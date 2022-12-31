@@ -2,9 +2,9 @@ use crate::domains::account::GithubAccount;
 use crate::domains::permissions::GithubPermissions;
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubRepository {
-  id: String,
+  id: u64,
   node_id: String,
   name: String,
   full_name: String,

@@ -1,8 +1,8 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubAccount {
-  id: String,
+  id: u64,
   login: String,
   avatar_url: String,
   gravatar_id: String,
@@ -17,6 +17,5 @@ pub struct GithubAccount {
   repos_url: String,
   events_url: String,
   received_events_url: String,
-  type_: String,
   site_admin: bool,
 }

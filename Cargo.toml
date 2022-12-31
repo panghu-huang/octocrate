@@ -6,7 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+async-trait = "0.1.60"
 chrono = "0.4.23"
-jsonwebtoken = "8.2.0"
-reqwest = "0.11.13"
+dotenv = "0.15.0"
+jsonwebtoken = { version = "8.2.0", features = ["use_pem"] }
+reqwest = { version = "0.11.13", features = ["json"] }
 serde = "1.0.152"
+tokio = { version = "1.23.0", features = ["full"] }

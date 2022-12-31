@@ -1,6 +1,5 @@
 mod api;
 mod app;
-mod expirable_token;
 mod domains;
 mod infrastructure;
 
