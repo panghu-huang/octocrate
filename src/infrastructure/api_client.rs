@@ -3,7 +3,7 @@ use reqwest::{Client, RequestBuilder};
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 
-pub struct GithubAPIClient {
+pub struct GithubAPIClient{
     token: Box<dyn ExpirableToken>,
 }
 
@@ -16,12 +16,14 @@ impl GithubAPIRequest {
         GithubAPIRequest { request_builder }
     }
 
+    #[allow(dead_code)]
     pub fn header(mut self, key: impl Into<String>, value: impl Into<String>) -> Self {
         self.request_builder = self.request_builder.header(key.into(), value.into());
 
         self
     }
 
+    #[allow(dead_code)]
     pub fn json<T: Serialize + ?Sized>(mut self, json: &T) -> Self {
         self.request_builder = self.request_builder.json(json);
 
@@ -60,6 +62,7 @@ impl GithubAPIRequest {
         }
     }
 
+    #[allow(dead_code)]
     pub async fn respond_text(self) -> Result<String, GithubError> {
         let res = self.request_builder.send().await;
         match res {
@@ -100,31 +103,30 @@ impl GithubAPIClient {
         }
     }
 
-    pub fn get(&mut self, url: impl Into<String>) -> GithubAPIRequest {
+    pub fn get(&self, url: impl Into<String>) -> GithubAPIRequest {
         let builder = Client::new().get(url.into());
         let builder = self.format_request(builder);
 
-        GithubAPIRequest {
-            request_builder: builder,
-        }
+        GithubAPIRequest::new(builder)
     }
 
-    pub fn post(&mut self, url: impl Into<String>) -> GithubAPIRequest {
+    pub fn post(&self, url: impl Into<String>) -> GithubAPIRequest {
         let builder = Client::new().post(url.into());
         let builder = self.format_request(builder);
 
-        GithubAPIRequest {
-            request_builder: builder,
-        }
+        GithubAPIRequest::new(builder)
     }
 
-    fn format_request(&mut self, request_builder: RequestBuilder) -> RequestBuilder {
+    fn format_request(&self, request_builder: RequestBuilder) -> RequestBuilder {
+        let request_builder = request_builder
+        .header("User-Agent", "Coodev")
+        .header("Accept", "application/vnd.github+json");
+
         let token = self.token.get_token();
         if token.is_some() {
-            return request_builder
-            .header("User-Agent", "Coodev")
-            .header("Authorization", format!("Bearer {}", token.unwrap()));
+            return request_builder.header("Authorization", format!("Bearer {}", token.unwrap()));
         }
-        request_builder.header("User-Agent", "Coodev")
+
+        request_builder
     }
 }

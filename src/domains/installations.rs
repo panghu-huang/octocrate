@@ -1,6 +1,6 @@
-use crate::domains::account::GithubAccount;
+use crate::domains::accounts::GithubAccount;
 use crate::domains::permissions::GithubPermissions;
-use crate::domains::repository::GithubRepository;
+use crate::domains::repositories::GithubRepository;
 use crate::infrastructure::expirable_token::ExpirableToken;
 use serde::{Deserialize, Serialize};
 use chrono::{DateTime, Utc};
@@ -47,7 +47,7 @@ impl ExpirableToken for GithubInstallationAccessToken {
       expires_at < Utc::now()
   }
 
-  fn get_token(&mut self) -> Option<String> {
+  fn get_token(&self) -> Option<String> {
       if self.is_expired() {
           None
       } else {

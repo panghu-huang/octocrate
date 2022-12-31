@@ -1,11 +1,12 @@
 use std::collections::HashMap;
 
+use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::{
-    account::GithubAccount,
-    jwt_token::GithubJWTExpirableToken,
-    installation::{GithubInstallation, GithubInstallationAccessToken},
-    issue::{GithubComment, GithubIssue},
-    repository::GithubRepository,
+    accounts::GithubAccount,
+    installation_token::GithubInstallationExpirableToken,
+    installations::{GithubInstallation, GithubInstallationAccessToken},
+    issues::{GithubIssueComment, GithubIssue},
+    repositories::GithubRepository,
 };
 use crate::infrastructure::api_client::GithubAPIClient;
 use crate::infrastructure::error::GithubError;
@@ -16,7 +17,7 @@ use serde::{Deserialize, Serialize};
 pub struct GithubCommentEvent {
     action: String,
     issue: GithubIssue,
-    comment: GithubComment,
+    comment: GithubIssueComment,
     repository: GithubRepository,
     sender: GithubAccount,
 }
@@ -33,36 +34,39 @@ pub struct GithubWebHookEventPayload {
 pub type GithubWebhookEventListener = Box<dyn Fn(GithubWebHookEventPayload) + Send + Sync>;
 
 pub struct GithubApp {
-    id: String,
     listeners: Vec<GithubWebhookEventListener>,
     tokens: HashMap<u64, GithubInstallationAccessToken>,
     api_client: GithubAPIClient,
 }
 
-const GITHUB_API_BASE_URL: &str = "https://api.github.com";
-
 impl GithubApp {
     pub fn new(id: String, private_key: String) -> Self {
-        let token = GithubJWTExpirableToken::new(id.clone(), private_key.clone());
+        let mut token = GithubInstallationExpirableToken::new(id.clone(), private_key.clone());
 
         let tokens = HashMap::new();
 
+        if let Err(error) = token.generate_token_if_expired() {
+            panic!("Error generating token: {}", error);
+        }
+
         Self {
-            id,
             tokens,
             api_client: GithubAPIClient::new(token),
             listeners: Vec::new(),
         }
     }
 
-    pub async fn get_installations(&mut self) -> Result<Vec<GithubInstallation>, GithubError> {
+    pub async fn get_installations(&self) -> Result<Vec<GithubInstallation>, GithubError> {
         let request_url = format!("{}/app/installations", GITHUB_API_BASE_URL);
 
-        self.api_client.get(request_url).respond_json::<Vec<GithubInstallation>>().await
+        self.api_client
+            .get(request_url)
+            .respond_json::<Vec<GithubInstallation>>()
+            .await
     }
 
     pub async fn get_installation(
-        &mut self,
+        &self,
         installation_id: impl Into<String>,
     ) -> Result<GithubInstallation, GithubError> {
         let request_url = format!(
@@ -70,7 +74,10 @@ impl GithubApp {
             GITHUB_API_BASE_URL,
             installation_id.into()
         );
-        self.api_client.get(request_url).respond_json::<GithubInstallation>().await
+        self.api_client
+            .get(request_url)
+            .respond_json::<GithubInstallation>()
+            .await
     }
 
     pub async fn get_installation_access_token(
@@ -91,8 +98,11 @@ impl GithubApp {
             GITHUB_API_BASE_URL, installation_id
         );
 
-        let token: GithubInstallationAccessToken =
-            self.api_client.post(request_url).respond_json::<GithubInstallationAccessToken>().await?;
+        let token: GithubInstallationAccessToken = self
+            .api_client
+            .post(request_url)
+            .respond_json::<GithubInstallationAccessToken>()
+            .await?;
 
         self.tokens.insert(installation_id, token.clone());
 
@@ -126,26 +136,26 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn get_installations() {
-        let mut app = create_app();
+    async fn test_get_installations() {
+        let app = create_app();
 
         let installations = app.get_installations().await.unwrap();
         println!("installations {:#?}", installations);
     }
 
     #[tokio::test]
-    async fn get_installation() {
-        let mut app = create_app();
+    async fn test_get_installation() {
+        let app = create_app();
 
         let installation_id = env::var("TEST_GITHUB_INSTALLATION_ID").unwrap();
 
         let installation = app.get_installation(installation_id).await.unwrap();
-        
+
         println!("installation {:#?}", installation);
     }
 
     #[tokio::test]
-    async fn get_installation_access_token() {
+    async fn test_get_installation_access_token() {
         let mut app = create_app();
 
         let installation_id = env::var("TEST_GITHUB_INSTALLATION_ID").unwrap();

@@ -13,14 +13,15 @@ pub struct GithubTokenPayload {
     iss: String,
 }
 
-pub struct GithubJWTExpirableToken {
+#[derive(Debug, Clone)]
+pub struct GithubInstallationExpirableToken {
     github_app_id: String,
     github_app_private_key: String,
     token: Option<String>,
     expires_at: Option<DateTime<Utc>>,
 }
 
-impl GithubJWTExpirableToken {
+impl GithubInstallationExpirableToken {
     pub fn new(github_app_id: String, github_app_private_key: String) -> Self {
         Self {
             token: None,
@@ -53,22 +54,26 @@ impl GithubJWTExpirableToken {
 
       Ok(token)
   }
+
+  pub fn generate_token_if_expired(&mut self) -> Result<String, GithubError> {
+      if self.is_expired() {
+          self.generate_token()
+      } else {
+          Ok(self.token.clone().unwrap())
+      }
+  }
 }
 
-impl ExpirableToken for GithubJWTExpirableToken {
+impl ExpirableToken for GithubInstallationExpirableToken {
     fn is_expired(&self) -> bool {
         self.expires_at.is_none() || self.expires_at.unwrap() < Utc::now()
     }
 
-    fn get_token(&mut self) -> Option<String> {
+    fn get_token(&self) -> Option<String> {
         if self.is_expired() {
-            match self.generate_token() {
-                Ok(token) => Some(token),
-                Err(_) => None,
-            }
+            None
         } else {
             self.token.clone()
         }
     }
-
 }

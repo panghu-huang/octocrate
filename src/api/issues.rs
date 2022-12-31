@@ -2,35 +2,34 @@ use std::ops::Deref;
 use std::sync::Arc;
 
 use crate::constants::GITHUB_API_BASE_URL;
-use crate::domains::repositories::GithubRepository;
+use crate::domains::issues::GithubIssue;
 use crate::infrastructure::api_client::GithubAPIClient;
 use crate::infrastructure::error::GithubError;
 
-pub struct GithubRepositoryAPI {
+pub struct GithubIssueAPI {
     client: Arc<GithubAPIClient>,
 }
 
-impl GithubRepositoryAPI {
+impl GithubIssueAPI {
     pub fn new(client: Arc<GithubAPIClient>) -> Self {
         Self { client }
     }
 
-    pub async fn get(
+    pub async fn list_repository_issues(
         &self,
         owner: impl Into<String>,
         repo: impl Into<String>,
-    ) -> Result<GithubRepository, GithubError> {
+    ) -> Result<Vec<GithubIssue>, GithubError> {
         let request_url = format!(
-            "{}/repos/{}/{}",
+            "{}/repos/{}/{}/issues?state=all&per_page=30",
             GITHUB_API_BASE_URL,
             owner.into(),
             repo.into()
         );
 
-        self.client
-            .deref()
+        self.client.deref()
             .get(request_url)
-            .respond_json::<GithubRepository>()
+            .respond_json::<Vec<GithubIssue>>()
             .await
     }
 }
@@ -54,7 +53,7 @@ mod tests {
     }
 
     #[tokio::test]
-    async fn test_get_repository() {
+    async fn test_list_repository_issues() {
         let mut app = create_app();
         let installation_id = env::var("TEST_GITHUB_INSTALLATION_ID").unwrap();
         let repo_owner = env::var("TEST_GITHUB_REPO_OWNER").unwrap();
@@ -66,12 +65,16 @@ mod tests {
             .unwrap();
 
         let api_client = GithubAPIClient::new(token);
-        let repo_api = GithubRepositoryAPI::new(Arc::new(api_client));
-        let repo = repo_api
-            .get(repo_owner, repo_name)
+        let mut issues_api = GithubIssueAPI::new(
+            Arc::new(api_client)
+        );
+        let issues = issues_api
+            .list_repository_issues(repo_owner, repo_name)
             .await
             .unwrap();
 
-        println!("repo {:#?}", repo);
+        println!("issues {:#?}", issues);
+
+        assert!(issues.len() > 0);
     }
 }

@@ -2,7 +2,6 @@ mod api;
 mod app;
 mod domains;
 mod infrastructure;
+mod constants;
 
-fn main() {
-    println!("Hello, world!");
-}
+pub use app::GithubApp;

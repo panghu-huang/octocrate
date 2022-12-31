@@ -1,5 +1,5 @@
-use crate::domains::account::GithubAccount;
-use crate::domains::permissions::GithubPermissions;
+use crate::domains::accounts::GithubAccount;
+use crate::domains::permissions::{GithubRepositoryPermissions};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -57,13 +57,13 @@ pub struct GithubRepository {
   svn_url: String,
   homepage: Option<String>,
   language: Option<String>,
-  forks_count: String,
-  stargazers_count: String,
-  watchers_count: String,
-  size: String,
+  forks_count: u64,
+  stargazers_count: u64,
+  watchers_count: u64,
+  size: u64,
   default_branch: String,
-  open_issues_count: String,
-  is_template: Option<String>,
+  open_issues_count: u64,
+  is_template: Option<bool>,
   topics: Vec<String>,
   has_issues: bool,
   has_projects: bool,
@@ -76,12 +76,11 @@ pub struct GithubRepository {
   pushed_at: String,
   created_at: String,
   updated_at: String,
-  permissions: GithubPermissions,
-  template_repository: Option<String>,
+  permissions: GithubRepositoryPermissions,
   temp_clone_token: Option<String>,
   allow_squash_merge: bool,
   allow_merge_commit: bool,
   allow_rebase_merge: bool,
   delete_branch_on_merge: bool,
-  allow_auto_merge: Option<String>,
+  allow_auto_merge: bool,
 }

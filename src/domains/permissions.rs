@@ -7,3 +7,11 @@ pub struct GithubPermissions {
   issues: String,
   single_file: Option<String>,
 }
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubRepositoryPermissions {
+  pub admin: bool,
+  pub push: bool,
+  pub pull: bool,
+  pub triage: Option<bool>,
+}

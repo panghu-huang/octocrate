@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
-use crate::domains::repository::GithubRepository;
-use crate::domains::account::GithubAccount;
+use crate::domains::repositories::GithubRepository;
+use crate::domains::accounts::GithubAccount;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct GithubPullRequest {
@@ -43,14 +43,14 @@ pub struct GithubLabel {
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct GithubIssue {
-    pub id: String,
-    pub number: String,
+    pub id: u64,
+    pub number: u64,
     pub title: String,
-    pub body: String,
+    pub body: Option<String>,
     pub state: String,
     pub created_at: String,
     pub updated_at: String,
-    pub closed_at: String,
+    pub closed_at: Option<String>,
     pub author_association: String,
     pub repository_url: String,
     pub labels_url: String,
@@ -68,12 +68,12 @@ pub struct GithubIssue {
     pub comments: u32,
     pub pull_request: Option<GithubPullRequest>,
     pub closed_by: Option<GithubAccount>,
-    pub repository: GithubRepository,
-    pub user: GithubAccount,
+    pub repository: Option<GithubRepository>,
+    pub user: Option<GithubAccount>,
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct GithubComment {
+pub struct GithubIssueComment {
     pub id: u32,
     pub node_id: String,
     pub url: String,
@@ -82,4 +82,6 @@ pub struct GithubComment {
     pub user: GithubAccount,
     pub created_at: String,
     pub updated_at: String,
+    pub author_association: String,
+    pub issue_url: String,
 }
