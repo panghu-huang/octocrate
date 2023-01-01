@@ -6,7 +6,7 @@ use std::sync::Arc;
 use crate::infrastructure::api_client::GithubAPIClient;
 use crate::domains::installations::GithubInstallationAccessToken;
 
-
+#[derive(Clone)]
 pub struct GithubAPI {
   pub issues: issues::GithubIssueAPI,
   pub repository: repository::GithubRepositoryAPI,

@@ -1,40 +1,32 @@
 use std::collections::HashMap;
 
+use crate::api::GithubAPI;
 use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::{
-    accounts::GithubAccount,
+    events::GithubWebhookIssueCommentEvent,
     installation_token::GithubInstallationExpirableToken,
     installations::{GithubInstallation, GithubInstallationAccessToken},
-    issues::{GithubIssueComment, GithubIssue},
-    repositories::GithubRepository,
 };
 use crate::infrastructure::api_client::GithubAPIClient;
 use crate::infrastructure::error::GithubError;
 use crate::infrastructure::expirable_token::ExpirableToken;
-use serde::{Deserialize, Serialize};
+use websockets::WebSocket;
 
-#[derive(Serialize, Deserialize, Debug)]
-pub struct GithubCommentEvent {
-    action: String,
-    issue: GithubIssue,
-    comment: GithubIssueComment,
-    repository: GithubRepository,
-    sender: GithubAccount,
-}
-
+#[derive(Debug, Clone)]
 pub enum GithubWebhookEvent {
-    IssueComment(GithubCommentEvent),
+    IssueComment(GithubWebhookIssueCommentEvent),
 }
 
-pub struct GithubWebHookEventPayload {
+#[derive(Debug)]
+pub struct GithubWebhookEventPayload {
     event: GithubWebhookEvent,
-    api: String,
+    // api: GithubAPI,
 }
 
-pub type GithubWebhookEventListener = Box<dyn Fn(GithubWebHookEventPayload) + Send + Sync>;
+pub type GithubWebhookEventListener = Box<dyn Fn(GithubWebhookEventPayload) + Send + Sync>;
 
 pub struct GithubApp {
-    listeners: Vec<GithubWebhookEventListener>,
+    webhook_event_listeners: Vec<GithubWebhookEventListener>,
     tokens: HashMap<u64, GithubInstallationAccessToken>,
     api_client: GithubAPIClient,
 }
@@ -52,7 +44,26 @@ impl GithubApp {
         Self {
             tokens,
             api_client: GithubAPIClient::new(token),
-            listeners: Vec::new(),
+            webhook_event_listeners: Vec::new(),
+        }
+    }
+
+    pub async fn connect(&self) -> Result<(), GithubError> {
+        let ws_url = std::env::var("WEBHOOK_WEBSOCKET_URL").unwrap();
+        let ws = WebSocket::connect(ws_url.as_str()).await?;
+
+        let (mut ws, _) = ws.split();
+        loop {
+            let s = ws.receive().await?;
+            let (msg, _, _) = s.as_text().unwrap();
+            let event = self.parse_webhook_event(msg)?;
+
+            for listener in &self.webhook_event_listeners {
+                listener(GithubWebhookEventPayload {
+                    event: event.clone(),
+                    // api: self.get_api(installation_id)
+                });
+            }
         }
     }
 
@@ -109,11 +120,51 @@ impl GithubApp {
         Ok(token)
     }
 
-    pub fn on_event<F>(&mut self, listener: F)
+    pub fn on_webhook_event<F>(&mut self, listener: F) -> &Self
     where
-        F: Fn(GithubWebHookEventPayload) + Send + Sync + 'static,
+        F: Fn(GithubWebhookEventPayload) + Send + Sync + 'static,
     {
-        self.listeners.push(Box::new(listener));
+        self.webhook_event_listeners.push(Box::new(listener));
+
+        self
+    }
+
+    async fn get_api(&mut self, installation_id: u64) -> Result<GithubAPI, GithubError> {
+        if let Some(token) = self.tokens.get(&installation_id) {
+            if !token.is_expired() {
+                return Ok(GithubAPI::new(token.clone()));
+            }
+        }
+
+        let token = self
+            .get_installation_access_token(installation_id.to_string())
+            .await?;
+
+        Ok(GithubAPI::new(token))
+    }
+
+    fn parse_webhook_event(&self, payload: &String) -> Result<GithubWebhookEvent, GithubError> {
+        let event: serde_json::Value = serde_json::from_str(payload)?;
+
+        if let Some(event_name) = event["event"].as_str() {
+            match event_name {
+                "issue_comment" => {
+                    let evt = serde_json::from_value::<GithubWebhookIssueCommentEvent>(
+                        event["data"].clone(),
+                    )?;
+
+                    return Ok(GithubWebhookEvent::IssueComment(evt));
+                }
+                _ => {
+                    return Err(GithubError::new(format!(
+                        "Unknown event name: {}",
+                        event_name
+                    )));
+                }
+            }
+        }
+
+        Err(GithubError::new("No event name found"))
     }
 }
 
@@ -133,6 +184,13 @@ mod tests {
         let private_key = fs::read_to_string(github_app_private_key_path).unwrap();
 
         GithubApp::new(github_app_id, private_key)
+    }
+
+    #[tokio::test]
+    async fn test_connect() {
+        let app = create_app();
+
+        app.connect().await.unwrap();
     }
 
     #[tokio::test]
