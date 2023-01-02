@@ -3,8 +3,9 @@ use serde::{Deserialize, Serialize};
 use crate::domains::{
     accounts::GithubAccount,
     issues::{GithubIssue, GithubIssueComment},
+    pulls::GithubPullRequest,
     repositories::GithubRepository,
-    pulls::GithubPullRequest
+    commits::GithubCommitAuthor
 };
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -37,8 +38,50 @@ pub struct GithubWebhookPullRequestEvent {
     pub installation: GithubWebhookInstallation,
 }
 
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubWebhookPushEventCommit {
+    pub id: String,
+    pub tree_id: String,
+    pub distinct: bool,
+    pub message: String,
+    pub timestamp: String,
+    pub url: String,
+    pub author: GithubCommitAuthor,
+    pub committer: GithubCommitAuthor,
+    pub added: Vec<String>,
+    pub removed: Vec<String>,
+    pub modified: Vec<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubPusher {
+    pub name: String,
+    pub email: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubWebhookPushEvent {
+    #[serde(rename = "ref")]
+    pub ref_name: String,
+    pub before: String,
+    pub after: String,
+    pub created: bool,
+    pub deleted: bool,
+    pub forced: bool,
+    pub base_ref: Option<String>,
+    pub compare: String,
+    pub commits: Vec<GithubWebhookPushEventCommit>,
+    pub head_commit: Option<GithubWebhookPushEventCommit>,
+    pub repository: GithubRepository,
+    pub pusher: GithubPusher,
+    pub sender: GithubAccount,
+    pub installation: GithubWebhookInstallation,
+}
+
 #[derive(Debug, Clone)]
 pub enum GithubWebhookEvent {
     IssueComment(GithubWebhookIssueCommentEvent),
+    PullRequest(GithubWebhookPullRequestEvent),
+    Push(GithubWebhookPushEvent),
     Unsupported(String),
 }

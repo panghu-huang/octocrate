@@ -2,7 +2,6 @@ use dotenv::dotenv;
 use github_app::{events::GithubWebhookEvent, GithubApp};
 use std::env;
 use std::fs;
-use tokio::{runtime::Handle, task};
 
 #[tokio::main]
 async fn main() {
@@ -35,14 +34,12 @@ async fn main() {
                         });
                     }
                 }
-                GithubWebhookEvent::Unsupported(payload) => {
-                    println!("Unsupported event {:#?}", payload);
-                }
+                _ => {}
             };
 
             Ok(())
         })
-        .connect()
+        .start()
         .await
         .unwrap();
 }

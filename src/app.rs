@@ -1,7 +1,10 @@
 use crate::api::GithubAPI;
 use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::{
-    events::{GithubWebhookEvent, GithubWebhookInstallation, GithubWebhookIssueCommentEvent},
+    events::{
+        GithubWebhookEvent, GithubWebhookInstallation, GithubWebhookIssueCommentEvent,
+        GithubWebhookPullRequestEvent, GithubWebhookPushEvent,
+    },
     installation_token::GithubInstallationExpirableToken,
     installations::{GithubInstallation, GithubInstallationAccessToken},
 };
@@ -44,7 +47,7 @@ impl GithubApp {
         }
     }
 
-    pub async fn connect(&mut self) -> Result<(), GithubError> {
+    pub async fn start(&mut self) -> Result<(), GithubError> {
         let ws_url = std::env::var("WEBHOOK_WEBSOCKET_URL").unwrap();
         let ws = WebSocket::connect(ws_url.as_str()).await?;
 
@@ -170,6 +173,19 @@ impl GithubApp {
 
                     return Ok((installation, GithubWebhookEvent::IssueComment(evt)));
                 }
+                "pull_request" => {
+                    let evt = serde_json::from_value::<GithubWebhookPullRequestEvent>(
+                        event["data"].clone(),
+                    )?;
+
+                    return Ok((installation, GithubWebhookEvent::PullRequest(evt)));
+                }
+                "push" => {
+                    let evt =
+                        serde_json::from_value::<GithubWebhookPushEvent>(event["data"].clone())?;
+
+                    return Ok((installation, GithubWebhookEvent::Push(evt)));
+                }
                 _ => {
                     return Ok((
                         installation,
@@ -205,7 +221,7 @@ mod tests {
     async fn test_connect() {
         let mut app = create_app();
 
-        app.connect().await.unwrap();
+        app.start().await.unwrap();
     }
 
     #[tokio::test]

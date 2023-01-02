@@ -73,8 +73,12 @@ pub struct GithubRepository {
     pub archived: bool,
     pub disabled: bool,
     pub visibility: String,
-    pub pushed_at: String,
-    pub created_at: String,
+    // on push event, pushed_at's data type is integer
+    // but on repository event, pushed_at's data type is string
+    // pub pushed_at: String,
+    // on push event, created_at's data type is integer
+    // but on repository event, created_at's data type is string
+    // pub created_at: String,
     pub updated_at: String,
     pub permissions: Option<GithubRepositoryPermissions>,
     pub temp_clone_token: Option<String>,
