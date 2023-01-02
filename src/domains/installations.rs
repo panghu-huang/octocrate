@@ -5,7 +5,7 @@ use crate::infrastructure::expirable_token::ExpirableToken;
 use serde::{Deserialize, Serialize};
 use chrono::{DateTime, Utc};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubInstallation {
   pub id: u64,
   pub account: GithubAccount,

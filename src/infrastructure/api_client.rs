@@ -3,7 +3,8 @@ use reqwest::{Client, RequestBuilder};
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 
-pub struct GithubAPIClient{
+#[derive(Debug)]
+pub struct GithubAPIClient {
     token: Box<dyn ExpirableToken>,
 }
 
@@ -69,7 +70,6 @@ impl GithubAPIRequest {
             Ok(res) => {
                 let status = res.status();
                 if !status.is_success() {
-
                     if let Ok(error_response) = res.json::<GithubError>().await {
                         return Err(error_response);
                     }
@@ -117,10 +117,17 @@ impl GithubAPIClient {
         GithubAPIRequest::new(builder)
     }
 
+    pub fn put(&self, url: impl Into<String>) -> GithubAPIRequest {
+        let builder = Client::new().put(url.into());
+        let builder = self.format_request(builder);
+
+        GithubAPIRequest::new(builder)
+    }
+
     fn format_request(&self, request_builder: RequestBuilder) -> RequestBuilder {
         let request_builder = request_builder
-        .header("User-Agent", "Coodev")
-        .header("Accept", "application/vnd.github+json");
+            .header("User-Agent", "Coodev")
+            .header("Accept", "application/vnd.github+json");
 
         let token = self.token.get_token();
         if token.is_some() {

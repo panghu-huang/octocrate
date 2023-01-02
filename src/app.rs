@@ -1,29 +1,21 @@
-use std::collections::HashMap;
-
 use crate::api::GithubAPI;
 use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::{
-    events::GithubWebhookIssueCommentEvent,
+    events::{GithubWebhookEvent, GithubWebhookInstallation, GithubWebhookIssueCommentEvent},
     installation_token::GithubInstallationExpirableToken,
     installations::{GithubInstallation, GithubInstallationAccessToken},
 };
 use crate::infrastructure::api_client::GithubAPIClient;
 use crate::infrastructure::error::GithubError;
 use crate::infrastructure::expirable_token::ExpirableToken;
+use std::collections::HashMap;
 use websockets::WebSocket;
 
-#[derive(Debug, Clone)]
-pub enum GithubWebhookEvent {
-    IssueComment(GithubWebhookIssueCommentEvent),
-}
-
-#[derive(Debug)]
-pub struct GithubWebhookEventPayload {
-    event: GithubWebhookEvent,
-    // api: GithubAPI,
-}
-
-pub type GithubWebhookEventListener = Box<dyn Fn(GithubWebhookEventPayload) + Send + Sync>;
+pub type GithubWebhookEventListener = Box<
+    dyn Fn(GithubWebhookEvent, GithubAPI) -> Result<(), Box<dyn std::error::Error>>
+        + Send
+        + Sync,
+>;
 
 pub struct GithubApp {
     webhook_event_listeners: Vec<GithubWebhookEventListener>,
@@ -48,7 +40,7 @@ impl GithubApp {
         }
     }
 
-    pub async fn connect(&self) -> Result<(), GithubError> {
+    pub async fn connect(&mut self) -> Result<(), GithubError> {
         let ws_url = std::env::var("WEBHOOK_WEBSOCKET_URL").unwrap();
         let ws = WebSocket::connect(ws_url.as_str()).await?;
 
@@ -56,13 +48,13 @@ impl GithubApp {
         loop {
             let s = ws.receive().await?;
             let (msg, _, _) = s.as_text().unwrap();
-            let event = self.parse_webhook_event(msg)?;
+            let (installation, event) = self.parse_webhook_event_payload(msg)?;
 
+            let api = self.get_api(installation.id).await?;
             for listener in &self.webhook_event_listeners {
-                listener(GithubWebhookEventPayload {
-                    event: event.clone(),
-                    // api: self.get_api(installation_id)
-                });
+                if let Err(error) = listener(event.clone(), api.clone()) {
+                    println!("Error: {}", error);
+                }
             }
         }
     }
@@ -120,16 +112,20 @@ impl GithubApp {
         Ok(token)
     }
 
-    pub fn on_webhook_event<F>(&mut self, listener: F) -> &Self
+    pub fn on_webhook_event<F>(&mut self, listener: F) -> &mut Self
     where
-        F: Fn(GithubWebhookEventPayload) + Send + Sync + 'static,
+        F: Fn(
+            GithubWebhookEvent,
+            GithubAPI,
+        ) -> Result<(), Box<dyn std::error::Error>>,
+        F: Send + Sync + 'static,
     {
         self.webhook_event_listeners.push(Box::new(listener));
 
         self
     }
 
-    async fn get_api(&mut self, installation_id: u64) -> Result<GithubAPI, GithubError> {
+    pub async fn get_api(&mut self, installation_id: u64) -> Result<GithubAPI, GithubError> {
         if let Some(token) = self.tokens.get(&installation_id) {
             if !token.is_expired() {
                 return Ok(GithubAPI::new(token.clone()));
@@ -143,8 +139,19 @@ impl GithubApp {
         Ok(GithubAPI::new(token))
     }
 
-    fn parse_webhook_event(&self, payload: &String) -> Result<GithubWebhookEvent, GithubError> {
+    fn parse_webhook_event_payload(
+        &self,
+        payload: &String,
+    ) -> Result<(GithubWebhookInstallation, GithubWebhookEvent), GithubError> {
         let event: serde_json::Value = serde_json::from_str(payload)?;
+        let installation = event
+            .get("data")
+            .ok_or(GithubError::new("No data field on webhook event"))?
+            .get("installation")
+            .ok_or(GithubError::new("No installation field on webhook event"))?;
+
+        let installation =
+            serde_json::from_value::<GithubWebhookInstallation>(installation.clone())?;
 
         if let Some(event_name) = event["event"].as_str() {
             match event_name {
@@ -153,7 +160,7 @@ impl GithubApp {
                         event["data"].clone(),
                     )?;
 
-                    return Ok(GithubWebhookEvent::IssueComment(evt));
+                    return Ok((installation, GithubWebhookEvent::IssueComment(evt)));
                 }
                 _ => {
                     return Err(GithubError::new(format!(
@@ -188,7 +195,7 @@ mod tests {
 
     #[tokio::test]
     async fn test_connect() {
-        let app = create_app();
+        let mut app = create_app();
 
         app.connect().await.unwrap();
     }

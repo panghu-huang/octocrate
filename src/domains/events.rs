@@ -8,31 +8,36 @@ use crate::domains::{
 };
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct Installation {
-    pub id: i64,
+pub struct GithubWebhookInstallation {
+    pub id: u64,
     pub node_id: String,
 }
 
 // event name: issue_comment
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubWebhookIssueCommentEvent {
-    /// created
+    /// created / edited / deleted
     pub action: String,
     pub issue: GithubIssue,
     pub comment: GithubIssueComment,
     pub repository: GithubRepository,
     pub sender: GithubAccount,
-    pub installation: Installation,
+    pub installation: GithubWebhookInstallation,
 }
 
 // event name: pull_request
-#[derive(Serialize, Deserialize, Debug)]
-pub struct GithubWebhookPullRequestOpenedEvent {
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubWebhookPullRequestEvent {
     /// opened
     pub action: String,
-    pub number: i64,
+    pub number: u64,
     pub pull_request: GithubPullRequest,
     pub repository: GithubRepository,
     pub sender: GithubAccount,
-    pub installation: Installation,
+    pub installation: GithubWebhookInstallation,
+}
+
+#[derive(Debug, Clone)]
+pub enum GithubWebhookEvent {
+    IssueComment(GithubWebhookIssueCommentEvent),
 }

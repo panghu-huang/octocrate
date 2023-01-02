@@ -2,7 +2,7 @@ use serde::{Deserialize, Serialize};
 
 use super::{accounts::GithubAccount, issues::{GithubLabel, GithubMilestone}};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubPullRequest {
     pub url: String,
     pub id: u64,

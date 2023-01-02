@@ -6,7 +6,7 @@ use crate::domains::repositories::GithubRepository;
 use crate::infrastructure::api_client::GithubAPIClient;
 use crate::infrastructure::error::GithubError;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct GithubRepositoryAPI {
     client: Arc<GithubAPIClient>,
 }
