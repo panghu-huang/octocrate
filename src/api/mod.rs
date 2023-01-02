@@ -1,21 +1,20 @@
 pub mod issues;
-pub mod repository;
 pub mod pulls;
-
-use std::sync::Arc;
+pub mod repository;
 
 use crate::infrastructure::api_client::GithubAPIClient;
-use crate::domains::installations::GithubInstallationAccessToken;
+use crate::infrastructure::expirable_token::ExpirableToken;
+use std::sync::Arc;
 
 #[derive(Clone, Debug)]
-pub struct GithubAPI {
-  pub issues: issues::GithubIssueAPI,
-  pub repository: repository::GithubRepositoryAPI,
-  pub pulls: pulls::GithubPullRequestAPI,
+pub struct GithubAPI<T: ExpirableToken + Clone> {
+    pub issues: issues::GithubIssueAPI<T>,
+    pub repository: repository::GithubRepositoryAPI<T>,
+    pub pulls: pulls::GithubPullRequestAPI<T>,
 }
 
-impl GithubAPI {
-    pub fn new(token: GithubInstallationAccessToken) -> Self {
+impl<T: ExpirableToken + Clone + 'static> GithubAPI<T> {
+    pub fn new(token: T) -> Self {
         let client = Arc::new(GithubAPIClient::new(token));
 
         Self {

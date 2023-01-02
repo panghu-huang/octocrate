@@ -4,8 +4,8 @@ use serde::de::DeserializeOwned;
 use serde::Serialize;
 
 #[derive(Debug)]
-pub struct GithubAPIClient {
-    token: Box<dyn ExpirableToken>,
+pub struct GithubAPIClient<T: ExpirableToken + Clone> {
+    token: T,
 }
 
 pub struct GithubAPIRequest {
@@ -93,13 +93,13 @@ impl GithubAPIRequest {
     }
 }
 
-impl GithubAPIClient {
-    pub fn new<T>(token: T) -> Self
+impl<T: ExpirableToken + Clone> GithubAPIClient<T> {
+    pub fn new(token: T) -> Self
     where
-        T: ExpirableToken + 'static,
+        T: ExpirableToken + Clone + 'static,
     {
         GithubAPIClient {
-            token: Box::new(token),
+            token,
         }
     }
 

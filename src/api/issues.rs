@@ -5,14 +5,15 @@ use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::issues::{GithubIssue, GithubIssueComment};
 use crate::infrastructure::api_client::GithubAPIClient;
 use crate::infrastructure::error::GithubError;
+use crate::infrastructure::expirable_token::ExpirableToken;
 
 #[derive(Clone, Debug)]
-pub struct GithubIssueAPI {
-    client: Arc<GithubAPIClient>,
+pub struct GithubIssueAPI<T: ExpirableToken + Clone> {
+    client: Arc<GithubAPIClient<T>>,
 }
 
-impl GithubIssueAPI {
-    pub fn new(client: Arc<GithubAPIClient>) -> Self {
+impl<T: ExpirableToken + Clone> GithubIssueAPI<T> {
+    pub fn new(client: Arc<GithubAPIClient<T>>) -> Self {
         Self { client }
     }
 
@@ -63,6 +64,7 @@ impl GithubIssueAPI {
     }
 }
 
+#[cfg(test)]
 mod tests {
     #![allow(unused_imports)]
     use super::*;

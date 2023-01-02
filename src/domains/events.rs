@@ -40,4 +40,5 @@ pub struct GithubWebhookPullRequestEvent {
 #[derive(Debug, Clone)]
 pub enum GithubWebhookEvent {
     IssueComment(GithubWebhookIssueCommentEvent),
+    Unsupported(String),
 }

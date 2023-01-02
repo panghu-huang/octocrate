@@ -5,14 +5,15 @@ use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::repositories::GithubRepository;
 use crate::infrastructure::api_client::GithubAPIClient;
 use crate::infrastructure::error::GithubError;
+use crate::infrastructure::expirable_token::ExpirableToken;
 
 #[derive(Clone, Debug)]
-pub struct GithubRepositoryAPI {
-    client: Arc<GithubAPIClient>,
+pub struct GithubRepositoryAPI<T: ExpirableToken + Clone> {
+    client: Arc<GithubAPIClient<T>>,
 }
 
-impl GithubRepositoryAPI {
-    pub fn new(client: Arc<GithubAPIClient>) -> Self {
+impl<T: ExpirableToken + Clone> GithubRepositoryAPI<T> {
+    pub fn new(client: Arc<GithubAPIClient<T>>) -> Self {
         Self { client }
     }
 
@@ -36,6 +37,7 @@ impl GithubRepositoryAPI {
     }
 }
 
+#[cfg(test)]
 mod tests {
     #![allow(unused_imports)]
     use super::*;
@@ -68,10 +70,7 @@ mod tests {
 
         let api_client = GithubAPIClient::new(token);
         let repo_api = GithubRepositoryAPI::new(Arc::new(api_client));
-        let repo = repo_api
-            .get(repo_owner, repo_name)
-            .await
-            .unwrap();
+        let repo = repo_api.get(repo_owner, repo_name).await.unwrap();
 
         println!("repo {:#?}", repo);
     }

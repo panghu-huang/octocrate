@@ -12,7 +12,11 @@ use std::collections::HashMap;
 use websockets::WebSocket;
 
 pub type GithubWebhookEventListener = Box<
-    dyn Fn(GithubWebhookEvent, GithubAPI) -> Result<(), Box<dyn std::error::Error>>
+    dyn Fn(
+            GithubWebhookEvent,
+            GithubWebhookInstallation,
+            GithubAPI<GithubInstallationAccessToken>,
+        ) -> Result<(), Box<dyn std::error::Error>>
         + Send
         + Sync,
 >;
@@ -20,7 +24,7 @@ pub type GithubWebhookEventListener = Box<
 pub struct GithubApp {
     webhook_event_listeners: Vec<GithubWebhookEventListener>,
     tokens: HashMap<u64, GithubInstallationAccessToken>,
-    api_client: GithubAPIClient,
+    api_client: GithubAPIClient<GithubInstallationExpirableToken>,
 }
 
 impl GithubApp {
@@ -52,7 +56,7 @@ impl GithubApp {
 
             let api = self.get_api(installation.id).await?;
             for listener in &self.webhook_event_listeners {
-                if let Err(error) = listener(event.clone(), api.clone()) {
+                if let Err(error) = listener(event.clone(), installation.clone(), api.clone()) {
                     println!("Error: {}", error);
                 }
             }
@@ -116,7 +120,8 @@ impl GithubApp {
     where
         F: Fn(
             GithubWebhookEvent,
-            GithubAPI,
+            GithubWebhookInstallation,
+            GithubAPI<GithubInstallationAccessToken>,
         ) -> Result<(), Box<dyn std::error::Error>>,
         F: Send + Sync + 'static,
     {
@@ -125,7 +130,10 @@ impl GithubApp {
         self
     }
 
-    pub async fn get_api(&mut self, installation_id: u64) -> Result<GithubAPI, GithubError> {
+    pub async fn get_api(
+        &mut self,
+        installation_id: u64,
+    ) -> Result<GithubAPI<GithubInstallationAccessToken>, GithubError> {
         if let Some(token) = self.tokens.get(&installation_id) {
             if !token.is_expired() {
                 return Ok(GithubAPI::new(token.clone()));
@@ -163,10 +171,10 @@ impl GithubApp {
                     return Ok((installation, GithubWebhookEvent::IssueComment(evt)));
                 }
                 _ => {
-                    return Err(GithubError::new(format!(
-                        "Unknown event name: {}",
-                        event_name
-                    )));
+                    return Ok((
+                        installation,
+                        GithubWebhookEvent::Unsupported(payload.clone()),
+                    ));
                 }
             }
         }
@@ -175,7 +183,7 @@ impl GithubApp {
     }
 }
 
-// tests
+#[cfg(test)]
 mod tests {
 
     use super::GithubApp;

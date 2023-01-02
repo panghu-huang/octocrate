@@ -1,9 +1,10 @@
-use std::ops::Deref;
-use std::sync::Arc;
-use serde::{Deserialize, Serialize};
 use crate::constants::GITHUB_API_BASE_URL;
 use crate::infrastructure::api_client::GithubAPIClient;
 use crate::infrastructure::error::GithubError;
+use crate::infrastructure::expirable_token::ExpirableToken;
+use serde::{Deserialize, Serialize};
+use std::ops::Deref;
+use std::sync::Arc;
 
 #[derive(Clone, Debug, Deserialize, Serialize)]
 pub struct GithubMergePullRequestResponse {
@@ -13,12 +14,12 @@ pub struct GithubMergePullRequestResponse {
 }
 
 #[derive(Clone, Debug)]
-pub struct GithubPullRequestAPI {
-    client: Arc<GithubAPIClient>,
+pub struct GithubPullRequestAPI<T: ExpirableToken + Clone> {
+    client: Arc<GithubAPIClient<T>>,
 }
 
-impl GithubPullRequestAPI {
-    pub fn new(client: Arc<GithubAPIClient>) -> Self {
+impl<T: ExpirableToken + Clone> GithubPullRequestAPI<T> {
+    pub fn new(client: Arc<GithubAPIClient<T>>) -> Self {
         Self { client }
     }
 
