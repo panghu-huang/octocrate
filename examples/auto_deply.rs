@@ -1,18 +1,11 @@
-use dotenv::dotenv;
-use github_app::{events::GithubWebhookEvent, GithubApp};
-use std::env;
-use std::fs;
+use github_app::{events::GithubWebhookEvent, test_utils, GithubApp};
 
 #[tokio::main]
 async fn main() {
-    dotenv().ok();
+    let envs = test_utils::load_test_envs().unwrap();
 
-    let github_app_id = env::var("TEST_GITHUB_APP_ID").unwrap();
-    let github_app_private_key_path = env::var("TEST_GITHUB_APP_PRIVATE_KEY_PATH").unwrap();
-    let private_key = fs::read_to_string(github_app_private_key_path).unwrap();
-
-    GithubApp::new(github_app_id, private_key)
-        .on_webhook_event(|event, _installation, api| {
+    GithubApp::new(envs.github_app_id, envs.github_app_private_key)
+        .on_webhook_event(|event, api| {
             match event {
                 GithubWebhookEvent::IssueComment(evt) => {
                     if evt.comment.body.starts_with("Hello") {

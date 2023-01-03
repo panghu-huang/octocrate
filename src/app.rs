@@ -8,16 +8,13 @@ use crate::domains::{
     installation_token::GithubInstallationExpirableToken,
     installations::{GithubInstallation, GithubInstallationAccessToken},
 };
-use crate::infrastructure::api_client::GithubAPIClient;
-use crate::infrastructure::error::GithubError;
-use crate::infrastructure::expirable_token::ExpirableToken;
+use crate::infrastructure::{ExpirableToken, GithubAPIClient, GithubError, GithubResult};
 use std::collections::HashMap;
 use websockets::WebSocket;
 
 pub type GithubWebhookEventListener = Box<
     dyn Fn(
             GithubWebhookEvent,
-            GithubWebhookInstallation,
             GithubAPI<GithubInstallationAccessToken>,
         ) -> Result<(), Box<dyn std::error::Error>>
         + Send
@@ -31,8 +28,8 @@ pub struct GithubApp {
 }
 
 impl GithubApp {
-    pub fn new(id: String, private_key: String) -> Self {
-        let mut token = GithubInstallationExpirableToken::new(id.clone(), private_key.clone());
+    pub fn new(id: impl Into<String>, private_key: impl Into<String>) -> Self {
+        let mut token = GithubInstallationExpirableToken::new(id.into(), private_key.into());
 
         let tokens = HashMap::new();
 
@@ -47,7 +44,7 @@ impl GithubApp {
         }
     }
 
-    pub async fn start(&mut self) -> Result<(), GithubError> {
+    pub async fn start(&mut self) -> GithubResult<()> {
         let ws_url = std::env::var("WEBHOOK_WEBSOCKET_URL").unwrap();
         let ws = WebSocket::connect(ws_url.as_str()).await?;
 
@@ -59,14 +56,14 @@ impl GithubApp {
 
             let api = self.get_api(installation.id).await?;
             for listener in &self.webhook_event_listeners {
-                if let Err(error) = listener(event.clone(), installation.clone(), api.clone()) {
-                    println!("Error: {}", error);
+                if let Err(error) = listener(event.clone(), api.clone()) {
+                    eprintln!("Error: {}", error);
                 }
             }
         }
     }
 
-    pub async fn get_installations(&self) -> Result<Vec<GithubInstallation>, GithubError> {
+    pub async fn get_installations(&self) -> GithubResult<Vec<GithubInstallation>> {
         let request_url = format!("{}/app/installations", GITHUB_API_BASE_URL);
 
         self.api_client
@@ -77,8 +74,8 @@ impl GithubApp {
 
     pub async fn get_installation(
         &self,
-        installation_id: impl Into<String>,
-    ) -> Result<GithubInstallation, GithubError> {
+        installation_id: impl Into<u64>,
+    ) -> GithubResult<GithubInstallation> {
         let request_url = format!(
             "{}/app/installations/{}",
             GITHUB_API_BASE_URL,
@@ -92,10 +89,9 @@ impl GithubApp {
 
     pub async fn get_installation_access_token(
         &mut self,
-        installation_id: impl Into<String>,
-    ) -> Result<GithubInstallationAccessToken, GithubError> {
-        let installation_id: String = installation_id.into();
-        let installation_id: u64 = installation_id.parse().unwrap();
+        installation_id: impl Into<u64>,
+    ) -> GithubResult<GithubInstallationAccessToken> {
+        let installation_id: u64 = installation_id.into();
 
         if let Some(token) = self.tokens.get(&installation_id) {
             if !token.is_expired() {
@@ -108,7 +104,7 @@ impl GithubApp {
             GITHUB_API_BASE_URL, installation_id
         );
 
-        let token: GithubInstallationAccessToken = self
+        let token = self
             .api_client
             .post(request_url)
             .respond_json::<GithubInstallationAccessToken>()
@@ -123,7 +119,6 @@ impl GithubApp {
     where
         F: Fn(
             GithubWebhookEvent,
-            GithubWebhookInstallation,
             GithubAPI<GithubInstallationAccessToken>,
         ) -> Result<(), Box<dyn std::error::Error>>,
         F: Send + Sync + 'static,
@@ -136,16 +131,14 @@ impl GithubApp {
     pub async fn get_api(
         &mut self,
         installation_id: u64,
-    ) -> Result<GithubAPI<GithubInstallationAccessToken>, GithubError> {
+    ) -> GithubResult<GithubAPI<GithubInstallationAccessToken>> {
         if let Some(token) = self.tokens.get(&installation_id) {
             if !token.is_expired() {
                 return Ok(GithubAPI::new(token.clone()));
             }
         }
 
-        let token = self
-            .get_installation_access_token(installation_id.to_string())
-            .await?;
+        let token = self.get_installation_access_token(installation_id).await?;
 
         Ok(GithubAPI::new(token))
     }
@@ -153,16 +146,8 @@ impl GithubApp {
     fn parse_webhook_event_payload(
         &self,
         payload: &String,
-    ) -> Result<(GithubWebhookInstallation, GithubWebhookEvent), GithubError> {
+    ) -> GithubResult<(GithubWebhookInstallation, GithubWebhookEvent)> {
         let event: serde_json::Value = serde_json::from_str(payload)?;
-        let installation = event
-            .get("data")
-            .ok_or(GithubError::new("No data field on webhook event"))?
-            .get("installation")
-            .ok_or(GithubError::new("No installation field on webhook event"))?;
-
-        let installation =
-            serde_json::from_value::<GithubWebhookInstallation>(installation.clone())?;
 
         if let Some(event_name) = event["event"].as_str() {
             match event_name {
@@ -171,22 +156,36 @@ impl GithubApp {
                         event["data"].clone(),
                     )?;
 
-                    return Ok((installation, GithubWebhookEvent::IssueComment(evt)));
+                    return Ok((
+                        evt.installation.clone(),
+                        GithubWebhookEvent::IssueComment(evt),
+                    ));
                 }
                 "pull_request" => {
                     let evt = serde_json::from_value::<GithubWebhookPullRequestEvent>(
                         event["data"].clone(),
                     )?;
 
-                    return Ok((installation, GithubWebhookEvent::PullRequest(evt)));
+                    return Ok((
+                        evt.installation.clone(),
+                        GithubWebhookEvent::PullRequest(evt),
+                    ));
                 }
                 "push" => {
                     let evt =
                         serde_json::from_value::<GithubWebhookPushEvent>(event["data"].clone())?;
 
-                    return Ok((installation, GithubWebhookEvent::Push(evt)));
+                    return Ok((evt.installation.clone(), GithubWebhookEvent::Push(evt)));
                 }
                 _ => {
+                    let installation = event
+                        .get("data")
+                        .ok_or(GithubError::new("No data field on webhook event"))?
+                        .get("installation")
+                        .ok_or(GithubError::new("No installation field on webhook event"))?;
+
+                    let installation =
+                        serde_json::from_value::<GithubWebhookInstallation>(installation.clone())?;
                     return Ok((
                         installation,
                         GithubWebhookEvent::Unsupported(payload.clone()),
@@ -201,65 +200,53 @@ impl GithubApp {
 
 #[cfg(test)]
 mod tests {
+    use crate::infrastructure::GithubResult;
+    use crate::test_utils;
 
-    use super::GithubApp;
-    use dotenv::dotenv;
-    use std::env;
-    use std::fs;
+    #[tokio::test]
+    #[ignore]
+    async fn start() -> GithubResult<()> {
+        let mut app = test_utils::create_github_app()?;
 
-    fn create_app() -> GithubApp {
-        dotenv().ok();
-        let github_app_id = env::var("TEST_GITHUB_APP_ID").unwrap();
-        let github_app_private_key_path = env::var("TEST_GITHUB_APP_PRIVATE_KEY_PATH").unwrap();
+        app.start().await?;
 
-        let private_key = fs::read_to_string(github_app_private_key_path).unwrap();
-
-        GithubApp::new(github_app_id, private_key)
+        Ok(())
     }
 
     #[tokio::test]
-    async fn test_connect() {
-        let mut app = create_app();
+    async fn get_installations() -> GithubResult<()> {
+        let app = test_utils::create_github_app()?;
 
-        app.start().await.unwrap();
+        let _installations = app.get_installations().await?;
+
+        Ok(())
     }
 
     #[tokio::test]
-    async fn test_get_installations() {
-        let app = create_app();
+    async fn get_installation() -> GithubResult<()> {
+        let app = test_utils::create_github_app()?;
+        let envs = test_utils::load_test_envs()?;
 
-        let installations = app.get_installations().await.unwrap();
-        println!("installations {:#?}", installations);
+        let installation = app.get_installation(envs.installation_id).await?;
+
+        assert_eq!(installation.id, envs.installation_id);
+        Ok(())
     }
 
     #[tokio::test]
-    async fn test_get_installation() {
-        let app = create_app();
-
-        let installation_id = env::var("TEST_GITHUB_INSTALLATION_ID").unwrap();
-
-        let installation = app.get_installation(installation_id).await.unwrap();
-
-        println!("installation {:#?}", installation);
-    }
-
-    #[tokio::test]
-    async fn test_get_installation_access_token() {
-        let mut app = create_app();
-
-        let installation_id = env::var("TEST_GITHUB_INSTALLATION_ID").unwrap();
+    async fn get_installation_access_token() -> GithubResult<()> {
+        let mut app = test_utils::create_github_app()?;
+        let envs = test_utils::load_test_envs()?;
+        let installation_id = envs.installation_id;
 
         let access_token = app
             .get_installation_access_token(installation_id.clone())
-            .await
-            .unwrap();
+            .await?;
 
-        let access_token1 = app
-            .get_installation_access_token(installation_id)
-            .await
-            .unwrap();
+        let access_token1 = app.get_installation_access_token(installation_id).await?;
 
         assert_eq!(access_token.expires_at, access_token1.expires_at);
-        println!("installation access token {:#?}", access_token);
+
+        Ok(())
     }
 }

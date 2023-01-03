@@ -1,7 +1,4 @@
-use crate::infrastructure::{
-  error::GithubError,
-  expirable_token::{ExpirableToken},
-};
+use crate::infrastructure::{ExpirableToken, GithubError};
 use chrono::{DateTime, Utc};
 use jsonwebtoken::{encode, Algorithm, EncodingKey, Header};
 use serde::{Deserialize, Serialize};
@@ -31,37 +28,33 @@ impl GithubInstallationExpirableToken {
         }
     }
 
-    
     fn generate_token(&mut self) -> Result<String, GithubError> {
-      let now = chrono::Utc::now().timestamp();
-      let expires_at = chrono::Utc::now() + chrono::Duration::seconds(60);
-      let payload = GithubTokenPayload {
-          iat: now,
-          exp: expires_at.timestamp(),
-          iss: self.github_app_id.clone(),
-      };
-      let token = encode(
-          &Header::new(Algorithm::RS256),
-          &payload,
-          &EncodingKey::from_rsa_pem(
-            self.github_app_private_key
-              .as_bytes()
-          ).unwrap(),
-      )?;
-      println!("token: {}", token);
-      self.token = Some(token.clone());
-      self.expires_at = Some(expires_at);
+        let now = chrono::Utc::now().timestamp();
+        let expires_at = chrono::Utc::now() + chrono::Duration::seconds(60);
+        let payload = GithubTokenPayload {
+            iat: now,
+            exp: expires_at.timestamp(),
+            iss: self.github_app_id.clone(),
+        };
+        let token = encode(
+            &Header::new(Algorithm::RS256),
+            &payload,
+            &EncodingKey::from_rsa_pem(self.github_app_private_key.as_bytes()).unwrap(),
+        )?;
 
-      Ok(token)
-  }
+        self.token = Some(token.clone());
+        self.expires_at = Some(expires_at);
 
-  pub fn generate_token_if_expired(&mut self) -> Result<String, GithubError> {
-      if self.is_expired() {
-          self.generate_token()
-      } else {
-          Ok(self.token.clone().unwrap())
-      }
-  }
+        Ok(token)
+    }
+
+    pub fn generate_token_if_expired(&mut self) -> Result<String, GithubError> {
+        if self.is_expired() {
+            self.generate_token()
+        } else {
+            Ok(self.token.clone().unwrap())
+        }
+    }
 }
 
 impl ExpirableToken for GithubInstallationExpirableToken {

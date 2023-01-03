@@ -52,7 +52,6 @@ impl GithubAPIRequest {
                         return Ok(response);
                     }
                     Err(error) => {
-                        println!("Error: {:#?}", error);
                         return Err(GithubError::new(error.to_string()));
                     }
                 }

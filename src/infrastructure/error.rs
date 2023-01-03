@@ -3,6 +3,8 @@ use std::error::Error;
 use jsonwebtoken::errors::Error as JwtError;
 use websockets::WebSocketError;
 use serde_json::Error as SerdeJsonError;
+use dotenv::Error as DotEnvError;
+use std::io::Error as IoError;
 use std::fmt;
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -47,6 +49,22 @@ impl From<WebSocketError> for GithubError {
 
 impl From<SerdeJsonError> for GithubError {
     fn from(err: SerdeJsonError) -> Self {
+        GithubError {
+            message: err.to_string(),
+        }
+    }
+}
+
+impl From<DotEnvError> for GithubError {
+    fn from(err: DotEnvError) -> Self {
+        GithubError {
+            message: err.to_string(),
+        }
+    }
+}
+
+impl From<IoError> for GithubError {
+    fn from(err: IoError) -> Self {
         GithubError {
             message: err.to_string(),
         }

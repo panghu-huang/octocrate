@@ -7,3 +7,4 @@ pub mod installation_token;
 pub mod events;
 pub mod pulls;
 pub mod commits;
+pub mod personal_access_token;

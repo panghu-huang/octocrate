@@ -1,16 +1,15 @@
+pub mod commits;
 pub mod issues;
 pub mod pulls;
-pub mod repository;
-pub mod commits;
+pub mod repositories;
 
-use crate::infrastructure::api_client::GithubAPIClient;
-use crate::infrastructure::expirable_token::ExpirableToken;
+use crate::infrastructure::{ExpirableToken, GithubAPIClient};
 use std::sync::Arc;
 
 #[derive(Clone, Debug)]
 pub struct GithubAPI<T: ExpirableToken + Clone> {
     pub issues: issues::GithubIssueAPI<T>,
-    pub repositories: repository::GithubRepositoryAPI<T>,
+    pub repositories: repositories::GithubRepositoryAPI<T>,
     pub pulls: pulls::GithubPullRequestAPI<T>,
     pub commits: commits::GithubCommitAPI<T>,
 }
@@ -21,9 +20,33 @@ impl<T: ExpirableToken + Clone + 'static> GithubAPI<T> {
 
         Self {
             issues: issues::GithubIssueAPI::new(client.clone()),
-            repositories: repository::GithubRepositoryAPI::new(client.clone()),
+            repositories: repositories::GithubRepositoryAPI::new(client.clone()),
             pulls: pulls::GithubPullRequestAPI::new(client.clone()),
             commits: commits::GithubCommitAPI::new(client.clone()),
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::GithubAPI;
+    use crate::domains::personal_access_token::GithubPersonalAccessToken;
+    use crate::infrastructure::GithubResult;
+    use crate::utils::test_utils;
+
+    #[tokio::test]
+    async fn get_repository() -> GithubResult<()> {
+        let envs = test_utils::load_test_envs()?;
+        let token = GithubPersonalAccessToken::new(envs.personal_access_token);
+        let github_api = GithubAPI::new(token);
+
+        let repo = github_api
+            .repositories
+            .get_repository(envs.repo_owner, envs.repo_name.clone())
+            .await?;
+
+        assert_eq!(repo.name, envs.repo_name);
+
+        Ok(())
     }
 }

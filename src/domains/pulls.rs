@@ -48,20 +48,24 @@ pub struct GithubPullRequest {
     pub labels: Vec<GithubLabel>,
     pub milestone: Option<GithubMilestone>,
     pub draft: bool,
-    pub commits: u64,
-    pub additions: u64,
-    pub deletions: u64,
-    pub changed_files: u64,
+    /// NOTE: Only present in pull request details
+    pub commits: Option<u64>,
+    /// NOTE: Only present in pull request details
+    pub additions: Option<u64>,
+    /// NOTE: Only present in pull request details
+    pub deletions: Option<u64>,
+    /// NOTE: Only present in pull request details
+    pub changed_files: Option<u64>,
     pub base: GithubPullRequestRef,
     pub head: GithubPullRequestRef,
     pub author_association: String,
     pub active_lock_reason: Option<String>,
-    pub merged: bool,
+    pub merged: Option<bool>,
     pub mergeable: Option<bool>,
     pub rebaseable: Option<bool>,
-    pub mergeable_state: String,
+    pub mergeable_state: Option<String>,
     pub merged_by: Option<GithubAccount>,
-    pub comments: u64,
-    pub review_comments: u64,
-    pub maintainer_can_modify: bool,
+    pub comments: Option<u64>,
+    pub review_comments: Option<u64>,
+    pub maintainer_can_modify: Option<bool>,
 }

@@ -1,18 +1,11 @@
-use dotenv::dotenv;
-use github_app::{events::GithubWebhookEvent, GithubApp};
-use std::env;
-use std::fs;
+use github_app::{events::GithubWebhookEvent, test_utils, GithubApp};
 
 #[tokio::main]
 async fn main() {
-    dotenv().ok();
+    let envs = test_utils::load_test_envs().unwrap();
 
-    let github_app_id = env::var("TEST_GITHUB_APP_ID").unwrap();
-    let github_app_private_key_path = env::var("TEST_GITHUB_APP_PRIVATE_KEY_PATH").unwrap();
-    let private_key = fs::read_to_string(github_app_private_key_path).unwrap();
-
-    GithubApp::new(github_app_id, private_key)
-        .on_webhook_event(|event, _installation, _api| {
+    GithubApp::new(envs.github_app_id, envs.github_app_private_key)
+        .on_webhook_event(|event, _api| {
             match event {
                 GithubWebhookEvent::PullRequest(evt) => {
                     println!("Pull request {:#?}", evt);
@@ -20,7 +13,12 @@ async fn main() {
                 GithubWebhookEvent::Push(evt) => {
                     println!("Push {:#?}", evt);
                 }
-                _ => {}
+                GithubWebhookEvent::IssueComment(evt) => {
+                    println!("Issue comment {:#?}", evt);
+                }
+                GithubWebhookEvent::Unsupported(evt) => {
+                    println!("Unsupported {:#?}", evt);
+                }
             };
 
             Ok(())
