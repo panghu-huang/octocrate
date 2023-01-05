@@ -25,7 +25,7 @@ impl RequestContext {
           use crate::constants::GITHUB_API_BASE_URL;
 
           #[derive(Clone, Debug)]
-          pub struct GithubRepositoryAPI<T: ExpirableToken + Clone> {
+          pub struct #name<T: ExpirableToken + Clone> {
             client: std::sync::Arc<GithubAPIClient<T>>,
           }
 

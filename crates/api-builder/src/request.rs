@@ -4,7 +4,7 @@ use std::collections::HashMap;
 use syn::{
     braced,
     parse::{Parse, ParseBuffer, ParseStream},
-    Error, Expr, Ident, Lit,
+    Error, Expr, Ident, Lit, Type
 };
 
 #[derive(Debug, Clone)]
@@ -24,7 +24,7 @@ pub struct Request {
     params: Vec<(Ident, Ident)>,
     query: HashMap<String, String>,
     headers: HashMap<String, String>,
-    response: Ident,
+    response: Type,
 }
 
 #[derive(Debug)]
@@ -35,7 +35,7 @@ pub struct RequestBuilder {
     params: Option<Vec<(Ident, Ident)>>,
     query: Option<HashMap<String, String>>,
     headers: Option<HashMap<String, String>>,
-    response: Option<Ident>,
+    response: Option<Type>,
 }
 
 impl RequestBuilder {
@@ -76,7 +76,7 @@ impl RequestBuilder {
         self
     }
 
-    pub fn response(&mut self, response: Ident) -> &mut Self {
+    pub fn response(&mut self, response: Type) -> &mut Self {
         self.response = Some(response);
         self
     }
@@ -210,7 +210,9 @@ impl Parse for Request {
                     builder.params(params);
                 }
                 "response" => {
-                    let res: Ident = content.parse()?;
+                    println!("Before response {:?}", content);
+                    let res: Type = content.parse()?;
+                    println!("{:?}", res);
 
                     builder.response(res);
                 }
