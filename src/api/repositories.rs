@@ -1,38 +1,18 @@
-use std::ops::Deref;
-use std::sync::Arc;
-
-use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::repositories::GithubRepository;
-use crate::infrastructure::{ExpirableToken, GithubAPIClient, GithubError};
 
-#[derive(Clone, Debug)]
-pub struct GithubRepositoryAPI<T: ExpirableToken + Clone> {
-    client: Arc<GithubAPIClient<T>>,
-}
+use request_builder::github_api;
 
-impl<T: ExpirableToken + Clone> GithubRepositoryAPI<T> {
-    pub fn new(client: Arc<GithubAPIClient<T>>) -> Self {
-        Self { client }
+github_api! {
+  GithubRepositoryAPI {
+    get_repository {
+      path "/repos/{}/{}"
+      params {
+        owner String
+        name String
+      }
+      response GithubRepository
     }
-
-    pub async fn get_repository(
-        &self,
-        owner: impl Into<String>,
-        repo: impl Into<String>,
-    ) -> Result<GithubRepository, GithubError> {
-        let request_url = format!(
-            "{}/repos/{}/{}",
-            GITHUB_API_BASE_URL,
-            owner.into(),
-            repo.into()
-        );
-
-        self.client
-            .deref()
-            .get(request_url)
-            .respond_json::<GithubRepository>()
-            .await
-    }
+  }
 }
 
 #[cfg(test)]
