@@ -1,4 +1,4 @@
-use github_app::{events::GithubWebhookEvent, test_utils, GithubApp};
+use github_api::{events::GithubWebhookEvent, test_utils, GithubApp};
 
 #[tokio::main]
 async fn main() {

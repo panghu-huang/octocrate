@@ -3,7 +3,7 @@ use std::sync::Arc;
 
 use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::issues::{GithubIssue, GithubIssueComment};
-use crate::infrastructure::{ExpirableToken, GithubAPIClient, GithubError};
+use infrastructure::{ExpirableToken, GithubAPIClient, GithubError};
 
 #[derive(Clone, Debug)]
 pub struct GithubIssueAPI<T: ExpirableToken + Clone> {
@@ -67,8 +67,8 @@ mod tests {
     #![allow(unused_imports)]
     use super::*;
     use crate::app::GithubApp;
-    use crate::infrastructure::GithubResult;
     use crate::utils::test_utils;
+    use infrastructure::GithubResult;
 
     #[tokio::test]
     async fn list_repository_issues() -> GithubResult<()> {
@@ -93,7 +93,12 @@ mod tests {
         let issues_api = GithubIssueAPI::new(Arc::new(api_client));
         let comment_body = "test";
         let issue_comment = issues_api
-            .create_issue_comment(envs.repo_owner, envs.repo_name, envs.issue_number, comment_body)
+            .create_issue_comment(
+                envs.repo_owner,
+                envs.repo_name,
+                envs.issue_number,
+                comment_body,
+            )
             .await?;
 
         assert_eq!(issue_comment.body, comment_body);

@@ -1,6 +1,6 @@
 use crate::app::GithubApp;
 use crate::domains::personal_access_token::GithubPersonalAccessToken;
-use crate::infrastructure::{GithubAPIClient, GithubError, GithubResult};
+use infrastructure::{GithubAPIClient, GithubError, GithubResult};
 use dotenv::dotenv;
 use serde::{Deserialize, Serialize};
 use std::env;

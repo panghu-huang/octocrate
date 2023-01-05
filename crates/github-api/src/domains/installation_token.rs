@@ -1,4 +1,4 @@
-use crate::infrastructure::{ExpirableToken, GithubError};
+use infrastructure::{ExpirableToken, GithubError};
 use chrono::{DateTime, Utc};
 use jsonwebtoken::{encode, Algorithm, EncodingKey, Header};
 use serde::{Deserialize, Serialize};

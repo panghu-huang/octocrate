@@ -56,13 +56,15 @@ pub struct GithubWebhookPushEventCommit {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubPusher {
     pub name: String,
-    pub email: String,
+    /// If pusher is a bot, email will be null
+    pub email: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubWebhookPushEvent {
     #[serde(rename = "ref")]
     pub ref_name: String,
+    /// If first commit, before will be 0000000000000000000000000000000000000000
     pub before: String,
     pub after: String,
     pub created: bool,

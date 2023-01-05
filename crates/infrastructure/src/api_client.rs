@@ -1,4 +1,4 @@
-use crate::infrastructure::{error::GithubError, expirable_token::ExpirableToken};
+use crate::{error::GithubError, ExpirableToken};
 use reqwest::{Client, RequestBuilder};
 use serde::de::DeserializeOwned;
 use serde::Serialize;

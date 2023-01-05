@@ -21,8 +21,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "api-builder"
-version = "0.1.0"
+name = "async-trait"
+version = "0.1.60"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "677d1d8ab452a3936018a687b20e6f7cf5363d713b732b8884001317b0e48aa3"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -380,14 +382,15 @@ dependencies = [
 ]
 
 [[package]]
-name = "github-api"
+name = "github-app"
 version = "0.1.0"
 dependencies = [
- "api-builder",
+ "async-trait",
  "chrono",
  "dotenv",
- "infrastructure",
  "jsonwebtoken",
+ "request-builder",
+ "reqwest",
  "serde",
  "serde_json",
  "tokio",
@@ -541,18 +544,6 @@ checksum = "1885e79c1fc4b10f0e172c475f458b7f7b93061064d98c3293e98c5ba0c8b399"
 dependencies = [
  "autocfg",
  "hashbrown",
-]
-
-[[package]]
-name = "infrastructure"
-version = "0.1.0"
-dependencies = [
- "dotenv",
- "jsonwebtoken",
- "reqwest",
- "serde",
- "serde_json",
- "websockets",
 ]
 
 [[package]]
@@ -964,6 +955,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "request-builder"
+version = "0.1.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "reqwest"
 version = "0.11.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1292,9 +1292,9 @@ checksum = "cda74da7e1a664f795bb1f8a87ec406fb89a02522cf6e50620d016add6dbbf5c"
 
 [[package]]
 name = "tokio"
-version = "1.23.1"
+version = "1.23.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "38a54aca0c15d014013256222ba0ebed095673f89345dd79119d912eb561b7a8"
+checksum = "eab6d665857cc6ca78d6e80303a02cea7a7851e85dfbd77cbdc09bd129f1ef46"
 dependencies = [
  "autocfg",
  "bytes",

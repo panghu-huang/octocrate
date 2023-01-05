@@ -3,7 +3,7 @@ pub mod issues;
 pub mod pulls;
 pub mod repositories;
 
-use crate::infrastructure::{ExpirableToken, GithubAPIClient};
+use infrastructure::{ExpirableToken, GithubAPIClient};
 use std::sync::Arc;
 
 #[derive(Clone, Debug)]
@@ -31,8 +31,8 @@ impl<T: ExpirableToken + Clone + 'static> GithubAPI<T> {
 mod tests {
     use super::GithubAPI;
     use crate::domains::personal_access_token::GithubPersonalAccessToken;
-    use crate::infrastructure::GithubResult;
     use crate::utils::test_utils;
+    use infrastructure::GithubResult;
 
     #[tokio::test]
     async fn get_repository() -> GithubResult<()> {

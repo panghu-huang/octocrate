@@ -1,7 +1,7 @@
 use crate::domains::accounts::GithubAccount;
 use crate::domains::permissions::GithubPermissions;
 use crate::domains::repositories::GithubRepository;
-use crate::infrastructure::ExpirableToken;
+use infrastructure::ExpirableToken;
 use serde::{Deserialize, Serialize};
 use chrono::{DateTime, Utc};
 

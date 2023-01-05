@@ -1,6 +1,6 @@
 use crate::domains::repositories::GithubRepository;
 
-use request_builder::github_api;
+use api_builder::github_api;
 
 github_api! {
   GithubRepositoryAPI {
@@ -18,8 +18,8 @@ github_api! {
 #[cfg(test)]
 mod tests {
     use super::GithubRepositoryAPI;
-    use crate::infrastructure::GithubResult;
     use crate::utils::test_utils;
+    use infrastructure::GithubResult;
     use std::sync::Arc;
 
     #[tokio::test]

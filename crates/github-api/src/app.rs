@@ -8,7 +8,7 @@ use crate::domains::{
     installation_token::GithubInstallationExpirableToken,
     installations::{GithubInstallation, GithubInstallationAccessToken},
 };
-use crate::infrastructure::{ExpirableToken, GithubAPIClient, GithubError, GithubResult};
+use infrastructure::{ExpirableToken, GithubAPIClient, GithubError, GithubResult};
 use std::collections::HashMap;
 use websockets::WebSocket;
 
@@ -200,7 +200,7 @@ impl GithubApp {
 
 #[cfg(test)]
 mod tests {
-    use crate::infrastructure::GithubResult;
+    use infrastructure::GithubResult;
     use crate::test_utils;
 
     #[tokio::test]

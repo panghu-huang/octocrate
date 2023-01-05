@@ -1,4 +1,4 @@
-use crate::infrastructure::ExpirableToken;
+use infrastructure::ExpirableToken;
 
 #[derive(Clone, Debug)]
 pub struct GithubPersonalAccessToken {

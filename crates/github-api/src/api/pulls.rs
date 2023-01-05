@@ -1,6 +1,6 @@
 use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::pulls::GithubPullRequest;
-use crate::infrastructure::{ExpirableToken, GithubAPIClient, GithubError};
+use infrastructure::{ExpirableToken, GithubAPIClient, GithubError};
 use serde::{Deserialize, Serialize};
 use std::ops::Deref;
 use std::sync::Arc;
@@ -87,8 +87,8 @@ impl<T: ExpirableToken + Clone> GithubPullRequestAPI<T> {
 #[cfg(test)]
 mod tests {
     use super::GithubPullRequestAPI;
-    use crate::infrastructure::GithubResult;
     use crate::utils::test_utils;
+    use infrastructure::GithubResult;
     use std::sync::Arc;
 
     #[tokio::test]
