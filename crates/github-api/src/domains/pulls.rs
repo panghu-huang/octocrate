@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 use crate::domains::{
-    accounts::GithubAccount,
+    users::GithubUser,
     issues::{GithubLabel, GithubMilestone},
     repositories::GithubRepository,
 };
@@ -12,7 +12,7 @@ pub struct GithubPullRequestRef {
     #[serde(rename = "ref")]
     pub ref_name: String,
     pub sha: String,
-    pub user: GithubAccount,
+    pub user: GithubUser,
     pub repo: GithubRepository,
 }
 
@@ -34,17 +34,17 @@ pub struct GithubPullRequest {
     pub state: String,
     pub locked: bool,
     pub title: String,
-    pub user: GithubAccount,
+    pub user: GithubUser,
     pub body: Option<String>,
     pub created_at: String,
     pub updated_at: String,
     pub closed_at: Option<String>,
     pub merged_at: Option<String>,
     pub merge_commit_sha: Option<String>,
-    pub assignee: Option<GithubAccount>,
-    pub assignees: Vec<GithubAccount>,
-    pub requested_reviewers: Vec<GithubAccount>,
-    pub requested_teams: Vec<GithubAccount>,
+    pub assignee: Option<GithubUser>,
+    pub assignees: Vec<GithubUser>,
+    pub requested_reviewers: Vec<GithubUser>,
+    pub requested_teams: Vec<GithubUser>,
     pub labels: Vec<GithubLabel>,
     pub milestone: Option<GithubMilestone>,
     pub draft: bool,
@@ -64,7 +64,7 @@ pub struct GithubPullRequest {
     pub mergeable: Option<bool>,
     pub rebaseable: Option<bool>,
     pub mergeable_state: Option<String>,
-    pub merged_by: Option<GithubAccount>,
+    pub merged_by: Option<GithubUser>,
     pub comments: Option<u64>,
     pub review_comments: Option<u64>,
     pub maintainer_can_modify: Option<bool>,

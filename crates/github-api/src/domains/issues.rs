@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 use crate::domains::repositories::GithubRepository;
-use crate::domains::accounts::GithubAccount;
+use crate::domains::users::GithubUser;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubIssuePullRequest {
@@ -21,7 +21,7 @@ pub struct GithubMilestone {
     pub state: String,
     pub title: String,
     pub description: String,
-    pub creator: GithubAccount,
+    pub creator: GithubUser,
     pub open_issues: u32,
     pub closed_issues: u32,
     pub created_at: String,
@@ -60,16 +60,16 @@ pub struct GithubIssue {
     pub node_id: String,
     pub url: String,
     pub labels: Vec<GithubLabel>,
-    pub assignees: Vec<GithubAccount>,
-    pub assignee: Option<GithubAccount>,
+    pub assignees: Vec<GithubUser>,
+    pub assignee: Option<GithubUser>,
     pub milestone: Option<GithubMilestone>,
     pub locked: bool,
     pub active_lock_reason: Option<String>,
     pub comments: u32,
     pub pull_request: Option<GithubIssuePullRequest>,
-    pub closed_by: Option<GithubAccount>,
+    pub closed_by: Option<GithubUser>,
     pub repository: Option<GithubRepository>,
-    pub user: Option<GithubAccount>,
+    pub user: Option<GithubUser>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -79,7 +79,7 @@ pub struct GithubIssueComment {
     pub url: String,
     pub html_url: String,
     pub body: String,
-    pub user: GithubAccount,
+    pub user: GithubUser,
     pub created_at: String,
     pub updated_at: String,
     pub author_association: String,

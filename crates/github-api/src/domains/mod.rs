@@ -1,4 +1,4 @@
-pub mod accounts;
+pub mod users;
 pub mod permissions;
 pub mod repositories;
 pub mod installations;

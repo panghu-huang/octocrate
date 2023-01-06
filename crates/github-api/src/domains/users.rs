@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct GithubAccount {
+pub struct GithubUser {
     pub id: u64,
     pub login: String,
     pub avatar_url: String,

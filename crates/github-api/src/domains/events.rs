@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 use crate::domains::{
-    accounts::GithubAccount,
+    users::GithubUser,
     issues::{GithubIssue, GithubIssueComment},
     pulls::GithubPullRequest,
     repositories::GithubRepository,
@@ -22,7 +22,7 @@ pub struct GithubWebhookIssueCommentEvent {
     pub issue: GithubIssue,
     pub comment: GithubIssueComment,
     pub repository: GithubRepository,
-    pub sender: GithubAccount,
+    pub sender: GithubUser,
     pub installation: GithubWebhookInstallation,
 }
 
@@ -34,7 +34,7 @@ pub struct GithubWebhookPullRequestEvent {
     pub number: u64,
     pub pull_request: GithubPullRequest,
     pub repository: GithubRepository,
-    pub sender: GithubAccount,
+    pub sender: GithubUser,
     pub installation: GithubWebhookInstallation,
 }
 
@@ -76,7 +76,7 @@ pub struct GithubWebhookPushEvent {
     pub head_commit: Option<GithubWebhookPushEventCommit>,
     pub repository: GithubRepository,
     pub pusher: GithubPusher,
-    pub sender: GithubAccount,
+    pub sender: GithubUser,
     pub installation: GithubWebhookInstallation,
 }
 

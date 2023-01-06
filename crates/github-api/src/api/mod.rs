@@ -3,6 +3,7 @@ pub mod issues;
 pub mod pulls;
 pub mod repositories;
 pub mod branches;
+pub mod users;
 
 use infrastructure::{ExpirableToken, GithubAPIClient};
 use std::sync::Arc;
@@ -13,6 +14,7 @@ pub struct GithubAPI<T: ExpirableToken + Clone> {
     pub repositories: repositories::GithubRepositoryAPI<T>,
     pub pulls: pulls::GithubPullRequestAPI<T>,
     pub commits: commits::GithubCommitAPI<T>,
+    pub branches: branches::GithubBranchAPI<T>,
 }
 
 impl<T: ExpirableToken + Clone + 'static> GithubAPI<T> {
@@ -24,6 +26,7 @@ impl<T: ExpirableToken + Clone + 'static> GithubAPI<T> {
             repositories: repositories::GithubRepositoryAPI::new(client.clone()),
             pulls: pulls::GithubPullRequestAPI::new(client.clone()),
             commits: commits::GithubCommitAPI::new(client.clone()),
+            branches: branches::GithubBranchAPI::new(client.clone()),
         }
     }
 }

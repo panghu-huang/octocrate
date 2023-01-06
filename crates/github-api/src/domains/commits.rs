@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-use crate::domains::accounts::GithubAccount;
+use crate::domains::users::GithubUser;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubCommitParent {
@@ -39,12 +39,12 @@ pub struct GithubCommitContent {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubCommit {
     pub sha: String,
-    pub node_id: String,
-    pub commit: GithubCommitContent,
     pub url: String,
-    pub html_url: String,
-    pub comments_url: String,
-    pub author: Option<GithubAccount>,
-    pub committer: Option<GithubAccount>,
-    pub parents: Vec<GithubCommitParent>,
+    pub node_id: Option<String>,
+    pub commit: Option<GithubCommitContent>,
+    pub html_url: Option<String>,
+    pub comments_url: Option<String>,
+    pub author: Option<GithubUser>,
+    pub committer: Option<GithubUser>,
+    pub parents: Option<Vec<GithubCommitParent>>,
 }

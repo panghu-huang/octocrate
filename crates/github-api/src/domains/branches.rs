@@ -1,5 +1,4 @@
-use crate::domains::accounts::GithubAccount;
-use crate::domains::commits::GithubCommitContent;
+use crate::domains::commits::GithubCommit;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -23,7 +22,7 @@ pub struct GithubBranchProtection {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GithubBranch {
     pub name: String,
-    pub commit: GithubBranchCommit,
+    pub commit: GithubCommit,
     pub protected: bool,
     pub protection: Option<GithubBranchProtection>,
 }

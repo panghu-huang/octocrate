@@ -4,7 +4,7 @@ use std::collections::HashMap;
 use syn::{
     braced,
     parse::{Parse, ParseBuffer, ParseStream},
-    Error, Expr, Ident, Lit, Type
+    Error, Expr, Ident, Lit, Type,
 };
 
 #[derive(Debug, Clone)]
@@ -108,19 +108,32 @@ impl Request {
 
         let params = self.generate_params_ast();
         let url = self.generate_url_ast();
+        let method = self.generate_method_ast();
 
         let ast = quote! {
           pub async fn #name(&self, #params) -> infrastructure::GithubResult<#response> {
             let url = format!("{}{}", GITHUB_API_BASE_URL, #url);
             self.client
               .deref()
-              .get(url)
+              .#method(url)
               .respond_json::<#response>()
               .await
           }
         };
 
         ast
+    }
+
+    fn generate_method_ast(&self) -> TokenStream {
+        let method = match &self.method {
+            RequestMethod::GET => quote! { get },
+            RequestMethod::POST => quote! { post },
+            RequestMethod::PUT => quote! { put },
+            RequestMethod::DELETE => quote! { delete },
+            RequestMethod::PATCH => quote! { patch },
+        };
+
+        method
     }
 
     fn generate_params_ast(&self) -> TokenStream {
@@ -210,9 +223,7 @@ impl Parse for Request {
                     builder.params(params);
                 }
                 "response" => {
-                    println!("Before response {:?}", content);
                     let res: Type = content.parse()?;
-                    println!("{:?}", res);
 
                     builder.response(res);
                 }

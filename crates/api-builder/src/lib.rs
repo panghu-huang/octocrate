@@ -1,5 +1,6 @@
 mod request;
 mod request_context;
+mod api_test;
 
 use proc_macro::TokenStream;
 use syn::parse_macro_input;
@@ -13,11 +14,11 @@ use crate::request_context::RequestContext;
 /// api! {
 ///   GithubRepositoriesAPI {
 ///     list {
-///       method: GET
-///       path: "https://api.github.com/user/repos"
-///       params: {
-///         page: u64
-///         state: String
+///       method GET
+///       path "https://api.github.com/user/repos"
+///       params {
+///         page u64
+///         state String
 ///       }
 ///     }
 ///   }

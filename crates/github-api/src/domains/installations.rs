@@ -1,4 +1,4 @@
-use crate::domains::accounts::GithubAccount;
+use crate::domains::users::GithubUser;
 use crate::domains::permissions::GithubPermissions;
 use crate::domains::repositories::GithubRepository;
 use infrastructure::ExpirableToken;
@@ -8,7 +8,7 @@ use chrono::{DateTime, Utc};
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubInstallation {
   pub id: u64,
-  pub account: GithubAccount,
+  pub account: GithubUser,
   pub access_tokens_url: String,
   pub repositories_url: String,
   pub html_url: String,

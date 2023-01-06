@@ -1,4 +1,4 @@
-use crate::domains::accounts::GithubAccount;
+use crate::domains::users::GithubUser;
 use crate::domains::permissions::GithubRepositoryPermissions;
 use serde::{Deserialize, Serialize};
 
@@ -8,7 +8,7 @@ pub struct GithubRepository {
     pub node_id: String,
     pub name: String,
     pub full_name: String,
-    pub owner: GithubAccount,
+    pub owner: GithubUser,
     pub private: bool,
     pub html_url: String,
     pub description: Option<String>,

@@ -11,6 +11,16 @@ github_api! {
       }
       response Vec<GithubBranch>
     }
+
+    get_branch {
+      path "/repos/{}/{}/branches/{}"
+      params {
+        owner String
+        repo String
+        branch String
+      }
+      response GithubBranch
+    }
   }
 }
 
@@ -31,9 +41,26 @@ mod tests {
             .list_branches(envs.repo_owner, envs.repo_name.clone())
             .await?;
 
-        println!("{:?}", branches);
-
         assert!(branches.len() > 0);
+
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn get_branch() -> GithubResult<()> {
+        let envs = test_utils::load_test_envs()?;
+        let api_client = test_utils::create_api_client()?;
+        let github_api = GithubBranchAPI::new(Arc::new(api_client));
+
+        let branch = github_api
+            .get_branch(
+                envs.repo_owner,
+                envs.repo_name.clone(),
+                envs.branch_name.clone(),
+            )
+            .await?;
+
+        assert!(branch.name == envs.branch_name);
 
         Ok(())
     }
