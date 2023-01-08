@@ -1,3 +1,5 @@
+use crate::api_test::APITest;
+
 use proc_macro2::TokenStream;
 use quote::quote;
 use std::collections::HashMap;
@@ -25,6 +27,7 @@ pub struct Request {
     query: HashMap<String, String>,
     headers: HashMap<String, String>,
     response: Type,
+    test: Option<APITest>,
 }
 
 #[derive(Debug)]
@@ -36,6 +39,7 @@ pub struct RequestBuilder {
     query: Option<HashMap<String, String>>,
     headers: Option<HashMap<String, String>>,
     response: Option<Type>,
+    test: Option<APITest>,
 }
 
 impl RequestBuilder {
@@ -48,6 +52,7 @@ impl RequestBuilder {
             query: None,
             headers: None,
             response: None,
+            test: None,
         }
     }
 
@@ -81,6 +86,11 @@ impl RequestBuilder {
         self
     }
 
+    pub fn test(&mut self, test: APITest) -> &mut Self {
+        self.test = Some(test);
+        self
+    }
+
     pub fn build(&self) -> Request {
         if self.path.is_none() {
             panic!("Missing `path` for request: {}", self.name);
@@ -97,6 +107,7 @@ impl RequestBuilder {
             query: self.query.clone().unwrap_or(HashMap::new()),
             headers: self.headers.clone().unwrap_or(HashMap::new()),
             response: self.response.clone().unwrap(),
+            test: self.test.clone(),
         }
     }
 }
@@ -122,6 +133,14 @@ impl Request {
         };
 
         ast
+    }
+
+    pub fn generate_test_ast(&self) -> TokenStream {
+        if let Some(test) = &self.test {
+            test.generate_ast()
+        } else {
+            quote! {}
+        }
     }
 
     fn generate_method_ast(&self) -> TokenStream {
@@ -183,12 +202,10 @@ impl Request {
 
         Ok(params)
     }
-}
 
-impl Parse for Request {
-    fn parse(input: ParseStream) -> syn::Result<Self> {
+    pub fn parse(struct_name: Ident, input: ParseStream) -> syn::Result<Self> {
         let name: Ident = input.parse()?;
-        let mut builder = RequestBuilder::new(name);
+        let mut builder = RequestBuilder::new(name.clone());
 
         let content: ParseBuffer;
         braced!(content in input);
@@ -226,6 +243,11 @@ impl Parse for Request {
                     let res: Type = content.parse()?;
 
                     builder.response(res);
+                }
+                "test" => {
+                    let test = APITest::parse(struct_name.clone(), name.clone(), &content)?;
+
+                    builder.test(test);
                 }
                 key => {
                     return Err(Error::new_spanned(key, format!("Unknown key: {}", key)));

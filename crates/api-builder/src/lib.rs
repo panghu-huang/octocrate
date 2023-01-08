@@ -1,6 +1,6 @@
+mod api_test;
 mod request;
 mod request_context;
-mod api_test;
 
 use proc_macro::TokenStream;
 use syn::parse_macro_input;
