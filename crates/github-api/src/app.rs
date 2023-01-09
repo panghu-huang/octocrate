@@ -8,9 +8,10 @@ use crate::domains::{
     installation_token::GithubInstallationExpirableToken,
     installations::{GithubInstallation, GithubInstallationAccessToken},
 };
+use actix_web::{post, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
 use infrastructure::{ExpirableToken, GithubAPIClient, GithubError, GithubResult};
 use std::collections::HashMap;
-use websockets::WebSocket;
+use tokio::sync::{mpsc, oneshot};
 
 pub type GithubWebhookEventListener = Box<
     dyn Fn(
@@ -21,10 +22,40 @@ pub type GithubWebhookEventListener = Box<
         + Sync,
 >;
 
+#[derive(Debug)]
+pub enum ChannelMessage {
+    WebhookEvent(String, String),
+    ServerHandle(actix_web::dev::ServerHandle),
+    Stop(oneshot::Sender<()>),
+}
+
+#[derive(Clone, Debug)]
+pub struct Handle {
+    msg_tx: mpsc::UnboundedSender<ChannelMessage>,
+}
+
 pub struct GithubApp {
+    handle: Handle,
+    msg_rx: mpsc::UnboundedReceiver<ChannelMessage>,
     webhook_event_listeners: Vec<GithubWebhookEventListener>,
     tokens: HashMap<u64, GithubInstallationAccessToken>,
     api_client: GithubAPIClient<GithubInstallationExpirableToken>,
+}
+
+impl Handle {
+    pub fn new(msg_tx: mpsc::UnboundedSender<ChannelMessage>) -> Self {
+        Self { msg_tx }
+    }
+
+    pub async fn stop(&self) -> GithubResult<()> {
+        let (tx, rx) = oneshot::channel::<()>();
+
+        self.msg_tx.send(ChannelMessage::Stop(tx)).unwrap();
+
+        rx.await.unwrap();
+
+        Ok(())
+    }
 }
 
 impl GithubApp {
@@ -37,30 +68,112 @@ impl GithubApp {
             panic!("Error generating token: {}", error);
         }
 
+        let (tx, rx) = mpsc::unbounded_channel::<ChannelMessage>();
+
         Self {
             tokens,
             api_client: GithubAPIClient::new(token),
             webhook_event_listeners: Vec::new(),
+            handle: Handle::new(tx),
+            msg_rx: rx,
         }
     }
 
+    pub fn handle(&self) -> Handle {
+        self.handle.clone()
+    }
+
     pub async fn start(&mut self) -> GithubResult<()> {
-        let ws_url = std::env::var("WEBHOOK_WEBSOCKET_URL").unwrap();
-        let ws = WebSocket::connect(ws_url.as_str()).await?;
+        let msg_tx = self.handle.msg_tx.clone();
 
-        let (mut ws, _) = ws.split();
-        loop {
-            let s = ws.receive().await?;
-            let (msg, _, _) = s.as_text().unwrap();
-            let (installation, event) = self.parse_webhook_event_payload(msg)?;
+        tokio::spawn(async move {
+            #[post("/webhook")]
+            async fn webhook(
+                payload: web::Bytes,
+                req: HttpRequest,
+                sender: web::Data<mpsc::UnboundedSender<ChannelMessage>>,
+            ) -> impl Responder {
+                let event = req.headers().get("X-GitHub-Event").unwrap();
+                let payload = String::from_utf8(payload.to_vec()).unwrap();
 
-            let api = self.get_api(installation.id).await?;
-            for listener in &self.webhook_event_listeners {
-                if let Err(error) = listener(event.clone(), api.clone()) {
-                    eprintln!("Error: {}", error);
-                }
+                sender
+                    .send(ChannelMessage::WebhookEvent(
+                        event.to_str().unwrap().to_string(),
+                        payload,
+                    ))
+                    .unwrap();
+                HttpResponse::Ok()
             }
+
+            let port = std::env::var("PORT").unwrap_or(String::from("3000"));
+            let port = port.parse::<u16>().unwrap();
+
+            let tx = msg_tx.clone();
+
+            let srv = HttpServer::new(move || {
+                return App::new()
+                    .service(webhook)
+                    .app_data(web::Data::new(msg_tx.clone()));
+            })
+            .bind(("127.0.0.1", port))
+            .unwrap()
+            .run();
+
+            let handle = srv.handle();
+
+            tx.send(ChannelMessage::ServerHandle(handle.clone()))
+                .unwrap();
+
+            println!("Server started on http://localhost:{}", port);
+
+            srv.await.unwrap();
+        });
+
+        let mut server_handle: Option<actix_web::dev::ServerHandle> = None;
+
+        loop {
+            tokio::select! {
+              msg = self.msg_rx.recv() => {
+                  if let Some(msg) = msg {
+                    match msg {
+                      ChannelMessage::WebhookEvent(event, payload) => {
+                          let (installation, event) = self.parse_webhook_event_payload(event, payload)?;
+
+                          let api = self.get_api(installation.id).await?;
+                          for listener in &self.webhook_event_listeners {
+                              if let Err(error) = listener(event.clone(), api.clone()) {
+                                  eprintln!("Error: {}", error);
+                              }
+                          }
+                      }
+                      #[allow(unused_assignments)]
+                      ChannelMessage::ServerHandle(handle) => {
+                          server_handle = Some(handle);
+                      }
+                      ChannelMessage::Stop(tx) => {
+                        if let Some(handle) = server_handle.clone() {
+                          handle.stop(true).await;
+                        }
+                        tx.send(()).unwrap();
+
+                        break;
+                      }
+                  }
+                }
+              }
+
+              v = tokio::signal::ctrl_c() => {
+                if let Ok(_) = v {
+                  if let Some(handle) = server_handle.clone() {
+                    handle.stop(true).await;
+                  }
+                  break;
+                }
+              }
+            };
         }
+
+        Ok(())
     }
 
     pub async fn get_installations(&self) -> GithubResult<Vec<GithubInstallation>> {
@@ -145,63 +258,52 @@ impl GithubApp {
 
     fn parse_webhook_event_payload(
         &self,
-        payload: &String,
+        event_name: String,
+        payload: String,
     ) -> GithubResult<(GithubWebhookInstallation, GithubWebhookEvent)> {
-        let event: serde_json::Value = serde_json::from_str(payload)?;
+        match event_name.as_str() {
+            "issue_comment" => {
+                let evt = serde_json::from_str::<GithubWebhookIssueCommentEvent>(&payload)?;
 
-        if let Some(event_name) = event["event"].as_str() {
-            match event_name {
-                "issue_comment" => {
-                    let evt = serde_json::from_value::<GithubWebhookIssueCommentEvent>(
-                        event["data"].clone(),
-                    )?;
+                return Ok((
+                    evt.installation.clone(),
+                    GithubWebhookEvent::IssueComment(evt),
+                ));
+            }
+            "pull_request" => {
+                let evt = serde_json::from_str::<GithubWebhookPullRequestEvent>(&payload)?;
 
-                    return Ok((
-                        evt.installation.clone(),
-                        GithubWebhookEvent::IssueComment(evt),
-                    ));
-                }
-                "pull_request" => {
-                    let evt = serde_json::from_value::<GithubWebhookPullRequestEvent>(
-                        event["data"].clone(),
-                    )?;
+                return Ok((
+                    evt.installation.clone(),
+                    GithubWebhookEvent::PullRequest(evt),
+                ));
+            }
+            "push" => {
+                let evt = serde_json::from_str::<GithubWebhookPushEvent>(&payload)?;
 
-                    return Ok((
-                        evt.installation.clone(),
-                        GithubWebhookEvent::PullRequest(evt),
-                    ));
-                }
-                "push" => {
-                    let evt =
-                        serde_json::from_value::<GithubWebhookPushEvent>(event["data"].clone())?;
+                return Ok((evt.installation.clone(), GithubWebhookEvent::Push(evt)));
+            }
+            _ => {
+                let event = serde_json::from_str::<serde_json::Value>(&payload)?;
+                let installation = event
+                    .get("installation")
+                    .ok_or(GithubError::new("No installation field on webhook event"))?;
 
-                    return Ok((evt.installation.clone(), GithubWebhookEvent::Push(evt)));
-                }
-                _ => {
-                    let installation = event
-                        .get("data")
-                        .ok_or(GithubError::new("No data field on webhook event"))?
-                        .get("installation")
-                        .ok_or(GithubError::new("No installation field on webhook event"))?;
-
-                    let installation =
-                        serde_json::from_value::<GithubWebhookInstallation>(installation.clone())?;
-                    return Ok((
-                        installation,
-                        GithubWebhookEvent::Unsupported(payload.clone()),
-                    ));
-                }
+                let installation =
+                    serde_json::from_value::<GithubWebhookInstallation>(installation.clone())?;
+                return Ok((
+                    installation,
+                    GithubWebhookEvent::Unsupported(payload.clone()),
+                ));
             }
         }
-
-        Err(GithubError::new("No event name found"))
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use infrastructure::GithubResult;
     use crate::test_utils;
+    use infrastructure::GithubResult;
 
     #[tokio::test]
     #[ignore]
