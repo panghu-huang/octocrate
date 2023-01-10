@@ -1,7 +1,7 @@
 use crate::app::GithubApp;
 use crate::domains::personal_access_token::GithubPersonalAccessToken;
-use infrastructure::{GithubAPIClient, GithubError, GithubResult};
 use dotenv::dotenv;
+use infrastructure::{GithubAPIClient, GithubError, GithubResult};
 use serde::{Deserialize, Serialize};
 use std::env;
 use std::fs;
@@ -16,6 +16,7 @@ pub struct TestEnvs {
     pub issue_number: u64,
     pub personal_access_token: String,
     pub branch_name: String,
+    pub commit_sha: String,
 }
 
 fn read_env(key: &str) -> GithubResult<String> {
@@ -32,6 +33,7 @@ pub fn load_test_envs() -> GithubResult<TestEnvs> {
     let issue_number = read_env("TEST_GITHUB_ISSUE_NUMBER")?;
     let personal_access_token = read_env("TEST_GITHUB_PERSONAL_ACCESS_TOKEN")?;
     let branch_name = read_env("TEST_GITHUB_BRANCH_NAME")?;
+    let commit_sha = read_env("TEST_GITHUB_COMMIT_SHA")?;
 
     let github_app_private_key = fs::read_to_string(github_app_private_key_path)?;
 
@@ -44,6 +46,7 @@ pub fn load_test_envs() -> GithubResult<TestEnvs> {
         issue_number: issue_number.parse::<u64>().unwrap(),
         personal_access_token,
         branch_name,
+        commit_sha,
     })
 }
 

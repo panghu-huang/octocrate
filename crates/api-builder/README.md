@@ -102,3 +102,43 @@ mod tests {
     }
 }
 ```
+
+You can pass query or body to test
+```rust
+github_api! {
+  GithubIssueAPI {
+    list_repository_issues {
+      /// ...
+      /// Add test block
+      test {
+        params {
+          envs.repo_owner
+          envs.repo_name
+        }
+        query {
+          state "closed"
+        }
+        assert assert!(res.len() > 0)
+      }
+    }
+  }
+}
+```
+
+```rust
+github_api! {
+  GithubIssueAPI {
+    create_issue_comment {
+      // ...
+      test {
+        // ...
+        body {
+          body "Hello World"
+        }
+        assert assert!(res.body == "Hello World")
+      }
+    }
+  }
+}
+
+```

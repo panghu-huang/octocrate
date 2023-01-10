@@ -1,9 +1,9 @@
 use serde::{Deserialize, Serialize};
 
 use crate::domains::{
-    users::GithubUser,
     issues::{GithubLabel, GithubMilestone},
     repositories::GithubRepository,
+    users::GithubUser,
 };
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -68,4 +68,25 @@ pub struct GithubPullRequest {
     pub comments: Option<u64>,
     pub review_comments: Option<u64>,
     pub maintainer_can_modify: Option<bool>,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct GithubMergePullRequestResponse {
+    pub sha: String,
+    pub merged: bool,
+    pub message: String,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize)]
+pub struct GithubPullRequestFile {
+    pub sha: String,
+    pub filename: String,
+    pub status: String,
+    pub additions: u64,
+    pub deletions: u64,
+    pub changes: u64,
+    pub blob_url: String,
+    pub raw_url: String,
+    pub contents_url: String,
+    pub patch: String,
 }

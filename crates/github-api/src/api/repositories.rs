@@ -1,5 +1,4 @@
 use crate::domains::repositories::GithubRepository;
-
 use api_builder::github_api;
 
 github_api! {
@@ -11,30 +10,65 @@ github_api! {
         name String
       }
       response GithubRepository
+      test {
+        params {
+          envs.repo_owner
+          envs.repo_name.clone()
+        }
+        assert assert_eq!(res.name, envs.repo_name)
+      }
+    }
+
+    list_organization_repositories {
+      path "/orgs/{}/repos"
+      params {
+        org String
+      }
+      response Vec<GithubRepository>
+      test {
+        params {
+          "coodevjs"
+        }
+        assert assert!(res.len() > 0)
+      }
+    }
+
+    list_user_repositories {
+      path "/users/{}/repos"
+      params {
+        username String
+      }
+      response Vec<GithubRepository>
+      test {
+        params {
+          "panghu-huang"
+        }
+        assert assert!(res.len() > 0)
+      }
+    }
+
+    list_repository_language {
+      path "/repos/{}/{}/languages"
+      params {
+        owner String
+        repo String
+      }
+      response std::collections::HashMap<String, u64>
+      test {
+        params {
+          envs.repo_owner
+          "github-api"
+        }
+        assert assert!(res.len() > 0)
+      }
+    }
+
+    list_authenticated_user_repositories {
+      path "/user/repos"
+      response Vec<GithubRepository>
+      test {
+        assert assert!(res.len() > 0)
+      }
     }
   }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::GithubRepositoryAPI;
-    use crate::utils::test_utils;
-    use infrastructure::GithubResult;
-    use std::sync::Arc;
-
-    #[tokio::test]
-    async fn get_repository() -> GithubResult<()> {
-        let envs = test_utils::load_test_envs()?;
-        let api_client = test_utils::create_api_client()?;
-
-        let repo_api = GithubRepositoryAPI::new(Arc::new(api_client));
-        let repo = repo_api
-            .get_repository(envs.repo_owner, envs.repo_name.clone())
-            .send()
-            .await?;
-
-        assert_eq!(repo.name, envs.repo_name);
-
-        Ok(())
-    }
 }
