@@ -32,44 +32,45 @@ github_api! {
   }
 }
 
-// #[cfg(test)]
-// mod tests {
-//     use super::GithubBranchAPI;
-//     use crate::utils::test_utils;
-//     use infrastructure::GithubResult;
-//     use std::sync::Arc;
+#[cfg(test)]
+mod tests {
+    use super::GithubBranchAPI;
+    use crate::utils::test_utils;
+    use infrastructure::GithubResult;
+    use std::sync::Arc;
 
-//     #[tokio::test]
-//     async fn list_branches() -> GithubResult<()> {
-//         let envs = test_utils::load_test_envs()?;
-//         let api_client = test_utils::create_api_client()?;
-//         let github_api = GithubBranchAPI::new(Arc::new(api_client));
+    #[tokio::test]
+    async fn list_branches() -> GithubResult<()> {
+        let envs = test_utils::load_test_envs()?;
+        let api_client = test_utils::create_api_client()?;
+        let github_api = GithubBranchAPI::new(Arc::new(api_client));
 
-//         let branches = github_api
-//             .list_branches(envs.repo_owner, envs.repo_name.clone())
-//             .await?;
+        let branches = github_api
+            .list_branches(envs.repo_owner, envs.repo_name.clone())
+            .send()
+            .await
+            .unwrap();
 
-//         assert!(branches.len() > 0);
+        Ok(())
+    }
 
-//         Ok(())
-//     }
+    #[tokio::test]
+    async fn get_branch() -> GithubResult<()> {
+        let envs = test_utils::load_test_envs()?;
+        let api_client = test_utils::create_api_client()?;
+        let github_api = GithubBranchAPI::new(Arc::new(api_client));
 
-//     #[tokio::test]
-//     async fn get_branch() -> GithubResult<()> {
-//         let envs = test_utils::load_test_envs()?;
-//         let api_client = test_utils::create_api_client()?;
-//         let github_api = GithubBranchAPI::new(Arc::new(api_client));
+        let branch = github_api
+            .get_branch(
+                envs.repo_owner,
+                envs.repo_name.clone(),
+                envs.branch_name.clone(),
+            )
+            .send()
+            .await?;
 
-//         let branch = github_api
-//             .get_branch(
-//                 envs.repo_owner,
-//                 envs.repo_name.clone(),
-//                 envs.branch_name.clone(),
-//             )
-//             .await?;
+        assert!(branch.name == envs.branch_name);
 
-//         assert!(branch.name == envs.branch_name);
-
-//         Ok(())
-//     }
-// }
+        Ok(())
+    }
+}

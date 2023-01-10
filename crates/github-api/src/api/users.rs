@@ -31,7 +31,7 @@ mod tests {
         let api_client = test_utils::create_api_client()?;
         let github_api = GithubUserAPI::new(Arc::new(api_client));
 
-        let user = github_api.get_authenticated_user().await?;
+        let user = github_api.get_authenticated_user().send().await?;
 
         assert_eq!(user.login, envs.repo_owner);
 
@@ -44,7 +44,7 @@ mod tests {
         let api_client = test_utils::create_api_client()?;
         let github_api = GithubUserAPI::new(Arc::new(api_client));
 
-        let user = github_api.get_user(envs.repo_owner.clone()).await?;
+        let user = github_api.get_user(envs.repo_owner.clone()).send().await?;
 
         assert_eq!(user.login, envs.repo_owner);
 

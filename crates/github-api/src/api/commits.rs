@@ -1,6 +1,6 @@
 use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::commits::GithubCommit;
-use infrastructure::{ExpirableToken, GithubAPIClient, GithubError};
+use infrastructure::{ExpirableToken, GithubAPIClient, GithubAPIRequest};
 use std::ops::Deref;
 use std::sync::Arc;
 
@@ -14,11 +14,11 @@ impl<T: ExpirableToken + Clone> GithubCommitAPI<T> {
         Self { client }
     }
 
-    pub async fn list_repository_commits(
+    pub fn list_repository_commits(
         &self,
         owner: impl Into<String>,
         repo: impl Into<String>,
-    ) -> Result<Vec<GithubCommit>, GithubError> {
+    ) -> GithubAPIRequest<Vec<GithubCommit>> {
         let request_url = format!(
             "{}/repos/{}/{}/commits",
             GITHUB_API_BASE_URL,
@@ -26,11 +26,7 @@ impl<T: ExpirableToken + Clone> GithubCommitAPI<T> {
             repo.into(),
         );
 
-        self.client
-            .deref()
-            .get(request_url)
-            .respond_json::<Vec<GithubCommit>>()
-            .await
+        self.client.deref().get::<Vec<GithubCommit>>(request_url)
     }
 }
 
@@ -50,6 +46,7 @@ mod tests {
 
         let commits = api
             .list_repository_commits(envs.repo_owner, envs.repo_name)
+            .send()
             .await?;
 
         assert!(commits.len() > 0);

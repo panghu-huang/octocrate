@@ -1,5 +1,5 @@
+use crate::domains::issues::{GithubIssue, GithubIssueComment};
 use api_builder::github_api;
-use crate::domains::issues::GithubIssue;
 
 github_api! {
   GithubIssueAPI {
@@ -15,6 +15,9 @@ github_api! {
           envs.repo_owner
           envs.repo_name
         }
+        query {
+          state "closed"
+        }
         assert assert!(res.len() > 0)
       }
     }
@@ -27,14 +30,17 @@ github_api! {
         repo String
         issue_number u64
       }
-      response GithubIssue
+      response GithubIssueComment
       test {
         params {
           envs.repo_owner
           envs.repo_name
-          1 as u64
+          envs.issue_number
         }
-        assert assert!(res.body.unwrap() == "Hello World")
+        body {
+          body "Hello World"
+        }
+        assert assert!(res.body == "Hello World")
       }
     }
   }

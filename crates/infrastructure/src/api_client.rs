@@ -2,19 +2,24 @@ use crate::{error::GithubError, ExpirableToken};
 use reqwest::{Client, RequestBuilder};
 use serde::de::DeserializeOwned;
 use serde::Serialize;
+use std::marker::PhantomData;
 
 #[derive(Debug)]
 pub struct GithubAPIClient<T: ExpirableToken + Clone> {
     token: T,
 }
 
-pub struct GithubAPIRequest {
+pub struct GithubAPIRequest<T: Serialize + DeserializeOwned + ?Sized> {
     request_builder: RequestBuilder,
+    _marker: PhantomData<T>,
 }
 
-impl GithubAPIRequest {
+impl<T: Serialize + DeserializeOwned + ?Sized> GithubAPIRequest<T> {
     pub fn new(request_builder: RequestBuilder) -> Self {
-        GithubAPIRequest { request_builder }
+        GithubAPIRequest {
+            request_builder,
+            _marker: PhantomData,
+        }
     }
 
     #[allow(dead_code)]
@@ -25,16 +30,26 @@ impl GithubAPIRequest {
     }
 
     #[allow(dead_code)]
-    pub fn json<T: Serialize + ?Sized>(mut self, json: &T) -> Self {
+    pub fn query<Q>(mut self, query: &Q) -> Self
+    where
+        Q: Serialize + ?Sized,
+    {
+        self.request_builder = self.request_builder.query(query);
+
+        self
+    }
+
+    #[allow(dead_code)]
+    pub fn body<R>(mut self, json: &R) -> Self
+    where
+        R: Serialize + ?Sized,
+    {
         self.request_builder = self.request_builder.json(json);
 
         self
     }
 
-    pub async fn respond_json<T>(self) -> Result<T, GithubError>
-    where
-        T: DeserializeOwned,
-    {
+    pub async fn send(self) -> Result<T, GithubError> {
         let res = self.request_builder.send().await;
         match res {
             Ok(res) => {
@@ -97,26 +112,33 @@ impl<T: ExpirableToken + Clone> GithubAPIClient<T> {
     where
         T: ExpirableToken + Clone + 'static,
     {
-        GithubAPIClient {
-            token,
-        }
+        GithubAPIClient { token }
     }
 
-    pub fn get(&self, url: impl Into<String>) -> GithubAPIRequest {
+    pub fn get<R>(&self, url: impl Into<String>) -> GithubAPIRequest<R>
+    where
+        R: Serialize + DeserializeOwned + ?Sized,
+    {
         let builder = Client::new().get(url.into());
         let builder = self.format_request(builder);
 
         GithubAPIRequest::new(builder)
     }
 
-    pub fn post(&self, url: impl Into<String>) -> GithubAPIRequest {
+    pub fn post<R>(&self, url: impl Into<String>) -> GithubAPIRequest<R>
+    where
+        R: Serialize + DeserializeOwned + ?Sized,
+    {
         let builder = Client::new().post(url.into());
         let builder = self.format_request(builder);
 
         GithubAPIRequest::new(builder)
     }
 
-    pub fn put(&self, url: impl Into<String>) -> GithubAPIRequest {
+    pub fn put<R>(&self, url: impl Into<String>) -> GithubAPIRequest<R>
+    where
+        R: Serialize + DeserializeOwned + ?Sized,
+    {
         let builder = Client::new().put(url.into());
         let builder = self.format_request(builder);
 

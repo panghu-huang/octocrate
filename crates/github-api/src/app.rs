@@ -180,8 +180,8 @@ impl GithubApp {
         let request_url = format!("{}/app/installations", GITHUB_API_BASE_URL);
 
         self.api_client
-            .get(request_url)
-            .respond_json::<Vec<GithubInstallation>>()
+            .get::<Vec<GithubInstallation>>(request_url)
+            .send()
             .await
     }
 
@@ -195,8 +195,8 @@ impl GithubApp {
             installation_id.into()
         );
         self.api_client
-            .get(request_url)
-            .respond_json::<GithubInstallation>()
+            .get::<GithubInstallation>(request_url)
+            .send()
             .await
     }
 
@@ -219,8 +219,8 @@ impl GithubApp {
 
         let token = self
             .api_client
-            .post(request_url)
-            .respond_json::<GithubInstallationAccessToken>()
+            .post::<GithubInstallationAccessToken>(request_url)
+            .send()
             .await?;
 
         self.tokens.insert(installation_id, token.clone());

@@ -30,6 +30,7 @@ mod tests {
         let repo_api = GithubRepositoryAPI::new(Arc::new(api_client));
         let repo = repo_api
             .get_repository(envs.repo_owner, envs.repo_name.clone())
+            .send()
             .await?;
 
         assert_eq!(repo.name, envs.repo_name);

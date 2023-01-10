@@ -1,6 +1,6 @@
 use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::pulls::GithubPullRequest;
-use infrastructure::{ExpirableToken, GithubAPIClient, GithubError};
+use infrastructure::{ExpirableToken, GithubAPIClient, GithubAPIRequest};
 use serde::{Deserialize, Serialize};
 use std::ops::Deref;
 use std::sync::Arc;
@@ -22,12 +22,12 @@ impl<T: ExpirableToken + Clone> GithubPullRequestAPI<T> {
         Self { client }
     }
 
-    pub async fn merge_pull_request(
+    pub fn merge_pull_request(
         &self,
         owner: impl Into<String>,
         repo: impl Into<String>,
         pull_number: impl Into<u64>,
-    ) -> Result<GithubMergePullRequestResponse, GithubError> {
+    ) -> GithubAPIRequest<GithubMergePullRequestResponse> {
         let request_url = format!(
             "{}/repos/{}/{}/pulls/{}/merge",
             GITHUB_API_BASE_URL,
@@ -38,17 +38,15 @@ impl<T: ExpirableToken + Clone> GithubPullRequestAPI<T> {
 
         self.client
             .deref()
-            .put(request_url)
-            .respond_json::<GithubMergePullRequestResponse>()
-            .await
+            .put::<GithubMergePullRequestResponse>(request_url)
     }
 
-    pub async fn get_pull_request(
+    pub fn get_pull_request(
         &self,
         owner: impl Into<String>,
         repo: impl Into<String>,
         pull_number: impl Into<u64>,
-    ) -> Result<GithubPullRequest, GithubError> {
+    ) -> GithubAPIRequest<GithubPullRequest> {
         let request_url = format!(
             "{}/repos/{}/{}/pulls/{}",
             GITHUB_API_BASE_URL,
@@ -57,18 +55,14 @@ impl<T: ExpirableToken + Clone> GithubPullRequestAPI<T> {
             pull_number.into()
         );
 
-        self.client
-            .deref()
-            .get(request_url)
-            .respond_json::<GithubPullRequest>()
-            .await
+        self.client.deref().get::<GithubPullRequest>(request_url)
     }
 
-    pub async fn list_pull_requests(
+    pub fn list_pull_requests(
         &self,
         owner: impl Into<String>,
         repo: impl Into<String>,
-    ) -> Result<Vec<GithubPullRequest>, GithubError> {
+    ) -> GithubAPIRequest<Vec<GithubPullRequest>> {
         let request_url = format!(
             "{}/repos/{}/{}/pulls?state=all&per_page=30",
             GITHUB_API_BASE_URL,
@@ -78,9 +72,7 @@ impl<T: ExpirableToken + Clone> GithubPullRequestAPI<T> {
 
         self.client
             .deref()
-            .get(request_url)
-            .respond_json::<Vec<GithubPullRequest>>()
-            .await
+            .get::<Vec<GithubPullRequest>>(request_url)
     }
 }
 
@@ -99,6 +91,7 @@ mod tests {
 
         let result = api
             .list_pull_requests(envs.repo_owner, envs.repo_name)
+            .send()
             .await?;
 
         assert!(result.len() > 0);
@@ -114,6 +107,7 @@ mod tests {
 
         let result = api
             .get_pull_request(envs.repo_owner, envs.repo_name, envs.issue_number)
+            .send()
             .await?;
 
         assert!(result.merged.is_some());

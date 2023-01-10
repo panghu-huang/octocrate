@@ -1,4 +1,5 @@
 use github_api::{events::GithubWebhookEvent, test_utils, GithubApp};
+use serde_json::json;
 
 #[tokio::main]
 async fn main() {
@@ -17,12 +18,11 @@ async fn main() {
                             println!("Reply issue comment {}/{}#{}", owner, repo, issue_number);
                             let _issue_comment = api
                                 .issues
-                                .create_issue_comment(
-                                    owner,
-                                    repo,
-                                    issue_number,
-                                    "Reply from Coodev CI",
-                                )
+                                .create_issue_comment(owner, repo, issue_number)
+                                .body(&json!({
+                                    "body": "Reply from Coodev CI"
+                                }))
+                                .send()
                                 .await;
                         });
                     }

@@ -47,6 +47,7 @@ mod tests {
         let repo = github_api
             .repositories
             .get_repository(envs.repo_owner, envs.repo_name.clone())
+            .send()
             .await?;
 
         assert_eq!(repo.name, envs.repo_name);

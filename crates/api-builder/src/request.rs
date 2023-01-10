@@ -2,10 +2,9 @@ use crate::api_test::APITest;
 
 use proc_macro2::TokenStream;
 use quote::quote;
-use std::collections::HashMap;
 use syn::{
     braced,
-    parse::{Parse, ParseBuffer, ParseStream},
+    parse::{ParseBuffer, ParseStream},
     Error, Expr, Ident, Lit, Type,
 };
 
@@ -24,8 +23,6 @@ pub struct Request {
     method: RequestMethod,
     path: String,
     params: Vec<(Ident, Ident)>,
-    query: HashMap<String, String>,
-    headers: HashMap<String, String>,
     response: Type,
     test: Option<APITest>,
 }
@@ -36,8 +33,6 @@ pub struct RequestBuilder {
     method: Option<RequestMethod>,
     path: Option<String>,
     params: Option<Vec<(Ident, Ident)>>,
-    query: Option<HashMap<String, String>>,
-    headers: Option<HashMap<String, String>>,
     response: Option<Type>,
     test: Option<APITest>,
 }
@@ -49,8 +44,6 @@ impl RequestBuilder {
             method: None,
             path: None,
             params: None,
-            query: None,
-            headers: None,
             response: None,
             test: None,
         }
@@ -68,16 +61,6 @@ impl RequestBuilder {
 
     pub fn params(&mut self, params: Vec<(Ident, Ident)>) -> &mut Self {
         self.params = Some(params);
-        self
-    }
-
-    pub fn query(&mut self, query: HashMap<String, String>) -> &mut Self {
-        self.query = Some(query);
-        self
-    }
-
-    pub fn headers(&mut self, headers: HashMap<String, String>) -> &mut Self {
-        self.headers = Some(headers);
         self
     }
 
@@ -104,8 +87,6 @@ impl RequestBuilder {
             method: self.method.clone().unwrap_or(RequestMethod::GET),
             path: self.path.clone().unwrap(),
             params: self.params.clone().unwrap_or(vec![]),
-            query: self.query.clone().unwrap_or(HashMap::new()),
-            headers: self.headers.clone().unwrap_or(HashMap::new()),
             response: self.response.clone().unwrap(),
             test: self.test.clone(),
         }
@@ -122,13 +103,12 @@ impl Request {
         let method = self.generate_method_ast();
 
         let ast = quote! {
-          pub async fn #name(&self, #params) -> infrastructure::GithubResult<#response> {
+          pub fn #name(&self, #params) -> infrastructure::GithubAPIRequest<#response> {
             let url = format!("{}{}", GITHUB_API_BASE_URL, #url);
+
             self.client
               .deref()
-              .#method(url)
-              .respond_json::<#response>()
-              .await
+              .#method::<#response>(url)
           }
         };
 
@@ -179,7 +159,7 @@ impl Request {
                   #key.into()
                 }
             })
-            .collect::<Vec<_>>();
+            .collect::<Vec<TokenStream>>();
 
         let ast = quote! {
           format!(#url, #(#args),*)

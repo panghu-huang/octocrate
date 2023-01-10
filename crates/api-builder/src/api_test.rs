@@ -6,6 +6,8 @@ use syn::{
     Error, Expr, Ident,
 };
 
+type Object = Vec<(Ident, Expr)>;
+
 /// # Example
 /// ```rust
 ///
@@ -35,6 +37,8 @@ pub struct APITest {
     pub name: Ident,
     pub struct_name: Ident,
     pub params: Vec<Expr>,
+    pub query: Option<Object>,
+    pub body: Option<Object>,
     pub assert: Expr,
 }
 
@@ -43,6 +47,8 @@ pub struct APITestBuilder {
     pub name: Ident,
     pub struct_name: Ident,
     pub params: Option<Vec<Expr>>,
+    pub query: Option<Object>,
+    pub body: Option<Object>,
     pub assert: Option<Expr>,
 }
 
@@ -53,6 +59,8 @@ impl APITestBuilder {
             struct_name,
             params: None,
             assert: None,
+            query: None,
+            body: None,
         }
     }
 
@@ -66,6 +74,16 @@ impl APITestBuilder {
         self
     }
 
+    pub fn query(&mut self, query: Object) -> &mut Self {
+        self.query = Some(query);
+        self
+    }
+
+    pub fn body(&mut self, body: Object) -> &mut Self {
+        self.body = Some(body);
+        self
+    }
+
     pub fn build(&mut self) -> APITest {
         if self.assert.is_none() {
             panic!("assert is required for test `{}`", self.name);
@@ -76,6 +94,8 @@ impl APITestBuilder {
             struct_name: self.struct_name.clone(),
             params: self.params.take().unwrap_or(vec![]),
             assert: self.assert.take().unwrap(),
+            query: self.query.take(),
+            body: self.body.take(),
         }
     }
 }
@@ -85,6 +105,8 @@ impl APITest {
         let name = &self.name;
         let struct_name = &self.struct_name;
         let params = &self.params;
+        let query = &self.generate_query_ast();
+        let body = &self.generate_body_ast();
         let assert = &self.assert;
 
         quote! {
@@ -99,6 +121,9 @@ impl APITest {
                 .#name(
                     #(#params),*
                 )
+                #query
+                #body
+                .send()
                 .await?;
 
             #assert;
@@ -106,6 +131,70 @@ impl APITest {
             Ok(())
           }
         }
+    }
+
+    fn generate_body_ast(&self) -> TokenStream {
+        match &self.body {
+            Some(body) => {
+                let body = body
+                    .iter()
+                    .map(|(key, value)| {
+                        let key = key.to_string();
+                        quote! {
+                            #key: #value
+                        }
+                    })
+                    .collect::<Vec<TokenStream>>();
+
+                quote! {
+                    .body(&serde_json::json!({
+                        #(#body),*
+                    }))
+                }
+            }
+            None => {
+                quote! {}
+            }
+        }
+    }
+
+    fn generate_query_ast(&self) -> TokenStream {
+        match &self.query {
+            Some(query) => {
+                let query = query
+                    .iter()
+                    .map(|(key, value)| {
+                        let key = key.to_string();
+                        quote! {
+                           (#key, #value),
+                        }
+                    })
+                    .collect::<Vec<TokenStream>>();
+
+                quote! {
+                    .query(&[#(#query),*])
+                }
+            }
+            None => {
+                quote! {}
+            }
+        }
+    }
+
+    fn parse_object(input: ParseStream) -> syn::Result<Object> {
+        let content: ParseBuffer;
+        braced!(content in input);
+
+        let mut object: Object = vec![];
+
+        while !content.is_empty() {
+            let key: Ident = content.parse()?;
+            let value: Expr = content.parse()?;
+
+            object.push((key, value));
+        }
+
+        Ok(object)
     }
 
     pub fn parse(struct_name: Ident, name: Ident, input: ParseStream) -> syn::Result<APITest> {
@@ -134,6 +223,16 @@ impl APITest {
                     let exp: Expr = content.parse()?;
 
                     test.assert(exp);
+                }
+                "query" => {
+                    let object = Self::parse_object(&content)?;
+
+                    test.query(object);
+                }
+                "body" => {
+                    let object = Self::parse_object(&content)?;
+
+                    test.body(object);
                 }
                 _ => {
                     return Err(Error::new_spanned(
