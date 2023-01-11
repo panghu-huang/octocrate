@@ -2,6 +2,7 @@ use crate::domains::branches::GithubBranch;
 use api_builder::github_api;
 
 github_api! {
+  /// see https://docs.github.com/en/rest/reference/repos#branches
   GithubBranchAPI {
     list_branches {
       path "/repos/{}/{}/branches"

@@ -5,7 +5,7 @@ use quote::quote;
 use syn::{
     braced,
     parse::{ParseBuffer, ParseStream},
-    Error, Expr, Ident, Lit, Type,
+    Attribute, Error, Expr, Ident, Lit, Type,
 };
 
 #[derive(Debug, Clone)]
@@ -20,6 +20,7 @@ pub enum RequestMethod {
 #[derive(Debug, Clone)]
 pub struct Request {
     name: Ident,
+    attributes: Vec<Attribute>,
     method: RequestMethod,
     path: String,
     params: Vec<(Ident, Ident)>,
@@ -30,6 +31,7 @@ pub struct Request {
 #[derive(Debug)]
 pub struct RequestBuilder {
     name: Ident,
+    attributes: Vec<Attribute>,
     method: Option<RequestMethod>,
     path: Option<String>,
     params: Option<Vec<(Ident, Ident)>>,
@@ -38,9 +40,10 @@ pub struct RequestBuilder {
 }
 
 impl RequestBuilder {
-    pub fn new(name: Ident) -> Self {
+    pub fn new(name: Ident, attributes: Vec<Attribute>) -> Self {
         Self {
             name,
+            attributes,
             method: None,
             path: None,
             params: None,
@@ -84,6 +87,7 @@ impl RequestBuilder {
         }
         Request {
             name: self.name.clone(),
+            attributes: self.attributes.clone(),
             method: self.method.clone().unwrap_or(RequestMethod::GET),
             path: self.path.clone().unwrap(),
             params: self.params.clone().unwrap_or(vec![]),
@@ -97,12 +101,14 @@ impl Request {
     pub fn generate_ast(&self) -> TokenStream {
         let name = &self.name;
         let response = &self.response;
+        let attributes = &self.attributes;
 
         let params = self.generate_params_ast();
         let url = self.generate_url_ast();
         let method = self.generate_method_ast();
 
         let ast = quote! {
+          #(#attributes)*
           pub fn #name(&self, #params) -> infrastructure::GithubAPIRequest<#response> {
             let url = format!("{}{}", GITHUB_API_BASE_URL, #url);
 
@@ -184,8 +190,13 @@ impl Request {
     }
 
     pub fn parse(struct_name: Ident, input: ParseStream) -> syn::Result<Self> {
+        let attributes = match input.call(Attribute::parse_outer) {
+            Ok(attr) => attr,
+            Err(_) => vec![],
+        };
+        
         let name: Ident = input.parse()?;
-        let mut builder = RequestBuilder::new(name.clone());
+        let mut builder = RequestBuilder::new(name.clone(), attributes);
 
         let content: ParseBuffer;
         braced!(content in input);

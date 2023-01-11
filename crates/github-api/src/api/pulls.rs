@@ -8,6 +8,9 @@ use api_builder::github_api;
 // 1. 返回 404 代表没有合并，但现在 API client 代表出错
 // 2. 要使用 response_text 代替 send 方法，API 设计不统一
 github_api! {
+  /// Github Pull Request API
+  /// 
+  /// see https://docs.github.com/en/rest/reference/pulls
   GithubPullRequestAPI {
     get_pull_request {
       path "/repos/{}/{}/pulls/{}"
@@ -83,6 +86,11 @@ github_api! {
       }
     }
 
+    /// check if the pull request is merged
+    /// 
+    /// DON'T use `send` to send request
+    /// 
+    /// Please use `respond_text` instead
     check_if_pull_request_is_merged {
       path "/repos/{}/{}/pulls/{}/merge"
       method GET
@@ -97,7 +105,7 @@ github_api! {
 }
 
 #[cfg(test)]
-mod tests {
+mod spacial_tests {
     use super::GithubPullRequestAPI;
     use crate::utils::test_utils;
     use infrastructure::GithubResult;
