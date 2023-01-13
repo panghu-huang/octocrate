@@ -19,7 +19,7 @@ async fn main() {
             }
             Ok(())
         })
-        .serve()
+        .start()
         .await
         .unwrap();
     });
