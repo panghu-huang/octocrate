@@ -6,12 +6,12 @@ async fn main() {
 
     let mut app = GithubApp::new(envs.github_app_id, envs.github_app_private_key);
 
-    let handle = app.handle();
+    let app_handle = app.app_handle();
 
     tokio::spawn(async move {
         tokio::time::sleep(std::time::Duration::from_secs(2)).await;
-        handle.stop().await.unwrap();
+        app_handle.stop().await.unwrap();
     });
 
-    app.start().await.unwrap();
+    app.serve().await.unwrap();
 }

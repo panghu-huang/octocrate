@@ -1,11 +1,12 @@
+use infrastructure::{GithubError, GithubResult};
 use serde::{Deserialize, Serialize};
 
 use crate::domains::{
-    users::GithubUser,
+    commits::GithubCommitAuthor,
     issues::{GithubIssue, GithubIssueComment},
     pulls::GithubPullRequest,
     repositories::GithubRepository,
-    commits::GithubCommitAuthor
+    users::GithubUser,
 };
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -85,5 +86,55 @@ pub enum GithubWebhookEvent {
     IssueComment(GithubWebhookIssueCommentEvent),
     PullRequest(GithubWebhookPullRequestEvent),
     Push(GithubWebhookPushEvent),
-    Unsupported(String),
+    Unsupported {
+        payload: String,
+        installation: GithubWebhookInstallation,
+    },
+}
+
+impl GithubWebhookEvent {
+    pub fn installation(&self) -> GithubWebhookInstallation {
+        match self {
+            GithubWebhookEvent::IssueComment(evt) => evt.installation.clone(),
+            GithubWebhookEvent::PullRequest(evt) => evt.installation.clone(),
+            GithubWebhookEvent::Push(evt) => evt.installation.clone(),
+            GithubWebhookEvent::Unsupported {
+                payload: _,
+                installation,
+            } => installation.clone(),
+        }
+    }
+
+    pub fn try_parse(event_name: String, payload: String) -> GithubResult<Self> {
+        match event_name.as_str() {
+            "issue_comment" => {
+                let evt = serde_json::from_str::<GithubWebhookIssueCommentEvent>(&payload)?;
+
+                return Ok(GithubWebhookEvent::IssueComment(evt));
+            }
+            "pull_request" => {
+                let evt = serde_json::from_str::<GithubWebhookPullRequestEvent>(&payload)?;
+
+                return Ok(GithubWebhookEvent::PullRequest(evt));
+            }
+            "push" => {
+                let evt = serde_json::from_str::<GithubWebhookPushEvent>(&payload)?;
+
+                return Ok(GithubWebhookEvent::Push(evt));
+            }
+            _ => {
+                let event = serde_json::from_str::<serde_json::Value>(&payload)?;
+                let installation = event
+                    .get("installation")
+                    .ok_or(GithubError::new("No installation field on webhook event"))?;
+
+                let installation =
+                    serde_json::from_value::<GithubWebhookInstallation>(installation.clone())?;
+                return Ok(GithubWebhookEvent::Unsupported {
+                    payload,
+                    installation,
+                });
+            }
+        }
+    }
 }

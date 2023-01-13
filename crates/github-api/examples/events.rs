@@ -16,8 +16,11 @@ async fn main() {
                 GithubWebhookEvent::IssueComment(evt) => {
                     println!("Issue comment {:#?}", evt);
                 }
-                GithubWebhookEvent::Unsupported(evt) => {
-                    println!("Unsupported {:#?}", evt);
+                GithubWebhookEvent::Unsupported {
+                    installation: _,
+                    payload,
+                } => {
+                    println!("Unsupported {:#?}", payload);
                 }
             };
 
