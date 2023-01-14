@@ -1,5 +1,14 @@
 # Github API
 
+## Install
+
+Install `github-api` by adding the following to your `Cargo.toml` file:
+
+```toml
+[dependencies]
+github-api = { git = "https://github.com/panghu-huang/github-api" }
+```
+
 ## Usage
 
 ### Github App
@@ -42,8 +51,9 @@ async fn main() {
 ```
 
 ### Github API
+
 ```rust
-use github_api::{personal_access_token::GithubPersonalAccessToken, GithubAPI};
+use github_api::{GithubPersonalAccessToken, GithubAPI};
 
 #[tokio::main]
 async fn main() {

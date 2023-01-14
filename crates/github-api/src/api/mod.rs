@@ -1,9 +1,9 @@
-pub mod commits;
-pub mod issues;
-pub mod pulls;
-pub mod repositories;
-pub mod branches;
-pub mod users;
+mod branches;
+mod commits;
+mod issues;
+mod pulls;
+mod repositories;
+mod users;
 
 use infrastructure::{ExpirableToken, GithubAPIClient};
 use std::sync::Arc;

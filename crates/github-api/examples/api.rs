@@ -1,4 +1,4 @@
-use github_api::{personal_access_token::GithubPersonalAccessToken, test_utils, GithubAPI};
+use github_api::{test_utils, GithubAPI, GithubPersonalAccessToken};
 
 #[tokio::main]
 async fn main() {
