@@ -9,3 +9,4 @@ pub mod pulls;
 pub mod commits;
 pub mod personal_access_token;
 pub mod branches;
+pub mod actions;

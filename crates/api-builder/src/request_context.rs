@@ -29,7 +29,6 @@ impl RequestContext {
         let ast = quote! {
           use std::ops::Deref;
           use infrastructure::{ExpirableToken, GithubAPIClient};
-          use crate::constants::GITHUB_API_BASE_URL;
 
           #(#attributes)*
           #[derive(Clone, Debug)]
@@ -68,23 +67,6 @@ impl Parse for RequestContext {
             Ok(attr) => attr,
             Err(_) => Vec::new(),
         };
-        // while let Ok(attr) = input.call(Attribute::parse_outer) {
-        //     if attr.len() == 1 {
-        //         if let Some(comment) = attr[0].parse_meta().ok().and_then(|meta| {
-        //             if let syn::Meta::NameValue(syn::MetaNameValue {
-        //                 lit: syn::Lit::Str(lit_str),
-        //                 ..
-        //             }) = meta
-        //             {
-        //                 Some(lit_str.value())
-        //             } else {
-        //                 None
-        //             }
-        //         }) {
-        //             comments.push(comment);
-        //         }
-        //     }
-        // }
         let name: Ident = input.parse()?;
 
         let mut requests: Vec<Request> = Vec::new();

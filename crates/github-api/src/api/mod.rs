@@ -1,3 +1,4 @@
+mod actions;
 mod branches;
 mod commits;
 mod issues;
@@ -5,7 +6,7 @@ mod pulls;
 mod repositories;
 mod users;
 
-use infrastructure::{ExpirableToken, GithubAPIClient};
+use infrastructure::{ExpirableToken, GithubAPIClient, GithubAPIConfig};
 use std::sync::Arc;
 
 #[derive(Clone, Debug)]
@@ -18,8 +19,8 @@ pub struct GithubAPI<T: ExpirableToken + Clone> {
 }
 
 impl<T: ExpirableToken + Clone + 'static> GithubAPI<T> {
-    pub fn new(token: T) -> Self {
-        let client = Arc::new(GithubAPIClient::new(token));
+    pub fn new(api_config: GithubAPIConfig<T>) -> Self {
+        let client = Arc::new(GithubAPIClient::new(api_config));
 
         Self {
             issues: issues::GithubIssueAPI::new(client.clone()),
@@ -29,6 +30,12 @@ impl<T: ExpirableToken + Clone + 'static> GithubAPI<T> {
             branches: branches::GithubBranchAPI::new(client.clone()),
         }
     }
+
+    pub fn with_token(token: T) -> Self {
+        let api_config = GithubAPIConfig::with_token(token);
+
+        Self::new(api_config)
+    }
 }
 
 #[cfg(test)]
@@ -36,13 +43,14 @@ mod tests {
     use super::GithubAPI;
     use crate::domains::personal_access_token::GithubPersonalAccessToken;
     use crate::utils::test_utils;
-    use infrastructure::GithubResult;
+    use infrastructure::{GithubAPIConfig, GithubResult};
 
     #[tokio::test]
     async fn get_repository() -> GithubResult<()> {
         let envs = test_utils::load_test_envs()?;
         let token = GithubPersonalAccessToken::new(envs.personal_access_token);
-        let github_api = GithubAPI::new(token);
+        let api_config = GithubAPIConfig::with_token(token);
+        let github_api = GithubAPI::new(api_config);
 
         let repo = github_api
             .repositories

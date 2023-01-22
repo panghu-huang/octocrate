@@ -24,7 +24,6 @@ Will compile as below
 use std::ops::Deref;
 use std::sync::Arc;
 
-use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::issues::{GithubIssue};
 use infrastructure::{ExpirableToken, GithubAPIClient, GithubError};
 
@@ -44,8 +43,7 @@ impl<T: ExpirableToken + Clone> GithubIssueAPI<T> {
         repo: impl Into<String>,
     ) -> Result<Vec<GithubIssue>, GithubError> {
         let request_url = format!(
-            "{}/repos/{}/{}/issues",
-            GITHUB_API_BASE_URL,
+            "/repos/{}/{}/issues",
             owner.into(),
             repo.into()
         );

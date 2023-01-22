@@ -110,7 +110,7 @@ impl Request {
         let ast = quote! {
           #(#attributes)*
           pub fn #name(&self, #params) -> infrastructure::GithubAPIRequest<#response> {
-            let url = format!("{}{}", GITHUB_API_BASE_URL, #url);
+            let url = #url;
 
             self.client
               .deref()
@@ -194,7 +194,7 @@ impl Request {
             Ok(attr) => attr,
             Err(_) => vec![],
         };
-        
+
         let name: Ident = input.parse()?;
         let mut builder = RequestBuilder::new(name.clone(), attributes);
 

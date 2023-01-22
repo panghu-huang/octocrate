@@ -26,4 +26,3 @@ tokio = { workspace = true, features = ["full"] }
 api-builder = { path = "../api-builder" }
 infrastructure = { path = "../infrastructure" }
 actix-web = "4.2.1"
-

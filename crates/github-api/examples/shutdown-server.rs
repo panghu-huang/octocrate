@@ -4,7 +4,11 @@ use github_api::{test_utils, GithubApp};
 async fn main() {
     let envs = test_utils::load_test_envs().unwrap();
 
-    let mut app = GithubApp::new(envs.github_app_id, envs.github_app_private_key);
+    let mut app = GithubApp::builder()
+        .app_id(envs.github_app_id)
+        .private_key(envs.github_app_private_key)
+        .build()
+        .unwrap();
 
     let app_handle = app.app_handle();
 

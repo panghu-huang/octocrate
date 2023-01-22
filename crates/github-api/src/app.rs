@@ -1,12 +1,11 @@
 use crate::api::GithubAPI;
-use crate::constants::GITHUB_API_BASE_URL;
 use crate::domains::{
     events::GithubWebhookEvent,
     installation_token::GithubInstallationExpirableToken,
     installations::{GithubInstallation, GithubInstallationAccessToken},
 };
 use actix_web::{post, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
-use infrastructure::{ExpirableToken, GithubAPIClient, GithubResult};
+use infrastructure::{ExpirableToken, GithubAPIClient, GithubAPIConfig, GithubError, GithubResult};
 use std::collections::HashMap;
 use tokio::sync::{mpsc, oneshot};
 
@@ -32,11 +31,18 @@ pub struct AppHandle {
 }
 
 pub struct GithubApp {
+    base_url: String,
     app_handle: AppHandle,
     msg_rx: mpsc::UnboundedReceiver<Message>,
     webhook_event_listeners: Vec<GithubWebhookEventListener>,
     tokens: HashMap<u64, GithubInstallationAccessToken>,
     api_client: GithubAPIClient<GithubInstallationExpirableToken>,
+}
+
+pub struct GithubAppBuilder {
+    app_id: Option<String>,
+    private_key: Option<String>,
+    base_url: Option<String>,
 }
 
 impl AppHandle {
@@ -60,20 +66,31 @@ impl AppHandle {
 }
 
 impl GithubApp {
-    pub fn new(id: impl Into<String>, private_key: impl Into<String>) -> Self {
-        let mut token = GithubInstallationExpirableToken::new(id.into(), private_key.into());
+    pub fn builder() -> GithubAppBuilder {
+        GithubAppBuilder::new()
+    }
+
+    pub fn new(
+        app_id: impl Into<String>,
+        private_key: impl Into<String>,
+        base_url: impl Into<String>,
+    ) -> Self {
+        let mut token = GithubInstallationExpirableToken::new(app_id.into(), private_key.into());
 
         let tokens = HashMap::new();
 
         if let Err(error) = token.generate_token_if_expired() {
             panic!("Error generating token: {}", error);
         }
+        let base_url = base_url.into();
+        let api_config = GithubAPIConfig::new(base_url.clone(), token);
 
         let (tx, rx) = mpsc::unbounded_channel::<Message>();
 
         Self {
+            base_url: base_url,
             tokens,
-            api_client: GithubAPIClient::new(token),
+            api_client: GithubAPIClient::new(api_config),
             webhook_event_listeners: Vec::new(),
             app_handle: AppHandle::new(tx),
             msg_rx: rx,
@@ -98,8 +115,7 @@ impl GithubApp {
                 let payload = String::from_utf8(payload.to_vec()).unwrap();
 
                 let event_name = event_name.to_str().unwrap();
-                let event =
-                    GithubWebhookEvent::try_parse(event_name.to_string(), payload).unwrap();
+                let event = GithubWebhookEvent::try_parse(event_name.to_string(), payload).unwrap();
 
                 sender.send(Message::WebhookEvent(event)).unwrap();
 
@@ -180,10 +196,8 @@ impl GithubApp {
     }
 
     pub async fn get_installations(&self) -> GithubResult<Vec<GithubInstallation>> {
-        let request_url = format!("{}/app/installations", GITHUB_API_BASE_URL);
-
         self.api_client
-            .get::<Vec<GithubInstallation>>(request_url)
+            .get::<Vec<GithubInstallation>>("/app/installations")
             .send()
             .await
     }
@@ -192,11 +206,7 @@ impl GithubApp {
         &self,
         installation_id: impl Into<u64>,
     ) -> GithubResult<GithubInstallation> {
-        let request_url = format!(
-            "{}/app/installations/{}",
-            GITHUB_API_BASE_URL,
-            installation_id.into()
-        );
+        let request_url = format!("/app/installations/{}", installation_id.into());
         self.api_client
             .get::<GithubInstallation>(request_url)
             .send()
@@ -215,10 +225,7 @@ impl GithubApp {
             }
         }
 
-        let request_url = format!(
-            "{}/app/installations/{}/access_tokens",
-            GITHUB_API_BASE_URL, installation_id
-        );
+        let request_url = format!("/app/installations/{}/access_tokens", installation_id);
 
         let token = self
             .api_client
@@ -250,13 +257,58 @@ impl GithubApp {
     ) -> GithubResult<GithubAPI<GithubInstallationAccessToken>> {
         if let Some(token) = self.tokens.get(&installation_id) {
             if !token.is_expired() {
-                return Ok(GithubAPI::new(token.clone()));
+                let api_config = GithubAPIConfig::new(self.base_url.clone(), token.clone());
+                return Ok(GithubAPI::new(api_config));
             }
         }
 
         let token = self.get_installation_access_token(installation_id).await?;
 
-        Ok(GithubAPI::new(token))
+        let api_config = GithubAPIConfig::new(self.base_url.clone(), token.clone());
+        return Ok(GithubAPI::new(api_config));
+    }
+}
+
+impl GithubAppBuilder {
+    pub fn new() -> Self {
+        Self {
+            app_id: None,
+            private_key: None,
+            base_url: None,
+        }
+    }
+
+    pub fn app_id(mut self, app_id: impl Into<String>) -> Self {
+        self.app_id = Some(app_id.into());
+        self
+    }
+
+    pub fn private_key(mut self, private_key: impl Into<String>) -> Self {
+        self.private_key = Some(private_key.into());
+        self
+    }
+
+    pub fn base_url(mut self, base_url: impl Into<String>) -> Self {
+        self.base_url = Some(base_url.into());
+        self
+    }
+
+    pub fn build(self) -> GithubResult<GithubApp> {
+        let app_id = self.app_id.ok_or_else(|| {
+            GithubError::new("app_id is required to create a GithubApp".to_string())
+        })?;
+
+        let private_key = self.private_key.ok_or_else(|| {
+            GithubError::new("private_key is required to create a GithubApp".to_string())
+        })?;
+
+        let base_url = self
+            .base_url
+            .unwrap_or_else(|| "https://api.github.com".to_string());
+
+        let app = GithubApp::new(app_id, private_key, base_url);
+
+        Ok(app)
     }
 }
 

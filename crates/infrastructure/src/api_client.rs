@@ -5,8 +5,30 @@ use serde::Serialize;
 use std::marker::PhantomData;
 
 #[derive(Debug)]
+pub struct GithubAPIConfig<T: ExpirableToken + Clone> {
+    pub base_url: String,
+    pub token: T,
+}
+
+impl<T: ExpirableToken + Clone> GithubAPIConfig<T> {
+    pub fn new(base_url: impl Into<String>, token: T) -> Self {
+        Self {
+            base_url: base_url.into(),
+            token,
+        }
+    }
+
+    pub fn with_token(token: T) -> Self {
+        Self {
+            base_url: "https://api.github.com".to_string(),
+            token,
+        }
+    }
+}
+
+#[derive(Debug)]
 pub struct GithubAPIClient<T: ExpirableToken + Clone> {
-    token: T,
+    api_config: GithubAPIConfig<T>,
 }
 
 pub struct GithubAPIRequest<T: Serialize + DeserializeOwned + ?Sized> {
@@ -108,18 +130,24 @@ impl<T: Serialize + DeserializeOwned + ?Sized> GithubAPIRequest<T> {
 }
 
 impl<T: ExpirableToken + Clone> GithubAPIClient<T> {
-    pub fn new(token: T) -> Self
+    pub fn new(api_config: GithubAPIConfig<T>) -> Self
     where
         T: ExpirableToken + Clone + 'static,
     {
-        GithubAPIClient { token }
+        GithubAPIClient { api_config }
+    }
+
+    pub fn with_token(token: T) -> Self {
+        let api_config = GithubAPIConfig::with_token(token);
+        GithubAPIClient { api_config }
     }
 
     pub fn get<R>(&self, url: impl Into<String>) -> GithubAPIRequest<R>
     where
         R: Serialize + DeserializeOwned + ?Sized,
     {
-        let builder = Client::new().get(url.into());
+        let url = format!("{}{}", self.api_config.base_url, url.into());
+        let builder = Client::new().get(url);
         let builder = self.format_request(builder);
 
         GithubAPIRequest::new(builder)
@@ -129,7 +157,8 @@ impl<T: ExpirableToken + Clone> GithubAPIClient<T> {
     where
         R: Serialize + DeserializeOwned + ?Sized,
     {
-        let builder = Client::new().post(url.into());
+        let url = format!("{}{}", self.api_config.base_url, url.into());
+        let builder = Client::new().post(url);
         let builder = self.format_request(builder);
 
         GithubAPIRequest::new(builder)
@@ -139,7 +168,30 @@ impl<T: ExpirableToken + Clone> GithubAPIClient<T> {
     where
         R: Serialize + DeserializeOwned + ?Sized,
     {
-        let builder = Client::new().put(url.into());
+        let url = format!("{}{}", self.api_config.base_url, url.into());
+        let builder = Client::new().put(url);
+        let builder = self.format_request(builder);
+
+        GithubAPIRequest::new(builder)
+    }
+
+    pub fn patch<R>(&self, url: impl Into<String>) -> GithubAPIRequest<R>
+    where
+        R: Serialize + DeserializeOwned + ?Sized,
+    {
+        let url = format!("{}{}", self.api_config.base_url, url.into());
+        let builder = Client::new().patch(url);
+        let builder = self.format_request(builder);
+
+        GithubAPIRequest::new(builder)
+    }
+
+    pub fn delete<R>(&self, url: impl Into<String>) -> GithubAPIRequest<R>
+    where
+        R: Serialize + DeserializeOwned + ?Sized,
+    {
+        let url = format!("{}{}", self.api_config.base_url, url.into());
+        let builder = Client::new().delete(url);
         let builder = self.format_request(builder);
 
         GithubAPIRequest::new(builder)
@@ -150,7 +202,7 @@ impl<T: ExpirableToken + Clone> GithubAPIClient<T> {
             .header("User-Agent", "Coodev")
             .header("Accept", "application/vnd.github+json");
 
-        let token = self.token.get_token();
+        let token = self.api_config.token.get_token();
         if token.is_some() {
             return request_builder.header("Authorization", format!("Bearer {}", token.unwrap()));
         }

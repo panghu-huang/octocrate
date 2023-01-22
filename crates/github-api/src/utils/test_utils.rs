@@ -54,19 +54,18 @@ pub fn create_github_app() -> GithubResult<GithubApp> {
     dotenv()?;
 
     let envs = load_test_envs()?;
+    let app = GithubApp::builder()
+        .app_id(envs.github_app_id)
+        .private_key(envs.github_app_private_key)
+        .build()?;
 
-    Ok(GithubApp::new(
-        envs.github_app_id,
-        envs.github_app_private_key,
-    ))
+    Ok(app)
 }
 
 pub fn create_api_client() -> GithubResult<GithubAPIClient<GithubPersonalAccessToken>> {
     dotenv()?;
-
     let envs = load_test_envs()?;
-
     let token = GithubPersonalAccessToken::new(envs.personal_access_token);
 
-    Ok(GithubAPIClient::new(token))
+    Ok(GithubAPIClient::with_token(token))
 }

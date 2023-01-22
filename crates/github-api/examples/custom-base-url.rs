@@ -1,4 +1,4 @@
-use github_api::{test_utils, GithubAPI, GithubPersonalAccessToken};
+use github_api::{test_utils, GithubAPI, GithubAPIConfig, GithubPersonalAccessToken};
 
 #[tokio::main]
 async fn main() {
@@ -6,7 +6,8 @@ async fn main() {
 
     let token = GithubPersonalAccessToken::new(envs.personal_access_token);
 
-    let api = GithubAPI::with_token(token);
+    let config = GithubAPIConfig::new("https://api.github.com", token);
+    let api = GithubAPI::new(config);
 
     let repositories = api
         .repositories

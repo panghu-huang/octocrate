@@ -18,8 +18,13 @@ use serde_json::json;
 
 #[tokio::main]
 async fn main() {
-    GithubApp::new("GITHUB_APP_ID", "GITHUB_APP_PRIVATE_KEY")
-        .on_webhook_event(|event, api| {
+    let mut app = GithubApp::builder()
+        .app_id("GITHUB_APP_ID")
+        .private_key("GITHUB_APP_PRIVATE_KEY")
+        .build()
+        .unwrap();
+
+    app.on_webhook_event(|event, api| {
             match event {
                 GithubWebhookEvent::IssueComment(evt) => {
                     if evt.comment.body.starts_with("Hello") {
@@ -59,7 +64,7 @@ use github_api::{GithubPersonalAccessToken, GithubAPI};
 async fn main() {
     let token = GithubPersonalAccessToken::new("YOUR_PERSONAL_ACCESS_TOKEN");
 
-    let api = GithubAPI::new(token);
+    let api = GithubAPI::with_token(token);
 
     let repositories = api
         .repositories
