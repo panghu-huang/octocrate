@@ -1,5 +1,7 @@
 # Github API
 
+A Github API library based on Rust
+
 ## Install
 
 Install `github-api` by adding the following to your `Cargo.toml` file:
