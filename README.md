@@ -12,9 +12,11 @@ github-api = { git = "https://github.com/panghu-huang/github-api" }
 ## Usage
 
 ### Github App
+
+Here's a simple example showing how to create a Github App and handle the issue comment event.
+
 ```rust
 use github_api::{events::GithubWebhookEvent, GithubApp};
-use serde_json::json;
 
 #[tokio::main]
 async fn main() {
@@ -27,24 +29,13 @@ async fn main() {
     app.on_webhook_event(|event, api| {
             match event {
                 GithubWebhookEvent::IssueComment(evt) => {
-                    if evt.comment.body.starts_with("Hello") {
-                        tokio::spawn(async move {
-                            let owner = evt.repository.owner.login;
-                            let repo = evt.repository.name;
-                            let issue_number = evt.issue.number;
-
-                            let _issue_comment = api
-                                .issues
-                                .create_issue_comment(owner, repo, issue_number)
-                                .body(&json!({
-                                    "body": "Reply from Coodev CI"
-                                }))
-                                .send()
-                                .await;
-                        });
-                    }
+                    // handle issue comment event
+                    // ...
                 }
-                _ => {}
+                _ => {
+                    // handle other events
+                    // ...
+                }
             };
 
             Ok(())
@@ -54,6 +45,10 @@ async fn main() {
         .unwrap();
 }
 ```
+
+The `github_app.serve()` method opens a web server to listen for webhook requests from Github, the default path is `/github/webhook`
+
+If you want to customize the server, use `start()` instead of `serve()`. Example: [examples/manual-trigger.rs](./crates/github-api/examples/manual-trigger.rs)
 
 ### Github API
 

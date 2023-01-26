@@ -81,11 +81,50 @@ pub struct GithubWebhookPushEvent {
     pub installation: GithubWebhookInstallation,
 }
 
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubWorkflowJobStep {
+    pub name: String,
+    pub status: String,
+    pub conclusion: Option<String>,
+    pub number: u64,
+    pub started_at: String,
+    pub completed_at: Option<String>,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubWorkflowJob {
+    pub id: u64,
+    pub node_id: String,
+    pub run_id: u64,
+    pub head_branch: String,
+    pub head_sha: String,
+    pub url: String,
+    pub html_url: String,
+    pub workflow_name: String,
+    pub status: String,
+    pub conclusion: Option<String>,
+    pub started_at: String,
+    pub completed_at: Option<String>,
+    pub name: String,
+    pub steps: Vec<GithubWorkflowJobStep>,
+    pub check_run_url: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubWorkflowJobEvent {
+    pub action: String,
+    pub workflow_job: GithubWorkflowJob,
+    pub repository: GithubRepository,
+    pub sender: GithubUser,
+    pub installation: GithubWebhookInstallation,
+}
+
 #[derive(Debug, Clone)]
 pub enum GithubWebhookEvent {
     IssueComment(GithubWebhookIssueCommentEvent),
     PullRequest(GithubWebhookPullRequestEvent),
     Push(GithubWebhookPushEvent),
+    WorkflowJob(GithubWorkflowJobEvent),
     Unsupported {
         payload: String,
         installation: GithubWebhookInstallation,
@@ -98,6 +137,7 @@ impl GithubWebhookEvent {
             GithubWebhookEvent::IssueComment(evt) => evt.installation.clone(),
             GithubWebhookEvent::PullRequest(evt) => evt.installation.clone(),
             GithubWebhookEvent::Push(evt) => evt.installation.clone(),
+            GithubWebhookEvent::WorkflowJob(evt) => evt.installation.clone(),
             GithubWebhookEvent::Unsupported {
                 payload: _,
                 installation,
@@ -121,6 +161,11 @@ impl GithubWebhookEvent {
                 let evt = serde_json::from_str::<GithubWebhookPushEvent>(&payload)?;
 
                 return Ok(GithubWebhookEvent::Push(evt));
+            }
+            "workflow_job" => {
+                let evt = serde_json::from_str::<GithubWorkflowJobEvent>(&payload)?;
+
+                return Ok(GithubWebhookEvent::WorkflowJob(evt));
             }
             _ => {
                 let event = serde_json::from_str::<serde_json::Value>(&payload)?;

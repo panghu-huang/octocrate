@@ -105,7 +105,7 @@ impl GithubApp {
         let msg_tx = self.app_handle.msg_tx.clone();
 
         tokio::spawn(async move {
-            #[post("/webhook")]
+            #[post("/github/webhook")]
             async fn webhook(
                 payload: web::Bytes,
                 req: HttpRequest,

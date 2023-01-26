@@ -9,6 +9,7 @@ async fn main() {
         .private_key(envs.github_app_private_key)
         .build()
         .unwrap();
+
     app.on_webhook_event(|event, _api| {
         match event {
             GithubWebhookEvent::PullRequest(evt) => {
@@ -19,6 +20,9 @@ async fn main() {
             }
             GithubWebhookEvent::IssueComment(evt) => {
                 println!("Issue comment {:#?}", evt);
+            }
+            GithubWebhookEvent::WorkflowJob(evt) => {
+                println!("Workflow job {:#?}", evt);
             }
             GithubWebhookEvent::Unsupported {
                 installation: _,
