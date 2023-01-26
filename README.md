@@ -73,3 +73,7 @@ async fn main() {
     println!("Repositories: {:#?}", repositories);
 }
 ```
+
+### Examples
+
+For more examples, please refer to: [examples](./crates/github-api/examples)
