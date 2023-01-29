@@ -15,15 +15,15 @@ pub struct GithubMilestone {
     pub url: String,
     pub html_url: String,
     pub labels_url: String,
-    pub id: u32,
+    pub id: u64,
     pub node_id: String,
-    pub number: u32,
+    pub number: u64,
     pub state: String,
     pub title: String,
     pub description: String,
     pub creator: GithubUser,
-    pub open_issues: u32,
-    pub closed_issues: u32,
+    pub open_issues: u64,
+    pub closed_issues: u64,
     pub created_at: String,
     pub updated_at: String,
     pub closed_at: String,
@@ -32,7 +32,7 @@ pub struct GithubMilestone {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubLabel {
-    pub id: u32,
+    pub id: u64,
     pub node_id: String,
     pub url: String,
     pub name: String,
@@ -65,7 +65,7 @@ pub struct GithubIssue {
     pub milestone: Option<GithubMilestone>,
     pub locked: bool,
     pub active_lock_reason: Option<String>,
-    pub comments: u32,
+    pub comments: u64,
     pub pull_request: Option<GithubIssuePullRequest>,
     pub closed_by: Option<GithubUser>,
     pub repository: Option<GithubRepository>,
@@ -74,7 +74,7 @@ pub struct GithubIssue {
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct GithubIssueComment {
-    pub id: u32,
+    pub id: u64,
     pub node_id: String,
     pub url: String,
     pub html_url: String,
