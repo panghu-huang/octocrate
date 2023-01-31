@@ -1,11 +1,12 @@
 mod actions;
 mod branches;
 mod commits;
+mod deployments;
+mod git_database;
 mod issues;
 mod pulls;
 mod repositories;
 mod users;
-mod deployments;
 
 use infrastructure::{ExpirableToken, GithubAPIClient, GithubAPIConfig};
 use std::sync::Arc;
@@ -18,6 +19,7 @@ pub struct GithubAPI<T: ExpirableToken + Clone> {
     pub commits: commits::GithubCommitAPI<T>,
     pub branches: branches::GithubBranchAPI<T>,
     pub deployments: deployments::GithubDeploymentAPI<T>,
+    pub git_database: git_database::GithubGitDatabaseAPI<T>,
 }
 
 impl<T: ExpirableToken + Clone + 'static> GithubAPI<T> {
@@ -31,6 +33,7 @@ impl<T: ExpirableToken + Clone + 'static> GithubAPI<T> {
             commits: commits::GithubCommitAPI::new(client.clone()),
             branches: branches::GithubBranchAPI::new(client.clone()),
             deployments: deployments::GithubDeploymentAPI::new(client.clone()),
+            git_database: git_database::GithubGitDatabaseAPI::new(client.clone()),
         }
     }
 

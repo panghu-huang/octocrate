@@ -11,3 +11,4 @@ pub mod personal_access_token;
 pub mod branches;
 pub mod actions;
 pub mod deployments;
+pub mod git_database;
