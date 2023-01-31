@@ -15,11 +15,8 @@ use crate::request_context::RequestContext;
 ///   GithubRepositoriesAPI {
 ///     list {
 ///       method GET
-///       path "https://api.github.com/user/repos"
-///       params {
-///         page u64
-///         state String
-///       }
+///       path "/user/repos"
+///       response Vec<GithubRepository>
 ///     }
 ///   }
 /// }
