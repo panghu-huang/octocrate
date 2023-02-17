@@ -5,6 +5,7 @@ use serde_json::Error as SerdeJsonError;
 use std::error::Error;
 use std::fmt;
 use std::io::Error as IoError;
+use tokio::sync::{mpsc, oneshot};
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct GithubError {
@@ -56,6 +57,31 @@ impl From<DotEnvError> for GithubError {
 
 impl From<IoError> for GithubError {
     fn from(err: IoError) -> Self {
+        GithubError {
+            message: err.to_string(),
+        }
+    }
+}
+
+impl<T> From<mpsc::error::SendError<T>> for GithubError {
+    fn from(err: mpsc::error::SendError<T>) -> Self {
+        GithubError {
+            message: err.to_string(),
+        }
+    }
+}
+
+#[allow(deprecated)]
+impl From<mpsc::error::RecvError> for GithubError {
+    fn from(err: mpsc::error::RecvError) -> Self {
+        GithubError {
+            message: err.to_string(),
+        }
+    }
+}
+
+impl From<oneshot::error::RecvError> for GithubError {
+    fn from(err: oneshot::error::RecvError) -> Self {
         GithubError {
             message: err.to_string(),
         }

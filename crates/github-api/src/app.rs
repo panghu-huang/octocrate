@@ -50,16 +50,18 @@ impl AppHandle {
         Self { msg_tx }
     }
 
-    pub fn trigger_webhook_event(&self, event: GithubWebhookEvent) {
-        self.msg_tx.send(Message::WebhookEvent(event)).unwrap();
+    pub fn trigger_webhook_event(&self, event: GithubWebhookEvent) -> GithubResult<()> {
+        self.msg_tx.send(Message::WebhookEvent(event))?;
+
+        Ok(())
     }
 
     pub async fn stop(&self) -> GithubResult<()> {
         let (tx, rx) = oneshot::channel::<()>();
 
-        self.msg_tx.send(Message::Stop(tx)).unwrap();
+        self.msg_tx.send(Message::Stop(tx))?;
 
-        rx.await.unwrap();
+        rx.await?;
 
         Ok(())
     }
