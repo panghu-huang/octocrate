@@ -77,13 +77,10 @@ impl GithubApp {
         private_key: impl Into<String>,
         base_url: impl Into<String>,
     ) -> Self {
-        let mut token = GithubInstallationExpirableToken::new(app_id.into(), private_key.into());
+        let token = GithubInstallationExpirableToken::new(app_id.into(), private_key.into());
 
         let tokens = HashMap::new();
 
-        if let Err(error) = token.generate_token_if_expired() {
-            panic!("Error generating token: {}", error);
-        }
         let base_url = base_url.into();
         let api_config = GithubAPIConfig::new(base_url.clone(), token);
 
@@ -160,12 +157,18 @@ impl GithubApp {
                     match msg {
                       Message::WebhookEvent(event) => {
                           let installation = event.installation();
-                          let api = self.get_api(installation.id).await?;
-                          for listener in &self.webhook_event_listeners {
-                              if let Err(error) = listener(event.clone(), api.clone()) {
-                                  eprintln!("Error: {}", error);
+                          match self.get_api(installation.id).await {
+                            Ok(api) => {
+                              for listener in &self.webhook_event_listeners {
+                                if let Err(error) = listener(event.clone(), api.clone()) {
+                                    eprintln!("Error: {}", error);
+                                }
                               }
-                          }
+                            }
+                            Err(error) => {
+                              eprintln!("Error on GithubApp.start(): {}", error);
+                            }
+                          };
                       }
                       #[allow(unused_assignments)]
                       Message::ServerHandle(handle) => {
