@@ -1,5 +1,5 @@
-use crate::domains::users::GithubUser;
 use crate::domains::permissions::GithubRepositoryPermissions;
+use crate::domains::users::GithubUser;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -87,4 +87,30 @@ pub struct GithubRepository {
     pub allow_rebase_merge: Option<bool>,
     pub delete_branch_on_merge: Option<bool>,
     pub allow_auto_merge: Option<bool>,
+}
+
+// Repository contents
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubRepositoryContentsLinks {
+    pub git: String,
+    #[serde(rename = "self")]
+    pub self_link: String,
+    pub html: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubRepositoryContent {
+    pub name: String,
+    pub path: String,
+    pub sha: String,
+    pub size: u64,
+    pub url: String,
+    pub html_url: String,
+    pub git_url: String,
+    pub download_url: String,
+    #[serde(rename = "type")]
+    pub content_type: String,
+    pub content: Option<String>,
+    pub encoding: Option<String>,
+    pub _links: GithubRepositoryContentsLinks,
 }

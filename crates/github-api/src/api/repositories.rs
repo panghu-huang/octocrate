@@ -1,4 +1,4 @@
-use crate::domains::repositories::GithubRepository;
+use crate::domains::repositories::{GithubRepository, GithubRepositoryContent};
 use api_builder::github_api;
 
 github_api! {
@@ -68,6 +68,76 @@ github_api! {
       response Vec<GithubRepository>
       test {
         assert assert!(res.len() > 0)
+      }
+    }
+
+    list_repository_contents {
+      path "/repos/{}/{}/contents/{}"
+      params {
+        owner String
+        repo String
+        path String
+      }
+      response Vec<GithubRepositoryContent>
+      test {
+        params {
+          envs.repo_owner
+          envs.repo_name
+          "README.md"
+        }
+        assert println!("{:?}", res)
+      }
+    }
+
+    get_repository_content {
+      path "/repos/{}/{}/contents/{}"
+      params {
+        owner String
+        repo String
+        path String
+      }
+      response GithubRepositoryContent
+      test {
+        params {
+          envs.repo_owner
+          envs.repo_name
+          "README.md"
+        }
+        assert assert_eq!(res.content_type, "file")
+      }
+    }
+
+    get_repository_readme {
+      path "/repos/{}/{}/readme"
+      params {
+        owner String
+        repo String
+      }
+      response GithubRepositoryContent
+      test {
+        params {
+          envs.repo_owner
+          envs.repo_name
+        }
+        assert assert_eq!(res.content_type, "file")
+      }
+    }
+
+    get_repository_readme_for_dir {
+      path "/repos/{}/{}/readme/{}"
+      params {
+        owner String
+        repo String
+        path String
+      }
+      response GithubRepositoryContent
+      test {
+        params {
+          envs.repo_owner
+          envs.repo_name
+          "."
+        }
+        assert println!("{:?}", res)
       }
     }
   }
