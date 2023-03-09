@@ -4,6 +4,7 @@ use crate::domains::{
     installation_token::GithubInstallationExpirableToken,
     installations::{GithubInstallation, GithubInstallationAccessToken},
 };
+#[cfg(feature = "webhook-server")]
 use actix_web::{post, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
 use infrastructure::{ExpirableToken, GithubAPIClient, GithubAPIConfig, GithubError, GithubResult};
 use std::collections::HashMap;
@@ -21,6 +22,7 @@ pub type GithubWebhookEventListener = Box<
 #[derive(Debug)]
 pub enum Message {
     WebhookEvent(GithubWebhookEvent),
+    #[cfg(feature = "webhook-server")]
     ServerHandle(actix_web::dev::ServerHandle),
     Stop(oneshot::Sender<()>),
 }
@@ -100,6 +102,7 @@ impl GithubApp {
         self.app_handle.clone()
     }
 
+    #[cfg(feature = "webhook-server")]
     pub async fn serve(&mut self) -> GithubResult<()> {
         let msg_tx = self.app_handle.msg_tx.clone();
 
@@ -148,6 +151,7 @@ impl GithubApp {
     }
 
     pub async fn start(&mut self) -> GithubResult<()> {
+        #[cfg(feature = "webhook-server")]
         let mut server_handle: Option<actix_web::dev::ServerHandle> = None;
 
         loop {
@@ -170,13 +174,17 @@ impl GithubApp {
                             }
                           };
                       }
+                      #[cfg(feature = "webhook-server")]
                       #[allow(unused_assignments)]
                       Message::ServerHandle(handle) => {
                           server_handle = Some(handle);
                       }
                       Message::Stop(tx) => {
-                        if let Some(handle) = server_handle.clone() {
-                          handle.stop(true).await;
+                        #[cfg(feature = "webhook-server")]
+                        {
+                          if let Some(handle) = server_handle.clone() {
+                            handle.stop(true).await;
+                          }
                         }
                         tx.send(()).unwrap();
 
@@ -188,6 +196,7 @@ impl GithubApp {
 
               v = tokio::signal::ctrl_c() => {
                 if let Ok(_) = v {
+                  #[cfg(feature = "webhook-server")]
                   if let Some(handle) = server_handle.clone() {
                     handle.stop(true).await;
                   }
