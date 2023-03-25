@@ -77,3 +77,7 @@ async fn main() {
 ### Examples
 
 For more examples, please refer to: [examples](./crates/github-api/examples)
+
+### Test
+
+test for coodev ci
