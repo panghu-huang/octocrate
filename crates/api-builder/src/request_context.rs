@@ -32,12 +32,12 @@ impl RequestContext {
 
           #(#attributes)*
           #[derive(Clone, Debug)]
-          pub struct #name<T: ExpirableToken + Clone> {
-            client: std::sync::Arc<GithubAPIClient<T>>,
+          pub struct #name {
+            client: std::sync::Arc<GithubAPIClient>,
           }
 
-          impl<T: ExpirableToken + Clone> #name<T> {
-            pub fn new(client: std::sync::Arc<GithubAPIClient<T>>) -> Self {
+          impl #name {
+            pub fn new(client: std::sync::Arc<GithubAPIClient>) -> Self {
               Self { client }
             }
 

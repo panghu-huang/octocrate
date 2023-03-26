@@ -3,32 +3,41 @@ use reqwest::{Client, RequestBuilder};
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 use std::marker::PhantomData;
+use std::sync::Arc;
 
-#[derive(Debug)]
-pub struct GithubAPIConfig<T: ExpirableToken + Clone> {
+pub type APIToken = Arc<Box<dyn ExpirableToken>>;
+
+#[derive(Debug, Clone)]
+pub struct GithubAPIConfig {
     pub base_url: String,
-    pub token: T,
+    pub token: APIToken,
 }
 
-impl<T: ExpirableToken + Clone> GithubAPIConfig<T> {
-    pub fn new(base_url: impl Into<String>, token: T) -> Self {
+impl GithubAPIConfig {
+    pub fn new<T>(base_url: impl Into<String>, token: T) -> Self
+    where
+        T: ExpirableToken + 'static,
+    {
         Self {
             base_url: base_url.into(),
-            token,
+            token: Arc::new(Box::new(token)),
         }
     }
 
-    pub fn with_token(token: T) -> Self {
+    pub fn with_token<T>(token: T) -> Self
+    where
+        T: ExpirableToken + 'static,
+    {
         Self {
             base_url: "https://api.github.com".to_string(),
-            token,
+            token: Arc::new(Box::new(token)),
         }
     }
 }
 
-#[derive(Debug)]
-pub struct GithubAPIClient<T: ExpirableToken + Clone> {
-    api_config: GithubAPIConfig<T>,
+#[derive(Debug, Clone)]
+pub struct GithubAPIClient {
+    api_config: GithubAPIConfig,
 }
 
 pub struct GithubAPIRequest<T: Serialize + DeserializeOwned + ?Sized> {
@@ -129,15 +138,15 @@ impl<T: Serialize + DeserializeOwned + ?Sized> GithubAPIRequest<T> {
     }
 }
 
-impl<T: ExpirableToken + Clone> GithubAPIClient<T> {
-    pub fn new(api_config: GithubAPIConfig<T>) -> Self
-    where
-        T: ExpirableToken + Clone + 'static,
-    {
+impl GithubAPIClient {
+    pub fn new(api_config: GithubAPIConfig) -> Self {
         GithubAPIClient { api_config }
     }
 
-    pub fn with_token(token: T) -> Self {
+    pub fn with_token<T>(token: T) -> Self
+    where
+        T: ExpirableToken + 'static,
+    {
         let api_config = GithubAPIConfig::with_token(token);
         GithubAPIClient { api_config }
     }

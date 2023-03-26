@@ -3,8 +3,7 @@ use crate::domains::personal_access_token::GithubPersonalAccessToken;
 use dotenv::dotenv;
 use infrastructure::{GithubAPIClient, GithubError, GithubResult};
 use serde::{Deserialize, Serialize};
-use std::env;
-use std::fs;
+use std::{env, fs};
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct TestEnvs {
@@ -62,7 +61,7 @@ pub fn create_github_app() -> GithubResult<GithubApp> {
     Ok(app)
 }
 
-pub fn create_api_client() -> GithubResult<GithubAPIClient<GithubPersonalAccessToken>> {
+pub fn create_api_client() -> GithubResult<GithubAPIClient> {
     dotenv()?;
     let envs = load_test_envs()?;
     let token = GithubPersonalAccessToken::new(envs.personal_access_token);

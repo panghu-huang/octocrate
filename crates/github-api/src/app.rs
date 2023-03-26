@@ -11,12 +11,7 @@ use std::collections::HashMap;
 use tokio::sync::{mpsc, oneshot};
 
 pub type GithubWebhookEventListener = Box<
-    dyn Fn(
-            GithubWebhookEvent,
-            GithubAPI<GithubInstallationAccessToken>,
-        ) -> Result<(), Box<dyn std::error::Error>>
-        + Send
-        + Sync,
+    dyn Fn(GithubWebhookEvent, GithubAPI) -> Result<(), Box<dyn std::error::Error>> + Send + Sync,
 >;
 
 #[derive(Debug)]
@@ -38,7 +33,7 @@ pub struct GithubApp {
     msg_rx: mpsc::UnboundedReceiver<Message>,
     webhook_event_listeners: Vec<GithubWebhookEventListener>,
     tokens: HashMap<u64, GithubInstallationAccessToken>,
-    api_client: GithubAPIClient<GithubInstallationExpirableToken>,
+    api_client: GithubAPIClient,
 }
 
 pub struct GithubAppBuilder {
@@ -216,6 +211,22 @@ impl GithubApp {
             .await
     }
 
+    pub async fn get_repository_installation(
+        &self,
+        owner: impl Into<String>,
+        repo: impl Into<String>,
+    ) -> GithubResult<GithubInstallation> {
+        let owner = owner.into();
+        let repo = repo.into();
+
+        let request_url = format!("/repos/{}/{}/installation", owner, repo);
+
+        self.api_client
+            .get::<GithubInstallation>(request_url)
+            .send()
+            .await
+    }
+
     pub async fn get_installation(
         &self,
         installation_id: impl Into<u64>,
@@ -254,10 +265,7 @@ impl GithubApp {
 
     pub fn on_webhook_event<F>(&mut self, listener: F) -> &mut Self
     where
-        F: Fn(
-            GithubWebhookEvent,
-            GithubAPI<GithubInstallationAccessToken>,
-        ) -> Result<(), Box<dyn std::error::Error>>,
+        F: Fn(GithubWebhookEvent, GithubAPI) -> Result<(), Box<dyn std::error::Error>>,
         F: Send + Sync + 'static,
     {
         self.webhook_event_listeners.push(Box::new(listener));
@@ -265,10 +273,7 @@ impl GithubApp {
         self
     }
 
-    pub async fn get_api(
-        &mut self,
-        installation_id: u64,
-    ) -> GithubResult<GithubAPI<GithubInstallationAccessToken>> {
+    pub async fn get_api(&mut self, installation_id: u64) -> GithubResult<GithubAPI> {
         if let Some(token) = self.tokens.get(&installation_id) {
             if !token.is_expired() {
                 let api_config = GithubAPIConfig::new(self.base_url.clone(), token.clone());
@@ -277,7 +282,6 @@ impl GithubApp {
         }
 
         let token = self.get_installation_access_token(installation_id).await?;
-
         let api_config = GithubAPIConfig::new(self.base_url.clone(), token.clone());
         return Ok(GithubAPI::new(api_config));
     }
@@ -374,6 +378,21 @@ mod tests {
         let access_token1 = app.get_installation_access_token(installation_id).await?;
 
         assert_eq!(access_token.expires_at, access_token1.expires_at);
+
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn get_repository_installation() -> GithubResult<()> {
+        let app = test_utils::create_github_app()?;
+        let envs = test_utils::load_test_envs()?;
+        let github_app_id = envs.github_app_id;
+
+        let installation = app
+            .get_repository_installation(envs.repo_owner.clone(), envs.repo_name.clone())
+            .await?;
+
+        assert_eq!(installation.app_id.to_string(), github_app_id);
 
         Ok(())
     }

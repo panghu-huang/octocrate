@@ -12,18 +12,18 @@ use infrastructure::{ExpirableToken, GithubAPIClient, GithubAPIConfig};
 use std::sync::Arc;
 
 #[derive(Clone, Debug)]
-pub struct GithubAPI<T: ExpirableToken + Clone> {
-    pub issues: issues::GithubIssueAPI<T>,
-    pub repositories: repositories::GithubRepositoryAPI<T>,
-    pub pulls: pulls::GithubPullRequestAPI<T>,
-    pub commits: commits::GithubCommitAPI<T>,
-    pub branches: branches::GithubBranchAPI<T>,
-    pub deployments: deployments::GithubDeploymentAPI<T>,
-    pub git_database: git_database::GithubGitDatabaseAPI<T>,
+pub struct GithubAPI {
+    pub issues: issues::GithubIssueAPI,
+    pub repositories: repositories::GithubRepositoryAPI,
+    pub pulls: pulls::GithubPullRequestAPI,
+    pub commits: commits::GithubCommitAPI,
+    pub branches: branches::GithubBranchAPI,
+    pub deployments: deployments::GithubDeploymentAPI,
+    pub git_database: git_database::GithubGitDatabaseAPI,
 }
 
-impl<T: ExpirableToken + Clone + 'static> GithubAPI<T> {
-    pub fn new(api_config: GithubAPIConfig<T>) -> Self {
+impl GithubAPI {
+    pub fn new(api_config: GithubAPIConfig) -> Self {
         let client = Arc::new(GithubAPIClient::new(api_config));
 
         Self {
@@ -37,7 +37,10 @@ impl<T: ExpirableToken + Clone + 'static> GithubAPI<T> {
         }
     }
 
-    pub fn with_token(token: T) -> Self {
+    pub fn with_token<T>(token: T) -> Self
+    where
+        T: ExpirableToken + 'static,
+    {
         let api_config = GithubAPIConfig::with_token(token);
 
         Self::new(api_config)

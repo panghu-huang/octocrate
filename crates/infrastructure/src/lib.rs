@@ -6,7 +6,7 @@ use std::fmt::Debug;
 pub use api_client::*;
 pub use error::*;
 
-pub trait ExpirableToken: Debug {
+pub trait ExpirableToken: Debug + Send + Sync {
     fn is_expired(&self) -> bool;
     fn get_token(&self) -> Option<String>;
 }
