@@ -1,4 +1,6 @@
-use crate::domains::repositories::{GithubRepository, GithubRepositoryContent};
+use crate::domains::repositories::{
+    GithubRepository, GithubRepositoryContent, GithubRepositoryContentResponse,
+};
 use api_builder::github_api;
 
 github_api! {
@@ -78,7 +80,7 @@ github_api! {
         repo String
         path String
       }
-      response Vec<GithubRepositoryContent>
+      response GithubRepositoryContentResponse
       test {
         params {
           envs.repo_owner
@@ -86,24 +88,6 @@ github_api! {
           "README.md"
         }
         assert println!("{:?}", res)
-      }
-    }
-
-    get_repository_content {
-      path "/repos/{}/{}/contents/{}"
-      params {
-        owner String
-        repo String
-        path String
-      }
-      response GithubRepositoryContent
-      test {
-        params {
-          envs.repo_owner
-          envs.repo_name
-          "README.md"
-        }
-        assert assert_eq!(res.content_type, "file")
       }
     }
 

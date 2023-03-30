@@ -24,13 +24,13 @@ pub enum Message {
 
 #[derive(Clone, Debug)]
 pub struct AppHandle {
-    msg_tx: mpsc::UnboundedSender<Message>,
+    msg_tx: mpsc::Sender<Message>,
 }
 
 pub struct GithubApp {
     base_url: String,
     app_handle: AppHandle,
-    msg_rx: mpsc::UnboundedReceiver<Message>,
+    msg_rx: mpsc::Receiver<Message>,
     webhook_event_listeners: Vec<GithubWebhookEventListener>,
     tokens: HashMap<u64, GithubInstallationAccessToken>,
     api_client: GithubAPIClient,
@@ -43,12 +43,12 @@ pub struct GithubAppBuilder {
 }
 
 impl AppHandle {
-    pub fn new(msg_tx: mpsc::UnboundedSender<Message>) -> Self {
+    pub fn new(msg_tx: mpsc::Sender<Message>) -> Self {
         Self { msg_tx }
     }
 
-    pub fn trigger_webhook_event(&self, event: GithubWebhookEvent) -> GithubResult<()> {
-        self.msg_tx.send(Message::WebhookEvent(event))?;
+    pub async fn trigger_webhook_event(&self, event: GithubWebhookEvent) -> GithubResult<()> {
+        self.msg_tx.send(Message::WebhookEvent(event)).await?;
 
         Ok(())
     }
@@ -56,7 +56,7 @@ impl AppHandle {
     pub async fn stop(&self) -> GithubResult<()> {
         let (tx, rx) = oneshot::channel::<()>();
 
-        self.msg_tx.send(Message::Stop(tx))?;
+        self.msg_tx.send(Message::Stop(tx)).await?;
 
         rx.await?;
 
@@ -81,7 +81,7 @@ impl GithubApp {
         let base_url = base_url.into();
         let api_config = GithubAPIConfig::new(base_url.clone(), token);
 
-        let (tx, rx) = mpsc::unbounded_channel::<Message>();
+        let (tx, rx) = mpsc::channel::<Message>(3);
 
         Self {
             base_url: base_url,

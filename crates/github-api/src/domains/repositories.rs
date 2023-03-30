@@ -114,3 +114,10 @@ pub struct GithubRepositoryContent {
     pub encoding: Option<String>,
     pub _links: GithubRepositoryContentsLinks,
 }
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(untagged)]
+pub enum GithubRepositoryContentResponse {
+    File(GithubRepositoryContent),
+    Directory(Vec<GithubRepositoryContent>),
+}
