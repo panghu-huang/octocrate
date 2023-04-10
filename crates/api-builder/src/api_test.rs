@@ -39,6 +39,7 @@ pub struct APITest {
     pub params: Vec<Expr>,
     pub query: Option<Object>,
     pub body: Option<Object>,
+    pub ignore: bool,
     pub assert: Expr,
 }
 
@@ -49,6 +50,7 @@ pub struct APITestBuilder {
     pub params: Option<Vec<Expr>>,
     pub query: Option<Object>,
     pub body: Option<Object>,
+    pub ignore: bool,
     pub assert: Option<Expr>,
 }
 
@@ -60,6 +62,7 @@ impl APITestBuilder {
             params: None,
             assert: None,
             query: None,
+            ignore: false,
             body: None,
         }
     }
@@ -95,6 +98,7 @@ impl APITestBuilder {
             params: self.params.take().unwrap_or(vec![]),
             assert: self.assert.take().unwrap(),
             query: self.query.take(),
+            ignore: self.ignore,
             body: self.body.take(),
         }
     }
@@ -107,9 +111,11 @@ impl APITest {
         let params = &self.params;
         let query = &self.generate_query_ast();
         let body = &self.generate_body_ast();
+        let ignore = &self.generate_ignore_ast();
         let assert = &self.assert;
 
         quote! {
+          #ignore
           #[tokio::test]
           async fn #name() -> GithubResult<()> {
             let envs = test_utils::load_test_envs()?;
@@ -155,6 +161,16 @@ impl APITest {
             None => {
                 quote! {}
             }
+        }
+    }
+
+    fn generate_ignore_ast(&self) -> TokenStream {
+        if self.ignore {
+            quote! {
+                #[ignore]
+            }
+        } else {
+            quote! {}
         }
     }
 
@@ -233,6 +249,9 @@ impl APITest {
                     let object = Self::parse_object(&content)?;
 
                     test.body(object);
+                }
+                "ignore" => {
+                    test.ignore = true;
                 }
                 _ => {
                     return Err(Error::new_spanned(

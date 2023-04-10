@@ -16,6 +16,7 @@ pub struct TestEnvs {
     pub personal_access_token: String,
     pub branch_name: String,
     pub commit_sha: String,
+    pub deployment_id: u64,
 }
 
 fn read_env(key: &str) -> GithubResult<String> {
@@ -33,6 +34,7 @@ pub fn load_test_envs() -> GithubResult<TestEnvs> {
     let personal_access_token = read_env("TEST_GITHUB_PERSONAL_ACCESS_TOKEN")?;
     let branch_name = read_env("TEST_GITHUB_BRANCH_NAME")?;
     let commit_sha = read_env("TEST_GITHUB_COMMIT_SHA")?;
+    let deployment_id = read_env("TEST_GITHUB_DEPLOYMENT_ID")?;
 
     let github_app_private_key = fs::read_to_string(github_app_private_key_path)?;
 
@@ -46,6 +48,7 @@ pub fn load_test_envs() -> GithubResult<TestEnvs> {
         personal_access_token,
         branch_name,
         commit_sha,
+        deployment_id: deployment_id.parse::<u64>().unwrap(),
     })
 }
 
