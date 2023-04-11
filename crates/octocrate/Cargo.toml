@@ -5,9 +5,9 @@ edition = "2021"
 authors = ["wokeyifrontend@gmail.com"]
 license = "MIT OR Apache-2.0"
 description = "A library of github API"
-readme = "README.md"
-homepage = "https://github.com/panghu-huang/github-api"
-repository = "https://github.com/panghu-huang/github-api"
+readme = "../../README.md"
+homepage = "https://github.com/panghu-huang/octocrate"
+repository = "https://github.com/panghu-huang/octocrate"
 keywords = ["github"]
 include = ["**/*.rs", "Cargo.toml"]
 
@@ -44,6 +44,6 @@ tokio = { workspace = true, features = [
   "rt-multi-thread",
   "signal",
 ] }
-octocrate-api-builder = { path = "../octocrate-api-builder" }
-octocrate-infra = { path = "../octocrate-infra" }
+octocrate-api-builder = { version = "0.1.0", path = "../octocrate-api-builder" }
+octocrate-infra = { version = "0.1.0", path = "../octocrate-infra" }
 actix-web = { version = "4.2.1", optional = true }

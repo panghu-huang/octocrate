@@ -2,6 +2,10 @@
 name = "octocrate-infra"
 version = "0.1.0"
 edition = "2021"
+description = "Infrastructure for octocrate"
+authors = ["wokeyifrontend@gmail"]
+license = "MIT"
+repository = "https://github.com/panghu-huang/octocrate"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

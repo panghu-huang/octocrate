@@ -1,14 +1,13 @@
-# Github API
+# Octocrate (Octocat + Crate)
 
 A Github API library based on Rust
 
 ## Install
 
-Install `github-api` by adding the following to your `Cargo.toml` file:
+Install `Octocrate` with `cargo`:
 
-```toml
-[dependencies]
-github-api = { git = "https://github.com/panghu-huang/github-api" }
+```bash
+cargo install octocrate
 ```
 
 ## Usage
@@ -18,7 +17,7 @@ github-api = { git = "https://github.com/panghu-huang/github-api" }
 Here's a simple example showing how to create a Github App and handle the issue comment event.
 
 ```rust
-use github_api::{events::GithubWebhookEvent, GithubApp};
+use octocrate::{events::GithubWebhookEvent, GithubApp};
 
 #[tokio::main]
 async fn main() {
@@ -50,12 +49,12 @@ async fn main() {
 
 The `github_app.serve()` method opens a web server to listen for webhook requests from Github, the default path is `/github/webhook`
 
-If you want to customize the server, use `start()` instead of `serve()`. Example: [examples/manual-trigger.rs](./crates/github-api/examples/manual-trigger.rs)
+If you want to customize the server, use `start()` instead of `serve()`. Example: [examples/manual-trigger.rs](./crates/octocrate/examples/manual-trigger.rs)
 
 ### Github API
 
 ```rust
-use github_api::{GithubPersonalAccessToken, GithubAPI};
+use octocrate::{GithubPersonalAccessToken, GithubAPI};
 
 #[tokio::main]
 async fn main() {
@@ -76,4 +75,4 @@ async fn main() {
 
 ### Examples
 
-For more examples, please refer to: [examples](./crates/github-api/examples)
+For more examples, please refer to: [examples](./crates/octocrate/examples)
