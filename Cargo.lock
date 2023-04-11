@@ -232,15 +232,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "api-builder"
-version = "0.1.0"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn",
-]
-
-[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -602,21 +593,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "github-api"
-version = "0.1.0"
-dependencies = [
- "actix-web",
- "api-builder",
- "chrono",
- "dotenv",
- "infrastructure",
- "jsonwebtoken",
- "serde",
- "serde_json",
- "tokio",
-]
-
-[[package]]
 name = "h2"
 version = "0.3.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -763,18 +739,6 @@ checksum = "1885e79c1fc4b10f0e172c475f458b7f7b93061064d98c3293e98c5ba0c8b399"
 dependencies = [
  "autocfg",
  "hashbrown",
-]
-
-[[package]]
-name = "infrastructure"
-version = "0.1.0"
-dependencies = [
- "dotenv",
- "jsonwebtoken",
- "reqwest",
- "serde",
- "serde_json",
- "tokio",
 ]
 
 [[package]]
@@ -983,6 +947,42 @@ checksum = "0fac9e2da13b5eb447a6ce3d392f23a29d8694bff781bf03a16cd9ac8697593b"
 dependencies = [
  "hermit-abi",
  "libc",
+]
+
+[[package]]
+name = "octocrate"
+version = "0.1.0"
+dependencies = [
+ "actix-web",
+ "chrono",
+ "dotenv",
+ "jsonwebtoken",
+ "octocrate-api-builder",
+ "octocrate-infra",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
+name = "octocrate-api-builder"
+version = "0.1.0"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "octocrate-infra"
+version = "0.1.0"
+dependencies = [
+ "dotenv",
+ "jsonwebtoken",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tokio",
 ]
 
 [[package]]
