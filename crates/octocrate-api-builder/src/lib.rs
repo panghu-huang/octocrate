@@ -10,8 +10,9 @@ use crate::request_context::RequestContext;
 #[proc_macro]
 /// # Example
 /// ```rust
+/// extern crate octocrate_api_builder;
 /// use octocrate_api_builder::github_api;
-/// 
+///
 /// github_api! {
 ///   GithubRepositoriesAPI {
 ///     list {

@@ -1,6 +1,4 @@
-use crate::domains::actions::{
-    GithubActionSecret, GithubActionSecretPublicKey, GithubActionSecrets,
-};
+use crate::{GithubActionSecret, GithubActionSecretPublicKey, GithubActionSecrets};
 use octocrate_api_builder::github_api;
 
 github_api! {

@@ -46,7 +46,7 @@ impl RequestContext {
           }
 
           #[cfg(test)]
-          mod tests {
+          mod github_api_tests {
             use super::#name;
             use crate::utils::test_utils;
             use octocrate_infra::GithubResult;

@@ -1,4 +1,4 @@
-use crate::domains::deployments::{GithubDeployment, GithubDeploymentStatus};
+use crate::{GithubDeployment, GithubDeploymentStatus};
 use octocrate_api_builder::github_api;
 
 github_api! {
@@ -67,21 +67,21 @@ github_api! {
           envs.deployment_id
         }
         body {
-          state crate::domains::deployments::GithubDeploymentState::Success
+          state crate::GithubDeploymentState::Success
           environment "production"
           description "Deployed to production"
           log_url "https://example.com"
           environment_url "https://example.com"
           target_url "https://example.com"
         }
-        assert assert_eq!(res.state, crate::domains::deployments::GithubDeploymentState::Success)
+        assert assert_eq!(res.state, crate::GithubDeploymentState::Success)
       }
     }
   }
 }
 
 #[cfg(test)]
-mod special_tests {
+mod tests {
     use super::GithubDeploymentAPI;
     use crate::utils::test_utils;
     use octocrate_infra::GithubResult;

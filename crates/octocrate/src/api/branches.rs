@@ -1,4 +1,4 @@
-use crate::domains::branches::GithubBranch;
+use crate::GithubBranch;
 use octocrate_api_builder::github_api;
 
 github_api! {

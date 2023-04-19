@@ -951,7 +951,7 @@ dependencies = [
 
 [[package]]
 name = "octocrate"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "actix-web",
  "chrono",
@@ -966,7 +966,7 @@ dependencies = [
 
 [[package]]
 name = "octocrate-api-builder"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "proc-macro2",
  "quote",

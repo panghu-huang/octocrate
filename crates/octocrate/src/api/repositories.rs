@@ -1,6 +1,4 @@
-use crate::domains::repositories::{
-    GithubRepository, GithubRepositoryContent, GithubRepositoryContentResponse,
-};
+use crate::{GithubRepository, GithubRepositoryContent, GithubRepositoryContentResponse};
 use octocrate_api_builder::github_api;
 
 github_api! {

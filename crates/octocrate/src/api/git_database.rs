@@ -1,4 +1,4 @@
-use crate::domains::git_database::GithubReference;
+use crate::GithubReference;
 use octocrate_api_builder::github_api;
 
 github_api! {
@@ -76,7 +76,7 @@ github_api! {
 }
 
 #[cfg(test)]
-mod spacial_tests {
+mod tests {
     use super::GithubGitDatabaseAPI;
     use crate::utils::test_utils;
     use octocrate_infra::GithubResult;

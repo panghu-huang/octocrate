@@ -1,4 +1,4 @@
-use crate::domains::commits::{GithubCommit, GithubCommitCombinedStatuses, GithubCommitStatus};
+use crate::{GithubCommit, GithubCommitCombinedStatuses, GithubCommitStatus};
 use octocrate_api_builder::github_api;
 
 github_api! {

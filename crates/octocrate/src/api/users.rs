@@ -1,4 +1,4 @@
-use crate::domains::users::GithubUser;
+use crate::GithubUser;
 use octocrate_api_builder::github_api;
 
 github_api! {

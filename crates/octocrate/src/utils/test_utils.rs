@@ -1,5 +1,4 @@
-use crate::app::GithubApp;
-use crate::domains::personal_access_token::GithubPersonalAccessToken;
+use crate::{app::GithubApp, GithubPersonalAccessToken};
 use dotenv::dotenv;
 use octocrate_infra::{GithubAPIClient, GithubError, GithubResult};
 use serde::{Deserialize, Serialize};

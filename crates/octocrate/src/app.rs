@@ -1,67 +1,29 @@
-use crate::api::GithubAPI;
-use crate::domains::{
-    events::GithubWebhookEvent,
-    installation_token::GithubInstallationExpirableToken,
-    installations::{GithubInstallation, GithubInstallationAccessToken},
+use crate::{
+    GithubAPI, GithubInstallation, GithubInstallationAccessToken, GithubInstallationExpirableToken,
 };
-#[cfg(feature = "webhook-server")]
-use actix_web::{post, web, App, HttpRequest, HttpResponse, HttpServer, Responder};
-use octocrate_infra::{ExpirableToken, GithubAPIClient, GithubAPIConfig, GithubError, GithubResult};
-use std::collections::HashMap;
-use tokio::sync::{mpsc, oneshot};
+use octocrate_infra::{
+    ExpirableToken, GithubAPIClient, GithubAPIConfig, GithubError, GithubResult,
+};
+use std::{
+    collections::HashMap,
+    sync::{Arc, Mutex, MutexGuard},
+};
 
-pub type GithubWebhookEventListener = Box<
-    dyn Fn(GithubWebhookEvent, GithubAPI) -> Result<(), Box<dyn std::error::Error>> + Send + Sync,
->;
-
-#[derive(Debug)]
-pub enum Message {
-    WebhookEvent(GithubWebhookEvent),
-    #[cfg(feature = "webhook-server")]
-    ServerHandle(actix_web::dev::ServerHandle),
-    Stop(oneshot::Sender<()>),
+pub struct GithubAppInner {
+    tokens: HashMap<u64, GithubInstallationAccessToken>,
 }
 
-#[derive(Clone, Debug)]
-pub struct AppHandle {
-    msg_tx: mpsc::Sender<Message>,
-}
-
+#[derive(Clone)]
 pub struct GithubApp {
     base_url: String,
-    app_handle: AppHandle,
-    msg_rx: mpsc::Receiver<Message>,
-    webhook_event_listeners: Vec<GithubWebhookEventListener>,
-    tokens: HashMap<u64, GithubInstallationAccessToken>,
     api_client: GithubAPIClient,
+    inner: Arc<Mutex<GithubAppInner>>,
 }
 
 pub struct GithubAppBuilder {
     app_id: Option<String>,
     private_key: Option<String>,
     base_url: Option<String>,
-}
-
-impl AppHandle {
-    pub fn new(msg_tx: mpsc::Sender<Message>) -> Self {
-        Self { msg_tx }
-    }
-
-    pub async fn trigger_webhook_event(&self, event: GithubWebhookEvent) -> GithubResult<()> {
-        self.msg_tx.send(Message::WebhookEvent(event)).await?;
-
-        Ok(())
-    }
-
-    pub async fn stop(&self) -> GithubResult<()> {
-        let (tx, rx) = oneshot::channel::<()>();
-
-        self.msg_tx.send(Message::Stop(tx)).await?;
-
-        rx.await?;
-
-        Ok(())
-    }
 }
 
 impl GithubApp {
@@ -81,127 +43,13 @@ impl GithubApp {
         let base_url = base_url.into();
         let api_config = GithubAPIConfig::new(base_url.clone(), token);
 
-        let (tx, rx) = mpsc::channel::<Message>(3);
+        let inner = GithubAppInner { tokens };
 
         Self {
             base_url: base_url,
-            tokens,
             api_client: GithubAPIClient::new(api_config),
-            webhook_event_listeners: Vec::new(),
-            app_handle: AppHandle::new(tx),
-            msg_rx: rx,
+            inner: Arc::new(Mutex::new(inner)),
         }
-    }
-
-    pub fn app_handle(&self) -> AppHandle {
-        self.app_handle.clone()
-    }
-
-    #[cfg(feature = "webhook-server")]
-    pub async fn serve(&mut self) -> GithubResult<()> {
-        let msg_tx = self.app_handle.msg_tx.clone();
-
-        tokio::spawn(async move {
-            #[post("/github/webhook")]
-            async fn webhook(
-                payload: web::Bytes,
-                req: HttpRequest,
-                sender: web::Data<mpsc::UnboundedSender<Message>>,
-            ) -> impl Responder {
-                let event_name = req.headers().get("X-GitHub-Event").unwrap();
-                let payload = String::from_utf8(payload.to_vec()).unwrap();
-
-                let event_name = event_name.to_str().unwrap();
-                let event = GithubWebhookEvent::try_parse(event_name.to_string(), payload).unwrap();
-
-                sender.send(Message::WebhookEvent(event)).unwrap();
-
-                HttpResponse::Ok()
-            }
-
-            let port = std::env::var("PORT").unwrap_or(String::from("3000"));
-            let port = port.parse::<u16>().unwrap();
-
-            let tx = msg_tx.clone();
-
-            let srv = HttpServer::new(move || {
-                return App::new()
-                    .service(webhook)
-                    .app_data(web::Data::new(msg_tx.clone()));
-            })
-            .bind(("127.0.0.1", port))
-            .unwrap()
-            .run();
-
-            let handle = srv.handle();
-
-            tx.send(Message::ServerHandle(handle.clone())).unwrap();
-
-            println!("Server started on http://localhost:{}", port);
-
-            srv.await.unwrap();
-        });
-
-        self.start().await
-    }
-
-    pub async fn start(&mut self) -> GithubResult<()> {
-        #[cfg(feature = "webhook-server")]
-        let mut server_handle: Option<actix_web::dev::ServerHandle> = None;
-
-        loop {
-            tokio::select! {
-              msg = self.msg_rx.recv() => {
-                  if let Some(msg) = msg {
-                    match msg {
-                      Message::WebhookEvent(event) => {
-                          let installation = event.installation();
-                          match self.get_api(installation.id).await {
-                            Ok(api) => {
-                              for listener in &self.webhook_event_listeners {
-                                if let Err(error) = listener(event.clone(), api.clone()) {
-                                    eprintln!("Error: {}", error);
-                                }
-                              }
-                            }
-                            Err(error) => {
-                              eprintln!("Error on GithubApp.start(): {}", error);
-                            }
-                          };
-                      }
-                      #[cfg(feature = "webhook-server")]
-                      #[allow(unused_assignments)]
-                      Message::ServerHandle(handle) => {
-                          server_handle = Some(handle);
-                      }
-                      Message::Stop(tx) => {
-                        #[cfg(feature = "webhook-server")]
-                        {
-                          if let Some(handle) = server_handle.clone() {
-                            handle.stop(true).await;
-                          }
-                        }
-                        tx.send(()).unwrap();
-
-                        break;
-                      }
-                  }
-                }
-              }
-
-              v = tokio::signal::ctrl_c() => {
-                if let Ok(_) = v {
-                  #[cfg(feature = "webhook-server")]
-                  if let Some(handle) = server_handle.clone() {
-                    handle.stop(true).await;
-                  }
-                  break;
-                }
-              }
-            };
-        }
-
-        Ok(())
     }
 
     pub async fn get_installations(&self) -> GithubResult<Vec<GithubInstallation>> {
@@ -239,12 +87,14 @@ impl GithubApp {
     }
 
     pub async fn get_installation_access_token(
-        &mut self,
+        &self,
         installation_id: impl Into<u64>,
     ) -> GithubResult<GithubInstallationAccessToken> {
         let installation_id: u64 = installation_id.into();
 
-        if let Some(token) = self.tokens.get(&installation_id) {
+        let inner = self.get_locked_inner()?.tokens.clone();
+
+        if let Some(token) = inner.get(&installation_id) {
             if !token.is_expired() {
                 return Ok(token.clone());
             }
@@ -258,32 +108,32 @@ impl GithubApp {
             .send()
             .await?;
 
-        self.tokens.insert(installation_id, token.clone());
+        let mut inner = self.get_locked_inner()?;
+        inner.tokens.insert(installation_id, token.clone());
 
         Ok(token)
     }
 
-    pub fn on_webhook_event<F>(&mut self, listener: F) -> &mut Self
-    where
-        F: Fn(GithubWebhookEvent, GithubAPI) -> Result<(), Box<dyn std::error::Error>>,
-        F: Send + Sync + 'static,
-    {
-        self.webhook_event_listeners.push(Box::new(listener));
-
-        self
-    }
-
-    pub async fn get_api(&mut self, installation_id: u64) -> GithubResult<GithubAPI> {
-        if let Some(token) = self.tokens.get(&installation_id) {
+    pub async fn get_api(&self, installation_id: u64) -> GithubResult<GithubAPI> {
+        let tokens = self.get_locked_inner()?.tokens.clone();
+        if let Some(token) = tokens.get(&installation_id) {
             if !token.is_expired() {
                 let api_config = GithubAPIConfig::new(self.base_url.clone(), token.clone());
                 return Ok(GithubAPI::new(api_config));
             }
         }
+        drop(tokens);
 
         let token = self.get_installation_access_token(installation_id).await?;
         let api_config = GithubAPIConfig::new(self.base_url.clone(), token.clone());
         return Ok(GithubAPI::new(api_config));
+    }
+
+    fn get_locked_inner(&self) -> Result<MutexGuard<GithubAppInner>, GithubError> {
+        match self.inner.lock() {
+            Ok(inner) => Ok(inner),
+            Err(_) => Err(GithubError::new("Failed to get inner")),
+        }
     }
 }
 
@@ -335,6 +185,7 @@ mod tests {
     use crate::test_utils;
     use octocrate_infra::GithubResult;
 
+    #[cfg(feature = "webhook-events")]
     #[tokio::test]
     #[ignore]
     async fn start() -> GithubResult<()> {
@@ -367,7 +218,7 @@ mod tests {
 
     #[tokio::test]
     async fn get_installation_access_token() -> GithubResult<()> {
-        let mut app = test_utils::create_github_app()?;
+        let app = test_utils::create_github_app()?;
         let envs = test_utils::load_test_envs()?;
         let installation_id = envs.installation_id;
 
@@ -393,6 +244,22 @@ mod tests {
             .await?;
 
         assert_eq!(installation.app_id.to_string(), github_app_id);
+
+        Ok(())
+    }
+
+    #[tokio::test]
+    async fn get_api() -> GithubResult<()> {
+        let app = test_utils::create_github_app()?;
+        let envs = test_utils::load_test_envs()?;
+        let installation_id = envs.installation_id;
+        let repo_installation = app
+            .get_repository_installation("panghu-huang", "octocrate")
+            .await?;
+
+        let api1 = app.get_api(installation_id);
+        let api2 = app.get_api(repo_installation.id);
+        let _res = tokio::join!(api1, api2);
 
         Ok(())
     }

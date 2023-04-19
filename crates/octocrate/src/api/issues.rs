@@ -1,4 +1,4 @@
-use crate::domains::issues::{GithubIssue, GithubIssueComment};
+use crate::{GithubIssue, GithubIssueComment};
 use octocrate_api_builder::github_api;
 
 github_api! {

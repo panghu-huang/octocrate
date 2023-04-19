@@ -10,6 +10,10 @@ type Object = Vec<(Ident, Expr)>;
 
 /// # Example
 /// ```rust
+/// extern crate octocrate_api_builder;
+/// use octocrate_api_builder::github_api;
+/// 
+/// pub struct Response {}
 ///
 /// github_api! {
 ///   GithubRepositoriesAPI {
@@ -20,10 +24,11 @@ type Object = Vec<(Ident, Expr)>;
 ///         page u64
 ///         state String
 ///       }
+///       response Response
 ///       test {
 ///         params {
-///            page 1
-///            state "all".to_string()
+///            1
+///            "all".to_string()
 ///         }
 ///         assert assert_eq!(res.len(), 30)
 ///       }

@@ -1,6 +1,6 @@
 [package]
 name = "octocrate"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["wokeyifrontend@gmail.com"]
 license = "MIT OR Apache-2.0"
@@ -10,6 +10,9 @@ homepage = "https://github.com/panghu-huang/octocrate"
 repository = "https://github.com/panghu-huang/octocrate"
 keywords = ["github"]
 include = ["**/*.rs", "Cargo.toml"]
+
+[lib]
+name = "octocrate"
 
 [features]
 default = []
@@ -28,6 +31,11 @@ required-features = ["webhook-server"]
 [[example]]
 name = "shutdown-server"
 path = "examples/shutdown-server.rs"
+required-features = ["webhook-server"]
+
+[[example]]
+name = "manual-trigger"
+path = "examples/manual-trigger.rs"
 required-features = ["webhook-server"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html

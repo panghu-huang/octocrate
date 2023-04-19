@@ -50,8 +50,8 @@ impl GithubAPI {
 #[cfg(test)]
 mod tests {
     use super::GithubAPI;
-    use crate::domains::personal_access_token::GithubPersonalAccessToken;
     use crate::utils::test_utils;
+    use crate::GithubPersonalAccessToken;
     use octocrate_infra::{GithubAPIConfig, GithubResult};
 
     #[tokio::test]

@@ -1,6 +1,6 @@
 [package]
 name = "octocrate-api-builder"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Github API builder for octocrate"
 authors = ["wokeyifrontend@gmail"]
