@@ -83,7 +83,7 @@ github_api! {
         params {
           envs.repo_owner
           envs.repo_name
-          "README.md"
+          ".github"
         }
         assert println!("{:?}", res)
       }
@@ -101,7 +101,7 @@ github_api! {
           envs.repo_owner
           envs.repo_name
         }
-        assert assert_eq!(res.content_type, "file")
+        assert assert_eq!(res.content_type, crate::GithubRepositoryContentType::File)
       }
     }
 

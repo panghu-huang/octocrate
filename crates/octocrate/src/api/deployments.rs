@@ -101,7 +101,7 @@ mod tests {
               "ref": "88d3bd59fe5c1c1f46d0424418a87b63614106f9",
               "environment": "production",
               "description": "Deploying to production",
-              "payload": "{\"foo\": \"bar\"}",
+              "payload": {"foo": "bar"},
             }))
             .send()
             .await?;

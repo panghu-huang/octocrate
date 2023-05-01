@@ -2,12 +2,22 @@
 
 A Github API library based on Rust
 
+![octocrate](https://img.shields.io/crates/v/octocrate.svg)
+![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+
 ## Install
 
 Install `Octocrate` with `cargo`:
 
 ```bash
 cargo install octocrate
+```
+
+Or modify your `Cargo.toml` to include `octocrate` as a dependency:
+
+```toml
+[dependencies]
+octocrate = "0.1.2"
 ```
 
 ## Usage
