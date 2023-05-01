@@ -83,7 +83,7 @@ github_api! {
         params {
           envs.repo_owner
           envs.repo_name
-          ".github"
+          "README.md"
         }
         assert println!("{:?}", res)
       }

@@ -3,7 +3,6 @@ resolver = "2"
 
 members = ["crates/*"]
 
-
 [workspace.dependencies]
 dotenv = "0.15.0"
 jsonwebtoken = { version = "8.2.0", features = ["use_pem"] }

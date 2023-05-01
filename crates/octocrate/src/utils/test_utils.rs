@@ -22,8 +22,15 @@ fn read_env(key: &str) -> GithubResult<String> {
   env::var(key).map_err(|_| GithubError::new(format!("{} is not set", key)))
 }
 
+fn resolve_dotenv() {
+  if let Err(err) = dotenv() {
+    eprintln!("Failed to load .env file: {}", err);
+  }
+}
+
 pub fn load_test_envs() -> GithubResult<TestEnvs> {
-  dotenv()?;
+  resolve_dotenv();
+
   let github_app_id = read_env("TEST_GITHUB_APP_ID")?;
   let github_app_private_key_path = read_env("TEST_GITHUB_APP_PRIVATE_KEY_PATH")?;
   let installation_id = read_env("TEST_GITHUB_INSTALLATION_ID")?;
@@ -62,7 +69,7 @@ pub fn load_test_envs() -> GithubResult<TestEnvs> {
 }
 
 pub fn create_github_app() -> GithubResult<GithubApp> {
-  dotenv()?;
+  resolve_dotenv();
 
   let envs = load_test_envs()?;
   let app = GithubApp::builder()
@@ -74,7 +81,8 @@ pub fn create_github_app() -> GithubResult<GithubApp> {
 }
 
 pub fn create_api_client() -> GithubResult<GithubAPIClient> {
-  dotenv()?;
+  resolve_dotenv();
+
   let envs = load_test_envs()?;
   let token = GithubPersonalAccessToken::new(envs.personal_access_token);
 
