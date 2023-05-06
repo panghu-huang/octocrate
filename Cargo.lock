@@ -977,7 +977,6 @@ dependencies = [
 name = "octocrate-infra"
 version = "0.1.0"
 dependencies = [
- "dotenv",
  "jsonwebtoken",
  "reqwest",
  "serde",

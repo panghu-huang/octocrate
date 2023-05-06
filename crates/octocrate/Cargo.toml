@@ -17,32 +17,48 @@ name = "octocrate"
 [features]
 default = []
 webhook-server = ["actix-web"]
+test-utils = ["dotenv"]
 
 [[example]]
 name = "auto-reply"
 path = "examples/auto-reply.rs"
-required-features = ["webhook-server"]
+required-features = ["webhook-server", "test-utils"]
 
 [[example]]
 name = "events"
 path = "examples/events.rs"
-required-features = ["webhook-server"]
+required-features = ["webhook-server", "test-utils"]
 
 [[example]]
 name = "shutdown-server"
 path = "examples/shutdown-server.rs"
-required-features = ["webhook-server"]
+required-features = ["webhook-server", "test-utils"]
 
 [[example]]
 name = "manual-trigger"
 path = "examples/manual-trigger.rs"
-required-features = ["webhook-server"]
+required-features = ["webhook-server", "test-utils"]
+
+[[example]]
+name = "api"
+path = "examples/api.rs"
+required-features = ["test-utils"]
+
+[[example]]
+name = "github-app"
+path = "examples/github-app.rs"
+required-features = ["test-utils"]
+
+[[example]]
+name = "custom-base-url"
+path = "examples/custom-base-url.rs"
+required-features = ["test-utils"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 chrono = "0.4.23"
-dotenv = { workspace = true }
+dotenv = { workspace = true, optional = true }
 jsonwebtoken = { workspace = true, features = ["use_pem"] }
 serde = { workspace = true }
 serde_json = { workspace = true }
@@ -55,3 +71,6 @@ tokio = { workspace = true, features = [
 octocrate-api-builder = { version = "0.1.0", path = "../octocrate-api-builder" }
 octocrate-infra = { version = "0.1.0", path = "../octocrate-infra" }
 actix-web = { version = "4.2.1", optional = true }
+
+[dev-dependencies]
+dotenv = { workspace = true }

@@ -20,6 +20,13 @@ github_api! {
         repo String
       }
       response Vec<GithubDeployment>
+      test {
+        params {
+          envs.repo_owner
+          envs.repo_name
+        }
+        assert assert!(res.len() > 0)
+      }
     }
 
     create_deployment {
@@ -82,32 +89,32 @@ github_api! {
 
 #[cfg(test)]
 mod tests {
-    use super::GithubDeploymentAPI;
-    use crate::utils::test_utils;
-    use octocrate_infra::GithubResult;
-    use std::sync::Arc;
+  use super::GithubDeploymentAPI;
+  use crate::utils::test_utils;
+  use octocrate_infra::GithubResult;
+  use std::sync::Arc;
 
-    #[ignore]
-    #[tokio::test]
-    async fn test_create_deployment() -> GithubResult<()> {
-        let envs = test_utils::load_test_envs()?;
-        let api_client = test_utils::create_api_client()?;
+  #[ignore]
+  #[tokio::test]
+  async fn test_create_deployment() -> GithubResult<()> {
+    let envs = test_utils::load_test_envs()?;
+    let api_client = test_utils::create_api_client()?;
 
-        let api = GithubDeploymentAPI::new(Arc::new(api_client));
+    let api = GithubDeploymentAPI::new(Arc::new(api_client));
 
-        let res = api
-            .create_deployment(envs.repo_owner, envs.repo_name)
-            .body(&serde_json::json!({
-              "ref": "88d3bd59fe5c1c1f46d0424418a87b63614106f9",
-              "environment": "production",
-              "description": "Deploying to production",
-              "payload": {"foo": "bar"},
-            }))
-            .send()
-            .await?;
+    let res = api
+      .create_deployment(envs.repo_owner, envs.repo_name)
+      .body(&serde_json::json!({
+        "ref": "88d3bd59fe5c1c1f46d0424418a87b63614106f9",
+        "environment": "production",
+        "description": "Deploying to production",
+        "payload": {"foo": "bar"},
+      }))
+      .send()
+      .await?;
 
-        println!("{:#?}", res);
+    println!("{:#?}", res);
 
-        Ok(())
-    }
+    Ok(())
+  }
 }
