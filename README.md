@@ -10,7 +10,7 @@ A Github API library based on Rust
 Install `Octocrate` with `cargo`:
 
 ```bash
-cargo install octocrate
+cargo add octocrate
 ```
 
 Or modify your `Cargo.toml` to include `octocrate` as a dependency:
