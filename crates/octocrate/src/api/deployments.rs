@@ -105,7 +105,7 @@ mod tests {
     let res = api
       .create_deployment(envs.repo_owner, envs.repo_name)
       .body(&serde_json::json!({
-        "ref": "88d3bd59fe5c1c1f46d0424418a87b63614106f9",
+        "ref": "98637116178bccf382ef99dbd51e686bf7a820ba",
         "environment": "production",
         "description": "Deploying to production",
         "payload": {"foo": "bar"},
