@@ -6,7 +6,7 @@ use std::fmt;
 use std::io::Error as IoError;
 use tokio::sync::{mpsc, oneshot};
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct GithubError {
   pub message: String,
 }

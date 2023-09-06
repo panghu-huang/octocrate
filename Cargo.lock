@@ -951,7 +951,7 @@ dependencies = [
 
 [[package]]
 name = "octocrate"
-version = "0.1.4"
+version = "0.1.5"
 dependencies = [
  "actix-web",
  "chrono",
@@ -975,7 +975,7 @@ dependencies = [
 
 [[package]]
 name = "octocrate-infra"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "jsonwebtoken",
  "reqwest",
