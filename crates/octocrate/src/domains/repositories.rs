@@ -1,5 +1,6 @@
-use crate::domains::permissions::GithubRepositoryPermissions;
-use crate::domains::users::GithubUser;
+use crate::domains::{
+  commits::GithubCommitAuthor, permissions::GithubRepositoryPermissions, users::GithubUser,
+};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -129,4 +130,21 @@ pub struct GithubRepositoryContent {
 pub enum GithubRepositoryContentResponse {
   File(GithubRepositoryContent),
   Directory(Vec<GithubRepositoryContent>),
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubFileCommitCommit {
+  pub sha: String,
+  pub node_id: String,
+  pub url: String,
+  pub html_url: String,
+  pub author: GithubCommitAuthor,
+  pub committer: GithubCommitAuthor,
+  pub message: String,
+}
+
+#[derive(Serialize, Deserialize, Debug, Clone)]
+pub struct GithubFileCommit {
+  pub content: GithubRepositoryContent,
+  pub commit: GithubFileCommitCommit,
 }

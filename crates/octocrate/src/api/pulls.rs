@@ -100,26 +100,50 @@ github_api! {
       }
       response ()
     }
+
+    create_pull_request {
+      path "/repos/{}/{}/pulls"
+      method POST
+      params {
+        owner String
+        repo String
+      }
+      response GithubPullRequest
+      test {
+        ignore
+        params {
+          envs.repo_owner
+          envs.repo_name
+        }
+        body {
+          title "Hello World"
+          head "main"
+          base "panghu-huang-patch-1"
+        }
+        assert println!("{:?}", res)
+      }
+    }
   }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::GithubPullRequestAPI;
-    use crate::utils::test_utils;
-    use octocrate_infra::GithubResult;
-    use std::sync::Arc;
+  use super::GithubPullRequestAPI;
+  use crate::utils::test_utils;
+  use octocrate_infra::GithubResult;
+  use std::sync::Arc;
 
-    #[tokio::test]
-    async fn check_if_pull_request_is_merged() -> GithubResult<()> {
-        let envs = test_utils::load_test_envs()?;
-        let api_client = test_utils::create_api_client()?;
+  #[tokio::test]
+  async fn check_if_pull_request_is_merged() -> GithubResult<()> {
+    let envs = test_utils::load_test_envs()?;
+    let api_client = test_utils::create_api_client()?;
 
-        let api = GithubPullRequestAPI::new(Arc::new(api_client));
-        api.check_if_pull_request_is_merged(envs.repo_owner, envs.repo_name, envs.issue_number)
-            .respond_text()
-            .await?;
+    let api = GithubPullRequestAPI::new(Arc::new(api_client));
+    api
+      .check_if_pull_request_is_merged(envs.repo_owner, envs.repo_name, envs.issue_number)
+      .respond_text()
+      .await?;
 
-        Ok(())
-    }
+    Ok(())
+  }
 }

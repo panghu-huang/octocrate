@@ -1,4 +1,6 @@
-use crate::{GithubRepository, GithubRepositoryContent, GithubRepositoryContentResponse};
+use crate::{
+  GithubFileCommit, GithubRepository, GithubRepositoryContent, GithubRepositoryContentResponse,
+};
 use octocrate_api_builder::github_api;
 
 github_api! {
@@ -120,6 +122,31 @@ github_api! {
           "."
         }
         assert println!("{:?}", res)
+      }
+    }
+
+    create_or_update_file_contents {
+      path "/repos/{}/{}/contents/{}"
+      method PUT
+      params {
+        owner String
+        repo String
+        path String
+      }
+      response GithubFileCommit
+      test {
+        ignore
+        params {
+          envs.repo_owner
+          envs.repo_name
+          "test/1.txt"
+        }
+        body {
+          message "Create test file"
+          content "SGVsbG8gV29ybGQ="
+          sha envs.commit_sha
+        }
+        assert println!("{:#?}", res)
       }
     }
   }

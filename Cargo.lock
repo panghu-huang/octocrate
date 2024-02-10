@@ -951,7 +951,7 @@ dependencies = [
 
 [[package]]
 name = "octocrate"
-version = "0.1.5"
+version = "0.1.6"
 dependencies = [
  "actix-web",
  "chrono",
