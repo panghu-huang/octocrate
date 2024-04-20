@@ -12,8 +12,8 @@ description.workspace = true
 categories.workspace = true
 
 [features]
-full = ["chrono"]
-apps = ["chrono"]
+full = []
+apps = []
 actions = []
 activity = []
 billing = []
@@ -55,4 +55,3 @@ desktop = []
 serde_json = { workspace = true }
 serde = { workspace = true, features = ["derive"] }
 derive_builder = { workspace = true }
-chrono = { workspace = true, optional = true }
