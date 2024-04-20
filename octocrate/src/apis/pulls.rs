@@ -14,10 +14,13 @@ impl GitHubPullsAPI {
     }
   }
 
-  /// **List review comments on a pull request**
+  /// **Dismiss a review for a pull request**
   ///
-  /// Lists all review comments for a specified pull request. By default, review comments
-  /// are in ascending order by ID.
+  /// Dismisses a specified review on a pull request.
+  ///
+  /// **Note:** To dismiss a pull request review on a [protected branch](https://docs.github.com/rest/branches/branch-protection),
+  /// you must be a repository administrator or be included in the list of people or teams
+  /// who can dismiss pull request reviews.
   ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
   ///
@@ -26,57 +29,139 @@ impl GitHubPullsAPI {
   /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
   /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request](https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request)
-  pub fn list_review_comments(
+  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#dismiss-a-review-for-a-pull-request](https://docs.github.com/rest/pulls/reviews#dismiss-a-review-for-a-pull-request)
+  pub fn dismiss_review(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
-  ) -> Request<(), PullsListReviewCommentsQuery, PullRequestReviewCommentArray> {
+    review_id: impl Into<i64>,
+  ) -> Request<PullsDismissReviewRequest, (), PullRequestReview> {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/comments");
+    let review_id = review_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals");
 
-    Request::<(), PullsListReviewCommentsQuery, PullRequestReviewCommentArray>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<PullsDismissReviewRequest, (), PullRequestReview>::builder(&self.config)
+      .put(url)
+      .build()
   }
 
-  /// **Create a review comment for a pull request**
+  /// **Check if a pull request has been merged**
   ///
-  /// Creates a review comment on the diff of a specified pull request. To add a regular comment to a pull request timeline, see "[Create an issue comment](https://docs.github.com/rest/issues/comments#create-an-issue-comment)."
+  /// Checks if a pull request has been merged into the base branch. The HTTP status of the response indicates whether or not the pull request has been merged; the response body is empty.
   ///
-  /// If your comment applies to more than one line in the pull request diff, you should use the parameters `line`, `side`, and optionally `start_line` and `start_side` in your request.
-  ///
-  /// The `position` parameter is deprecated. If you use `position`, the `line`, `side`, `start_line`, and `start_side` parameters are not required.
-  ///
-  /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
-  /// and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#create-a-review-comment-for-a-pull-request](https://docs.github.com/rest/pulls/comments#create-a-review-comment-for-a-pull-request)
-  pub fn create_review_comment(
+  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#check-if-a-pull-request-has-been-merged](https://docs.github.com/rest/pulls/pulls#check-if-a-pull-request-has-been-merged)
+  pub fn check_if_merged(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
-  ) -> Request<PullsCreateReviewCommentRequest, (), PullRequestReviewComment> {
+  ) -> NoContentRequest<(), ()> {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/comments");
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/merge");
 
-    Request::<PullsCreateReviewCommentRequest, (), PullRequestReviewComment>::builder(&self.config)
-      .post(url)
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Merge a pull request**
+  ///
+  /// Merges a pull request into the base branch.
+  /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#merge-a-pull-request](https://docs.github.com/rest/pulls/pulls#merge-a-pull-request)
+  pub fn merge(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    pull_number: impl Into<i64>,
+  ) -> Request<PullsMergeRequest, (), PullRequestMergeResult> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let pull_number = pull_number.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/merge");
+
+    Request::<PullsMergeRequest, (), PullRequestMergeResult>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Get a pull request**
+  ///
+  /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Lists details of a pull request by providing its number.
+  ///
+  /// When you get, [create](https://docs.github.com/rest/pulls/pulls/#create-a-pull-request), or [edit](https://docs.github.com/rest/pulls/pulls#update-a-pull-request) a pull request, GitHub creates a merge commit to test whether the pull request can be automatically merged into the base branch. This test commit is not added to the base branch or the head branch. You can review the status of the test commit using the `mergeable` key. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+  ///
+  /// The value of the `mergeable` attribute can be `true`, `false`, or `null`. If the value is `null`, then GitHub has started a background job to compute the mergeability. After giving the job time to complete, resubmit the request. When the job finishes, you will see a non-`null` value for the `mergeable` attribute in the response. If `mergeable` is `true`, then `merge_commit_sha` will be the SHA of the _test_ merge commit.
+  ///
+  /// The value of the `merge_commit_sha` attribute changes depending on the state of the pull request. Before merging a pull request, the `merge_commit_sha` attribute holds the SHA of the _test_ merge commit. After merging a pull request, the `merge_commit_sha` attribute changes depending on how you merged the pull request:
+  ///
+  /// *   If merged as a [merge commit](https://docs.github.com/articles/about-merge-methods-on-github/), `merge_commit_sha` represents the SHA of the merge commit.
+  /// *   If merged via a [squash](https://docs.github.com/articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha` represents the SHA of the squashed commit on the base branch.
+  /// *   If [rebased](https://docs.github.com/articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha` represents the commit that the base branch was updated to.
+  ///
+  /// Pass the appropriate [media type](https://docs.github.com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and patch formats.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  /// - **`application/vnd.github.diff`**: For more information, see "[git-diff](https://git-scm.com/docs/git-diff)" in the Git documentation. If a diff is corrupt, contact us through the [GitHub Support portal](https://support.github.com/). Include the repository name and pull request ID in your message.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#get-a-pull-request](https://docs.github.com/rest/pulls/pulls#get-a-pull-request)
+  pub fn get(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    pull_number: impl Into<i64>,
+  ) -> Request<(), (), PullRequest> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let pull_number = pull_number.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}");
+
+    Request::<(), (), PullRequest>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update a pull request**
+  ///
+  /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// To open or update a pull request in a public repository, you must have write access to the head or the source branch. For organization-owned repositories, you must be a member of the organization that owns the repository to open or update a pull request.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  /// - **`application/vnd.github.diff`**: For more information, see "[git-diff](https://git-scm.com/docs/git-diff)" in the Git documentation. If a diff is corrupt, contact us through the [GitHub Support portal](https://support.github.com/). Include the repository name and pull request ID in your message.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#update-a-pull-request](https://docs.github.com/rest/pulls/pulls#update-a-pull-request)
+  pub fn update(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    pull_number: impl Into<i64>,
+  ) -> Request<PullsUpdateRequest, (), PullRequest> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let pull_number = pull_number.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}");
+
+    Request::<PullsUpdateRequest, (), PullRequest>::builder(&self.config)
+      .patch(url)
       .build()
   }
 
@@ -144,56 +229,9 @@ impl GitHubPullsAPI {
       .build()
   }
 
-  /// **Check if a pull request has been merged**
+  /// **Get a review comment for a pull request**
   ///
-  /// Checks if a pull request has been merged into the base branch. The HTTP status of the response indicates whether or not the pull request has been merged; the response body is empty.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#check-if-a-pull-request-has-been-merged](https://docs.github.com/rest/pulls/pulls#check-if-a-pull-request-has-been-merged)
-  pub fn check_if_merged(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    pull_number: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let pull_number = pull_number.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/merge");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Merge a pull request**
-  ///
-  /// Merges a pull request into the base branch.
-  /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#merge-a-pull-request](https://docs.github.com/rest/pulls/pulls#merge-a-pull-request)
-  pub fn merge(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    pull_number: impl Into<i64>,
-  ) -> Request<PullsMergeRequest, (), PullRequestMergeResult> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let pull_number = pull_number.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/merge");
-
-    Request::<PullsMergeRequest, (), PullRequestMergeResult>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Dismiss a review for a pull request**
-  ///
-  /// Dismisses a specified review on a pull request.
-  ///
-  /// **Note:** To dismiss a pull request review on a [protected branch](https://docs.github.com/rest/branches/branch-protection),
-  /// you must be a repository administrator or be included in the list of people or teams
-  /// who can dismiss pull request reviews.
+  /// Provides details for a specified review comment.
   ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
   ///
@@ -202,28 +240,131 @@ impl GitHubPullsAPI {
   /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
   /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#dismiss-a-review-for-a-pull-request](https://docs.github.com/rest/pulls/reviews#dismiss-a-review-for-a-pull-request)
-  pub fn dismiss_review(
+  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
+  pub fn get_review_comment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    comment_id: impl Into<i64>,
+  ) -> Request<(), (), PullRequestReviewComment> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let comment_id = comment_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}");
+
+    Request::<(), (), PullRequestReviewComment>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update a review comment for a pull request**
+  ///
+  /// Edits the content of a specified review comment.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#update-a-review-comment-for-a-pull-request](https://docs.github.com/rest/pulls/comments#update-a-review-comment-for-a-pull-request)
+  pub fn update_review_comment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    comment_id: impl Into<i64>,
+  ) -> Request<PullsUpdateReviewCommentRequest, (), PullRequestReviewComment> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let comment_id = comment_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}");
+
+    Request::<PullsUpdateReviewCommentRequest, (), PullRequestReviewComment>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **Delete a review comment for a pull request**
+  ///
+  /// Deletes a review comment.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#delete-a-review-comment-for-a-pull-request](https://docs.github.com/rest/pulls/comments#delete-a-review-comment-for-a-pull-request)
+  pub fn delete_review_comment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    comment_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let comment_id = comment_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Update a pull request branch**
+  ///
+  /// Updates the pull request branch with the latest upstream changes by merging HEAD from the base branch into the pull request branch.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#update-a-pull-request-branch](https://docs.github.com/rest/pulls/pulls#update-a-pull-request-branch)
+  pub fn update_branch(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
-    review_id: impl Into<i64>,
-  ) -> Request<PullsDismissReviewRequest, (), PullRequestReview> {
+  ) -> Request<PullsUpdateBranchRequest, (), PullsUpdateBranchResponse> {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
-    let review_id = review_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/dismissals");
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/update-branch");
 
-    Request::<PullsDismissReviewRequest, (), PullRequestReview>::builder(&self.config)
+    Request::<PullsUpdateBranchRequest, (), PullsUpdateBranchResponse>::builder(&self.config)
       .put(url)
       .build()
   }
 
-  /// **Create a reply for a review comment**
+  /// **List review comments on a pull request**
   ///
-  /// Creates a reply to a review comment for a pull request. For the `comment_id`, provide the ID of the review comment you are replying to. This must be the ID of a _top-level review comment_, not a reply to that comment. Replies to replies are not supported.
+  /// Lists all review comments for a specified pull request. By default, review comments
+  /// are in ascending order by ID.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request](https://docs.github.com/rest/pulls/comments#list-review-comments-on-a-pull-request)
+  pub fn list_review_comments(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    pull_number: impl Into<i64>,
+  ) -> Request<(), PullsListReviewCommentsQuery, PullRequestReviewCommentArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let pull_number = pull_number.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/comments");
+
+    Request::<(), PullsListReviewCommentsQuery, PullRequestReviewCommentArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
+  }
+
+  /// **Create a review comment for a pull request**
+  ///
+  /// Creates a review comment on the diff of a specified pull request. To add a regular comment to a pull request timeline, see "[Create an issue comment](https://docs.github.com/rest/issues/comments#create-an-issue-comment)."
+  ///
+  /// If your comment applies to more than one line in the pull request diff, you should use the parameters `line`, `side`, and optionally `start_line` and `start_side` in your request.
+  ///
+  /// The `position` parameter is deprecated. If you use `position`, the `line`, `side`, `start_line`, and `start_side` parameters are not required.
   ///
   /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
   /// and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
@@ -235,54 +376,20 @@ impl GitHubPullsAPI {
   /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
   /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#create-a-reply-for-a-review-comment](https://docs.github.com/rest/pulls/comments#create-a-reply-for-a-review-comment)
-  pub fn create_reply_for_review_comment(
+  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#create-a-review-comment-for-a-pull-request](https://docs.github.com/rest/pulls/comments#create-a-review-comment-for-a-pull-request)
+  pub fn create_review_comment(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
-    comment_id: impl Into<i64>,
-  ) -> Request<PullsCreateReplyForReviewCommentRequest, (), PullRequestReviewComment> {
+  ) -> Request<PullsCreateReviewCommentRequest, (), PullRequestReviewComment> {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
-    let comment_id = comment_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies");
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/comments");
 
-    Request::<PullsCreateReplyForReviewCommentRequest, (), PullRequestReviewComment>::builder(
-      &self.config,
-    )
-    .post(url)
-    .build()
-  }
-
-  /// **List comments for a pull request review**
-  ///
-  /// Lists comments for a specific pull request review.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review](https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review)
-  pub fn list_comments_for_review(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    pull_number: impl Into<i64>,
-    review_id: impl Into<i64>,
-  ) -> Request<(), PullsListCommentsForReviewQuery, LegacyReviewCommentArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let pull_number = pull_number.into();
-    let review_id = review_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments");
-
-    Request::<(), PullsListCommentsForReviewQuery, LegacyReviewCommentArray>::builder(&self.config)
-      .get(url)
+    Request::<PullsCreateReviewCommentRequest, (), PullRequestReviewComment>::builder(&self.config)
+      .post(url)
       .build()
   }
 
@@ -314,187 +421,6 @@ impl GitHubPullsAPI {
 
     Request::<(), PullsListCommitsQuery, CommitArray>::builder(&self.config)
       .get(url)
-      .build()
-  }
-
-  /// **List pull requests files**
-  ///
-  /// Lists the files in a specified pull request.
-  ///
-  /// **Note:** Responses include a maximum of 3000 files. The paginated response
-  /// returns 30 files per page by default.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  /// - **`application/vnd.github.diff`**: For more information, see "[git-diff](https://git-scm.com/docs/git-diff)" in the Git documentation. If a diff is corrupt, contact us through the [GitHub Support portal](https://support.github.com/). Include the repository name and pull request ID in your message.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#list-pull-requests-files](https://docs.github.com/rest/pulls/pulls#list-pull-requests-files)
-  pub fn list_files(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    pull_number: impl Into<i64>,
-  ) -> Request<(), PullsListFilesQuery, DiffEntryArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let pull_number = pull_number.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/files");
-
-    Request::<(), PullsListFilesQuery, DiffEntryArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List review comments in a repository**
-  ///
-  /// Lists review comments for all pull requests in a repository. By default,
-  /// review comments are in ascending order by ID.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository](https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository)
-  pub fn list_review_comments_for_repo(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), PullsListReviewCommentsForRepoQuery, PullRequestReviewCommentArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/comments");
-
-    Request::<(), PullsListReviewCommentsForRepoQuery, PullRequestReviewCommentArray>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
-  }
-
-  /// **Get a review for a pull request**
-  ///
-  /// Retrieves a pull request review by its ID.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request](https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request)
-  pub fn get_review(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    pull_number: impl Into<i64>,
-    review_id: impl Into<i64>,
-  ) -> Request<(), (), PullRequestReview> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let pull_number = pull_number.into();
-    let review_id = review_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}");
-
-    Request::<(), (), PullRequestReview>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update a review for a pull request**
-  ///
-  /// Updates the contents of a specified review summary comment.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#update-a-review-for-a-pull-request](https://docs.github.com/rest/pulls/reviews#update-a-review-for-a-pull-request)
-  pub fn update_review(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    pull_number: impl Into<i64>,
-    review_id: impl Into<i64>,
-  ) -> Request<PullsUpdateReviewRequest, (), PullRequestReview> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let pull_number = pull_number.into();
-    let review_id = review_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}");
-
-    Request::<PullsUpdateReviewRequest, (), PullRequestReview>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Delete a pending review for a pull request**
-  ///
-  /// Deletes a pull request review that has not been submitted. Submitted reviews cannot be deleted.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request](https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request)
-  pub fn delete_pending_review(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    pull_number: impl Into<i64>,
-    review_id: impl Into<i64>,
-  ) -> Request<(), (), PullRequestReview> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let pull_number = pull_number.into();
-    let review_id = review_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}");
-
-    Request::<(), (), PullRequestReview>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Submit a review for a pull request**
-  ///
-  /// Submits a pending review for a pull request. For more information about creating a pending review for a pull request, see "[Create a review for a pull request](https://docs.github.com/rest/pulls/reviews#create-a-review-for-a-pull-request)."
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request)
-  pub fn submit_review(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    pull_number: impl Into<i64>,
-    review_id: impl Into<i64>,
-  ) -> Request<PullsSubmitReviewRequest, (), PullRequestReview> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let pull_number = pull_number.into();
-    let review_id = review_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events");
-
-    Request::<PullsSubmitReviewRequest, (), PullRequestReview>::builder(&self.config)
-      .post(url)
       .build()
   }
 
@@ -627,104 +553,99 @@ impl GitHubPullsAPI {
       .build()
   }
 
-  /// **Update a pull request branch**
+  /// **List comments for a pull request review**
   ///
-  /// Updates the pull request branch with the latest upstream changes by merging HEAD from the base branch into the pull request branch.
+  /// Lists comments for a specific pull request review.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#update-a-pull-request-branch](https://docs.github.com/rest/pulls/pulls#update-a-pull-request-branch)
-  pub fn update_branch(
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review](https://docs.github.com/rest/pulls/reviews#list-comments-for-a-pull-request-review)
+  pub fn list_comments_for_review(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
-  ) -> Request<PullsUpdateBranchRequest, (), PullsUpdateBranchResponse> {
+    review_id: impl Into<i64>,
+  ) -> Request<(), PullsListCommentsForReviewQuery, LegacyReviewCommentArray> {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/update-branch");
+    let review_id = review_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments");
 
-    Request::<PullsUpdateBranchRequest, (), PullsUpdateBranchResponse>::builder(&self.config)
+    Request::<(), PullsListCommentsForReviewQuery, LegacyReviewCommentArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get a review for a pull request**
+  ///
+  /// Retrieves a pull request review by its ID.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request](https://docs.github.com/rest/pulls/reviews#get-a-review-for-a-pull-request)
+  pub fn get_review(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    pull_number: impl Into<i64>,
+    review_id: impl Into<i64>,
+  ) -> Request<(), (), PullRequestReview> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let pull_number = pull_number.into();
+    let review_id = review_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}");
+
+    Request::<(), (), PullRequestReview>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update a review for a pull request**
+  ///
+  /// Updates the contents of a specified review summary comment.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#update-a-review-for-a-pull-request](https://docs.github.com/rest/pulls/reviews#update-a-review-for-a-pull-request)
+  pub fn update_review(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    pull_number: impl Into<i64>,
+    review_id: impl Into<i64>,
+  ) -> Request<PullsUpdateReviewRequest, (), PullRequestReview> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let pull_number = pull_number.into();
+    let review_id = review_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}");
+
+    Request::<PullsUpdateReviewRequest, (), PullRequestReview>::builder(&self.config)
       .put(url)
       .build()
   }
 
-  /// **Get a pull request**
+  /// **Delete a pending review for a pull request**
   ///
-  /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Lists details of a pull request by providing its number.
-  ///
-  /// When you get, [create](https://docs.github.com/rest/pulls/pulls/#create-a-pull-request), or [edit](https://docs.github.com/rest/pulls/pulls#update-a-pull-request) a pull request, GitHub creates a merge commit to test whether the pull request can be automatically merged into the base branch. This test commit is not added to the base branch or the head branch. You can review the status of the test commit using the `mergeable` key. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
-  ///
-  /// The value of the `mergeable` attribute can be `true`, `false`, or `null`. If the value is `null`, then GitHub has started a background job to compute the mergeability. After giving the job time to complete, resubmit the request. When the job finishes, you will see a non-`null` value for the `mergeable` attribute in the response. If `mergeable` is `true`, then `merge_commit_sha` will be the SHA of the _test_ merge commit.
-  ///
-  /// The value of the `merge_commit_sha` attribute changes depending on the state of the pull request. Before merging a pull request, the `merge_commit_sha` attribute holds the SHA of the _test_ merge commit. After merging a pull request, the `merge_commit_sha` attribute changes depending on how you merged the pull request:
-  ///
-  /// *   If merged as a [merge commit](https://docs.github.com/articles/about-merge-methods-on-github/), `merge_commit_sha` represents the SHA of the merge commit.
-  /// *   If merged via a [squash](https://docs.github.com/articles/about-merge-methods-on-github/#squashing-your-merge-commits), `merge_commit_sha` represents the SHA of the squashed commit on the base branch.
-  /// *   If [rebased](https://docs.github.com/articles/about-merge-methods-on-github/#rebasing-and-merging-your-commits), `merge_commit_sha` represents the commit that the base branch was updated to.
-  ///
-  /// Pass the appropriate [media type](https://docs.github.com/rest/overview/media-types/#commits-commit-comparison-and-pull-requests) to fetch diff and patch formats.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  /// - **`application/vnd.github.diff`**: For more information, see "[git-diff](https://git-scm.com/docs/git-diff)" in the Git documentation. If a diff is corrupt, contact us through the [GitHub Support portal](https://support.github.com/). Include the repository name and pull request ID in your message.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#get-a-pull-request](https://docs.github.com/rest/pulls/pulls#get-a-pull-request)
-  pub fn get(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    pull_number: impl Into<i64>,
-  ) -> Request<(), (), PullRequest> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let pull_number = pull_number.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}");
-
-    Request::<(), (), PullRequest>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update a pull request**
-  ///
-  /// Draft pull requests are available in public repositories with GitHub Free and GitHub Free for organizations, GitHub Pro, and legacy per-repository billing plans, and in public and private repositories with GitHub Team and GitHub Enterprise Cloud. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// To open or update a pull request in a public repository, you must have write access to the head or the source branch. For organization-owned repositories, you must be a member of the organization that owns the repository to open or update a pull request.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  /// - **`application/vnd.github.diff`**: For more information, see "[git-diff](https://git-scm.com/docs/git-diff)" in the Git documentation. If a diff is corrupt, contact us through the [GitHub Support portal](https://support.github.com/). Include the repository name and pull request ID in your message.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#update-a-pull-request](https://docs.github.com/rest/pulls/pulls#update-a-pull-request)
-  pub fn update(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    pull_number: impl Into<i64>,
-  ) -> Request<PullsUpdateRequest, (), PullRequest> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let pull_number = pull_number.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}");
-
-    Request::<PullsUpdateRequest, (), PullRequest>::builder(&self.config)
-      .patch(url)
-      .build()
-  }
-
-  /// **Get a review comment for a pull request**
-  ///
-  /// Provides details for a specified review comment.
+  /// Deletes a pull request review that has not been submitted. Submitted reviews cannot be deleted.
   ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
   ///
@@ -733,69 +654,148 @@ impl GitHubPullsAPI {
   /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
   /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request)
-  pub fn get_review_comment(
+  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request](https://docs.github.com/rest/pulls/reviews#delete-a-pending-review-for-a-pull-request)
+  pub fn delete_pending_review(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    comment_id: impl Into<i64>,
-  ) -> Request<(), (), PullRequestReviewComment> {
+    pull_number: impl Into<i64>,
+    review_id: impl Into<i64>,
+  ) -> Request<(), (), PullRequestReview> {
     let owner = owner.into();
     let repo = repo.into();
-    let comment_id = comment_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}");
+    let pull_number = pull_number.into();
+    let review_id = review_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}");
 
-    Request::<(), (), PullRequestReviewComment>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update a review comment for a pull request**
-  ///
-  /// Edits the content of a specified review comment.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#update-a-review-comment-for-a-pull-request](https://docs.github.com/rest/pulls/comments#update-a-review-comment-for-a-pull-request)
-  pub fn update_review_comment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    comment_id: impl Into<i64>,
-  ) -> Request<PullsUpdateReviewCommentRequest, (), PullRequestReviewComment> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let comment_id = comment_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}");
-
-    Request::<PullsUpdateReviewCommentRequest, (), PullRequestReviewComment>::builder(&self.config)
-      .patch(url)
-      .build()
-  }
-
-  /// **Delete a review comment for a pull request**
-  ///
-  /// Deletes a review comment.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#delete-a-review-comment-for-a-pull-request](https://docs.github.com/rest/pulls/comments#delete-a-review-comment-for-a-pull-request)
-  pub fn delete_review_comment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    comment_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let comment_id = comment_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
+    Request::<(), (), PullRequestReview>::builder(&self.config)
       .delete(url)
+      .build()
+  }
+
+  /// **Create a reply for a review comment**
+  ///
+  /// Creates a reply to a review comment for a pull request. For the `comment_id`, provide the ID of the review comment you are replying to. This must be the ID of a _top-level review comment_, not a reply to that comment. Replies to replies are not supported.
+  ///
+  /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
+  /// and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#create-a-reply-for-a-review-comment](https://docs.github.com/rest/pulls/comments#create-a-reply-for-a-review-comment)
+  pub fn create_reply_for_review_comment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    pull_number: impl Into<i64>,
+    comment_id: impl Into<i64>,
+  ) -> Request<PullsCreateReplyForReviewCommentRequest, (), PullRequestReviewComment> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let pull_number = pull_number.into();
+    let comment_id = comment_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/comments/{comment_id}/replies");
+
+    Request::<PullsCreateReplyForReviewCommentRequest, (), PullRequestReviewComment>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
+  }
+
+  /// **Submit a review for a pull request**
+  ///
+  /// Submits a pending review for a pull request. For more information about creating a pending review for a pull request, see "[Create a review for a pull request](https://docs.github.com/rest/pulls/reviews#create-a-review-for-a-pull-request)."
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request)
+  pub fn submit_review(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    pull_number: impl Into<i64>,
+    review_id: impl Into<i64>,
+  ) -> Request<PullsSubmitReviewRequest, (), PullRequestReview> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let pull_number = pull_number.into();
+    let review_id = review_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/events");
+
+    Request::<PullsSubmitReviewRequest, (), PullRequestReview>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **List review comments in a repository**
+  ///
+  /// Lists review comments for all pull requests in a repository. By default,
+  /// review comments are in ascending order by ID.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository](https://docs.github.com/rest/pulls/comments#list-review-comments-in-a-repository)
+  pub fn list_review_comments_for_repo(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), PullsListReviewCommentsForRepoQuery, PullRequestReviewCommentArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/comments");
+
+    Request::<(), PullsListReviewCommentsForRepoQuery, PullRequestReviewCommentArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
+  }
+
+  /// **List pull requests files**
+  ///
+  /// Lists the files in a specified pull request.
+  ///
+  /// **Note:** Responses include a maximum of 3000 files. The paginated response
+  /// returns 30 files per page by default.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  /// - **`application/vnd.github.diff`**: For more information, see "[git-diff](https://git-scm.com/docs/git-diff)" in the Git documentation. If a diff is corrupt, contact us through the [GitHub Support portal](https://support.github.com/). Include the repository name and pull request ID in your message.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pulls/pulls#list-pull-requests-files](https://docs.github.com/rest/pulls/pulls#list-pull-requests-files)
+  pub fn list_files(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    pull_number: impl Into<i64>,
+  ) -> Request<(), PullsListFilesQuery, DiffEntryArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let pull_number = pull_number.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/files");
+
+    Request::<(), PullsListFilesQuery, DiffEntryArray>::builder(&self.config)
+      .get(url)
       .build()
   }
 }

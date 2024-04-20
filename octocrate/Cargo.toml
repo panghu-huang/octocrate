@@ -52,6 +52,9 @@ classroom = ["octocrate-types/classroom"]
 desktop = ["octocrate-types/desktop"]
 pagination = ["octocrate-types/pagination", "octocrate-core/pagination"]
 
+[lib]
+doctest = false
+
 [dependencies]
 serde_json = { workspace = true }
 serde = { workspace = true, features = ["derive"] }

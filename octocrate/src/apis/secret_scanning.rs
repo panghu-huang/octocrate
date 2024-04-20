@@ -13,30 +13,6 @@ impl GitHubSecretScanningAPI {
     }
   }
 
-  /// **List secret scanning alerts for an enterprise**
-  ///
-  /// Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.
-  ///
-  /// Alerts are only returned for organizations in the enterprise for which the authenticated user is an organization owner or a [security manager](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization).
-  ///
-  /// The authenticated user must be a member of the enterprise in order to use this endpoint.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope or `security_events` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise](https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise)
-  pub fn list_alerts_for_enterprise(
-    &self,
-    enterprise: impl Into<String>,
-  ) -> Request<(), SecretScanningListAlertsForEnterpriseQuery, OrganizationSecretScanningAlertArray>
-  {
-    let enterprise = enterprise.into();
-    let url = format!("/enterprises/{enterprise}/secret-scanning/alerts");
-
-    Request::<(), SecretScanningListAlertsForEnterpriseQuery, OrganizationSecretScanningAlertArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **List secret scanning alerts for an organization**
   ///
   /// Lists secret scanning alerts for eligible repositories in an organization, from newest to oldest.
@@ -108,6 +84,30 @@ impl GitHubSecretScanningAPI {
     )
     .get(url)
     .build()
+  }
+
+  /// **List secret scanning alerts for an enterprise**
+  ///
+  /// Lists secret scanning alerts for eligible repositories in an enterprise, from newest to oldest.
+  ///
+  /// Alerts are only returned for organizations in the enterprise for which the authenticated user is an organization owner or a [security manager](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization).
+  ///
+  /// The authenticated user must be a member of the enterprise in order to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope or `security_events` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise](https://docs.github.com/rest/secret-scanning/secret-scanning#list-secret-scanning-alerts-for-an-enterprise)
+  pub fn list_alerts_for_enterprise(
+    &self,
+    enterprise: impl Into<String>,
+  ) -> Request<(), SecretScanningListAlertsForEnterpriseQuery, OrganizationSecretScanningAlertArray>
+  {
+    let enterprise = enterprise.into();
+    let url = format!("/enterprises/{enterprise}/secret-scanning/alerts");
+
+    Request::<(), SecretScanningListAlertsForEnterpriseQuery, OrganizationSecretScanningAlertArray>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get a secret scanning alert**

@@ -22,6 +22,9 @@ jobs:
       - name: Cache
         uses: Swatinem/rust-cache@v2
 
+      - name: Generate code
+        run: cargo run -p codegen
+
       - name: Check formatting
         run: cargo fmt --check
 
@@ -29,14 +32,14 @@ jobs:
         run: cargo clippy
 
       - name: Run tests
-        run: cargo test --features="pagination" -- --nocapture
-
-      - name: Generate code
-        run: cargo run -p codegen
-
-      - name: Run tests
         env:
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          GITHUB_APP_ID: ${{ secrets.GH_APP_ID }}
         run: |
+          private_key_path=$(mktemp)
+          echo "${{ secrets.GH_PRIVATE_KEY }}" | base64 --decode > $private_key_path
+
+          export GITHUB_APP_PRIVATE_KEY_PATH=$private_key_path
           export GITHUB_PERSONAL_ACCESS_TOKEN=$PERSONAL_ACCESS_TOKEN
-          cargo test --features="pagination repos users pulls issues search" --examples -- --nocapture
+
+          cargo test --all-features -- --nocapture

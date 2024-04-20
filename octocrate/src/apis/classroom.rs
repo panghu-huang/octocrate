@@ -14,6 +14,20 @@ impl GitHubClassroomAPI {
     }
   }
 
+  /// **Get a classroom**
+  ///
+  /// Gets a GitHub Classroom classroom for the current user. Classroom will only be returned if the current user is an administrator of the GitHub Classroom.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/classroom/classroom#get-a-classroom](https://docs.github.com/rest/classroom/classroom#get-a-classroom)
+  pub fn get_a_classroom(&self, classroom_id: impl Into<i64>) -> Request<(), (), Classroom> {
+    let classroom_id = classroom_id.into();
+    let url = format!("/classrooms/{classroom_id}");
+
+    Request::<(), (), Classroom>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
   /// **List accepted assignments for an assignment**
   ///
   /// Lists any assignment repositories that have been created by students accepting a GitHub Classroom assignment. Accepted assignments will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
@@ -69,23 +83,6 @@ impl GitHubClassroomAPI {
       .build()
   }
 
-  /// **Get an assignment**
-  ///
-  /// Gets a GitHub Classroom assignment. Assignment will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/classroom/classroom#get-an-assignment](https://docs.github.com/rest/classroom/classroom#get-an-assignment)
-  pub fn get_an_assignment(
-    &self,
-    assignment_id: impl Into<i64>,
-  ) -> Request<(), (), ClassroomAssignment> {
-    let assignment_id = assignment_id.into();
-    let url = format!("/assignments/{assignment_id}");
-
-    Request::<(), (), ClassroomAssignment>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **Get assignment grades**
   ///
   /// Gets grades for a GitHub Classroom assignment. Grades will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
@@ -103,16 +100,19 @@ impl GitHubClassroomAPI {
       .build()
   }
 
-  /// **Get a classroom**
+  /// **Get an assignment**
   ///
-  /// Gets a GitHub Classroom classroom for the current user. Classroom will only be returned if the current user is an administrator of the GitHub Classroom.
+  /// Gets a GitHub Classroom assignment. Assignment will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/classroom/classroom#get-a-classroom](https://docs.github.com/rest/classroom/classroom#get-a-classroom)
-  pub fn get_a_classroom(&self, classroom_id: impl Into<i64>) -> Request<(), (), Classroom> {
-    let classroom_id = classroom_id.into();
-    let url = format!("/classrooms/{classroom_id}");
+  /// *Documentation*: [https://docs.github.com/rest/classroom/classroom#get-an-assignment](https://docs.github.com/rest/classroom/classroom#get-an-assignment)
+  pub fn get_an_assignment(
+    &self,
+    assignment_id: impl Into<i64>,
+  ) -> Request<(), (), ClassroomAssignment> {
+    let assignment_id = assignment_id.into();
+    let url = format!("/assignments/{assignment_id}");
 
-    Request::<(), (), Classroom>::builder(&self.config)
+    Request::<(), (), ClassroomAssignment>::builder(&self.config)
       .get(url)
       .build()
   }
