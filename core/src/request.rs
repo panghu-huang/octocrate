@@ -2,6 +2,7 @@ use crate::{
   api_config::SharedAPIConfig,
   error::{APIErrorResponse, Error},
   request_builder::RequestBuilder,
+  response::GitHubResponse,
 };
 use std::marker::PhantomData;
 
@@ -13,13 +14,13 @@ pub struct Request<Body, Query, Response> {
   pub(crate) _response: PhantomData<Response>,
 }
 
-impl<Body, Query, Response> Request<Body, Query, Response>
+impl<Body, Query, ResponseData> Request<Body, Query, ResponseData>
 where
   Body: serde::Serialize,
   Query: serde::Serialize,
-  Response: serde::de::DeserializeOwned,
+  ResponseData: serde::de::DeserializeOwned,
 {
-  pub fn builder(config: &SharedAPIConfig) -> RequestBuilder<Body, Query, Response> {
+  pub fn builder(config: &SharedAPIConfig) -> RequestBuilder<Body, Query, ResponseData> {
     RequestBuilder::new(config)
   }
 
@@ -35,7 +36,9 @@ where
     self
   }
 
-  pub async fn send(self) -> Result<Response, Error> {
+  /// Send the request and wrap the response with a GitHubResponse struct which
+  /// proved access to some of the response metadata.
+  pub async fn send_with_response(self) -> Result<GitHubResponse<ResponseData>, Error> {
     let mut builder = self
       .builder
       .header("User-Agent", "octocrate")
@@ -51,6 +54,11 @@ where
     match res {
       Ok(res) => {
         let status = res.status();
+        let content_length = res.content_length();
+        let headers = res.headers().clone();
+        let version = res.version();
+        let url = res.url().clone();
+
         if !status.is_success() {
           if let Ok(error_response) = res.json::<APIErrorResponse>().await {
             return Err(Error::RequestFailed(error_response));
@@ -68,8 +76,16 @@ where
         })?;
 
         match serde_json::from_str(&res) {
-          Ok(response) => {
-            return Ok(response);
+          Ok(data) => {
+            let github_response = GitHubResponse {
+              content_length,
+              data,
+              headers,
+              status,
+              url,
+              version,
+            };
+            return Ok(github_response);
           }
           Err(error) => {
             return Err(Error::Error(format!(
@@ -85,6 +101,10 @@ where
         return Err(Error::Error(err.to_string()));
       }
     }
+  }
+
+  pub async fn send(self) -> Result<ResponseData, Error> {
+    Ok(self.send_with_response().await?.data)
   }
 }
 
