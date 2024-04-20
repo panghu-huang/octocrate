@@ -50,8 +50,10 @@ security_advisories = []
 interactions = []
 classroom = []
 desktop = []
+pagination = ["dep:url"]
 
 [dependencies]
 serde_json = { workspace = true }
+url = { workspace = true, optional = true }
 serde = { workspace = true, features = ["derive"] }
 derive_builder = { workspace = true }

@@ -104,6 +104,24 @@ where
   }
 }
 
+#[cfg(feature = "pagination")]
+impl<Body, Query, ResponseData> Request<Body, Query, ResponseData>
+where
+  Body: serde::Serialize,
+  Query: serde::Serialize,
+  ResponseData: serde::de::DeserializeOwned + IntoIterator,
+{
+  pub async fn paginated_send(self) -> Result<octocrate_types::PaginatedData<ResponseData>, Error> {
+    Ok(self.paginated_send_with_response().await?.paginate())
+  }
+
+  pub async fn paginated_send_with_response(
+    self,
+  ) -> Result<crate::GitHubPaginatedResponse<ResponseData>, Error> {
+    Ok(self.send_with_response().await?.into())
+  }
+}
+
 #[cfg(test)]
 mod tests {
   use super::*;
