@@ -55,8 +55,8 @@ desktop = ["octocrate-types/desktop"]
 serde_json = { workspace = true }
 serde = { workspace = true, features = ["derive"] }
 derive_builder = { workspace = true }
-octocrate-core = { path = "../core", version = "0.1.2" }
-octocrate-types = { path = "../types", version = "0.1.0" }
+octocrate-core = { workspace = true }
+octocrate-types = { workspace = true }
 chrono = { workspace = true, optional = true }
 
 [dev-dependencies]
