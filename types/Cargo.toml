@@ -56,4 +56,4 @@ pagination = ["dep:url"]
 serde_json = { workspace = true }
 url = { workspace = true, optional = true }
 serde = { workspace = true, features = ["derive"] }
-derive_builder = { workspace = true }
+typed-builder = { workspace = true }

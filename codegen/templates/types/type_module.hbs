@@ -1,6 +1,8 @@
 #[allow(unused_imports)]
 use serde::{Serialize, Deserialize};
 #[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+#[allow(unused_imports)]
 use super::*;
 
 /// Types defination
@@ -86,7 +88,7 @@ impl ToString for {{ name }} {
 {{/if}}
 
 {{#if structs }}
-/// Structs defination
+/// Structs definition
 {{#each structs }}
 #[cfg(
   any(
@@ -100,8 +102,8 @@ impl ToString for {{ name }} {
 /// {{this}}
 {{/each}}
 {{/if}}
-#[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
-#[builder(setter(into, strip_option))]
+#[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+#[builder(field_defaults(setter(into)))]
 pub struct {{ name }} {
   {{#each fields }}
   {{#if description }}
@@ -114,7 +116,7 @@ pub struct {{ name }} {
   {{/if}}
   {{#if (is_optional_field type_name)}}
   #[serde(skip_serializing_if = "Option::is_none")]
-  #[builder(default = "None")]
+  #[builder(default, setter(strip_option))]
   {{/if}}
   pub {{ name }}: {{ type_name }},
   {{/each}}
@@ -128,8 +130,9 @@ pub struct {{ name }} {
   )
 )]
 impl {{ name }} {
-  pub fn builder() -> {{ name }}Builder {
-    {{ name }}Builder::default()
+  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
+  pub fn unwrap(self) -> Self {
+    self
   }
 }
 {{/each}}
