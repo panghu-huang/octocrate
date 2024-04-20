@@ -10,7 +10,7 @@ where
   handlebars.register_escape_fn(no_escape);
 
   handlebars_helper!(split_lines: |input: str| {
-    input.split("\n").map(|line| {
+    input.split('\n').map(|line| {
       line.to_string()
     }).collect::<Vec<String>>()
   });
@@ -22,9 +22,7 @@ where
   handlebars.register_helper("is_optional_field", Box::new(is_optional_field));
   handlebars.register_helper("split_lines", Box::new(split_lines));
 
-  let rendered = handlebars.render_template(template, data).unwrap();
-
-  rendered
+  handlebars.render_template(template, data).unwrap()
 }
 
 #[cfg(test)]

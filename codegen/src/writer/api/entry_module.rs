@@ -1,5 +1,8 @@
 use super::super::File;
-use crate::common::{render_template, RenameRule};
+use crate::{
+  common::{render_template, RenameRule},
+  writer::format_code,
+};
 use serde::Serialize;
 
 #[derive(Serialize)]
@@ -36,7 +39,7 @@ impl File for APIEntryModule {
   fn write(&self, path: &std::path::PathBuf) {
     let template = include_str!("../../../templates/api/entry_module.hbs");
 
-    let rendered = render_template(template, self);
+    let rendered = format_code(render_template(template, self));
 
     let file_path = path.join(self.file_name());
 

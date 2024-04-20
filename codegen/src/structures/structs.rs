@@ -22,7 +22,7 @@ pub struct Struct {
 impl Struct {
   pub fn new_with_description(name: &String, description: &String) -> Self {
     Self {
-      name: RenameRule::VariantName.apply(&name),
+      name: RenameRule::VariantName.apply(name),
       description: Some(description.clone()),
       fields: vec![],
       tags: vec!["full".to_string()],
@@ -53,7 +53,7 @@ impl Struct {
   }
 
   pub fn set_name(&mut self, name: &String) {
-    self.name = RenameRule::VariantName.apply(&name);
+    self.name = RenameRule::VariantName.apply(name);
   }
 }
 
@@ -77,7 +77,7 @@ impl StructField {
   // }
 
   pub fn new(name: &String, type_name: &String) -> Self {
-    let normalized_name = RenameRule::FieldName.apply(&name);
+    let normalized_name = RenameRule::FieldName.apply(name);
 
     let rename = if &normalized_name != name {
       Some(name.clone())

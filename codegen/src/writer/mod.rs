@@ -1,7 +1,9 @@
 mod api;
+mod format;
 mod types;
 
 pub use api::*;
+pub use format::*;
 use std::path::PathBuf;
 pub use types::*;
 
@@ -37,7 +39,7 @@ impl<'a> Writer<'a> {
 
   pub fn write(&self) {
     for file in &self.files {
-      file.write(&self.path);
+      file.write(self.path);
     }
   }
 }

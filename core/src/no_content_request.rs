@@ -54,15 +54,13 @@ where
             return Err(Error::RequestFailed(error_response));
           }
 
-          let err_msg = format!("Request failed with {}", status.to_string());
+          let err_msg = format!("Request failed with {}", status);
           return Err(Error::Error(err_msg));
         }
 
         Ok(())
       }
-      Err(err) => {
-        return Err(Error::Error(err.to_string()));
-      }
+      Err(err) => Err(Error::Error(err.to_string())),
     }
   }
 }

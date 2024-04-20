@@ -1,6 +1,6 @@
 use crate::schemas::schema::{SchemaType, SchemaTypeDefination};
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Default)]
 pub struct SchemaTypes {
   pub types: Vec<SchemaType>,
   pub is_null: bool,
@@ -107,7 +107,7 @@ impl SchemaTypes {
     ) {
       // object
       // [object]
-      (true, false, false, false, false, false) => object_name.clone().into(),
+      (true, false, false, false, false, false) => object_name.clone(),
       // [object, null]
       (true, false, false, false, false, true) => format!("Option<{}>", object_name),
       // [object, array]
@@ -161,31 +161,18 @@ impl From<&SchemaTypeDefination> for SchemaTypes {
   fn from(value: &SchemaTypeDefination) -> Self {
     let types = match value {
       SchemaTypeDefination::String(type_) => {
-        vec![SchemaType::try_from(type_).expect(format!("Unknown schema type: {}", type_).as_str())]
+        vec![
+          SchemaType::try_from(type_).unwrap_or_else(|_| panic!("Unknown schema type: {}", type_))
+        ]
       }
       SchemaTypeDefination::Array(types) => types
         .iter()
         .map(|type_| {
-          SchemaType::try_from(type_).expect(format!("Unknown schema type: {}", type_).as_str())
+          SchemaType::try_from(type_).unwrap_or_else(|_| panic!("Unknown schema type: {}", type_))
         })
         .collect(),
     };
 
     SchemaTypes::new(types)
-  }
-}
-
-impl Default for SchemaTypes {
-  fn default() -> Self {
-    SchemaTypes {
-      types: vec![],
-      is_null: false,
-      is_array: false,
-      is_object: false,
-      is_string: false,
-      is_integer: false,
-      is_boolean: false,
-      is_number: false,
-    }
   }
 }

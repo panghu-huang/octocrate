@@ -1,5 +1,5 @@
 use super::super::File;
-use crate::common::render_template;
+use crate::{common::render_template, writer::format_code};
 use serde::Serialize;
 
 #[derive(Serialize)]
@@ -29,7 +29,7 @@ impl File for TypeEntryModule {
   fn write(&self, path: &std::path::PathBuf) {
     let template = include_str!("../../../templates/types/entry_module.hbs");
 
-    let rendered = render_template(template, self);
+    let rendered = format_code(render_template(template, self));
 
     let file_path = path.join(self.file_name());
 

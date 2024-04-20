@@ -22,6 +22,12 @@ jobs:
       - name: Cache
         uses: Swatinem/rust-cache@v2
 
+      - name: Check formatting
+        run: cargo fmt --check
+
+      - name: Check linting
+        run: cargo clippy
+
       - name: Run tests
         run: cargo test -- --nocapture
 

@@ -81,7 +81,7 @@ impl RenameRule {
     let mut value = vec![];
 
     for i in original.split_whitespace() {
-      if regexp.is_match(&i) {
+      if regexp.is_match(i) {
         value.push(i.to_lowercase());
       } else {
         value.push(i.to_string());

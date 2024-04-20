@@ -11,7 +11,7 @@ impl SchemaParser {
     let title = schema
       .title
       .clone()
-      .and_then(|t| if t.contains("_") { None } else { Some(t) });
+      .and_then(|t| if t.contains('_') { None } else { Some(t) });
 
     let previous_prefix = self.prefixs.clone();
 
@@ -66,7 +66,7 @@ impl SchemaParser {
     let alias = match &title {
       Some(title) => Some(RenameRule::VariantName.apply(title).to_string()),
       None => {
-        if type_name.ends_with(">") || !full_type.starts_with("Vec<") {
+        if type_name.ends_with('>') || !full_type.starts_with("Vec<") {
           None
         } else {
           let alias = RenameRule::VariantName
@@ -96,7 +96,7 @@ impl SchemaParser {
 
     self.prefixs = previous_prefix;
 
-    return parsed;
+    parsed
   }
 }
 
