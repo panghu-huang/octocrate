@@ -35,6 +35,48 @@ impl GitHubBillingAPI {
       .build()
   }
 
+  /// **Get GitHub Packages billing for an organization**
+  ///
+  /// Gets the free and paid storage used for GitHub Packages in gigabytes.
+  ///
+  /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization](https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization)
+  pub fn get_github_packages_billing_org(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), (), PackagesBillingUsage> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/settings/billing/packages");
+
+    Request::<(), (), PackagesBillingUsage>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get shared storage billing for an organization**
+  ///
+  /// Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
+  ///
+  /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization](https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization)
+  pub fn get_shared_storage_billing_org(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), (), CombinedBillingUsage> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/settings/billing/shared-storage");
+
+    Request::<(), (), CombinedBillingUsage>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
   /// **Get GitHub Actions billing for a user**
   ///
   /// Gets the summary of the free and paid GitHub Actions minutes used.
@@ -71,48 +113,6 @@ impl GitHubBillingAPI {
   ) -> Request<(), (), PackagesBillingUsage> {
     let username = username.into();
     let url = format!("/users/{username}/settings/billing/packages");
-
-    Request::<(), (), PackagesBillingUsage>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get shared storage billing for an organization**
-  ///
-  /// Gets the estimated paid and estimated total storage used for GitHub Actions and GitHub Packages.
-  ///
-  /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization](https://docs.github.com/rest/billing/billing#get-shared-storage-billing-for-an-organization)
-  pub fn get_shared_storage_billing_org(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<(), (), CombinedBillingUsage> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/settings/billing/shared-storage");
-
-    Request::<(), (), CombinedBillingUsage>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get GitHub Packages billing for an organization**
-  ///
-  /// Gets the free and paid storage used for GitHub Packages in gigabytes.
-  ///
-  /// Paid minutes only apply to packages stored for private repositories. For more information, see "[Managing billing for GitHub Packages](https://docs.github.com/github/setting-up-and-managing-billing-and-payments-on-github/managing-billing-for-github-packages)."
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` or `admin:org` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization](https://docs.github.com/rest/billing/billing#get-github-packages-billing-for-an-organization)
-  pub fn get_github_packages_billing_org(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<(), (), PackagesBillingUsage> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/settings/billing/packages");
 
     Request::<(), (), PackagesBillingUsage>::builder(&self.config)
       .get(url)

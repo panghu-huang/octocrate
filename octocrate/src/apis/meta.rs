@@ -14,19 +14,6 @@ impl GitHubMetaAPI {
     }
   }
 
-  /// **Get all API versions**
-  ///
-  /// Get all supported GitHub API versions.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/meta/meta#get-all-api-versions](https://docs.github.com/rest/meta/meta#get-all-api-versions)
-  pub fn get_all_versions(&self) -> Request<(), (), StringArray> {
-    let url = format!("/versions");
-
-    Request::<(), (), StringArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **GitHub API Root**
   ///
   /// Get Hypermedia links to resources accessible in GitHub's REST API
@@ -68,6 +55,19 @@ impl GitHubMetaAPI {
     let url = format!("/octocat");
 
     NoContentRequest::<(), MetaGetOctocatQuery>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get all API versions**
+  ///
+  /// Get all supported GitHub API versions.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/meta/meta#get-all-api-versions](https://docs.github.com/rest/meta/meta#get-all-api-versions)
+  pub fn get_all_versions(&self) -> Request<(), (), StringArray> {
+    let url = format!("/versions");
+
+    Request::<(), (), StringArray>::builder(&self.config)
       .get(url)
       .build()
   }

@@ -7,10 +7,10 @@ pub mod schema;
 pub mod tag;
 pub mod webhook;
 
+use indexmap::IndexMap;
 use refs::Reference;
 use schema::SchemaDefinition;
 use serde::Deserialize;
-use std::collections::HashMap;
 
 pub type Path = String;
 
@@ -54,14 +54,14 @@ pub struct Webhooks {
 
 #[derive(Deserialize, Clone, Debug)]
 pub struct Components {
-  pub parameters: HashMap<String, parameters::Parameter>,
-  pub schemas: HashMap<String, schema::Schema>,
+  pub parameters: IndexMap<String, parameters::Parameter>,
+  pub schemas: IndexMap<String, schema::Schema>,
 }
 
 #[derive(Deserialize, Clone, Debug)]
 pub struct APIDescription {
-  pub paths: HashMap<Path, Paths>,
-  pub webhooks: HashMap<Path, Webhooks>,
+  pub paths: IndexMap<Path, Paths>,
+  pub webhooks: IndexMap<Path, Webhooks>,
   pub components: Components,
   pub tags: Vec<tag::Tag>,
   #[serde(rename = "externalDocs")]
@@ -89,11 +89,11 @@ impl TryFrom<&String> for APIDescription {
 impl Default for APIDescription {
   fn default() -> Self {
     Self {
-      paths: HashMap::new(),
-      webhooks: HashMap::new(),
+      paths: IndexMap::new(),
+      webhooks: IndexMap::new(),
       components: Components {
-        parameters: HashMap::new(),
-        schemas: HashMap::new(),
+        parameters: IndexMap::new(),
+        schemas: IndexMap::new(),
       },
       tags: Vec::new(),
       external_docs: external_docs::ExternalDocs {

@@ -20,3 +20,4 @@ regex = { workspace = true }
 serde = { workspace = true, features = ["derive"] }
 handlebars = { workspace = true }
 indicatif = { workspace = true }
+indexmap = { workspace = true, features = ["serde"] }
