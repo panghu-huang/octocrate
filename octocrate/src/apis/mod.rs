@@ -1,73 +1,73 @@
-#[cfg(any(feature = "full", feature = "codespaces"))]
-pub mod codespaces;
-#[cfg(any(feature = "full", feature = "users"))]
-pub mod users;
-#[cfg(any(feature = "full", feature = "meta"))]
-pub mod meta;
-#[cfg(any(feature = "full", feature = "dependabot"))]
-pub mod dependabot;
 #[cfg(any(feature = "full", feature = "actions"))]
 pub mod actions;
-#[cfg(any(feature = "full", feature = "search"))]
-pub mod search;
-#[cfg(any(feature = "full", feature = "migrations"))]
-pub mod migrations;
-#[cfg(any(feature = "full", feature = "interactions"))]
-pub mod interactions;
-#[cfg(any(feature = "full", feature = "emojis"))]
-pub mod emojis;
-#[cfg(any(feature = "full", feature = "packages"))]
-pub mod packages;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub mod issues;
 #[cfg(any(feature = "full", feature = "activity"))]
 pub mod activity;
-#[cfg(any(feature = "full", feature = "gitignore"))]
-pub mod gitignore;
-#[cfg(any(feature = "full", feature = "code_scanning"))]
-pub mod code_scanning;
-#[cfg(any(feature = "full", feature = "codes_of_conduct"))]
-pub mod codes_of_conduct;
-#[cfg(any(feature = "full", feature = "secret_scanning"))]
-pub mod secret_scanning;
-#[cfg(any(feature = "full", feature = "dependency_graph"))]
-pub mod dependency_graph;
-#[cfg(any(feature = "full", feature = "oidc"))]
-pub mod oidc;
-#[cfg(any(feature = "full", feature = "rate_limit"))]
-pub mod rate_limit;
-#[cfg(any(feature = "full", feature = "security_advisories"))]
-pub mod security_advisories;
-#[cfg(any(feature = "full", feature = "markdown"))]
-pub mod markdown;
-#[cfg(any(feature = "full", feature = "checks"))]
-pub mod checks;
-#[cfg(any(feature = "full", feature = "licenses"))]
-pub mod licenses;
-#[cfg(any(feature = "full", feature = "reactions"))]
-pub mod reactions;
-#[cfg(any(feature = "full", feature = "orgs"))]
-pub mod orgs;
-#[cfg(any(feature = "full", feature = "classroom"))]
-pub mod classroom;
-#[cfg(any(feature = "full", feature = "teams"))]
-pub mod teams;
-#[cfg(any(feature = "full", feature = "pulls"))]
-pub mod pulls;
-#[cfg(any(feature = "full", feature = "gists"))]
-pub mod gists;
-#[cfg(any(feature = "full", feature = "copilot"))]
-pub mod copilot;
-#[cfg(any(feature = "full", feature = "git"))]
-pub mod git;
-#[cfg(any(feature = "full", feature = "projects"))]
-pub mod projects;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub mod repos;
 #[cfg(any(feature = "full", feature = "apps"))]
 pub mod apps;
 #[cfg(any(feature = "full", feature = "billing"))]
 pub mod billing;
+#[cfg(any(feature = "full", feature = "checks"))]
+pub mod checks;
+#[cfg(any(feature = "full", feature = "classroom"))]
+pub mod classroom;
+#[cfg(any(feature = "full", feature = "code_scanning"))]
+pub mod code_scanning;
+#[cfg(any(feature = "full", feature = "codes_of_conduct"))]
+pub mod codes_of_conduct;
+#[cfg(any(feature = "full", feature = "codespaces"))]
+pub mod codespaces;
+#[cfg(any(feature = "full", feature = "copilot"))]
+pub mod copilot;
+#[cfg(any(feature = "full", feature = "dependabot"))]
+pub mod dependabot;
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
+pub mod dependency_graph;
+#[cfg(any(feature = "full", feature = "emojis"))]
+pub mod emojis;
+#[cfg(any(feature = "full", feature = "gists"))]
+pub mod gists;
+#[cfg(any(feature = "full", feature = "git"))]
+pub mod git;
+#[cfg(any(feature = "full", feature = "gitignore"))]
+pub mod gitignore;
+#[cfg(any(feature = "full", feature = "interactions"))]
+pub mod interactions;
+#[cfg(any(feature = "full", feature = "issues"))]
+pub mod issues;
+#[cfg(any(feature = "full", feature = "licenses"))]
+pub mod licenses;
+#[cfg(any(feature = "full", feature = "markdown"))]
+pub mod markdown;
+#[cfg(any(feature = "full", feature = "meta"))]
+pub mod meta;
+#[cfg(any(feature = "full", feature = "migrations"))]
+pub mod migrations;
+#[cfg(any(feature = "full", feature = "oidc"))]
+pub mod oidc;
+#[cfg(any(feature = "full", feature = "orgs"))]
+pub mod orgs;
+#[cfg(any(feature = "full", feature = "packages"))]
+pub mod packages;
+#[cfg(any(feature = "full", feature = "projects"))]
+pub mod projects;
+#[cfg(any(feature = "full", feature = "pulls"))]
+pub mod pulls;
+#[cfg(any(feature = "full", feature = "rate_limit"))]
+pub mod rate_limit;
+#[cfg(any(feature = "full", feature = "reactions"))]
+pub mod reactions;
+#[cfg(any(feature = "full", feature = "repos"))]
+pub mod repos;
+#[cfg(any(feature = "full", feature = "search"))]
+pub mod search;
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
+pub mod secret_scanning;
+#[cfg(any(feature = "full", feature = "security_advisories"))]
+pub mod security_advisories;
+#[cfg(any(feature = "full", feature = "teams"))]
+pub mod teams;
+#[cfg(any(feature = "full", feature = "users"))]
+pub mod users;
 
 use octocrate_core::SharedAPIConfig;
 

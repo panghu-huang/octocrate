@@ -1,6 +1,6 @@
-use octocrate_core::*;
 #[allow(unused_imports)]
 use crate::types::*;
+use octocrate_core::*;
 
 /// Owner or admin management of users interactions.
 pub struct GitHubInteractionsAPI {
@@ -110,10 +110,7 @@ impl GitHubInteractionsAPI {
   /// Removes all interaction restrictions from public repositories in the given organization. You must be an organization owner to remove restrictions.
   ///
   /// *Documentation*: [https://docs.github.com/rest/interactions/orgs#remove-interaction-restrictions-for-an-organization](https://docs.github.com/rest/interactions/orgs#remove-interaction-restrictions-for-an-organization)
-  pub fn remove_restrictions_for_org(
-    &self,
-    org: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn remove_restrictions_for_org(&self, org: impl Into<String>) -> NoContentRequest<(), ()> {
     let org = org.into();
     let url = format!("/orgs/{org}/interaction-limits");
 
@@ -132,9 +129,11 @@ impl GitHubInteractionsAPI {
   ) -> Request<(), (), InteractionsGetRestrictionsForAuthenticatedUserResponse> {
     let url = format!("/user/interaction-limits");
 
-    Request::<(), (), InteractionsGetRestrictionsForAuthenticatedUserResponse>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), (), InteractionsGetRestrictionsForAuthenticatedUserResponse>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Set interaction restrictions for your public repositories**
@@ -157,15 +156,11 @@ impl GitHubInteractionsAPI {
   /// Removes any interaction restrictions from your public repositories.
   ///
   /// *Documentation*: [https://docs.github.com/rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories](https://docs.github.com/rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories)
-  pub fn remove_restrictions_for_authenticated_user(
-    &self,
-  ) -> NoContentRequest<(), ()> {
+  pub fn remove_restrictions_for_authenticated_user(&self) -> NoContentRequest<(), ()> {
     let url = format!("/user/interaction-limits");
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
       .build()
   }
-
-
 }

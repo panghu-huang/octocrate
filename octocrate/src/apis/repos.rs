@@ -1,6 +1,6 @@
-use octocrate_core::*;
 #[allow(unused_imports)]
 use crate::types::*;
+use octocrate_core::*;
 
 /// Interact with GitHub Repos.
 pub struct GitHubReposAPI {
@@ -17,28 +17,28 @@ impl GitHubReposAPI {
   /// **Get a commit**
   ///
   /// Returns the contents of a single commit reference. You must have `read` access for the repository to use this endpoint.
-  /// 
+  ///
   /// **Note:** If there are more than 300 files in the commit diff and the default JSON media type is requested, the response will include pagination link headers for the remaining files, up to a limit of 3000 files. Each page contains the static commit information, and the only changes are to the file listing.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." Pagination query parameters are not supported for these media types.
-  /// 
+  ///
   /// - **`application/vnd.github.diff`**: Returns the diff of the commit. Larger diffs may time out and return a 5xx status code.
   /// - **`application/vnd.github.patch`**: Returns the patch of the commit. Diffs with binary data will have no `patch` property. Larger diffs may time out and return a 5xx status code.
   /// - **`application/vnd.github.sha`**: Returns the commit's SHA-1 hash. You can use this endpoint to check if a remote reference's SHA-1 hash is the same as your local reference's SHA-1 hash by providing the local SHA-1 reference as the ETag.
-  /// 
+  ///
   /// **Signature verification object**
-  /// 
+  ///
   /// The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
-  /// 
+  ///
   /// | Name | Type | Description |
   /// | ---- | ---- | ----------- |
   /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
   /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
   /// | `signature` | `string` | The signature that was extracted from the commit. |
   /// | `payload` | `string` | The value that was signed. |
-  /// 
+  ///
   /// These are the possible values for `reason` in the `verification` object:
-  /// 
+  ///
   /// | Value | Description |
   /// | ----- | ----------- |
   /// | `expired_key` | The key that made the signature is expired. |
@@ -96,11 +96,11 @@ impl GitHubReposAPI {
   /// **Check if a user is a repository collaborator**
   ///
   /// For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
-  /// 
+  ///
   /// Team members will include the members of child teams.
-  /// 
+  ///
   /// The authenticated user must have push access to the repository to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `read:org` and `repo` scopes to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator](https://docs.github.com/rest/collaborators/collaborators#check-if-a-user-is-a-repository-collaborator)
@@ -123,25 +123,25 @@ impl GitHubReposAPI {
   /// **Add a repository collaborator**
   ///
   /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-  /// 
+  ///
   /// Adding an outside collaborator may be restricted by enterprise administrators. For more information, see "[Enforcing repository management policies in your enterprise](https://docs.github.com/admin/policies/enforcing-policies-for-your-enterprise/enforcing-repository-management-policies-in-your-enterprise#enforcing-a-policy-for-inviting-outside-collaborators-to-repositories)."
-  /// 
+  ///
   /// For more information on permission levels, see "[Repository permission levels for an organization](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/repository-permission-levels-for-an-organization#permission-levels-for-repositories-owned-by-an-organization)". There are restrictions on which permissions can be granted to organization members when an organization base role is in place. In this case, the permission being given must be equal to or higher than the org base permission. Otherwise, the request will fail with:
-  /// 
+  ///
   /// ```
   /// Cannot assign {member} permission of {role name}
   /// ```
-  /// 
+  ///
   /// Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
-  /// 
+  ///
   /// The invitee will receive a notification that they have been invited to the repository, which they must accept or decline. They may do this via the notifications page, the email they receive, or by using the [API](https://docs.github.com/rest/collaborators/invitations).
-  /// 
+  ///
   /// **Updating an existing collaborator's permission level**
-  /// 
+  ///
   /// The endpoint can also be used to change the permissions of an existing collaborator without first removing and re-adding the collaborator. To change the permissions, use the same endpoint and pass a different `permission` parameter. The response will be a `204`, with no other indication that the permission level changed.
-  /// 
+  ///
   /// **Rate limits**
-  /// 
+  ///
   /// You are limited to sending 50 invitations to a repository per 24 hour period. Note there is no limit if you are inviting organization members to an organization repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/collaborators/collaborators#add-a-repository-collaborator](https://docs.github.com/rest/collaborators/collaborators#add-a-repository-collaborator)
@@ -164,25 +164,25 @@ impl GitHubReposAPI {
   /// **Remove a repository collaborator**
   ///
   /// Removes a collaborator from a repository.
-  /// 
+  ///
   /// To use this endpoint, the authenticated user must either be an administrator of the repository or target themselves for removal.
-  /// 
+  ///
   /// This endpoint also:
   /// - Cancels any outstanding invitations
   /// - Unasigns the user from any issues
   /// - Removes access to organization projects if the user is not an organization member and is not a collaborator on any other organization repositories.
   /// - Unstars the repository
   /// - Updates access permissions to packages
-  /// 
+  ///
   /// Removing a user as a collaborator has the following effects on forks:
   ///  - If the user had access to a fork through their membership to this repository, the user will also be removed from the fork.
   ///  - If the user had their own fork of the repository, the fork will be deleted.
   ///  - If the user still has read access to the repository, open pull requests by this user from a fork will be denied.
-  /// 
+  ///
   /// **Note**: A user can still have access to the repository through organization permissions like base repository permissions.
-  /// 
+  ///
   /// Although the API responds immediately, the additional permission updates might take some extra time to complete in the background.
-  /// 
+  ///
   /// For more information on fork permissions, see "[About permissions and visibility of forks](https://docs.github.com/pull-requests/collaborating-with-pull-requests/working-with-forks/about-permissions-and-visibility-of-forks)".
   ///
   /// *Documentation*: [https://docs.github.com/rest/collaborators/collaborators#remove-a-repository-collaborator](https://docs.github.com/rest/collaborators/collaborators#remove-a-repository-collaborator)
@@ -205,7 +205,7 @@ impl GitHubReposAPI {
   /// **Get a webhook configuration for a repository**
   ///
   /// Returns the webhook configuration for a repository. To get more information about the webhook, including the `active` state and `events`, use "[Get a repository webhook](/rest/webhooks/repos#get-a-repository-webhook)."
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `read:repo_hook` or `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository](https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository)
@@ -228,7 +228,7 @@ impl GitHubReposAPI {
   /// **Update a webhook configuration for a repository**
   ///
   /// Updates the webhook configuration for a repository. To update more information about the webhook, including the `active` state and `events`, use "[Update a repository webhook](/rest/webhooks/repos#update-a-repository-webhook)."
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `write:repo_hook` or `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository](https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository)
@@ -243,9 +243,11 @@ impl GitHubReposAPI {
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/config");
 
-    Request::<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfiguration>::builder(&self.config)
-      .patch(url)
-      .build()
+    Request::<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfiguration>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
   }
 
   /// **Get a release by tag name**
@@ -313,11 +315,11 @@ impl GitHubReposAPI {
   /// **Rename a branch**
   ///
   /// Renames a branch in a repository.
-  /// 
+  ///
   /// **Note:** Although the API responds immediately, the branch rename process might take some extra time to complete in the background. You won't be able to push to the old branch name while the rename process is in progress. For more information, see "[Renaming a branch](https://docs.github.com/github/administering-a-repository/renaming-a-branch)".
-  /// 
+  ///
   /// The authenticated user must have push access to the branch. If the branch is the default branch, the authenticated user must also have admin or owner permissions.
-  /// 
+  ///
   /// In order to rename the default branch, fine-grained access tokens also need the `administration:write` repository permission.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branches#rename-a-branch](https://docs.github.com/rest/branches/branches#rename-a-branch)
@@ -397,7 +399,7 @@ impl GitHubReposAPI {
   /// **List pull requests associated with a commit**
   ///
   /// Lists the merged pull request that introduced the commit to the repository. If the commit is not present in the default branch, will only return open pull requests associated with the commit.
-  /// 
+  ///
   /// To list the open or merged pull requests associated with a branch, you can set the `commit_sha` parameter to the branch name.
   ///
   /// *Documentation*: [https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit](https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit)
@@ -412,9 +414,11 @@ impl GitHubReposAPI {
     let commit_sha = commit_sha.into();
     let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/pulls");
 
-    Request::<(), ReposListPullRequestsAssociatedWithCommitQuery, PullRequestSimpleArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), ReposListPullRequestsAssociatedWithCommitQuery, PullRequestSimpleArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get status checks protection**
@@ -441,7 +445,7 @@ impl GitHubReposAPI {
   /// **Update status check protection**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Updating required status checks requires admin or owner permissions to the repository and branch protection to be enabled.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#update-status-check-protection](https://docs.github.com/rest/branches/branch-protection#update-status-check-protection)
@@ -485,7 +489,7 @@ impl GitHubReposAPI {
   /// **Get a GitHub Pages site**
   ///
   /// Gets information about a GitHub Pages site.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site)
@@ -506,9 +510,9 @@ impl GitHubReposAPI {
   /// **Create a GitHub Pages site**
   ///
   /// Configures a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages)."
-  /// 
+  ///
   /// The authenticated user must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site)
@@ -529,9 +533,9 @@ impl GitHubReposAPI {
   /// **Update information about a GitHub Pages site**
   ///
   /// Updates information for a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages).
-  /// 
+  ///
   /// The authenticated user must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site)
@@ -552,9 +556,9 @@ impl GitHubReposAPI {
   /// **Delete a GitHub Pages site**
   ///
   /// Deletes a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages).
-  /// 
+  ///
   /// The authenticated user must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site)
@@ -597,9 +601,9 @@ impl GitHubReposAPI {
   /// **Get a commit comment**
   ///
   /// Gets a specified commit comment.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -625,9 +629,9 @@ impl GitHubReposAPI {
   /// **Update a commit comment**
   ///
   /// Updates the contents of a specified commit comment.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -673,15 +677,13 @@ impl GitHubReposAPI {
   /// **List public repositories**
   ///
   /// Lists all public repositories in the order that they were created.
-  /// 
+  ///
   /// Note:
   /// - For GitHub Enterprise Server, this endpoint will only list repositories available to all users on the enterprise.
   /// - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of repositories.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-public-repositories](https://docs.github.com/rest/repos/repos#list-public-repositories)
-  pub fn list_public(
-    &self,
-  ) -> Request<(), ReposListPublicQuery, MinimalRepositoryArray> {
+  pub fn list_public(&self) -> Request<(), ReposListPublicQuery, MinimalRepositoryArray> {
     let url = format!("/repositories");
 
     Request::<(), ReposListPublicQuery, MinimalRepositoryArray>::builder(&self.config)
@@ -710,9 +712,9 @@ impl GitHubReposAPI {
   /// **Create a fork**
   ///
   /// Create a fork for the authenticated user.
-  /// 
+  ///
   /// **Note**: Forking a Repository happens asynchronously. You may have to wait a short period of time before you can access the git objects. If this takes longer than 5 minutes, be sure to contact [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api).
-  /// 
+  ///
   /// **Note**: Although this endpoint works with GitHub Apps, the GitHub App must be installed on the destination account with access to all repositories and on the source account with access to the source repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/forks#create-a-fork](https://docs.github.com/rest/repos/forks#create-a-fork)
@@ -733,7 +735,7 @@ impl GitHubReposAPI {
   /// **List branches for HEAD commit**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
   ///
   /// *Documentation*: [https://docs.github.com/rest/commits/commits#list-branches-for-head-commit](https://docs.github.com/rest/commits/commits#list-branches-for-head-commit)
@@ -767,7 +769,8 @@ impl GitHubReposAPI {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
+    let url =
+      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
     Request::<(), (), StringArray>::builder(&self.config)
       .get(url)
@@ -788,7 +791,8 @@ impl GitHubReposAPI {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
+    let url =
+      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
     Request::<ReposAddStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
       .post(url)
@@ -809,7 +813,8 @@ impl GitHubReposAPI {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
+    let url =
+      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
     Request::<ReposSetStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
       .put(url)
@@ -830,7 +835,8 @@ impl GitHubReposAPI {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
+    let url =
+      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
     Request::<ReposRemoveStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
       .delete(url)
@@ -841,7 +847,7 @@ impl GitHubReposAPI {
   ///
   /// List any syntax errors that are detected in the CODEOWNERS
   /// file.
-  /// 
+  ///
   /// For more information about the correct CODEOWNERS syntax,
   /// see "[About code owners](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)."
   ///
@@ -863,7 +869,7 @@ impl GitHubReposAPI {
   /// **Cancel a GitHub Pages deployment**
   ///
   /// Cancels a GitHub Pages deployment.
-  /// 
+  ///
   /// The authenticated user must have write permissions for the GitHub Pages site.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#cancel-a-github-pages-deployment](https://docs.github.com/rest/pages/pages#cancel-a-github-pages-deployment)
@@ -907,11 +913,11 @@ impl GitHubReposAPI {
   /// **Update branch protection**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Protecting a branch requires admin or owner permissions to the repository.
-  /// 
+  ///
   /// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
-  /// 
+  ///
   /// **Note**: The list of users, apps, and teams in total is limited to 100 items.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#update-branch-protection](https://docs.github.com/rest/branches/branch-protection#update-branch-protection)
@@ -978,7 +984,7 @@ impl GitHubReposAPI {
   /// **Create a repository using a template**
   ///
   /// Creates a new repository using a repository template. Use the `template_owner` and `template_repo` route parameters to specify the repository to use as the template. If the repository is not public, the authenticated user must own or be a member of an organization that owns the repository. To check if a repository is available to use as a template, get the repository's information using the [Get a repository](https://docs.github.com/rest/repos/repos#get-a-repository) endpoint and check that the `is_template` key is `true`.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template](https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template)
@@ -999,9 +1005,9 @@ impl GitHubReposAPI {
   /// **Get commit signature protection**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to check whether a branch requires signed commits. An enabled status of `true` indicates you must sign commits on this branch. For more information, see [Signing commits with GPG](https://docs.github.com/articles/signing-commits-with-gpg) in GitHub Help.
-  /// 
+  ///
   /// **Note**: You must enable branch protection to require signed commits.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection](https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection)
@@ -1024,7 +1030,7 @@ impl GitHubReposAPI {
   /// **Create commit signature protection**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to require signed commits on a branch. You must enable branch protection to require signed commits.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection](https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection)
@@ -1047,7 +1053,7 @@ impl GitHubReposAPI {
   /// **Delete commit signature protection**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to disable required signed commits on a branch. You must enable branch protection to require signed commits.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection](https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection)
@@ -1070,7 +1076,7 @@ impl GitHubReposAPI {
   /// **List organization repositories**
   ///
   /// Lists repositories for the specified organization.
-  /// 
+  ///
   /// **Note:** In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-organization-repositories](https://docs.github.com/rest/repos/repos#list-organization-repositories)
@@ -1089,7 +1095,7 @@ impl GitHubReposAPI {
   /// **Create an organization repository**
   ///
   /// Creates a new repository in the specified organization. The authenticated user must be a member of the organization.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-an-organization-repository](https://docs.github.com/rest/repos/repos#create-an-organization-repository)
@@ -1108,7 +1114,7 @@ impl GitHubReposAPI {
   /// **Get a release**
   ///
   /// Gets a public release with the specified release ID.
-  /// 
+  ///
   /// **Note:** This returns an `upload_url` key corresponding to the endpoint
   /// for uploading release assets. This key is a hypermedia resource. For more information, see
   /// "[Getting started with the REST API](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
@@ -1176,7 +1182,7 @@ impl GitHubReposAPI {
   ///
   /// Checks the repository permission of a collaborator. The possible repository
   /// permissions are `admin`, `write`, `read`, and `none`.
-  /// 
+  ///
   /// *Note*: The `permission` attribute provides the legacy base roles of `admin`, `write`, `read`, and `none`, where the
   /// `maintain` role is mapped to `write` and the `triage` role is mapped to `read`. To determine the role assigned to the
   /// collaborator, see the `role_name` attribute, which will provide the full role name, including custom roles. The
@@ -1223,22 +1229,22 @@ impl GitHubReposAPI {
   ///
   /// This endpoint makes use of a [Hypermedia relation](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia) to determine which URL to access. The endpoint you call to upload release assets is specific to your release. Use the `upload_url` returned in
   /// the response of the [Create a release endpoint](https://docs.github.com/rest/releases/releases#create-a-release) to upload a release asset.
-  /// 
+  ///
   /// You need to use an HTTP client which supports [SNI](http://en.wikipedia.org/wiki/Server_Name_Indication) to make calls to this endpoint.
-  /// 
-  /// Most libraries will set the required `Content-Length` header automatically. Use the required `Content-Type` header to provide the media type of the asset. For a list of media types, see [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml). For example: 
-  /// 
+  ///
+  /// Most libraries will set the required `Content-Length` header automatically. Use the required `Content-Type` header to provide the media type of the asset. For a list of media types, see [Media Types](https://www.iana.org/assignments/media-types/media-types.xhtml). For example:
+  ///
   /// `application/zip`
-  /// 
+  ///
   /// GitHub expects the asset data in its raw binary form, rather than JSON. You will send the raw binary content of the asset as the request body. Everything else about the endpoint is the same as the rest of the API. For example,
   /// you'll still need to pass your authentication to be able to upload an asset.
-  /// 
+  ///
   /// When an upstream failure occurs, you will receive a `502 Bad Gateway` status. This may leave an empty asset with a state of `starter`. It can be safely deleted.
-  /// 
+  ///
   /// **Notes:**
   /// *   GitHub renames asset filenames that have special characters, non-alphanumeric characters, and leading or trailing periods. The "[List release assets](https://docs.github.com/rest/releases/assets#list-release-assets)"
   /// endpoint lists the renamed filenames. For more information and help, contact [GitHub Support](https://support.github.com/contact?tags=dotcom-rest-api).
-  /// *   To find the `release_id` query the [`GET /repos/{owner}/{repo}/releases/latest` endpoint](https://docs.github.com/rest/releases/releases#get-the-latest-release). 
+  /// *   To find the `release_id` query the [`GET /repos/{owner}/{repo}/releases/latest` endpoint](https://docs.github.com/rest/releases/releases#get-the-latest-release).
   /// *   If you upload an asset with the same filename as another uploaded asset, you'll receive an error and must delete the old file before you can re-upload the new asset.
   ///
   /// *Documentation*: [https://docs.github.com/rest/releases/assets#upload-a-release-asset](https://docs.github.com/rest/releases/assets#upload-a-release-asset)
@@ -1261,7 +1267,7 @@ impl GitHubReposAPI {
   /// **List repositories for the authenticated user**
   ///
   /// Lists repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
-  /// 
+  ///
   /// The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user](https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user)
@@ -1278,7 +1284,7 @@ impl GitHubReposAPI {
   /// **Create a repository for the authenticated user**
   ///
   /// Creates a new repository for the authenticated user.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user](https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user)
@@ -1312,9 +1318,9 @@ impl GitHubReposAPI {
   /// **Get an environment**
   ///
   /// **Note:** To get information about name patterns that branches must match in order to deploy to this environment, see "[Get a deployment branch policy](/rest/deployments/branch-policies#get-a-deployment-branch-policy)."
-  /// 
+  ///
   /// Anyone with read access to the repository can use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/environments#get-an-environment](https://docs.github.com/rest/deployments/environments#get-an-environment)
@@ -1337,11 +1343,11 @@ impl GitHubReposAPI {
   /// **Create or update an environment**
   ///
   /// Create or update an environment with protection rules, such as required reviewers. For more information about environment protection rules, see "[Environments](/actions/reference/environments#environment-protection-rules)."
-  /// 
+  ///
   /// **Note:** To create or update name patterns that branches must match in order to deploy to this environment, see "[Deployment branch policies](/rest/deployments/branch-policies)."
-  /// 
+  ///
   /// **Note:** To create or update secrets for an environment, see "[GitHub Actions secrets](/rest/actions/secrets)."
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/environments#create-or-update-an-environment](https://docs.github.com/rest/deployments/environments#create-or-update-an-environment)
@@ -1387,7 +1393,7 @@ impl GitHubReposAPI {
   /// Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the repository’s default branch (usually
   /// `main`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use
   /// the `Location` header to make a second `GET` request.
-  /// 
+  ///
   /// **Note**: For private repositories, these links are temporary and expire after five minutes. If the repository is empty, you will receive a 404 when you follow the redirect.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip](https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip)
@@ -1410,7 +1416,7 @@ impl GitHubReposAPI {
   /// **Get the status of a GitHub Pages deployment**
   ///
   /// Gets the current status of a GitHub Pages deployment.
-  /// 
+  ///
   /// The authenticated user must have read permission for the GitHub Pages site.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment](https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment)
@@ -1432,12 +1438,12 @@ impl GitHubReposAPI {
 
   /// **Get the weekly commit activity**
   ///
-  /// 
+  ///
   /// Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
-  /// 
+  ///
   /// **Note:** This endpoint can only be used for repositories with fewer than 10,000 commits. If the repository contains
   /// 10,000 or more commits, a 422 status code will be returned.
-  /// 
+  ///
   ///
   /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity](https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity)
   pub fn get_code_frequency_stats(
@@ -1457,9 +1463,9 @@ impl GitHubReposAPI {
   /// **List repository teams**
   ///
   /// Lists the teams that have access to the specified repository and that are also visible to the authenticated user.
-  /// 
+  ///
   /// For a public repository, a team is listed only if that team added the public repository explicitly.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to use this endpoint with a public repository, and `repo` scope to use this endpoint with a private repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-teams](https://docs.github.com/rest/repos/repos#list-repository-teams)
@@ -1517,11 +1523,11 @@ impl GitHubReposAPI {
   /// **Get the hourly commit count for each day**
   ///
   /// Each array contains the day number, hour number, and number of commits:
-  /// 
+  ///
   /// *   `0-6`: Sunday - Saturday
   /// *   `0-23`: Hour of day
   /// *   Number of commits
-  /// 
+  ///
   /// For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on Tuesdays. All times are based on the time zone of individual commits.
   ///
   /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day](https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day)
@@ -1562,7 +1568,7 @@ impl GitHubReposAPI {
   /// **Get an autolink reference of a repository**
   ///
   /// This returns a single autolink reference by ID that was configured for the given repository.
-  /// 
+  ///
   /// Information about autolinks are only available to repository administrators.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository](https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository)
@@ -1585,7 +1591,7 @@ impl GitHubReposAPI {
   /// **Delete an autolink reference from a repository**
   ///
   /// This deletes a single autolink reference by ID that was configured for the given repository.
-  /// 
+  ///
   /// Information about autolinks are only available to repository administrators.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository](https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository)
@@ -1609,11 +1615,11 @@ impl GitHubReposAPI {
   ///
   /// For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
   /// Organization members with write, maintain, or admin privileges on the organization-owned repository can use this endpoint.
-  /// 
+  ///
   /// Team members will include the members of child teams.
-  /// 
+  ///
   /// The authenticated user must have push access to the repository to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `read:org` and `repo` scopes to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators](https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators)
@@ -1744,7 +1750,7 @@ impl GitHubReposAPI {
   /// **List repository activities**
   ///
   /// Lists a detailed history of changes to a repository, such as pushes, merges, force pushes, and branch changes, and associates these changes with commits and users.
-  /// 
+  ///
   /// For more information about viewing repository activity,
   /// see "[Viewing activity and data for your repository](https://docs.github.com/repositories/viewing-activity-and-data-for-your-repository)."
   ///
@@ -1766,9 +1772,9 @@ impl GitHubReposAPI {
   /// **List environments**
   ///
   /// Lists the environments for a repository.
-  /// 
+  ///
   /// Anyone with read access to the repository can use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/environments#list-environments](https://docs.github.com/rest/deployments/environments#list-environments)
@@ -1781,9 +1787,11 @@ impl GitHubReposAPI {
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/environments");
 
-    Request::<(), ReposGetAllEnvironmentsQuery, ReposGetAllEnvironmentsResponse>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), ReposGetAllEnvironmentsQuery, ReposGetAllEnvironmentsResponse>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get all organization repository rulesets**
@@ -1823,7 +1831,7 @@ impl GitHubReposAPI {
   /// **Get teams with access to the protected branch**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Lists the teams who have push access to this branch. The list includes child teams.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch](https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch)
@@ -1846,7 +1854,7 @@ impl GitHubReposAPI {
   /// **Add team access restrictions**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Grants the specified teams push access for this branch. You can also give push access to child teams.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions](https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions)
@@ -1869,7 +1877,7 @@ impl GitHubReposAPI {
   /// **Set team access restrictions**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Replaces the list of teams that have push access to this branch. This removes all teams that previously had push access and grants push access to the new list of teams. Team restrictions include child teams.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions](https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions)
@@ -1892,7 +1900,7 @@ impl GitHubReposAPI {
   /// **Remove team access restrictions**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Removes the ability of a team to push to this branch. You can also remove push access for child teams.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions](https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions)
@@ -1937,9 +1945,9 @@ impl GitHubReposAPI {
   /// **List deployment branch policies**
   ///
   /// Lists the deployment branch policies for an environment.
-  /// 
+  ///
   /// Anyone with read access to the repository can use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies](https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies)
@@ -1948,11 +1956,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     environment_name: impl Into<String>,
-  ) -> Request<(), ReposListDeploymentBranchPoliciesQuery, ReposListDeploymentBranchPoliciesResponse> {
+  ) -> Request<(), ReposListDeploymentBranchPoliciesQuery, ReposListDeploymentBranchPoliciesResponse>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies");
+    let url =
+      format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies");
 
     Request::<(), ReposListDeploymentBranchPoliciesQuery, ReposListDeploymentBranchPoliciesResponse>::builder(&self.config)
       .get(url)
@@ -1962,7 +1972,7 @@ impl GitHubReposAPI {
   /// **Create a deployment branch policy**
   ///
   /// Creates a deployment branch or tag policy for an environment.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy)
@@ -1975,11 +1985,14 @@ impl GitHubReposAPI {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies");
+    let url =
+      format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies");
 
-    Request::<DeploymentBranchAndTagPolicyNamePattern, (), DeploymentBranchPolicy>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<DeploymentBranchAndTagPolicyNamePattern, (), DeploymentBranchPolicy>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Update a repository invitation**
@@ -2046,7 +2059,7 @@ impl GitHubReposAPI {
   /// **Set admin branch protection**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Adding admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection](https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection)
@@ -2069,7 +2082,7 @@ impl GitHubReposAPI {
   /// **Delete admin branch protection**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Removing admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection](https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection)
@@ -2144,9 +2157,9 @@ impl GitHubReposAPI {
   /// **Get access restrictions**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Lists who has access to this protected branch.
-  /// 
+  ///
   /// **Note**: Users, apps, and teams `restrictions` are only available for organization-owned repositories.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-access-restrictions](https://docs.github.com/rest/branches/branch-protection#get-access-restrictions)
@@ -2169,7 +2182,7 @@ impl GitHubReposAPI {
   /// **Delete access restrictions**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Disables the ability to restrict who can push to this branch.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions](https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions)
@@ -2211,52 +2224,52 @@ impl GitHubReposAPI {
   /// **Create a deployment**
   ///
   /// Deployments offer a few configurable parameters with certain defaults.
-  /// 
+  ///
   /// The `ref` parameter can be any named branch, tag, or SHA. At GitHub we often deploy branches and verify them
   /// before we merge a pull request.
-  /// 
+  ///
   /// The `environment` parameter allows deployments to be issued to different runtime environments. Teams often have
   /// multiple environments for verifying their applications, such as `production`, `staging`, and `qa`. This parameter
   /// makes it easier to track which environments have requested deployments. The default environment is `production`.
-  /// 
+  ///
   /// The `auto_merge` parameter is used to ensure that the requested ref is not behind the repository's default branch. If
   /// the ref _is_ behind the default branch for the repository, we will attempt to merge it for you. If the merge succeeds,
   /// the API will return a successful merge commit. If merge conflicts prevent the merge from succeeding, the API will
   /// return a failure response.
-  /// 
+  ///
   /// By default, [commit statuses](https://docs.github.com/rest/commits/statuses) for every submitted context must be in a `success`
   /// state. The `required_contexts` parameter allows you to specify a subset of contexts that must be `success`, or to
   /// specify contexts that have not yet been submitted. You are not required to use commit statuses to deploy. If you do
   /// not require any contexts or create any commit statuses, the deployment will always succeed.
-  /// 
+  ///
   /// The `payload` parameter is available for any extra information that a deployment system might need. It is a JSON text
   /// field that will be passed on when a deployment event is dispatched.
-  /// 
+  ///
   /// The `task` parameter is used by the deployment system to allow different execution paths. In the web world this might
   /// be `deploy:migrations` to run schema changes on the system. In the compiled world this could be a flag to compile an
   /// application with debugging enabled.
-  /// 
+  ///
   /// Merged branch response:
-  /// 
+  ///
   /// You will see this response when GitHub automatically merges the base branch into the topic branch instead of creating
   /// a deployment. This auto-merge happens when:
   /// *   Auto-merge option is enabled in the repository
   /// *   Topic branch does not include the latest changes on the base branch, which is `master` in the response example
   /// *   There are no merge conflicts
-  /// 
+  ///
   /// If there are no new commits in the base branch, a new request to create a deployment should give a successful
   /// response.
-  /// 
+  ///
   /// Merge conflict response:
-  /// 
+  ///
   /// This error happens when the `auto_merge` option is enabled and when the default branch (in this case `master`), can't
   /// be merged into the branch that's being deployed (in this case `topic-branch`), due to merge conflicts.
-  /// 
+  ///
   /// Failed commit status checks:
-  /// 
+  ///
   /// This error happens when the `required_contexts` parameter indicates that one or more contexts need to have a `success`
   /// status for the commit to be deployed, but one or more of the required contexts do not have a state of `success`.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` or `repo_deployment` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/deployments#create-a-deployment](https://docs.github.com/rest/deployments/deployments#create-a-deployment)
@@ -2269,9 +2282,11 @@ impl GitHubReposAPI {
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/deployments");
 
-    Request::<ReposCreateDeploymentRequest, (), ReposCreateDeploymentResponse>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<ReposCreateDeploymentRequest, (), ReposCreateDeploymentResponse>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Get a deployment status**
@@ -2300,18 +2315,18 @@ impl GitHubReposAPI {
   /// **List commits**
   ///
   /// **Signature verification object**
-  /// 
+  ///
   /// The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
-  /// 
+  ///
   /// | Name | Type | Description |
   /// | ---- | ---- | ----------- |
   /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
   /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
   /// | `signature` | `string` | The signature that was extracted from the commit. |
   /// | `payload` | `string` | The value that was signed. |
-  /// 
+  ///
   /// These are the possible values for `reason` in the `verification` object:
-  /// 
+  ///
   /// | Value | Description |
   /// | ----- | ----------- |
   /// | `expired_key` | The key that made the signature is expired. |
@@ -2459,40 +2474,40 @@ impl GitHubReposAPI {
   /// **Compare two commits**
   ///
   /// Compares two commits against one another. You can compare refs (branches or tags) and commit SHAs in the same repository, or you can compare refs and commit SHAs that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see "[Understanding connections between repositories](https://docs.github.com/repositories/viewing-activity-and-data-for-your-repository/understanding-connections-between-repositories)."
-  /// 
+  ///
   /// This endpoint is equivalent to running the `git log BASE..HEAD` command, but it returns commits in a different order. The `git log BASE..HEAD` command returns commits in reverse chronological order, whereas the API returns commits in chronological order.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.diff`**: Returns the diff of the commit.
   /// - **`application/vnd.github.patch`**: Returns the patch of the commit. Diffs with binary data will have no `patch` property.
-  /// 
+  ///
   /// The API response includes details about the files that were changed between the two commits. This includes the status of the change (if a file was added, removed, modified, or renamed), and details of the change itself. For example, files with a `renamed` status have a `previous_filename` field showing the previous filename of the file, and files with a `modified` status have a `patch` field showing the changes made to the file.
-  /// 
+  ///
   /// When calling this endpoint without any paging parameter (`per_page` or `page`), the returned list is limited to 250 commits, and the last commit in the list is the most recent of the entire comparison.
-  /// 
+  ///
   /// **Working with large comparisons**
-  /// 
+  ///
   /// To process a response with a large number of commits, use a query parameter (`per_page` or `page`) to paginate the results. When using pagination:
-  /// 
+  ///
   /// - The list of changed files is only shown on the first page of results, but it includes all changed files for the entire comparison.
   /// - The results are returned in chronological order, but the last commit in the returned list may not be the most recent one in the entire set if there are more pages of results.
-  /// 
+  ///
   /// For more information on working with pagination, see "[Using pagination in the REST API](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api)."
-  /// 
+  ///
   /// **Signature verification object**
-  /// 
+  ///
   /// The response will include a `verification` object that describes the result of verifying the commit's signature. The `verification` object includes the following fields:
-  /// 
+  ///
   /// | Name | Type | Description |
   /// | ---- | ---- | ----------- |
   /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
   /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
   /// | `signature` | `string` | The signature that was extracted from the commit. |
   /// | `payload` | `string` | The value that was signed. |
-  /// 
+  ///
   /// These are the possible values for `reason` in the `verification` object:
-  /// 
+  ///
   /// | Value | Description |
   /// | ----- | ----------- |
   /// | `expired_key` | The key that made the signature is expired. |
@@ -2540,9 +2555,11 @@ impl GitHubReposAPI {
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/releases/generate-notes");
 
-    Request::<ReposGenerateReleaseNotesRequest, (), GeneratedReleaseNotesContent>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<ReposGenerateReleaseNotesRequest, (), GeneratedReleaseNotesContent>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **List branches**
@@ -2566,11 +2583,11 @@ impl GitHubReposAPI {
   /// **Create a repository dispatch event**
   ///
   /// You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want activity that happens outside of GitHub to trigger a GitHub Actions workflow or GitHub App webhook. You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see "[RepositoryDispatchEvent](https://docs.github.com/webhooks/event-payloads/#repository_dispatch)."
-  /// 
+  ///
   /// The `client_payload` parameter is available for any extra information that your workflow might need. This parameter is a JSON payload that will be passed on when the webhook event is dispatched. For example, the `client_payload` can include a message that a user would like to send using a GitHub Actions workflow. Or the `client_payload` can be used as a test to debug your workflow.
-  /// 
+  ///
   /// This input example shows how you can use the `client_payload` as a test to debug your workflow.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event](https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event)
@@ -2591,7 +2608,7 @@ impl GitHubReposAPI {
   /// **Create a GitHub Pages deployment**
   ///
   /// Create a GitHub Pages deployment for a repository.
-  /// 
+  ///
   /// The authenticated user must have write permission to the repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment](https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment)
@@ -2612,7 +2629,7 @@ impl GitHubReposAPI {
   /// **Get users with access to the protected branch**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Lists the people who have push access to this branch.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch](https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch)
@@ -2635,9 +2652,9 @@ impl GitHubReposAPI {
   /// **Add user access restrictions**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Grants the specified people push access for this branch.
-  /// 
+  ///
   /// | Type    | Description                                                                                                                   |
   /// | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
   /// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
@@ -2662,9 +2679,9 @@ impl GitHubReposAPI {
   /// **Set user access restrictions**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Replaces the list of people that have push access to this branch. This removes all people that previously had push access and grants push access to the new list of people.
-  /// 
+  ///
   /// | Type    | Description                                                                                                                   |
   /// | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
   /// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
@@ -2689,9 +2706,9 @@ impl GitHubReposAPI {
   /// **Remove user access restrictions**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Removes the ability of a user to push to this branch.
-  /// 
+  ///
   /// | Type    | Description                                                                                                                                   |
   /// | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
   /// | `array` | Usernames of the people who should no longer have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
@@ -2716,7 +2733,7 @@ impl GitHubReposAPI {
   /// **Get latest Pages build**
   ///
   /// Gets information about the single most recent build of a GitHub Pages site.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#get-latest-pages-build](https://docs.github.com/rest/pages/pages#get-latest-pages-build)
@@ -2820,7 +2837,7 @@ impl GitHubReposAPI {
   /// **Test the push repository webhook**
   ///
   /// This will trigger the hook with the latest push to the current repository if the hook is subscribed to `push` events. If the hook is not subscribed to `push` events, the server will respond with 204 but no test POST will be generated.
-  /// 
+  ///
   /// **Note**: Previously `/repos/:owner/:repo/hooks/:hook_id/test`
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook](https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook)
@@ -2843,7 +2860,7 @@ impl GitHubReposAPI {
   /// **List releases**
   ///
   /// This returns a list of releases, which does not include regular Git tags that have not been associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.github.com/rest/repos/repos#list-repository-tags).
-  /// 
+  ///
   /// Information about published releases are available to everyone. Only users with push access will receive listings for draft releases.
   ///
   /// *Documentation*: [https://docs.github.com/rest/releases/releases#list-releases](https://docs.github.com/rest/releases/releases#list-releases)
@@ -2864,7 +2881,7 @@ impl GitHubReposAPI {
   /// **Create a release**
   ///
   /// Users with push access to the repository can create a release.
-  /// 
+  ///
   /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
   ///
   /// *Documentation*: [https://docs.github.com/rest/releases/releases#create-a-release](https://docs.github.com/rest/releases/releases#create-a-release)
@@ -2904,9 +2921,9 @@ impl GitHubReposAPI {
   /// **List commit comments for a repository**
   ///
   /// Lists the commit comments for a specified repository. Comments are ordered by ascending ID.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -2930,9 +2947,9 @@ impl GitHubReposAPI {
   /// **Get a deployment branch policy**
   ///
   /// Gets a deployment branch or tag policy for an environment.
-  /// 
+  ///
   /// Anyone with read access to the repository can use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy)
@@ -2957,7 +2974,7 @@ impl GitHubReposAPI {
   /// **Update a deployment branch policy**
   ///
   /// Updates a deployment branch or tag policy for an environment.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy)
@@ -2982,7 +2999,7 @@ impl GitHubReposAPI {
   /// **Delete a deployment branch policy**
   ///
   /// Deletes a deployment branch or tag policy for an environment.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy)
@@ -3083,19 +3100,21 @@ impl GitHubReposAPI {
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries");
 
-    Request::<(), ReposListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), ReposListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List custom deployment rule integrations available for an environment**
   ///
   /// Gets all custom deployment protection rule integrations that are available for an environment. Anyone with read access to the repository can use this endpoint.
-  /// 
+  ///
   /// For more information about environments, see "[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
-  /// 
+  ///
   /// For more information about the app that is providing this custom deployment rule, see "[GET an app](https://docs.github.com/rest/apps/apps#get-an-app)".
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment](https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment)
@@ -3104,15 +3123,25 @@ impl GitHubReposAPI {
     environment_name: impl Into<String>,
     repo: impl Into<String>,
     owner: impl Into<String>,
-  ) -> Request<(), ReposListCustomDeploymentRuleIntegrationsQuery, ReposListCustomDeploymentRuleIntegrationsResponse> {
+  ) -> Request<
+    (),
+    ReposListCustomDeploymentRuleIntegrationsQuery,
+    ReposListCustomDeploymentRuleIntegrationsResponse,
+  > {
     let environment_name = environment_name.into();
     let repo = repo.into();
     let owner = owner.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/apps");
+    let url = format!(
+      "/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/apps"
+    );
 
-    Request::<(), ReposListCustomDeploymentRuleIntegrationsQuery, ReposListCustomDeploymentRuleIntegrationsResponse>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      ReposListCustomDeploymentRuleIntegrationsQuery,
+      ReposListCustomDeploymentRuleIntegrationsResponse,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **Get the last year of commit activity**
@@ -3199,9 +3228,9 @@ impl GitHubReposAPI {
   /// **List commit comments**
   ///
   /// Lists the comments for a specified commit.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -3227,11 +3256,11 @@ impl GitHubReposAPI {
   /// **Create a commit comment**
   ///
   /// Create a comment for a commit using its `:commit_sha`.
-  /// 
+  ///
   /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -3280,9 +3309,9 @@ impl GitHubReposAPI {
   /// **Get the weekly commit count**
   ///
   /// Returns the total commit counts for the `owner` and total commit counts in `all`. `all` is everyone combined, including the `owner` in the last 52 weeks. If you'd like to get the commit counts for non-owners, you can subtract `owner` from `all`.
-  /// 
+  ///
   /// The array order is oldest week (index 0) to most recent week.
-  /// 
+  ///
   /// The most recent week is seven days ago at UTC midnight to today at UTC midnight.
   ///
   /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count](https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count)
@@ -3303,7 +3332,7 @@ impl GitHubReposAPI {
   /// **Get all autolinks of a repository**
   ///
   /// Gets all autolinks that are configured for a repository.
-  /// 
+  ///
   /// Information about autolinks are only available to repository administrators.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository](https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository)
@@ -3343,15 +3372,15 @@ impl GitHubReposAPI {
   /// **Get community profile metrics**
   ///
   /// Returns all community profile metrics for a repository. The repository cannot be a fork.
-  /// 
+  ///
   /// The returned metrics include an overall health score, the repository description, the presence of documentation, the
   /// detected code of conduct, the detected license, and the presence of ISSUE\_TEMPLATE, PULL\_REQUEST\_TEMPLATE,
   /// README, and CONTRIBUTING files.
-  /// 
+  ///
   /// The `health_percentage` score is defined as a percentage of how many of
   /// the recommended community health files are present. For more information, see
   /// "[About community profiles for public repositories](https://docs.github.com/communities/setting-up-your-project-for-healthy-contributions/about-community-profiles-for-public-repositories)."
-  /// 
+  ///
   /// `content_reports_enabled` is only returned for organization-owned repositories.
   ///
   /// *Documentation*: [https://docs.github.com/rest/metrics/community#get-community-profile-metrics](https://docs.github.com/rest/metrics/community#get-community-profile-metrics)
@@ -3372,7 +3401,7 @@ impl GitHubReposAPI {
   /// **List GitHub Pages builds**
   ///
   /// Lists builts of a GitHub Pages site.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#list-apiname-pages-builds](https://docs.github.com/rest/pages/pages#list-apiname-pages-builds)
@@ -3393,7 +3422,7 @@ impl GitHubReposAPI {
   /// **Request a GitHub Pages build**
   ///
   /// You can request that your site be built from the latest revision on the default branch. This has the same effect as pushing a commit to your default branch, but does not require an additional commit. Manually triggering page builds can be helpful when diagnosing build warnings and failures.
-  /// 
+  ///
   /// Build requests are limited to one concurrent build per repository and one concurrent build per requester. If you request a build while another is still in progress, the second request will be queued until the first completes.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build](https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build)
@@ -3414,7 +3443,7 @@ impl GitHubReposAPI {
   /// **Get the latest release**
   ///
   /// View the latest published full release for the repository.
-  /// 
+  ///
   /// The latest release is the most recent non-prerelease, non-draft release, sorted by the `created_at` attribute. The `created_at` attribute is the date of the commit used for the release, and not the date when the release was drafted or published.
   ///
   /// *Documentation*: [https://docs.github.com/rest/releases/releases#get-the-latest-release](https://docs.github.com/rest/releases/releases#get-the-latest-release)
@@ -3491,7 +3520,7 @@ impl GitHubReposAPI {
   /// **List commit statuses for a reference**
   ///
   /// Users with pull access in a repository can view commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name. Statuses are returned in reverse chronological order. The first status in the list will be the latest one.
-  /// 
+  ///
   /// This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
   ///
   /// *Documentation*: [https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference](https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference)
@@ -3533,21 +3562,21 @@ impl GitHubReposAPI {
   /// **Get repository content**
   ///
   /// Gets the contents of a file or directory in a repository. Specify the file path or directory with the `path` parameter. If you omit the `path` parameter, you will receive the contents of the repository's root directory.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw file contents for files and symlinks.
   /// - **`application/vnd.github.html+json`**: Returns the file contents in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
   /// - **`application/vnd.github.object+json`**: Returns the contents in a consistent object format regardless of the content type. For example, instead of an array of objects for a directory, the response will be an object with an `entries` attribute containing the array of objects.
-  /// 
+  ///
   /// If the content is a directory, the response will be an array of objects, one object for each item in the directory. When listing the contents of a directory, submodules have their "type" specified as "file". Logically, the value _should_ be "submodule". This behavior exists [for backwards compatibility purposes](https://git.io/v1YCW). In the next major version of the API, the type will be returned as "submodule".
-  /// 
+  ///
   /// If the content is a symlink and the symlink's target is a normal file in the repository, then the API responds with the content of the file. Otherwise, the API responds with an object describing the symlink itself.
-  /// 
+  ///
   /// If the content is a submodule, the `submodule_git_url` field identifies the location of the submodule repository, and the `sha` identifies a specific commit within the submodule repository. Git uses the given URL when cloning the submodule repository, and checks out the submodule at that specific commit. If the submodule repository is not hosted on github.com, the Git URLs (`git_url` and `_links["git"]`) and the github.com URLs (`html_url` and `_links["html"]`) will have null values.
-  /// 
+  ///
   /// **Notes**:
-  /// 
+  ///
   /// - To get a repository's contents recursively, you can [recursively get the tree](https://docs.github.com/rest/git/trees#get-a-tree).
   /// - This API has an upper limit of 1,000 files for a directory. If you need to retrieve
   /// more files, use the [Git Trees API](https://docs.github.com/rest/git/trees#get-a-tree).
@@ -3578,9 +3607,9 @@ impl GitHubReposAPI {
   /// **Create or update file contents**
   ///
   /// Creates a new file or replaces an existing file in a repository.
-  /// 
+  ///
   /// **Note:** If you use this endpoint and the "[Delete a file](https://docs.github.com/rest/repos/contents/#delete-a-file)" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. The `workflow` scope is also required in order to modify files in the `.github/workflows` directory.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/contents#create-or-update-file-contents](https://docs.github.com/rest/repos/contents#create-or-update-file-contents)
@@ -3603,13 +3632,13 @@ impl GitHubReposAPI {
   /// **Delete a file**
   ///
   /// Deletes a file in a repository.
-  /// 
+  ///
   /// You can provide an additional `committer` parameter, which is an object containing information about the committer. Or, you can provide an `author` parameter, which is an object containing information about the author.
-  /// 
+  ///
   /// The `author` section is optional and is filled in with the `committer` information if omitted. If the `committer` information is omitted, the authenticated user's information is used.
-  /// 
+  ///
   /// You must provide values for both `name` and `email`, whether you choose to use `author` or `committer`. Otherwise, you'll receive a `422` status code.
-  /// 
+  ///
   /// **Note:** If you use this endpoint and the "[Create or update file contents](https://docs.github.com/rest/repos/contents/#create-or-update-file-contents)" endpoint in parallel, the concurrent requests will conflict and you will receive errors. You must use these endpoints serially instead.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/contents#delete-a-file](https://docs.github.com/rest/repos/contents#delete-a-file)
@@ -3632,7 +3661,7 @@ impl GitHubReposAPI {
   /// **List tag protection states for a repository**
   ///
   /// This returns the tag protection states of a repository.
-  /// 
+  ///
   /// This information is only available to repository administrators.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository](https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository)
@@ -3673,11 +3702,11 @@ impl GitHubReposAPI {
   /// **Get a DNS health check for GitHub Pages**
   ///
   /// Gets a health check of the DNS settings for the `CNAME` record configured for a repository's GitHub Pages.
-  /// 
+  ///
   /// The first request to this endpoint returns a `202 Accepted` status and starts an asynchronous background task to get the results for the domain. After the background task completes, subsequent requests to this endpoint return a `200 OK` status with the health check results in the response.
-  /// 
+  ///
   /// The authenticated user must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#get-a-dns-health-check-for-github-pages](https://docs.github.com/rest/pages/pages#get-a-dns-health-check-for-github-pages)
@@ -3698,10 +3727,10 @@ impl GitHubReposAPI {
   /// **Get the combined status for a specific reference**
   ///
   /// Users with pull access in a repository can access a combined view of commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name.
-  /// 
-  /// 
+  ///
+  ///
   /// Additionally, a combined `state` is returned. The `state` is one of:
-  /// 
+  ///
   /// *   **failure** if any of the contexts report as `error` or `failure`
   /// *   **pending** if there are no statuses or a context is `pending`
   /// *   **success** if the latest status for all contexts is `success`
@@ -3726,7 +3755,7 @@ impl GitHubReposAPI {
   /// **Get GitHub Pages build**
   ///
   /// Gets information about a GitHub Pages build.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/pages/pages#get-apiname-pages-build](https://docs.github.com/rest/pages/pages#get-apiname-pages-build)
@@ -3794,7 +3823,7 @@ impl GitHubReposAPI {
   /// **Create a deployment status**
   ///
   /// Users with `push` access can create deployment statuses for a given deployment.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo_deployment` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/statuses#create-a-deployment-status](https://docs.github.com/rest/deployments/statuses#create-a-deployment-status)
@@ -3836,9 +3865,9 @@ impl GitHubReposAPI {
   /// **Get a repository README for a directory**
   ///
   /// Gets the README from a repository directory.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type.
   /// - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
   ///
@@ -3862,9 +3891,9 @@ impl GitHubReposAPI {
   /// **Get a custom deployment protection rule**
   ///
   /// Gets an enabled custom deployment protection rule for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
-  /// 
+  ///
   /// For more information about the app that is providing this custom deployment rule, see [`GET /apps/{app_slug}`](https://docs.github.com/rest/apps/apps#get-an-app).
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule](https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule)
@@ -3889,9 +3918,9 @@ impl GitHubReposAPI {
   /// **Disable a custom protection rule for an environment**
   ///
   /// Disables a custom deployment protection rule for an environment.
-  /// 
+  ///
   /// The authenticated user must have admin or owner permissions to the repository to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment](https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment)
@@ -3927,7 +3956,8 @@ impl GitHubReposAPI {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews");
+    let url =
+      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews");
 
     Request::<(), (), ProtectedBranchPullRequestReview>::builder(&self.config)
       .get(url)
@@ -3937,9 +3967,9 @@ impl GitHubReposAPI {
   /// **Update pull request review protection**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Updating pull request review enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
-  /// 
+  ///
   /// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#update-pull-request-review-protection](https://docs.github.com/rest/branches/branch-protection#update-pull-request-review-protection)
@@ -3948,11 +3978,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposUpdatePullRequestReviewProtectionRequest, (), ProtectedBranchPullRequestReview> {
+  ) -> Request<ReposUpdatePullRequestReviewProtectionRequest, (), ProtectedBranchPullRequestReview>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews");
+    let url =
+      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews");
 
     Request::<ReposUpdatePullRequestReviewProtectionRequest, (), ProtectedBranchPullRequestReview>::builder(&self.config)
       .patch(url)
@@ -3973,7 +4005,8 @@ impl GitHubReposAPI {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews");
+    let url =
+      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews");
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
@@ -4022,9 +4055,9 @@ impl GitHubReposAPI {
   /// **Get a repository README**
   ///
   /// Gets the preferred README for a repository.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type.
   /// - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
   ///
@@ -4046,7 +4079,7 @@ impl GitHubReposAPI {
   /// **Get a repository**
   ///
   /// The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network.
-  /// 
+  ///
   /// **Note:** In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#get-a-repository](https://docs.github.com/rest/repos/repos#get-a-repository)
@@ -4086,10 +4119,10 @@ impl GitHubReposAPI {
   /// **Delete a repository**
   ///
   /// Deleting a repository requires admin access.
-  /// 
+  ///
   /// If an organization owner has configured the organization to prevent members from deleting organization-owned
   /// repositories, you will get a `403 Forbidden` response.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `delete_repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#delete-a-repository](https://docs.github.com/rest/repos/repos#delete-a-repository)
@@ -4172,9 +4205,9 @@ impl GitHubReposAPI {
   /// **Get all deployment protection rules for an environment**
   ///
   /// Gets all custom deployment protection rules that are enabled for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
-  /// 
+  ///
   /// For more information about the app that is providing this custom deployment rule, see the [documentation for the `GET /apps/{app_slug}` endpoint](https://docs.github.com/rest/apps/apps#get-an-app).
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment](https://docs.github.com/rest/deployments/protection-rules#get-all-deployment-protection-rules-for-an-environment)
@@ -4187,7 +4220,8 @@ impl GitHubReposAPI {
     let environment_name = environment_name.into();
     let repo = repo.into();
     let owner = owner.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules");
+    let url =
+      format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules");
 
     Request::<(), (), ReposGetAllDeploymentProtectionRulesResponse>::builder(&self.config)
       .get(url)
@@ -4197,11 +4231,11 @@ impl GitHubReposAPI {
   /// **Create a custom deployment protection rule on an environment**
   ///
   /// Enable a custom deployment protection rule for an environment.
-  /// 
+  ///
   /// The authenticated user must have admin or owner permissions to the repository to use this endpoint.
-  /// 
+  ///
   /// For more information about the app that is providing this custom deployment rule, see the [documentation for the `GET /apps/{app_slug}` endpoint](https://docs.github.com/rest/apps/apps#get-an-app).
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment](https://docs.github.com/rest/deployments/protection-rules#create-a-custom-deployment-protection-rule-on-an-environment)
@@ -4214,23 +4248,26 @@ impl GitHubReposAPI {
     let environment_name = environment_name.into();
     let repo = repo.into();
     let owner = owner.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules");
+    let url =
+      format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules");
 
-    Request::<ReposCreateDeploymentProtectionRuleRequest, (), DeploymentProtectionRule>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<ReposCreateDeploymentProtectionRuleRequest, (), DeploymentProtectionRule>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Get all contributor commit activity**
   ///
-  /// 
+  ///
   /// Returns the `total` number of commits authored by the contributor. In addition, the response includes a Weekly Hash (`weeks` array) with the following information:
-  /// 
+  ///
   /// *   `w` - Start of the week, given as a [Unix timestamp](https://en.wikipedia.org/wiki/Unix_time).
   /// *   `a` - Number of additions
   /// *   `d` - Number of deletions
   /// *   `c` - Number of commits
-  /// 
+  ///
   /// **Note:** This endpoint will return `0` values for all addition and deletion counts in repositories with 10,000 or more commits.
   ///
   /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity](https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity)
@@ -4307,14 +4344,14 @@ impl GitHubReposAPI {
   /// **Delete a deployment**
   ///
   /// If the repository only has one deployment, you can delete the deployment regardless of its status. If the repository has more than one deployment, you can only delete inactive deployments. This ensures that repositories with multiple deployments will always have an active deployment.
-  /// 
+  ///
   /// To set a deployment as inactive, you must:
-  /// 
+  ///
   /// *   Create a new deployment that is active so that the system has a record of the current state, then delete the previously active deployment.
   /// *   Mark the active deployment as inactive by adding any non-successful deployment status.
-  /// 
+  ///
   /// For more information, see "[Create a deployment](https://docs.github.com/rest/deployments/deployments/#create-a-deployment)" and "[Create a deployment status](https://docs.github.com/rest/deployments/statuses#create-a-deployment-status)."
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` or `repo_deployment` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/deployments/deployments#delete-a-deployment](https://docs.github.com/rest/deployments/deployments#delete-a-deployment)
@@ -4337,7 +4374,7 @@ impl GitHubReposAPI {
   /// **Get apps with access to the protected branch**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Lists the GitHub Apps that have push access to this branch. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch](https://docs.github.com/rest/branches/branch-protection#get-apps-with-access-to-the-protected-branch)
@@ -4360,7 +4397,7 @@ impl GitHubReposAPI {
   /// **Add app access restrictions**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Grants the specified apps push access for this branch. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#add-app-access-restrictions](https://docs.github.com/rest/branches/branch-protection#add-app-access-restrictions)
@@ -4383,7 +4420,7 @@ impl GitHubReposAPI {
   /// **Set app access restrictions**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Replaces the list of apps that have push access to this branch. This removes all apps that previously had push access and grants push access to the new list of apps. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#set-app-access-restrictions](https://docs.github.com/rest/branches/branch-protection#set-app-access-restrictions)
@@ -4406,7 +4443,7 @@ impl GitHubReposAPI {
   /// **Remove app access restrictions**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  /// 
+  ///
   /// Removes the ability of an app to push to this branch. Only GitHub Apps that are installed on the repository and that have been granted write access to the repository contents can be added as authorized actors on a protected branch.
   ///
   /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#remove-app-access-restrictions](https://docs.github.com/rest/branches/branch-protection#remove-app-access-restrictions)
@@ -4450,7 +4487,7 @@ impl GitHubReposAPI {
   ///
   /// Create new or update existing custom property values for a repository.
   /// Using a value of `null` for a custom property will remove or 'unset' the property value from the repository.
-  /// 
+  ///
   /// Repository admins and other users with the repository-level "edit custom property values" fine-grained permission can use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository](https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository)
@@ -4528,7 +4565,7 @@ impl GitHubReposAPI {
   /// **List repository contributors**
   ///
   /// Lists contributors to the specified repository and sorts them by the number of commits per contributor in descending order. This endpoint may return information that is a few hours old because the GitHub REST API caches contributor data to improve performance.
-  /// 
+  ///
   /// GitHub identifies contributors by author email address. This endpoint groups contribution counts by GitHub user, which includes all associated email addresses. To improve performance, only the first 500 author email addresses in the repository link to GitHub users. The rest will appear as anonymous contributors without associated GitHub user information.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-contributors](https://docs.github.com/rest/repos/repos#list-repository-contributors)
@@ -4549,7 +4586,7 @@ impl GitHubReposAPI {
   /// **Create a commit status**
   ///
   /// Users with push access in a repository can create commit statuses for a given SHA.
-  /// 
+  ///
   /// Note: there is a limit of 1000 statuses per `sha` and `context` within a repository. Attempts to create more than 1000 statuses will result in a validation error.
   ///
   /// *Documentation*: [https://docs.github.com/rest/commits/statuses#create-a-commit-status](https://docs.github.com/rest/commits/statuses#create-a-commit-status)
@@ -4568,6 +4605,4 @@ impl GitHubReposAPI {
       .post(url)
       .build()
   }
-
-
 }

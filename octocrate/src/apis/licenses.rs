@@ -1,6 +1,6 @@
-use octocrate_core::*;
 #[allow(unused_imports)]
 use crate::types::*;
+use octocrate_core::*;
 
 /// View various OSS licenses.
 pub struct GitHubLicensesAPI {
@@ -17,9 +17,9 @@ impl GitHubLicensesAPI {
   /// **Get the license for a repository**
   ///
   /// This method returns the contents of the repository's license file, if one is detected.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw contents of the license.
   /// - **`application/vnd.github.html+json`**: Returns the license contents in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
   ///
@@ -43,10 +43,7 @@ impl GitHubLicensesAPI {
   /// Gets information about a specific license. For more information, see "[Licensing a repository ](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
   ///
   /// *Documentation*: [https://docs.github.com/rest/licenses/licenses#get-a-license](https://docs.github.com/rest/licenses/licenses#get-a-license)
-  pub fn get(
-    &self,
-    license: impl Into<String>,
-  ) -> Request<(), (), License> {
+  pub fn get(&self, license: impl Into<String>) -> Request<(), (), License> {
     let license = license.into();
     let url = format!("/licenses/{license}");
 
@@ -69,6 +66,4 @@ impl GitHubLicensesAPI {
       .get(url)
       .build()
   }
-
-
 }

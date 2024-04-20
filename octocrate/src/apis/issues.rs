@@ -1,6 +1,6 @@
-use octocrate_core::*;
 #[allow(unused_imports)]
 use crate::types::*;
+use octocrate_core::*;
 
 /// Interact with GitHub Issues.
 pub struct GitHubIssuesAPI {
@@ -57,23 +57,21 @@ impl GitHubIssuesAPI {
   /// List issues assigned to the authenticated user across all visible repositories including owned repositories, member
   /// repositories, and organization repositories. You can use the `filter` query parameter to fetch issues that are not
   /// necessarily assigned to you.
-  /// 
+  ///
   /// **Note**: GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this
   /// reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
   /// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
   /// request id, use the "[List pull requests](https://docs.github.com/rest/pulls/pulls#list-pull-requests)" endpoint.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
   /// - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
   ///
   /// *Documentation*: [https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user](https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user)
-  pub fn list(
-    &self,
-  ) -> Request<(), IssuesListQuery, IssueArray> {
+  pub fn list(&self) -> Request<(), IssuesListQuery, IssueArray> {
     let url = format!("/issues");
 
     Request::<(), IssuesListQuery, IssueArray>::builder(&self.config)
@@ -128,9 +126,9 @@ impl GitHubIssuesAPI {
   /// **Check if a user can be assigned to a issue**
   ///
   /// Checks if a user has permission to be assigned to a specific issue.
-  /// 
+  ///
   /// If the `assignee` can be assigned to this issue, a `204` status code with no content is returned.
-  /// 
+  ///
   /// Otherwise a `404` status code is returned.
   ///
   /// *Documentation*: [https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue](https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned-to-a-issue)
@@ -155,11 +153,11 @@ impl GitHubIssuesAPI {
   /// **List issue comments for a repository**
   ///
   /// You can use the REST API to list comments on issues and pull requests for a repository. Every pull request is an issue, but not every issue is a pull request.
-  /// 
+  ///
   /// By default, issue comments are ordered by ascending ID.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -183,14 +181,14 @@ impl GitHubIssuesAPI {
   /// **List repository issues**
   ///
   /// List issues in a repository. Only open issues will be listed.
-  /// 
+  ///
   /// **Note**: GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this
   /// reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
   /// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
   /// request id, use the "[List pull requests](https://docs.github.com/rest/pulls/pulls#list-pull-requests)" endpoint.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -214,12 +212,12 @@ impl GitHubIssuesAPI {
   /// **Create an issue**
   ///
   /// Any user with pull access to a repository can create an issue. If [issues are disabled in the repository](https://docs.github.com/articles/disabling-issues/), the API returns a `410 Gone` status.
-  /// 
+  ///
   /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
   /// and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -284,7 +282,7 @@ impl GitHubIssuesAPI {
 
   /// **Add labels to an issue**
   ///
-  /// Adds labels to an issue. If you provide an empty array of labels, all labels are removed from the issue. 
+  /// Adds labels to an issue. If you provide an empty array of labels, all labels are removed from the issue.
   ///
   /// *Documentation*: [https://docs.github.com/rest/issues/labels#add-labels-to-an-issue](https://docs.github.com/rest/issues/labels#add-labels-to-an-issue)
   pub fn add_labels(
@@ -353,14 +351,14 @@ impl GitHubIssuesAPI {
   /// returns a `404 Not Found` status. If the issue was deleted from a repository where the authenticated user has read
   /// access, the API returns a `410 Gone` status. To receive webhook events for transferred and deleted issues, subscribe
   /// to the [`issues`](https://docs.github.com/webhooks/event-payloads/#issues) webhook.
-  /// 
+  ///
   /// **Note**: GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this
   /// reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
   /// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
   /// request id, use the "[List pull requests](https://docs.github.com/rest/pulls/pulls#list-pull-requests)" endpoint.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -386,9 +384,9 @@ impl GitHubIssuesAPI {
   /// **Update an issue**
   ///
   /// Issue owners and users with push access can edit an issue.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -414,9 +412,9 @@ impl GitHubIssuesAPI {
   /// **Get an issue comment**
   ///
   /// You can use the REST API to get comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -442,9 +440,9 @@ impl GitHubIssuesAPI {
   /// **Update an issue comment**
   ///
   /// You can use the REST API to update comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -491,14 +489,14 @@ impl GitHubIssuesAPI {
   /// **List organization issues assigned to the authenticated user**
   ///
   /// List issues in an organization assigned to the authenticated user.
-  /// 
+  ///
   /// **Note**: GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this
   /// reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
   /// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
   /// request id, use the "[List pull requests](https://docs.github.com/rest/pulls/pulls#list-pull-requests)" endpoint.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -520,14 +518,14 @@ impl GitHubIssuesAPI {
   /// **List user account issues assigned to the authenticated user**
   ///
   /// List issues across owned and member repositories assigned to the authenticated user.
-  /// 
+  ///
   /// **Note**: GitHub's REST API considers every pull request an issue, but not every issue is a pull request. For this
   /// reason, "Issues" endpoints may return both issues and pull requests in the response. You can identify pull requests by
   /// the `pull_request` key. Be aware that the `id` of a pull request returned from "Issues" endpoints will be an _issue id_. To find out the pull
   /// request id, use the "[List pull requests](https://docs.github.com/rest/pulls/pulls#list-pull-requests)" endpoint.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -547,7 +545,7 @@ impl GitHubIssuesAPI {
   /// **Lock an issue**
   ///
   /// Users with push access can lock an issue or pull request's conversation.
-  /// 
+  ///
   /// Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
   ///
   /// *Documentation*: [https://docs.github.com/rest/issues/issues#lock-an-issue](https://docs.github.com/rest/issues/issues#lock-an-issue)
@@ -591,11 +589,11 @@ impl GitHubIssuesAPI {
   /// **List issue comments**
   ///
   /// You can use the REST API to list comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
-  /// 
+  ///
   /// Issue comments are ordered by ascending ID.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -621,14 +619,14 @@ impl GitHubIssuesAPI {
   /// **Create an issue comment**
   ///
   /// You can use the REST API to create comments on issues and pull requests. Every pull request is an issue, but not every issue is a pull request.
-  /// 
+  ///
   /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications).
   /// Creating content too quickly using this endpoint may result in secondary rate limiting.
   /// For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
   /// and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
   /// - **`application/vnd.github.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
@@ -694,9 +692,9 @@ impl GitHubIssuesAPI {
   /// **Check if a user can be assigned**
   ///
   /// Checks if a user has permission to be assigned to an issue in this repository.
-  /// 
+  ///
   /// If the `assignee` can be assigned to issues in the repository, a `204` header with no content is returned.
-  /// 
+  ///
   /// Otherwise a `404` status code is returned.
   ///
   /// *Documentation*: [https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned](https://docs.github.com/rest/issues/assignees#check-if-a-user-can-be-assigned)
@@ -960,6 +958,4 @@ impl GitHubIssuesAPI {
       .delete(url)
       .build()
   }
-
-
 }

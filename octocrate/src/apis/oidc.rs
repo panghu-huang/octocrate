@@ -1,6 +1,6 @@
-use octocrate_core::*;
 #[allow(unused_imports)]
 use crate::types::*;
+use octocrate_core::*;
 
 /// Endpoints to manage GitHub OIDC configuration using the REST API.
 pub struct GitHubOidcAPI {
@@ -17,7 +17,7 @@ impl GitHubOidcAPI {
   /// **Get the customization template for an OIDC subject claim for an organization**
   ///
   /// Gets the customization template for an OpenID Connect (OIDC) subject claim.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization](https://docs.github.com/rest/actions/oidc#get-the-customization-template-for-an-oidc-subject-claim-for-an-organization)
@@ -36,7 +36,7 @@ impl GitHubOidcAPI {
   /// **Set the customization template for an OIDC subject claim for an organization**
   ///
   /// Creates or updates the customization template for an OpenID Connect (OIDC) subject claim.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization](https://docs.github.com/rest/actions/oidc#set-the-customization-template-for-an-oidc-subject-claim-for-an-organization)
@@ -51,6 +51,4 @@ impl GitHubOidcAPI {
       .put(url)
       .build()
   }
-
-
 }

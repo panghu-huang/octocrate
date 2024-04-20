@@ -1,6 +1,6 @@
-use octocrate_core::*;
 #[allow(unused_imports)]
 use crate::types::*;
+use octocrate_core::*;
 
 /// View, modify your gists.
 pub struct GitHubGistsAPI {
@@ -17,9 +17,9 @@ impl GitHubGistsAPI {
   /// **Get a gist revision**
   ///
   /// Gets a specified gist revision.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
   ///
@@ -42,10 +42,7 @@ impl GitHubGistsAPI {
   ///
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred](https://docs.github.com/rest/gists/gists#check-if-a-gist-is-starred)
-  pub fn check_is_starred(
-    &self,
-    gist_id: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn check_is_starred(&self, gist_id: impl Into<String>) -> NoContentRequest<(), ()> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/star");
 
@@ -59,10 +56,7 @@ impl GitHubGistsAPI {
   /// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#star-a-gist](https://docs.github.com/rest/gists/gists#star-a-gist)
-  pub fn star(
-    &self,
-    gist_id: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn star(&self, gist_id: impl Into<String>) -> NoContentRequest<(), ()> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/star");
 
@@ -75,10 +69,7 @@ impl GitHubGistsAPI {
   ///
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#unstar-a-gist](https://docs.github.com/rest/gists/gists#unstar-a-gist)
-  pub fn unstar(
-    &self,
-    gist_id: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn unstar(&self, gist_id: impl Into<String>) -> NoContentRequest<(), ()> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/star");
 
@@ -90,9 +81,9 @@ impl GitHubGistsAPI {
   /// **List gist comments**
   ///
   /// Lists the comments on a gist.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
   ///
@@ -112,9 +103,9 @@ impl GitHubGistsAPI {
   /// **Create a gist comment**
   ///
   /// Creates a comment on a gist.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
   ///
@@ -153,9 +144,7 @@ impl GitHubGistsAPI {
   /// List the authenticated user's starred gists:
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-starred-gists](https://docs.github.com/rest/gists/gists#list-starred-gists)
-  pub fn list_starred(
-    &self,
-  ) -> Request<(), GistsListStarredQuery, BaseGistArray> {
+  pub fn list_starred(&self) -> Request<(), GistsListStarredQuery, BaseGistArray> {
     let url = format!("/gists/starred");
 
     Request::<(), GistsListStarredQuery, BaseGistArray>::builder(&self.config)
@@ -168,9 +157,7 @@ impl GitHubGistsAPI {
   /// Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user](https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user)
-  pub fn list(
-    &self,
-  ) -> Request<(), GistsListQuery, BaseGistArray> {
+  pub fn list(&self) -> Request<(), GistsListQuery, BaseGistArray> {
     let url = format!("/gists");
 
     Request::<(), GistsListQuery, BaseGistArray>::builder(&self.config)
@@ -181,13 +168,11 @@ impl GitHubGistsAPI {
   /// **Create a gist**
   ///
   /// Allows you to add a new gist with one or more files.
-  /// 
+  ///
   /// **Note:** Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally.
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#create-a-gist](https://docs.github.com/rest/gists/gists#create-a-gist)
-  pub fn create(
-    &self,
-  ) -> Request<GistsCreateRequest, (), GistSimple> {
+  pub fn create(&self) -> Request<GistsCreateRequest, (), GistSimple> {
     let url = format!("/gists");
 
     Request::<GistsCreateRequest, (), GistSimple>::builder(&self.config)
@@ -231,10 +216,7 @@ impl GitHubGistsAPI {
   ///
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#fork-a-gist](https://docs.github.com/rest/gists/gists#fork-a-gist)
-  pub fn fork(
-    &self,
-    gist_id: impl Into<String>,
-  ) -> Request<(), (), BaseGist> {
+  pub fn fork(&self, gist_id: impl Into<String>) -> Request<(), (), BaseGist> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/forks");
 
@@ -246,13 +228,11 @@ impl GitHubGistsAPI {
   /// **List public gists**
   ///
   /// List public gists sorted by most recently updated to least recently updated.
-  /// 
+  ///
   /// Note: With [pagination](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-public-gists](https://docs.github.com/rest/gists/gists#list-public-gists)
-  pub fn list_public(
-    &self,
-  ) -> Request<(), GistsListPublicQuery, BaseGistArray> {
+  pub fn list_public(&self) -> Request<(), GistsListPublicQuery, BaseGistArray> {
     let url = format!("/gists/public");
 
     Request::<(), GistsListPublicQuery, BaseGistArray>::builder(&self.config)
@@ -263,9 +243,9 @@ impl GitHubGistsAPI {
   /// **Get a gist comment**
   ///
   /// Gets a comment on a gist.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
   ///
@@ -287,9 +267,9 @@ impl GitHubGistsAPI {
   /// **Update a gist comment**
   ///
   /// Updates a comment on a gist.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
   ///
@@ -329,17 +309,14 @@ impl GitHubGistsAPI {
   /// **Get a gist**
   ///
   /// Gets a specified gist.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#get-a-gist](https://docs.github.com/rest/gists/gists#get-a-gist)
-  pub fn get(
-    &self,
-    gist_id: impl Into<String>,
-  ) -> Request<(), (), GistSimple> {
+  pub fn get(&self, gist_id: impl Into<String>) -> Request<(), (), GistSimple> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}");
 
@@ -353,19 +330,16 @@ impl GitHubGistsAPI {
   /// Allows you to update a gist's description and to update, delete, or rename gist files. Files
   /// from the previous version of the gist that aren't explicitly changed during an edit
   /// are unchanged.
-  /// 
+  ///
   /// At least one of `description` or `files` is required.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
   /// - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#update-a-gist](https://docs.github.com/rest/gists/gists#update-a-gist)
-  pub fn update(
-    &self,
-    gist_id: impl Into<String>,
-  ) -> Request<GistsUpdateRequest, (), GistSimple> {
+  pub fn update(&self, gist_id: impl Into<String>) -> Request<GistsUpdateRequest, (), GistSimple> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}");
 
@@ -378,10 +352,7 @@ impl GitHubGistsAPI {
   ///
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#delete-a-gist](https://docs.github.com/rest/gists/gists#delete-a-gist)
-  pub fn delete(
-    &self,
-    gist_id: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn delete(&self, gist_id: impl Into<String>) -> NoContentRequest<(), ()> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}");
 
@@ -389,6 +360,4 @@ impl GitHubGistsAPI {
       .delete(url)
       .build()
   }
-
-
 }

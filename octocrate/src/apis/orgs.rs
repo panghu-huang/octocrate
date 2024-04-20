@@ -1,6 +1,6 @@
-use octocrate_core::*;
 #[allow(unused_imports)]
 use crate::types::*;
+use octocrate_core::*;
 
 /// Interact with GitHub Orgs.
 pub struct GitHubOrgsAPI {
@@ -35,10 +35,10 @@ impl GitHubOrgsAPI {
   ///
   /// This will trigger a [ping event](https://docs.github.com/webhooks/#ping-event)
   /// to be sent to the hook.
-  /// 
-  /// You must be an organization owner to use this endpoint. 
-  /// 
-  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit 
+  ///
+  /// You must be an organization owner to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit
   /// webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/webhooks#ping-an-organization-webhook](https://docs.github.com/rest/orgs/webhooks#ping-an-organization-webhook)
@@ -65,14 +65,22 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<OrgsConvertMemberToOutsideCollaboratorRequest, (), OrgsConvertMemberToOutsideCollaboratorResponse> {
+  ) -> Request<
+    OrgsConvertMemberToOutsideCollaboratorRequest,
+    (),
+    OrgsConvertMemberToOutsideCollaboratorResponse,
+  > {
     let org = org.into();
     let username = username.into();
     let url = format!("/orgs/{org}/outside_collaborators/{username}");
 
-    Request::<OrgsConvertMemberToOutsideCollaboratorRequest, (), OrgsConvertMemberToOutsideCollaboratorResponse>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<
+      OrgsConvertMemberToOutsideCollaboratorRequest,
+      (),
+      OrgsConvertMemberToOutsideCollaboratorResponse,
+    >::builder(&self.config)
+    .put(url)
+    .build()
   }
 
   /// **Remove outside collaborator from an organization**
@@ -114,7 +122,7 @@ impl GitHubOrgsAPI {
   /// **List fine-grained personal access tokens with access to organization resources**
   ///
   /// Lists approved fine-grained personal access tokens owned by organization members that can access organization resources.
-  /// 
+  ///
   /// Only GitHub Apps can use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources](https://docs.github.com/rest/orgs/personal-access-tokens#list-fine-grained-personal-access-tokens-with-access-to-organization-resources)
@@ -125,15 +133,17 @@ impl GitHubOrgsAPI {
     let org = org.into();
     let url = format!("/orgs/{org}/personal-access-tokens");
 
-    Request::<(), OrgsListPatGrantsQuery, OrganizationProgrammaticAccessGrantArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), OrgsListPatGrantsQuery, OrganizationProgrammaticAccessGrantArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Update the access to organization resources via fine-grained personal access tokens**
   ///
   /// Updates the access organization members have to organization resources via fine-grained personal access tokens. Limited to revoking a token's existing access.
-  /// 
+  ///
   /// Only GitHub Apps can use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens](https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-to-organization-resources-via-fine-grained-personal-access-tokens)
@@ -152,10 +162,10 @@ impl GitHubOrgsAPI {
   /// **Redeliver a delivery for an organization webhook**
   ///
   /// Redeliver a delivery for a webhook configured in an organization.
-  /// 
-  /// You must be an organization owner to use this endpoint. 
-  /// 
-  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit 
+  ///
+  /// You must be an organization owner to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit
   /// webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook](https://docs.github.com/rest/orgs/webhooks#redeliver-a-delivery-for-an-organization-webhook)
@@ -187,15 +197,17 @@ impl GitHubOrgsAPI {
     let org = org.into();
     let url = format!("/orgs/{org}/invitations");
 
-    Request::<(), OrgsListPendingInvitationsQuery, OrganizationInvitationArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), OrgsListPendingInvitationsQuery, OrganizationInvitationArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Create an organization invitation**
   ///
   /// Invite people to an organization by using their GitHub user ID or their email address. In order to create invitations in an organization, the authenticated user must be an organization owner.
-  /// 
+  ///
   /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)"
   /// and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
   ///
@@ -215,7 +227,7 @@ impl GitHubOrgsAPI {
   /// **List organizations for the authenticated user**
   ///
   /// List organizations for the authenticated user.
-  /// 
+  ///
   /// For OAuth app tokens and personal access tokens (classic), this endpoint only lists organizations that your authorization allows you to operate on in some way (e.g., you can list teams with `read:org` scope, you can publicize your organization membership with `user` scope, etc.). Therefore, this API requires at least `user` or `read:org` scope for OAuth app tokens and personal access tokens (classic). Requests with insufficient scope will receive a `403 Forbidden` response.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user](https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user)
@@ -232,10 +244,10 @@ impl GitHubOrgsAPI {
   /// **List deliveries for an organization webhook**
   ///
   /// Returns a list of webhook deliveries for a webhook configured in an organization.
-  /// 
-  /// You must be an organization owner to use this endpoint. 
-  /// 
-  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit 
+  ///
+  /// You must be an organization owner to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit
   /// webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook](https://docs.github.com/rest/orgs/webhooks#list-deliveries-for-an-organization-webhook)
@@ -275,13 +287,13 @@ impl GitHubOrgsAPI {
   /// **Set organization membership for a user**
   ///
   /// Only authenticated organization owners can add a member to the organization or update the member's role.
-  /// 
+  ///
   /// *   If the authenticated user is _adding_ a member to the organization, the invited user will receive an email inviting them to the organization. The user's [membership status](https://docs.github.com/rest/orgs/members#get-organization-membership-for-a-user) will be `pending` until they accept the invitation.
   ///     
   /// *   Authenticated users can _update_ a user's membership by passing the `role` parameter. If the authenticated user changes a member's role to `admin`, the affected user will receive an email notifying them that they've been made an organization owner. If the authenticated user changes an owner's role to `member`, no email will be sent.
-  /// 
+  ///
   /// **Rate limits**
-  /// 
+  ///
   /// To prevent abuse, the authenticated user is limited to 50 organization invitations per 24 hour period. If the organization is more than one month old or on a paid plan, the limit is 500 invitations per 24 hour period.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/members#set-organization-membership-for-a-user](https://docs.github.com/rest/orgs/members#set-organization-membership-for-a-user)
@@ -302,7 +314,7 @@ impl GitHubOrgsAPI {
   /// **Remove organization membership for a user**
   ///
   /// In order to remove a user's membership with an organization, the authenticated user must be an organization owner.
-  /// 
+  ///
   /// If the specified user is an active member of the organization, this will remove them from the organization. If the specified user has been invited to the organization, this will cancel their invitation. The specified user will receive an email notification in both cases.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/members#remove-organization-membership-for-a-user](https://docs.github.com/rest/orgs/members#remove-organization-membership-for-a-user)
@@ -340,9 +352,9 @@ impl GitHubOrgsAPI {
   /// **Remove all organization roles for a team**
   ///
   /// Removes all assigned organization roles from a team. For more information on organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// The authenticated user must be an administrator for the organization to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-team](https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-team)
@@ -363,7 +375,7 @@ impl GitHubOrgsAPI {
   /// **Cancel an organization invitation**
   ///
   /// Cancel an organization invitation. In order to cancel an organization invitation, the authenticated user must be an organization owner.
-  /// 
+  ///
   /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications).
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/members#cancel-an-organization-invitation](https://docs.github.com/rest/orgs/members#cancel-an-organization-invitation)
@@ -390,24 +402,32 @@ impl GitHubOrgsAPI {
   pub fn list_custom_properties_values_for_repos(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListCustomPropertiesValuesForReposQuery, OrganizationRepositoryCustomPropertyValuesArray> {
+  ) -> Request<
+    (),
+    OrgsListCustomPropertiesValuesForReposQuery,
+    OrganizationRepositoryCustomPropertyValuesArray,
+  > {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/values");
 
-    Request::<(), OrgsListCustomPropertiesValuesForReposQuery, OrganizationRepositoryCustomPropertyValuesArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      OrgsListCustomPropertiesValuesForReposQuery,
+      OrganizationRepositoryCustomPropertyValuesArray,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **Create or update custom property values for organization repositories**
   ///
   /// Create new or update existing custom property values for repositories in a batch that belong to an organization.
   /// Each target repository will have its custom property values updated to match the values provided in the request.
-  /// 
+  ///
   /// A maximum of 30 repositories can be updated in a single request.
-  /// 
+  ///
   /// Using a value of `null` for a custom property will remove or 'unset' the property value from the repository.
-  /// 
+  ///
   /// To use this endpoint, the authenticated user must be one of:
   ///   - An administrator for the organization.
   ///   - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_values_editor` in the organization.
@@ -420,17 +440,19 @@ impl GitHubOrgsAPI {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/values");
 
-    NoContentRequest::<OrgsCreateOrUpdateCustomPropertiesValuesForReposRequest, ()>::builder(&self.config)
-      .patch(url)
-      .build()
+    NoContentRequest::<OrgsCreateOrUpdateCustomPropertiesValuesForReposRequest, ()>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
   }
 
   /// **List security manager teams**
   ///
   /// Lists teams that are security managers for an organization. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
-  /// 
+  ///
   /// The authenticated user must be an administrator or security manager for the organization to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `read:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/security-managers#list-security-manager-teams](https://docs.github.com/rest/orgs/security-managers#list-security-manager-teams)
@@ -449,10 +471,10 @@ impl GitHubOrgsAPI {
   /// **Get a webhook delivery for an organization webhook**
   ///
   /// Returns a delivery for a webhook configured in an organization.
-  /// 
-  /// You must be an organization owner to use this endpoint. 
-  /// 
-  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit 
+  ///
+  /// You must be an organization owner to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit
   /// webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook](https://docs.github.com/rest/orgs/webhooks#get-a-webhook-delivery-for-an-organization-webhook)
@@ -475,14 +497,14 @@ impl GitHubOrgsAPI {
   /// **List organization fine-grained permissions for an organization**
   ///
   /// Lists the fine-grained permissions that can be used in custom organization roles for an organization. For more information, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// To list the fine-grained permissions that can be used in custom repository roles for an organization, see "[List repository fine-grained permissions for an organization](https://docs.github.com/rest/orgs/organization-roles#list-repository-fine-grained-permissions-for-an-organization)."
-  /// 
+  ///
   /// To use this endpoint, the authenticated user must be one of:
-  /// 
+  ///
   /// - An administrator for the organization.
   /// - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization](https://docs.github.com/rest/orgs/organization-roles#list-organization-fine-grained-permissions-for-an-organization)
@@ -501,9 +523,9 @@ impl GitHubOrgsAPI {
   /// **List users that are assigned to an organization role**
   ///
   /// Lists organization members that are assigned to an organization role. For more information on organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// To use this endpoint, you must be an administrator for the organization.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role](https://docs.github.com/rest/orgs/organization-roles#list-users-that-are-assigned-to-an-organization-role)
@@ -524,11 +546,11 @@ impl GitHubOrgsAPI {
   /// **Get an organization webhook**
   ///
   /// Returns a webhook configured in an organization. To get only the webhook
-  /// `config` properties, see "[Get a webhook configuration for an organization](/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization). 
-  /// 
-  /// You must be an organization owner to use this endpoint. 
-  /// 
-  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit 
+  /// `config` properties, see "[Get a webhook configuration for an organization](/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization).
+  ///
+  /// You must be an organization owner to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit
   /// webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/webhooks#get-an-organization-webhook](https://docs.github.com/rest/orgs/webhooks#get-an-organization-webhook)
@@ -552,11 +574,11 @@ impl GitHubOrgsAPI {
   /// the `secret` will be overwritten. If you previously had a `secret` set, you must
   /// provide the same `secret` or set a new `secret` or the secret will be removed. If
   /// you are only updating individual webhook `config` properties, use "[Update a webhook
-  /// configuration for an organization](/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization)". 
-  /// 
-  /// You must be an organization owner to use this endpoint. 
-  /// 
-  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit 
+  /// configuration for an organization](/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization)".
+  ///
+  /// You must be an organization owner to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit
   /// webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/webhooks#update-an-organization-webhook](https://docs.github.com/rest/orgs/webhooks#update-an-organization-webhook)
@@ -576,9 +598,9 @@ impl GitHubOrgsAPI {
 
   /// **Delete an organization webhook**
   ///
-  /// You must be an organization owner to use this endpoint. 
-  /// 
-  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit 
+  /// You must be an organization owner to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit
   /// webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/webhooks#delete-an-organization-webhook](https://docs.github.com/rest/orgs/webhooks#delete-an-organization-webhook)
@@ -599,7 +621,7 @@ impl GitHubOrgsAPI {
   /// **List repositories requested to be accessed by a fine-grained personal access token**
   ///
   /// Lists the repositories a fine-grained personal access token request is requesting access to.
-  /// 
+  ///
   /// Only GitHub Apps can use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token](https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-requested-to-be-accessed-by-a-fine-grained-personal-access-token)
@@ -612,20 +634,22 @@ impl GitHubOrgsAPI {
     let pat_request_id = pat_request_id.into();
     let url = format!("/orgs/{org}/personal-access-token-requests/{pat_request_id}/repositories");
 
-    Request::<(), OrgsListPatGrantRequestRepositoriesQuery, MinimalRepositoryArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), OrgsListPatGrantRequestRepositoriesQuery, MinimalRepositoryArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get an organization role**
   ///
   /// Gets an organization role that is available to this organization. For more information on organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// To use this endpoint, the authenticated user must be one of:
-  /// 
+  ///
   /// - An administrator for the organization.
   /// - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#get-an-organization-role](https://docs.github.com/rest/orgs/organization-roles#get-an-organization-role)
@@ -646,13 +670,13 @@ impl GitHubOrgsAPI {
   /// **Update a custom organization role**
   ///
   /// Updates an existing custom organization role. Permission changes will apply to all assignees. For more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
-  /// 
+  ///
+  ///
   /// To use this endpoint, the authenticated user must be one of:
-  /// 
+  ///
   /// - An administrator for the organization.
   /// - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#update-a-custom-organization-role](https://docs.github.com/rest/orgs/organization-roles#update-a-custom-organization-role)
@@ -673,12 +697,12 @@ impl GitHubOrgsAPI {
   /// **Delete a custom organization role.**
   ///
   /// Deletes a custom organization role. For more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// To use this endpoint, the authenticated user must be one of:
-  /// 
+  ///
   /// - An administrator for the organization.
   /// - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#delete-a-custom-organization-role](https://docs.github.com/rest/orgs/organization-roles#delete-a-custom-organization-role)
@@ -756,9 +780,9 @@ impl GitHubOrgsAPI {
   /// **Add a security manager team**
   ///
   /// Adds a team as a security manager for an organization. For more information, see "[Managing security for an organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization) for an organization."
-  /// 
+  ///
   /// The authenticated user must be an administrator for the organization to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/security-managers#add-a-security-manager-team](https://docs.github.com/rest/orgs/security-managers#add-a-security-manager-team)
@@ -779,9 +803,9 @@ impl GitHubOrgsAPI {
   /// **Remove a security manager team**
   ///
   /// Removes the security manager role from a team for an organization. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization) team from an organization."
-  /// 
+  ///
   /// The authenticated user must be an administrator for the organization to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/security-managers#remove-a-security-manager-team](https://docs.github.com/rest/orgs/security-managers#remove-a-security-manager-team)
@@ -803,9 +827,9 @@ impl GitHubOrgsAPI {
   ///
   /// Lists all GitHub Apps in an organization. The installation count includes
   /// all GitHub Apps installed on repositories in the organization.
-  /// 
+  ///
   /// The authenticated user must be an organization owner to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:read` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#list-app-installations-for-an-organization](https://docs.github.com/rest/orgs/orgs#list-app-installations-for-an-organization)
@@ -816,17 +840,19 @@ impl GitHubOrgsAPI {
     let org = org.into();
     let url = format!("/orgs/{org}/installations");
 
-    Request::<(), OrgsListAppInstallationsQuery, OrgsListAppInstallationsResponse>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), OrgsListAppInstallationsQuery, OrgsListAppInstallationsResponse>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Remove all organization roles for a user**
   ///
   /// Revokes all assigned organization roles from a user. For more information on organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// The authenticated user must be an administrator for the organization to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-user](https://docs.github.com/rest/orgs/organization-roles#remove-all-organization-roles-for-a-user)
@@ -847,9 +873,9 @@ impl GitHubOrgsAPI {
   /// **Assign an organization role to a user**
   ///
   /// Assigns an organization role to a member of an organization. For more information on organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// The authenticated user must be an administrator for the organization to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-user](https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-user)
@@ -872,9 +898,9 @@ impl GitHubOrgsAPI {
   /// **Remove an organization role from a user**
   ///
   /// Remove an organization role from a user. For more information on organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// The authenticated user must be an administrator for the organization to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-user](https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-user)
@@ -923,9 +949,11 @@ impl GitHubOrgsAPI {
     let org = org.into();
     let url = format!("/user/memberships/orgs/{org}");
 
-    Request::<OrgsUpdateMembershipForAuthenticatedUserRequest, (), OrgMembership>::builder(&self.config)
-      .patch(url)
-      .build()
+    Request::<OrgsUpdateMembershipForAuthenticatedUserRequest, (), OrgMembership>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
   }
 
   /// **List outside collaborators for an organization**
@@ -955,18 +983,20 @@ impl GitHubOrgsAPI {
   ) -> Request<(), OrgsListMembershipsForAuthenticatedUserQuery, OrgMembershipArray> {
     let url = format!("/user/memberships/orgs");
 
-    Request::<(), OrgsListMembershipsForAuthenticatedUserQuery, OrgMembershipArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), OrgsListMembershipsForAuthenticatedUserQuery, OrgMembershipArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get a webhook configuration for an organization**
   ///
   /// Returns the webhook configuration for an organization. To get more information about the webhook, including the `active` state and `events`, use "[Get an organization webhook ](/rest/orgs/webhooks#get-an-organization-webhook)."
-  /// 
-  /// You must be an organization owner to use this endpoint. 
-  /// 
-  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit 
+  ///
+  /// You must be an organization owner to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit
   /// webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization](https://docs.github.com/rest/orgs/webhooks#get-a-webhook-configuration-for-an-organization)
@@ -987,10 +1017,10 @@ impl GitHubOrgsAPI {
   /// **Update a webhook configuration for an organization**
   ///
   /// Updates the webhook configuration for an organization. To update more information about the webhook, including the `active` state and `events`, use "[Update an organization webhook ](/rest/orgs/webhooks#update-an-organization-webhook)."
-  /// 
-  /// You must be an organization owner to use this endpoint. 
-  /// 
-  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit 
+  ///
+  /// You must be an organization owner to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit
   /// webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization](https://docs.github.com/rest/orgs/webhooks#update-a-webhook-configuration-for-an-organization)
@@ -1011,12 +1041,12 @@ impl GitHubOrgsAPI {
   /// **Get all organization roles for an organization**
   ///
   /// Lists the organization roles available in this organization. For more information on organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// To use this endpoint, the authenticated user must be one of:
-  /// 
+  ///
   /// - An administrator for the organization.
   /// - A user, or a user on a team, with the fine-grained permissions of `read_organization_custom_org_role` in the organization.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#get-all-organization-roles-for-an-organization](https://docs.github.com/rest/orgs/organization-roles#get-all-organization-roles-for-an-organization)
@@ -1035,12 +1065,12 @@ impl GitHubOrgsAPI {
   /// **Create a custom organization role**
   ///
   /// Creates a custom organization role that can be assigned to users and teams, granting them specific permissions over the organization. For more information on custom organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// To use this endpoint, the authenticated user must be one of:
-  /// 
+  ///
   /// - An administrator for the organization.
   /// - A user, or a user on a team, with the fine-grained permissions of `write_organization_custom_org_role` in the organization.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#create-a-custom-organization-role](https://docs.github.com/rest/orgs/organization-roles#create-a-custom-organization-role)
@@ -1059,16 +1089,18 @@ impl GitHubOrgsAPI {
   /// **Enable or disable a security feature for an organization**
   ///
   /// Enables or disables the specified security feature for all eligible repositories in an organization. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
-  /// 
+  ///
   /// The authenticated user must be an organization owner or be member of a team with the security manager role to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `write:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#enable-or-disable-a-security-feature-for-an-organization](https://docs.github.com/rest/orgs/orgs#enable-or-disable-a-security-feature-for-an-organization)
   pub fn enable_or_disable_security_product_on_all_org_repos(
     &self,
     org: impl Into<String>,
-    security_product: impl Into<OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersSecurityProduct>,
+    security_product: impl Into<
+      OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersSecurityProduct,
+    >,
     enablement: impl Into<OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersEnablement>,
   ) -> NoContentRequest<OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest, ()> {
     let org = org.into();
@@ -1078,9 +1110,11 @@ impl GitHubOrgsAPI {
     let enablement = enablement.to_string();
     let url = format!("/orgs/{org}/{security_product}/{enablement}");
 
-    NoContentRequest::<OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest, ()>::builder(&self.config)
-      .post(url)
-      .build()
+    NoContentRequest::<OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest, ()>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Check organization membership for a user**
@@ -1124,7 +1158,7 @@ impl GitHubOrgsAPI {
   /// **Update the access a fine-grained personal access token has to organization resources**
   ///
   /// Updates the access an organization member has to organization resources via a fine-grained personal access token. Limited to revoking the token's existing access. Limited to revoking a token's existing access.
-  /// 
+  ///
   /// Only GitHub Apps can use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-a-fine-grained-personal-access-token-has-to-organization-resources](https://docs.github.com/rest/orgs/personal-access-tokens#update-the-access-a-fine-grained-personal-access-token-has-to-organization-resources)
@@ -1145,9 +1179,9 @@ impl GitHubOrgsAPI {
   /// **List teams that are assigned to an organization role**
   ///
   /// Lists the teams that are assigned to an organization role. For more information on organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// To use this endpoint, you must be an administrator for the organization.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role](https://docs.github.com/rest/orgs/organization-roles#list-teams-that-are-assigned-to-an-organization-role)
@@ -1186,7 +1220,7 @@ impl GitHubOrgsAPI {
   /// **Create or update custom properties for an organization**
   ///
   /// Creates new or updates existing custom properties defined for an organization in a batch.
-  /// 
+  ///
   /// To use this endpoint, the authenticated user must be one of:
   ///   - An administrator for the organization.
   ///   - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_definitions_manager` in the organization.
@@ -1216,17 +1250,19 @@ impl GitHubOrgsAPI {
     let org = org.into();
     let url = format!("/orgs/{org}/failed_invitations");
 
-    Request::<(), OrgsListFailedInvitationsQuery, OrganizationInvitationArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), OrgsListFailedInvitationsQuery, OrganizationInvitationArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Assign an organization role to a team**
   ///
   /// Assigns an organization role to a team in an organization. For more information on organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// The authenticated user must be an administrator for the organization to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-team](https://docs.github.com/rest/orgs/organization-roles#assign-an-organization-role-to-a-team)
@@ -1249,9 +1285,9 @@ impl GitHubOrgsAPI {
   /// **Remove an organization role from a team**
   ///
   /// Removes an organization role from a team. For more information on organization roles, see "[Managing people's access to your organization with roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/about-custom-organization-roles)."
-  /// 
+  ///
   /// The authenticated user must be an administrator for the organization to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-team](https://docs.github.com/rest/orgs/organization-roles#remove-an-organization-role-from-a-team)
@@ -1274,7 +1310,7 @@ impl GitHubOrgsAPI {
   /// **List organizations for a user**
   ///
   /// List [public organization memberships](https://docs.github.com/articles/publicizing-or-concealing-organization-membership) for the specified user.
-  /// 
+  ///
   /// This method only lists _public_ memberships, regardless of authentication. If you need to fetch all of the organization memberships (public and private) for the authenticated user, use the [List organizations for the authenticated user](https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user) API instead.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#list-organizations-for-a-user](https://docs.github.com/rest/orgs/orgs#list-organizations-for-a-user)
@@ -1312,7 +1348,7 @@ impl GitHubOrgsAPI {
   /// **Set public organization membership for the authenticated user**
   ///
   /// The user can publicize their own membership. (A user cannot publicize the membership for another user.)
-  /// 
+  ///
   /// Note that you'll need to set `Content-Length` to zero when calling out to this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/members#set-public-organization-membership-for-the-authenticated-user](https://docs.github.com/rest/orgs/members#set-public-organization-membership-for-the-authenticated-user)
@@ -1372,7 +1408,7 @@ impl GitHubOrgsAPI {
   /// **Create or update a custom property for an organization**
   ///
   /// Creates a new or updates an existing custom property that is defined for an organization.
-  /// 
+  ///
   /// To use this endpoint, the authenticated user must be one of:
   /// - An administrator for the organization.
   /// - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_definitions_manager` in the organization.
@@ -1387,15 +1423,17 @@ impl GitHubOrgsAPI {
     let custom_property_name = custom_property_name.into();
     let url = format!("/orgs/{org}/properties/schema/{custom_property_name}");
 
-    Request::<OrgsCreateOrUpdateCustomPropertyRequest, (), OrganizationCustomProperty>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<OrgsCreateOrUpdateCustomPropertyRequest, (), OrganizationCustomProperty>::builder(
+      &self.config,
+    )
+    .put(url)
+    .build()
   }
 
   /// **Remove a custom property for an organization**
   ///
   /// Removes a custom property that is defined for an organization.
-  /// 
+  ///
   /// To use this endpoint, the authenticated user must be one of:
   ///   - An administrator for the organization.
   ///   - A user, or a user on a team, with the fine-grained permission of `custom_properties_org_definitions_manager` in the organization.
@@ -1418,7 +1456,7 @@ impl GitHubOrgsAPI {
   /// **List repositories a fine-grained personal access token has access to**
   ///
   /// Lists the repositories a fine-grained personal access token has access to.
-  /// 
+  ///
   /// Only GitHub Apps can use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to](https://docs.github.com/rest/orgs/personal-access-tokens#list-repositories-a-fine-grained-personal-access-token-has-access-to)
@@ -1439,31 +1477,28 @@ impl GitHubOrgsAPI {
   /// **Get an organization**
   ///
   /// Gets information about an organization.
-  /// 
+  ///
   /// When the value of `two_factor_requirement_enabled` is `true`, the organization requires all members, billing managers, and outside collaborators to enable [two-factor authentication](https://docs.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/).
-  /// 
+  ///
   /// To see the full details about an organization, the authenticated user must be an organization owner.
-  /// 
+  ///
   /// The values returned by this endpoint are set by the "Update an organization" endpoint. If your organization set a default security configuration (beta), the following values retrieved from the "Update an organization" endpoint have been overwritten by that configuration:
-  /// 
+  ///
   /// - advanced_security_enabled_for_new_repositories
   /// - dependabot_alerts_enabled_for_new_repositories
   /// - dependabot_security_updates_enabled_for_new_repositories
   /// - dependency_graph_enabled_for_new_repositories
   /// - secret_scanning_enabled_for_new_repositories
   /// - secret_scanning_push_protection_enabled_for_new_repositories
-  /// 
+  ///
   /// For more information on security configurations, see "[Enabling security features at scale](https://docs.github.com/code-security/securing-your-organization/introduction-to-securing-your-organization-at-scale/about-enabling-security-features-at-scale)."
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to see the full details about an organization.
-  /// 
+  ///
   /// To see information about an organization's GitHub plan, GitHub Apps need the `Organization plan` permission.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#get-an-organization](https://docs.github.com/rest/orgs/orgs#get-an-organization)
-  pub fn get(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<(), (), OrganizationFull> {
+  pub fn get(&self, org: impl Into<String>) -> Request<(), (), OrganizationFull> {
     let org = org.into();
     let url = format!("/orgs/{org}");
 
@@ -1475,29 +1510,26 @@ impl GitHubOrgsAPI {
   /// **Update an organization**
   ///
   /// **Parameter Deprecation Notice:** GitHub will replace and discontinue `members_allowed_repository_creation_type` in favor of more granular permissions. The new input parameters are `members_can_create_public_repositories`, `members_can_create_private_repositories` for all organizations and `members_can_create_internal_repositories` for organizations associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. For more information, see the [blog post](https://developer.github.com/changes/2019-12-03-internal-visibility-changes).
-  /// 
+  ///
   /// Updates the organization's profile and member privileges.
-  /// 
+  ///
   /// With security configurations (beta), your organization can choose a default security configuration which will automatically apply a set of security enablement settings to new repositories in your organization based on their visibility. For targeted repositories, the following attributes will be overridden by the default security configuration:
-  /// 
+  ///
   /// - advanced_security_enabled_for_new_repositories
   /// - dependabot_alerts_enabled_for_new_repositories
   /// - dependabot_security_updates_enabled_for_new_repositories
   /// - dependency_graph_enabled_for_new_repositories
   /// - secret_scanning_enabled_for_new_repositories
   /// - secret_scanning_push_protection_enabled_for_new_repositories
-  /// 
+  ///
   /// For more information on setting a default security configuration, see "[Enabling security features at scale](https://docs.github.com/code-security/securing-your-organization/introduction-to-securing-your-organization-at-scale/about-enabling-security-features-at-scale)."
-  /// 
+  ///
   /// The authenticated user must be an organization owner to use this endpoint.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#update-an-organization](https://docs.github.com/rest/orgs/orgs#update-an-organization)
-  pub fn update(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<OrgsUpdateRequest, (), OrganizationFull> {
+  pub fn update(&self, org: impl Into<String>) -> Request<OrgsUpdateRequest, (), OrganizationFull> {
     let org = org.into();
     let url = format!("/orgs/{org}");
 
@@ -1509,18 +1541,15 @@ impl GitHubOrgsAPI {
   /// **Delete an organization**
   ///
   /// Deletes an organization and all its repositories.
-  /// 
+  ///
   /// The organization login will be unavailable for 90 days after deletion.
-  /// 
+  ///
   /// Please review the Terms of Service regarding account deletion before using this endpoint:
-  /// 
+  ///
   /// https://docs.github.com/site-policy/github-terms/github-terms-of-service
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#delete-an-organization](https://docs.github.com/rest/orgs/orgs#delete-an-organization)
-  pub fn delete(
-    &self,
-    org: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn delete(&self, org: impl Into<String>) -> NoContentRequest<(), ()> {
     let org = org.into();
     let url = format!("/orgs/{org}");
 
@@ -1532,13 +1561,11 @@ impl GitHubOrgsAPI {
   /// **List organizations**
   ///
   /// Lists all organizations, in the order that they were created.
-  /// 
+  ///
   /// **Note:** Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of organizations.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#list-organizations](https://docs.github.com/rest/orgs/orgs#list-organizations)
-  pub fn list(
-    &self,
-  ) -> Request<(), OrgsListQuery, OrganizationSimpleArray> {
+  pub fn list(&self) -> Request<(), OrgsListQuery, OrganizationSimpleArray> {
     let url = format!("/organizations");
 
     Request::<(), OrgsListQuery, OrganizationSimpleArray>::builder(&self.config)
@@ -1549,26 +1576,34 @@ impl GitHubOrgsAPI {
   /// **List requests to access organization resources with fine-grained personal access tokens**
   ///
   /// Lists requests from organization members to access organization resources with a fine-grained personal access token.
-  /// 
+  ///
   /// Only GitHub Apps can use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens](https://docs.github.com/rest/orgs/personal-access-tokens#list-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens)
   pub fn list_pat_grant_requests(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListPatGrantRequestsQuery, SimpleOrganizationProgrammaticAccessGrantRequestArray> {
+  ) -> Request<
+    (),
+    OrgsListPatGrantRequestsQuery,
+    SimpleOrganizationProgrammaticAccessGrantRequestArray,
+  > {
     let org = org.into();
     let url = format!("/orgs/{org}/personal-access-token-requests");
 
-    Request::<(), OrgsListPatGrantRequestsQuery, SimpleOrganizationProgrammaticAccessGrantRequestArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      OrgsListPatGrantRequestsQuery,
+      SimpleOrganizationProgrammaticAccessGrantRequestArray,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **Review requests to access organization resources with fine-grained personal access tokens**
   ///
   /// Approves or denies multiple pending requests to access organization resources via a fine-grained personal access token.
-  /// 
+  ///
   /// Only GitHub Apps can use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens](https://docs.github.com/rest/orgs/personal-access-tokens#review-requests-to-access-organization-resources-with-fine-grained-personal-access-tokens)
@@ -1605,9 +1640,9 @@ impl GitHubOrgsAPI {
 
   /// **List organization webhooks**
   ///
-  /// You must be an organization owner to use this endpoint. 
-  /// 
-  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit 
+  /// You must be an organization owner to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or edit
   /// webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/webhooks#list-organization-webhooks](https://docs.github.com/rest/orgs/webhooks#list-organization-webhooks)
@@ -1626,10 +1661,10 @@ impl GitHubOrgsAPI {
   /// **Create an organization webhook**
   ///
   /// Create a hook that posts payloads in JSON format.
-  /// 
-  /// You must be an organization owner to use this endpoint. 
-  /// 
-  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or 
+  ///
+  /// You must be an organization owner to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need `admin:org_hook` scope. OAuth apps cannot list, view, or
   /// edit webhooks that they did not create and users cannot list, view, or edit webhooks that were created by OAuth apps.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/webhooks#create-an-organization-webhook](https://docs.github.com/rest/orgs/webhooks#create-an-organization-webhook)
@@ -1648,7 +1683,7 @@ impl GitHubOrgsAPI {
   /// **Review a request to access organization resources with a fine-grained personal access token**
   ///
   /// Approves or denies a pending request to access organization resources via a fine-grained personal access token.
-  /// 
+  ///
   /// Only GitHub Apps can use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/personal-access-tokens#review-a-request-to-access-organization-resources-with-a-fine-grained-personal-access-token](https://docs.github.com/rest/orgs/personal-access-tokens#review-a-request-to-access-organization-resources-with-a-fine-grained-personal-access-token)
@@ -1665,6 +1700,4 @@ impl GitHubOrgsAPI {
       .post(url)
       .build()
   }
-
-
 }

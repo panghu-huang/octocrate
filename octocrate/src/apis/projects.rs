@@ -1,6 +1,6 @@
-use octocrate_core::*;
 #[allow(unused_imports)]
 use crate::types::*;
+use octocrate_core::*;
 
 /// Interact with GitHub Projects.
 pub struct GitHubProjectsAPI {
@@ -108,10 +108,7 @@ impl GitHubProjectsAPI {
   /// Gets information about a project column.
   ///
   /// *Documentation*: [https://docs.github.com/rest/projects/columns#get-a-project-column](https://docs.github.com/rest/projects/columns#get-a-project-column)
-  pub fn get_column(
-    &self,
-    column_id: impl Into<i64>,
-  ) -> Request<(), (), ProjectColumn> {
+  pub fn get_column(&self, column_id: impl Into<i64>) -> Request<(), (), ProjectColumn> {
     let column_id = column_id.into();
     let url = format!("/projects/columns/{column_id}");
 
@@ -141,10 +138,7 @@ impl GitHubProjectsAPI {
   /// Deletes a project column.
   ///
   /// *Documentation*: [https://docs.github.com/rest/projects/columns#delete-a-project-column](https://docs.github.com/rest/projects/columns#delete-a-project-column)
-  pub fn delete_column(
-    &self,
-    column_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn delete_column(&self, column_id: impl Into<i64>) -> NoContentRequest<(), ()> {
     let column_id = column_id.into();
     let url = format!("/projects/columns/{column_id}");
 
@@ -158,10 +152,7 @@ impl GitHubProjectsAPI {
   /// Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
   ///
   /// *Documentation*: [https://docs.github.com/rest/projects/projects#get-a-project](https://docs.github.com/rest/projects/projects#get-a-project)
-  pub fn get(
-    &self,
-    project_id: impl Into<i64>,
-  ) -> Request<(), (), Project> {
+  pub fn get(&self, project_id: impl Into<i64>) -> Request<(), (), Project> {
     let project_id = project_id.into();
     let url = format!("/projects/{project_id}");
 
@@ -175,10 +166,7 @@ impl GitHubProjectsAPI {
   /// Updates a project board's information. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
   ///
   /// *Documentation*: [https://docs.github.com/rest/projects/projects#update-a-project](https://docs.github.com/rest/projects/projects#update-a-project)
-  pub fn update(
-    &self,
-    project_id: impl Into<i64>,
-  ) -> Request<ProjectsUpdateRequest, (), Project> {
+  pub fn update(&self, project_id: impl Into<i64>) -> Request<ProjectsUpdateRequest, (), Project> {
     let project_id = project_id.into();
     let url = format!("/projects/{project_id}");
 
@@ -192,10 +180,7 @@ impl GitHubProjectsAPI {
   /// Deletes a project board. Returns a `404 Not Found` status if projects are disabled.
   ///
   /// *Documentation*: [https://docs.github.com/rest/projects/projects#delete-a-project](https://docs.github.com/rest/projects/projects#delete-a-project)
-  pub fn delete(
-    &self,
-    project_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn delete(&self, project_id: impl Into<i64>) -> NoContentRequest<(), ()> {
     let project_id = project_id.into();
     let url = format!("/projects/{project_id}");
 
@@ -242,10 +227,7 @@ impl GitHubProjectsAPI {
   /// Gets information about a project card.
   ///
   /// *Documentation*: [https://docs.github.com/rest/projects/cards#get-a-project-card](https://docs.github.com/rest/projects/cards#get-a-project-card)
-  pub fn get_card(
-    &self,
-    card_id: impl Into<i64>,
-  ) -> Request<(), (), ProjectCard> {
+  pub fn get_card(&self, card_id: impl Into<i64>) -> Request<(), (), ProjectCard> {
     let card_id = card_id.into();
     let url = format!("/projects/columns/cards/{card_id}");
 
@@ -275,10 +257,7 @@ impl GitHubProjectsAPI {
   /// Deletes a project card
   ///
   /// *Documentation*: [https://docs.github.com/rest/projects/cards#delete-a-project-card](https://docs.github.com/rest/projects/cards#delete-a-project-card)
-  pub fn delete_card(
-    &self,
-    card_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn delete_card(&self, card_id: impl Into<i64>) -> NoContentRequest<(), ()> {
     let card_id = card_id.into();
     let url = format!("/projects/columns/cards/{card_id}");
 
@@ -441,6 +420,4 @@ impl GitHubProjectsAPI {
       .post(url)
       .build()
   }
-
-
 }

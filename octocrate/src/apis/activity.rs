@@ -1,6 +1,6 @@
-use octocrate_core::*;
 #[allow(unused_imports)]
 use crate::types::*;
+use octocrate_core::*;
 
 /// Activity APIs provide access to notifications, subscriptions, and timelines.
 pub struct GitHubActivityAPI {
@@ -35,10 +35,7 @@ impl GitHubActivityAPI {
   /// Gets information about a notification thread.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/notifications#get-a-thread](https://docs.github.com/rest/activity/notifications#get-a-thread)
-  pub fn get_thread(
-    &self,
-    thread_id: impl Into<i64>,
-  ) -> Request<(), (), Thread> {
+  pub fn get_thread(&self, thread_id: impl Into<i64>) -> Request<(), (), Thread> {
     let thread_id = thread_id.into();
     let url = format!("/notifications/threads/{thread_id}");
 
@@ -52,10 +49,7 @@ impl GitHubActivityAPI {
   /// Marks a thread as "read." Marking a thread as "read" is equivalent to clicking a notification in your notification inbox on GitHub: https://github.com/notifications.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read](https://docs.github.com/rest/activity/notifications#mark-a-thread-as-read)
-  pub fn mark_thread_as_read(
-    &self,
-    thread_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn mark_thread_as_read(&self, thread_id: impl Into<i64>) -> NoContentRequest<(), ()> {
     let thread_id = thread_id.into();
     let url = format!("/notifications/threads/{thread_id}");
 
@@ -69,10 +63,7 @@ impl GitHubActivityAPI {
   /// Marks a thread as "done." Marking a thread as "done" is equivalent to marking a notification in your notification inbox on GitHub as done: https://github.com/notifications.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done](https://docs.github.com/rest/activity/notifications#mark-a-thread-as-done)
-  pub fn mark_thread_as_done(
-    &self,
-    thread_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn mark_thread_as_done(&self, thread_id: impl Into<i64>) -> NoContentRequest<(), ()> {
     let thread_id = thread_id.into();
     let url = format!("/notifications/threads/{thread_id}");
 
@@ -91,9 +82,11 @@ impl GitHubActivityAPI {
   ) -> Request<(), ActivityListNotificationsForAuthenticatedUserQuery, ThreadArray> {
     let url = format!("/notifications");
 
-    Request::<(), ActivityListNotificationsForAuthenticatedUserQuery, ThreadArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), ActivityListNotificationsForAuthenticatedUserQuery, ThreadArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Mark notifications as read**
@@ -103,7 +96,8 @@ impl GitHubActivityAPI {
   /// *Documentation*: [https://docs.github.com/rest/activity/notifications#mark-notifications-as-read](https://docs.github.com/rest/activity/notifications#mark-notifications-as-read)
   pub fn mark_notifications_as_read(
     &self,
-  ) -> Request<ActivityMarkNotificationsAsReadRequest, (), ActivityMarkNotificationsAsReadResponse> {
+  ) -> Request<ActivityMarkNotificationsAsReadRequest, (), ActivityMarkNotificationsAsReadResponse>
+  {
     let url = format!("/notifications");
 
     Request::<ActivityMarkNotificationsAsReadRequest, (), ActivityMarkNotificationsAsReadResponse>::builder(&self.config)
@@ -181,9 +175,9 @@ impl GitHubActivityAPI {
   /// **List repositories starred by the authenticated user**
   ///
   /// Lists repositories the authenticated user has starred.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user](https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user)
@@ -192,15 +186,17 @@ impl GitHubActivityAPI {
   ) -> Request<(), ActivityListReposStarredByAuthenticatedUserQuery, RepositoryArray> {
     let url = format!("/user/starred");
 
-    Request::<(), ActivityListReposStarredByAuthenticatedUserQuery, RepositoryArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), ActivityListReposStarredByAuthenticatedUserQuery, RepositoryArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List repository events**
   ///
   /// **Note**: This API is not built to serve real-time use cases. Depending on the time of day, event latency can be anywhere from 30s to 6h.
-  /// 
+  ///
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/events#list-repository-events](https://docs.github.com/rest/activity/events#list-repository-events)
   pub fn list_repo_events(
@@ -220,7 +216,7 @@ impl GitHubActivityAPI {
   /// **Get a thread subscription for the authenticated user**
   ///
   /// This checks to see if the current user is subscribed to a thread. You can also [get a repository subscription](https://docs.github.com/rest/activity/watching#get-a-repository-subscription).
-  /// 
+  ///
   /// Note that subscriptions are only generated if a user is participating in a conversation--for example, they've replied to the thread, were **@mentioned**, or manually subscribe to a thread.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user](https://docs.github.com/rest/activity/notifications#get-a-thread-subscription-for-the-authenticated-user)
@@ -239,9 +235,9 @@ impl GitHubActivityAPI {
   /// **Set a thread subscription**
   ///
   /// If you are watching a repository, you receive notifications for all threads by default. Use this endpoint to ignore future notifications for threads until you comment on the thread or get an **@mention**.
-  /// 
+  ///
   /// You can also use this endpoint to subscribe to threads that you are currently not receiving notifications for or to subscribed to threads that you have previously ignored.
-  /// 
+  ///
   /// Unsubscribing from a conversation in a repository that you are not watching is functionally equivalent to the [Delete a thread subscription](https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription) endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/notifications#set-a-thread-subscription](https://docs.github.com/rest/activity/notifications#set-a-thread-subscription)
@@ -262,10 +258,7 @@ impl GitHubActivityAPI {
   /// Mutes all future notifications for a conversation until you comment on the thread or get an **@mention**. If you are watching the repository of the thread, you will still receive notifications. To ignore future notifications for a repository you are watching, use the [Set a thread subscription](https://docs.github.com/rest/activity/notifications#set-a-thread-subscription) endpoint and set `ignore` to `true`.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription](https://docs.github.com/rest/activity/notifications#delete-a-thread-subscription)
-  pub fn delete_thread_subscription(
-    &self,
-    thread_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
+  pub fn delete_thread_subscription(&self, thread_id: impl Into<i64>) -> NoContentRequest<(), ()> {
     let thread_id = thread_id.into();
     let url = format!("/notifications/threads/{thread_id}/subscription");
 
@@ -345,9 +338,11 @@ impl GitHubActivityAPI {
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/notifications");
 
-    Request::<(), ActivityListRepoNotificationsForAuthenticatedUserQuery, ThreadArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), ActivityListRepoNotificationsForAuthenticatedUserQuery, ThreadArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Mark repository notifications as read**
@@ -359,14 +354,22 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ActivityMarkRepoNotificationsAsReadRequest, (), ActivityMarkRepoNotificationsAsReadResponse> {
+  ) -> Request<
+    ActivityMarkRepoNotificationsAsReadRequest,
+    (),
+    ActivityMarkRepoNotificationsAsReadResponse,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/notifications");
 
-    Request::<ActivityMarkRepoNotificationsAsReadRequest, (), ActivityMarkRepoNotificationsAsReadResponse>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<
+      ActivityMarkRepoNotificationsAsReadRequest,
+      (),
+      ActivityMarkRepoNotificationsAsReadResponse,
+    >::builder(&self.config)
+    .put(url)
+    .build()
   }
 
   /// **Check if a repository is starred by the authenticated user**
@@ -429,7 +432,7 @@ impl GitHubActivityAPI {
   /// **Get feeds**
   ///
   /// Lists the feeds available to the authenticated user. The response provides a URL for each feed. You can then get a specific feed by sending a request to one of the feed URLs.
-  /// 
+  ///
   /// *   **Timeline**: The GitHub global public timeline
   /// *   **User**: The public timeline for any user, using `uri_template`. For more information, see "[Hypermedia](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#hypermedia)."
   /// *   **Current user public**: The public timeline for the authenticated user
@@ -437,15 +440,13 @@ impl GitHubActivityAPI {
   /// *   **Current user actor**: The private timeline for activity created by the authenticated user
   /// *   **Current user organizations**: The private timeline for the organizations the authenticated user is a member of.
   /// *   **Security advisories**: A collection of public announcements that provide information about security-related vulnerabilities in software on GitHub.
-  /// 
+  ///
   /// By default, timeline resources are returned in JSON. You can specify the `application/atom+xml` type in the `Accept` header to return timeline resources in Atom format. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// **Note**: Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) since current feed URIs use the older, non revocable auth tokens.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/feeds#get-feeds](https://docs.github.com/rest/activity/feeds#get-feeds)
-  pub fn get_feeds(
-    &self,
-  ) -> Request<(), (), Feed> {
+  pub fn get_feeds(&self) -> Request<(), (), Feed> {
     let url = format!("/feeds");
 
     Request::<(), (), Feed>::builder(&self.config)
@@ -456,9 +457,9 @@ impl GitHubActivityAPI {
   /// **List stargazers**
   ///
   /// Lists the people that have starred the repository.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/starring#list-stargazers](https://docs.github.com/rest/activity/starring#list-stargazers)
@@ -541,17 +542,19 @@ impl GitHubActivityAPI {
     let username = username.into();
     let url = format!("/users/{username}/subscriptions");
 
-    Request::<(), ActivityListReposWatchedByUserQuery, MinimalRepositoryArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), ActivityListReposWatchedByUserQuery, MinimalRepositoryArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List repositories starred by a user**
   ///
   /// Lists repositories a user has starred.
-  /// 
+  ///
   /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  /// 
+  ///
   /// - **`application/vnd.github.star+json`**: Includes a timestamp of when the star was created.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/starring#list-repositories-starred-by-a-user](https://docs.github.com/rest/activity/starring#list-repositories-starred-by-a-user)
@@ -572,9 +575,7 @@ impl GitHubActivityAPI {
   /// We delay the public events feed by five minutes, which means the most recent event returned by the public events API actually occurred at least five minutes ago.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/events#list-public-events](https://docs.github.com/rest/activity/events#list-public-events)
-  pub fn list_public_events(
-    &self,
-  ) -> Request<(), ActivityListPublicEventsQuery, EventArray> {
+  pub fn list_public_events(&self) -> Request<(), ActivityListPublicEventsQuery, EventArray> {
     let url = format!("/events");
 
     Request::<(), ActivityListPublicEventsQuery, EventArray>::builder(&self.config)
@@ -598,6 +599,4 @@ impl GitHubActivityAPI {
       .get(url)
       .build()
   }
-
-
 }

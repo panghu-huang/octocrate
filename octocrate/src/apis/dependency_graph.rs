@@ -1,6 +1,6 @@
-use octocrate_core::*;
 #[allow(unused_imports)]
 use crate::types::*;
+use octocrate_core::*;
 
 pub struct GitHubDependencyGraphAPI {
   config: SharedAPIConfig,
@@ -16,9 +16,9 @@ impl GitHubDependencyGraphAPI {
   /// **Create a snapshot of dependencies for a repository**
   ///
   /// Create a new snapshot of a repository's dependencies.
-  /// 
+  ///
   /// The authenticated user must have access to the repository.
-  /// 
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository](https://docs.github.com/rest/dependency-graph/dependency-submission#create-a-snapshot-of-dependencies-for-a-repository)
@@ -75,6 +75,4 @@ impl GitHubDependencyGraphAPI {
       .get(url)
       .build()
   }
-
-
 }
