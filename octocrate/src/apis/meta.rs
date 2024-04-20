@@ -14,28 +14,15 @@ impl GitHubMetaAPI {
     }
   }
 
-  /// **GitHub API Root**
+  /// **Get all API versions**
   ///
-  /// Get Hypermedia links to resources accessible in GitHub's REST API
+  /// Get all supported GitHub API versions.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/meta/meta#github-api-root](https://docs.github.com/rest/meta/meta#github-api-root)
-  pub fn root(&self) -> Request<(), (), Root> {
-    let url = format!("/");
+  /// *Documentation*: [https://docs.github.com/rest/meta/meta#get-all-api-versions](https://docs.github.com/rest/meta/meta#get-all-api-versions)
+  pub fn get_all_versions(&self) -> Request<(), (), StringArray> {
+    let url = format!("/versions");
 
-    Request::<(), (), Root>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get the Zen of GitHub**
-  ///
-  /// Get a random sentence from the Zen of GitHub
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/meta/meta#get-the-zen-of-github](https://docs.github.com/rest/meta/meta#get-the-zen-of-github)
-  pub fn get_zen(&self) -> Request<(), (), String> {
-    let url = format!("/zen");
-
-    Request::<(), (), String>::builder(&self.config)
+    Request::<(), (), StringArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -59,6 +46,32 @@ impl GitHubMetaAPI {
       .build()
   }
 
+  /// **Get the Zen of GitHub**
+  ///
+  /// Get a random sentence from the Zen of GitHub
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/meta/meta#get-the-zen-of-github](https://docs.github.com/rest/meta/meta#get-the-zen-of-github)
+  pub fn get_zen(&self) -> Request<(), (), String> {
+    let url = format!("/zen");
+
+    Request::<(), (), String>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **GitHub API Root**
+  ///
+  /// Get Hypermedia links to resources accessible in GitHub's REST API
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/meta/meta#github-api-root](https://docs.github.com/rest/meta/meta#github-api-root)
+  pub fn root(&self) -> Request<(), (), Root> {
+    let url = format!("/");
+
+    Request::<(), (), Root>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
   /// **Get Octocat**
   ///
   /// Get the octocat as ASCII art
@@ -68,19 +81,6 @@ impl GitHubMetaAPI {
     let url = format!("/octocat");
 
     NoContentRequest::<(), MetaGetOctocatQuery>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get all API versions**
-  ///
-  /// Get all supported GitHub API versions.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/meta/meta#get-all-api-versions](https://docs.github.com/rest/meta/meta#get-all-api-versions)
-  pub fn get_all_versions(&self) -> Request<(), (), StringArray> {
-    let url = format!("/versions");
-
-    Request::<(), (), StringArray>::builder(&self.config)
       .get(url)
       .build()
   }

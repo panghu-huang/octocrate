@@ -14,6 +14,55 @@ impl GitHubGitAPI {
     }
   }
 
+  /// **Get a reference**
+  ///
+  /// Returns a single reference from your Git database. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an existing ref, a `404` is returned.
+  ///
+  /// **Note:** You need to explicitly [request a pull request](https://docs.github.com/rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/git/refs#get-a-reference](https://docs.github.com/rest/git/refs#get-a-reference)
+  pub fn get_ref(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    ref_: impl Into<String>,
+  ) -> Request<(), (), GitReference> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let ref_ = ref_.into();
+    let url = format!("/repos/{owner}/{repo}/git/ref/{ref_}");
+
+    Request::<(), (), GitReference>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get a tree**
+  ///
+  /// Returns a single tree using the SHA1 value or ref name for that tree.
+  ///
+  /// If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees, and fetch one sub-tree at a time.
+  ///
+  ///
+  /// **Note**: The limit for the `tree` array is 100,000 entries with a maximum size of 7 MB when using the `recursive` parameter.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/git/trees#get-a-tree](https://docs.github.com/rest/git/trees#get-a-tree)
+  pub fn get_tree(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    tree_sha: impl Into<String>,
+  ) -> Request<(), GitGetTreeQuery, GitTree> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let tree_sha = tree_sha.into();
+    let url = format!("/repos/{owner}/{repo}/git/trees/{tree_sha}");
+
+    Request::<(), GitGetTreeQuery, GitTree>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
   /// **Get a commit object**
   ///
   /// Gets a Git [commit object](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects).
@@ -66,71 +115,6 @@ impl GitHubGitAPI {
       .build()
   }
 
-  /// **Get a reference**
-  ///
-  /// Returns a single reference from your Git database. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an existing ref, a `404` is returned.
-  ///
-  /// **Note:** You need to explicitly [request a pull request](https://docs.github.com/rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)".
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/git/refs#get-a-reference](https://docs.github.com/rest/git/refs#get-a-reference)
-  pub fn get_ref(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    ref_: impl Into<String>,
-  ) -> Request<(), (), GitReference> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let ref_ = ref_.into();
-    let url = format!("/repos/{owner}/{repo}/git/ref/{ref_}");
-
-    Request::<(), (), GitReference>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update a reference**
-  ///
-  /// Updates the provided reference to point to a new SHA. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/git/refs#update-a-reference](https://docs.github.com/rest/git/refs#update-a-reference)
-  pub fn update_ref(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    ref_: impl Into<String>,
-  ) -> Request<GitUpdateRefRequest, (), GitReference> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let ref_ = ref_.into();
-    let url = format!("/repos/{owner}/{repo}/git/refs/{ref_}");
-
-    Request::<GitUpdateRefRequest, (), GitReference>::builder(&self.config)
-      .patch(url)
-      .build()
-  }
-
-  /// **Delete a reference**
-  ///
-  /// Deletes the provided reference.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/git/refs#delete-a-reference](https://docs.github.com/rest/git/refs#delete-a-reference)
-  pub fn delete_ref(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    ref_: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let ref_ = ref_.into();
-    let url = format!("/repos/{owner}/{repo}/git/refs/{ref_}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
   /// **Create a commit**
   ///
   /// Creates a new Git [commit object](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects).
@@ -179,74 +163,6 @@ impl GitHubGitAPI {
       .build()
   }
 
-  /// **Get a tree**
-  ///
-  /// Returns a single tree using the SHA1 value or ref name for that tree.
-  ///
-  /// If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees, and fetch one sub-tree at a time.
-  ///
-  ///
-  /// **Note**: The limit for the `tree` array is 100,000 entries with a maximum size of 7 MB when using the `recursive` parameter.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/git/trees#get-a-tree](https://docs.github.com/rest/git/trees#get-a-tree)
-  pub fn get_tree(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    tree_sha: impl Into<String>,
-  ) -> Request<(), GitGetTreeQuery, GitTree> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let tree_sha = tree_sha.into();
-    let url = format!("/repos/{owner}/{repo}/git/trees/{tree_sha}");
-
-    Request::<(), GitGetTreeQuery, GitTree>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a reference**
-  ///
-  /// Creates a reference for your repository. You are unable to create new references for empty repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories without branches.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/git/refs#create-a-reference](https://docs.github.com/rest/git/refs#create-a-reference)
-  pub fn create_ref(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<GitCreateRefRequest, (), GitReference> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/git/refs");
-
-    Request::<GitCreateRefRequest, (), GitReference>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Create a tree**
-  ///
-  /// The tree creation API accepts nested entries. If you specify both a tree and a nested path modifying that tree, this endpoint will overwrite the contents of the tree with the new path contents, and create a new tree structure.
-  ///
-  /// If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to commit the tree and then update a branch to point to the commit. For more information see "[Create a commit](https://docs.github.com/rest/git/commits#create-a-commit)" and "[Update a reference](https://docs.github.com/rest/git/refs#update-a-reference)."
-  ///
-  /// Returns an error if you try to delete a file that does not exist.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/git/trees#create-a-tree](https://docs.github.com/rest/git/trees#create-a-tree)
-  pub fn create_tree(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<GitCreateTreeRequest, (), GitTree> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/git/trees");
-
-    Request::<GitCreateTreeRequest, (), GitTree>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
   /// **Get a blob**
   ///
   /// The `content` in the response will always be Base64 encoded.
@@ -272,6 +188,47 @@ impl GitHubGitAPI {
 
     Request::<(), (), Blob>::builder(&self.config)
       .get(url)
+      .build()
+  }
+
+  /// **Create a blob**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/git/blobs#create-a-blob](https://docs.github.com/rest/git/blobs#create-a-blob)
+  pub fn create_blob(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<GitCreateBlobRequest, (), ShortBlob> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/git/blobs");
+
+    Request::<GitCreateBlobRequest, (), ShortBlob>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Create a tree**
+  ///
+  /// The tree creation API accepts nested entries. If you specify both a tree and a nested path modifying that tree, this endpoint will overwrite the contents of the tree with the new path contents, and create a new tree structure.
+  ///
+  /// If you use this endpoint to add, delete, or modify the file contents in a tree, you will need to commit the tree and then update a branch to point to the commit. For more information see "[Create a commit](https://docs.github.com/rest/git/commits#create-a-commit)" and "[Update a reference](https://docs.github.com/rest/git/refs#update-a-reference)."
+  ///
+  /// Returns an error if you try to delete a file that does not exist.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/git/trees#create-a-tree](https://docs.github.com/rest/git/trees#create-a-tree)
+  pub fn create_tree(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<GitCreateTreeRequest, (), GitTree> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/git/trees");
+
+    Request::<GitCreateTreeRequest, (), GitTree>::builder(&self.config)
+      .post(url)
       .build()
   }
 
@@ -323,21 +280,64 @@ impl GitHubGitAPI {
       .build()
   }
 
-  /// **Create a blob**
+  /// **Create a reference**
   ///
+  /// Creates a reference for your repository. You are unable to create new references for empty repositories, even if the commit SHA-1 hash used exists. Empty repositories are repositories without branches.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/git/blobs#create-a-blob](https://docs.github.com/rest/git/blobs#create-a-blob)
-  pub fn create_blob(
+  /// *Documentation*: [https://docs.github.com/rest/git/refs#create-a-reference](https://docs.github.com/rest/git/refs#create-a-reference)
+  pub fn create_ref(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<GitCreateBlobRequest, (), ShortBlob> {
+  ) -> Request<GitCreateRefRequest, (), GitReference> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/git/blobs");
+    let url = format!("/repos/{owner}/{repo}/git/refs");
 
-    Request::<GitCreateBlobRequest, (), ShortBlob>::builder(&self.config)
+    Request::<GitCreateRefRequest, (), GitReference>::builder(&self.config)
       .post(url)
+      .build()
+  }
+
+  /// **Update a reference**
+  ///
+  /// Updates the provided reference to point to a new SHA. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/git/refs#update-a-reference](https://docs.github.com/rest/git/refs#update-a-reference)
+  pub fn update_ref(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    ref_: impl Into<String>,
+  ) -> Request<GitUpdateRefRequest, (), GitReference> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let ref_ = ref_.into();
+    let url = format!("/repos/{owner}/{repo}/git/refs/{ref_}");
+
+    Request::<GitUpdateRefRequest, (), GitReference>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **Delete a reference**
+  ///
+  /// Deletes the provided reference.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/git/refs#delete-a-reference](https://docs.github.com/rest/git/refs#delete-a-reference)
+  pub fn delete_ref(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    ref_: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let ref_ = ref_.into();
+    let url = format!("/repos/{owner}/{repo}/git/refs/{ref_}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
       .build()
   }
 

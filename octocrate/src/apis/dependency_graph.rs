@@ -36,25 +36,6 @@ impl GitHubDependencyGraphAPI {
       .build()
   }
 
-  /// **Export a software bill of materials (SBOM) for a repository.**
-  ///
-  /// Exports the software bill of materials (SBOM) for a repository in SPDX JSON format.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository](https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository)
-  pub fn export_sbom(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), DependencyGraphSpdxSbom> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/dependency-graph/sbom");
-
-    Request::<(), (), DependencyGraphSpdxSbom>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **Get a diff of the dependencies between commits**
   ///
   /// Gets the diff of the dependency changes between two commits of a repository, based on the changes to the dependency manifests made in those commits.
@@ -72,6 +53,25 @@ impl GitHubDependencyGraphAPI {
     let url = format!("/repos/{owner}/{repo}/dependency-graph/compare/{basehead}");
 
     Request::<(), DependencyGraphDiffRangeQuery, DependencyGraphDiff>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Export a software bill of materials (SBOM) for a repository.**
+  ///
+  /// Exports the software bill of materials (SBOM) for a repository in SPDX JSON format.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository](https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository)
+  pub fn export_sbom(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), DependencyGraphSpdxSbom> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/dependency-graph/sbom");
+
+    Request::<(), (), DependencyGraphSpdxSbom>::builder(&self.config)
       .get(url)
       .build()
   }

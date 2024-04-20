@@ -14,6 +14,45 @@ impl GitHubDependabotAPI {
     }
   }
 
+  /// **List organization secrets**
+  ///
+  /// Lists all secrets available in an organization without revealing their
+  /// encrypted values.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#list-organization-secrets](https://docs.github.com/rest/dependabot/secrets#list-organization-secrets)
+  pub fn list_org_secrets(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), DependabotListOrgSecretsQuery, DependabotListOrgSecretsResponse> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/dependabot/secrets");
+
+    Request::<(), DependabotListOrgSecretsQuery, DependabotListOrgSecretsResponse>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
+  }
+
+  /// **Get an organization public key**
+  ///
+  /// Gets your public key, which you need to encrypt secrets. You need to
+  /// encrypt a secret before you can create or update secrets.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key](https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key)
+  pub fn get_org_public_key(&self, org: impl Into<String>) -> Request<(), (), DependabotPublicKey> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/dependabot/secrets/public-key");
+
+    Request::<(), (), DependabotPublicKey>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
   /// **Get a Dependabot alert**
   ///
   /// OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
@@ -58,6 +97,162 @@ impl GitHubDependabotAPI {
       .build()
   }
 
+  /// **Get a repository public key**
+  ///
+  /// Gets your public key, which you need to encrypt secrets. You need to
+  /// encrypt a secret before you can create or update secrets. Anyone with read access
+  /// to the repository can use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint if the repository is private.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key](https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key)
+  pub fn get_repo_public_key(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), DependabotPublicKey> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/dependabot/secrets/public-key");
+
+    Request::<(), (), DependabotPublicKey>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get an organization secret**
+  ///
+  /// Gets a single organization secret without revealing its encrypted value.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#get-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#get-an-organization-secret)
+  pub fn get_org_secret(
+    &self,
+    org: impl Into<String>,
+    secret_name: impl Into<String>,
+  ) -> Request<(), (), DependabotSecretForAnOrganization> {
+    let org = org.into();
+    let secret_name = secret_name.into();
+    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}");
+
+    Request::<(), (), DependabotSecretForAnOrganization>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create or update an organization secret**
+  ///
+  /// Creates or updates an organization secret with an encrypted value. Encrypt your secret using
+  /// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret)
+  pub fn create_or_update_org_secret(
+    &self,
+    org: impl Into<String>,
+    secret_name: impl Into<String>,
+  ) -> Request<DependabotCreateOrUpdateOrgSecretRequest, (), EmptyObject> {
+    let org = org.into();
+    let secret_name = secret_name.into();
+    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}");
+
+    Request::<DependabotCreateOrUpdateOrgSecretRequest, (), EmptyObject>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Delete an organization secret**
+  ///
+  /// Deletes a secret in an organization using the secret name.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#delete-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#delete-an-organization-secret)
+  pub fn delete_org_secret(
+    &self,
+    org: impl Into<String>,
+    secret_name: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let org = org.into();
+    let secret_name = secret_name.into();
+    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **List Dependabot alerts for a repository**
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository](https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository)
+  pub fn list_alerts_for_repo(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), DependabotListAlertsForRepoQuery, DependabotAlertArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/dependabot/alerts");
+
+    Request::<(), DependabotListAlertsForRepoQuery, DependabotAlertArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Add selected repository to an organization secret**
+  ///
+  /// Adds a repository to an organization secret when the `visibility` for
+  /// repository access is set to `selected`. The visibility is set when you [Create or
+  /// update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret)
+  pub fn add_selected_repo_to_org_secret(
+    &self,
+    org: impl Into<String>,
+    secret_name: impl Into<String>,
+    repository_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let org = org.into();
+    let secret_name = secret_name.into();
+    let repository_id = repository_id.into();
+    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Remove selected repository from an organization secret**
+  ///
+  /// Removes a repository from an organization secret when the `visibility`
+  /// for repository access is set to `selected`. The visibility is set when you [Create
+  /// or update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret)
+  pub fn remove_selected_repo_from_org_secret(
+    &self,
+    org: impl Into<String>,
+    secret_name: impl Into<String>,
+    repository_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let org = org.into();
+    let secret_name = secret_name.into();
+    let repository_id = repository_id.into();
+    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
   /// **List Dependabot alerts for an enterprise**
   ///
   /// Lists Dependabot alerts for repositories that are owned by the specified enterprise.
@@ -81,26 +276,56 @@ impl GitHubDependabotAPI {
       .build()
   }
 
-  /// **Get a repository public key**
+  /// **List selected repositories for an organization secret**
   ///
-  /// Gets your public key, which you need to encrypt secrets. You need to
-  /// encrypt a secret before you can create or update secrets. Anyone with read access
-  /// to the repository can use this endpoint.
+  /// Lists all repositories that have been selected when the `visibility`
+  /// for repository access to a secret is set to `selected`.
   ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint if the repository is private.
+  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key](https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key)
-  pub fn get_repo_public_key(
+  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret)
+  pub fn list_selected_repos_for_org_secret(
     &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), DependabotPublicKey> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/dependabot/secrets/public-key");
+    org: impl Into<String>,
+    secret_name: impl Into<String>,
+  ) -> Request<
+    (),
+    DependabotListSelectedReposForOrgSecretQuery,
+    DependabotListSelectedReposForOrgSecretResponse,
+  > {
+    let org = org.into();
+    let secret_name = secret_name.into();
+    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}/repositories");
 
-    Request::<(), (), DependabotPublicKey>::builder(&self.config)
-      .get(url)
+    Request::<
+      (),
+      DependabotListSelectedReposForOrgSecretQuery,
+      DependabotListSelectedReposForOrgSecretResponse,
+    >::builder(&self.config)
+    .get(url)
+    .build()
+  }
+
+  /// **Set selected repositories for an organization secret**
+  ///
+  /// Replaces all repositories for an organization secret when the `visibility`
+  /// for repository access is set to `selected`. The visibility is set when you [Create
+  /// or update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret)
+  pub fn set_selected_repos_for_org_secret(
+    &self,
+    org: impl Into<String>,
+    secret_name: impl Into<String>,
+  ) -> NoContentRequest<DependabotSetSelectedReposForOrgSecretRequest, ()> {
+    let org = org.into();
+    let secret_name = secret_name.into();
+    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}/repositories");
+
+    NoContentRequest::<DependabotSetSelectedReposForOrgSecretRequest, ()>::builder(&self.config)
+      .put(url)
       .build()
   }
 
@@ -174,42 +399,6 @@ impl GitHubDependabotAPI {
       .build()
   }
 
-  /// **List Dependabot alerts for a repository**
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint. If this endpoint is only used with public repositories, the token can use the `public_repo` scope instead.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository](https://docs.github.com/rest/dependabot/alerts#list-dependabot-alerts-for-a-repository)
-  pub fn list_alerts_for_repo(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), DependabotListAlertsForRepoQuery, DependabotAlertArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/dependabot/alerts");
-
-    Request::<(), DependabotListAlertsForRepoQuery, DependabotAlertArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get an organization public key**
-  ///
-  /// Gets your public key, which you need to encrypt secrets. You need to
-  /// encrypt a secret before you can create or update secrets.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key](https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key)
-  pub fn get_org_public_key(&self, org: impl Into<String>) -> Request<(), (), DependabotPublicKey> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/dependabot/secrets/public-key");
-
-    Request::<(), (), DependabotPublicKey>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **List Dependabot alerts for an organization**
   ///
   /// Lists Dependabot alerts for an organization.
@@ -231,195 +420,6 @@ impl GitHubDependabotAPI {
     )
     .get(url)
     .build()
-  }
-
-  /// **List organization secrets**
-  ///
-  /// Lists all secrets available in an organization without revealing their
-  /// encrypted values.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#list-organization-secrets](https://docs.github.com/rest/dependabot/secrets#list-organization-secrets)
-  pub fn list_org_secrets(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<(), DependabotListOrgSecretsQuery, DependabotListOrgSecretsResponse> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/dependabot/secrets");
-
-    Request::<(), DependabotListOrgSecretsQuery, DependabotListOrgSecretsResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
-  }
-
-  /// **Add selected repository to an organization secret**
-  ///
-  /// Adds a repository to an organization secret when the `visibility` for
-  /// repository access is set to `selected`. The visibility is set when you [Create or
-  /// update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#add-selected-repository-to-an-organization-secret)
-  pub fn add_selected_repo_to_org_secret(
-    &self,
-    org: impl Into<String>,
-    secret_name: impl Into<String>,
-    repository_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let org = org.into();
-    let secret_name = secret_name.into();
-    let repository_id = repository_id.into();
-    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Remove selected repository from an organization secret**
-  ///
-  /// Removes a repository from an organization secret when the `visibility`
-  /// for repository access is set to `selected`. The visibility is set when you [Create
-  /// or update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret)
-  pub fn remove_selected_repo_from_org_secret(
-    &self,
-    org: impl Into<String>,
-    secret_name: impl Into<String>,
-    repository_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let org = org.into();
-    let secret_name = secret_name.into();
-    let repository_id = repository_id.into();
-    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}/repositories/{repository_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Get an organization secret**
-  ///
-  /// Gets a single organization secret without revealing its encrypted value.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#get-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#get-an-organization-secret)
-  pub fn get_org_secret(
-    &self,
-    org: impl Into<String>,
-    secret_name: impl Into<String>,
-  ) -> Request<(), (), DependabotSecretForAnOrganization> {
-    let org = org.into();
-    let secret_name = secret_name.into();
-    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}");
-
-    Request::<(), (), DependabotSecretForAnOrganization>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create or update an organization secret**
-  ///
-  /// Creates or updates an organization secret with an encrypted value. Encrypt your secret using
-  /// [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)."
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret)
-  pub fn create_or_update_org_secret(
-    &self,
-    org: impl Into<String>,
-    secret_name: impl Into<String>,
-  ) -> Request<DependabotCreateOrUpdateOrgSecretRequest, (), EmptyObject> {
-    let org = org.into();
-    let secret_name = secret_name.into();
-    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}");
-
-    Request::<DependabotCreateOrUpdateOrgSecretRequest, (), EmptyObject>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Delete an organization secret**
-  ///
-  /// Deletes a secret in an organization using the secret name.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#delete-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#delete-an-organization-secret)
-  pub fn delete_org_secret(
-    &self,
-    org: impl Into<String>,
-    secret_name: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let org = org.into();
-    let secret_name = secret_name.into();
-    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **List selected repositories for an organization secret**
-  ///
-  /// Lists all repositories that have been selected when the `visibility`
-  /// for repository access to a secret is set to `selected`.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret)
-  pub fn list_selected_repos_for_org_secret(
-    &self,
-    org: impl Into<String>,
-    secret_name: impl Into<String>,
-  ) -> Request<
-    (),
-    DependabotListSelectedReposForOrgSecretQuery,
-    DependabotListSelectedReposForOrgSecretResponse,
-  > {
-    let org = org.into();
-    let secret_name = secret_name.into();
-    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}/repositories");
-
-    Request::<
-      (),
-      DependabotListSelectedReposForOrgSecretQuery,
-      DependabotListSelectedReposForOrgSecretResponse,
-    >::builder(&self.config)
-    .get(url)
-    .build()
-  }
-
-  /// **Set selected repositories for an organization secret**
-  ///
-  /// Replaces all repositories for an organization secret when the `visibility`
-  /// for repository access is set to `selected`. The visibility is set when you [Create
-  /// or update an organization secret](https://docs.github.com/rest/dependabot/secrets#create-or-update-an-organization-secret).
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret)
-  pub fn set_selected_repos_for_org_secret(
-    &self,
-    org: impl Into<String>,
-    secret_name: impl Into<String>,
-  ) -> NoContentRequest<DependabotSetSelectedReposForOrgSecretRequest, ()> {
-    let org = org.into();
-    let secret_name = secret_name.into();
-    let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}/repositories");
-
-    NoContentRequest::<DependabotSetSelectedReposForOrgSecretRequest, ()>::builder(&self.config)
-      .put(url)
-      .build()
   }
 
   /// **List repository secrets**

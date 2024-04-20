@@ -38,20 +38,6 @@ impl GitHubLicensesAPI {
       .build()
   }
 
-  /// **Get a license**
-  ///
-  /// Gets information about a specific license. For more information, see "[Licensing a repository ](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/licenses/licenses#get-a-license](https://docs.github.com/rest/licenses/licenses#get-a-license)
-  pub fn get(&self, license: impl Into<String>) -> Request<(), (), License> {
-    let license = license.into();
-    let url = format!("/licenses/{license}");
-
-    Request::<(), (), License>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **Get all commonly used licenses**
   ///
   /// Lists the most commonly used licenses on GitHub. For more information, see "[Licensing a repository ](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
@@ -63,6 +49,20 @@ impl GitHubLicensesAPI {
     let url = format!("/licenses");
 
     Request::<(), LicensesGetAllCommonlyUsedQuery, LicenseSimpleArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get a license**
+  ///
+  /// Gets information about a specific license. For more information, see "[Licensing a repository ](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/licenses/licenses#get-a-license](https://docs.github.com/rest/licenses/licenses#get-a-license)
+  pub fn get(&self, license: impl Into<String>) -> Request<(), (), License> {
+    let license = license.into();
+    let url = format!("/licenses/{license}");
+
+    Request::<(), (), License>::builder(&self.config)
       .get(url)
       .build()
   }

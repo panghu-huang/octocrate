@@ -14,31 +14,6 @@ impl GitHubClassroomAPI {
     }
   }
 
-  /// **List accepted assignments for an assignment**
-  ///
-  /// Lists any assignment repositories that have been created by students accepting a GitHub Classroom assignment. Accepted assignments will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/classroom/classroom#list-accepted-assignments-for-an-assignment](https://docs.github.com/rest/classroom/classroom#list-accepted-assignments-for-an-assignment)
-  pub fn list_accepted_assigments_for_an_assignment(
-    &self,
-    assignment_id: impl Into<i64>,
-  ) -> Request<
-    (),
-    ClassroomListAcceptedAssigmentsForAnAssignmentQuery,
-    ClassroomAcceptedAssignmentArray,
-  > {
-    let assignment_id = assignment_id.into();
-    let url = format!("/assignments/{assignment_id}/accepted_assignments");
-
-    Request::<
-      (),
-      ClassroomListAcceptedAssigmentsForAnAssignmentQuery,
-      ClassroomAcceptedAssignmentArray,
-    >::builder(&self.config)
-    .get(url)
-    .build()
-  }
-
   /// **Get a classroom**
   ///
   /// Gets a GitHub Classroom classroom for the current user. Classroom will only be returned if the current user is an administrator of the GitHub Classroom.
@@ -49,23 +24,6 @@ impl GitHubClassroomAPI {
     let url = format!("/classrooms/{classroom_id}");
 
     Request::<(), (), Classroom>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get assignment grades**
-  ///
-  /// Gets grades for a GitHub Classroom assignment. Grades will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/classroom/classroom#get-assignment-grades](https://docs.github.com/rest/classroom/classroom#get-assignment-grades)
-  pub fn get_assignment_grades(
-    &self,
-    assignment_id: impl Into<i64>,
-  ) -> Request<(), (), ClassroomAssignmentGradeArray> {
-    let assignment_id = assignment_id.into();
-    let url = format!("/assignments/{assignment_id}/grades");
-
-    Request::<(), (), ClassroomAssignmentGradeArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -83,6 +41,23 @@ impl GitHubClassroomAPI {
     let url = format!("/classrooms/{classroom_id}/assignments");
 
     Request::<(), ClassroomListAssignmentsForAClassroomQuery, SimpleClassroomAssignmentArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get assignment grades**
+  ///
+  /// Gets grades for a GitHub Classroom assignment. Grades will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/classroom/classroom#get-assignment-grades](https://docs.github.com/rest/classroom/classroom#get-assignment-grades)
+  pub fn get_assignment_grades(
+    &self,
+    assignment_id: impl Into<i64>,
+  ) -> Request<(), (), ClassroomAssignmentGradeArray> {
+    let assignment_id = assignment_id.into();
+    let url = format!("/assignments/{assignment_id}/grades");
+
+    Request::<(), (), ClassroomAssignmentGradeArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -115,5 +90,30 @@ impl GitHubClassroomAPI {
     Request::<(), ClassroomListClassroomsQuery, SimpleClassroomArray>::builder(&self.config)
       .get(url)
       .build()
+  }
+
+  /// **List accepted assignments for an assignment**
+  ///
+  /// Lists any assignment repositories that have been created by students accepting a GitHub Classroom assignment. Accepted assignments will only be returned if the current user is an administrator of the GitHub Classroom for the assignment.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/classroom/classroom#list-accepted-assignments-for-an-assignment](https://docs.github.com/rest/classroom/classroom#list-accepted-assignments-for-an-assignment)
+  pub fn list_accepted_assigments_for_an_assignment(
+    &self,
+    assignment_id: impl Into<i64>,
+  ) -> Request<
+    (),
+    ClassroomListAcceptedAssigmentsForAnAssignmentQuery,
+    ClassroomAcceptedAssignmentArray,
+  > {
+    let assignment_id = assignment_id.into();
+    let url = format!("/assignments/{assignment_id}/accepted_assignments");
+
+    Request::<
+      (),
+      ClassroomListAcceptedAssigmentsForAnAssignmentQuery,
+      ClassroomAcceptedAssignmentArray,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 }

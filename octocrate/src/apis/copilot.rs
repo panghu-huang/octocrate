@@ -14,56 +14,6 @@ impl GitHubCopilotAPI {
     }
   }
 
-  /// **Get Copilot seat information and settings for an organization**
-  ///
-  /// **Note**: This endpoint is in beta and is subject to change.
-  ///
-  /// Gets information about an organization's Copilot subscription, including seat breakdown
-  /// and code matching policies. To configure these settings, go to your organization's settings on GitHub.com.
-  /// For more information, see "[Managing policies for Copilot in your organization](https://docs.github.com/copilot/managing-copilot/managing-policies-for-copilot-business-in-your-organization)".
-  ///
-  /// Only organization owners can configure and view details about the organization's Copilot Business subscription.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `manage_billing:copilot` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization](https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization)
-  pub fn get_copilot_organization_details(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<(), (), CopilotBusinessOrganizationDetails> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/copilot/billing");
-
-    Request::<(), (), CopilotBusinessOrganizationDetails>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get Copilot seat assignment details for a user**
-  ///
-  /// **Note**: This endpoint is in beta and is subject to change.
-  ///
-  /// Gets the GitHub Copilot seat assignment details for a member of an organization who currently has access to GitHub Copilot.
-  ///
-  /// Organization owners can view GitHub Copilot seat assignment details for members in their organization.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `manage_billing:copilot` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user](https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user)
-  pub fn get_copilot_seat_details_for_user(
-    &self,
-    org: impl Into<String>,
-    username: impl Into<String>,
-  ) -> Request<(), (), CopilotBusinessSeatDetail> {
-    let org = org.into();
-    let username = username.into();
-    let url = format!("/orgs/{org}/members/{username}/copilot");
-
-    Request::<(), (), CopilotBusinessSeatDetail>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **Add teams to the Copilot subscription for an organization**
   ///
   /// **Note**: This endpoint is in beta and is subject to change.
@@ -127,6 +77,31 @@ impl GitHubCopilotAPI {
     >::builder(&self.config)
     .delete(url)
     .build()
+  }
+
+  /// **Get Copilot seat information and settings for an organization**
+  ///
+  /// **Note**: This endpoint is in beta and is subject to change.
+  ///
+  /// Gets information about an organization's Copilot subscription, including seat breakdown
+  /// and code matching policies. To configure these settings, go to your organization's settings on GitHub.com.
+  /// For more information, see "[Managing policies for Copilot in your organization](https://docs.github.com/copilot/managing-copilot/managing-policies-for-copilot-business-in-your-organization)".
+  ///
+  /// Only organization owners can configure and view details about the organization's Copilot Business subscription.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `manage_billing:copilot` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization](https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-information-and-settings-for-an-organization)
+  pub fn get_copilot_organization_details(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), (), CopilotBusinessOrganizationDetails> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/copilot/billing");
+
+    Request::<(), (), CopilotBusinessOrganizationDetails>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **List all Copilot seat assignments for an organization**
@@ -217,5 +192,30 @@ impl GitHubCopilotAPI {
     >::builder(&self.config)
     .delete(url)
     .build()
+  }
+
+  /// **Get Copilot seat assignment details for a user**
+  ///
+  /// **Note**: This endpoint is in beta and is subject to change.
+  ///
+  /// Gets the GitHub Copilot seat assignment details for a member of an organization who currently has access to GitHub Copilot.
+  ///
+  /// Organization owners can view GitHub Copilot seat assignment details for members in their organization.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `manage_billing:copilot` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user](https://docs.github.com/rest/copilot/copilot-user-management#get-copilot-seat-assignment-details-for-a-user)
+  pub fn get_copilot_seat_details_for_user(
+    &self,
+    org: impl Into<String>,
+    username: impl Into<String>,
+  ) -> Request<(), (), CopilotBusinessSeatDetail> {
+    let org = org.into();
+    let username = username.into();
+    let url = format!("/orgs/{org}/members/{username}/copilot");
+
+    Request::<(), (), CopilotBusinessSeatDetail>::builder(&self.config)
+      .get(url)
+      .build()
   }
 }

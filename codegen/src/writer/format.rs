@@ -20,7 +20,7 @@ pub fn format_code(module: impl AsRef<[u8]>) -> String {
   let output = command.wait_with_output().unwrap();
 
   if output.status.success() {
-    return String::from_utf8(output.stdout).unwrap();
+    String::from_utf8(output.stdout).unwrap()
   } else {
     panic!("Could not format the provided content");
   }

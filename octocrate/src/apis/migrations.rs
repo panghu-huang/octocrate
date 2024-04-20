@@ -14,124 +14,6 @@ impl GitHubMigrationsAPI {
     }
   }
 
-  /// **Get an organization migration status**
-  ///
-  /// Fetches the status of a migration.
-  ///
-  /// The `state` of a migration can be one of the following values:
-  ///
-  /// *   `pending`, which means the migration hasn't started yet.
-  /// *   `exporting`, which means the migration is in progress.
-  /// *   `exported`, which means the migration finished successfully.
-  /// *   `failed`, which means the migration failed.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#get-an-organization-migration-status](https://docs.github.com/rest/migrations/orgs#get-an-organization-migration-status)
-  pub fn get_status_for_org(
-    &self,
-    org: impl Into<String>,
-    migration_id: impl Into<i64>,
-  ) -> Request<(), MigrationsGetStatusForOrgQuery, Migration> {
-    let org = org.into();
-    let migration_id = migration_id.into();
-    let url = format!("/orgs/{org}/migrations/{migration_id}");
-
-    Request::<(), MigrationsGetStatusForOrgQuery, Migration>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update Git LFS preference**
-  ///
-  /// You can import repositories from Subversion, Mercurial, and TFS that include files larger than 100MB. This ability
-  /// is powered by [Git LFS](https://git-lfs.com).
-  ///
-  /// You can learn more about our LFS feature and working with large files [on our help
-  /// site](https://docs.github.com/repositories/working-with-files/managing-large-files).
-  ///
-  /// **Warning:** Due to very low levels of usage and available alternatives, this endpoint is deprecated and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/source-imports#update-git-lfs-preference](https://docs.github.com/rest/migrations/source-imports#update-git-lfs-preference)
-  pub fn set_lfs_preference(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<MigrationsSetLfsPreferenceRequest, (), Import> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/import/lfs");
-
-    Request::<MigrationsSetLfsPreferenceRequest, (), Import>::builder(&self.config)
-      .patch(url)
-      .build()
-  }
-
-  /// **Map a commit author**
-  ///
-  /// Update an author's identity for the import. Your application can continue updating authors any time before you push
-  /// new commits to the repository.
-  ///
-  /// **Warning:** Due to very low levels of usage and available alternatives, this endpoint is deprecated and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/source-imports#map-a-commit-author](https://docs.github.com/rest/migrations/source-imports#map-a-commit-author)
-  pub fn map_commit_author(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    author_id: impl Into<i64>,
-  ) -> Request<MigrationsMapCommitAuthorRequest, (), PorterAuthor> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let author_id = author_id.into();
-    let url = format!("/repos/{owner}/{repo}/import/authors/{author_id}");
-
-    Request::<MigrationsMapCommitAuthorRequest, (), PorterAuthor>::builder(&self.config)
-      .patch(url)
-      .build()
-  }
-
-  /// **Get large files**
-  ///
-  /// List files larger than 100MB found during the import
-  ///
-  /// **Warning:** Due to very low levels of usage and available alternatives, this endpoint is deprecated and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/source-imports#get-large-files](https://docs.github.com/rest/migrations/source-imports#get-large-files)
-  pub fn get_large_files(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), PorterLargeFileArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/import/large_files");
-
-    Request::<(), (), PorterLargeFileArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Unlock a user repository**
-  ///
-  /// Unlocks a repository. You can lock repositories when you [start a user migration](https://docs.github.com/rest/migrations/users#start-a-user-migration). Once the migration is complete you can unlock each repository to begin using it again or [delete the repository](https://docs.github.com/rest/repos/repos#delete-a-repository) if you no longer need the source data. Returns a status of `404 Not Found` if the repository is not locked.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/users#unlock-a-user-repository](https://docs.github.com/rest/migrations/users#unlock-a-user-repository)
-  pub fn unlock_repo_for_authenticated_user(
-    &self,
-    migration_id: impl Into<i64>,
-    repo_name: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let migration_id = migration_id.into();
-    let repo_name = repo_name.into();
-    let url = format!("/user/migrations/{migration_id}/repos/{repo_name}/lock");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
   /// **Download a user migration archive**
   ///
   /// Fetches the URL to download the migration archive as a `tar.gz` file. Depending on the resources your repository uses, the migration archive can contain JSON files with data for these objects:
@@ -186,191 +68,19 @@ impl GitHubMigrationsAPI {
       .build()
   }
 
-  /// **List repositories for a user migration**
+  /// **Unlock a user repository**
   ///
-  /// Lists all the repositories for this user migration.
+  /// Unlocks a repository. You can lock repositories when you [start a user migration](https://docs.github.com/rest/migrations/users#start-a-user-migration). Once the migration is complete you can unlock each repository to begin using it again or [delete the repository](https://docs.github.com/rest/repos/repos#delete-a-repository) if you no longer need the source data. Returns a status of `404 Not Found` if the repository is not locked.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/users#list-repositories-for-a-user-migration](https://docs.github.com/rest/migrations/users#list-repositories-for-a-user-migration)
-  pub fn list_repos_for_authenticated_user(
+  /// *Documentation*: [https://docs.github.com/rest/migrations/users#unlock-a-user-repository](https://docs.github.com/rest/migrations/users#unlock-a-user-repository)
+  pub fn unlock_repo_for_authenticated_user(
     &self,
-    migration_id: impl Into<i64>,
-  ) -> Request<(), MigrationsListReposForAuthenticatedUserQuery, MinimalRepositoryArray> {
-    let migration_id = migration_id.into();
-    let url = format!("/user/migrations/{migration_id}/repositories");
-
-    Request::<(), MigrationsListReposForAuthenticatedUserQuery, MinimalRepositoryArray>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
-  }
-
-  /// **Get commit authors**
-  ///
-  /// Each type of source control system represents authors in a different way. For example, a Git commit author has a display name and an email address, but a Subversion commit author just has a username. The GitHub Importer will make the author information valid, but the author might not be correct. For example, it will change the bare Subversion username `hubot` into something like `hubot <hubot@12341234-abab-fefe-8787-fedcba987654>`.
-  ///
-  /// This endpoint and the [Map a commit author](https://docs.github.com/rest/migrations/source-imports#map-a-commit-author) endpoint allow you to provide correct Git author information.
-  ///
-  /// **Warning:** Due to very low levels of usage and available alternatives, this endpoint is deprecated and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/source-imports#get-commit-authors](https://docs.github.com/rest/migrations/source-imports#get-commit-authors)
-  pub fn get_commit_authors(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), MigrationsGetCommitAuthorsQuery, PorterAuthorArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/import/authors");
-
-    Request::<(), MigrationsGetCommitAuthorsQuery, PorterAuthorArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get a user migration status**
-  ///
-  /// Fetches a single user migration. The response includes the `state` of the migration, which can be one of the following values:
-  ///
-  /// *   `pending` - the migration hasn't started yet.
-  /// *   `exporting` - the migration is in progress.
-  /// *   `exported` - the migration finished successfully.
-  /// *   `failed` - the migration failed.
-  ///
-  /// Once the migration has been `exported` you can [download the migration archive](https://docs.github.com/rest/migrations/users#download-a-user-migration-archive).
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/users#get-a-user-migration-status](https://docs.github.com/rest/migrations/users#get-a-user-migration-status)
-  pub fn get_status_for_authenticated_user(
-    &self,
-    migration_id: impl Into<i64>,
-  ) -> Request<(), MigrationsGetStatusForAuthenticatedUserQuery, Migration> {
-    let migration_id = migration_id.into();
-    let url = format!("/user/migrations/{migration_id}");
-
-    Request::<(), MigrationsGetStatusForAuthenticatedUserQuery, Migration>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List user migrations**
-  ///
-  /// Lists all migrations a user has started.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/users#list-user-migrations](https://docs.github.com/rest/migrations/users#list-user-migrations)
-  pub fn list_for_authenticated_user(
-    &self,
-  ) -> Request<(), MigrationsListForAuthenticatedUserQuery, MigrationArray> {
-    let url = format!("/user/migrations");
-
-    Request::<(), MigrationsListForAuthenticatedUserQuery, MigrationArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Start a user migration**
-  ///
-  /// Initiates the generation of a user migration archive.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/users#start-a-user-migration](https://docs.github.com/rest/migrations/users#start-a-user-migration)
-  pub fn start_for_authenticated_user(
-    &self,
-  ) -> Request<MigrationsStartForAuthenticatedUserRequest, (), Migration> {
-    let url = format!("/user/migrations");
-
-    Request::<MigrationsStartForAuthenticatedUserRequest, (), Migration>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Download an organization migration archive**
-  ///
-  /// Fetches the URL to a migration archive.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#download-an-organization-migration-archive](https://docs.github.com/rest/migrations/orgs#download-an-organization-migration-archive)
-  pub fn download_archive_for_org(
-    &self,
-    org: impl Into<String>,
-    migration_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let org = org.into();
-    let migration_id = migration_id.into();
-    let url = format!("/orgs/{org}/migrations/{migration_id}/archive");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Delete an organization migration archive**
-  ///
-  /// Deletes a previous migration archive. Migration archives are automatically deleted after seven days.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#delete-an-organization-migration-archive](https://docs.github.com/rest/migrations/orgs#delete-an-organization-migration-archive)
-  pub fn delete_archive_for_org(
-    &self,
-    org: impl Into<String>,
-    migration_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let org = org.into();
-    let migration_id = migration_id.into();
-    let url = format!("/orgs/{org}/migrations/{migration_id}/archive");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **List organization migrations**
-  ///
-  /// Lists the most recent migrations, including both exports (which can be started through the REST API) and imports (which cannot be started using the REST API).
-  ///
-  /// A list of `repositories` is only returned for export migrations.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#list-organization-migrations](https://docs.github.com/rest/migrations/orgs#list-organization-migrations)
-  pub fn list_for_org(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<(), MigrationsListForOrgQuery, MigrationArray> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/migrations");
-
-    Request::<(), MigrationsListForOrgQuery, MigrationArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Start an organization migration**
-  ///
-  /// Initiates the generation of a migration archive.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#start-an-organization-migration](https://docs.github.com/rest/migrations/orgs#start-an-organization-migration)
-  pub fn start_for_org(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<MigrationsStartForOrgRequest, (), Migration> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/migrations");
-
-    Request::<MigrationsStartForOrgRequest, (), Migration>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Unlock an organization repository**
-  ///
-  /// Unlocks a repository that was locked for migration. You should unlock each migrated repository and [delete them](https://docs.github.com/rest/repos/repos#delete-a-repository) when the migration is complete and you no longer need the source data.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#unlock-an-organization-repository](https://docs.github.com/rest/migrations/orgs#unlock-an-organization-repository)
-  pub fn unlock_repo_for_org(
-    &self,
-    org: impl Into<String>,
     migration_id: impl Into<i64>,
     repo_name: impl Into<String>,
   ) -> NoContentRequest<(), ()> {
-    let org = org.into();
     let migration_id = migration_id.into();
     let repo_name = repo_name.into();
-    let url = format!("/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock");
+    let url = format!("/user/migrations/{migration_id}/repos/{repo_name}/lock");
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
@@ -518,6 +228,296 @@ impl GitHubMigrationsAPI {
     let url = format!("/orgs/{org}/migrations/{migration_id}/repositories");
 
     Request::<(), MigrationsListReposForOrgQuery, MinimalRepositoryArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get large files**
+  ///
+  /// List files larger than 100MB found during the import
+  ///
+  /// **Warning:** Due to very low levels of usage and available alternatives, this endpoint is deprecated and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/source-imports#get-large-files](https://docs.github.com/rest/migrations/source-imports#get-large-files)
+  pub fn get_large_files(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), PorterLargeFileArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/import/large_files");
+
+    Request::<(), (), PorterLargeFileArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get commit authors**
+  ///
+  /// Each type of source control system represents authors in a different way. For example, a Git commit author has a display name and an email address, but a Subversion commit author just has a username. The GitHub Importer will make the author information valid, but the author might not be correct. For example, it will change the bare Subversion username `hubot` into something like `hubot <hubot@12341234-abab-fefe-8787-fedcba987654>`.
+  ///
+  /// This endpoint and the [Map a commit author](https://docs.github.com/rest/migrations/source-imports#map-a-commit-author) endpoint allow you to provide correct Git author information.
+  ///
+  /// **Warning:** Due to very low levels of usage and available alternatives, this endpoint is deprecated and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/source-imports#get-commit-authors](https://docs.github.com/rest/migrations/source-imports#get-commit-authors)
+  pub fn get_commit_authors(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), MigrationsGetCommitAuthorsQuery, PorterAuthorArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/import/authors");
+
+    Request::<(), MigrationsGetCommitAuthorsQuery, PorterAuthorArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List organization migrations**
+  ///
+  /// Lists the most recent migrations, including both exports (which can be started through the REST API) and imports (which cannot be started using the REST API).
+  ///
+  /// A list of `repositories` is only returned for export migrations.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#list-organization-migrations](https://docs.github.com/rest/migrations/orgs#list-organization-migrations)
+  pub fn list_for_org(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), MigrationsListForOrgQuery, MigrationArray> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/migrations");
+
+    Request::<(), MigrationsListForOrgQuery, MigrationArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Start an organization migration**
+  ///
+  /// Initiates the generation of a migration archive.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#start-an-organization-migration](https://docs.github.com/rest/migrations/orgs#start-an-organization-migration)
+  pub fn start_for_org(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<MigrationsStartForOrgRequest, (), Migration> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/migrations");
+
+    Request::<MigrationsStartForOrgRequest, (), Migration>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Unlock an organization repository**
+  ///
+  /// Unlocks a repository that was locked for migration. You should unlock each migrated repository and [delete them](https://docs.github.com/rest/repos/repos#delete-a-repository) when the migration is complete and you no longer need the source data.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#unlock-an-organization-repository](https://docs.github.com/rest/migrations/orgs#unlock-an-organization-repository)
+  pub fn unlock_repo_for_org(
+    &self,
+    org: impl Into<String>,
+    migration_id: impl Into<i64>,
+    repo_name: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let org = org.into();
+    let migration_id = migration_id.into();
+    let repo_name = repo_name.into();
+    let url = format!("/orgs/{org}/migrations/{migration_id}/repos/{repo_name}/lock");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **List repositories for a user migration**
+  ///
+  /// Lists all the repositories for this user migration.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/users#list-repositories-for-a-user-migration](https://docs.github.com/rest/migrations/users#list-repositories-for-a-user-migration)
+  pub fn list_repos_for_authenticated_user(
+    &self,
+    migration_id: impl Into<i64>,
+  ) -> Request<(), MigrationsListReposForAuthenticatedUserQuery, MinimalRepositoryArray> {
+    let migration_id = migration_id.into();
+    let url = format!("/user/migrations/{migration_id}/repositories");
+
+    Request::<(), MigrationsListReposForAuthenticatedUserQuery, MinimalRepositoryArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
+  }
+
+  /// **Download an organization migration archive**
+  ///
+  /// Fetches the URL to a migration archive.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#download-an-organization-migration-archive](https://docs.github.com/rest/migrations/orgs#download-an-organization-migration-archive)
+  pub fn download_archive_for_org(
+    &self,
+    org: impl Into<String>,
+    migration_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let org = org.into();
+    let migration_id = migration_id.into();
+    let url = format!("/orgs/{org}/migrations/{migration_id}/archive");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Delete an organization migration archive**
+  ///
+  /// Deletes a previous migration archive. Migration archives are automatically deleted after seven days.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#delete-an-organization-migration-archive](https://docs.github.com/rest/migrations/orgs#delete-an-organization-migration-archive)
+  pub fn delete_archive_for_org(
+    &self,
+    org: impl Into<String>,
+    migration_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let org = org.into();
+    let migration_id = migration_id.into();
+    let url = format!("/orgs/{org}/migrations/{migration_id}/archive");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **List user migrations**
+  ///
+  /// Lists all migrations a user has started.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/users#list-user-migrations](https://docs.github.com/rest/migrations/users#list-user-migrations)
+  pub fn list_for_authenticated_user(
+    &self,
+  ) -> Request<(), MigrationsListForAuthenticatedUserQuery, MigrationArray> {
+    let url = format!("/user/migrations");
+
+    Request::<(), MigrationsListForAuthenticatedUserQuery, MigrationArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Start a user migration**
+  ///
+  /// Initiates the generation of a user migration archive.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/users#start-a-user-migration](https://docs.github.com/rest/migrations/users#start-a-user-migration)
+  pub fn start_for_authenticated_user(
+    &self,
+  ) -> Request<MigrationsStartForAuthenticatedUserRequest, (), Migration> {
+    let url = format!("/user/migrations");
+
+    Request::<MigrationsStartForAuthenticatedUserRequest, (), Migration>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get an organization migration status**
+  ///
+  /// Fetches the status of a migration.
+  ///
+  /// The `state` of a migration can be one of the following values:
+  ///
+  /// *   `pending`, which means the migration hasn't started yet.
+  /// *   `exporting`, which means the migration is in progress.
+  /// *   `exported`, which means the migration finished successfully.
+  /// *   `failed`, which means the migration failed.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/orgs#get-an-organization-migration-status](https://docs.github.com/rest/migrations/orgs#get-an-organization-migration-status)
+  pub fn get_status_for_org(
+    &self,
+    org: impl Into<String>,
+    migration_id: impl Into<i64>,
+  ) -> Request<(), MigrationsGetStatusForOrgQuery, Migration> {
+    let org = org.into();
+    let migration_id = migration_id.into();
+    let url = format!("/orgs/{org}/migrations/{migration_id}");
+
+    Request::<(), MigrationsGetStatusForOrgQuery, Migration>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Map a commit author**
+  ///
+  /// Update an author's identity for the import. Your application can continue updating authors any time before you push
+  /// new commits to the repository.
+  ///
+  /// **Warning:** Due to very low levels of usage and available alternatives, this endpoint is deprecated and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/source-imports#map-a-commit-author](https://docs.github.com/rest/migrations/source-imports#map-a-commit-author)
+  pub fn map_commit_author(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    author_id: impl Into<i64>,
+  ) -> Request<MigrationsMapCommitAuthorRequest, (), PorterAuthor> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let author_id = author_id.into();
+    let url = format!("/repos/{owner}/{repo}/import/authors/{author_id}");
+
+    Request::<MigrationsMapCommitAuthorRequest, (), PorterAuthor>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **Update Git LFS preference**
+  ///
+  /// You can import repositories from Subversion, Mercurial, and TFS that include files larger than 100MB. This ability
+  /// is powered by [Git LFS](https://git-lfs.com).
+  ///
+  /// You can learn more about our LFS feature and working with large files [on our help
+  /// site](https://docs.github.com/repositories/working-with-files/managing-large-files).
+  ///
+  /// **Warning:** Due to very low levels of usage and available alternatives, this endpoint is deprecated and will no longer be available from 00:00 UTC on April 12, 2024. For more details and alternatives, see the [changelog](https://gh.io/source-imports-api-deprecation).
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/source-imports#update-git-lfs-preference](https://docs.github.com/rest/migrations/source-imports#update-git-lfs-preference)
+  pub fn set_lfs_preference(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<MigrationsSetLfsPreferenceRequest, (), Import> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/import/lfs");
+
+    Request::<MigrationsSetLfsPreferenceRequest, (), Import>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **Get a user migration status**
+  ///
+  /// Fetches a single user migration. The response includes the `state` of the migration, which can be one of the following values:
+  ///
+  /// *   `pending` - the migration hasn't started yet.
+  /// *   `exporting` - the migration is in progress.
+  /// *   `exported` - the migration finished successfully.
+  /// *   `failed` - the migration failed.
+  ///
+  /// Once the migration has been `exported` you can [download the migration archive](https://docs.github.com/rest/migrations/users#download-a-user-migration-archive).
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/migrations/users#get-a-user-migration-status](https://docs.github.com/rest/migrations/users#get-a-user-migration-status)
+  pub fn get_status_for_authenticated_user(
+    &self,
+    migration_id: impl Into<i64>,
+  ) -> Request<(), MigrationsGetStatusForAuthenticatedUserQuery, Migration> {
+    let migration_id = migration_id.into();
+    let url = format!("/user/migrations/{migration_id}");
+
+    Request::<(), MigrationsGetStatusForAuthenticatedUserQuery, Migration>::builder(&self.config)
       .get(url)
       .build()
   }

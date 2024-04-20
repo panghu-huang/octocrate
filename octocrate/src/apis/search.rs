@@ -35,29 +35,6 @@ impl GitHubSearchAPI {
       .build()
   }
 
-  /// **Search users**
-  ///
-  /// Find users via various criteria. This method returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api).
-  ///
-  /// When searching for users, you can get text match metadata for the issue **login**, public **email**, and **name** fields when you pass the `text-match` media type. For more details about highlighting search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata). For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata).
-  ///
-  /// For example, if you're looking for a list of popular users, you might try this query:
-  ///
-  /// `q=tom+repos:%3E42+followers:%3E1000`
-  ///
-  /// This query searches for users with the name `tom`. The results are restricted to users with more than 42 repositories and over 1,000 followers.
-  ///
-  /// This endpoint does not accept authentication and will only include publicly visible users. As an alternative, you can use the GraphQL API. The GraphQL API requires authentication and will return private users, including Enterprise Managed Users (EMUs), that you are authorized to view. For more information, see "[GraphQL Queries](https://docs.github.com/graphql/reference/queries#search)."
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/search/search#search-users](https://docs.github.com/rest/search/search#search-users)
-  pub fn users(&self) -> Request<(), SearchUsersQuery, SearchUsersResponse> {
-    let url = format!("/search/users");
-
-    Request::<(), SearchUsersQuery, SearchUsersResponse>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **Search labels**
   ///
   /// Find labels in a repository with names or descriptions that match search keywords. Returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api).
@@ -75,26 +52,6 @@ impl GitHubSearchAPI {
     let url = format!("/search/labels");
 
     Request::<(), SearchLabelsQuery, SearchLabelsResponse>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Search commits**
-  ///
-  /// Find commits via various criteria on the default branch (usually `main`). This method returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api).
-  ///
-  /// When searching for commits, you can get text match metadata for the **message** field when you provide the `text-match` media type. For more details about how to receive highlighted search results, see [Text match
-  /// metadata](https://docs.github.com/rest/search/search#text-match-metadata).
-  ///
-  /// For example, if you want to find commits related to CSS in the [octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife) repository. Your query would look something like this:
-  ///
-  /// `q=repo:octocat/Spoon-Knife+css`
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/search/search#search-commits](https://docs.github.com/rest/search/search#search-commits)
-  pub fn commits(&self) -> Request<(), SearchCommitsQuery, SearchCommitsResponse> {
-    let url = format!("/search/commits");
-
-    Request::<(), SearchCommitsQuery, SearchCommitsResponse>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -125,6 +82,29 @@ impl GitHubSearchAPI {
     )
     .get(url)
     .build()
+  }
+
+  /// **Search users**
+  ///
+  /// Find users via various criteria. This method returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api).
+  ///
+  /// When searching for users, you can get text match metadata for the issue **login**, public **email**, and **name** fields when you pass the `text-match` media type. For more details about highlighting search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata). For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata).
+  ///
+  /// For example, if you're looking for a list of popular users, you might try this query:
+  ///
+  /// `q=tom+repos:%3E42+followers:%3E1000`
+  ///
+  /// This query searches for users with the name `tom`. The results are restricted to users with more than 42 repositories and over 1,000 followers.
+  ///
+  /// This endpoint does not accept authentication and will only include publicly visible users. As an alternative, you can use the GraphQL API. The GraphQL API requires authentication and will return private users, including Enterprise Managed Users (EMUs), that you are authorized to view. For more information, see "[GraphQL Queries](https://docs.github.com/graphql/reference/queries#search)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/search/search#search-users](https://docs.github.com/rest/search/search#search-users)
+  pub fn users(&self) -> Request<(), SearchUsersQuery, SearchUsersResponse> {
+    let url = format!("/search/users");
+
+    Request::<(), SearchUsersQuery, SearchUsersResponse>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Search repositories**
@@ -176,6 +156,26 @@ impl GitHubSearchAPI {
     let url = format!("/search/code");
 
     Request::<(), SearchCodeQuery, SearchCodeResponse>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Search commits**
+  ///
+  /// Find commits via various criteria on the default branch (usually `main`). This method returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api).
+  ///
+  /// When searching for commits, you can get text match metadata for the **message** field when you provide the `text-match` media type. For more details about how to receive highlighted search results, see [Text match
+  /// metadata](https://docs.github.com/rest/search/search#text-match-metadata).
+  ///
+  /// For example, if you want to find commits related to CSS in the [octocat/Spoon-Knife](https://github.com/octocat/Spoon-Knife) repository. Your query would look something like this:
+  ///
+  /// `q=repo:octocat/Spoon-Knife+css`
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/search/search#search-commits](https://docs.github.com/rest/search/search#search-commits)
+  pub fn commits(&self) -> Request<(), SearchCommitsQuery, SearchCommitsResponse> {
+    let url = format!("/search/commits");
+
+    Request::<(), SearchCommitsQuery, SearchCommitsResponse>::builder(&self.config)
       .get(url)
       .build()
   }
