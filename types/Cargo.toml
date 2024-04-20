@@ -1,0 +1,57 @@
+[package]
+name = "octocrate-types"
+version = "0.1.0"
+edition.workspace = true
+keywords.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+description.workspace = true
+categories.workspace = true
+
+[features]
+full = []
+apps = []
+actions = []
+activity = []
+billing = []
+checks = []
+code_scanning = []
+codes_of_conduct = []
+emojis = []
+dependabot = []
+dependency_graph = []
+gists = []
+git = []
+gitignore = []
+issues = []
+licenses = []
+markdown = []
+merge_queue = []
+meta = []
+migrations = []
+oidc = []
+orgs = []
+packages = []
+projects = []
+pulls = []
+rate_limit = []
+reactions = []
+repos = []
+search = []
+secret_scanning = []
+teams = []
+users = []
+codespaces = []
+copilot = []
+security_advisories = []
+interactions = []
+classroom = []
+desktop = []
+
+[dependencies]
+serde_json = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+derive_builder = { workspace = true }

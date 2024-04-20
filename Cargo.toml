@@ -1,5 +1,5 @@
 [workspace]
-members = ["codegen", "octocrate", "core"]
+members = ["codegen", "octocrate", "core", "types"]
 resolver = "2"
 
 [workspace.package]
@@ -27,3 +27,8 @@ jsonwebtoken = "8.2.0"
 dotenv = "0.15.0"
 handlebars = "5.1.2"
 indicatif = "0.17.8"
+
+# internal
+octocrate = { path = "octocrate", version = "0.3.5" }
+octocrate-core = { path = "core", version = "0.1.2" }
+octocrate-types = { path = "types", version = "0.1.0" }

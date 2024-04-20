@@ -1,351 +1,142 @@
 #[allow(unused_imports)]
-use serde::{Serialize, Deserialize};
-#[allow(unused_imports)]
 use super::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
 
 /// Types defination
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type CheckRunPullRequestArray = Vec<CheckRunPullRequest>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookDeploymentReviewApprovedReviewersArray = Vec<WebhookDeploymentReviewApprovedReviewers>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookDeploymentReviewApprovedReviewersArray =
+  Vec<WebhookDeploymentReviewApprovedReviewers>;
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type MetaDeletedEventHookEventsArray = Vec<MetaDeletedEventHookEvents>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookDeploymentReviewApprovedWorkflowJobRunsArray = Vec<WebhookDeploymentReviewApprovedWorkflowJobRuns>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookDeploymentReviewApprovedWorkflowJobRunsArray =
+  Vec<WebhookDeploymentReviewApprovedWorkflowJobRuns>;
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type StatusEventBranchesArray = Vec<StatusEventBranches>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type WorkflowRunPullRequestsArray = Vec<WorkflowRunPullRequests>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookInstallationRepositoriesRemovedRepositoriesAddedArray = Vec<WebhookInstallationRepositoriesRemovedRepositoriesAdded>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type RepositoryRulesetEditedEventChangesConditionsUpdatedArray = Vec<RepositoryRulesetEditedEventChangesConditionsUpdated>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersArray = Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiers>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookInstallationRepositoriesRemovedRepositoriesAddedArray =
+  Vec<WebhookInstallationRepositoriesRemovedRepositoriesAdded>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type RepositoryRulesetEditedEventChangesConditionsUpdatedArray =
+  Vec<RepositoryRulesetEditedEventChangesConditionsUpdated>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersArray =
+  Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiers>;
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type StatusEventCommitParentsArray = Vec<StatusEventCommitParents>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwesArray = Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwes>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesArray = Vec<WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFiles>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type PackagePublishedEventPackagePackageVersionPackageFilesArray = Vec<PackagePublishedEventPackagePackageVersionPackageFiles>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookDeploymentReviewRejectedReviewersArray = Vec<WebhookDeploymentReviewRejectedReviewers>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadataArray = Vec<WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadata>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesArray = Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferences>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesArray = Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilities>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwesArray =
+  Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwes>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesArray =
+  Vec<WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFiles>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type PackagePublishedEventPackagePackageVersionPackageFilesArray =
+  Vec<PackagePublishedEventPackagePackageVersionPackageFiles>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookDeploymentReviewRejectedReviewersArray =
+  Vec<WebhookDeploymentReviewRejectedReviewers>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadataArray =
+  Vec<WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadata>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesArray =
+  Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferences>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesArray =
+  Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilities>;
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type InstallationUnsuspendEventRepositoriesArray = Vec<InstallationUnsuspendEventRepositories>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type InstallationDeletedEventRepositoriesArray = Vec<InstallationDeletedEventRepositories>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookInstallationRepositoriesRemovedRepositoriesRemovedArray = Vec<WebhookInstallationRepositoriesRemovedRepositoriesRemoved>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwesArray = Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwes>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookInstallationRepositoriesAddedRepositoriesAddedArray = Vec<WebhookInstallationRepositoriesAddedRepositoriesAdded>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type RepositoryRulesetEditedEventChangesRulesUpdatedArray = Vec<RepositoryRulesetEditedEventChangesRulesUpdated>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookInstallationRepositoriesRemovedRepositoriesRemovedArray =
+  Vec<WebhookInstallationRepositoriesRemovedRepositoriesRemoved>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwesArray =
+  Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwes>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookInstallationRepositoriesAddedRepositoriesAddedArray =
+  Vec<WebhookInstallationRepositoriesAddedRepositoriesAdded>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type RepositoryRulesetEditedEventChangesRulesUpdatedArray =
+  Vec<RepositoryRulesetEditedEventChangesRulesUpdated>;
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type InstallationCreatedEventRepositoriesArray = Vec<InstallationCreatedEventRepositories>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryReferencesArray = Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryReferences>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookInstallationRepositoriesAddedRepositoriesRemovedArray = Vec<WebhookInstallationRepositoriesAddedRepositoriesRemoved>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesArray = Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwes>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type PackageUpdatedEventPackagePackageVersionPackageFilesArray = Vec<PackageUpdatedEventPackagePackageVersionPackageFiles>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryReferencesArray =
+  Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryReferences>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookInstallationRepositoriesAddedRepositoriesRemovedArray =
+  Vec<WebhookInstallationRepositoriesAddedRepositoriesRemoved>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesArray =
+  Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwes>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type PackageUpdatedEventPackagePackageVersionPackageFilesArray =
+  Vec<PackageUpdatedEventPackagePackageVersionPackageFiles>;
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type InstallationSuspendEventRepositoriesArray = Vec<InstallationSuspendEventRepositories>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type AppEventsArray = Vec<AppEvents>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookDeploymentReviewRequestedReviewersArray = Vec<WebhookDeploymentReviewRequestedReviewers>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesArray = Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilities>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesArray = Vec<WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFiles>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesArray = Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilities>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryReferencesArray = Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryReferences>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookDeploymentReviewRequestedReviewersArray =
+  Vec<WebhookDeploymentReviewRequestedReviewers>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesArray =
+  Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilities>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesArray =
+  Vec<WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFiles>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesArray =
+  Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilities>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryReferencesArray =
+  Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryReferences>;
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type GollumEventPagesArray = Vec<GollumEventPages>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiersArray = Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiers>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type PackagePublishedEventPackagePackageVersionDockerMetadataArray = Vec<PackagePublishedEventPackagePackageVersionDockerMetadata>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookInstallationNewPermissionsAcceptedRepositoriesArray = Vec<WebhookInstallationNewPermissionsAcceptedRepositories>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type PackageUpdatedEventPackagePackageVersionDockerMetadataArray = Vec<PackageUpdatedEventPackagePackageVersionDockerMetadata>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersArray = Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiers>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-pub type WebhookDeploymentReviewRejectedWorkflowJobRunsArray = Vec<WebhookDeploymentReviewRejectedWorkflowJobRuns>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiersArray =
+  Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiers>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type PackagePublishedEventPackagePackageVersionDockerMetadataArray =
+  Vec<PackagePublishedEventPackagePackageVersionDockerMetadata>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookInstallationNewPermissionsAcceptedRepositoriesArray =
+  Vec<WebhookInstallationNewPermissionsAcceptedRepositories>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type PackageUpdatedEventPackagePackageVersionDockerMetadataArray =
+  Vec<PackageUpdatedEventPackagePackageVersionDockerMetadata>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersArray =
+  Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiers>;
+#[cfg(any(feature = "full", feature = "webhook",))]
+pub type WebhookDeploymentReviewRejectedWorkflowJobRunsArray =
+  Vec<WebhookDeploymentReviewRejectedWorkflowJobRuns>;
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type RubyGemsMetadataArray = Vec<RubyGemsMetadata>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type PullRequestArray = Vec<PullRequest>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type WorkflowStepArray = Vec<WorkflowStep>;
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 pub type RepositoryRulesetConditionsForRefNamesArray = Vec<RepositoryRulesetConditionsForRefNames>;
 
 /// Enumerations defination
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ProjectEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ProjectEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -354,24 +145,14 @@ impl ToString for ProjectsV2ProjectEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionUnlockedEventAction {
   #[serde(rename = "unlocked")]
   Unlocked,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionUnlockedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -380,12 +161,7 @@ impl ToString for DiscussionUnlockedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
   #[serde(rename = "fixed")]
@@ -394,12 +170,7 @@ pub enum WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
   Open,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -409,12 +180,7 @@ impl ToString for WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleSignatureRequirementEnforcementLevel {
   #[serde(rename = "off")]
@@ -425,40 +191,27 @@ pub enum BranchProtectionRuleSignatureRequirementEnforcementLevel {
   Everyone,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleSignatureRequirementEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
       BranchProtectionRuleSignatureRequirementEnforcementLevel::Off => "off".to_string(),
-      BranchProtectionRuleSignatureRequirementEnforcementLevel::NonAdmins => "non_admins".to_string(),
+      BranchProtectionRuleSignatureRequirementEnforcementLevel::NonAdmins => {
+        "non_admins".to_string()
+      }
       BranchProtectionRuleSignatureRequirementEnforcementLevel::Everyone => "everyone".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionReopenedEventAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionReopenedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -467,24 +220,14 @@ impl ToString for DiscussionReopenedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MemberRemovedEventAction {
   #[serde(rename = "removed")]
   Removed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MemberRemovedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -493,24 +236,14 @@ impl ToString for MemberRemovedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum InstallationUnsuspendEventAction {
   #[serde(rename = "unsuspend")]
   Unsuspend,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for InstallationUnsuspendEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -519,24 +252,14 @@ impl ToString for InstallationUnsuspendEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesPinnedEventAction {
   #[serde(rename = "pinned")]
   Pinned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesPinnedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -545,24 +268,14 @@ impl ToString for IssuesPinnedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ProjectClosedEventAction {
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ProjectClosedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -571,24 +284,14 @@ impl ToString for ProjectsV2ProjectClosedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -597,38 +300,25 @@ impl ToString for ProjectDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryVulnerabilityAlertCreateAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
-  WebhookRepositoryVulnerabilityAlertCreateAlertItem2(WebhookRepositoryVulnerabilityAlertCreateAlertItem2),
+  WebhookRepositoryVulnerabilityAlertCreateAlertItem2(
+    WebhookRepositoryVulnerabilityAlertCreateAlertItem2,
+  ),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionConfigurationEnabledEventAction {
   #[serde(rename = "enabled")]
   Enabled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionConfigurationEnabledEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -637,24 +327,14 @@ impl ToString for BranchProtectionConfigurationEnabledEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookProjectCardConvertedAction {
   #[serde(rename = "converted")]
   Converted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookProjectCardConvertedAction {
   fn to_string(&self) -> String {
     match self {
@@ -663,24 +343,14 @@ impl ToString for WebhookProjectCardConvertedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ReleasePrereleasedEventAction {
   #[serde(rename = "prereleased")]
   Prereleased,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ReleasePrereleasedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -689,24 +359,14 @@ impl ToString for ReleasePrereleasedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MilestoneCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MilestoneCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -715,12 +375,7 @@ impl ToString for MilestoneCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The action that was performed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesAssignedEventAction {
@@ -728,12 +383,7 @@ pub enum IssuesAssignedEventAction {
   Assigned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesAssignedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -742,12 +392,7 @@ impl ToString for IssuesAssignedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleAllowDeletionsEnforcementLevel {
   #[serde(rename = "off")]
@@ -758,12 +403,7 @@ pub enum BranchProtectionRuleAllowDeletionsEnforcementLevel {
   Everyone,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleAllowDeletionsEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -774,38 +414,25 @@ impl ToString for BranchProtectionRuleAllowDeletionsEnforcementLevel {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryVulnerabilityAlertResolveAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
-  WebhookRepositoryVulnerabilityAlertResolveAlertItem2(WebhookRepositoryVulnerabilityAlertResolveAlertItem2),
+  WebhookRepositoryVulnerabilityAlertResolveAlertItem2(
+    WebhookRepositoryVulnerabilityAlertResolveAlertItem2,
+  ),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -814,24 +441,14 @@ impl ToString for WebhookPullRequestReviewCommentDeletedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionClosedEventAction {
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionClosedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -840,24 +457,14 @@ impl ToString for DiscussionClosedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CustomPropertyDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for CustomPropertyDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -866,24 +473,14 @@ impl ToString for CustomPropertyDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ReleaseDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ReleaseDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -892,24 +489,14 @@ impl ToString for ReleaseDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookProjectCardMovedAction {
   #[serde(rename = "moved")]
   Moved,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookProjectCardMovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -918,24 +505,14 @@ impl ToString for WebhookProjectCardMovedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestDequeuedAction {
   #[serde(rename = "dequeued")]
   Dequeued,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestDequeuedAction {
   fn to_string(&self) -> String {
     match self {
@@ -944,24 +521,14 @@ impl ToString for WebhookPullRequestDequeuedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPersonalAccessTokenRequestCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPersonalAccessTokenRequestCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -970,12 +537,7 @@ impl ToString for WebhookPersonalAccessTokenRequestCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelFrom {
   #[serde(rename = "off")]
@@ -986,40 +548,31 @@ pub enum BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLe
   Everyone,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelFrom {
   fn to_string(&self) -> String {
     match self {
-      BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelFrom::Off => "off".to_string(),
-      BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelFrom::NonAdmins => "non_admins".to_string(),
-      BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelFrom::Everyone => "everyone".to_string(),
+      BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelFrom::Off => {
+        "off".to_string()
+      }
+      BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelFrom::NonAdmins => {
+        "non_admins".to_string()
+      }
+      BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelFrom::Everyone => {
+        "everyone".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MilestoneDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MilestoneDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -1028,24 +581,14 @@ impl ToString for MilestoneDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectReopenedEventAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectReopenedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -1054,12 +597,7 @@ impl ToString for ProjectReopenedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowJobQueuedWorkflowJobStatus {
   #[serde(rename = "queued")]
@@ -1072,12 +610,7 @@ pub enum WebhookWorkflowJobQueuedWorkflowJobStatus {
   Waiting,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowJobQueuedWorkflowJobStatus {
   fn to_string(&self) -> String {
     match self {
@@ -1089,12 +622,7 @@ impl ToString for WebhookWorkflowJobQueuedWorkflowJobStatus {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The type of Git ref object deleted in the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DeleteEventRefType {
@@ -1104,12 +632,7 @@ pub enum DeleteEventRefType {
   Branch,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DeleteEventRefType {
   fn to_string(&self) -> String {
     match self {
@@ -1119,24 +642,14 @@ impl ToString for DeleteEventRefType {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ItemArchivedEventAction {
   #[serde(rename = "archived")]
   Archived,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ItemArchivedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -1145,12 +658,7 @@ impl ToString for ProjectsV2ItemArchivedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// State of the issue; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookIssueCommentCreatedIssueItem2State {
@@ -1160,12 +668,7 @@ pub enum WebhookIssueCommentCreatedIssueItem2State {
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookIssueCommentCreatedIssueItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -1175,24 +678,14 @@ impl ToString for WebhookIssueCommentCreatedIssueItem2State {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowJobCompletedAction {
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowJobCompletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1201,24 +694,14 @@ impl ToString for WebhookWorkflowJobCompletedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -1227,24 +710,14 @@ impl ToString for BranchProtectionRuleDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookSecretScanningAlertValidatedAction {
   #[serde(rename = "validated")]
   Validated,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookSecretScanningAlertValidatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1253,24 +726,14 @@ impl ToString for WebhookSecretScanningAlertValidatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionUnpinnedEventAction {
   #[serde(rename = "unpinned")]
   Unpinned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionUnpinnedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -1279,24 +742,14 @@ impl ToString for DiscussionUnpinnedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
   #[serde(rename = "open")]
   Open,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -1305,24 +758,14 @@ impl ToString for WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WatchStartedEventAction {
   #[serde(rename = "started")]
   Started,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WatchStartedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -1331,12 +774,7 @@ impl ToString for WatchStartedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionAuthorAssociation {
@@ -1358,12 +796,7 @@ pub enum DiscussionAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -1379,35 +812,20 @@ impl ToString for DiscussionAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum IssuesUnlockedEventIssueItem2Locked {
   Boolean(bool),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookSecretScanningAlertReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookSecretScanningAlertReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1416,24 +834,14 @@ impl ToString for WebhookSecretScanningAlertReopenedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertReintroducedEventAction {
   #[serde(rename = "reintroduced")]
   Reintroduced,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DependabotAlertReintroducedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -1442,12 +850,7 @@ impl ToString for DependabotAlertReintroducedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
   #[serde(rename = "success")]
@@ -1466,12 +869,7 @@ pub enum WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
   TimedOut,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
   fn to_string(&self) -> String {
     match self {
@@ -1479,19 +877,16 @@ impl ToString for WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
       WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Failure => "failure".to_string(),
       WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Skipped => "skipped".to_string(),
       WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Cancelled => "cancelled".to_string(),
-      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::ActionRequired => "action_required".to_string(),
+      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::ActionRequired => {
+        "action_required".to_string()
+      }
       WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Neutral => "neutral".to_string(),
       WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::TimedOut => "timed_out".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
@@ -1505,12 +900,7 @@ pub enum WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
   Error,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1522,12 +912,7 @@ impl ToString for WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PullRequestReviewCommentAuthorAssociation {
@@ -1549,19 +934,16 @@ pub enum PullRequestReviewCommentAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for PullRequestReviewCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
       PullRequestReviewCommentAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
       PullRequestReviewCommentAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
       PullRequestReviewCommentAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      PullRequestReviewCommentAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
+      PullRequestReviewCommentAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
       PullRequestReviewCommentAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
       PullRequestReviewCommentAuthorAssociation::Member => "MEMBER".to_string(),
       PullRequestReviewCommentAuthorAssociation::None => "NONE".to_string(),
@@ -1570,24 +952,14 @@ impl ToString for PullRequestReviewCommentAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryPrivatizedEventAction {
   #[serde(rename = "privatized")]
   Privatized,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryPrivatizedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -1596,38 +968,25 @@ impl ToString for RepositoryPrivatizedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewRequestRemovedItem1Action {
   #[serde(rename = "review_request_removed")]
   ReviewRequestRemoved,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewRequestRemovedItem1Action {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewRequestRemovedItem1Action::ReviewRequestRemoved => "review_request_removed".to_string(),
+      WebhookPullRequestReviewRequestRemovedItem1Action::ReviewRequestRemoved => {
+        "review_request_removed".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertFixedAlertRuleSeverity {
@@ -1641,12 +1000,7 @@ pub enum WebhookCodeScanningAlertFixedAlertRuleSeverity {
   Error,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertFixedAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1658,12 +1012,7 @@ impl ToString for WebhookCodeScanningAlertFixedAlertRuleSeverity {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
@@ -1675,27 +1024,19 @@ pub enum WebhookPullRequestEditedPullRequestItem2MergeCommitTitle {
   MergeMessage,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
       WebhookPullRequestEditedPullRequestItem2MergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestEditedPullRequestItem2MergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
+      WebhookPullRequestEditedPullRequestItem2MergeCommitTitle::MergeMessage => {
+        "MERGE_MESSAGE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WorkflowRunConclusion {
   #[serde(rename = "success")]
@@ -1716,12 +1057,7 @@ pub enum WorkflowRunConclusion {
   Skipped,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WorkflowRunConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -1737,12 +1073,7 @@ impl ToString for WorkflowRunConclusion {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestReopenedPullRequest {
@@ -1751,12 +1082,7 @@ pub enum WebhookPullRequestReopenedPullRequest {
   WebhookPullRequestReopenedPullRequestItem2(WebhookPullRequestReopenedPullRequestItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -1771,12 +1097,7 @@ pub enum WebhookPullRequestOpenedPullRequestItem2MergeCommitMessage {
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -1787,24 +1108,14 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitMessage {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ReleaseEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ReleaseEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -1813,24 +1124,14 @@ impl ToString for ReleaseEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDeployKeyDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDeployKeyDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1839,24 +1140,14 @@ impl ToString for WebhookDeployKeyDeletedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDeploymentStatusCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDeploymentStatusCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1865,12 +1156,7 @@ impl ToString for WebhookDeploymentStatusCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ForkEventForkee {
@@ -1879,12 +1165,7 @@ pub enum ForkEventForkee {
   ForkEventForkeeItem2(ForkEventForkeeItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation {
@@ -1906,33 +1187,39 @@ pub enum WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
-      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Member => "MEMBER".to_string(),
-      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::None => "NONE".to_string(),
-      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Collaborator => {
+        "COLLABORATOR".to_string()
+      }
+      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Contributor => {
+        "CONTRIBUTOR".to_string()
+      }
+      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::FirstTimer => {
+        "FIRST_TIMER".to_string()
+      }
+      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
+      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Mannequin => {
+        "MANNEQUIN".to_string()
+      }
+      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Member => {
+        "MEMBER".to_string()
+      }
+      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::None => {
+        "NONE".to_string()
+      }
+      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Owner => {
+        "OWNER".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WorkflowStepConclusion {
   #[serde(rename = "failure")]
@@ -1945,12 +1232,7 @@ pub enum WorkflowStepConclusion {
   Cancelled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WorkflowStepConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -1962,12 +1244,7 @@ impl ToString for WorkflowStepConclusion {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -1982,12 +1259,7 @@ pub enum WebhookPullRequestEditedPullRequestItem2MergeCommitMessage {
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -1998,12 +1270,7 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitMessage {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
@@ -2016,41 +1283,32 @@ pub enum WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason {
   Spam,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::Resolved => "resolved".to_string(),
-      WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::OffTopic => "off-topic".to_string(),
-      WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::TooHeated => "too heated".to_string(),
+      WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::Resolved => {
+        "resolved".to_string()
+      }
+      WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::OffTopic => {
+        "off-topic".to_string()
+      }
+      WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::TooHeated => {
+        "too heated".to_string()
+      }
       WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::Spam => "spam".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -2059,12 +1317,7 @@ impl ToString for DiscussionDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
   #[serde(rename = "off")]
@@ -2075,54 +1328,40 @@ pub enum BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
   Everyone,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
       BranchProtectionRuleLinearHistoryRequirementEnforcementLevel::Off => "off".to_string(),
-      BranchProtectionRuleLinearHistoryRequirementEnforcementLevel::NonAdmins => "non_admins".to_string(),
-      BranchProtectionRuleLinearHistoryRequirementEnforcementLevel::Everyone => "everyone".to_string(),
+      BranchProtectionRuleLinearHistoryRequirementEnforcementLevel::NonAdmins => {
+        "non_admins".to_string()
+      }
+      BranchProtectionRuleLinearHistoryRequirementEnforcementLevel::Everyone => {
+        "everyone".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookRepositoryVulnerabilityAlertDismissAlertItem2State {
   #[serde(rename = "dismissed")]
   Dismissed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookRepositoryVulnerabilityAlertDismissAlertItem2State {
   fn to_string(&self) -> String {
     match self {
-      WebhookRepositoryVulnerabilityAlertDismissAlertItem2State::Dismissed => "dismissed".to_string(),
+      WebhookRepositoryVulnerabilityAlertDismissAlertItem2State::Dismissed => {
+        "dismissed".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -2137,28 +1376,24 @@ pub enum WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage {
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage::Blank => "BLANK".to_string(),
+      WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage::PrBody => {
+        "PR_BODY".to_string()
+      }
+      WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage::PrTitle => {
+        "PR_TITLE".to_string()
+      }
+      WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage::Blank => {
+        "BLANK".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The scope of the membership. Currently, can only be `team`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MembershipAddedEventScope {
@@ -2166,12 +1401,7 @@ pub enum MembershipAddedEventScope {
   Team,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MembershipAddedEventScope {
   fn to_string(&self) -> String {
     match self {
@@ -2180,26 +1410,18 @@ impl ToString for MembershipAddedEventScope {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestReadyForReviewPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
-  WebhookPullRequestReadyForReviewPullRequestItem2(WebhookPullRequestReadyForReviewPullRequestItem2),
+  WebhookPullRequestReadyForReviewPullRequestItem2(
+    WebhookPullRequestReadyForReviewPullRequestItem2,
+  ),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssueCommentDeletedIssue {
@@ -2208,24 +1430,14 @@ pub enum WebhookIssueCommentDeletedIssue {
   WebhookIssueCommentDeletedIssueItem2(WebhookIssueCommentDeletedIssueItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2234,12 +1446,7 @@ impl ToString for WebhookPullRequestReviewCommentEditedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowJobWaitingWorkflowJobStatus {
   #[serde(rename = "queued")]
@@ -2252,12 +1459,7 @@ pub enum WebhookWorkflowJobWaitingWorkflowJobStatus {
   Waiting,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowJobWaitingWorkflowJobStatus {
   fn to_string(&self) -> String {
     match self {
@@ -2269,24 +1471,14 @@ impl ToString for WebhookWorkflowJobWaitingWorkflowJobStatus {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookRepositoryVulnerabilityAlertCreateAction {
   #[serde(rename = "create")]
   Create,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookRepositoryVulnerabilityAlertCreateAction {
   fn to_string(&self) -> String {
     match self {
@@ -2295,24 +1487,14 @@ impl ToString for WebhookRepositoryVulnerabilityAlertCreateAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewDismissedAction {
   #[serde(rename = "dismissed")]
   Dismissed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewDismissedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2321,12 +1503,7 @@ impl ToString for WebhookPullRequestReviewDismissedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
@@ -2340,12 +1517,7 @@ pub enum WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
   Error,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -2357,12 +1529,7 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// Describe whether all repositories have been selected or there's a selection involved
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookInstallationRepositoriesRemovedRepositorySelection {
@@ -2372,12 +1539,7 @@ pub enum WebhookInstallationRepositoriesRemovedRepositorySelection {
   Selected,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookInstallationRepositoriesRemovedRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -2387,12 +1549,7 @@ impl ToString for WebhookInstallationRepositoriesRemovedRepositorySelection {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestState {
   #[serde(rename = "open")]
@@ -2401,12 +1558,7 @@ pub enum WebhookPullRequestReviewCommentDeletedPullRequestState {
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -2416,12 +1568,7 @@ impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The new state. Can be `pending`, `success`, `failure`, or `error`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum StatusEventState {
@@ -2435,12 +1582,7 @@ pub enum StatusEventState {
   Error,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for StatusEventState {
   fn to_string(&self) -> String {
     match self {
@@ -2452,24 +1594,14 @@ impl ToString for StatusEventState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookSecretScanningAlertCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookSecretScanningAlertCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2478,24 +1610,14 @@ impl ToString for WebhookSecretScanningAlertCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -2504,24 +1626,14 @@ impl ToString for IssuesEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertReopenedEventAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DependabotAlertReopenedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -2530,24 +1642,14 @@ impl ToString for DependabotAlertReopenedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookInstallationRepositoriesRemovedAction {
   #[serde(rename = "removed")]
   Removed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookInstallationRepositoriesRemovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2556,24 +1658,14 @@ impl ToString for WebhookInstallationRepositoriesRemovedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SponsorshipCancelledEventAction {
   #[serde(rename = "cancelled")]
   Cancelled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for SponsorshipCancelledEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -2582,12 +1674,7 @@ impl ToString for SponsorshipCancelledEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
@@ -2599,39 +1686,26 @@ pub enum WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle {
   MergeMessage,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
       WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
+      WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle::MergeMessage => {
+        "MERGE_MESSAGE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CustomPropertyCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for CustomPropertyCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -2640,24 +1714,14 @@ impl ToString for CustomPropertyCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CheckRunRequestedActionEventAction {
   #[serde(rename = "requested_action")]
   RequestedAction,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for CheckRunRequestedActionEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -2666,24 +1730,14 @@ impl ToString for CheckRunRequestedActionEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestLockedAction {
   #[serde(rename = "locked")]
   Locked,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestLockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2692,24 +1746,14 @@ impl ToString for WebhookPullRequestLockedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookOrgBlockBlockedAction {
   #[serde(rename = "blocked")]
   Blocked,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookOrgBlockBlockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2718,24 +1762,14 @@ impl ToString for WebhookOrgBlockBlockedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookSecretScanningAlertRevokedAction {
   #[serde(rename = "revoked")]
   Revoked,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookSecretScanningAlertRevokedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2744,12 +1778,7 @@ impl ToString for WebhookSecretScanningAlertRevokedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowJobInProgressWorkflowJobItem2Status {
   #[serde(rename = "in_progress")]
@@ -2760,12 +1789,7 @@ pub enum WebhookWorkflowJobInProgressWorkflowJobItem2Status {
   Queued,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowJobInProgressWorkflowJobItem2Status {
   fn to_string(&self) -> String {
     match self {
@@ -2776,24 +1800,14 @@ impl ToString for WebhookWorkflowJobInProgressWorkflowJobItem2Status {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionLabeledEventAction {
   #[serde(rename = "labeled")]
   Labeled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionLabeledEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -2802,12 +1816,7 @@ impl ToString for DiscussionLabeledEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum IssuesDemilestonedEventIssue {
@@ -2816,24 +1825,14 @@ pub enum IssuesDemilestonedEventIssue {
   IssuesDemilestonedEventIssueItem2(IssuesDemilestonedEventIssueItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowJobInProgressAction {
   #[serde(rename = "in_progress")]
   InProgress,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowJobInProgressAction {
   fn to_string(&self) -> String {
     match self {
@@ -2842,38 +1841,25 @@ impl ToString for WebhookWorkflowJobInProgressAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAction {
   #[serde(rename = "appeared_in_branch")]
   AppearedInBranch,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertAppearedInBranchAction {
   fn to_string(&self) -> String {
     match self {
-      WebhookCodeScanningAlertAppearedInBranchAction::AppearedInBranch => "appeared_in_branch".to_string(),
+      WebhookCodeScanningAlertAppearedInBranchAction::AppearedInBranch => {
+        "appeared_in_branch".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
@@ -2886,41 +1872,32 @@ pub enum WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason {
   Spam,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::Resolved => "resolved".to_string(),
-      WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::OffTopic => "off-topic".to_string(),
-      WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::TooHeated => "too heated".to_string(),
+      WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::Resolved => {
+        "resolved".to_string()
+      }
+      WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::OffTopic => {
+        "off-topic".to_string()
+      }
+      WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::TooHeated => {
+        "too heated".to_string()
+      }
       WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::Spam => "spam".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionLockedEventAction {
   #[serde(rename = "locked")]
   Locked,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionLockedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -2929,12 +1906,7 @@ impl ToString for DiscussionLockedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// State of the issue; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookIssueCommentEditedIssueItem2State {
@@ -2944,12 +1916,7 @@ pub enum WebhookIssueCommentEditedIssueItem2State {
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookIssueCommentEditedIssueItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -2959,24 +1926,14 @@ impl ToString for WebhookIssueCommentEditedIssueItem2State {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionUnansweredEventAction {
   #[serde(rename = "unanswered")]
   Unanswered,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionUnansweredEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -2985,12 +1942,7 @@ impl ToString for DiscussionUnansweredEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
@@ -3002,39 +1954,26 @@ pub enum WebhookPullRequestClosedPullRequestItem2MergeCommitTitle {
   MergeMessage,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
       WebhookPullRequestClosedPullRequestItem2MergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestClosedPullRequestItem2MergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
+      WebhookPullRequestClosedPullRequestItem2MergeCommitTitle::MergeMessage => {
+        "MERGE_MESSAGE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3043,24 +1982,14 @@ impl ToString for WebhookPullRequestReviewEditedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookProjectColumnEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookProjectColumnEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3069,12 +1998,7 @@ impl ToString for WebhookProjectColumnEditedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertReopenedAlertRuleSeverity {
@@ -3088,12 +2012,7 @@ pub enum WebhookCodeScanningAlertReopenedAlertRuleSeverity {
   Error,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertReopenedAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -3105,12 +2024,7 @@ impl ToString for WebhookCodeScanningAlertReopenedAlertRuleSeverity {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleRequiredConversationResolutionLevel {
   #[serde(rename = "off")]
@@ -3121,40 +2035,27 @@ pub enum BranchProtectionRuleRequiredConversationResolutionLevel {
   Everyone,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleRequiredConversationResolutionLevel {
   fn to_string(&self) -> String {
     match self {
       BranchProtectionRuleRequiredConversationResolutionLevel::Off => "off".to_string(),
-      BranchProtectionRuleRequiredConversationResolutionLevel::NonAdmins => "non_admins".to_string(),
+      BranchProtectionRuleRequiredConversationResolutionLevel::NonAdmins => {
+        "non_admins".to_string()
+      }
       BranchProtectionRuleRequiredConversationResolutionLevel::Everyone => "everyone".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowJobWaitingAction {
   #[serde(rename = "waiting")]
   Waiting,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowJobWaitingAction {
   fn to_string(&self) -> String {
     match self {
@@ -3163,12 +2064,7 @@ impl ToString for WebhookWorkflowJobWaitingAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDeploymentStatusCreatedCheckRunStatus {
@@ -3184,12 +2080,7 @@ pub enum WebhookDeploymentStatusCreatedCheckRunStatus {
   Pending,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDeploymentStatusCreatedCheckRunStatus {
   fn to_string(&self) -> String {
     match self {
@@ -3202,24 +2093,14 @@ impl ToString for WebhookDeploymentStatusCreatedCheckRunStatus {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertFixedEventAction {
   #[serde(rename = "fixed")]
   Fixed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DependabotAlertFixedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -3228,24 +2109,14 @@ impl ToString for DependabotAlertFixedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ReleaseReleasedEventAction {
   #[serde(rename = "released")]
   Released,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ReleaseReleasedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -3254,12 +2125,7 @@ impl ToString for ReleaseReleasedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
@@ -3270,40 +2136,31 @@ pub enum WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel
   PerUnit,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel {
   fn to_string(&self) -> String {
     match self {
-      WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel::Free => "FREE".to_string(),
-      WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel::FlatRate => "FLAT_RATE".to_string(),
-      WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel::PerUnit => "PER_UNIT".to_string(),
+      WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel::Free => {
+        "FREE".to_string()
+      }
+      WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel::FlatRate => {
+        "FLAT_RATE".to_string()
+      }
+      WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel::PerUnit => {
+        "PER_UNIT".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDeployKeyCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDeployKeyCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3312,12 +2169,7 @@ impl ToString for WebhookDeployKeyCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum UserType {
   Bot,
@@ -3325,12 +2177,7 @@ pub enum UserType {
   Organization,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for UserType {
   fn to_string(&self) -> String {
     match self {
@@ -3341,24 +2188,14 @@ impl ToString for UserType {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// Whether the release is identified as a prerelease or a full release.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum ReleasePrereleasedEventReleaseItem2Prerelease {
   Boolean(bool),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum IssuesUnlockedEventIssue {
@@ -3367,38 +2204,25 @@ pub enum IssuesUnlockedEventIssue {
   IssuesUnlockedEventIssueItem2(IssuesUnlockedEventIssueItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertReopenedByUserAction {
   #[serde(rename = "reopened_by_user")]
   ReopenedByUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertReopenedByUserAction {
   fn to_string(&self) -> String {
     match self {
-      WebhookCodeScanningAlertReopenedByUserAction::ReopenedByUser => "reopened_by_user".to_string(),
+      WebhookCodeScanningAlertReopenedByUserAction::ReopenedByUser => {
+        "reopened_by_user".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -3413,12 +2237,7 @@ pub enum WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitMess
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -3429,24 +2248,14 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeC
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewThreadResolvedAction {
   #[serde(rename = "resolved")]
   Resolved,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewThreadResolvedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3455,24 +2264,14 @@ impl ToString for WebhookPullRequestReviewThreadResolvedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -3481,50 +2280,32 @@ impl ToString for RepositoryEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookSponsorshipPendingCancellationAction {
   #[serde(rename = "pending_cancellation")]
   PendingCancellation,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookSponsorshipPendingCancellationAction {
   fn to_string(&self) -> String {
     match self {
-      WebhookSponsorshipPendingCancellationAction::PendingCancellation => "pending_cancellation".to_string(),
+      WebhookSponsorshipPendingCancellationAction::PendingCancellation => {
+        "pending_cancellation".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookProjectCardEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookProjectCardEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3533,25 +2314,17 @@ impl ToString for WebhookProjectCardEditedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchaseChangedMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
-  WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2(WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2),
+  WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2(
+    WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2,
+  ),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleMergeQueueEnforcementLevel {
   #[serde(rename = "off")]
@@ -3562,12 +2335,7 @@ pub enum BranchProtectionRuleMergeQueueEnforcementLevel {
   Everyone,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleMergeQueueEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -3578,12 +2346,7 @@ impl ToString for BranchProtectionRuleMergeQueueEnforcementLevel {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The type of Git ref object created in the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CreateEventRefType {
@@ -3593,12 +2356,7 @@ pub enum CreateEventRefType {
   Branch,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for CreateEventRefType {
   fn to_string(&self) -> String {
     match self {
@@ -3608,12 +2366,7 @@ impl ToString for CreateEventRefType {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The action that was performed on the page. Can be `created` or `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum GollumEventPagesAction {
@@ -3623,12 +2376,7 @@ pub enum GollumEventPagesAction {
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for GollumEventPagesAction {
   fn to_string(&self) -> String {
     match self {
@@ -3638,24 +2386,14 @@ impl ToString for GollumEventPagesAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
   #[serde(rename = "open")]
   Open,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -3664,24 +2402,14 @@ impl ToString for WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewThreadUnresolvedAction {
   #[serde(rename = "unresolved")]
   Unresolved,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewThreadUnresolvedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3690,24 +2418,14 @@ impl ToString for WebhookPullRequestReviewThreadUnresolvedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMergeGroupChecksRequestedAction {
   #[serde(rename = "checks_requested")]
   ChecksRequested,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMergeGroupChecksRequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3716,64 +2434,43 @@ impl ToString for WebhookMergeGroupChecksRequestedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewRequestedItem2Action {
   #[serde(rename = "review_requested")]
   ReviewRequested,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewRequestedItem2Action {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewRequestedItem2Action::ReviewRequested => "review_requested".to_string(),
+      WebhookPullRequestReviewRequestedItem2Action::ReviewRequested => {
+        "review_requested".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryVulnerabilityAlertReopenAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
-  WebhookRepositoryVulnerabilityAlertReopenAlertItem2(WebhookRepositoryVulnerabilityAlertReopenAlertItem2),
+  WebhookRepositoryVulnerabilityAlertReopenAlertItem2(
+    WebhookRepositoryVulnerabilityAlertReopenAlertItem2,
+  ),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDiscussionCommentEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDiscussionCommentEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3782,12 +2479,7 @@ impl ToString for WebhookDiscussionCommentEditedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The merge method to use.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PullRequestAutoMergeMergeMethod {
@@ -3799,12 +2491,7 @@ pub enum PullRequestAutoMergeMergeMethod {
   Rebase,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for PullRequestAutoMergeMergeMethod {
   fn to_string(&self) -> String {
     match self {
@@ -3815,24 +2502,14 @@ impl ToString for PullRequestAutoMergeMergeMethod {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMarketplacePurchaseCancelledAction {
   #[serde(rename = "cancelled")]
   Cancelled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMarketplacePurchaseCancelledAction {
   fn to_string(&self) -> String {
     match self {
@@ -3841,24 +2518,14 @@ impl ToString for WebhookMarketplacePurchaseCancelledAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ItemReorderedEventAction {
   #[serde(rename = "reordered")]
   Reordered,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ItemReorderedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -3867,12 +2534,7 @@ impl ToString for ProjectsV2ItemReorderedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -3887,40 +2549,27 @@ pub enum WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage {
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
       WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage::PrTitle => "PR_TITLE".to_string(),
+      WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage::PrTitle => {
+        "PR_TITLE".to_string()
+      }
       WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage::Blank => "BLANK".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SponsorshipEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for SponsorshipEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -3929,12 +2578,7 @@ impl ToString for SponsorshipEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum IssuesLockedEventIssue {
@@ -3943,24 +2587,14 @@ pub enum IssuesLockedEventIssue {
   IssuesLockedEventIssueItem2(IssuesLockedEventIssueItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookProjectsV2ProjectCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookProjectsV2ProjectCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3969,12 +2603,7 @@ impl ToString for WebhookProjectsV2ProjectCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
   #[serde(rename = "success")]
@@ -3995,12 +2624,7 @@ pub enum WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
   Stale,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
   fn to_string(&self) -> String {
     match self {
@@ -4009,19 +2633,16 @@ impl ToString for WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
       WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Neutral => "neutral".to_string(),
       WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Cancelled => "cancelled".to_string(),
       WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::TimedOut => "timed_out".to_string(),
-      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::ActionRequired => "action_required".to_string(),
+      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::ActionRequired => {
+        "action_required".to_string()
+      }
       WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Skipped => "skipped".to_string(),
       WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Stale => "stale".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesClosedEventIssueItem2State {
   #[serde(rename = "closed")]
@@ -4030,12 +2651,7 @@ pub enum IssuesClosedEventIssueItem2State {
   Open,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesClosedEventIssueItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -4045,24 +2661,14 @@ impl ToString for IssuesClosedEventIssueItem2State {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecretScanningAlertLocationCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for SecretScanningAlertLocationCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -4071,24 +2677,14 @@ impl ToString for SecretScanningAlertLocationCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum LabelDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for LabelDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -4097,24 +2693,14 @@ impl ToString for LabelDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertFixedAction {
   #[serde(rename = "fixed")]
   Fixed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertFixedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4123,24 +2709,14 @@ impl ToString for WebhookCodeScanningAlertFixedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MilestoneOpenedEventAction {
   #[serde(rename = "opened")]
   Opened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MilestoneOpenedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -4149,24 +2725,14 @@ impl ToString for MilestoneOpenedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookRegistryPackagePublishedAction {
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookRegistryPackagePublishedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4175,24 +2741,14 @@ impl ToString for WebhookRegistryPackagePublishedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulesetEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryRulesetEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -4201,12 +2757,7 @@ impl ToString for RepositoryRulesetEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -4221,40 +2772,31 @@ pub enum WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessag
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
-      WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage::Blank => "BLANK".to_string(),
+      WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage::PrBody => {
+        "PR_BODY".to_string()
+      }
+      WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage::CommitMessages => {
+        "COMMIT_MESSAGES".to_string()
+      }
+      WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage::Blank => {
+        "BLANK".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionAnsweredEventAction {
   #[serde(rename = "answered")]
   Answered,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionAnsweredEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -4263,12 +2805,7 @@ impl ToString for DiscussionAnsweredEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -4280,27 +2817,21 @@ pub enum WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle {
   CommitOrPrTitle,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
+      WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle::PrTitle => {
+        "PR_TITLE".to_string()
+      }
+      WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => {
+        "COMMIT_OR_PR_TITLE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -4315,40 +2846,31 @@ pub enum WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage {
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage::Blank => "BLANK".to_string(),
+      WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage::PrBody => {
+        "PR_BODY".to_string()
+      }
+      WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage::PrTitle => {
+        "PR_TITLE".to_string()
+      }
+      WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage::Blank => {
+        "BLANK".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookSecurityAdvisoryWithdrawnAction {
   #[serde(rename = "withdrawn")]
   Withdrawn,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookSecurityAdvisoryWithdrawnAction {
   fn to_string(&self) -> String {
     match self {
@@ -4357,12 +2879,7 @@ impl ToString for WebhookSecurityAdvisoryWithdrawnAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MarketplacePurchasePlanPriceModel {
   #[serde(rename = "FREE")]
@@ -4373,12 +2890,7 @@ pub enum MarketplacePurchasePlanPriceModel {
   PerUnit,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MarketplacePurchasePlanPriceModel {
   fn to_string(&self) -> String {
     match self {
@@ -4389,12 +2901,7 @@ impl ToString for MarketplacePurchasePlanPriceModel {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewDismissedReviewState {
   #[serde(rename = "dismissed")]
@@ -4405,40 +2912,27 @@ pub enum WebhookPullRequestReviewDismissedReviewState {
   ChangesRequested,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewDismissedReviewState {
   fn to_string(&self) -> String {
     match self {
       WebhookPullRequestReviewDismissedReviewState::Dismissed => "dismissed".to_string(),
       WebhookPullRequestReviewDismissedReviewState::Approved => "approved".to_string(),
-      WebhookPullRequestReviewDismissedReviewState::ChangesRequested => "changes_requested".to_string(),
+      WebhookPullRequestReviewDismissedReviewState::ChangesRequested => {
+        "changes_requested".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MilestoneClosedEventAction {
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MilestoneClosedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -4447,24 +2941,14 @@ impl ToString for MilestoneClosedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ItemCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ItemCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -4473,24 +2957,14 @@ impl ToString for ProjectsV2ItemCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesUnlabeledEventAction {
   #[serde(rename = "unlabeled")]
   Unlabeled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesUnlabeledEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -4499,12 +2973,7 @@ impl ToString for IssuesUnlabeledEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReleasePrereleasedEventRelease {
@@ -4513,12 +2982,7 @@ pub enum ReleasePrereleasedEventRelease {
   ReleasePrereleasedEventReleaseItem2(ReleasePrereleasedEventReleaseItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
@@ -4531,41 +2995,32 @@ pub enum WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason {
   Spam,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::Resolved => "resolved".to_string(),
-      WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::OffTopic => "off-topic".to_string(),
-      WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::TooHeated => "too heated".to_string(),
+      WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::Resolved => {
+        "resolved".to_string()
+      }
+      WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::OffTopic => {
+        "off-topic".to_string()
+      }
+      WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::TooHeated => {
+        "too heated".to_string()
+      }
       WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::Spam => "spam".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ProjectReopenedEventAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ProjectReopenedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -4574,12 +3029,7 @@ impl ToString for ProjectsV2ProjectReopenedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesReopenedEventIssueItem2State {
   #[serde(rename = "open")]
@@ -4588,12 +3038,7 @@ pub enum IssuesReopenedEventIssueItem2State {
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesReopenedEventIssueItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -4603,24 +3048,14 @@ impl ToString for IssuesReopenedEventIssueItem2State {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum TeamEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for TeamEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -4629,12 +3064,7 @@ impl ToString for TeamEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum AlertInstanceState {
@@ -4646,12 +3076,7 @@ pub enum AlertInstanceState {
   Fixed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for AlertInstanceState {
   fn to_string(&self) -> String {
     match self {
@@ -4662,12 +3087,7 @@ impl ToString for AlertInstanceState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
@@ -4679,27 +3099,19 @@ pub enum WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle {
   MergeMessage,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
       WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
+      WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle::MergeMessage => {
+        "MERGE_MESSAGE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The reason for resolving the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecretScanningAlertResolutionWebhook {
@@ -4717,12 +3129,7 @@ pub enum SecretScanningAlertResolutionWebhook {
   PatternEdited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for SecretScanningAlertResolutionWebhook {
   fn to_string(&self) -> String {
     match self {
@@ -4736,12 +3143,7 @@ impl ToString for SecretScanningAlertResolutionWebhook {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookWorkflowJobCompletedWorkflowJob {
@@ -4750,24 +3152,14 @@ pub enum WebhookWorkflowJobCompletedWorkflowJob {
   WebhookWorkflowJobCompletedWorkflowJobItem2(WebhookWorkflowJobCompletedWorkflowJobItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookSponsorshipTierChangedAction {
   #[serde(rename = "tier_changed")]
   TierChanged,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookSponsorshipTierChangedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4776,12 +3168,7 @@ impl ToString for WebhookSponsorshipTierChangedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation {
@@ -4803,45 +3190,44 @@ pub enum WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
-      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Member => "MEMBER".to_string(),
+      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Collaborator => {
+        "COLLABORATOR".to_string()
+      }
+      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Contributor => {
+        "CONTRIBUTOR".to_string()
+      }
+      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::FirstTimer => {
+        "FIRST_TIMER".to_string()
+      }
+      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
+      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Mannequin => {
+        "MANNEQUIN".to_string()
+      }
+      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Member => {
+        "MEMBER".to_string()
+      }
       WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::None => "NONE".to_string(),
-      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Owner => {
+        "OWNER".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookOrganizationMemberInvitedAction {
   #[serde(rename = "member_invited")]
   MemberInvited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookOrganizationMemberInvitedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4850,24 +3236,14 @@ impl ToString for WebhookOrganizationMemberInvitedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowRunRequestedAction {
   #[serde(rename = "requested")]
   Requested,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowRunRequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4876,24 +3252,14 @@ impl ToString for WebhookWorkflowRunRequestedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDeploymentReviewRequestedReviewersType {
   User,
   Team,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDeploymentReviewRequestedReviewersType {
   fn to_string(&self) -> String {
     match self {
@@ -4903,12 +3269,7 @@ impl ToString for WebhookDeploymentReviewRequestedReviewersType {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewEditedReviewAuthorAssociation {
@@ -4930,19 +3291,22 @@ pub enum WebhookPullRequestReviewEditedReviewAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewEditedReviewAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewEditedReviewAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      WebhookPullRequestReviewEditedReviewAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      WebhookPullRequestReviewEditedReviewAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      WebhookPullRequestReviewEditedReviewAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
+      WebhookPullRequestReviewEditedReviewAuthorAssociation::Collaborator => {
+        "COLLABORATOR".to_string()
+      }
+      WebhookPullRequestReviewEditedReviewAuthorAssociation::Contributor => {
+        "CONTRIBUTOR".to_string()
+      }
+      WebhookPullRequestReviewEditedReviewAuthorAssociation::FirstTimer => {
+        "FIRST_TIMER".to_string()
+      }
+      WebhookPullRequestReviewEditedReviewAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
       WebhookPullRequestReviewEditedReviewAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
       WebhookPullRequestReviewEditedReviewAuthorAssociation::Member => "MEMBER".to_string(),
       WebhookPullRequestReviewEditedReviewAuthorAssociation::None => "NONE".to_string(),
@@ -4951,12 +3315,7 @@ impl ToString for WebhookPullRequestReviewEditedReviewAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WorkflowRunStatus {
   #[serde(rename = "requested")]
@@ -4973,12 +3332,7 @@ pub enum WorkflowRunStatus {
   Waiting,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WorkflowRunStatus {
   fn to_string(&self) -> String {
     match self {
@@ -4992,24 +3346,14 @@ impl ToString for WorkflowRunStatus {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookSecretScanningAlertResolvedAction {
   #[serde(rename = "resolved")]
   Resolved,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookSecretScanningAlertResolvedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5018,24 +3362,14 @@ impl ToString for WebhookSecretScanningAlertResolvedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionCategoryChangedEventAction {
   #[serde(rename = "category_changed")]
   CategoryChanged,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionCategoryChangedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -5044,24 +3378,14 @@ impl ToString for DiscussionCategoryChangedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CheckRunCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for CheckRunCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -5070,24 +3394,14 @@ impl ToString for CheckRunCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -5096,23 +3410,13 @@ impl ToString for RepositoryCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDeploymentReviewRejectedReviewersType {
   User,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDeploymentReviewRejectedReviewersType {
   fn to_string(&self) -> String {
     match self {
@@ -5121,12 +3425,7 @@ impl ToString for WebhookDeploymentReviewRejectedReviewersType {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCommitCommentCreatedCommentAuthorAssociation {
@@ -5148,19 +3447,18 @@ pub enum WebhookCommitCommentCreatedCommentAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCommitCommentCreatedCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
-      WebhookCommitCommentCreatedCommentAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
+      WebhookCommitCommentCreatedCommentAuthorAssociation::Collaborator => {
+        "COLLABORATOR".to_string()
+      }
       WebhookCommitCommentCreatedCommentAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
       WebhookCommitCommentCreatedCommentAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      WebhookCommitCommentCreatedCommentAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
+      WebhookCommitCommentCreatedCommentAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
       WebhookCommitCommentCreatedCommentAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
       WebhookCommitCommentCreatedCommentAuthorAssociation::Member => "MEMBER".to_string(),
       WebhookCommitCommentCreatedCommentAuthorAssociation::None => "NONE".to_string(),
@@ -5169,12 +3467,7 @@ impl ToString for WebhookCommitCommentCreatedCommentAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
@@ -5185,28 +3478,24 @@ pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceMod
   PerUnit,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel {
   fn to_string(&self) -> String {
     match self {
-      WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel::Free => "FREE".to_string(),
-      WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel::FlatRate => "FLAT_RATE".to_string(),
-      WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel::PerUnit => "PER_UNIT".to_string(),
+      WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel::Free => {
+        "FREE".to_string()
+      }
+      WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel::FlatRate => {
+        "FLAT_RATE".to_string()
+      }
+      WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel::PerUnit => {
+        "PER_UNIT".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
@@ -5217,40 +3506,31 @@ pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceMod
   PerUnit,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel {
   fn to_string(&self) -> String {
     match self {
-      WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel::Free => "FREE".to_string(),
-      WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel::FlatRate => "FLAT_RATE".to_string(),
-      WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel::PerUnit => "PER_UNIT".to_string(),
+      WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel::Free => {
+        "FREE".to_string()
+      }
+      WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel::FlatRate => {
+        "FLAT_RATE".to_string()
+      }
+      WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel::PerUnit => {
+        "PER_UNIT".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -5259,24 +3539,14 @@ impl ToString for RepositoryDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertClosedByUserAction {
   #[serde(rename = "closed_by_user")]
   ClosedByUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertClosedByUserAction {
   fn to_string(&self) -> String {
     match self {
@@ -5285,24 +3555,14 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum InstallationDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for InstallationDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -5311,24 +3571,14 @@ impl ToString for InstallationDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCheckSuiteCompletedAction {
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCheckSuiteCompletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5337,12 +3587,7 @@ impl ToString for WebhookCheckSuiteCompletedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The current state of the discussion.
 /// `converting` means that the discussion is being converted from an issue.
 /// `transferring` means that the discussion is being transferred from another repository.
@@ -5360,12 +3605,7 @@ pub enum DiscussionState {
   Transferring,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionState {
   fn to_string(&self) -> String {
     match self {
@@ -5378,12 +3618,7 @@ impl ToString for DiscussionState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCheckSuiteCompletedCheckSuiteConclusion {
@@ -5407,12 +3642,7 @@ pub enum WebhookCheckSuiteCompletedCheckSuiteConclusion {
   StartupFailure,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCheckSuiteCompletedCheckSuiteConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -5421,20 +3651,19 @@ impl ToString for WebhookCheckSuiteCompletedCheckSuiteConclusion {
       WebhookCheckSuiteCompletedCheckSuiteConclusion::Neutral => "neutral".to_string(),
       WebhookCheckSuiteCompletedCheckSuiteConclusion::Cancelled => "cancelled".to_string(),
       WebhookCheckSuiteCompletedCheckSuiteConclusion::TimedOut => "timed_out".to_string(),
-      WebhookCheckSuiteCompletedCheckSuiteConclusion::ActionRequired => "action_required".to_string(),
+      WebhookCheckSuiteCompletedCheckSuiteConclusion::ActionRequired => {
+        "action_required".to_string()
+      }
       WebhookCheckSuiteCompletedCheckSuiteConclusion::Stale => "stale".to_string(),
       WebhookCheckSuiteCompletedCheckSuiteConclusion::Skipped => "skipped".to_string(),
-      WebhookCheckSuiteCompletedCheckSuiteConclusion::StartupFailure => "startup_failure".to_string(),
+      WebhookCheckSuiteCompletedCheckSuiteConclusion::StartupFailure => {
+        "startup_failure".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertCreatedAlertRuleSeverity {
@@ -5448,12 +3677,7 @@ pub enum WebhookCodeScanningAlertCreatedAlertRuleSeverity {
   Error,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertCreatedAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -5465,24 +3689,14 @@ impl ToString for WebhookCodeScanningAlertCreatedAlertRuleSeverity {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5491,12 +3705,7 @@ impl ToString for WebhookCodeScanningAlertCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation {
@@ -5518,33 +3727,39 @@ pub enum WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
-      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Member => "MEMBER".to_string(),
-      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::None => "NONE".to_string(),
-      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Collaborator => {
+        "COLLABORATOR".to_string()
+      }
+      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Contributor => {
+        "CONTRIBUTOR".to_string()
+      }
+      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::FirstTimer => {
+        "FIRST_TIMER".to_string()
+      }
+      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
+      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Mannequin => {
+        "MANNEQUIN".to_string()
+      }
+      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Member => {
+        "MEMBER".to_string()
+      }
+      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::None => {
+        "NONE".to_string()
+      }
+      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Owner => {
+        "OWNER".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertReopenedByUserAlertState {
@@ -5554,12 +3769,7 @@ pub enum WebhookCodeScanningAlertReopenedByUserAlertState {
   Fixed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertReopenedByUserAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -5569,12 +3779,7 @@ impl ToString for WebhookCodeScanningAlertReopenedByUserAlertState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevelFrom {
   #[serde(rename = "off")]
@@ -5585,13 +3790,10 @@ pub enum BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforceme
   Everyone,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
-impl ToString for BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevelFrom {
+#[cfg(any(feature = "full", feature = "webhook",))]
+impl ToString
+  for BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevelFrom
+{
   fn to_string(&self) -> String {
     match self {
       BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevelFrom::Off => "off".to_string(),
@@ -5601,24 +3803,14 @@ impl ToString for BranchProtectionRuleEditedEventChangesLinearHistoryRequirement
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PackageUpdatedEventAction {
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for PackageUpdatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -5627,12 +3819,7 @@ impl ToString for PackageUpdatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The result of the completed check run. This value will be `null` until the check run has completed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDeploymentStatusCreatedCheckRunConclusion {
@@ -5654,12 +3841,7 @@ pub enum WebhookDeploymentStatusCreatedCheckRunConclusion {
   Skipped,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDeploymentStatusCreatedCheckRunConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -5668,19 +3850,16 @@ impl ToString for WebhookDeploymentStatusCreatedCheckRunConclusion {
       WebhookDeploymentStatusCreatedCheckRunConclusion::Neutral => "neutral".to_string(),
       WebhookDeploymentStatusCreatedCheckRunConclusion::Cancelled => "cancelled".to_string(),
       WebhookDeploymentStatusCreatedCheckRunConclusion::TimedOut => "timed_out".to_string(),
-      WebhookDeploymentStatusCreatedCheckRunConclusion::ActionRequired => "action_required".to_string(),
+      WebhookDeploymentStatusCreatedCheckRunConclusion::ActionRequired => {
+        "action_required".to_string()
+      }
       WebhookDeploymentStatusCreatedCheckRunConclusion::Stale => "stale".to_string(),
       WebhookDeploymentStatusCreatedCheckRunConclusion::Skipped => "skipped".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
   #[serde(rename = "off")]
@@ -5691,40 +3870,27 @@ pub enum BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
   Everyone,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
       BranchProtectionRuleRequiredStatusChecksEnforcementLevel::Off => "off".to_string(),
-      BranchProtectionRuleRequiredStatusChecksEnforcementLevel::NonAdmins => "non_admins".to_string(),
+      BranchProtectionRuleRequiredStatusChecksEnforcementLevel::NonAdmins => {
+        "non_admins".to_string()
+      }
       BranchProtectionRuleRequiredStatusChecksEnforcementLevel::Everyone => "everyone".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookRepositoryVulnerabilityAlertResolveAction {
   #[serde(rename = "resolve")]
   Resolve,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookRepositoryVulnerabilityAlertResolveAction {
   fn to_string(&self) -> String {
     match self {
@@ -5733,12 +3899,7 @@ impl ToString for WebhookRepositoryVulnerabilityAlertResolveAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
   #[serde(rename = "success")]
@@ -5759,12 +3920,7 @@ pub enum WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
   Skipped,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
   fn to_string(&self) -> String {
     match self {
@@ -5773,19 +3929,16 @@ impl ToString for WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
       WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Neutral => "neutral".to_string(),
       WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Cancelled => "cancelled".to_string(),
       WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::TimedOut => "timed_out".to_string(),
-      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::ActionRequired => "action_required".to_string(),
+      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::ActionRequired => {
+        "action_required".to_string()
+      }
       WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Stale => "stale".to_string(),
       WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Skipped => "skipped".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -5800,28 +3953,24 @@ pub enum WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage {
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
-      WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage::Blank => "BLANK".to_string(),
+      WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage::PrBody => {
+        "PR_BODY".to_string()
+      }
+      WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage::CommitMessages => {
+        "COMMIT_MESSAGES".to_string()
+      }
+      WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage::Blank => {
+        "BLANK".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertClosedByUserAlertState {
@@ -5831,12 +3980,7 @@ pub enum WebhookCodeScanningAlertClosedByUserAlertState {
   Fixed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertClosedByUserAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -5846,24 +3990,14 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAlertState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestMilestonedAction {
   #[serde(rename = "milestoned")]
   Milestoned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestMilestonedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5872,12 +4006,7 @@ impl ToString for WebhookPullRequestMilestonedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookWorkflowJobInProgressWorkflowJob {
@@ -5886,24 +4015,14 @@ pub enum WebhookWorkflowJobInProgressWorkflowJob {
   WebhookWorkflowJobInProgressWorkflowJobItem2(WebhookWorkflowJobInProgressWorkflowJobItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookInstallationTargetRenamedAction {
   #[serde(rename = "renamed")]
   Renamed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookInstallationTargetRenamedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5912,24 +4031,14 @@ impl ToString for WebhookInstallationTargetRenamedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum LabelCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for LabelCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -5938,12 +4047,7 @@ impl ToString for LabelCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The action that was performed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesUnassignedEventAction {
@@ -5951,12 +4055,7 @@ pub enum IssuesUnassignedEventAction {
   Unassigned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesUnassignedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -5965,24 +4064,14 @@ impl ToString for IssuesUnassignedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestSynchronizeAction {
   #[serde(rename = "synchronize")]
   Synchronize,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestSynchronizeAction {
   fn to_string(&self) -> String {
     match self {
@@ -5991,12 +4080,7 @@ impl ToString for WebhookPullRequestSynchronizeAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum IssuesMilestonedEventIssue {
@@ -6005,24 +4089,14 @@ pub enum IssuesMilestonedEventIssue {
   IssuesMilestonedEventIssueItem2(IssuesMilestonedEventIssueItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookGithubAppAuthorizationRevokedAction {
   #[serde(rename = "revoked")]
   Revoked,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookGithubAppAuthorizationRevokedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6031,24 +4105,14 @@ impl ToString for WebhookGithubAppAuthorizationRevokedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CustomPropertyUpdatedEventAction {
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for CustomPropertyUpdatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6057,24 +4121,14 @@ impl ToString for CustomPropertyUpdatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DeploymentCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DeploymentCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6083,12 +4137,7 @@ impl ToString for DeploymentCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WorkflowJobConclusion {
   #[serde(rename = "success")]
@@ -6101,12 +4150,7 @@ pub enum WorkflowJobConclusion {
   Neutral,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WorkflowJobConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -6118,12 +4162,7 @@ impl ToString for WorkflowJobConclusion {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SimplePullRequestState {
   #[serde(rename = "open")]
@@ -6132,12 +4171,7 @@ pub enum SimplePullRequestState {
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for SimplePullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -6147,12 +4181,7 @@ impl ToString for SimplePullRequestState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookWorkflowRunCompletedWorkflowRun {
@@ -6160,12 +4189,7 @@ pub enum WebhookWorkflowRunCompletedWorkflowRun {
   WebhookWorkflowRunCompletedWorkflowRunItem2(WebhookWorkflowRunCompletedWorkflowRunItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCheckSuiteCompletedCheckSuiteStatus {
@@ -6181,12 +4205,7 @@ pub enum WebhookCheckSuiteCompletedCheckSuiteStatus {
   Pending,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCheckSuiteCompletedCheckSuiteStatus {
   fn to_string(&self) -> String {
     match self {
@@ -6199,12 +4218,7 @@ impl ToString for WebhookCheckSuiteCompletedCheckSuiteStatus {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DeploymentWorkflowRunConclusion {
   #[serde(rename = "success")]
@@ -6223,12 +4237,7 @@ pub enum DeploymentWorkflowRunConclusion {
   Stale,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DeploymentWorkflowRunConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -6243,12 +4252,7 @@ impl ToString for DeploymentWorkflowRunConclusion {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The reason for the current state
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionStateReason {
@@ -6262,12 +4266,7 @@ pub enum DiscussionStateReason {
   Reopened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionStateReason {
   fn to_string(&self) -> String {
     match self {
@@ -6279,24 +4278,14 @@ impl ToString for DiscussionStateReason {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryPublicizedEventAction {
   #[serde(rename = "publicized")]
   Publicized,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryPublicizedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6305,24 +4294,14 @@ impl ToString for RepositoryPublicizedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CheckRunCompletedEventAction {
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for CheckRunCompletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6331,24 +4310,14 @@ impl ToString for CheckRunCompletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionUnlabeledEventAction {
   #[serde(rename = "unlabeled")]
   Unlabeled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionUnlabeledEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6357,24 +4326,14 @@ impl ToString for DiscussionUnlabeledEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6383,24 +4342,14 @@ impl ToString for WebhookPullRequestReviewCommentCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesDemilestonedEventAction {
   #[serde(rename = "demilestoned")]
   Demilestoned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesDemilestonedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6409,24 +4358,14 @@ impl ToString for IssuesDemilestonedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionPinnedEventAction {
   #[serde(rename = "pinned")]
   Pinned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionPinnedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6435,38 +4374,25 @@ impl ToString for DiscussionPinnedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryVulnerabilityAlertDismissAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
-  WebhookRepositoryVulnerabilityAlertDismissAlertItem2(WebhookRepositoryVulnerabilityAlertDismissAlertItem2),
+  WebhookRepositoryVulnerabilityAlertDismissAlertItem2(
+    WebhookRepositoryVulnerabilityAlertDismissAlertItem2,
+  ),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryArchivedEventAction {
   #[serde(rename = "archived")]
   Archived,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryArchivedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6475,50 +4401,32 @@ impl ToString for RepositoryArchivedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestAutoMergeEnabledAction {
   #[serde(rename = "auto_merge_enabled")]
   AutoMergeEnabled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestAutoMergeEnabledAction {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestAutoMergeEnabledAction::AutoMergeEnabled => "auto_merge_enabled".to_string(),
+      WebhookPullRequestAutoMergeEnabledAction::AutoMergeEnabled => {
+        "auto_merge_enabled".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryAdvisoryPublishedEventAction {
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryAdvisoryPublishedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6527,24 +4435,14 @@ impl ToString for RepositoryAdvisoryPublishedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesReopenedEventAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesReopenedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6553,24 +4451,14 @@ impl ToString for IssuesReopenedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRenamedEventAction {
   #[serde(rename = "renamed")]
   Renamed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryRenamedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6579,12 +4467,7 @@ impl ToString for RepositoryRenamedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertFixedAlertDismissedReason {
@@ -6596,28 +4479,20 @@ pub enum WebhookCodeScanningAlertFixedAlertDismissedReason {
   UsedInTests,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertFixedAlertDismissedReason {
   fn to_string(&self) -> String {
     match self {
-      WebhookCodeScanningAlertFixedAlertDismissedReason::FalsePositive => "false positive".to_string(),
+      WebhookCodeScanningAlertFixedAlertDismissedReason::FalsePositive => {
+        "false positive".to_string()
+      }
       WebhookCodeScanningAlertFixedAlertDismissedReason::WonTFix => "won't fix".to_string(),
       WebhookCodeScanningAlertFixedAlertDismissedReason::UsedInTests => "used in tests".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MemberAddedEventChangesPermissionTo {
   #[serde(rename = "write")]
@@ -6628,12 +4503,7 @@ pub enum MemberAddedEventChangesPermissionTo {
   Read,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MemberAddedEventChangesPermissionTo {
   fn to_string(&self) -> String {
     match self {
@@ -6644,24 +4514,14 @@ impl ToString for MemberAddedEventChangesPermissionTo {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6670,24 +4530,14 @@ impl ToString for IssuesDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryTransferredEventAction {
   #[serde(rename = "transferred")]
   Transferred,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryTransferredEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6696,37 +4546,24 @@ impl ToString for RepositoryTransferredEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
-  WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2(WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2),
+  WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2(
+    WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2,
+  ),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DeploymentProtectionRuleRequestedEventAction {
   #[serde(rename = "requested")]
   Requested,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DeploymentProtectionRuleRequestedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6735,12 +4572,7 @@ impl ToString for DeploymentProtectionRuleRequestedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum DiscussionCreatedEventDiscussion {
@@ -6749,12 +4581,7 @@ pub enum DiscussionCreatedEventDiscussion {
   DiscussionCreatedEventDiscussionItem2(DiscussionCreatedEventDiscussionItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// Describe whether all repositories have been selected or there's a selection involved
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookInstallationRepositoriesAddedRepositorySelection {
@@ -6764,12 +4591,7 @@ pub enum WebhookInstallationRepositoriesAddedRepositorySelection {
   Selected,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookInstallationRepositoriesAddedRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -6779,12 +4601,7 @@ impl ToString for WebhookInstallationRepositoriesAddedRepositorySelection {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertCreatedAlertState {
@@ -6794,12 +4611,7 @@ pub enum WebhookCodeScanningAlertCreatedAlertState {
   Dismissed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertCreatedAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -6809,50 +4621,32 @@ impl ToString for WebhookCodeScanningAlertCreatedAlertState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookTeamRemovedFromRepositoryAction {
   #[serde(rename = "removed_from_repository")]
   RemovedFromRepository,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookTeamRemovedFromRepositoryAction {
   fn to_string(&self) -> String {
     match self {
-      WebhookTeamRemovedFromRepositoryAction::RemovedFromRepository => "removed_from_repository".to_string(),
+      WebhookTeamRemovedFromRepositoryAction::RemovedFromRepository => {
+        "removed_from_repository".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum OrganizationRenamedEventAction {
   #[serde(rename = "renamed")]
   Renamed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for OrganizationRenamedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6861,24 +4655,14 @@ impl ToString for OrganizationRenamedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookSecurityAdvisoryUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookSecurityAdvisoryUpdatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6887,24 +4671,14 @@ impl ToString for WebhookSecurityAdvisoryUpdatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6913,24 +4687,14 @@ impl ToString for WebhookCodeScanningAlertReopenedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionTransferredEventAction {
   #[serde(rename = "transferred")]
   Transferred,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionTransferredEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -6939,24 +4703,14 @@ impl ToString for DiscussionTransferredEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMarketplacePurchasePurchasedAction {
   #[serde(rename = "purchased")]
   Purchased,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMarketplacePurchasePurchasedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6965,24 +4719,14 @@ impl ToString for WebhookMarketplacePurchasePurchasedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookProjectColumnCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookProjectColumnCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6991,24 +4735,14 @@ impl ToString for WebhookProjectColumnCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertAutoDismissedEventAction {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DependabotAlertAutoDismissedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7017,24 +4751,14 @@ impl ToString for DependabotAlertAutoDismissedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum LabelEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for LabelEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7043,24 +4767,14 @@ impl ToString for LabelEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesLabeledEventAction {
   #[serde(rename = "labeled")]
   Labeled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesLabeledEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7069,24 +4783,14 @@ impl ToString for IssuesLabeledEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum OrganizationDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for OrganizationDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7095,24 +4799,14 @@ impl ToString for OrganizationDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPersonalAccessTokenRequestApprovedAction {
   #[serde(rename = "approved")]
   Approved,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPersonalAccessTokenRequestApprovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7121,24 +4815,14 @@ impl ToString for WebhookPersonalAccessTokenRequestApprovedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDeploymentReviewRequestedAction {
   #[serde(rename = "requested")]
   Requested,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDeploymentReviewRequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7147,12 +4831,7 @@ impl ToString for WebhookDeploymentReviewRequestedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertState {
@@ -7164,12 +4843,7 @@ pub enum WebhookCodeScanningAlertAppearedInBranchAlertState {
   Fixed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -7180,24 +4854,14 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ReleaseCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ReleaseCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7206,12 +4870,7 @@ impl ToString for ReleaseCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
@@ -7223,39 +4882,28 @@ pub enum WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle {
   MergeMessage,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
+      WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle::PrTitle => {
+        "PR_TITLE".to_string()
+      }
+      WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle::MergeMessage => {
+        "MERGE_MESSAGE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CheckRunReRequestedEventAction {
   #[serde(rename = "rerequested")]
   Rerequested,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for CheckRunReRequestedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7264,12 +4912,7 @@ impl ToString for CheckRunReRequestedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionUnansweredEventOldAnswerAuthorAssociation {
@@ -7291,19 +4934,18 @@ pub enum DiscussionUnansweredEventOldAnswerAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionUnansweredEventOldAnswerAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
-      DiscussionUnansweredEventOldAnswerAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
+      DiscussionUnansweredEventOldAnswerAuthorAssociation::Collaborator => {
+        "COLLABORATOR".to_string()
+      }
       DiscussionUnansweredEventOldAnswerAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
       DiscussionUnansweredEventOldAnswerAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      DiscussionUnansweredEventOldAnswerAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
+      DiscussionUnansweredEventOldAnswerAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
       DiscussionUnansweredEventOldAnswerAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
       DiscussionUnansweredEventOldAnswerAuthorAssociation::Member => "MEMBER".to_string(),
       DiscussionUnansweredEventOldAnswerAuthorAssociation::None => "NONE".to_string(),
@@ -7312,24 +4954,14 @@ impl ToString for DiscussionUnansweredEventOldAnswerAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7338,24 +4970,14 @@ impl ToString for BranchProtectionRuleEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookProjectColumnMovedAction {
   #[serde(rename = "moved")]
   Moved,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookProjectColumnMovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7364,12 +4986,7 @@ impl ToString for WebhookProjectColumnMovedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -7381,39 +4998,28 @@ pub enum WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle {
   CommitOrPrTitle,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
+      WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle::PrTitle => {
+        "PR_TITLE".to_string()
+      }
+      WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => {
+        "COMMIT_OR_PR_TITLE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookTeamAddedToRepositoryAction {
   #[serde(rename = "added_to_repository")]
   AddedToRepository,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookTeamAddedToRepositoryAction {
   fn to_string(&self) -> String {
     match self {
@@ -7422,24 +5028,14 @@ impl ToString for WebhookTeamAddedToRepositoryAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionConfigurationDisabledEventAction {
   #[serde(rename = "disabled")]
   Disabled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionConfigurationDisabledEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7448,24 +5044,14 @@ impl ToString for BranchProtectionConfigurationDisabledEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestUnassignedAction {
   #[serde(rename = "unassigned")]
   Unassigned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestUnassignedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7474,25 +5060,17 @@ impl ToString for WebhookPullRequestUnassignedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
-  WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2(WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2),
+  WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2(
+    WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2,
+  ),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum StatusEventCommitCommitCommitter {
@@ -7501,24 +5079,14 @@ pub enum StatusEventCommitCommitCommitter {
   StatusEventCommitCommitCommitterItem2(StatusEventCommitCommitCommitterItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDeploymentReviewApprovedAction {
   #[serde(rename = "approved")]
   Approved,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDeploymentReviewApprovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7527,24 +5095,14 @@ impl ToString for WebhookDeploymentReviewApprovedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowRunInProgressAction {
   #[serde(rename = "in_progress")]
   InProgress,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowRunInProgressAction {
   fn to_string(&self) -> String {
     match self {
@@ -7553,24 +5111,14 @@ impl ToString for WebhookWorkflowRunInProgressAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookProjectCardCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookProjectCardCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7579,12 +5127,7 @@ impl ToString for WebhookProjectCardCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -7596,39 +5139,28 @@ pub enum WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle 
   CommitOrPrTitle,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
+      WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle::PrTitle => {
+        "PR_TITLE".to_string()
+      }
+      WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => {
+        "COMMIT_OR_PR_TITLE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ItemConvertedEventAction {
   #[serde(rename = "converted")]
   Converted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ItemConvertedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7637,12 +5169,7 @@ impl ToString for ProjectsV2ItemConvertedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDiscussionCommentDeletedCommentAuthorAssociation {
@@ -7664,19 +5191,22 @@ pub enum WebhookDiscussionCommentDeletedCommentAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDiscussionCommentDeletedCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
-      WebhookDiscussionCommentDeletedCommentAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      WebhookDiscussionCommentDeletedCommentAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      WebhookDiscussionCommentDeletedCommentAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      WebhookDiscussionCommentDeletedCommentAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
+      WebhookDiscussionCommentDeletedCommentAuthorAssociation::Collaborator => {
+        "COLLABORATOR".to_string()
+      }
+      WebhookDiscussionCommentDeletedCommentAuthorAssociation::Contributor => {
+        "CONTRIBUTOR".to_string()
+      }
+      WebhookDiscussionCommentDeletedCommentAuthorAssociation::FirstTimer => {
+        "FIRST_TIMER".to_string()
+      }
+      WebhookDiscussionCommentDeletedCommentAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
       WebhookDiscussionCommentDeletedCommentAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
       WebhookDiscussionCommentDeletedCommentAuthorAssociation::Member => "MEMBER".to_string(),
       WebhookDiscussionCommentDeletedCommentAuthorAssociation::None => "NONE".to_string(),
@@ -7685,12 +5215,7 @@ impl ToString for WebhookDiscussionCommentDeletedCommentAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PullRequestActiveLockReason {
   #[serde(rename = "resolved")]
@@ -7703,12 +5228,7 @@ pub enum PullRequestActiveLockReason {
   Spam,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for PullRequestActiveLockReason {
   fn to_string(&self) -> String {
     match self {
@@ -7720,38 +5240,25 @@ impl ToString for PullRequestActiveLockReason {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestConvertedToDraftPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
-  WebhookPullRequestConvertedToDraftPullRequestItem2(WebhookPullRequestConvertedToDraftPullRequestItem2),
+  WebhookPullRequestConvertedToDraftPullRequestItem2(
+    WebhookPullRequestConvertedToDraftPullRequestItem2,
+  ),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum InstallationCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for InstallationCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7760,24 +5267,14 @@ impl ToString for InstallationCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPersonalAccessTokenRequestDeniedAction {
   #[serde(rename = "denied")]
   Denied,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPersonalAccessTokenRequestDeniedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7786,24 +5283,14 @@ impl ToString for WebhookPersonalAccessTokenRequestDeniedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesUnlockedEventAction {
   #[serde(rename = "unlocked")]
   Unlocked,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesUnlockedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7812,24 +5299,14 @@ impl ToString for IssuesUnlockedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ReleaseUnpublishedEventAction {
   #[serde(rename = "unpublished")]
   Unpublished,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ReleaseUnpublishedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7838,24 +5315,14 @@ impl ToString for ReleaseUnpublishedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7864,24 +5331,14 @@ impl ToString for WebhookPullRequestReopenedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesOpenedEventAction {
   #[serde(rename = "opened")]
   Opened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesOpenedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -7890,12 +5347,7 @@ impl ToString for IssuesOpenedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// Type of repository selection requested.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PersonalAccessTokenRequestRepositorySelection {
@@ -7907,12 +5359,7 @@ pub enum PersonalAccessTokenRequestRepositorySelection {
   Subset,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for PersonalAccessTokenRequestRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -7923,12 +5370,7 @@ impl ToString for PersonalAccessTokenRequestRepositorySelection {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -7940,39 +5382,28 @@ pub enum WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle {
   CommitOrPrTitle,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
+      WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle::PrTitle => {
+        "PR_TITLE".to_string()
+      }
+      WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => {
+        "COMMIT_OR_PR_TITLE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCheckSuiteRerequestedAction {
   #[serde(rename = "rerequested")]
   Rerequested,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCheckSuiteRerequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7981,24 +5412,14 @@ impl ToString for WebhookCheckSuiteRerequestedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ItemRestoredEventAction {
   #[serde(rename = "restored")]
   Restored,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ItemRestoredEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -8007,12 +5428,7 @@ impl ToString for ProjectsV2ItemRestoredEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewRequestRemoved {
@@ -8020,12 +5436,7 @@ pub enum WebhookPullRequestReviewRequestRemoved {
   WebhookPullRequestReviewRequestRemovedItem2(WebhookPullRequestReviewRequestRemovedItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The scope of the membership. Currently, can only be `team`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MembershipRemovedEventScope {
@@ -8035,12 +5446,7 @@ pub enum MembershipRemovedEventScope {
   Organization,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MembershipRemovedEventScope {
   fn to_string(&self) -> String {
     match self {
@@ -8050,24 +5456,14 @@ impl ToString for MembershipRemovedEventScope {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookIssueCommentDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookIssueCommentDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8076,24 +5472,14 @@ impl ToString for WebhookIssueCommentDeletedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -8102,12 +5488,7 @@ impl ToString for DiscussionEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -8122,12 +5503,7 @@ pub enum WebhookPullRequestClosedPullRequestItem2MergeCommitMessage {
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -8138,24 +5514,14 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitMessage {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryAdvisoryReportedEventAction {
   #[serde(rename = "reported")]
   Reported,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryAdvisoryReportedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -8164,12 +5530,7 @@ impl ToString for RepositoryAdvisoryReportedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewRequested {
@@ -8177,24 +5538,14 @@ pub enum WebhookPullRequestReviewRequested {
   WebhookPullRequestReviewRequestedItem2(WebhookPullRequestReviewRequestedItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMarketplacePurchasePendingChangeAction {
   #[serde(rename = "pending_change")]
   PendingChange,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMarketplacePurchasePendingChangeAction {
   fn to_string(&self) -> String {
     match self {
@@ -8203,12 +5554,7 @@ impl ToString for WebhookMarketplacePurchasePendingChangeAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestOpenedPullRequest {
@@ -8217,24 +5563,14 @@ pub enum WebhookPullRequestOpenedPullRequest {
   WebhookPullRequestOpenedPullRequestItem2(WebhookPullRequestOpenedPullRequestItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulesetCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryRulesetCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -8243,24 +5579,14 @@ impl ToString for RepositoryRulesetCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookRegistryPackageUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookRegistryPackageUpdatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8269,24 +5595,14 @@ impl ToString for WebhookRegistryPackageUpdatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReadyForReviewAction {
   #[serde(rename = "ready_for_review")]
   ReadyForReview,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReadyForReviewAction {
   fn to_string(&self) -> String {
     match self {
@@ -8295,12 +5611,7 @@ impl ToString for WebhookPullRequestReadyForReviewAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestClosedPullRequest {
@@ -8309,12 +5620,7 @@ pub enum WebhookPullRequestClosedPullRequest {
   WebhookPullRequestClosedPullRequestItem2(WebhookPullRequestClosedPullRequestItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReleasePublishedEventRelease {
@@ -8323,12 +5629,7 @@ pub enum ReleasePublishedEventRelease {
   ReleasePublishedEventReleaseItem2(ReleasePublishedEventReleaseItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MetaDeletedEventHookEvents {
   #[serde(rename = "*")]
@@ -8437,12 +5738,7 @@ pub enum MetaDeletedEventHookEvents {
   ProjectsV2Item,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MetaDeletedEventHookEvents {
   fn to_string(&self) -> String {
     match self {
@@ -8478,16 +5774,24 @@ impl ToString for MetaDeletedEventHookEvents {
       MetaDeletedEventHookEvents::Public => "public".to_string(),
       MetaDeletedEventHookEvents::PullRequest => "pull_request".to_string(),
       MetaDeletedEventHookEvents::PullRequestReview => "pull_request_review".to_string(),
-      MetaDeletedEventHookEvents::PullRequestReviewComment => "pull_request_review_comment".to_string(),
-      MetaDeletedEventHookEvents::PullRequestReviewThread => "pull_request_review_thread".to_string(),
+      MetaDeletedEventHookEvents::PullRequestReviewComment => {
+        "pull_request_review_comment".to_string()
+      }
+      MetaDeletedEventHookEvents::PullRequestReviewThread => {
+        "pull_request_review_thread".to_string()
+      }
       MetaDeletedEventHookEvents::Push => "push".to_string(),
       MetaDeletedEventHookEvents::RegistryPackage => "registry_package".to_string(),
       MetaDeletedEventHookEvents::Release => "release".to_string(),
       MetaDeletedEventHookEvents::Repository => "repository".to_string(),
       MetaDeletedEventHookEvents::RepositoryImport => "repository_import".to_string(),
-      MetaDeletedEventHookEvents::RepositoryVulnerabilityAlert => "repository_vulnerability_alert".to_string(),
+      MetaDeletedEventHookEvents::RepositoryVulnerabilityAlert => {
+        "repository_vulnerability_alert".to_string()
+      }
       MetaDeletedEventHookEvents::SecretScanningAlert => "secret_scanning_alert".to_string(),
-      MetaDeletedEventHookEvents::SecretScanningAlertLocation => "secret_scanning_alert_location".to_string(),
+      MetaDeletedEventHookEvents::SecretScanningAlertLocation => {
+        "secret_scanning_alert_location".to_string()
+      }
       MetaDeletedEventHookEvents::SecurityAndAnalysis => "security_and_analysis".to_string(),
       MetaDeletedEventHookEvents::Star => "star".to_string(),
       MetaDeletedEventHookEvents::Status => "status".to_string(),
@@ -8502,38 +5806,25 @@ impl ToString for MetaDeletedEventHookEvents {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookInstallationNewPermissionsAcceptedAction {
   #[serde(rename = "new_permissions_accepted")]
   NewPermissionsAccepted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookInstallationNewPermissionsAcceptedAction {
   fn to_string(&self) -> String {
     match self {
-      WebhookInstallationNewPermissionsAcceptedAction::NewPermissionsAccepted => "new_permissions_accepted".to_string(),
+      WebhookInstallationNewPermissionsAcceptedAction::NewPermissionsAccepted => {
+        "new_permissions_accepted".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
@@ -8545,39 +5836,28 @@ pub enum WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTitle {
   MergeMessage,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
+      WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTitle::PrTitle => {
+        "PR_TITLE".to_string()
+      }
+      WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTitle::MergeMessage => {
+        "MERGE_MESSAGE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMarketplacePurchaseChangedAction {
   #[serde(rename = "changed")]
   Changed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMarketplacePurchaseChangedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8586,38 +5866,25 @@ impl ToString for WebhookMarketplacePurchaseChangedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestConvertedToDraftAction {
   #[serde(rename = "converted_to_draft")]
   ConvertedToDraft,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestConvertedToDraftAction {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestConvertedToDraftAction::ConvertedToDraft => "converted_to_draft".to_string(),
+      WebhookPullRequestConvertedToDraftAction::ConvertedToDraft => {
+        "converted_to_draft".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReleaseUnpublishedEventRelease {
@@ -8626,24 +5893,14 @@ pub enum ReleaseUnpublishedEventRelease {
   ReleaseUnpublishedEventReleaseItem2(ReleaseUnpublishedEventReleaseItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ItemEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ItemEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -8652,24 +5909,14 @@ impl ToString for ProjectsV2ItemEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MemberEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MemberEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -8678,12 +5925,7 @@ impl ToString for MemberEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestState {
   #[serde(rename = "open")]
@@ -8692,12 +5934,7 @@ pub enum WebhookPullRequestReviewCommentCreatedPullRequestState {
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -8707,12 +5944,7 @@ impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -8727,40 +5959,31 @@ pub enum WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage {
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
-      WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage::Blank => "BLANK".to_string(),
+      WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage::PrBody => {
+        "PR_BODY".to_string()
+      }
+      WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage::CommitMessages => {
+        "COMMIT_MESSAGES".to_string()
+      }
+      WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage::Blank => {
+        "BLANK".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesUnpinnedEventAction {
   #[serde(rename = "unpinned")]
   Unpinned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesUnpinnedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -8769,24 +5992,14 @@ impl ToString for IssuesUnpinnedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertAutoReopenedEventAction {
   #[serde(rename = "auto_reopened")]
   AutoReopened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DependabotAlertAutoReopenedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -8795,24 +6008,14 @@ impl ToString for DependabotAlertAutoReopenedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookOrganizationMemberRemovedAction {
   #[serde(rename = "member_removed")]
   MemberRemoved,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookOrganizationMemberRemovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8821,12 +6024,7 @@ impl ToString for WebhookOrganizationMemberRemovedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The action performed. Can be `created`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCommitCommentCreatedAction {
@@ -8834,12 +6032,7 @@ pub enum WebhookCommitCommentCreatedAction {
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCommitCommentCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8848,12 +6041,7 @@ impl ToString for WebhookCommitCommentCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssueCommentAuthorAssociation {
@@ -8875,12 +6063,7 @@ pub enum IssueCommentAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssueCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -8896,24 +6079,14 @@ impl ToString for IssueCommentAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestClosedAction {
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestClosedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8922,24 +6095,14 @@ impl ToString for WebhookPullRequestClosedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCheckSuiteRequestedAction {
   #[serde(rename = "requested")]
   Requested,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCheckSuiteRequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8948,12 +6111,7 @@ impl ToString for WebhookCheckSuiteRequestedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCheckSuiteRerequestedCheckSuiteConclusion {
@@ -8973,12 +6131,7 @@ pub enum WebhookCheckSuiteRerequestedCheckSuiteConclusion {
   Stale,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCheckSuiteRerequestedCheckSuiteConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -8987,30 +6140,22 @@ impl ToString for WebhookCheckSuiteRerequestedCheckSuiteConclusion {
       WebhookCheckSuiteRerequestedCheckSuiteConclusion::Neutral => "neutral".to_string(),
       WebhookCheckSuiteRerequestedCheckSuiteConclusion::Cancelled => "cancelled".to_string(),
       WebhookCheckSuiteRerequestedCheckSuiteConclusion::TimedOut => "timed_out".to_string(),
-      WebhookCheckSuiteRerequestedCheckSuiteConclusion::ActionRequired => "action_required".to_string(),
+      WebhookCheckSuiteRerequestedCheckSuiteConclusion::ActionRequired => {
+        "action_required".to_string()
+      }
       WebhookCheckSuiteRerequestedCheckSuiteConclusion::Stale => "stale".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestAssignedAction {
   #[serde(rename = "assigned")]
   Assigned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestAssignedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9019,12 +6164,7 @@ impl ToString for WebhookPullRequestAssignedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRulePullRequestReviewsEnforcementLevel {
   #[serde(rename = "off")]
@@ -9035,12 +6175,7 @@ pub enum BranchProtectionRulePullRequestReviewsEnforcementLevel {
   Everyone,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRulePullRequestReviewsEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -9051,38 +6186,25 @@ impl ToString for BranchProtectionRulePullRequestReviewsEnforcementLevel {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookSponsorshipPendingTierChangeAction {
   #[serde(rename = "pending_tier_change")]
   PendingTierChange,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookSponsorshipPendingTierChangeAction {
   fn to_string(&self) -> String {
     match self {
-      WebhookSponsorshipPendingTierChangeAction::PendingTierChange => "pending_tier_change".to_string(),
+      WebhookSponsorshipPendingTierChangeAction::PendingTierChange => {
+        "pending_tier_change".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDiscussionCommentEditedCommentAuthorAssociation {
@@ -9104,19 +6226,22 @@ pub enum WebhookDiscussionCommentEditedCommentAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDiscussionCommentEditedCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
-      WebhookDiscussionCommentEditedCommentAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      WebhookDiscussionCommentEditedCommentAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      WebhookDiscussionCommentEditedCommentAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      WebhookDiscussionCommentEditedCommentAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
+      WebhookDiscussionCommentEditedCommentAuthorAssociation::Collaborator => {
+        "COLLABORATOR".to_string()
+      }
+      WebhookDiscussionCommentEditedCommentAuthorAssociation::Contributor => {
+        "CONTRIBUTOR".to_string()
+      }
+      WebhookDiscussionCommentEditedCommentAuthorAssociation::FirstTimer => {
+        "FIRST_TIMER".to_string()
+      }
+      WebhookDiscussionCommentEditedCommentAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
       WebhookDiscussionCommentEditedCommentAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
       WebhookDiscussionCommentEditedCommentAuthorAssociation::Member => "MEMBER".to_string(),
       WebhookDiscussionCommentEditedCommentAuthorAssociation::None => "NONE".to_string(),
@@ -9125,12 +6250,7 @@ impl ToString for WebhookDiscussionCommentEditedCommentAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookProjectCardMovedProjectCard {
@@ -9138,24 +6258,14 @@ pub enum WebhookProjectCardMovedProjectCard {
   WebhookProjectCardMovedProjectCardItem2(WebhookProjectCardMovedProjectCardItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesLockedEventAction {
   #[serde(rename = "locked")]
   Locked,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesLockedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -9164,25 +6274,17 @@ impl ToString for IssuesLockedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
-  WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2(WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2),
+  WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2(
+    WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2,
+  ),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WorkflowStepStatus {
   #[serde(rename = "in_progress")]
@@ -9195,12 +6297,7 @@ pub enum WorkflowStepStatus {
   Pending,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WorkflowStepStatus {
   fn to_string(&self) -> String {
     match self {
@@ -9212,12 +6309,7 @@ impl ToString for WorkflowStepStatus {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCheckSuiteRequestedCheckSuiteStatus {
@@ -9231,12 +6323,7 @@ pub enum WebhookCheckSuiteRequestedCheckSuiteStatus {
   Queued,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCheckSuiteRequestedCheckSuiteStatus {
   fn to_string(&self) -> String {
     match self {
@@ -9248,24 +6335,14 @@ impl ToString for WebhookCheckSuiteRequestedCheckSuiteStatus {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDiscussionCommentCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDiscussionCommentCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9274,12 +6351,7 @@ impl ToString for WebhookDiscussionCommentCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertReopenedAlertState {
@@ -9291,12 +6363,7 @@ pub enum WebhookCodeScanningAlertReopenedAlertState {
   Fixed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertReopenedAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -9307,24 +6374,14 @@ impl ToString for WebhookCodeScanningAlertReopenedAlertState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum StarDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for StarDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -9333,24 +6390,14 @@ impl ToString for StarDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MemberAddedEventAction {
   #[serde(rename = "added")]
   Added,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MemberAddedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -9359,24 +6406,14 @@ impl ToString for MemberAddedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestOpenedAction {
   #[serde(rename = "opened")]
   Opened,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestOpenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9385,24 +6422,14 @@ impl ToString for WebhookPullRequestOpenedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SponsorshipCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for SponsorshipCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -9411,24 +6438,14 @@ impl ToString for SponsorshipCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ReleasePublishedEventAction {
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ReleasePublishedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -9437,24 +6454,14 @@ impl ToString for ReleasePublishedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestEnqueuedAction {
   #[serde(rename = "enqueued")]
   Enqueued,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestEnqueuedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9463,12 +6470,7 @@ impl ToString for WebhookPullRequestEnqueuedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionCreatedEventDiscussionItem2State {
   #[serde(rename = "open")]
@@ -9479,12 +6481,7 @@ pub enum DiscussionCreatedEventDiscussionItem2State {
   Transferring,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionCreatedEventDiscussionItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -9495,12 +6492,7 @@ impl ToString for DiscussionCreatedEventDiscussionItem2State {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionAnsweredEventAnswerAuthorAssociation {
@@ -9522,19 +6514,16 @@ pub enum DiscussionAnsweredEventAnswerAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionAnsweredEventAnswerAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
       DiscussionAnsweredEventAnswerAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
       DiscussionAnsweredEventAnswerAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
       DiscussionAnsweredEventAnswerAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      DiscussionAnsweredEventAnswerAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
+      DiscussionAnsweredEventAnswerAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
       DiscussionAnsweredEventAnswerAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
       DiscussionAnsweredEventAnswerAuthorAssociation::Member => "MEMBER".to_string(),
       DiscussionAnsweredEventAnswerAuthorAssociation::None => "NONE".to_string(),
@@ -9543,12 +6532,7 @@ impl ToString for DiscussionAnsweredEventAnswerAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The current status of the job. Can be `queued`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WorkflowJobStatus {
@@ -9560,12 +6544,7 @@ pub enum WorkflowJobStatus {
   Completed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WorkflowJobStatus {
   fn to_string(&self) -> String {
     match self {
@@ -9576,12 +6555,7 @@ impl ToString for WorkflowJobStatus {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookEvent {
@@ -9831,24 +6805,14 @@ pub enum WebhookEvent {
   WorkflowDispatch(WebhookWorkflowDispatch),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestUnlockedAction {
   #[serde(rename = "unlocked")]
   Unlocked,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestUnlockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9857,12 +6821,7 @@ impl ToString for WebhookPullRequestUnlockedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum StatusEventCommitCommitAuthor {
@@ -9871,24 +6830,14 @@ pub enum StatusEventCommitCommitAuthor {
   StatusEventCommitCommitAuthorItem2(StatusEventCommitCommitAuthorItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MembershipAddedEventAction {
   #[serde(rename = "added")]
   Added,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MembershipAddedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -9897,23 +6846,13 @@ impl ToString for MembershipAddedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum IssuesLockedEventIssueItem2Locked {
   Boolean(bool),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -9928,51 +6867,37 @@ pub enum WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage {
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
-      WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage::Blank => "BLANK".to_string(),
+      WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage::PrBody => {
+        "PR_BODY".to_string()
+      }
+      WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage::CommitMessages => {
+        "COMMIT_MESSAGES".to_string()
+      }
+      WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage::Blank => {
+        "BLANK".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum DiscussionCreatedEventDiscussionItem2Locked {
   Boolean(bool),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum InstallationSuspendEventAction {
   #[serde(rename = "suspend")]
   Suspend,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for InstallationSuspendEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -9981,24 +6906,14 @@ impl ToString for InstallationSuspendEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookRepositoryVulnerabilityAlertReopenAction {
   #[serde(rename = "reopen")]
   Reopen,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookRepositoryVulnerabilityAlertReopenAction {
   fn to_string(&self) -> String {
     match self {
@@ -10007,12 +6922,7 @@ impl ToString for WebhookRepositoryVulnerabilityAlertReopenAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PullRequestAuthorAssociation {
@@ -10034,12 +6944,7 @@ pub enum PullRequestAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for PullRequestAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -10055,24 +6960,14 @@ impl ToString for PullRequestAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DependabotAlertCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -10081,12 +6976,7 @@ impl ToString for DependabotAlertCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum AppEvents {
   #[serde(rename = "branch_protection_rule")]
@@ -10195,12 +7085,7 @@ pub enum AppEvents {
   SecretScanningAlertLocation,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for AppEvents {
   fn to_string(&self) -> String {
     match self {
@@ -10260,24 +7145,14 @@ impl ToString for AppEvents {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowRunCompletedAction {
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowRunCompletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10286,24 +7161,14 @@ impl ToString for WebhookWorkflowRunCompletedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookSecurityAdvisoryPublishedAction {
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookSecurityAdvisoryPublishedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10312,24 +7177,14 @@ impl ToString for WebhookSecurityAdvisoryPublishedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MilestoneEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MilestoneEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -10338,12 +7193,7 @@ impl ToString for MilestoneEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCheckSuiteRerequestedCheckSuiteStatus {
@@ -10357,12 +7207,7 @@ pub enum WebhookCheckSuiteRerequestedCheckSuiteStatus {
   Queued,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCheckSuiteRerequestedCheckSuiteStatus {
   fn to_string(&self) -> String {
     match self {
@@ -10374,50 +7219,32 @@ impl ToString for WebhookCheckSuiteRerequestedCheckSuiteStatus {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewRequestedItem1Action {
   #[serde(rename = "review_requested")]
   ReviewRequested,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewRequestedItem1Action {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewRequestedItem1Action::ReviewRequested => "review_requested".to_string(),
+      WebhookPullRequestReviewRequestedItem1Action::ReviewRequested => {
+        "review_requested".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookWorkflowJobQueuedAction {
   #[serde(rename = "queued")]
   Queued,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookWorkflowJobQueuedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10426,12 +7253,7 @@ impl ToString for WebhookWorkflowJobQueuedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssueCommentEditedIssue {
@@ -10440,12 +7262,7 @@ pub enum WebhookIssueCommentEditedIssue {
   WebhookIssueCommentEditedIssueItem2(WebhookIssueCommentEditedIssueItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleAllowForcePushesEnforcementLevel {
   #[serde(rename = "off")]
@@ -10456,12 +7273,7 @@ pub enum BranchProtectionRuleAllowForcePushesEnforcementLevel {
   Everyone,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleAllowForcePushesEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -10472,12 +7284,7 @@ impl ToString for BranchProtectionRuleAllowForcePushesEnforcementLevel {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ProjectsV2ItemEditedEventChanges {
@@ -10485,24 +7292,14 @@ pub enum ProjectsV2ItemEditedEventChanges {
   ProjectsV2ItemEditedEventChangesItem2(ProjectsV2ItemEditedEventChangesItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectClosedEventAction {
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectClosedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -10511,24 +7308,14 @@ impl ToString for ProjectClosedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryUnarchivedEventAction {
   #[serde(rename = "unarchived")]
   Unarchived,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryUnarchivedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -10537,12 +7324,7 @@ impl ToString for RepositoryUnarchivedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryVulnerabilityAlertAlertState {
   #[serde(rename = "open")]
@@ -10553,12 +7335,7 @@ pub enum RepositoryVulnerabilityAlertAlertState {
   Fixed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryVulnerabilityAlertAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -10569,24 +7346,14 @@ impl ToString for RepositoryVulnerabilityAlertAlertState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ItemDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ItemDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -10595,12 +7362,7 @@ impl ToString for ProjectsV2ItemDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDiscussionCommentCreatedCommentAuthorAssociation {
@@ -10622,19 +7384,22 @@ pub enum WebhookDiscussionCommentCreatedCommentAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDiscussionCommentCreatedCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
-      WebhookDiscussionCommentCreatedCommentAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      WebhookDiscussionCommentCreatedCommentAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      WebhookDiscussionCommentCreatedCommentAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      WebhookDiscussionCommentCreatedCommentAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
+      WebhookDiscussionCommentCreatedCommentAuthorAssociation::Collaborator => {
+        "COLLABORATOR".to_string()
+      }
+      WebhookDiscussionCommentCreatedCommentAuthorAssociation::Contributor => {
+        "CONTRIBUTOR".to_string()
+      }
+      WebhookDiscussionCommentCreatedCommentAuthorAssociation::FirstTimer => {
+        "FIRST_TIMER".to_string()
+      }
+      WebhookDiscussionCommentCreatedCommentAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
       WebhookDiscussionCommentCreatedCommentAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
       WebhookDiscussionCommentCreatedCommentAuthorAssociation::Member => "MEMBER".to_string(),
       WebhookDiscussionCommentCreatedCommentAuthorAssociation::None => "NONE".to_string(),
@@ -10643,12 +7408,7 @@ impl ToString for WebhookDiscussionCommentCreatedCommentAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewCommentEditedPullRequestState {
   #[serde(rename = "open")]
@@ -10657,12 +7417,7 @@ pub enum WebhookPullRequestReviewCommentEditedPullRequestState {
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewCommentEditedPullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -10672,12 +7427,7 @@ impl ToString for WebhookPullRequestReviewCommentEditedPullRequestState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertFixedAlertState {
@@ -10685,12 +7435,7 @@ pub enum WebhookCodeScanningAlertFixedAlertState {
   Fixed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertFixedAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -10699,12 +7444,7 @@ impl ToString for WebhookCodeScanningAlertFixedAlertState {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssueCommentCreatedIssue {
@@ -10713,12 +7453,7 @@ pub enum WebhookIssueCommentCreatedIssue {
   WebhookIssueCommentCreatedIssueItem2(WebhookIssueCommentCreatedIssueItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookRepositoryImportStatus {
   #[serde(rename = "success")]
@@ -10729,12 +7464,7 @@ pub enum WebhookRepositoryImportStatus {
   Failure,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookRepositoryImportStatus {
   fn to_string(&self) -> String {
     match self {
@@ -10745,24 +7475,14 @@ impl ToString for WebhookRepositoryImportStatus {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ProjectDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ProjectDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -10771,50 +7491,32 @@ impl ToString for ProjectsV2ProjectDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestAutoMergeDisabledAction {
   #[serde(rename = "auto_merge_disabled")]
   AutoMergeDisabled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestAutoMergeDisabledAction {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestAutoMergeDisabledAction::AutoMergeDisabled => "auto_merge_disabled".to_string(),
+      WebhookPullRequestAutoMergeDisabledAction::AutoMergeDisabled => {
+        "auto_merge_disabled".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookProjectColumnDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookProjectColumnDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10823,24 +7525,14 @@ impl ToString for WebhookProjectColumnDeletedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewSubmittedAction {
   #[serde(rename = "submitted")]
   Submitted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewSubmittedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10849,12 +7541,7 @@ impl ToString for WebhookPullRequestReviewSubmittedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum IssuesClosedEventIssue {
@@ -10863,12 +7550,7 @@ pub enum IssuesClosedEventIssue {
   IssuesClosedEventIssueItem2(IssuesClosedEventIssueItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
@@ -10882,12 +7564,7 @@ pub enum WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
   Error,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -10899,24 +7576,14 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectEditedEventAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectEditedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -10925,24 +7592,14 @@ impl ToString for ProjectEditedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestDemilestonedAction {
   #[serde(rename = "demilestoned")]
   Demilestoned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestDemilestonedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10951,24 +7608,14 @@ impl ToString for WebhookPullRequestDemilestonedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PackagePublishedEventAction {
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for PackagePublishedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -10977,12 +7624,7 @@ impl ToString for PackagePublishedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The token status as of the latest validity check.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecretScanningAlertWebhookValidity {
@@ -10994,12 +7636,7 @@ pub enum SecretScanningAlertWebhookValidity {
   Unknown,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for SecretScanningAlertWebhookValidity {
   fn to_string(&self) -> String {
     match self {
@@ -11010,24 +7647,14 @@ impl ToString for SecretScanningAlertWebhookValidity {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum TeamDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for TeamDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -11036,12 +7663,7 @@ impl ToString for TeamDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The action that was performed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesClosedEventAction {
@@ -11049,12 +7671,7 @@ pub enum IssuesClosedEventAction {
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesClosedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -11063,12 +7680,7 @@ impl ToString for IssuesClosedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DeploymentWorkflowRunStatus {
   #[serde(rename = "requested")]
@@ -11085,12 +7697,7 @@ pub enum DeploymentWorkflowRunStatus {
   Pending,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DeploymentWorkflowRunStatus {
   fn to_string(&self) -> String {
     match self {
@@ -11104,23 +7711,13 @@ impl ToString for DeploymentWorkflowRunStatus {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDeploymentReviewApprovedReviewersType {
   User,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDeploymentReviewApprovedReviewersType {
   fn to_string(&self) -> String {
     match self {
@@ -11129,24 +7726,14 @@ impl ToString for WebhookDeploymentReviewApprovedReviewersType {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CustomPropertyValuesUpdatedEventAction {
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for CustomPropertyValuesUpdatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -11155,24 +7742,14 @@ impl ToString for CustomPropertyValuesUpdatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -11181,24 +7758,14 @@ impl ToString for BranchProtectionRuleCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookInstallationRepositoriesAddedAction {
   #[serde(rename = "added")]
   Added,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookInstallationRepositoriesAddedAction {
   fn to_string(&self) -> String {
     match self {
@@ -11207,24 +7774,14 @@ impl ToString for WebhookInstallationRepositoriesAddedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestUnlabeledAction {
   #[serde(rename = "unlabeled")]
   Unlabeled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestUnlabeledAction {
   fn to_string(&self) -> String {
     match self {
@@ -11233,24 +7790,14 @@ impl ToString for WebhookPullRequestUnlabeledAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MetaDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MetaDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -11259,12 +7806,7 @@ impl ToString for MetaDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum IssuesReopenedEventIssue {
@@ -11273,24 +7815,14 @@ pub enum IssuesReopenedEventIssue {
   IssuesReopenedEventIssueItem2(IssuesReopenedEventIssueItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum TeamCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for TeamCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -11299,12 +7831,7 @@ impl ToString for TeamCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
   #[serde(rename = "off")]
@@ -11315,40 +7842,27 @@ pub enum BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
   Everyone,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
       BranchProtectionRuleRequiredDeploymentsEnforcementLevel::Off => "off".to_string(),
-      BranchProtectionRuleRequiredDeploymentsEnforcementLevel::NonAdmins => "non_admins".to_string(),
+      BranchProtectionRuleRequiredDeploymentsEnforcementLevel::NonAdmins => {
+        "non_admins".to_string()
+      }
       BranchProtectionRuleRequiredDeploymentsEnforcementLevel::Everyone => "everyone".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesTransferredEventAction {
   #[serde(rename = "transferred")]
   Transferred,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesTransferredEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -11357,24 +7871,14 @@ impl ToString for IssuesTransferredEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMergeGroupDestroyedAction {
   #[serde(rename = "destroyed")]
   Destroyed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMergeGroupDestroyedAction {
   fn to_string(&self) -> String {
     match self {
@@ -11383,12 +7887,7 @@ impl ToString for WebhookMergeGroupDestroyedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCheckSuiteRequestedCheckSuiteConclusion {
@@ -11410,12 +7909,7 @@ pub enum WebhookCheckSuiteRequestedCheckSuiteConclusion {
   Skipped,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCheckSuiteRequestedCheckSuiteConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -11424,31 +7918,23 @@ impl ToString for WebhookCheckSuiteRequestedCheckSuiteConclusion {
       WebhookCheckSuiteRequestedCheckSuiteConclusion::Neutral => "neutral".to_string(),
       WebhookCheckSuiteRequestedCheckSuiteConclusion::Cancelled => "cancelled".to_string(),
       WebhookCheckSuiteRequestedCheckSuiteConclusion::TimedOut => "timed_out".to_string(),
-      WebhookCheckSuiteRequestedCheckSuiteConclusion::ActionRequired => "action_required".to_string(),
+      WebhookCheckSuiteRequestedCheckSuiteConclusion::ActionRequired => {
+        "action_required".to_string()
+      }
       WebhookCheckSuiteRequestedCheckSuiteConclusion::Stale => "stale".to_string(),
       WebhookCheckSuiteRequestedCheckSuiteConclusion::Skipped => "skipped".to_string(),
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertDismissedEventAction {
   #[serde(rename = "dismissed")]
   Dismissed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DependabotAlertDismissedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -11457,12 +7943,7 @@ impl ToString for DependabotAlertDismissedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewDismissedReviewAuthorAssociation {
@@ -11484,20 +7965,25 @@ pub enum WebhookPullRequestReviewDismissedReviewAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewDismissedReviewAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      WebhookPullRequestReviewDismissedReviewAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      WebhookPullRequestReviewDismissedReviewAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
-      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
+      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Collaborator => {
+        "COLLABORATOR".to_string()
+      }
+      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Contributor => {
+        "CONTRIBUTOR".to_string()
+      }
+      WebhookPullRequestReviewDismissedReviewAuthorAssociation::FirstTimer => {
+        "FIRST_TIMER".to_string()
+      }
+      WebhookPullRequestReviewDismissedReviewAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
+      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Mannequin => {
+        "MANNEQUIN".to_string()
+      }
       WebhookPullRequestReviewDismissedReviewAuthorAssociation::Member => "MEMBER".to_string(),
       WebhookPullRequestReviewDismissedReviewAuthorAssociation::None => "NONE".to_string(),
       WebhookPullRequestReviewDismissedReviewAuthorAssociation::Owner => "OWNER".to_string(),
@@ -11505,51 +7991,35 @@ impl ToString for WebhookPullRequestReviewDismissedReviewAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
-  WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2(WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2),
+  WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2(
+    WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2,
+  ),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewRequestRemovedItem2Action {
   #[serde(rename = "review_request_removed")]
   ReviewRequestRemoved,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewRequestRemovedItem2Action {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewRequestRemovedItem2Action::ReviewRequestRemoved => "review_request_removed".to_string(),
+      WebhookPullRequestReviewRequestRemovedItem2Action::ReviewRequestRemoved => {
+        "review_request_removed".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
@@ -11561,39 +8031,28 @@ pub enum WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
   UsedInTests,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
   fn to_string(&self) -> String {
     match self {
-      WebhookCodeScanningAlertClosedByUserAlertDismissedReason::FalsePositive => "false positive".to_string(),
+      WebhookCodeScanningAlertClosedByUserAlertDismissedReason::FalsePositive => {
+        "false positive".to_string()
+      }
       WebhookCodeScanningAlertClosedByUserAlertDismissedReason::WonTFix => "won't fix".to_string(),
-      WebhookCodeScanningAlertClosedByUserAlertDismissedReason::UsedInTests => "used in tests".to_string(),
+      WebhookCodeScanningAlertClosedByUserAlertDismissedReason::UsedInTests => {
+        "used in tests".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum ForkEventForkeeItem2Fork {
   Boolean(bool),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
@@ -11604,40 +8063,31 @@ pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPric
   PerUnit,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel {
   fn to_string(&self) -> String {
     match self {
-      WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel::Free => "FREE".to_string(),
-      WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel::FlatRate => "FLAT_RATE".to_string(),
-      WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel::PerUnit => "PER_UNIT".to_string(),
+      WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel::Free => {
+        "FREE".to_string()
+      }
+      WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel::FlatRate => {
+        "FLAT_RATE".to_string()
+      }
+      WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel::PerUnit => {
+        "PER_UNIT".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -11646,24 +8096,14 @@ impl ToString for ProjectCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDeploymentReviewRejectedAction {
   #[serde(rename = "rejected")]
   Rejected,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDeploymentReviewRejectedAction {
   fn to_string(&self) -> String {
     match self {
@@ -11672,24 +8112,14 @@ impl ToString for WebhookDeploymentReviewRejectedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookIssueCommentEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookIssueCommentEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -11698,24 +8128,14 @@ impl ToString for WebhookIssueCommentEditedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestLabeledAction {
   #[serde(rename = "labeled")]
   Labeled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestLabeledAction {
   fn to_string(&self) -> String {
     match self {
@@ -11724,24 +8144,14 @@ impl ToString for WebhookPullRequestLabeledAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPersonalAccessTokenRequestCancelledAction {
   #[serde(rename = "cancelled")]
   Cancelled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPersonalAccessTokenRequestCancelledAction {
   fn to_string(&self) -> String {
     match self {
@@ -11750,12 +8160,7 @@ impl ToString for WebhookPersonalAccessTokenRequestCancelledAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMergeGroupDestroyedReason {
@@ -11767,12 +8172,7 @@ pub enum WebhookMergeGroupDestroyedReason {
   Dequeued,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMergeGroupDestroyedReason {
   fn to_string(&self) -> String {
     match self {
@@ -11783,12 +8183,7 @@ impl ToString for WebhookMergeGroupDestroyedReason {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestEditedPullRequest {
@@ -11797,24 +8192,14 @@ pub enum WebhookPullRequestEditedPullRequest {
   WebhookPullRequestEditedPullRequestItem2(WebhookPullRequestEditedPullRequestItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum StarCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for StarCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -11823,24 +8208,14 @@ impl ToString for StarCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookProjectCardDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookProjectCardDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -11849,24 +8224,14 @@ impl ToString for WebhookProjectCardDeletedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesMilestonedEventAction {
   #[serde(rename = "milestoned")]
   Milestoned,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesMilestonedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -11875,12 +8240,7 @@ impl ToString for IssuesMilestonedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SimplePullRequestActiveLockReason {
   #[serde(rename = "resolved")]
@@ -11893,12 +8253,7 @@ pub enum SimplePullRequestActiveLockReason {
   Spam,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for SimplePullRequestActiveLockReason {
   fn to_string(&self) -> String {
     match self {
@@ -11910,12 +8265,7 @@ impl ToString for SimplePullRequestActiveLockReason {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookWorkflowRunInProgressWorkflowRun {
@@ -11923,12 +8273,7 @@ pub enum WebhookWorkflowRunInProgressWorkflowRun {
   WebhookWorkflowRunInProgressWorkflowRunItem2(WebhookWorkflowRunInProgressWorkflowRunItem2),
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -11940,39 +8285,28 @@ pub enum WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle {
   CommitOrPrTitle,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
+      WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle::PrTitle => {
+        "PR_TITLE".to_string()
+      }
+      WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => {
+        "COMMIT_OR_PR_TITLE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookOrgBlockUnblockedAction {
   #[serde(rename = "unblocked")]
   Unblocked,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookOrgBlockUnblockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -11981,12 +8315,7 @@ impl ToString for WebhookOrgBlockUnblockedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SimplePullRequestAuthorAssociation {
@@ -12008,19 +8337,16 @@ pub enum SimplePullRequestAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for SimplePullRequestAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
       SimplePullRequestAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
       SimplePullRequestAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
       SimplePullRequestAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      SimplePullRequestAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
+      SimplePullRequestAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
       SimplePullRequestAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
       SimplePullRequestAuthorAssociation::Member => "MEMBER".to_string(),
       SimplePullRequestAuthorAssociation::None => "NONE".to_string(),
@@ -12029,12 +8355,7 @@ impl ToString for SimplePullRequestAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
@@ -12046,28 +8367,24 @@ pub enum WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
   UsedInTests,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
   fn to_string(&self) -> String {
     match self {
-      WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason::FalsePositive => "false positive".to_string(),
-      WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason::WonTFix => "won't fix".to_string(),
-      WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason::UsedInTests => "used in tests".to_string(),
+      WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason::FalsePositive => {
+        "false positive".to_string()
+      }
+      WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason::WonTFix => {
+        "won't fix".to_string()
+      }
+      WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason::UsedInTests => {
+        "used in tests".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// State of the issue; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookIssueCommentDeletedIssueItem2State {
@@ -12077,12 +8394,7 @@ pub enum WebhookIssueCommentDeletedIssueItem2State {
   Closed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookIssueCommentDeletedIssueItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -12092,24 +8404,14 @@ impl ToString for WebhookIssueCommentDeletedIssueItem2State {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookOrganizationMemberAddedAction {
   #[serde(rename = "member_added")]
   MemberAdded,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookOrganizationMemberAddedAction {
   fn to_string(&self) -> String {
     match self {
@@ -12118,24 +8420,14 @@ impl ToString for WebhookOrganizationMemberAddedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MembershipRemovedEventAction {
   #[serde(rename = "removed")]
   Removed,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MembershipRemovedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -12144,12 +8436,7 @@ impl ToString for MembershipRemovedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -12161,27 +8448,21 @@ pub enum WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitl
   CommitOrPrTitle,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
+      WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitle::PrTitle => {
+        "PR_TITLE".to_string()
+      }
+      WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitle::CommitOrPrTitle => {
+        "COMMIT_OR_PR_TITLE".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
@@ -12203,20 +8484,25 @@ pub enum WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
   Owner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
-      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
+      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Collaborator => {
+        "COLLABORATOR".to_string()
+      }
+      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Contributor => {
+        "CONTRIBUTOR".to_string()
+      }
+      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::FirstTimer => {
+        "FIRST_TIMER".to_string()
+      }
+      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::FirstTimeContributor => {
+        "FIRST_TIME_CONTRIBUTOR".to_string()
+      }
+      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Mannequin => {
+        "MANNEQUIN".to_string()
+      }
       WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Member => "MEMBER".to_string(),
       WebhookPullRequestReviewSubmittedReviewAuthorAssociation::None => "NONE".to_string(),
       WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Owner => "OWNER".to_string(),
@@ -12224,12 +8510,7 @@ impl ToString for WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MetaDeletedEventHookConfigContentType {
   #[serde(rename = "json")]
@@ -12238,12 +8519,7 @@ pub enum MetaDeletedEventHookConfigContentType {
   Form,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for MetaDeletedEventHookConfigContentType {
   fn to_string(&self) -> String {
     match self {
@@ -12253,24 +8529,14 @@ impl ToString for MetaDeletedEventHookConfigContentType {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiscussionCreatedEventAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for DiscussionCreatedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -12279,12 +8545,7 @@ impl ToString for DiscussionCreatedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -12299,28 +8560,24 @@ pub enum WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage {
   Blank,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
-      WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
-      WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage::Blank => "BLANK".to_string(),
+      WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage::PrBody => {
+        "PR_BODY".to_string()
+      }
+      WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage::CommitMessages => {
+        "COMMIT_MESSAGES".to_string()
+      }
+      WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage::Blank => {
+        "BLANK".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum StatusEventCommitCommitVerificationReason {
   #[serde(rename = "expired_key")]
@@ -12355,26 +8612,27 @@ pub enum StatusEventCommitCommitVerificationReason {
   OcspPending,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for StatusEventCommitCommitVerificationReason {
   fn to_string(&self) -> String {
     match self {
       StatusEventCommitCommitVerificationReason::ExpiredKey => "expired_key".to_string(),
       StatusEventCommitCommitVerificationReason::NotSigningKey => "not_signing_key".to_string(),
       StatusEventCommitCommitVerificationReason::GpgverifyError => "gpgverify_error".to_string(),
-      StatusEventCommitCommitVerificationReason::GpgverifyUnavailable => "gpgverify_unavailable".to_string(),
+      StatusEventCommitCommitVerificationReason::GpgverifyUnavailable => {
+        "gpgverify_unavailable".to_string()
+      }
       StatusEventCommitCommitVerificationReason::Unsigned => "unsigned".to_string(),
-      StatusEventCommitCommitVerificationReason::UnknownSignatureType => "unknown_signature_type".to_string(),
+      StatusEventCommitCommitVerificationReason::UnknownSignatureType => {
+        "unknown_signature_type".to_string()
+      }
       StatusEventCommitCommitVerificationReason::NoUser => "no_user".to_string(),
       StatusEventCommitCommitVerificationReason::UnverifiedEmail => "unverified_email".to_string(),
       StatusEventCommitCommitVerificationReason::BadEmail => "bad_email".to_string(),
       StatusEventCommitCommitVerificationReason::UnknownKey => "unknown_key".to_string(),
-      StatusEventCommitCommitVerificationReason::MalformedSignature => "malformed_signature".to_string(),
+      StatusEventCommitCommitVerificationReason::MalformedSignature => {
+        "malformed_signature".to_string()
+      }
       StatusEventCommitCommitVerificationReason::Invalid => "invalid".to_string(),
       StatusEventCommitCommitVerificationReason::Valid => "valid".to_string(),
       StatusEventCommitCommitVerificationReason::BadCert => "bad_cert".to_string(),
@@ -12383,50 +8641,32 @@ impl ToString for StatusEventCommitCommitVerificationReason {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookMarketplacePurchasePendingChangeCancelledAction {
   #[serde(rename = "pending_change_cancelled")]
   PendingChangeCancelled,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookMarketplacePurchasePendingChangeCancelledAction {
   fn to_string(&self) -> String {
     match self {
-      WebhookMarketplacePurchasePendingChangeCancelledAction::PendingChangeCancelled => "pending_change_cancelled".to_string(),
+      WebhookMarketplacePurchasePendingChangeCancelledAction::PendingChangeCancelled => {
+        "pending_change_cancelled".to_string()
+      }
     }
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookRepositoryVulnerabilityAlertDismissAction {
   #[serde(rename = "dismiss")]
   Dismiss,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookRepositoryVulnerabilityAlertDismissAction {
   fn to_string(&self) -> String {
     match self {
@@ -12435,24 +8675,14 @@ impl ToString for WebhookRepositoryVulnerabilityAlertDismissAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookIssueCommentCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookIssueCommentCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -12461,24 +8691,14 @@ impl ToString for WebhookIssueCommentCreatedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookDiscussionCommentDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookDiscussionCommentDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -12487,12 +8707,7 @@ impl ToString for WebhookDiscussionCommentDeletedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The type of content tracked in a project item
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectsV2ItemContentType {
@@ -12501,12 +8716,7 @@ pub enum ProjectsV2ItemContentType {
   DraftIssue,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for ProjectsV2ItemContentType {
   fn to_string(&self) -> String {
     match self {
@@ -12517,24 +8727,14 @@ impl ToString for ProjectsV2ItemContentType {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulesetDeletedEventAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for RepositoryRulesetDeletedEventAction {
   fn to_string(&self) -> String {
     match self {
@@ -12543,24 +8743,14 @@ impl ToString for RepositoryRulesetDeletedEventAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WebhookPullRequestEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for WebhookPullRequestEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -12569,12 +8759,7 @@ impl ToString for WebhookPullRequestEditedAction {
   }
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssuesLockedEventIssueItem2ActiveLockReason {
   #[serde(rename = "resolved")]
@@ -12587,12 +8772,7 @@ pub enum IssuesLockedEventIssueItem2ActiveLockReason {
   Spam,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ToString for IssuesLockedEventIssueItem2ActiveLockReason {
   fn to_string(&self) -> String {
     match self {
@@ -12604,14 +8784,8 @@ impl ToString for IssuesLockedEventIssueItem2ActiveLockReason {
   }
 }
 
-
 /// Structs defination
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ProjectEditedEventChangesDescription {
@@ -12623,23 +8797,13 @@ pub struct ProjectsV2ProjectEditedEventChangesDescription {
   pub to: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ProjectEditedEventChangesDescription {
   pub fn builder() -> ProjectsV2ProjectEditedEventChangesDescriptionBuilder {
     ProjectsV2ProjectEditedEventChangesDescriptionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentDeleted {
@@ -12661,23 +8825,13 @@ pub struct WebhookIssueCommentDeleted {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentDeleted {
   pub fn builder() -> WebhookIssueCommentDeletedBuilder {
     WebhookIssueCommentDeletedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesName {
@@ -12686,23 +8840,13 @@ pub struct RepositoryRulesetEditedEventChangesName {
   pub from: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesName {
   pub fn builder() -> RepositoryRulesetEditedEventChangesNameBuilder {
     RepositoryRulesetEditedEventChangesNameBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestEditedChangesBody {
@@ -12710,23 +8854,13 @@ pub struct WebhookPullRequestEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestEditedChangesBody {
   pub fn builder() -> WebhookPullRequestEditedChangesBodyBuilder {
     WebhookPullRequestEditedChangesBodyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryPrivatizedEvent {
@@ -12744,23 +8878,13 @@ pub struct RepositoryPrivatizedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryPrivatizedEvent {
   pub fn builder() -> RepositoryPrivatizedEventBuilder {
     RepositoryPrivatizedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CheckRunPullRequestBase {
@@ -12770,23 +8894,13 @@ pub struct CheckRunPullRequestBase {
   pub sha: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CheckRunPullRequestBase {
   pub fn builder() -> CheckRunPullRequestBaseBuilder {
     CheckRunPullRequestBaseBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DeploymentWorkflowRunHeadRepository {
@@ -12930,23 +9044,13 @@ pub struct DeploymentWorkflowRunHeadRepository {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DeploymentWorkflowRunHeadRepository {
   pub fn builder() -> DeploymentWorkflowRunHeadRepositoryBuilder {
     DeploymentWorkflowRunHeadRepositoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The changes to the comment.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -12956,23 +9060,13 @@ pub struct WebhookPullRequestReviewCommentEditedChanges {
   pub body: Option<WebhookPullRequestReviewCommentEditedChangesBody>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentEditedChanges {
   pub fn builder() -> WebhookPullRequestReviewCommentEditedChangesBuilder {
     WebhookPullRequestReviewCommentEditedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiers {
@@ -12981,23 +9075,13 @@ pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiers {
   pub fn builder() -> WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiersBuilder {
     WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiersBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardDeleted {
@@ -13018,23 +9102,13 @@ pub struct WebhookProjectCardDeleted {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardDeleted {
   pub fn builder() -> WebhookProjectCardDeletedBuilder {
     WebhookProjectCardDeletedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowJobInProgressWorkflowJobItem2 {
@@ -13108,23 +9182,13 @@ pub struct WebhookWorkflowJobInProgressWorkflowJobItem2 {
   pub workflow_name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowJobInProgressWorkflowJobItem2 {
   pub fn builder() -> WebhookWorkflowJobInProgressWorkflowJobItem2Builder {
     WebhookWorkflowJobInProgressWorkflowJobItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleaseEditedEventChangesMakeLatest {
@@ -13132,23 +9196,13 @@ pub struct ReleaseEditedEventChangesMakeLatest {
   pub to: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleaseEditedEventChangesMakeLatest {
   pub fn builder() -> ReleaseEditedEventChangesMakeLatestBuilder {
     ReleaseEditedEventChangesMakeLatestBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SimplePullRequestLinks {
@@ -13163,23 +9217,13 @@ pub struct SimplePullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SimplePullRequestLinks {
   pub fn builder() -> SimplePullRequestLinksBuilder {
     SimplePullRequestLinksBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardMovedProjectCardItem2 {
@@ -13221,23 +9265,13 @@ pub struct WebhookProjectCardMovedProjectCardItem2 {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardMovedProjectCardItem2 {
   pub fn builder() -> WebhookProjectCardMovedProjectCardItem2Builder {
     WebhookProjectCardMovedProjectCardItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2RepositoryOwner {
@@ -13298,23 +9332,13 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2RepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompletedWorkflowRunItem2RepositoryOwner {
   pub fn builder() -> WebhookWorkflowRunCompletedWorkflowRunItem2RepositoryOwnerBuilder {
     WebhookWorkflowRunCompletedWorkflowRunItem2RepositoryOwnerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentCreatedPullRequestBase {
@@ -13329,23 +9353,13 @@ pub struct WebhookPullRequestReviewCommentCreatedPullRequestBase {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentCreatedPullRequestBase {
   pub fn builder() -> WebhookPullRequestReviewCommentCreatedPullRequestBaseBuilder {
     WebhookPullRequestReviewCommentCreatedPullRequestBaseBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StatusEventCommit {
@@ -13364,23 +9378,13 @@ pub struct StatusEventCommit {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StatusEventCommit {
   pub fn builder() -> StatusEventCommitBuilder {
     StatusEventCommitBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewThreadResolvedThread {
@@ -13388,23 +9392,13 @@ pub struct WebhookPullRequestReviewThreadResolvedThread {
   pub node_id: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewThreadResolvedThread {
   pub fn builder() -> WebhookPullRequestReviewThreadResolvedThreadBuilder {
     WebhookPullRequestReviewThreadResolvedThreadBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRepositoryVulnerabilityAlertResolveAlertItem2 {
@@ -13450,23 +9444,13 @@ pub struct WebhookRepositoryVulnerabilityAlertResolveAlertItem2 {
   pub state: WebhookRepositoryVulnerabilityAlertResolveAlertItem2State,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRepositoryVulnerabilityAlertResolveAlertItem2 {
   pub fn builder() -> WebhookRepositoryVulnerabilityAlertResolveAlertItem2Builder {
     WebhookRepositoryVulnerabilityAlertResolveAlertItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StatusEventCommitParents {
@@ -13475,23 +9459,13 @@ pub struct StatusEventCommitParents {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StatusEventCommitParents {
   pub fn builder() -> StatusEventCommitParentsBuilder {
     StatusEventCommitParentsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewRequestedReviewers {
@@ -13504,23 +9478,13 @@ pub struct WebhookDeploymentReviewRequestedReviewers {
   pub type_: Option<WebhookDeploymentReviewRequestedReviewersType>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewRequestedReviewers {
   pub fn builder() -> WebhookDeploymentReviewRequestedReviewersBuilder {
     WebhookDeploymentReviewRequestedReviewersBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackage {
@@ -13540,23 +9504,13 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackage {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackageUpdatedRegistryPackage {
   pub fn builder() -> WebhookRegistryPackageUpdatedRegistryPackageBuilder {
     WebhookRegistryPackageUpdatedRegistryPackageBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentEditedIssueItem2 {
@@ -13638,23 +9592,13 @@ pub struct WebhookIssueCommentEditedIssueItem2 {
   pub user: Option<WebhookIssueCommentEditedIssueItem2User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentEditedIssueItem2 {
   pub fn builder() -> WebhookIssueCommentEditedIssueItem2Builder {
     WebhookIssueCommentEditedIssueItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct InstallationDeletedEvent {
@@ -13679,23 +9623,13 @@ pub struct InstallationDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl InstallationDeletedEvent {
   pub fn builder() -> InstallationDeletedEventBuilder {
     InstallationDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackageUpdatedEventPackagePackageVersionPackageFiles {
@@ -13716,23 +9650,13 @@ pub struct PackageUpdatedEventPackagePackageVersionPackageFiles {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackageUpdatedEventPackagePackageVersionPackageFiles {
   pub fn builder() -> PackageUpdatedEventPackagePackageVersionPackageFilesBuilder {
     PackageUpdatedEventPackagePackageVersionPackageFilesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectReopenedEvent {
@@ -13753,23 +9677,13 @@ pub struct ProjectReopenedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectReopenedEvent {
   pub fn builder() -> ProjectReopenedEventBuilder {
     ProjectReopenedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesClosedEventIssueItem2Reactions {
@@ -13807,23 +9721,13 @@ pub struct IssuesClosedEventIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesClosedEventIssueItem2Reactions {
   pub fn builder() -> IssuesClosedEventIssueItem2ReactionsBuilder {
     IssuesClosedEventIssueItem2ReactionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SponsorshipEditedEventChanges {
@@ -13832,23 +9736,13 @@ pub struct SponsorshipEditedEventChanges {
   pub privacy_level: Option<SponsorshipEditedEventChangesPrivacyLevel>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipEditedEventChanges {
   pub fn builder() -> SponsorshipEditedEventChangesBuilder {
     SponsorshipEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// Details of a Personal Access Token Request.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -13886,23 +9780,13 @@ pub struct PersonalAccessTokenRequest {
   pub token_last_used_at: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PersonalAccessTokenRequest {
   pub fn builder() -> PersonalAccessTokenRequestBuilder {
     PersonalAccessTokenRequestBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentEditedPullRequest {
@@ -13968,23 +9852,13 @@ pub struct WebhookPullRequestReviewCommentEditedPullRequest {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentEditedPullRequest {
   pub fn builder() -> WebhookPullRequestReviewCommentEditedPullRequestBuilder {
     WebhookPullRequestReviewCommentEditedPullRequestBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DependabotAlertAutoReopenedEvent {
@@ -14003,23 +9877,13 @@ pub struct DependabotAlertAutoReopenedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DependabotAlertAutoReopenedEvent {
   pub fn builder() -> DependabotAlertAutoReopenedEventBuilder {
     DependabotAlertAutoReopenedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ProjectClosedEvent {
@@ -14032,23 +9896,13 @@ pub struct ProjectsV2ProjectClosedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ProjectClosedEvent {
   pub fn builder() -> ProjectsV2ProjectClosedEventBuilder {
     ProjectsV2ProjectClosedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectColumnEdited {
@@ -14072,23 +9926,13 @@ pub struct WebhookProjectColumnEdited {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectColumnEdited {
   pub fn builder() -> WebhookProjectColumnEditedBuilder {
     WebhookProjectColumnEditedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct OrganizationRenamedEventChangesLogin {
@@ -14097,23 +9941,13 @@ pub struct OrganizationRenamedEventChangesLogin {
   pub from: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl OrganizationRenamedEventChangesLogin {
   pub fn builder() -> OrganizationRenamedEventChangesLoginBuilder {
     OrganizationRenamedEventChangesLoginBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// Information about the package.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -14144,23 +9978,13 @@ pub struct PackagePublishedEventPackage {
   pub updated_at: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEventPackage {
   pub fn builder() -> PackagePublishedEventPackageBuilder {
     PackagePublishedEventPackageBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesDemilestonedEventIssueItem2 {
@@ -14248,23 +10072,13 @@ pub struct IssuesDemilestonedEventIssueItem2 {
   pub user: Option<IssuesDemilestonedEventIssueItem2User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesDemilestonedEventIssueItem2 {
   pub fn builder() -> IssuesDemilestonedEventIssueItem2Builder {
     IssuesDemilestonedEventIssueItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadata {
@@ -14273,23 +10087,14 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMet
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadata {
-  pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadataBuilder {
+  pub fn builder(
+  ) -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadataBuilder {
     WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadataBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct TeamCreatedEvent {
@@ -14310,23 +10115,13 @@ pub struct TeamCreatedEvent {
   pub team: Team,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl TeamCreatedEvent {
   pub fn builder() -> TeamCreatedEventBuilder {
     TeamCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAndAnalysisChanges {
@@ -14335,23 +10130,13 @@ pub struct WebhookSecurityAndAnalysisChanges {
   pub from: Option<WebhookSecurityAndAnalysisChangesFrom>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAndAnalysisChanges {
   pub fn builder() -> WebhookSecurityAndAnalysisChangesBuilder {
     WebhookSecurityAndAnalysisChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookOrgBlockUnblocked {
@@ -14372,23 +10157,13 @@ pub struct WebhookOrgBlockUnblocked {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookOrgBlockUnblocked {
   pub fn builder() -> WebhookOrgBlockUnblockedBuilder {
     WebhookOrgBlockUnblockedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Account {
@@ -14410,23 +10185,13 @@ pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Account {
   pub type_: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Account {
   pub fn builder() -> WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2AccountBuilder {
     WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2AccountBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CheckRunReRequestedEvent {
@@ -14444,23 +10209,13 @@ pub struct CheckRunReRequestedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CheckRunReRequestedEvent {
   pub fn builder() -> CheckRunReRequestedEventBuilder {
     CheckRunReRequestedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryCvss {
@@ -14470,23 +10225,13 @@ pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryPublishedSecurityAdvisoryCvss {
   pub fn builder() -> WebhookSecurityAdvisoryPublishedSecurityAdvisoryCvssBuilder {
     WebhookSecurityAdvisoryPublishedSecurityAdvisoryCvssBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleaseCreatedEvent {
@@ -14506,23 +10251,13 @@ pub struct ReleaseCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleaseCreatedEvent {
   pub fn builder() -> ReleaseCreatedEventBuilder {
     ReleaseCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WorkflowRunPullRequestsBase {
@@ -14532,23 +10267,13 @@ pub struct WorkflowRunPullRequestsBase {
   pub sha: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WorkflowRunPullRequestsBase {
   pub fn builder() -> WorkflowRunPullRequestsBaseBuilder {
     WorkflowRunPullRequestsBaseBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MetaDeletedEventHookConfig {
@@ -14560,23 +10285,13 @@ pub struct MetaDeletedEventHookConfig {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MetaDeletedEventHookConfig {
   pub fn builder() -> MetaDeletedEventHookConfigBuilder {
     MetaDeletedEventHookConfigBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReadyForReviewPullRequestItem2 {
@@ -14598,7 +10313,8 @@ pub struct WebhookPullRequestReadyForReviewPullRequestItem2 {
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub merge_commit_message: Option<WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage>,
+  pub merge_commit_message:
+    Option<WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage>,
   /// The default value for a merge commit title.
   /// - `PR_TITLE` - default to the pull request's title.
   /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
@@ -14611,36 +10327,28 @@ pub struct WebhookPullRequestReadyForReviewPullRequestItem2 {
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_message: Option<WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage>,
+  pub squash_merge_commit_message:
+    Option<WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage>,
   /// The default value for a squash merge commit title:
   /// - `PR_TITLE` - default to the pull request's title.
   /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_title: Option<WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle>,
+  pub squash_merge_commit_title:
+    Option<WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle>,
   /// Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReadyForReviewPullRequestItem2 {
   pub fn builder() -> WebhookPullRequestReadyForReviewPullRequestItem2Builder {
     WebhookPullRequestReadyForReviewPullRequestItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesMilestonedEventIssueItem2Reactions {
@@ -14678,23 +10386,13 @@ pub struct IssuesMilestonedEventIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesMilestonedEventIssueItem2Reactions {
   pub fn builder() -> IssuesMilestonedEventIssueItem2ReactionsBuilder {
     IssuesMilestonedEventIssueItem2ReactionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackagePublishedEventPackagePackageVersionContainerMetadata {
@@ -14709,23 +10407,13 @@ pub struct PackagePublishedEventPackagePackageVersionContainerMetadata {
   pub tag: Option<PackagePublishedEventPackagePackageVersionContainerMetadataTag>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEventPackagePackageVersionContainerMetadata {
   pub fn builder() -> PackagePublishedEventPackagePackageVersionContainerMetadataBuilder {
     PackagePublishedEventPackagePackageVersionContainerMetadataBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestConvertedToDraftPullRequestItem2 {
@@ -14747,49 +10435,43 @@ pub struct WebhookPullRequestConvertedToDraftPullRequestItem2 {
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub merge_commit_message: Option<WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage>,
+  pub merge_commit_message:
+    Option<WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage>,
   /// The default value for a merge commit title.
   /// - `PR_TITLE` - default to the pull request's title.
   /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub merge_commit_title: Option<WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle>,
+  pub merge_commit_title:
+    Option<WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle>,
   /// The default value for a squash merge commit message:
   /// - `PR_BODY` - default to the pull request's body.
   /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_message: Option<WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitMessage>,
+  pub squash_merge_commit_message:
+    Option<WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitMessage>,
   /// The default value for a squash merge commit title:
   /// - `PR_TITLE` - default to the pull request's title.
   /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_title: Option<WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitle>,
+  pub squash_merge_commit_title:
+    Option<WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitle>,
   /// Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestConvertedToDraftPullRequestItem2 {
   pub fn builder() -> WebhookPullRequestConvertedToDraftPullRequestItem2Builder {
     WebhookPullRequestConvertedToDraftPullRequestItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookGithubAppAuthorizationRevoked {
@@ -14797,23 +10479,13 @@ pub struct WebhookGithubAppAuthorizationRevoked {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookGithubAppAuthorizationRevoked {
   pub fn builder() -> WebhookGithubAppAuthorizationRevokedBuilder {
     WebhookGithubAppAuthorizationRevokedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryTransferredEventChangesOwnerFrom {
@@ -14825,23 +10497,13 @@ pub struct RepositoryTransferredEventChangesOwnerFrom {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryTransferredEventChangesOwnerFrom {
   pub fn builder() -> RepositoryTransferredEventChangesOwnerFromBuilder {
     RepositoryTransferredEventChangesOwnerFromBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionCategory {
@@ -14859,23 +10521,13 @@ pub struct DiscussionCategory {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionCategory {
   pub fn builder() -> DiscussionCategoryBuilder {
     DiscussionCategoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwes {
@@ -14883,23 +10535,13 @@ pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwes {
   pub fn builder() -> WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesBuilder {
     WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipTierChanged {
@@ -14921,23 +10563,13 @@ pub struct WebhookSponsorshipTierChanged {
   pub sponsorship: WebhookSponsorshipTierChangedSponsorship,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipTierChanged {
   pub fn builder() -> WebhookSponsorshipTierChangedBuilder {
     WebhookSponsorshipTierChangedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackagePublishedEventPackagePackageVersionNpmMetadata {
@@ -15054,23 +10686,13 @@ pub struct PackagePublishedEventPackagePackageVersionNpmMetadata {
   pub version: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEventPackagePackageVersionNpmMetadata {
   pub fn builder() -> PackagePublishedEventPackagePackageVersionNpmMetadataBuilder {
     PackagePublishedEventPackagePackageVersionNpmMetadataBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionDeletedEvent {
@@ -15089,23 +10711,13 @@ pub struct DiscussionDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionDeletedEvent {
   pub fn builder() -> DiscussionDeletedEventBuilder {
     DiscussionDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookOrgBlockBlocked {
@@ -15126,23 +10738,13 @@ pub struct WebhookOrgBlockBlocked {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookOrgBlockBlocked {
   pub fn builder() -> WebhookOrgBlockBlockedBuilder {
     WebhookOrgBlockBlockedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct AlertInstanceMessage {
@@ -15151,23 +10753,13 @@ pub struct AlertInstanceMessage {
   pub text: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl AlertInstanceMessage {
   pub fn builder() -> AlertInstanceMessageBuilder {
     AlertInstanceMessageBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CustomPropertyDeletedEventDefinition {
@@ -15175,23 +10767,13 @@ pub struct CustomPropertyDeletedEventDefinition {
   pub property_name: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CustomPropertyDeletedEventDefinition {
   pub fn builder() -> CustomPropertyDeletedEventDefinitionBuilder {
     CustomPropertyDeletedEventDefinitionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryLite {
@@ -15250,23 +10832,13 @@ pub struct RepositoryLite {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryLite {
   pub fn builder() -> RepositoryLiteBuilder {
     RepositoryLiteBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StatusEventCommitCommitVerification {
@@ -15280,23 +10852,13 @@ pub struct StatusEventCommitCommitVerification {
   pub verified: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StatusEventCommitCommitVerification {
   pub fn builder() -> StatusEventCommitCommitVerificationBuilder {
     StatusEventCommitCommitVerificationBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchaseCancelled {
@@ -15321,23 +10883,13 @@ pub struct WebhookMarketplacePurchaseCancelled {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchaseCancelled {
   pub fn builder() -> WebhookMarketplacePurchaseCancelledBuilder {
     WebhookMarketplacePurchaseCancelledBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesLockedEventIssueItem2Reactions {
@@ -15375,23 +10927,13 @@ pub struct IssuesLockedEventIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesLockedEventIssueItem2Reactions {
   pub fn builder() -> IssuesLockedEventIssueItem2ReactionsBuilder {
     IssuesLockedEventIssueItem2ReactionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewThreadResolved {
@@ -15413,23 +10955,13 @@ pub struct WebhookPullRequestReviewThreadResolved {
   pub thread: WebhookPullRequestReviewThreadResolvedThread,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewThreadResolved {
   pub fn builder() -> WebhookPullRequestReviewThreadResolvedBuilder {
     WebhookPullRequestReviewThreadResolvedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectColumnMoved {
@@ -15450,23 +10982,13 @@ pub struct WebhookProjectColumnMoved {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectColumnMoved {
   pub fn builder() -> WebhookProjectColumnMovedBuilder {
     WebhookProjectColumnMovedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -15508,23 +11030,13 @@ pub struct App {
   pub updated_at: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl App {
   pub fn builder() -> AppBuilder {
     AppBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MemberEditedEventChangesPermission {
@@ -15536,23 +11048,13 @@ pub struct MemberEditedEventChangesPermission {
   pub to: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MemberEditedEventChangesPermission {
   pub fn builder() -> MemberEditedEventChangesPermissionBuilder {
     MemberEditedEventChangesPermissionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewSubmittedReviewLinks {
@@ -15560,23 +11062,13 @@ pub struct WebhookPullRequestReviewSubmittedReviewLinks {
   pub pull_request: Link,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewSubmittedReviewLinks {
   pub fn builder() -> WebhookPullRequestReviewSubmittedReviewLinksBuilder {
     WebhookPullRequestReviewSubmittedReviewLinksBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ProjectReopenedEvent {
@@ -15589,23 +11081,13 @@ pub struct ProjectsV2ProjectReopenedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ProjectReopenedEvent {
   pub fn builder() -> ProjectsV2ProjectReopenedEventBuilder {
     ProjectsV2ProjectReopenedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -15625,23 +11107,13 @@ pub struct SponsorshipTier {
   pub node_id: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipTier {
   pub fn builder() -> SponsorshipTierBuilder {
     SponsorshipTierBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardMovedProjectCardItem2Creator {
@@ -15702,23 +11174,13 @@ pub struct WebhookProjectCardMovedProjectCardItem2Creator {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardMovedProjectCardItem2Creator {
   pub fn builder() -> WebhookProjectCardMovedProjectCardItem2CreatorBuilder {
     WebhookProjectCardMovedProjectCardItem2CreatorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct InstallationSuspendEvent {
@@ -15743,23 +11205,13 @@ pub struct InstallationSuspendEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl InstallationSuspendEvent {
   pub fn builder() -> InstallationSuspendEventBuilder {
     InstallationSuspendEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionEditedEventChanges {
@@ -15771,23 +11223,13 @@ pub struct DiscussionEditedEventChanges {
   pub title: Option<DiscussionEditedEventChangesTitle>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionEditedEventChanges {
   pub fn builder() -> DiscussionEditedEventChangesBuilder {
     DiscussionEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRepositoryVulnerabilityAlertResolve {
@@ -15806,23 +11248,13 @@ pub struct WebhookRepositoryVulnerabilityAlertResolve {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRepositoryVulnerabilityAlertResolve {
   pub fn builder() -> WebhookRepositoryVulnerabilityAlertResolveBuilder {
     WebhookRepositoryVulnerabilityAlertResolveBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CustomPropertyDeletedEvent {
@@ -15840,23 +11272,13 @@ pub struct CustomPropertyDeletedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CustomPropertyDeletedEvent {
   pub fn builder() -> CustomPropertyDeletedEventBuilder {
     CustomPropertyDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct TeamEditedEventChangesPrivacy {
@@ -15864,23 +11286,13 @@ pub struct TeamEditedEventChangesPrivacy {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl TeamEditedEventChangesPrivacy {
   pub fn builder() -> TeamEditedEventChangesPrivacyBuilder {
     TeamEditedEventChangesPrivacyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionUnlabeledEvent {
@@ -15900,23 +11312,13 @@ pub struct DiscussionUnlabeledEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionUnlabeledEvent {
   pub fn builder() -> DiscussionUnlabeledEventBuilder {
     DiscussionUnlabeledEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentCreatedIssueItem2User {
@@ -15977,23 +11379,13 @@ pub struct WebhookIssueCommentCreatedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentCreatedIssueItem2User {
   pub fn builder() -> WebhookIssueCommentCreatedIssueItem2UserBuilder {
     WebhookIssueCommentCreatedIssueItem2UserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WorkflowStep {
@@ -16011,23 +11403,13 @@ pub struct WorkflowStep {
   pub status: WorkflowStepStatus,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WorkflowStep {
   pub fn builder() -> WorkflowStepBuilder {
     WorkflowStepBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecretScanningAlertRevoked {
@@ -16048,23 +11430,13 @@ pub struct WebhookSecretScanningAlertRevoked {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecretScanningAlertRevoked {
   pub fn builder() -> WebhookSecretScanningAlertRevokedBuilder {
     WebhookSecretScanningAlertRevokedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesReopenedEventIssueItem2User {
@@ -16125,23 +11497,13 @@ pub struct IssuesReopenedEventIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesReopenedEventIssueItem2User {
   pub fn builder() -> IssuesReopenedEventIssueItem2UserBuilder {
     IssuesReopenedEventIssueItem2UserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DependabotAlertReopenedEvent {
@@ -16160,23 +11522,13 @@ pub struct DependabotAlertReopenedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DependabotAlertReopenedEvent {
   pub fn builder() -> DependabotAlertReopenedEventBuilder {
     DependabotAlertReopenedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct TeamEditedEvent {
@@ -16199,23 +11551,13 @@ pub struct TeamEditedEvent {
   pub team: Team,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl TeamEditedEvent {
   pub fn builder() -> TeamEditedEventBuilder {
     TeamEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ProjectDeletedEvent {
@@ -16228,23 +11570,13 @@ pub struct ProjectsV2ProjectDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ProjectDeletedEvent {
   pub fn builder() -> ProjectsV2ProjectDeletedEventBuilder {
     ProjectsV2ProjectDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemEditedEvent {
@@ -16260,23 +11592,13 @@ pub struct ProjectsV2ItemEditedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemEditedEvent {
   pub fn builder() -> ProjectsV2ItemEditedEventBuilder {
     ProjectsV2ItemEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentEditedPullRequestHead {
@@ -16293,23 +11615,13 @@ pub struct WebhookPullRequestReviewCommentEditedPullRequestHead {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentEditedPullRequestHead {
   pub fn builder() -> WebhookPullRequestReviewCommentEditedPullRequestHeadBuilder {
     WebhookPullRequestReviewCommentEditedPullRequestHeadBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesUnlockedEventIssueItem2Reactions {
@@ -16347,23 +11659,13 @@ pub struct IssuesUnlockedEventIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesUnlockedEventIssueItem2Reactions {
   pub fn builder() -> IssuesUnlockedEventIssueItem2ReactionsBuilder {
     IssuesUnlockedEventIssueItem2ReactionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestEnqueued {
@@ -16383,23 +11685,13 @@ pub struct WebhookPullRequestEnqueued {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestEnqueued {
   pub fn builder() -> WebhookPullRequestEnqueuedBuilder {
     WebhookPullRequestEnqueuedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Account {
@@ -16421,23 +11713,14 @@ pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Accoun
   pub type_: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Account {
-  pub fn builder() -> WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2AccountBuilder {
+  pub fn builder() -> WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2AccountBuilder
+  {
     WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2AccountBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecretScanningAlertCreated {
@@ -16458,23 +11741,13 @@ pub struct WebhookSecretScanningAlertCreated {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecretScanningAlertCreated {
   pub fn builder() -> WebhookSecretScanningAlertCreatedBuilder {
     WebhookSecretScanningAlertCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCheckSuiteCompleted {
@@ -16494,23 +11767,13 @@ pub struct WebhookCheckSuiteCompleted {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCheckSuiteCompleted {
   pub fn builder() -> WebhookCheckSuiteCompletedBuilder {
     WebhookCheckSuiteCompletedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -16528,10 +11791,12 @@ pub struct BranchProtectionRule {
   pub dismiss_stale_reviews_on_push: bool,
   pub id: i64,
   pub ignore_approvals_from_contributors: bool,
-  pub linear_history_requirement_enforcement_level: BranchProtectionRuleLinearHistoryRequirementEnforcementLevel,
+  pub linear_history_requirement_enforcement_level:
+    BranchProtectionRuleLinearHistoryRequirementEnforcementLevel,
   pub merge_queue_enforcement_level: BranchProtectionRuleMergeQueueEnforcementLevel,
   pub name: String,
-  pub pull_request_reviews_enforcement_level: BranchProtectionRulePullRequestReviewsEnforcementLevel,
+  pub pull_request_reviews_enforcement_level:
+    BranchProtectionRulePullRequestReviewsEnforcementLevel,
   pub repository_id: i64,
   pub require_code_owner_review: bool,
   /// Whether the most recent push must be approved by someone other than the person who pushed it
@@ -16539,32 +11804,26 @@ pub struct BranchProtectionRule {
   #[builder(default = "None")]
   pub require_last_push_approval: Option<bool>,
   pub required_approving_review_count: i64,
-  pub required_conversation_resolution_level: BranchProtectionRuleRequiredConversationResolutionLevel,
-  pub required_deployments_enforcement_level: BranchProtectionRuleRequiredDeploymentsEnforcementLevel,
+  pub required_conversation_resolution_level:
+    BranchProtectionRuleRequiredConversationResolutionLevel,
+  pub required_deployments_enforcement_level:
+    BranchProtectionRuleRequiredDeploymentsEnforcementLevel,
   pub required_status_checks: Vec<String>,
-  pub required_status_checks_enforcement_level: BranchProtectionRuleRequiredStatusChecksEnforcementLevel,
-  pub signature_requirement_enforcement_level: BranchProtectionRuleSignatureRequirementEnforcementLevel,
+  pub required_status_checks_enforcement_level:
+    BranchProtectionRuleRequiredStatusChecksEnforcementLevel,
+  pub signature_requirement_enforcement_level:
+    BranchProtectionRuleSignatureRequirementEnforcementLevel,
   pub strict_required_status_checks_policy: bool,
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRule {
   pub fn builder() -> BranchProtectionRuleBuilder {
     BranchProtectionRuleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchasePendingChange {
@@ -16589,23 +11848,13 @@ pub struct WebhookMarketplacePurchasePendingChange {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchasePendingChange {
   pub fn builder() -> WebhookMarketplacePurchasePendingChangeBuilder {
     WebhookMarketplacePurchasePendingChangeBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardCreated {
@@ -16626,23 +11875,13 @@ pub struct WebhookProjectCardCreated {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardCreated {
   pub fn builder() -> WebhookProjectCardCreatedBuilder {
     WebhookProjectCardCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationRepositoriesAdded {
@@ -16669,23 +11908,13 @@ pub struct WebhookInstallationRepositoriesAdded {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationRepositoriesAdded {
   pub fn builder() -> WebhookInstallationRepositoriesAddedBuilder {
     WebhookInstallationRepositoriesAddedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryTransferredEvent {
@@ -16704,23 +11933,13 @@ pub struct RepositoryTransferredEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryTransferredEvent {
   pub fn builder() -> RepositoryTransferredEventBuilder {
     RepositoryTransferredEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionCategoryChangedEventChangesCategoryFrom {
@@ -16738,23 +11957,13 @@ pub struct DiscussionCategoryChangedEventChangesCategoryFrom {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionCategoryChangedEventChangesCategoryFrom {
   pub fn builder() -> DiscussionCategoryChangedEventChangesCategoryFromBuilder {
     DiscussionCategoryChangedEventChangesCategoryFromBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2 {
@@ -16781,23 +11990,13 @@ pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2 {
   pub unit_count: Option<i64>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2 {
   pub fn builder() -> WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Builder {
     WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestDemilestoned {
@@ -16820,23 +12019,13 @@ pub struct WebhookPullRequestDemilestoned {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestDemilestoned {
   pub fn builder() -> WebhookPullRequestDemilestonedBuilder {
     WebhookPullRequestDemilestonedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackageUpdatedEvent {
@@ -16856,46 +12045,26 @@ pub struct PackageUpdatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackageUpdatedEvent {
   pub fn builder() -> PackageUpdatedEventBuilder {
     PackageUpdatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestEditedChangesBaseRef {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestEditedChangesBaseRef {
   pub fn builder() -> WebhookPullRequestEditedChangesBaseRefBuilder {
     WebhookPullRequestEditedChangesBaseRefBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetDeletedEvent {
@@ -16916,23 +12085,13 @@ pub struct RepositoryRulesetDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetDeletedEvent {
   pub fn builder() -> RepositoryRulesetDeletedEventBuilder {
     RepositoryRulesetDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesLockedEventIssueItem2User {
@@ -16993,23 +12152,13 @@ pub struct IssuesLockedEventIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesLockedEventIssueItem2User {
   pub fn builder() -> IssuesLockedEventIssueItem2UserBuilder {
     IssuesLockedEventIssueItem2UserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertReopenedByUserAlertRule {
@@ -17023,23 +12172,13 @@ pub struct WebhookCodeScanningAlertReopenedByUserAlertRule {
   pub severity: Option<WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertReopenedByUserAlertRule {
   pub fn builder() -> WebhookCodeScanningAlertReopenedByUserAlertRuleBuilder {
     WebhookCodeScanningAlertReopenedByUserAlertRuleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SponsorshipEditedEventSponsorshipMaintainer {
@@ -17100,23 +12239,13 @@ pub struct SponsorshipEditedEventSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipEditedEventSponsorshipMaintainer {
   pub fn builder() -> SponsorshipEditedEventSponsorshipMaintainerBuilder {
     SponsorshipEditedEventSponsorshipMaintainerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentCreatedIssueItem2 {
@@ -17198,23 +12327,13 @@ pub struct WebhookIssueCommentCreatedIssueItem2 {
   pub user: Option<WebhookIssueCommentCreatedIssueItem2User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentCreatedIssueItem2 {
   pub fn builder() -> WebhookIssueCommentCreatedIssueItem2Builder {
     WebhookIssueCommentCreatedIssueItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionCategoryChangedEvent {
@@ -17234,23 +12353,13 @@ pub struct DiscussionCategoryChangedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionCategoryChangedEvent {
   pub fn builder() -> DiscussionCategoryChangedEventBuilder {
     DiscussionCategoryChangedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectCreatedEvent {
@@ -17271,23 +12380,13 @@ pub struct ProjectCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectCreatedEvent {
   pub fn builder() -> ProjectCreatedEventBuilder {
     ProjectCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2 {
@@ -17357,7 +12456,8 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2 {
   pub pull_requests: Option<Vec<Option<serde_json::Value>>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub referenced_workflows: Option<Vec<WebhookWorkflowRunCompletedWorkflowRunItem2ReferencedWorkflows>>,
+  pub referenced_workflows:
+    Option<Vec<WebhookWorkflowRunCompletedWorkflowRunItem2ReferencedWorkflows>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub repository: Option<WebhookWorkflowRunCompletedWorkflowRunItem2Repository>,
@@ -17393,23 +12493,13 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2 {
   pub workflow_url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompletedWorkflowRunItem2 {
   pub fn builder() -> WebhookWorkflowRunCompletedWorkflowRunItem2Builder {
     WebhookWorkflowRunCompletedWorkflowRunItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesClosedEvent {
@@ -17430,23 +12520,13 @@ pub struct IssuesClosedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesClosedEvent {
   pub fn builder() -> IssuesClosedEventBuilder {
     IssuesClosedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewRequestRemovedItem1 {
@@ -17470,23 +12550,13 @@ pub struct WebhookPullRequestReviewRequestRemovedItem1 {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewRequestRemovedItem1 {
   pub fn builder() -> WebhookPullRequestReviewRequestRemovedItem1Builder {
     WebhookPullRequestReviewRequestRemovedItem1Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowJobWaitingWorkflowJob {
@@ -17534,23 +12604,13 @@ pub struct WebhookWorkflowJobWaitingWorkflowJob {
   pub workflow_name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowJobWaitingWorkflowJob {
   pub fn builder() -> WebhookWorkflowJobWaitingWorkflowJobBuilder {
     WebhookWorkflowJobWaitingWorkflowJobBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured
 /// for and sent to a GitHub App. For more information,
 /// see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
@@ -17563,46 +12623,27 @@ pub struct SimpleInstallation {
   pub node_id: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SimpleInstallation {
   pub fn builder() -> SimpleInstallationBuilder {
     SimpleInstallationBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevel {
   pub from: BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelFrom,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevel {
-  pub fn builder() -> BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelBuilder {
+  pub fn builder(
+  ) -> BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelBuilder {
     BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevelBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemArchivedEvent {
@@ -17616,46 +12657,26 @@ pub struct ProjectsV2ItemArchivedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemArchivedEvent {
   pub fn builder() -> ProjectsV2ItemArchivedEventBuilder {
     ProjectsV2ItemArchivedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionEditedEventChangesTitle {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionEditedEventChangesTitle {
   pub fn builder() -> DiscussionEditedEventChangesTitleBuilder {
     DiscussionEditedEventChangesTitleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionReleaseAuthor {
@@ -17716,23 +12737,14 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionReleaseAu
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackagePackageVersionReleaseAuthor {
-  pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionReleaseAuthorBuilder {
+  pub fn builder(
+  ) -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionReleaseAuthorBuilder {
     WebhookRegistryPackagePublishedRegistryPackagePackageVersionReleaseAuthorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDiscussionCommentDeleted {
@@ -17752,23 +12764,13 @@ pub struct WebhookDiscussionCommentDeleted {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDiscussionCommentDeleted {
   pub fn builder() -> WebhookDiscussionCommentDeletedBuilder {
     WebhookDiscussionCommentDeletedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataValueItem4 {
@@ -17787,23 +12789,15 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMeta
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataValueItem4 {
-  pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataValueItem4Builder {
+  pub fn builder(
+  ) -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataValueItem4Builder
+  {
     WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataValueItem4Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The [commit comment](https://docs.github.com/rest/commits/comments#get-a-commit-comment) resource.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -17842,46 +12836,26 @@ pub struct WebhookCommitCommentCreatedComment {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCommitCommentCreatedComment {
   pub fn builder() -> WebhookCommitCommentCreatedCommentBuilder {
     WebhookCommitCommentCreatedCommentBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionEditedEventChangesBody {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionEditedEventChangesBody {
   pub fn builder() -> DiscussionEditedEventChangesBodyBuilder {
     DiscussionEditedEventChangesBodyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2 {
@@ -17908,23 +12882,13 @@ pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2 {
   pub unit_count: Option<i64>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2 {
   pub fn builder() -> WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Builder {
     WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleaseUnpublishedEventReleaseItem2Author {
@@ -17985,23 +12949,13 @@ pub struct ReleaseUnpublishedEventReleaseItem2Author {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleaseUnpublishedEventReleaseItem2Author {
   pub fn builder() -> ReleaseUnpublishedEventReleaseItem2AuthorBuilder {
     ReleaseUnpublishedEventReleaseItem2AuthorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionClosedEvent {
@@ -18020,23 +12974,13 @@ pub struct DiscussionClosedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionClosedEvent {
   pub fn builder() -> DiscussionClosedEventBuilder {
     DiscussionClosedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectColumnEditedChanges {
@@ -18045,23 +12989,13 @@ pub struct WebhookProjectColumnEditedChanges {
   pub name: Option<WebhookProjectColumnEditedChangesName>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectColumnEditedChanges {
   pub fn builder() -> WebhookProjectColumnEditedChangesBuilder {
     WebhookProjectColumnEditedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CheckRunRequestedActionEvent {
@@ -18081,23 +13015,13 @@ pub struct CheckRunRequestedActionEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CheckRunRequestedActionEvent {
   pub fn builder() -> CheckRunRequestedActionEventBuilder {
     CheckRunRequestedActionEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CustomPropertyUpdatedEvent {
@@ -18115,23 +13039,13 @@ pub struct CustomPropertyUpdatedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CustomPropertyUpdatedEvent {
   pub fn builder() -> CustomPropertyUpdatedEventBuilder {
     CustomPropertyUpdatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SponsorshipCreatedEvent {
@@ -18152,23 +13066,13 @@ pub struct SponsorshipCreatedEvent {
   pub sponsorship: SponsorshipCreatedEventSponsorship,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipCreatedEvent {
   pub fn builder() -> SponsorshipCreatedEventBuilder {
     SponsorshipCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StatusEventCommitCommitCommitterItem2 {
@@ -18181,23 +13085,13 @@ pub struct StatusEventCommitCommitCommitterItem2 {
   pub name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StatusEventCommitCommitCommitterItem2 {
   pub fn builder() -> StatusEventCommitCommitCommitterItem2Builder {
     StatusEventCommitCommitCommitterItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemArchivedEventChangesArchivedAt {
@@ -18209,23 +13103,13 @@ pub struct ProjectsV2ItemArchivedEventChangesArchivedAt {
   pub to: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemArchivedEventChangesArchivedAt {
   pub fn builder() -> ProjectsV2ItemArchivedEventChangesArchivedAtBuilder {
     ProjectsV2ItemArchivedEventChangesArchivedAtBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipPendingTierChangeSponsorship {
@@ -18245,23 +13129,13 @@ pub struct WebhookSponsorshipPendingTierChangeSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipPendingTierChangeSponsorship {
   pub fn builder() -> WebhookSponsorshipPendingTierChangeSponsorshipBuilder {
     WebhookSponsorshipPendingTierChangeSponsorshipBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// Requested permissions that elevate access for a previously approved request for access, categorized by type of permission.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -18277,23 +13151,13 @@ pub struct PersonalAccessTokenRequestPermissionsUpgraded {
   pub repository: Option<serde_json::Value>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PersonalAccessTokenRequestPermissionsUpgraded {
   pub fn builder() -> PersonalAccessTokenRequestPermissionsUpgradedBuilder {
     PersonalAccessTokenRequestPermissionsUpgradedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// A Discussion in a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -18343,23 +13207,13 @@ pub struct Discussion {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl Discussion {
   pub fn builder() -> DiscussionBuilder {
     DiscussionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesUnassignedEvent {
@@ -18383,23 +13237,13 @@ pub struct IssuesUnassignedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesUnassignedEvent {
   pub fn builder() -> IssuesUnassignedEventBuilder {
     IssuesUnassignedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The membership between the user and the organization. Not present when the action is `member_invited`.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -18413,23 +13257,13 @@ pub struct Membership {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl Membership {
   pub fn builder() -> MembershipBuilder {
     MembershipBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPersonalAccessTokenRequestCancelled {
@@ -18440,23 +13274,13 @@ pub struct WebhookPersonalAccessTokenRequestCancelled {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPersonalAccessTokenRequestCancelled {
   pub fn builder() -> WebhookPersonalAccessTokenRequestCancelledBuilder {
     WebhookPersonalAccessTokenRequestCancelledBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryEditedEventChanges {
@@ -18474,23 +13298,13 @@ pub struct RepositoryEditedEventChanges {
   pub topics: Option<RepositoryEditedEventChangesTopics>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryEditedEventChanges {
   pub fn builder() -> RepositoryEditedEventChangesBuilder {
     RepositoryEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardEditedChangesNote {
@@ -18499,23 +13313,13 @@ pub struct WebhookProjectCardEditedChangesNote {
   pub from: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardEditedChangesNote {
   pub fn builder() -> WebhookProjectCardEditedChangesNoteBuilder {
     WebhookProjectCardEditedChangesNoteBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesMilestonedEventIssueItem2 {
@@ -18601,23 +13405,13 @@ pub struct IssuesMilestonedEventIssueItem2 {
   pub user: Option<IssuesMilestonedEventIssueItem2User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesMilestonedEventIssueItem2 {
   pub fn builder() -> IssuesMilestonedEventIssueItem2Builder {
     IssuesMilestonedEventIssueItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRepositoryVulnerabilityAlertCreateAlertItem2 {
@@ -18657,23 +13451,13 @@ pub struct WebhookRepositoryVulnerabilityAlertCreateAlertItem2 {
   pub state: WebhookRepositoryVulnerabilityAlertCreateAlertItem2State,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRepositoryVulnerabilityAlertCreateAlertItem2 {
   pub fn builder() -> WebhookRepositoryVulnerabilityAlertCreateAlertItem2Builder {
     WebhookRepositoryVulnerabilityAlertCreateAlertItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleaseEditedEvent {
@@ -18696,23 +13480,13 @@ pub struct ReleaseEditedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleaseEditedEvent {
   pub fn builder() -> ReleaseEditedEventBuilder {
     ReleaseEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationRepositoriesRemovedRepositoriesAdded {
@@ -18726,23 +13500,13 @@ pub struct WebhookInstallationRepositoriesRemovedRepositoriesAdded {
   pub private: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationRepositoriesRemovedRepositoriesAdded {
   pub fn builder() -> WebhookInstallationRepositoriesRemovedRepositoriesAddedBuilder {
     WebhookInstallationRepositoriesRemovedRepositoriesAddedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct User {
@@ -18808,23 +13572,13 @@ pub struct User {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl User {
   pub fn builder() -> UserBuilder {
     UserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DeploymentWorkflowRunHeadRepositoryOwner {
@@ -18885,23 +13639,13 @@ pub struct DeploymentWorkflowRunHeadRepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DeploymentWorkflowRunHeadRepositoryOwner {
   pub fn builder() -> DeploymentWorkflowRunHeadRepositoryOwnerBuilder {
     DeploymentWorkflowRunHeadRepositoryOwnerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchaseChanged {
@@ -18926,23 +13670,13 @@ pub struct WebhookMarketplacePurchaseChanged {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchaseChanged {
   pub fn builder() -> WebhookMarketplacePurchaseChangedBuilder {
     WebhookMarketplacePurchaseChangedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2Actor {
@@ -19003,23 +13737,13 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2Actor {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompletedWorkflowRunItem2Actor {
   pub fn builder() -> WebhookWorkflowRunCompletedWorkflowRunItem2ActorBuilder {
     WebhookWorkflowRunCompletedWorkflowRunItem2ActorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleaseReleasedEvent {
@@ -19041,23 +13765,13 @@ pub struct ReleaseReleasedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleaseReleasedEvent {
   pub fn builder() -> ReleaseReleasedEventBuilder {
     ReleaseReleasedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionRuleEditedEvent {
@@ -19081,23 +13795,13 @@ pub struct BranchProtectionRuleEditedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRuleEditedEvent {
   pub fn builder() -> BranchProtectionRuleEditedEventBuilder {
     BranchProtectionRuleEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MarketplacePurchaseAccount {
@@ -19111,23 +13815,13 @@ pub struct MarketplacePurchaseAccount {
   pub type_: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MarketplacePurchaseAccount {
   pub fn builder() -> MarketplacePurchaseAccountBuilder {
     MarketplacePurchaseAccountBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentEditedPullRequestLinks {
@@ -19142,23 +13836,13 @@ pub struct WebhookPullRequestReviewCommentEditedPullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentEditedPullRequestLinks {
   pub fn builder() -> WebhookPullRequestReviewCommentEditedPullRequestLinksBuilder {
     WebhookPullRequestReviewCommentEditedPullRequestLinksBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Account {
@@ -19180,23 +13864,13 @@ pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Account {
   pub type_: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Account {
   pub fn builder() -> WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2AccountBuilder {
     WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2AccountBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewRejectedWorkflowJobRuns {
@@ -19226,23 +13900,13 @@ pub struct WebhookDeploymentReviewRejectedWorkflowJobRuns {
   pub updated_at: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewRejectedWorkflowJobRuns {
   pub fn builder() -> WebhookDeploymentReviewRejectedWorkflowJobRunsBuilder {
     WebhookDeploymentReviewRejectedWorkflowJobRunsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestAssigned {
@@ -19266,23 +13930,13 @@ pub struct WebhookPullRequestAssigned {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestAssigned {
   pub fn builder() -> WebhookPullRequestAssignedBuilder {
     WebhookPullRequestAssignedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryEditedEventChangesTopics {
@@ -19291,23 +13945,13 @@ pub struct RepositoryEditedEventChangesTopics {
   pub from: Option<Vec<String>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryEditedEventChangesTopics {
   pub fn builder() -> RepositoryEditedEventChangesTopicsBuilder {
     RepositoryEditedEventChangesTopicsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchasePurchased {
@@ -19332,23 +13976,13 @@ pub struct WebhookMarketplacePurchasePurchased {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchasePurchased {
   pub fn builder() -> WebhookMarketplacePurchasePurchasedBuilder {
     WebhookMarketplacePurchasePurchasedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchasePendingChangeCancelled {
@@ -19373,46 +14007,26 @@ pub struct WebhookMarketplacePurchasePendingChangeCancelled {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchasePendingChangeCancelled {
   pub fn builder() -> WebhookMarketplacePurchasePendingChangeCancelledBuilder {
     WebhookMarketplacePurchasePendingChangeCancelledBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDiscussionCommentEditedChanges {
   pub body: WebhookDiscussionCommentEditedChangesBody,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDiscussionCommentEditedChanges {
   pub fn builder() -> WebhookDiscussionCommentEditedChangesBuilder {
     WebhookDiscussionCommentEditedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct Reactions {
@@ -19430,23 +14044,13 @@ pub struct Reactions {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl Reactions {
   pub fn builder() -> ReactionsBuilder {
     ReactionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemEditedEventChangesItem1FieldValue {
@@ -19458,23 +14062,13 @@ pub struct ProjectsV2ItemEditedEventChangesItem1FieldValue {
   pub field_type: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemEditedEventChangesItem1FieldValue {
   pub fn builder() -> ProjectsV2ItemEditedEventChangesItem1FieldValueBuilder {
     ProjectsV2ItemEditedEventChangesItem1FieldValueBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesReopenedEventIssueItem2 {
@@ -19559,23 +14153,13 @@ pub struct IssuesReopenedEventIssueItem2 {
   pub user: Option<IssuesReopenedEventIssueItem2User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesReopenedEventIssueItem2 {
   pub fn builder() -> IssuesReopenedEventIssueItem2Builder {
     IssuesReopenedEventIssueItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentStatusCreated {
@@ -19606,23 +14190,13 @@ pub struct WebhookDeploymentStatusCreated {
   pub workflow_run: Option<DeploymentWorkflowRun>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentStatusCreated {
   pub fn builder() -> WebhookDeploymentStatusCreatedBuilder {
     WebhookDeploymentStatusCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Plan {
@@ -19655,23 +14229,13 @@ pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Plan {
   pub yearly_price_in_cents: Option<i64>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Plan {
   pub fn builder() -> WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanBuilder {
     WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct AlertInstance {
@@ -19702,23 +14266,13 @@ pub struct AlertInstance {
   pub state: AlertInstanceState,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl AlertInstance {
   pub fn builder() -> AlertInstanceBuilder {
     AlertInstanceBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DeleteEvent {
@@ -19742,23 +14296,13 @@ pub struct DeleteEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DeleteEvent {
   pub fn builder() -> DeleteEventBuilder {
     DeleteEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SimplePullRequestHead {
@@ -19775,23 +14319,13 @@ pub struct SimplePullRequestHead {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SimplePullRequestHead {
   pub fn builder() -> SimplePullRequestHeadBuilder {
     SimplePullRequestHeadBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Plan {
@@ -19815,7 +14349,8 @@ pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Plan {
   pub name: Option<String>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub price_model: Option<WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel>,
+  pub price_model:
+    Option<WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub unit_name: Option<String>,
@@ -19824,23 +14359,13 @@ pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Plan {
   pub yearly_price_in_cents: Option<i64>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Plan {
   pub fn builder() -> WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanBuilder {
     WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentEditedIssueItem2User {
@@ -19901,23 +14426,13 @@ pub struct WebhookIssueCommentEditedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentEditedIssueItem2User {
   pub fn builder() -> WebhookIssueCommentEditedIssueItem2UserBuilder {
     WebhookIssueCommentEditedIssueItem2UserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewRequestedItem1 {
@@ -19941,23 +14456,13 @@ pub struct WebhookPullRequestReviewRequestedItem1 {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewRequestedItem1 {
   pub fn builder() -> WebhookPullRequestReviewRequestedItem1Builder {
     WebhookPullRequestReviewRequestedItem1Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReopened {
@@ -19978,23 +14483,13 @@ pub struct WebhookPullRequestReopened {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReopened {
   pub fn builder() -> WebhookPullRequestReopenedBuilder {
     WebhookPullRequestReopenedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesUnlockedEvent {
@@ -20013,23 +14508,13 @@ pub struct IssuesUnlockedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesUnlockedEvent {
   pub fn builder() -> IssuesUnlockedEventBuilder {
     IssuesUnlockedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDiscussionCommentEdited {
@@ -20050,23 +14535,13 @@ pub struct WebhookDiscussionCommentEdited {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDiscussionCommentEdited {
   pub fn builder() -> WebhookDiscussionCommentEditedBuilder {
     WebhookDiscussionCommentEditedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The invitation for the user or email if the action is `member_invited`.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -20097,23 +14572,13 @@ pub struct WebhookOrganizationMemberInvitedInvitation {
   pub team_count: f64,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookOrganizationMemberInvitedInvitation {
   pub fn builder() -> WebhookOrganizationMemberInvitedInvitationBuilder {
     WebhookOrganizationMemberInvitedInvitationBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitAuthor {
@@ -20125,23 +14590,13 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitAuthor {
   pub name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitAuthor {
   pub fn builder() -> WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitAuthorBuilder {
     WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitAuthorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitCommitter {
@@ -20153,23 +14608,13 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitCommitter {
   pub name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitCommitter {
   pub fn builder() -> WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitCommitterBuilder {
     WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitCommitterBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionEditedEvent {
@@ -20191,23 +14636,13 @@ pub struct DiscussionEditedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionEditedEvent {
   pub fn builder() -> DiscussionEditedEventBuilder {
     DiscussionEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct OrganizationRenamedEvent {
@@ -20232,23 +14667,13 @@ pub struct OrganizationRenamedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl OrganizationRenamedEvent {
   pub fn builder() -> OrganizationRenamedEventBuilder {
     OrganizationRenamedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DependabotAlertCreatedEvent {
@@ -20267,23 +14692,13 @@ pub struct DependabotAlertCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DependabotAlertCreatedEvent {
   pub fn builder() -> DependabotAlertCreatedEventBuilder {
     DependabotAlertCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationRepositoriesRemoved {
@@ -20310,23 +14725,13 @@ pub struct WebhookInstallationRepositoriesRemoved {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationRepositoriesRemoved {
   pub fn builder() -> WebhookInstallationRepositoriesRemovedBuilder {
     WebhookInstallationRepositoriesRemovedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct InstallationDeletedEventRepositories {
@@ -20340,23 +14745,13 @@ pub struct InstallationDeletedEventRepositories {
   pub private: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl InstallationDeletedEventRepositories {
   pub fn builder() -> InstallationDeletedEventRepositoriesBuilder {
     InstallationDeletedEventRepositoriesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestEditedPullRequestItem2 {
@@ -20391,36 +14786,28 @@ pub struct WebhookPullRequestEditedPullRequestItem2 {
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_message: Option<WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage>,
+  pub squash_merge_commit_message:
+    Option<WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage>,
   /// The default value for a squash merge commit title:
   /// - `PR_TITLE` - default to the pull request's title.
   /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_title: Option<WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle>,
+  pub squash_merge_commit_title:
+    Option<WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle>,
   /// Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestEditedPullRequestItem2 {
   pub fn builder() -> WebhookPullRequestEditedPullRequestItem2Builder {
     WebhookPullRequestEditedPullRequestItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CustomPropertyValuesUpdatedEvent {
@@ -20442,23 +14829,13 @@ pub struct CustomPropertyValuesUpdatedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CustomPropertyValuesUpdatedEvent {
   pub fn builder() -> CustomPropertyValuesUpdatedEventBuilder {
     CustomPropertyValuesUpdatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPersonalAccessTokenRequestApproved {
@@ -20469,23 +14846,13 @@ pub struct WebhookPersonalAccessTokenRequestApproved {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPersonalAccessTokenRequestApproved {
   pub fn builder() -> WebhookPersonalAccessTokenRequestApprovedBuilder {
     WebhookPersonalAccessTokenRequestApprovedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StatusEventBranchesCommit {
@@ -20497,23 +14864,13 @@ pub struct StatusEventBranchesCommit {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StatusEventBranchesCommit {
   pub fn builder() -> StatusEventBranchesCommitBuilder {
     StatusEventBranchesCommitBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepositoryOwner {
@@ -20574,23 +14931,13 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepositoryOwner {
   pub fn builder() -> WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepositoryOwnerBuilder {
     WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepositoryOwnerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesDemilestonedEvent {
@@ -20613,48 +14960,29 @@ pub struct IssuesDemilestonedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesDemilestonedEvent {
   pub fn builder() -> IssuesDemilestonedEventBuilder {
     IssuesDemilestonedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemReorderedEventChanges {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub previous_projects_v2_item_node_id: Option<ProjectsV2ItemReorderedEventChangesPreviousProjectsV2ItemNodeId>,
+  pub previous_projects_v2_item_node_id:
+    Option<ProjectsV2ItemReorderedEventChangesPreviousProjectsV2ItemNodeId>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemReorderedEventChanges {
   pub fn builder() -> ProjectsV2ItemReorderedEventChangesBuilder {
     ProjectsV2ItemReorderedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepoRef {
@@ -20663,23 +14991,13 @@ pub struct RepoRef {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepoRef {
   pub fn builder() -> RepoRefBuilder {
     RepoRefBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewApprovedWorkflowJobRun {
@@ -20693,23 +15011,13 @@ pub struct WebhookDeploymentReviewApprovedWorkflowJobRun {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewApprovedWorkflowJobRun {
   pub fn builder() -> WebhookDeploymentReviewApprovedWorkflowJobRunBuilder {
     WebhookDeploymentReviewApprovedWorkflowJobRunBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Plan {
@@ -20733,7 +15041,8 @@ pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Plan {
   pub name: Option<String>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub price_model: Option<WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel>,
+  pub price_model:
+    Option<WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub unit_name: Option<String>,
@@ -20742,23 +15051,13 @@ pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Plan {
   pub yearly_price_in_cents: Option<i64>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Plan {
   pub fn builder() -> WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanBuilder {
     WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleaseUnpublishedEventReleaseItem2 {
@@ -20818,69 +15117,39 @@ pub struct ReleaseUnpublishedEventReleaseItem2 {
   pub zipball_url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleaseUnpublishedEventReleaseItem2 {
   pub fn builder() -> ReleaseUnpublishedEventReleaseItem2Builder {
     ReleaseUnpublishedEventReleaseItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRenamedEventChangesRepositoryName {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRenamedEventChangesRepositoryName {
   pub fn builder() -> RepositoryRenamedEventChangesRepositoryNameBuilder {
     RepositoryRenamedEventChangesRepositoryNameBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardMovedChangesColumnId {
   pub from: i64,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardMovedChangesColumnId {
   pub fn builder() -> WebhookProjectCardMovedChangesColumnIdBuilder {
     WebhookProjectCardMovedChangesColumnIdBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`, and `started_at` are the same as those in a [`check_run`](#check_run) object.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -20935,23 +15204,13 @@ pub struct WorkflowJob {
   pub workflow_name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WorkflowJob {
   pub fn builder() -> WorkflowJobBuilder {
     WorkflowJobBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookOrganizationMemberRemoved {
@@ -20971,23 +15230,13 @@ pub struct WebhookOrganizationMemberRemoved {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookOrganizationMemberRemoved {
   pub fn builder() -> WebhookOrganizationMemberRemovedBuilder {
     WebhookOrganizationMemberRemovedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// A user forks a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -21007,23 +15256,13 @@ pub struct ForkEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ForkEvent {
   pub fn builder() -> ForkEventBuilder {
     ForkEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepository {
@@ -21167,23 +15406,13 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepository {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepository {
   pub fn builder() -> WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepositoryBuilder {
     WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepositoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackagePublishedEventPackageRegistry {
@@ -21195,23 +15424,13 @@ pub struct PackagePublishedEventPackageRegistry {
   pub vendor: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEventPackageRegistry {
   pub fn builder() -> PackagePublishedEventPackageRegistryBuilder {
     PackagePublishedEventPackageRegistryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleaseEditedEventChangesName {
@@ -21219,23 +15438,13 @@ pub struct ReleaseEditedEventChangesName {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleaseEditedEventChangesName {
   pub fn builder() -> ReleaseEditedEventChangesNameBuilder {
     ReleaseEditedEventChangesNameBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestOpenedPullRequestItem2 {
@@ -21270,36 +15479,28 @@ pub struct WebhookPullRequestOpenedPullRequestItem2 {
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_message: Option<WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage>,
+  pub squash_merge_commit_message:
+    Option<WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage>,
   /// The default value for a squash merge commit title:
   /// - `PR_TITLE` - default to the pull request's title.
   /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_title: Option<WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle>,
+  pub squash_merge_commit_title:
+    Option<WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle>,
   /// Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestOpenedPullRequestItem2 {
   pub fn builder() -> WebhookPullRequestOpenedPullRequestItem2Builder {
     WebhookPullRequestOpenedPullRequestItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertReopenedByUserAlertTool {
@@ -21311,23 +15512,13 @@ pub struct WebhookCodeScanningAlertReopenedByUserAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertReopenedByUserAlertTool {
   pub fn builder() -> WebhookCodeScanningAlertReopenedByUserAlertToolBuilder {
     WebhookCodeScanningAlertReopenedByUserAlertToolBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -21369,23 +15560,13 @@ pub struct WebhookCodeScanningAlertCreatedAlert {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertCreatedAlert {
   pub fn builder() -> WebhookCodeScanningAlertCreatedAlertBuilder {
     WebhookCodeScanningAlertCreatedAlertBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct TeamEditedEventChangesRepositoryPermissionsFrom {
@@ -21403,23 +15584,13 @@ pub struct TeamEditedEventChangesRepositoryPermissionsFrom {
   pub push: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl TeamEditedEventChangesRepositoryPermissionsFrom {
   pub fn builder() -> TeamEditedEventChangesRepositoryPermissionsFromBuilder {
     TeamEditedEventChangesRepositoryPermissionsFromBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackageUpdated {
@@ -21440,23 +15611,13 @@ pub struct WebhookRegistryPackageUpdated {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackageUpdated {
   pub fn builder() -> WebhookRegistryPackageUpdatedBuilder {
     WebhookRegistryPackageUpdatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesUnlabeledEvent {
@@ -21479,23 +15640,13 @@ pub struct IssuesUnlabeledEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesUnlabeledEvent {
   pub fn builder() -> IssuesUnlabeledEventBuilder {
     IssuesUnlabeledEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestMilestoned {
@@ -21518,23 +15669,13 @@ pub struct WebhookPullRequestMilestoned {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestMilestoned {
   pub fn builder() -> WebhookPullRequestMilestonedBuilder {
     WebhookPullRequestMilestonedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationRepositoriesAddedRepositoriesRemoved {
@@ -21558,23 +15699,13 @@ pub struct WebhookInstallationRepositoriesAddedRepositoriesRemoved {
   pub private: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationRepositoriesAddedRepositoriesRemoved {
   pub fn builder() -> WebhookInstallationRepositoriesAddedRepositoriesRemovedBuilder {
     WebhookInstallationRepositoriesAddedRepositoriesRemovedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The [deployment status](https://docs.github.com/rest/deployments/statuses#list-deployment-statuses).
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -21608,23 +15739,13 @@ pub struct WebhookDeploymentStatusCreatedDeploymentStatus {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentStatusCreatedDeploymentStatus {
   pub fn builder() -> WebhookDeploymentStatusCreatedDeploymentStatusBuilder {
     WebhookDeploymentStatusCreatedDeploymentStatusBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct LabelEditedEventChangesDescription {
@@ -21632,23 +15753,13 @@ pub struct LabelEditedEventChangesDescription {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl LabelEditedEventChangesDescription {
   pub fn builder() -> LabelEditedEventChangesDescriptionBuilder {
     LabelEditedEventChangesDescriptionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentStatusCreatedCheckRun {
@@ -21675,23 +15786,13 @@ pub struct WebhookDeploymentStatusCreatedCheckRun {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentStatusCreatedCheckRun {
   pub fn builder() -> WebhookDeploymentStatusCreatedCheckRunBuilder {
     WebhookDeploymentStatusCreatedCheckRunBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -21711,23 +15812,13 @@ pub struct WebhookDeployKeyDeletedKey {
   pub verified: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeployKeyDeletedKey {
   pub fn builder() -> WebhookDeployKeyDeletedKeyBuilder {
     WebhookDeployKeyDeletedKeyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StatusEvent {
@@ -21768,23 +15859,13 @@ pub struct StatusEvent {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StatusEvent {
   pub fn builder() -> StatusEventBuilder {
     StatusEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct GollumEventPages {
@@ -21803,23 +15884,13 @@ pub struct GollumEventPages {
   pub title: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl GollumEventPages {
   pub fn builder() -> GollumEventPagesBuilder {
     GollumEventPagesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDiscussionCommentCreated {
@@ -21839,23 +15910,13 @@ pub struct WebhookDiscussionCommentCreated {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDiscussionCommentCreated {
   pub fn builder() -> WebhookDiscussionCommentCreatedBuilder {
     WebhookDiscussionCommentCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertCreatedAlertRule {
@@ -21885,46 +15946,26 @@ pub struct WebhookCodeScanningAlertCreatedAlertRule {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertCreatedAlertRule {
   pub fn builder() -> WebhookCodeScanningAlertCreatedAlertRuleBuilder {
     WebhookCodeScanningAlertCreatedAlertRuleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionRuleEditedEventChangesAuthorizedActorNames {
   pub from: Vec<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRuleEditedEventChangesAuthorizedActorNames {
   pub fn builder() -> BranchProtectionRuleEditedEventChangesAuthorizedActorNamesBuilder {
     BranchProtectionRuleEditedEventChangesAuthorizedActorNamesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectDeletedEvent {
@@ -21947,23 +15988,13 @@ pub struct ProjectDeletedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectDeletedEvent {
   pub fn builder() -> ProjectDeletedEventBuilder {
     ProjectDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationTargetRenamed {
@@ -21986,23 +16017,13 @@ pub struct WebhookInstallationTargetRenamed {
   pub target_type: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationTargetRenamed {
   pub fn builder() -> WebhookInstallationTargetRenamedBuilder {
     WebhookInstallationTargetRenamedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertReopenedAlertRule {
@@ -22032,23 +16053,13 @@ pub struct WebhookCodeScanningAlertReopenedAlertRule {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertReopenedAlertRule {
   pub fn builder() -> WebhookCodeScanningAlertReopenedAlertRuleBuilder {
     WebhookCodeScanningAlertReopenedAlertRuleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesConditions {
@@ -22063,46 +16074,26 @@ pub struct RepositoryRulesetEditedEventChangesConditions {
   pub updated: Option<Vec<RepositoryRulesetEditedEventChangesConditionsUpdated>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesConditions {
   pub fn builder() -> RepositoryRulesetEditedEventChangesConditionsBuilder {
     RepositoryRulesetEditedEventChangesConditionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardMovedChanges {
   pub column_id: WebhookProjectCardMovedChangesColumnId,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardMovedChanges {
   pub fn builder() -> WebhookProjectCardMovedChangesBuilder {
     WebhookProjectCardMovedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewThreadUnresolvedThread {
@@ -22110,23 +16101,13 @@ pub struct WebhookPullRequestReviewThreadUnresolvedThread {
   pub node_id: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewThreadUnresolvedThread {
   pub fn builder() -> WebhookPullRequestReviewThreadUnresolvedThreadBuilder {
     WebhookPullRequestReviewThreadUnresolvedThreadBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRepositoryImport {
@@ -22144,23 +16125,13 @@ pub struct WebhookRepositoryImport {
   pub status: WebhookRepositoryImportStatus,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRepositoryImport {
   pub fn builder() -> WebhookRepositoryImportBuilder {
     WebhookRepositoryImportBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -22206,23 +16177,13 @@ pub struct WebhookCheckSuiteCompletedCheckSuite {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCheckSuiteCompletedCheckSuite {
   pub fn builder() -> WebhookCheckSuiteCompletedCheckSuiteBuilder {
     WebhookCheckSuiteCompletedCheckSuiteBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryPublicizedEvent {
@@ -22240,23 +16201,13 @@ pub struct RepositoryPublicizedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryPublicizedEvent {
   pub fn builder() -> RepositoryPublicizedEventBuilder {
     RepositoryPublicizedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2ReferencedWorkflows {
@@ -22268,23 +16219,13 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2ReferencedWorkflows {
   pub sha: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompletedWorkflowRunItem2ReferencedWorkflows {
   pub fn builder() -> WebhookWorkflowRunCompletedWorkflowRunItem2ReferencedWorkflowsBuilder {
     WebhookWorkflowRunCompletedWorkflowRunItem2ReferencedWorkflowsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryAdvisoryPublishedEvent {
@@ -22305,23 +16246,13 @@ pub struct RepositoryAdvisoryPublishedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryAdvisoryPublishedEvent {
   pub fn builder() -> RepositoryAdvisoryPublishedEventBuilder {
     RepositoryAdvisoryPublishedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardConverted {
@@ -22343,23 +16274,13 @@ pub struct WebhookProjectCardConverted {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardConverted {
   pub fn builder() -> WebhookProjectCardConvertedBuilder {
     WebhookProjectCardConvertedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackagePublishedEventPackagePackageVersionDockerMetadata {
@@ -22368,29 +16289,20 @@ pub struct PackagePublishedEventPackagePackageVersionDockerMetadata {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEventPackagePackageVersionDockerMetadata {
   pub fn builder() -> PackagePublishedEventPackagePackageVersionDockerMetadataBuilder {
     PackagePublishedEventPackagePackageVersionDockerMetadataBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesConditionsUpdatedChanges {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub condition_type: Option<RepositoryRulesetEditedEventChangesConditionsUpdatedChangesConditionType>,
+  pub condition_type:
+    Option<RepositoryRulesetEditedEventChangesConditionsUpdatedChangesConditionType>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub exclude: Option<RepositoryRulesetEditedEventChangesConditionsUpdatedChangesExclude>,
@@ -22402,23 +16314,13 @@ pub struct RepositoryRulesetEditedEventChangesConditionsUpdatedChanges {
   pub target: Option<RepositoryRulesetEditedEventChangesConditionsUpdatedChangesTarget>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesConditionsUpdatedChanges {
   pub fn builder() -> RepositoryRulesetEditedEventChangesConditionsUpdatedChangesBuilder {
     RepositoryRulesetEditedEventChangesConditionsUpdatedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentEditedIssueItem2Reactions {
@@ -22456,23 +16358,13 @@ pub struct WebhookIssueCommentEditedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentEditedIssueItem2Reactions {
   pub fn builder() -> WebhookIssueCommentEditedIssueItem2ReactionsBuilder {
     WebhookIssueCommentEditedIssueItem2ReactionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WorkflowRunPullRequestsHead {
@@ -22482,23 +16374,13 @@ pub struct WorkflowRunPullRequestsHead {
   pub sha: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WorkflowRunPullRequestsHead {
   pub fn builder() -> WorkflowRunPullRequestsHeadBuilder {
     WorkflowRunPullRequestsHeadBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCheckSuiteRerequested {
@@ -22518,23 +16400,13 @@ pub struct WebhookCheckSuiteRerequested {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCheckSuiteRerequested {
   pub fn builder() -> WebhookCheckSuiteRerequestedBuilder {
     WebhookCheckSuiteRerequestedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CheckRunCompletedEvent {
@@ -22552,23 +16424,13 @@ pub struct CheckRunCompletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CheckRunCompletedEvent {
   pub fn builder() -> CheckRunCompletedEventBuilder {
     CheckRunCompletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleasePrereleasedEvent {
@@ -22589,23 +16451,13 @@ pub struct ReleasePrereleasedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleasePrereleasedEvent {
   pub fn builder() -> ReleasePrereleasedEventBuilder {
     ReleasePrereleasedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -22637,23 +16489,13 @@ pub struct WebhookCodeScanningAlertAppearedInBranchAlert {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertAppearedInBranchAlert {
   pub fn builder() -> WebhookCodeScanningAlertAppearedInBranchAlertBuilder {
     WebhookCodeScanningAlertAppearedInBranchAlertBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunRequested {
@@ -22675,23 +16517,13 @@ pub struct WebhookWorkflowRunRequested {
   pub workflow_run: WorkflowRun,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunRequested {
   pub fn builder() -> WebhookWorkflowRunRequestedBuilder {
     WebhookWorkflowRunRequestedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestAutoMergeEnabled {
@@ -22714,23 +16546,13 @@ pub struct WebhookPullRequestAutoMergeEnabled {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestAutoMergeEnabled {
   pub fn builder() -> WebhookPullRequestAutoMergeEnabledBuilder {
     WebhookPullRequestAutoMergeEnabledBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StarDeletedEvent {
@@ -22750,23 +16572,13 @@ pub struct StarDeletedEvent {
   pub starred_at: serde_json::Value,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StarDeletedEvent {
   pub fn builder() -> StarDeletedEventBuilder {
     StarDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestLocked {
@@ -22787,23 +16599,13 @@ pub struct WebhookPullRequestLocked {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestLocked {
   pub fn builder() -> WebhookPullRequestLockedBuilder {
     WebhookPullRequestLockedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectColumnCreated {
@@ -22826,23 +16628,13 @@ pub struct WebhookProjectColumnCreated {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectColumnCreated {
   pub fn builder() -> WebhookProjectColumnCreatedBuilder {
     WebhookProjectColumnCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesPackage {
@@ -22850,23 +16642,13 @@ pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesPackage 
   pub name: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesPackage {
   pub fn builder() -> WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesPackageBuilder {
     WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesPackageBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StatusEventCommitCommitTree {
@@ -22874,23 +16656,13 @@ pub struct StatusEventCommitCommitTree {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StatusEventCommitCommitTree {
   pub fn builder() -> StatusEventCommitCommitTreeBuilder {
     StatusEventCommitCommitTreeBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesPackage {
@@ -22898,23 +16670,14 @@ pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesPackag
   pub name: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesPackage {
-  pub fn builder() -> WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesPackageBuilder {
+  pub fn builder() -> WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesPackageBuilder
+  {
     WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesPackageBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesConditionsUpdatedChangesInclude {
@@ -22923,23 +16686,13 @@ pub struct RepositoryRulesetEditedEventChangesConditionsUpdatedChangesInclude {
   pub from: Option<Vec<String>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesConditionsUpdatedChangesInclude {
   pub fn builder() -> RepositoryRulesetEditedEventChangesConditionsUpdatedChangesIncludeBuilder {
     RepositoryRulesetEditedEventChangesConditionsUpdatedChangesIncludeBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeployKeyCreated {
@@ -22959,23 +16712,13 @@ pub struct WebhookDeployKeyCreated {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeployKeyCreated {
   pub fn builder() -> WebhookDeployKeyCreatedBuilder {
     WebhookDeployKeyCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemArchivedEventChanges {
@@ -22984,23 +16727,13 @@ pub struct ProjectsV2ItemArchivedEventChanges {
   pub archived_at: Option<ProjectsV2ItemArchivedEventChangesArchivedAt>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemArchivedEventChanges {
   pub fn builder() -> ProjectsV2ItemArchivedEventChangesBuilder {
     ProjectsV2ItemArchivedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemRestoredEventChanges {
@@ -23009,23 +16742,13 @@ pub struct ProjectsV2ItemRestoredEventChanges {
   pub archived_at: Option<ProjectsV2ItemRestoredEventChangesArchivedAt>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemRestoredEventChanges {
   pub fn builder() -> ProjectsV2ItemRestoredEventChangesBuilder {
     ProjectsV2ItemRestoredEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesMilestonedEvent {
@@ -23046,23 +16769,13 @@ pub struct IssuesMilestonedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesMilestonedEvent {
   pub fn builder() -> IssuesMilestonedEventBuilder {
     IssuesMilestonedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionAuthor {
@@ -23087,46 +16800,26 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionAuthor {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackageUpdatedRegistryPackagePackageVersionAuthor {
   pub fn builder() -> WebhookRegistryPackageUpdatedRegistryPackagePackageVersionAuthorBuilder {
     WebhookRegistryPackageUpdatedRegistryPackagePackageVersionAuthorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationTargetRenamedChangesSlug {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationTargetRenamedChangesSlug {
   pub fn builder() -> WebhookInstallationTargetRenamedChangesSlugBuilder {
     WebhookInstallationTargetRenamedChangesSlugBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewRequestedWorkflowJobRun {
@@ -23142,23 +16835,13 @@ pub struct WebhookDeploymentReviewRequestedWorkflowJobRun {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewRequestedWorkflowJobRun {
   pub fn builder() -> WebhookDeploymentReviewRequestedWorkflowJobRunBuilder {
     WebhookDeploymentReviewRequestedWorkflowJobRunBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleaseDeletedEvent {
@@ -23178,23 +16861,13 @@ pub struct ReleaseDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleaseDeletedEvent {
   pub fn builder() -> ReleaseDeletedEventBuilder {
     ReleaseDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPing {
@@ -23221,23 +16894,13 @@ pub struct WebhookPing {
   pub zen: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPing {
   pub fn builder() -> WebhookPingBuilder {
     WebhookPingBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackagePublishedEventPackagePackageVersionContainerMetadataTag {
@@ -23249,23 +16912,13 @@ pub struct PackagePublishedEventPackagePackageVersionContainerMetadataTag {
   pub name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEventPackagePackageVersionContainerMetadataTag {
   pub fn builder() -> PackagePublishedEventPackagePackageVersionContainerMetadataTagBuilder {
     PackagePublishedEventPackagePackageVersionContainerMetadataTagBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionUnansweredEvent {
@@ -23281,46 +16934,26 @@ pub struct DiscussionUnansweredEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionUnansweredEvent {
   pub fn builder() -> DiscussionUnansweredEventBuilder {
     DiscussionUnansweredEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRenamedEventChangesRepository {
   pub name: RepositoryRenamedEventChangesRepositoryName,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRenamedEventChangesRepository {
   pub fn builder() -> RepositoryRenamedEventChangesRepositoryBuilder {
     RepositoryRenamedEventChangesRepositoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMergeGroupDestroyed {
@@ -23344,23 +16977,13 @@ pub struct WebhookMergeGroupDestroyed {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMergeGroupDestroyed {
   pub fn builder() -> WebhookMergeGroupDestroyedBuilder {
     WebhookMergeGroupDestroyedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionCreatedEventDiscussionItem2Reactions {
@@ -23398,23 +17021,13 @@ pub struct DiscussionCreatedEventDiscussionItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionCreatedEventDiscussionItem2Reactions {
   pub fn builder() -> DiscussionCreatedEventDiscussionItem2ReactionsBuilder {
     DiscussionCreatedEventDiscussionItem2ReactionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The details of the security advisory, including summary, description, and severity.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -23433,23 +17046,13 @@ pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisory {
   pub withdrawn_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryWithdrawnSecurityAdvisory {
   pub fn builder() -> WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryBuilder {
     WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowJobQueued {
@@ -23471,23 +17074,13 @@ pub struct WebhookWorkflowJobQueued {
   pub workflow_job: WebhookWorkflowJobQueuedWorkflowJob,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowJobQueued {
   pub fn builder() -> WebhookWorkflowJobQueuedBuilder {
     WebhookWorkflowJobQueuedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionPinnedEvent {
@@ -23506,23 +17099,13 @@ pub struct DiscussionPinnedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionPinnedEvent {
   pub fn builder() -> DiscussionPinnedEventBuilder {
     DiscussionPinnedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesLockedEvent {
@@ -23541,23 +17124,13 @@ pub struct IssuesLockedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesLockedEvent {
   pub fn builder() -> IssuesLockedEventBuilder {
     IssuesLockedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewRequested {
@@ -23583,23 +17156,13 @@ pub struct WebhookDeploymentReviewRequested {
   pub workflow_run: Option<DeploymentWorkflowRun>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewRequested {
   pub fn builder() -> WebhookDeploymentReviewRequestedBuilder {
     WebhookDeploymentReviewRequestedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRepositoryVulnerabilityAlertCreate {
@@ -23618,23 +17181,13 @@ pub struct WebhookRepositoryVulnerabilityAlertCreate {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRepositoryVulnerabilityAlertCreate {
   pub fn builder() -> WebhookRepositoryVulnerabilityAlertCreateBuilder {
     WebhookRepositoryVulnerabilityAlertCreateBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertAppearedInBranchAlertRule {
@@ -23648,23 +17201,13 @@ pub struct WebhookCodeScanningAlertAppearedInBranchAlertRule {
   pub severity: Option<WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertAppearedInBranchAlertRule {
   pub fn builder() -> WebhookCodeScanningAlertAppearedInBranchAlertRuleBuilder {
     WebhookCodeScanningAlertAppearedInBranchAlertRuleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectEditedEvent {
@@ -23691,23 +17234,13 @@ pub struct ProjectEditedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectEditedEvent {
   pub fn builder() -> ProjectEditedEventBuilder {
     ProjectEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PersonalAccessTokenRequestRepositories {
@@ -23721,51 +17254,32 @@ pub struct PersonalAccessTokenRequestRepositories {
   pub private: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PersonalAccessTokenRequestRepositories {
   pub fn builder() -> PersonalAccessTokenRequestRepositoriesBuilder {
     PersonalAccessTokenRequestRepositoriesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilities {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub first_patched_version: Option<WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesFirstPatchedVersion>,
+  pub first_patched_version:
+    Option<WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesFirstPatchedVersion>,
   pub package: WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesPackage,
   pub severity: String,
   pub vulnerable_version_range: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilities {
   pub fn builder() -> WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesBuilder {
     WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DeploymentCreatedEvent {
@@ -23791,25 +17305,15 @@ pub struct DeploymentCreatedEvent {
   pub workflow_run: Option<DeploymentWorkflowRun>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DeploymentCreatedEvent {
   pub fn builder() -> DeploymentCreatedEventBuilder {
     DeploymentCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// A group of pull requests that the merge queue has grouped together to be merged.
-/// 
+///
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MergeGroup {
@@ -23824,23 +17328,13 @@ pub struct MergeGroup {
   pub head_sha: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MergeGroup {
   pub fn builder() -> MergeGroupBuilder {
     MergeGroupBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2 {
@@ -23912,7 +17406,8 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2 {
   pub pull_requests: Option<Vec<Option<serde_json::Value>>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub referenced_workflows: Option<Vec<WebhookWorkflowRunInProgressWorkflowRunItem2ReferencedWorkflows>>,
+  pub referenced_workflows:
+    Option<Vec<WebhookWorkflowRunInProgressWorkflowRunItem2ReferencedWorkflows>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub repository: Option<WebhookWorkflowRunInProgressWorkflowRunItem2Repository>,
@@ -23948,23 +17443,13 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2 {
   pub workflow_url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgressWorkflowRunItem2 {
   pub fn builder() -> WebhookWorkflowRunInProgressWorkflowRunItem2Builder {
     WebhookWorkflowRunInProgressWorkflowRunItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-github-pages-builds) itself.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -23983,23 +17468,13 @@ pub struct WebhookPageBuildBuild {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPageBuildBuild {
   pub fn builder() -> WebhookPageBuildBuildBuilder {
     WebhookPageBuildBuildBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemRestoredEventChangesArchivedAt {
@@ -24011,23 +17486,13 @@ pub struct ProjectsV2ItemRestoredEventChangesArchivedAt {
   pub to: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemRestoredEventChangesArchivedAt {
   pub fn builder() -> ProjectsV2ItemRestoredEventChangesArchivedAtBuilder {
     ProjectsV2ItemRestoredEventChangesArchivedAtBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemReorderedEventChangesPreviousProjectsV2ItemNodeId {
@@ -24039,23 +17504,13 @@ pub struct ProjectsV2ItemReorderedEventChangesPreviousProjectsV2ItemNodeId {
   pub to: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemReorderedEventChangesPreviousProjectsV2ItemNodeId {
   pub fn builder() -> ProjectsV2ItemReorderedEventChangesPreviousProjectsV2ItemNodeIdBuilder {
     ProjectsV2ItemReorderedEventChangesPreviousProjectsV2ItemNodeIdBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecretScanningAlertReopened {
@@ -24076,23 +17531,13 @@ pub struct WebhookSecretScanningAlertReopened {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecretScanningAlertReopened {
   pub fn builder() -> WebhookSecretScanningAlertReopenedBuilder {
     WebhookSecretScanningAlertReopenedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionCreatedEventDiscussionItem2 {
@@ -24153,23 +17598,13 @@ pub struct DiscussionCreatedEventDiscussionItem2 {
   pub user: Option<DiscussionCreatedEventDiscussionItem2User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionCreatedEventDiscussionItem2 {
   pub fn builder() -> DiscussionCreatedEventDiscussionItem2Builder {
     DiscussionCreatedEventDiscussionItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The review that was affected.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -24196,23 +17631,13 @@ pub struct WebhookPullRequestReviewDismissedReview {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewDismissedReview {
   pub fn builder() -> WebhookPullRequestReviewDismissedReviewBuilder {
     WebhookPullRequestReviewDismissedReviewBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentEditedChangesBody {
@@ -24220,23 +17645,13 @@ pub struct WebhookPullRequestReviewCommentEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentEditedChangesBody {
   pub fn builder() -> WebhookPullRequestReviewCommentEditedChangesBodyBuilder {
     WebhookPullRequestReviewCommentEditedChangesBodyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionAnsweredEventAnswer {
@@ -24260,23 +17675,13 @@ pub struct DiscussionAnsweredEventAnswer {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionAnsweredEventAnswer {
   pub fn builder() -> DiscussionAnsweredEventAnswerBuilder {
     DiscussionAnsweredEventAnswerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SponsorshipCreatedEventSponsorshipMaintainer {
@@ -24337,23 +17742,13 @@ pub struct SponsorshipCreatedEventSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipCreatedEventSponsorshipMaintainer {
   pub fn builder() -> SponsorshipCreatedEventSponsorshipMaintainerBuilder {
     SponsorshipCreatedEventSponsorshipMaintainerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestEditedChangesTitle {
@@ -24361,23 +17756,13 @@ pub struct WebhookPullRequestEditedChangesTitle {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestEditedChangesTitle {
   pub fn builder() -> WebhookPullRequestEditedChangesTitleBuilder {
     WebhookPullRequestEditedChangesTitleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesEnforcement {
@@ -24386,23 +17771,13 @@ pub struct RepositoryRulesetEditedEventChangesEnforcement {
   pub from: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesEnforcement {
   pub fn builder() -> RepositoryRulesetEditedEventChangesEnforcementBuilder {
     RepositoryRulesetEditedEventChangesEnforcementBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SponsorshipCancelledEvent {
@@ -24423,23 +17798,13 @@ pub struct SponsorshipCancelledEvent {
   pub sponsorship: SponsorshipCancelledEventSponsorship,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipCancelledEvent {
   pub fn builder() -> SponsorshipCancelledEventBuilder {
     SponsorshipCancelledEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewRejectedReviewers {
@@ -24452,23 +17817,13 @@ pub struct WebhookDeploymentReviewRejectedReviewers {
   pub type_: Option<WebhookDeploymentReviewRejectedReviewersType>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewRejectedReviewers {
   pub fn builder() -> WebhookDeploymentReviewRejectedReviewersBuilder {
     WebhookDeploymentReviewRejectedReviewersBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesDeletedEvent {
@@ -24488,23 +17843,13 @@ pub struct IssuesDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesDeletedEvent {
   pub fn builder() -> IssuesDeletedEventBuilder {
     IssuesDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleasePublishedEventReleaseItem2 {
@@ -24564,23 +17909,13 @@ pub struct ReleasePublishedEventReleaseItem2 {
   pub zipball_url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleasePublishedEventReleaseItem2 {
   pub fn builder() -> ReleasePublishedEventReleaseItem2Builder {
     ReleasePublishedEventReleaseItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAndAnalysis {
@@ -24600,23 +17935,13 @@ pub struct WebhookSecurityAndAnalysis {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAndAnalysis {
   pub fn builder() -> WebhookSecurityAndAnalysisBuilder {
     WebhookSecurityAndAnalysisBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionConfigurationDisabledEvent {
@@ -24634,46 +17959,26 @@ pub struct BranchProtectionConfigurationDisabledEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionConfigurationDisabledEvent {
   pub fn builder() -> BranchProtectionConfigurationDisabledEventBuilder {
     BranchProtectionConfigurationDisabledEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryEditedEventChangesDefaultBranch {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryEditedEventChangesDefaultBranch {
   pub fn builder() -> RepositoryEditedEventChangesDefaultBranchBuilder {
     RepositoryEditedEventChangesDefaultBranchBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The details of the security advisory, including summary, description, and severity.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -24694,23 +17999,13 @@ pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryPublishedSecurityAdvisory {
   pub fn builder() -> WebhookSecurityAdvisoryPublishedSecurityAdvisoryBuilder {
     WebhookSecurityAdvisoryPublishedSecurityAdvisoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentCreatedIssueItem2Reactions {
@@ -24748,23 +18043,13 @@ pub struct WebhookIssueCommentCreatedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentCreatedIssueItem2Reactions {
   pub fn builder() -> WebhookIssueCommentCreatedIssueItem2ReactionsBuilder {
     WebhookIssueCommentCreatedIssueItem2ReactionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemConvertedEventChanges {
@@ -24773,23 +18058,13 @@ pub struct ProjectsV2ItemConvertedEventChanges {
   pub content_type: Option<ProjectsV2ItemConvertedEventChangesContentType>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemConvertedEventChanges {
   pub fn builder() -> ProjectsV2ItemConvertedEventChangesBuilder {
     ProjectsV2ItemConvertedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesUnlockedEventIssueItem2User {
@@ -24850,23 +18125,13 @@ pub struct IssuesUnlockedEventIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesUnlockedEventIssueItem2User {
   pub fn builder() -> IssuesUnlockedEventIssueItem2UserBuilder {
     IssuesUnlockedEventIssueItem2UserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertCreated {
@@ -24891,23 +18156,13 @@ pub struct WebhookCodeScanningAlertCreated {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertCreated {
   pub fn builder() -> WebhookCodeScanningAlertCreatedBuilder {
     WebhookCodeScanningAlertCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackageUpdatedEventPackagePackageVersionRelease {
@@ -24926,23 +18181,13 @@ pub struct PackageUpdatedEventPackagePackageVersionRelease {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackageUpdatedEventPackagePackageVersionRelease {
   pub fn builder() -> PackageUpdatedEventPackagePackageVersionReleaseBuilder {
     PackageUpdatedEventPackagePackageVersionReleaseBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentDeletedIssueItem2User {
@@ -25003,23 +18248,13 @@ pub struct WebhookIssueCommentDeletedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentDeletedIssueItem2User {
   pub fn builder() -> WebhookIssueCommentDeletedIssueItem2UserBuilder {
     WebhookIssueCommentDeletedIssueItem2UserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentEdited {
@@ -25042,23 +18277,13 @@ pub struct WebhookPullRequestReviewCommentEdited {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentEdited {
   pub fn builder() -> WebhookPullRequestReviewCommentEditedBuilder {
     WebhookPullRequestReviewCommentEditedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAndAnalysisChangesFrom {
@@ -25067,23 +18292,13 @@ pub struct WebhookSecurityAndAnalysisChangesFrom {
   pub security_and_analysis: Option<SecurityAndAnalysis>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAndAnalysisChangesFrom {
   pub fn builder() -> WebhookSecurityAndAnalysisChangesFromBuilder {
     WebhookSecurityAndAnalysisChangesFromBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecretScanningAlertValidated {
@@ -25104,23 +18319,13 @@ pub struct WebhookSecretScanningAlertValidated {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecretScanningAlertValidated {
   pub fn builder() -> WebhookSecretScanningAlertValidatedBuilder {
     WebhookSecretScanningAlertValidatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesReopenedEventIssueItem2Reactions {
@@ -25158,23 +18363,13 @@ pub struct IssuesReopenedEventIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesReopenedEventIssueItem2Reactions {
   pub fn builder() -> IssuesReopenedEventIssueItem2ReactionsBuilder {
     IssuesReopenedEventIssueItem2ReactionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestClosedPullRequestItem2 {
@@ -25209,36 +18404,28 @@ pub struct WebhookPullRequestClosedPullRequestItem2 {
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_message: Option<WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage>,
+  pub squash_merge_commit_message:
+    Option<WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage>,
   /// The default value for a squash merge commit title:
   /// - `PR_TITLE` - default to the pull request's title.
   /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_title: Option<WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle>,
+  pub squash_merge_commit_title:
+    Option<WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle>,
   /// Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestClosedPullRequestItem2 {
   pub fn builder() -> WebhookPullRequestClosedPullRequestItem2Builder {
     WebhookPullRequestClosedPullRequestItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPageBuildBuildError {
@@ -25247,23 +18434,13 @@ pub struct WebhookPageBuildBuildError {
   pub message: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPageBuildBuildError {
   pub fn builder() -> WebhookPageBuildBuildErrorBuilder {
     WebhookPageBuildBuildErrorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationRepositoriesRemovedRepositoriesRemoved {
@@ -25277,23 +18454,13 @@ pub struct WebhookInstallationRepositoriesRemovedRepositoriesRemoved {
   pub private: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationRepositoriesRemovedRepositoriesRemoved {
   pub fn builder() -> WebhookInstallationRepositoriesRemovedRepositoriesRemovedBuilder {
     WebhookInstallationRepositoriesRemovedRepositoriesRemovedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryUnarchivedEvent {
@@ -25311,23 +18478,13 @@ pub struct RepositoryUnarchivedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryUnarchivedEvent {
   pub fn builder() -> RepositoryUnarchivedEventBuilder {
     RepositoryUnarchivedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The role assigned to the collaborator.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -25335,23 +18492,13 @@ pub struct MemberAddedEventChangesRoleName {
   pub to: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MemberAddedEventChangesRoleName {
   pub fn builder() -> MemberAddedEventChangesRoleNameBuilder {
     MemberAddedEventChangesRoleNameBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipPendingCancellationSponsorship {
@@ -25371,23 +18518,13 @@ pub struct WebhookSponsorshipPendingCancellationSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipPendingCancellationSponsorship {
   pub fn builder() -> WebhookSponsorshipPendingCancellationSponsorshipBuilder {
     WebhookSponsorshipPendingCancellationSponsorshipBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackageRegistry {
@@ -25409,23 +18546,13 @@ pub struct WebhookRegistryPackagePublishedRegistryPackageRegistry {
   pub vendor: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackageRegistry {
   pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackageRegistryBuilder {
     WebhookRegistryPackagePublishedRegistryPackageRegistryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadata {
@@ -25440,23 +18567,14 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMeta
   pub value: Option<serde_json::Value>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadata {
-  pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataBuilder {
+  pub fn builder(
+  ) -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataBuilder {
     WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestDequeued {
@@ -25477,23 +18595,13 @@ pub struct WebhookPullRequestDequeued {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestDequeued {
   pub fn builder() -> WebhookPullRequestDequeuedBuilder {
     WebhookPullRequestDequeuedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewEditedChanges {
@@ -25502,23 +18610,13 @@ pub struct WebhookPullRequestReviewEditedChanges {
   pub body: Option<WebhookPullRequestReviewEditedChangesBody>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewEditedChanges {
   pub fn builder() -> WebhookPullRequestReviewEditedChangesBuilder {
     WebhookPullRequestReviewEditedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackageUpdatedEventPackagePackageVersion {
@@ -25569,23 +18667,13 @@ pub struct PackageUpdatedEventPackagePackageVersion {
   pub version: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackageUpdatedEventPackagePackageVersion {
   pub fn builder() -> PackageUpdatedEventPackagePackageVersionBuilder {
     PackageUpdatedEventPackagePackageVersionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionTransferredEvent {
@@ -25605,23 +18693,13 @@ pub struct DiscussionTransferredEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionTransferredEvent {
   pub fn builder() -> DiscussionTransferredEventBuilder {
     DiscussionTransferredEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MilestoneCreatedEvent {
@@ -25641,23 +18719,13 @@ pub struct MilestoneCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MilestoneCreatedEvent {
   pub fn builder() -> MilestoneCreatedEventBuilder {
     MilestoneCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StatusEventCommitCommit {
@@ -25670,23 +18738,13 @@ pub struct StatusEventCommitCommit {
   pub verification: StatusEventCommitCommitVerification,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StatusEventCommitCommit {
   pub fn builder() -> StatusEventCommitCommitBuilder {
     StatusEventCommitCommitBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MilestoneEditedEventChangesDescription {
@@ -25694,23 +18752,13 @@ pub struct MilestoneEditedEventChangesDescription {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MilestoneEditedEventChangesDescription {
   pub fn builder() -> MilestoneEditedEventChangesDescriptionBuilder {
     MilestoneEditedEventChangesDescriptionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryCreatedEvent {
@@ -25728,23 +18776,13 @@ pub struct RepositoryCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryCreatedEvent {
   pub fn builder() -> RepositoryCreatedEventBuilder {
     RepositoryCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertClosedByUser {
@@ -25769,23 +18807,13 @@ pub struct WebhookCodeScanningAlertClosedByUser {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertClosedByUser {
   pub fn builder() -> WebhookCodeScanningAlertClosedByUserBuilder {
     WebhookCodeScanningAlertClosedByUserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SponsorshipCancelledEventSponsorshipMaintainer {
@@ -25846,23 +18874,13 @@ pub struct SponsorshipCancelledEventSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipCancelledEventSponsorshipMaintainer {
   pub fn builder() -> SponsorshipCancelledEventSponsorshipMaintainerBuilder {
     SponsorshipCancelledEventSponsorshipMaintainerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryEditedEvent {
@@ -25881,23 +18899,13 @@ pub struct RepositoryEditedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryEditedEvent {
   pub fn builder() -> RepositoryEditedEventBuilder {
     RepositoryEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookTeamAdd {
@@ -25916,23 +18924,13 @@ pub struct WebhookTeamAdd {
   pub team: Team,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookTeamAdd {
   pub fn builder() -> WebhookTeamAddBuilder {
     WebhookTeamAddBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublished {
@@ -25953,23 +18951,13 @@ pub struct WebhookRegistryPackagePublished {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublished {
   pub fn builder() -> WebhookRegistryPackagePublishedBuilder {
     WebhookRegistryPackagePublishedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryAdvisoryReportedEvent {
@@ -25990,23 +18978,13 @@ pub struct RepositoryAdvisoryReportedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryAdvisoryReportedEvent {
   pub fn builder() -> RepositoryAdvisoryReportedEventBuilder {
     RepositoryAdvisoryReportedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ProjectEditedEventChangesTitle {
@@ -26018,23 +18996,13 @@ pub struct ProjectsV2ProjectEditedEventChangesTitle {
   pub to: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ProjectEditedEventChangesTitle {
   pub fn builder() -> ProjectsV2ProjectEditedEventChangesTitleBuilder {
     ProjectsV2ProjectEditedEventChangesTitleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RubyGemsMetadata {
@@ -26070,23 +19038,13 @@ pub struct RubyGemsMetadata {
   pub version_info: Option<RubyGemsMetadataVersionInfo>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RubyGemsMetadata {
   pub fn builder() -> RubyGemsMetadataBuilder {
     RubyGemsMetadataBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The security alert of the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -26124,23 +19082,13 @@ pub struct RepositoryVulnerabilityAlertAlert {
   pub state: RepositoryVulnerabilityAlertAlertState,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryVulnerabilityAlertAlert {
   pub fn builder() -> RepositoryVulnerabilityAlertAlertBuilder {
     RepositoryVulnerabilityAlertAlertBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertClosedByUserAlertRule {
@@ -26170,23 +19118,13 @@ pub struct WebhookCodeScanningAlertClosedByUserAlertRule {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertClosedByUserAlertRule {
   pub fn builder() -> WebhookCodeScanningAlertClosedByUserAlertRuleBuilder {
     WebhookCodeScanningAlertClosedByUserAlertRuleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata {
@@ -26201,23 +19139,14 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainer
   pub tag: Option<WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataTag>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata {
-  pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataBuilder {
+  pub fn builder(
+  ) -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataBuilder {
     WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipPendingCancellation {
@@ -26242,23 +19171,13 @@ pub struct WebhookSponsorshipPendingCancellation {
   pub sponsorship: WebhookSponsorshipPendingCancellationSponsorship,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipPendingCancellation {
   pub fn builder() -> WebhookSponsorshipPendingCancellationBuilder {
     WebhookSponsorshipPendingCancellationBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StatusEventCommitCommitAuthorItem2 {
@@ -26271,23 +19190,13 @@ pub struct StatusEventCommitCommitAuthorItem2 {
   pub name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StatusEventCommitCommitAuthorItem2 {
   pub fn builder() -> StatusEventCommitCommitAuthorItem2Builder {
     StatusEventCommitCommitAuthorItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipPendingTierChangeSponsorshipMaintainer {
@@ -26348,23 +19257,13 @@ pub struct WebhookSponsorshipPendingTierChangeSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipPendingTierChangeSponsorshipMaintainer {
   pub fn builder() -> WebhookSponsorshipPendingTierChangeSponsorshipMaintainerBuilder {
     WebhookSponsorshipPendingTierChangeSponsorshipMaintainerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SimplePullRequest {
@@ -26428,23 +19327,13 @@ pub struct SimplePullRequest {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SimplePullRequest {
   pub fn builder() -> SimplePullRequestBuilder {
     SimplePullRequestBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The changes to the team if the action was `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -26466,23 +19355,13 @@ pub struct TeamEditedEventChanges {
   pub repository: Option<TeamEditedEventChangesRepository>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl TeamEditedEventChanges {
   pub fn builder() -> TeamEditedEventChangesBuilder {
     TeamEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// A project was created
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -26496,23 +19375,13 @@ pub struct WebhookProjectsV2ProjectCreated {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectsV2ProjectCreated {
   pub fn builder() -> WebhookProjectsV2ProjectCreatedBuilder {
     WebhookProjectsV2ProjectCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -26528,23 +19397,13 @@ pub struct MetaDeletedEventHook {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MetaDeletedEventHook {
   pub fn builder() -> MetaDeletedEventHookBuilder {
     MetaDeletedEventHookBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct LabelEditedEventChangesName {
@@ -26552,23 +19411,13 @@ pub struct LabelEditedEventChangesName {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl LabelEditedEventChangesName {
   pub fn builder() -> LabelEditedEventChangesNameBuilder {
     LabelEditedEventChangesNameBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestAutoMergeDisabled {
@@ -26589,23 +19438,13 @@ pub struct WebhookPullRequestAutoMergeDisabled {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestAutoMergeDisabled {
   pub fn builder() -> WebhookPullRequestAutoMergeDisabledBuilder {
     WebhookPullRequestAutoMergeDisabledBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesRulesUpdatedChangesRuleType {
@@ -26614,23 +19453,13 @@ pub struct RepositoryRulesetEditedEventChangesRulesUpdatedChangesRuleType {
   pub from: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesRulesUpdatedChangesRuleType {
   pub fn builder() -> RepositoryRulesetEditedEventChangesRulesUpdatedChangesRuleTypeBuilder {
     RepositoryRulesetEditedEventChangesRulesUpdatedChangesRuleTypeBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DependabotAlertDismissedEvent {
@@ -26649,23 +19478,13 @@ pub struct DependabotAlertDismissedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DependabotAlertDismissedEvent {
   pub fn builder() -> DependabotAlertDismissedEventBuilder {
     DependabotAlertDismissedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct OrganizationDeletedEvent {
@@ -26687,23 +19506,13 @@ pub struct OrganizationDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl OrganizationDeletedEvent {
   pub fn builder() -> OrganizationDeletedEventBuilder {
     OrganizationDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertReopenedByUser {
@@ -26728,23 +19537,13 @@ pub struct WebhookCodeScanningAlertReopenedByUser {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertReopenedByUser {
   pub fn builder() -> WebhookCodeScanningAlertReopenedByUserBuilder {
     WebhookCodeScanningAlertReopenedByUserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesEditedEvent {
@@ -26769,23 +19568,13 @@ pub struct IssuesEditedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesEditedEvent {
   pub fn builder() -> IssuesEditedEventBuilder {
     IssuesEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -26811,23 +19600,13 @@ pub struct WebhookCodeScanningAlertReopenedByUserAlert {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertReopenedByUserAlert {
   pub fn builder() -> WebhookCodeScanningAlertReopenedByUserAlertBuilder {
     WebhookCodeScanningAlertReopenedByUserAlertBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewEditedChangesBody {
@@ -26835,23 +19614,13 @@ pub struct WebhookPullRequestReviewEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewEditedChangesBody {
   pub fn builder() -> WebhookPullRequestReviewEditedChangesBodyBuilder {
     WebhookPullRequestReviewEditedChangesBodyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionLockedEvent {
@@ -26870,46 +19639,26 @@ pub struct DiscussionLockedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionLockedEvent {
   pub fn builder() -> DiscussionLockedEventBuilder {
     DiscussionLockedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct TeamEditedEventChangesRepository {
   pub permissions: TeamEditedEventChangesRepositoryPermissions,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl TeamEditedEventChangesRepository {
   pub fn builder() -> TeamEditedEventChangesRepositoryBuilder {
     TeamEditedEventChangesRepositoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleasePrereleasedEventReleaseItem2Author {
@@ -26970,23 +19719,13 @@ pub struct ReleasePrereleasedEventReleaseItem2Author {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleasePrereleasedEventReleaseItem2Author {
   pub fn builder() -> ReleasePrereleasedEventReleaseItem2AuthorBuilder {
     ReleasePrereleasedEventReleaseItem2AuthorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesMilestonedEventIssueItem2User {
@@ -27047,46 +19786,27 @@ pub struct IssuesMilestonedEventIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesMilestonedEventIssueItem2User {
   pub fn builder() -> IssuesMilestonedEventIssueItem2UserBuilder {
     IssuesMilestonedEventIssueItem2UserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesFirstPatchedVersion {
   pub identifier: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesFirstPatchedVersion {
-  pub fn builder() -> WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesFirstPatchedVersionBuilder {
+  pub fn builder(
+  ) -> WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesFirstPatchedVersionBuilder {
     WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesFirstPatchedVersionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleaseEditedEventChangesBody {
@@ -27094,23 +19814,13 @@ pub struct ReleaseEditedEventChangesBody {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleaseEditedEventChangesBody {
   pub fn builder() -> ReleaseEditedEventChangesBodyBuilder {
     ReleaseEditedEventChangesBodyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleasePublishedEventReleaseItem2Author {
@@ -27171,23 +19881,13 @@ pub struct ReleasePublishedEventReleaseItem2Author {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleasePublishedEventReleaseItem2Author {
   pub fn builder() -> ReleasePublishedEventReleaseItem2AuthorBuilder {
     ReleasePublishedEventReleaseItem2AuthorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesClosedEventIssueItem2User {
@@ -27248,23 +19948,13 @@ pub struct IssuesClosedEventIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesClosedEventIssueItem2User {
   pub fn builder() -> IssuesClosedEventIssueItem2UserBuilder {
     IssuesClosedEventIssueItem2UserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleaseEditedEventChanges {
@@ -27279,23 +19969,13 @@ pub struct ReleaseEditedEventChanges {
   pub name: Option<ReleaseEditedEventChangesName>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleaseEditedEventChanges {
   pub fn builder() -> ReleaseEditedEventChangesBuilder {
     ReleaseEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentCreated {
@@ -27316,51 +19996,32 @@ pub struct WebhookPullRequestReviewCommentCreated {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentCreated {
   pub fn builder() -> WebhookPullRequestReviewCommentCreatedBuilder {
     WebhookPullRequestReviewCommentCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilities {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub first_patched_version: Option<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesFirstPatchedVersion>,
+  pub first_patched_version:
+    Option<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesFirstPatchedVersion>,
   pub package: WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesPackage,
   pub severity: String,
   pub vulnerable_version_range: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilities {
   pub fn builder() -> WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesBuilder {
     WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewRequestedItem2 {
@@ -27383,23 +20044,13 @@ pub struct WebhookPullRequestReviewRequestedItem2 {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewRequestedItem2 {
   pub fn builder() -> WebhookPullRequestReviewRequestedItem2Builder {
     WebhookPullRequestReviewRequestedItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesLabeledEvent {
@@ -27422,23 +20073,13 @@ pub struct IssuesLabeledEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesLabeledEvent {
   pub fn builder() -> IssuesLabeledEventBuilder {
     IssuesLabeledEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The changes to the label if the action was `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -27454,23 +20095,13 @@ pub struct LabelEditedEventChanges {
   pub name: Option<LabelEditedEventChangesName>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl LabelEditedEventChanges {
   pub fn builder() -> LabelEditedEventChangesBuilder {
     LabelEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DeploymentWorkflowRun {
@@ -27541,23 +20172,13 @@ pub struct DeploymentWorkflowRun {
   pub workflow_url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DeploymentWorkflowRun {
   pub fn builder() -> DeploymentWorkflowRunBuilder {
     DeploymentWorkflowRunBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemReorderedEvent {
@@ -27571,23 +20192,13 @@ pub struct ProjectsV2ItemReorderedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemReorderedEvent {
   pub fn builder() -> ProjectsV2ItemReorderedEventBuilder {
     ProjectsV2ItemReorderedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Account {
@@ -27609,23 +20220,13 @@ pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Account {
   pub type_: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Account {
   pub fn builder() -> WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2AccountBuilder {
     WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2AccountBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionReopenedEvent {
@@ -27644,23 +20245,13 @@ pub struct DiscussionReopenedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionReopenedEvent {
   pub fn builder() -> DiscussionReopenedEventBuilder {
     DiscussionReopenedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgress {
@@ -27682,23 +20273,13 @@ pub struct WebhookWorkflowRunInProgress {
   pub workflow_run: WebhookWorkflowRunInProgressWorkflowRun,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgress {
   pub fn builder() -> WebhookWorkflowRunInProgressBuilder {
     WebhookWorkflowRunInProgressBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionDockerMetadata {
@@ -27707,23 +20288,14 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionDockerMetad
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackageUpdatedRegistryPackagePackageVersionDockerMetadata {
-  pub fn builder() -> WebhookRegistryPackageUpdatedRegistryPackagePackageVersionDockerMetadataBuilder {
+  pub fn builder() -> WebhookRegistryPackageUpdatedRegistryPackagePackageVersionDockerMetadataBuilder
+  {
     WebhookRegistryPackageUpdatedRegistryPackagePackageVersionDockerMetadataBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MilestoneEditedEventChangesTitle {
@@ -27731,23 +20303,13 @@ pub struct MilestoneEditedEventChangesTitle {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MilestoneEditedEventChangesTitle {
   pub fn builder() -> MilestoneEditedEventChangesTitleBuilder {
     MilestoneEditedEventChangesTitleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertCreatedAlertTool {
@@ -27762,46 +20324,26 @@ pub struct WebhookCodeScanningAlertCreatedAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertCreatedAlertTool {
   pub fn builder() -> WebhookCodeScanningAlertCreatedAlertToolBuilder {
     WebhookCodeScanningAlertCreatedAlertToolBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferences {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferences {
   pub fn builder() -> WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesBuilder {
     WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesEditedEventChangesBody {
@@ -27809,23 +20351,13 @@ pub struct IssuesEditedEventChangesBody {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesEditedEventChangesBody {
   pub fn builder() -> IssuesEditedEventChangesBodyBuilder {
     IssuesEditedEventChangesBodyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MilestoneEditedEvent {
@@ -27847,23 +20379,13 @@ pub struct MilestoneEditedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MilestoneEditedEvent {
   pub fn builder() -> MilestoneEditedEventBuilder {
     MilestoneEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CheckRunPullRequest {
@@ -27874,23 +20396,13 @@ pub struct CheckRunPullRequest {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CheckRunPullRequest {
   pub fn builder() -> CheckRunPullRequestBuilder {
     CheckRunPullRequestBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestEditedChangesBase {
@@ -27899,46 +20411,26 @@ pub struct WebhookPullRequestEditedChangesBase {
   pub sha: WebhookPullRequestEditedChangesBaseSha,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestEditedChangesBase {
   pub fn builder() -> WebhookPullRequestEditedChangesBaseBuilder {
     WebhookPullRequestEditedChangesBaseBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardConvertedChangesNote {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardConvertedChangesNote {
   pub fn builder() -> WebhookProjectCardConvertedChangesNoteBuilder {
     WebhookProjectCardConvertedChangesNoteBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentDeleted {
@@ -27959,23 +20451,13 @@ pub struct WebhookPullRequestReviewCommentDeleted {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentDeleted {
   pub fn builder() -> WebhookPullRequestReviewCommentDeletedBuilder {
     WebhookPullRequestReviewCommentDeletedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesPackage {
@@ -27983,23 +20465,14 @@ pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesPackag
   pub name: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesPackage {
-  pub fn builder() -> WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesPackageBuilder {
+  pub fn builder() -> WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesPackageBuilder
+  {
     WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesPackageBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MemberEditedEventChangesOldPermission {
@@ -28007,23 +20480,13 @@ pub struct MemberEditedEventChangesOldPermission {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MemberEditedEventChangesOldPermission {
   pub fn builder() -> MemberEditedEventChangesOldPermissionBuilder {
     MemberEditedEventChangesOldPermissionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -28058,23 +20521,13 @@ pub struct WebhookCodeScanningAlertFixedAlert {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertFixedAlert {
   pub fn builder() -> WebhookCodeScanningAlertFixedAlertBuilder {
     WebhookCodeScanningAlertFixedAlertBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardEdited {
@@ -28096,23 +20549,13 @@ pub struct WebhookProjectCardEdited {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardEdited {
   pub fn builder() -> WebhookProjectCardEditedBuilder {
     WebhookProjectCardEditedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionCreatedEventDiscussionItem2Category {
@@ -28148,23 +20591,13 @@ pub struct DiscussionCreatedEventDiscussionItem2Category {
   pub updated_at: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionCreatedEventDiscussionItem2Category {
   pub fn builder() -> DiscussionCreatedEventDiscussionItem2CategoryBuilder {
     DiscussionCreatedEventDiscussionItem2CategoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SponsorshipEditedEvent {
@@ -28186,46 +20619,26 @@ pub struct SponsorshipEditedEvent {
   pub sponsorship: SponsorshipEditedEventSponsorship,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipEditedEvent {
   pub fn builder() -> SponsorshipEditedEventBuilder {
     SponsorshipEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipTierChangedChanges {
   pub tier: WebhookSponsorshipTierChangedChangesTier,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipTierChangedChanges {
   pub fn builder() -> WebhookSponsorshipTierChangedChangesBuilder {
     WebhookSponsorshipTierChangedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewRejected {
@@ -28260,23 +20673,13 @@ pub struct WebhookDeploymentReviewRejected {
   pub workflow_run: Option<DeploymentWorkflowRun>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewRejected {
   pub fn builder() -> WebhookDeploymentReviewRejectedBuilder {
     WebhookDeploymentReviewRejectedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipPendingTierChange {
@@ -28302,23 +20705,13 @@ pub struct WebhookSponsorshipPendingTierChange {
   pub sponsorship: WebhookSponsorshipPendingTierChangeSponsorship,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipPendingTierChange {
   pub fn builder() -> WebhookSponsorshipPendingTierChangeBuilder {
     WebhookSponsorshipPendingTierChangeBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionUnlockedEvent {
@@ -28337,23 +20730,13 @@ pub struct DiscussionUnlockedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionUnlockedEvent {
   pub fn builder() -> DiscussionUnlockedEventBuilder {
     DiscussionUnlockedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The action requested by the user.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -28364,23 +20747,13 @@ pub struct CheckRunRequestedActionEventRequestedAction {
   pub identifier: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CheckRunRequestedActionEventRequestedAction {
   pub fn builder() -> CheckRunRequestedActionEventRequestedActionBuilder {
     CheckRunRequestedActionEventRequestedActionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipTierChangedSponsorship {
@@ -28400,23 +20773,13 @@ pub struct WebhookSponsorshipTierChangedSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipTierChangedSponsorship {
   pub fn builder() -> WebhookSponsorshipTierChangedSponsorshipBuilder {
     WebhookSponsorshipTierChangedSponsorshipBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MemberAddedEvent {
@@ -28440,23 +20803,13 @@ pub struct MemberAddedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MemberAddedEvent {
   pub fn builder() -> MemberAddedEventBuilder {
     MemberAddedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPersonalAccessTokenRequestDenied {
@@ -28467,23 +20820,13 @@ pub struct WebhookPersonalAccessTokenRequestDenied {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPersonalAccessTokenRequestDenied {
   pub fn builder() -> WebhookPersonalAccessTokenRequestDeniedBuilder {
     WebhookPersonalAccessTokenRequestDeniedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRepositoryDispatchSample {
@@ -28505,23 +20848,13 @@ pub struct WebhookRepositoryDispatchSample {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRepositoryDispatchSample {
   pub fn builder() -> WebhookRepositoryDispatchSampleBuilder {
     WebhookRepositoryDispatchSampleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwes {
@@ -28529,23 +20862,13 @@ pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwes {
   pub fn builder() -> WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwesBuilder {
     WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookTeamRemovedFromRepository {
@@ -28566,23 +20889,13 @@ pub struct WebhookTeamRemovedFromRepository {
   pub team: Team,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookTeamRemovedFromRepository {
   pub fn builder() -> WebhookTeamRemovedFromRepositoryBuilder {
     WebhookTeamRemovedFromRepositoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionRuleEditedEventChangesAuthorizedActorsOnly {
@@ -28591,23 +20904,13 @@ pub struct BranchProtectionRuleEditedEventChangesAuthorizedActorsOnly {
   pub from: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRuleEditedEventChangesAuthorizedActorsOnly {
   pub fn builder() -> BranchProtectionRuleEditedEventChangesAuthorizedActorsOnlyBuilder {
     BranchProtectionRuleEditedEventChangesAuthorizedActorsOnlyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CheckRunCreatedEvent {
@@ -28625,23 +20928,13 @@ pub struct CheckRunCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CheckRunCreatedEvent {
   pub fn builder() -> CheckRunCreatedEventBuilder {
     CheckRunCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionCreatedEvent {
@@ -28660,23 +20953,13 @@ pub struct DiscussionCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionCreatedEvent {
   pub fn builder() -> DiscussionCreatedEventBuilder {
     DiscussionCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// New requested permissions, categorized by type of permission.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -28692,23 +20975,13 @@ pub struct PersonalAccessTokenRequestPermissionsAdded {
   pub repository: Option<serde_json::Value>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PersonalAccessTokenRequestPermissionsAdded {
   pub fn builder() -> PersonalAccessTokenRequestPermissionsAddedBuilder {
     PersonalAccessTokenRequestPermissionsAddedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackagePublishedEventPackagePackageVersionNugetMetadata {
@@ -28723,23 +20996,13 @@ pub struct PackagePublishedEventPackagePackageVersionNugetMetadata {
   pub value: Option<serde_json::Value>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEventPackagePackageVersionNugetMetadata {
   pub fn builder() -> PackagePublishedEventPackagePackageVersionNugetMetadataBuilder {
     PackagePublishedEventPackagePackageVersionNugetMetadataBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MemberRemovedEvent {
@@ -28760,23 +21023,13 @@ pub struct MemberRemovedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MemberRemovedEvent {
   pub fn builder() -> MemberRemovedEventBuilder {
     MemberRemovedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ProjectEditedEventChangesPublic {
@@ -28788,23 +21041,13 @@ pub struct ProjectsV2ProjectEditedEventChangesPublic {
   pub to: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ProjectEditedEventChangesPublic {
   pub fn builder() -> ProjectsV2ProjectEditedEventChangesPublicBuilder {
     ProjectsV2ProjectEditedEventChangesPublicBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReopenedPullRequestItem2 {
@@ -28839,36 +21082,28 @@ pub struct WebhookPullRequestReopenedPullRequestItem2 {
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_message: Option<WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage>,
+  pub squash_merge_commit_message:
+    Option<WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage>,
   /// The default value for a squash merge commit title:
   /// - `PR_TITLE` - default to the pull request's title.
   /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub squash_merge_commit_title: Option<WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle>,
+  pub squash_merge_commit_title:
+    Option<WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle>,
   /// Whether a squash merge commit can use the pull request title as default. **This property has been deprecated. Please use `squash_merge_commit_title` instead.**
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReopenedPullRequestItem2 {
   pub fn builder() -> WebhookPullRequestReopenedPullRequestItem2Builder {
     WebhookPullRequestReopenedPullRequestItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommit {
@@ -28892,23 +21127,13 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommit {
   pub tree_id: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommit {
   pub fn builder() -> WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitBuilder {
     WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepository {
@@ -29052,23 +21277,13 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepository {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepository {
   pub fn builder() -> WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepositoryBuilder {
     WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepositoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesClosedEventIssueItem2 {
@@ -29153,23 +21368,13 @@ pub struct IssuesClosedEventIssueItem2 {
   pub user: Option<IssuesClosedEventIssueItem2User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesClosedEventIssueItem2 {
   pub fn builder() -> IssuesClosedEventIssueItem2Builder {
     IssuesClosedEventIssueItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionUnansweredEventOldAnswer {
@@ -29193,23 +21398,13 @@ pub struct DiscussionUnansweredEventOldAnswer {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionUnansweredEventOldAnswer {
   pub fn builder() -> DiscussionUnansweredEventOldAnswerBuilder {
     DiscussionUnansweredEventOldAnswerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// This field is included for legacy purposes; use the `role_name` field instead. The `maintain`
 /// role is mapped to `write` and the `triage` role is mapped to `read`. To determine the role
 /// assigned to the collaborator, use the `role_name` field instead, which will provide the full
@@ -29220,23 +21415,13 @@ pub struct MemberAddedEventChangesPermission {
   pub to: MemberAddedEventChangesPermissionTo,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MemberAddedEventChangesPermission {
   pub fn builder() -> MemberAddedEventChangesPermissionBuilder {
     MemberAddedEventChangesPermissionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemCreatedEvent {
@@ -29249,23 +21434,13 @@ pub struct ProjectsV2ItemCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemCreatedEvent {
   pub fn builder() -> ProjectsV2ItemCreatedEventBuilder {
     ProjectsV2ItemCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleasePublishedEvent {
@@ -29286,23 +21461,13 @@ pub struct ReleasePublishedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleasePublishedEvent {
   pub fn builder() -> ReleasePublishedEventBuilder {
     ReleasePublishedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesConditionsUpdatedChangesConditionType {
@@ -29311,23 +21476,14 @@ pub struct RepositoryRulesetEditedEventChangesConditionsUpdatedChangesConditionT
   pub from: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesConditionsUpdatedChangesConditionType {
-  pub fn builder() -> RepositoryRulesetEditedEventChangesConditionsUpdatedChangesConditionTypeBuilder {
+  pub fn builder() -> RepositoryRulesetEditedEventChangesConditionsUpdatedChangesConditionTypeBuilder
+  {
     RepositoryRulesetEditedEventChangesConditionsUpdatedChangesConditionTypeBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
@@ -29342,14 +21498,16 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
   pub body_html: Option<String>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub container_metadata: Option<WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata>,
+  pub container_metadata:
+    Option<WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub created_at: Option<String>,
   pub description: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub docker_metadata: Option<Vec<WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadata>>,
+  pub docker_metadata:
+    Option<Vec<WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadata>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub draft: Option<bool>,
@@ -29366,7 +21524,8 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
   pub npm_metadata: Option<WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub nuget_metadata: Option<Vec<WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadata>>,
+  pub nuget_metadata:
+    Option<Vec<WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadata>>,
   pub package_files: Vec<WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFiles>,
   pub package_url: String,
   #[serde(skip_serializing_if = "Option::is_none")]
@@ -29394,23 +21553,13 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
   pub version: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
   pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionBuilder {
     WebhookRegistryPackagePublishedRegistryPackagePackageVersionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestUnassigned {
@@ -29436,23 +21585,13 @@ pub struct WebhookPullRequestUnassigned {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestUnassigned {
   pub fn builder() -> WebhookPullRequestUnassignedBuilder {
     WebhookPullRequestUnassignedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleasePrereleasedEventReleaseItem2 {
@@ -29511,69 +21650,39 @@ pub struct ReleasePrereleasedEventReleaseItem2 {
   pub zipball_url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleasePrereleasedEventReleaseItem2 {
   pub fn builder() -> ReleasePrereleasedEventReleaseItem2Builder {
     ReleasePrereleasedEventReleaseItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemEditedEventChangesItem2 {
   pub body: ProjectsV2ItemEditedEventChangesItem2Body,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemEditedEventChangesItem2 {
   pub fn builder() -> ProjectsV2ItemEditedEventChangesItem2Builder {
     ProjectsV2ItemEditedEventChangesItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryReferences {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryUpdatedSecurityAdvisoryReferences {
   pub fn builder() -> WebhookSecurityAdvisoryUpdatedSecurityAdvisoryReferencesBuilder {
     WebhookSecurityAdvisoryUpdatedSecurityAdvisoryReferencesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct InstallationCreatedEvent {
@@ -29598,23 +21707,13 @@ pub struct InstallationCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl InstallationCreatedEvent {
   pub fn builder() -> InstallationCreatedEventBuilder {
     InstallationCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestConvertedToDraft {
@@ -29635,23 +21734,13 @@ pub struct WebhookPullRequestConvertedToDraft {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestConvertedToDraft {
   pub fn builder() -> WebhookPullRequestConvertedToDraftBuilder {
     WebhookPullRequestConvertedToDraftBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The review that was affected.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -29680,23 +21769,13 @@ pub struct WebhookPullRequestReviewSubmittedReview {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewSubmittedReview {
   pub fn builder() -> WebhookPullRequestReviewSubmittedReviewBuilder {
     WebhookPullRequestReviewSubmittedReviewBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ProjectEditedEvent {
@@ -29710,23 +21789,13 @@ pub struct ProjectsV2ProjectEditedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ProjectEditedEvent {
   pub fn builder() -> ProjectsV2ProjectEditedEventBuilder {
     ProjectsV2ProjectEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ReleaseUnpublishedEvent {
@@ -29747,23 +21816,13 @@ pub struct ReleaseUnpublishedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ReleaseUnpublishedEvent {
   pub fn builder() -> ReleaseUnpublishedEventBuilder {
     ReleaseUnpublishedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2Repository {
@@ -29907,23 +21966,13 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2Repository {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompletedWorkflowRunItem2Repository {
   pub fn builder() -> WebhookWorkflowRunCompletedWorkflowRunItem2RepositoryBuilder {
     WebhookWorkflowRunCompletedWorkflowRunItem2RepositoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemEditedEventChangesItem2Body {
@@ -29935,23 +21984,13 @@ pub struct ProjectsV2ItemEditedEventChangesItem2Body {
   pub to: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemEditedEventChangesItem2Body {
   pub fn builder() -> ProjectsV2ItemEditedEventChangesItem2BodyBuilder {
     ProjectsV2ItemEditedEventChangesItem2BodyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemConvertedEventChangesContentType {
@@ -29963,23 +22002,13 @@ pub struct ProjectsV2ItemConvertedEventChangesContentType {
   pub to: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemConvertedEventChangesContentType {
   pub fn builder() -> ProjectsV2ItemConvertedEventChangesContentTypeBuilder {
     ProjectsV2ItemConvertedEventChangesContentTypeBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipTierChangedSponsorshipMaintainer {
@@ -30040,23 +22069,13 @@ pub struct WebhookSponsorshipTierChangedSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipTierChangedSponsorshipMaintainer {
   pub fn builder() -> WebhookSponsorshipTierChangedSponsorshipMaintainerBuilder {
     WebhookSponsorshipTierChangedSponsorshipMaintainerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionLabeledEvent {
@@ -30076,23 +22095,13 @@ pub struct DiscussionLabeledEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionLabeledEvent {
   pub fn builder() -> DiscussionLabeledEventBuilder {
     DiscussionLabeledEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// If the action was `edited`, the changes to the rule.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -30108,35 +22117,28 @@ pub struct BranchProtectionRuleEditedEventChanges {
   pub authorized_actors_only: Option<BranchProtectionRuleEditedEventChangesAuthorizedActorsOnly>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub authorized_dismissal_actors_only: Option<BranchProtectionRuleEditedEventChangesAuthorizedDismissalActorsOnly>,
+  pub authorized_dismissal_actors_only:
+    Option<BranchProtectionRuleEditedEventChangesAuthorizedDismissalActorsOnly>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub linear_history_requirement_enforcement_level: Option<BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevel>,
+  pub linear_history_requirement_enforcement_level:
+    Option<BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevel>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub required_status_checks: Option<BranchProtectionRuleEditedEventChangesRequiredStatusChecks>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub required_status_checks_enforcement_level: Option<BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevel>,
+  pub required_status_checks_enforcement_level:
+    Option<BranchProtectionRuleEditedEventChangesRequiredStatusChecksEnforcementLevel>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRuleEditedEventChanges {
   pub fn builder() -> BranchProtectionRuleEditedEventChangesBuilder {
     BranchProtectionRuleEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectEditedEventChangesBody {
@@ -30144,23 +22146,13 @@ pub struct ProjectEditedEventChangesBody {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectEditedEventChangesBody {
   pub fn builder() -> ProjectEditedEventChangesBodyBuilder {
     ProjectEditedEventChangesBodyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwes {
@@ -30168,23 +22160,13 @@ pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwes {
   pub fn builder() -> WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwesBuilder {
     WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryPublished {
@@ -30208,23 +22190,13 @@ pub struct WebhookSecurityAdvisoryPublished {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryPublished {
   pub fn builder() -> WebhookSecurityAdvisoryPublishedBuilder {
     WebhookSecurityAdvisoryPublishedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewDismissed {
@@ -30245,23 +22217,13 @@ pub struct WebhookPullRequestReviewDismissed {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewDismissed {
   pub fn builder() -> WebhookPullRequestReviewDismissedBuilder {
     WebhookPullRequestReviewDismissedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesUnpinnedEvent {
@@ -30281,23 +22243,13 @@ pub struct IssuesUnpinnedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesUnpinnedEvent {
   pub fn builder() -> IssuesUnpinnedEventBuilder {
     IssuesUnpinnedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEvent {
@@ -30321,23 +22273,13 @@ pub struct RepositoryRulesetEditedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEvent {
   pub fn builder() -> RepositoryRulesetEditedEventBuilder {
     RepositoryRulesetEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionTransferredEventChanges {
@@ -30345,23 +22287,13 @@ pub struct DiscussionTransferredEventChanges {
   pub new_repository: Repository,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionTransferredEventChanges {
   pub fn builder() -> DiscussionTransferredEventChangesBuilder {
     DiscussionTransferredEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookOrganizationMemberAdded {
@@ -30381,23 +22313,13 @@ pub struct WebhookOrganizationMemberAdded {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookOrganizationMemberAdded {
   pub fn builder() -> WebhookOrganizationMemberAddedBuilder {
     WebhookOrganizationMemberAddedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MilestoneEditedEventChangesDueOn {
@@ -30405,23 +22327,13 @@ pub struct MilestoneEditedEventChangesDueOn {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MilestoneEditedEventChangesDueOn {
   pub fn builder() -> MilestoneEditedEventChangesDueOnBuilder {
     MilestoneEditedEventChangesDueOnBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewEditedReviewLinks {
@@ -30429,23 +22341,13 @@ pub struct WebhookPullRequestReviewEditedReviewLinks {
   pub pull_request: Link,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewEditedReviewLinks {
   pub fn builder() -> WebhookPullRequestReviewEditedReviewLinksBuilder {
     WebhookPullRequestReviewEditedReviewLinksBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StatusEventBranches {
@@ -30454,23 +22356,13 @@ pub struct StatusEventBranches {
   pub protected: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StatusEventBranches {
   pub fn builder() -> StatusEventBranchesBuilder {
     StatusEventBranchesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewThreadUnresolved {
@@ -30492,23 +22384,13 @@ pub struct WebhookPullRequestReviewThreadUnresolved {
   pub thread: WebhookPullRequestReviewThreadUnresolvedThread,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewThreadUnresolved {
   pub fn builder() -> WebhookPullRequestReviewThreadUnresolvedBuilder {
     WebhookPullRequestReviewThreadUnresolvedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackageOwner {
@@ -30533,23 +22415,13 @@ pub struct WebhookRegistryPackagePublishedRegistryPackageOwner {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackageOwner {
   pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackageOwnerBuilder {
     WebhookRegistryPackagePublishedRegistryPackageOwnerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackagePublishedEventPackagePackageVersionRelease {
@@ -30570,23 +22442,13 @@ pub struct PackagePublishedEventPackagePackageVersionRelease {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEventPackagePackageVersionRelease {
   pub fn builder() -> PackagePublishedEventPackagePackageVersionReleaseBuilder {
     PackagePublishedEventPackagePackageVersionReleaseBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease {
@@ -30603,23 +22465,13 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease {
   pub fn builder() -> WebhookRegistryPackageUpdatedRegistryPackagePackageVersionReleaseBuilder {
     WebhookRegistryPackageUpdatedRegistryPackagePackageVersionReleaseBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewRejectedApprover {
@@ -30680,23 +22532,13 @@ pub struct WebhookDeploymentReviewRejectedApprover {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewRejectedApprover {
   pub fn builder() -> WebhookDeploymentReviewRejectedApproverBuilder {
     WebhookDeploymentReviewRejectedApproverBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The details of the security advisory, including summary, description, and severity.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -30717,23 +22559,13 @@ pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryUpdatedSecurityAdvisory {
   pub fn builder() -> WebhookSecurityAdvisoryUpdatedSecurityAdvisoryBuilder {
     WebhookSecurityAdvisoryUpdatedSecurityAdvisoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesRules {
@@ -30748,23 +22580,13 @@ pub struct RepositoryRulesetEditedEventChangesRules {
   pub updated: Option<Vec<RepositoryRulesetEditedEventChangesRulesUpdated>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesRules {
   pub fn builder() -> RepositoryRulesetEditedEventChangesRulesBuilder {
     RepositoryRulesetEditedEventChangesRulesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationNewPermissionsAccepted {
@@ -30789,23 +22611,13 @@ pub struct WebhookInstallationNewPermissionsAccepted {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationNewPermissionsAccepted {
   pub fn builder() -> WebhookInstallationNewPermissionsAcceptedBuilder {
     WebhookInstallationNewPermissionsAcceptedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectColumnDeleted {
@@ -30828,23 +22640,13 @@ pub struct WebhookProjectColumnDeleted {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectColumnDeleted {
   pub fn builder() -> WebhookProjectColumnDeletedBuilder {
     WebhookProjectColumnDeletedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestUnlocked {
@@ -30865,23 +22667,13 @@ pub struct WebhookPullRequestUnlocked {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestUnlocked {
   pub fn builder() -> WebhookPullRequestUnlockedBuilder {
     WebhookPullRequestUnlockedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -30913,23 +22705,13 @@ pub struct WebhookCodeScanningAlertReopenedAlert {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertReopenedAlert {
   pub fn builder() -> WebhookCodeScanningAlertReopenedAlertBuilder {
     WebhookCodeScanningAlertReopenedAlertBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemDeletedEvent {
@@ -30942,23 +22724,13 @@ pub struct ProjectsV2ItemDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemDeletedEvent {
   pub fn builder() -> ProjectsV2ItemDeletedEventBuilder {
     ProjectsV2ItemDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MilestoneDeletedEvent {
@@ -30978,23 +22750,13 @@ pub struct MilestoneDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MilestoneDeletedEvent {
   pub fn builder() -> MilestoneDeletedEventBuilder {
     MilestoneDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The changes to the milestone if the action was `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -31010,23 +22772,13 @@ pub struct MilestoneEditedEventChanges {
   pub title: Option<MilestoneEditedEventChangesTitle>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MilestoneEditedEventChanges {
   pub fn builder() -> MilestoneEditedEventChangesBuilder {
     MilestoneEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct InstallationUnsuspendEvent {
@@ -31051,23 +22803,13 @@ pub struct InstallationUnsuspendEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl InstallationUnsuspendEvent {
   pub fn builder() -> InstallationUnsuspendEventBuilder {
     InstallationUnsuspendEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct TeamEditedEventChangesNotificationSetting {
@@ -31075,23 +22817,13 @@ pub struct TeamEditedEventChangesNotificationSetting {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl TeamEditedEventChangesNotificationSetting {
   pub fn builder() -> TeamEditedEventChangesNotificationSettingBuilder {
     TeamEditedEventChangesNotificationSettingBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct AlertInstanceLocation {
@@ -31112,23 +22844,13 @@ pub struct AlertInstanceLocation {
   pub start_line: Option<i64>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl AlertInstanceLocation {
   pub fn builder() -> AlertInstanceLocationBuilder {
     AlertInstanceLocationBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackageUpdatedEventPackageRegistry {
@@ -31140,23 +22862,13 @@ pub struct PackageUpdatedEventPackageRegistry {
   pub vendor: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackageUpdatedEventPackageRegistry {
   pub fn builder() -> PackageUpdatedEventPackageRegistryBuilder {
     PackageUpdatedEventPackageRegistryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesConditionsUpdated {
@@ -31168,23 +22880,13 @@ pub struct RepositoryRulesetEditedEventChangesConditionsUpdated {
   pub condition: Option<RepositoryRulesetConditionsForRefNames>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesConditionsUpdated {
   pub fn builder() -> RepositoryRulesetEditedEventChangesConditionsUpdatedBuilder {
     RepositoryRulesetEditedEventChangesConditionsUpdatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MetaDeletedEvent {
@@ -31210,23 +22912,13 @@ pub struct MetaDeletedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MetaDeletedEvent {
   pub fn builder() -> MetaDeletedEventBuilder {
     MetaDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRenamedEvent {
@@ -31245,46 +22937,26 @@ pub struct RepositoryRenamedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRenamedEvent {
   pub fn builder() -> RepositoryRenamedEventBuilder {
     RepositoryRenamedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRenamedEventChanges {
   pub repository: RepositoryRenamedEventChangesRepository,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRenamedEventChanges {
   pub fn builder() -> RepositoryRenamedEventChangesBuilder {
     RepositoryRenamedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -31330,23 +23002,13 @@ pub struct WebhookCheckSuiteRerequestedCheckSuite {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCheckSuiteRerequestedCheckSuite {
   pub fn builder() -> WebhookCheckSuiteRerequestedCheckSuiteBuilder {
     WebhookCheckSuiteRerequestedCheckSuiteBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The changes to the collaborator permissions
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -31359,23 +23021,13 @@ pub struct MemberEditedEventChanges {
   pub permission: Option<MemberEditedEventChangesPermission>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MemberEditedEventChanges {
   pub fn builder() -> MemberEditedEventChangesBuilder {
     MemberEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowJobInProgress {
@@ -31397,23 +23049,13 @@ pub struct WebhookWorkflowJobInProgress {
   pub workflow_job: WebhookWorkflowJobInProgressWorkflowJob,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowJobInProgress {
   pub fn builder() -> WebhookWorkflowJobInProgressBuilder {
     WebhookWorkflowJobInProgressBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The changes to the comment.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -31423,46 +23065,26 @@ pub struct WebhookIssueCommentEditedChanges {
   pub body: Option<WebhookIssueCommentEditedChangesBody>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentEditedChanges {
   pub fn builder() -> WebhookIssueCommentEditedChangesBuilder {
     WebhookIssueCommentEditedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct TeamEditedEventChangesRepositoryPermissions {
   pub from: TeamEditedEventChangesRepositoryPermissionsFrom,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl TeamEditedEventChangesRepositoryPermissions {
   pub fn builder() -> TeamEditedEventChangesRepositoryPermissionsBuilder {
     TeamEditedEventChangesRepositoryPermissionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesAssignedEvent {
@@ -31486,23 +23108,13 @@ pub struct IssuesAssignedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesAssignedEvent {
   pub fn builder() -> IssuesAssignedEventBuilder {
     IssuesAssignedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewApproved {
@@ -31537,23 +23149,13 @@ pub struct WebhookDeploymentReviewApproved {
   pub workflow_run: Option<DeploymentWorkflowRun>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewApproved {
   pub fn builder() -> WebhookDeploymentReviewApprovedBuilder {
     WebhookDeploymentReviewApprovedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2Actor {
@@ -31614,23 +23216,13 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2Actor {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgressWorkflowRunItem2Actor {
   pub fn builder() -> WebhookWorkflowRunInProgressWorkflowRunItem2ActorBuilder {
     WebhookWorkflowRunInProgressWorkflowRunItem2ActorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesRulesUpdatedChanges {
@@ -31645,23 +23237,13 @@ pub struct RepositoryRulesetEditedEventChangesRulesUpdatedChanges {
   pub rule_type: Option<RepositoryRulesetEditedEventChangesRulesUpdatedChangesRuleType>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesRulesUpdatedChanges {
   pub fn builder() -> RepositoryRulesetEditedEventChangesRulesUpdatedChangesBuilder {
     RepositoryRulesetEditedEventChangesRulesUpdatedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CreateEvent {
@@ -31691,23 +23273,13 @@ pub struct CreateEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CreateEvent {
   pub fn builder() -> CreateEventBuilder {
     CreateEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MemberEditedEvent {
@@ -31730,23 +23302,13 @@ pub struct MemberEditedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MemberEditedEvent {
   pub fn builder() -> MemberEditedEventBuilder {
     MemberEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionRuleDeletedEvent {
@@ -31766,23 +23328,13 @@ pub struct BranchProtectionRuleDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRuleDeletedEvent {
   pub fn builder() -> BranchProtectionRuleDeletedEventBuilder {
     BranchProtectionRuleDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesOpenedEvent {
@@ -31805,23 +23357,13 @@ pub struct IssuesOpenedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesOpenedEvent {
   pub fn builder() -> IssuesOpenedEventBuilder {
     IssuesOpenedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MilestoneOpenedEvent {
@@ -31841,46 +23383,26 @@ pub struct MilestoneOpenedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MilestoneOpenedEvent {
   pub fn builder() -> MilestoneOpenedEventBuilder {
     MilestoneOpenedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectColumnEditedChangesName {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectColumnEditedChangesName {
   pub fn builder() -> WebhookProjectColumnEditedChangesNameBuilder {
     WebhookProjectColumnEditedChangesNameBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct GollumEvent {
@@ -31899,23 +23421,13 @@ pub struct GollumEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl GollumEvent {
   pub fn builder() -> GollumEventBuilder {
     GollumEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentEditedPullRequestBase {
@@ -31930,23 +23442,13 @@ pub struct WebhookPullRequestReviewCommentEditedPullRequestBase {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentEditedPullRequestBase {
   pub fn builder() -> WebhookPullRequestReviewCommentEditedPullRequestBaseBuilder {
     WebhookPullRequestReviewCommentEditedPullRequestBaseBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectClosedEvent {
@@ -31967,23 +23469,13 @@ pub struct ProjectClosedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectClosedEvent {
   pub fn builder() -> ProjectClosedEventBuilder {
     ProjectClosedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2 {
@@ -32010,23 +23502,13 @@ pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2 {
   pub unit_count: Option<i64>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2 {
   pub fn builder() -> WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Builder {
     WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct InstallationCreatedEventRepositories {
@@ -32040,23 +23522,13 @@ pub struct InstallationCreatedEventRepositories {
   pub private: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl InstallationCreatedEventRepositories {
   pub fn builder() -> InstallationCreatedEventRepositoriesBuilder {
     InstallationCreatedEventRepositoriesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct OrganizationRenamedEventChanges {
@@ -32065,23 +23537,13 @@ pub struct OrganizationRenamedEventChanges {
   pub login: Option<OrganizationRenamedEventChangesLogin>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl OrganizationRenamedEventChanges {
   pub fn builder() -> OrganizationRenamedEventChangesBuilder {
     OrganizationRenamedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryEditedEventChangesDescription {
@@ -32090,23 +23552,13 @@ pub struct RepositoryEditedEventChangesDescription {
   pub from: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryEditedEventChangesDescription {
   pub fn builder() -> RepositoryEditedEventChangesDescriptionBuilder {
     RepositoryEditedEventChangesDescriptionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentDeletedPullRequestBase {
@@ -32121,23 +23573,13 @@ pub struct WebhookPullRequestReviewCommentDeletedPullRequestBase {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentDeletedPullRequestBase {
   pub fn builder() -> WebhookPullRequestReviewCommentDeletedPullRequestBaseBuilder {
     WebhookPullRequestReviewCommentDeletedPullRequestBaseBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipTierChangedChangesTier {
@@ -32145,23 +23587,13 @@ pub struct WebhookSponsorshipTierChangedChangesTier {
   pub from: SponsorshipTier,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipTierChangedChangesTier {
   pub fn builder() -> WebhookSponsorshipTierChangedChangesTierBuilder {
     WebhookSponsorshipTierChangedChangesTierBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ForkEventForkeeItem2Owner {
@@ -32222,23 +23654,13 @@ pub struct ForkEventForkeeItem2Owner {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ForkEventForkeeItem2Owner {
   pub fn builder() -> ForkEventForkeeItem2OwnerBuilder {
     ForkEventForkeeItem2OwnerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct TeamDeletedEvent {
@@ -32261,23 +23683,13 @@ pub struct TeamDeletedEvent {
   pub team: Team,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl TeamDeletedEvent {
   pub fn builder() -> TeamDeletedEventBuilder {
     TeamDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestSynchronize {
@@ -32300,23 +23712,13 @@ pub struct WebhookPullRequestSynchronize {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestSynchronize {
   pub fn builder() -> WebhookPullRequestSynchronizeBuilder {
     WebhookPullRequestSynchronizeBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct InstallationSuspendEventRepositories {
@@ -32330,23 +23732,13 @@ pub struct InstallationSuspendEventRepositories {
   pub private: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl InstallationSuspendEventRepositories {
   pub fn builder() -> InstallationSuspendEventRepositoriesBuilder {
     InstallationSuspendEventRepositoriesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertAppearedInBranch {
@@ -32371,23 +23763,13 @@ pub struct WebhookCodeScanningAlertAppearedInBranch {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertAppearedInBranch {
   pub fn builder() -> WebhookCodeScanningAlertAppearedInBranchBuilder {
     WebhookCodeScanningAlertAppearedInBranchBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// An item belonging to a project
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -32411,46 +23793,26 @@ pub struct ProjectsV2Item {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2Item {
   pub fn builder() -> ProjectsV2ItemBuilder {
     ProjectsV2ItemBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDiscussionCommentEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDiscussionCommentEditedChangesBody {
   pub fn builder() -> WebhookDiscussionCommentEditedChangesBodyBuilder {
     WebhookDiscussionCommentEditedChangesBodyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestLabeled {
@@ -32474,23 +23836,13 @@ pub struct WebhookPullRequestLabeled {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestLabeled {
   pub fn builder() -> WebhookPullRequestLabeledBuilder {
     WebhookPullRequestLabeledBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertReopened {
@@ -32521,23 +23873,13 @@ pub struct WebhookCodeScanningAlertReopened {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertReopened {
   pub fn builder() -> WebhookCodeScanningAlertReopenedBuilder {
     WebhookCodeScanningAlertReopenedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DependabotAlertReintroducedEvent {
@@ -32556,23 +23898,13 @@ pub struct DependabotAlertReintroducedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DependabotAlertReintroducedEvent {
   pub fn builder() -> DependabotAlertReintroducedEventBuilder {
     DependabotAlertReintroducedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct LabelEditedEvent {
@@ -32595,23 +23927,13 @@ pub struct LabelEditedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl LabelEditedEvent {
   pub fn builder() -> LabelEditedEventBuilder {
     LabelEditedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionReleaseAuthor {
@@ -32636,46 +23958,29 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionReleaseAuth
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackageUpdatedRegistryPackagePackageVersionReleaseAuthor {
-  pub fn builder() -> WebhookRegistryPackageUpdatedRegistryPackagePackageVersionReleaseAuthorBuilder {
+  pub fn builder() -> WebhookRegistryPackageUpdatedRegistryPackagePackageVersionReleaseAuthorBuilder
+  {
     WebhookRegistryPackageUpdatedRegistryPackagePackageVersionReleaseAuthorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesFirstPatchedVersion {
   pub identifier: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesFirstPatchedVersion {
-  pub fn builder() -> WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesFirstPatchedVersionBuilder {
-    WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesFirstPatchedVersionBuilder::default()
+  pub fn builder(
+  ) -> WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesFirstPatchedVersionBuilder {
+    WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesFirstPatchedVersionBuilder::default(
+    )
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryWithdrawn {
@@ -32699,23 +24004,13 @@ pub struct WebhookSecurityAdvisoryWithdrawn {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryWithdrawn {
   pub fn builder() -> WebhookSecurityAdvisoryWithdrawnBuilder {
     WebhookSecurityAdvisoryWithdrawnBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct InstallationUnsuspendEventRepositories {
@@ -32729,23 +24024,13 @@ pub struct InstallationUnsuspendEventRepositories {
   pub private: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl InstallationUnsuspendEventRepositories {
   pub fn builder() -> InstallationUnsuspendEventRepositoriesBuilder {
     InstallationUnsuspendEventRepositoriesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookTeamAddedToRepository {
@@ -32768,23 +24053,13 @@ pub struct WebhookTeamAddedToRepository {
   pub team: Team,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookTeamAddedToRepository {
   pub fn builder() -> WebhookTeamAddedToRepositoryBuilder {
     WebhookTeamAddedToRepositoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFiles {
@@ -32823,23 +24098,14 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFile
   pub updated_at: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFiles {
-  pub fn builder() -> WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesBuilder {
+  pub fn builder() -> WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesBuilder
+  {
     WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertClosedByUserAlertTool {
@@ -32854,23 +24120,13 @@ pub struct WebhookCodeScanningAlertClosedByUserAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertClosedByUserAlertTool {
   pub fn builder() -> WebhookCodeScanningAlertClosedByUserAlertToolBuilder {
     WebhookCodeScanningAlertClosedByUserAlertToolBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackagePublishedEventPackagePackageVersionNugetMetadataValueItem4 {
@@ -32889,23 +24145,13 @@ pub struct PackagePublishedEventPackagePackageVersionNugetMetadataValueItem4 {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEventPackagePackageVersionNugetMetadataValueItem4 {
   pub fn builder() -> PackagePublishedEventPackagePackageVersionNugetMetadataValueItem4Builder {
     PackagePublishedEventPackagePackageVersionNugetMetadataValueItem4Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DeploymentProtectionRuleRequestedEvent {
@@ -32944,23 +24190,13 @@ pub struct DeploymentProtectionRuleRequestedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DeploymentProtectionRuleRequestedEvent {
   pub fn builder() -> DeploymentProtectionRuleRequestedEventBuilder {
     DeploymentProtectionRuleRequestedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MemberAddedEventChanges {
@@ -32977,23 +24213,13 @@ pub struct MemberAddedEventChanges {
   pub role_name: Option<MemberAddedEventChangesRoleName>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MemberAddedEventChanges {
   pub fn builder() -> MemberAddedEventChangesBuilder {
     MemberAddedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease {
@@ -33032,23 +24258,13 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease {
   pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionReleaseBuilder {
     WebhookRegistryPackagePublishedRegistryPackagePackageVersionReleaseBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewApprovedApprover {
@@ -33109,23 +24325,13 @@ pub struct WebhookDeploymentReviewApprovedApprover {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewApprovedApprover {
   pub fn builder() -> WebhookDeploymentReviewApprovedApproverBuilder {
     WebhookDeploymentReviewApprovedApproverBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesPinnedEvent {
@@ -33145,23 +24351,13 @@ pub struct IssuesPinnedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesPinnedEvent {
   pub fn builder() -> IssuesPinnedEventBuilder {
     IssuesPinnedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionCreatedEventDiscussionItem2User {
@@ -33222,23 +24418,13 @@ pub struct DiscussionCreatedEventDiscussionItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionCreatedEventDiscussionItem2User {
   pub fn builder() -> DiscussionCreatedEventDiscussionItem2UserBuilder {
     DiscussionCreatedEventDiscussionItem2UserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SponsorshipCancelledEventSponsorship {
@@ -33258,23 +24444,13 @@ pub struct SponsorshipCancelledEventSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipCancelledEventSponsorship {
   pub fn builder() -> SponsorshipCancelledEventSponsorshipBuilder {
     SponsorshipCancelledEventSponsorshipBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiers {
@@ -33283,23 +24459,13 @@ pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiers {
   pub fn builder() -> WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersBuilder {
     WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesOpenedEventChanges {
@@ -33311,23 +24477,13 @@ pub struct IssuesOpenedEventChanges {
   pub old_repository: Repository,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesOpenedEventChanges {
   pub fn builder() -> IssuesOpenedEventChangesBuilder {
     IssuesOpenedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionConfigurationEnabledEvent {
@@ -33345,23 +24501,13 @@ pub struct BranchProtectionConfigurationEnabledEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionConfigurationEnabledEvent {
   pub fn builder() -> BranchProtectionConfigurationEnabledEventBuilder {
     BranchProtectionConfigurationEnabledEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReadyForReview {
@@ -33382,23 +24528,13 @@ pub struct WebhookPullRequestReadyForReview {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReadyForReview {
   pub fn builder() -> WebhookPullRequestReadyForReviewBuilder {
     WebhookPullRequestReadyForReviewBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SponsorshipEditedEventChangesPrivacyLevel {
@@ -33406,23 +24542,13 @@ pub struct SponsorshipEditedEventChangesPrivacyLevel {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipEditedEventChangesPrivacyLevel {
   pub fn builder() -> SponsorshipEditedEventChangesPrivacyLevelBuilder {
     SponsorshipEditedEventChangesPrivacyLevelBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewDismissedReviewLinks {
@@ -33430,23 +24556,13 @@ pub struct WebhookPullRequestReviewDismissedReviewLinks {
   pub pull_request: Link,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewDismissedReviewLinks {
   pub fn builder() -> WebhookPullRequestReviewDismissedReviewLinksBuilder {
     WebhookPullRequestReviewDismissedReviewLinksBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// Metaproperties for Git author/committer information.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -33464,23 +24580,13 @@ pub struct Committer {
   pub username: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl Committer {
   pub fn builder() -> CommitterBuilder {
     CommitterBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDiscussionCommentEditedComment {
@@ -33504,23 +24610,13 @@ pub struct WebhookDiscussionCommentEditedComment {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDiscussionCommentEditedComment {
   pub fn builder() -> WebhookDiscussionCommentEditedCommentBuilder {
     WebhookDiscussionCommentEditedCommentBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesTransferredEventChanges {
@@ -33530,23 +24626,13 @@ pub struct IssuesTransferredEventChanges {
   pub new_repository: Repository,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesTransferredEventChanges {
   pub fn builder() -> IssuesTransferredEventChangesBuilder {
     IssuesTransferredEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFiles {
@@ -33571,23 +24657,14 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFi
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFiles {
-  pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesBuilder {
+  pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesBuilder
+  {
     WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertReopenedAlertTool {
@@ -33602,23 +24679,13 @@ pub struct WebhookCodeScanningAlertReopenedAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertReopenedAlertTool {
   pub fn builder() -> WebhookCodeScanningAlertReopenedAlertToolBuilder {
     WebhookCodeScanningAlertReopenedAlertToolBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipPendingCancellationSponsorshipMaintainer {
@@ -33679,23 +24746,13 @@ pub struct WebhookSponsorshipPendingCancellationSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipPendingCancellationSponsorshipMaintainer {
   pub fn builder() -> WebhookSponsorshipPendingCancellationSponsorshipMaintainerBuilder {
     WebhookSponsorshipPendingCancellationSponsorshipMaintainerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewSubmitted {
@@ -33716,23 +24773,13 @@ pub struct WebhookPullRequestReviewSubmitted {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewSubmitted {
   pub fn builder() -> WebhookPullRequestReviewSubmittedBuilder {
     WebhookPullRequestReviewSubmittedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MembershipRemovedEvent {
@@ -33759,23 +24806,13 @@ pub struct MembershipRemovedEvent {
   pub team: Team,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MembershipRemovedEvent {
   pub fn builder() -> MembershipRemovedEventBuilder {
     MembershipRemovedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentDeletedPullRequestHead {
@@ -33792,23 +24829,13 @@ pub struct WebhookPullRequestReviewCommentDeletedPullRequestHead {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentDeletedPullRequestHead {
   pub fn builder() -> WebhookPullRequestReviewCommentDeletedPullRequestHeadBuilder {
     WebhookPullRequestReviewCommentDeletedPullRequestHeadBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPersonalAccessTokenRequestCreated {
@@ -33819,23 +24846,13 @@ pub struct WebhookPersonalAccessTokenRequestCreated {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPersonalAccessTokenRequestCreated {
   pub fn builder() -> WebhookPersonalAccessTokenRequestCreatedBuilder {
     WebhookPersonalAccessTokenRequestCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata {
@@ -33952,23 +24969,14 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetada
   pub version: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata {
-  pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadataBuilder {
+  pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadataBuilder
+  {
     WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadataBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DeploymentWorkflowRunReferencedWorkflows {
@@ -33980,23 +24988,13 @@ pub struct DeploymentWorkflowRunReferencedWorkflows {
   pub sha: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DeploymentWorkflowRunReferencedWorkflows {
   pub fn builder() -> DeploymentWorkflowRunReferencedWorkflowsBuilder {
     DeploymentWorkflowRunReferencedWorkflowsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepositoryOwner {
@@ -34057,46 +25055,26 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepositoryOwner {
   pub fn builder() -> WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepositoryOwnerBuilder {
     WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepositoryOwnerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardEditedChanges {
   pub note: WebhookProjectCardEditedChangesNote,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardEditedChanges {
   pub fn builder() -> WebhookProjectCardEditedChangesBuilder {
     WebhookProjectCardEditedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SimplePullRequestBase {
@@ -34111,23 +25089,13 @@ pub struct SimplePullRequestBase {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SimplePullRequestBase {
   pub fn builder() -> SimplePullRequestBaseBuilder {
     SimplePullRequestBaseBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesRulesUpdatedChangesPattern {
@@ -34136,23 +25104,13 @@ pub struct RepositoryRulesetEditedEventChangesRulesUpdatedChangesPattern {
   pub from: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesRulesUpdatedChangesPattern {
   pub fn builder() -> RepositoryRulesetEditedEventChangesRulesUpdatedChangesPatternBuilder {
     RepositoryRulesetEditedEventChangesRulesUpdatedChangesPatternBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct TeamEditedEventChangesDescription {
@@ -34160,23 +25118,13 @@ pub struct TeamEditedEventChangesDescription {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl TeamEditedEventChangesDescription {
   pub fn builder() -> TeamEditedEventChangesDescriptionBuilder {
     TeamEditedEventChangesDescriptionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipPendingTierChangeChangesTier {
@@ -34184,46 +25132,26 @@ pub struct WebhookSponsorshipPendingTierChangeChangesTier {
   pub from: SponsorshipTier,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipPendingTierChangeChangesTier {
   pub fn builder() -> WebhookSponsorshipPendingTierChangeChangesTierBuilder {
     WebhookSponsorshipPendingTierChangeChangesTierBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationTargetRenamedChangesLogin {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationTargetRenamedChangesLogin {
   pub fn builder() -> WebhookInstallationTargetRenamedChangesLoginBuilder {
     WebhookInstallationTargetRenamedChangesLoginBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewApprovedWorkflowJobRuns {
@@ -34253,23 +25181,13 @@ pub struct WebhookDeploymentReviewApprovedWorkflowJobRuns {
   pub updated_at: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewApprovedWorkflowJobRuns {
   pub fn builder() -> WebhookDeploymentReviewApprovedWorkflowJobRunsBuilder {
     WebhookDeploymentReviewApprovedWorkflowJobRunsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentDeletedIssueItem2 {
@@ -34351,23 +25269,13 @@ pub struct WebhookIssueCommentDeletedIssueItem2 {
   pub user: Option<WebhookIssueCommentDeletedIssueItem2User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentDeletedIssueItem2 {
   pub fn builder() -> WebhookIssueCommentDeletedIssueItem2Builder {
     WebhookIssueCommentDeletedIssueItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestClosed {
@@ -34388,23 +25296,13 @@ pub struct WebhookPullRequestClosed {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestClosed {
   pub fn builder() -> WebhookPullRequestClosedBuilder {
     WebhookPullRequestClosedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPageBuild {
@@ -34425,46 +25323,26 @@ pub struct WebhookPageBuild {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPageBuild {
   pub fn builder() -> WebhookPageBuildBuilder {
     WebhookPageBuildBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionCategoryChangedEventChangesCategory {
   pub from: DiscussionCategoryChangedEventChangesCategoryFrom,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionCategoryChangedEventChangesCategory {
   pub fn builder() -> DiscussionCategoryChangedEventChangesCategoryBuilder {
     DiscussionCategoryChangedEventChangesCategoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitAuthor {
@@ -34476,23 +25354,13 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitAuthor {
   pub name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitAuthor {
   pub fn builder() -> WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitAuthorBuilder {
     WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitAuthorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DependabotAlertFixedEvent {
@@ -34511,23 +25379,13 @@ pub struct DependabotAlertFixedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DependabotAlertFixedEvent {
   pub fn builder() -> DependabotAlertFixedEventBuilder {
     DependabotAlertFixedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesEditedEventChangesTitle {
@@ -34535,23 +25393,13 @@ pub struct IssuesEditedEventChangesTitle {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesEditedEventChangesTitle {
   pub fn builder() -> IssuesEditedEventChangesTitleBuilder {
     IssuesEditedEventChangesTitleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ForkEventForkeeItem2 {
@@ -34791,23 +25639,13 @@ pub struct ForkEventForkeeItem2 {
   pub watchers_count: Option<i64>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ForkEventForkeeItem2 {
   pub fn builder() -> ForkEventForkeeItem2Builder {
     ForkEventForkeeItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackagePublishedEventPackagePackageVersion {
@@ -34879,23 +25717,13 @@ pub struct PackagePublishedEventPackagePackageVersion {
   pub version: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEventPackagePackageVersion {
   pub fn builder() -> PackagePublishedEventPackagePackageVersionBuilder {
     PackagePublishedEventPackagePackageVersionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SecretScanningAlertLocationCreatedEvent {
@@ -34914,23 +25742,13 @@ pub struct SecretScanningAlertLocationCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SecretScanningAlertLocationCreatedEvent {
   pub fn builder() -> SecretScanningAlertLocationCreatedEventBuilder {
     SecretScanningAlertLocationCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowJobWaiting {
@@ -34952,46 +25770,26 @@ pub struct WebhookWorkflowJobWaiting {
   pub workflow_job: WebhookWorkflowJobWaitingWorkflowJob,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowJobWaiting {
   pub fn builder() -> WebhookWorkflowJobWaitingBuilder {
     WebhookWorkflowJobWaitingBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryReferences {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryPublishedSecurityAdvisoryReferences {
   pub fn builder() -> WebhookSecurityAdvisoryPublishedSecurityAdvisoryReferencesBuilder {
     WebhookSecurityAdvisoryPublishedSecurityAdvisoryReferencesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct LabelEditedEventChangesColor {
@@ -34999,23 +25797,13 @@ pub struct LabelEditedEventChangesColor {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl LabelEditedEventChangesColor {
   pub fn builder() -> LabelEditedEventChangesColorBuilder {
     LabelEditedEventChangesColorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2ReferencedWorkflows {
@@ -35027,23 +25815,13 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2ReferencedWorkflows {
   pub sha: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgressWorkflowRunItem2ReferencedWorkflows {
   pub fn builder() -> WebhookWorkflowRunInProgressWorkflowRunItem2ReferencedWorkflowsBuilder {
     WebhookWorkflowRunInProgressWorkflowRunItem2ReferencedWorkflowsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// A projects v2 project
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -35074,23 +25852,13 @@ pub struct ProjectsV2Project {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2Project {
   pub fn builder() -> ProjectsV2ProjectBuilder {
     ProjectsV2ProjectBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowJobCompletedWorkflowJobItem2 {
@@ -35166,23 +25934,13 @@ pub struct WebhookWorkflowJobCompletedWorkflowJobItem2 {
   pub workflow_name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowJobCompletedWorkflowJobItem2 {
   pub fn builder() -> WebhookWorkflowJobCompletedWorkflowJobItem2Builder {
     WebhookWorkflowJobCompletedWorkflowJobItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewApprovedReviewers {
@@ -35195,23 +25953,13 @@ pub struct WebhookDeploymentReviewApprovedReviewers {
   pub type_: Option<WebhookDeploymentReviewApprovedReviewersType>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewApprovedReviewers {
   pub fn builder() -> WebhookDeploymentReviewApprovedReviewersBuilder {
     WebhookDeploymentReviewApprovedReviewersBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RubyGemsMetadataVersionInfo {
@@ -35220,23 +25968,13 @@ pub struct RubyGemsMetadataVersionInfo {
   pub version: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RubyGemsMetadataVersionInfo {
   pub fn builder() -> RubyGemsMetadataVersionInfoBuilder {
     RubyGemsMetadataVersionInfoBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardMoved {
@@ -35260,23 +25998,13 @@ pub struct WebhookProjectCardMoved {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardMoved {
   pub fn builder() -> WebhookProjectCardMovedBuilder {
     WebhookProjectCardMovedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// Information about the package.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -35301,23 +26029,13 @@ pub struct PackageUpdatedEventPackage {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackageUpdatedEventPackage {
   pub fn builder() -> PackageUpdatedEventPackageBuilder {
     PackageUpdatedEventPackageBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemRestoredEvent {
@@ -35331,23 +26049,13 @@ pub struct ProjectsV2ItemRestoredEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemRestoredEvent {
   pub fn builder() -> ProjectsV2ItemRestoredEventBuilder {
     ProjectsV2ItemRestoredEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2 {
@@ -35374,23 +26082,13 @@ pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2 {
   pub unit_count: Option<i64>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2 {
   pub fn builder() -> WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Builder {
     WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestOpened {
@@ -35411,23 +26109,13 @@ pub struct WebhookPullRequestOpened {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestOpened {
   pub fn builder() -> WebhookPullRequestOpenedBuilder {
     WebhookPullRequestOpenedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The review that was affected.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -35456,23 +26144,13 @@ pub struct WebhookPullRequestReviewEditedReview {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewEditedReview {
   pub fn builder() -> WebhookPullRequestReviewEditedReviewBuilder {
     WebhookPullRequestReviewEditedReviewBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MilestoneClosedEvent {
@@ -35492,23 +26170,13 @@ pub struct MilestoneClosedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MilestoneClosedEvent {
   pub fn builder() -> MilestoneClosedEventBuilder {
     MilestoneClosedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WatchStartedEvent {
@@ -35526,23 +26194,13 @@ pub struct WatchStartedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WatchStartedEvent {
   pub fn builder() -> WatchStartedEventBuilder {
     WatchStartedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookOrganizationMemberInvited {
@@ -35565,23 +26223,13 @@ pub struct WebhookOrganizationMemberInvited {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookOrganizationMemberInvited {
   pub fn builder() -> WebhookOrganizationMemberInvitedBuilder {
     WebhookOrganizationMemberInvitedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewRequestRemovedItem2 {
@@ -35604,23 +26252,13 @@ pub struct WebhookPullRequestReviewRequestRemovedItem2 {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewRequestRemovedItem2 {
   pub fn builder() -> WebhookPullRequestReviewRequestRemovedItem2Builder {
     WebhookPullRequestReviewRequestRemovedItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct LabelCreatedEvent {
@@ -35641,23 +26279,13 @@ pub struct LabelCreatedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl LabelCreatedEvent {
   pub fn builder() -> LabelCreatedEventBuilder {
     LabelCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRepositoryVulnerabilityAlertReopenAlertItem2 {
@@ -35697,23 +26325,13 @@ pub struct WebhookRepositoryVulnerabilityAlertReopenAlertItem2 {
   pub state: WebhookRepositoryVulnerabilityAlertReopenAlertItem2State,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRepositoryVulnerabilityAlertReopenAlertItem2 {
   pub fn builder() -> WebhookRepositoryVulnerabilityAlertReopenAlertItem2Builder {
     WebhookRepositoryVulnerabilityAlertReopenAlertItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -35733,23 +26351,13 @@ pub struct WebhookDeployKeyCreatedKey {
   pub verified: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeployKeyCreatedKey {
   pub fn builder() -> WebhookDeployKeyCreatedKeyBuilder {
     WebhookDeployKeyCreatedKeyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The changes to the project if the action was `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -35762,23 +26370,13 @@ pub struct ProjectEditedEventChanges {
   pub name: Option<ProjectEditedEventChangesName>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectEditedEventChanges {
   pub fn builder() -> ProjectEditedEventChangesBuilder {
     ProjectEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackageUpdatedEventPackagePackageVersionDockerMetadata {
@@ -35787,46 +26385,26 @@ pub struct PackageUpdatedEventPackagePackageVersionDockerMetadata {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackageUpdatedEventPackagePackageVersionDockerMetadata {
   pub fn builder() -> PackageUpdatedEventPackagePackageVersionDockerMetadataBuilder {
     PackageUpdatedEventPackagePackageVersionDockerMetadataBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestEditedChangesBaseSha {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestEditedChangesBaseSha {
   pub fn builder() -> WebhookPullRequestEditedChangesBaseShaBuilder {
     WebhookPullRequestEditedChangesBaseShaBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PublicEvent {
@@ -35843,23 +26421,13 @@ pub struct PublicEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PublicEvent {
   pub fn builder() -> PublicEventBuilder {
     PublicEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WorkflowRunPullRequests {
@@ -35870,23 +26438,13 @@ pub struct WorkflowRunPullRequests {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WorkflowRunPullRequests {
   pub fn builder() -> WorkflowRunPullRequestsBuilder {
     WorkflowRunPullRequestsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss {
@@ -35896,23 +26454,13 @@ pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss {
   pub fn builder() -> WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssBuilder {
     WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvssBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesConditionsUpdatedChangesExclude {
@@ -35921,23 +26469,13 @@ pub struct RepositoryRulesetEditedEventChangesConditionsUpdatedChangesExclude {
   pub from: Option<Vec<String>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesConditionsUpdatedChangesExclude {
   pub fn builder() -> RepositoryRulesetEditedEventChangesConditionsUpdatedChangesExcludeBuilder {
     RepositoryRulesetEditedEventChangesConditionsUpdatedChangesExcludeBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesDemilestonedEventIssueItem2User {
@@ -35998,23 +26536,13 @@ pub struct IssuesDemilestonedEventIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesDemilestonedEventIssueItem2User {
   pub fn builder() -> IssuesDemilestonedEventIssueItem2UserBuilder {
     IssuesDemilestonedEventIssueItem2UserBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChanges {
@@ -36032,23 +26560,13 @@ pub struct RepositoryRulesetEditedEventChanges {
   pub rules: Option<RepositoryRulesetEditedEventChangesRules>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChanges {
   pub fn builder() -> RepositoryRulesetEditedEventChangesBuilder {
     RepositoryRulesetEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2TriggeringActor {
@@ -36109,23 +26627,13 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2TriggeringActor {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgressWorkflowRunItem2TriggeringActor {
   pub fn builder() -> WebhookWorkflowRunInProgressWorkflowRunItem2TriggeringActorBuilder {
     WebhookWorkflowRunInProgressWorkflowRunItem2TriggeringActorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ProjectEditedEventChangesShortDescription {
@@ -36137,23 +26645,13 @@ pub struct ProjectsV2ProjectEditedEventChangesShortDescription {
   pub to: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ProjectEditedEventChangesShortDescription {
   pub fn builder() -> ProjectsV2ProjectEditedEventChangesShortDescriptionBuilder {
     ProjectsV2ProjectEditedEventChangesShortDescriptionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeployKeyDeleted {
@@ -36173,23 +26671,13 @@ pub struct WebhookDeployKeyDeleted {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeployKeyDeleted {
   pub fn builder() -> WebhookDeployKeyDeletedBuilder {
     WebhookDeployKeyDeletedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SponsorshipCreatedEventSponsorship {
@@ -36209,23 +26697,13 @@ pub struct SponsorshipCreatedEventSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipCreatedEventSponsorship {
   pub fn builder() -> SponsorshipCreatedEventSponsorshipBuilder {
     SponsorshipCreatedEventSponsorshipBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesConditionsUpdatedChangesTarget {
@@ -36234,23 +26712,13 @@ pub struct RepositoryRulesetEditedEventChangesConditionsUpdatedChangesTarget {
   pub from: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesConditionsUpdatedChangesTarget {
   pub fn builder() -> RepositoryRulesetEditedEventChangesConditionsUpdatedChangesTargetBuilder {
     RepositoryRulesetEditedEventChangesConditionsUpdatedChangesTargetBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertAppearedInBranchAlertTool {
@@ -36262,23 +26730,13 @@ pub struct WebhookCodeScanningAlertAppearedInBranchAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertAppearedInBranchAlertTool {
   pub fn builder() -> WebhookCodeScanningAlertAppearedInBranchAlertToolBuilder {
     WebhookCodeScanningAlertAppearedInBranchAlertToolBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentCreatedPullRequest {
@@ -36344,23 +26802,13 @@ pub struct WebhookPullRequestReviewCommentCreatedPullRequest {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentCreatedPullRequest {
   pub fn builder() -> WebhookPullRequestReviewCommentCreatedPullRequestBuilder {
     WebhookPullRequestReviewCommentCreatedPullRequestBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowJobQueuedWorkflowJob {
@@ -36408,23 +26856,13 @@ pub struct WebhookWorkflowJobQueuedWorkflowJob {
   pub workflow_name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowJobQueuedWorkflowJob {
   pub fn builder() -> WebhookWorkflowJobQueuedWorkflowJobBuilder {
     WebhookWorkflowJobQueuedWorkflowJobBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct LabelDeletedEvent {
@@ -36443,23 +26881,13 @@ pub struct LabelDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl LabelDeletedEvent {
   pub fn builder() -> LabelDeletedEventBuilder {
     LabelDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDeploymentReviewRejectedWorkflowJobRun {
@@ -36473,23 +26901,13 @@ pub struct WebhookDeploymentReviewRejectedWorkflowJobRun {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDeploymentReviewRejectedWorkflowJobRun {
   pub fn builder() -> WebhookDeploymentReviewRejectedWorkflowJobRunBuilder {
     WebhookDeploymentReviewRejectedWorkflowJobRunBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationTargetRenamedAccount {
@@ -36596,23 +27014,13 @@ pub struct WebhookInstallationTargetRenamedAccount {
   pub website_url: Option<serde_json::Value>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationTargetRenamedAccount {
   pub fn builder() -> WebhookInstallationTargetRenamedAccountBuilder {
     WebhookInstallationTargetRenamedAccountBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MarketplacePurchasePlan {
@@ -36629,23 +27037,13 @@ pub struct MarketplacePurchasePlan {
   pub yearly_price_in_cents: i64,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MarketplacePurchasePlan {
   pub fn builder() -> MarketplacePurchasePlanBuilder {
     MarketplacePurchasePlanBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentEdited {
@@ -36669,23 +27067,13 @@ pub struct WebhookIssueCommentEdited {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentEdited {
   pub fn builder() -> WebhookIssueCommentEditedBuilder {
     WebhookIssueCommentEditedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowJobCompleted {
@@ -36707,23 +27095,13 @@ pub struct WebhookWorkflowJobCompleted {
   pub workflow_job: WebhookWorkflowJobCompletedWorkflowJob,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowJobCompleted {
   pub fn builder() -> WebhookWorkflowJobCompletedBuilder {
     WebhookWorkflowJobCompletedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionAuthor {
@@ -36748,69 +27126,40 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionAuthor {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackagePackageVersionAuthor {
   pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionAuthorBuilder {
     WebhookRegistryPackagePublishedRegistryPackagePackageVersionAuthorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevel {
   pub from: BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevelFrom,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevel {
-  pub fn builder() -> BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevelBuilder {
+  pub fn builder(
+  ) -> BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevelBuilder {
     BranchProtectionRuleEditedEventChangesLinearHistoryRequirementEnforcementLevelBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemEditedEventChangesItem1 {
   pub field_value: ProjectsV2ItemEditedEventChangesItem1FieldValue,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemEditedEventChangesItem1 {
   pub fn builder() -> ProjectsV2ItemEditedEventChangesItem1Builder {
     ProjectsV2ItemEditedEventChangesItem1Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowDispatch {
@@ -36833,46 +27182,26 @@ pub struct WebhookWorkflowDispatch {
   pub workflow: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowDispatch {
   pub fn builder() -> WebhookWorkflowDispatchBuilder {
     WebhookWorkflowDispatchBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookProjectCardConvertedChanges {
   pub note: WebhookProjectCardConvertedChangesNote,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookProjectCardConvertedChanges {
   pub fn builder() -> WebhookProjectCardConvertedChangesBuilder {
     WebhookProjectCardConvertedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryUpdated {
@@ -36896,23 +27225,13 @@ pub struct WebhookSecurityAdvisoryUpdated {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryUpdated {
   pub fn builder() -> WebhookSecurityAdvisoryUpdatedBuilder {
     WebhookSecurityAdvisoryUpdatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertFixedAlertTool {
@@ -36927,23 +27246,13 @@ pub struct WebhookCodeScanningAlertFixedAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertFixedAlertTool {
   pub fn builder() -> WebhookCodeScanningAlertFixedAlertToolBuilder {
     WebhookCodeScanningAlertFixedAlertToolBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionAnsweredEvent {
@@ -36963,23 +27272,13 @@ pub struct DiscussionAnsweredEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionAnsweredEvent {
   pub fn builder() -> DiscussionAnsweredEventBuilder {
     DiscussionAnsweredEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The changes to the comment if the action was `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -36995,23 +27294,13 @@ pub struct WebhookPullRequestEditedChanges {
   pub title: Option<WebhookPullRequestEditedChangesTitle>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestEditedChanges {
   pub fn builder() -> WebhookPullRequestEditedChangesBuilder {
     WebhookPullRequestEditedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PushEvent {
@@ -37056,23 +27345,13 @@ pub struct PushEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PushEvent {
   pub fn builder() -> PushEventBuilder {
     PushEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SponsorshipEditedEventSponsorship {
@@ -37092,23 +27371,13 @@ pub struct SponsorshipEditedEventSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SponsorshipEditedEventSponsorship {
   pub fn builder() -> SponsorshipEditedEventSponsorshipBuilder {
     SponsorshipEditedEventSponsorshipBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCheckSuiteRequested {
@@ -37128,23 +27397,13 @@ pub struct WebhookCheckSuiteRequested {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCheckSuiteRequested {
   pub fn builder() -> WebhookCheckSuiteRequestedBuilder {
     WebhookCheckSuiteRequestedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesUnlockedEventIssueItem2 {
@@ -37227,46 +27486,26 @@ pub struct IssuesUnlockedEventIssueItem2 {
   pub user: Option<IssuesUnlockedEventIssueItem2User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesUnlockedEventIssueItem2 {
   pub fn builder() -> IssuesUnlockedEventIssueItem2Builder {
     IssuesUnlockedEventIssueItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionCategoryChangedEventChanges {
   pub category: DiscussionCategoryChangedEventChangesCategory,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionCategoryChangedEventChanges {
   pub fn builder() -> DiscussionCategoryChangedEventChangesBuilder {
     DiscussionCategoryChangedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesRulesUpdated {
@@ -37278,23 +27517,13 @@ pub struct RepositoryRulesetEditedEventChangesRulesUpdated {
   pub rule: Option<RepositoryRule>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesRulesUpdated {
   pub fn builder() -> RepositoryRulesetEditedEventChangesRulesUpdatedBuilder {
     RepositoryRulesetEditedEventChangesRulesUpdatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentDeletedPullRequestLinks {
@@ -37309,23 +27538,13 @@ pub struct WebhookPullRequestReviewCommentDeletedPullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentDeletedPullRequestLinks {
   pub fn builder() -> WebhookPullRequestReviewCommentDeletedPullRequestLinksBuilder {
     WebhookPullRequestReviewCommentDeletedPullRequestLinksBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The status of auto merging a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -37345,23 +27564,13 @@ pub struct PullRequestAutoMerge {
   pub merge_method: PullRequestAutoMergeMergeMethod,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PullRequestAutoMerge {
   pub fn builder() -> PullRequestAutoMergeBuilder {
     PullRequestAutoMergeBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct MembershipAddedEvent {
@@ -37388,23 +27597,13 @@ pub struct MembershipAddedEvent {
   pub team: Team,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl MembershipAddedEvent {
   pub fn builder() -> MembershipAddedEventBuilder {
     MembershipAddedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -37434,23 +27633,13 @@ pub struct WebhookCodeScanningAlertClosedByUserAlert {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertClosedByUserAlert {
   pub fn builder() -> WebhookCodeScanningAlertClosedByUserAlertBuilder {
     WebhookCodeScanningAlertClosedByUserAlertBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionRuleEditedEventChangesAdminEnforced {
@@ -37459,23 +27648,13 @@ pub struct BranchProtectionRuleEditedEventChangesAdminEnforced {
   pub from: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRuleEditedEventChangesAdminEnforced {
   pub fn builder() -> BranchProtectionRuleEditedEventChangesAdminEnforcedBuilder {
     BranchProtectionRuleEditedEventChangesAdminEnforcedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentCreatedPullRequestHead {
@@ -37492,23 +27671,13 @@ pub struct WebhookPullRequestReviewCommentCreatedPullRequestHead {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentCreatedPullRequestHead {
   pub fn builder() -> WebhookPullRequestReviewCommentCreatedPullRequestHeadBuilder {
     WebhookPullRequestReviewCommentCreatedPullRequestHeadBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ItemConvertedEvent {
@@ -37522,23 +27691,13 @@ pub struct ProjectsV2ItemConvertedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ItemConvertedEvent {
   pub fn builder() -> ProjectsV2ItemConvertedEventBuilder {
     ProjectsV2ItemConvertedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompleted {
@@ -37560,23 +27719,13 @@ pub struct WebhookWorkflowRunCompleted {
   pub workflow_run: WebhookWorkflowRunCompletedWorkflowRun,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompleted {
   pub fn builder() -> WebhookWorkflowRunCompletedBuilder {
     WebhookWorkflowRunCompletedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentEditedChangesBody {
@@ -37584,23 +27733,13 @@ pub struct WebhookIssueCommentEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentEditedChangesBody {
   pub fn builder() -> WebhookIssueCommentEditedChangesBodyBuilder {
     WebhookIssueCommentEditedChangesBodyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesTransferredEvent {
@@ -37621,23 +27760,13 @@ pub struct IssuesTransferredEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesTransferredEvent {
   pub fn builder() -> IssuesTransferredEventBuilder {
     IssuesTransferredEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentDeletedPullRequest {
@@ -37703,23 +27832,13 @@ pub struct WebhookPullRequestReviewCommentDeletedPullRequest {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentDeletedPullRequest {
   pub fn builder() -> WebhookPullRequestReviewCommentDeletedPullRequestBuilder {
     WebhookPullRequestReviewCommentDeletedPullRequestBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestUnlabeled {
@@ -37743,23 +27862,13 @@ pub struct WebhookPullRequestUnlabeled {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestUnlabeled {
   pub fn builder() -> WebhookPullRequestUnlabeledBuilder {
     WebhookPullRequestUnlabeledBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct SecretScanningAlertWebhook {
@@ -37817,74 +27926,46 @@ pub struct SecretScanningAlertWebhook {
   pub validity: Option<SecretScanningAlertWebhookValidity>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl SecretScanningAlertWebhook {
   pub fn builder() -> SecretScanningAlertWebhookBuilder {
     SecretScanningAlertWebhookBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilities {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub first_patched_version: Option<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesFirstPatchedVersion>,
+  pub first_patched_version:
+    Option<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesFirstPatchedVersion>,
   pub package: WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesPackage,
   pub severity: String,
   pub vulnerable_version_range: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilities {
   pub fn builder() -> WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesBuilder {
     WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2 {
   pub next_billing_date: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2 {
-  pub fn builder() -> WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2Builder {
+  pub fn builder() -> WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2Builder
+  {
     WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2RepositoryOwner {
@@ -37945,23 +28026,13 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2RepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgressWorkflowRunItem2RepositoryOwner {
   pub fn builder() -> WebhookWorkflowRunInProgressWorkflowRunItem2RepositoryOwnerBuilder {
     WebhookWorkflowRunInProgressWorkflowRunItem2RepositoryOwnerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertFixedAlertRule {
@@ -37991,23 +28062,13 @@ pub struct WebhookCodeScanningAlertFixedAlertRule {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertFixedAlertRule {
   pub fn builder() -> WebhookCodeScanningAlertFixedAlertRuleBuilder {
     WebhookCodeScanningAlertFixedAlertRuleBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DiscussionUnpinnedEvent {
@@ -38026,23 +28087,13 @@ pub struct DiscussionUnpinnedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DiscussionUnpinnedEvent {
   pub fn builder() -> DiscussionUnpinnedEventBuilder {
     DiscussionUnpinnedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRepositoryVulnerabilityAlertReopen {
@@ -38061,23 +28112,13 @@ pub struct WebhookRepositoryVulnerabilityAlertReopen {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRepositoryVulnerabilityAlertReopen {
   pub fn builder() -> WebhookRepositoryVulnerabilityAlertReopenBuilder {
     WebhookRepositoryVulnerabilityAlertReopenBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationNewPermissionsAcceptedRepositories {
@@ -38091,23 +28132,13 @@ pub struct WebhookInstallationNewPermissionsAcceptedRepositories {
   pub private: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationNewPermissionsAcceptedRepositories {
   pub fn builder() -> WebhookInstallationNewPermissionsAcceptedRepositoriesBuilder {
     WebhookInstallationNewPermissionsAcceptedRepositoriesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDiscussionCommentDeletedComment {
@@ -38131,23 +28162,13 @@ pub struct WebhookDiscussionCommentDeletedComment {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDiscussionCommentDeletedComment {
   pub fn builder() -> WebhookDiscussionCommentDeletedCommentBuilder {
     WebhookDiscussionCommentDeletedCommentBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -38163,23 +28184,13 @@ pub struct PersonalAccessTokenRequestPermissionsResult {
   pub repository: Option<serde_json::Value>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PersonalAccessTokenRequestPermissionsResult {
   pub fn builder() -> PersonalAccessTokenRequestPermissionsResultBuilder {
     PersonalAccessTokenRequestPermissionsResultBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewCommentCreatedPullRequestLinks {
@@ -38194,23 +28205,13 @@ pub struct WebhookPullRequestReviewCommentCreatedPullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewCommentCreatedPullRequestLinks {
   pub fn builder() -> WebhookPullRequestReviewCommentCreatedPullRequestLinksBuilder {
     WebhookPullRequestReviewCommentCreatedPullRequestLinksBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CheckRunPullRequestHead {
@@ -38220,23 +28221,13 @@ pub struct CheckRunPullRequestHead {
   pub sha: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CheckRunPullRequestHead {
   pub fn builder() -> CheckRunPullRequestHeadBuilder {
     CheckRunPullRequestHeadBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecretScanningAlertResolved {
@@ -38257,46 +28248,26 @@ pub struct WebhookSecretScanningAlertResolved {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecretScanningAlertResolved {
   pub fn builder() -> WebhookSecretScanningAlertResolvedBuilder {
     WebhookSecretScanningAlertResolvedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionRuleEditedEventChangesRequiredStatusChecks {
   pub from: Vec<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRuleEditedEventChangesRequiredStatusChecks {
   pub fn builder() -> BranchProtectionRuleEditedEventChangesRequiredStatusChecksBuilder {
     BranchProtectionRuleEditedEventChangesRequiredStatusChecksBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentDeletedIssueItem2Reactions {
@@ -38334,23 +28305,13 @@ pub struct WebhookIssueCommentDeletedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentDeletedIssueItem2Reactions {
   pub fn builder() -> WebhookIssueCommentDeletedIssueItem2ReactionsBuilder {
     WebhookIssueCommentDeletedIssueItem2ReactionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackageOwner {
@@ -38375,23 +28336,13 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackageOwner {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackageUpdatedRegistryPackageOwner {
   pub fn builder() -> WebhookRegistryPackageUpdatedRegistryPackageOwnerBuilder {
     WebhookRegistryPackageUpdatedRegistryPackageOwnerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2TriggeringActor {
@@ -38452,23 +28403,13 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2TriggeringActor {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompletedWorkflowRunItem2TriggeringActor {
   pub fn builder() -> WebhookWorkflowRunCompletedWorkflowRunItem2TriggeringActorBuilder {
     WebhookWorkflowRunCompletedWorkflowRunItem2TriggeringActorBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DependabotAlertAutoDismissedEvent {
@@ -38487,23 +28428,13 @@ pub struct DependabotAlertAutoDismissedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DependabotAlertAutoDismissedEvent {
   pub fn builder() -> DependabotAlertAutoDismissedEventBuilder {
     DependabotAlertAutoDismissedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommit {
@@ -38527,23 +28458,13 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommit {
   pub tree_id: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommit {
   pub fn builder() -> WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitBuilder {
     WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct StarCreatedEvent {
@@ -38565,23 +28486,13 @@ pub struct StarCreatedEvent {
   pub starred_at: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl StarCreatedEvent {
   pub fn builder() -> StarCreatedEventBuilder {
     StarCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMergeGroupChecksRequested {
@@ -38601,23 +28512,13 @@ pub struct WebhookMergeGroupChecksRequested {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMergeGroupChecksRequested {
   pub fn builder() -> WebhookMergeGroupChecksRequestedBuilder {
     WebhookMergeGroupChecksRequestedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DeploymentWorkflowRunRepository {
@@ -38761,23 +28662,13 @@ pub struct DeploymentWorkflowRunRepository {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DeploymentWorkflowRunRepository {
   pub fn builder() -> DeploymentWorkflowRunRepositoryBuilder {
     DeploymentWorkflowRunRepositoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackagePublishedEventPackagePackageVersionPackageFiles {
@@ -38802,23 +28693,13 @@ pub struct PackagePublishedEventPackagePackageVersionPackageFiles {
   pub updated_at: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEventPackagePackageVersionPackageFiles {
   pub fn builder() -> PackagePublishedEventPackagePackageVersionPackageFilesBuilder {
     PackagePublishedEventPackagePackageVersionPackageFilesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetCreatedEvent {
@@ -38839,23 +28720,13 @@ pub struct RepositoryRulesetCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetCreatedEvent {
   pub fn builder() -> RepositoryRulesetCreatedEventBuilder {
     RepositoryRulesetCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
@@ -38866,7 +28737,8 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
   pub description: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub docker_metadata: Option<Vec<Option<WebhookRegistryPackageUpdatedRegistryPackagePackageVersionDockerMetadata>>>,
+  pub docker_metadata:
+    Option<Vec<Option<WebhookRegistryPackageUpdatedRegistryPackagePackageVersionDockerMetadata>>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub draft: Option<bool>,
@@ -38899,23 +28771,13 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
   pub version: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
   pub fn builder() -> WebhookRegistryPackageUpdatedRegistryPackagePackageVersionBuilder {
     WebhookRegistryPackageUpdatedRegistryPackagePackageVersionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct PackagePublishedEvent {
@@ -38937,23 +28799,13 @@ pub struct PackagePublishedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl PackagePublishedEvent {
   pub fn builder() -> PackagePublishedEventBuilder {
     PackagePublishedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookIssueCommentCreated {
@@ -38975,23 +28827,13 @@ pub struct WebhookIssueCommentCreated {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookIssueCommentCreated {
   pub fn builder() -> WebhookIssueCommentCreatedBuilder {
     WebhookIssueCommentCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCodeScanningAlertFixed {
@@ -39016,23 +28858,13 @@ pub struct WebhookCodeScanningAlertFixed {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCodeScanningAlertFixed {
   pub fn builder() -> WebhookCodeScanningAlertFixedBuilder {
     WebhookCodeScanningAlertFixedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionRuleEditedEventChangesAuthorizedDismissalActorsOnly {
@@ -39041,23 +28873,13 @@ pub struct BranchProtectionRuleEditedEventChangesAuthorizedDismissalActorsOnly {
   pub from: Option<bool>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRuleEditedEventChangesAuthorizedDismissalActorsOnly {
   pub fn builder() -> BranchProtectionRuleEditedEventChangesAuthorizedDismissalActorsOnlyBuilder {
     BranchProtectionRuleEditedEventChangesAuthorizedDismissalActorsOnlyBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestEdited {
@@ -39082,23 +28904,13 @@ pub struct WebhookPullRequestEdited {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestEdited {
   pub fn builder() -> WebhookPullRequestEditedBuilder {
     WebhookPullRequestEditedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiers {
@@ -39107,23 +28919,13 @@ pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiers {
   pub fn builder() -> WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersBuilder {
     WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Plan {
@@ -39147,7 +28949,8 @@ pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Plan {
   pub name: Option<String>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
-  pub price_model: Option<WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel>,
+  pub price_model:
+    Option<WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default = "None")]
   pub unit_name: Option<String>,
@@ -39156,23 +28959,13 @@ pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Plan {
   pub yearly_price_in_cents: Option<i64>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Plan {
   pub fn builder() -> WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanBuilder {
     WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationRepositoriesAddedRepositoriesAdded {
@@ -39186,23 +28979,13 @@ pub struct WebhookInstallationRepositoriesAddedRepositoriesAdded {
   pub private: bool,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationRepositoriesAddedRepositoriesAdded {
   pub fn builder() -> WebhookInstallationRepositoriesAddedRepositoriesAddedBuilder {
     WebhookInstallationRepositoriesAddedRepositoriesAddedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectEditedEventChangesName {
@@ -39210,23 +28993,13 @@ pub struct ProjectEditedEventChangesName {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectEditedEventChangesName {
   pub fn builder() -> ProjectEditedEventChangesNameBuilder {
     ProjectEditedEventChangesNameBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct BranchProtectionRuleCreatedEvent {
@@ -39246,23 +29019,13 @@ pub struct BranchProtectionRuleCreatedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl BranchProtectionRuleCreatedEvent {
   pub fn builder() -> BranchProtectionRuleCreatedEventBuilder {
     BranchProtectionRuleCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataTag {
@@ -39274,23 +29037,15 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainer
   pub name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataTag {
-  pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataTagBuilder {
-    WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataTagBuilder::default()
+  pub fn builder(
+  ) -> WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataTagBuilder {
+    WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataTagBuilder::default(
+    )
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesReopenedEvent {
@@ -39309,23 +29064,13 @@ pub struct IssuesReopenedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesReopenedEvent {
   pub fn builder() -> IssuesReopenedEventBuilder {
     IssuesReopenedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryEditedEventChangesHomepage {
@@ -39334,23 +29079,13 @@ pub struct RepositoryEditedEventChangesHomepage {
   pub from: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryEditedEventChangesHomepage {
   pub fn builder() -> RepositoryEditedEventChangesHomepageBuilder {
     RepositoryEditedEventChangesHomepageBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookCommitCommentCreated {
@@ -39371,23 +29106,13 @@ pub struct WebhookCommitCommentCreated {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCommitCommentCreated {
   pub fn builder() -> WebhookCommitCommentCreatedBuilder {
     WebhookCommitCommentCreatedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct ProjectsV2ProjectEditedEventChanges {
@@ -39405,23 +29130,13 @@ pub struct ProjectsV2ProjectEditedEventChanges {
   pub title: Option<ProjectsV2ProjectEditedEventChangesTitle>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl ProjectsV2ProjectEditedEventChanges {
   pub fn builder() -> ProjectsV2ProjectEditedEventChangesBuilder {
     ProjectsV2ProjectEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryDeletedEvent {
@@ -39439,46 +29154,26 @@ pub struct RepositoryDeletedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryDeletedEvent {
   pub fn builder() -> RepositoryDeletedEventBuilder {
     RepositoryDeletedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryTransferredEventChanges {
   pub owner: RepositoryTransferredEventChangesOwner,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryTransferredEventChanges {
   pub fn builder() -> RepositoryTransferredEventChangesBuilder {
     RepositoryTransferredEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WorkflowRunReferencedWorkflows {
@@ -39490,46 +29185,27 @@ pub struct WorkflowRunReferencedWorkflows {
   pub sha: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WorkflowRunReferencedWorkflows {
   pub fn builder() -> WorkflowRunReferencedWorkflowsBuilder {
     WorkflowRunReferencedWorkflowsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesFirstPatchedVersion {
   pub identifier: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesFirstPatchedVersion {
-  pub fn builder() -> WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesFirstPatchedVersionBuilder {
+  pub fn builder(
+  ) -> WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesFirstPatchedVersionBuilder {
     WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesFirstPatchedVersionBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct TeamEditedEventChangesName {
@@ -39537,23 +29213,13 @@ pub struct TeamEditedEventChangesName {
   pub from: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl TeamEditedEventChangesName {
   pub fn builder() -> TeamEditedEventChangesNameBuilder {
     TeamEditedEventChangesNameBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRegistryPackagePublishedRegistryPackage {
@@ -39581,23 +29247,13 @@ pub struct WebhookRegistryPackagePublishedRegistryPackage {
   pub updated_at: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRegistryPackagePublishedRegistryPackage {
   pub fn builder() -> WebhookRegistryPackagePublishedRegistryPackageBuilder {
     WebhookRegistryPackagePublishedRegistryPackageBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryArchivedEvent {
@@ -39615,46 +29271,26 @@ pub struct RepositoryArchivedEvent {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryArchivedEvent {
   pub fn builder() -> RepositoryArchivedEventBuilder {
     RepositoryArchivedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSponsorshipPendingTierChangeChanges {
   pub tier: WebhookSponsorshipPendingTierChangeChangesTier,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSponsorshipPendingTierChangeChanges {
   pub fn builder() -> WebhookSponsorshipPendingTierChangeChangesBuilder {
     WebhookSponsorshipPendingTierChangeChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2Repository {
@@ -39798,23 +29434,13 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2Repository {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunInProgressWorkflowRunItem2Repository {
   pub fn builder() -> WebhookWorkflowRunInProgressWorkflowRunItem2RepositoryBuilder {
     WebhookWorkflowRunInProgressWorkflowRunItem2RepositoryBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCvss {
@@ -39824,46 +29450,26 @@ pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCvss {
   pub fn builder() -> WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCvssBuilder {
     WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCvssBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryTransferredEventChangesOwner {
   pub from: RepositoryTransferredEventChangesOwnerFrom,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryTransferredEventChangesOwner {
   pub fn builder() -> RepositoryTransferredEventChangesOwnerBuilder {
     RepositoryTransferredEventChangesOwnerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The changes to the issue.
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -39876,23 +29482,13 @@ pub struct IssuesEditedEventChanges {
   pub title: Option<IssuesEditedEventChangesTitle>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesEditedEventChanges {
   pub fn builder() -> IssuesEditedEventChangesBuilder {
     IssuesEditedEventChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct RepositoryRulesetEditedEventChangesRulesUpdatedChangesConfiguration {
@@ -39901,23 +29497,13 @@ pub struct RepositoryRulesetEditedEventChangesRulesUpdatedChangesConfiguration {
   pub from: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl RepositoryRulesetEditedEventChangesRulesUpdatedChangesConfiguration {
   pub fn builder() -> RepositoryRulesetEditedEventChangesRulesUpdatedChangesConfigurationBuilder {
     RepositoryRulesetEditedEventChangesRulesUpdatedChangesConfigurationBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookPullRequestReviewEdited {
@@ -39939,23 +29525,13 @@ pub struct WebhookPullRequestReviewEdited {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookPullRequestReviewEdited {
   pub fn builder() -> WebhookPullRequestReviewEditedBuilder {
     WebhookPullRequestReviewEditedBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 /// The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
@@ -40001,23 +29577,13 @@ pub struct WebhookCheckSuiteRequestedCheckSuite {
   pub url: String,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookCheckSuiteRequestedCheckSuite {
   pub fn builder() -> WebhookCheckSuiteRequestedCheckSuiteBuilder {
     WebhookCheckSuiteRequestedCheckSuiteBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct CustomPropertyCreatedEvent {
@@ -40035,23 +29601,13 @@ pub struct CustomPropertyCreatedEvent {
   pub sender: Option<SimpleUser>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl CustomPropertyCreatedEvent {
   pub fn builder() -> CustomPropertyCreatedEventBuilder {
     CustomPropertyCreatedEventBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookInstallationTargetRenamedChanges {
@@ -40063,23 +29619,13 @@ pub struct WebhookInstallationTargetRenamedChanges {
   pub slug: Option<WebhookInstallationTargetRenamedChangesSlug>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookInstallationTargetRenamedChanges {
   pub fn builder() -> WebhookInstallationTargetRenamedChangesBuilder {
     WebhookInstallationTargetRenamedChangesBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct DeploymentWorkflowRunRepositoryOwner {
@@ -40140,23 +29686,13 @@ pub struct DeploymentWorkflowRunRepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl DeploymentWorkflowRunRepositoryOwner {
   pub fn builder() -> DeploymentWorkflowRunRepositoryOwnerBuilder {
     DeploymentWorkflowRunRepositoryOwnerBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRepositoryVulnerabilityAlertDismiss {
@@ -40175,23 +29711,13 @@ pub struct WebhookRepositoryVulnerabilityAlertDismiss {
   pub sender: SimpleUser,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRepositoryVulnerabilityAlertDismiss {
   pub fn builder() -> WebhookRepositoryVulnerabilityAlertDismissBuilder {
     WebhookRepositoryVulnerabilityAlertDismissBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookDiscussionCommentCreatedComment {
@@ -40215,23 +29741,13 @@ pub struct WebhookDiscussionCommentCreatedComment {
   pub user: Option<User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookDiscussionCommentCreatedComment {
   pub fn builder() -> WebhookDiscussionCommentCreatedCommentBuilder {
     WebhookDiscussionCommentCreatedCommentBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesLockedEventIssueItem2 {
@@ -40316,23 +29832,13 @@ pub struct IssuesLockedEventIssueItem2 {
   pub user: Option<IssuesLockedEventIssueItem2User>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesLockedEventIssueItem2 {
   pub fn builder() -> IssuesLockedEventIssueItem2Builder {
     IssuesLockedEventIssueItem2Builder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitCommitter {
@@ -40344,23 +29850,13 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitCommitter {
   pub name: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitCommitter {
   pub fn builder() -> WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitCommitterBuilder {
     WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitCommitterBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct IssuesDemilestonedEventIssueItem2Reactions {
@@ -40398,23 +29894,13 @@ pub struct IssuesDemilestonedEventIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl IssuesDemilestonedEventIssueItem2Reactions {
   pub fn builder() -> IssuesDemilestonedEventIssueItem2ReactionsBuilder {
     IssuesDemilestonedEventIssueItem2ReactionsBuilder::default()
   }
 }
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 #[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
 #[builder(setter(into, strip_option))]
 pub struct WebhookRepositoryVulnerabilityAlertDismissAlertItem2 {
@@ -40462,12 +29948,7 @@ pub struct WebhookRepositoryVulnerabilityAlertDismissAlertItem2 {
   pub state: WebhookRepositoryVulnerabilityAlertDismissAlertItem2State,
 }
 
-#[cfg(
-  any(
-    feature = "full",
-    feature = "webhook",
-  )
-)]
+#[cfg(any(feature = "full", feature = "webhook",))]
 impl WebhookRepositoryVulnerabilityAlertDismissAlertItem2 {
   pub fn builder() -> WebhookRepositoryVulnerabilityAlertDismissAlertItem2Builder {
     WebhookRepositoryVulnerabilityAlertDismissAlertItem2Builder::default()
