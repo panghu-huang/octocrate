@@ -20,7 +20,7 @@ reqwest = { version = "0.12.2" }
 serde = { version = "1.0.197" }
 serde_json = "1.0.115"
 tokio = { version = "1.32.0" }
-derive_builder = "0.20.0"
+typed-builder = "0.18"
 thiserror = "1.0.44"
 chrono = "0.4.37"
 jsonwebtoken = "8.2.0"
