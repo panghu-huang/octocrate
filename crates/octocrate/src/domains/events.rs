@@ -1,4 +1,3 @@
-use octocrate_infra::{GithubError, GithubResult};
 use serde::{Deserialize, Serialize};
 
 use crate::domains::{
@@ -119,7 +118,8 @@ pub struct GithubWorkflowJobEvent {
   pub installation: GithubWebhookInstallation,
 }
 
-#[derive(Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
+#[serde(untagged)]
 pub enum GithubWebhookEvent {
   IssueComment(GithubWebhookIssueCommentEvent),
   PullRequest(GithubWebhookPullRequestEvent),
@@ -142,44 +142,6 @@ impl GithubWebhookEvent {
         payload: _,
         installation,
       } => installation.clone(),
-    }
-  }
-
-  pub fn try_parse(event_name: String, payload: String) -> GithubResult<Self> {
-    match event_name.as_str() {
-      "issue_comment" => {
-        let evt = serde_json::from_str::<GithubWebhookIssueCommentEvent>(&payload)?;
-
-        return Ok(GithubWebhookEvent::IssueComment(evt));
-      }
-      "pull_request" => {
-        let evt = serde_json::from_str::<GithubWebhookPullRequestEvent>(&payload)?;
-
-        return Ok(GithubWebhookEvent::PullRequest(evt));
-      }
-      "push" => {
-        let evt = serde_json::from_str::<GithubWebhookPushEvent>(&payload)?;
-
-        return Ok(GithubWebhookEvent::Push(evt));
-      }
-      "workflow_job" => {
-        let evt = serde_json::from_str::<GithubWorkflowJobEvent>(&payload)?;
-
-        return Ok(GithubWebhookEvent::WorkflowJob(evt));
-      }
-      _ => {
-        let event = serde_json::from_str::<serde_json::Value>(&payload)?;
-        let installation = event
-          .get("installation")
-          .ok_or(GithubError::new("No installation field on webhook event"))?;
-
-        let installation =
-          serde_json::from_value::<GithubWebhookInstallation>(installation.clone())?;
-        return Ok(GithubWebhookEvent::Unsupported {
-          payload,
-          installation,
-        });
-      }
     }
   }
 }

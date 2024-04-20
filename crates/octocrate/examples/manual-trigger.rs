@@ -31,7 +31,7 @@ async fn main() {
 
   let server_handle = rx.await.unwrap();
   let json = include_str!("./push.json");
-  let event = GithubWebhookEvent::try_parse("push".to_string(), json.to_string()).unwrap();
+  let event: GithubWebhookEvent = serde_json::from_str(json).unwrap();
 
   server_handle.trigger_webhook_event(event).await.unwrap();
   tokio::time::sleep(std::time::Duration::from_secs(3)).await;
