@@ -1,0 +1,58 @@
+use octocrate_core::*;
+#[allow(unused_imports)]
+use crate::types::*;
+
+{{#if description}}
+{{#each (split_lines description)}}
+/// {{this}}
+{{/each}}
+{{/if}}
+pub struct GitHub{{ module_name }}API {
+  config: SharedAPIConfig,
+}
+
+impl GitHub{{ module_name }}API {
+  pub fn new(config: &SharedAPIConfig) -> Self {
+    Self {
+      config: config.clone(),
+    }
+  }
+
+  {{#each functions }}
+  /// **{{ summary }}**
+  ///
+  {{#if description}}
+  {{#each (split_lines description)}}
+  /// {{this}}
+  {{/each}}
+  {{/if}}
+  ///
+  /// *Documentation*: [{{ document_url }}]({{ document_url }})
+  pub fn {{ function_name }}(
+    &self,
+    {{#each parameters }}
+    {{ name }}: impl Into<{{ type_name }}>,
+    {{/each}}
+  ) -> {{#if response_type}}Request<{{ body_type }}, {{ query_type }}, {{ response_type }}>{{else}}NoContentRequest<{{ body_type }}, {{ query_type }}>{{/if}} {
+    {{#each parameters }}
+    let {{ name }} = {{ name }}.into();
+    {{/each}}
+    {{#each stringify_params }}
+    let {{ this }} = {{ this }}.to_string();
+    {{/each}}
+    let url = format!("{{ url }}");
+
+    {{#if response_type }}
+    Request::<{{ body_type }}, {{ query_type }}, {{ response_type }}>::builder(&self.config)
+      .{{ method }}(url)
+      .build()
+    {{else}}
+    NoContentRequest::<{{ body_type }}, {{ query_type }}>::builder(&self.config)
+      .{{ method }}(url)
+      .build()
+    {{/if}}
+  }
+
+  {{/each}}
+
+}

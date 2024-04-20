@@ -1,0 +1,136 @@
+#[allow(unused_imports)]
+use serde::{Serialize, Deserialize};
+#[allow(unused_imports)]
+use super::*;
+
+/// Types defination
+{{#each types }}
+{{#if alias }}
+#[cfg(
+  any(
+    {{#each tags }}
+    feature = "{{ this }}",
+    {{/each}}
+  )
+)]
+{{#if description }}
+{{#each (split_lines description)}}
+/// {{this}}
+{{/each}}
+{{/if}}
+pub type {{ alias }} = {{ type_name }};
+{{/if}}
+{{/each}}
+
+{{#if enums }}
+/// Enumerations defination
+{{#each enums }}
+#[cfg(
+  any(
+    {{#each tags }}
+    feature = "{{ this }}",
+    {{/each}}
+  )
+)]
+{{#if description }}
+{{#each (split_lines description)}}
+/// {{this}}
+{{/each}}
+{{/if}}
+#[derive(Debug, Clone, Serialize, Deserialize{{#if impl_to_string }}, PartialEq{{/if}})]
+{{#if untagged }}
+#[serde(untagged)]
+{{/if}}
+pub enum {{ name }} {
+  {{#each fields }}
+  {{#if description }}
+  {{#each (split_lines description)}}
+  /// {{this}}
+  {{/each}}
+  {{/if}}
+  {{#if type_name }}
+  {{ name }}({{ type_name }}),
+  {{else}}
+  {{#if rename }}
+  #[serde(rename = "{{ rename }}")]
+  {{/if}}
+  {{ name }},
+  {{/if}}
+  {{/each}}
+}
+{{#if impl_to_string }}
+
+#[cfg(
+  any(
+    {{#each tags }}
+    feature = "{{ this }}",
+    {{/each}}
+  )
+)]
+impl ToString for {{ name }} {
+  fn to_string(&self) -> String {
+    match self {
+      {{#each fields }}
+      {{#if rename }}
+      {{ ../name }}::{{ name }} => "{{ rename }}".to_string(),
+      {{else}}
+      {{ ../name }}::{{ name }} => "{{ name }}".to_string(),
+      {{/if}}
+      {{/each}}
+    }
+  }
+}
+{{/if}}
+
+{{/each}}
+{{/if}}
+
+{{#if structs }}
+/// Structs defination
+{{#each structs }}
+#[cfg(
+  any(
+    {{#each tags }}
+    feature = "{{ this }}",
+    {{/each}}
+  )
+)]
+{{#if description}}
+{{#each (split_lines description)}}
+/// {{this}}
+{{/each}}
+{{/if}}
+#[derive(Debug, Clone, Serialize, Deserialize, derive_builder::Builder)]
+#[builder(setter(into, strip_option))]
+pub struct {{ name }} {
+  {{#each fields }}
+  {{#if description }}
+  {{#each (split_lines description)}}
+  /// {{this}}
+  {{/each}}
+  {{/if}}
+  {{#if rename }}
+  #[serde(rename = "{{ rename }}")]
+  {{/if}}
+  {{#if (is_optional_field type_name)}}
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default = "None")]
+  {{/if}}
+  pub {{ name }}: {{ type_name }},
+  {{/each}}
+}
+
+#[cfg(
+  any(
+    {{#each tags }}
+    feature = "{{ this }}",
+    {{/each}}
+  )
+)]
+impl {{ name }} {
+  pub fn builder() -> {{ name }}Builder {
+    {{ name }}Builder::default()
+  }
+}
+{{/each}}
+{{/if}}

@@ -1,0 +1,106 @@
+[package]
+name = "octocrate"
+version = "0.3.5"
+edition.workspace = true
+keywords.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme.workspace = true
+description.workspace = true
+categories.workspace = true
+
+[features]
+full = ["chrono"]
+apps = ["chrono"]
+actions = []
+activity = []
+billing = []
+checks = []
+code_scanning = []
+codes_of_conduct = []
+emojis = []
+dependabot = []
+dependency_graph = []
+gists = []
+git = []
+gitignore = []
+issues = []
+licenses = []
+markdown = []
+merge_queue = []
+meta = []
+migrations = []
+oidc = []
+orgs = []
+packages = []
+projects = []
+pulls = []
+rate_limit = []
+reactions = []
+repos = []
+search = []
+secret_scanning = []
+teams = []
+users = []
+codespaces = []
+copilot = []
+security_advisories = []
+interactions = []
+classroom = []
+desktop = []
+
+[dependencies]
+serde_json = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+derive_builder = { workspace = true }
+octocrate-core = { path = "../core", version = "0.1.2" }
+chrono = { workspace = true, optional = true }
+
+[dev-dependencies]
+tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+dotenv = { workspace = true }
+
+[[example]]
+name = "commits"
+path = "examples/commits.rs"
+required-features = ["repos"]
+test = true
+
+[[example]]
+name = "repos"
+path = "examples/repos.rs"
+required-features = ["repos"]
+test = true
+
+[[example]]
+name = "users"
+path = "examples/users.rs"
+required-features = ["users"]
+test = true
+
+[[example]]
+name = "pulls"
+path = "examples/pulls.rs"
+required-features = ["pulls"]
+test = true
+
+[[example]]
+name = "apps"
+path = "examples/apps.rs"
+required-features = ["apps", "repos"]
+test = true
+
+[[example]]
+name = "issues"
+path = "examples/issues.rs"
+required-features = ["issues"]
+test = true
+
+
+[[example]]
+name = "search"
+path = "examples/search.rs"
+required-features = ["search"]
+test = true

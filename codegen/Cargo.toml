@@ -1,0 +1,22 @@
+[package]
+name = "codegen"
+version = "0.1.0"
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+description.workspace = true
+readme.workspace = true
+homepage.workspace = true
+repository.workspace = true
+keywords.workspace = true
+include.workspace = true
+categories.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = { workspace = true }
+regex = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+handlebars = { workspace = true }
+indicatif = { workspace = true }
