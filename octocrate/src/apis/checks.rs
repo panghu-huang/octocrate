@@ -14,28 +14,78 @@ impl GitHubChecksAPI {
     }
   }
 
-  /// **Rerequest a check run**
+  /// **Create a check run**
   ///
-  /// Triggers GitHub to rerequest an existing check run, without pushing new code to a repository. This endpoint will trigger the [`check_run` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) event with the action `rerequested`. When a check run is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
+  /// Creates a new check run for a specific commit in a repository.
   ///
-  /// For more information about how to re-run GitHub Actions jobs, see "[Re-run a job from a workflow run](https://docs.github.com/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run)".
+  /// To create a check run, you must use a GitHub App. OAuth apps and authenticated users are not able to create a check suite.
   ///
-  /// OAuth apps and personal access tokens (classic) cannot use this endpoint.
+  /// In a check suite, GitHub limits the number of check runs with the same name to 1000. Once these check runs exceed 1000, GitHub will start to automatically delete older check runs.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/checks/runs#rerequest-a-check-run](https://docs.github.com/rest/checks/runs#rerequest-a-check-run)
-  pub fn rerequest_run(
+  /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/checks/runs#create-a-check-run](https://docs.github.com/rest/checks/runs#create-a-check-run)
+  pub fn create(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ChecksCreateRequest, (), CheckRun> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/check-runs");
+
+    Request::<ChecksCreateRequest, (), CheckRun>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get a check run**
+  ///
+  /// Gets a single check run using its `id`.
+  ///
+  /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/checks/runs#get-a-check-run](https://docs.github.com/rest/checks/runs#get-a-check-run)
+  pub fn get(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
     check_run_id: impl Into<i64>,
-  ) -> Request<(), (), EmptyObject> {
+  ) -> Request<(), (), CheckRun> {
     let owner = owner.into();
     let repo = repo.into();
     let check_run_id = check_run_id.into();
-    let url = format!("/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest");
+    let url = format!("/repos/{owner}/{repo}/check-runs/{check_run_id}");
 
-    Request::<(), (), EmptyObject>::builder(&self.config)
-      .post(url)
+    Request::<(), (), CheckRun>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update a check run**
+  ///
+  /// Updates a check run for a specific commit in a repository.
+  ///
+  /// **Note:** The endpoints to manage checks only look for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
+  ///
+  /// OAuth apps and personal access tokens (classic) cannot use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/checks/runs#update-a-check-run](https://docs.github.com/rest/checks/runs#update-a-check-run)
+  pub fn update(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    check_run_id: impl Into<i64>,
+  ) -> Request<ChecksUpdateRequest, (), CheckRun> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let check_run_id = check_run_id.into();
+    let url = format!("/repos/{owner}/{repo}/check-runs/{check_run_id}");
+
+    Request::<ChecksUpdateRequest, (), CheckRun>::builder(&self.config)
+      .patch(url)
       .build()
   }
 
@@ -62,6 +112,54 @@ impl GitHubChecksAPI {
       .build()
   }
 
+  /// **Rerequest a check run**
+  ///
+  /// Triggers GitHub to rerequest an existing check run, without pushing new code to a repository. This endpoint will trigger the [`check_run` webhook](https://docs.github.com/webhooks/event-payloads/#check_run) event with the action `rerequested`. When a check run is `rerequested`, its `status` is reset to `queued` and the `conclusion` is cleared.
+  ///
+  /// For more information about how to re-run GitHub Actions jobs, see "[Re-run a job from a workflow run](https://docs.github.com/rest/actions/workflow-runs#re-run-a-job-from-a-workflow-run)".
+  ///
+  /// OAuth apps and personal access tokens (classic) cannot use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/checks/runs#rerequest-a-check-run](https://docs.github.com/rest/checks/runs#rerequest-a-check-run)
+  pub fn rerequest_run(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    check_run_id: impl Into<i64>,
+  ) -> Request<(), (), EmptyObject> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let check_run_id = check_run_id.into();
+    let url = format!("/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest");
+
+    Request::<(), (), EmptyObject>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Create a check suite**
+  ///
+  /// Creates a check suite manually. By default, check suites are automatically created when you create a [check run](https://docs.github.com/rest/checks/runs). You only need to use this endpoint for manually creating check suites when you've disabled automatic creation using "[Update repository preferences for check suites](https://docs.github.com/rest/checks/suites#update-repository-preferences-for-check-suites)".
+  ///
+  /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+  ///
+  /// OAuth apps and personal access tokens (classic) cannot use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/checks/suites#create-a-check-suite](https://docs.github.com/rest/checks/suites#create-a-check-suite)
+  pub fn create_suite(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ChecksCreateSuiteRequest, (), CheckSuite> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/check-suites");
+
+    Request::<ChecksCreateSuiteRequest, (), CheckSuite>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
   /// **Update repository preferences for check suites**
   ///
   /// Changes the default automatic flow when creating check suites. By default, a check suite is automatically created each time code is pushed to a repository. When you disable the automatic creation of check suites, you can manually [Create a check suite](https://docs.github.com/rest/checks/suites#create-a-check-suite).
@@ -79,6 +177,31 @@ impl GitHubChecksAPI {
 
     Request::<ChecksSetSuitesPreferencesRequest, (), CheckSuitePreference>::builder(&self.config)
       .patch(url)
+      .build()
+  }
+
+  /// **Get a check suite**
+  ///
+  /// Gets a single check suite using its `id`.
+  ///
+  /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/checks/suites#get-a-check-suite](https://docs.github.com/rest/checks/suites#get-a-check-suite)
+  pub fn get_suite(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    check_suite_id: impl Into<i64>,
+  ) -> Request<(), (), CheckSuite> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let check_suite_id = check_suite_id.into();
+    let url = format!("/repos/{owner}/{repo}/check-suites/{check_suite_id}");
+
+    Request::<(), (), CheckSuite>::builder(&self.config)
+      .get(url)
       .build()
   }
 
@@ -157,79 +280,6 @@ impl GitHubChecksAPI {
       .build()
   }
 
-  /// **Create a check run**
-  ///
-  /// Creates a new check run for a specific commit in a repository.
-  ///
-  /// To create a check run, you must use a GitHub App. OAuth apps and authenticated users are not able to create a check suite.
-  ///
-  /// In a check suite, GitHub limits the number of check runs with the same name to 1000. Once these check runs exceed 1000, GitHub will start to automatically delete older check runs.
-  ///
-  /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/checks/runs#create-a-check-run](https://docs.github.com/rest/checks/runs#create-a-check-run)
-  pub fn create(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ChecksCreateRequest, (), CheckRun> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/check-runs");
-
-    Request::<ChecksCreateRequest, (), CheckRun>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Create a check suite**
-  ///
-  /// Creates a check suite manually. By default, check suites are automatically created when you create a [check run](https://docs.github.com/rest/checks/runs). You only need to use this endpoint for manually creating check suites when you've disabled automatic creation using "[Update repository preferences for check suites](https://docs.github.com/rest/checks/suites#update-repository-preferences-for-check-suites)".
-  ///
-  /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-  ///
-  /// OAuth apps and personal access tokens (classic) cannot use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/checks/suites#create-a-check-suite](https://docs.github.com/rest/checks/suites#create-a-check-suite)
-  pub fn create_suite(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ChecksCreateSuiteRequest, (), CheckSuite> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/check-suites");
-
-    Request::<ChecksCreateSuiteRequest, (), CheckSuite>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Get a check suite**
-  ///
-  /// Gets a single check suite using its `id`.
-  ///
-  /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array and a `null` value for `head_branch`.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/checks/suites#get-a-check-suite](https://docs.github.com/rest/checks/suites#get-a-check-suite)
-  pub fn get_suite(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    check_suite_id: impl Into<i64>,
-  ) -> Request<(), (), CheckSuite> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let check_suite_id = check_suite_id.into();
-    let url = format!("/repos/{owner}/{repo}/check-suites/{check_suite_id}");
-
-    Request::<(), (), CheckSuite>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **List check suites for a Git reference**
   ///
   /// Lists check suites for a commit `ref`. The `ref` can be a SHA, branch name, or a tag name.
@@ -255,55 +305,5 @@ impl GitHubChecksAPI {
     )
     .get(url)
     .build()
-  }
-
-  /// **Get a check run**
-  ///
-  /// Gets a single check run using its `id`.
-  ///
-  /// **Note:** The Checks API only looks for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint on a private repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/checks/runs#get-a-check-run](https://docs.github.com/rest/checks/runs#get-a-check-run)
-  pub fn get(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    check_run_id: impl Into<i64>,
-  ) -> Request<(), (), CheckRun> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let check_run_id = check_run_id.into();
-    let url = format!("/repos/{owner}/{repo}/check-runs/{check_run_id}");
-
-    Request::<(), (), CheckRun>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update a check run**
-  ///
-  /// Updates a check run for a specific commit in a repository.
-  ///
-  /// **Note:** The endpoints to manage checks only look for pushes in the repository where the check suite or check run were created. Pushes to a branch in a forked repository are not detected and return an empty `pull_requests` array.
-  ///
-  /// OAuth apps and personal access tokens (classic) cannot use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/checks/runs#update-a-check-run](https://docs.github.com/rest/checks/runs#update-a-check-run)
-  pub fn update(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    check_run_id: impl Into<i64>,
-  ) -> Request<ChecksUpdateRequest, (), CheckRun> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let check_run_id = check_run_id.into();
-    let url = format!("/repos/{owner}/{repo}/check-runs/{check_run_id}");
-
-    Request::<ChecksUpdateRequest, (), CheckRun>::builder(&self.config)
-      .patch(url)
-      .build()
   }
 }

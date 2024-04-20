@@ -14,51 +14,6 @@ impl GitHubInteractionsAPI {
     }
   }
 
-  /// **Get interaction restrictions for your public repositories**
-  ///
-  /// Shows which type of GitHub user can interact with your public repositories and when the restriction expires.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/interactions/user#get-interaction-restrictions-for-your-public-repositories](https://docs.github.com/rest/interactions/user#get-interaction-restrictions-for-your-public-repositories)
-  pub fn get_restrictions_for_authenticated_user(
-    &self,
-  ) -> Request<(), (), InteractionsGetRestrictionsForAuthenticatedUserResponse> {
-    let url = format!("/user/interaction-limits");
-
-    Request::<(), (), InteractionsGetRestrictionsForAuthenticatedUserResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
-  }
-
-  /// **Set interaction restrictions for your public repositories**
-  ///
-  /// Temporarily restricts which type of GitHub user can interact with your public repositories. Setting the interaction limit at the user level will overwrite any interaction limits that are set for individual repositories owned by the user.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories](https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories)
-  pub fn set_restrictions_for_authenticated_user(
-    &self,
-  ) -> Request<InteractionRestrictions, (), InteractionLimits> {
-    let url = format!("/user/interaction-limits");
-
-    Request::<InteractionRestrictions, (), InteractionLimits>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Remove interaction restrictions from your public repositories**
-  ///
-  /// Removes any interaction restrictions from your public repositories.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories](https://docs.github.com/rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories)
-  pub fn remove_restrictions_for_authenticated_user(&self) -> NoContentRequest<(), ()> {
-    let url = format!("/user/interaction-limits");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
   /// **Get interaction restrictions for an organization**
   ///
   /// Shows which type of GitHub user can interact with this organization and when the restriction expires. If there is no restrictions, you will see an empty response.
@@ -158,6 +113,51 @@ impl GitHubInteractionsAPI {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/interaction-limits");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get interaction restrictions for your public repositories**
+  ///
+  /// Shows which type of GitHub user can interact with your public repositories and when the restriction expires.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/interactions/user#get-interaction-restrictions-for-your-public-repositories](https://docs.github.com/rest/interactions/user#get-interaction-restrictions-for-your-public-repositories)
+  pub fn get_restrictions_for_authenticated_user(
+    &self,
+  ) -> Request<(), (), InteractionsGetRestrictionsForAuthenticatedUserResponse> {
+    let url = format!("/user/interaction-limits");
+
+    Request::<(), (), InteractionsGetRestrictionsForAuthenticatedUserResponse>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
+  }
+
+  /// **Set interaction restrictions for your public repositories**
+  ///
+  /// Temporarily restricts which type of GitHub user can interact with your public repositories. Setting the interaction limit at the user level will overwrite any interaction limits that are set for individual repositories owned by the user.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories](https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories)
+  pub fn set_restrictions_for_authenticated_user(
+    &self,
+  ) -> Request<InteractionRestrictions, (), InteractionLimits> {
+    let url = format!("/user/interaction-limits");
+
+    Request::<InteractionRestrictions, (), InteractionLimits>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Remove interaction restrictions from your public repositories**
+  ///
+  /// Removes any interaction restrictions from your public repositories.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories](https://docs.github.com/rest/interactions/user#remove-interaction-restrictions-from-your-public-repositories)
+  pub fn remove_restrictions_for_authenticated_user(&self) -> NoContentRequest<(), ()> {
+    let url = format!("/user/interaction-limits");
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)

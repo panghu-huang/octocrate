@@ -14,6 +14,47 @@ impl GitHubUsersAPI {
     }
   }
 
+  /// **Get the authenticated user**
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `user` scope in order for the response to include private profile information.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/users#get-the-authenticated-user](https://docs.github.com/rest/users/users#get-the-authenticated-user)
+  pub fn get_authenticated(&self) -> Request<(), (), UsersGetAuthenticatedResponse> {
+    let url = format!("/user");
+
+    Request::<(), (), UsersGetAuthenticatedResponse>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update the authenticated user**
+  ///
+  /// **Note:** If your email is set to private and you send an `email` parameter as part of this request to update your profile, your privacy settings are still enforced: the email address will not be displayed on your public profile or via the API.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/users#update-the-authenticated-user](https://docs.github.com/rest/users/users#update-the-authenticated-user)
+  pub fn update_authenticated(&self) -> Request<UsersUpdateAuthenticatedRequest, (), PrivateUser> {
+    let url = format!("/user");
+
+    Request::<UsersUpdateAuthenticatedRequest, (), PrivateUser>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **List users blocked by the authenticated user**
+  ///
+  /// List the users you've blocked on your personal account.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/blocking#list-users-blocked-by-the-authenticated-user](https://docs.github.com/rest/users/blocking#list-users-blocked-by-the-authenticated-user)
+  pub fn list_blocked_by_authenticated_user(
+    &self,
+  ) -> Request<(), UsersListBlockedByAuthenticatedUserQuery, SimpleUserArray> {
+    let url = format!("/user/blocks");
+
+    Request::<(), UsersListBlockedByAuthenticatedUserQuery, SimpleUserArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
   /// **Check if a user is blocked by the authenticated user**
   ///
   /// Returns a 204 if the given user is blocked by the authenticated user. Returns a 404 if the given user is not blocked by the authenticated user, or if the given user account has been identified as spam by GitHub.
@@ -56,66 +97,21 @@ impl GitHubUsersAPI {
       .build()
   }
 
-  /// **Get a user**
+  /// **Set primary email visibility for the authenticated user**
   ///
-  /// Provides publicly available information about someone with a GitHub account.
+  /// Sets the visibility for your primary email addresses.
   ///
-  /// The `email` key in the following response is the publicly visible email address from your GitHub [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be “public” which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub. For more information, see [Authentication](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#authentication).
-  ///
-  /// The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see "[Emails API](https://docs.github.com/rest/users/emails)".
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/users#get-a-user](https://docs.github.com/rest/users/users#get-a-user)
-  pub fn get_by_username(
+  /// *Documentation*: [https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user](https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user)
+  pub fn set_primary_email_visibility_for_authenticated_user(
     &self,
-    username: impl Into<String>,
-  ) -> Request<(), (), UsersGetByUsernameResponse> {
-    let username = username.into();
-    let url = format!("/users/{username}");
+  ) -> Request<UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest, (), EmailArray> {
+    let url = format!("/user/email/visibility");
 
-    Request::<(), (), UsersGetByUsernameResponse>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List users blocked by the authenticated user**
-  ///
-  /// List the users you've blocked on your personal account.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/blocking#list-users-blocked-by-the-authenticated-user](https://docs.github.com/rest/users/blocking#list-users-blocked-by-the-authenticated-user)
-  pub fn list_blocked_by_authenticated_user(
-    &self,
-  ) -> Request<(), UsersListBlockedByAuthenticatedUserQuery, SimpleUserArray> {
-    let url = format!("/user/blocks");
-
-    Request::<(), UsersListBlockedByAuthenticatedUserQuery, SimpleUserArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get the authenticated user**
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `user` scope in order for the response to include private profile information.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/users#get-the-authenticated-user](https://docs.github.com/rest/users/users#get-the-authenticated-user)
-  pub fn get_authenticated(&self) -> Request<(), (), UsersGetAuthenticatedResponse> {
-    let url = format!("/user");
-
-    Request::<(), (), UsersGetAuthenticatedResponse>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update the authenticated user**
-  ///
-  /// **Note:** If your email is set to private and you send an `email` parameter as part of this request to update your profile, your privacy settings are still enforced: the email address will not be displayed on your public profile or via the API.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/users#update-the-authenticated-user](https://docs.github.com/rest/users/users#update-the-authenticated-user)
-  pub fn update_authenticated(&self) -> Request<UsersUpdateAuthenticatedRequest, (), PrivateUser> {
-    let url = format!("/user");
-
-    Request::<UsersUpdateAuthenticatedRequest, (), PrivateUser>::builder(&self.config)
-      .patch(url)
-      .build()
+    Request::<UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest, (), EmailArray>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
   }
 
   /// **List email addresses for the authenticated user**
@@ -166,24 +162,6 @@ impl GitHubUsersAPI {
       .build()
   }
 
-  /// **Check if a user follows another user**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/followers#check-if-a-user-follows-another-user](https://docs.github.com/rest/users/followers#check-if-a-user-follows-another-user)
-  pub fn check_following_for_user(
-    &self,
-    username: impl Into<String>,
-    target_user: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let username = username.into();
-    let target_user = target_user.into();
-    let url = format!("/users/{username}/following/{target_user}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **List followers of the authenticated user**
   ///
   /// Lists the people following the authenticated user.
@@ -201,38 +179,17 @@ impl GitHubUsersAPI {
     .build()
   }
 
-  /// **List followers of a user**
+  /// **List the people the authenticated user follows**
   ///
-  /// Lists the people following the specified user.
+  /// Lists the people who the authenticated user follows.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/users/followers#list-followers-of-a-user](https://docs.github.com/rest/users/followers#list-followers-of-a-user)
-  pub fn list_followers_for_user(
+  /// *Documentation*: [https://docs.github.com/rest/users/followers#list-the-people-the-authenticated-user-follows](https://docs.github.com/rest/users/followers#list-the-people-the-authenticated-user-follows)
+  pub fn list_followed_by_authenticated_user(
     &self,
-    username: impl Into<String>,
-  ) -> Request<(), UsersListFollowersForUserQuery, SimpleUserArray> {
-    let username = username.into();
-    let url = format!("/users/{username}/followers");
+  ) -> Request<(), UsersListFollowedByAuthenticatedUserQuery, SimpleUserArray> {
+    let url = format!("/user/following");
 
-    Request::<(), UsersListFollowersForUserQuery, SimpleUserArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List public email addresses for the authenticated user**
-  ///
-  /// Lists your publicly visible email address, which you can set with the
-  /// [Set primary email visibility for the authenticated user](https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user)
-  /// endpoint.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `user:email` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/emails#list-public-email-addresses-for-the-authenticated-user](https://docs.github.com/rest/users/emails#list-public-email-addresses-for-the-authenticated-user)
-  pub fn list_public_emails_for_authenticated_user(
-    &self,
-  ) -> Request<(), UsersListPublicEmailsForAuthenticatedUserQuery, EmailArray> {
-    let url = format!("/user/public_emails");
-
-    Request::<(), UsersListPublicEmailsForAuthenticatedUserQuery, EmailArray>::builder(&self.config)
+    Request::<(), UsersListFollowedByAuthenticatedUserQuery, SimpleUserArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -317,94 +274,75 @@ impl GitHubUsersAPI {
       .build()
   }
 
-  /// **List SSH signing keys for a user**
+  /// **Get a GPG key for the authenticated user**
   ///
-  /// Lists the SSH signing keys for a user. This operation is accessible by anyone.
+  /// View extended details for a single GPG key.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user](https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user)
-  pub fn list_ssh_signing_keys_for_user(
+  /// OAuth app tokens and personal access tokens (classic) need the `read:gpg_key` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user](https://docs.github.com/rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user)
+  pub fn get_gpg_key_for_authenticated_user(
     &self,
-    username: impl Into<String>,
-  ) -> Request<(), UsersListSshSigningKeysForUserQuery, SshSigningKeyArray> {
-    let username = username.into();
-    let url = format!("/users/{username}/ssh_signing_keys");
+    gpg_key_id: impl Into<i64>,
+  ) -> Request<(), (), GpgKey> {
+    let gpg_key_id = gpg_key_id.into();
+    let url = format!("/user/gpg_keys/{gpg_key_id}");
 
-    Request::<(), UsersListSshSigningKeysForUserQuery, SshSigningKeyArray>::builder(&self.config)
+    Request::<(), (), GpgKey>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Get an SSH signing key for the authenticated user**
+  /// **Delete a GPG key for the authenticated user**
   ///
-  /// Gets extended details for an SSH signing key.
+  /// Removes a GPG key from the authenticated user's GitHub account.
   ///
-  /// OAuth app tokens and personal access tokens (classic) need the `read:ssh_signing_key` scope to use this endpoint.
+  /// OAuth app tokens and personal access tokens (classic) need the `admin:gpg_key` scope to use this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user](https://docs.github.com/rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user)
-  pub fn get_ssh_signing_key_for_authenticated_user(
+  /// *Documentation*: [https://docs.github.com/rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user](https://docs.github.com/rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user)
+  pub fn delete_gpg_key_for_authenticated_user(
     &self,
-    ssh_signing_key_id: impl Into<i64>,
-  ) -> Request<(), (), SshSigningKey> {
-    let ssh_signing_key_id = ssh_signing_key_id.into();
-    let url = format!("/user/ssh_signing_keys/{ssh_signing_key_id}");
-
-    Request::<(), (), SshSigningKey>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Delete an SSH signing key for the authenticated user**
-  ///
-  /// Deletes an SSH signing key from the authenticated user's GitHub account.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `admin:ssh_signing_key` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user](https://docs.github.com/rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user)
-  pub fn delete_ssh_signing_key_for_authenticated_user(
-    &self,
-    ssh_signing_key_id: impl Into<i64>,
+    gpg_key_id: impl Into<i64>,
   ) -> NoContentRequest<(), ()> {
-    let ssh_signing_key_id = ssh_signing_key_id.into();
-    let url = format!("/user/ssh_signing_keys/{ssh_signing_key_id}");
+    let gpg_key_id = gpg_key_id.into();
+    let url = format!("/user/gpg_keys/{gpg_key_id}");
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
       .build()
   }
 
-  /// **List users**
+  /// **List public SSH keys for the authenticated user**
   ///
-  /// Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts.
+  /// Lists the public SSH keys for the authenticated user's GitHub account.
   ///
-  /// Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of users.
+  /// OAuth app tokens and personal access tokens (classic) need the `read:public_key` scope to use this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/users/users#list-users](https://docs.github.com/rest/users/users#list-users)
-  pub fn list(&self) -> Request<(), UsersListQuery, SimpleUserArray> {
-    let url = format!("/users");
+  /// *Documentation*: [https://docs.github.com/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user](https://docs.github.com/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user)
+  pub fn list_public_ssh_keys_for_authenticated_user(
+    &self,
+  ) -> Request<(), UsersListPublicSshKeysForAuthenticatedUserQuery, KeyArray> {
+    let url = format!("/user/keys");
 
-    Request::<(), UsersListQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), UsersListPublicSshKeysForAuthenticatedUserQuery, KeyArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Get contextual information for a user**
+  /// **Create a public SSH key for the authenticated user**
   ///
-  /// Provides hovercard information. You can find out more about someone in relation to their pull requests, issues, repositories, and organizations.
+  /// Adds a public SSH key to the authenticated user's GitHub account.
   ///
-  ///   The `subject_type` and `subject_id` parameters provide context for the person's hovercard, which returns more information than without the parameters. For example, if you wanted to find out more about `octocat` who owns the `Spoon-Knife` repository, you would use a `subject_type` value of `repository` and a `subject_id` value of `1300192` (the ID of the `Spoon-Knife` repository).
+  /// OAuth app tokens and personal access tokens (classic) need the `write:gpg_key` scope to use this endpoint.
   ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/users#get-contextual-information-for-a-user](https://docs.github.com/rest/users/users#get-contextual-information-for-a-user)
-  pub fn get_context_for_user(
+  /// *Documentation*: [https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user](https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user)
+  pub fn create_public_ssh_key_for_authenticated_user(
     &self,
-    username: impl Into<String>,
-  ) -> Request<(), UsersGetContextForUserQuery, Hovercard> {
-    let username = username.into();
-    let url = format!("/users/{username}/hovercard");
+  ) -> Request<UsersCreatePublicSshKeyForAuthenticatedUserRequest, (), Key> {
+    let url = format!("/user/keys");
 
-    Request::<(), UsersGetContextForUserQuery, Hovercard>::builder(&self.config)
-      .get(url)
+    Request::<UsersCreatePublicSshKeyForAuthenticatedUserRequest, (), Key>::builder(&self.config)
+      .post(url)
       .build()
   }
 
@@ -446,109 +384,22 @@ impl GitHubUsersAPI {
       .build()
   }
 
-  /// **List public keys for a user**
+  /// **List public email addresses for the authenticated user**
   ///
-  /// Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
+  /// Lists your publicly visible email address, which you can set with the
+  /// [Set primary email visibility for the authenticated user](https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user)
+  /// endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/users/keys#list-public-keys-for-a-user](https://docs.github.com/rest/users/keys#list-public-keys-for-a-user)
-  pub fn list_public_keys_for_user(
+  /// OAuth app tokens and personal access tokens (classic) need the `user:email` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/emails#list-public-email-addresses-for-the-authenticated-user](https://docs.github.com/rest/users/emails#list-public-email-addresses-for-the-authenticated-user)
+  pub fn list_public_emails_for_authenticated_user(
     &self,
-    username: impl Into<String>,
-  ) -> Request<(), UsersListPublicKeysForUserQuery, KeySimpleArray> {
-    let username = username.into();
-    let url = format!("/users/{username}/keys");
+  ) -> Request<(), UsersListPublicEmailsForAuthenticatedUserQuery, EmailArray> {
+    let url = format!("/user/public_emails");
 
-    Request::<(), UsersListPublicKeysForUserQuery, KeySimpleArray>::builder(&self.config)
+    Request::<(), UsersListPublicEmailsForAuthenticatedUserQuery, EmailArray>::builder(&self.config)
       .get(url)
-      .build()
-  }
-
-  /// **List GPG keys for a user**
-  ///
-  /// Lists the GPG keys for a user. This information is accessible by anyone.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-a-user](https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-a-user)
-  pub fn list_gpg_keys_for_user(
-    &self,
-    username: impl Into<String>,
-  ) -> Request<(), UsersListGpgKeysForUserQuery, GpgKeyArray> {
-    let username = username.into();
-    let url = format!("/users/{username}/gpg_keys");
-
-    Request::<(), UsersListGpgKeysForUserQuery, GpgKeyArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List social accounts for a user**
-  ///
-  /// Lists social media accounts for a user. This endpoint is accessible by anyone.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-a-user](https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-a-user)
-  pub fn list_social_accounts_for_user(
-    &self,
-    username: impl Into<String>,
-  ) -> Request<(), UsersListSocialAccountsForUserQuery, SocialAccountArray> {
-    let username = username.into();
-    let url = format!("/users/{username}/social_accounts");
-
-    Request::<(), UsersListSocialAccountsForUserQuery, SocialAccountArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List the people a user follows**
-  ///
-  /// Lists the people who the specified user follows.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/followers#list-the-people-a-user-follows](https://docs.github.com/rest/users/followers#list-the-people-a-user-follows)
-  pub fn list_following_for_user(
-    &self,
-    username: impl Into<String>,
-  ) -> Request<(), UsersListFollowingForUserQuery, SimpleUserArray> {
-    let username = username.into();
-    let url = format!("/users/{username}/following");
-
-    Request::<(), UsersListFollowingForUserQuery, SimpleUserArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get a GPG key for the authenticated user**
-  ///
-  /// View extended details for a single GPG key.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `read:gpg_key` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user](https://docs.github.com/rest/users/gpg-keys#get-a-gpg-key-for-the-authenticated-user)
-  pub fn get_gpg_key_for_authenticated_user(
-    &self,
-    gpg_key_id: impl Into<i64>,
-  ) -> Request<(), (), GpgKey> {
-    let gpg_key_id = gpg_key_id.into();
-    let url = format!("/user/gpg_keys/{gpg_key_id}");
-
-    Request::<(), (), GpgKey>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Delete a GPG key for the authenticated user**
-  ///
-  /// Removes a GPG key from the authenticated user's GitHub account.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `admin:gpg_key` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user](https://docs.github.com/rest/users/gpg-keys#delete-a-gpg-key-for-the-authenticated-user)
-  pub fn delete_gpg_key_for_authenticated_user(
-    &self,
-    gpg_key_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let gpg_key_id = gpg_key_id.into();
-    let url = format!("/user/gpg_keys/{gpg_key_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
       .build()
   }
 
@@ -645,69 +496,218 @@ impl GitHubUsersAPI {
     .build()
   }
 
-  /// **Set primary email visibility for the authenticated user**
+  /// **Get an SSH signing key for the authenticated user**
   ///
-  /// Sets the visibility for your primary email addresses.
+  /// Gets extended details for an SSH signing key.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user](https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user)
-  pub fn set_primary_email_visibility_for_authenticated_user(
+  /// OAuth app tokens and personal access tokens (classic) need the `read:ssh_signing_key` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user](https://docs.github.com/rest/users/ssh-signing-keys#get-an-ssh-signing-key-for-the-authenticated-user)
+  pub fn get_ssh_signing_key_for_authenticated_user(
     &self,
-  ) -> Request<UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest, (), EmailArray> {
-    let url = format!("/user/email/visibility");
+    ssh_signing_key_id: impl Into<i64>,
+  ) -> Request<(), (), SshSigningKey> {
+    let ssh_signing_key_id = ssh_signing_key_id.into();
+    let url = format!("/user/ssh_signing_keys/{ssh_signing_key_id}");
 
-    Request::<UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest, (), EmailArray>::builder(
-      &self.config,
-    )
-    .patch(url)
-    .build()
-  }
-
-  /// **List the people the authenticated user follows**
-  ///
-  /// Lists the people who the authenticated user follows.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/users/followers#list-the-people-the-authenticated-user-follows](https://docs.github.com/rest/users/followers#list-the-people-the-authenticated-user-follows)
-  pub fn list_followed_by_authenticated_user(
-    &self,
-  ) -> Request<(), UsersListFollowedByAuthenticatedUserQuery, SimpleUserArray> {
-    let url = format!("/user/following");
-
-    Request::<(), UsersListFollowedByAuthenticatedUserQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), (), SshSigningKey>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **List public SSH keys for the authenticated user**
+  /// **Delete an SSH signing key for the authenticated user**
   ///
-  /// Lists the public SSH keys for the authenticated user's GitHub account.
+  /// Deletes an SSH signing key from the authenticated user's GitHub account.
   ///
-  /// OAuth app tokens and personal access tokens (classic) need the `read:public_key` scope to use this endpoint.
+  /// OAuth app tokens and personal access tokens (classic) need the `admin:ssh_signing_key` scope to use this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user](https://docs.github.com/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user)
-  pub fn list_public_ssh_keys_for_authenticated_user(
+  /// *Documentation*: [https://docs.github.com/rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user](https://docs.github.com/rest/users/ssh-signing-keys#delete-an-ssh-signing-key-for-the-authenticated-user)
+  pub fn delete_ssh_signing_key_for_authenticated_user(
     &self,
-  ) -> Request<(), UsersListPublicSshKeysForAuthenticatedUserQuery, KeyArray> {
-    let url = format!("/user/keys");
+    ssh_signing_key_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let ssh_signing_key_id = ssh_signing_key_id.into();
+    let url = format!("/user/ssh_signing_keys/{ssh_signing_key_id}");
 
-    Request::<(), UsersListPublicSshKeysForAuthenticatedUserQuery, KeyArray>::builder(&self.config)
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **List users**
+  ///
+  /// Lists all users, in the order that they signed up on GitHub. This list includes personal user accounts and organization accounts.
+  ///
+  /// Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of users.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/users#list-users](https://docs.github.com/rest/users/users#list-users)
+  pub fn list(&self) -> Request<(), UsersListQuery, SimpleUserArray> {
+    let url = format!("/users");
+
+    Request::<(), UsersListQuery, SimpleUserArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Create a public SSH key for the authenticated user**
+  /// **Get a user**
   ///
-  /// Adds a public SSH key to the authenticated user's GitHub account.
+  /// Provides publicly available information about someone with a GitHub account.
   ///
-  /// OAuth app tokens and personal access tokens (classic) need the `write:gpg_key` scope to use this endpoint.
+  /// The `email` key in the following response is the publicly visible email address from your GitHub [profile page](https://github.com/settings/profile). When setting up your profile, you can select a primary email address to be “public” which provides an email entry for this endpoint. If you do not set a public email address for `email`, then it will have a value of `null`. You only see publicly visible email addresses when authenticated with GitHub. For more information, see [Authentication](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#authentication).
   ///
-  /// *Documentation*: [https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user](https://docs.github.com/rest/users/keys#create-a-public-ssh-key-for-the-authenticated-user)
-  pub fn create_public_ssh_key_for_authenticated_user(
+  /// The Emails API enables you to list all of your email addresses, and toggle a primary email to be visible publicly. For more information, see "[Emails API](https://docs.github.com/rest/users/emails)".
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/users#get-a-user](https://docs.github.com/rest/users/users#get-a-user)
+  pub fn get_by_username(
     &self,
-  ) -> Request<UsersCreatePublicSshKeyForAuthenticatedUserRequest, (), Key> {
-    let url = format!("/user/keys");
+    username: impl Into<String>,
+  ) -> Request<(), (), UsersGetByUsernameResponse> {
+    let username = username.into();
+    let url = format!("/users/{username}");
 
-    Request::<UsersCreatePublicSshKeyForAuthenticatedUserRequest, (), Key>::builder(&self.config)
-      .post(url)
+    Request::<(), (), UsersGetByUsernameResponse>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List followers of a user**
+  ///
+  /// Lists the people following the specified user.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/followers#list-followers-of-a-user](https://docs.github.com/rest/users/followers#list-followers-of-a-user)
+  pub fn list_followers_for_user(
+    &self,
+    username: impl Into<String>,
+  ) -> Request<(), UsersListFollowersForUserQuery, SimpleUserArray> {
+    let username = username.into();
+    let url = format!("/users/{username}/followers");
+
+    Request::<(), UsersListFollowersForUserQuery, SimpleUserArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List the people a user follows**
+  ///
+  /// Lists the people who the specified user follows.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/followers#list-the-people-a-user-follows](https://docs.github.com/rest/users/followers#list-the-people-a-user-follows)
+  pub fn list_following_for_user(
+    &self,
+    username: impl Into<String>,
+  ) -> Request<(), UsersListFollowingForUserQuery, SimpleUserArray> {
+    let username = username.into();
+    let url = format!("/users/{username}/following");
+
+    Request::<(), UsersListFollowingForUserQuery, SimpleUserArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Check if a user follows another user**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/followers#check-if-a-user-follows-another-user](https://docs.github.com/rest/users/followers#check-if-a-user-follows-another-user)
+  pub fn check_following_for_user(
+    &self,
+    username: impl Into<String>,
+    target_user: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let username = username.into();
+    let target_user = target_user.into();
+    let url = format!("/users/{username}/following/{target_user}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List GPG keys for a user**
+  ///
+  /// Lists the GPG keys for a user. This information is accessible by anyone.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-a-user](https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-a-user)
+  pub fn list_gpg_keys_for_user(
+    &self,
+    username: impl Into<String>,
+  ) -> Request<(), UsersListGpgKeysForUserQuery, GpgKeyArray> {
+    let username = username.into();
+    let url = format!("/users/{username}/gpg_keys");
+
+    Request::<(), UsersListGpgKeysForUserQuery, GpgKeyArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get contextual information for a user**
+  ///
+  /// Provides hovercard information. You can find out more about someone in relation to their pull requests, issues, repositories, and organizations.
+  ///
+  ///   The `subject_type` and `subject_id` parameters provide context for the person's hovercard, which returns more information than without the parameters. For example, if you wanted to find out more about `octocat` who owns the `Spoon-Knife` repository, you would use a `subject_type` value of `repository` and a `subject_id` value of `1300192` (the ID of the `Spoon-Knife` repository).
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/users#get-contextual-information-for-a-user](https://docs.github.com/rest/users/users#get-contextual-information-for-a-user)
+  pub fn get_context_for_user(
+    &self,
+    username: impl Into<String>,
+  ) -> Request<(), UsersGetContextForUserQuery, Hovercard> {
+    let username = username.into();
+    let url = format!("/users/{username}/hovercard");
+
+    Request::<(), UsersGetContextForUserQuery, Hovercard>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List public keys for a user**
+  ///
+  /// Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/keys#list-public-keys-for-a-user](https://docs.github.com/rest/users/keys#list-public-keys-for-a-user)
+  pub fn list_public_keys_for_user(
+    &self,
+    username: impl Into<String>,
+  ) -> Request<(), UsersListPublicKeysForUserQuery, KeySimpleArray> {
+    let username = username.into();
+    let url = format!("/users/{username}/keys");
+
+    Request::<(), UsersListPublicKeysForUserQuery, KeySimpleArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List social accounts for a user**
+  ///
+  /// Lists social media accounts for a user. This endpoint is accessible by anyone.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-a-user](https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-a-user)
+  pub fn list_social_accounts_for_user(
+    &self,
+    username: impl Into<String>,
+  ) -> Request<(), UsersListSocialAccountsForUserQuery, SocialAccountArray> {
+    let username = username.into();
+    let url = format!("/users/{username}/social_accounts");
+
+    Request::<(), UsersListSocialAccountsForUserQuery, SocialAccountArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List SSH signing keys for a user**
+  ///
+  /// Lists the SSH signing keys for a user. This operation is accessible by anyone.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user](https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-a-user)
+  pub fn list_ssh_signing_keys_for_user(
+    &self,
+    username: impl Into<String>,
+  ) -> Request<(), UsersListSshSigningKeysForUserQuery, SshSigningKeyArray> {
+    let username = username.into();
+    let url = format!("/users/{username}/ssh_signing_keys");
+
+    Request::<(), UsersListSshSigningKeysForUserQuery, SshSigningKeyArray>::builder(&self.config)
+      .get(url)
       .build()
   }
 }

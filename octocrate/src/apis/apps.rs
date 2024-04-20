@@ -14,90 +14,6 @@ impl GitHubAppsAPI {
     }
   }
 
-  /// **Add a repository to an app installation**
-  ///
-  /// Add a single repository to an installation. The authenticated user must have admin access to the repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation](https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation)
-  pub fn add_repo_to_installation_for_authenticated_user(
-    &self,
-    installation_id: impl Into<i64>,
-    repository_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let installation_id = installation_id.into();
-    let repository_id = repository_id.into();
-    let url = format!("/user/installations/{installation_id}/repositories/{repository_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Remove a repository from an app installation**
-  ///
-  /// Remove a single repository from an installation. The authenticated user must have admin access to the repository. The installation must have the `repository_selection` of `selected`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation](https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation)
-  pub fn remove_repo_from_installation_for_authenticated_user(
-    &self,
-    installation_id: impl Into<i64>,
-    repository_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let installation_id = installation_id.into();
-    let repository_id = repository_id.into();
-    let url = format!("/user/installations/{installation_id}/repositories/{repository_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **List subscriptions for the authenticated user (stubbed)**
-  ///
-  /// Lists the active subscriptions for the authenticated user.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed](https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed)
-  pub fn list_subscriptions_for_authenticated_user_stubbed(
-    &self,
-  ) -> Request<
-    (),
-    AppsListSubscriptionsForAuthenticatedUserStubbedQuery,
-    UserMarketplacePurchaseArray,
-  > {
-    let url = format!("/user/marketplace_purchases/stubbed");
-
-    Request::<(), AppsListSubscriptionsForAuthenticatedUserStubbedQuery, UserMarketplacePurchaseArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List app installations accessible to the user access token**
-  ///
-  /// Lists installations of your GitHub App that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
-  ///
-  /// The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
-  ///
-  /// You can find the permissions for the installation under the `permissions` key.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token](https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token)
-  pub fn list_installations_for_authenticated_user(
-    &self,
-  ) -> Request<
-    (),
-    AppsListInstallationsForAuthenticatedUserQuery,
-    AppsListInstallationsForAuthenticatedUserResponse,
-  > {
-    let url = format!("/user/installations");
-
-    Request::<
-      (),
-      AppsListInstallationsForAuthenticatedUserQuery,
-      AppsListInstallationsForAuthenticatedUserResponse,
-    >::builder(&self.config)
-    .get(url)
-    .build()
-  }
-
   /// **Get the authenticated app**
   ///
   /// Returns the GitHub App associated with the authentication credentials used. To see how many app installations are associated with this GitHub App, see the `installations_count` in the response. For more details about your app's installations, see the "[List installations for the authenticated app](https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app)" endpoint.
@@ -113,61 +29,19 @@ impl GitHubAppsAPI {
       .build()
   }
 
-  /// **Revoke an installation access token**
+  /// **Create a GitHub App from a manifest**
   ///
-  /// Revokes the installation token you're using to authenticate as an installation and access this endpoint.
+  /// Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest flow](https://docs.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/). When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
   ///
-  /// Once an installation token is revoked, the token is invalidated and cannot be used. Other endpoints that require the revoked installation token must have a new installation token to work. You can create a new token using the "[Create an installation access token for an app](https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app)" endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token](https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token)
-  pub fn revoke_installation_access_token(&self) -> NoContentRequest<(), ()> {
-    let url = format!("/installation/token");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Create a scoped access token**
-  ///
-  /// Use a non-scoped user access token to create a repository-scoped and/or permission-scoped user access token. You can specify
-  /// which repositories the token can access and which permissions are granted to the
-  /// token.
-  ///
-  /// Invalid tokens will return `404 NOT FOUND`.
-  ///
-  /// You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication)
-  /// when accessing this endpoint, using the `client_id` and `client_secret` of the GitHub App
-  /// as the username and password.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/apps#create-a-scoped-access-token](https://docs.github.com/rest/apps/apps#create-a-scoped-access-token)
-  pub fn scope_token(
+  /// *Documentation*: [https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest](https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest)
+  pub fn create_from_manifest(
     &self,
-    client_id: impl Into<String>,
-  ) -> Request<AppsScopeTokenRequest, (), Authorization> {
-    let client_id = client_id.into();
-    let url = format!("/applications/{client_id}/token/scoped");
+    code: impl Into<String>,
+  ) -> Request<(), (), AppsCreateFromManifestResponse> {
+    let code = code.into();
+    let url = format!("/app-manifests/{code}/conversions");
 
-    Request::<AppsScopeTokenRequest, (), Authorization>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Redeliver a delivery for an app webhook**
-  ///
-  /// Redeliver a delivery for the webhook configured for a GitHub App.
-  ///
-  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook](https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook)
-  pub fn redeliver_webhook_delivery(
-    &self,
-    delivery_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let delivery_id = delivery_id.into();
-    let url = format!("/app/hook/deliveries/{delivery_id}/attempts");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
+    Request::<(), (), AppsCreateFromManifestResponse>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -204,80 +78,97 @@ impl GitHubAppsAPI {
       .build()
   }
 
-  /// **Get a user installation for the authenticated app**
+  /// **List deliveries for an app webhook**
   ///
-  /// Enables an authenticated GitHub App to find the user’s installation information.
-  ///
-  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app)
-  pub fn get_user_installation(
-    &self,
-    username: impl Into<String>,
-  ) -> Request<(), (), Installation> {
-    let username = username.into();
-    let url = format!("/users/{username}/installation");
-
-    Request::<(), (), Installation>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get a repository installation for the authenticated app**
-  ///
-  /// Enables an authenticated GitHub App to find the repository's installation information. The installation's account type will be either an organization or a user account, depending which account the repository belongs to.
+  /// Returns a list of webhook deliveries for the webhook configured for a GitHub App.
   ///
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app)
-  pub fn get_repo_installation(
+  /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook](https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook)
+  pub fn list_webhook_deliveries(
     &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), Installation> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/installation");
+  ) -> Request<(), AppsListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray> {
+    let url = format!("/app/hook/deliveries");
 
-    Request::<(), (), Installation>::builder(&self.config)
+    Request::<(), AppsListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **List subscriptions for the authenticated user**
+  /// **Get a delivery for an app webhook**
   ///
-  /// Lists the active subscriptions for the authenticated user.
+  /// Returns a delivery for the webhook configured for a GitHub App.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user](https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user)
-  pub fn list_subscriptions_for_authenticated_user(
+  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook](https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook)
+  pub fn get_webhook_delivery(
     &self,
-  ) -> Request<(), AppsListSubscriptionsForAuthenticatedUserQuery, UserMarketplacePurchaseArray> {
-    let url = format!("/user/marketplace_purchases");
+    delivery_id: impl Into<i64>,
+  ) -> Request<(), (), WebhookDelivery> {
+    let delivery_id = delivery_id.into();
+    let url = format!("/app/hook/deliveries/{delivery_id}");
 
-    Request::<(), AppsListSubscriptionsForAuthenticatedUserQuery, UserMarketplacePurchaseArray>::builder(&self.config)
+    Request::<(), (), WebhookDelivery>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **List accounts for a plan (stubbed)**
+  /// **Redeliver a delivery for an app webhook**
   ///
-  /// Returns repository and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+  /// Redeliver a delivery for the webhook configured for a GitHub App.
   ///
-  /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
+  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed](https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed)
-  pub fn list_accounts_for_plan_stubbed(
+  /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook](https://docs.github.com/rest/apps/webhooks#redeliver-a-delivery-for-an-app-webhook)
+  pub fn redeliver_webhook_delivery(
     &self,
-    plan_id: impl Into<i64>,
-  ) -> Request<(), AppsListAccountsForPlanStubbedQuery, MarketplacePurchaseArray> {
-    let plan_id = plan_id.into();
-    let url = format!("/marketplace_listing/stubbed/plans/{plan_id}/accounts");
+    delivery_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let delivery_id = delivery_id.into();
+    let url = format!("/app/hook/deliveries/{delivery_id}/attempts");
 
-    Request::<(), AppsListAccountsForPlanStubbedQuery, MarketplacePurchaseArray>::builder(
-      &self.config,
-    )
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **List installation requests for the authenticated app**
+  ///
+  /// Lists all the pending installation requests for the authenticated GitHub App.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app)
+  pub fn list_installation_requests_for_authenticated_app(
+    &self,
+  ) -> Request<
+    (),
+    AppsListInstallationRequestsForAuthenticatedAppQuery,
+    IntegrationInstallationRequestArray,
+  > {
+    let url = format!("/app/installation-requests");
+
+    Request::<
+      (),
+      AppsListInstallationRequestsForAuthenticatedAppQuery,
+      IntegrationInstallationRequestArray,
+    >::builder(&self.config)
     .get(url)
     .build()
+  }
+
+  /// **List installations for the authenticated app**
+  ///
+  /// The permissions the installation has are included under the `permissions` key.
+  ///
+  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app)
+  pub fn list_installations(&self) -> Request<(), AppsListInstallationsQuery, InstallationArray> {
+    let url = format!("/app/installations");
+
+    Request::<(), AppsListInstallationsQuery, InstallationArray>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get an installation for the authenticated app**
@@ -310,6 +201,33 @@ impl GitHubAppsAPI {
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
       .build()
+  }
+
+  /// **Create an installation access token for an app**
+  ///
+  /// Creates an installation access token that enables a GitHub App to make authenticated API requests for the app's installation on an organization or individual account. Installation tokens expire one hour from the time you create them. Using an expired token produces a status code of `401 - Unauthorized`, and requires creating a new installation token. By default the installation token has access to all repositories that the installation can access.
+  ///
+  /// Optionally, you can use the `repositories` or `repository_ids` body parameters to specify individual repositories that the installation access token can access. If you don't use `repositories` or `repository_ids` to grant access to specific repositories, the installation access token will have access to all repositories that the installation was granted access to. The installation access token cannot be granted access to repositories that the installation was not granted access to. Up to 500 repositories can be listed in this manner.
+  ///
+  /// Optionally, use the `permissions` body parameter to specify the permissions that the installation access token should have. If `permissions` is not specified, the installation access token will have all of the permissions that were granted to the app. The installation access token cannot be granted permissions that the app was not granted.
+  ///
+  /// When using the repository or permission parameters to reduce the access of the token, the complexity of the token is increased due to both the number of permissions in the request and the number of repositories the token will have access to. If the complexity is too large, the token will fail to be issued. If this occurs, the error message will indicate the maximum number of repositories that should be requested. For the average application requesting 8 permissions, this limit is around 5000 repositories. With fewer permissions requested, more repositories are supported.
+  ///
+  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app](https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app)
+  pub fn create_installation_access_token(
+    &self,
+    installation_id: impl Into<i64>,
+  ) -> Request<AppsCreateInstallationAccessTokenRequest, (), InstallationToken> {
+    let installation_id = installation_id.into();
+    let url = format!("/app/installations/{installation_id}/access_tokens");
+
+    Request::<AppsCreateInstallationAccessTokenRequest, (), InstallationToken>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Suspend an app installation**
@@ -347,22 +265,21 @@ impl GitHubAppsAPI {
       .build()
   }
 
-  /// **Get a subscription plan for an account (stubbed)**
+  /// **Delete an app authorization**
   ///
-  /// Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+  /// OAuth and GitHub application owners can revoke a grant for their application and a specific user. You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. You must also provide a valid OAuth `access_token` as an input parameter and the grant for the token's owner will be deleted.
+  /// Deleting an application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
   ///
-  /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed](https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed)
-  pub fn get_subscription_plan_for_account_stubbed(
+  /// *Documentation*: [https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization](https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization)
+  pub fn delete_authorization(
     &self,
-    account_id: impl Into<i64>,
-  ) -> Request<(), (), MarketplacePurchase> {
-    let account_id = account_id.into();
-    let url = format!("/marketplace_listing/stubbed/accounts/{account_id}");
+    client_id: impl Into<String>,
+  ) -> NoContentRequest<AppsDeleteAuthorizationRequest, ()> {
+    let client_id = client_id.into();
+    let url = format!("/applications/{client_id}/grant");
 
-    Request::<(), (), MarketplacePurchase>::builder(&self.config)
-      .get(url)
+    NoContentRequest::<AppsDeleteAuthorizationRequest, ()>::builder(&self.config)
+      .delete(url)
       .build()
   }
 
@@ -417,78 +334,80 @@ impl GitHubAppsAPI {
       .build()
   }
 
-  /// **List plans (stubbed)**
+  /// **Create a scoped access token**
   ///
-  /// Lists all plans that are part of your GitHub Marketplace listing.
+  /// Use a non-scoped user access token to create a repository-scoped and/or permission-scoped user access token. You can specify
+  /// which repositories the token can access and which permissions are granted to the
+  /// token.
   ///
-  /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
+  /// Invalid tokens will return `404 NOT FOUND`.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-plans-stubbed](https://docs.github.com/rest/apps/marketplace#list-plans-stubbed)
-  pub fn list_plans_stubbed(
+  /// You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication)
+  /// when accessing this endpoint, using the `client_id` and `client_secret` of the GitHub App
+  /// as the username and password.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/apps#create-a-scoped-access-token](https://docs.github.com/rest/apps/apps#create-a-scoped-access-token)
+  pub fn scope_token(
     &self,
-  ) -> Request<(), AppsListPlansStubbedQuery, MarketplaceListingPlanArray> {
-    let url = format!("/marketplace_listing/stubbed/plans");
+    client_id: impl Into<String>,
+  ) -> Request<AppsScopeTokenRequest, (), Authorization> {
+    let client_id = client_id.into();
+    let url = format!("/applications/{client_id}/token/scoped");
 
-    Request::<(), AppsListPlansStubbedQuery, MarketplaceListingPlanArray>::builder(&self.config)
+    Request::<AppsScopeTokenRequest, (), Authorization>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get an app**
+  ///
+  /// **Note**: The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-an-app](https://docs.github.com/rest/apps/apps#get-an-app)
+  pub fn get_by_slug(&self, app_slug: impl Into<String>) -> Request<(), (), GitHubApp> {
+    let app_slug = app_slug.into();
+    let url = format!("/apps/{app_slug}");
+
+    Request::<(), (), GitHubApp>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **List installation requests for the authenticated app**
+  /// **List repositories accessible to the app installation**
   ///
-  /// Lists all the pending installation requests for the authenticated GitHub App.
+  /// List repositories that an app installation can access.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#list-installation-requests-for-the-authenticated-app)
-  pub fn list_installation_requests_for_authenticated_app(
+  /// *Documentation*: [https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation](https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation)
+  pub fn list_repos_accessible_to_installation(
     &self,
   ) -> Request<
     (),
-    AppsListInstallationRequestsForAuthenticatedAppQuery,
-    IntegrationInstallationRequestArray,
+    AppsListReposAccessibleToInstallationQuery,
+    AppsListReposAccessibleToInstallationResponse,
   > {
-    let url = format!("/app/installation-requests");
+    let url = format!("/installation/repositories");
 
     Request::<
       (),
-      AppsListInstallationRequestsForAuthenticatedAppQuery,
-      IntegrationInstallationRequestArray,
+      AppsListReposAccessibleToInstallationQuery,
+      AppsListReposAccessibleToInstallationResponse,
     >::builder(&self.config)
     .get(url)
     .build()
   }
 
-  /// **Delete an app authorization**
+  /// **Revoke an installation access token**
   ///
-  /// OAuth and GitHub application owners can revoke a grant for their application and a specific user. You must use [Basic Authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) when accessing this endpoint, using the OAuth application's `client_id` and `client_secret` as the username and password. You must also provide a valid OAuth `access_token` as an input parameter and the grant for the token's owner will be deleted.
-  /// Deleting an application's grant will also delete all OAuth tokens associated with the application for the user. Once deleted, the application will have no access to the user's account and will no longer be listed on [the application authorizations settings screen within GitHub](https://github.com/settings/applications#authorized).
+  /// Revokes the installation token you're using to authenticate as an installation and access this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization](https://docs.github.com/rest/apps/oauth-applications#delete-an-app-authorization)
-  pub fn delete_authorization(
-    &self,
-    client_id: impl Into<String>,
-  ) -> NoContentRequest<AppsDeleteAuthorizationRequest, ()> {
-    let client_id = client_id.into();
-    let url = format!("/applications/{client_id}/grant");
+  /// Once an installation token is revoked, the token is invalidated and cannot be used. Other endpoints that require the revoked installation token must have a new installation token to work. You can create a new token using the "[Create an installation access token for an app](https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app)" endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token](https://docs.github.com/rest/apps/installations#revoke-an-installation-access-token)
+  pub fn revoke_installation_access_token(&self) -> NoContentRequest<(), ()> {
+    let url = format!("/installation/token");
 
-    NoContentRequest::<AppsDeleteAuthorizationRequest, ()>::builder(&self.config)
+    NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
-      .build()
-  }
-
-  /// **List deliveries for an app webhook**
-  ///
-  /// Returns a list of webhook deliveries for the webhook configured for a GitHub App.
-  ///
-  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook](https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook)
-  pub fn list_webhook_deliveries(
-    &self,
-  ) -> Request<(), AppsListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray> {
-    let url = format!("/app/hook/deliveries");
-
-    Request::<(), AppsListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray>::builder(&self.config)
-      .get(url)
       .build()
   }
 
@@ -511,21 +430,159 @@ impl GitHubAppsAPI {
       .build()
   }
 
-  /// **Create a GitHub App from a manifest**
+  /// **List plans**
   ///
-  /// Use this endpoint to complete the handshake necessary when implementing the [GitHub App Manifest flow](https://docs.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/). When you create a GitHub App with the manifest flow, you receive a temporary `code` used to retrieve the GitHub App's `id`, `pem` (private key), and `webhook_secret`.
+  /// Lists all plans that are part of your GitHub Marketplace listing.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest](https://docs.github.com/rest/apps/apps#create-a-github-app-from-a-manifest)
-  pub fn create_from_manifest(
-    &self,
-    code: impl Into<String>,
-  ) -> Request<(), (), AppsCreateFromManifestResponse> {
-    let code = code.into();
-    let url = format!("/app-manifests/{code}/conversions");
+  /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-plans](https://docs.github.com/rest/apps/marketplace#list-plans)
+  pub fn list_plans(&self) -> Request<(), AppsListPlansQuery, MarketplaceListingPlanArray> {
+    let url = format!("/marketplace_listing/plans");
 
-    Request::<(), (), AppsCreateFromManifestResponse>::builder(&self.config)
-      .post(url)
+    Request::<(), AppsListPlansQuery, MarketplaceListingPlanArray>::builder(&self.config)
+      .get(url)
       .build()
+  }
+
+  /// **List accounts for a plan**
+  ///
+  /// Returns user and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+  ///
+  /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan](https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan)
+  pub fn list_accounts_for_plan(
+    &self,
+    plan_id: impl Into<i64>,
+  ) -> Request<(), AppsListAccountsForPlanQuery, MarketplacePurchaseArray> {
+    let plan_id = plan_id.into();
+    let url = format!("/marketplace_listing/plans/{plan_id}/accounts");
+
+    Request::<(), AppsListAccountsForPlanQuery, MarketplacePurchaseArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get a subscription plan for an account (stubbed)**
+  ///
+  /// Shows whether the user or organization account actively subscribes to a plan listed by the authenticated GitHub App. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+  ///
+  /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed](https://docs.github.com/rest/apps/marketplace#get-a-subscription-plan-for-an-account-stubbed)
+  pub fn get_subscription_plan_for_account_stubbed(
+    &self,
+    account_id: impl Into<i64>,
+  ) -> Request<(), (), MarketplacePurchase> {
+    let account_id = account_id.into();
+    let url = format!("/marketplace_listing/stubbed/accounts/{account_id}");
+
+    Request::<(), (), MarketplacePurchase>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List plans (stubbed)**
+  ///
+  /// Lists all plans that are part of your GitHub Marketplace listing.
+  ///
+  /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-plans-stubbed](https://docs.github.com/rest/apps/marketplace#list-plans-stubbed)
+  pub fn list_plans_stubbed(
+    &self,
+  ) -> Request<(), AppsListPlansStubbedQuery, MarketplaceListingPlanArray> {
+    let url = format!("/marketplace_listing/stubbed/plans");
+
+    Request::<(), AppsListPlansStubbedQuery, MarketplaceListingPlanArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List accounts for a plan (stubbed)**
+  ///
+  /// Returns repository and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
+  ///
+  /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed](https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan-stubbed)
+  pub fn list_accounts_for_plan_stubbed(
+    &self,
+    plan_id: impl Into<i64>,
+  ) -> Request<(), AppsListAccountsForPlanStubbedQuery, MarketplacePurchaseArray> {
+    let plan_id = plan_id.into();
+    let url = format!("/marketplace_listing/stubbed/plans/{plan_id}/accounts");
+
+    Request::<(), AppsListAccountsForPlanStubbedQuery, MarketplacePurchaseArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
+  }
+
+  /// **Get an organization installation for the authenticated app**
+  ///
+  /// Enables an authenticated GitHub App to find the organization's installation information.
+  ///
+  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app)
+  pub fn get_org_installation(&self, org: impl Into<String>) -> Request<(), (), Installation> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/installation");
+
+    Request::<(), (), Installation>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get a repository installation for the authenticated app**
+  ///
+  /// Enables an authenticated GitHub App to find the repository's installation information. The installation's account type will be either an organization or a user account, depending which account the repository belongs to.
+  ///
+  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#get-a-repository-installation-for-the-authenticated-app)
+  pub fn get_repo_installation(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), Installation> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/installation");
+
+    Request::<(), (), Installation>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List app installations accessible to the user access token**
+  ///
+  /// Lists installations of your GitHub App that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
+  ///
+  /// The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
+  ///
+  /// You can find the permissions for the installation under the `permissions` key.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token](https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token)
+  pub fn list_installations_for_authenticated_user(
+    &self,
+  ) -> Request<
+    (),
+    AppsListInstallationsForAuthenticatedUserQuery,
+    AppsListInstallationsForAuthenticatedUserResponse,
+  > {
+    let url = format!("/user/installations");
+
+    Request::<
+      (),
+      AppsListInstallationsForAuthenticatedUserQuery,
+      AppsListInstallationsForAuthenticatedUserResponse,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **List repositories accessible to the user access token**
@@ -557,150 +614,93 @@ impl GitHubAppsAPI {
     .build()
   }
 
-  /// **Get an organization installation for the authenticated app**
+  /// **Add a repository to an app installation**
   ///
-  /// Enables an authenticated GitHub App to find the organization's installation information.
+  /// Add a single repository to an installation. The authenticated user must have admin access to the repository.
   ///
-  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app)
-  pub fn get_org_installation(&self, org: impl Into<String>) -> Request<(), (), Installation> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/installation");
-
-    Request::<(), (), Installation>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List accounts for a plan**
-  ///
-  /// Returns user and organization accounts associated with the specified plan, including free plans. For per-seat pricing, you see the list of accounts that have purchased the plan, including the number of seats purchased. When someone submits a plan change that won't be processed until the end of their billing cycle, you will also see the upcoming pending change.
-  ///
-  /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan](https://docs.github.com/rest/apps/marketplace#list-accounts-for-a-plan)
-  pub fn list_accounts_for_plan(
-    &self,
-    plan_id: impl Into<i64>,
-  ) -> Request<(), AppsListAccountsForPlanQuery, MarketplacePurchaseArray> {
-    let plan_id = plan_id.into();
-    let url = format!("/marketplace_listing/plans/{plan_id}/accounts");
-
-    Request::<(), AppsListAccountsForPlanQuery, MarketplacePurchaseArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create an installation access token for an app**
-  ///
-  /// Creates an installation access token that enables a GitHub App to make authenticated API requests for the app's installation on an organization or individual account. Installation tokens expire one hour from the time you create them. Using an expired token produces a status code of `401 - Unauthorized`, and requires creating a new installation token. By default the installation token has access to all repositories that the installation can access.
-  ///
-  /// Optionally, you can use the `repositories` or `repository_ids` body parameters to specify individual repositories that the installation access token can access. If you don't use `repositories` or `repository_ids` to grant access to specific repositories, the installation access token will have access to all repositories that the installation was granted access to. The installation access token cannot be granted access to repositories that the installation was not granted access to. Up to 500 repositories can be listed in this manner.
-  ///
-  /// Optionally, use the `permissions` body parameter to specify the permissions that the installation access token should have. If `permissions` is not specified, the installation access token will have all of the permissions that were granted to the app. The installation access token cannot be granted permissions that the app was not granted.
-  ///
-  /// When using the repository or permission parameters to reduce the access of the token, the complexity of the token is increased due to both the number of permissions in the request and the number of repositories the token will have access to. If the complexity is too large, the token will fail to be issued. If this occurs, the error message will indicate the maximum number of repositories that should be requested. For the average application requesting 8 permissions, this limit is around 5000 repositories. With fewer permissions requested, more repositories are supported.
-  ///
-  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app](https://docs.github.com/rest/apps/apps#create-an-installation-access-token-for-an-app)
-  pub fn create_installation_access_token(
+  /// *Documentation*: [https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation](https://docs.github.com/rest/apps/installations#add-a-repository-to-an-app-installation)
+  pub fn add_repo_to_installation_for_authenticated_user(
     &self,
     installation_id: impl Into<i64>,
-  ) -> Request<AppsCreateInstallationAccessTokenRequest, (), InstallationToken> {
+    repository_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
     let installation_id = installation_id.into();
-    let url = format!("/app/installations/{installation_id}/access_tokens");
+    let repository_id = repository_id.into();
+    let url = format!("/user/installations/{installation_id}/repositories/{repository_id}");
 
-    Request::<AppsCreateInstallationAccessTokenRequest, (), InstallationToken>::builder(
-      &self.config,
-    )
-    .post(url)
-    .build()
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .put(url)
+      .build()
   }
 
-  /// **Get a delivery for an app webhook**
+  /// **Remove a repository from an app installation**
   ///
-  /// Returns a delivery for the webhook configured for a GitHub App.
+  /// Remove a single repository from an installation. The authenticated user must have admin access to the repository. The installation must have the `repository_selection` of `selected`.
   ///
-  /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook](https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook)
-  pub fn get_webhook_delivery(
+  /// *Documentation*: [https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation](https://docs.github.com/rest/apps/installations#remove-a-repository-from-an-app-installation)
+  pub fn remove_repo_from_installation_for_authenticated_user(
     &self,
-    delivery_id: impl Into<i64>,
-  ) -> Request<(), (), WebhookDelivery> {
-    let delivery_id = delivery_id.into();
-    let url = format!("/app/hook/deliveries/{delivery_id}");
+    installation_id: impl Into<i64>,
+    repository_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let installation_id = installation_id.into();
+    let repository_id = repository_id.into();
+    let url = format!("/user/installations/{installation_id}/repositories/{repository_id}");
 
-    Request::<(), (), WebhookDelivery>::builder(&self.config)
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **List subscriptions for the authenticated user**
+  ///
+  /// Lists the active subscriptions for the authenticated user.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user](https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user)
+  pub fn list_subscriptions_for_authenticated_user(
+    &self,
+  ) -> Request<(), AppsListSubscriptionsForAuthenticatedUserQuery, UserMarketplacePurchaseArray> {
+    let url = format!("/user/marketplace_purchases");
+
+    Request::<(), AppsListSubscriptionsForAuthenticatedUserQuery, UserMarketplacePurchaseArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **List repositories accessible to the app installation**
+  /// **List subscriptions for the authenticated user (stubbed)**
   ///
-  /// List repositories that an app installation can access.
+  /// Lists the active subscriptions for the authenticated user.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation](https://docs.github.com/rest/apps/installations#list-repositories-accessible-to-the-app-installation)
-  pub fn list_repos_accessible_to_installation(
+  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed](https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user-stubbed)
+  pub fn list_subscriptions_for_authenticated_user_stubbed(
     &self,
   ) -> Request<
     (),
-    AppsListReposAccessibleToInstallationQuery,
-    AppsListReposAccessibleToInstallationResponse,
+    AppsListSubscriptionsForAuthenticatedUserStubbedQuery,
+    UserMarketplacePurchaseArray,
   > {
-    let url = format!("/installation/repositories");
+    let url = format!("/user/marketplace_purchases/stubbed");
 
-    Request::<
-      (),
-      AppsListReposAccessibleToInstallationQuery,
-      AppsListReposAccessibleToInstallationResponse,
-    >::builder(&self.config)
-    .get(url)
-    .build()
+    Request::<(), AppsListSubscriptionsForAuthenticatedUserStubbedQuery, UserMarketplacePurchaseArray>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
-  /// **List installations for the authenticated app**
+  /// **Get a user installation for the authenticated app**
   ///
-  /// The permissions the installation has are included under the `permissions` key.
+  /// Enables an authenticated GitHub App to find the user’s installation information.
   ///
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app)
-  pub fn list_installations(&self) -> Request<(), AppsListInstallationsQuery, InstallationArray> {
-    let url = format!("/app/installations");
+  /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#get-a-user-installation-for-the-authenticated-app)
+  pub fn get_user_installation(
+    &self,
+    username: impl Into<String>,
+  ) -> Request<(), (), Installation> {
+    let username = username.into();
+    let url = format!("/users/{username}/installation");
 
-    Request::<(), AppsListInstallationsQuery, InstallationArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get an app**
-  ///
-  /// **Note**: The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-an-app](https://docs.github.com/rest/apps/apps#get-an-app)
-  pub fn get_by_slug(&self, app_slug: impl Into<String>) -> Request<(), (), GitHubApp> {
-    let app_slug = app_slug.into();
-    let url = format!("/apps/{app_slug}");
-
-    Request::<(), (), GitHubApp>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List plans**
-  ///
-  /// Lists all plans that are part of your GitHub Marketplace listing.
-  ///
-  /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-plans](https://docs.github.com/rest/apps/marketplace#list-plans)
-  pub fn list_plans(&self) -> Request<(), AppsListPlansQuery, MarketplaceListingPlanArray> {
-    let url = format!("/marketplace_listing/plans");
-
-    Request::<(), AppsListPlansQuery, MarketplaceListingPlanArray>::builder(&self.config)
+    Request::<(), (), Installation>::builder(&self.config)
       .get(url)
       .build()
   }

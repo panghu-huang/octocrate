@@ -13,6 +13,27 @@ impl GitHubCodeScanningAPI {
     }
   }
 
+  /// **List code scanning alerts for an organization**
+  ///
+  /// Lists code scanning alerts for the default branch for all eligible repositories in an organization. Eligible repositories are repositories that are owned by organizations that you own or for which you are a security manager. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+  ///
+  /// The authenticated user must be an owner or security manager for the organization to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `security_events` or `repo`s cope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization](https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization)
+  pub fn list_alerts_for_org(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), CodeScanningListAlertsForOrgQuery, CodeScanningOrganizationAlertItemsArray> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/code-scanning/alerts");
+
+    Request::<(), CodeScanningListAlertsForOrgQuery, CodeScanningOrganizationAlertItemsArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
   /// **List code scanning alerts for a repository**
   ///
   /// Lists code scanning alerts.
@@ -40,32 +61,48 @@ impl GitHubCodeScanningAPI {
     .build()
   }
 
-  /// **Get a CodeQL database for a repository**
+  /// **Get a code scanning alert**
   ///
-  /// Gets a CodeQL database for a language in a repository.
-  ///
-  /// By default this endpoint returns JSON metadata about the CodeQL database. To
-  /// download the CodeQL database binary content, set the `Accept` header of the request
-  /// to [`application/zip`](https://docs.github.com/rest/overview/media-types), and make sure
-  /// your HTTP client is configured to follow redirects or use the `Location` header
-  /// to make a second request to get the redirect URL.
+  /// Gets a single code scanning alert.
   ///
   /// OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository](https://docs.github.com/rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository)
-  pub fn get_codeql_database(
+  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-alert](https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-alert)
+  pub fn get_alert(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    language: impl Into<String>,
-  ) -> Request<(), (), CodeQLDatabase> {
+    alert_number: impl Into<serde_json::Value>,
+  ) -> Request<(), (), CodeScanningAlert> {
     let owner = owner.into();
     let repo = repo.into();
-    let language = language.into();
-    let url = format!("/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}");
+    let alert_number = alert_number.into();
+    let url = format!("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}");
 
-    Request::<(), (), CodeQLDatabase>::builder(&self.config)
+    Request::<(), (), CodeScanningAlert>::builder(&self.config)
       .get(url)
+      .build()
+  }
+
+  /// **Update a code scanning alert**
+  ///
+  /// Updates the status of a single code scanning alert.
+  /// OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#update-a-code-scanning-alert](https://docs.github.com/rest/code-scanning/code-scanning#update-a-code-scanning-alert)
+  pub fn update_alert(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    alert_number: impl Into<serde_json::Value>,
+  ) -> Request<CodeScanningUpdateAlertRequest, (), CodeScanningAlert> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let alert_number = alert_number.into();
+    let url = format!("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}");
+
+    Request::<CodeScanningUpdateAlertRequest, (), CodeScanningAlert>::builder(&self.config)
+      .patch(url)
       .build()
   }
 
@@ -88,6 +125,41 @@ impl GitHubCodeScanningAPI {
     let url = format!("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances");
 
     Request::<(), CodeScanningListAlertInstancesQuery, CodeScanningAlertInstanceArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
+  }
+
+  /// **List code scanning analyses for a repository**
+  ///
+  /// Lists the details of all code scanning analyses for a repository,
+  /// starting with the most recent.
+  /// The response is paginated and you can use the `page` and `per_page` parameters
+  /// to list the analyses you're interested in.
+  /// By default 30 analyses are listed per page.
+  ///
+  /// The `rules_count` field in the response give the number of rules
+  /// that were run in the analysis.
+  /// For very old analyses this data is not available,
+  /// and `0` is returned in this field.
+  ///
+  /// **Deprecation notice**:
+  /// The `tool_name` field is deprecated and will, in future, not be included in the response for this endpoint. The example response reflects this change. The tool name can now be found inside the `tool` field.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository](https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository)
+  pub fn list_recent_analyses(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), CodeScanningListRecentAnalysesQuery, CodeScanningAnalysisArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/code-scanning/analyses");
+
+    Request::<(), CodeScanningListRecentAnalysesQuery, CodeScanningAnalysisArray>::builder(
       &self.config,
     )
     .get(url)
@@ -236,61 +308,33 @@ impl GitHubCodeScanningAPI {
       .build()
   }
 
-  /// **Get information about a SARIF upload**
+  /// **Get a CodeQL database for a repository**
   ///
-  /// Gets information about a SARIF upload, including the status and the URL of the analysis that was uploaded so that you can retrieve details of the analysis. For more information, see "[Get a code scanning analysis for a repository](/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository)."
+  /// Gets a CodeQL database for a language in a repository.
+  ///
+  /// By default this endpoint returns JSON metadata about the CodeQL database. To
+  /// download the CodeQL database binary content, set the `Accept` header of the request
+  /// to [`application/zip`](https://docs.github.com/rest/overview/media-types), and make sure
+  /// your HTTP client is configured to follow redirects or use the `Location` header
+  /// to make a second request to get the redirect URL.
+  ///
   /// OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload](https://docs.github.com/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload)
-  pub fn get_sarif(
+  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository](https://docs.github.com/rest/code-scanning/code-scanning#get-a-codeql-database-for-a-repository)
+  pub fn get_codeql_database(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    sarif_id: impl Into<String>,
-  ) -> Request<(), (), CodeScanningSarifsStatus> {
+    language: impl Into<String>,
+  ) -> Request<(), (), CodeQLDatabase> {
     let owner = owner.into();
     let repo = repo.into();
-    let sarif_id = sarif_id.into();
-    let url = format!("/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}");
+    let language = language.into();
+    let url = format!("/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}");
 
-    Request::<(), (), CodeScanningSarifsStatus>::builder(&self.config)
+    Request::<(), (), CodeQLDatabase>::builder(&self.config)
       .get(url)
       .build()
-  }
-
-  /// **List code scanning analyses for a repository**
-  ///
-  /// Lists the details of all code scanning analyses for a repository,
-  /// starting with the most recent.
-  /// The response is paginated and you can use the `page` and `per_page` parameters
-  /// to list the analyses you're interested in.
-  /// By default 30 analyses are listed per page.
-  ///
-  /// The `rules_count` field in the response give the number of rules
-  /// that were run in the analysis.
-  /// For very old analyses this data is not available,
-  /// and `0` is returned in this field.
-  ///
-  /// **Deprecation notice**:
-  /// The `tool_name` field is deprecated and will, in future, not be included in the response for this endpoint. The example response reflects this change. The tool name can now be found inside the `tool` field.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository](https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-analyses-for-a-repository)
-  pub fn list_recent_analyses(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), CodeScanningListRecentAnalysesQuery, CodeScanningAnalysisArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/code-scanning/analyses");
-
-    Request::<(), CodeScanningListRecentAnalysesQuery, CodeScanningAnalysisArray>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
   }
 
   /// **Get a code scanning default setup configuration**
@@ -387,68 +431,24 @@ impl GitHubCodeScanningAPI {
       .build()
   }
 
-  /// **Get a code scanning alert**
+  /// **Get information about a SARIF upload**
   ///
-  /// Gets a single code scanning alert.
-  ///
+  /// Gets information about a SARIF upload, including the status and the URL of the analysis that was uploaded so that you can retrieve details of the analysis. For more information, see "[Get a code scanning analysis for a repository](/rest/code-scanning/code-scanning#get-a-code-scanning-analysis-for-a-repository)."
   /// OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-alert](https://docs.github.com/rest/code-scanning/code-scanning#get-a-code-scanning-alert)
-  pub fn get_alert(
+  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload](https://docs.github.com/rest/code-scanning/code-scanning#get-information-about-a-sarif-upload)
+  pub fn get_sarif(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    alert_number: impl Into<serde_json::Value>,
-  ) -> Request<(), (), CodeScanningAlert> {
+    sarif_id: impl Into<String>,
+  ) -> Request<(), (), CodeScanningSarifsStatus> {
     let owner = owner.into();
     let repo = repo.into();
-    let alert_number = alert_number.into();
-    let url = format!("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}");
+    let sarif_id = sarif_id.into();
+    let url = format!("/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}");
 
-    Request::<(), (), CodeScanningAlert>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update a code scanning alert**
-  ///
-  /// Updates the status of a single code scanning alert.
-  /// OAuth app tokens and personal access tokens (classic) need the `security_events` scope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#update-a-code-scanning-alert](https://docs.github.com/rest/code-scanning/code-scanning#update-a-code-scanning-alert)
-  pub fn update_alert(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    alert_number: impl Into<serde_json::Value>,
-  ) -> Request<CodeScanningUpdateAlertRequest, (), CodeScanningAlert> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let alert_number = alert_number.into();
-    let url = format!("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}");
-
-    Request::<CodeScanningUpdateAlertRequest, (), CodeScanningAlert>::builder(&self.config)
-      .patch(url)
-      .build()
-  }
-
-  /// **List code scanning alerts for an organization**
-  ///
-  /// Lists code scanning alerts for the default branch for all eligible repositories in an organization. Eligible repositories are repositories that are owned by organizations that you own or for which you are a security manager. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
-  ///
-  /// The authenticated user must be an owner or security manager for the organization to use this endpoint.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `security_events` or `repo`s cope to use this endpoint with private or public repositories, or the `public_repo` scope to use this endpoint with only public repositories.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization](https://docs.github.com/rest/code-scanning/code-scanning#list-code-scanning-alerts-for-an-organization)
-  pub fn list_alerts_for_org(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<(), CodeScanningListAlertsForOrgQuery, CodeScanningOrganizationAlertItemsArray> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/code-scanning/alerts");
-
-    Request::<(), CodeScanningListAlertsForOrgQuery, CodeScanningOrganizationAlertItemsArray>::builder(&self.config)
+    Request::<(), (), CodeScanningSarifsStatus>::builder(&self.config)
       .get(url)
       .build()
   }
