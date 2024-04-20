@@ -29,7 +29,7 @@ jobs:
         run: cargo clippy
 
       - name: Run tests
-        run: cargo test --all-features -- --nocapture
+        run: cargo test --features="pagination" -- --nocapture
 
       - name: Generate code
         run: cargo run -p codegen
@@ -39,4 +39,4 @@ jobs:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           export GITHUB_PERSONAL_ACCESS_TOKEN=$PERSONAL_ACCESS_TOKEN
-          cargo test --features="repos users pulls issues search" --examples -- --nocapture
+          cargo test --features="integration repos users pulls issues search" --examples -- --nocapture

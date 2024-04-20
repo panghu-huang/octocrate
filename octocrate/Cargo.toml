@@ -67,42 +67,42 @@ dotenv = { workspace = true }
 [[example]]
 name = "commits"
 path = "examples/commits.rs"
-required-features = ["repos"]
+required-features = ["integration", "repos"]
 test = true
 
 [[example]]
 name = "repos"
 path = "examples/repos.rs"
-required-features = ["repos"]
+required-features = ["integration", "repos"]
 test = true
 
 [[example]]
 name = "users"
 path = "examples/users.rs"
-required-features = ["users"]
+required-features = ["integration", "users"]
 test = true
 
 [[example]]
 name = "pulls"
 path = "examples/pulls.rs"
-required-features = ["pulls"]
+required-features = ["integration", "pulls"]
 test = true
 
 [[example]]
 name = "apps"
 path = "examples/apps.rs"
-required-features = ["apps", "repos"]
+required-features = ["integration", "apps", "repos"]
 test = true
 
 [[example]]
 name = "issues"
 path = "examples/issues.rs"
-required-features = ["issues"]
+required-features = ["integration", "issues"]
 test = true
 
 
 [[example]]
 name = "search"
 path = "examples/search.rs"
-required-features = ["search"]
+required-features = ["integration", "search"]
 test = true
