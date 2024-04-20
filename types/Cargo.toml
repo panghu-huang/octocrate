@@ -12,7 +12,7 @@ description.workspace = true
 categories.workspace = true
 
 [features]
-full = []
+full = ["pagination"]
 apps = []
 actions = []
 activity = []

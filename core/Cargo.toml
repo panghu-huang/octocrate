@@ -13,6 +13,8 @@ categories.workspace = true
 
 
 [features]
+full = ["octocrate-types/full"]
+apps = ["octocrate-types/apps"]
 pagination = ["octocrate-types/pagination"]
 
 [dependencies]

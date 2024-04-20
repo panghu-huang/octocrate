@@ -12,7 +12,7 @@ description.workspace = true
 categories.workspace = true
 
 [features]
-full = ["octocrate-types/full", "chrono"]
+full = ["octocrate-types/full", "pagination", "chrono"]
 apps = ["octocrate-types/apps", "chrono"]
 actions = ["octocrate-types/actions"]
 activity = ["octocrate-types/activity"]
