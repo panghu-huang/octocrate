@@ -124,19 +124,19 @@ impl ParseContext {
           ParsedData::Enum(enum_) => {
             for field in &enum_.fields {
               if let Some(field_reference) = &field.reference {
-                self.reference_existing(&field_reference);
+                self.reference_existing(field_reference);
               }
             }
           }
           ParsedData::Type(type_) => {
             if let Some(field_reference) = &type_.reference {
-              self.reference_existing(&field_reference);
+              self.reference_existing(field_reference);
             }
           }
           ParsedData::Struct(struct_) => {
             for field in &struct_.fields {
               if let Some(field_reference) = &field.reference {
-                self.reference_existing(&field_reference);
+                self.reference_existing(field_reference);
               }
             }
           }
@@ -162,7 +162,7 @@ impl ParseContext {
   }
 
   pub fn set_working_tag(&mut self, tag: &String) {
-    self.working_tag = Some(tag.replace("-", "_"));
+    self.working_tag = Some(tag.replace('-', "_"));
   }
 
   pub fn add_tag_description(&mut self, tag: &String, description: &String) {
@@ -240,8 +240,7 @@ impl ParseContext {
       .api_description
       .components
       .schemas
-      .get(name)
-      .map(|component| component.clone())
+      .get(name).cloned()
   }
 
   pub fn get_parameter(&self, name: &String) -> Option<Parameter> {
@@ -249,7 +248,6 @@ impl ParseContext {
       .api_description
       .components
       .parameters
-      .get(name)
-      .map(|parameter| parameter.clone())
+      .get(name).cloned()
   }
 }

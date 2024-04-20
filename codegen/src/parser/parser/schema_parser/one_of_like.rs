@@ -83,7 +83,7 @@ impl SchemaParser {
         let title = match schema {
           SchemaDefinition::Ref(_) => None,
           SchemaDefinition::Schema(schema) => schema.title.as_ref().and_then(|title| {
-            if !title.contains("_") {
+            if !title.contains('_') {
               Some(title.clone())
             } else {
               None
@@ -155,7 +155,7 @@ impl SchemaParser {
           let title = match schema {
             SchemaDefinition::Ref(_) => None,
             SchemaDefinition::Schema(schema) => schema.title.as_ref().and_then(|title| {
-              if !title.contains("_") {
+              if !title.contains('_') {
                 Some(title.clone())
               } else {
                 None
@@ -172,7 +172,7 @@ impl SchemaParser {
 
               let struct_name = &struct_.name;
 
-              if check_if_same_name(&struct_name, &enum_) {
+              if check_if_same_name(struct_name, &enum_) {
                 // has_same_name = true;
                 continue;
               }
@@ -197,7 +197,7 @@ impl SchemaParser {
               }
 
               let enum_name = &generated.name;
-              if check_if_same_name(&enum_name, &enum_) {
+              if check_if_same_name(enum_name, &enum_) {
                 // has_same_name = true;
                 continue;
               }
@@ -233,13 +233,13 @@ impl SchemaParser {
                   None => &type_.type_name,
                 };
 
-                let mut enum_field = EnumField::new(&type_name);
+                let mut enum_field = EnumField::new(type_name);
 
                 if let Some(reference) = &type_.reference {
                   enum_field.reference(reference);
                 }
 
-                enum_field.set_type_name(&type_name);
+                enum_field.set_type_name(type_name);
 
                 enum_.add_field(enum_field);
               }

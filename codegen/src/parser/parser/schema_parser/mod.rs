@@ -48,10 +48,8 @@ impl SchemaParser {
         match ctx.reference_existing(&reference_id) {
           Some(parsed) => parsed.inner,
           None => {
-            let schema = ctx.get_component(&reference_id).expect(&format!(
-              "Failed to find reference schema with id: {}",
-              reference_id
-            ));
+            let schema = ctx.get_component(&reference_id).unwrap_or_else(|| panic!("Failed to find reference schema with id: {}",
+              reference_id));
 
             let previous_prefixs = self.prefixs.clone();
 
@@ -61,7 +59,7 @@ impl SchemaParser {
               .title
               .clone()
               .and_then(|title| {
-                if title.contains("_") {
+                if title.contains('_') {
                   None
                 } else {
                   Some(title)
@@ -84,7 +82,7 @@ impl SchemaParser {
 
   fn parse_schema(&mut self, ctx: &mut ParseContext, schema: &Schema) -> ParsedData {
     if schema.enum_.is_some() {
-      return self.parse_enum(ctx, &schema);
+      return self.parse_enum(ctx, schema);
     }
 
     if schema.one_of.is_some() || schema.all_of.is_some() || schema.any_of.is_some() {
@@ -92,11 +90,11 @@ impl SchemaParser {
     }
 
     if schema.items.is_some() {
-      return self.parse_items(ctx, &schema);
+      return self.parse_items(ctx, schema);
     }
 
     if schema.properties.is_some() {
-      return self.parse_properties(ctx, &schema);
+      return self.parse_properties(ctx, schema);
     }
 
     let schema_types = if let Some(types) = &schema.type_ {

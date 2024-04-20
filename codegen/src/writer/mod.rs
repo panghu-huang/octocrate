@@ -37,7 +37,7 @@ impl<'a> Writer<'a> {
 
   pub fn write(&self) {
     for file in &self.files {
-      file.write(&self.path);
+      file.write(self.path);
     }
   }
 }

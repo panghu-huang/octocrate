@@ -49,7 +49,7 @@ impl SchemaParser {
 
     if is_optional {
       return ParsedData::Type(Type::new_with_reference(
-        &format!("Option<{}>", enum_.name.to_string()),
+        &format!("Option<{}>", enum_.name),
         &enum_.name,
       ));
     }

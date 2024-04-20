@@ -135,9 +135,9 @@ impl IntoIterator for &Paths {
   }
 }
 
-impl Into<Option<SchemaDefinition>> for ContentOrRef {
-  fn into(self) -> Option<SchemaDefinition> {
-    match self {
+impl From<ContentOrRef> for Option<SchemaDefinition> {
+  fn from(val: ContentOrRef) -> Self {
+    match val {
       ContentOrRef::Content { content } => match content {
         Some(content) => content.application_json.map(|json| json.schema),
         None => None,

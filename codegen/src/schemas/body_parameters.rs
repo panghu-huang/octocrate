@@ -147,7 +147,7 @@ mod body_parameters_tests {
     assert_eq!(body_parameter.description, "<p>Specify which security and analysis features to enable or disable for the repository.</p>\n<p>To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see \"<a href=\"https://docs.github.com/enterprise-cloud@latest//organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization\">Managing security managers in your organization</a>.\"</p>\n<p>For example, to enable GitHub Advanced Security, use this data in the body of the <code>PATCH</code> request:\n<code>{ \"security_and_analysis\": {\"advanced_security\": { \"status\": \"enabled\" } } }</code>.</p>\n<p>You can check which security and analysis features are currently enabled by using a <code>GET /repos/{owner}/{repo}</code> request.</p>");
     assert!(body_parameter.required.is_none());
     assert_eq!(body_parameter.type_, BodyParameterType::ObjectOrNull);
-    assert_eq!(body_parameter.child_params_group.is_some(), true);
+    assert!(body_parameter.child_params_group.is_some());
     assert_eq!(body_parameter.enum_, None);
 
     let child_params_group = body_parameter.child_params_group.as_ref().unwrap();
@@ -160,7 +160,7 @@ mod body_parameters_tests {
     assert_eq!(child_params_group.description, "<p>Use the <code>status</code> property to enable or disable GitHub Advanced Security for this repository. For more information, see \"<a href=\"/github/getting-started-with-github/learning-about-github/about-github-advanced-security\">About GitHub Advanced Security</a>.\"</p>");
     assert!(body_parameter.required.is_none());
     assert_eq!(child_params_group.type_, BodyParameterType::Object);
-    assert_eq!(child_params_group.child_params_group.is_some(), true);
+    assert!(child_params_group.child_params_group.is_some());
 
     let child_params_group = child_params_group.child_params_group.as_ref().unwrap();
 

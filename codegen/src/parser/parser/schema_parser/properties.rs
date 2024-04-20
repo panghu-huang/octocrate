@@ -16,7 +16,7 @@ impl SchemaParser {
     if schema
       .title
       .as_ref()
-      .is_some_and(|title| !title.contains("_"))
+      .is_some_and(|title| !title.contains('_'))
     {
       let title = schema.title.as_ref().unwrap();
       struct_name = title.to_string();
@@ -38,7 +38,7 @@ impl SchemaParser {
 
       for (name, schema) in properties {
         self.prefixs.push(name.clone());
-        let parsed = self.parse_schema_definition(ctx, &schema);
+        let parsed = self.parse_schema_definition(ctx, schema);
         self.prefixs.pop();
 
         let description = if let SchemaDefinition::Schema(schema) = &schema {
@@ -49,7 +49,7 @@ impl SchemaParser {
 
         match parsed {
           ParsedData::Struct(generated) => {
-            let mut struct_field = StructField::new(&name, &generated.name);
+            let mut struct_field = StructField::new(name, &generated.name);
 
             if let Some(description) = &description {
               struct_field.set_description(description);
@@ -61,7 +61,7 @@ impl SchemaParser {
             struct_.add_field(struct_field);
           }
           ParsedData::Enum(generated) => {
-            let mut struct_field = StructField::new(&name, &generated.name);
+            let mut struct_field = StructField::new(name, &generated.name);
 
             if let Some(description) = &description {
               struct_field.set_description(description);
@@ -73,7 +73,7 @@ impl SchemaParser {
             struct_.add_field(struct_field);
           }
           ParsedData::Type(type_) => {
-            let mut struct_field = StructField::new(&name, &type_.type_name);
+            let mut struct_field = StructField::new(name, &type_.type_name);
 
             if let Some(description) = &description {
               struct_field.set_description(description);
@@ -90,7 +90,7 @@ impl SchemaParser {
         struct_.set_description(description);
       }
 
-      let required = schema.required.clone().unwrap_or(vec![]);
+      let required = schema.required.clone().unwrap_or_default();
 
       for field in struct_.fields.iter_mut() {
         let field_name = field
@@ -118,7 +118,7 @@ impl SchemaParser {
 
       let type_name = schema_types.to_full_type_with_object(&struct_.name.to_string());
 
-      if type_name != struct_.name.to_string() {
+      if type_name != struct_.name {
         // ctx.record_reference_type(&struct_.name.to_string(), struct_.clone());
 
         return ParsedData::Type(Type::new_with_reference(&type_name, &struct_.name));

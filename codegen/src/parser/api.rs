@@ -39,10 +39,10 @@ pub struct API {
 
 impl API {
   pub fn parse(ctx: &mut ParseContext, method: &String, path: &String, schema: &APISchema) -> Self {
-    let api_name = schema.operation_id.split("/").last().unwrap().to_string();
+    let api_name = schema.operation_id.split('/').last().unwrap().to_string();
     let api_name = RenameRule::FieldName.apply(&api_name);
 
-    let scope_name = RenameRule::FieldName.apply(&schema.operation_id.replace("/", "-"));
+    let scope_name = RenameRule::FieldName.apply(&schema.operation_id.replace('/', "-"));
 
     let method = Method::try_from(method).unwrap();
 
@@ -151,7 +151,7 @@ impl API {
       .filter(|(_, res)| res.is_some())
       .collect::<Vec<_>>();
 
-    if available_responses.len() == 0 {
+    if available_responses.is_empty() {
       return None;
     }
 
@@ -159,7 +159,7 @@ impl API {
       let parsed = schema_parser.parse(
         ctx,
         &format!("{}_response", scope_name),
-        &available_responses[0].1.as_ref().unwrap(),
+        available_responses[0].1.as_ref().unwrap(),
       );
 
       ctx.add_reference(&parsed.name(), parsed.clone());

@@ -62,28 +62,28 @@ impl Codegen {
       let webhook = webhook
         .post
         .clone()
-        .expect(format!("No post for webhook {}", name).as_str());
+        .unwrap_or_else(|| panic!("No post for webhook {}", name));
 
       let request_body = webhook
         .request_body
         .clone()
-        .expect(format!("No request body for webhook {}", name).as_str());
+        .unwrap_or_else(|| panic!("No request body for webhook {}", name));
 
       let body_schema: Option<SchemaDefinition> = request_body.into();
 
       if let Some(body_schema) = body_schema {
-        let parsed = schema_parser.parse(&mut parse_context, &name, &body_schema);
+        let parsed = schema_parser.parse(&mut parse_context, name, &body_schema);
 
         match &parsed {
           ParsedData::Struct(struct_) => {
-            let mut field = EnumField::new(&name);
+            let mut field = EnumField::new(name);
 
             field.set_type_name(&struct_.name);
 
             enum_.add_field(field);
           }
           ParsedData::Enum(generated) => {
-            let mut field = EnumField::new(&name);
+            let mut field = EnumField::new(name);
 
             field.set_type_name(&generated.name);
 
@@ -114,7 +114,7 @@ impl Codegen {
   }
 
   pub fn write_apis(&self, parsed: ParsedAPIDescription, path: &PathBuf) {
-    let mut writer = Writer::new(&path);
+    let mut writer = Writer::new(path);
 
     // APIs
     println!("Writing apis to file system");
@@ -204,7 +204,7 @@ impl Codegen {
   }
 
   pub fn write_types(&self, parsed: ParsedAPIDescription, path: &PathBuf) {
-    let mut writer = Writer::new(&path);
+    let mut writer = Writer::new(path);
 
     println!("Writing to file system");
 
@@ -214,7 +214,7 @@ impl Codegen {
     let mut types_module = TypeModule::new("models");
 
     for (_, type_) in parsed.types.iter() {
-      types_module.add_type(&type_);
+      types_module.add_type(type_);
     }
 
     type_entry_module.add_module("models");
@@ -225,7 +225,7 @@ impl Codegen {
     let mut webhooks_module = TypeModule::new("webhooks");
 
     for (_, type_) in parsed.webhooks.iter() {
-      webhooks_module.add_type(&type_);
+      webhooks_module.add_type(type_);
     }
 
     type_entry_module.add_module("webhooks");
