@@ -2,8 +2,9 @@ use crate::{
   parser::{api::API, ParsedData},
   schemas::{parameters::Parameter, schema::Schema, APIDescription},
 };
+use indexmap::IndexMap;
 use indicatif::{ProgressBar, ProgressStyle};
-use std::{collections::HashMap, sync::Mutex};
+use std::sync::Mutex;
 
 pub type IdentifierOrName = String;
 
@@ -23,14 +24,14 @@ pub struct TypeReference {
 }
 
 struct ParseContextInner {
-  references: HashMap<IdentifierOrName, TypeReference>,
-  apis: HashMap<APITag, Vec<API>>,
+  references: IndexMap<IdentifierOrName, TypeReference>,
+  apis: IndexMap<APITag, Vec<API>>,
 }
 
 pub struct ParseContext {
   stage: Stage,
   working_tag: Option<String>,
-  tags: HashMap<String, String>,
+  tags: IndexMap<String, String>,
   api_description: APIDescription,
   inner: Mutex<ParseContextInner>,
   progress_bar: ProgressBar,
@@ -54,12 +55,12 @@ impl ParseContext {
     Self {
       stage: Stage::ParsingAPI,
       working_tag: None,
-      tags: HashMap::new(),
+      tags: IndexMap::new(),
       api_description,
       progress_bar,
       inner: Mutex::new(ParseContextInner {
-        references: HashMap::new(),
-        apis: HashMap::new(),
+        references: IndexMap::new(),
+        apis: IndexMap::new(),
       }),
     }
   }
@@ -70,11 +71,11 @@ impl ParseContext {
       stage: Stage::ParsingAPI,
       working_tag: None,
       progress_bar: ProgressBar::new_spinner(),
-      tags: HashMap::new(),
+      tags: IndexMap::new(),
       api_description: APIDescription::default(),
       inner: Mutex::new(ParseContextInner {
-        references: HashMap::new(),
-        apis: HashMap::new(),
+        references: IndexMap::new(),
+        apis: IndexMap::new(),
       }),
     }
   }
@@ -169,7 +170,7 @@ impl ParseContext {
     self.tags.insert(tag.clone(), description.clone());
   }
 
-  pub fn get_apis(&self) -> HashMap<APITag, Vec<API>> {
+  pub fn get_apis(&self) -> IndexMap<APITag, Vec<API>> {
     self
       .inner
       .lock()
@@ -178,7 +179,7 @@ impl ParseContext {
       .clone()
   }
 
-  pub fn get_tags(&self) -> HashMap<String, String> {
+  pub fn get_tags(&self) -> IndexMap<String, String> {
     self.tags.clone()
   }
 
@@ -211,7 +212,7 @@ impl ParseContext {
     self.progress_bar.finish_with_message("✅ Finished parsing");
   }
 
-  pub fn get_references(&self) -> HashMap<IdentifierOrName, ParsedData> {
+  pub fn get_references(&self) -> IndexMap<IdentifierOrName, ParsedData> {
     self
       .inner
       .lock()
@@ -223,7 +224,7 @@ impl ParseContext {
       .collect()
   }
 
-  pub fn get_webhooks(&self) -> HashMap<IdentifierOrName, ParsedData> {
+  pub fn get_webhooks(&self) -> IndexMap<IdentifierOrName, ParsedData> {
     self
       .inner
       .lock()

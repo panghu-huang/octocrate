@@ -1,3 +1,5 @@
+use indexmap::IndexMap;
+
 use crate::{
   parser::{api::API, context::ParseContext, parser::schema_parser::SchemaParser, ParsedData},
   schemas::{schema::SchemaDefinition, APIDescription},
@@ -6,14 +8,14 @@ use crate::{
     APIEntryModule, APIFunction, APIModule, Directory, TypeEntryModule, TypeModule, Writer,
   },
 };
-use std::{collections::HashMap, path::PathBuf};
+use std::path::PathBuf;
 
 #[derive(Clone)]
 pub struct ParsedAPIDescription {
-  tags: HashMap<String, String>,
-  types: HashMap<String, ParsedData>,
-  webhooks: HashMap<String, ParsedData>,
-  apis: HashMap<String, Vec<API>>,
+  tags: IndexMap<String, String>,
+  types: IndexMap<String, ParsedData>,
+  webhooks: IndexMap<String, ParsedData>,
+  apis: IndexMap<String, Vec<API>>,
 }
 
 pub struct Codegen;
