@@ -1,9 +1,9 @@
 mod models;
 mod webhooks;
 
-use serde::{Serialize, Deserialize};
 #[allow(unused_imports)]
 pub use models::*;
+use serde::{Deserialize, Serialize};
 #[allow(unused_imports)]
 pub use webhooks::*;
 
@@ -11,54 +11,54 @@ pub use webhooks::*;
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(untagged)]
 pub enum StringOrInteger {
-    String(String),
-    Number(i64),
+  String(String),
+  Number(i64),
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(untagged)]
 pub enum StringOrNumber {
-    String(String),
-    Number(f64),
+  String(String),
+  Number(f64),
 }
 
 /// Predefined types
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(untagged)]
 pub enum ObjectOrString<T> {
-    String(String),
-    Object(T),
+  String(String),
+  Object(T),
 }
 
 /// Predefined types
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(untagged)]
 pub enum StringOrBool {
-    String(String),
-    Bool(bool),
+  String(String),
+  Bool(bool),
 }
 
 /// Predefined types
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum ReadWritePermission {
-    #[serde(rename = "read")]
-    Read,
-    #[serde(rename = "write")]
-    Write,
+  #[serde(rename = "read")]
+  Read,
+  #[serde(rename = "write")]
+  Write,
 }
 
 /// Predefined types
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum ReadPermission {
-    #[serde(rename = "read")]
-    Read,
+  #[serde(rename = "read")]
+  Read,
 }
 
 /// Predefined types
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum WritePermission {
-    #[serde(rename = "write")]
-    Write,
+  #[serde(rename = "write")]
+  Write,
 }
 
 impl std::fmt::Display for StringOrNumber {

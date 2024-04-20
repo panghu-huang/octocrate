@@ -794,6 +794,7 @@ dependencies = [
  "derive_builder",
  "dotenv",
  "octocrate-core",
+ "octocrate-types",
  "serde",
  "serde_json",
  "tokio",
@@ -810,6 +811,16 @@ dependencies = [
  "serde_json",
  "thiserror",
  "tokio",
+]
+
+[[package]]
+name = "octocrate-types"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "derive_builder",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
