@@ -8,6 +8,7 @@ use crate::{
 };
 use std::{collections::HashMap, path::PathBuf};
 
+#[derive(Clone)]
 pub struct ParsedAPIDescription {
   tags: HashMap<String, String>,
   types: HashMap<String, ParsedData>,
@@ -112,41 +113,8 @@ impl Codegen {
     }
   }
 
-  pub fn write(&self, parsed: ParsedAPIDescription, path: &PathBuf) {
+  pub fn write_apis(&self, parsed: ParsedAPIDescription, path: &PathBuf) {
     let mut writer = Writer::new(&path);
-
-    println!("Writing to file system");
-    // Types
-    let mut directory = Directory::new("types");
-
-    let mut type_entry_module = TypeEntryModule::new();
-    // Types
-    let mut types_module = TypeModule::new("models");
-
-    for (_, type_) in parsed.types {
-      types_module.add_type(&type_);
-    }
-
-    type_entry_module.add_module("models");
-
-    directory.add_file(types_module);
-
-    // Webhooks
-    let mut webhooks_module = TypeModule::new("webhooks");
-
-    for (_, type_) in parsed.webhooks {
-      webhooks_module.add_type(&type_);
-    }
-
-    type_entry_module.add_module("webhooks");
-
-    directory.add_file(webhooks_module);
-
-    // Add type entry module
-    directory.add_file(type_entry_module);
-
-    // Add types directory
-    writer.add_file(directory);
 
     // APIs
     println!("Writing apis to file system");
@@ -229,6 +197,43 @@ impl Codegen {
     directory.add_file(api_entry_module);
 
     writer.add_file(directory);
+
+    writer.write();
+
+    println!("Finished writing");
+  }
+
+  pub fn write_types(&self, parsed: ParsedAPIDescription, path: &PathBuf) {
+    let mut writer = Writer::new(&path);
+
+    println!("Writing to file system");
+
+    let mut type_entry_module = TypeEntryModule::new("lib.rs");
+
+    // Types
+    let mut types_module = TypeModule::new("models");
+
+    for (_, type_) in parsed.types.iter() {
+      types_module.add_type(&type_);
+    }
+
+    type_entry_module.add_module("models");
+
+    writer.add_file(types_module);
+
+    // Webhooks
+    let mut webhooks_module = TypeModule::new("webhooks");
+
+    for (_, type_) in parsed.webhooks.iter() {
+      webhooks_module.add_type(&type_);
+    }
+
+    type_entry_module.add_module("webhooks");
+
+    writer.add_file(webhooks_module);
+
+    // Add type entry module
+    writer.add_file(type_entry_module);
 
     writer.write();
 

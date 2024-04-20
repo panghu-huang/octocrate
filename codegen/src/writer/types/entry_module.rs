@@ -4,13 +4,15 @@ use serde::Serialize;
 
 #[derive(Serialize)]
 pub struct TypeEntryModule {
+  name: String,
   modules: Vec<String>,
 }
 
 impl TypeEntryModule {
-  pub fn new() -> TypeEntryModule {
+  pub fn new(name: impl Into<String>) -> TypeEntryModule {
     TypeEntryModule {
       modules: Vec::new(),
+      name: name.into(),
     }
   }
 
@@ -21,7 +23,7 @@ impl TypeEntryModule {
 
 impl File for TypeEntryModule {
   fn file_name(&self) -> String {
-    "mod.rs".to_string()
+    self.name.clone()
   }
 
   fn write(&self, path: &std::path::PathBuf) {
@@ -43,12 +45,10 @@ mod tests {
   fn test_render() {
     let template = include_str!("../../../templates/types/entry_module.hbs");
 
-    let mut module = TypeEntryModule::new();
+    let mut module = TypeEntryModule::new("mod.rs");
 
     module.add_module("test_module");
 
     let _rendered = render_template(template, &module);
-
-    // println!("{}", rendered);
   }
 }
