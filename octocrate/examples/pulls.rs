@@ -23,8 +23,7 @@ async fn test_list_pull_request() {
       &PullsListQuery::builder()
         .state(PullsListQueryState::Open)
         .per_page(10)
-        .build()
-        .unwrap(),
+        .build(),
     )
     .send()
     .await
