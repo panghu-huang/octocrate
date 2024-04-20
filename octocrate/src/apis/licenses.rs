@@ -1,6 +1,6 @@
-#[allow(unused_imports)]
-use crate::types::*;
 use octocrate_core::*;
+#[allow(unused_imports)]
+use octocrate_types::*;
 
 /// View various OSS licenses.
 pub struct GitHubLicensesAPI {
@@ -12,6 +12,21 @@ impl GitHubLicensesAPI {
     Self {
       config: config.clone(),
     }
+  }
+
+  /// **Get all commonly used licenses**
+  ///
+  /// Lists the most commonly used licenses on GitHub. For more information, see "[Licensing a repository ](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses](https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses)
+  pub fn get_all_commonly_used(
+    &self,
+  ) -> Request<(), LicensesGetAllCommonlyUsedQuery, LicenseSimpleArray> {
+    let url = format!("/licenses");
+
+    Request::<(), LicensesGetAllCommonlyUsedQuery, LicenseSimpleArray>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get the license for a repository**
@@ -34,21 +49,6 @@ impl GitHubLicensesAPI {
     let url = format!("/repos/{owner}/{repo}/license");
 
     Request::<(), LicensesGetForRepoQuery, LicenseContent>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get all commonly used licenses**
-  ///
-  /// Lists the most commonly used licenses on GitHub. For more information, see "[Licensing a repository ](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)."
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses](https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses)
-  pub fn get_all_commonly_used(
-    &self,
-  ) -> Request<(), LicensesGetAllCommonlyUsedQuery, LicenseSimpleArray> {
-    let url = format!("/licenses");
-
-    Request::<(), LicensesGetAllCommonlyUsedQuery, LicenseSimpleArray>::builder(&self.config)
       .get(url)
       .build()
   }

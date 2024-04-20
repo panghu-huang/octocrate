@@ -1,6 +1,6 @@
-#[allow(unused_imports)]
-use crate::types::*;
 use octocrate_core::*;
+#[allow(unused_imports)]
+use octocrate_types::*;
 
 /// Interact with GitHub Projects.
 pub struct GitHubProjectsAPI {
@@ -14,90 +14,159 @@ impl GitHubProjectsAPI {
     }
   }
 
-  /// **Move a project column**
+  /// **Get a project card**
   ///
+  /// Gets information about a project card.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/columns#move-a-project-column](https://docs.github.com/rest/projects/columns#move-a-project-column)
-  pub fn move_column(
-    &self,
-    column_id: impl Into<i64>,
-  ) -> Request<ProjectsMoveColumnRequest, (), ProjectsMoveColumnResponse> {
-    let column_id = column_id.into();
-    let url = format!("/projects/columns/{column_id}/moves");
+  /// *Documentation*: [https://docs.github.com/rest/projects/cards#get-a-project-card](https://docs.github.com/rest/projects/cards#get-a-project-card)
+  pub fn get_card(&self, card_id: impl Into<i64>) -> Request<(), (), ProjectCard> {
+    let card_id = card_id.into();
+    let url = format!("/projects/columns/cards/{card_id}");
 
-    Request::<ProjectsMoveColumnRequest, (), ProjectsMoveColumnResponse>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **List user projects**
-  ///
-  /// Lists projects for a user.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/projects#list-user-projects](https://docs.github.com/rest/projects/projects#list-user-projects)
-  pub fn list_for_user(
-    &self,
-    username: impl Into<String>,
-  ) -> Request<(), ProjectsListForUserQuery, ProjectArray> {
-    let username = username.into();
-    let url = format!("/users/{username}/projects");
-
-    Request::<(), ProjectsListForUserQuery, ProjectArray>::builder(&self.config)
+    Request::<(), (), ProjectCard>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Add project collaborator**
+  /// **Update an existing project card**
   ///
-  /// Adds a collaborator to an organization project and sets their permission level. You must be an organization owner or a project `admin` to add a collaborator.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/collaborators#add-project-collaborator](https://docs.github.com/rest/projects/collaborators#add-project-collaborator)
-  pub fn add_collaborator(
+  /// *Documentation*: [https://docs.github.com/rest/projects/cards#update-an-existing-project-card](https://docs.github.com/rest/projects/cards#update-an-existing-project-card)
+  pub fn update_card(
     &self,
-    project_id: impl Into<i64>,
-    username: impl Into<String>,
-  ) -> NoContentRequest<ProjectsAddCollaboratorRequest, ()> {
-    let project_id = project_id.into();
-    let username = username.into();
-    let url = format!("/projects/{project_id}/collaborators/{username}");
+    card_id: impl Into<i64>,
+  ) -> Request<ProjectsUpdateCardRequest, (), ProjectCard> {
+    let card_id = card_id.into();
+    let url = format!("/projects/columns/cards/{card_id}");
 
-    NoContentRequest::<ProjectsAddCollaboratorRequest, ()>::builder(&self.config)
-      .put(url)
+    Request::<ProjectsUpdateCardRequest, (), ProjectCard>::builder(&self.config)
+      .patch(url)
       .build()
   }
 
-  /// **Remove user as a collaborator**
+  /// **Delete a project card**
   ///
-  /// Removes a collaborator from an organization project. You must be an organization owner or a project `admin` to remove a collaborator.
+  /// Deletes a project card
   ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/collaborators#remove-user-as-a-collaborator](https://docs.github.com/rest/projects/collaborators#remove-user-as-a-collaborator)
-  pub fn remove_collaborator(
-    &self,
-    project_id: impl Into<i64>,
-    username: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let project_id = project_id.into();
-    let username = username.into();
-    let url = format!("/projects/{project_id}/collaborators/{username}");
+  /// *Documentation*: [https://docs.github.com/rest/projects/cards#delete-a-project-card](https://docs.github.com/rest/projects/cards#delete-a-project-card)
+  pub fn delete_card(&self, card_id: impl Into<i64>) -> NoContentRequest<(), ()> {
+    let card_id = card_id.into();
+    let url = format!("/projects/columns/cards/{card_id}");
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
       .build()
   }
 
-  /// **Move a project card**
+  /// **Create a user project**
   ///
+  /// Creates a user project board. Returns a `410 Gone` status if the user does not have existing classic projects. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/cards#move-a-project-card](https://docs.github.com/rest/projects/cards#move-a-project-card)
-  pub fn move_card(
+  /// *Documentation*: [https://docs.github.com/rest/projects/projects#create-a-user-project](https://docs.github.com/rest/projects/projects#create-a-user-project)
+  pub fn create_for_authenticated_user(
     &self,
-    card_id: impl Into<i64>,
-  ) -> Request<ProjectsMoveCardRequest, (), ProjectsMoveCardResponse> {
-    let card_id = card_id.into();
-    let url = format!("/projects/columns/cards/{card_id}/moves");
+  ) -> Request<ProjectsCreateForAuthenticatedUserRequest, (), Project> {
+    let url = format!("/user/projects");
 
-    Request::<ProjectsMoveCardRequest, (), ProjectsMoveCardResponse>::builder(&self.config)
+    Request::<ProjectsCreateForAuthenticatedUserRequest, (), Project>::builder(&self.config)
       .post(url)
+      .build()
+  }
+
+  /// **List repository projects**
+  ///
+  /// Lists the projects in a repository. Returns a `404 Not Found` status if projects are disabled in the repository. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/projects/projects#list-repository-projects](https://docs.github.com/rest/projects/projects#list-repository-projects)
+  pub fn list_for_repo(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ProjectsListForRepoQuery, ProjectArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/projects");
+
+    Request::<(), ProjectsListForRepoQuery, ProjectArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create a repository project**
+  ///
+  /// Creates a repository project board. Returns a `410 Gone` status if projects are disabled in the repository or if the repository does not have existing classic projects. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/projects/projects#create-a-repository-project](https://docs.github.com/rest/projects/projects#create-a-repository-project)
+  pub fn create_for_repo(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ProjectsCreateForRepoRequest, (), Project> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/projects");
+
+    Request::<ProjectsCreateForRepoRequest, (), Project>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get a project**
+  ///
+  /// Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/projects/projects#get-a-project](https://docs.github.com/rest/projects/projects#get-a-project)
+  pub fn get(&self, project_id: impl Into<i64>) -> Request<(), (), Project> {
+    let project_id = project_id.into();
+    let url = format!("/projects/{project_id}");
+
+    Request::<(), (), Project>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update a project**
+  ///
+  /// Updates a project board's information. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/projects/projects#update-a-project](https://docs.github.com/rest/projects/projects#update-a-project)
+  pub fn update(&self, project_id: impl Into<i64>) -> Request<ProjectsUpdateRequest, (), Project> {
+    let project_id = project_id.into();
+    let url = format!("/projects/{project_id}");
+
+    Request::<ProjectsUpdateRequest, (), Project>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **Delete a project**
+  ///
+  /// Deletes a project board. Returns a `404 Not Found` status if projects are disabled.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/projects/projects#delete-a-project](https://docs.github.com/rest/projects/projects#delete-a-project)
+  pub fn delete(&self, project_id: impl Into<i64>) -> NoContentRequest<(), ()> {
+    let project_id = project_id.into();
+    let url = format!("/projects/{project_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **List project collaborators**
+  ///
+  /// Lists the collaborators for an organization project. For a project, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners. You must be an organization owner or a project `admin` to list collaborators.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/projects/collaborators#list-project-collaborators](https://docs.github.com/rest/projects/collaborators#list-project-collaborators)
+  pub fn list_collaborators(
+    &self,
+    project_id: impl Into<i64>,
+  ) -> Request<(), ProjectsListCollaboratorsQuery, SimpleUserArray> {
+    let project_id = project_id.into();
+    let url = format!("/projects/{project_id}/collaborators");
+
+    Request::<(), ProjectsListCollaboratorsQuery, SimpleUserArray>::builder(&self.config)
+      .get(url)
       .build()
   }
 
@@ -145,45 +214,72 @@ impl GitHubProjectsAPI {
       .build()
   }
 
-  /// **Get a project**
+  /// **Get project permission for a user**
   ///
-  /// Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
+  /// Returns the collaborator's permission level for an organization project. Possible values for the `permission` key: `admin`, `write`, `read`, `none`. You must be an organization owner or a project `admin` to review a user's permission level.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/projects#get-a-project](https://docs.github.com/rest/projects/projects#get-a-project)
-  pub fn get(&self, project_id: impl Into<i64>) -> Request<(), (), Project> {
+  /// *Documentation*: [https://docs.github.com/rest/projects/collaborators#get-project-permission-for-a-user](https://docs.github.com/rest/projects/collaborators#get-project-permission-for-a-user)
+  pub fn get_permission_for_user(
+    &self,
+    project_id: impl Into<i64>,
+    username: impl Into<String>,
+  ) -> Request<(), (), ProjectCollaboratorPermission> {
     let project_id = project_id.into();
-    let url = format!("/projects/{project_id}");
+    let username = username.into();
+    let url = format!("/projects/{project_id}/collaborators/{username}/permission");
 
-    Request::<(), (), Project>::builder(&self.config)
+    Request::<(), (), ProjectCollaboratorPermission>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Update a project**
+  /// **Move a project card**
   ///
-  /// Updates a project board's information. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/projects#update-a-project](https://docs.github.com/rest/projects/projects#update-a-project)
-  pub fn update(&self, project_id: impl Into<i64>) -> Request<ProjectsUpdateRequest, (), Project> {
-    let project_id = project_id.into();
-    let url = format!("/projects/{project_id}");
+  /// *Documentation*: [https://docs.github.com/rest/projects/cards#move-a-project-card](https://docs.github.com/rest/projects/cards#move-a-project-card)
+  pub fn move_card(
+    &self,
+    card_id: impl Into<i64>,
+  ) -> Request<ProjectsMoveCardRequest, (), ProjectsMoveCardResponse> {
+    let card_id = card_id.into();
+    let url = format!("/projects/columns/cards/{card_id}/moves");
 
-    Request::<ProjectsUpdateRequest, (), Project>::builder(&self.config)
-      .patch(url)
+    Request::<ProjectsMoveCardRequest, (), ProjectsMoveCardResponse>::builder(&self.config)
+      .post(url)
       .build()
   }
 
-  /// **Delete a project**
+  /// **List project columns**
   ///
-  /// Deletes a project board. Returns a `404 Not Found` status if projects are disabled.
+  /// Lists the project columns in a project.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/projects#delete-a-project](https://docs.github.com/rest/projects/projects#delete-a-project)
-  pub fn delete(&self, project_id: impl Into<i64>) -> NoContentRequest<(), ()> {
+  /// *Documentation*: [https://docs.github.com/rest/projects/columns#list-project-columns](https://docs.github.com/rest/projects/columns#list-project-columns)
+  pub fn list_columns(
+    &self,
+    project_id: impl Into<i64>,
+  ) -> Request<(), ProjectsListColumnsQuery, ProjectColumnArray> {
     let project_id = project_id.into();
-    let url = format!("/projects/{project_id}");
+    let url = format!("/projects/{project_id}/columns");
 
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
+    Request::<(), ProjectsListColumnsQuery, ProjectColumnArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create a project column**
+  ///
+  /// Creates a new project column.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/projects/columns#create-a-project-column](https://docs.github.com/rest/projects/columns#create-a-project-column)
+  pub fn create_column(
+    &self,
+    project_id: impl Into<i64>,
+  ) -> Request<ProjectsCreateColumnRequest, (), ProjectColumn> {
+    let project_id = project_id.into();
+    let url = format!("/projects/{project_id}/columns");
+
+    Request::<ProjectsCreateColumnRequest, (), ProjectColumn>::builder(&self.config)
+      .post(url)
       .build()
   }
 
@@ -221,61 +317,6 @@ impl GitHubProjectsAPI {
       .build()
   }
 
-  /// **List project collaborators**
-  ///
-  /// Lists the collaborators for an organization project. For a project, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners. You must be an organization owner or a project `admin` to list collaborators.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/collaborators#list-project-collaborators](https://docs.github.com/rest/projects/collaborators#list-project-collaborators)
-  pub fn list_collaborators(
-    &self,
-    project_id: impl Into<i64>,
-  ) -> Request<(), ProjectsListCollaboratorsQuery, SimpleUserArray> {
-    let project_id = project_id.into();
-    let url = format!("/projects/{project_id}/collaborators");
-
-    Request::<(), ProjectsListCollaboratorsQuery, SimpleUserArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List repository projects**
-  ///
-  /// Lists the projects in a repository. Returns a `404 Not Found` status if projects are disabled in the repository. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/projects#list-repository-projects](https://docs.github.com/rest/projects/projects#list-repository-projects)
-  pub fn list_for_repo(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ProjectsListForRepoQuery, ProjectArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/projects");
-
-    Request::<(), ProjectsListForRepoQuery, ProjectArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a repository project**
-  ///
-  /// Creates a repository project board. Returns a `410 Gone` status if projects are disabled in the repository or if the repository does not have existing classic projects. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/projects#create-a-repository-project](https://docs.github.com/rest/projects/projects#create-a-repository-project)
-  pub fn create_for_repo(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ProjectsCreateForRepoRequest, (), Project> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/projects");
-
-    Request::<ProjectsCreateForRepoRequest, (), Project>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
   /// **List project cards**
   ///
   /// Lists the project cards in a project.
@@ -309,115 +350,74 @@ impl GitHubProjectsAPI {
       .build()
   }
 
-  /// **Get a project card**
+  /// **List user projects**
   ///
-  /// Gets information about a project card.
+  /// Lists projects for a user.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/cards#get-a-project-card](https://docs.github.com/rest/projects/cards#get-a-project-card)
-  pub fn get_card(&self, card_id: impl Into<i64>) -> Request<(), (), ProjectCard> {
-    let card_id = card_id.into();
-    let url = format!("/projects/columns/cards/{card_id}");
+  /// *Documentation*: [https://docs.github.com/rest/projects/projects#list-user-projects](https://docs.github.com/rest/projects/projects#list-user-projects)
+  pub fn list_for_user(
+    &self,
+    username: impl Into<String>,
+  ) -> Request<(), ProjectsListForUserQuery, ProjectArray> {
+    let username = username.into();
+    let url = format!("/users/{username}/projects");
 
-    Request::<(), (), ProjectCard>::builder(&self.config)
+    Request::<(), ProjectsListForUserQuery, ProjectArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Update an existing project card**
+  /// **Move a project column**
   ///
   ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/cards#update-an-existing-project-card](https://docs.github.com/rest/projects/cards#update-an-existing-project-card)
-  pub fn update_card(
+  /// *Documentation*: [https://docs.github.com/rest/projects/columns#move-a-project-column](https://docs.github.com/rest/projects/columns#move-a-project-column)
+  pub fn move_column(
     &self,
-    card_id: impl Into<i64>,
-  ) -> Request<ProjectsUpdateCardRequest, (), ProjectCard> {
-    let card_id = card_id.into();
-    let url = format!("/projects/columns/cards/{card_id}");
+    column_id: impl Into<i64>,
+  ) -> Request<ProjectsMoveColumnRequest, (), ProjectsMoveColumnResponse> {
+    let column_id = column_id.into();
+    let url = format!("/projects/columns/{column_id}/moves");
 
-    Request::<ProjectsUpdateCardRequest, (), ProjectCard>::builder(&self.config)
-      .patch(url)
+    Request::<ProjectsMoveColumnRequest, (), ProjectsMoveColumnResponse>::builder(&self.config)
+      .post(url)
       .build()
   }
 
-  /// **Delete a project card**
+  /// **Add project collaborator**
   ///
-  /// Deletes a project card
+  /// Adds a collaborator to an organization project and sets their permission level. You must be an organization owner or a project `admin` to add a collaborator.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/cards#delete-a-project-card](https://docs.github.com/rest/projects/cards#delete-a-project-card)
-  pub fn delete_card(&self, card_id: impl Into<i64>) -> NoContentRequest<(), ()> {
-    let card_id = card_id.into();
-    let url = format!("/projects/columns/cards/{card_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Get project permission for a user**
-  ///
-  /// Returns the collaborator's permission level for an organization project. Possible values for the `permission` key: `admin`, `write`, `read`, `none`. You must be an organization owner or a project `admin` to review a user's permission level.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/collaborators#get-project-permission-for-a-user](https://docs.github.com/rest/projects/collaborators#get-project-permission-for-a-user)
-  pub fn get_permission_for_user(
+  /// *Documentation*: [https://docs.github.com/rest/projects/collaborators#add-project-collaborator](https://docs.github.com/rest/projects/collaborators#add-project-collaborator)
+  pub fn add_collaborator(
     &self,
     project_id: impl Into<i64>,
     username: impl Into<String>,
-  ) -> Request<(), (), ProjectCollaboratorPermission> {
+  ) -> NoContentRequest<ProjectsAddCollaboratorRequest, ()> {
     let project_id = project_id.into();
     let username = username.into();
-    let url = format!("/projects/{project_id}/collaborators/{username}/permission");
+    let url = format!("/projects/{project_id}/collaborators/{username}");
 
-    Request::<(), (), ProjectCollaboratorPermission>::builder(&self.config)
-      .get(url)
+    NoContentRequest::<ProjectsAddCollaboratorRequest, ()>::builder(&self.config)
+      .put(url)
       .build()
   }
 
-  /// **Create a user project**
+  /// **Remove user as a collaborator**
   ///
-  /// Creates a user project board. Returns a `410 Gone` status if the user does not have existing classic projects. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
+  /// Removes a collaborator from an organization project. You must be an organization owner or a project `admin` to remove a collaborator.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/projects#create-a-user-project](https://docs.github.com/rest/projects/projects#create-a-user-project)
-  pub fn create_for_authenticated_user(
-    &self,
-  ) -> Request<ProjectsCreateForAuthenticatedUserRequest, (), Project> {
-    let url = format!("/user/projects");
-
-    Request::<ProjectsCreateForAuthenticatedUserRequest, (), Project>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **List project columns**
-  ///
-  /// Lists the project columns in a project.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/columns#list-project-columns](https://docs.github.com/rest/projects/columns#list-project-columns)
-  pub fn list_columns(
+  /// *Documentation*: [https://docs.github.com/rest/projects/collaborators#remove-user-as-a-collaborator](https://docs.github.com/rest/projects/collaborators#remove-user-as-a-collaborator)
+  pub fn remove_collaborator(
     &self,
     project_id: impl Into<i64>,
-  ) -> Request<(), ProjectsListColumnsQuery, ProjectColumnArray> {
+    username: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
     let project_id = project_id.into();
-    let url = format!("/projects/{project_id}/columns");
+    let username = username.into();
+    let url = format!("/projects/{project_id}/collaborators/{username}");
 
-    Request::<(), ProjectsListColumnsQuery, ProjectColumnArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a project column**
-  ///
-  /// Creates a new project column.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/projects/columns#create-a-project-column](https://docs.github.com/rest/projects/columns#create-a-project-column)
-  pub fn create_column(
-    &self,
-    project_id: impl Into<i64>,
-  ) -> Request<ProjectsCreateColumnRequest, (), ProjectColumn> {
-    let project_id = project_id.into();
-    let url = format!("/projects/{project_id}/columns");
-
-    Request::<ProjectsCreateColumnRequest, (), ProjectColumn>::builder(&self.config)
-      .post(url)
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
       .build()
   }
 }

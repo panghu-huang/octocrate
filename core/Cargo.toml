@@ -11,7 +11,11 @@ readme.workspace = true
 description.workspace = true
 categories.workspace = true
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[features]
+full = ["octocrate-types/full"]
+apps = ["octocrate-types/apps"]
+pagination = ["octocrate-types/pagination"]
 
 [dependencies]
 serde_json = { workspace = true }
@@ -19,6 +23,7 @@ reqwest = { workspace = true, features = ["json"] }
 serde = { workspace = true, features = ["derive"] }
 thiserror = { workspace = true }
 jsonwebtoken = { workspace = true, features = ["use_pem"] }
+octocrate-types = { workspace = true }
 chrono = { workspace = true }
 
 [dev-dependencies]

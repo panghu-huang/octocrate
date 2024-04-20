@@ -1,6 +1,6 @@
-#[allow(unused_imports)]
-use crate::types::*;
 use octocrate_core::*;
+#[allow(unused_imports)]
+use octocrate_types::*;
 
 /// Endpoints to manage GitHub OIDC configuration using the REST API.
 pub struct GitHubOidcAPI {

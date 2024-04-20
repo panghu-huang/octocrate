@@ -1,6 +1,6 @@
-#[allow(unused_imports)]
-use crate::types::*;
 use octocrate_core::*;
+#[allow(unused_imports)]
+use octocrate_types::*;
 
 /// View gitignore templates
 pub struct GitHubGitignoreAPI {
@@ -12,19 +12,6 @@ impl GitHubGitignoreAPI {
     Self {
       config: config.clone(),
     }
-  }
-
-  /// **Get all gitignore templates**
-  ///
-  /// List all templates available to pass as an option when [creating a repository](https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user).
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates](https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates)
-  pub fn get_all_templates(&self) -> Request<(), (), StringArray> {
-    let url = format!("/gitignore/templates");
-
-    Request::<(), (), StringArray>::builder(&self.config)
-      .get(url)
-      .build()
   }
 
   /// **Get a gitignore template**
@@ -41,6 +28,19 @@ impl GitHubGitignoreAPI {
     let url = format!("/gitignore/templates/{name}");
 
     Request::<(), (), GitignoreTemplate>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get all gitignore templates**
+  ///
+  /// List all templates available to pass as an option when [creating a repository](https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user).
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates](https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates)
+  pub fn get_all_templates(&self) -> Request<(), (), StringArray> {
+    let url = format!("/gitignore/templates");
+
+    Request::<(), (), StringArray>::builder(&self.config)
       .get(url)
       .build()
   }

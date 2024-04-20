@@ -12,7 +12,7 @@ description.workspace = true
 categories.workspace = true
 
 [features]
-full = ["octocrate-types/full", "chrono"]
+full = ["octocrate-types/full", "pagination", "chrono"]
 apps = ["octocrate-types/apps", "chrono"]
 actions = ["octocrate-types/actions"]
 activity = ["octocrate-types/activity"]
@@ -50,6 +50,7 @@ security_advisories = ["octocrate-types/security_advisories"]
 interactions = ["octocrate-types/interactions"]
 classroom = ["octocrate-types/classroom"]
 desktop = ["octocrate-types/desktop"]
+pagination = ["octocrate-types/pagination", "octocrate-core/pagination"]
 
 [dependencies]
 serde_json = { workspace = true }
@@ -104,4 +105,10 @@ test = true
 name = "search"
 path = "examples/search.rs"
 required-features = ["search"]
+test = true
+
+[[example]]
+name = "pagination"
+path = "examples/pagination.rs"
+required-features = ["pagination", "repos"]
 test = true

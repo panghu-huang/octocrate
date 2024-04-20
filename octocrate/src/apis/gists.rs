@@ -1,6 +1,6 @@
-#[allow(unused_imports)]
-use crate::types::*;
 use octocrate_core::*;
+#[allow(unused_imports)]
+use octocrate_types::*;
 
 /// View, modify your gists.
 pub struct GitHubGistsAPI {
@@ -12,82 +12,6 @@ impl GitHubGistsAPI {
     Self {
       config: config.clone(),
     }
-  }
-
-  /// **List public gists**
-  ///
-  /// List public gists sorted by most recently updated to least recently updated.
-  ///
-  /// Note: With [pagination](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-public-gists](https://docs.github.com/rest/gists/gists#list-public-gists)
-  pub fn list_public(&self) -> Request<(), GistsListPublicQuery, BaseGistArray> {
-    let url = format!("/gists/public");
-
-    Request::<(), GistsListPublicQuery, BaseGistArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List gists for the authenticated user**
-  ///
-  /// Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user](https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user)
-  pub fn list(&self) -> Request<(), GistsListQuery, BaseGistArray> {
-    let url = format!("/gists");
-
-    Request::<(), GistsListQuery, BaseGistArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a gist**
-  ///
-  /// Allows you to add a new gist with one or more files.
-  ///
-  /// **Note:** Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/gists/gists#create-a-gist](https://docs.github.com/rest/gists/gists#create-a-gist)
-  pub fn create(&self) -> Request<GistsCreateRequest, (), GistSimple> {
-    let url = format!("/gists");
-
-    Request::<GistsCreateRequest, (), GistSimple>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **List gists for a user**
-  ///
-  /// Lists public gists for the specified user:
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-gists-for-a-user](https://docs.github.com/rest/gists/gists#list-gists-for-a-user)
-  pub fn list_for_user(
-    &self,
-    username: impl Into<String>,
-  ) -> Request<(), GistsListForUserQuery, BaseGistArray> {
-    let username = username.into();
-    let url = format!("/users/{username}/gists");
-
-    Request::<(), GistsListForUserQuery, BaseGistArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List gist commits**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-gist-commits](https://docs.github.com/rest/gists/gists#list-gist-commits)
-  pub fn list_commits(
-    &self,
-    gist_id: impl Into<String>,
-  ) -> Request<(), GistsListCommitsQuery, GistCommitArray> {
-    let gist_id = gist_id.into();
-    let url = format!("/gists/{gist_id}/commits");
-
-    Request::<(), GistsListCommitsQuery, GistCommitArray>::builder(&self.config)
-      .get(url)
-      .build()
   }
 
   /// **Get a gist**
@@ -142,6 +66,50 @@ impl GitHubGistsAPI {
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
+      .build()
+  }
+
+  /// **List gist commits**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-gist-commits](https://docs.github.com/rest/gists/gists#list-gist-commits)
+  pub fn list_commits(
+    &self,
+    gist_id: impl Into<String>,
+  ) -> Request<(), GistsListCommitsQuery, GistCommitArray> {
+    let gist_id = gist_id.into();
+    let url = format!("/gists/{gist_id}/commits");
+
+    Request::<(), GistsListCommitsQuery, GistCommitArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List gists for the authenticated user**
+  ///
+  /// Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user](https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user)
+  pub fn list(&self) -> Request<(), GistsListQuery, BaseGistArray> {
+    let url = format!("/gists");
+
+    Request::<(), GistsListQuery, BaseGistArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create a gist**
+  ///
+  /// Allows you to add a new gist with one or more files.
+  ///
+  /// **Note:** Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/gists/gists#create-a-gist](https://docs.github.com/rest/gists/gists#create-a-gist)
+  pub fn create(&self) -> Request<GistsCreateRequest, (), GistSimple> {
+    let url = format!("/gists");
+
+    Request::<GistsCreateRequest, (), GistSimple>::builder(&self.config)
+      .post(url)
       .build()
   }
 
@@ -208,43 +176,6 @@ impl GitHubGistsAPI {
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
-      .build()
-  }
-
-  /// **Get a gist revision**
-  ///
-  /// Gets a specified gist revision.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/gists/gists#get-a-gist-revision](https://docs.github.com/rest/gists/gists#get-a-gist-revision)
-  pub fn get_revision(
-    &self,
-    gist_id: impl Into<String>,
-    sha: impl Into<String>,
-  ) -> Request<(), (), GistSimple> {
-    let gist_id = gist_id.into();
-    let sha = sha.into();
-    let url = format!("/gists/{gist_id}/{sha}");
-
-    Request::<(), (), GistSimple>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List starred gists**
-  ///
-  /// List the authenticated user's starred gists:
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-starred-gists](https://docs.github.com/rest/gists/gists#list-starred-gists)
-  pub fn list_starred(&self) -> Request<(), GistsListStarredQuery, BaseGistArray> {
-    let url = format!("/gists/starred");
-
-    Request::<(), GistsListStarredQuery, BaseGistArray>::builder(&self.config)
-      .get(url)
       .build()
   }
 
@@ -321,6 +252,21 @@ impl GitHubGistsAPI {
       .build()
   }
 
+  /// **List public gists**
+  ///
+  /// List public gists sorted by most recently updated to least recently updated.
+  ///
+  /// Note: With [pagination](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-public-gists](https://docs.github.com/rest/gists/gists#list-public-gists)
+  pub fn list_public(&self) -> Request<(), GistsListPublicQuery, BaseGistArray> {
+    let url = format!("/gists/public");
+
+    Request::<(), GistsListPublicQuery, BaseGistArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
   /// **Check if a gist is starred**
   ///
   ///
@@ -358,6 +304,60 @@ impl GitHubGistsAPI {
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
+      .build()
+  }
+
+  /// **List gists for a user**
+  ///
+  /// Lists public gists for the specified user:
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-gists-for-a-user](https://docs.github.com/rest/gists/gists#list-gists-for-a-user)
+  pub fn list_for_user(
+    &self,
+    username: impl Into<String>,
+  ) -> Request<(), GistsListForUserQuery, BaseGistArray> {
+    let username = username.into();
+    let url = format!("/users/{username}/gists");
+
+    Request::<(), GistsListForUserQuery, BaseGistArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get a gist revision**
+  ///
+  /// Gets a specified gist revision.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github.raw+json`**: Returns the raw markdown. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/gists/gists#get-a-gist-revision](https://docs.github.com/rest/gists/gists#get-a-gist-revision)
+  pub fn get_revision(
+    &self,
+    gist_id: impl Into<String>,
+    sha: impl Into<String>,
+  ) -> Request<(), (), GistSimple> {
+    let gist_id = gist_id.into();
+    let sha = sha.into();
+    let url = format!("/gists/{gist_id}/{sha}");
+
+    Request::<(), (), GistSimple>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List starred gists**
+  ///
+  /// List the authenticated user's starred gists:
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-starred-gists](https://docs.github.com/rest/gists/gists#list-starred-gists)
+  pub fn list_starred(&self) -> Request<(), GistsListStarredQuery, BaseGistArray> {
+    let url = format!("/gists/starred");
+
+    Request::<(), GistsListStarredQuery, BaseGistArray>::builder(&self.config)
+      .get(url)
       .build()
   }
 }

@@ -27,6 +27,7 @@ jsonwebtoken = "8.2.0"
 dotenv = "0.15.0"
 handlebars = "5.1.2"
 indicatif = "0.17.8"
+url = "2"
 
 # internal
 octocrate = { path = "octocrate", version = "0.3.5" }
