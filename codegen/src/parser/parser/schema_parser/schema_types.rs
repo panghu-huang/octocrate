@@ -1,7 +1,6 @@
 use crate::schemas::schema::{SchemaType, SchemaTypeDefination};
 
-#[derive(Debug, Clone)]
-#[derive(Default)]
+#[derive(Debug, Clone, Default)]
 pub struct SchemaTypes {
   pub types: Vec<SchemaType>,
   pub is_null: bool,
@@ -162,7 +161,9 @@ impl From<&SchemaTypeDefination> for SchemaTypes {
   fn from(value: &SchemaTypeDefination) -> Self {
     let types = match value {
       SchemaTypeDefination::String(type_) => {
-        vec![SchemaType::try_from(type_).unwrap_or_else(|_| panic!("Unknown schema type: {}", type_))]
+        vec![
+          SchemaType::try_from(type_).unwrap_or_else(|_| panic!("Unknown schema type: {}", type_))
+        ]
       }
       SchemaTypeDefination::Array(types) => types
         .iter()
@@ -175,5 +176,3 @@ impl From<&SchemaTypeDefination> for SchemaTypes {
     SchemaTypes::new(types)
   }
 }
-
-

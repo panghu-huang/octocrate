@@ -1,7 +1,9 @@
 mod api;
+mod format;
 mod types;
 
 pub use api::*;
+pub use format::*;
 use std::path::PathBuf;
 pub use types::*;
 

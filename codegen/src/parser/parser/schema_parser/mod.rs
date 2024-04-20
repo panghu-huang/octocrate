@@ -48,8 +48,9 @@ impl SchemaParser {
         match ctx.reference_existing(&reference_id) {
           Some(parsed) => parsed.inner,
           None => {
-            let schema = ctx.get_component(&reference_id).unwrap_or_else(|| panic!("Failed to find reference schema with id: {}",
-              reference_id));
+            let schema = ctx.get_component(&reference_id).unwrap_or_else(|| {
+              panic!("Failed to find reference schema with id: {}", reference_id)
+            });
 
             let previous_prefixs = self.prefixs.clone();
 

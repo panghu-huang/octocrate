@@ -60,9 +60,7 @@ where
 
         Ok(())
       }
-      Err(err) => {
-        Err(Error::Error(err.to_string()))
-      }
+      Err(err) => Err(Error::Error(err.to_string())),
     }
   }
 }

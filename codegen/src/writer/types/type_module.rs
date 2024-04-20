@@ -3,6 +3,7 @@ use crate::{
   common::{render_template, RenameRule},
   parser::ParsedData,
   structures::{enums::Enum, structs::Struct, types::Type},
+  writer::format_code,
 };
 use serde::Serialize;
 
@@ -44,7 +45,7 @@ impl File for TypeModule {
   fn write(&self, path: &std::path::PathBuf) {
     let template = include_str!("../../../templates/types/type_module.hbs");
 
-    let rendered = render_template(template, self);
+    let rendered = format_code(render_template(template, self));
 
     let file_path = path.join(self.file_name());
 

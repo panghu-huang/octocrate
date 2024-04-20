@@ -22,8 +22,6 @@ where
   handlebars.register_helper("is_optional_field", Box::new(is_optional_field));
   handlebars.register_helper("split_lines", Box::new(split_lines));
 
-  
-
   handlebars.render_template(template, data).unwrap()
 }
 

@@ -87,19 +87,15 @@ where
             };
             Ok(github_response)
           }
-          Err(error) => {
-            Err(Error::Error(format!(
-              r#"Failed to parse response with status {}: {}
+          Err(error) => Err(Error::Error(format!(
+            r#"Failed to parse response with status {}: {}
 
               Response: {}"#,
-              status, error, res
-            )))
-          }
+            status, error, res
+          ))),
         }
       }
-      Err(err) => {
-        Err(Error::Error(err.to_string()))
-      }
+      Err(err) => Err(Error::Error(err.to_string())),
     }
   }
 

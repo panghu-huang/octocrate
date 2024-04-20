@@ -236,11 +236,7 @@ impl ParseContext {
   }
 
   pub fn get_component(&self, name: &String) -> Option<Schema> {
-    self
-      .api_description
-      .components
-      .schemas
-      .get(name).cloned()
+    self.api_description.components.schemas.get(name).cloned()
   }
 
   pub fn get_parameter(&self, name: &String) -> Option<Parameter> {
@@ -248,6 +244,7 @@ impl ParseContext {
       .api_description
       .components
       .parameters
-      .get(name).cloned()
+      .get(name)
+      .cloned()
   }
 }
