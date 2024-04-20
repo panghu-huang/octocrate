@@ -40,6 +40,5 @@ jobs:
           echo "${{ secrets.GH_APP_PRIVATE_KEY }}" | base64 --decode > $private_key_path
 
           export GITHUB_APP_PRIVATE_KEY_PATH=$private_key_path
-          export GITHUB_PERSONAL_ACCESS_TOKEN=$PERSONAL_ACCESS_TOKEN
 
           cargo test --all-features -- --nocapture
