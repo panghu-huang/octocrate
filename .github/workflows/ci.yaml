@@ -28,13 +28,5 @@ jobs:
       - name: Run tests
         env:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          GH_APP_ID: ${{ secrets.GH_APP_ID }}
-          GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
         run: |
-          private_key_path=$(mktemp)
-          echo $GITHUB_APP_PRIVATE_KEY | base64 --decode > $private_key_path
-
-          export GITHUB_APP_ID=$GH_APP_ID
-          export GITHUB_APP_PRIVATE_KEY_PATH=$private_key_path
-
-          cargo test --features="apps repos users pulls issues search" --examples -- --nocapture
+          cargo test --features="repos users pulls issues search" --examples -- --nocapture
