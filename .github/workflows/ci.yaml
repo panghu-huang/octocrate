@@ -39,4 +39,4 @@ jobs:
           PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
           export GITHUB_PERSONAL_ACCESS_TOKEN=$PERSONAL_ACCESS_TOKEN
-          cargo test --features="integration repos users pulls issues search" --examples -- --nocapture
+          cargo test --features="pagination repos users pulls issues search" --examples -- --nocapture
