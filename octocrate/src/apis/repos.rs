@@ -14,460 +14,6 @@ impl GitHubReposAPI {
     }
   }
 
-  /// **List custom deployment rule integrations available for an environment**
-  ///
-  /// Gets all custom deployment protection rule integrations that are available for an environment. Anyone with read access to the repository can use this endpoint.
-  ///
-  /// For more information about environments, see "[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
-  ///
-  /// For more information about the app that is providing this custom deployment rule, see "[GET an app](https://docs.github.com/rest/apps/apps#get-an-app)".
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment](https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment)
-  pub fn list_custom_deployment_rule_integrations(
-    &self,
-    environment_name: impl Into<String>,
-    repo: impl Into<String>,
-    owner: impl Into<String>,
-  ) -> Request<
-    (),
-    ReposListCustomDeploymentRuleIntegrationsQuery,
-    ReposListCustomDeploymentRuleIntegrationsResponse,
-  > {
-    let environment_name = environment_name.into();
-    let repo = repo.into();
-    let owner = owner.into();
-    let url = format!(
-      "/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/apps"
-    );
-
-    Request::<
-      (),
-      ReposListCustomDeploymentRuleIntegrationsQuery,
-      ReposListCustomDeploymentRuleIntegrationsResponse,
-    >::builder(&self.config)
-    .get(url)
-    .build()
-  }
-
-  /// **List pull requests associated with a commit**
-  ///
-  /// Lists the merged pull request that introduced the commit to the repository. If the commit is not present in the default branch, will only return open pull requests associated with the commit.
-  ///
-  /// To list the open or merged pull requests associated with a branch, you can set the `commit_sha` parameter to the branch name.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit](https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit)
-  pub fn list_pull_requests_associated_with_commit(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    commit_sha: impl Into<String>,
-  ) -> Request<(), ReposListPullRequestsAssociatedWithCommitQuery, PullRequestSimpleArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let commit_sha = commit_sha.into();
-    let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/pulls");
-
-    Request::<(), ReposListPullRequestsAssociatedWithCommitQuery, PullRequestSimpleArray>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
-  }
-
-  /// **Get a webhook configuration for a repository**
-  ///
-  /// Returns the webhook configuration for a repository. To get more information about the webhook, including the `active` state and `events`, use "[Get a repository webhook](/rest/webhooks/repos#get-a-repository-webhook)."
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `read:repo_hook` or `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository](https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository)
-  pub fn get_webhook_config_for_repo(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    hook_id: impl Into<i64>,
-  ) -> Request<(), (), WebhookConfiguration> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let hook_id = hook_id.into();
-    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/config");
-
-    Request::<(), (), WebhookConfiguration>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update a webhook configuration for a repository**
-  ///
-  /// Updates the webhook configuration for a repository. To update more information about the webhook, including the `active` state and `events`, use "[Update a repository webhook](/rest/webhooks/repos#update-a-repository-webhook)."
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `write:repo_hook` or `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository](https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository)
-  pub fn update_webhook_config_for_repo(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    hook_id: impl Into<i64>,
-  ) -> Request<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfiguration> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let hook_id = hook_id.into();
-    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/config");
-
-    Request::<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfiguration>::builder(
-      &self.config,
-    )
-    .patch(url)
-    .build()
-  }
-
-  /// **Get an autolink reference of a repository**
-  ///
-  /// This returns a single autolink reference by ID that was configured for the given repository.
-  ///
-  /// Information about autolinks are only available to repository administrators.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository](https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository)
-  pub fn get_autolink(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    autolink_id: impl Into<i64>,
-  ) -> Request<(), (), AutolinkReference> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let autolink_id = autolink_id.into();
-    let url = format!("/repos/{owner}/{repo}/autolinks/{autolink_id}");
-
-    Request::<(), (), AutolinkReference>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Delete an autolink reference from a repository**
-  ///
-  /// This deletes a single autolink reference by ID that was configured for the given repository.
-  ///
-  /// Information about autolinks are only available to repository administrators.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository](https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository)
-  pub fn delete_autolink(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    autolink_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let autolink_id = autolink_id.into();
-    let url = format!("/repos/{owner}/{repo}/autolinks/{autolink_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Get an organization repository ruleset**
-  ///
-  /// Get a repository ruleset for an organization.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset](https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset)
-  pub fn get_org_ruleset(
-    &self,
-    org: impl Into<String>,
-    ruleset_id: impl Into<i64>,
-  ) -> Request<(), (), RepositoryRuleset> {
-    let org = org.into();
-    let ruleset_id = ruleset_id.into();
-    let url = format!("/orgs/{org}/rulesets/{ruleset_id}");
-
-    Request::<(), (), RepositoryRuleset>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update an organization repository ruleset**
-  ///
-  /// Update a ruleset for an organization.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/orgs/rules#update-an-organization-repository-ruleset](https://docs.github.com/rest/orgs/rules#update-an-organization-repository-ruleset)
-  pub fn update_org_ruleset(
-    &self,
-    org: impl Into<String>,
-    ruleset_id: impl Into<i64>,
-  ) -> Request<ReposUpdateOrgRulesetRequest, (), RepositoryRuleset> {
-    let org = org.into();
-    let ruleset_id = ruleset_id.into();
-    let url = format!("/orgs/{org}/rulesets/{ruleset_id}");
-
-    Request::<ReposUpdateOrgRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Delete an organization repository ruleset**
-  ///
-  /// Delete a ruleset for an organization.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/orgs/rules#delete-an-organization-repository-ruleset](https://docs.github.com/rest/orgs/rules#delete-an-organization-repository-ruleset)
-  pub fn delete_org_ruleset(
-    &self,
-    org: impl Into<String>,
-    ruleset_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let org = org.into();
-    let ruleset_id = ruleset_id.into();
-    let url = format!("/orgs/{org}/rulesets/{ruleset_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Get all repository topics**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#get-all-repository-topics](https://docs.github.com/rest/repos/repos#get-all-repository-topics)
-  pub fn get_all_topics(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposGetAllTopicsQuery, Topic> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/topics");
-
-    Request::<(), ReposGetAllTopicsQuery, Topic>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Replace all repository topics**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#replace-all-repository-topics](https://docs.github.com/rest/repos/repos#replace-all-repository-topics)
-  pub fn replace_all_topics(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ReposReplaceAllTopicsRequest, (), Topic> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/topics");
-
-    Request::<ReposReplaceAllTopicsRequest, (), Topic>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Get all autolinks of a repository**
-  ///
-  /// Gets all autolinks that are configured for a repository.
-  ///
-  /// Information about autolinks are only available to repository administrators.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository](https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository)
-  pub fn list_autolinks(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), AutolinkReferenceArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/autolinks");
-
-    Request::<(), (), AutolinkReferenceArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create an autolink reference for a repository**
-  ///
-  /// Users with admin access to the repository can create an autolink.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository](https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository)
-  pub fn create_autolink(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ReposCreateAutolinkRequest, (), AutolinkReference> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/autolinks");
-
-    Request::<ReposCreateAutolinkRequest, (), AutolinkReference>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Get a repository README for a directory**
-  ///
-  /// Gets the README from a repository directory.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type.
-  /// - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory](https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory)
-  pub fn get_readme_in_directory(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    dir: impl Into<String>,
-  ) -> Request<(), ReposGetReadmeInDirectoryQuery, ContentFile> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let dir = dir.into();
-    let url = format!("/repos/{owner}/{repo}/readme/{dir}");
-
-    Request::<(), ReposGetReadmeInDirectoryQuery, ContentFile>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List CODEOWNERS errors**
-  ///
-  /// List any syntax errors that are detected in the CODEOWNERS
-  /// file.
-  ///
-  /// For more information about the correct CODEOWNERS syntax,
-  /// see "[About code owners](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)."
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-codeowners-errors](https://docs.github.com/rest/repos/repos#list-codeowners-errors)
-  pub fn codeowners_errors(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposCodeownersErrorsQuery, CodeownersErrors> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/codeowners/errors");
-
-    Request::<(), ReposCodeownersErrorsQuery, CodeownersErrors>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List commit comments**
-  ///
-  /// Lists the comments for a specified commit.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/comments#list-commit-comments](https://docs.github.com/rest/commits/comments#list-commit-comments)
-  pub fn list_comments_for_commit(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    commit_sha: impl Into<String>,
-  ) -> Request<(), ReposListCommentsForCommitQuery, CommitCommentArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let commit_sha = commit_sha.into();
-    let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/comments");
-
-    Request::<(), ReposListCommentsForCommitQuery, CommitCommentArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a commit comment**
-  ///
-  /// Create a comment for a commit using its `:commit_sha`.
-  ///
-  /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/comments#create-a-commit-comment](https://docs.github.com/rest/commits/comments#create-a-commit-comment)
-  pub fn create_commit_comment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    commit_sha: impl Into<String>,
-  ) -> Request<ReposCreateCommitCommentRequest, (), CommitComment> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let commit_sha = commit_sha.into();
-    let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/comments");
-
-    Request::<ReposCreateCommitCommentRequest, (), CommitComment>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Generate release notes content for a release**
-  ///
-  /// Generate a name and body describing a [release](https://docs.github.com/rest/releases/releases#get-a-release). The body content will be markdown formatted and contain information like the changes since last release and users who contributed. The generated release notes are not saved anywhere. They are intended to be generated and used when creating a new release.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release](https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release)
-  pub fn generate_release_notes(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ReposGenerateReleaseNotesRequest, (), GeneratedReleaseNotesContent> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/releases/generate-notes");
-
-    Request::<ReposGenerateReleaseNotesRequest, (), GeneratedReleaseNotesContent>::builder(
-      &self.config,
-    )
-    .post(url)
-    .build()
-  }
-
-  /// **Get repository clones**
-  ///
-  /// Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/metrics/traffic#get-repository-clones](https://docs.github.com/rest/metrics/traffic#get-repository-clones)
-  pub fn get_clones(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposGetClonesQuery, CloneTraffic> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/traffic/clones");
-
-    Request::<(), ReposGetClonesQuery, CloneTraffic>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List repository tags**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-tags](https://docs.github.com/rest/repos/repos#list-repository-tags)
-  pub fn list_tags(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposListTagsQuery, TagArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/tags");
-
-    Request::<(), ReposListTagsQuery, TagArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **List forks**
   ///
   ///
@@ -509,79 +55,666 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **List deployment branch policies**
+  /// **Download a repository archive (zip)**
   ///
-  /// Lists the deployment branch policies for an environment.
+  /// Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the repository’s default branch (usually
+  /// `main`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use
+  /// the `Location` header to make a second `GET` request.
   ///
-  /// Anyone with read access to the repository can use this endpoint.
+  /// **Note**: For private repositories, these links are temporary and expire after five minutes. If the repository is empty, you will receive a 404 when you follow the redirect.
   ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies](https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies)
-  pub fn list_deployment_branch_policies(
+  /// *Documentation*: [https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip](https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip)
+  pub fn download_zipball_archive(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    environment_name: impl Into<String>,
-  ) -> Request<(), ReposListDeploymentBranchPoliciesQuery, ReposListDeploymentBranchPoliciesResponse>
-  {
+    ref_: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
     let owner = owner.into();
     let repo = repo.into();
-    let environment_name = environment_name.into();
-    let url =
-      format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies");
+    let ref_ = ref_.into();
+    let url = format!("/repos/{owner}/{repo}/zipball/{ref_}");
 
-    Request::<(), ReposListDeploymentBranchPoliciesQuery, ReposListDeploymentBranchPoliciesResponse>::builder(&self.config)
+    NoContentRequest::<(), ()>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Create a deployment branch policy**
+  /// **List branches for HEAD commit**
   ///
-  /// Creates a deployment branch or tag policy for an environment.
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
   ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  /// Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy)
-  pub fn create_deployment_branch_policy(
+  /// *Documentation*: [https://docs.github.com/rest/commits/commits#list-branches-for-head-commit](https://docs.github.com/rest/commits/commits#list-branches-for-head-commit)
+  pub fn list_branches_for_head_commit(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    environment_name: impl Into<String>,
-  ) -> Request<DeploymentBranchAndTagPolicyNamePattern, (), DeploymentBranchPolicy> {
+    commit_sha: impl Into<String>,
+  ) -> Request<(), (), BranchShortArray> {
     let owner = owner.into();
     let repo = repo.into();
-    let environment_name = environment_name.into();
-    let url =
-      format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies");
+    let commit_sha = commit_sha.into();
+    let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head");
 
-    Request::<DeploymentBranchAndTagPolicyNamePattern, (), DeploymentBranchPolicy>::builder(
+    Request::<(), (), BranchShortArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get the hourly commit count for each day**
+  ///
+  /// Each array contains the day number, hour number, and number of commits:
+  ///
+  /// *   `0-6`: Sunday - Saturday
+  /// *   `0-23`: Hour of day
+  /// *   Number of commits
+  ///
+  /// For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on Tuesdays. All times are based on the time zone of individual commits.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day](https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day)
+  pub fn get_punch_card_stats(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), Vec<Vec<i64>>> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/stats/punch_card");
+
+    Request::<(), (), Vec<Vec<i64>>>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List deliveries for a repository webhook**
+  ///
+  /// Returns a list of webhook deliveries for a webhook configured in a repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook)
+  pub fn list_webhook_deliveries(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    hook_id: impl Into<i64>,
+  ) -> Request<(), ReposListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let hook_id = hook_id.into();
+    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries");
+
+    Request::<(), ReposListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray>::builder(
       &self.config,
     )
-    .post(url)
+    .get(url)
     .build()
   }
 
-  /// **Get the status of a GitHub Pages deployment**
+  /// **Get latest Pages build**
   ///
-  /// Gets the current status of a GitHub Pages deployment.
+  /// Gets information about the single most recent build of a GitHub Pages site.
   ///
-  /// The authenticated user must have read permission for the GitHub Pages site.
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment](https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment)
-  pub fn get_pages_deployment(
+  /// *Documentation*: [https://docs.github.com/rest/pages/pages#get-latest-pages-build](https://docs.github.com/rest/pages/pages#get-latest-pages-build)
+  pub fn get_latest_pages_build(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    pages_deployment_id: impl Into<StringOrInteger>,
-  ) -> Request<(), (), GitHubPagesDeploymentStatus> {
+  ) -> Request<(), (), PageBuild> {
     let owner = owner.into();
     let repo = repo.into();
-    let pages_deployment_id = pages_deployment_id.into();
-    let url = format!("/repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}");
+    let url = format!("/repos/{owner}/{repo}/pages/builds/latest");
 
-    Request::<(), (), GitHubPagesDeploymentStatus>::builder(&self.config)
+    Request::<(), (), PageBuild>::builder(&self.config)
       .get(url)
+      .build()
+  }
+
+  /// **Get teams with access to the protected branch**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Lists the teams who have push access to this branch. The list includes child teams.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch](https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch)
+  pub fn get_teams_with_access_to_protected_branch(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<(), (), TeamArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
+
+    Request::<(), (), TeamArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Add team access restrictions**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Grants the specified teams push access for this branch. You can also give push access to child teams.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions](https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions)
+  pub fn add_team_access_restrictions(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<ReposAddTeamAccessRestrictionsRequest, (), TeamArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
+
+    Request::<ReposAddTeamAccessRestrictionsRequest, (), TeamArray>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Set team access restrictions**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Replaces the list of teams that have push access to this branch. This removes all teams that previously had push access and grants push access to the new list of teams. Team restrictions include child teams.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions](https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions)
+  pub fn set_team_access_restrictions(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<ReposSetTeamAccessRestrictionsRequest, (), TeamArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
+
+    Request::<ReposSetTeamAccessRestrictionsRequest, (), TeamArray>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Remove team access restrictions**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Removes the ability of a team to push to this branch. You can also remove push access for child teams.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions](https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions)
+  pub fn remove_team_access_restrictions(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<ReposRemoveTeamAccessRestrictionsRequest, (), TeamArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
+
+    Request::<ReposRemoveTeamAccessRestrictionsRequest, (), TeamArray>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **List commit statuses for a reference**
+  ///
+  /// Users with pull access in a repository can view commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name. Statuses are returned in reverse chronological order. The first status in the list will be the latest one.
+  ///
+  /// This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference](https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference)
+  pub fn list_commit_statuses_for_ref(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    ref_: impl Into<String>,
+  ) -> Request<(), ReposListCommitStatusesForRefQuery, StatusArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let ref_ = ref_.into();
+    let url = format!("/repos/{owner}/{repo}/commits/{ref_}/statuses");
+
+    Request::<(), ReposListCommitStatusesForRefQuery, StatusArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get a deployment**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/deployments#get-a-deployment](https://docs.github.com/rest/deployments/deployments#get-a-deployment)
+  pub fn get_deployment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    deployment_id: impl Into<i64>,
+  ) -> Request<(), (), Deployment> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let deployment_id = deployment_id.into();
+    let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}");
+
+    Request::<(), (), Deployment>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Delete a deployment**
+  ///
+  /// If the repository only has one deployment, you can delete the deployment regardless of its status. If the repository has more than one deployment, you can only delete inactive deployments. This ensures that repositories with multiple deployments will always have an active deployment.
+  ///
+  /// To set a deployment as inactive, you must:
+  ///
+  /// *   Create a new deployment that is active so that the system has a record of the current state, then delete the previously active deployment.
+  /// *   Mark the active deployment as inactive by adding any non-successful deployment status.
+  ///
+  /// For more information, see "[Create a deployment](https://docs.github.com/rest/deployments/deployments/#create-a-deployment)" and "[Create a deployment status](https://docs.github.com/rest/deployments/statuses#create-a-deployment-status)."
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` or `repo_deployment` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/deployments#delete-a-deployment](https://docs.github.com/rest/deployments/deployments#delete-a-deployment)
+  pub fn delete_deployment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    deployment_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let deployment_id = deployment_id.into();
+    let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get admin branch protection**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection](https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection)
+  pub fn get_admin_branch_protection(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<(), (), ProtectedBranchAdminEnforced> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins");
+
+    Request::<(), (), ProtectedBranchAdminEnforced>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Set admin branch protection**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Adding admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection](https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection)
+  pub fn set_admin_branch_protection(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<(), (), ProtectedBranchAdminEnforced> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins");
+
+    Request::<(), (), ProtectedBranchAdminEnforced>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Delete admin branch protection**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Removing admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection](https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection)
+  pub fn delete_admin_branch_protection(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get a delivery for a repository webhook**
+  ///
+  /// Returns a delivery for a webhook configured in a repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook)
+  pub fn get_webhook_delivery(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    hook_id: impl Into<i64>,
+    delivery_id: impl Into<i64>,
+  ) -> Request<(), (), WebhookDelivery> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let hook_id = hook_id.into();
+    let delivery_id = delivery_id.into();
+    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}");
+
+    Request::<(), (), WebhookDelivery>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Check if automated security fixes are enabled for a repository**
+  ///
+  /// Shows whether automated security fixes are enabled, disabled or paused for a repository. The authenticated user must have admin read access to the repository. For more information, see "[Configuring automated security fixes](https://docs.github.com/articles/configuring-automated-security-fixes)".
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository](https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository)
+  pub fn check_automated_security_fixes(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), CheckAutomatedSecurityFixes> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/automated-security-fixes");
+
+    Request::<(), (), CheckAutomatedSecurityFixes>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Enable automated security fixes**
+  ///
+  /// Enables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://docs.github.com/articles/configuring-automated-security-fixes)".
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#enable-automated-security-fixes](https://docs.github.com/rest/repos/repos#enable-automated-security-fixes)
+  pub fn enable_automated_security_fixes(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/automated-security-fixes");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Disable automated security fixes**
+  ///
+  /// Disables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://docs.github.com/articles/configuring-automated-security-fixes)".
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#disable-automated-security-fixes](https://docs.github.com/rest/repos/repos#disable-automated-security-fixes)
+  pub fn disable_automated_security_fixes(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/automated-security-fixes");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get users with access to the protected branch**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Lists the people who have push access to this branch.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch](https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch)
+  pub fn get_users_with_access_to_protected_branch(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<(), (), SimpleUserArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
+
+    Request::<(), (), SimpleUserArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Add user access restrictions**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Grants the specified people push access for this branch.
+  ///
+  /// | Type    | Description                                                                                                                   |
+  /// | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
+  /// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions](https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions)
+  pub fn add_user_access_restrictions(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<ReposAddUserAccessRestrictionsRequest, (), SimpleUserArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
+
+    Request::<ReposAddUserAccessRestrictionsRequest, (), SimpleUserArray>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Set user access restrictions**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Replaces the list of people that have push access to this branch. This removes all people that previously had push access and grants push access to the new list of people.
+  ///
+  /// | Type    | Description                                                                                                                   |
+  /// | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
+  /// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions](https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions)
+  pub fn set_user_access_restrictions(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<ReposSetUserAccessRestrictionsRequest, (), SimpleUserArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
+
+    Request::<ReposSetUserAccessRestrictionsRequest, (), SimpleUserArray>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Remove user access restrictions**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Removes the ability of a user to push to this branch.
+  ///
+  /// | Type    | Description                                                                                                                                   |
+  /// | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+  /// | `array` | Usernames of the people who should no longer have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions](https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions)
+  pub fn remove_user_access_restrictions(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<ReposRemoveUserAccessRestrictionsRequest, (), SimpleUserArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
+
+    Request::<ReposRemoveUserAccessRestrictionsRequest, (), SimpleUserArray>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **List repository collaborators**
+  ///
+  /// For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
+  /// Organization members with write, maintain, or admin privileges on the organization-owned repository can use this endpoint.
+  ///
+  /// Team members will include the members of child teams.
+  ///
+  /// The authenticated user must have push access to the repository to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `read:org` and `repo` scopes to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators](https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators)
+  pub fn list_collaborators(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposListCollaboratorsQuery, CollaboratorArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/collaborators");
+
+    Request::<(), ReposListCollaboratorsQuery, CollaboratorArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List repository contributors**
+  ///
+  /// Lists contributors to the specified repository and sorts them by the number of commits per contributor in descending order. This endpoint may return information that is a few hours old because the GitHub REST API caches contributor data to improve performance.
+  ///
+  /// GitHub identifies contributors by author email address. This endpoint groups contribution counts by GitHub user, which includes all associated email addresses. To improve performance, only the first 500 author email addresses in the repository link to GitHub users. The rest will appear as anonymous contributors without associated GitHub user information.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-contributors](https://docs.github.com/rest/repos/repos#list-repository-contributors)
+  pub fn list_contributors(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposListContributorsQuery, ContributorArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/contributors");
+
+    Request::<(), ReposListContributorsQuery, ContributorArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get the latest release**
+  ///
+  /// View the latest published full release for the repository.
+  ///
+  /// The latest release is the most recent non-prerelease, non-draft release, sorted by the `created_at` attribute. The `created_at` attribute is the date of the commit used for the release, and not the date when the release was drafted or published.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/releases/releases#get-the-latest-release](https://docs.github.com/rest/releases/releases#get-the-latest-release)
+  pub fn get_latest_release(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), Release> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/releases/latest");
+
+    Request::<(), (), Release>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get a release asset**
+  ///
+  /// To download the asset's binary content, set the `Accept` header of the request to [`application/octet-stream`](https://docs.github.com/rest/overview/media-types). The API will either redirect the client to the location, or stream it directly if possible. API clients should handle both a `200` or `302` response.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/releases/assets#get-a-release-asset](https://docs.github.com/rest/releases/assets#get-a-release-asset)
+  pub fn get_release_asset(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    asset_id: impl Into<i64>,
+  ) -> Request<(), (), ReleaseAsset> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let asset_id = asset_id.into();
+    let url = format!("/repos/{owner}/{repo}/releases/assets/{asset_id}");
+
+    Request::<(), (), ReleaseAsset>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update a release asset**
+  ///
+  /// Users with push access to the repository can edit a release asset.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/releases/assets#update-a-release-asset](https://docs.github.com/rest/releases/assets#update-a-release-asset)
+  pub fn update_release_asset(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    asset_id: impl Into<i64>,
+  ) -> Request<ReposUpdateReleaseAssetRequest, (), ReleaseAsset> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let asset_id = asset_id.into();
+    let url = format!("/repos/{owner}/{repo}/releases/assets/{asset_id}");
+
+    Request::<ReposUpdateReleaseAssetRequest, (), ReleaseAsset>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **Delete a release asset**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/releases/assets#delete-a-release-asset](https://docs.github.com/rest/releases/assets#delete-a-release-asset)
+  pub fn delete_release_asset(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    asset_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let asset_id = asset_id.into();
+    let url = format!("/repos/{owner}/{repo}/releases/assets/{asset_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
       .build()
   }
 
@@ -652,356 +785,213 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **Get an organization rule suite**
+  /// **List organization repositories**
   ///
-  /// Gets information about a suite of rule evaluations from within an organization.
-  /// For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
+  /// Lists repositories for the specified organization.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite](https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite)
-  pub fn get_org_rule_suite(
+  /// **Note:** In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-organization-repositories](https://docs.github.com/rest/repos/repos#list-organization-repositories)
+  pub fn list_for_org(
     &self,
     org: impl Into<String>,
-    rule_suite_id: impl Into<i64>,
-  ) -> Request<(), (), RuleSuite> {
+  ) -> Request<(), ReposListForOrgQuery, MinimalRepositoryArray> {
     let org = org.into();
-    let rule_suite_id = rule_suite_id.into();
-    let url = format!("/orgs/{org}/rulesets/rule-suites/{rule_suite_id}");
+    let url = format!("/orgs/{org}/repos");
 
-    Request::<(), (), RuleSuite>::builder(&self.config)
+    Request::<(), ReposListForOrgQuery, MinimalRepositoryArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Get rules for a branch**
+  /// **Create an organization repository**
   ///
-  /// Returns all active rules that apply to the specified branch. The branch does not need to exist; rules that would apply
-  /// to a branch with that name will be returned. All active rules that apply will be returned, regardless of the level
-  /// at which they are configured (e.g. repository or organization). Rules in rulesets with "evaluate" or "disabled"
-  /// enforcement statuses are not returned.
+  /// Creates a new repository in the specified organization. The authenticated user must be a member of the organization.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/rules#get-rules-for-a-branch](https://docs.github.com/rest/repos/rules#get-rules-for-a-branch)
-  pub fn get_branch_rules(
+  /// OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-an-organization-repository](https://docs.github.com/rest/repos/repos#create-an-organization-repository)
+  pub fn create_in_org(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<ReposCreateInOrgRequest, (), FullRepository> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/repos");
+
+    Request::<ReposCreateInOrgRequest, (), FullRepository>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **List releases**
+  ///
+  /// This returns a list of releases, which does not include regular Git tags that have not been associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.github.com/rest/repos/repos#list-repository-tags).
+  ///
+  /// Information about published releases are available to everyone. Only users with push access will receive listings for draft releases.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/releases/releases#list-releases](https://docs.github.com/rest/releases/releases#list-releases)
+  pub fn list_releases(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<(), ReposGetBranchRulesQuery, RepositoryRuleArray> {
+  ) -> Request<(), ReposListReleasesQuery, ReleaseArray> {
     let owner = owner.into();
     let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/rules/branches/{branch}");
+    let url = format!("/repos/{owner}/{repo}/releases");
 
-    Request::<(), ReposGetBranchRulesQuery, RepositoryRuleArray>::builder(&self.config)
+    Request::<(), ReposListReleasesQuery, ReleaseArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **List branches**
+  /// **Create a release**
   ///
+  /// Users with push access to the repository can create a release.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branches#list-branches](https://docs.github.com/rest/branches/branches#list-branches)
-  pub fn list_branches(
+  /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/releases/releases#create-a-release](https://docs.github.com/rest/releases/releases#create-a-release)
+  pub fn create_release(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListBranchesQuery, ShortBranchArray> {
+  ) -> Request<ReposCreateReleaseRequest, (), Release> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/branches");
+    let url = format!("/repos/{owner}/{repo}/releases");
 
-    Request::<(), ReposListBranchesQuery, ShortBranchArray>::builder(&self.config)
+    Request::<ReposCreateReleaseRequest, (), Release>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get a deployment status**
+  ///
+  /// Users with pull access can view a deployment status for a deployment:
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/statuses#get-a-deployment-status](https://docs.github.com/rest/deployments/statuses#get-a-deployment-status)
+  pub fn get_deployment_status(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    deployment_id: impl Into<i64>,
+    status_id: impl Into<i64>,
+  ) -> Request<(), (), DeploymentStatus> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let deployment_id = deployment_id.into();
+    let status_id = status_id.into();
+    let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}");
+
+    Request::<(), (), DeploymentStatus>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Get a repository webhook**
+  /// **List tag protection states for a repository**
   ///
-  /// Returns a webhook configured in a repository. To get only the webhook `config` properties, see "[Get a webhook configuration for a repository](/rest/webhooks/repo-config#get-a-webhook-configuration-for-a-repository)."
+  /// This returns the tag protection states of a repository.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook)
-  pub fn get_webhook(
+  /// This information is only available to repository administrators.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository](https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository)
+  pub fn list_tag_protection(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    hook_id: impl Into<i64>,
-  ) -> Request<(), (), Webhook> {
+  ) -> Request<(), (), TagProtectionArray> {
     let owner = owner.into();
     let repo = repo.into();
-    let hook_id = hook_id.into();
-    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}");
+    let url = format!("/repos/{owner}/{repo}/tags/protection");
 
-    Request::<(), (), Webhook>::builder(&self.config)
+    Request::<(), (), TagProtectionArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Update a repository webhook**
+  /// **Create a tag protection state for a repository**
   ///
-  /// Updates a webhook configured in a repository. If you previously had a `secret` set, you must provide the same `secret` or set a new `secret` or the secret will be removed. If you are only updating individual webhook `config` properties, use "[Update a webhook configuration for a repository](/rest/webhooks/repo-config#update-a-webhook-configuration-for-a-repository)."
+  /// This creates a tag protection state for a repository.
+  /// This endpoint is only available to repository administrators.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook)
-  pub fn update_webhook(
+  /// *Documentation*: [https://docs.github.com/rest/repos/tags#create-a-tag-protection-state-for-a-repository](https://docs.github.com/rest/repos/tags#create-a-tag-protection-state-for-a-repository)
+  pub fn create_tag_protection(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    hook_id: impl Into<i64>,
-  ) -> Request<ReposUpdateWebhookRequest, (), Webhook> {
+  ) -> Request<ReposCreateTagProtectionRequest, (), TagProtection> {
     let owner = owner.into();
     let repo = repo.into();
-    let hook_id = hook_id.into();
-    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}");
+    let url = format!("/repos/{owner}/{repo}/tags/protection");
 
-    Request::<ReposUpdateWebhookRequest, (), Webhook>::builder(&self.config)
-      .patch(url)
+    Request::<ReposCreateTagProtectionRequest, (), TagProtection>::builder(&self.config)
+      .post(url)
       .build()
   }
 
-  /// **Delete a repository webhook**
+  /// **Get top referral sources**
   ///
+  /// Get the top 10 referrers over the last 14 days.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#delete-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#delete-a-repository-webhook)
-  pub fn delete_webhook(
+  /// *Documentation*: [https://docs.github.com/rest/metrics/traffic#get-top-referral-sources](https://docs.github.com/rest/metrics/traffic#get-top-referral-sources)
+  pub fn get_top_referrers(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    hook_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
+  ) -> Request<(), (), ReferrerTrafficArray> {
     let owner = owner.into();
     let repo = repo.into();
-    let hook_id = hook_id.into();
-    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}");
+    let url = format!("/repos/{owner}/{repo}/traffic/popular/referrers");
 
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **List repository contributors**
-  ///
-  /// Lists contributors to the specified repository and sorts them by the number of commits per contributor in descending order. This endpoint may return information that is a few hours old because the GitHub REST API caches contributor data to improve performance.
-  ///
-  /// GitHub identifies contributors by author email address. This endpoint groups contribution counts by GitHub user, which includes all associated email addresses. To improve performance, only the first 500 author email addresses in the repository link to GitHub users. The rest will appear as anonymous contributors without associated GitHub user information.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-contributors](https://docs.github.com/rest/repos/repos#list-repository-contributors)
-  pub fn list_contributors(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposListContributorsQuery, ContributorArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/contributors");
-
-    Request::<(), ReposListContributorsQuery, ContributorArray>::builder(&self.config)
+    Request::<(), (), ReferrerTrafficArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **List environments**
+  /// **Get the status of a GitHub Pages deployment**
   ///
-  /// Lists the environments for a repository.
+  /// Gets the current status of a GitHub Pages deployment.
   ///
-  /// Anyone with read access to the repository can use this endpoint.
+  /// The authenticated user must have read permission for the GitHub Pages site.
   ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/environments#list-environments](https://docs.github.com/rest/deployments/environments#list-environments)
-  pub fn get_all_environments(
+  /// *Documentation*: [https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment](https://docs.github.com/rest/pages/pages#get-the-status-of-a-github-pages-deployment)
+  pub fn get_pages_deployment(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposGetAllEnvironmentsQuery, ReposGetAllEnvironmentsResponse> {
+    pages_deployment_id: impl Into<StringOrInteger>,
+  ) -> Request<(), (), GitHubPagesDeploymentStatus> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/environments");
+    let pages_deployment_id = pages_deployment_id.into();
+    let url = format!("/repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}");
 
-    Request::<(), ReposGetAllEnvironmentsQuery, ReposGetAllEnvironmentsResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
-  }
-
-  /// **List commits**
-  ///
-  /// **Signature verification object**
-  ///
-  /// The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
-  ///
-  /// | Name | Type | Description |
-  /// | ---- | ---- | ----------- |
-  /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
-  /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
-  /// | `signature` | `string` | The signature that was extracted from the commit. |
-  /// | `payload` | `string` | The value that was signed. |
-  ///
-  /// These are the possible values for `reason` in the `verification` object:
-  ///
-  /// | Value | Description |
-  /// | ----- | ----------- |
-  /// | `expired_key` | The key that made the signature is expired. |
-  /// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
-  /// | `gpgverify_error` | There was an error communicating with the signature verification service. |
-  /// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
-  /// | `unsigned` | The object does not include a signature. |
-  /// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
-  /// | `no_user` | No user was associated with the `committer` email address in the commit. |
-  /// | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
-  /// | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
-  /// | `unknown_key` | The key that made the signature has not been registered with any user's account. |
-  /// | `malformed_signature` | There was an error parsing the signature. |
-  /// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
-  /// | `valid` | None of the above errors applied, so the signature is considered to be verified. |
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/commits#list-commits](https://docs.github.com/rest/commits/commits#list-commits)
-  pub fn list_commits(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposListCommitsQuery, CommitArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/commits");
-
-    Request::<(), ReposListCommitsQuery, CommitArray>::builder(&self.config)
+    Request::<(), (), GitHubPagesDeploymentStatus>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Get the latest release**
+  /// **Get the weekly commit count**
   ///
-  /// View the latest published full release for the repository.
+  /// Returns the total commit counts for the `owner` and total commit counts in `all`. `all` is everyone combined, including the `owner` in the last 52 weeks. If you'd like to get the commit counts for non-owners, you can subtract `owner` from `all`.
   ///
-  /// The latest release is the most recent non-prerelease, non-draft release, sorted by the `created_at` attribute. The `created_at` attribute is the date of the commit used for the release, and not the date when the release was drafted or published.
+  /// The array order is oldest week (index 0) to most recent week.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/releases/releases#get-the-latest-release](https://docs.github.com/rest/releases/releases#get-the-latest-release)
-  pub fn get_latest_release(
+  /// The most recent week is seven days ago at UTC midnight to today at UTC midnight.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count](https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count)
+  pub fn get_participation_stats(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Release> {
+  ) -> Request<(), (), ParticipationStats> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/releases/latest");
+    let url = format!("/repos/{owner}/{repo}/stats/participation");
 
-    Request::<(), (), Release>::builder(&self.config)
+    Request::<(), (), ParticipationStats>::builder(&self.config)
       .get(url)
       .build()
-  }
-
-  /// **Get branch protection**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-branch-protection](https://docs.github.com/rest/branches/branch-protection#get-branch-protection)
-  pub fn get_branch_protection(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<(), (), BranchProtection> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection");
-
-    Request::<(), (), BranchProtection>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update branch protection**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Protecting a branch requires admin or owner permissions to the repository.
-  ///
-  /// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
-  ///
-  /// **Note**: The list of users, apps, and teams in total is limited to 100 items.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#update-branch-protection](https://docs.github.com/rest/branches/branch-protection#update-branch-protection)
-  pub fn update_branch_protection(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<ReposUpdateBranchProtectionRequest, (), ProtectedBranch> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection");
-
-    Request::<ReposUpdateBranchProtectionRequest, (), ProtectedBranch>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Delete branch protection**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#delete-branch-protection](https://docs.github.com/rest/branches/branch-protection#delete-branch-protection)
-  pub fn delete_branch_protection(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Get a delivery for a repository webhook**
-  ///
-  /// Returns a delivery for a webhook configured in a repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#get-a-delivery-for-a-repository-webhook)
-  pub fn get_webhook_delivery(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    hook_id: impl Into<i64>,
-    delivery_id: impl Into<i64>,
-  ) -> Request<(), (), WebhookDelivery> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let hook_id = hook_id.into();
-    let delivery_id = delivery_id.into();
-    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}");
-
-    Request::<(), (), WebhookDelivery>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List deliveries for a repository webhook**
-  ///
-  /// Returns a list of webhook deliveries for a webhook configured in a repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#list-deliveries-for-a-repository-webhook)
-  pub fn list_webhook_deliveries(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    hook_id: impl Into<i64>,
-  ) -> Request<(), ReposListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let hook_id = hook_id.into();
-    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries");
-
-    Request::<(), ReposListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
   }
 
   /// **Check if a user is a repository collaborator**
@@ -1113,224 +1103,6 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **Create a GitHub Pages deployment**
-  ///
-  /// Create a GitHub Pages deployment for a repository.
-  ///
-  /// The authenticated user must have write permission to the repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment](https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment)
-  pub fn create_pages_deployment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ReposCreatePagesDeploymentRequest, (), GitHubPages> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/pages/deployments");
-
-    Request::<ReposCreatePagesDeploymentRequest, (), GitHubPages>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **List commit comments for a repository**
-  ///
-  /// Lists the commit comments for a specified repository. Comments are ordered by ascending ID.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository](https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository)
-  pub fn list_commit_comments_for_repo(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposListCommitCommentsForRepoQuery, CommitCommentArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/comments");
-
-    Request::<(), ReposListCommitCommentsForRepoQuery, CommitCommentArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get a deployment status**
-  ///
-  /// Users with pull access can view a deployment status for a deployment:
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/statuses#get-a-deployment-status](https://docs.github.com/rest/deployments/statuses#get-a-deployment-status)
-  pub fn get_deployment_status(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    deployment_id: impl Into<i64>,
-    status_id: impl Into<i64>,
-  ) -> Request<(), (), DeploymentStatus> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let deployment_id = deployment_id.into();
-    let status_id = status_id.into();
-    let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}");
-
-    Request::<(), (), DeploymentStatus>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List repository invitations**
-  ///
-  /// When authenticating as a user with admin rights to a repository, this endpoint will list all currently open repository invitations.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/collaborators/invitations#list-repository-invitations](https://docs.github.com/rest/collaborators/invitations#list-repository-invitations)
-  pub fn list_invitations(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposListInvitationsQuery, RepositoryInvitationArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/invitations");
-
-    Request::<(), ReposListInvitationsQuery, RepositoryInvitationArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List repository activities**
-  ///
-  /// Lists a detailed history of changes to a repository, such as pushes, merges, force pushes, and branch changes, and associates these changes with commits and users.
-  ///
-  /// For more information about viewing repository activity,
-  /// see "[Viewing activity and data for your repository](https://docs.github.com/repositories/viewing-activity-and-data-for-your-repository)."
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-activities](https://docs.github.com/rest/repos/repos#list-repository-activities)
-  pub fn list_activities(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposListActivitiesQuery, ActivityArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/activity");
-
-    Request::<(), ReposListActivitiesQuery, ActivityArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get the last year of commit activity**
-  ///
-  /// Returns the last year of commit activity grouped by week. The `days` array is a group of commits per day, starting on `Sunday`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity](https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity)
-  pub fn get_commit_activity_stats(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), CommitActivityArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/stats/commit_activity");
-
-    Request::<(), (), CommitActivityArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get access restrictions**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Lists who has access to this protected branch.
-  ///
-  /// **Note**: Users, apps, and teams `restrictions` are only available for organization-owned repositories.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-access-restrictions](https://docs.github.com/rest/branches/branch-protection#get-access-restrictions)
-  pub fn get_access_restrictions(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<(), (), BranchRestrictionPolicy> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions");
-
-    Request::<(), (), BranchRestrictionPolicy>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Delete access restrictions**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Disables the ability to restrict who can push to this branch.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions](https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions)
-  pub fn delete_access_restrictions(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Update a repository invitation**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/collaborators/invitations#update-a-repository-invitation](https://docs.github.com/rest/collaborators/invitations#update-a-repository-invitation)
-  pub fn update_invitation(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    invitation_id: impl Into<i64>,
-  ) -> Request<ReposUpdateInvitationRequest, (), RepositoryInvitation> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let invitation_id = invitation_id.into();
-    let url = format!("/repos/{owner}/{repo}/invitations/{invitation_id}");
-
-    Request::<ReposUpdateInvitationRequest, (), RepositoryInvitation>::builder(&self.config)
-      .patch(url)
-      .build()
-  }
-
-  /// **Delete a repository invitation**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/collaborators/invitations#delete-a-repository-invitation](https://docs.github.com/rest/collaborators/invitations#delete-a-repository-invitation)
-  pub fn delete_invitation(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    invitation_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let invitation_id = invitation_id.into();
-    let url = format!("/repos/{owner}/{repo}/invitations/{invitation_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
   /// **Get repository content**
   ///
   /// Gets the contents of a file or directory in a repository. Specify the file path or directory with the `path` parameter. If you omit the `path` parameter, you will receive the contents of the repository's root directory.
@@ -1430,180 +1202,154 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **List deploy keys**
+  /// **List deployments**
   ///
+  /// Simple filtering of deployments is available via query parameters:
   ///
-  /// *Documentation*: [https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys](https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys)
-  pub fn list_deploy_keys(
+  /// *Documentation*: [https://docs.github.com/rest/deployments/deployments#list-deployments](https://docs.github.com/rest/deployments/deployments#list-deployments)
+  pub fn list_deployments(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListDeployKeysQuery, DeployKeyArray> {
+  ) -> Request<(), ReposListDeploymentsQuery, DeploymentArray> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/keys");
+    let url = format!("/repos/{owner}/{repo}/deployments");
 
-    Request::<(), ReposListDeployKeysQuery, DeployKeyArray>::builder(&self.config)
+    Request::<(), ReposListDeploymentsQuery, DeploymentArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Create a deploy key**
+  /// **Create a deployment**
   ///
-  /// You can create a read-only deploy key.
+  /// Deployments offer a few configurable parameters with certain defaults.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key](https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key)
-  pub fn create_deploy_key(
+  /// The `ref` parameter can be any named branch, tag, or SHA. At GitHub we often deploy branches and verify them
+  /// before we merge a pull request.
+  ///
+  /// The `environment` parameter allows deployments to be issued to different runtime environments. Teams often have
+  /// multiple environments for verifying their applications, such as `production`, `staging`, and `qa`. This parameter
+  /// makes it easier to track which environments have requested deployments. The default environment is `production`.
+  ///
+  /// The `auto_merge` parameter is used to ensure that the requested ref is not behind the repository's default branch. If
+  /// the ref _is_ behind the default branch for the repository, we will attempt to merge it for you. If the merge succeeds,
+  /// the API will return a successful merge commit. If merge conflicts prevent the merge from succeeding, the API will
+  /// return a failure response.
+  ///
+  /// By default, [commit statuses](https://docs.github.com/rest/commits/statuses) for every submitted context must be in a `success`
+  /// state. The `required_contexts` parameter allows you to specify a subset of contexts that must be `success`, or to
+  /// specify contexts that have not yet been submitted. You are not required to use commit statuses to deploy. If you do
+  /// not require any contexts or create any commit statuses, the deployment will always succeed.
+  ///
+  /// The `payload` parameter is available for any extra information that a deployment system might need. It is a JSON text
+  /// field that will be passed on when a deployment event is dispatched.
+  ///
+  /// The `task` parameter is used by the deployment system to allow different execution paths. In the web world this might
+  /// be `deploy:migrations` to run schema changes on the system. In the compiled world this could be a flag to compile an
+  /// application with debugging enabled.
+  ///
+  /// Merged branch response:
+  ///
+  /// You will see this response when GitHub automatically merges the base branch into the topic branch instead of creating
+  /// a deployment. This auto-merge happens when:
+  /// *   Auto-merge option is enabled in the repository
+  /// *   Topic branch does not include the latest changes on the base branch, which is `master` in the response example
+  /// *   There are no merge conflicts
+  ///
+  /// If there are no new commits in the base branch, a new request to create a deployment should give a successful
+  /// response.
+  ///
+  /// Merge conflict response:
+  ///
+  /// This error happens when the `auto_merge` option is enabled and when the default branch (in this case `master`), can't
+  /// be merged into the branch that's being deployed (in this case `topic-branch`), due to merge conflicts.
+  ///
+  /// Failed commit status checks:
+  ///
+  /// This error happens when the `required_contexts` parameter indicates that one or more contexts need to have a `success`
+  /// status for the commit to be deployed, but one or more of the required contexts do not have a state of `success`.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` or `repo_deployment` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/deployments#create-a-deployment](https://docs.github.com/rest/deployments/deployments#create-a-deployment)
+  pub fn create_deployment(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreateDeployKeyRequest, (), DeployKey> {
+  ) -> Request<ReposCreateDeploymentRequest, (), ReposCreateDeploymentResponse> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/keys");
+    let url = format!("/repos/{owner}/{repo}/deployments");
 
-    Request::<ReposCreateDeployKeyRequest, (), DeployKey>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<ReposCreateDeploymentRequest, (), ReposCreateDeploymentResponse>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
-  /// **Get all custom property values for a repository**
+  /// **Get repository clones**
   ///
-  /// Gets all custom property values that are set for a repository.
-  /// Users with read access to the repository can use this endpoint.
+  /// Get the total number of clones and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository](https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository)
-  pub fn get_custom_properties_values(
+  /// *Documentation*: [https://docs.github.com/rest/metrics/traffic#get-repository-clones](https://docs.github.com/rest/metrics/traffic#get-repository-clones)
+  pub fn get_clones(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), CustomPropertyValueArray> {
+  ) -> Request<(), ReposGetClonesQuery, CloneTraffic> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/properties/values");
+    let url = format!("/repos/{owner}/{repo}/traffic/clones");
 
-    Request::<(), (), CustomPropertyValueArray>::builder(&self.config)
+    Request::<(), ReposGetClonesQuery, CloneTraffic>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Create or update custom property values for a repository**
+  /// **Get page views**
   ///
-  /// Create new or update existing custom property values for a repository.
-  /// Using a value of `null` for a custom property will remove or 'unset' the property value from the repository.
+  /// Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
   ///
-  /// Repository admins and other users with the repository-level "edit custom property values" fine-grained permission can use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository](https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository)
-  pub fn create_or_update_custom_properties_values(
+  /// *Documentation*: [https://docs.github.com/rest/metrics/traffic#get-page-views](https://docs.github.com/rest/metrics/traffic#get-page-views)
+  pub fn get_views(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<ReposCreateOrUpdateCustomPropertiesValuesRequest, ()> {
+  ) -> Request<(), ReposGetViewsQuery, ViewTraffic> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/properties/values");
+    let url = format!("/repos/{owner}/{repo}/traffic/views");
 
-    NoContentRequest::<ReposCreateOrUpdateCustomPropertiesValuesRequest, ()>::builder(&self.config)
-      .patch(url)
-      .build()
-  }
-
-  /// **Get commit signature protection**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to check whether a branch requires signed commits. An enabled status of `true` indicates you must sign commits on this branch. For more information, see [Signing commits with GPG](https://docs.github.com/articles/signing-commits-with-gpg) in GitHub Help.
-  ///
-  /// **Note**: You must enable branch protection to require signed commits.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection](https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection)
-  pub fn get_commit_signature_protection(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<(), (), ProtectedBranchAdminEnforced> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures");
-
-    Request::<(), (), ProtectedBranchAdminEnforced>::builder(&self.config)
+    Request::<(), ReposGetViewsQuery, ViewTraffic>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Create commit signature protection**
+  /// **List environments**
   ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  /// Lists the environments for a repository.
   ///
-  /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to require signed commits on a branch. You must enable branch protection to require signed commits.
+  /// Anyone with read access to the repository can use this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection](https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection)
-  pub fn create_commit_signature_protection(
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/environments#list-environments](https://docs.github.com/rest/deployments/environments#list-environments)
+  pub fn get_all_environments(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<(), (), ProtectedBranchAdminEnforced> {
+  ) -> Request<(), ReposGetAllEnvironmentsQuery, ReposGetAllEnvironmentsResponse> {
     let owner = owner.into();
     let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures");
+    let url = format!("/repos/{owner}/{repo}/environments");
 
-    Request::<(), (), ProtectedBranchAdminEnforced>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Delete commit signature protection**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to disable required signed commits on a branch. You must enable branch protection to require signed commits.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection](https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection)
-  pub fn delete_commit_signature_protection(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **List repository collaborators**
-  ///
-  /// For organization-owned repositories, the list of collaborators includes outside collaborators, organization members that are direct collaborators, organization members with access through team memberships, organization members with access through default organization permissions, and organization owners.
-  /// Organization members with write, maintain, or admin privileges on the organization-owned repository can use this endpoint.
-  ///
-  /// Team members will include the members of child teams.
-  ///
-  /// The authenticated user must have push access to the repository to use this endpoint.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `read:org` and `repo` scopes to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators](https://docs.github.com/rest/collaborators/collaborators#list-repository-collaborators)
-  pub fn list_collaborators(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposListCollaboratorsQuery, CollaboratorArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/collaborators");
-
-    Request::<(), ReposListCollaboratorsQuery, CollaboratorArray>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), ReposGetAllEnvironmentsQuery, ReposGetAllEnvironmentsResponse>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Accept a repository invitation**
@@ -1638,37 +1384,755 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **List repositories for the authenticated user**
+  /// **List repository invitations for the authenticated user**
   ///
-  /// Lists repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
+  /// When authenticating as a user, this endpoint will list all currently open repository invitations for that user.
   ///
-  /// The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user](https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user)
-  pub fn list_for_authenticated_user(
+  /// *Documentation*: [https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user](https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user)
+  pub fn list_invitations_for_authenticated_user(
     &self,
-  ) -> Request<(), ReposListForAuthenticatedUserQuery, RepositoryArray> {
-    let url = format!("/user/repos");
+  ) -> Request<(), ReposListInvitationsForAuthenticatedUserQuery, RepositoryInvitationArray> {
+    let url = format!("/user/repository_invitations");
 
-    Request::<(), ReposListForAuthenticatedUserQuery, RepositoryArray>::builder(&self.config)
+    Request::<(), ReposListInvitationsForAuthenticatedUserQuery, RepositoryInvitationArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Create a repository for the authenticated user**
+  /// **List GitHub Pages builds**
   ///
-  /// Creates a new repository for the authenticated user.
+  /// Lists builts of a GitHub Pages site.
   ///
-  /// OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user](https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user)
-  pub fn create_for_authenticated_user(
+  /// *Documentation*: [https://docs.github.com/rest/pages/pages#list-apiname-pages-builds](https://docs.github.com/rest/pages/pages#list-apiname-pages-builds)
+  pub fn list_pages_builds(
     &self,
-  ) -> Request<ReposCreateForAuthenticatedUserRequest, (), FullRepository> {
-    let url = format!("/user/repos");
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposListPagesBuildsQuery, PageBuildArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/pages/builds");
 
-    Request::<ReposCreateForAuthenticatedUserRequest, (), FullRepository>::builder(&self.config)
+    Request::<(), ReposListPagesBuildsQuery, PageBuildArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Request a GitHub Pages build**
+  ///
+  /// You can request that your site be built from the latest revision on the default branch. This has the same effect as pushing a commit to your default branch, but does not require an additional commit. Manually triggering page builds can be helpful when diagnosing build warnings and failures.
+  ///
+  /// Build requests are limited to one concurrent build per repository and one concurrent build per requester. If you request a build while another is still in progress, the second request will be queued until the first completes.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build](https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build)
+  pub fn request_pages_build(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), PageBuildStatus> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/pages/builds");
+
+    Request::<(), (), PageBuildStatus>::builder(&self.config)
       .post(url)
+      .build()
+  }
+
+  /// **Check if private vulnerability reporting is enabled for a repository**
+  ///
+  /// Returns a boolean indicating whether or not private vulnerability reporting is enabled for the repository. For more information, see "[Evaluating the security settings of a repository](https://docs.github.com/code-security/security-advisories/working-with-repository-security-advisories/evaluating-the-security-settings-of-a-repository)".
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository](https://docs.github.com/rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository)
+  pub fn check_private_vulnerability_reporting(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), ReposCheckPrivateVulnerabilityReportingResponse> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/private-vulnerability-reporting");
+
+    Request::<(), (), ReposCheckPrivateVulnerabilityReportingResponse>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Enable private vulnerability reporting for a repository**
+  ///
+  /// Enables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository](https://docs.github.com/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository)
+  pub fn enable_private_vulnerability_reporting(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/private-vulnerability-reporting");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Disable private vulnerability reporting for a repository**
+  ///
+  /// Disables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)".
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository](https://docs.github.com/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository)
+  pub fn disable_private_vulnerability_reporting(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/private-vulnerability-reporting");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get a repository ruleset**
+  ///
+  /// Get a ruleset for a repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/rules#get-a-repository-ruleset](https://docs.github.com/rest/repos/rules#get-a-repository-ruleset)
+  pub fn get_repo_ruleset(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    ruleset_id: impl Into<i64>,
+  ) -> Request<(), ReposGetRepoRulesetQuery, RepositoryRuleset> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let ruleset_id = ruleset_id.into();
+    let url = format!("/repos/{owner}/{repo}/rulesets/{ruleset_id}");
+
+    Request::<(), ReposGetRepoRulesetQuery, RepositoryRuleset>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update a repository ruleset**
+  ///
+  /// Update a ruleset for a repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/rules#update-a-repository-ruleset](https://docs.github.com/rest/repos/rules#update-a-repository-ruleset)
+  pub fn update_repo_ruleset(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    ruleset_id: impl Into<i64>,
+  ) -> Request<ReposUpdateRepoRulesetRequest, (), RepositoryRuleset> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let ruleset_id = ruleset_id.into();
+    let url = format!("/repos/{owner}/{repo}/rulesets/{ruleset_id}");
+
+    Request::<ReposUpdateRepoRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Delete a repository ruleset**
+  ///
+  /// Delete a ruleset for a repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/rules#delete-a-repository-ruleset](https://docs.github.com/rest/repos/rules#delete-a-repository-ruleset)
+  pub fn delete_repo_ruleset(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    ruleset_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let ruleset_id = ruleset_id.into();
+    let url = format!("/repos/{owner}/{repo}/rulesets/{ruleset_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get a webhook configuration for a repository**
+  ///
+  /// Returns the webhook configuration for a repository. To get more information about the webhook, including the `active` state and `events`, use "[Get a repository webhook](/rest/webhooks/repos#get-a-repository-webhook)."
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `read:repo_hook` or `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository](https://docs.github.com/rest/repos/webhooks#get-a-webhook-configuration-for-a-repository)
+  pub fn get_webhook_config_for_repo(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    hook_id: impl Into<i64>,
+  ) -> Request<(), (), WebhookConfiguration> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let hook_id = hook_id.into();
+    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/config");
+
+    Request::<(), (), WebhookConfiguration>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update a webhook configuration for a repository**
+  ///
+  /// Updates the webhook configuration for a repository. To update more information about the webhook, including the `active` state and `events`, use "[Update a repository webhook](/rest/webhooks/repos#update-a-repository-webhook)."
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `write:repo_hook` or `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository](https://docs.github.com/rest/repos/webhooks#update-a-webhook-configuration-for-a-repository)
+  pub fn update_webhook_config_for_repo(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    hook_id: impl Into<i64>,
+  ) -> Request<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfiguration> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let hook_id = hook_id.into();
+    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/config");
+
+    Request::<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfiguration>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
+  }
+
+  /// **Cancel a GitHub Pages deployment**
+  ///
+  /// Cancels a GitHub Pages deployment.
+  ///
+  /// The authenticated user must have write permissions for the GitHub Pages site.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pages/pages#cancel-a-github-pages-deployment](https://docs.github.com/rest/pages/pages#cancel-a-github-pages-deployment)
+  pub fn cancel_pages_deployment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    pages_deployment_id: impl Into<StringOrInteger>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let pages_deployment_id = pages_deployment_id.into();
+    let url = format!("/repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}/cancel");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get community profile metrics**
+  ///
+  /// Returns all community profile metrics for a repository. The repository cannot be a fork.
+  ///
+  /// The returned metrics include an overall health score, the repository description, the presence of documentation, the
+  /// detected code of conduct, the detected license, and the presence of ISSUE\_TEMPLATE, PULL\_REQUEST\_TEMPLATE,
+  /// README, and CONTRIBUTING files.
+  ///
+  /// The `health_percentage` score is defined as a percentage of how many of
+  /// the recommended community health files are present. For more information, see
+  /// "[About community profiles for public repositories](https://docs.github.com/communities/setting-up-your-project-for-healthy-contributions/about-community-profiles-for-public-repositories)."
+  ///
+  /// `content_reports_enabled` is only returned for organization-owned repositories.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/metrics/community#get-community-profile-metrics](https://docs.github.com/rest/metrics/community#get-community-profile-metrics)
+  pub fn get_community_profile_metrics(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), CommunityProfile> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/community/profile");
+
+    Request::<(), (), CommunityProfile>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get all contributor commit activity**
+  ///
+  ///
+  /// Returns the `total` number of commits authored by the contributor. In addition, the response includes a Weekly Hash (`weeks` array) with the following information:
+  ///
+  /// *   `w` - Start of the week, given as a [Unix timestamp](https://en.wikipedia.org/wiki/Unix_time).
+  /// *   `a` - Number of additions
+  /// *   `d` - Number of deletions
+  /// *   `c` - Number of commits
+  ///
+  /// **Note:** This endpoint will return `0` values for all addition and deletion counts in repositories with 10,000 or more commits.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity](https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity)
+  pub fn get_contributors_stats(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), ContributorActivityArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/stats/contributors");
+
+    Request::<(), (), ContributorActivityArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get access restrictions**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Lists who has access to this protected branch.
+  ///
+  /// **Note**: Users, apps, and teams `restrictions` are only available for organization-owned repositories.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-access-restrictions](https://docs.github.com/rest/branches/branch-protection#get-access-restrictions)
+  pub fn get_access_restrictions(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<(), (), BranchRestrictionPolicy> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions");
+
+    Request::<(), (), BranchRestrictionPolicy>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Delete access restrictions**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Disables the ability to restrict who can push to this branch.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions](https://docs.github.com/rest/branches/branch-protection#delete-access-restrictions)
+  pub fn delete_access_restrictions(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get a repository README for a directory**
+  ///
+  /// Gets the README from a repository directory.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type.
+  /// - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory](https://docs.github.com/rest/repos/contents#get-a-repository-readme-for-a-directory)
+  pub fn get_readme_in_directory(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    dir: impl Into<String>,
+  ) -> Request<(), ReposGetReadmeInDirectoryQuery, ContentFile> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let dir = dir.into();
+    let url = format!("/repos/{owner}/{repo}/readme/{dir}");
+
+    Request::<(), ReposGetReadmeInDirectoryQuery, ContentFile>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create a commit status**
+  ///
+  /// Users with push access in a repository can create commit statuses for a given SHA.
+  ///
+  /// Note: there is a limit of 1000 statuses per `sha` and `context` within a repository. Attempts to create more than 1000 statuses will result in a validation error.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/commits/statuses#create-a-commit-status](https://docs.github.com/rest/commits/statuses#create-a-commit-status)
+  pub fn create_commit_status(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    sha: impl Into<String>,
+  ) -> Request<ReposCreateCommitStatusRequest, (), Status> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let sha = sha.into();
+    let url = format!("/repos/{owner}/{repo}/statuses/{sha}");
+
+    Request::<ReposCreateCommitStatusRequest, (), Status>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **List repository invitations**
+  ///
+  /// When authenticating as a user with admin rights to a repository, this endpoint will list all currently open repository invitations.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/collaborators/invitations#list-repository-invitations](https://docs.github.com/rest/collaborators/invitations#list-repository-invitations)
+  pub fn list_invitations(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposListInvitationsQuery, RepositoryInvitationArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/invitations");
+
+    Request::<(), ReposListInvitationsQuery, RepositoryInvitationArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Download a repository archive (tar)**
+  ///
+  /// Gets a redirect URL to download a tar archive for a repository. If you omit `:ref`, the repository’s default branch (usually
+  /// `main`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use
+  /// the `Location` header to make a second `GET` request.
+  /// **Note**: For private repositories, these links are temporary and expire after five minutes.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/contents#download-a-repository-archive-tar](https://docs.github.com/rest/repos/contents#download-a-repository-archive-tar)
+  pub fn download_tarball_archive(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    ref_: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let ref_ = ref_.into();
+    let url = format!("/repos/{owner}/{repo}/tarball/{ref_}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get a repository**
+  ///
+  /// The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network.
+  ///
+  /// **Note:** In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#get-a-repository](https://docs.github.com/rest/repos/repos#get-a-repository)
+  pub fn get(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), FullRepository> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}");
+
+    Request::<(), (), FullRepository>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update a repository**
+  ///
+  /// **Note**: To edit a repository's topics, use the [Replace all repository topics](https://docs.github.com/rest/repos/repos#replace-all-repository-topics) endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#update-a-repository](https://docs.github.com/rest/repos/repos#update-a-repository)
+  pub fn update(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ReposUpdateRequest, (), FullRepository> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}");
+
+    Request::<ReposUpdateRequest, (), FullRepository>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **Delete a repository**
+  ///
+  /// Deleting a repository requires admin access.
+  ///
+  /// If an organization owner has configured the organization to prevent members from deleting organization-owned
+  /// repositories, you will get a `403 Forbidden` response.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `delete_repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#delete-a-repository](https://docs.github.com/rest/repos/repos#delete-a-repository)
+  pub fn delete(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get a deployment branch policy**
+  ///
+  /// Gets a deployment branch or tag policy for an environment.
+  ///
+  /// Anyone with read access to the repository can use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy)
+  pub fn get_deployment_branch_policy(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    environment_name: impl Into<String>,
+    branch_policy_id: impl Into<i64>,
+  ) -> Request<(), (), DeploymentBranchPolicy> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let environment_name = environment_name.into();
+    let branch_policy_id = branch_policy_id.into();
+    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}");
+
+    Request::<(), (), DeploymentBranchPolicy>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update a deployment branch policy**
+  ///
+  /// Updates a deployment branch or tag policy for an environment.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy)
+  pub fn update_deployment_branch_policy(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    environment_name: impl Into<String>,
+    branch_policy_id: impl Into<i64>,
+  ) -> Request<DeploymentBranchPolicyNamePattern, (), DeploymentBranchPolicy> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let environment_name = environment_name.into();
+    let branch_policy_id = branch_policy_id.into();
+    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}");
+
+    Request::<DeploymentBranchPolicyNamePattern, (), DeploymentBranchPolicy>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Delete a deployment branch policy**
+  ///
+  /// Deletes a deployment branch or tag policy for an environment.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy)
+  pub fn delete_deployment_branch_policy(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    environment_name: impl Into<String>,
+    branch_policy_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let environment_name = environment_name.into();
+    let branch_policy_id = branch_policy_id.into();
+    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get a repository webhook**
+  ///
+  /// Returns a webhook configured in a repository. To get only the webhook `config` properties, see "[Get a webhook configuration for a repository](/rest/webhooks/repo-config#get-a-webhook-configuration-for-a-repository)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#get-a-repository-webhook)
+  pub fn get_webhook(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    hook_id: impl Into<i64>,
+  ) -> Request<(), (), Webhook> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let hook_id = hook_id.into();
+    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}");
+
+    Request::<(), (), Webhook>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update a repository webhook**
+  ///
+  /// Updates a webhook configured in a repository. If you previously had a `secret` set, you must provide the same `secret` or set a new `secret` or the secret will be removed. If you are only updating individual webhook `config` properties, use "[Update a webhook configuration for a repository](/rest/webhooks/repo-config#update-a-webhook-configuration-for-a-repository)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#update-a-repository-webhook)
+  pub fn update_webhook(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    hook_id: impl Into<i64>,
+  ) -> Request<ReposUpdateWebhookRequest, (), Webhook> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let hook_id = hook_id.into();
+    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}");
+
+    Request::<ReposUpdateWebhookRequest, (), Webhook>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **Delete a repository webhook**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#delete-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#delete-a-repository-webhook)
+  pub fn delete_webhook(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    hook_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let hook_id = hook_id.into();
+    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **List repository webhooks**
+  ///
+  /// Lists webhooks for a repository. `last response` may return null if there have not been any deliveries within 30 days.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#list-repository-webhooks](https://docs.github.com/rest/repos/webhooks#list-repository-webhooks)
+  pub fn list_webhooks(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposListWebhooksQuery, WebhookArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/hooks");
+
+    Request::<(), ReposListWebhooksQuery, WebhookArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create a repository webhook**
+  ///
+  /// Repositories can have multiple webhooks installed. Each webhook should have a unique `config`. Multiple webhooks can
+  /// share the same `config` as long as those webhooks do not have any `events` that overlap.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#create-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#create-a-repository-webhook)
+  pub fn create_webhook(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ReposCreateWebhookRequest, (), Webhook> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/hooks");
+
+    Request::<ReposCreateWebhookRequest, (), Webhook>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **List commits**
+  ///
+  /// **Signature verification object**
+  ///
+  /// The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object:
+  ///
+  /// | Name | Type | Description |
+  /// | ---- | ---- | ----------- |
+  /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
+  /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
+  /// | `signature` | `string` | The signature that was extracted from the commit. |
+  /// | `payload` | `string` | The value that was signed. |
+  ///
+  /// These are the possible values for `reason` in the `verification` object:
+  ///
+  /// | Value | Description |
+  /// | ----- | ----------- |
+  /// | `expired_key` | The key that made the signature is expired. |
+  /// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
+  /// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+  /// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+  /// | `unsigned` | The object does not include a signature. |
+  /// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+  /// | `no_user` | No user was associated with the `committer` email address in the commit. |
+  /// | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
+  /// | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
+  /// | `unknown_key` | The key that made the signature has not been registered with any user's account. |
+  /// | `malformed_signature` | There was an error parsing the signature. |
+  /// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
+  /// | `valid` | None of the above errors applied, so the signature is considered to be verified. |
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/commits/commits#list-commits](https://docs.github.com/rest/commits/commits#list-commits)
+  pub fn list_commits(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposListCommitsQuery, CommitArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/commits");
+
+    Request::<(), ReposListCommitsQuery, CommitArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List repository rule suites**
+  ///
+  /// Lists suites of rule evaluations at the repository level.
+  /// For more information, see "[Managing rulesets for a repository](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#viewing-insights-for-rulesets)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites](https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites)
+  pub fn get_repo_rule_suites(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposGetRepoRuleSuitesQuery, RuleSuites> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/rulesets/rule-suites");
+
+    Request::<(), ReposGetRepoRuleSuitesQuery, RuleSuites>::builder(&self.config)
+      .get(url)
       .build()
   }
 
@@ -1743,62 +2207,6 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **Get all contributor commit activity**
-  ///
-  ///
-  /// Returns the `total` number of commits authored by the contributor. In addition, the response includes a Weekly Hash (`weeks` array) with the following information:
-  ///
-  /// *   `w` - Start of the week, given as a [Unix timestamp](https://en.wikipedia.org/wiki/Unix_time).
-  /// *   `a` - Number of additions
-  /// *   `d` - Number of deletions
-  /// *   `c` - Number of commits
-  ///
-  /// **Note:** This endpoint will return `0` values for all addition and deletion counts in repositories with 10,000 or more commits.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity](https://docs.github.com/rest/metrics/statistics#get-all-contributor-commit-activity)
-  pub fn get_contributors_stats(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), ContributorActivityArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/stats/contributors");
-
-    Request::<(), (), ContributorActivityArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get community profile metrics**
-  ///
-  /// Returns all community profile metrics for a repository. The repository cannot be a fork.
-  ///
-  /// The returned metrics include an overall health score, the repository description, the presence of documentation, the
-  /// detected code of conduct, the detected license, and the presence of ISSUE\_TEMPLATE, PULL\_REQUEST\_TEMPLATE,
-  /// README, and CONTRIBUTING files.
-  ///
-  /// The `health_percentage` score is defined as a percentage of how many of
-  /// the recommended community health files are present. For more information, see
-  /// "[About community profiles for public repositories](https://docs.github.com/communities/setting-up-your-project-for-healthy-contributions/about-community-profiles-for-public-repositories)."
-  ///
-  /// `content_reports_enabled` is only returned for organization-owned repositories.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/metrics/community#get-community-profile-metrics](https://docs.github.com/rest/metrics/community#get-community-profile-metrics)
-  pub fn get_community_profile_metrics(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), CommunityProfile> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/community/profile");
-
-    Request::<(), (), CommunityProfile>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
   /// **Get GitHub Pages build**
   ///
   /// Gets information about a GitHub Pages build.
@@ -1822,142 +2230,6 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **Get the combined status for a specific reference**
-  ///
-  /// Users with pull access in a repository can access a combined view of commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name.
-  ///
-  ///
-  /// Additionally, a combined `state` is returned. The `state` is one of:
-  ///
-  /// *   **failure** if any of the contexts report as `error` or `failure`
-  /// *   **pending** if there are no statuses or a context is `pending`
-  /// *   **success** if the latest status for all contexts is `success`
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference](https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference)
-  pub fn get_combined_status_for_ref(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    ref_: impl Into<String>,
-  ) -> Request<(), ReposGetCombinedStatusForRefQuery, CombinedCommitStatus> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let ref_ = ref_.into();
-    let url = format!("/repos/{owner}/{repo}/commits/{ref_}/status");
-
-    Request::<(), ReposGetCombinedStatusForRefQuery, CombinedCommitStatus>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List branches for HEAD commit**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Returns all branches where the given commit SHA is the HEAD, or latest commit for the branch.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/commits#list-branches-for-head-commit](https://docs.github.com/rest/commits/commits#list-branches-for-head-commit)
-  pub fn list_branches_for_head_commit(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    commit_sha: impl Into<String>,
-  ) -> Request<(), (), BranchShortArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let commit_sha = commit_sha.into();
-    let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head");
-
-    Request::<(), (), BranchShortArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List commit statuses for a reference**
-  ///
-  /// Users with pull access in a repository can view commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name. Statuses are returned in reverse chronological order. The first status in the list will be the latest one.
-  ///
-  /// This resource is also available via a legacy route: `GET /repos/:owner/:repo/statuses/:ref`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference](https://docs.github.com/rest/commits/statuses#list-commit-statuses-for-a-reference)
-  pub fn list_commit_statuses_for_ref(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    ref_: impl Into<String>,
-  ) -> Request<(), ReposListCommitStatusesForRefQuery, StatusArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let ref_ = ref_.into();
-    let url = format!("/repos/{owner}/{repo}/commits/{ref_}/statuses");
-
-    Request::<(), ReposListCommitStatusesForRefQuery, StatusArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get a release asset**
-  ///
-  /// To download the asset's binary content, set the `Accept` header of the request to [`application/octet-stream`](https://docs.github.com/rest/overview/media-types). The API will either redirect the client to the location, or stream it directly if possible. API clients should handle both a `200` or `302` response.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/releases/assets#get-a-release-asset](https://docs.github.com/rest/releases/assets#get-a-release-asset)
-  pub fn get_release_asset(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    asset_id: impl Into<i64>,
-  ) -> Request<(), (), ReleaseAsset> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let asset_id = asset_id.into();
-    let url = format!("/repos/{owner}/{repo}/releases/assets/{asset_id}");
-
-    Request::<(), (), ReleaseAsset>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update a release asset**
-  ///
-  /// Users with push access to the repository can edit a release asset.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/releases/assets#update-a-release-asset](https://docs.github.com/rest/releases/assets#update-a-release-asset)
-  pub fn update_release_asset(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    asset_id: impl Into<i64>,
-  ) -> Request<ReposUpdateReleaseAssetRequest, (), ReleaseAsset> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let asset_id = asset_id.into();
-    let url = format!("/repos/{owner}/{repo}/releases/assets/{asset_id}");
-
-    Request::<ReposUpdateReleaseAssetRequest, (), ReleaseAsset>::builder(&self.config)
-      .patch(url)
-      .build()
-  }
-
-  /// **Delete a release asset**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/releases/assets#delete-a-release-asset](https://docs.github.com/rest/releases/assets#delete-a-release-asset)
-  pub fn delete_release_asset(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    asset_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let asset_id = asset_id.into();
-    let url = format!("/repos/{owner}/{repo}/releases/assets/{asset_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
   /// **Transfer a repository**
   ///
   /// A transfer request will need to be accepted by the new owner when transferring a personal repository to another user. The response will contain the original `owner`, and the transfer will continue asynchronously. For more details on the requirements to transfer personal and organization-owned repositories, see [about repository transfers](https://docs.github.com/articles/about-repository-transfers/).
@@ -1974,6 +2246,434 @@ impl GitHubReposAPI {
 
     Request::<ReposTransferRequest, (), MinimalRepository>::builder(&self.config)
       .post(url)
+      .build()
+  }
+
+  /// **Compare two commits**
+  ///
+  /// Compares two commits against one another. You can compare refs (branches or tags) and commit SHAs in the same repository, or you can compare refs and commit SHAs that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see "[Understanding connections between repositories](https://docs.github.com/repositories/viewing-activity-and-data-for-your-repository/understanding-connections-between-repositories)."
+  ///
+  /// This endpoint is equivalent to running the `git log BASE..HEAD` command, but it returns commits in a different order. The `git log BASE..HEAD` command returns commits in reverse chronological order, whereas the API returns commits in chronological order.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github.diff`**: Returns the diff of the commit.
+  /// - **`application/vnd.github.patch`**: Returns the patch of the commit. Diffs with binary data will have no `patch` property.
+  ///
+  /// The API response includes details about the files that were changed between the two commits. This includes the status of the change (if a file was added, removed, modified, or renamed), and details of the change itself. For example, files with a `renamed` status have a `previous_filename` field showing the previous filename of the file, and files with a `modified` status have a `patch` field showing the changes made to the file.
+  ///
+  /// When calling this endpoint without any paging parameter (`per_page` or `page`), the returned list is limited to 250 commits, and the last commit in the list is the most recent of the entire comparison.
+  ///
+  /// **Working with large comparisons**
+  ///
+  /// To process a response with a large number of commits, use a query parameter (`per_page` or `page`) to paginate the results. When using pagination:
+  ///
+  /// - The list of changed files is only shown on the first page of results, but it includes all changed files for the entire comparison.
+  /// - The results are returned in chronological order, but the last commit in the returned list may not be the most recent one in the entire set if there are more pages of results.
+  ///
+  /// For more information on working with pagination, see "[Using pagination in the REST API](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api)."
+  ///
+  /// **Signature verification object**
+  ///
+  /// The response will include a `verification` object that describes the result of verifying the commit's signature. The `verification` object includes the following fields:
+  ///
+  /// | Name | Type | Description |
+  /// | ---- | ---- | ----------- |
+  /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
+  /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
+  /// | `signature` | `string` | The signature that was extracted from the commit. |
+  /// | `payload` | `string` | The value that was signed. |
+  ///
+  /// These are the possible values for `reason` in the `verification` object:
+  ///
+  /// | Value | Description |
+  /// | ----- | ----------- |
+  /// | `expired_key` | The key that made the signature is expired. |
+  /// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
+  /// | `gpgverify_error` | There was an error communicating with the signature verification service. |
+  /// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
+  /// | `unsigned` | The object does not include a signature. |
+  /// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
+  /// | `no_user` | No user was associated with the `committer` email address in the commit. |
+  /// | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
+  /// | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
+  /// | `unknown_key` | The key that made the signature has not been registered with any user's account. |
+  /// | `malformed_signature` | There was an error parsing the signature. |
+  /// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
+  /// | `valid` | None of the above errors applied, so the signature is considered to be verified. |
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/commits/commits#compare-two-commits](https://docs.github.com/rest/commits/commits#compare-two-commits)
+  pub fn compare_commits(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    basehead: impl Into<String>,
+  ) -> Request<(), ReposCompareCommitsQuery, CommitComparison> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let basehead = basehead.into();
+    let url = format!("/repos/{owner}/{repo}/compare/{basehead}");
+
+    Request::<(), ReposCompareCommitsQuery, CommitComparison>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get all custom property values for a repository**
+  ///
+  /// Gets all custom property values that are set for a repository.
+  /// Users with read access to the repository can use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository](https://docs.github.com/rest/repos/custom-properties#get-all-custom-property-values-for-a-repository)
+  pub fn get_custom_properties_values(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), CustomPropertyValueArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/properties/values");
+
+    Request::<(), (), CustomPropertyValueArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create or update custom property values for a repository**
+  ///
+  /// Create new or update existing custom property values for a repository.
+  /// Using a value of `null` for a custom property will remove or 'unset' the property value from the repository.
+  ///
+  /// Repository admins and other users with the repository-level "edit custom property values" fine-grained permission can use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository](https://docs.github.com/rest/repos/custom-properties#create-or-update-custom-property-values-for-a-repository)
+  pub fn create_or_update_custom_properties_values(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<ReposCreateOrUpdateCustomPropertiesValuesRequest, ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/properties/values");
+
+    NoContentRequest::<ReposCreateOrUpdateCustomPropertiesValuesRequest, ()>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **List branches**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branches#list-branches](https://docs.github.com/rest/branches/branches#list-branches)
+  pub fn list_branches(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposListBranchesQuery, ShortBranchArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/branches");
+
+    Request::<(), ReposListBranchesQuery, ShortBranchArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get a custom deployment protection rule**
+  ///
+  /// Gets an enabled custom deployment protection rule for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+  ///
+  /// For more information about the app that is providing this custom deployment rule, see [`GET /apps/{app_slug}`](https://docs.github.com/rest/apps/apps#get-an-app).
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule](https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule)
+  pub fn get_custom_deployment_protection_rule(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    environment_name: impl Into<String>,
+    protection_rule_id: impl Into<i64>,
+  ) -> Request<(), (), DeploymentProtectionRule> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let environment_name = environment_name.into();
+    let protection_rule_id = protection_rule_id.into();
+    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}");
+
+    Request::<(), (), DeploymentProtectionRule>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Disable a custom protection rule for an environment**
+  ///
+  /// Disables a custom deployment protection rule for an environment.
+  ///
+  /// The authenticated user must have admin or owner permissions to the repository to use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment](https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment)
+  pub fn disable_deployment_protection_rule(
+    &self,
+    environment_name: impl Into<String>,
+    repo: impl Into<String>,
+    owner: impl Into<String>,
+    protection_rule_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let environment_name = environment_name.into();
+    let repo = repo.into();
+    let owner = owner.into();
+    let protection_rule_id = protection_rule_id.into();
+    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **List public repositories**
+  ///
+  /// Lists all public repositories in the order that they were created.
+  ///
+  /// Note:
+  /// - For GitHub Enterprise Server, this endpoint will only list repositories available to all users on the enterprise.
+  /// - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of repositories.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-public-repositories](https://docs.github.com/rest/repos/repos#list-public-repositories)
+  pub fn list_public(&self) -> Request<(), ReposListPublicQuery, MinimalRepositoryArray> {
+    let url = format!("/repositories");
+
+    Request::<(), ReposListPublicQuery, MinimalRepositoryArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get all organization repository rulesets**
+  ///
+  /// Get all the repository rulesets for an organization.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets](https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets)
+  pub fn get_org_rulesets(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), ReposGetOrgRulesetsQuery, RepositoryRulesetArray> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/rulesets");
+
+    Request::<(), ReposGetOrgRulesetsQuery, RepositoryRulesetArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create an organization repository ruleset**
+  ///
+  /// Create a repository ruleset for an organization.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset](https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset)
+  pub fn create_org_ruleset(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<ReposCreateOrgRulesetRequest, (), RepositoryRuleset> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/rulesets");
+
+    Request::<ReposCreateOrgRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get an organization rule suite**
+  ///
+  /// Gets information about a suite of rule evaluations from within an organization.
+  /// For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite](https://docs.github.com/rest/orgs/rule-suites#get-an-organization-rule-suite)
+  pub fn get_org_rule_suite(
+    &self,
+    org: impl Into<String>,
+    rule_suite_id: impl Into<i64>,
+  ) -> Request<(), (), RuleSuite> {
+    let org = org.into();
+    let rule_suite_id = rule_suite_id.into();
+    let url = format!("/orgs/{org}/rulesets/rule-suites/{rule_suite_id}");
+
+    Request::<(), (), RuleSuite>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Check if vulnerability alerts are enabled for a repository**
+  ///
+  /// Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user must have admin read access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/articles/about-security-alerts-for-vulnerable-dependencies)".
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository](https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository)
+  pub fn check_vulnerability_alerts(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/vulnerability-alerts");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Enable vulnerability alerts**
+  ///
+  /// Enables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/articles/about-security-alerts-for-vulnerable-dependencies)".
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#enable-vulnerability-alerts](https://docs.github.com/rest/repos/repos#enable-vulnerability-alerts)
+  pub fn enable_vulnerability_alerts(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/vulnerability-alerts");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Disable vulnerability alerts**
+  ///
+  /// Disables dependency alerts and the dependency graph for a repository.
+  /// The authenticated user must have admin access to the repository. For more information,
+  /// see "[About security alerts for vulnerable dependencies](https://docs.github.com/articles/about-security-alerts-for-vulnerable-dependencies)".
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#disable-vulnerability-alerts](https://docs.github.com/rest/repos/repos#disable-vulnerability-alerts)
+  pub fn disable_vulnerability_alerts(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/vulnerability-alerts");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get an environment**
+  ///
+  /// **Note:** To get information about name patterns that branches must match in order to deploy to this environment, see "[Get a deployment branch policy](/rest/deployments/branch-policies#get-a-deployment-branch-policy)."
+  ///
+  /// Anyone with read access to the repository can use this endpoint.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/environments#get-an-environment](https://docs.github.com/rest/deployments/environments#get-an-environment)
+  pub fn get_environment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    environment_name: impl Into<String>,
+  ) -> Request<(), (), Environment> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let environment_name = environment_name.into();
+    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}");
+
+    Request::<(), (), Environment>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create or update an environment**
+  ///
+  /// Create or update an environment with protection rules, such as required reviewers. For more information about environment protection rules, see "[Environments](/actions/reference/environments#environment-protection-rules)."
+  ///
+  /// **Note:** To create or update name patterns that branches must match in order to deploy to this environment, see "[Deployment branch policies](/rest/deployments/branch-policies)."
+  ///
+  /// **Note:** To create or update secrets for an environment, see "[GitHub Actions secrets](/rest/actions/secrets)."
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/environments#create-or-update-an-environment](https://docs.github.com/rest/deployments/environments#create-or-update-an-environment)
+  pub fn create_or_update_environment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    environment_name: impl Into<String>,
+  ) -> Request<ReposCreateOrUpdateEnvironmentRequest, (), Environment> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let environment_name = environment_name.into();
+    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}");
+
+    Request::<ReposCreateOrUpdateEnvironmentRequest, (), Environment>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Delete an environment**
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/environments#delete-an-environment](https://docs.github.com/rest/deployments/environments#delete-an-environment)
+  pub fn delete_an_environment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    environment_name: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let environment_name = environment_name.into();
+    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get a deploy key**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key)
+  pub fn get_deploy_key(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    key_id: impl Into<i64>,
+  ) -> Request<(), (), DeployKey> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let key_id = key_id.into();
+    let url = format!("/repos/{owner}/{repo}/keys/{key_id}");
+
+    Request::<(), (), DeployKey>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Delete a deploy key**
+  ///
+  /// Deploy keys are immutable. If you need to update a key, remove the key and create a new one instead.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deploy-keys/deploy-keys#delete-a-deploy-key](https://docs.github.com/rest/deploy-keys/deploy-keys#delete-a-deploy-key)
+  pub fn delete_deploy_key(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    key_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let key_id = key_id.into();
+    let url = format!("/repos/{owner}/{repo}/keys/{key_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
       .build()
   }
 
@@ -2069,1682 +2769,109 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **Create a repository dispatch event**
+  /// **Create a repository using a template**
   ///
-  /// You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want activity that happens outside of GitHub to trigger a GitHub Actions workflow or GitHub App webhook. You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see "[RepositoryDispatchEvent](https://docs.github.com/webhooks/event-payloads/#repository_dispatch)."
-  ///
-  /// The `client_payload` parameter is available for any extra information that your workflow might need. This parameter is a JSON payload that will be passed on when the webhook event is dispatched. For example, the `client_payload` can include a message that a user would like to send using a GitHub Actions workflow. Or the `client_payload` can be used as a test to debug your workflow.
-  ///
-  /// This input example shows how you can use the `client_payload` as a test to debug your workflow.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event](https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event)
-  pub fn create_dispatch_event(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> NoContentRequest<ReposCreateDispatchEventRequest, ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/dispatches");
-
-    NoContentRequest::<ReposCreateDispatchEventRequest, ()>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Test the push repository webhook**
-  ///
-  /// This will trigger the hook with the latest push to the current repository if the hook is subscribed to `push` events. If the hook is not subscribed to `push` events, the server will respond with 204 but no test POST will be generated.
-  ///
-  /// **Note**: Previously `/repos/:owner/:repo/hooks/:hook_id/test`
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook](https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook)
-  pub fn test_push_webhook(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    hook_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let hook_id = hook_id.into();
-    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/tests");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Get all repository rulesets**
-  ///
-  /// Get all the rulesets for a repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/rules#get-all-repository-rulesets](https://docs.github.com/rest/repos/rules#get-all-repository-rulesets)
-  pub fn get_repo_rulesets(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposGetRepoRulesetsQuery, RepositoryRulesetArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/rulesets");
-
-    Request::<(), ReposGetRepoRulesetsQuery, RepositoryRulesetArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a repository ruleset**
-  ///
-  /// Create a ruleset for a repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/rules#create-a-repository-ruleset](https://docs.github.com/rest/repos/rules#create-a-repository-ruleset)
-  pub fn create_repo_ruleset(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ReposCreateRepoRulesetRequest, (), RepositoryRuleset> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/rulesets");
-
-    Request::<ReposCreateRepoRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **List deployments**
-  ///
-  /// Simple filtering of deployments is available via query parameters:
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/deployments#list-deployments](https://docs.github.com/rest/deployments/deployments#list-deployments)
-  pub fn list_deployments(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposListDeploymentsQuery, DeploymentArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/deployments");
-
-    Request::<(), ReposListDeploymentsQuery, DeploymentArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a deployment**
-  ///
-  /// Deployments offer a few configurable parameters with certain defaults.
-  ///
-  /// The `ref` parameter can be any named branch, tag, or SHA. At GitHub we often deploy branches and verify them
-  /// before we merge a pull request.
-  ///
-  /// The `environment` parameter allows deployments to be issued to different runtime environments. Teams often have
-  /// multiple environments for verifying their applications, such as `production`, `staging`, and `qa`. This parameter
-  /// makes it easier to track which environments have requested deployments. The default environment is `production`.
-  ///
-  /// The `auto_merge` parameter is used to ensure that the requested ref is not behind the repository's default branch. If
-  /// the ref _is_ behind the default branch for the repository, we will attempt to merge it for you. If the merge succeeds,
-  /// the API will return a successful merge commit. If merge conflicts prevent the merge from succeeding, the API will
-  /// return a failure response.
-  ///
-  /// By default, [commit statuses](https://docs.github.com/rest/commits/statuses) for every submitted context must be in a `success`
-  /// state. The `required_contexts` parameter allows you to specify a subset of contexts that must be `success`, or to
-  /// specify contexts that have not yet been submitted. You are not required to use commit statuses to deploy. If you do
-  /// not require any contexts or create any commit statuses, the deployment will always succeed.
-  ///
-  /// The `payload` parameter is available for any extra information that a deployment system might need. It is a JSON text
-  /// field that will be passed on when a deployment event is dispatched.
-  ///
-  /// The `task` parameter is used by the deployment system to allow different execution paths. In the web world this might
-  /// be `deploy:migrations` to run schema changes on the system. In the compiled world this could be a flag to compile an
-  /// application with debugging enabled.
-  ///
-  /// Merged branch response:
-  ///
-  /// You will see this response when GitHub automatically merges the base branch into the topic branch instead of creating
-  /// a deployment. This auto-merge happens when:
-  /// *   Auto-merge option is enabled in the repository
-  /// *   Topic branch does not include the latest changes on the base branch, which is `master` in the response example
-  /// *   There are no merge conflicts
-  ///
-  /// If there are no new commits in the base branch, a new request to create a deployment should give a successful
-  /// response.
-  ///
-  /// Merge conflict response:
-  ///
-  /// This error happens when the `auto_merge` option is enabled and when the default branch (in this case `master`), can't
-  /// be merged into the branch that's being deployed (in this case `topic-branch`), due to merge conflicts.
-  ///
-  /// Failed commit status checks:
-  ///
-  /// This error happens when the `required_contexts` parameter indicates that one or more contexts need to have a `success`
-  /// status for the commit to be deployed, but one or more of the required contexts do not have a state of `success`.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` or `repo_deployment` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/deployments#create-a-deployment](https://docs.github.com/rest/deployments/deployments#create-a-deployment)
-  pub fn create_deployment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ReposCreateDeploymentRequest, (), ReposCreateDeploymentResponse> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/deployments");
-
-    Request::<ReposCreateDeploymentRequest, (), ReposCreateDeploymentResponse>::builder(
-      &self.config,
-    )
-    .post(url)
-    .build()
-  }
-
-  /// **Get a branch**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branches#get-a-branch](https://docs.github.com/rest/branches/branches#get-a-branch)
-  pub fn get_branch(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<(), (), BranchWithProtection> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}");
-
-    Request::<(), (), BranchWithProtection>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List repository webhooks**
-  ///
-  /// Lists webhooks for a repository. `last response` may return null if there have not been any deliveries within 30 days.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#list-repository-webhooks](https://docs.github.com/rest/repos/webhooks#list-repository-webhooks)
-  pub fn list_webhooks(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposListWebhooksQuery, WebhookArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/hooks");
-
-    Request::<(), ReposListWebhooksQuery, WebhookArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a repository webhook**
-  ///
-  /// Repositories can have multiple webhooks installed. Each webhook should have a unique `config`. Multiple webhooks can
-  /// share the same `config` as long as those webhooks do not have any `events` that overlap.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#create-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#create-a-repository-webhook)
-  pub fn create_webhook(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ReposCreateWebhookRequest, (), Webhook> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/hooks");
-
-    Request::<ReposCreateWebhookRequest, (), Webhook>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Get the weekly commit activity**
-  ///
-  ///
-  /// Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
-  ///
-  /// **Note:** This endpoint can only be used for repositories with fewer than 10,000 commits. If the repository contains
-  /// 10,000 or more commits, a 422 status code will be returned.
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity](https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity)
-  pub fn get_code_frequency_stats(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), Vec<Vec<i64>>> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/stats/code_frequency");
-
-    Request::<(), (), Vec<Vec<i64>>>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Check if automated security fixes are enabled for a repository**
-  ///
-  /// Shows whether automated security fixes are enabled, disabled or paused for a repository. The authenticated user must have admin read access to the repository. For more information, see "[Configuring automated security fixes](https://docs.github.com/articles/configuring-automated-security-fixes)".
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository](https://docs.github.com/rest/repos/repos#check-if-automated-security-fixes-are-enabled-for-a-repository)
-  pub fn check_automated_security_fixes(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), CheckAutomatedSecurityFixes> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/automated-security-fixes");
-
-    Request::<(), (), CheckAutomatedSecurityFixes>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Enable automated security fixes**
-  ///
-  /// Enables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://docs.github.com/articles/configuring-automated-security-fixes)".
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#enable-automated-security-fixes](https://docs.github.com/rest/repos/repos#enable-automated-security-fixes)
-  pub fn enable_automated_security_fixes(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/automated-security-fixes");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Disable automated security fixes**
-  ///
-  /// Disables automated security fixes for a repository. The authenticated user must have admin access to the repository. For more information, see "[Configuring automated security fixes](https://docs.github.com/articles/configuring-automated-security-fixes)".
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#disable-automated-security-fixes](https://docs.github.com/rest/repos/repos#disable-automated-security-fixes)
-  pub fn disable_automated_security_fixes(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/automated-security-fixes");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Cancel a GitHub Pages deployment**
-  ///
-  /// Cancels a GitHub Pages deployment.
-  ///
-  /// The authenticated user must have write permissions for the GitHub Pages site.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pages/pages#cancel-a-github-pages-deployment](https://docs.github.com/rest/pages/pages#cancel-a-github-pages-deployment)
-  pub fn cancel_pages_deployment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    pages_deployment_id: impl Into<StringOrInteger>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let pages_deployment_id = pages_deployment_id.into();
-    let url = format!("/repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}/cancel");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Get all organization repository rulesets**
-  ///
-  /// Get all the repository rulesets for an organization.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets](https://docs.github.com/rest/orgs/rules#get-all-organization-repository-rulesets)
-  pub fn get_org_rulesets(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<(), ReposGetOrgRulesetsQuery, RepositoryRulesetArray> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/rulesets");
-
-    Request::<(), ReposGetOrgRulesetsQuery, RepositoryRulesetArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create an organization repository ruleset**
-  ///
-  /// Create a repository ruleset for an organization.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset](https://docs.github.com/rest/orgs/rules#create-an-organization-repository-ruleset)
-  pub fn create_org_ruleset(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<ReposCreateOrgRulesetRequest, (), RepositoryRuleset> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/rulesets");
-
-    Request::<ReposCreateOrgRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Get a deploy key**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key)
-  pub fn get_deploy_key(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    key_id: impl Into<i64>,
-  ) -> Request<(), (), DeployKey> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let key_id = key_id.into();
-    let url = format!("/repos/{owner}/{repo}/keys/{key_id}");
-
-    Request::<(), (), DeployKey>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Delete a deploy key**
-  ///
-  /// Deploy keys are immutable. If you need to update a key, remove the key and create a new one instead.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deploy-keys/deploy-keys#delete-a-deploy-key](https://docs.github.com/rest/deploy-keys/deploy-keys#delete-a-deploy-key)
-  pub fn delete_deploy_key(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    key_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let key_id = key_id.into();
-    let url = format!("/repos/{owner}/{repo}/keys/{key_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Get a repository README**
-  ///
-  /// Gets the preferred README for a repository.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type.
-  /// - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/contents#get-a-repository-readme](https://docs.github.com/rest/repos/contents#get-a-repository-readme)
-  pub fn get_readme(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposGetReadmeQuery, ContentFile> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/readme");
-
-    Request::<(), ReposGetReadmeQuery, ContentFile>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get a deployment branch policy**
-  ///
-  /// Gets a deployment branch or tag policy for an environment.
-  ///
-  /// Anyone with read access to the repository can use this endpoint.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#get-a-deployment-branch-policy)
-  pub fn get_deployment_branch_policy(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    environment_name: impl Into<String>,
-    branch_policy_id: impl Into<i64>,
-  ) -> Request<(), (), DeploymentBranchPolicy> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let environment_name = environment_name.into();
-    let branch_policy_id = branch_policy_id.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}");
-
-    Request::<(), (), DeploymentBranchPolicy>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update a deployment branch policy**
-  ///
-  /// Updates a deployment branch or tag policy for an environment.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#update-a-deployment-branch-policy)
-  pub fn update_deployment_branch_policy(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    environment_name: impl Into<String>,
-    branch_policy_id: impl Into<i64>,
-  ) -> Request<DeploymentBranchPolicyNamePattern, (), DeploymentBranchPolicy> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let environment_name = environment_name.into();
-    let branch_policy_id = branch_policy_id.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}");
-
-    Request::<DeploymentBranchPolicyNamePattern, (), DeploymentBranchPolicy>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Delete a deployment branch policy**
-  ///
-  /// Deletes a deployment branch or tag policy for an environment.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#delete-a-deployment-branch-policy)
-  pub fn delete_deployment_branch_policy(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    environment_name: impl Into<String>,
-    branch_policy_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let environment_name = environment_name.into();
-    let branch_policy_id = branch_policy_id.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Get all status check contexts**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts](https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts)
-  pub fn get_all_status_check_contexts(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<(), (), StringArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url =
-      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
-
-    Request::<(), (), StringArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Add status check contexts**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#add-status-check-contexts](https://docs.github.com/rest/branches/branch-protection#add-status-check-contexts)
-  pub fn add_status_check_contexts(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<ReposAddStatusCheckContextsRequest, (), StringArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url =
-      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
-
-    Request::<ReposAddStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Set status check contexts**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#set-status-check-contexts](https://docs.github.com/rest/branches/branch-protection#set-status-check-contexts)
-  pub fn set_status_check_contexts(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<ReposSetStatusCheckContextsRequest, (), StringArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url =
-      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
-
-    Request::<ReposSetStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Remove status check contexts**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#remove-status-check-contexts](https://docs.github.com/rest/branches/branch-protection#remove-status-check-contexts)
-  pub fn remove_status_check_contexts(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<ReposRemoveStatusCheckContextsRequest, (), StringArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url =
-      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
-
-    Request::<ReposRemoveStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **List GitHub Pages builds**
-  ///
-  /// Lists builts of a GitHub Pages site.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pages/pages#list-apiname-pages-builds](https://docs.github.com/rest/pages/pages#list-apiname-pages-builds)
-  pub fn list_pages_builds(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposListPagesBuildsQuery, PageBuildArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/pages/builds");
-
-    Request::<(), ReposListPagesBuildsQuery, PageBuildArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Request a GitHub Pages build**
-  ///
-  /// You can request that your site be built from the latest revision on the default branch. This has the same effect as pushing a commit to your default branch, but does not require an additional commit. Manually triggering page builds can be helpful when diagnosing build warnings and failures.
-  ///
-  /// Build requests are limited to one concurrent build per repository and one concurrent build per requester. If you request a build while another is still in progress, the second request will be queued until the first completes.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build](https://docs.github.com/rest/pages/pages#request-a-apiname-pages-build)
-  pub fn request_pages_build(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), PageBuildStatus> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/pages/builds");
-
-    Request::<(), (), PageBuildStatus>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Compare two commits**
-  ///
-  /// Compares two commits against one another. You can compare refs (branches or tags) and commit SHAs in the same repository, or you can compare refs and commit SHAs that exist in different repositories within the same repository network, including fork branches. For more information about how to view a repository's network, see "[Understanding connections between repositories](https://docs.github.com/repositories/viewing-activity-and-data-for-your-repository/understanding-connections-between-repositories)."
-  ///
-  /// This endpoint is equivalent to running the `git log BASE..HEAD` command, but it returns commits in a different order. The `git log BASE..HEAD` command returns commits in reverse chronological order, whereas the API returns commits in chronological order.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github.diff`**: Returns the diff of the commit.
-  /// - **`application/vnd.github.patch`**: Returns the patch of the commit. Diffs with binary data will have no `patch` property.
-  ///
-  /// The API response includes details about the files that were changed between the two commits. This includes the status of the change (if a file was added, removed, modified, or renamed), and details of the change itself. For example, files with a `renamed` status have a `previous_filename` field showing the previous filename of the file, and files with a `modified` status have a `patch` field showing the changes made to the file.
-  ///
-  /// When calling this endpoint without any paging parameter (`per_page` or `page`), the returned list is limited to 250 commits, and the last commit in the list is the most recent of the entire comparison.
-  ///
-  /// **Working with large comparisons**
-  ///
-  /// To process a response with a large number of commits, use a query parameter (`per_page` or `page`) to paginate the results. When using pagination:
-  ///
-  /// - The list of changed files is only shown on the first page of results, but it includes all changed files for the entire comparison.
-  /// - The results are returned in chronological order, but the last commit in the returned list may not be the most recent one in the entire set if there are more pages of results.
-  ///
-  /// For more information on working with pagination, see "[Using pagination in the REST API](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api)."
-  ///
-  /// **Signature verification object**
-  ///
-  /// The response will include a `verification` object that describes the result of verifying the commit's signature. The `verification` object includes the following fields:
-  ///
-  /// | Name | Type | Description |
-  /// | ---- | ---- | ----------- |
-  /// | `verified` | `boolean` | Indicates whether GitHub considers the signature in this commit to be verified. |
-  /// | `reason` | `string` | The reason for verified value. Possible values and their meanings are enumerated in table below. |
-  /// | `signature` | `string` | The signature that was extracted from the commit. |
-  /// | `payload` | `string` | The value that was signed. |
-  ///
-  /// These are the possible values for `reason` in the `verification` object:
-  ///
-  /// | Value | Description |
-  /// | ----- | ----------- |
-  /// | `expired_key` | The key that made the signature is expired. |
-  /// | `not_signing_key` | The "signing" flag is not among the usage flags in the GPG key that made the signature. |
-  /// | `gpgverify_error` | There was an error communicating with the signature verification service. |
-  /// | `gpgverify_unavailable` | The signature verification service is currently unavailable. |
-  /// | `unsigned` | The object does not include a signature. |
-  /// | `unknown_signature_type` | A non-PGP signature was found in the commit. |
-  /// | `no_user` | No user was associated with the `committer` email address in the commit. |
-  /// | `unverified_email` | The `committer` email address in the commit was associated with a user, but the email address is not verified on their account. |
-  /// | `bad_email` | The `committer` email address in the commit is not included in the identities of the PGP key that made the signature. |
-  /// | `unknown_key` | The key that made the signature has not been registered with any user's account. |
-  /// | `malformed_signature` | There was an error parsing the signature. |
-  /// | `invalid` | The signature could not be cryptographically verified using the key whose key-id was found in the signature. |
-  /// | `valid` | None of the above errors applied, so the signature is considered to be verified. |
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/commits#compare-two-commits](https://docs.github.com/rest/commits/commits#compare-two-commits)
-  pub fn compare_commits(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    basehead: impl Into<String>,
-  ) -> Request<(), ReposCompareCommitsQuery, CommitComparison> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let basehead = basehead.into();
-    let url = format!("/repos/{owner}/{repo}/compare/{basehead}");
-
-    Request::<(), ReposCompareCommitsQuery, CommitComparison>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get top referral sources**
-  ///
-  /// Get the top 10 referrers over the last 14 days.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/metrics/traffic#get-top-referral-sources](https://docs.github.com/rest/metrics/traffic#get-top-referral-sources)
-  pub fn get_top_referrers(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), ReferrerTrafficArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/traffic/popular/referrers");
-
-    Request::<(), (), ReferrerTrafficArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get an environment**
-  ///
-  /// **Note:** To get information about name patterns that branches must match in order to deploy to this environment, see "[Get a deployment branch policy](/rest/deployments/branch-policies#get-a-deployment-branch-policy)."
-  ///
-  /// Anyone with read access to the repository can use this endpoint.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/environments#get-an-environment](https://docs.github.com/rest/deployments/environments#get-an-environment)
-  pub fn get_environment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    environment_name: impl Into<String>,
-  ) -> Request<(), (), Environment> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let environment_name = environment_name.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}");
-
-    Request::<(), (), Environment>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create or update an environment**
-  ///
-  /// Create or update an environment with protection rules, such as required reviewers. For more information about environment protection rules, see "[Environments](/actions/reference/environments#environment-protection-rules)."
-  ///
-  /// **Note:** To create or update name patterns that branches must match in order to deploy to this environment, see "[Deployment branch policies](/rest/deployments/branch-policies)."
-  ///
-  /// **Note:** To create or update secrets for an environment, see "[GitHub Actions secrets](/rest/actions/secrets)."
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/environments#create-or-update-an-environment](https://docs.github.com/rest/deployments/environments#create-or-update-an-environment)
-  pub fn create_or_update_environment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    environment_name: impl Into<String>,
-  ) -> Request<ReposCreateOrUpdateEnvironmentRequest, (), Environment> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let environment_name = environment_name.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}");
-
-    Request::<ReposCreateOrUpdateEnvironmentRequest, (), Environment>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Delete an environment**
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/environments#delete-an-environment](https://docs.github.com/rest/deployments/environments#delete-an-environment)
-  pub fn delete_an_environment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    environment_name: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let environment_name = environment_name.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **List releases**
-  ///
-  /// This returns a list of releases, which does not include regular Git tags that have not been associated with a release. To get a list of Git tags, use the [Repository Tags API](https://docs.github.com/rest/repos/repos#list-repository-tags).
-  ///
-  /// Information about published releases are available to everyone. Only users with push access will receive listings for draft releases.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/releases/releases#list-releases](https://docs.github.com/rest/releases/releases#list-releases)
-  pub fn list_releases(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposListReleasesQuery, ReleaseArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/releases");
-
-    Request::<(), ReposListReleasesQuery, ReleaseArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a release**
-  ///
-  /// Users with push access to the repository can create a release.
-  ///
-  /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/releases/releases#create-a-release](https://docs.github.com/rest/releases/releases#create-a-release)
-  pub fn create_release(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ReposCreateReleaseRequest, (), Release> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/releases");
-
-    Request::<ReposCreateReleaseRequest, (), Release>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Redeliver a delivery for a repository webhook**
-  ///
-  /// Redeliver a webhook delivery for a webhook configured in a repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook)
-  pub fn redeliver_webhook_delivery(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    hook_id: impl Into<i64>,
-    delivery_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let hook_id = hook_id.into();
-    let delivery_id = delivery_id.into();
-    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Get users with access to the protected branch**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Lists the people who have push access to this branch.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch](https://docs.github.com/rest/branches/branch-protection#get-users-with-access-to-the-protected-branch)
-  pub fn get_users_with_access_to_protected_branch(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<(), (), SimpleUserArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
-
-    Request::<(), (), SimpleUserArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Add user access restrictions**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Grants the specified people push access for this branch.
-  ///
-  /// | Type    | Description                                                                                                                   |
-  /// | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
-  /// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions](https://docs.github.com/rest/branches/branch-protection#add-user-access-restrictions)
-  pub fn add_user_access_restrictions(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<ReposAddUserAccessRestrictionsRequest, (), SimpleUserArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
-
-    Request::<ReposAddUserAccessRestrictionsRequest, (), SimpleUserArray>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Set user access restrictions**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Replaces the list of people that have push access to this branch. This removes all people that previously had push access and grants push access to the new list of people.
-  ///
-  /// | Type    | Description                                                                                                                   |
-  /// | ------- | ----------------------------------------------------------------------------------------------------------------------------- |
-  /// | `array` | Usernames for people who can have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions](https://docs.github.com/rest/branches/branch-protection#set-user-access-restrictions)
-  pub fn set_user_access_restrictions(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<ReposSetUserAccessRestrictionsRequest, (), SimpleUserArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
-
-    Request::<ReposSetUserAccessRestrictionsRequest, (), SimpleUserArray>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Remove user access restrictions**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Removes the ability of a user to push to this branch.
-  ///
-  /// | Type    | Description                                                                                                                                   |
-  /// | ------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-  /// | `array` | Usernames of the people who should no longer have push access. **Note**: The list of users, apps, and teams in total is limited to 100 items. |
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions](https://docs.github.com/rest/branches/branch-protection#remove-user-access-restrictions)
-  pub fn remove_user_access_restrictions(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<ReposRemoveUserAccessRestrictionsRequest, (), SimpleUserArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
-
-    Request::<ReposRemoveUserAccessRestrictionsRequest, (), SimpleUserArray>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Get a commit comment**
-  ///
-  /// Gets a specified commit comment.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/comments#get-a-commit-comment](https://docs.github.com/rest/commits/comments#get-a-commit-comment)
-  pub fn get_commit_comment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    comment_id: impl Into<i64>,
-  ) -> Request<(), (), CommitComment> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let comment_id = comment_id.into();
-    let url = format!("/repos/{owner}/{repo}/comments/{comment_id}");
-
-    Request::<(), (), CommitComment>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update a commit comment**
-  ///
-  /// Updates the contents of a specified commit comment.
-  ///
-  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
-  ///
-  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
-  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
-  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
-  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/comments#update-a-commit-comment](https://docs.github.com/rest/commits/comments#update-a-commit-comment)
-  pub fn update_commit_comment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    comment_id: impl Into<i64>,
-  ) -> Request<ReposUpdateCommitCommentRequest, (), CommitComment> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let comment_id = comment_id.into();
-    let url = format!("/repos/{owner}/{repo}/comments/{comment_id}");
-
-    Request::<ReposUpdateCommitCommentRequest, (), CommitComment>::builder(&self.config)
-      .patch(url)
-      .build()
-  }
-
-  /// **Delete a commit comment**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/comments#delete-a-commit-comment](https://docs.github.com/rest/commits/comments#delete-a-commit-comment)
-  pub fn delete_commit_comment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    comment_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let comment_id = comment_id.into();
-    let url = format!("/repos/{owner}/{repo}/comments/{comment_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Get a custom deployment protection rule**
-  ///
-  /// Gets an enabled custom deployment protection rule for an environment. Anyone with read access to the repository can use this endpoint. For more information about environments, see "[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
-  ///
-  /// For more information about the app that is providing this custom deployment rule, see [`GET /apps/{app_slug}`](https://docs.github.com/rest/apps/apps#get-an-app).
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule](https://docs.github.com/rest/deployments/protection-rules#get-a-custom-deployment-protection-rule)
-  pub fn get_custom_deployment_protection_rule(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    environment_name: impl Into<String>,
-    protection_rule_id: impl Into<i64>,
-  ) -> Request<(), (), DeploymentProtectionRule> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let environment_name = environment_name.into();
-    let protection_rule_id = protection_rule_id.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}");
-
-    Request::<(), (), DeploymentProtectionRule>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Disable a custom protection rule for an environment**
-  ///
-  /// Disables a custom deployment protection rule for an environment.
-  ///
-  /// The authenticated user must have admin or owner permissions to the repository to use this endpoint.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment](https://docs.github.com/rest/deployments/protection-rules#disable-a-custom-protection-rule-for-an-environment)
-  pub fn disable_deployment_protection_rule(
-    &self,
-    environment_name: impl Into<String>,
-    repo: impl Into<String>,
-    owner: impl Into<String>,
-    protection_rule_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let environment_name = environment_name.into();
-    let repo = repo.into();
-    let owner = owner.into();
-    let protection_rule_id = protection_rule_id.into();
-    let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Get a GitHub Pages site**
-  ///
-  /// Gets information about a GitHub Pages site.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site)
-  pub fn get_pages(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), GitHubPages> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/pages");
-
-    Request::<(), (), GitHubPages>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a GitHub Pages site**
-  ///
-  /// Configures a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages)."
-  ///
-  /// The authenticated user must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site)
-  pub fn create_pages_site(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<serde_json::Value, (), GitHubPages> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/pages");
-
-    Request::<serde_json::Value, (), GitHubPages>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Update information about a GitHub Pages site**
-  ///
-  /// Updates information for a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages).
-  ///
-  /// The authenticated user must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site)
-  pub fn update_information_about_pages_site(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> NoContentRequest<serde_json::Value, ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/pages");
-
-    NoContentRequest::<serde_json::Value, ()>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Delete a GitHub Pages site**
-  ///
-  /// Deletes a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages).
-  ///
-  /// The authenticated user must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site)
-  pub fn delete_pages_site(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/pages");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **List deployment statuses**
-  ///
-  /// Users with pull access can view deployment statuses for a deployment:
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/statuses#list-deployment-statuses](https://docs.github.com/rest/deployments/statuses#list-deployment-statuses)
-  pub fn list_deployment_statuses(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    deployment_id: impl Into<i64>,
-  ) -> Request<(), ReposListDeploymentStatusesQuery, DeploymentStatusArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let deployment_id = deployment_id.into();
-    let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses");
-
-    Request::<(), ReposListDeploymentStatusesQuery, DeploymentStatusArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a deployment status**
-  ///
-  /// Users with `push` access can create deployment statuses for a given deployment.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo_deployment` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/statuses#create-a-deployment-status](https://docs.github.com/rest/deployments/statuses#create-a-deployment-status)
-  pub fn create_deployment_status(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    deployment_id: impl Into<i64>,
-  ) -> Request<ReposCreateDeploymentStatusRequest, (), DeploymentStatus> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let deployment_id = deployment_id.into();
-    let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses");
-
-    Request::<ReposCreateDeploymentStatusRequest, (), DeploymentStatus>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **List tag protection states for a repository**
-  ///
-  /// This returns the tag protection states of a repository.
-  ///
-  /// This information is only available to repository administrators.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository](https://docs.github.com/rest/repos/tags#list-tag-protection-states-for-a-repository)
-  pub fn list_tag_protection(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), TagProtectionArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/tags/protection");
-
-    Request::<(), (), TagProtectionArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create a tag protection state for a repository**
-  ///
-  /// This creates a tag protection state for a repository.
-  /// This endpoint is only available to repository administrators.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/tags#create-a-tag-protection-state-for-a-repository](https://docs.github.com/rest/repos/tags#create-a-tag-protection-state-for-a-repository)
-  pub fn create_tag_protection(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ReposCreateTagProtectionRequest, (), TagProtection> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/tags/protection");
-
-    Request::<ReposCreateTagProtectionRequest, (), TagProtection>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Check if private vulnerability reporting is enabled for a repository**
-  ///
-  /// Returns a boolean indicating whether or not private vulnerability reporting is enabled for the repository. For more information, see "[Evaluating the security settings of a repository](https://docs.github.com/code-security/security-advisories/working-with-repository-security-advisories/evaluating-the-security-settings-of-a-repository)".
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository](https://docs.github.com/rest/repos/repos#check-if-private-vulnerability-reporting-is-enabled-for-a-repository)
-  pub fn check_private_vulnerability_reporting(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), ReposCheckPrivateVulnerabilityReportingResponse> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/private-vulnerability-reporting");
-
-    Request::<(), (), ReposCheckPrivateVulnerabilityReportingResponse>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Enable private vulnerability reporting for a repository**
-  ///
-  /// Enables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)."
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository](https://docs.github.com/rest/repos/repos#enable-private-vulnerability-reporting-for-a-repository)
-  pub fn enable_private_vulnerability_reporting(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/private-vulnerability-reporting");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Disable private vulnerability reporting for a repository**
-  ///
-  /// Disables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see "[Privately reporting a security vulnerability](https://docs.github.com/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)".
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository](https://docs.github.com/rest/repos/repos#disable-private-vulnerability-reporting-for-a-repository)
-  pub fn disable_private_vulnerability_reporting(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/private-vulnerability-reporting");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **List repositories for a user**
-  ///
-  /// Lists public repositories for the specified user.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repositories-for-a-user](https://docs.github.com/rest/repos/repos#list-repositories-for-a-user)
-  pub fn list_for_user(
-    &self,
-    username: impl Into<String>,
-  ) -> Request<(), ReposListForUserQuery, MinimalRepositoryArray> {
-    let username = username.into();
-    let url = format!("/users/{username}/repos");
-
-    Request::<(), ReposListForUserQuery, MinimalRepositoryArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get a release by tag name**
-  ///
-  /// Get a published release with the specified tag.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name](https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name)
-  pub fn get_release_by_tag(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    tag: impl Into<String>,
-  ) -> Request<(), (), Release> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let tag = tag.into();
-    let url = format!("/repos/{owner}/{repo}/releases/tags/{tag}");
-
-    Request::<(), (), Release>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List repository invitations for the authenticated user**
-  ///
-  /// When authenticating as a user, this endpoint will list all currently open repository invitations for that user.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user](https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user)
-  pub fn list_invitations_for_authenticated_user(
-    &self,
-  ) -> Request<(), ReposListInvitationsForAuthenticatedUserQuery, RepositoryInvitationArray> {
-    let url = format!("/user/repository_invitations");
-
-    Request::<(), ReposListInvitationsForAuthenticatedUserQuery, RepositoryInvitationArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **List repository languages**
-  ///
-  /// Lists languages for the specified repository. The value shown for each language is the number of bytes of code written in that language.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-languages](https://docs.github.com/rest/repos/repos#list-repository-languages)
-  pub fn list_languages(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), serde_json::Value> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/languages");
-
-    Request::<(), (), serde_json::Value>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get page views**
-  ///
-  /// Get the total number of views and breakdown per day or week for the last 14 days. Timestamps are aligned to UTC midnight of the beginning of the day or week. Week begins on Monday.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/metrics/traffic#get-page-views](https://docs.github.com/rest/metrics/traffic#get-page-views)
-  pub fn get_views(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), ReposGetViewsQuery, ViewTraffic> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/traffic/views");
-
-    Request::<(), ReposGetViewsQuery, ViewTraffic>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get a deployment**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/deployments#get-a-deployment](https://docs.github.com/rest/deployments/deployments#get-a-deployment)
-  pub fn get_deployment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    deployment_id: impl Into<i64>,
-  ) -> Request<(), (), Deployment> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let deployment_id = deployment_id.into();
-    let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}");
-
-    Request::<(), (), Deployment>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Delete a deployment**
-  ///
-  /// If the repository only has one deployment, you can delete the deployment regardless of its status. If the repository has more than one deployment, you can only delete inactive deployments. This ensures that repositories with multiple deployments will always have an active deployment.
-  ///
-  /// To set a deployment as inactive, you must:
-  ///
-  /// *   Create a new deployment that is active so that the system has a record of the current state, then delete the previously active deployment.
-  /// *   Mark the active deployment as inactive by adding any non-successful deployment status.
-  ///
-  /// For more information, see "[Create a deployment](https://docs.github.com/rest/deployments/deployments/#create-a-deployment)" and "[Create a deployment status](https://docs.github.com/rest/deployments/statuses#create-a-deployment-status)."
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` or `repo_deployment` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/deployments/deployments#delete-a-deployment](https://docs.github.com/rest/deployments/deployments#delete-a-deployment)
-  pub fn delete_deployment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    deployment_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let deployment_id = deployment_id.into();
-    let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Sync a fork branch with the upstream repository**
-  ///
-  /// Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository](https://docs.github.com/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository)
-  pub fn merge_upstream(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ReposMergeUpstreamRequest, (), MergedUpstream> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/merge-upstream");
-
-    Request::<ReposMergeUpstreamRequest, (), MergedUpstream>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Merge a branch**
-  ///
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branches#merge-a-branch](https://docs.github.com/rest/branches/branches#merge-a-branch)
-  pub fn merge(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<ReposMergeRequest, (), Commit> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/merges");
-
-    Request::<ReposMergeRequest, (), Commit>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **List public repositories**
-  ///
-  /// Lists all public repositories in the order that they were created.
-  ///
-  /// Note:
-  /// - For GitHub Enterprise Server, this endpoint will only list repositories available to all users on the enterprise.
-  /// - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of repositories.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-public-repositories](https://docs.github.com/rest/repos/repos#list-public-repositories)
-  pub fn list_public(&self) -> Request<(), ReposListPublicQuery, MinimalRepositoryArray> {
-    let url = format!("/repositories");
-
-    Request::<(), ReposListPublicQuery, MinimalRepositoryArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Download a repository archive (zip)**
-  ///
-  /// Gets a redirect URL to download a zip archive for a repository. If you omit `:ref`, the repository’s default branch (usually
-  /// `main`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use
-  /// the `Location` header to make a second `GET` request.
-  ///
-  /// **Note**: For private repositories, these links are temporary and expire after five minutes. If the repository is empty, you will receive a 404 when you follow the redirect.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip](https://docs.github.com/rest/repos/contents#download-a-repository-archive-zip)
-  pub fn download_zipball_archive(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    ref_: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let ref_ = ref_.into();
-    let url = format!("/repos/{owner}/{repo}/zipball/{ref_}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get a repository ruleset**
-  ///
-  /// Get a ruleset for a repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/rules#get-a-repository-ruleset](https://docs.github.com/rest/repos/rules#get-a-repository-ruleset)
-  pub fn get_repo_ruleset(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    ruleset_id: impl Into<i64>,
-  ) -> Request<(), ReposGetRepoRulesetQuery, RepositoryRuleset> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let ruleset_id = ruleset_id.into();
-    let url = format!("/repos/{owner}/{repo}/rulesets/{ruleset_id}");
-
-    Request::<(), ReposGetRepoRulesetQuery, RepositoryRuleset>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Update a repository ruleset**
-  ///
-  /// Update a ruleset for a repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/rules#update-a-repository-ruleset](https://docs.github.com/rest/repos/rules#update-a-repository-ruleset)
-  pub fn update_repo_ruleset(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    ruleset_id: impl Into<i64>,
-  ) -> Request<ReposUpdateRepoRulesetRequest, (), RepositoryRuleset> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let ruleset_id = ruleset_id.into();
-    let url = format!("/repos/{owner}/{repo}/rulesets/{ruleset_id}");
-
-    Request::<ReposUpdateRepoRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Delete a repository ruleset**
-  ///
-  /// Delete a ruleset for a repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/rules#delete-a-repository-ruleset](https://docs.github.com/rest/repos/rules#delete-a-repository-ruleset)
-  pub fn delete_repo_ruleset(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    ruleset_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let ruleset_id = ruleset_id.into();
-    let url = format!("/repos/{owner}/{repo}/rulesets/{ruleset_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **List organization repositories**
-  ///
-  /// Lists repositories for the specified organization.
-  ///
-  /// **Note:** In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-organization-repositories](https://docs.github.com/rest/repos/repos#list-organization-repositories)
-  pub fn list_for_org(
-    &self,
-    org: impl Into<String>,
-  ) -> Request<(), ReposListForOrgQuery, MinimalRepositoryArray> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/repos");
-
-    Request::<(), ReposListForOrgQuery, MinimalRepositoryArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create an organization repository**
-  ///
-  /// Creates a new repository in the specified organization. The authenticated user must be a member of the organization.
+  /// Creates a new repository using a repository template. Use the `template_owner` and `template_repo` route parameters to specify the repository to use as the template. If the repository is not public, the authenticated user must own or be a member of an organization that owns the repository. To check if a repository is available to use as a template, get the repository's information using the [Get a repository](https://docs.github.com/rest/repos/repos#get-a-repository) endpoint and check that the `is_template` key is `true`.
   ///
   /// OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-an-organization-repository](https://docs.github.com/rest/repos/repos#create-an-organization-repository)
-  pub fn create_in_org(
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template](https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template)
+  pub fn create_using_template(
     &self,
-    org: impl Into<String>,
-  ) -> Request<ReposCreateInOrgRequest, (), FullRepository> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/repos");
+    template_owner: impl Into<String>,
+    template_repo: impl Into<String>,
+  ) -> Request<ReposCreateUsingTemplateRequest, (), FullRepository> {
+    let template_owner = template_owner.into();
+    let template_repo = template_repo.into();
+    let url = format!("/repos/{template_owner}/{template_repo}/generate");
 
-    Request::<ReposCreateInOrgRequest, (), FullRepository>::builder(&self.config)
+    Request::<ReposCreateUsingTemplateRequest, (), FullRepository>::builder(&self.config)
       .post(url)
       .build()
   }
 
-  /// **List repository teams**
+  /// **List commit comments**
   ///
-  /// Lists the teams that have access to the specified repository and that are also visible to the authenticated user.
+  /// Lists the comments for a specified commit.
   ///
-  /// For a public repository, a team is listed only if that team added the public repository explicitly.
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
   ///
-  /// OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to use this endpoint with a public repository, and `repo` scope to use this endpoint with a private repository.
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-teams](https://docs.github.com/rest/repos/repos#list-repository-teams)
-  pub fn list_teams(
+  /// *Documentation*: [https://docs.github.com/rest/commits/comments#list-commit-comments](https://docs.github.com/rest/commits/comments#list-commit-comments)
+  pub fn list_comments_for_commit(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListTeamsQuery, TeamArray> {
+    commit_sha: impl Into<String>,
+  ) -> Request<(), ReposListCommentsForCommitQuery, CommitCommentArray> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/teams");
+    let commit_sha = commit_sha.into();
+    let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/comments");
 
-    Request::<(), ReposListTeamsQuery, TeamArray>::builder(&self.config)
+    Request::<(), ReposListCommentsForCommitQuery, CommitCommentArray>::builder(&self.config)
       .get(url)
+      .build()
+  }
+
+  /// **Create a commit comment**
+  ///
+  /// Create a comment for a commit using its `:commit_sha`.
+  ///
+  /// This endpoint triggers [notifications](https://docs.github.com/github/managing-subscriptions-and-notifications-on-github/about-notifications). Creating content too quickly using this endpoint may result in secondary rate limiting. For more information, see "[Rate limits for the API](https://docs.github.com/rest/overview/rate-limits-for-the-rest-api#about-secondary-rate-limits)" and "[Best practices for using the REST API](https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api)."
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/commits/comments#create-a-commit-comment](https://docs.github.com/rest/commits/comments#create-a-commit-comment)
+  pub fn create_commit_comment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    commit_sha: impl Into<String>,
+  ) -> Request<ReposCreateCommitCommentRequest, (), CommitComment> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let commit_sha = commit_sha.into();
+    let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/comments");
+
+    Request::<ReposCreateCommitCommentRequest, (), CommitComment>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Rename a branch**
+  ///
+  /// Renames a branch in a repository.
+  ///
+  /// **Note:** Although the API responds immediately, the branch rename process might take some extra time to complete in the background. You won't be able to push to the old branch name while the rename process is in progress. For more information, see "[Renaming a branch](https://docs.github.com/github/administering-a-repository/renaming-a-branch)".
+  ///
+  /// The authenticated user must have push access to the branch. If the branch is the default branch, the authenticated user must also have admin or owner permissions.
+  ///
+  /// In order to rename the default branch, fine-grained access tokens also need the `administration:write` repository permission.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branches#rename-a-branch](https://docs.github.com/rest/branches/branches#rename-a-branch)
+  pub fn rename_branch(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<ReposRenameBranchRequest, (), BranchWithProtection> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/rename");
+
+    Request::<ReposRenameBranchRequest, (), BranchWithProtection>::builder(&self.config)
+      .post(url)
       .build()
   }
 
@@ -3885,216 +3012,118 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **Check if vulnerability alerts are enabled for a repository**
+  /// **Get the combined status for a specific reference**
   ///
-  /// Shows whether dependency alerts are enabled or disabled for a repository. The authenticated user must have admin read access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/articles/about-security-alerts-for-vulnerable-dependencies)".
+  /// Users with pull access in a repository can access a combined view of commit statuses for a given ref. The ref can be a SHA, a branch name, or a tag name.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository](https://docs.github.com/rest/repos/repos#check-if-vulnerability-alerts-are-enabled-for-a-repository)
-  pub fn check_vulnerability_alerts(
+  ///
+  /// Additionally, a combined `state` is returned. The `state` is one of:
+  ///
+  /// *   **failure** if any of the contexts report as `error` or `failure`
+  /// *   **pending** if there are no statuses or a context is `pending`
+  /// *   **success** if the latest status for all contexts is `success`
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference](https://docs.github.com/rest/commits/statuses#get-the-combined-status-for-a-specific-reference)
+  pub fn get_combined_status_for_ref(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
+    ref_: impl Into<String>,
+  ) -> Request<(), ReposGetCombinedStatusForRefQuery, CombinedCommitStatus> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/vulnerability-alerts");
+    let ref_ = ref_.into();
+    let url = format!("/repos/{owner}/{repo}/commits/{ref_}/status");
 
-    NoContentRequest::<(), ()>::builder(&self.config)
+    Request::<(), ReposGetCombinedStatusForRefQuery, CombinedCommitStatus>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Enable vulnerability alerts**
+  /// **Get a repository README**
   ///
-  /// Enables dependency alerts and the dependency graph for a repository. The authenticated user must have admin access to the repository. For more information, see "[About security alerts for vulnerable dependencies](https://docs.github.com/articles/about-security-alerts-for-vulnerable-dependencies)".
+  /// Gets the preferred README for a repository.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#enable-vulnerability-alerts](https://docs.github.com/rest/repos/repos#enable-vulnerability-alerts)
-  pub fn enable_vulnerability_alerts(
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github.raw+json`**: Returns the raw file contents. This is the default if you do not specify a media type.
+  /// - **`application/vnd.github.html+json`**: Returns the README in HTML. Markup languages are rendered to HTML using GitHub's open-source [Markup library](https://github.com/github/markup).
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/contents#get-a-repository-readme](https://docs.github.com/rest/repos/contents#get-a-repository-readme)
+  pub fn get_readme(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
+  ) -> Request<(), ReposGetReadmeQuery, ContentFile> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/vulnerability-alerts");
+    let url = format!("/repos/{owner}/{repo}/readme");
 
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .put(url)
+    Request::<(), ReposGetReadmeQuery, ContentFile>::builder(&self.config)
+      .get(url)
       .build()
   }
 
-  /// **Disable vulnerability alerts**
+  /// **Update a repository invitation**
   ///
-  /// Disables dependency alerts and the dependency graph for a repository.
-  /// The authenticated user must have admin access to the repository. For more information,
-  /// see "[About security alerts for vulnerable dependencies](https://docs.github.com/articles/about-security-alerts-for-vulnerable-dependencies)".
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#disable-vulnerability-alerts](https://docs.github.com/rest/repos/repos#disable-vulnerability-alerts)
-  pub fn disable_vulnerability_alerts(
+  /// *Documentation*: [https://docs.github.com/rest/collaborators/invitations#update-a-repository-invitation](https://docs.github.com/rest/collaborators/invitations#update-a-repository-invitation)
+  pub fn update_invitation(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
+    invitation_id: impl Into<i64>,
+  ) -> Request<ReposUpdateInvitationRequest, (), RepositoryInvitation> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let invitation_id = invitation_id.into();
+    let url = format!("/repos/{owner}/{repo}/invitations/{invitation_id}");
+
+    Request::<ReposUpdateInvitationRequest, (), RepositoryInvitation>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **Delete a repository invitation**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/collaborators/invitations#delete-a-repository-invitation](https://docs.github.com/rest/collaborators/invitations#delete-a-repository-invitation)
+  pub fn delete_invitation(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    invitation_id: impl Into<i64>,
   ) -> NoContentRequest<(), ()> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/vulnerability-alerts");
+    let invitation_id = invitation_id.into();
+    let url = format!("/repos/{owner}/{repo}/invitations/{invitation_id}");
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
       .build()
   }
 
-  /// **List organization rule suites**
+  /// **List CODEOWNERS errors**
   ///
-  /// Lists suites of rule evaluations at the organization level.
-  /// For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
+  /// List any syntax errors that are detected in the CODEOWNERS
+  /// file.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites](https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites)
-  pub fn get_org_rule_suites(
+  /// For more information about the correct CODEOWNERS syntax,
+  /// see "[About code owners](https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-codeowners-errors](https://docs.github.com/rest/repos/repos#list-codeowners-errors)
+  pub fn codeowners_errors(
     &self,
-    org: impl Into<String>,
-  ) -> Request<(), ReposGetOrgRuleSuitesQuery, RuleSuites> {
-    let org = org.into();
-    let url = format!("/orgs/{org}/rulesets/rule-suites");
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposCodeownersErrorsQuery, CodeownersErrors> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/codeowners/errors");
 
-    Request::<(), ReposGetOrgRuleSuitesQuery, RuleSuites>::builder(&self.config)
+    Request::<(), ReposCodeownersErrorsQuery, CodeownersErrors>::builder(&self.config)
       .get(url)
-      .build()
-  }
-
-  /// **Create a repository using a template**
-  ///
-  /// Creates a new repository using a repository template. Use the `template_owner` and `template_repo` route parameters to specify the repository to use as the template. If the repository is not public, the authenticated user must own or be a member of an organization that owns the repository. To check if a repository is available to use as a template, get the repository's information using the [Get a repository](https://docs.github.com/rest/repos/repos#get-a-repository) endpoint and check that the `is_template` key is `true`.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template](https://docs.github.com/rest/repos/repos#create-a-repository-using-a-template)
-  pub fn create_using_template(
-    &self,
-    template_owner: impl Into<String>,
-    template_repo: impl Into<String>,
-  ) -> Request<ReposCreateUsingTemplateRequest, (), FullRepository> {
-    let template_owner = template_owner.into();
-    let template_repo = template_repo.into();
-    let url = format!("/repos/{template_owner}/{template_repo}/generate");
-
-    Request::<ReposCreateUsingTemplateRequest, (), FullRepository>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Get teams with access to the protected branch**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Lists the teams who have push access to this branch. The list includes child teams.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch](https://docs.github.com/rest/branches/branch-protection#get-teams-with-access-to-the-protected-branch)
-  pub fn get_teams_with_access_to_protected_branch(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<(), (), TeamArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
-
-    Request::<(), (), TeamArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Add team access restrictions**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Grants the specified teams push access for this branch. You can also give push access to child teams.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions](https://docs.github.com/rest/branches/branch-protection#add-team-access-restrictions)
-  pub fn add_team_access_restrictions(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<ReposAddTeamAccessRestrictionsRequest, (), TeamArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
-
-    Request::<ReposAddTeamAccessRestrictionsRequest, (), TeamArray>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Set team access restrictions**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Replaces the list of teams that have push access to this branch. This removes all teams that previously had push access and grants push access to the new list of teams. Team restrictions include child teams.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions](https://docs.github.com/rest/branches/branch-protection#set-team-access-restrictions)
-  pub fn set_team_access_restrictions(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<ReposSetTeamAccessRestrictionsRequest, (), TeamArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
-
-    Request::<ReposSetTeamAccessRestrictionsRequest, (), TeamArray>::builder(&self.config)
-      .put(url)
-      .build()
-  }
-
-  /// **Remove team access restrictions**
-  ///
-  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
-  ///
-  /// Removes the ability of a team to push to this branch. You can also remove push access for child teams.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions](https://docs.github.com/rest/branches/branch-protection#remove-team-access-restrictions)
-  pub fn remove_team_access_restrictions(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<ReposRemoveTeamAccessRestrictionsRequest, (), TeamArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
-
-    Request::<ReposRemoveTeamAccessRestrictionsRequest, (), TeamArray>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Create a commit status**
-  ///
-  /// Users with push access in a repository can create commit statuses for a given SHA.
-  ///
-  /// Note: there is a limit of 1000 statuses per `sha` and `context` within a repository. Attempts to create more than 1000 statuses will result in a validation error.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/commits/statuses#create-a-commit-status](https://docs.github.com/rest/commits/statuses#create-a-commit-status)
-  pub fn create_commit_status(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    sha: impl Into<String>,
-  ) -> Request<ReposCreateCommitStatusRequest, (), Status> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let sha = sha.into();
-    let url = format!("/repos/{owner}/{repo}/statuses/{sha}");
-
-    Request::<ReposCreateCommitStatusRequest, (), Status>::builder(&self.config)
-      .post(url)
       .build()
   }
 
@@ -4156,114 +3185,173 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **Delete a tag protection state for a repository**
+  /// **List repository tags**
   ///
-  /// This deletes a tag protection state for a repository.
-  /// This endpoint is only available to repository administrators.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/tags#delete-a-tag-protection-state-for-a-repository](https://docs.github.com/rest/repos/tags#delete-a-tag-protection-state-for-a-repository)
-  pub fn delete_tag_protection(
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-tags](https://docs.github.com/rest/repos/repos#list-repository-tags)
+  pub fn list_tags(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    tag_protection_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
+  ) -> Request<(), ReposListTagsQuery, TagArray> {
     let owner = owner.into();
     let repo = repo.into();
-    let tag_protection_id = tag_protection_id.into();
-    let url = format!("/repos/{owner}/{repo}/tags/protection/{tag_protection_id}");
+    let url = format!("/repos/{owner}/{repo}/tags");
 
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **Get the hourly commit count for each day**
-  ///
-  /// Each array contains the day number, hour number, and number of commits:
-  ///
-  /// *   `0-6`: Sunday - Saturday
-  /// *   `0-23`: Hour of day
-  /// *   Number of commits
-  ///
-  /// For example, `[2, 14, 25]` indicates that there were 25 total commits, during the 2:00pm hour on Tuesdays. All times are based on the time zone of individual commits.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day](https://docs.github.com/rest/metrics/statistics#get-the-hourly-commit-count-for-each-day)
-  pub fn get_punch_card_stats(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), Vec<Vec<i64>>> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/stats/punch_card");
-
-    Request::<(), (), Vec<Vec<i64>>>::builder(&self.config)
+    Request::<(), ReposListTagsQuery, TagArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Get a repository**
+  /// **List deployment branch policies**
   ///
-  /// The `parent` and `source` objects are present when the repository is a fork. `parent` is the repository this repository was forked from, `source` is the ultimate source for the network.
+  /// Lists the deployment branch policies for an environment.
   ///
-  /// **Note:** In order to see the `security_and_analysis` block for a repository you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+  /// Anyone with read access to the repository can use this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#get-a-repository](https://docs.github.com/rest/repos/repos#get-a-repository)
-  pub fn get(
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies](https://docs.github.com/rest/deployments/branch-policies#list-deployment-branch-policies)
+  pub fn list_deployment_branch_policies(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), FullRepository> {
+    environment_name: impl Into<String>,
+  ) -> Request<(), ReposListDeploymentBranchPoliciesQuery, ReposListDeploymentBranchPoliciesResponse>
+  {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}");
+    let environment_name = environment_name.into();
+    let url =
+      format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies");
 
-    Request::<(), (), FullRepository>::builder(&self.config)
+    Request::<(), ReposListDeploymentBranchPoliciesQuery, ReposListDeploymentBranchPoliciesResponse>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Update a repository**
+  /// **Create a deployment branch policy**
   ///
-  /// **Note**: To edit a repository's topics, use the [Replace all repository topics](https://docs.github.com/rest/repos/repos#replace-all-repository-topics) endpoint.
+  /// Creates a deployment branch or tag policy for an environment.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#update-a-repository](https://docs.github.com/rest/repos/repos#update-a-repository)
-  pub fn update(
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy](https://docs.github.com/rest/deployments/branch-policies#create-a-deployment-branch-policy)
+  pub fn create_deployment_branch_policy(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposUpdateRequest, (), FullRepository> {
+    environment_name: impl Into<String>,
+  ) -> Request<DeploymentBranchAndTagPolicyNamePattern, (), DeploymentBranchPolicy> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}");
+    let environment_name = environment_name.into();
+    let url =
+      format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies");
 
-    Request::<ReposUpdateRequest, (), FullRepository>::builder(&self.config)
-      .patch(url)
+    Request::<DeploymentBranchAndTagPolicyNamePattern, (), DeploymentBranchPolicy>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
+  }
+
+  /// **List pull requests associated with a commit**
+  ///
+  /// Lists the merged pull request that introduced the commit to the repository. If the commit is not present in the default branch, will only return open pull requests associated with the commit.
+  ///
+  /// To list the open or merged pull requests associated with a branch, you can set the `commit_sha` parameter to the branch name.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit](https://docs.github.com/rest/commits/commits#list-pull-requests-associated-with-a-commit)
+  pub fn list_pull_requests_associated_with_commit(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    commit_sha: impl Into<String>,
+  ) -> Request<(), ReposListPullRequestsAssociatedWithCommitQuery, PullRequestSimpleArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let commit_sha = commit_sha.into();
+    let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/pulls");
+
+    Request::<(), ReposListPullRequestsAssociatedWithCommitQuery, PullRequestSimpleArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
+  }
+
+  /// **List repositories for a user**
+  ///
+  /// Lists public repositories for the specified user.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repositories-for-a-user](https://docs.github.com/rest/repos/repos#list-repositories-for-a-user)
+  pub fn list_for_user(
+    &self,
+    username: impl Into<String>,
+  ) -> Request<(), ReposListForUserQuery, MinimalRepositoryArray> {
+    let username = username.into();
+    let url = format!("/users/{username}/repos");
+
+    Request::<(), ReposListForUserQuery, MinimalRepositoryArray>::builder(&self.config)
+      .get(url)
       .build()
   }
 
-  /// **Delete a repository**
+  /// **Get the last year of commit activity**
   ///
-  /// Deleting a repository requires admin access.
+  /// Returns the last year of commit activity grouped by week. The `days` array is a group of commits per day, starting on `Sunday`.
   ///
-  /// If an organization owner has configured the organization to prevent members from deleting organization-owned
-  /// repositories, you will get a `403 Forbidden` response.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `delete_repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/repos#delete-a-repository](https://docs.github.com/rest/repos/repos#delete-a-repository)
-  pub fn delete(
+  /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity](https://docs.github.com/rest/metrics/statistics#get-the-last-year-of-commit-activity)
+  pub fn get_commit_activity_stats(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
+  ) -> Request<(), (), CommitActivityArray> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}");
+    let url = format!("/repos/{owner}/{repo}/stats/commit_activity");
 
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
+    Request::<(), (), CommitActivityArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Sync a fork branch with the upstream repository**
+  ///
+  /// Sync a branch of a forked repository to keep it up-to-date with the upstream repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository](https://docs.github.com/rest/branches/branches#sync-a-fork-branch-with-the-upstream-repository)
+  pub fn merge_upstream(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ReposMergeUpstreamRequest, (), MergedUpstream> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/merge-upstream");
+
+    Request::<ReposMergeUpstreamRequest, (), MergedUpstream>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **List repository languages**
+  ///
+  /// Lists languages for the specified repository. The value shown for each language is the number of bytes of code written in that language.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-languages](https://docs.github.com/rest/repos/repos#list-repository-languages)
+  pub fn list_languages(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), serde_json::Value> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/languages");
+
+    Request::<(), (), serde_json::Value>::builder(&self.config)
+      .get(url)
       .build()
   }
 
@@ -4288,81 +3376,6 @@ impl GitHubReposAPI {
     let url = format!("/repos/{owner}/{repo}/pages/health");
 
     Request::<(), (), ReposGetPagesHealthCheckResponse>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Rename a branch**
-  ///
-  /// Renames a branch in a repository.
-  ///
-  /// **Note:** Although the API responds immediately, the branch rename process might take some extra time to complete in the background. You won't be able to push to the old branch name while the rename process is in progress. For more information, see "[Renaming a branch](https://docs.github.com/github/administering-a-repository/renaming-a-branch)".
-  ///
-  /// The authenticated user must have push access to the branch. If the branch is the default branch, the authenticated user must also have admin or owner permissions.
-  ///
-  /// In order to rename the default branch, fine-grained access tokens also need the `administration:write` repository permission.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branches#rename-a-branch](https://docs.github.com/rest/branches/branches#rename-a-branch)
-  pub fn rename_branch(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    branch: impl Into<String>,
-  ) -> Request<ReposRenameBranchRequest, (), BranchWithProtection> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/rename");
-
-    Request::<ReposRenameBranchRequest, (), BranchWithProtection>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Get latest Pages build**
-  ///
-  /// Gets information about the single most recent build of a GitHub Pages site.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/pages/pages#get-latest-pages-build](https://docs.github.com/rest/pages/pages#get-latest-pages-build)
-  pub fn get_latest_pages_build(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), PageBuild> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/pages/builds/latest");
-
-    Request::<(), (), PageBuild>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Get repository permissions for a user**
-  ///
-  /// Checks the repository permission of a collaborator. The possible repository
-  /// permissions are `admin`, `write`, `read`, and `none`.
-  ///
-  /// *Note*: The `permission` attribute provides the legacy base roles of `admin`, `write`, `read`, and `none`, where the
-  /// `maintain` role is mapped to `write` and the `triage` role is mapped to `read`. To determine the role assigned to the
-  /// collaborator, see the `role_name` attribute, which will provide the full role name, including custom roles. The
-  /// `permissions` hash can also be used to determine which base level of access the collaborator has to the repository.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/collaborators/collaborators#get-repository-permissions-for-a-user](https://docs.github.com/rest/collaborators/collaborators#get-repository-permissions-for-a-user)
-  pub fn get_collaborator_permission_level(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    username: impl Into<String>,
-  ) -> Request<(), (), RepositoryCollaboratorPermission> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let username = username.into();
-    let url = format!("/repos/{owner}/{repo}/collaborators/{username}/permission");
-
-    Request::<(), (), RepositoryCollaboratorPermission>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4432,36 +3445,215 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **Download a repository archive (tar)**
+  /// **Get a commit comment**
   ///
-  /// Gets a redirect URL to download a tar archive for a repository. If you omit `:ref`, the repository’s default branch (usually
-  /// `main`) will be used. Please make sure your HTTP framework is configured to follow redirects or you will need to use
-  /// the `Location` header to make a second `GET` request.
-  /// **Note**: For private repositories, these links are temporary and expire after five minutes.
+  /// Gets a specified commit comment.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/contents#download-a-repository-archive-tar](https://docs.github.com/rest/repos/contents#download-a-repository-archive-tar)
-  pub fn download_tarball_archive(
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/commits/comments#get-a-commit-comment](https://docs.github.com/rest/commits/comments#get-a-commit-comment)
+  pub fn get_commit_comment(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    ref_: impl Into<String>,
-  ) -> NoContentRequest<(), ()> {
+    comment_id: impl Into<i64>,
+  ) -> Request<(), (), CommitComment> {
     let owner = owner.into();
     let repo = repo.into();
-    let ref_ = ref_.into();
-    let url = format!("/repos/{owner}/{repo}/tarball/{ref_}");
+    let comment_id = comment_id.into();
+    let url = format!("/repos/{owner}/{repo}/comments/{comment_id}");
 
-    NoContentRequest::<(), ()>::builder(&self.config)
+    Request::<(), (), CommitComment>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Get admin branch protection**
+  /// **Update a commit comment**
+  ///
+  /// Updates the contents of a specified commit comment.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/commits/comments#update-a-commit-comment](https://docs.github.com/rest/commits/comments#update-a-commit-comment)
+  pub fn update_commit_comment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    comment_id: impl Into<i64>,
+  ) -> Request<ReposUpdateCommitCommentRequest, (), CommitComment> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let comment_id = comment_id.into();
+    let url = format!("/repos/{owner}/{repo}/comments/{comment_id}");
+
+    Request::<ReposUpdateCommitCommentRequest, (), CommitComment>::builder(&self.config)
+      .patch(url)
+      .build()
+  }
+
+  /// **Delete a commit comment**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/commits/comments#delete-a-commit-comment](https://docs.github.com/rest/commits/comments#delete-a-commit-comment)
+  pub fn delete_commit_comment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    comment_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let comment_id = comment_id.into();
+    let url = format!("/repos/{owner}/{repo}/comments/{comment_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Create a repository dispatch event**
+  ///
+  /// You can use this endpoint to trigger a webhook event called `repository_dispatch` when you want activity that happens outside of GitHub to trigger a GitHub Actions workflow or GitHub App webhook. You must configure your GitHub Actions workflow or GitHub App to run when the `repository_dispatch` event occurs. For an example `repository_dispatch` webhook payload, see "[RepositoryDispatchEvent](https://docs.github.com/webhooks/event-payloads/#repository_dispatch)."
+  ///
+  /// The `client_payload` parameter is available for any extra information that your workflow might need. This parameter is a JSON payload that will be passed on when the webhook event is dispatched. For example, the `client_payload` can include a message that a user would like to send using a GitHub Actions workflow. Or the `client_payload` can be used as a test to debug your workflow.
+  ///
+  /// This input example shows how you can use the `client_payload` as a test to debug your workflow.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event](https://docs.github.com/rest/repos/repos#create-a-repository-dispatch-event)
+  pub fn create_dispatch_event(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<ReposCreateDispatchEventRequest, ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/dispatches");
+
+    NoContentRequest::<ReposCreateDispatchEventRequest, ()>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get top referral paths**
+  ///
+  /// Get the top 10 popular contents over the last 14 days.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/metrics/traffic#get-top-referral-paths](https://docs.github.com/rest/metrics/traffic#get-top-referral-paths)
+  pub fn get_top_paths(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), ContentTrafficArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/traffic/popular/paths");
+
+    Request::<(), (), ContentTrafficArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get all autolinks of a repository**
+  ///
+  /// Gets all autolinks that are configured for a repository.
+  ///
+  /// Information about autolinks are only available to repository administrators.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository](https://docs.github.com/rest/repos/autolinks#get-all-autolinks-of-a-repository)
+  pub fn list_autolinks(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), AutolinkReferenceArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/autolinks");
+
+    Request::<(), (), AutolinkReferenceArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create an autolink reference for a repository**
+  ///
+  /// Users with admin access to the repository can create an autolink.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository](https://docs.github.com/rest/repos/autolinks#create-an-autolink-reference-for-a-repository)
+  pub fn create_autolink(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ReposCreateAutolinkRequest, (), AutolinkReference> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/autolinks");
+
+    Request::<ReposCreateAutolinkRequest, (), AutolinkReference>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get a release by tag name**
+  ///
+  /// Get a published release with the specified tag.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name](https://docs.github.com/rest/releases/releases#get-a-release-by-tag-name)
+  pub fn get_release_by_tag(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    tag: impl Into<String>,
+  ) -> Request<(), (), Release> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let tag = tag.into();
+    let url = format!("/repos/{owner}/{repo}/releases/tags/{tag}");
+
+    Request::<(), (), Release>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List organization rule suites**
+  ///
+  /// Lists suites of rule evaluations at the organization level.
+  /// For more information, see "[Managing rulesets for repositories in your organization](https://docs.github.com/organizations/managing-organization-settings/managing-rulesets-for-repositories-in-your-organization#viewing-insights-for-rulesets)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites](https://docs.github.com/rest/orgs/rule-suites#list-organization-rule-suites)
+  pub fn get_org_rule_suites(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), ReposGetOrgRuleSuitesQuery, RuleSuites> {
+    let org = org.into();
+    let url = format!("/orgs/{org}/rulesets/rule-suites");
+
+    Request::<(), ReposGetOrgRuleSuitesQuery, RuleSuites>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get commit signature protection**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection](https://docs.github.com/rest/branches/branch-protection#get-admin-branch-protection)
-  pub fn get_admin_branch_protection(
+  /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to check whether a branch requires signed commits. An enabled status of `true` indicates you must sign commits on this branch. For more information, see [Signing commits with GPG](https://docs.github.com/articles/signing-commits-with-gpg) in GitHub Help.
+  ///
+  /// **Note**: You must enable branch protection to require signed commits.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection](https://docs.github.com/rest/branches/branch-protection#get-commit-signature-protection)
+  pub fn get_commit_signature_protection(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
@@ -4470,21 +3662,21 @@ impl GitHubReposAPI {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins");
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures");
 
     Request::<(), (), ProtectedBranchAdminEnforced>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Set admin branch protection**
+  /// **Create commit signature protection**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
   ///
-  /// Adding admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
+  /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to require signed commits on a branch. You must enable branch protection to require signed commits.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection](https://docs.github.com/rest/branches/branch-protection#set-admin-branch-protection)
-  pub fn set_admin_branch_protection(
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection](https://docs.github.com/rest/branches/branch-protection#create-commit-signature-protection)
+  pub fn create_commit_signature_protection(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
@@ -4493,21 +3685,21 @@ impl GitHubReposAPI {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins");
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures");
 
     Request::<(), (), ProtectedBranchAdminEnforced>::builder(&self.config)
       .post(url)
       .build()
   }
 
-  /// **Delete admin branch protection**
+  /// **Delete commit signature protection**
   ///
   /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
   ///
-  /// Removing admin enforcement requires admin or owner permissions to the repository and branch protection to be enabled.
+  /// When authenticated with admin or owner permissions to the repository, you can use this endpoint to disable required signed commits on a branch. You must enable branch protection to require signed commits.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection](https://docs.github.com/rest/branches/branch-protection#delete-admin-branch-protection)
-  pub fn delete_admin_branch_protection(
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection](https://docs.github.com/rest/branches/branch-protection#delete-commit-signature-protection)
+  pub fn delete_commit_signature_protection(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
@@ -4516,7 +3708,53 @@ impl GitHubReposAPI {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
-    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins");
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get an autolink reference of a repository**
+  ///
+  /// This returns a single autolink reference by ID that was configured for the given repository.
+  ///
+  /// Information about autolinks are only available to repository administrators.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository](https://docs.github.com/rest/repos/autolinks#get-an-autolink-reference-of-a-repository)
+  pub fn get_autolink(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    autolink_id: impl Into<i64>,
+  ) -> Request<(), (), AutolinkReference> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let autolink_id = autolink_id.into();
+    let url = format!("/repos/{owner}/{repo}/autolinks/{autolink_id}");
+
+    Request::<(), (), AutolinkReference>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Delete an autolink reference from a repository**
+  ///
+  /// This deletes a single autolink reference by ID that was configured for the given repository.
+  ///
+  /// Information about autolinks are only available to repository administrators.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository](https://docs.github.com/rest/repos/autolinks#delete-an-autolink-reference-from-a-repository)
+  pub fn delete_autolink(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    autolink_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let autolink_id = autolink_id.into();
+    let url = format!("/repos/{owner}/{repo}/autolinks/{autolink_id}");
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
@@ -4544,64 +3782,826 @@ impl GitHubReposAPI {
       .build()
   }
 
-  /// **Get the weekly commit count**
+  /// **Test the push repository webhook**
   ///
-  /// Returns the total commit counts for the `owner` and total commit counts in `all`. `all` is everyone combined, including the `owner` in the last 52 weeks. If you'd like to get the commit counts for non-owners, you can subtract `owner` from `all`.
+  /// This will trigger the hook with the latest push to the current repository if the hook is subscribed to `push` events. If the hook is not subscribed to `push` events, the server will respond with 204 but no test POST will be generated.
   ///
-  /// The array order is oldest week (index 0) to most recent week.
+  /// **Note**: Previously `/repos/:owner/:repo/hooks/:hook_id/test`
   ///
-  /// The most recent week is seven days ago at UTC midnight to today at UTC midnight.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count](https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-count)
-  pub fn get_participation_stats(
+  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook](https://docs.github.com/rest/repos/webhooks#test-the-push-repository-webhook)
+  pub fn test_push_webhook(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ParticipationStats> {
+    hook_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/stats/participation");
+    let hook_id = hook_id.into();
+    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/tests");
 
-    Request::<(), (), ParticipationStats>::builder(&self.config)
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get all repository topics**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#get-all-repository-topics](https://docs.github.com/rest/repos/repos#get-all-repository-topics)
+  pub fn get_all_topics(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposGetAllTopicsQuery, Topic> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/topics");
+
+    Request::<(), ReposGetAllTopicsQuery, Topic>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **Get top referral paths**
+  /// **Replace all repository topics**
   ///
-  /// Get the top 10 popular contents over the last 14 days.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/metrics/traffic#get-top-referral-paths](https://docs.github.com/rest/metrics/traffic#get-top-referral-paths)
-  pub fn get_top_paths(
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#replace-all-repository-topics](https://docs.github.com/rest/repos/repos#replace-all-repository-topics)
+  pub fn replace_all_topics(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ContentTrafficArray> {
+  ) -> Request<ReposReplaceAllTopicsRequest, (), Topic> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/traffic/popular/paths");
+    let url = format!("/repos/{owner}/{repo}/topics");
 
-    Request::<(), (), ContentTrafficArray>::builder(&self.config)
+    Request::<ReposReplaceAllTopicsRequest, (), Topic>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Create a GitHub Pages deployment**
+  ///
+  /// Create a GitHub Pages deployment for a repository.
+  ///
+  /// The authenticated user must have write permission to the repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment](https://docs.github.com/rest/pages/pages#create-a-github-pages-deployment)
+  pub fn create_pages_deployment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ReposCreatePagesDeploymentRequest, (), GitHubPages> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/pages/deployments");
+
+    Request::<ReposCreatePagesDeploymentRequest, (), GitHubPages>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **List deployment statuses**
+  ///
+  /// Users with pull access can view deployment statuses for a deployment:
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/statuses#list-deployment-statuses](https://docs.github.com/rest/deployments/statuses#list-deployment-statuses)
+  pub fn list_deployment_statuses(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    deployment_id: impl Into<i64>,
+  ) -> Request<(), ReposListDeploymentStatusesQuery, DeploymentStatusArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let deployment_id = deployment_id.into();
+    let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses");
+
+    Request::<(), ReposListDeploymentStatusesQuery, DeploymentStatusArray>::builder(&self.config)
       .get(url)
       .build()
   }
 
-  /// **List repository rule suites**
+  /// **Create a deployment status**
   ///
-  /// Lists suites of rule evaluations at the repository level.
-  /// For more information, see "[Managing rulesets for a repository](https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/managing-rulesets-for-a-repository#viewing-insights-for-rulesets)."
+  /// Users with `push` access can create deployment statuses for a given deployment.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites](https://docs.github.com/rest/repos/rule-suites#list-repository-rule-suites)
-  pub fn get_repo_rule_suites(
+  /// OAuth app tokens and personal access tokens (classic) need the `repo_deployment` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/statuses#create-a-deployment-status](https://docs.github.com/rest/deployments/statuses#create-a-deployment-status)
+  pub fn create_deployment_status(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposGetRepoRuleSuitesQuery, RuleSuites> {
+    deployment_id: impl Into<i64>,
+  ) -> Request<ReposCreateDeploymentStatusRequest, (), DeploymentStatus> {
     let owner = owner.into();
     let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/rulesets/rule-suites");
+    let deployment_id = deployment_id.into();
+    let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses");
 
-    Request::<(), ReposGetRepoRuleSuitesQuery, RuleSuites>::builder(&self.config)
+    Request::<ReposCreateDeploymentStatusRequest, (), DeploymentStatus>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get all status check contexts**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts](https://docs.github.com/rest/branches/branch-protection#get-all-status-check-contexts)
+  pub fn get_all_status_check_contexts(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<(), (), StringArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url =
+      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
+
+    Request::<(), (), StringArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Add status check contexts**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#add-status-check-contexts](https://docs.github.com/rest/branches/branch-protection#add-status-check-contexts)
+  pub fn add_status_check_contexts(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<ReposAddStatusCheckContextsRequest, (), StringArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url =
+      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
+
+    Request::<ReposAddStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Set status check contexts**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#set-status-check-contexts](https://docs.github.com/rest/branches/branch-protection#set-status-check-contexts)
+  pub fn set_status_check_contexts(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<ReposSetStatusCheckContextsRequest, (), StringArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url =
+      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
+
+    Request::<ReposSetStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Remove status check contexts**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#remove-status-check-contexts](https://docs.github.com/rest/branches/branch-protection#remove-status-check-contexts)
+  pub fn remove_status_check_contexts(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<ReposRemoveStatusCheckContextsRequest, (), StringArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url =
+      format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
+
+    Request::<ReposRemoveStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **List commit comments for a repository**
+  ///
+  /// Lists the commit comments for a specified repository. Comments are ordered by ascending ID.
+  ///
+  /// This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)."
+  ///
+  /// - **`application/vnd.github-commitcomment.raw+json`**: Returns the raw markdown body. Response will include `body`. This is the default if you do not pass any specific media type.
+  /// - **`application/vnd.github-commitcomment.text+json`**: Returns a text only representation of the markdown body. Response will include `body_text`.
+  /// - **`application/vnd.github-commitcomment.html+json`**: Returns HTML rendered from the body's markdown. Response will include `body_html`.
+  /// - **`application/vnd.github-commitcomment.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository](https://docs.github.com/rest/commits/comments#list-commit-comments-for-a-repository)
+  pub fn list_commit_comments_for_repo(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposListCommitCommentsForRepoQuery, CommitCommentArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/comments");
+
+    Request::<(), ReposListCommitCommentsForRepoQuery, CommitCommentArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get branch protection**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#get-branch-protection](https://docs.github.com/rest/branches/branch-protection#get-branch-protection)
+  pub fn get_branch_protection(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<(), (), BranchProtection> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection");
+
+    Request::<(), (), BranchProtection>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update branch protection**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// Protecting a branch requires admin or owner permissions to the repository.
+  ///
+  /// **Note**: Passing new arrays of `users` and `teams` replaces their previous values.
+  ///
+  /// **Note**: The list of users, apps, and teams in total is limited to 100 items.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#update-branch-protection](https://docs.github.com/rest/branches/branch-protection#update-branch-protection)
+  pub fn update_branch_protection(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<ReposUpdateBranchProtectionRequest, (), ProtectedBranch> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection");
+
+    Request::<ReposUpdateBranchProtectionRequest, (), ProtectedBranch>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Delete branch protection**
+  ///
+  /// Protected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branch-protection#delete-branch-protection](https://docs.github.com/rest/branches/branch-protection#delete-branch-protection)
+  pub fn delete_branch_protection(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Get an organization repository ruleset**
+  ///
+  /// Get a repository ruleset for an organization.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset](https://docs.github.com/rest/orgs/rules#get-an-organization-repository-ruleset)
+  pub fn get_org_ruleset(
+    &self,
+    org: impl Into<String>,
+    ruleset_id: impl Into<i64>,
+  ) -> Request<(), (), RepositoryRuleset> {
+    let org = org.into();
+    let ruleset_id = ruleset_id.into();
+    let url = format!("/orgs/{org}/rulesets/{ruleset_id}");
+
+    Request::<(), (), RepositoryRuleset>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Update an organization repository ruleset**
+  ///
+  /// Update a ruleset for an organization.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/orgs/rules#update-an-organization-repository-ruleset](https://docs.github.com/rest/orgs/rules#update-an-organization-repository-ruleset)
+  pub fn update_org_ruleset(
+    &self,
+    org: impl Into<String>,
+    ruleset_id: impl Into<i64>,
+  ) -> Request<ReposUpdateOrgRulesetRequest, (), RepositoryRuleset> {
+    let org = org.into();
+    let ruleset_id = ruleset_id.into();
+    let url = format!("/orgs/{org}/rulesets/{ruleset_id}");
+
+    Request::<ReposUpdateOrgRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Delete an organization repository ruleset**
+  ///
+  /// Delete a ruleset for an organization.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/orgs/rules#delete-an-organization-repository-ruleset](https://docs.github.com/rest/orgs/rules#delete-an-organization-repository-ruleset)
+  pub fn delete_org_ruleset(
+    &self,
+    org: impl Into<String>,
+    ruleset_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let org = org.into();
+    let ruleset_id = ruleset_id.into();
+    let url = format!("/orgs/{org}/rulesets/{ruleset_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Delete a tag protection state for a repository**
+  ///
+  /// This deletes a tag protection state for a repository.
+  /// This endpoint is only available to repository administrators.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/tags#delete-a-tag-protection-state-for-a-repository](https://docs.github.com/rest/repos/tags#delete-a-tag-protection-state-for-a-repository)
+  pub fn delete_tag_protection(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    tag_protection_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let tag_protection_id = tag_protection_id.into();
+    let url = format!("/repos/{owner}/{repo}/tags/protection/{tag_protection_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Merge a branch**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branches#merge-a-branch](https://docs.github.com/rest/branches/branches#merge-a-branch)
+  pub fn merge(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ReposMergeRequest, (), Commit> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/merges");
+
+    Request::<ReposMergeRequest, (), Commit>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get a GitHub Pages site**
+  ///
+  /// Gets information about a GitHub Pages site.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#get-a-apiname-pages-site)
+  pub fn get_pages(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), GitHubPages> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/pages");
+
+    Request::<(), (), GitHubPages>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create a GitHub Pages site**
+  ///
+  /// Configures a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages)."
+  ///
+  /// The authenticated user must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#create-a-apiname-pages-site)
+  pub fn create_pages_site(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<serde_json::Value, (), GitHubPages> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/pages");
+
+    Request::<serde_json::Value, (), GitHubPages>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Update information about a GitHub Pages site**
+  ///
+  /// Updates information for a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages).
+  ///
+  /// The authenticated user must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#update-information-about-a-apiname-pages-site)
+  pub fn update_information_about_pages_site(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<serde_json::Value, ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/pages");
+
+    NoContentRequest::<serde_json::Value, ()>::builder(&self.config)
+      .put(url)
+      .build()
+  }
+
+  /// **Delete a GitHub Pages site**
+  ///
+  /// Deletes a GitHub Pages site. For more information, see "[About GitHub Pages](/github/working-with-github-pages/about-github-pages).
+  ///
+  /// The authenticated user must be a repository administrator, maintainer, or have the 'manage GitHub Pages settings' permission.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site](https://docs.github.com/rest/pages/pages#delete-a-apiname-pages-site)
+  pub fn delete_pages_site(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/pages");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Generate release notes content for a release**
+  ///
+  /// Generate a name and body describing a [release](https://docs.github.com/rest/releases/releases#get-a-release). The body content will be markdown formatted and contain information like the changes since last release and users who contributed. The generated release notes are not saved anywhere. They are intended to be generated and used when creating a new release.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release](https://docs.github.com/rest/releases/releases#generate-release-notes-content-for-a-release)
+  pub fn generate_release_notes(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ReposGenerateReleaseNotesRequest, (), GeneratedReleaseNotesContent> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/releases/generate-notes");
+
+    Request::<ReposGenerateReleaseNotesRequest, (), GeneratedReleaseNotesContent>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
+  }
+
+  /// **List custom deployment rule integrations available for an environment**
+  ///
+  /// Gets all custom deployment protection rule integrations that are available for an environment. Anyone with read access to the repository can use this endpoint.
+  ///
+  /// For more information about environments, see "[Using environments for deployment](https://docs.github.com/actions/deployment/targeting-different-environments/using-environments-for-deployment)."
+  ///
+  /// For more information about the app that is providing this custom deployment rule, see "[GET an app](https://docs.github.com/rest/apps/apps#get-an-app)".
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `repo` scope to use this endpoint with a private repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment](https://docs.github.com/rest/deployments/protection-rules#list-custom-deployment-rule-integrations-available-for-an-environment)
+  pub fn list_custom_deployment_rule_integrations(
+    &self,
+    environment_name: impl Into<String>,
+    repo: impl Into<String>,
+    owner: impl Into<String>,
+  ) -> Request<
+    (),
+    ReposListCustomDeploymentRuleIntegrationsQuery,
+    ReposListCustomDeploymentRuleIntegrationsResponse,
+  > {
+    let environment_name = environment_name.into();
+    let repo = repo.into();
+    let owner = owner.into();
+    let url = format!(
+      "/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/apps"
+    );
+
+    Request::<
+      (),
+      ReposListCustomDeploymentRuleIntegrationsQuery,
+      ReposListCustomDeploymentRuleIntegrationsResponse,
+    >::builder(&self.config)
+    .get(url)
+    .build()
+  }
+
+  /// **Get rules for a branch**
+  ///
+  /// Returns all active rules that apply to the specified branch. The branch does not need to exist; rules that would apply
+  /// to a branch with that name will be returned. All active rules that apply will be returned, regardless of the level
+  /// at which they are configured (e.g. repository or organization). Rules in rulesets with "evaluate" or "disabled"
+  /// enforcement statuses are not returned.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/rules#get-rules-for-a-branch](https://docs.github.com/rest/repos/rules#get-rules-for-a-branch)
+  pub fn get_branch_rules(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<(), ReposGetBranchRulesQuery, RepositoryRuleArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/rules/branches/{branch}");
+
+    Request::<(), ReposGetBranchRulesQuery, RepositoryRuleArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List deploy keys**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys](https://docs.github.com/rest/deploy-keys/deploy-keys#list-deploy-keys)
+  pub fn list_deploy_keys(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposListDeployKeysQuery, DeployKeyArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/keys");
+
+    Request::<(), ReposListDeployKeysQuery, DeployKeyArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create a deploy key**
+  ///
+  /// You can create a read-only deploy key.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key](https://docs.github.com/rest/deploy-keys/deploy-keys#create-a-deploy-key)
+  pub fn create_deploy_key(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ReposCreateDeployKeyRequest, (), DeployKey> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/keys");
+
+    Request::<ReposCreateDeployKeyRequest, (), DeployKey>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get the weekly commit activity**
+  ///
+  ///
+  /// Returns a weekly aggregate of the number of additions and deletions pushed to a repository.
+  ///
+  /// **Note:** This endpoint can only be used for repositories with fewer than 10,000 commits. If the repository contains
+  /// 10,000 or more commits, a 422 status code will be returned.
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity](https://docs.github.com/rest/metrics/statistics#get-the-weekly-commit-activity)
+  pub fn get_code_frequency_stats(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), Vec<Vec<i64>>> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/stats/code_frequency");
+
+    Request::<(), (), Vec<Vec<i64>>>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get all repository rulesets**
+  ///
+  /// Get all the rulesets for a repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/rules#get-all-repository-rulesets](https://docs.github.com/rest/repos/rules#get-all-repository-rulesets)
+  pub fn get_repo_rulesets(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposGetRepoRulesetsQuery, RepositoryRulesetArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/rulesets");
+
+    Request::<(), ReposGetRepoRulesetsQuery, RepositoryRulesetArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create a repository ruleset**
+  ///
+  /// Create a ruleset for a repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/rules#create-a-repository-ruleset](https://docs.github.com/rest/repos/rules#create-a-repository-ruleset)
+  pub fn create_repo_ruleset(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<ReposCreateRepoRulesetRequest, (), RepositoryRuleset> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/rulesets");
+
+    Request::<ReposCreateRepoRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **List repository activities**
+  ///
+  /// Lists a detailed history of changes to a repository, such as pushes, merges, force pushes, and branch changes, and associates these changes with commits and users.
+  ///
+  /// For more information about viewing repository activity,
+  /// see "[Viewing activity and data for your repository](https://docs.github.com/repositories/viewing-activity-and-data-for-your-repository)."
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-activities](https://docs.github.com/rest/repos/repos#list-repository-activities)
+  pub fn list_activities(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposListActivitiesQuery, ActivityArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/activity");
+
+    Request::<(), ReposListActivitiesQuery, ActivityArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Redeliver a delivery for a repository webhook**
+  ///
+  /// Redeliver a webhook delivery for a webhook configured in a repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook](https://docs.github.com/rest/repos/webhooks#redeliver-a-delivery-for-a-repository-webhook)
+  pub fn redeliver_webhook_delivery(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    hook_id: impl Into<i64>,
+    delivery_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let hook_id = hook_id.into();
+    let delivery_id = delivery_id.into();
+    let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}/attempts");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **List repositories for the authenticated user**
+  ///
+  /// Lists repositories that the authenticated user has explicit permission (`:read`, `:write`, or `:admin`) to access.
+  ///
+  /// The authenticated user has explicit permission to access repositories they own, repositories where they are a collaborator, and repositories that they can access through an organization membership.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user](https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user)
+  pub fn list_for_authenticated_user(
+    &self,
+  ) -> Request<(), ReposListForAuthenticatedUserQuery, RepositoryArray> {
+    let url = format!("/user/repos");
+
+    Request::<(), ReposListForAuthenticatedUserQuery, RepositoryArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create a repository for the authenticated user**
+  ///
+  /// Creates a new repository for the authenticated user.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to create a public repository, and `repo` scope to create a private repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user](https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user)
+  pub fn create_for_authenticated_user(
+    &self,
+  ) -> Request<ReposCreateForAuthenticatedUserRequest, (), FullRepository> {
+    let url = format!("/user/repos");
+
+    Request::<ReposCreateForAuthenticatedUserRequest, (), FullRepository>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Get repository permissions for a user**
+  ///
+  /// Checks the repository permission of a collaborator. The possible repository
+  /// permissions are `admin`, `write`, `read`, and `none`.
+  ///
+  /// *Note*: The `permission` attribute provides the legacy base roles of `admin`, `write`, `read`, and `none`, where the
+  /// `maintain` role is mapped to `write` and the `triage` role is mapped to `read`. To determine the role assigned to the
+  /// collaborator, see the `role_name` attribute, which will provide the full role name, including custom roles. The
+  /// `permissions` hash can also be used to determine which base level of access the collaborator has to the repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/collaborators/collaborators#get-repository-permissions-for-a-user](https://docs.github.com/rest/collaborators/collaborators#get-repository-permissions-for-a-user)
+  pub fn get_collaborator_permission_level(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    username: impl Into<String>,
+  ) -> Request<(), (), RepositoryCollaboratorPermission> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let username = username.into();
+    let url = format!("/repos/{owner}/{repo}/collaborators/{username}/permission");
+
+    Request::<(), (), RepositoryCollaboratorPermission>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **List repository teams**
+  ///
+  /// Lists the teams that have access to the specified repository and that are also visible to the authenticated user.
+  ///
+  /// For a public repository, a team is listed only if that team added the public repository explicitly.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `public_repo` or `repo` scope to use this endpoint with a public repository, and `repo` scope to use this endpoint with a private repository.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repository-teams](https://docs.github.com/rest/repos/repos#list-repository-teams)
+  pub fn list_teams(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), ReposListTeamsQuery, TeamArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/teams");
+
+    Request::<(), ReposListTeamsQuery, TeamArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Get a branch**
+  ///
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/branches/branches#get-a-branch](https://docs.github.com/rest/branches/branches#get-a-branch)
+  pub fn get_branch(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    branch: impl Into<String>,
+  ) -> Request<(), (), BranchWithProtection> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let branch = branch.into();
+    let url = format!("/repos/{owner}/{repo}/branches/{branch}");
+
+    Request::<(), (), BranchWithProtection>::builder(&self.config)
       .get(url)
       .build()
   }

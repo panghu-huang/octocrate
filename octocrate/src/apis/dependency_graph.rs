@@ -13,6 +13,27 @@ impl GitHubDependencyGraphAPI {
     }
   }
 
+  /// **Get a diff of the dependencies between commits**
+  ///
+  /// Gets the diff of the dependency changes between two commits of a repository, based on the changes to the dependency manifests made in those commits.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits](https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits)
+  pub fn diff_range(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    basehead: impl Into<String>,
+  ) -> Request<(), DependencyGraphDiffRangeQuery, DependencyGraphDiff> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let basehead = basehead.into();
+    let url = format!("/repos/{owner}/{repo}/dependency-graph/compare/{basehead}");
+
+    Request::<(), DependencyGraphDiffRangeQuery, DependencyGraphDiff>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
   /// **Export a software bill of materials (SBOM) for a repository.**
   ///
   /// Exports the software bill of materials (SBOM) for a repository in SPDX JSON format.
@@ -52,27 +73,6 @@ impl GitHubDependencyGraphAPI {
 
     Request::<Snapshot, (), DependencyGraphCreateRepositorySnapshotResponse>::builder(&self.config)
       .post(url)
-      .build()
-  }
-
-  /// **Get a diff of the dependencies between commits**
-  ///
-  /// Gets the diff of the dependency changes between two commits of a repository, based on the changes to the dependency manifests made in those commits.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits](https://docs.github.com/rest/dependency-graph/dependency-review#get-a-diff-of-the-dependencies-between-commits)
-  pub fn diff_range(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    basehead: impl Into<String>,
-  ) -> Request<(), DependencyGraphDiffRangeQuery, DependencyGraphDiff> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let basehead = basehead.into();
-    let url = format!("/repos/{owner}/{repo}/dependency-graph/compare/{basehead}");
-
-    Request::<(), DependencyGraphDiffRangeQuery, DependencyGraphDiff>::builder(&self.config)
-      .get(url)
       .build()
   }
 }
