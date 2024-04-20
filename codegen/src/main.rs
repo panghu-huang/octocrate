@@ -16,7 +16,7 @@ fn main() {
   let parsed_api_description = codegen.parse();
 
   let apis_dir = std::path::PathBuf::from("octocrate/src");
-  let types_dir = std::path::PathBuf::from("octocrate-types/src");
+  let types_dir = std::path::PathBuf::from("types/src");
 
   codegen.write_apis(parsed_api_description.clone(), &apis_dir);
   codegen.write_types(parsed_api_description, &types_dir);
