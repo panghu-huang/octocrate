@@ -1,6 +1,6 @@
-#[allow(unused_imports)]
-use crate::types::*;
 use octocrate_core::*;
+#[allow(unused_imports)]
+use octocrate_types::*;
 
 pub struct GitHubDependencyGraphAPI {
   config: SharedAPIConfig,
@@ -11,6 +11,25 @@ impl GitHubDependencyGraphAPI {
     Self {
       config: config.clone(),
     }
+  }
+
+  /// **Export a software bill of materials (SBOM) for a repository.**
+  ///
+  /// Exports the software bill of materials (SBOM) for a repository in SPDX JSON format.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository](https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository)
+  pub fn export_sbom(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+  ) -> Request<(), (), DependencyGraphSpdxSbom> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let url = format!("/repos/{owner}/{repo}/dependency-graph/sbom");
+
+    Request::<(), (), DependencyGraphSpdxSbom>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Create a snapshot of dependencies for a repository**
@@ -53,25 +72,6 @@ impl GitHubDependencyGraphAPI {
     let url = format!("/repos/{owner}/{repo}/dependency-graph/compare/{basehead}");
 
     Request::<(), DependencyGraphDiffRangeQuery, DependencyGraphDiff>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Export a software bill of materials (SBOM) for a repository.**
-  ///
-  /// Exports the software bill of materials (SBOM) for a repository in SPDX JSON format.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository](https://docs.github.com/rest/dependency-graph/sboms#export-a-software-bill-of-materials-sbom-for-a-repository)
-  pub fn export_sbom(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-  ) -> Request<(), (), DependencyGraphSpdxSbom> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let url = format!("/repos/{owner}/{repo}/dependency-graph/sbom");
-
-    Request::<(), (), DependencyGraphSpdxSbom>::builder(&self.config)
       .get(url)
       .build()
   }

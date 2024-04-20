@@ -1,6 +1,6 @@
-#[allow(unused_imports)]
-use crate::types::*;
 use octocrate_core::*;
+#[allow(unused_imports)]
+use octocrate_types::*;
 
 /// Interact with reactions to various GitHub entities.
 pub struct GitHubReactionsAPI {
@@ -12,31 +12,6 @@ impl GitHubReactionsAPI {
     Self {
       config: config.clone(),
     }
-  }
-
-  /// **Delete a pull request comment reaction**
-  ///
-  /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/pulls/comments/:comment_id/reactions/:reaction_id.`
-  ///
-  /// Delete a reaction to a [pull request review comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request).
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#delete-a-pull-request-comment-reaction](https://docs.github.com/rest/reactions/reactions#delete-a-pull-request-comment-reaction)
-  pub fn delete_for_pull_request_comment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    comment_id: impl Into<i64>,
-    reaction_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let comment_id = comment_id.into();
-    let reaction_id = reaction_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
   }
 
   /// **List reactions for a commit comment**
@@ -77,191 +52,6 @@ impl GitHubReactionsAPI {
     let url = format!("/repos/{owner}/{repo}/comments/{comment_id}/reactions");
 
     Request::<ReactionsCreateForCommitCommentRequest, (), Reaction>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **Delete an issue comment reaction**
-  ///
-  /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/issues/comments/:comment_id/reactions/:reaction_id`.
-  ///
-  /// Delete a reaction to an [issue comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment).
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#delete-an-issue-comment-reaction](https://docs.github.com/rest/reactions/reactions#delete-an-issue-comment-reaction)
-  pub fn delete_for_issue_comment(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    comment_id: impl Into<i64>,
-    reaction_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let comment_id = comment_id.into();
-    let reaction_id = reaction_id.into();
-    let url = format!("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}");
-
-    NoContentRequest::<(), ()>::builder(&self.config)
-      .delete(url)
-      .build()
-  }
-
-  /// **List reactions for a team discussion comment (Legacy)**
-  ///
-  /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List reactions for a team discussion comment`](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment) endpoint.
-  ///
-  /// List the reactions to a [team discussion comment](https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment).
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy)
-  pub fn list_for_team_discussion_comment_legacy(
-    &self,
-    team_id: impl Into<i64>,
-    discussion_number: impl Into<i64>,
-    comment_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForTeamDiscussionCommentLegacyQuery, ReactionArray> {
-    let team_id = team_id.into();
-    let discussion_number = discussion_number.into();
-    let comment_number = comment_number.into();
-    let url = format!(
-      "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
-    );
-
-    Request::<(), ReactionsListForTeamDiscussionCommentLegacyQuery, ReactionArray>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
-  }
-
-  /// **Create reaction for a team discussion comment (Legacy)**
-  ///
-  /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new "[Create reaction for a team discussion comment](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment)" endpoint.
-  ///
-  /// Create a reaction to a [team discussion comment](https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment).
-  ///
-  /// A response with an HTTP `200` status means that you already added the reaction type to this team discussion comment.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy)
-  pub fn create_for_team_discussion_comment_legacy(
-    &self,
-    team_id: impl Into<i64>,
-    discussion_number: impl Into<i64>,
-    comment_number: impl Into<i64>,
-  ) -> Request<ReactionsCreateForTeamDiscussionCommentLegacyRequest, (), Reaction> {
-    let team_id = team_id.into();
-    let discussion_number = discussion_number.into();
-    let comment_number = comment_number.into();
-    let url = format!(
-      "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
-    );
-
-    Request::<ReactionsCreateForTeamDiscussionCommentLegacyRequest, (), Reaction>::builder(
-      &self.config,
-    )
-    .post(url)
-    .build()
-  }
-
-  /// **List reactions for a team discussion**
-  ///
-  /// List the reactions to a [team discussion](https://docs.github.com/rest/teams/discussions#get-a-discussion).
-  ///
-  /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion)
-  pub fn list_for_team_discussion_in_org(
-    &self,
-    org: impl Into<String>,
-    team_slug: impl Into<String>,
-    discussion_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForTeamDiscussionInOrgQuery, ReactionArray> {
-    let org = org.into();
-    let team_slug = team_slug.into();
-    let discussion_number = discussion_number.into();
-    let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions");
-
-    Request::<(), ReactionsListForTeamDiscussionInOrgQuery, ReactionArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create reaction for a team discussion**
-  ///
-  /// Create a reaction to a [team discussion](https://docs.github.com/rest/teams/discussions#get-a-discussion).
-  ///
-  /// A response with an HTTP `200` status means that you already added the reaction type to this team discussion.
-  ///
-  /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion)
-  pub fn create_for_team_discussion_in_org(
-    &self,
-    org: impl Into<String>,
-    team_slug: impl Into<String>,
-    discussion_number: impl Into<i64>,
-  ) -> Request<ReactionsCreateForTeamDiscussionInOrgRequest, (), Reaction> {
-    let org = org.into();
-    let team_slug = team_slug.into();
-    let discussion_number = discussion_number.into();
-    let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions");
-
-    Request::<ReactionsCreateForTeamDiscussionInOrgRequest, (), Reaction>::builder(&self.config)
-      .post(url)
-      .build()
-  }
-
-  /// **List reactions for a team discussion (Legacy)**
-  ///
-  /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List reactions for a team discussion`](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion) endpoint.
-  ///
-  /// List the reactions to a [team discussion](https://docs.github.com/rest/teams/discussions#get-a-discussion).
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy)
-  pub fn list_for_team_discussion_legacy(
-    &self,
-    team_id: impl Into<i64>,
-    discussion_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForTeamDiscussionLegacyQuery, ReactionArray> {
-    let team_id = team_id.into();
-    let discussion_number = discussion_number.into();
-    let url = format!("/teams/{team_id}/discussions/{discussion_number}/reactions");
-
-    Request::<(), ReactionsListForTeamDiscussionLegacyQuery, ReactionArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create reaction for a team discussion (Legacy)**
-  ///
-  /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create reaction for a team discussion`](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion) endpoint.
-  ///
-  /// Create a reaction to a [team discussion](https://docs.github.com/rest/teams/discussions#get-a-discussion).
-  ///
-  /// A response with an HTTP `200` status means that you already added the reaction type to this team discussion.
-  ///
-  /// OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy)
-  pub fn create_for_team_discussion_legacy(
-    &self,
-    team_id: impl Into<i64>,
-    discussion_number: impl Into<i64>,
-  ) -> Request<ReactionsCreateForTeamDiscussionLegacyRequest, (), Reaction> {
-    let team_id = team_id.into();
-    let discussion_number = discussion_number.into();
-    let url = format!("/teams/{team_id}/discussions/{discussion_number}/reactions");
-
-    Request::<ReactionsCreateForTeamDiscussionLegacyRequest, (), Reaction>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -308,70 +98,28 @@ impl GitHubReactionsAPI {
       .build()
   }
 
-  /// **Delete a release reaction**
+  /// **Delete an issue comment reaction**
   ///
-  /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/releases/:release_id/reactions/:reaction_id`.
+  /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/issues/comments/:comment_id/reactions/:reaction_id`.
   ///
-  /// Delete a reaction to a [release](https://docs.github.com/rest/releases/releases#get-a-release).
+  /// Delete a reaction to an [issue comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment).
   ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#delete-a-release-reaction](https://docs.github.com/rest/reactions/reactions#delete-a-release-reaction)
-  pub fn delete_for_release(
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#delete-an-issue-comment-reaction](https://docs.github.com/rest/reactions/reactions#delete-an-issue-comment-reaction)
+  pub fn delete_for_issue_comment(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    release_id: impl Into<i64>,
+    comment_id: impl Into<i64>,
     reaction_id: impl Into<i64>,
   ) -> NoContentRequest<(), ()> {
     let owner = owner.into();
     let repo = repo.into();
-    let release_id = release_id.into();
+    let comment_id = comment_id.into();
     let reaction_id = reaction_id.into();
-    let url = format!("/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}");
+    let url = format!("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions/{reaction_id}");
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
-      .build()
-  }
-
-  /// **List reactions for an issue**
-  ///
-  /// List the reactions to an [issue](https://docs.github.com/rest/issues/issues#get-an-issue).
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue](https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue)
-  pub fn list_for_issue(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    issue_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForIssueQuery, ReactionArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let issue_number = issue_number.into();
-    let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/reactions");
-
-    Request::<(), ReactionsListForIssueQuery, ReactionArray>::builder(&self.config)
-      .get(url)
-      .build()
-  }
-
-  /// **Create reaction for an issue**
-  ///
-  /// Create a reaction to an [issue](https://docs.github.com/rest/issues/issues#get-an-issue). A response with an HTTP `200` status means that you already added the reaction type to this issue.
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue](https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue)
-  pub fn create_for_issue(
-    &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    issue_number: impl Into<i64>,
-  ) -> Request<ReactionsCreateForIssueRequest, (), Reaction> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let issue_number = issue_number.into();
-    let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/reactions");
-
-    Request::<ReactionsCreateForIssueRequest, (), Reaction>::builder(&self.config)
-      .post(url)
       .build()
   }
 
@@ -404,25 +152,75 @@ impl GitHubReactionsAPI {
       .build()
   }
 
-  /// **Delete a commit comment reaction**
+  /// **List reactions for a pull request review comment**
   ///
-  /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/comments/:comment_id/reactions/:reaction_id`.
+  /// List the reactions to a [pull request review comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request).
   ///
-  /// Delete a reaction to a [commit comment](https://docs.github.com/rest/commits/comments#get-a-commit-comment).
-  ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#delete-a-commit-comment-reaction](https://docs.github.com/rest/reactions/reactions#delete-a-commit-comment-reaction)
-  pub fn delete_for_commit_comment(
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment)
+  pub fn list_for_pull_request_review_comment(
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-    reaction_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
+  ) -> Request<(), ReactionsListForPullRequestReviewCommentQuery, ReactionArray> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions");
+
+    Request::<(), ReactionsListForPullRequestReviewCommentQuery, ReactionArray>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
+  }
+
+  /// **Create reaction for a pull request review comment**
+  ///
+  /// Create a reaction to a [pull request review comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request). A response with an HTTP `200` status means that you already added the reaction type to this pull request review comment.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment)
+  pub fn create_for_pull_request_review_comment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    comment_id: impl Into<i64>,
+  ) -> Request<ReactionsCreateForPullRequestReviewCommentRequest, (), Reaction> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let comment_id = comment_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions");
+
+    Request::<ReactionsCreateForPullRequestReviewCommentRequest, (), Reaction>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
+  }
+
+  /// **Delete team discussion comment reaction**
+  ///
+  /// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route `DELETE /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions/:reaction_id`.
+  ///
+  /// Delete a reaction to a [team discussion comment](https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment).
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#delete-team-discussion-comment-reaction](https://docs.github.com/rest/reactions/reactions#delete-team-discussion-comment-reaction)
+  pub fn delete_for_team_discussion_comment(
+    &self,
+    org: impl Into<String>,
+    team_slug: impl Into<String>,
+    discussion_number: impl Into<i64>,
+    comment_number: impl Into<i64>,
+    reaction_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let org = org.into();
+    let team_slug = team_slug.into();
+    let discussion_number = discussion_number.into();
+    let comment_number = comment_number.into();
     let reaction_id = reaction_id.into();
-    let url = format!("/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}");
+    let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}");
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
@@ -489,29 +287,77 @@ impl GitHubReactionsAPI {
     .build()
   }
 
-  /// **Delete team discussion comment reaction**
+  /// **List reactions for a team discussion**
   ///
-  /// **Note:** You can also specify a team or organization with `team_id` and `org_id` using the route `DELETE /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions/:reaction_id`.
+  /// List the reactions to a [team discussion](https://docs.github.com/rest/teams/discussions#get-a-discussion).
   ///
-  /// Delete a reaction to a [team discussion comment](https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment).
+  /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
   ///
-  /// OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+  /// OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#delete-team-discussion-comment-reaction](https://docs.github.com/rest/reactions/reactions#delete-team-discussion-comment-reaction)
-  pub fn delete_for_team_discussion_comment(
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion)
+  pub fn list_for_team_discussion_in_org(
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
-    comment_number: impl Into<i64>,
-    reaction_id: impl Into<i64>,
-  ) -> NoContentRequest<(), ()> {
+  ) -> Request<(), ReactionsListForTeamDiscussionInOrgQuery, ReactionArray> {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
-    let comment_number = comment_number.into();
+    let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions");
+
+    Request::<(), ReactionsListForTeamDiscussionInOrgQuery, ReactionArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create reaction for a team discussion**
+  ///
+  /// Create a reaction to a [team discussion](https://docs.github.com/rest/teams/discussions#get-a-discussion).
+  ///
+  /// A response with an HTTP `200` status means that you already added the reaction type to this team discussion.
+  ///
+  /// **Note:** You can also specify a team by `org_id` and `team_id` using the route `POST /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion)
+  pub fn create_for_team_discussion_in_org(
+    &self,
+    org: impl Into<String>,
+    team_slug: impl Into<String>,
+    discussion_number: impl Into<i64>,
+  ) -> Request<ReactionsCreateForTeamDiscussionInOrgRequest, (), Reaction> {
+    let org = org.into();
+    let team_slug = team_slug.into();
+    let discussion_number = discussion_number.into();
+    let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions");
+
+    Request::<ReactionsCreateForTeamDiscussionInOrgRequest, (), Reaction>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Delete a release reaction**
+  ///
+  /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE delete /repositories/:repository_id/releases/:release_id/reactions/:reaction_id`.
+  ///
+  /// Delete a reaction to a [release](https://docs.github.com/rest/releases/releases#get-a-release).
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#delete-a-release-reaction](https://docs.github.com/rest/reactions/reactions#delete-a-release-reaction)
+  pub fn delete_for_release(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    release_id: impl Into<i64>,
+    reaction_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let release_id = release_id.into();
     let reaction_id = reaction_id.into();
-    let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions/{reaction_id}");
+    let url = format!("/repos/{owner}/{repo}/releases/{release_id}/reactions/{reaction_id}");
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
@@ -540,6 +386,48 @@ impl GitHubReactionsAPI {
 
     NoContentRequest::<(), ()>::builder(&self.config)
       .delete(url)
+      .build()
+  }
+
+  /// **List reactions for an issue**
+  ///
+  /// List the reactions to an [issue](https://docs.github.com/rest/issues/issues#get-an-issue).
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue](https://docs.github.com/rest/reactions/reactions#list-reactions-for-an-issue)
+  pub fn list_for_issue(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    issue_number: impl Into<i64>,
+  ) -> Request<(), ReactionsListForIssueQuery, ReactionArray> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let issue_number = issue_number.into();
+    let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/reactions");
+
+    Request::<(), ReactionsListForIssueQuery, ReactionArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create reaction for an issue**
+  ///
+  /// Create a reaction to an [issue](https://docs.github.com/rest/issues/issues#get-an-issue). A response with an HTTP `200` status means that you already added the reaction type to this issue.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue](https://docs.github.com/rest/reactions/reactions#create-reaction-for-an-issue)
+  pub fn create_for_issue(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    issue_number: impl Into<i64>,
+  ) -> Request<ReactionsCreateForIssueRequest, (), Reaction> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let issue_number = issue_number.into();
+    let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/reactions");
+
+    Request::<ReactionsCreateForIssueRequest, (), Reaction>::builder(&self.config)
+      .post(url)
       .build()
   }
 
@@ -585,49 +473,161 @@ impl GitHubReactionsAPI {
       .build()
   }
 
-  /// **List reactions for a pull request review comment**
+  /// **List reactions for a team discussion comment (Legacy)**
   ///
-  /// List the reactions to a [pull request review comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request).
+  /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List reactions for a team discussion comment`](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment) endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-pull-request-review-comment)
-  pub fn list_for_pull_request_review_comment(
+  /// List the reactions to a [team discussion comment](https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment).
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-comment-legacy)
+  pub fn list_for_team_discussion_comment_legacy(
     &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    comment_id: impl Into<i64>,
-  ) -> Request<(), ReactionsListForPullRequestReviewCommentQuery, ReactionArray> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let comment_id = comment_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions");
+    team_id: impl Into<i64>,
+    discussion_number: impl Into<i64>,
+    comment_number: impl Into<i64>,
+  ) -> Request<(), ReactionsListForTeamDiscussionCommentLegacyQuery, ReactionArray> {
+    let team_id = team_id.into();
+    let discussion_number = discussion_number.into();
+    let comment_number = comment_number.into();
+    let url = format!(
+      "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
+    );
 
-    Request::<(), ReactionsListForPullRequestReviewCommentQuery, ReactionArray>::builder(
+    Request::<(), ReactionsListForTeamDiscussionCommentLegacyQuery, ReactionArray>::builder(
       &self.config,
     )
     .get(url)
     .build()
   }
 
-  /// **Create reaction for a pull request review comment**
+  /// **Create reaction for a team discussion comment (Legacy)**
   ///
-  /// Create a reaction to a [pull request review comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request). A response with an HTTP `200` status means that you already added the reaction type to this pull request review comment.
+  /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new "[Create reaction for a team discussion comment](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment)" endpoint.
   ///
-  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-pull-request-review-comment)
-  pub fn create_for_pull_request_review_comment(
+  /// Create a reaction to a [team discussion comment](https://docs.github.com/rest/teams/discussion-comments#get-a-discussion-comment).
+  ///
+  /// A response with an HTTP `200` status means that you already added the reaction type to this team discussion comment.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-comment-legacy)
+  pub fn create_for_team_discussion_comment_legacy(
     &self,
-    owner: impl Into<String>,
-    repo: impl Into<String>,
-    comment_id: impl Into<i64>,
-  ) -> Request<ReactionsCreateForPullRequestReviewCommentRequest, (), Reaction> {
-    let owner = owner.into();
-    let repo = repo.into();
-    let comment_id = comment_id.into();
-    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions");
+    team_id: impl Into<i64>,
+    discussion_number: impl Into<i64>,
+    comment_number: impl Into<i64>,
+  ) -> Request<ReactionsCreateForTeamDiscussionCommentLegacyRequest, (), Reaction> {
+    let team_id = team_id.into();
+    let discussion_number = discussion_number.into();
+    let comment_number = comment_number.into();
+    let url = format!(
+      "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
+    );
 
-    Request::<ReactionsCreateForPullRequestReviewCommentRequest, (), Reaction>::builder(
+    Request::<ReactionsCreateForTeamDiscussionCommentLegacyRequest, (), Reaction>::builder(
       &self.config,
     )
     .post(url)
     .build()
+  }
+
+  /// **List reactions for a team discussion (Legacy)**
+  ///
+  /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`List reactions for a team discussion`](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion) endpoint.
+  ///
+  /// List the reactions to a [team discussion](https://docs.github.com/rest/teams/discussions#get-a-discussion).
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `read:discussion` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy](https://docs.github.com/rest/reactions/reactions#list-reactions-for-a-team-discussion-legacy)
+  pub fn list_for_team_discussion_legacy(
+    &self,
+    team_id: impl Into<i64>,
+    discussion_number: impl Into<i64>,
+  ) -> Request<(), ReactionsListForTeamDiscussionLegacyQuery, ReactionArray> {
+    let team_id = team_id.into();
+    let discussion_number = discussion_number.into();
+    let url = format!("/teams/{team_id}/discussions/{discussion_number}/reactions");
+
+    Request::<(), ReactionsListForTeamDiscussionLegacyQuery, ReactionArray>::builder(&self.config)
+      .get(url)
+      .build()
+  }
+
+  /// **Create reaction for a team discussion (Legacy)**
+  ///
+  /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the new [`Create reaction for a team discussion`](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion) endpoint.
+  ///
+  /// Create a reaction to a [team discussion](https://docs.github.com/rest/teams/discussions#get-a-discussion).
+  ///
+  /// A response with an HTTP `200` status means that you already added the reaction type to this team discussion.
+  ///
+  /// OAuth app tokens and personal access tokens (classic) need the `write:discussion` scope to use this endpoint.
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy](https://docs.github.com/rest/reactions/reactions#create-reaction-for-a-team-discussion-legacy)
+  pub fn create_for_team_discussion_legacy(
+    &self,
+    team_id: impl Into<i64>,
+    discussion_number: impl Into<i64>,
+  ) -> Request<ReactionsCreateForTeamDiscussionLegacyRequest, (), Reaction> {
+    let team_id = team_id.into();
+    let discussion_number = discussion_number.into();
+    let url = format!("/teams/{team_id}/discussions/{discussion_number}/reactions");
+
+    Request::<ReactionsCreateForTeamDiscussionLegacyRequest, (), Reaction>::builder(&self.config)
+      .post(url)
+      .build()
+  }
+
+  /// **Delete a commit comment reaction**
+  ///
+  /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/comments/:comment_id/reactions/:reaction_id`.
+  ///
+  /// Delete a reaction to a [commit comment](https://docs.github.com/rest/commits/comments#get-a-commit-comment).
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#delete-a-commit-comment-reaction](https://docs.github.com/rest/reactions/reactions#delete-a-commit-comment-reaction)
+  pub fn delete_for_commit_comment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    comment_id: impl Into<i64>,
+    reaction_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let comment_id = comment_id.into();
+    let reaction_id = reaction_id.into();
+    let url = format!("/repos/{owner}/{repo}/comments/{comment_id}/reactions/{reaction_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
+  }
+
+  /// **Delete a pull request comment reaction**
+  ///
+  /// **Note:** You can also specify a repository by `repository_id` using the route `DELETE /repositories/:repository_id/pulls/comments/:comment_id/reactions/:reaction_id.`
+  ///
+  /// Delete a reaction to a [pull request review comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request).
+  ///
+  /// *Documentation*: [https://docs.github.com/rest/reactions/reactions#delete-a-pull-request-comment-reaction](https://docs.github.com/rest/reactions/reactions#delete-a-pull-request-comment-reaction)
+  pub fn delete_for_pull_request_comment(
+    &self,
+    owner: impl Into<String>,
+    repo: impl Into<String>,
+    comment_id: impl Into<i64>,
+    reaction_id: impl Into<i64>,
+  ) -> NoContentRequest<(), ()> {
+    let owner = owner.into();
+    let repo = repo.into();
+    let comment_id = comment_id.into();
+    let reaction_id = reaction_id.into();
+    let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions/{reaction_id}");
+
+    NoContentRequest::<(), ()>::builder(&self.config)
+      .delete(url)
+      .build()
   }
 }
