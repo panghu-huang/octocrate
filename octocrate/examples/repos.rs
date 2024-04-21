@@ -19,8 +19,7 @@ async fn test_list_user_repositories() {
   let query = ReposListForUserQuery::builder()
     .page(1)
     .per_page(10)
-    .build()
-    .unwrap();
+    .build();
 
   let repositories = api
     .repos
@@ -37,8 +36,7 @@ async fn test_list_user_repositories() {
   let query = ReposListForUserQuery::builder()
     .page(2)
     .per_page(10)
-    .build()
-    .unwrap();
+    .build();
 
   let repositories = api
     .repos

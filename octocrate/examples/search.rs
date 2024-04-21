@@ -20,8 +20,7 @@ async fn test_search_pull_requests() {
     .query(
       &SearchIssuesAndPullRequestsQuery::builder()
         .q("repo:facebook/react is:pr is:open")
-        .build()
-        .unwrap(),
+        .build(),
     )
     .send()
     .await
