@@ -186,7 +186,7 @@ impl ParseContext {
   pub fn start_parsing_webhook(&mut self, webhook: &String) {
     if self.stage == Stage::ParsingAPI {
       self.stage = Stage::ParsingWebhook;
-      self.working_tag = Some("webhook".to_string());
+      self.working_tag = Some("webhooks".to_string());
     }
 
     self

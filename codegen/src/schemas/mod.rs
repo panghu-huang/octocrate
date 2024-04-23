@@ -153,13 +153,14 @@ mod tests {
 
   #[test]
   fn test_api_description() {
-    let json = include_str!("../../resources/api.json");
+    let api_description = APIDescription::try_load().unwrap();
 
-    let api_description = APIDescription::try_from(&json.to_string()).unwrap();
+    assert_eq!(
+      api_description.external_docs.url,
+      "https://docs.github.com/rest/"
+    );
 
-    // println!("{:?}", api_description.external_docs);
-
-    let _api = api_description
+    let api = api_description
       .paths
       .get("/repos/{owner}/{repo}/contents/{path}")
       .unwrap()
@@ -167,6 +168,6 @@ mod tests {
       .clone()
       .unwrap();
 
-    // println!("{:#?}", api);
+    assert_eq!(api.operation_id, "repos/create-or-update-file-contents");
   }
 }

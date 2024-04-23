@@ -31,7 +31,7 @@ use typed_builder::TypedBuilder;
   feature = "pulls",
   feature = "search",
   feature = "users",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 pub type StringArray = Vec<String>;
 #[cfg(any(feature = "full", feature = "security_advisories",))]
@@ -56,7 +56,7 @@ pub type InstallationArray = Vec<Installation>;
   feature = "orgs",
   feature = "repos",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 pub type I64Array = Vec<i64>;
 #[cfg(any(
@@ -80,15 +80,15 @@ pub type SimpleClassroomArray = Vec<SimpleClassroom>;
 pub type SimpleClassroomAssignmentArray = Vec<SimpleClassroomAssignment>;
 #[cfg(any(feature = "full", feature = "codes_of_conduct",))]
 pub type CodeOfConductArray = Vec<CodeOfConduct>;
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 pub type DependabotAlertSecurityAdvisoryCwesArray = Vec<DependabotAlertSecurityAdvisoryCwes>;
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 pub type DependabotAlertSecurityAdvisoryIdentifiersArray =
   Vec<DependabotAlertSecurityAdvisoryIdentifiers>;
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 pub type DependabotAlertSecurityAdvisoryReferencesArray =
   Vec<DependabotAlertSecurityAdvisoryReferences>;
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 pub type DependabotAlertSecurityVulnerabilityArray = Vec<DependabotAlertSecurityVulnerability>;
 #[cfg(any(feature = "full", feature = "dependabot",))]
 pub type DependabotAlertWithRepositoryArray = Vec<DependabotAlertWithRepository>;
@@ -104,7 +104,7 @@ pub type LinkWithTypeArray = Vec<LinkWithType>;
   feature = "full",
   feature = "gists",
   feature = "users",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 pub type SerdeJsonValueArray = Vec<serde_json::Value>;
 #[cfg(any(feature = "full", feature = "gists",))]
@@ -185,7 +185,7 @@ pub type OrgHookArray = Vec<OrgHook>;
   feature = "teams",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 pub type TeamArray = Vec<Team>;
 #[cfg(any(feature = "full", feature = "migrations",))]
@@ -215,22 +215,22 @@ pub type OrganizationCustomPropertyArray = Vec<OrganizationCustomProperty>;
   feature = "full",
   feature = "orgs",
   feature = "repos",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 pub type CustomPropertyValueArray = Vec<CustomPropertyValue>;
 #[cfg(any(feature = "full", feature = "orgs",))]
 pub type OrganizationRepositoryCustomPropertyValuesArray =
   Vec<OrganizationRepositoryCustomPropertyValues>;
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 pub type RepositoryRulesetBypassActorArray = Vec<RepositoryRulesetBypassActor>;
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 pub type RepositoryRulesetPropertyTargetingDefinitionArray =
   Vec<RepositoryRulesetPropertyTargetingDefinition>;
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 pub type StatusCheckConfigurationArray = Vec<StatusCheckConfiguration>;
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 pub type WorkflowFileReferenceArray = Vec<WorkflowFileReference>;
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 pub type RepositoryRuleArray = Vec<RepositoryRule>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type RepositoryRulesetArray = Vec<RepositoryRuleset>;
@@ -238,7 +238,11 @@ pub type RepositoryRulesetArray = Vec<RepositoryRuleset>;
 pub type RuleSuites = Vec<RuleSuitesItem>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type RuleSuiteRuleEvaluationsArray = Vec<RuleSuiteRuleEvaluations>;
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 pub type RepositoryAdvisoryIdentifiersArray = Vec<RepositoryAdvisoryIdentifiers>;
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 pub type RepositoryAdvisoryArray = Vec<RepositoryAdvisory>;
@@ -357,7 +361,7 @@ pub type CommitCommentArray = Vec<CommitComment>;
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 pub type CommitArray = Vec<Commit>;
 #[cfg(any(feature = "full", feature = "repos",))]
@@ -430,7 +434,7 @@ pub type IssueCommentArray = Vec<IssueComment>;
 pub type IssueEventArray = Vec<IssueEvent>;
 #[cfg(any(feature = "full", feature = "issues",))]
 pub type IssueEventForIssueArray = Vec<IssueEventForIssue>;
-#[cfg(any(feature = "full", feature = "issues", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "webhooks",))]
 pub type LabelArray = Vec<Label>;
 #[cfg(any(feature = "full", feature = "issues",))]
 pub type IssuesAddLabelsRequestItem3LabelsArray = Vec<IssuesAddLabelsRequestItem3Labels>;
@@ -446,7 +450,7 @@ pub type TimelineCommittedEventParentsArray = Vec<TimelineCommittedEventParents>
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 pub type PullRequestReviewCommentArray = Vec<PullRequestReviewComment>;
 #[cfg(any(feature = "full", feature = "issues",))]
@@ -457,7 +461,7 @@ pub type DeployKeyArray = Vec<DeployKey>;
 pub type MilestoneArray = Vec<Milestone>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type PageBuildArray = Vec<PageBuild>;
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 pub type PullRequestLabelsArray = Vec<PullRequestLabels>;
 #[cfg(any(feature = "full", feature = "pulls",))]
 pub type PullRequestReviewArray = Vec<PullRequestReview>;
@@ -644,7 +648,11 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 /// The type of credit the user is receiving.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecurityAdvisoryCreditTypes {
@@ -670,7 +678,11 @@ pub enum SecurityAdvisoryCreditTypes {
   Other,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl ToString for SecurityAdvisoryCreditTypes {
   fn to_string(&self) -> String {
     match self {
@@ -760,7 +772,11 @@ impl ToString for GlobalAdvisoryType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 /// The package's language or package management ecosystem.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecurityAdvisoryEcosystems {
@@ -792,7 +808,11 @@ pub enum SecurityAdvisoryEcosystems {
   Swift,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl ToString for SecurityAdvisoryEcosystems {
   fn to_string(&self) -> String {
     match self {
@@ -836,7 +856,7 @@ pub enum IntegrationInstallationRequestAccount {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -851,7 +871,7 @@ pub enum InstallationAccount {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The level of permission to grant the access token for custom property management.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -868,7 +888,7 @@ pub enum AppPermissionsOrganizationCustomProperties {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for AppPermissionsOrganizationCustomProperties {
   fn to_string(&self) -> String {
@@ -884,7 +904,7 @@ impl ToString for AppPermissionsOrganizationCustomProperties {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The level of permission to grant the access token to manage organization projects and projects beta (where available).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -901,7 +921,7 @@ pub enum AppPermissionsOrganizationProjects {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for AppPermissionsOrganizationProjects {
   fn to_string(&self) -> String {
@@ -917,7 +937,7 @@ impl ToString for AppPermissionsOrganizationProjects {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The level of permission to grant the access token to manage repository projects, columns, and cards.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -934,7 +954,7 @@ pub enum AppPermissionsRepositoryProjects {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for AppPermissionsRepositoryProjects {
   fn to_string(&self) -> String {
@@ -950,7 +970,7 @@ impl ToString for AppPermissionsRepositoryProjects {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Describe whether all repositories have been selected or there's a selection involved
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -965,7 +985,7 @@ pub enum InstallationRepositorySelection {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for InstallationRepositorySelection {
   fn to_string(&self) -> String {
@@ -987,7 +1007,7 @@ impl ToString for InstallationRepositorySelection {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The default value for a merge commit message.
 ///
@@ -1015,7 +1035,7 @@ pub enum RepositoryMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for RepositoryMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -1038,7 +1058,7 @@ impl ToString for RepositoryMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The default value for a merge commit title.
 ///
@@ -1063,7 +1083,7 @@ pub enum RepositoryMergeCommitTitle {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for RepositoryMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -1085,7 +1105,7 @@ impl ToString for RepositoryMergeCommitTitle {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The default value for a squash merge commit message:
 ///
@@ -1113,7 +1133,7 @@ pub enum RepositorySquashMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for RepositorySquashMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -1136,7 +1156,7 @@ impl ToString for RepositorySquashMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The default value for a squash merge commit title:
 ///
@@ -1161,7 +1181,7 @@ pub enum RepositorySquashMergeCommitTitle {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for RepositorySquashMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -1357,7 +1377,7 @@ impl ToString for DependabotAlertWithRepositoryDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// The type of advisory identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertSecurityAdvisoryIdentifiersType {
@@ -1367,7 +1387,7 @@ pub enum DependabotAlertSecurityAdvisoryIdentifiersType {
   Ghsa,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
   fn to_string(&self) -> String {
     match self {
@@ -1377,7 +1397,7 @@ impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertSecurityAdvisorySeverity {
@@ -1391,7 +1411,7 @@ pub enum DependabotAlertSecurityAdvisorySeverity {
   Critical,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl ToString for DependabotAlertSecurityAdvisorySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1403,7 +1423,7 @@ impl ToString for DependabotAlertSecurityAdvisorySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// The severity of the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertSecurityVulnerabilitySeverity {
@@ -1417,7 +1437,7 @@ pub enum DependabotAlertSecurityVulnerabilitySeverity {
   Critical,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl ToString for DependabotAlertSecurityVulnerabilitySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1589,7 +1609,7 @@ impl ToString for OrganizationSecretScanningAlertValidity {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -1620,7 +1640,7 @@ pub enum AuthorAssociation {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for AuthorAssociation {
   fn to_string(&self) -> String {
@@ -1644,7 +1664,7 @@ impl ToString for AuthorAssociation {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The state of the milestone.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -1662,7 +1682,7 @@ pub enum MilestoneState {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for MilestoneState {
   fn to_string(&self) -> String {
@@ -1677,7 +1697,7 @@ impl ToString for MilestoneState {
   feature = "full",
   feature = "activity",
   feature = "issues",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The reason for the current state
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -1694,7 +1714,7 @@ pub enum IssueStateReason {
   feature = "full",
   feature = "activity",
   feature = "issues",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for IssueStateReason {
   fn to_string(&self) -> String {
@@ -1839,7 +1859,7 @@ impl ToString for MarkdownRenderRequestMode {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MarketplaceListingPlanPriceModel {
   #[serde(rename = "FREE")]
@@ -1850,7 +1870,7 @@ pub enum MarketplaceListingPlanPriceModel {
   PerUnit,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
 impl ToString for MarketplaceListingPlanPriceModel {
   fn to_string(&self) -> String {
     match self {
@@ -1951,7 +1971,7 @@ impl ToString for AppsListAccountsForPlanStubbedQueryDirection {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecurityAndAnalysisAdvancedSecurityStatus {
@@ -1975,7 +1995,7 @@ pub enum SecurityAndAnalysisAdvancedSecurityStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
   fn to_string(&self) -> String {
@@ -2000,7 +2020,7 @@ impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The enablement status of Dependabot security updates for the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -2025,7 +2045,7 @@ pub enum SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   fn to_string(&self) -> String {
@@ -2050,7 +2070,7 @@ impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecurityAndAnalysisSecretScanningStatus {
@@ -2074,7 +2094,7 @@ pub enum SecurityAndAnalysisSecretScanningStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for SecurityAndAnalysisSecretScanningStatus {
   fn to_string(&self) -> String {
@@ -2099,7 +2119,7 @@ impl ToString for SecurityAndAnalysisSecretScanningStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
@@ -2123,7 +2143,7 @@ pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
   fn to_string(&self) -> String {
@@ -3974,7 +3994,7 @@ impl ToString for ProjectsListForOrgQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "projects", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
 /// The baseline permission that all organization members have on this project. Only present if owner is an organization.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectOrganizationPermission {
@@ -3988,7 +4008,7 @@ pub enum ProjectOrganizationPermission {
   None,
 }
 
-#[cfg(any(feature = "full", feature = "projects", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
 impl ToString for ProjectOrganizationPermission {
   fn to_string(&self) -> String {
     match self {
@@ -4000,7 +4020,7 @@ impl ToString for ProjectOrganizationPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
 /// The type of the value for the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum OrganizationCustomPropertyValueType {
@@ -4010,7 +4030,7 @@ pub enum OrganizationCustomPropertyValueType {
   SingleSelect,
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
 impl ToString for OrganizationCustomPropertyValueType {
   fn to_string(&self) -> String {
     match self {
@@ -4020,7 +4040,7 @@ impl ToString for OrganizationCustomPropertyValueType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
 /// Who can edit the values of the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum OrganizationCustomPropertyValuesEditableBy {
@@ -4030,7 +4050,7 @@ pub enum OrganizationCustomPropertyValuesEditableBy {
   OrgAndRepoActors,
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
 impl ToString for OrganizationCustomPropertyValuesEditableBy {
   fn to_string(&self) -> String {
     match self {
@@ -4265,7 +4285,7 @@ impl ToString for ReposCreateInOrgRequestVisibility {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The default value for a merge commit message.
 ///
@@ -4286,7 +4306,7 @@ pub enum FullRepositoryMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for FullRepositoryMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -4302,7 +4322,7 @@ impl ToString for FullRepositoryMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The default value for a merge commit title.
 ///
@@ -4320,7 +4340,7 @@ pub enum FullRepositoryMergeCommitTitle {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for FullRepositoryMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -4335,7 +4355,7 @@ impl ToString for FullRepositoryMergeCommitTitle {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The default value for a squash merge commit message:
 ///
@@ -4356,7 +4376,7 @@ pub enum FullRepositorySquashMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for FullRepositorySquashMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -4372,7 +4392,7 @@ impl ToString for FullRepositorySquashMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The default value for a squash merge commit title:
 ///
@@ -4390,7 +4410,7 @@ pub enum FullRepositorySquashMergeCommitTitle {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for FullRepositorySquashMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -4401,7 +4421,7 @@ impl ToString for FullRepositorySquashMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// The type of actor that can bypass a ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulesetBypassActorActorType {
@@ -4411,7 +4431,7 @@ pub enum RepositoryRulesetBypassActorActorType {
   OrganizationAdmin,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRulesetBypassActorActorType {
   fn to_string(&self) -> String {
     match self {
@@ -4423,7 +4443,7 @@ impl ToString for RepositoryRulesetBypassActorActorType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulesetBypassActorBypassMode {
@@ -4433,7 +4453,7 @@ pub enum RepositoryRulesetBypassActorBypassMode {
   PullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRulesetBypassActorBypassMode {
   fn to_string(&self) -> String {
     match self {
@@ -4443,7 +4463,7 @@ impl ToString for RepositoryRulesetBypassActorBypassMode {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrganizationRulesetConditionsItem1 {
@@ -4453,7 +4473,7 @@ pub enum OrganizationRulesetConditionsItem1 {
   RepositoryRulesetConditionsForRepositoryNames(RepositoryRulesetConditionsForRepositoryNames),
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrganizationRulesetConditionsItem2 {
@@ -4463,7 +4483,7 @@ pub enum OrganizationRulesetConditionsItem2 {
   RepositoryRulesetConditionsForRepositoryIDs(RepositoryRulesetConditionsForRepositoryIDs),
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrganizationRulesetConditionsItem3 {
@@ -4475,7 +4495,7 @@ pub enum OrganizationRulesetConditionsItem3 {
   ),
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrganizationRulesetConditions {
@@ -4484,7 +4504,7 @@ pub enum OrganizationRulesetConditions {
   OrganizationRulesetConditionsItem3(OrganizationRulesetConditionsItem3),
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRulesetConditions {
@@ -4493,7 +4513,7 @@ pub enum RepositoryRulesetConditions {
   OrganizationRulesetConditions(OrganizationRulesetConditions),
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// The bypass type of the user making the API request for this ruleset. This field is only returned when
 /// querying the repository-level endpoint.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -4506,7 +4526,7 @@ pub enum RepositoryRulesetCurrentUserCanBypass {
   Never,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRulesetCurrentUserCanBypass {
   fn to_string(&self) -> String {
     match self {
@@ -4517,7 +4537,7 @@ impl ToString for RepositoryRulesetCurrentUserCanBypass {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleEnforcement {
@@ -4529,7 +4549,7 @@ pub enum RepositoryRuleEnforcement {
   Evaluate,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleEnforcement {
   fn to_string(&self) -> String {
     match self {
@@ -4540,14 +4560,14 @@ impl ToString for RepositoryRuleEnforcement {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CreationType {
   #[serde(rename = "creation")]
   Creation,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for CreationType {
   fn to_string(&self) -> String {
     match self {
@@ -4556,14 +4576,14 @@ impl ToString for CreationType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum UpdateType {
   #[serde(rename = "update")]
   Update,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for UpdateType {
   fn to_string(&self) -> String {
     match self {
@@ -4572,14 +4592,14 @@ impl ToString for UpdateType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DeletionType {
   #[serde(rename = "deletion")]
   Deletion,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for DeletionType {
   fn to_string(&self) -> String {
     match self {
@@ -4588,14 +4608,14 @@ impl ToString for DeletionType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleRequiredLinearHistoryType {
   #[serde(rename = "required_linear_history")]
   RequiredLinearHistory,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleRequiredLinearHistoryType {
   fn to_string(&self) -> String {
     match self {
@@ -4606,14 +4626,14 @@ impl ToString for RepositoryRuleRequiredLinearHistoryType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleRequiredDeploymentsType {
   #[serde(rename = "required_deployments")]
   RequiredDeployments,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleRequiredDeploymentsType {
   fn to_string(&self) -> String {
     match self {
@@ -4624,14 +4644,14 @@ impl ToString for RepositoryRuleRequiredDeploymentsType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleRequiredSignaturesType {
   #[serde(rename = "required_signatures")]
   RequiredSignatures,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleRequiredSignaturesType {
   fn to_string(&self) -> String {
     match self {
@@ -4640,14 +4660,14 @@ impl ToString for RepositoryRuleRequiredSignaturesType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulePullRequestType {
   #[serde(rename = "pull_request")]
   PullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRulePullRequestType {
   fn to_string(&self) -> String {
     match self {
@@ -4656,14 +4676,14 @@ impl ToString for RepositoryRulePullRequestType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleRequiredStatusChecksType {
   #[serde(rename = "required_status_checks")]
   RequiredStatusChecks,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleRequiredStatusChecksType {
   fn to_string(&self) -> String {
     match self {
@@ -4674,14 +4694,14 @@ impl ToString for RepositoryRuleRequiredStatusChecksType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleNonFastForwardType {
   #[serde(rename = "non_fast_forward")]
   NonFastForward,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleNonFastForwardType {
   fn to_string(&self) -> String {
     match self {
@@ -4690,7 +4710,7 @@ impl ToString for RepositoryRuleNonFastForwardType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitMessagePatternParametersOperator {
@@ -4704,7 +4724,7 @@ pub enum RepositoryRuleCommitMessagePatternParametersOperator {
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleCommitMessagePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4716,14 +4736,14 @@ impl ToString for RepositoryRuleCommitMessagePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitMessagePatternType {
   #[serde(rename = "commit_message_pattern")]
   CommitMessagePattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleCommitMessagePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4734,7 +4754,7 @@ impl ToString for RepositoryRuleCommitMessagePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitAuthorEmailPatternParametersOperator {
@@ -4748,7 +4768,7 @@ pub enum RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4762,14 +4782,14 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitAuthorEmailPatternType {
   #[serde(rename = "commit_author_email_pattern")]
   CommitAuthorEmailPattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4780,7 +4800,7 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitterEmailPatternParametersOperator {
@@ -4794,7 +4814,7 @@ pub enum RepositoryRuleCommitterEmailPatternParametersOperator {
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleCommitterEmailPatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4808,14 +4828,14 @@ impl ToString for RepositoryRuleCommitterEmailPatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitterEmailPatternType {
   #[serde(rename = "committer_email_pattern")]
   CommitterEmailPattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleCommitterEmailPatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4826,7 +4846,7 @@ impl ToString for RepositoryRuleCommitterEmailPatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleBranchNamePatternParametersOperator {
@@ -4840,7 +4860,7 @@ pub enum RepositoryRuleBranchNamePatternParametersOperator {
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleBranchNamePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4852,14 +4872,14 @@ impl ToString for RepositoryRuleBranchNamePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleBranchNamePatternType {
   #[serde(rename = "branch_name_pattern")]
   BranchNamePattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleBranchNamePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4868,7 +4888,7 @@ impl ToString for RepositoryRuleBranchNamePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleTagNamePatternParametersOperator {
@@ -4882,7 +4902,7 @@ pub enum RepositoryRuleTagNamePatternParametersOperator {
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleTagNamePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4894,14 +4914,14 @@ impl ToString for RepositoryRuleTagNamePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleTagNamePatternType {
   #[serde(rename = "tag_name_pattern")]
   TagNamePattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRuleTagNamePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4910,14 +4930,14 @@ impl ToString for RepositoryRuleTagNamePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WorkflowsType {
   #[serde(rename = "workflows")]
   Workflows,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for WorkflowsType {
   fn to_string(&self) -> String {
     match self {
@@ -4926,7 +4946,7 @@ impl ToString for WorkflowsType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRule {
@@ -4962,7 +4982,7 @@ pub enum RepositoryRule {
   Workflows(Workflows),
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// The type of the source of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulesetSourceType {
@@ -4970,7 +4990,7 @@ pub enum RepositoryRulesetSourceType {
   Organization,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRulesetSourceType {
   fn to_string(&self) -> String {
     match self {
@@ -4980,7 +5000,7 @@ impl ToString for RepositoryRulesetSourceType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// The target of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulesetTarget {
@@ -4990,7 +5010,7 @@ pub enum RepositoryRulesetTarget {
   Tag,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for RepositoryRulesetTarget {
   fn to_string(&self) -> String {
     match self {
@@ -5342,7 +5362,11 @@ impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 /// The state of the user's acceptance of the credit.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryAdvisoryCreditState {
@@ -5354,7 +5378,11 @@ pub enum RepositoryAdvisoryCreditState {
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl ToString for RepositoryAdvisoryCreditState {
   fn to_string(&self) -> String {
     match self {
@@ -5365,7 +5393,11 @@ impl ToString for RepositoryAdvisoryCreditState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 /// The type of identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryAdvisoryIdentifiersType {
@@ -5375,7 +5407,11 @@ pub enum RepositoryAdvisoryIdentifiersType {
   Ghsa,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl ToString for RepositoryAdvisoryIdentifiersType {
   fn to_string(&self) -> String {
     match self {
@@ -5385,7 +5421,11 @@ impl ToString for RepositoryAdvisoryIdentifiersType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryAdvisorySeverity {
@@ -5399,7 +5439,11 @@ pub enum RepositoryAdvisorySeverity {
   Low,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl ToString for RepositoryAdvisorySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -5411,7 +5455,11 @@ impl ToString for RepositoryAdvisorySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 /// The state of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryAdvisoryState {
@@ -5427,7 +5475,11 @@ pub enum RepositoryAdvisoryState {
   Triage,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl ToString for RepositoryAdvisoryState {
   fn to_string(&self) -> String {
     match self {
@@ -6594,7 +6646,7 @@ impl ToString for ActionsReviewPendingDeploymentsForRunRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WorkflowState {
   #[serde(rename = "active")]
@@ -6609,7 +6661,7 @@ pub enum WorkflowState {
   DisabledManually,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
 impl ToString for WorkflowState {
   fn to_string(&self) -> String {
     match self {
@@ -6791,7 +6843,7 @@ impl ToString for ActivityActivityType {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiffEntryStatus {
@@ -6815,7 +6867,7 @@ pub enum DiffEntryStatus {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for DiffEntryStatus {
   fn to_string(&self) -> String {
@@ -6970,7 +7022,7 @@ pub enum ChecksCreateRequest {
   ChecksCreateRequestItem2(ChecksCreateRequestItem2),
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CheckRunConclusion {
   #[serde(rename = "success")]
@@ -6989,7 +7041,7 @@ pub enum CheckRunConclusion {
   ActionRequired,
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
 impl ToString for CheckRunConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -7004,7 +7056,7 @@ impl ToString for CheckRunConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
 /// The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CheckRunStatus {
@@ -7022,7 +7074,7 @@ pub enum CheckRunStatus {
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
 impl ToString for CheckRunStatus {
   fn to_string(&self) -> String {
     match self {
@@ -7732,7 +7784,7 @@ impl ToString for ReactionsCreateForCommitCommentRequestContent {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The merge method to use.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -7749,7 +7801,7 @@ pub enum AutoMergeMergeMethod {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for AutoMergeMergeMethod {
   fn to_string(&self) -> String {
@@ -7970,7 +8022,7 @@ impl ToString for DependabotListAlertsForRepoQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// The execution scope of the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertDependencyScope {
@@ -7980,7 +8032,7 @@ pub enum DependabotAlertDependencyScope {
   Runtime,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl ToString for DependabotAlertDependencyScope {
   fn to_string(&self) -> String {
     match self {
@@ -7990,7 +8042,7 @@ impl ToString for DependabotAlertDependencyScope {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// The reason that the alert was dismissed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertDismissedReason {
@@ -8006,7 +8058,7 @@ pub enum DependabotAlertDismissedReason {
   TolerableRisk,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl ToString for DependabotAlertDismissedReason {
   fn to_string(&self) -> String {
     match self {
@@ -8019,7 +8071,7 @@ impl ToString for DependabotAlertDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// The state of the Dependabot alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertState {
@@ -8033,7 +8085,7 @@ pub enum DependabotAlertState {
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl ToString for DependabotAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -8930,7 +8982,7 @@ impl ToString for ReactionsCreateForIssueRequestContent {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -8945,7 +8997,7 @@ pub enum PullRequestReviewCommentSide {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for PullRequestReviewCommentSide {
   fn to_string(&self) -> String {
@@ -8960,7 +9012,7 @@ impl ToString for PullRequestReviewCommentSide {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -8975,7 +9027,7 @@ pub enum PullRequestReviewCommentStartSide {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for PullRequestReviewCommentStartSide {
   fn to_string(&self) -> String {
@@ -8990,7 +9042,7 @@ impl ToString for PullRequestReviewCommentStartSide {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The level at which the comment is targeted, can be a diff line or a file.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -9005,7 +9057,7 @@ pub enum PullRequestReviewCommentSubjectType {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ToString for PullRequestReviewCommentSubjectType {
   fn to_string(&self) -> String {
@@ -9451,7 +9503,7 @@ impl ToString for PullsListQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 /// State of this Pull Request. Either `open` or `closed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PullRequestState {
@@ -9461,7 +9513,7 @@ pub enum PullRequestState {
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl ToString for PullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -9857,7 +9909,7 @@ impl ToString for PullsSubmitReviewRequestEvent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// State of the release asset.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ReleaseAssetState {
@@ -9867,7 +9919,7 @@ pub enum ReleaseAssetState {
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ToString for ReleaseAssetState {
   fn to_string(&self) -> String {
     match self {
@@ -10324,7 +10376,7 @@ impl ToString for SecretScanningAlertValidity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum SecretScanningLocationDetails {
@@ -10356,7 +10408,7 @@ pub enum SecretScanningLocationDetails {
   SecretScanningLocationPullRequestReviewComment(SecretScanningLocationPullRequestReviewComment),
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecretScanningLocationType {
@@ -10388,7 +10440,7 @@ pub enum SecretScanningLocationType {
   PullRequestReviewComment,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl ToString for SecretScanningLocationType {
   fn to_string(&self) -> String {
     match self {
@@ -12747,7 +12799,7 @@ impl SecurityAdvisoriesListGlobalAdvisoriesQuery {
   feature = "pulls",
   feature = "search",
   feature = "users",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// A GitHub user.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -12809,7 +12861,7 @@ pub struct SimpleUser {
   feature = "pulls",
   feature = "search",
   feature = "users",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl SimpleUser {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -13026,7 +13078,7 @@ impl GlobalAdvisory {
   feature = "repos",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The set of permissions for the GitHub app
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13058,7 +13110,7 @@ pub struct GitHubAppPermissions {
   feature = "repos",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl GitHubAppPermissions {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -13075,7 +13127,7 @@ impl GitHubAppPermissions {
   feature = "repos",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13131,7 +13183,7 @@ pub struct GitHubApp {
   feature = "repos",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl GitHubApp {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -13163,7 +13215,7 @@ impl AppsCreateFromManifestResponseItem2 {
   feature = "apps",
   feature = "orgs",
   feature = "repos",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Configuration object of the webhook
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13188,7 +13240,7 @@ pub struct WebhookConfiguration {
   feature = "apps",
   feature = "orgs",
   feature = "repos",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl WebhookConfiguration {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -13444,7 +13496,7 @@ impl AppsListInstallationRequestsForAuthenticatedAppQuery {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// An enterprise on GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13479,7 +13531,7 @@ pub struct Enterprise {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl Enterprise {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -13542,7 +13594,7 @@ impl AppsListInstallationsQuery {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The permissions granted to the user access token.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13746,7 +13798,7 @@ pub struct AppPermissions {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl AppPermissions {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -13758,7 +13810,7 @@ impl AppPermissions {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Installation
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13805,7 +13857,7 @@ pub struct Installation {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl Installation {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -13850,7 +13902,7 @@ impl AppsCreateInstallationAccessTokenRequest {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// License Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13883,7 +13935,7 @@ pub struct LicenseSimple {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl LicenseSimple {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -13902,7 +13954,7 @@ impl LicenseSimple {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13929,7 +13981,7 @@ pub struct RepositoryPermissions {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl RepositoryPermissions {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -13948,7 +14000,7 @@ impl RepositoryPermissions {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// A repository on GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14164,7 +14216,7 @@ pub struct Repository {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl Repository {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -14760,7 +14812,7 @@ impl ClassroomListAssignmentsForAClassroomQuery {
   feature = "teams",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Code Of Conduct
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14791,7 +14843,7 @@ pub struct CodeOfConduct {
   feature = "teams",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl CodeOfConduct {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -14873,7 +14925,7 @@ impl DependabotListAlertsForEnterpriseQuery {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// Details for the vulnerable package.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14884,7 +14936,7 @@ pub struct DependabotAlertPackage {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl DependabotAlertPackage {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -14922,7 +14974,7 @@ impl DependabotAlertWithRepositoryDependency {
   feature = "secret_scanning",
   feature = "code_scanning",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// A GitHub repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15029,7 +15081,7 @@ pub struct SimpleRepository {
   feature = "secret_scanning",
   feature = "code_scanning",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl SimpleRepository {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -15037,7 +15089,7 @@ impl SimpleRepository {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// Details for the advisory pertaining to the Common Vulnerability Scoring System.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15050,14 +15102,14 @@ pub struct DependabotAlertSecurityAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl DependabotAlertSecurityAdvisoryCvss {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// A CWE weakness assigned to the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15068,14 +15120,14 @@ pub struct DependabotAlertSecurityAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl DependabotAlertSecurityAdvisoryCwes {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// An advisory identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15087,14 +15139,14 @@ pub struct DependabotAlertSecurityAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl DependabotAlertSecurityAdvisoryIdentifiers {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// A link to additional advisory information.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15103,14 +15155,14 @@ pub struct DependabotAlertSecurityAdvisoryReferences {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl DependabotAlertSecurityAdvisoryReferences {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// Details pertaining to the package version that patches this vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15119,14 +15171,14 @@ pub struct DependabotAlertSecurityVulnerabilityFirstPatchedVersion {
   pub identifier: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl DependabotAlertSecurityVulnerabilityFirstPatchedVersion {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// Details pertaining to one vulnerable version range for the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15142,14 +15194,14 @@ pub struct DependabotAlertSecurityVulnerability {
   pub vulnerable_version_range: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl DependabotAlertSecurityVulnerability {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// Details for the GitHub Security Advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15186,7 +15238,7 @@ pub struct DependabotAlertSecurityAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl DependabotAlertSecurityAdvisory {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -15425,7 +15477,7 @@ impl Actor {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15452,7 +15504,7 @@ pub struct ReactionRollup {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl ReactionRollup {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -15464,7 +15516,7 @@ impl ReactionRollup {
   feature = "full",
   feature = "activity",
   feature = "issues",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Comments provide a way for people to collaborate on an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15505,7 +15557,7 @@ pub struct IssueComment {
   feature = "full",
   feature = "activity",
   feature = "issues",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl IssueComment {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -15517,7 +15569,7 @@ impl IssueComment {
   feature = "full",
   feature = "activity",
   feature = "issues",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15550,7 +15602,7 @@ pub struct IssueLabelsItem2 {
   feature = "full",
   feature = "activity",
   feature = "issues",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl IssueLabelsItem2 {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -15565,7 +15617,7 @@ impl IssueLabelsItem2 {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// A collection of related issues and pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15607,7 +15659,7 @@ pub struct Milestone {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl Milestone {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -15619,7 +15671,7 @@ impl Milestone {
   feature = "full",
   feature = "activity",
   feature = "issues",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15645,7 +15697,7 @@ pub struct IssuePullRequest {
   feature = "full",
   feature = "activity",
   feature = "issues",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl IssuePullRequest {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -15657,7 +15709,7 @@ impl IssuePullRequest {
   feature = "full",
   feature = "activity",
   feature = "issues",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15744,7 +15796,7 @@ pub struct Issue {
   feature = "full",
   feature = "activity",
   feature = "issues",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl Issue {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -16787,7 +16839,7 @@ impl MarkdownRenderRequest {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "apps", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
 /// Marketplace Listing Plan
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16809,14 +16861,14 @@ pub struct MarketplaceListingPlan {
   pub yearly_price_in_cents: i64,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
 impl MarketplaceListingPlan {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "apps", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MarketplacePurchaseMarketplacePendingChange {
@@ -16837,14 +16889,14 @@ pub struct MarketplacePurchaseMarketplacePendingChange {
   pub unit_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
 impl MarketplacePurchaseMarketplacePendingChange {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "apps", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MarketplacePurchaseMarketplacePurchase {
@@ -16874,14 +16926,14 @@ pub struct MarketplacePurchaseMarketplacePurchase {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
 impl MarketplacePurchaseMarketplacePurchase {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "apps", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
 /// Marketplace Purchase
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16903,7 +16955,7 @@ pub struct MarketplacePurchase {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
 impl MarketplacePurchase {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -17198,7 +17250,7 @@ impl ActivityListNotificationsForAuthenticatedUserQuery {
   feature = "teams",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17233,7 +17285,7 @@ pub struct MinimalRepositoryLicense {
   feature = "teams",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl MinimalRepositoryLicense {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -17254,7 +17306,7 @@ impl MinimalRepositoryLicense {
   feature = "teams",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17289,7 +17341,7 @@ pub struct MinimalRepositoryPermissions {
   feature = "teams",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl MinimalRepositoryPermissions {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -17311,7 +17363,7 @@ impl MinimalRepositoryPermissions {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17335,7 +17387,7 @@ pub struct SecurityAndAnalysisAdvancedSecurity {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl SecurityAndAnalysisAdvancedSecurity {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -17357,7 +17409,7 @@ impl SecurityAndAnalysisAdvancedSecurity {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Enable or disable Dependabot security updates for the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17383,7 +17435,7 @@ pub struct SecurityAndAnalysisDependabotSecurityUpdates {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl SecurityAndAnalysisDependabotSecurityUpdates {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -17405,7 +17457,7 @@ impl SecurityAndAnalysisDependabotSecurityUpdates {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17429,7 +17481,7 @@ pub struct SecurityAndAnalysisSecretScanning {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl SecurityAndAnalysisSecretScanning {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -17451,7 +17503,7 @@ impl SecurityAndAnalysisSecretScanning {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17475,7 +17527,7 @@ pub struct SecurityAndAnalysisSecretScanningPushProtection {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl SecurityAndAnalysisSecretScanningPushProtection {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -17497,7 +17549,7 @@ impl SecurityAndAnalysisSecretScanningPushProtection {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17531,7 +17583,7 @@ pub struct SecurityAndAnalysis {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl SecurityAndAnalysis {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -17552,7 +17604,7 @@ impl SecurityAndAnalysis {
   feature = "teams",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Minimal Repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17745,7 +17797,7 @@ pub struct MinimalRepository {
   feature = "teams",
   feature = "checks",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl MinimalRepository {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -17919,7 +17971,7 @@ impl OrgsListQuery {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
 /// A GitHub organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17940,7 +17992,7 @@ pub struct OrganizationSimple {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
 impl OrganizationSimple {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -19915,7 +19967,7 @@ impl CopilotListCopilotSeatsQuery {
   feature = "repos",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Groups of organization members that gives permissions on specified repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -19962,7 +20014,7 @@ pub struct TeamSimple {
   feature = "repos",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl TeamSimple {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -19980,7 +20032,7 @@ impl TeamSimple {
   feature = "repos",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20002,7 +20054,7 @@ pub struct TeamPermissions {
   feature = "repos",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl TeamPermissions {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -20020,7 +20072,7 @@ impl TeamPermissions {
   feature = "repos",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Groups of organization members that gives permissions on specified repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20062,7 +20114,7 @@ pub struct Team {
   feature = "repos",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl Team {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -20070,7 +20122,7 @@ impl Team {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "copilot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "copilot", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrganizationPlan {
@@ -20091,14 +20143,14 @@ pub struct OrganizationPlan {
   pub space: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "copilot", feature = "webhooks",))]
 impl OrganizationPlan {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "copilot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "copilot", feature = "webhooks",))]
 /// GitHub account for managing multiple users, teams, and repositories
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20160,7 +20212,7 @@ pub struct Organization {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "copilot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "copilot", feature = "webhooks",))]
 impl Organization {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -22147,7 +22199,7 @@ impl ProjectsListForOrgQuery {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "projects", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
 /// Projects are a way to organize columns and cards of work.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22182,7 +22234,7 @@ pub struct Project {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
 impl Project {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -22208,7 +22260,7 @@ impl ProjectsCreateForOrgRequest {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
 /// Custom property defined on an organization
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22240,7 +22292,7 @@ pub struct OrganizationCustomProperty {
   pub values_editable_by: Option<OrganizationCustomPropertyValuesEditableBy>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
 impl OrganizationCustomProperty {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -22324,7 +22376,7 @@ impl OrgsListCustomPropertiesValuesForReposQuery {
   feature = "full",
   feature = "orgs",
   feature = "repos",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Custom property name and associated value
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22340,7 +22392,7 @@ pub struct CustomPropertyValue {
   feature = "full",
   feature = "orgs",
   feature = "repos",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl CustomPropertyValue {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -22570,7 +22622,7 @@ impl ReposCreateInOrgRequest {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Code of Conduct Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22588,7 +22640,7 @@ pub struct CodeOfConductSimple {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl CodeOfConductSimple {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -22600,7 +22652,7 @@ impl CodeOfConductSimple {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22620,7 +22672,7 @@ pub struct FullRepositoryPermissions {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl FullRepositoryPermissions {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -22632,7 +22684,7 @@ impl FullRepositoryPermissions {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Full Repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22836,7 +22888,7 @@ pub struct FullRepository {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl FullRepository {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -22866,7 +22918,7 @@ impl ReposGetOrgRulesetsQuery {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinksHtml {
@@ -22876,14 +22928,14 @@ pub struct RepositoryRulesetLinksHtml {
   pub href: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetLinksHtml {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinksSelf {
@@ -22893,14 +22945,14 @@ pub struct RepositoryRulesetLinksSelf {
   pub href: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetLinksSelf {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinks {
@@ -22913,14 +22965,14 @@ pub struct RepositoryRulesetLinks {
   pub self_: Option<RepositoryRulesetLinksSelf>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetLinks {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// An actor that can bypass rules in a ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22933,14 +22985,14 @@ pub struct RepositoryRulesetBypassActor {
   pub bypass_mode: RepositoryRulesetBypassActorBypassMode,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetBypassActor {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsForRefNamesRefName {
@@ -22954,14 +23006,14 @@ pub struct RepositoryRulesetConditionsForRefNamesRefName {
   pub include: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetConditionsForRefNamesRefName {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Parameters for a repository ruleset ref name condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22971,14 +23023,14 @@ pub struct RepositoryRulesetConditionsForRefNames {
   pub ref_name: Option<RepositoryRulesetConditionsForRefNamesRefName>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetConditionsForRefNames {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsForRepositoryNamesRepositoryName {
@@ -22996,14 +23048,14 @@ pub struct RepositoryRulesetConditionsForRepositoryNamesRepositoryName {
   pub protected: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetConditionsForRepositoryNamesRepositoryName {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Parameters for a repository name condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23011,14 +23063,14 @@ pub struct RepositoryRulesetConditionsForRepositoryNames {
   pub repository_name: RepositoryRulesetConditionsForRepositoryNamesRepositoryName,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetConditionsForRepositoryNames {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsForRepositoryIDsRepositoryId {
@@ -23028,14 +23080,14 @@ pub struct RepositoryRulesetConditionsForRepositoryIDsRepositoryId {
   pub repository_ids: Option<Vec<i64>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetConditionsForRepositoryIDsRepositoryId {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Parameters for a repository ID condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23043,14 +23095,14 @@ pub struct RepositoryRulesetConditionsForRepositoryIDs {
   pub repository_id: RepositoryRulesetConditionsForRepositoryIDsRepositoryId,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetConditionsForRepositoryIDs {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Parameters for a targeting a repository property
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23061,14 +23113,14 @@ pub struct RepositoryRulesetPropertyTargetingDefinition {
   pub property_values: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetPropertyTargetingDefinition {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsForRepositoryPropertiesRepositoryProperty {
@@ -23082,14 +23134,14 @@ pub struct RepositoryRulesetConditionsForRepositoryPropertiesRepositoryProperty 
   pub include: Option<Vec<RepositoryRulesetPropertyTargetingDefinition>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetConditionsForRepositoryPropertiesRepositoryProperty {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Parameters for a repository property condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23097,14 +23149,14 @@ pub struct RepositoryRulesetConditionsForRepositoryProperties {
   pub repository_property: RepositoryRulesetConditionsForRepositoryPropertiesRepositoryProperty,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulesetConditionsForRepositoryProperties {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Only allow users with bypass permission to create matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23113,14 +23165,14 @@ pub struct Creation {
   pub type_: CreationType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl Creation {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UpdateParameters {
@@ -23128,14 +23180,14 @@ pub struct UpdateParameters {
   pub update_allows_fetch_and_merge: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl UpdateParameters {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Only allow users with bypass permission to update matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23147,14 +23199,14 @@ pub struct Update {
   pub type_: UpdateType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl Update {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Only allow users with bypass permissions to delete matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23163,14 +23215,14 @@ pub struct Deletion {
   pub type_: DeletionType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl Deletion {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Prevent merge commits from being pushed to matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23179,14 +23231,14 @@ pub struct RepositoryRuleRequiredLinearHistory {
   pub type_: RepositoryRuleRequiredLinearHistoryType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleRequiredLinearHistory {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleRequiredDeploymentsParameters {
@@ -23194,14 +23246,14 @@ pub struct RepositoryRuleRequiredDeploymentsParameters {
   pub required_deployment_environments: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleRequiredDeploymentsParameters {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23213,14 +23265,14 @@ pub struct RepositoryRuleRequiredDeployments {
   pub type_: RepositoryRuleRequiredDeploymentsType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleRequiredDeployments {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Commits pushed to matching refs must have verified signatures.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23229,14 +23281,14 @@ pub struct RepositoryRuleRequiredSignatures {
   pub type_: RepositoryRuleRequiredSignaturesType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleRequiredSignatures {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulePullRequestParameters {
@@ -23252,14 +23304,14 @@ pub struct RepositoryRulePullRequestParameters {
   pub required_review_thread_resolution: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulePullRequestParameters {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23271,14 +23323,14 @@ pub struct RepositoryRulePullRequest {
   pub type_: RepositoryRulePullRequestType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRulePullRequest {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Required status check
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23291,14 +23343,14 @@ pub struct StatusCheckConfiguration {
   pub integration_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl StatusCheckConfiguration {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleRequiredStatusChecksParameters {
@@ -23308,14 +23360,14 @@ pub struct RepositoryRuleRequiredStatusChecksParameters {
   pub strict_required_status_checks_policy: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleRequiredStatusChecksParameters {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23327,14 +23379,14 @@ pub struct RepositoryRuleRequiredStatusChecks {
   pub type_: RepositoryRuleRequiredStatusChecksType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleRequiredStatusChecks {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Prevent users with push access from force pushing to refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23343,14 +23395,14 @@ pub struct RepositoryRuleNonFastForward {
   pub type_: RepositoryRuleNonFastForwardType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleNonFastForward {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitMessagePatternParameters {
@@ -23368,14 +23420,14 @@ pub struct RepositoryRuleCommitMessagePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleCommitMessagePatternParameters {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Parameters to be used for the commit_message_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23387,14 +23439,14 @@ pub struct RepositoryRuleCommitMessagePattern {
   pub type_: RepositoryRuleCommitMessagePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleCommitMessagePattern {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitAuthorEmailPatternParameters {
@@ -23412,14 +23464,14 @@ pub struct RepositoryRuleCommitAuthorEmailPatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleCommitAuthorEmailPatternParameters {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Parameters to be used for the commit_author_email_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23431,14 +23483,14 @@ pub struct RepositoryRuleCommitAuthorEmailPattern {
   pub type_: RepositoryRuleCommitAuthorEmailPatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleCommitAuthorEmailPattern {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitterEmailPatternParameters {
@@ -23456,14 +23508,14 @@ pub struct RepositoryRuleCommitterEmailPatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleCommitterEmailPatternParameters {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Parameters to be used for the committer_email_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23475,14 +23527,14 @@ pub struct RepositoryRuleCommitterEmailPattern {
   pub type_: RepositoryRuleCommitterEmailPatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleCommitterEmailPattern {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleBranchNamePatternParameters {
@@ -23500,14 +23552,14 @@ pub struct RepositoryRuleBranchNamePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleBranchNamePatternParameters {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Parameters to be used for the branch_name_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23519,14 +23571,14 @@ pub struct RepositoryRuleBranchNamePattern {
   pub type_: RepositoryRuleBranchNamePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleBranchNamePattern {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleTagNamePatternParameters {
@@ -23544,14 +23596,14 @@ pub struct RepositoryRuleTagNamePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleTagNamePatternParameters {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Parameters to be used for the tag_name_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23563,14 +23615,14 @@ pub struct RepositoryRuleTagNamePattern {
   pub type_: RepositoryRuleTagNamePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleTagNamePattern {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// A workflow that must run for this rule to pass
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23590,14 +23642,14 @@ pub struct WorkflowFileReference {
   pub sha: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl WorkflowFileReference {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowsParameters {
@@ -23605,14 +23657,14 @@ pub struct WorkflowsParameters {
   pub workflows: Vec<WorkflowFileReference>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl WorkflowsParameters {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23624,14 +23676,14 @@ pub struct Workflows {
   pub type_: WorkflowsType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl Workflows {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// A set of rules to apply when specified conditions are met.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23681,7 +23733,7 @@ pub struct RepositoryRuleset {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl RepositoryRuleset {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -24065,7 +24117,11 @@ impl SecurityAdvisoriesListOrgRepositoryAdvisoriesQuery {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCredits {
@@ -24079,14 +24135,22 @@ pub struct RepositoryAdvisoryCredits {
   pub type_: Option<SecurityAdvisoryCreditTypes>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl RepositoryAdvisoryCredits {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 /// A credit given to a user for a repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24098,14 +24162,22 @@ pub struct RepositoryAdvisoryCredit {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl RepositoryAdvisoryCredit {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCvss {
@@ -24119,14 +24191,22 @@ pub struct RepositoryAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl RepositoryAdvisoryCvss {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCwes {
@@ -24136,14 +24216,22 @@ pub struct RepositoryAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl RepositoryAdvisoryCwes {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryIdentifiers {
@@ -24154,14 +24242,22 @@ pub struct RepositoryAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl RepositoryAdvisoryIdentifiers {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisorySubmission {
@@ -24169,14 +24265,22 @@ pub struct RepositoryAdvisorySubmission {
   pub accepted: bool,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl RepositoryAdvisorySubmission {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24188,14 +24292,22 @@ pub struct RepositoryAdvisoryVulnerabilityPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl RepositoryAdvisoryVulnerabilityPackage {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 /// A product affected by the vulnerability detailed in a repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24218,14 +24330,22 @@ pub struct RepositoryAdvisoryVulnerability {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl RepositoryAdvisoryVulnerability {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 /// A repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24317,7 +24437,11 @@ pub struct RepositoryAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories", feature = "webhook",))]
+#[cfg(any(
+  feature = "full",
+  feature = "security_advisories",
+  feature = "webhooks",
+))]
 impl RepositoryAdvisory {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -25531,7 +25655,7 @@ impl OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "projects", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
 /// Project cards represent a scope of work.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25565,7 +25689,7 @@ pub struct ProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
 impl ProjectCard {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -25624,7 +25748,7 @@ impl ProjectsMoveCardResponse {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "projects", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
 /// Project columns contain cards of work.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25641,7 +25765,7 @@ pub struct ProjectColumn {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
 impl ProjectColumn {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -26858,7 +26982,7 @@ impl ActionsListWorkflowRunsForRepoQuery {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Information about the Git author
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26874,7 +26998,7 @@ pub struct SimpleCommitAuthor {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl SimpleCommitAuthor {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -26886,7 +27010,7 @@ impl SimpleCommitAuthor {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Information about the Git committer
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26902,7 +27026,7 @@ pub struct SimpleCommitCommitter {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl SimpleCommitCommitter {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -26914,7 +27038,7 @@ impl SimpleCommitCommitter {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// A commit.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26942,7 +27066,7 @@ pub struct SimpleCommit {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl SimpleCommit {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -26954,7 +27078,7 @@ impl SimpleCommit {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26968,7 +27092,7 @@ pub struct PullRequestMinimalBaseRepo {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl PullRequestMinimalBaseRepo {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -26980,7 +27104,7 @@ impl PullRequestMinimalBaseRepo {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26995,7 +27119,7 @@ pub struct PullRequestMinimalBase {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl PullRequestMinimalBase {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -27007,7 +27131,7 @@ impl PullRequestMinimalBase {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27021,7 +27145,7 @@ pub struct PullRequestMinimalHeadRepo {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl PullRequestMinimalHeadRepo {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -27033,7 +27157,7 @@ impl PullRequestMinimalHeadRepo {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27048,7 +27172,7 @@ pub struct PullRequestMinimalHead {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl PullRequestMinimalHead {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -27060,7 +27184,7 @@ impl PullRequestMinimalHead {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27076,7 +27200,7 @@ pub struct PullRequestMinimal {
   feature = "full",
   feature = "actions",
   feature = "checks",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl PullRequestMinimal {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -27084,7 +27208,7 @@ impl PullRequestMinimal {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "actions", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
 /// A workflow referenced/reused by the initial caller workflow
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27097,14 +27221,14 @@ pub struct ReferencedWorkflow {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
 impl ReferencedWorkflow {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "actions", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
 /// An invocation of a workflow
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27198,7 +27322,7 @@ pub struct WorkflowRun {
   pub workflow_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
 impl WorkflowRun {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -27571,7 +27695,7 @@ impl ActionsReviewPendingDeploymentsForRunRequest {
   feature = "actions",
   feature = "checks",
   feature = "repos",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// A request for a specific ref(branch,sha,tag) to be deployed
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -27621,7 +27745,7 @@ pub struct Deployment {
   feature = "actions",
   feature = "checks",
   feature = "repos",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl Deployment {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -27960,7 +28084,7 @@ impl ActionsListRepoWorkflowsQuery {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "actions", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
 /// A GitHub Actions workflow
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27980,7 +28104,7 @@ pub struct Workflow {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
 impl Workflow {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -29075,7 +29199,7 @@ impl BranchWithProtectionLinks {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Metaproperties for Git author/committer information.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -29097,7 +29221,7 @@ pub struct GitUser {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl GitUser {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -29109,7 +29233,7 @@ impl GitUser {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29122,7 +29246,7 @@ pub struct CommitCommitTree {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl CommitCommitTree {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -29136,7 +29260,7 @@ impl CommitCommitTree {
   feature = "git",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29157,7 +29281,7 @@ pub struct Verification {
   feature = "git",
   feature = "pulls",
   feature = "search",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl Verification {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -29169,7 +29293,7 @@ impl Verification {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29193,7 +29317,7 @@ pub struct CommitCommit {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl CommitCommit {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -29205,7 +29329,7 @@ impl CommitCommit {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Diff Entry
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -29232,7 +29356,7 @@ pub struct DiffEntry {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl DiffEntry {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -29244,7 +29368,7 @@ impl DiffEntry {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29260,7 +29384,7 @@ pub struct CommitParents {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl CommitParents {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -29272,7 +29396,7 @@ impl CommitParents {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29292,7 +29416,7 @@ pub struct CommitStats {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl CommitStats {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -29304,7 +29428,7 @@ impl CommitStats {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Commit
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -29335,7 +29459,7 @@ pub struct Commit {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl Commit {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -30244,21 +30368,21 @@ impl ChecksCreateRequestItem2 {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "checks", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckRunCheckSuite {
   pub id: i64,
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
 impl CheckRunCheckSuite {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "checks", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckRunOutput {
@@ -30275,14 +30399,14 @@ pub struct CheckRunOutput {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
 impl CheckRunOutput {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "checks", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
 /// A check performed on the code of a given code change
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30329,7 +30453,7 @@ pub struct CheckRun {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
 impl CheckRun {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -32025,7 +32149,7 @@ impl ReposListPullRequestsAssociatedWithCommitQuery {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Hypermedia Link
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32038,7 +32162,7 @@ pub struct Link {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl Link {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -32072,7 +32196,7 @@ impl PullRequestSimpleLinks {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// The status of auto merging a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32091,7 +32215,7 @@ pub struct AutoMerge {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl AutoMerge {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -33431,7 +33555,7 @@ impl DependabotListAlertsForRepoQuery {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// Details for the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33449,14 +33573,14 @@ pub struct DependabotAlertDependency {
   pub scope: Option<DependabotAlertDependencyScope>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl DependabotAlertDependency {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// A Dependabot alert.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33494,7 +33618,7 @@ pub struct DependabotAlert {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 impl DependabotAlert {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -35384,7 +35508,7 @@ impl ReposListWebhooksQuery {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct HookResponse {
@@ -35399,14 +35523,14 @@ pub struct HookResponse {
   pub status: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl HookResponse {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Webhooks for repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35433,7 +35557,7 @@ pub struct Webhook {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl Webhook {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -37104,7 +37228,7 @@ impl IssuesListLabelsOnIssueQuery {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "issues", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "webhooks",))]
 /// Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37124,7 +37248,7 @@ pub struct Label {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "webhooks",))]
 impl Label {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -37633,7 +37757,7 @@ impl TimelineReviewedEvent {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37645,7 +37769,7 @@ pub struct PullRequestReviewCommentLinksHtml {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl PullRequestReviewCommentLinksHtml {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -37657,7 +37781,7 @@ impl PullRequestReviewCommentLinksHtml {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37669,7 +37793,7 @@ pub struct PullRequestReviewCommentLinksPullRequest {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl PullRequestReviewCommentLinksPullRequest {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -37681,7 +37805,7 @@ impl PullRequestReviewCommentLinksPullRequest {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37693,7 +37817,7 @@ pub struct PullRequestReviewCommentLinksSelf {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl PullRequestReviewCommentLinksSelf {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -37705,7 +37829,7 @@ impl PullRequestReviewCommentLinksSelf {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37720,7 +37844,7 @@ pub struct PullRequestReviewCommentLinks {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl PullRequestReviewCommentLinks {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -37732,7 +37856,7 @@ impl PullRequestReviewCommentLinks {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 /// Pull Request Review Comments are comments on a portion of the Pull Request's diff.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37823,7 +37947,7 @@ pub struct PullRequestReviewComment {
   feature = "full",
   feature = "issues",
   feature = "pulls",
-  feature = "webhook",
+  feature = "webhooks",
 ))]
 impl PullRequestReviewComment {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
@@ -39024,7 +39148,7 @@ impl PullsCreateRequest {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestLinks {
@@ -39039,14 +39163,14 @@ pub struct PullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestLinks {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepoOwner {
@@ -39073,14 +39197,14 @@ pub struct PullRequestBaseRepoOwner {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestBaseRepoOwner {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepoPermissions {
@@ -39095,14 +39219,14 @@ pub struct PullRequestBaseRepoPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestBaseRepoPermissions {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepo {
@@ -39226,14 +39350,14 @@ pub struct PullRequestBaseRepo {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestBaseRepo {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseUser {
@@ -39260,14 +39384,14 @@ pub struct PullRequestBaseUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestBaseUser {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBase {
@@ -39279,14 +39403,14 @@ pub struct PullRequestBase {
   pub user: PullRequestBaseUser,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestBase {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoLicense {
@@ -39301,14 +39425,14 @@ pub struct PullRequestHeadRepoLicense {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestHeadRepoLicense {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoOwner {
@@ -39335,14 +39459,14 @@ pub struct PullRequestHeadRepoOwner {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestHeadRepoOwner {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoPermissions {
@@ -39357,14 +39481,14 @@ pub struct PullRequestHeadRepoPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestHeadRepoPermissions {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepo {
@@ -39488,14 +39612,14 @@ pub struct PullRequestHeadRepo {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestHeadRepo {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadUser {
@@ -39522,14 +39646,14 @@ pub struct PullRequestHeadUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestHeadUser {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHead {
@@ -39543,14 +39667,14 @@ pub struct PullRequestHead {
   pub user: PullRequestHeadUser,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestHead {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestLabels {
@@ -39566,14 +39690,14 @@ pub struct PullRequestLabels {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequestLabels {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -39664,7 +39788,7 @@ pub struct PullRequest {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 impl PullRequest {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -40497,7 +40621,7 @@ impl ReposListReleasesQuery {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Data related to a release.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40523,14 +40647,14 @@ pub struct ReleaseAsset {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl ReleaseAsset {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// A release.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40585,7 +40709,7 @@ pub struct Release {
   pub zipball_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 impl Release {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
@@ -41208,7 +41332,7 @@ impl SecretScanningListLocationsForAlertQuery {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41233,14 +41357,14 @@ pub struct SecretScanningLocationCommit {
   pub start_line: f64,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationCommit {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41265,14 +41389,14 @@ pub struct SecretScanningLocationWikiCommit {
   pub start_line: f64,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationWikiCommit {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41281,14 +41405,14 @@ pub struct SecretScanningLocationIssueTitle {
   pub issue_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationIssueTitle {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41297,14 +41421,14 @@ pub struct SecretScanningLocationIssueBody {
   pub issue_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationIssueBody {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41313,14 +41437,14 @@ pub struct SecretScanningLocationIssueComment {
   pub issue_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationIssueComment {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41329,14 +41453,14 @@ pub struct SecretScanningLocationDiscussionTitle {
   pub discussion_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationDiscussionTitle {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41345,14 +41469,14 @@ pub struct SecretScanningLocationDiscussionBody {
   pub discussion_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationDiscussionBody {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41361,14 +41485,14 @@ pub struct SecretScanningLocationDiscussionComment {
   pub discussion_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationDiscussionComment {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41377,14 +41501,14 @@ pub struct SecretScanningLocationPullRequestTitle {
   pub pull_request_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationPullRequestTitle {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41393,14 +41517,14 @@ pub struct SecretScanningLocationPullRequestBody {
   pub pull_request_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationPullRequestBody {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41409,14 +41533,14 @@ pub struct SecretScanningLocationPullRequestComment {
   pub pull_request_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationPullRequestComment {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41425,14 +41549,14 @@ pub struct SecretScanningLocationPullRequestReview {
   pub pull_request_review_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationPullRequestReview {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41441,14 +41565,14 @@ pub struct SecretScanningLocationPullRequestReviewComment {
   pub pull_request_review_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocationPullRequestReviewComment {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
     self
   }
 }
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecretScanningLocation {
@@ -41462,7 +41586,7 @@ pub struct SecretScanningLocation {
   pub type_: Option<SecretScanningLocationType>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhook",))]
+#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 impl SecretScanningLocation {
   #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
   pub fn unwrap(self) -> Self {
