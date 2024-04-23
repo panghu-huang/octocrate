@@ -50,6 +50,7 @@ security_advisories = ["octocrate-types/security_advisories"]
 interactions = ["octocrate-types/interactions"]
 classroom = ["octocrate-types/classroom"]
 desktop = ["octocrate-types/desktop"]
+webhooks = ["octocrate-types/webhooks"]
 pagination = ["octocrate-types/pagination", "octocrate-core/pagination"]
 
 [lib]

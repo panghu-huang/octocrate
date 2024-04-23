@@ -50,6 +50,7 @@ security_advisories = []
 interactions = []
 classroom = []
 desktop = []
+webhooks = []
 pagination = ["dep:url"]
 
 [dependencies]
