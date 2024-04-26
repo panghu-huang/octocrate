@@ -294,7 +294,7 @@ mod schema_parser_one_of_like_tests {
     let mut parse_context = ParseContext::default();
     let mut schema_parser = SchemaParser::new();
 
-    parse_context.set_working_tag(&"testing".to_string());
+    parse_context.set_working_tag("testing");
 
     let content_directory = api_description
       .components

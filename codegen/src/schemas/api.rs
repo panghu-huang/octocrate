@@ -14,6 +14,7 @@ pub struct Responses {
   pub accepted: Option<ContentOrRef>,
 }
 
+#[allow(clippy::upper_case_acronyms)]
 #[derive(Deserialize, Clone, Debug)]
 pub struct API {
   pub summary: String,

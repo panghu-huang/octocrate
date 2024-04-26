@@ -1,7 +1,9 @@
-use super::{context::ParseContext, parser::parameters_parser::ParametersParser, ParsedData};
 use crate::{
   common::RenameRule,
-  parser::parser::schema_parser::SchemaParser,
+  parser::{
+    context::ParseContext, parameters_parser::ParametersParser, schema_parser::SchemaParser,
+    ParsedData,
+  },
   schemas::{
     api::{Responses, API as APISchema},
     parameters::ParameterDefinition,
@@ -14,6 +16,7 @@ use crate::{
   },
 };
 
+#[allow(clippy::upper_case_acronyms)]
 #[derive(Clone, Debug)]
 pub enum Method {
   GET,
@@ -23,6 +26,7 @@ pub enum Method {
   DELETE,
 }
 
+#[allow(clippy::upper_case_acronyms)]
 #[derive(Clone, Debug)]
 pub struct API {
   pub name: String,
@@ -38,7 +42,7 @@ pub struct API {
 }
 
 impl API {
-  pub fn parse(ctx: &mut ParseContext, method: &String, path: &String, schema: &APISchema) -> Self {
+  pub fn parse(ctx: &mut ParseContext, method: &String, path: &str, schema: &APISchema) -> Self {
     let api_name = schema.operation_id.split('/').last().unwrap().to_string();
     let api_name = RenameRule::FieldName.apply(&api_name);
 
@@ -131,7 +135,7 @@ impl API {
       summary: schema.summary.clone(),
       document_url: schema.external_docs.url.clone(),
       description: schema.description.clone(),
-      path: path.clone(),
+      path: path.to_owned(),
       method,
       parameters,
       body,

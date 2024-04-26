@@ -24,7 +24,7 @@ pub struct Enum {
 }
 
 impl Enum {
-  pub fn new(name: &String) -> Self {
+  pub fn new(name: &str) -> Self {
     Self {
       name: RenameRule::VariantName.apply(name),
       fields: vec![],
@@ -42,11 +42,11 @@ impl Enum {
       !self.fields.is_empty() && self.fields.iter().all(|f| f.type_name.is_none());
   }
 
-  pub fn set_description(&mut self, description: &String) {
-    self.description = Some(description.clone());
+  pub fn set_description(&mut self, description: &str) {
+    self.description = Some(description.to_owned());
   }
 
-  pub fn set_name(&mut self, name: &String) {
+  pub fn set_name(&mut self, name: &str) {
     self.name = RenameRule::VariantName.apply(name);
   }
 
@@ -84,15 +84,15 @@ impl EnumField {
     }
   }
 
-  pub fn reference(&mut self, reference: &String) {
-    self.reference = Some(reference.clone());
+  pub fn reference(&mut self, reference: &str) {
+    self.reference = Some(reference.to_owned());
   }
 
-  pub fn set_description(&mut self, description: &String) {
-    self.description = Some(description.clone());
+  pub fn set_description(&mut self, description: &str) {
+    self.description = Some(description.to_owned());
   }
 
-  pub fn set_type_name(&mut self, type_name: &String) {
-    self.type_name = Some(type_name.to_string());
+  pub fn set_type_name(&mut self, type_name: &str) {
+    self.type_name = Some(type_name.to_owned());
   }
 }

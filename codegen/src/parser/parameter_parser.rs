@@ -1,5 +1,5 @@
 use super::{
-  super::{context::ParseContext, ParsedData},
+  context::ParseContext, ParsedData,
   schema_parser::SchemaParser,
 };
 use crate::{
@@ -20,7 +20,7 @@ impl<'a> ParameterParser<'a> {
   pub fn parse(&self, ctx: &mut ParseContext, name: &String) -> ParsedData {
     let mut schema_parser = SchemaParser::new();
     let parameter = &self.parameter;
-    let is_requried = parameter.required.unwrap_or(false);
+    let is_required = parameter.required.unwrap_or(false);
 
     let generated_struct = schema_parser.parse(
       ctx,
@@ -36,7 +36,7 @@ impl<'a> ParameterParser<'a> {
           type_.set_description(description);
         }
 
-        if !is_requried && !type_.type_name.starts_with("Option<") {
+        if !is_required && !type_.type_name.starts_with("Option<") {
           type_.type_name = format!("Option<{}>", type_.type_name);
         };
 
@@ -49,7 +49,7 @@ impl<'a> ParameterParser<'a> {
           enum_.set_description(description);
         }
 
-        if !is_requried {
+        if !is_required {
           return ParsedData::Type(Type::new_with_reference(
             &format!("Option<{}>", enum_.name),
             &enum_.name,
@@ -65,7 +65,7 @@ impl<'a> ParameterParser<'a> {
           struct_.set_description(description);
         }
 
-        if !is_requried {
+        if !is_required {
           return ParsedData::Type(Type::new_with_reference(
             &format!("Option<{}>", struct_.name),
             &struct_.name,

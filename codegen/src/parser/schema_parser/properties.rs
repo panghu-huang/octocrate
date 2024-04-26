@@ -140,7 +140,7 @@ mod schema_parser_properties_tests {
 
     let mut parse_context = ParseContext::new(api_description);
 
-    parse_context.set_working_tag(&"testing".to_string());
+    parse_context.set_working_tag("testing");
 
     let json = r#"{
       "title": "User Search Result Item",

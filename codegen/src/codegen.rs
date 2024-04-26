@@ -1,14 +1,14 @@
 use indexmap::IndexMap;
 
 use crate::{
-  parser::{api::API, context::ParseContext, parser::schema_parser::SchemaParser, ParsedData},
+  parser::{api::API, context::ParseContext, schema_parser::SchemaParser, ParsedData},
   schemas::{schema::SchemaDefinition, APIDescription},
   structures::enums::{Enum, EnumField},
   writer::{
     APIEntryModule, APIFunction, APIModule, Directory, TypeEntryModule, TypeModule, Writer,
   },
 };
-use std::path::PathBuf;
+use std::path::Path;
 
 #[derive(Clone)]
 pub struct ParsedAPIDescription {
@@ -56,7 +56,7 @@ impl Codegen {
 
     let mut schema_parser = SchemaParser::new();
 
-    let mut enum_ = Enum::new(&"WebhookEvent".to_string());
+    let mut enum_ = Enum::new("WebhookEvent");
 
     for (name, webhook) in &api_description.webhooks {
       parse_context.start_parsing_webhook(name);
@@ -115,7 +115,7 @@ impl Codegen {
     }
   }
 
-  pub fn write_apis(&self, parsed: ParsedAPIDescription, path: &PathBuf) {
+  pub fn write_apis(&self, parsed: ParsedAPIDescription, path: &Path) {
     let mut writer = Writer::new(path);
 
     // APIs
@@ -205,7 +205,7 @@ impl Codegen {
     println!("Finished writing");
   }
 
-  pub fn write_types(&self, parsed: ParsedAPIDescription, path: &PathBuf) {
+  pub fn write_types(&self, parsed: ParsedAPIDescription, path: &Path) {
     let mut writer = Writer::new(path);
 
     println!("Writing to file system");

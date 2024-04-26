@@ -1,0 +1,9 @@
+[files]
+ignore-files = true
+extend-exclude = [
+  ".git/",
+  # File suffixes aren't typos
+  "codegen/resources/api.json",
+  "types/*",
+  "octocrate/src/apis/*",
+]

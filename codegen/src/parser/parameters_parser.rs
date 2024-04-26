@@ -1,7 +1,4 @@
-use super::{
-  super::{context::ParseContext, ParsedData},
-  parameter_parser::ParameterParser,
-};
+use super::{context::ParseContext, parameter_parser::ParameterParser, ParsedData};
 use crate::{
   schemas::parameters::Parameter,
   structures::structs::{Struct, StructField},
@@ -118,7 +115,7 @@ mod tests {
 
     let mut ctx = ParseContext::default();
 
-    ctx.set_working_tag(&"testing".to_string());
+    ctx.set_working_tag("testing");
 
     let parser = ParameterParser::new(&parameter);
 

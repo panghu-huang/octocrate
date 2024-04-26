@@ -11,19 +11,19 @@ pub struct Type {
 }
 
 impl Type {
-  pub fn new_with_reference(type_name: &String, reference: &String) -> Self {
+  pub fn new_with_reference(type_name: &str, reference: &str) -> Self {
     Type {
-      type_name: type_name.clone(),
+      type_name: type_name.to_owned(),
       alias: None,
-      reference: Some(reference.clone()),
+      reference: Some(reference.to_owned()),
       description: None,
       tags: vec!["full".to_string()],
     }
   }
 
-  pub fn new(type_name: &String) -> Self {
+  pub fn new(type_name: &str) -> Self {
     Type {
-      type_name: type_name.clone(),
+      type_name: type_name.to_owned(),
       alias: None,
       reference: None,
       description: None,
@@ -31,15 +31,15 @@ impl Type {
     }
   }
 
-  pub fn set_reference(&mut self, reference: &String) {
-    self.reference = Some(reference.clone());
+  pub fn set_reference(&mut self, reference: &str) {
+    self.reference = Some(reference.to_owned());
   }
 
-  pub fn set_description(&mut self, description: &String) {
-    self.description = Some(description.clone());
+  pub fn set_description(&mut self, description: &str) {
+    self.description = Some(description.to_owned());
   }
 
-  pub fn set_alias(&mut self, alias: &String) {
+  pub fn set_alias(&mut self, alias: &str) {
     self.alias = Some(RenameRule::VariantName.apply(alias));
   }
 

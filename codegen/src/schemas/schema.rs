@@ -15,7 +15,7 @@ pub enum SchemaType {
 
 #[derive(Deserialize, Clone, Debug, PartialEq)]
 #[serde(untagged)]
-pub enum SchemaTypeDefination {
+pub enum SchemaTypeDefinition {
   String(String),
   Array(Vec<String>),
 }
@@ -38,7 +38,7 @@ pub enum SchemaDefinition {
 pub struct Schema {
   pub title: Option<String>,
   #[serde(rename = "type")]
-  pub type_: Option<SchemaTypeDefination>,
+  pub type_: Option<SchemaTypeDefinition>,
   // pub format: Option<String>,
   pub items: Option<Box<SchemaDefinition>>,
   pub properties: Option<BTreeMap<String, SchemaDefinition>>,

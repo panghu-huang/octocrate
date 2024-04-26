@@ -20,10 +20,10 @@ pub struct Struct {
 }
 
 impl Struct {
-  pub fn new_with_description(name: &String, description: &String) -> Self {
+  pub fn new_with_description(name: &str, description: &str) -> Self {
     Self {
       name: RenameRule::VariantName.apply(name),
-      description: Some(description.clone()),
+      description: Some(description.to_owned()),
       fields: vec![],
       tags: vec!["full".to_string()],
     }
@@ -48,11 +48,11 @@ impl Struct {
     self.fields.push(field);
   }
 
-  pub fn set_description(&mut self, description: &String) {
-    self.description = Some(description.clone());
+  pub fn set_description(&mut self, description: &str) {
+    self.description = Some(description.to_owned());
   }
 
-  pub fn set_name(&mut self, name: &String) {
+  pub fn set_name(&mut self, name: &str) {
     self.name = RenameRule::VariantName.apply(name);
   }
 }
@@ -76,7 +76,7 @@ impl StructField {
   //   }
   // }
 
-  pub fn new(name: &String, type_name: &String) -> Self {
+  pub fn new(name: &String, type_name: &str) -> Self {
     let normalized_name = RenameRule::FieldName.apply(name);
 
     let rename = if &normalized_name != name {
@@ -89,16 +89,16 @@ impl StructField {
       name: normalized_name,
       rename,
       description: None,
-      type_name: type_name.clone(),
+      type_name: type_name.to_owned(),
       reference: None,
     }
   }
 
-  pub fn set_description(&mut self, description: &String) {
-    self.description = Some(description.clone());
+  pub fn set_description(&mut self, description: &str) {
+    self.description = Some(description.to_owned());
   }
 
-  pub fn reference(&mut self, reference: &String) {
-    self.reference = Some(reference.clone());
+  pub fn reference(&mut self, reference: &str) {
+    self.reference = Some(reference.to_owned());
   }
 }

@@ -27,9 +27,6 @@ pub enum ParameterDefinition {
 
 impl Position {
   pub fn is_query(&self) -> bool {
-    match self {
-      Position::Query => true,
-      _ => false,
-    }
+    matches!(self, Position::Query)
   }
 }

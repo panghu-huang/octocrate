@@ -42,7 +42,7 @@ impl File for TypeModule {
     format!("{}.rs", self.file_name)
   }
 
-  fn write(&self, path: &std::path::PathBuf) {
+  fn write(&self, path: &std::path::Path) {
     let template = include_str!("../../../templates/types/type_module.hbs");
 
     let rendered = format_code(render_template(template, self));

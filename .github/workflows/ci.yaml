@@ -22,6 +22,12 @@ jobs:
       - name: Cache
         uses: Swatinem/rust-cache@v2
 
+      - name: Check spelling
+        run: |
+          cargo install typos-cli
+
+          typos
+
       - name: Generate code
         run: cargo run -p codegen
 
