@@ -4,16 +4,16 @@ mod types;
 
 pub use api::*;
 pub use format::*;
-use std::path::PathBuf;
+use std::path::Path;
 pub use types::*;
 
 pub trait File {
   fn file_name(&self) -> String;
-  fn write(&self, path: &PathBuf);
+  fn write(&self, path: &Path);
 }
 
 pub struct Writer<'a> {
-  pub path: &'a PathBuf,
+  pub path: &'a Path,
   pub files: Vec<Box<dyn File>>,
 }
 
@@ -23,7 +23,7 @@ pub struct Directory {
 }
 
 impl<'a> Writer<'a> {
-  pub fn new(path: &'a PathBuf) -> Writer {
+  pub fn new(path: &'a Path) -> Writer {
     Writer {
       path,
       files: Vec::new(),
@@ -65,7 +65,7 @@ impl File for Directory {
     self.name.clone()
   }
 
-  fn write(&self, path: &PathBuf) {
+  fn write(&self, path: &Path) {
     let dir_path = path.join(self.file_name());
 
     if dir_path.exists() {

@@ -1,4 +1,4 @@
-use crate::schemas::schema::{SchemaType, SchemaTypeDefination};
+use crate::schemas::schema::{SchemaType, SchemaTypeDefinition};
 
 #[derive(Debug, Clone, Default)]
 pub struct SchemaTypes {
@@ -157,15 +157,15 @@ impl SchemaTypes {
   }
 }
 
-impl From<&SchemaTypeDefination> for SchemaTypes {
-  fn from(value: &SchemaTypeDefination) -> Self {
+impl From<&SchemaTypeDefinition> for SchemaTypes {
+  fn from(value: &SchemaTypeDefinition) -> Self {
     let types = match value {
-      SchemaTypeDefination::String(type_) => {
+      SchemaTypeDefinition::String(type_) => {
         vec![
           SchemaType::try_from(type_).unwrap_or_else(|_| panic!("Unknown schema type: {}", type_))
         ]
       }
-      SchemaTypeDefination::Array(types) => types
+      SchemaTypeDefinition::Array(types) => types
         .iter()
         .map(|type_| {
           SchemaType::try_from(type_).unwrap_or_else(|_| panic!("Unknown schema type: {}", type_))

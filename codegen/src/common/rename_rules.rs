@@ -42,7 +42,7 @@ impl RenameRule {
       }
     }
 
-    let normalized = RenameRule::normalize(&field.to_string());
+    let normalized = RenameRule::normalize(field);
     let value = match self {
       RenameRule::FieldName => normalized.to_lowercase(),
       RenameRule::VariantName => {
@@ -75,7 +75,7 @@ impl RenameRule {
     value
   }
 
-  fn normalize(original: &String) -> String {
+  fn normalize(original: &str) -> String {
     let regexp = Regex::new(r#"^([A-Z]|_)+$"#).unwrap();
 
     let mut value = vec![];

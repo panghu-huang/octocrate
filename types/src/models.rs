@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 #[allow(unused_imports)]
 use typed_builder::TypedBuilder;
 
-/// Types defination
+/// Types definition
 #[cfg(any(
   feature = "full",
   feature = "security_advisories",
@@ -559,7 +559,7 @@ pub type KeySimpleArray = Vec<KeySimple>;
 #[cfg(any(feature = "full", feature = "activity",))]
 pub type StarredRepositoryArray = Vec<StarredRepository>;
 
-/// Enumerations defination
+/// Enumerations definition
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQueryType {

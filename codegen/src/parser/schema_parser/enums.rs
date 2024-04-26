@@ -34,7 +34,7 @@ impl SchemaParser {
             StringOrBool::Bool(_) => {
               let mut enum_field = EnumField::new(&"Boolean".to_string());
 
-              enum_field.set_type_name(&"bool".to_string());
+              enum_field.set_type_name("bool");
 
               enum_.add_field(enum_field);
             }
@@ -67,30 +67,25 @@ impl SchemaParser {
       let mut is_write = false;
 
       for enum_value in enums {
-        if let Some(enum_value) = &enum_value {
-          match enum_value {
-            StringOrBool::String(value) => {
-              if value == "read" {
-                is_read = true;
-              } else if value == "write" {
-                is_write = true;
-              }
-            }
-            _ => {}
+        if let Some(StringOrBool::String(value)) = &enum_value {
+          if value == "read" {
+            is_read = true;
+          } else if value == "write" {
+            is_write = true;
           }
         }
       }
 
       match (len, is_read, is_write) {
         (1, true, false) => {
-          return Some(ParsedData::Type(Type::new(&"ReadPermission".to_string())));
+          return Some(ParsedData::Type(Type::new("ReadPermission")));
         }
         (1, false, true) => {
-          return Some(ParsedData::Type(Type::new(&"WritePermission".to_string())));
+          return Some(ParsedData::Type(Type::new("WritePermission")));
         }
         (2, true, true) => {
           return Some(ParsedData::Type(Type::new(
-            &"ReadWritePermission".to_string(),
+            "ReadWritePermission",
           )));
         }
         _ => {}

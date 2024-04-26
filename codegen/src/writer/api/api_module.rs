@@ -36,7 +36,7 @@ pub struct APIModule {
 }
 
 impl APIModule {
-  pub fn new(module_name: &String, description: Option<String>) -> APIModule {
+  pub fn new(module_name: &str, description: Option<String>) -> APIModule {
     APIModule {
       module_name: RenameRule::VariantName.apply(module_name),
       file_name: RenameRule::FieldName.apply(module_name),
@@ -55,7 +55,7 @@ impl File for APIModule {
     format!("{}.rs", self.file_name)
   }
 
-  fn write(&self, path: &std::path::PathBuf) {
+  fn write(&self, path: &std::path::Path) {
     let template = include_str!("../../../templates/api/api.hbs");
 
     let rendered = format_code(render_template(template, self));

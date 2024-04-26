@@ -23,7 +23,7 @@ impl APIEntryModule {
     }
   }
 
-  pub fn add_module(&mut self, module_name: &String) {
+  pub fn add_module(&mut self, module_name: &str) {
     self.modules.push(APIModule {
       module_name: RenameRule::VariantName.apply(module_name),
       file_name: RenameRule::FieldName.apply(module_name),
@@ -36,7 +36,7 @@ impl File for APIEntryModule {
     "mod.rs".to_string()
   }
 
-  fn write(&self, path: &std::path::PathBuf) {
+  fn write(&self, path: &std::path::Path) {
     let template = include_str!("../../../templates/api/entry_module.hbs");
 
     let rendered = format_code(render_template(template, self));

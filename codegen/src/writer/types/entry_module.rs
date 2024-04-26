@@ -26,7 +26,7 @@ impl File for TypeEntryModule {
     self.name.clone()
   }
 
-  fn write(&self, path: &std::path::PathBuf) {
+  fn write(&self, path: &std::path::Path) {
     let template = include_str!("../../../templates/types/entry_module.hbs");
 
     let rendered = format_code(render_template(template, self));

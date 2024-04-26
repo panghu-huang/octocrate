@@ -9,13 +9,6 @@ pub struct APIConfig {
 pub type SharedAPIConfig = Arc<APIConfig>;
 
 impl APIConfig {
-  pub fn default() -> Self {
-    APIConfig {
-      base_url: "https://api.github.com".to_string(),
-      token: None,
-    }
-  }
-
   pub fn with_token<T: ExpirableToken + 'static>(token: T) -> Self {
     APIConfig {
       base_url: "https://api.github.com".to_string(),
@@ -39,5 +32,14 @@ impl APIConfig {
 
   pub fn shared(self) -> SharedAPIConfig {
     Arc::new(self)
+  }
+}
+
+impl Default for APIConfig {
+  fn default() -> Self {
+    APIConfig {
+      base_url: "https://api.github.com".to_string(),
+      token: None,
+    }
   }
 }

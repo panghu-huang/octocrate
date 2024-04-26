@@ -2,7 +2,9 @@ use crate::structures::{enums::Enum, structs::Struct, types::Type};
 
 pub mod api;
 pub mod context;
-pub mod parser;
+pub mod parameter_parser;
+pub mod parameters_parser;
+pub mod schema_parser;
 
 #[derive(Clone, Debug)]
 pub enum ParsedData {

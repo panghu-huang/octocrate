@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 #[allow(unused_imports)]
 use typed_builder::TypedBuilder;
 
-/// Types defination
+/// Types definition
 #[cfg(any(feature = "full", feature = "webhooks",))]
 pub type AppEventsArray = Vec<AppEvents>;
 #[cfg(any(feature = "full", feature = "webhooks",))]
@@ -130,7 +130,7 @@ pub type WorkflowStepArray = Vec<WorkflowStep>;
 #[cfg(any(feature = "full", feature = "webhooks",))]
 pub type WorkflowRunPullRequestsArray = Vec<WorkflowRunPullRequests>;
 
-/// Enumerations defination
+/// Enumerations definition
 #[cfg(any(feature = "full", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum BranchProtectionConfigurationDisabledEventAction {

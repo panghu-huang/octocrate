@@ -105,7 +105,7 @@ impl ParseContext {
     }
   }
 
-  pub fn reference_existing(&self, name: &String) -> Option<TypeReference> {
+  pub fn reference_existing(&self, name: &str) -> Option<TypeReference> {
     let mut guard = self.inner.lock().expect("Failed to lock the inner context");
     let reference = guard.references.get_mut(name);
 
@@ -162,12 +162,12 @@ impl ParseContext {
     }
   }
 
-  pub fn set_working_tag(&mut self, tag: &String) {
+  pub fn set_working_tag(&mut self, tag: &str) {
     self.working_tag = Some(tag.replace('-', "_"));
   }
 
-  pub fn add_tag_description(&mut self, tag: &String, description: &String) {
-    self.tags.insert(tag.clone(), description.clone());
+  pub fn add_tag_description(&mut self, tag: &str, description: &str) {
+    self.tags.insert(tag.to_owned(), description.to_owned());
   }
 
   pub fn get_apis(&self) -> IndexMap<APITag, Vec<API>> {
@@ -183,7 +183,7 @@ impl ParseContext {
     self.tags.clone()
   }
 
-  pub fn start_parsing_webhook(&mut self, webhook: &String) {
+  pub fn start_parsing_webhook(&mut self, webhook: &str) {
     if self.stage == Stage::ParsingAPI {
       self.stage = Stage::ParsingWebhook;
       self.working_tag = Some("webhooks".to_string());
@@ -196,7 +196,7 @@ impl ParseContext {
     self.progress_bar.inc(1);
   }
 
-  pub fn start_parsing_api(&mut self, api: &String) {
+  pub fn start_parsing_api(&mut self, api: &str) {
     if self.stage == Stage::ParsingWebhook {
       panic!("Cannot start parsing API while parsing webhook");
     }
@@ -236,11 +236,11 @@ impl ParseContext {
       .collect()
   }
 
-  pub fn get_component(&self, name: &String) -> Option<Schema> {
+  pub fn get_component(&self, name: &str) -> Option<Schema> {
     self.api_description.components.schemas.get(name).cloned()
   }
 
-  pub fn get_parameter(&self, name: &String) -> Option<Parameter> {
+  pub fn get_parameter(&self, name: &str) -> Option<Parameter> {
     self
       .api_description
       .components

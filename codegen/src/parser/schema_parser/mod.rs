@@ -4,7 +4,7 @@ mod one_of_like;
 mod properties;
 mod schema_types;
 
-use super::super::{context::ParseContext, ParsedData};
+use super::{context::ParseContext, ParsedData};
 use crate::{
   schemas::schema::{Schema, SchemaDefinition},
   structures::types::Type,
