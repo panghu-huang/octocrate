@@ -17,8 +17,7 @@ async fn test_pagination() {
   let query = ReposListForUserQuery::builder()
     .page(1)
     .per_page(10)
-    .build()
-    .unwrap();
+    .build();
 
   let repositories = api
     .repos

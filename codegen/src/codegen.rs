@@ -56,7 +56,17 @@ impl Codegen {
 
     let mut schema_parser = SchemaParser::new();
 
-    let mut enum_ = Enum::new("WebhookEvent");
+    let mut webhook_event = Enum::new("WebhookEvent");
+
+    webhook_event.untagged();
+
+    // {
+    //   pull_request: Enum {
+    //     Opened(PullRequestOpened),
+    //     Closed(PullRequestClosed),
+    //   }
+    // }
+    let mut webhook_categories: IndexMap<String, Enum> = IndexMap::new();
 
     for (name, webhook) in &api_description.webhooks {
       parse_context.start_parsing_webhook(name);
@@ -81,17 +91,49 @@ impl Codegen {
             let mut field = EnumField::new(name);
 
             field.set_type_name(&struct_.name);
-
-            enum_.add_field(field);
           }
           ParsedData::Enum(generated) => {
             let mut field = EnumField::new(name);
 
             field.set_type_name(&generated.name);
-
-            enum_.add_field(field);
           }
           _ => panic!("Expected struct or enum for webhook {}", name),
+        }
+
+        let mut parts = webhook.operation_id.split('/');
+
+        let category = parts.next().unwrap_or_else(|| {
+          panic!("No category found in operationId for webhook {}", name);
+        });
+
+        if let Some(type_) = parts.next() {
+          let category_webhook = webhook_categories
+            .entry(category.to_string())
+            .or_insert_with(|| {
+              let mut enum_ = Enum::new(&format!("webhook_{}_event", category));
+
+              enum_.untagged();
+
+              let mut field = EnumField::new(category);
+
+              field.set_type_name(&enum_.name);
+
+              webhook_event.add_field(field);
+
+              enum_
+            });
+
+          let mut field = EnumField::new(type_);
+
+          field.set_type_name(&parsed.name());
+
+          category_webhook.add_field(field);
+        } else {
+          let mut field = EnumField::new(category);
+
+          field.set_type_name(&parsed.name());
+
+          webhook_event.add_field(field);
         }
 
         parse_context.add_reference(&parsed.name(), parsed);
@@ -100,9 +142,11 @@ impl Codegen {
       }
     }
 
-    enum_.untagged();
+    for enum_ in webhook_categories.values() {
+      parse_context.add_reference(&enum_.name, ParsedData::Enum(enum_.clone()));
+    }
 
-    parse_context.add_reference(&"WebhookEvent".to_string(), ParsedData::Enum(enum_));
+    parse_context.add_reference("WebhookEvent", ParsedData::Enum(webhook_event));
 
     parse_context.finish_parsing();
 
@@ -111,7 +155,7 @@ impl Codegen {
       tags: parse_context.get_tags(),
       apis: parse_context.get_apis(),
       types: parse_context.get_references(),
-      webhooks: parse_context.get_webhooks(),
+      webhooks: parse_context.get_webhook_references(),
     }
   }
 
@@ -230,7 +274,7 @@ impl Codegen {
       webhooks_module.add_type(type_);
     }
 
-    type_entry_module.add_module("webhooks");
+    type_entry_module.add_module_with_exports("webhooks", false);
 
     writer.add_file(webhooks_module);
 

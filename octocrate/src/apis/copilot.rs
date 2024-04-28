@@ -30,11 +30,11 @@ impl GitHubCopilotAPI {
   pub fn get_copilot_organization_details(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), CopilotBusinessOrganizationDetails> {
+  ) -> Request<(), (), CopilotOrganizationDetails> {
     let org = org.into();
     let url = format!("/orgs/{org}/copilot/billing");
 
-    Request::<(), (), CopilotBusinessOrganizationDetails>::builder(&self.config)
+    Request::<(), (), CopilotOrganizationDetails>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -209,12 +209,12 @@ impl GitHubCopilotAPI {
     &self,
     org: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<(), (), CopilotBusinessSeatDetail> {
+  ) -> Request<(), (), CopilotSeatDetails> {
     let org = org.into();
     let username = username.into();
     let url = format!("/orgs/{org}/members/{username}/copilot");
 
-    Request::<(), (), CopilotBusinessSeatDetail>::builder(&self.config)
+    Request::<(), (), CopilotSeatDetails>::builder(&self.config)
       .get(url)
       .build()
   }

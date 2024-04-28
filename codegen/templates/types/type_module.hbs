@@ -122,18 +122,5 @@ pub struct {{ name }} {
   {{/each}}
 }
 
-#[cfg(
-  any(
-    {{#each tags }}
-    feature = "{{ this }}",
-    {{/each}}
-  )
-)]
-impl {{ name }} {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 {{/each}}
 {{/if}}

@@ -39,11 +39,11 @@ impl GitHubInteractionsAPI {
   pub fn set_restrictions_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<InteractionRestrictions, (), InteractionLimits> {
+  ) -> Request<InteractionLimit, (), InteractionLimitResponse> {
     let org = org.into();
     let url = format!("/orgs/{org}/interaction-limits");
 
-    Request::<InteractionRestrictions, (), InteractionLimits>::builder(&self.config)
+    Request::<InteractionLimit, (), InteractionLimitResponse>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -90,12 +90,12 @@ impl GitHubInteractionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<InteractionRestrictions, (), InteractionLimits> {
+  ) -> Request<InteractionLimit, (), InteractionLimitResponse> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/interaction-limits");
 
-    Request::<InteractionRestrictions, (), InteractionLimits>::builder(&self.config)
+    Request::<InteractionLimit, (), InteractionLimitResponse>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -143,10 +143,10 @@ impl GitHubInteractionsAPI {
   /// *Documentation*: [https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories](https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories)
   pub fn set_restrictions_for_authenticated_user(
     &self,
-  ) -> Request<InteractionRestrictions, (), InteractionLimits> {
+  ) -> Request<InteractionLimit, (), InteractionLimitResponse> {
     let url = format!("/user/interaction-limits");
 
-    Request::<InteractionRestrictions, (), InteractionLimits>::builder(&self.config)
+    Request::<InteractionLimit, (), InteractionLimitResponse>::builder(&self.config)
       .put(url)
       .build()
   }

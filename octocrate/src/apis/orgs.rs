@@ -337,12 +337,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), (), WebhookConfiguration> {
+  ) -> Request<(), (), WebhookConfig> {
     let org = org.into();
     let hook_id = hook_id.into();
     let url = format!("/orgs/{org}/hooks/{hook_id}/config");
 
-    Request::<(), (), WebhookConfiguration>::builder(&self.config)
+    Request::<(), (), WebhookConfig>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -361,12 +361,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<OrgsUpdateWebhookConfigForOrgRequest, (), WebhookConfiguration> {
+  ) -> Request<OrgsUpdateWebhookConfigForOrgRequest, (), WebhookConfig> {
     let org = org.into();
     let hook_id = hook_id.into();
     let url = format!("/orgs/{org}/hooks/{hook_id}/config");
 
-    Request::<OrgsUpdateWebhookConfigForOrgRequest, (), WebhookConfiguration>::builder(&self.config)
+    Request::<OrgsUpdateWebhookConfigForOrgRequest, (), WebhookConfig>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -385,12 +385,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), OrgsListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray> {
+  ) -> Request<(), OrgsListWebhookDeliveriesQuery, HookDeliveryItemArray> {
     let org = org.into();
     let hook_id = hook_id.into();
     let url = format!("/orgs/{org}/hooks/{hook_id}/deliveries");
 
-    Request::<(), OrgsListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray>::builder(&self.config)
+    Request::<(), OrgsListWebhookDeliveriesQuery, HookDeliveryItemArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -410,13 +410,13 @@ impl GitHubOrgsAPI {
     org: impl Into<String>,
     hook_id: impl Into<i64>,
     delivery_id: impl Into<i64>,
-  ) -> Request<(), (), WebhookDelivery> {
+  ) -> Request<(), (), HookDelivery> {
     let org = org.into();
     let hook_id = hook_id.into();
     let delivery_id = delivery_id.into();
     let url = format!("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}");
 
-    Request::<(), (), WebhookDelivery>::builder(&self.config)
+    Request::<(), (), HookDelivery>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1115,21 +1115,14 @@ impl GitHubOrgsAPI {
   pub fn list_pat_grant_requests(
     &self,
     org: impl Into<String>,
-  ) -> Request<
-    (),
-    OrgsListPatGrantRequestsQuery,
-    SimpleOrganizationProgrammaticAccessGrantRequestArray,
-  > {
+  ) -> Request<(), OrgsListPatGrantRequestsQuery, OrganizationProgrammaticAccessGrantRequestArray>
+  {
     let org = org.into();
     let url = format!("/orgs/{org}/personal-access-token-requests");
 
-    Request::<
-      (),
-      OrgsListPatGrantRequestsQuery,
-      SimpleOrganizationProgrammaticAccessGrantRequestArray,
-    >::builder(&self.config)
-    .get(url)
-    .build()
+    Request::<(), OrgsListPatGrantRequestsQuery, OrganizationProgrammaticAccessGrantRequestArray>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Review requests to access organization resources with fine-grained personal access tokens**
@@ -1286,11 +1279,11 @@ impl GitHubOrgsAPI {
   pub fn get_all_custom_properties(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), OrganizationCustomPropertyArray> {
+  ) -> Request<(), (), OrgCustomPropertyArray> {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/schema");
 
-    Request::<(), (), OrganizationCustomPropertyArray>::builder(&self.config)
+    Request::<(), (), OrgCustomPropertyArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1307,13 +1300,15 @@ impl GitHubOrgsAPI {
   pub fn create_or_update_custom_properties(
     &self,
     org: impl Into<String>,
-  ) -> Request<OrgsCreateOrUpdateCustomPropertiesRequest, (), OrganizationCustomPropertyArray> {
+  ) -> Request<OrgsCreateOrUpdateCustomPropertiesRequest, (), OrgCustomPropertyArray> {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/schema");
 
-    Request::<OrgsCreateOrUpdateCustomPropertiesRequest, (), OrganizationCustomPropertyArray>::builder(&self.config)
-      .patch(url)
-      .build()
+    Request::<OrgsCreateOrUpdateCustomPropertiesRequest, (), OrgCustomPropertyArray>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
   }
 
   /// **Get a custom property for an organization**
@@ -1326,12 +1321,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     custom_property_name: impl Into<String>,
-  ) -> Request<(), (), OrganizationCustomProperty> {
+  ) -> Request<(), (), OrgCustomProperty> {
     let org = org.into();
     let custom_property_name = custom_property_name.into();
     let url = format!("/orgs/{org}/properties/schema/{custom_property_name}");
 
-    Request::<(), (), OrganizationCustomProperty>::builder(&self.config)
+    Request::<(), (), OrgCustomProperty>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1349,16 +1344,14 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     custom_property_name: impl Into<String>,
-  ) -> Request<OrgsCreateOrUpdateCustomPropertyRequest, (), OrganizationCustomProperty> {
+  ) -> Request<OrgsCreateOrUpdateCustomPropertyRequest, (), OrgCustomProperty> {
     let org = org.into();
     let custom_property_name = custom_property_name.into();
     let url = format!("/orgs/{org}/properties/schema/{custom_property_name}");
 
-    Request::<OrgsCreateOrUpdateCustomPropertyRequest, (), OrganizationCustomProperty>::builder(
-      &self.config,
-    )
-    .put(url)
-    .build()
+    Request::<OrgsCreateOrUpdateCustomPropertyRequest, (), OrgCustomProperty>::builder(&self.config)
+      .put(url)
+      .build()
   }
 
   /// **Remove a custom property for an organization**
@@ -1393,21 +1386,14 @@ impl GitHubOrgsAPI {
   pub fn list_custom_properties_values_for_repos(
     &self,
     org: impl Into<String>,
-  ) -> Request<
-    (),
-    OrgsListCustomPropertiesValuesForReposQuery,
-    OrganizationRepositoryCustomPropertyValuesArray,
-  > {
+  ) -> Request<(), OrgsListCustomPropertiesValuesForReposQuery, OrgRepoCustomPropertyValuesArray>
+  {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/values");
 
-    Request::<
-      (),
-      OrgsListCustomPropertiesValuesForReposQuery,
-      OrganizationRepositoryCustomPropertyValuesArray,
-    >::builder(&self.config)
-    .get(url)
-    .build()
+    Request::<(), OrgsListCustomPropertiesValuesForReposQuery, OrgRepoCustomPropertyValuesArray>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Create or update custom property values for organization repositories**

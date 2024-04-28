@@ -3,9 +3,15 @@ use crate::{common::render_template, writer::format_code};
 use serde::Serialize;
 
 #[derive(Serialize)]
+pub struct Module {
+  name: String,
+  exports_all: bool,
+}
+
+#[derive(Serialize)]
 pub struct TypeEntryModule {
   name: String,
-  modules: Vec<String>,
+  modules: Vec<Module>,
 }
 
 impl TypeEntryModule {
@@ -17,7 +23,17 @@ impl TypeEntryModule {
   }
 
   pub fn add_module(&mut self, module_name: impl Into<String>) {
-    self.modules.push(module_name.into());
+    self.modules.push(Module {
+      name: module_name.into(),
+      exports_all: true,
+    });
+  }
+
+  pub fn add_module_with_exports(&mut self, module_name: impl Into<String>, exports_all: bool) {
+    self.modules.push(Module {
+      name: module_name.into(),
+      exports_all,
+    });
   }
 }
 
@@ -43,12 +59,31 @@ mod tests {
 
   #[test]
   fn test_render() {
-    let template = include_str!("../../../templates/types/entry_module.hbs");
+    let template = r#"
+  {{#each modules}}
+  {{#if exports_all}}
+  mod {{ name }};
+
+  pub use {{ name }}::*;
+  {{else}}
+  pub mod {{ name }};
+  {{/if}}
+  {{/each}}
+    "#;
 
     let mut module = TypeEntryModule::new("mod.rs");
 
     module.add_module("test_module");
+    module.add_module_with_exports("test_module_2", false);
 
-    let _rendered = render_template(template, &module);
+    let rendered = render_template(template, &module);
+
+    let expected = r#"
+  mod test_module;
+
+  pub use test_module::*;
+  pub mod test_module_2;
+    "#;
+    assert_eq!(rendered, expected);
   }
 }

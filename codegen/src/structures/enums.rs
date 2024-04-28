@@ -62,13 +62,13 @@ impl Enum {
 }
 
 impl EnumField {
-  pub fn new(name: &String) -> Self {
+  pub fn new(name: &str) -> Self {
     let normalized_name = RenameRule::VariantName.apply(name);
 
     if normalized_name != *name {
       Self {
         name: normalized_name,
-        rename: Some(name.clone()),
+        rename: Some(name.to_owned()),
         type_name: None,
         description: None,
         reference: None,

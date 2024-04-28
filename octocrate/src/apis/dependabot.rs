@@ -110,12 +110,12 @@ impl GitHubDependabotAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), DependabotSecretForAnOrganization> {
+  ) -> Request<(), (), OrganizationDependabotSecret> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}");
 
-    Request::<(), (), DependabotSecretForAnOrganization>::builder(&self.config)
+    Request::<(), (), OrganizationDependabotSecret>::builder(&self.config)
       .get(url)
       .build()
   }

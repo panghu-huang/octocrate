@@ -21,6 +21,7 @@ async fn create_issue_comment() {
     body: "Hello, world! (Created by octocrate)".to_string(),
   };
 
+  // Create a comment on the issue
   let issue_comment = api
     .issues
     .create_comment("panghu-huang", "octocrate", 1)
@@ -48,4 +49,12 @@ async fn create_issue_comment() {
     "Hello, world! (Created by octocrate)"
   );
   assert_eq!(first_comment.author_association, AuthorAssociation::Owner);
+
+  // Delete the comment
+  api
+    .issues
+    .delete_comment("panghu-huang", "octocrate", first_comment.id)
+    .send()
+    .await
+    .unwrap();
 }

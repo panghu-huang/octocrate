@@ -24,11 +24,11 @@ impl GitHubOidcAPI {
   pub fn get_oidc_custom_sub_template_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), ActionsOidcSubjectCustomization> {
+  ) -> Request<(), (), OidcCustomSub> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/oidc/customization/sub");
 
-    Request::<(), (), ActionsOidcSubjectCustomization>::builder(&self.config)
+    Request::<(), (), OidcCustomSub>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -43,11 +43,11 @@ impl GitHubOidcAPI {
   pub fn update_oidc_custom_sub_template_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<ActionsOidcSubjectCustomization, (), EmptyObject> {
+  ) -> Request<OidcCustomSub, (), EmptyObject> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/oidc/customization/sub");
 
-    Request::<ActionsOidcSubjectCustomization, (), EmptyObject>::builder(&self.config)
+    Request::<OidcCustomSub, (), EmptyObject>::builder(&self.config)
       .put(url)
       .build()
   }

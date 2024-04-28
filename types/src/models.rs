@@ -19,19 +19,17 @@ use typed_builder::TypedBuilder;
   feature = "codespaces",
   feature = "copilot",
   feature = "dependabot",
-  feature = "packages",
   feature = "orgs",
   feature = "migrations",
+  feature = "packages",
   feature = "repos",
   feature = "teams",
-  feature = "checks",
   feature = "dependency_graph",
   feature = "git",
   feature = "issues",
   feature = "pulls",
   feature = "search",
   feature = "users",
-  feature = "webhooks",
 ))]
 pub type StringArray = Vec<String>;
 #[cfg(any(feature = "full", feature = "security_advisories",))]
@@ -42,7 +40,7 @@ pub type GlobalAdvisoryArray = Vec<GlobalAdvisory>;
   feature = "orgs",
   feature = "repos",
 ))]
-pub type SimpleWebhookDeliveryArray = Vec<SimpleWebhookDelivery>;
+pub type HookDeliveryItemArray = Vec<HookDeliveryItem>;
 #[cfg(any(feature = "full", feature = "apps",))]
 pub type IntegrationInstallationRequestArray = Vec<IntegrationInstallationRequest>;
 #[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
@@ -56,7 +54,6 @@ pub type InstallationArray = Vec<Installation>;
   feature = "orgs",
   feature = "repos",
   feature = "search",
-  feature = "webhooks",
 ))]
 pub type I64Array = Vec<i64>;
 #[cfg(any(
@@ -80,15 +77,15 @@ pub type SimpleClassroomArray = Vec<SimpleClassroom>;
 pub type SimpleClassroomAssignmentArray = Vec<SimpleClassroomAssignment>;
 #[cfg(any(feature = "full", feature = "codes_of_conduct",))]
 pub type CodeOfConductArray = Vec<CodeOfConduct>;
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 pub type DependabotAlertSecurityAdvisoryCwesArray = Vec<DependabotAlertSecurityAdvisoryCwes>;
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 pub type DependabotAlertSecurityAdvisoryIdentifiersArray =
   Vec<DependabotAlertSecurityAdvisoryIdentifiers>;
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 pub type DependabotAlertSecurityAdvisoryReferencesArray =
   Vec<DependabotAlertSecurityAdvisoryReferences>;
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 pub type DependabotAlertSecurityVulnerabilityArray = Vec<DependabotAlertSecurityVulnerability>;
 #[cfg(any(feature = "full", feature = "dependabot",))]
 pub type DependabotAlertWithRepositoryArray = Vec<DependabotAlertWithRepository>;
@@ -100,12 +97,7 @@ pub type EventPayloadPagesArray = Vec<EventPayloadPages>;
 pub type EventArray = Vec<Event>;
 #[cfg(any(feature = "full", feature = "activity",))]
 pub type LinkWithTypeArray = Vec<LinkWithType>;
-#[cfg(any(
-  feature = "full",
-  feature = "gists",
-  feature = "users",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "gists", feature = "users",))]
 pub type SerdeJsonValueArray = Vec<serde_json::Value>;
 #[cfg(any(feature = "full", feature = "gists",))]
 pub type BaseGistArray = Vec<BaseGist>;
@@ -130,13 +122,13 @@ pub type OrganizationSimpleArray = Vec<OrganizationSimple>;
 #[cfg(any(feature = "full", feature = "actions",))]
 pub type ActionsCacheUsageByRepositoryArray = Vec<ActionsCacheUsageByRepository>;
 #[cfg(any(feature = "full", feature = "actions",))]
-pub type SelfHostedRunnerLabelArray = Vec<SelfHostedRunnerLabel>;
+pub type RunnerLabelArray = Vec<RunnerLabel>;
 #[cfg(any(feature = "full", feature = "actions",))]
-pub type SelfHostedRunnersArray = Vec<SelfHostedRunners>;
+pub type RunnerArray = Vec<Runner>;
 #[cfg(any(feature = "full", feature = "actions",))]
 pub type RunnerApplicationArray = Vec<RunnerApplication>;
 #[cfg(any(feature = "full", feature = "actions",))]
-pub type ActionsSecretForAnOrganizationArray = Vec<ActionsSecretForAnOrganization>;
+pub type OrganizationActionsSecretArray = Vec<OrganizationActionsSecret>;
 #[cfg(any(
   feature = "full",
   feature = "actions",
@@ -150,7 +142,7 @@ pub type ActionsSecretForAnOrganizationArray = Vec<ActionsSecretForAnOrganizatio
 ))]
 pub type MinimalRepositoryArray = Vec<MinimalRepository>;
 #[cfg(any(feature = "full", feature = "actions",))]
-pub type ActionsVariableForAnOrganizationArray = Vec<ActionsVariableForAnOrganization>;
+pub type OrganizationActionsVariableArray = Vec<OrganizationActionsVariable>;
 #[cfg(any(
   feature = "full",
   feature = "orgs",
@@ -168,11 +160,11 @@ pub type CodeScanningOrganizationAlertItemsArray = Vec<CodeScanningOrganizationA
 #[cfg(any(feature = "full", feature = "codespaces",))]
 pub type CodespaceArray = Vec<Codespace>;
 #[cfg(any(feature = "full", feature = "codespaces",))]
-pub type CodespacesSecretArray = Vec<CodespacesSecret>;
+pub type CodespacesOrgSecretArray = Vec<CodespacesOrgSecret>;
 #[cfg(any(feature = "full", feature = "copilot",))]
-pub type CopilotBusinessSeatDetailArray = Vec<CopilotBusinessSeatDetail>;
+pub type CopilotSeatDetailsArray = Vec<CopilotSeatDetails>;
 #[cfg(any(feature = "full", feature = "dependabot",))]
-pub type DependabotSecretForAnOrganizationArray = Vec<DependabotSecretForAnOrganization>;
+pub type OrganizationDependabotSecretArray = Vec<OrganizationDependabotSecret>;
 #[cfg(any(feature = "full", feature = "packages",))]
 pub type PackageArray = Vec<Package>;
 #[cfg(any(feature = "full", feature = "orgs", feature = "teams",))]
@@ -185,7 +177,6 @@ pub type OrgHookArray = Vec<OrgHook>;
   feature = "teams",
   feature = "repos",
   feature = "pulls",
-  feature = "webhooks",
 ))]
 pub type TeamArray = Vec<Team>;
 #[cfg(any(feature = "full", feature = "migrations",))]
@@ -203,34 +194,30 @@ pub type OrganizationRoleArray = Vec<OrganizationRole>;
 #[cfg(any(feature = "full", feature = "packages",))]
 pub type PackageVersionArray = Vec<PackageVersion>;
 #[cfg(any(feature = "full", feature = "orgs",))]
-pub type SimpleOrganizationProgrammaticAccessGrantRequestArray =
-  Vec<SimpleOrganizationProgrammaticAccessGrantRequest>;
+pub type OrganizationProgrammaticAccessGrantRequestArray =
+  Vec<OrganizationProgrammaticAccessGrantRequest>;
 #[cfg(any(feature = "full", feature = "orgs",))]
 pub type OrganizationProgrammaticAccessGrantArray = Vec<OrganizationProgrammaticAccessGrant>;
 #[cfg(any(feature = "full", feature = "projects",))]
 pub type ProjectArray = Vec<Project>;
 #[cfg(any(feature = "full", feature = "orgs",))]
-pub type OrganizationCustomPropertyArray = Vec<OrganizationCustomProperty>;
-#[cfg(any(
-  feature = "full",
-  feature = "orgs",
-  feature = "repos",
-  feature = "webhooks",
-))]
+pub type OrgCustomPropertyArray = Vec<OrgCustomProperty>;
+#[cfg(any(feature = "full", feature = "orgs", feature = "repos",))]
 pub type CustomPropertyValueArray = Vec<CustomPropertyValue>;
 #[cfg(any(feature = "full", feature = "orgs",))]
-pub type OrganizationRepositoryCustomPropertyValuesArray =
-  Vec<OrganizationRepositoryCustomPropertyValues>;
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+pub type OrgRepoCustomPropertyValuesArray = Vec<OrgRepoCustomPropertyValues>;
+#[cfg(any(feature = "full", feature = "repos",))]
 pub type RepositoryRulesetBypassActorArray = Vec<RepositoryRulesetBypassActor>;
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-pub type RepositoryRulesetPropertyTargetingDefinitionArray =
-  Vec<RepositoryRulesetPropertyTargetingDefinition>;
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-pub type StatusCheckConfigurationArray = Vec<StatusCheckConfiguration>;
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-pub type WorkflowFileReferenceArray = Vec<WorkflowFileReference>;
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
+pub type RepositoryRulesetConditionsRepositoryPropertySpecArray =
+  Vec<RepositoryRulesetConditionsRepositoryPropertySpec>;
+#[cfg(any(feature = "full", feature = "repos",))]
+pub type RepositoryRuleParamsStatusCheckConfigurationArray =
+  Vec<RepositoryRuleParamsStatusCheckConfiguration>;
+#[cfg(any(feature = "full", feature = "repos",))]
+pub type RepositoryRuleParamsWorkflowFileReferenceArray =
+  Vec<RepositoryRuleParamsWorkflowFileReference>;
+#[cfg(any(feature = "full", feature = "repos",))]
 pub type RepositoryRuleArray = Vec<RepositoryRule>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type RepositoryRulesetArray = Vec<RepositoryRuleset>;
@@ -238,11 +225,7 @@ pub type RepositoryRulesetArray = Vec<RepositoryRuleset>;
 pub type RuleSuites = Vec<RuleSuitesItem>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type RuleSuiteRuleEvaluationsArray = Vec<RuleSuiteRuleEvaluations>;
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 pub type RepositoryAdvisoryIdentifiersArray = Vec<RepositoryAdvisoryIdentifiers>;
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 pub type RepositoryAdvisoryArray = Vec<RepositoryAdvisory>;
@@ -263,7 +246,7 @@ pub type ProjectColumnArray = Vec<ProjectColumn>;
 #[cfg(any(feature = "full", feature = "actions",))]
 pub type ArtifactArray = Vec<Artifact>;
 #[cfg(any(feature = "full", feature = "actions",))]
-pub type RepositoryActionsCachesActionsCachesArray = Vec<RepositoryActionsCachesActionsCaches>;
+pub type ActionsCacheListActionsCachesArray = Vec<ActionsCacheListActionsCaches>;
 #[cfg(any(feature = "full", feature = "actions",))]
 pub type JobStepsArray = Vec<JobSteps>;
 #[cfg(any(feature = "full", feature = "actions",))]
@@ -273,9 +256,9 @@ pub type ActionsVariableArray = Vec<ActionsVariable>;
 #[cfg(any(feature = "full", feature = "actions",))]
 pub type WorkflowRunArray = Vec<WorkflowRun>;
 #[cfg(any(feature = "full", feature = "actions",))]
-pub type EnvironmentApprovalEnvironmentsArray = Vec<EnvironmentApprovalEnvironments>;
+pub type EnvironmentApprovalsEnvironmentsArray = Vec<EnvironmentApprovalsEnvironments>;
 #[cfg(any(feature = "full", feature = "actions",))]
-pub type EnvironmentApprovalArray = Vec<EnvironmentApproval>;
+pub type EnvironmentApprovalsArray = Vec<EnvironmentApprovals>;
 #[cfg(any(feature = "full", feature = "actions",))]
 pub type JobArray = Vec<Job>;
 #[cfg(any(feature = "full", feature = "actions",))]
@@ -295,9 +278,9 @@ pub type WorkflowArray = Vec<Workflow>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type ActivityArray = Vec<Activity>;
 #[cfg(any(feature = "full", feature = "repos",))]
-pub type AutolinkReferenceArray = Vec<AutolinkReference>;
+pub type AutolinkArray = Vec<Autolink>;
 #[cfg(any(feature = "full", feature = "repos",))]
-pub type GitHubAppArray = Vec<GitHubApp>;
+pub type IntegrationArray = Vec<Integration>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type ProtectedBranchRequiredStatusCheckChecksArray =
   Vec<ProtectedBranchRequiredStatusCheckChecks>;
@@ -340,7 +323,7 @@ pub type CodeScanningAlertInstanceArray = Vec<CodeScanningAlertInstance>;
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 pub type CodeScanningAnalysisArray = Vec<CodeScanningAnalysis>;
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-pub type CodeQLDatabaseArray = Vec<CodeQLDatabase>;
+pub type CodeScanningCodeqlDatabaseArray = Vec<CodeScanningCodeqlDatabase>;
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 pub type CodeScanningDefaultSetupLanguagesArray = Vec<CodeScanningDefaultSetupLanguages>;
 #[cfg(any(feature = "full", feature = "code_scanning",))]
@@ -353,20 +336,17 @@ pub type CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDevc
   Vec<CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainers>;
 #[cfg(any(feature = "full", feature = "codespaces",))]
 pub type CodespaceMachineArray = Vec<CodespaceMachine>;
+#[cfg(any(feature = "full", feature = "codespaces",))]
+pub type RepoCodespacesSecretArray = Vec<RepoCodespacesSecret>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type CollaboratorArray = Vec<Collaborator>;
 #[cfg(any(feature = "full", feature = "repos", feature = "issues",))]
 pub type CommitCommentArray = Vec<CommitComment>;
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 pub type CommitArray = Vec<Commit>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type BranchShortArray = Vec<BranchShort>;
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 pub type PullRequestSimpleLabelsArray = Vec<PullRequestSimpleLabels>;
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 pub type PullRequestSimpleArray = Vec<PullRequestSimple>;
@@ -391,10 +371,10 @@ pub type DependencyGraphDiffItemVulnerabilitiesArray = Vec<DependencyGraphDiffIt
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
 pub type DependencyGraphDiff = Vec<DependencyGraphDiffItem>;
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
-pub type DependencyGraphSpdxSBOMSbomPackagesExternalRefsArray =
-  Vec<DependencyGraphSpdxSBOMSbomPackagesExternalRefs>;
+pub type DependencyGraphSpdxSbomSbomPackagesExternalRefsArray =
+  Vec<DependencyGraphSpdxSbomSbomPackagesExternalRefs>;
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
-pub type DependencyGraphSpdxSBOMSbomPackagesArray = Vec<DependencyGraphSpdxSBOMSbomPackages>;
+pub type DependencyGraphSpdxSbomSbomPackagesArray = Vec<DependencyGraphSpdxSbomSbomPackages>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type DeploymentStatusArray = Vec<DeploymentStatus>;
 #[cfg(any(feature = "full", feature = "repos",))]
@@ -409,17 +389,17 @@ pub type DeploymentBranchPolicyArray = Vec<DeploymentBranchPolicy>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type DeploymentProtectionRuleArray = Vec<DeploymentProtectionRule>;
 #[cfg(any(feature = "full", feature = "repos",))]
-pub type CustomDeploymentProtectionRuleAppArray = Vec<CustomDeploymentProtectionRuleApp>;
+pub type CustomDeploymentRuleAppArray = Vec<CustomDeploymentRuleApp>;
 #[cfg(any(feature = "full", feature = "git",))]
 pub type GitCommitParentsArray = Vec<GitCommitParents>;
 #[cfg(any(feature = "full", feature = "git",))]
-pub type GitReferenceArray = Vec<GitReference>;
+pub type GitRefArray = Vec<GitRef>;
 #[cfg(any(feature = "full", feature = "git",))]
 pub type GitCreateTreeRequestTreeArray = Vec<GitCreateTreeRequestTree>;
 #[cfg(any(feature = "full", feature = "git",))]
 pub type GitTreeTreeArray = Vec<GitTreeTree>;
 #[cfg(any(feature = "full", feature = "repos",))]
-pub type WebhookArray = Vec<Webhook>;
+pub type HookArray = Vec<Hook>;
 #[cfg(any(feature = "full", feature = "migrations",))]
 pub type ImportProjectChoicesArray = Vec<ImportProjectChoices>;
 #[cfg(any(feature = "full", feature = "migrations",))]
@@ -434,7 +414,7 @@ pub type IssueCommentArray = Vec<IssueComment>;
 pub type IssueEventArray = Vec<IssueEvent>;
 #[cfg(any(feature = "full", feature = "issues",))]
 pub type IssueEventForIssueArray = Vec<IssueEventForIssue>;
-#[cfg(any(feature = "full", feature = "issues", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "issues",))]
 pub type LabelArray = Vec<Label>;
 #[cfg(any(feature = "full", feature = "issues",))]
 pub type IssuesAddLabelsRequestItem3LabelsArray = Vec<IssuesAddLabelsRequestItem3Labels>;
@@ -446,33 +426,30 @@ pub type IssuesSetLabelsRequestItem3LabelsArray = Vec<IssuesSetLabelsRequestItem
 pub type IssuesSetLabelsRequestItem4Array = Vec<IssuesSetLabelsRequestItem4>;
 #[cfg(any(feature = "full", feature = "issues",))]
 pub type TimelineCommittedEventParentsArray = Vec<TimelineCommittedEventParents>;
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 pub type PullRequestReviewCommentArray = Vec<PullRequestReviewComment>;
 #[cfg(any(feature = "full", feature = "issues",))]
-pub type TimelineEventArray = Vec<TimelineEvent>;
+pub type TimelineIssueEventsArray = Vec<TimelineIssueEvents>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type DeployKeyArray = Vec<DeployKey>;
 #[cfg(any(feature = "full", feature = "issues",))]
 pub type MilestoneArray = Vec<Milestone>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type PageBuildArray = Vec<PageBuild>;
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 pub type PullRequestLabelsArray = Vec<PullRequestLabels>;
 #[cfg(any(feature = "full", feature = "pulls",))]
 pub type PullRequestReviewArray = Vec<PullRequestReview>;
 #[cfg(any(feature = "full", feature = "pulls",))]
 pub type PullsCreateReviewRequestCommentsArray = Vec<PullsCreateReviewRequestComments>;
 #[cfg(any(feature = "full", feature = "pulls",))]
-pub type LegacyReviewCommentArray = Vec<LegacyReviewComment>;
+pub type ReviewCommentArray = Vec<ReviewComment>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type ReleaseAssetArray = Vec<ReleaseAsset>;
 #[cfg(any(feature = "full", feature = "repos",))]
 pub type ReleaseArray = Vec<Release>;
+#[cfg(any(feature = "full", feature = "repos",))]
+pub type RepositoryRuleDetailedArray = Vec<RepositoryRuleDetailed>;
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 pub type SecretScanningAlertArray = Vec<SecretScanningAlert>;
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
@@ -526,6 +503,8 @@ pub type TopicSearchResultItemArray = Vec<TopicSearchResultItem>;
 #[cfg(any(feature = "full", feature = "search",))]
 pub type UserSearchResultItemArray = Vec<UserSearchResultItem>;
 #[cfg(any(feature = "full", feature = "codespaces",))]
+pub type CodespacesSecretArray = Vec<CodespacesSecret>;
+#[cfg(any(feature = "full", feature = "codespaces",))]
 pub type StringOrIntegerArray = Vec<StringOrInteger>;
 #[cfg(any(feature = "full", feature = "users",))]
 pub type EmailArray = Vec<Email>;
@@ -551,7 +530,7 @@ pub type SocialAccountArray = Vec<SocialAccount>;
 #[cfg(any(feature = "full", feature = "users",))]
 pub type SshSigningKeyArray = Vec<SshSigningKey>;
 #[cfg(any(feature = "full", feature = "teams",))]
-pub type FullTeamArray = Vec<FullTeam>;
+pub type TeamFullArray = Vec<TeamFull>;
 #[cfg(any(feature = "full", feature = "users",))]
 pub type HovercardContextsArray = Vec<HovercardContexts>;
 #[cfg(any(feature = "full", feature = "users",))]
@@ -648,11 +627,7 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQuerySort {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The type of credit the user is receiving.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecurityAdvisoryCreditTypes {
@@ -678,11 +653,7 @@ pub enum SecurityAdvisoryCreditTypes {
   Other,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 impl ToString for SecurityAdvisoryCreditTypes {
   fn to_string(&self) -> String {
     match self {
@@ -772,11 +743,7 @@ impl ToString for GlobalAdvisoryType {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The package's language or package management ecosystem.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecurityAdvisoryEcosystems {
@@ -808,11 +775,7 @@ pub enum SecurityAdvisoryEcosystems {
   Swift,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 impl ToString for SecurityAdvisoryEcosystems {
   fn to_string(&self) -> String {
     match self {
@@ -838,7 +801,7 @@ impl ToString for SecurityAdvisoryEcosystems {
 #[serde(untagged)]
 pub enum AppsCreateFromManifestResponse {
   /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
-  GitHubApp(GitHubApp),
+  Integration(Integration),
   AppsCreateFromManifestResponseItem2(AppsCreateFromManifestResponseItem2),
 }
 
@@ -852,12 +815,7 @@ pub enum IntegrationInstallationRequestAccount {
   Enterprise(Enterprise),
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum InstallationAccount {
@@ -867,12 +825,7 @@ pub enum InstallationAccount {
   Enterprise(Enterprise),
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 /// The level of permission to grant the access token for custom property management.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum AppPermissionsOrganizationCustomProperties {
@@ -884,12 +837,7 @@ pub enum AppPermissionsOrganizationCustomProperties {
   Admin,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 impl ToString for AppPermissionsOrganizationCustomProperties {
   fn to_string(&self) -> String {
     match self {
@@ -900,12 +848,7 @@ impl ToString for AppPermissionsOrganizationCustomProperties {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 /// The level of permission to grant the access token to manage organization projects and projects beta (where available).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum AppPermissionsOrganizationProjects {
@@ -917,12 +860,7 @@ pub enum AppPermissionsOrganizationProjects {
   Admin,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 impl ToString for AppPermissionsOrganizationProjects {
   fn to_string(&self) -> String {
     match self {
@@ -933,12 +871,7 @@ impl ToString for AppPermissionsOrganizationProjects {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 /// The level of permission to grant the access token to manage repository projects, columns, and cards.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum AppPermissionsRepositoryProjects {
@@ -950,12 +883,7 @@ pub enum AppPermissionsRepositoryProjects {
   Admin,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 impl ToString for AppPermissionsRepositoryProjects {
   fn to_string(&self) -> String {
     match self {
@@ -966,12 +894,7 @@ impl ToString for AppPermissionsRepositoryProjects {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 /// Describe whether all repositories have been selected or there's a selection involved
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum InstallationRepositorySelection {
@@ -981,12 +904,7 @@ pub enum InstallationRepositorySelection {
   Selected,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 impl ToString for InstallationRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -1007,7 +925,7 @@ impl ToString for InstallationRepositorySelection {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// The default value for a merge commit message.
 ///
@@ -1035,7 +953,7 @@ pub enum RepositoryMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 impl ToString for RepositoryMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -1058,7 +976,7 @@ impl ToString for RepositoryMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// The default value for a merge commit title.
 ///
@@ -1083,7 +1001,7 @@ pub enum RepositoryMergeCommitTitle {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 impl ToString for RepositoryMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -1105,7 +1023,7 @@ impl ToString for RepositoryMergeCommitTitle {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// The default value for a squash merge commit message:
 ///
@@ -1133,7 +1051,7 @@ pub enum RepositorySquashMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 impl ToString for RepositorySquashMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -1156,7 +1074,7 @@ impl ToString for RepositorySquashMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// The default value for a squash merge commit title:
 ///
@@ -1181,7 +1099,7 @@ pub enum RepositorySquashMergeCommitTitle {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 impl ToString for RepositorySquashMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -1377,7 +1295,7 @@ impl ToString for DependabotAlertWithRepositoryDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// The type of advisory identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertSecurityAdvisoryIdentifiersType {
@@ -1387,7 +1305,7 @@ pub enum DependabotAlertSecurityAdvisoryIdentifiersType {
   Ghsa,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
   fn to_string(&self) -> String {
     match self {
@@ -1397,7 +1315,7 @@ impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertSecurityAdvisorySeverity {
@@ -1411,7 +1329,7 @@ pub enum DependabotAlertSecurityAdvisorySeverity {
   Critical,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 impl ToString for DependabotAlertSecurityAdvisorySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1423,7 +1341,7 @@ impl ToString for DependabotAlertSecurityAdvisorySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// The severity of the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertSecurityVulnerabilitySeverity {
@@ -1437,7 +1355,7 @@ pub enum DependabotAlertSecurityVulnerabilitySeverity {
   Critical,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 impl ToString for DependabotAlertSecurityVulnerabilitySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1609,7 +1527,6 @@ impl ToString for OrganizationSecretScanningAlertValidity {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhooks",
 ))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -1640,7 +1557,6 @@ pub enum AuthorAssociation {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhooks",
 ))]
 impl ToString for AuthorAssociation {
   fn to_string(&self) -> String {
@@ -1664,7 +1580,6 @@ impl ToString for AuthorAssociation {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhooks",
 ))]
 /// The state of the milestone.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -1682,7 +1597,6 @@ pub enum MilestoneState {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhooks",
 ))]
 impl ToString for MilestoneState {
   fn to_string(&self) -> String {
@@ -1693,12 +1607,7 @@ impl ToString for MilestoneState {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
 /// The reason for the current state
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum IssueStateReason {
@@ -1710,12 +1619,7 @@ pub enum IssueStateReason {
   NotPlanned,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
 impl ToString for IssueStateReason {
   fn to_string(&self) -> String {
     match self {
@@ -1859,7 +1763,7 @@ impl ToString for MarkdownRenderRequestMode {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum MarketplaceListingPlanPriceModel {
   #[serde(rename = "FREE")]
@@ -1870,7 +1774,7 @@ pub enum MarketplaceListingPlanPriceModel {
   PerUnit,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "apps",))]
 impl ToString for MarketplaceListingPlanPriceModel {
   fn to_string(&self) -> String {
     match self {
@@ -1971,7 +1875,6 @@ impl ToString for AppsListAccountsForPlanStubbedQueryDirection {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecurityAndAnalysisAdvancedSecurityStatus {
@@ -1995,7 +1898,6 @@ pub enum SecurityAndAnalysisAdvancedSecurityStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
 ))]
 impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
   fn to_string(&self) -> String {
@@ -2020,7 +1922,6 @@ impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
 ))]
 /// The enablement status of Dependabot security updates for the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -2045,7 +1946,6 @@ pub enum SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
 ))]
 impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   fn to_string(&self) -> String {
@@ -2070,7 +1970,6 @@ impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecurityAndAnalysisSecretScanningStatus {
@@ -2094,7 +1993,6 @@ pub enum SecurityAndAnalysisSecretScanningStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
 ))]
 impl ToString for SecurityAndAnalysisSecretScanningStatus {
   fn to_string(&self) -> String {
@@ -2119,7 +2017,6 @@ impl ToString for SecurityAndAnalysisSecretScanningStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
@@ -2143,7 +2040,6 @@ pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
 ))]
 impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
   fn to_string(&self) -> String {
@@ -2253,7 +2149,7 @@ impl ToString for EnabledRepositories {
 #[cfg(any(feature = "full", feature = "actions",))]
 /// The type of label. Read-only labels are applied automatically when the runner is configured.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum SelfHostedRunnerLabelType {
+pub enum RunnerLabelType {
   #[serde(rename = "read-only")]
   ReadOnly,
   #[serde(rename = "custom")]
@@ -2261,11 +2157,11 @@ pub enum SelfHostedRunnerLabelType {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ToString for SelfHostedRunnerLabelType {
+impl ToString for RunnerLabelType {
   fn to_string(&self) -> String {
     match self {
-      SelfHostedRunnerLabelType::ReadOnly => "read-only".to_string(),
-      SelfHostedRunnerLabelType::Custom => "custom".to_string(),
+      RunnerLabelType::ReadOnly => "read-only".to_string(),
+      RunnerLabelType::Custom => "custom".to_string(),
     }
   }
 }
@@ -2293,7 +2189,7 @@ impl ToString for AuthenticationTokenRepositorySelection {
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Visibility of a secret
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum ActionsSecretForAnOrganizationVisibility {
+pub enum OrganizationActionsSecretVisibility {
   #[serde(rename = "all")]
   All,
   #[serde(rename = "private")]
@@ -2303,12 +2199,12 @@ pub enum ActionsSecretForAnOrganizationVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ToString for ActionsSecretForAnOrganizationVisibility {
+impl ToString for OrganizationActionsSecretVisibility {
   fn to_string(&self) -> String {
     match self {
-      ActionsSecretForAnOrganizationVisibility::All => "all".to_string(),
-      ActionsSecretForAnOrganizationVisibility::Private => "private".to_string(),
-      ActionsSecretForAnOrganizationVisibility::Selected => "selected".to_string(),
+      OrganizationActionsSecretVisibility::All => "all".to_string(),
+      OrganizationActionsSecretVisibility::Private => "private".to_string(),
+      OrganizationActionsSecretVisibility::Selected => "selected".to_string(),
     }
   }
 }
@@ -2339,7 +2235,7 @@ impl ToString for ActionsCreateOrUpdateOrgSecretRequestVisibility {
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Visibility of a variable
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum ActionsVariableForAnOrganizationVisibility {
+pub enum OrganizationActionsVariableVisibility {
   #[serde(rename = "all")]
   All,
   #[serde(rename = "private")]
@@ -2349,12 +2245,12 @@ pub enum ActionsVariableForAnOrganizationVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ToString for ActionsVariableForAnOrganizationVisibility {
+impl ToString for OrganizationActionsVariableVisibility {
   fn to_string(&self) -> String {
     match self {
-      ActionsVariableForAnOrganizationVisibility::All => "all".to_string(),
-      ActionsVariableForAnOrganizationVisibility::Private => "private".to_string(),
-      ActionsVariableForAnOrganizationVisibility::Selected => "selected".to_string(),
+      OrganizationActionsVariableVisibility::All => "all".to_string(),
+      OrganizationActionsVariableVisibility::Private => "private".to_string(),
+      OrganizationActionsVariableVisibility::Selected => "selected".to_string(),
     }
   }
 }
@@ -2693,7 +2589,7 @@ impl ToString for CodespacesSetCodespacesAccessRequestVisibility {
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// The type of repositories in the organization that the secret is visible to
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum CodespacesSecretVisibility {
+pub enum CodespacesOrgSecretVisibility {
   #[serde(rename = "all")]
   All,
   #[serde(rename = "private")]
@@ -2703,12 +2599,12 @@ pub enum CodespacesSecretVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl ToString for CodespacesSecretVisibility {
+impl ToString for CodespacesOrgSecretVisibility {
   fn to_string(&self) -> String {
     match self {
-      CodespacesSecretVisibility::All => "all".to_string(),
-      CodespacesSecretVisibility::Private => "private".to_string(),
-      CodespacesSecretVisibility::Selected => "selected".to_string(),
+      CodespacesOrgSecretVisibility::All => "all".to_string(),
+      CodespacesOrgSecretVisibility::Private => "private".to_string(),
+      CodespacesOrgSecretVisibility::Selected => "selected".to_string(),
     }
   }
 }
@@ -2739,7 +2635,7 @@ impl ToString for CodespacesCreateOrUpdateOrgSecretRequestVisibility {
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// The organization policy for allowing or disallowing organization members to use Copilot within their CLI.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum CopilotBusinessOrganizationDetailsCli {
+pub enum CopilotOrganizationDetailsCli {
   #[serde(rename = "enabled")]
   Enabled,
   #[serde(rename = "disabled")]
@@ -2749,12 +2645,12 @@ pub enum CopilotBusinessOrganizationDetailsCli {
 }
 
 #[cfg(any(feature = "full", feature = "copilot",))]
-impl ToString for CopilotBusinessOrganizationDetailsCli {
+impl ToString for CopilotOrganizationDetailsCli {
   fn to_string(&self) -> String {
     match self {
-      CopilotBusinessOrganizationDetailsCli::Enabled => "enabled".to_string(),
-      CopilotBusinessOrganizationDetailsCli::Disabled => "disabled".to_string(),
-      CopilotBusinessOrganizationDetailsCli::Unconfigured => "unconfigured".to_string(),
+      CopilotOrganizationDetailsCli::Enabled => "enabled".to_string(),
+      CopilotOrganizationDetailsCli::Disabled => "disabled".to_string(),
+      CopilotOrganizationDetailsCli::Unconfigured => "unconfigured".to_string(),
     }
   }
 }
@@ -2762,7 +2658,7 @@ impl ToString for CopilotBusinessOrganizationDetailsCli {
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum CopilotBusinessOrganizationDetailsIdeChat {
+pub enum CopilotOrganizationDetailsIdeChat {
   #[serde(rename = "enabled")]
   Enabled,
   #[serde(rename = "disabled")]
@@ -2772,12 +2668,12 @@ pub enum CopilotBusinessOrganizationDetailsIdeChat {
 }
 
 #[cfg(any(feature = "full", feature = "copilot",))]
-impl ToString for CopilotBusinessOrganizationDetailsIdeChat {
+impl ToString for CopilotOrganizationDetailsIdeChat {
   fn to_string(&self) -> String {
     match self {
-      CopilotBusinessOrganizationDetailsIdeChat::Enabled => "enabled".to_string(),
-      CopilotBusinessOrganizationDetailsIdeChat::Disabled => "disabled".to_string(),
-      CopilotBusinessOrganizationDetailsIdeChat::Unconfigured => "unconfigured".to_string(),
+      CopilotOrganizationDetailsIdeChat::Enabled => "enabled".to_string(),
+      CopilotOrganizationDetailsIdeChat::Disabled => "disabled".to_string(),
+      CopilotOrganizationDetailsIdeChat::Unconfigured => "unconfigured".to_string(),
     }
   }
 }
@@ -2785,7 +2681,7 @@ impl ToString for CopilotBusinessOrganizationDetailsIdeChat {
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// The organization policy for allowing or disallowing organization members to use Copilot features within github.com.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum CopilotBusinessOrganizationDetailsPlatformChat {
+pub enum CopilotOrganizationDetailsPlatformChat {
   #[serde(rename = "enabled")]
   Enabled,
   #[serde(rename = "disabled")]
@@ -2795,12 +2691,12 @@ pub enum CopilotBusinessOrganizationDetailsPlatformChat {
 }
 
 #[cfg(any(feature = "full", feature = "copilot",))]
-impl ToString for CopilotBusinessOrganizationDetailsPlatformChat {
+impl ToString for CopilotOrganizationDetailsPlatformChat {
   fn to_string(&self) -> String {
     match self {
-      CopilotBusinessOrganizationDetailsPlatformChat::Enabled => "enabled".to_string(),
-      CopilotBusinessOrganizationDetailsPlatformChat::Disabled => "disabled".to_string(),
-      CopilotBusinessOrganizationDetailsPlatformChat::Unconfigured => "unconfigured".to_string(),
+      CopilotOrganizationDetailsPlatformChat::Enabled => "enabled".to_string(),
+      CopilotOrganizationDetailsPlatformChat::Disabled => "disabled".to_string(),
+      CopilotOrganizationDetailsPlatformChat::Unconfigured => "unconfigured".to_string(),
     }
   }
 }
@@ -2808,7 +2704,7 @@ impl ToString for CopilotBusinessOrganizationDetailsPlatformChat {
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// The organization policy for allowing or disallowing Copilot to make suggestions that match public code.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum CopilotBusinessOrganizationDetailsPublicCodeSuggestions {
+pub enum CopilotOrganizationDetailsPublicCodeSuggestions {
   #[serde(rename = "allow")]
   Allow,
   #[serde(rename = "block")]
@@ -2820,15 +2716,13 @@ pub enum CopilotBusinessOrganizationDetailsPublicCodeSuggestions {
 }
 
 #[cfg(any(feature = "full", feature = "copilot",))]
-impl ToString for CopilotBusinessOrganizationDetailsPublicCodeSuggestions {
+impl ToString for CopilotOrganizationDetailsPublicCodeSuggestions {
   fn to_string(&self) -> String {
     match self {
-      CopilotBusinessOrganizationDetailsPublicCodeSuggestions::Allow => "allow".to_string(),
-      CopilotBusinessOrganizationDetailsPublicCodeSuggestions::Block => "block".to_string(),
-      CopilotBusinessOrganizationDetailsPublicCodeSuggestions::Unconfigured => {
-        "unconfigured".to_string()
-      }
-      CopilotBusinessOrganizationDetailsPublicCodeSuggestions::Unknown => "unknown".to_string(),
+      CopilotOrganizationDetailsPublicCodeSuggestions::Allow => "allow".to_string(),
+      CopilotOrganizationDetailsPublicCodeSuggestions::Block => "block".to_string(),
+      CopilotOrganizationDetailsPublicCodeSuggestions::Unconfigured => "unconfigured".to_string(),
+      CopilotOrganizationDetailsPublicCodeSuggestions::Unknown => "unknown".to_string(),
     }
   }
 }
@@ -2836,7 +2730,7 @@ impl ToString for CopilotBusinessOrganizationDetailsPublicCodeSuggestions {
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// The mode of assigning new seats.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum CopilotBusinessOrganizationDetailsSeatManagementSetting {
+pub enum CopilotOrganizationDetailsSeatManagementSetting {
   #[serde(rename = "assign_all")]
   AssignAll,
   #[serde(rename = "assign_selected")]
@@ -2848,19 +2742,15 @@ pub enum CopilotBusinessOrganizationDetailsSeatManagementSetting {
 }
 
 #[cfg(any(feature = "full", feature = "copilot",))]
-impl ToString for CopilotBusinessOrganizationDetailsSeatManagementSetting {
+impl ToString for CopilotOrganizationDetailsSeatManagementSetting {
   fn to_string(&self) -> String {
     match self {
-      CopilotBusinessOrganizationDetailsSeatManagementSetting::AssignAll => {
-        "assign_all".to_string()
-      }
-      CopilotBusinessOrganizationDetailsSeatManagementSetting::AssignSelected => {
+      CopilotOrganizationDetailsSeatManagementSetting::AssignAll => "assign_all".to_string(),
+      CopilotOrganizationDetailsSeatManagementSetting::AssignSelected => {
         "assign_selected".to_string()
       }
-      CopilotBusinessOrganizationDetailsSeatManagementSetting::Disabled => "disabled".to_string(),
-      CopilotBusinessOrganizationDetailsSeatManagementSetting::Unconfigured => {
-        "unconfigured".to_string()
-      }
+      CopilotOrganizationDetailsSeatManagementSetting::Disabled => "disabled".to_string(),
+      CopilotOrganizationDetailsSeatManagementSetting::Unconfigured => "unconfigured".to_string(),
     }
   }
 }
@@ -2868,7 +2758,7 @@ impl ToString for CopilotBusinessOrganizationDetailsSeatManagementSetting {
 #[cfg(any(feature = "full", feature = "copilot",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum CopilotBusinessSeatDetailAssignee {
+pub enum CopilotSeatDetailsAssignee {
   /// A GitHub user.
   SimpleUser(SimpleUser),
   /// Groups of organization members that gives permissions on specified repositories.
@@ -2937,7 +2827,7 @@ impl ToString for DependabotListAlertsForOrgQueryDirection {
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// Visibility of a secret
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum DependabotSecretForAnOrganizationVisibility {
+pub enum OrganizationDependabotSecretVisibility {
   #[serde(rename = "all")]
   All,
   #[serde(rename = "private")]
@@ -2947,12 +2837,12 @@ pub enum DependabotSecretForAnOrganizationVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-impl ToString for DependabotSecretForAnOrganizationVisibility {
+impl ToString for OrganizationDependabotSecretVisibility {
   fn to_string(&self) -> String {
     match self {
-      DependabotSecretForAnOrganizationVisibility::All => "all".to_string(),
-      DependabotSecretForAnOrganizationVisibility::Private => "private".to_string(),
-      DependabotSecretForAnOrganizationVisibility::Selected => "selected".to_string(),
+      OrganizationDependabotSecretVisibility::All => "all".to_string(),
+      OrganizationDependabotSecretVisibility::Private => "private".to_string(),
+      OrganizationDependabotSecretVisibility::Selected => "selected".to_string(),
     }
   }
 }
@@ -3058,7 +2948,7 @@ impl ToString for InteractionGroup {
 #[serde(untagged)]
 pub enum InteractionsGetRestrictionsForOrgResponse {
   /// Interaction limit settings.
-  InteractionLimits(InteractionLimits),
+  InteractionLimitResponse(InteractionLimitResponse),
   InteractionsGetRestrictionsForOrgResponseItem2(InteractionsGetRestrictionsForOrgResponseItem2),
 }
 
@@ -3816,7 +3706,7 @@ impl ToString for OrgsListPatGrantRequestsQueryDirection {
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Type of repository selection requested.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum SimpleOrganizationProgrammaticAccessGrantRequestRepositorySelection {
+pub enum OrganizationProgrammaticAccessGrantRequestRepositorySelection {
   #[serde(rename = "none")]
   None,
   #[serde(rename = "all")]
@@ -3826,16 +3716,12 @@ pub enum SimpleOrganizationProgrammaticAccessGrantRequestRepositorySelection {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl ToString for SimpleOrganizationProgrammaticAccessGrantRequestRepositorySelection {
+impl ToString for OrganizationProgrammaticAccessGrantRequestRepositorySelection {
   fn to_string(&self) -> String {
     match self {
-      SimpleOrganizationProgrammaticAccessGrantRequestRepositorySelection::None => {
-        "none".to_string()
-      }
-      SimpleOrganizationProgrammaticAccessGrantRequestRepositorySelection::All => "all".to_string(),
-      SimpleOrganizationProgrammaticAccessGrantRequestRepositorySelection::Subset => {
-        "subset".to_string()
-      }
+      OrganizationProgrammaticAccessGrantRequestRepositorySelection::None => "none".to_string(),
+      OrganizationProgrammaticAccessGrantRequestRepositorySelection::All => "all".to_string(),
+      OrganizationProgrammaticAccessGrantRequestRepositorySelection::Subset => "subset".to_string(),
     }
   }
 }
@@ -3994,7 +3880,7 @@ impl ToString for ProjectsListForOrgQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "projects",))]
 /// The baseline permission that all organization members have on this project. Only present if owner is an organization.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ProjectOrganizationPermission {
@@ -4008,7 +3894,7 @@ pub enum ProjectOrganizationPermission {
   None,
 }
 
-#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "projects",))]
 impl ToString for ProjectOrganizationPermission {
   fn to_string(&self) -> String {
     match self {
@@ -4020,44 +3906,42 @@ impl ToString for ProjectOrganizationPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "orgs",))]
 /// The type of the value for the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum OrganizationCustomPropertyValueType {
+pub enum OrgCustomPropertyValueType {
   #[serde(rename = "string")]
   String,
   #[serde(rename = "single_select")]
   SingleSelect,
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
-impl ToString for OrganizationCustomPropertyValueType {
+#[cfg(any(feature = "full", feature = "orgs",))]
+impl ToString for OrgCustomPropertyValueType {
   fn to_string(&self) -> String {
     match self {
-      OrganizationCustomPropertyValueType::String => "string".to_string(),
-      OrganizationCustomPropertyValueType::SingleSelect => "single_select".to_string(),
+      OrgCustomPropertyValueType::String => "string".to_string(),
+      OrgCustomPropertyValueType::SingleSelect => "single_select".to_string(),
     }
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "orgs",))]
 /// Who can edit the values of the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum OrganizationCustomPropertyValuesEditableBy {
+pub enum OrgCustomPropertyValuesEditableBy {
   #[serde(rename = "org_actors")]
   OrgActors,
   #[serde(rename = "org_and_repo_actors")]
   OrgAndRepoActors,
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
-impl ToString for OrganizationCustomPropertyValuesEditableBy {
+#[cfg(any(feature = "full", feature = "orgs",))]
+impl ToString for OrgCustomPropertyValuesEditableBy {
   fn to_string(&self) -> String {
     match self {
-      OrganizationCustomPropertyValuesEditableBy::OrgActors => "org_actors".to_string(),
-      OrganizationCustomPropertyValuesEditableBy::OrgAndRepoActors => {
-        "org_and_repo_actors".to_string()
-      }
+      OrgCustomPropertyValuesEditableBy::OrgActors => "org_actors".to_string(),
+      OrgCustomPropertyValuesEditableBy::OrgAndRepoActors => "org_and_repo_actors".to_string(),
     }
   }
 }
@@ -4285,7 +4169,7 @@ impl ToString for ReposCreateInOrgRequestVisibility {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// The default value for a merge commit message.
 ///
@@ -4306,7 +4190,7 @@ pub enum FullRepositoryMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 impl ToString for FullRepositoryMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -4322,7 +4206,7 @@ impl ToString for FullRepositoryMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// The default value for a merge commit title.
 ///
@@ -4340,7 +4224,7 @@ pub enum FullRepositoryMergeCommitTitle {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 impl ToString for FullRepositoryMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -4355,7 +4239,7 @@ impl ToString for FullRepositoryMergeCommitTitle {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// The default value for a squash merge commit message:
 ///
@@ -4376,7 +4260,7 @@ pub enum FullRepositorySquashMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 impl ToString for FullRepositorySquashMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -4392,7 +4276,7 @@ impl ToString for FullRepositorySquashMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// The default value for a squash merge commit title:
 ///
@@ -4410,7 +4294,7 @@ pub enum FullRepositorySquashMergeCommitTitle {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 impl ToString for FullRepositorySquashMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -4421,7 +4305,7 @@ impl ToString for FullRepositorySquashMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// The type of actor that can bypass a ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulesetBypassActorActorType {
@@ -4431,7 +4315,7 @@ pub enum RepositoryRulesetBypassActorActorType {
   OrganizationAdmin,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRulesetBypassActorActorType {
   fn to_string(&self) -> String {
     match self {
@@ -4443,7 +4327,7 @@ impl ToString for RepositoryRulesetBypassActorActorType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulesetBypassActorBypassMode {
@@ -4453,7 +4337,7 @@ pub enum RepositoryRulesetBypassActorBypassMode {
   PullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRulesetBypassActorBypassMode {
   fn to_string(&self) -> String {
     match self {
@@ -4463,57 +4347,48 @@ impl ToString for RepositoryRulesetBypassActorBypassMode {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum OrganizationRulesetConditionsItem1 {
+pub enum OrgRulesetConditionsItem1 {
   /// Parameters for a repository ruleset ref name condition
-  RepositoryRulesetConditionsForRefNames(RepositoryRulesetConditionsForRefNames),
+  RepositoryRulesetConditions(RepositoryRulesetConditions),
   /// Parameters for a repository name condition
-  RepositoryRulesetConditionsForRepositoryNames(RepositoryRulesetConditionsForRepositoryNames),
+  RepositoryRulesetConditionsRepositoryNameTarget(RepositoryRulesetConditionsRepositoryNameTarget),
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum OrganizationRulesetConditionsItem2 {
+pub enum OrgRulesetConditionsItem2 {
   /// Parameters for a repository ruleset ref name condition
-  RepositoryRulesetConditionsForRefNames(RepositoryRulesetConditionsForRefNames),
+  RepositoryRulesetConditions(RepositoryRulesetConditions),
   /// Parameters for a repository ID condition
-  RepositoryRulesetConditionsForRepositoryIDs(RepositoryRulesetConditionsForRepositoryIDs),
+  RepositoryRulesetConditionsRepositoryIdTarget(RepositoryRulesetConditionsRepositoryIdTarget),
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum OrganizationRulesetConditionsItem3 {
+pub enum OrgRulesetConditionsItem3 {
   /// Parameters for a repository ruleset ref name condition
-  RepositoryRulesetConditionsForRefNames(RepositoryRulesetConditionsForRefNames),
+  RepositoryRulesetConditions(RepositoryRulesetConditions),
   /// Parameters for a repository property condition
-  RepositoryRulesetConditionsForRepositoryProperties(
-    RepositoryRulesetConditionsForRepositoryProperties,
+  RepositoryRulesetConditionsRepositoryPropertyTarget(
+    RepositoryRulesetConditionsRepositoryPropertyTarget,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum OrganizationRulesetConditions {
-  OrganizationRulesetConditionsItem1(OrganizationRulesetConditionsItem1),
-  OrganizationRulesetConditionsItem2(OrganizationRulesetConditionsItem2),
-  OrganizationRulesetConditionsItem3(OrganizationRulesetConditionsItem3),
+pub enum OrgRulesetConditions {
+  OrgRulesetConditionsItem1(OrgRulesetConditionsItem1),
+  OrgRulesetConditionsItem2(OrgRulesetConditionsItem2),
+  OrgRulesetConditionsItem3(OrgRulesetConditionsItem3),
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(untagged)]
-pub enum RepositoryRulesetConditions {
-  /// Parameters for a repository ruleset ref name condition
-  RepositoryRulesetConditionsForRefNames(RepositoryRulesetConditionsForRefNames),
-  OrganizationRulesetConditions(OrganizationRulesetConditions),
-}
-
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// The bypass type of the user making the API request for this ruleset. This field is only returned when
 /// querying the repository-level endpoint.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -4526,7 +4401,7 @@ pub enum RepositoryRulesetCurrentUserCanBypass {
   Never,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRulesetCurrentUserCanBypass {
   fn to_string(&self) -> String {
     match self {
@@ -4537,7 +4412,7 @@ impl ToString for RepositoryRulesetCurrentUserCanBypass {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleEnforcement {
@@ -4549,7 +4424,7 @@ pub enum RepositoryRuleEnforcement {
   Evaluate,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleEnforcement {
   fn to_string(&self) -> String {
     match self {
@@ -4560,62 +4435,62 @@ impl ToString for RepositoryRuleEnforcement {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum CreationType {
+pub enum RepositoryRuleCreationType {
   #[serde(rename = "creation")]
   Creation,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl ToString for CreationType {
+#[cfg(any(feature = "full", feature = "repos",))]
+impl ToString for RepositoryRuleCreationType {
   fn to_string(&self) -> String {
     match self {
-      CreationType::Creation => "creation".to_string(),
+      RepositoryRuleCreationType::Creation => "creation".to_string(),
     }
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum UpdateType {
+pub enum RepositoryRuleUpdateType {
   #[serde(rename = "update")]
   Update,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl ToString for UpdateType {
+#[cfg(any(feature = "full", feature = "repos",))]
+impl ToString for RepositoryRuleUpdateType {
   fn to_string(&self) -> String {
     match self {
-      UpdateType::Update => "update".to_string(),
+      RepositoryRuleUpdateType::Update => "update".to_string(),
     }
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum DeletionType {
+pub enum RepositoryRuleDeletionType {
   #[serde(rename = "deletion")]
   Deletion,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl ToString for DeletionType {
+#[cfg(any(feature = "full", feature = "repos",))]
+impl ToString for RepositoryRuleDeletionType {
   fn to_string(&self) -> String {
     match self {
-      DeletionType::Deletion => "deletion".to_string(),
+      RepositoryRuleDeletionType::Deletion => "deletion".to_string(),
     }
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleRequiredLinearHistoryType {
   #[serde(rename = "required_linear_history")]
   RequiredLinearHistory,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleRequiredLinearHistoryType {
   fn to_string(&self) -> String {
     match self {
@@ -4626,14 +4501,14 @@ impl ToString for RepositoryRuleRequiredLinearHistoryType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleRequiredDeploymentsType {
   #[serde(rename = "required_deployments")]
   RequiredDeployments,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleRequiredDeploymentsType {
   fn to_string(&self) -> String {
     match self {
@@ -4644,14 +4519,14 @@ impl ToString for RepositoryRuleRequiredDeploymentsType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleRequiredSignaturesType {
   #[serde(rename = "required_signatures")]
   RequiredSignatures,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleRequiredSignaturesType {
   fn to_string(&self) -> String {
     match self {
@@ -4660,14 +4535,14 @@ impl ToString for RepositoryRuleRequiredSignaturesType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulePullRequestType {
   #[serde(rename = "pull_request")]
   PullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRulePullRequestType {
   fn to_string(&self) -> String {
     match self {
@@ -4676,14 +4551,14 @@ impl ToString for RepositoryRulePullRequestType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleRequiredStatusChecksType {
   #[serde(rename = "required_status_checks")]
   RequiredStatusChecks,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleRequiredStatusChecksType {
   fn to_string(&self) -> String {
     match self {
@@ -4694,14 +4569,14 @@ impl ToString for RepositoryRuleRequiredStatusChecksType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleNonFastForwardType {
   #[serde(rename = "non_fast_forward")]
   NonFastForward,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleNonFastForwardType {
   fn to_string(&self) -> String {
     match self {
@@ -4710,7 +4585,7 @@ impl ToString for RepositoryRuleNonFastForwardType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitMessagePatternParametersOperator {
@@ -4724,7 +4599,7 @@ pub enum RepositoryRuleCommitMessagePatternParametersOperator {
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleCommitMessagePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4736,14 +4611,14 @@ impl ToString for RepositoryRuleCommitMessagePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitMessagePatternType {
   #[serde(rename = "commit_message_pattern")]
   CommitMessagePattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleCommitMessagePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4754,7 +4629,7 @@ impl ToString for RepositoryRuleCommitMessagePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitAuthorEmailPatternParametersOperator {
@@ -4768,7 +4643,7 @@ pub enum RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4782,14 +4657,14 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitAuthorEmailPatternType {
   #[serde(rename = "commit_author_email_pattern")]
   CommitAuthorEmailPattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4800,7 +4675,7 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitterEmailPatternParametersOperator {
@@ -4814,7 +4689,7 @@ pub enum RepositoryRuleCommitterEmailPatternParametersOperator {
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleCommitterEmailPatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4828,14 +4703,14 @@ impl ToString for RepositoryRuleCommitterEmailPatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleCommitterEmailPatternType {
   #[serde(rename = "committer_email_pattern")]
   CommitterEmailPattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleCommitterEmailPatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4846,7 +4721,7 @@ impl ToString for RepositoryRuleCommitterEmailPatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleBranchNamePatternParametersOperator {
@@ -4860,7 +4735,7 @@ pub enum RepositoryRuleBranchNamePatternParametersOperator {
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleBranchNamePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4872,14 +4747,14 @@ impl ToString for RepositoryRuleBranchNamePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleBranchNamePatternType {
   #[serde(rename = "branch_name_pattern")]
   BranchNamePattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleBranchNamePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4888,7 +4763,7 @@ impl ToString for RepositoryRuleBranchNamePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleTagNamePatternParametersOperator {
@@ -4902,7 +4777,7 @@ pub enum RepositoryRuleTagNamePatternParametersOperator {
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleTagNamePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4914,14 +4789,14 @@ impl ToString for RepositoryRuleTagNamePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRuleTagNamePatternType {
   #[serde(rename = "tag_name_pattern")]
   TagNamePattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRuleTagNamePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4930,32 +4805,32 @@ impl ToString for RepositoryRuleTagNamePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum WorkflowsType {
+pub enum RepositoryRuleWorkflowsType {
   #[serde(rename = "workflows")]
   Workflows,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl ToString for WorkflowsType {
+#[cfg(any(feature = "full", feature = "repos",))]
+impl ToString for RepositoryRuleWorkflowsType {
   fn to_string(&self) -> String {
     match self {
-      WorkflowsType::Workflows => "workflows".to_string(),
+      RepositoryRuleWorkflowsType::Workflows => "workflows".to_string(),
     }
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRule {
   /// Only allow users with bypass permission to create matching refs.
-  Creation(Creation),
+  RepositoryRuleCreation(RepositoryRuleCreation),
   /// Only allow users with bypass permission to update matching refs.
-  Update(Update),
+  RepositoryRuleUpdate(RepositoryRuleUpdate),
   /// Only allow users with bypass permissions to delete matching refs.
-  Deletion(Deletion),
+  RepositoryRuleDeletion(RepositoryRuleDeletion),
   /// Prevent merge commits from being pushed to matching refs.
   RepositoryRuleRequiredLinearHistory(RepositoryRuleRequiredLinearHistory),
   /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
@@ -4979,10 +4854,10 @@ pub enum RepositoryRule {
   /// Parameters to be used for the tag_name_pattern rule
   RepositoryRuleTagNamePattern(RepositoryRuleTagNamePattern),
   /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
-  Workflows(Workflows),
+  RepositoryRuleWorkflows(RepositoryRuleWorkflows),
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// The type of the source of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulesetSourceType {
@@ -4990,7 +4865,7 @@ pub enum RepositoryRulesetSourceType {
   Organization,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRulesetSourceType {
   fn to_string(&self) -> String {
     match self {
@@ -5000,7 +4875,7 @@ impl ToString for RepositoryRulesetSourceType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// The target of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryRulesetTarget {
@@ -5010,7 +4885,7 @@ pub enum RepositoryRulesetTarget {
   Tag,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryRulesetTarget {
   fn to_string(&self) -> String {
     match self {
@@ -5362,11 +5237,7 @@ impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryState {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The state of the user's acceptance of the credit.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryAdvisoryCreditState {
@@ -5378,11 +5249,7 @@ pub enum RepositoryAdvisoryCreditState {
   Pending,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 impl ToString for RepositoryAdvisoryCreditState {
   fn to_string(&self) -> String {
     match self {
@@ -5393,11 +5260,7 @@ impl ToString for RepositoryAdvisoryCreditState {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The type of identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryAdvisoryIdentifiersType {
@@ -5407,11 +5270,7 @@ pub enum RepositoryAdvisoryIdentifiersType {
   Ghsa,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 impl ToString for RepositoryAdvisoryIdentifiersType {
   fn to_string(&self) -> String {
     match self {
@@ -5421,11 +5280,7 @@ impl ToString for RepositoryAdvisoryIdentifiersType {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryAdvisorySeverity {
@@ -5439,11 +5294,7 @@ pub enum RepositoryAdvisorySeverity {
   Low,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 impl ToString for RepositoryAdvisorySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -5455,11 +5306,7 @@ impl ToString for RepositoryAdvisorySeverity {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The state of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryAdvisoryState {
@@ -5475,11 +5322,7 @@ pub enum RepositoryAdvisoryState {
   Triage,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 impl ToString for RepositoryAdvisoryState {
   fn to_string(&self) -> String {
     match self {
@@ -5569,7 +5412,7 @@ impl ToString for TeamsCreateRequestPrivacy {
 #[cfg(any(feature = "full", feature = "teams",))]
 /// The notification setting the team has set
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum FullTeamNotificationSetting {
+pub enum TeamFullNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
   #[serde(rename = "notifications_disabled")]
@@ -5577,11 +5420,11 @@ pub enum FullTeamNotificationSetting {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl ToString for FullTeamNotificationSetting {
+impl ToString for TeamFullNotificationSetting {
   fn to_string(&self) -> String {
     match self {
-      FullTeamNotificationSetting::NotificationsEnabled => "notifications_enabled".to_string(),
-      FullTeamNotificationSetting::NotificationsDisabled => "notifications_disabled".to_string(),
+      TeamFullNotificationSetting::NotificationsEnabled => "notifications_enabled".to_string(),
+      TeamFullNotificationSetting::NotificationsDisabled => "notifications_disabled".to_string(),
     }
   }
 }
@@ -5589,7 +5432,7 @@ impl ToString for FullTeamNotificationSetting {
 #[cfg(any(feature = "full", feature = "teams",))]
 /// The level of privacy this team should have
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum FullTeamPrivacy {
+pub enum TeamFullPrivacy {
   #[serde(rename = "closed")]
   Closed,
   #[serde(rename = "secret")]
@@ -5597,11 +5440,11 @@ pub enum FullTeamPrivacy {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl ToString for FullTeamPrivacy {
+impl ToString for TeamFullPrivacy {
   fn to_string(&self) -> String {
     match self {
-      FullTeamPrivacy::Closed => "closed".to_string(),
-      FullTeamPrivacy::Secret => "secret".to_string(),
+      TeamFullPrivacy::Closed => "closed".to_string(),
+      TeamFullPrivacy::Secret => "secret".to_string(),
     }
   }
 }
@@ -6531,7 +6374,7 @@ impl ToString for ActionsListWorkflowRunsForRepoQueryStatus {
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Whether deployment to the environment(s) was approved or rejected or pending (with comments)
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum EnvironmentApprovalState {
+pub enum EnvironmentApprovalsState {
   #[serde(rename = "approved")]
   Approved,
   #[serde(rename = "rejected")]
@@ -6541,12 +6384,12 @@ pub enum EnvironmentApprovalState {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ToString for EnvironmentApprovalState {
+impl ToString for EnvironmentApprovalsState {
   fn to_string(&self) -> String {
     match self {
-      EnvironmentApprovalState::Approved => "approved".to_string(),
-      EnvironmentApprovalState::Rejected => "rejected".to_string(),
-      EnvironmentApprovalState::Pending => "pending".to_string(),
+      EnvironmentApprovalsState::Approved => "approved".to_string(),
+      EnvironmentApprovalsState::Rejected => "rejected".to_string(),
+      EnvironmentApprovalsState::Pending => "pending".to_string(),
     }
   }
 }
@@ -6646,7 +6489,7 @@ impl ToString for ActionsReviewPendingDeploymentsForRunRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum WorkflowState {
   #[serde(rename = "active")]
@@ -6661,7 +6504,7 @@ pub enum WorkflowState {
   DisabledManually,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "actions",))]
 impl ToString for WorkflowState {
   fn to_string(&self) -> String {
     match self {
@@ -6839,12 +6682,7 @@ impl ToString for ActivityActivityType {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DiffEntryStatus {
   #[serde(rename = "added")]
@@ -6863,12 +6701,7 @@ pub enum DiffEntryStatus {
   Unchanged,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 impl ToString for DiffEntryStatus {
   fn to_string(&self) -> String {
     match self {
@@ -7022,7 +6855,7 @@ pub enum ChecksCreateRequest {
   ChecksCreateRequestItem2(ChecksCreateRequestItem2),
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CheckRunConclusion {
   #[serde(rename = "success")]
@@ -7041,7 +6874,7 @@ pub enum CheckRunConclusion {
   ActionRequired,
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "checks",))]
 impl ToString for CheckRunConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -7056,7 +6889,7 @@ impl ToString for CheckRunConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "checks",))]
 /// The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum CheckRunStatus {
@@ -7074,7 +6907,7 @@ pub enum CheckRunStatus {
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "checks",))]
 impl ToString for CheckRunStatus {
   fn to_string(&self) -> String {
     match self {
@@ -7676,7 +7509,7 @@ impl ToString for ReposListCollaboratorsQueryPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// The permission associated with the invitation.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum RepositoryInvitationPermissions {
@@ -7692,7 +7525,7 @@ pub enum RepositoryInvitationPermissions {
   Maintain,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for RepositoryInvitationPermissions {
   fn to_string(&self) -> String {
     match self {
@@ -7780,12 +7613,7 @@ impl ToString for ReactionsCreateForCommitCommentRequestContent {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 /// The merge method to use.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum AutoMergeMergeMethod {
@@ -7797,12 +7625,7 @@ pub enum AutoMergeMergeMethod {
   Rebase,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 impl ToString for AutoMergeMergeMethod {
   fn to_string(&self) -> String {
     match self {
@@ -7922,32 +7745,32 @@ impl ToString for ContentFileType {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum SymlinkContentType {
+pub enum ContentSymlinkType {
   #[serde(rename = "symlink")]
   Symlink,
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ToString for SymlinkContentType {
+impl ToString for ContentSymlinkType {
   fn to_string(&self) -> String {
     match self {
-      SymlinkContentType::Symlink => "symlink".to_string(),
+      ContentSymlinkType::Symlink => "symlink".to_string(),
     }
   }
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum SubmoduleContentType {
+pub enum ContentSubmoduleType {
   #[serde(rename = "submodule")]
   Submodule,
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ToString for SubmoduleContentType {
+impl ToString for ContentSubmoduleType {
   fn to_string(&self) -> String {
     match self {
-      SubmoduleContentType::Submodule => "submodule".to_string(),
+      ContentSubmoduleType::Submodule => "submodule".to_string(),
     }
   }
 }
@@ -7960,9 +7783,9 @@ pub enum ReposGetContentResponse {
   /// Content File
   ContentFile(ContentFile),
   /// An object describing a symlink
-  SymlinkContent(SymlinkContent),
+  ContentSymlink(ContentSymlink),
   /// An object describing a submodule
-  SubmoduleContent(SubmoduleContent),
+  ContentSubmodule(ContentSubmodule),
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
@@ -8022,7 +7845,7 @@ impl ToString for DependabotListAlertsForRepoQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// The execution scope of the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertDependencyScope {
@@ -8032,7 +7855,7 @@ pub enum DependabotAlertDependencyScope {
   Runtime,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 impl ToString for DependabotAlertDependencyScope {
   fn to_string(&self) -> String {
     match self {
@@ -8042,7 +7865,7 @@ impl ToString for DependabotAlertDependencyScope {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// The reason that the alert was dismissed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertDismissedReason {
@@ -8058,7 +7881,7 @@ pub enum DependabotAlertDismissedReason {
   TolerableRisk,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 impl ToString for DependabotAlertDismissedReason {
   fn to_string(&self) -> String {
     match self {
@@ -8071,7 +7894,7 @@ impl ToString for DependabotAlertDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// The state of the Dependabot alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum DependabotAlertState {
@@ -8085,7 +7908,7 @@ pub enum DependabotAlertState {
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 impl ToString for DependabotAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -8308,7 +8131,7 @@ impl ToString for DeploymentBranchPolicyType {
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Whether this rule targets a branch or tag
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum DeploymentBranchAndTagPolicyNamePatternType {
+pub enum DeploymentBranchPolicyNamePatternWithTypeType {
   #[serde(rename = "branch")]
   Branch,
   #[serde(rename = "tag")]
@@ -8316,11 +8139,11 @@ pub enum DeploymentBranchAndTagPolicyNamePatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ToString for DeploymentBranchAndTagPolicyNamePatternType {
+impl ToString for DeploymentBranchPolicyNamePatternWithTypeType {
   fn to_string(&self) -> String {
     match self {
-      DeploymentBranchAndTagPolicyNamePatternType::Branch => "branch".to_string(),
-      DeploymentBranchAndTagPolicyNamePatternType::Tag => "tag".to_string(),
+      DeploymentBranchPolicyNamePatternWithTypeType::Branch => "branch".to_string(),
+      DeploymentBranchPolicyNamePatternWithTypeType::Tag => "tag".to_string(),
     }
   }
 }
@@ -8563,7 +8386,7 @@ impl ToString for MigrationsSetLfsPreferenceRequestUseLfs {
 #[serde(untagged)]
 pub enum InteractionsGetRestrictionsForRepoResponse {
   /// Interaction limit settings.
-  InteractionLimits(InteractionLimits),
+  InteractionLimitResponse(InteractionLimitResponse),
   InteractionsGetRestrictionsForRepoResponseItem2(InteractionsGetRestrictionsForRepoResponseItem2),
 }
 
@@ -8978,12 +8801,7 @@ impl ToString for ReactionsCreateForIssueRequestContent {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 /// The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PullRequestReviewCommentSide {
@@ -8993,12 +8811,7 @@ pub enum PullRequestReviewCommentSide {
   Right,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 impl ToString for PullRequestReviewCommentSide {
   fn to_string(&self) -> String {
     match self {
@@ -9008,12 +8821,7 @@ impl ToString for PullRequestReviewCommentSide {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PullRequestReviewCommentStartSide {
@@ -9023,12 +8831,7 @@ pub enum PullRequestReviewCommentStartSide {
   Right,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 impl ToString for PullRequestReviewCommentStartSide {
   fn to_string(&self) -> String {
     match self {
@@ -9038,12 +8841,7 @@ impl ToString for PullRequestReviewCommentStartSide {
   }
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 /// The level at which the comment is targeted, can be a diff line or a file.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PullRequestReviewCommentSubjectType {
@@ -9053,12 +8851,7 @@ pub enum PullRequestReviewCommentSubjectType {
   File,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 impl ToString for PullRequestReviewCommentSubjectType {
   fn to_string(&self) -> String {
     match self {
@@ -9071,7 +8864,7 @@ impl ToString for PullRequestReviewCommentSubjectType {
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum TimelineEvent {
+pub enum TimelineIssueEvents {
   /// Labeled Issue Event
   LabeledIssueEvent(LabeledIssueEvent),
   /// Unlabeled Issue Event
@@ -9243,7 +9036,7 @@ impl ToString for IssuesUpdateMilestoneRequestState {
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The process in which the Page will be built.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum GitHubPagesBuildType {
+pub enum PageBuildType {
   #[serde(rename = "legacy")]
   Legacy,
   #[serde(rename = "workflow")]
@@ -9251,11 +9044,11 @@ pub enum GitHubPagesBuildType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ToString for GitHubPagesBuildType {
+impl ToString for PageBuildType {
   fn to_string(&self) -> String {
     match self {
-      GitHubPagesBuildType::Legacy => "legacy".to_string(),
-      GitHubPagesBuildType::Workflow => "workflow".to_string(),
+      PageBuildType::Legacy => "legacy".to_string(),
+      PageBuildType::Workflow => "workflow".to_string(),
     }
   }
 }
@@ -9312,7 +9105,7 @@ impl ToString for PagesHttpsCertificateState {
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The state if the domain is verified
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum GitHubPagesProtectedDomainState {
+pub enum PageProtectedDomainState {
   #[serde(rename = "pending")]
   Pending,
   #[serde(rename = "verified")]
@@ -9322,12 +9115,12 @@ pub enum GitHubPagesProtectedDomainState {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ToString for GitHubPagesProtectedDomainState {
+impl ToString for PageProtectedDomainState {
   fn to_string(&self) -> String {
     match self {
-      GitHubPagesProtectedDomainState::Pending => "pending".to_string(),
-      GitHubPagesProtectedDomainState::Verified => "verified".to_string(),
-      GitHubPagesProtectedDomainState::Unverified => "unverified".to_string(),
+      PageProtectedDomainState::Pending => "pending".to_string(),
+      PageProtectedDomainState::Verified => "verified".to_string(),
+      PageProtectedDomainState::Unverified => "unverified".to_string(),
     }
   }
 }
@@ -9335,7 +9128,7 @@ impl ToString for GitHubPagesProtectedDomainState {
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The status of the most recent build of the Page.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum GitHubPagesStatus {
+pub enum PageStatus {
   #[serde(rename = "built")]
   Built,
   #[serde(rename = "building")]
@@ -9345,12 +9138,12 @@ pub enum GitHubPagesStatus {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ToString for GitHubPagesStatus {
+impl ToString for PageStatus {
   fn to_string(&self) -> String {
     match self {
-      GitHubPagesStatus::Built => "built".to_string(),
-      GitHubPagesStatus::Building => "building".to_string(),
-      GitHubPagesStatus::Errored => "errored".to_string(),
+      PageStatus::Built => "built".to_string(),
+      PageStatus::Building => "building".to_string(),
+      PageStatus::Errored => "errored".to_string(),
     }
   }
 }
@@ -9358,7 +9151,7 @@ impl ToString for GitHubPagesStatus {
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The current status of the deployment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum GitHubPagesDeploymentStatusStatus {
+pub enum PagesDeploymentStatusStatus {
   #[serde(rename = "deployment_in_progress")]
   DeploymentInProgress,
   #[serde(rename = "syncing_files")]
@@ -9384,26 +9177,22 @@ pub enum GitHubPagesDeploymentStatusStatus {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ToString for GitHubPagesDeploymentStatusStatus {
+impl ToString for PagesDeploymentStatusStatus {
   fn to_string(&self) -> String {
     match self {
-      GitHubPagesDeploymentStatusStatus::DeploymentInProgress => {
-        "deployment_in_progress".to_string()
-      }
-      GitHubPagesDeploymentStatusStatus::SyncingFiles => "syncing_files".to_string(),
-      GitHubPagesDeploymentStatusStatus::FinishedFileSync => "finished_file_sync".to_string(),
-      GitHubPagesDeploymentStatusStatus::UpdatingPages => "updating_pages".to_string(),
-      GitHubPagesDeploymentStatusStatus::PurgingCdn => "purging_cdn".to_string(),
-      GitHubPagesDeploymentStatusStatus::DeploymentCancelled => "deployment_cancelled".to_string(),
-      GitHubPagesDeploymentStatusStatus::DeploymentFailed => "deployment_failed".to_string(),
-      GitHubPagesDeploymentStatusStatus::DeploymentContentFailed => {
+      PagesDeploymentStatusStatus::DeploymentInProgress => "deployment_in_progress".to_string(),
+      PagesDeploymentStatusStatus::SyncingFiles => "syncing_files".to_string(),
+      PagesDeploymentStatusStatus::FinishedFileSync => "finished_file_sync".to_string(),
+      PagesDeploymentStatusStatus::UpdatingPages => "updating_pages".to_string(),
+      PagesDeploymentStatusStatus::PurgingCdn => "purging_cdn".to_string(),
+      PagesDeploymentStatusStatus::DeploymentCancelled => "deployment_cancelled".to_string(),
+      PagesDeploymentStatusStatus::DeploymentFailed => "deployment_failed".to_string(),
+      PagesDeploymentStatusStatus::DeploymentContentFailed => {
         "deployment_content_failed".to_string()
       }
-      GitHubPagesDeploymentStatusStatus::DeploymentAttemptError => {
-        "deployment_attempt_error".to_string()
-      }
-      GitHubPagesDeploymentStatusStatus::DeploymentLost => "deployment_lost".to_string(),
-      GitHubPagesDeploymentStatusStatus::Succeed => "succeed".to_string(),
+      PagesDeploymentStatusStatus::DeploymentAttemptError => "deployment_attempt_error".to_string(),
+      PagesDeploymentStatusStatus::DeploymentLost => "deployment_lost".to_string(),
+      PagesDeploymentStatusStatus::Succeed => "succeed".to_string(),
     }
   }
 }
@@ -9411,7 +9200,7 @@ impl ToString for GitHubPagesDeploymentStatusStatus {
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum ReposGetPagesHealthCheckResponse {
-  Success(PagesHealthCheckStatus),
+  Success(PagesHealthCheck),
   Accepted(EmptyObject),
 }
 
@@ -9503,7 +9292,7 @@ impl ToString for PullsListQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 /// State of this Pull Request. Either `open` or `closed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum PullRequestState {
@@ -9513,7 +9302,7 @@ pub enum PullRequestState {
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 impl ToString for PullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -9833,7 +9622,7 @@ impl ToString for PullsCreateReviewRequestEvent {
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum LegacyReviewCommentSide {
+pub enum ReviewCommentSide {
   #[serde(rename = "LEFT")]
   Left,
   #[serde(rename = "RIGHT")]
@@ -9841,11 +9630,11 @@ pub enum LegacyReviewCommentSide {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl ToString for LegacyReviewCommentSide {
+impl ToString for ReviewCommentSide {
   fn to_string(&self) -> String {
     match self {
-      LegacyReviewCommentSide::Left => "LEFT".to_string(),
-      LegacyReviewCommentSide::Right => "RIGHT".to_string(),
+      ReviewCommentSide::Left => "LEFT".to_string(),
+      ReviewCommentSide::Right => "RIGHT".to_string(),
     }
   }
 }
@@ -9853,7 +9642,7 @@ impl ToString for LegacyReviewCommentSide {
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum LegacyReviewCommentStartSide {
+pub enum ReviewCommentStartSide {
   #[serde(rename = "LEFT")]
   Left,
   #[serde(rename = "RIGHT")]
@@ -9861,11 +9650,11 @@ pub enum LegacyReviewCommentStartSide {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl ToString for LegacyReviewCommentStartSide {
+impl ToString for ReviewCommentStartSide {
   fn to_string(&self) -> String {
     match self {
-      LegacyReviewCommentStartSide::Left => "LEFT".to_string(),
-      LegacyReviewCommentStartSide::Right => "RIGHT".to_string(),
+      ReviewCommentStartSide::Left => "LEFT".to_string(),
+      ReviewCommentStartSide::Right => "RIGHT".to_string(),
     }
   }
 }
@@ -9909,7 +9698,7 @@ impl ToString for PullsSubmitReviewRequestEvent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// State of the release asset.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum ReleaseAssetState {
@@ -9919,7 +9708,7 @@ pub enum ReleaseAssetState {
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 impl ToString for ReleaseAssetState {
   fn to_string(&self) -> String {
     match self {
@@ -10041,17 +9830,17 @@ impl ToString for ReactionsCreateForReleaseRequestContent {
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The type of source for the ruleset that includes this rule.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
-pub enum RepositoryRulesetDataForRuleRulesetSourceType {
+pub enum RepositoryRuleRulesetInfoRulesetSourceType {
   Repository,
   Organization,
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ToString for RepositoryRulesetDataForRuleRulesetSourceType {
+impl ToString for RepositoryRuleRulesetInfoRulesetSourceType {
   fn to_string(&self) -> String {
     match self {
-      RepositoryRulesetDataForRuleRulesetSourceType::Repository => "Repository".to_string(),
-      RepositoryRulesetDataForRuleRulesetSourceType::Organization => "Organization".to_string(),
+      RepositoryRuleRulesetInfoRulesetSourceType::Repository => "Repository".to_string(),
+      RepositoryRuleRulesetInfoRulesetSourceType::Organization => "Organization".to_string(),
     }
   }
 }
@@ -10059,151 +9848,172 @@ impl ToString for RepositoryRulesetDataForRuleRulesetSourceType {
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem1 {
+pub enum RepositoryRuleDetailedItem1 {
   /// Only allow users with bypass permission to create matching refs.
-  Creation(Creation),
+  RepositoryRuleCreation(RepositoryRuleCreation),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem2 {
+pub enum RepositoryRuleDetailedItem2 {
   /// Only allow users with bypass permission to update matching refs.
-  Update(Update),
+  RepositoryRuleUpdate(RepositoryRuleUpdate),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem3 {
+pub enum RepositoryRuleDetailedItem3 {
   /// Only allow users with bypass permissions to delete matching refs.
-  Deletion(Deletion),
+  RepositoryRuleDeletion(RepositoryRuleDeletion),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem4 {
+pub enum RepositoryRuleDetailedItem4 {
   /// Prevent merge commits from being pushed to matching refs.
   RepositoryRuleRequiredLinearHistory(RepositoryRuleRequiredLinearHistory),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem5 {
+pub enum RepositoryRuleDetailedItem5 {
   /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
   RepositoryRuleRequiredDeployments(RepositoryRuleRequiredDeployments),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem6 {
+pub enum RepositoryRuleDetailedItem6 {
   /// Commits pushed to matching refs must have verified signatures.
   RepositoryRuleRequiredSignatures(RepositoryRuleRequiredSignatures),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem7 {
+pub enum RepositoryRuleDetailedItem7 {
   /// Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
   RepositoryRulePullRequest(RepositoryRulePullRequest),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem8 {
+pub enum RepositoryRuleDetailedItem8 {
   /// Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
   RepositoryRuleRequiredStatusChecks(RepositoryRuleRequiredStatusChecks),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem9 {
+pub enum RepositoryRuleDetailedItem9 {
   /// Prevent users with push access from force pushing to refs.
   RepositoryRuleNonFastForward(RepositoryRuleNonFastForward),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem10 {
+pub enum RepositoryRuleDetailedItem10 {
   /// Parameters to be used for the commit_message_pattern rule
   RepositoryRuleCommitMessagePattern(RepositoryRuleCommitMessagePattern),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem11 {
+pub enum RepositoryRuleDetailedItem11 {
   /// Parameters to be used for the commit_author_email_pattern rule
   RepositoryRuleCommitAuthorEmailPattern(RepositoryRuleCommitAuthorEmailPattern),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem12 {
+pub enum RepositoryRuleDetailedItem12 {
   /// Parameters to be used for the committer_email_pattern rule
   RepositoryRuleCommitterEmailPattern(RepositoryRuleCommitterEmailPattern),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem13 {
+pub enum RepositoryRuleDetailedItem13 {
   /// Parameters to be used for the branch_name_pattern rule
   RepositoryRuleBranchNamePattern(RepositoryRuleBranchNamePattern),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem14 {
+pub enum RepositoryRuleDetailedItem14 {
   /// Parameters to be used for the tag_name_pattern rule
   RepositoryRuleTagNamePattern(RepositoryRuleTagNamePattern),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
-pub enum RepositoryRuleItem15 {
+pub enum RepositoryRuleDetailedItem15 {
   /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
-  Workflows(Workflows),
+  RepositoryRuleWorkflows(RepositoryRuleWorkflows),
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
-  RepositoryRulesetDataForRule(RepositoryRulesetDataForRule),
+  RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
+}
+
+#[cfg(any(feature = "full", feature = "repos",))]
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(untagged)]
+pub enum RepositoryRuleDetailed {
+  RepositoryRuleDetailedItem1(RepositoryRuleDetailedItem1),
+  RepositoryRuleDetailedItem2(RepositoryRuleDetailedItem2),
+  RepositoryRuleDetailedItem3(RepositoryRuleDetailedItem3),
+  RepositoryRuleDetailedItem4(RepositoryRuleDetailedItem4),
+  RepositoryRuleDetailedItem5(RepositoryRuleDetailedItem5),
+  RepositoryRuleDetailedItem6(RepositoryRuleDetailedItem6),
+  RepositoryRuleDetailedItem7(RepositoryRuleDetailedItem7),
+  RepositoryRuleDetailedItem8(RepositoryRuleDetailedItem8),
+  RepositoryRuleDetailedItem9(RepositoryRuleDetailedItem9),
+  RepositoryRuleDetailedItem10(RepositoryRuleDetailedItem10),
+  RepositoryRuleDetailedItem11(RepositoryRuleDetailedItem11),
+  RepositoryRuleDetailedItem12(RepositoryRuleDetailedItem12),
+  RepositoryRuleDetailedItem13(RepositoryRuleDetailedItem13),
+  RepositoryRuleDetailedItem14(RepositoryRuleDetailedItem14),
+  RepositoryRuleDetailedItem15(RepositoryRuleDetailedItem15),
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
@@ -10376,7 +10186,7 @@ impl ToString for SecretScanningAlertValidity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum SecretScanningLocationDetails {
@@ -10408,7 +10218,7 @@ pub enum SecretScanningLocationDetails {
   SecretScanningLocationPullRequestReviewComment(SecretScanningLocationPullRequestReviewComment),
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
 pub enum SecretScanningLocationType {
@@ -10440,7 +10250,7 @@ pub enum SecretScanningLocationType {
   PullRequestReviewComment,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 impl ToString for SecretScanningLocationType {
   fn to_string(&self) -> String {
     match self {
@@ -11387,6 +11197,99 @@ pub enum CodespacesCreateForAuthenticatedUserRequest {
   ),
 }
 
+#[cfg(any(feature = "full", feature = "codespaces",))]
+/// The type of repositories in the organization that the secret is visible to
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub enum CodespacesSecretVisibility {
+  #[serde(rename = "all")]
+  All,
+  #[serde(rename = "private")]
+  Private,
+  #[serde(rename = "selected")]
+  Selected,
+}
+
+#[cfg(any(feature = "full", feature = "codespaces",))]
+impl ToString for CodespacesSecretVisibility {
+  fn to_string(&self) -> String {
+    match self {
+      CodespacesSecretVisibility::All => "all".to_string(),
+      CodespacesSecretVisibility::Private => "private".to_string(),
+      CodespacesSecretVisibility::Selected => "selected".to_string(),
+    }
+  }
+}
+
+#[cfg(any(feature = "full", feature = "codespaces",))]
+/// The initally assigned location of a new codespace.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub enum CodespaceWithFullRepositoryLocation {
+  EastUs,
+  SouthEastAsia,
+  WestEurope,
+  WestUs2,
+}
+
+#[cfg(any(feature = "full", feature = "codespaces",))]
+impl ToString for CodespaceWithFullRepositoryLocation {
+  fn to_string(&self) -> String {
+    match self {
+      CodespaceWithFullRepositoryLocation::EastUs => "EastUs".to_string(),
+      CodespaceWithFullRepositoryLocation::SouthEastAsia => "SouthEastAsia".to_string(),
+      CodespaceWithFullRepositoryLocation::WestEurope => "WestEurope".to_string(),
+      CodespaceWithFullRepositoryLocation::WestUs2 => "WestUs2".to_string(),
+    }
+  }
+}
+
+#[cfg(any(feature = "full", feature = "codespaces",))]
+/// State of this codespace.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+pub enum CodespaceWithFullRepositoryState {
+  Unknown,
+  Created,
+  Queued,
+  Provisioning,
+  Available,
+  Awaiting,
+  Unavailable,
+  Deleted,
+  Moved,
+  Shutdown,
+  Archived,
+  Starting,
+  ShuttingDown,
+  Failed,
+  Exporting,
+  Updating,
+  Rebuilding,
+}
+
+#[cfg(any(feature = "full", feature = "codespaces",))]
+impl ToString for CodespaceWithFullRepositoryState {
+  fn to_string(&self) -> String {
+    match self {
+      CodespaceWithFullRepositoryState::Unknown => "Unknown".to_string(),
+      CodespaceWithFullRepositoryState::Created => "Created".to_string(),
+      CodespaceWithFullRepositoryState::Queued => "Queued".to_string(),
+      CodespaceWithFullRepositoryState::Provisioning => "Provisioning".to_string(),
+      CodespaceWithFullRepositoryState::Available => "Available".to_string(),
+      CodespaceWithFullRepositoryState::Awaiting => "Awaiting".to_string(),
+      CodespaceWithFullRepositoryState::Unavailable => "Unavailable".to_string(),
+      CodespaceWithFullRepositoryState::Deleted => "Deleted".to_string(),
+      CodespaceWithFullRepositoryState::Moved => "Moved".to_string(),
+      CodespaceWithFullRepositoryState::Shutdown => "Shutdown".to_string(),
+      CodespaceWithFullRepositoryState::Archived => "Archived".to_string(),
+      CodespaceWithFullRepositoryState::Starting => "Starting".to_string(),
+      CodespaceWithFullRepositoryState::ShuttingDown => "ShuttingDown".to_string(),
+      CodespaceWithFullRepositoryState::Failed => "Failed".to_string(),
+      CodespaceWithFullRepositoryState::Exporting => "Exporting".to_string(),
+      CodespaceWithFullRepositoryState::Updating => "Updating".to_string(),
+      CodespaceWithFullRepositoryState::Rebuilding => "Rebuilding".to_string(),
+    }
+  }
+}
+
 #[cfg(any(feature = "full", feature = "users",))]
 /// Denotes whether an email is publicly visible.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
@@ -11437,7 +11340,7 @@ pub enum UsersDeleteEmailForAuthenticatedUserRequest {
 #[serde(untagged)]
 pub enum InteractionsGetRestrictionsForAuthenticatedUserResponse {
   /// Interaction limit settings.
-  InteractionLimits(InteractionLimits),
+  InteractionLimitResponse(InteractionLimitResponse),
   InteractionsGetRestrictionsForAuthenticatedUserResponseItem2(
     InteractionsGetRestrictionsForAuthenticatedUserResponseItem2,
   ),
@@ -12678,13 +12581,6 @@ pub struct Root {
   pub user_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "meta",))]
-impl Root {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// Query for `List global security advisories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -12768,13 +12664,6 @@ pub struct SecurityAdvisoriesListGlobalAdvisoriesQuery {
   pub sort: Option<SecurityAdvisoriesListGlobalAdvisoriesQuerySort>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl SecurityAdvisoriesListGlobalAdvisoriesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "security_advisories",
@@ -12799,7 +12688,6 @@ impl SecurityAdvisoriesListGlobalAdvisoriesQuery {
   feature = "pulls",
   feature = "search",
   feature = "users",
-  feature = "webhooks",
 ))]
 /// A GitHub user.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -12837,38 +12725,6 @@ pub struct SimpleUser {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "apps",
-  feature = "dependabot",
-  feature = "secret_scanning",
-  feature = "activity",
-  feature = "gists",
-  feature = "issues",
-  feature = "actions",
-  feature = "orgs",
-  feature = "code_scanning",
-  feature = "codespaces",
-  feature = "copilot",
-  feature = "packages",
-  feature = "migrations",
-  feature = "projects",
-  feature = "repos",
-  feature = "teams",
-  feature = "reactions",
-  feature = "checks",
-  feature = "pulls",
-  feature = "search",
-  feature = "users",
-  feature = "webhooks",
-))]
-impl SimpleUser {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12878,13 +12734,6 @@ pub struct GlobalAdvisoryCredits {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl GlobalAdvisoryCredits {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12900,13 +12749,6 @@ pub struct GlobalAdvisoryCvss {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-impl GlobalAdvisoryCvss {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GlobalAdvisoryCwes {
@@ -12916,13 +12758,6 @@ pub struct GlobalAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl GlobalAdvisoryCwes {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12935,13 +12770,6 @@ pub struct GlobalAdvisoryIdentifiers {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-impl GlobalAdvisoryIdentifiers {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12953,13 +12781,6 @@ pub struct GlobalAdvisoryVulnerabilitiesPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl GlobalAdvisoryVulnerabilitiesPackage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12982,13 +12803,6 @@ pub struct GlobalAdvisoryVulnerabilities {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl GlobalAdvisoryVulnerabilities {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// A GitHub Security Advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13062,13 +12876,6 @@ pub struct GlobalAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl GlobalAdvisory {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "apps",
@@ -13078,12 +12885,11 @@ impl GlobalAdvisory {
   feature = "repos",
   feature = "checks",
   feature = "search",
-  feature = "webhooks",
 ))]
 /// The set of permissions for the GitHub app
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct GitHubAppPermissions {
+pub struct IntegrationPermissions {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub checks: Option<String>,
@@ -13110,29 +12916,11 @@ pub struct GitHubAppPermissions {
   feature = "repos",
   feature = "checks",
   feature = "search",
-  feature = "webhooks",
-))]
-impl GitHubAppPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "repos",
-  feature = "checks",
-  feature = "search",
-  feature = "webhooks",
 ))]
 /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct GitHubApp {
+pub struct Integration {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub client_id: Option<String>,
@@ -13163,7 +12951,7 @@ pub struct GitHubApp {
   #[builder(default, setter(strip_option))]
   pub pem: Option<String>,
   /// The set of permissions for the GitHub app
-  pub permissions: GitHubAppPermissions,
+  pub permissions: IntegrationPermissions,
   /// The slug name of the GitHub app
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -13174,23 +12962,6 @@ pub struct GitHubApp {
   pub webhook_secret: Option<String>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "repos",
-  feature = "checks",
-  feature = "search",
-  feature = "webhooks",
-))]
-impl GitHubApp {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13203,24 +12974,16 @@ pub struct AppsCreateFromManifestResponseItem2 {
   pub webhook_secret: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsCreateFromManifestResponseItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "apps",
   feature = "orgs",
   feature = "repos",
-  feature = "webhooks",
 ))]
 /// Configuration object of the webhook
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct WebhookConfiguration {
+pub struct WebhookConfig {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub content_type: Option<String>,
@@ -13235,19 +12998,6 @@ pub struct WebhookConfiguration {
   pub url: Option<String>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "repos",
-  feature = "webhooks",
-))]
-impl WebhookConfiguration {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13267,13 +13017,6 @@ pub struct AppsUpdateWebhookConfigForAppRequest {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-impl AppsUpdateWebhookConfigForAppRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List deliveries for an app webhook`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13291,13 +13034,6 @@ pub struct AppsListWebhookDeliveriesQuery {
   pub redelivery: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListWebhookDeliveriesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "apps",
@@ -13307,7 +13043,7 @@ impl AppsListWebhookDeliveriesQuery {
 /// Delivery made by a webhook, without request and response information.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct SimpleWebhookDelivery {
+pub struct HookDeliveryItem {
   /// The type of activity for the event that triggered the delivery.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -13344,21 +13080,9 @@ pub struct SimpleWebhookDelivery {
   feature = "orgs",
   feature = "repos",
 ))]
-impl SimpleWebhookDelivery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "repos",
-))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct WebhookDeliveryRequest {
+pub struct HookDeliveryRequest {
   /// The request headers sent with the webhook delivery.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -13375,21 +13099,9 @@ pub struct WebhookDeliveryRequest {
   feature = "orgs",
   feature = "repos",
 ))]
-impl WebhookDeliveryRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "repos",
-))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct WebhookDeliveryResponse {
+pub struct HookDeliveryResponse {
   /// The response headers received when the delivery was made.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -13406,22 +13118,10 @@ pub struct WebhookDeliveryResponse {
   feature = "orgs",
   feature = "repos",
 ))]
-impl WebhookDeliveryResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "repos",
-))]
 /// Delivery made by a webhook.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct WebhookDelivery {
+pub struct HookDelivery {
   /// The type of activity for the event that triggered the delivery.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -13446,8 +13146,8 @@ pub struct WebhookDelivery {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub repository_id: Option<i64>,
-  pub request: WebhookDeliveryRequest,
-  pub response: WebhookDeliveryResponse,
+  pub request: HookDeliveryRequest,
+  pub response: HookDeliveryResponse,
   /// Description of the status of the attempted delivery
   pub status: String,
   /// Status code received when delivery was made.
@@ -13458,18 +13158,6 @@ pub struct WebhookDelivery {
   pub url: Option<String>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "repos",
-))]
-impl WebhookDelivery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List installation requests for the authenticated app`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13485,19 +13173,7 @@ pub struct AppsListInstallationRequestsForAuthenticatedAppQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListInstallationRequestsForAuthenticatedAppQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 /// An enterprise on GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13527,18 +13203,6 @@ pub struct Enterprise {
   pub website_url: Option<String>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
-impl Enterprise {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Request to install an integration on a target
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13554,13 +13218,6 @@ pub struct IntegrationInstallationRequest {
   pub requester: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl IntegrationInstallationRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List installations for the authenticated app`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13583,19 +13240,7 @@ pub struct AppsListInstallationsQuery {
   pub outdated: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListInstallationsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 /// The permissions granted to the user access token.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13794,24 +13439,7 @@ pub struct AppPermissions {
   pub workflows: Option<WritePermission>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
-impl AppPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 /// Installation
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13853,18 +13481,6 @@ pub struct Installation {
   pub updated_at: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "webhooks",
-))]
-impl Installation {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13882,13 +13498,6 @@ pub struct AppsCreateInstallationAccessTokenRequest {
   pub repository_ids: Option<Vec<i64>>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsCreateInstallationAccessTokenRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "apps",
@@ -13902,7 +13511,7 @@ impl AppsCreateInstallationAccessTokenRequest {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// License Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13927,34 +13536,13 @@ pub struct LicenseSimple {
   feature = "apps",
   feature = "activity",
   feature = "issues",
-  feature = "licenses",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "teams",
-  feature = "pulls",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "webhooks",
-))]
-impl LicenseSimple {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
   feature = "actions",
   feature = "migrations",
   feature = "repos",
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13981,26 +13569,7 @@ pub struct RepositoryPermissions {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
-))]
-impl RepositoryPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "pulls",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// A repository on GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14205,25 +13774,6 @@ pub struct Repository {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "pulls",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "webhooks",
-))]
-impl Repository {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Authentication token for a GitHub App installed on a user or org.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14252,13 +13802,6 @@ pub struct InstallationToken {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-impl InstallationToken {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsDeleteAuthorizationRequest {
@@ -14266,13 +13809,6 @@ pub struct AppsDeleteAuthorizationRequest {
   pub access_token: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsDeleteAuthorizationRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14282,13 +13818,6 @@ pub struct AppsCheckTokenRequest {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-impl AppsCheckTokenRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AuthorizationApp {
@@ -14297,13 +13826,6 @@ pub struct AuthorizationApp {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AuthorizationApp {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14324,13 +13846,6 @@ pub struct ScopedInstallation {
   pub single_file_paths: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl ScopedInstallation {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// The authorization for an OAuth app, GitHub App, or a Personal Access Token.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14373,13 +13888,6 @@ pub struct Authorization {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-impl Authorization {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsResetTokenRequest {
@@ -14388,13 +13896,6 @@ pub struct AppsResetTokenRequest {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-impl AppsResetTokenRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsDeleteTokenRequest {
@@ -14402,13 +13903,6 @@ pub struct AppsDeleteTokenRequest {
   pub access_token: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsDeleteTokenRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14436,18 +13930,11 @@ pub struct AppsScopeTokenRequest {
   pub target_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsScopeTokenRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "classroom",))]
 /// A GitHub organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct OrganizationSimpleForClassroom {
+pub struct SimpleClassroomOrganization {
   pub avatar_url: String,
   pub html_url: String,
   pub id: i64,
@@ -14459,13 +13946,6 @@ pub struct OrganizationSimpleForClassroom {
 }
 
 #[cfg(any(feature = "full", feature = "classroom",))]
-impl OrganizationSimpleForClassroom {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "classroom",))]
 /// A GitHub Classroom classroom
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14476,18 +13956,11 @@ pub struct Classroom {
   pub id: i64,
   /// The name of the classroom.
   pub name: String,
-  pub organization: OrganizationSimpleForClassroom,
+  pub organization: SimpleClassroomOrganization,
   /// The URL of the classroom on GitHub Classroom.
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
-impl Classroom {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "classroom",))]
 /// A GitHub repository view for Classroom
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14507,13 +13980,6 @@ pub struct SimpleClassroomRepository {
   pub private: bool,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
-impl SimpleClassroomRepository {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "classroom",))]
 /// A GitHub Classroom assignment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14565,13 +14031,6 @@ pub struct ClassroomAssignment {
 }
 
 #[cfg(any(feature = "full", feature = "classroom",))]
-impl ClassroomAssignment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "classroom",))]
 /// Query for `List accepted assignments for an assignment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14587,13 +14046,6 @@ pub struct ClassroomListAcceptedAssigmentsForAnAssignmentQuery {
 }
 
 #[cfg(any(feature = "full", feature = "classroom",))]
-impl ClassroomListAcceptedAssigmentsForAnAssignmentQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "classroom",))]
 /// A GitHub Classroom classroom
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14608,13 +14060,6 @@ pub struct SimpleClassroom {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
-impl SimpleClassroom {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "classroom",))]
 /// A GitHub Classroom assignment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14665,13 +14110,6 @@ pub struct SimpleClassroomAssignment {
 }
 
 #[cfg(any(feature = "full", feature = "classroom",))]
-impl SimpleClassroomAssignment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "classroom",))]
 /// A GitHub user simplified for Classroom.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14682,13 +14120,6 @@ pub struct SimpleClassroomUser {
   pub login: String,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
-impl SimpleClassroomUser {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "classroom",))]
 /// A GitHub Classroom accepted assignment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14709,13 +14140,6 @@ pub struct ClassroomAcceptedAssignment {
   pub submitted: bool,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
-impl ClassroomAcceptedAssignment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "classroom",))]
 /// Grade for a student or groups GitHub Classroom assignment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14748,13 +14172,6 @@ pub struct ClassroomAssignmentGrade {
 }
 
 #[cfg(any(feature = "full", feature = "classroom",))]
-impl ClassroomAssignmentGrade {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "classroom",))]
 /// Query for `List classrooms`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14770,13 +14187,6 @@ pub struct ClassroomListClassroomsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "classroom",))]
-impl ClassroomListClassroomsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "classroom",))]
 /// Query for `List assignments for a classroom`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14791,13 +14201,6 @@ pub struct ClassroomListAssignmentsForAClassroomQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
-impl ClassroomListAssignmentsForAClassroomQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "codes_of_conduct",
@@ -14812,7 +14215,6 @@ impl ClassroomListAssignmentsForAClassroomQuery {
   feature = "teams",
   feature = "checks",
   feature = "search",
-  feature = "webhooks",
 ))]
 /// Code Of Conduct
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14829,28 +14231,6 @@ pub struct CodeOfConduct {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "codes_of_conduct",
-  feature = "activity",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "packages",
-  feature = "migrations",
-  feature = "orgs",
-  feature = "repos",
-  feature = "teams",
-  feature = "checks",
-  feature = "search",
-  feature = "webhooks",
-))]
-impl CodeOfConduct {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// Query for `List Dependabot alerts for an enterprise`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14919,13 +14299,6 @@ pub struct DependabotListAlertsForEnterpriseQuery {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotListAlertsForEnterpriseQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// Details for the vulnerable package.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14936,13 +14309,6 @@ pub struct DependabotAlertPackage {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
-impl DependabotAlertPackage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// Details for the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14961,20 +14327,12 @@ pub struct DependabotAlertWithRepositoryDependency {
   pub scope: Option<DependabotAlertWithRepositoryDependencyScope>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotAlertWithRepositoryDependency {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "dependabot",
   feature = "secret_scanning",
   feature = "code_scanning",
   feature = "security_advisories",
-  feature = "webhooks",
 ))]
 /// A GitHub repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15075,21 +14433,7 @@ pub struct SimpleRepository {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "dependabot",
-  feature = "secret_scanning",
-  feature = "code_scanning",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl SimpleRepository {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// Details for the advisory pertaining to the Common Vulnerability Scoring System.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15102,14 +14446,7 @@ pub struct DependabotAlertSecurityAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
-impl DependabotAlertSecurityAdvisoryCvss {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// A CWE weakness assigned to the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15120,14 +14457,7 @@ pub struct DependabotAlertSecurityAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
-impl DependabotAlertSecurityAdvisoryCwes {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// An advisory identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15139,14 +14469,7 @@ pub struct DependabotAlertSecurityAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
-impl DependabotAlertSecurityAdvisoryIdentifiers {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// A link to additional advisory information.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15155,14 +14478,7 @@ pub struct DependabotAlertSecurityAdvisoryReferences {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
-impl DependabotAlertSecurityAdvisoryReferences {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// Details pertaining to the package version that patches this vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15171,14 +14487,7 @@ pub struct DependabotAlertSecurityVulnerabilityFirstPatchedVersion {
   pub identifier: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
-impl DependabotAlertSecurityVulnerabilityFirstPatchedVersion {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// Details pertaining to one vulnerable version range for the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15194,14 +14503,7 @@ pub struct DependabotAlertSecurityVulnerability {
   pub vulnerable_version_range: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
-impl DependabotAlertSecurityVulnerability {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// Details for the GitHub Security Advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15238,13 +14540,6 @@ pub struct DependabotAlertSecurityAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
-impl DependabotAlertSecurityAdvisory {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// A Dependabot alert.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15284,13 +14579,6 @@ pub struct DependabotAlertWithRepository {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotAlertWithRepository {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Query for `List secret scanning alerts for an enterprise`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15336,13 +14624,6 @@ pub struct SecretScanningListAlertsForEnterpriseQuery {
   pub validity: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
-impl SecretScanningListAlertsForEnterpriseQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15416,13 +14697,6 @@ pub struct OrganizationSecretScanningAlert {
   pub validity: Option<OrganizationSecretScanningAlertValidity>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
-impl OrganizationSecretScanningAlert {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List public events`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15438,13 +14712,6 @@ pub struct ActivityListPublicEventsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListPublicEventsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Actor
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15462,13 +14729,6 @@ pub struct Actor {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl Actor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "activity",
@@ -15477,7 +14737,6 @@ impl Actor {
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15496,28 +14755,7 @@ pub struct ReactionRollup {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
-  feature = "teams",
-  feature = "repos",
-  feature = "pulls",
-  feature = "search",
-  feature = "webhooks",
-))]
-impl ReactionRollup {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
 /// Comments provide a way for people to collaborate on an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15541,7 +14779,7 @@ pub struct IssueComment {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub reactions: Option<ReactionRollup>,
@@ -15553,24 +14791,7 @@ pub struct IssueComment {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
-  feature = "webhooks",
-))]
-impl IssueComment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssueLabelsItem2 {
@@ -15602,22 +14823,9 @@ pub struct IssueLabelsItem2 {
   feature = "full",
   feature = "activity",
   feature = "issues",
-  feature = "webhooks",
-))]
-impl IssueLabelsItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhooks",
 ))]
 /// A collection of related issues and pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15652,27 +14860,7 @@ pub struct Milestone {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
-  feature = "repos",
-  feature = "pulls",
-  feature = "search",
-  feature = "webhooks",
-))]
-impl Milestone {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuePullRequest {
@@ -15693,24 +14881,7 @@ pub struct IssuePullRequest {
   pub url: Option<String>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
-  feature = "webhooks",
-))]
-impl IssuePullRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
 /// Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15762,7 +14933,7 @@ pub struct Issue {
   pub number: i64,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub pull_request: Option<IssuePullRequest>,
@@ -15792,18 +14963,6 @@ pub struct Issue {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "issues",
-  feature = "webhooks",
-))]
-impl Issue {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15829,13 +14988,6 @@ pub struct EventPayloadPages {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl EventPayloadPages {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EventPayload {
@@ -15854,13 +15006,6 @@ pub struct EventPayload {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl EventPayload {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EventRepo {
@@ -15869,13 +15014,6 @@ pub struct EventRepo {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl EventRepo {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15899,13 +15037,6 @@ pub struct Event {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl Event {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 /// Hypermedia Link with Type
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15915,13 +15046,6 @@ pub struct LinkWithType {
   pub type_: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl LinkWithType {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15954,13 +15078,6 @@ pub struct FeedLinks {
   pub user: LinkWithType,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl FeedLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Feed
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -15998,13 +15115,6 @@ pub struct Feed {
   pub user_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl Feed {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists",))]
 /// Query for `List gists for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16024,13 +15134,6 @@ pub struct GistsListQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
-impl GistsListQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists",))]
 /// Base Gist
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16071,13 +15174,6 @@ pub struct BaseGist {
 }
 
 #[cfg(any(feature = "full", feature = "gists",))]
-impl BaseGist {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "gists",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistsCreateRequest {
@@ -16092,13 +15188,6 @@ pub struct GistsCreateRequest {
   pub public: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
-impl GistsCreateRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists",))]
 /// Gist
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16138,13 +15227,6 @@ pub struct Gist {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
-impl Gist {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16155,13 +15237,6 @@ pub struct PublicUserPlan {
   pub space: i64,
 }
 
-#[cfg(any(feature = "full", feature = "gists", feature = "users",))]
-impl PublicUserPlan {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists", feature = "users",))]
 /// Public User
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16241,13 +15316,6 @@ pub struct PublicUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "gists", feature = "users",))]
-impl PublicUser {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16270,13 +15338,6 @@ pub struct GistSimpleForks {
 }
 
 #[cfg(any(feature = "full", feature = "gists",))]
-impl GistSimpleForks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "gists",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistHistoryChangeStatus {
@@ -16291,13 +15352,6 @@ pub struct GistHistoryChangeStatus {
   pub total: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
-impl GistHistoryChangeStatus {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists",))]
 /// Gist History
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16320,13 +15374,6 @@ pub struct GistHistory {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
-impl GistHistory {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists",))]
 /// Gist Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16399,13 +15446,6 @@ pub struct GistSimple {
 }
 
 #[cfg(any(feature = "full", feature = "gists",))]
-impl GistSimple {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "gists",))]
 /// Query for `List public gists`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16424,13 +15464,6 @@ pub struct GistsListPublicQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
-impl GistsListPublicQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists",))]
 /// Query for `List starred gists`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16451,13 +15484,6 @@ pub struct GistsListStarredQuery {
 }
 
 #[cfg(any(feature = "full", feature = "gists",))]
-impl GistsListStarredQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "gists",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistsUpdateRequest {
@@ -16476,13 +15502,6 @@ pub struct GistsUpdateRequest {
 }
 
 #[cfg(any(feature = "full", feature = "gists",))]
-impl GistsUpdateRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "gists",))]
 /// Query for `List gist comments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16497,13 +15516,6 @@ pub struct GistsListCommentsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
-impl GistsListCommentsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists",))]
 /// A comment made to a gist.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16523,13 +15535,6 @@ pub struct GistComment {
 }
 
 #[cfg(any(feature = "full", feature = "gists",))]
-impl GistComment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "gists",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistsCreateCommentRequest {
@@ -16538,13 +15543,6 @@ pub struct GistsCreateCommentRequest {
 }
 
 #[cfg(any(feature = "full", feature = "gists",))]
-impl GistsCreateCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "gists",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistsUpdateCommentRequest {
@@ -16552,13 +15550,6 @@ pub struct GistsUpdateCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
-impl GistsUpdateCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists",))]
 /// Query for `List gist commits`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16575,13 +15566,6 @@ pub struct GistsListCommitsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "gists",))]
-impl GistsListCommitsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "gists",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistCommitChangeStatus {
@@ -16597,13 +15581,6 @@ pub struct GistCommitChangeStatus {
 }
 
 #[cfg(any(feature = "full", feature = "gists",))]
-impl GistCommitChangeStatus {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "gists",))]
 /// Gist Commit
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16617,13 +15594,6 @@ pub struct GistCommit {
   pub version: String,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
-impl GistCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists",))]
 /// Query for `List gist forks`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16639,13 +15609,6 @@ pub struct GistsListForksQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
-impl GistsListForksQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gitignore",))]
 /// Gitignore Template
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16655,13 +15618,6 @@ pub struct GitignoreTemplate {
   pub source: String,
 }
 
-#[cfg(any(feature = "full", feature = "gitignore",))]
-impl GitignoreTemplate {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List repositories accessible to the app installation`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16678,13 +15634,6 @@ pub struct AppsListReposAccessibleToInstallationQuery {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListReposAccessibleToInstallationQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsListReposAccessibleToInstallationResponse {
@@ -16695,13 +15644,6 @@ pub struct AppsListReposAccessibleToInstallationResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListReposAccessibleToInstallationResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List issues assigned to the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16753,13 +15695,6 @@ pub struct IssuesListQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "licenses",))]
 /// Query for `Get all commonly used licenses`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16778,13 +15713,6 @@ pub struct LicensesGetAllCommonlyUsedQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "licenses",))]
-impl LicensesGetAllCommonlyUsedQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "licenses",))]
 /// License
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16809,13 +15737,6 @@ pub struct License {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "licenses",))]
-impl License {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "markdown",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16832,14 +15753,7 @@ pub struct MarkdownRenderRequest {
   pub text: String,
 }
 
-#[cfg(any(feature = "full", feature = "markdown",))]
-impl MarkdownRenderRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "apps",))]
 /// Marketplace Listing Plan
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16861,14 +15775,7 @@ pub struct MarketplaceListingPlan {
   pub yearly_price_in_cents: i64,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
-impl MarketplaceListingPlan {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MarketplacePurchaseMarketplacePendingChange {
@@ -16889,14 +15796,7 @@ pub struct MarketplacePurchaseMarketplacePendingChange {
   pub unit_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
-impl MarketplacePurchaseMarketplacePendingChange {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MarketplacePurchaseMarketplacePurchase {
@@ -16926,14 +15826,7 @@ pub struct MarketplacePurchaseMarketplacePurchase {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
-impl MarketplacePurchaseMarketplacePurchase {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "apps",))]
 /// Marketplace Purchase
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16955,13 +15848,6 @@ pub struct MarketplacePurchase {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "webhooks",))]
-impl MarketplacePurchase {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List plans`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16977,13 +15863,6 @@ pub struct AppsListPlansQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListPlansQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List accounts for a plan`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17008,13 +15887,6 @@ pub struct AppsListAccountsForPlanQuery {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListAccountsForPlanQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List plans (stubbed)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17029,13 +15901,6 @@ pub struct AppsListPlansStubbedQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListPlansStubbedQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List accounts for a plan (stubbed)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17059,13 +15924,6 @@ pub struct AppsListAccountsForPlanStubbedQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListAccountsForPlanStubbedQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "meta",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17088,13 +15946,6 @@ pub struct ApiOverviewDomains {
 }
 
 #[cfg(any(feature = "full", feature = "meta",))]
-impl ApiOverviewDomains {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "meta",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ApiOverviewSshKeyFingerprints {
@@ -17116,13 +15967,6 @@ pub struct ApiOverviewSshKeyFingerprints {
   pub sha256_rsa: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "meta",))]
-impl ApiOverviewSshKeyFingerprints {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "meta",))]
 /// Api Overview
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17170,13 +16014,6 @@ pub struct ApiOverview {
   pub web: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "meta",))]
-impl ApiOverview {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List public events for a network of repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17192,13 +16029,6 @@ pub struct ActivityListPublicEventsForRepoNetworkQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListPublicEventsForRepoNetworkQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List notifications for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17230,13 +16060,6 @@ pub struct ActivityListNotificationsForAuthenticatedUserQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListNotificationsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "activity",
@@ -17250,7 +16073,6 @@ impl ActivityListNotificationsForAuthenticatedUserQuery {
   feature = "teams",
   feature = "checks",
   feature = "search",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17285,28 +16107,6 @@ pub struct MinimalRepositoryLicense {
   feature = "teams",
   feature = "checks",
   feature = "search",
-  feature = "webhooks",
-))]
-impl MinimalRepositoryLicense {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "packages",
-  feature = "migrations",
-  feature = "orgs",
-  feature = "repos",
-  feature = "teams",
-  feature = "checks",
-  feature = "search",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17340,30 +16140,8 @@ pub struct MinimalRepositoryPermissions {
   feature = "repos",
   feature = "teams",
   feature = "checks",
-  feature = "search",
-  feature = "webhooks",
-))]
-impl MinimalRepositoryPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "packages",
-  feature = "migrations",
-  feature = "orgs",
-  feature = "repos",
-  feature = "teams",
-  feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17387,29 +16165,6 @@ pub struct SecurityAndAnalysisAdvancedSecurity {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
-))]
-impl SecurityAndAnalysisAdvancedSecurity {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "packages",
-  feature = "migrations",
-  feature = "orgs",
-  feature = "repos",
-  feature = "teams",
-  feature = "checks",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "webhooks",
 ))]
 /// Enable or disable Dependabot security updates for the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17435,29 +16190,6 @@ pub struct SecurityAndAnalysisDependabotSecurityUpdates {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
-))]
-impl SecurityAndAnalysisDependabotSecurityUpdates {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "packages",
-  feature = "migrations",
-  feature = "orgs",
-  feature = "repos",
-  feature = "teams",
-  feature = "checks",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17481,29 +16213,6 @@ pub struct SecurityAndAnalysisSecretScanning {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
-))]
-impl SecurityAndAnalysisSecretScanning {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "packages",
-  feature = "migrations",
-  feature = "orgs",
-  feature = "repos",
-  feature = "teams",
-  feature = "checks",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17527,29 +16236,6 @@ pub struct SecurityAndAnalysisSecretScanningPushProtection {
   feature = "checks",
   feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
-))]
-impl SecurityAndAnalysisSecretScanningPushProtection {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "packages",
-  feature = "migrations",
-  feature = "orgs",
-  feature = "repos",
-  feature = "teams",
-  feature = "checks",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17581,30 +16267,7 @@ pub struct SecurityAndAnalysis {
   feature = "repos",
   feature = "teams",
   feature = "checks",
-  feature = "security_advisories",
   feature = "search",
-  feature = "webhooks",
-))]
-impl SecurityAndAnalysis {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "packages",
-  feature = "migrations",
-  feature = "orgs",
-  feature = "repos",
-  feature = "teams",
-  feature = "checks",
-  feature = "search",
-  feature = "webhooks",
 ))]
 /// Minimal Repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17784,27 +16447,6 @@ pub struct MinimalRepository {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "activity",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "packages",
-  feature = "migrations",
-  feature = "orgs",
-  feature = "repos",
-  feature = "teams",
-  feature = "checks",
-  feature = "search",
-  feature = "webhooks",
-))]
-impl MinimalRepository {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17816,13 +16458,6 @@ pub struct ThreadSubject {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ThreadSubject {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Thread
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17842,13 +16477,6 @@ pub struct Thread {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl Thread {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActivityMarkNotificationsAsReadRequest {
@@ -17863,13 +16491,6 @@ pub struct ActivityMarkNotificationsAsReadRequest {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityMarkNotificationsAsReadRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActivityMarkNotificationsAsReadResponse {
@@ -17878,13 +16499,6 @@ pub struct ActivityMarkNotificationsAsReadResponse {
   pub message: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityMarkNotificationsAsReadResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Thread Subscription
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17908,13 +16522,6 @@ pub struct ThreadSubscription {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl ThreadSubscription {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActivitySetThreadSubscriptionRequest {
@@ -17924,13 +16531,6 @@ pub struct ActivitySetThreadSubscriptionRequest {
   pub ignored: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivitySetThreadSubscriptionRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "meta",))]
 /// Query for `Get Octocat`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17942,13 +16542,6 @@ pub struct MetaGetOctocatQuery {
   pub s: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "meta",))]
-impl MetaGetOctocatQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List organizations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -17965,13 +16558,6 @@ pub struct OrgsListQuery {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
 /// A GitHub organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17992,13 +16578,6 @@ pub struct OrganizationSimple {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
-impl OrganizationSimple {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18014,13 +16593,6 @@ pub struct OrganizationFullPlan {
   pub space: i64,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrganizationFullPlan {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Organization Full
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -18184,13 +16756,6 @@ pub struct OrganizationFull {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrganizationFull {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsUpdateRequest {
@@ -18337,13 +16902,6 @@ pub struct OrgsUpdateRequest {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsUpdateRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18354,13 +16912,6 @@ pub struct ActionsCacheUsageOrgEnterprise {
   pub total_active_caches_size_in_bytes: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsCacheUsageOrgEnterprise {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List repositories with GitHub Actions cache usage for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -18377,13 +16928,6 @@ pub struct ActionsGetActionsCacheUsageByRepoForOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsGetActionsCacheUsageByRepoForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 /// GitHub Actions Cache Usage by repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18397,13 +16941,6 @@ pub struct ActionsCacheUsageByRepository {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsCacheUsageByRepository {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsGetActionsCacheUsageByRepoForOrgResponse {
@@ -18411,29 +16948,15 @@ pub struct ActionsGetActionsCacheUsageByRepoForOrgResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsGetActionsCacheUsageByRepoForOrgResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "oidc",))]
 /// Actions OIDC Subject customization
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct ActionsOidcSubjectCustomization {
+pub struct OidcCustomSub {
   /// Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.
   pub include_claim_keys: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "oidc",))]
-impl ActionsOidcSubjectCustomization {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "oidc",
@@ -18449,22 +16972,6 @@ impl ActionsOidcSubjectCustomization {
 #[builder(field_defaults(setter(into)))]
 pub struct EmptyObject {}
 
-#[cfg(any(
-  feature = "full",
-  feature = "oidc",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "checks",
-  feature = "code_scanning",
-  feature = "repos",
-))]
-impl EmptyObject {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18483,13 +16990,6 @@ pub struct ActionsOrganizationPermissions {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsOrganizationPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetGithubActionsPermissionsOrganizationRequest {
@@ -18499,13 +16999,6 @@ pub struct ActionsSetGithubActionsPermissionsOrganizationRequest {
   pub enabled_repositories: EnabledRepositories,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsSetGithubActionsPermissionsOrganizationRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List selected repositories enabled for GitHub Actions in an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -18522,13 +17015,6 @@ pub struct ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationQuery 
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse {
@@ -18537,13 +17023,6 @@ pub struct ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest {
@@ -18551,13 +17030,6 @@ pub struct ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18579,13 +17051,6 @@ pub struct SelectedActions {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl SelectedActions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsGetDefaultWorkflowPermissions {
@@ -18593,13 +17058,6 @@ pub struct ActionsGetDefaultWorkflowPermissions {
   pub default_workflow_permissions: ReadWritePermission,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsGetDefaultWorkflowPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18612,13 +17070,6 @@ pub struct ActionsSetDefaultWorkflowPermissions {
   pub default_workflow_permissions: Option<ReadWritePermission>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsSetDefaultWorkflowPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List self-hosted runners for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -18639,17 +17090,10 @@ pub struct ActionsListSelfHostedRunnersForOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListSelfHostedRunnersForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 /// A label for a self hosted runner
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct SelfHostedRunnerLabel {
+pub struct RunnerLabel {
   /// Unique identifier of the label.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -18660,25 +17104,18 @@ pub struct SelfHostedRunnerLabel {
   #[serde(rename = "type")]
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub type_: Option<SelfHostedRunnerLabelType>,
+  pub type_: Option<RunnerLabelType>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl SelfHostedRunnerLabel {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// A self hosted runner
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct SelfHostedRunners {
+pub struct Runner {
   pub busy: bool,
   /// The id of the runner.
   pub id: i64,
-  pub labels: Vec<SelfHostedRunnerLabel>,
+  pub labels: Vec<RunnerLabel>,
   /// The name of the runner.
   pub name: String,
   /// The Operating System of the runner.
@@ -18692,27 +17129,13 @@ pub struct SelfHostedRunners {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl SelfHostedRunners {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListSelfHostedRunnersForOrgResponse {
-  pub runners: Vec<SelfHostedRunners>,
+  pub runners: Vec<Runner>,
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListSelfHostedRunnersForOrgResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Runner Application
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -18732,13 +17155,6 @@ pub struct RunnerApplication {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl RunnerApplication {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsGenerateRunnerJitconfigForOrgRequest {
@@ -18754,13 +17170,6 @@ pub struct ActionsGenerateRunnerJitconfigForOrgRequest {
   pub work_folder: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsGenerateRunnerJitconfigForOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Authentication Token
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -18787,13 +17196,6 @@ pub struct AuthenticationToken {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl AuthenticationToken {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequest {
@@ -18802,13 +17204,6 @@ pub struct ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequest {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequest {
@@ -18816,13 +17211,6 @@ pub struct ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequest {
   pub labels: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List organization secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -18839,17 +17227,10 @@ pub struct ActionsListOrgSecretsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListOrgSecretsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 /// Secrets for GitHub Actions for an organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct ActionsSecretForAnOrganization {
+pub struct OrganizationActionsSecret {
   pub created_at: String,
   /// The name of the secret.
   pub name: String,
@@ -18858,31 +17239,17 @@ pub struct ActionsSecretForAnOrganization {
   pub selected_repositories_url: Option<String>,
   pub updated_at: String,
   /// Visibility of a secret
-  pub visibility: ActionsSecretForAnOrganizationVisibility,
+  pub visibility: OrganizationActionsSecretVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsSecretForAnOrganization {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListOrgSecretsResponse {
-  pub secrets: Vec<ActionsSecretForAnOrganization>,
+  pub secrets: Vec<OrganizationActionsSecret>,
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListOrgSecretsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// The public key used for setting Actions Secrets.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -18907,13 +17274,6 @@ pub struct ActionsPublicKey {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsPublicKey {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsCreateOrUpdateOrgSecretRequest {
@@ -18934,13 +17294,6 @@ pub struct ActionsCreateOrUpdateOrgSecretRequest {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsCreateOrUpdateOrgSecretRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List selected repositories for an organization secret`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18956,13 +17309,6 @@ pub struct ActionsListSelectedReposForOrgSecretQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListSelectedReposForOrgSecretQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListSelectedReposForOrgSecretResponse {
@@ -18971,13 +17317,6 @@ pub struct ActionsListSelectedReposForOrgSecretResponse {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListSelectedReposForOrgSecretResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetSelectedReposForOrgSecretRequest {
@@ -18985,13 +17324,6 @@ pub struct ActionsSetSelectedReposForOrgSecretRequest {
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsSetSelectedReposForOrgSecretRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List organization variables`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -19008,17 +17340,10 @@ pub struct ActionsListOrgVariablesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListOrgVariablesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 /// Organization variable for GitHub Actions.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct ActionsVariableForAnOrganization {
+pub struct OrganizationActionsVariable {
   /// The date and time at which the variable was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
   pub created_at: String,
   /// The name of the variable.
@@ -19031,31 +17356,17 @@ pub struct ActionsVariableForAnOrganization {
   /// The value of the variable.
   pub value: String,
   /// Visibility of a variable
-  pub visibility: ActionsVariableForAnOrganizationVisibility,
+  pub visibility: OrganizationActionsVariableVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsVariableForAnOrganization {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListOrgVariablesResponse {
   pub total_count: i64,
-  pub variables: Vec<ActionsVariableForAnOrganization>,
+  pub variables: Vec<OrganizationActionsVariable>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListOrgVariablesResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19072,13 +17383,6 @@ pub struct ActionsCreateOrgVariableRequest {
   pub visibility: ActionsCreateOrgVariableRequestVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsCreateOrgVariableRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19102,13 +17406,6 @@ pub struct ActionsUpdateOrgVariableRequest {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsUpdateOrgVariableRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List selected repositories for an organization variable`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19124,13 +17421,6 @@ pub struct ActionsListSelectedReposForOrgVariableQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListSelectedReposForOrgVariableQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListSelectedReposForOrgVariableResponse {
@@ -19139,13 +17429,6 @@ pub struct ActionsListSelectedReposForOrgVariableResponse {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListSelectedReposForOrgVariableResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetSelectedReposForOrgVariableRequest {
@@ -19153,13 +17436,6 @@ pub struct ActionsSetSelectedReposForOrgVariableRequest {
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsSetSelectedReposForOrgVariableRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List users blocked by an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -19175,13 +17451,6 @@ pub struct OrgsListBlockedUsersQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListBlockedUsersQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// Query for `List code scanning alerts for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -19230,13 +17499,6 @@ pub struct CodeScanningListAlertsForOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningListAlertsForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 /// Describe a region within a file for the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19259,13 +17521,6 @@ pub struct CodeScanningAlertLocation {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningAlertLocation {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAlertInstanceMessage {
@@ -19274,13 +17529,6 @@ pub struct CodeScanningAlertInstanceMessage {
   pub text: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningAlertInstanceMessage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19321,13 +17569,6 @@ pub struct CodeScanningAlertInstance {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningAlertInstance {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAlertRuleSummary {
@@ -19358,13 +17599,6 @@ pub struct CodeScanningAlertRuleSummary {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningAlertRuleSummary {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAnalysisTool {
@@ -19379,13 +17613,6 @@ pub struct CodeScanningAnalysisTool {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningAnalysisTool {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19420,13 +17647,6 @@ pub struct CodeScanningOrganizationAlertItems {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningOrganizationAlertItems {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `List codespaces for the organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -19442,13 +17662,6 @@ pub struct CodespacesListInOrganizationQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListInOrganizationQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Details about the codespace's git repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -19478,13 +17691,6 @@ pub struct CodespaceGitStatus {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespaceGitStatus {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 /// A description of the machine powering a codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19508,13 +17714,6 @@ pub struct CodespaceMachine {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespaceMachine {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespaceRuntimeConstraints {
@@ -19524,13 +17723,6 @@ pub struct CodespaceRuntimeConstraints {
   pub allowed_port_privacy_settings: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespaceRuntimeConstraints {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// A codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -19624,13 +17816,6 @@ pub struct Codespace {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl Codespace {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListInOrganizationResponse {
@@ -19638,13 +17823,6 @@ pub struct CodespacesListInOrganizationResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListInOrganizationResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19658,13 +17836,6 @@ pub struct CodespacesSetCodespacesAccessRequest {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesSetCodespacesAccessRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesSetCodespacesAccessUsersRequest {
@@ -19673,13 +17844,6 @@ pub struct CodespacesSetCodespacesAccessUsersRequest {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesSetCodespacesAccessUsersRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesDeleteCodespacesAccessUsersRequest {
@@ -19687,13 +17851,6 @@ pub struct CodespacesDeleteCodespacesAccessUsersRequest {
   pub selected_usernames: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesDeleteCodespacesAccessUsersRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `List organization secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -19710,17 +17867,10 @@ pub struct CodespacesListOrgSecretsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListOrgSecretsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 /// Secrets for a GitHub Codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct CodespacesSecret {
+pub struct CodespacesOrgSecret {
   /// The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
   pub created_at: String,
   /// The name of the secret
@@ -19732,31 +17882,17 @@ pub struct CodespacesSecret {
   /// The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
   pub updated_at: String,
   /// The type of repositories in the organization that the secret is visible to
-  pub visibility: CodespacesSecretVisibility,
+  pub visibility: CodespacesOrgSecretVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesSecret {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListOrgSecretsResponse {
-  pub secrets: Vec<CodespacesSecret>,
+  pub secrets: Vec<CodespacesOrgSecret>,
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListOrgSecretsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// The public key used for setting Codespaces secrets.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -19781,13 +17917,6 @@ pub struct CodespacesPublicKey {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesPublicKey {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesCreateOrUpdateOrgSecretRequest {
@@ -19808,13 +17937,6 @@ pub struct CodespacesCreateOrUpdateOrgSecretRequest {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesCreateOrUpdateOrgSecretRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `List selected repositories for an organization secret`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19830,13 +17952,6 @@ pub struct CodespacesListSelectedReposForOrgSecretQuery {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListSelectedReposForOrgSecretQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListSelectedReposForOrgSecretResponse {
@@ -19845,13 +17960,6 @@ pub struct CodespacesListSelectedReposForOrgSecretResponse {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListSelectedReposForOrgSecretResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesSetSelectedReposForOrgSecretRequest {
@@ -19859,18 +17967,11 @@ pub struct CodespacesSetSelectedReposForOrgSecretRequest {
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesSetSelectedReposForOrgSecretRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// The breakdown of Copilot Business seats for the organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct CopilotBusinessSeatBreakdown {
+pub struct CopilotSeatBreakdown {
   /// The number of seats that have used Copilot during the current billing cycle.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -19898,43 +17999,29 @@ pub struct CopilotBusinessSeatBreakdown {
 }
 
 #[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotBusinessSeatBreakdown {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "copilot",))]
 /// Information about the seat breakdown and policies set for an organization with a Copilot Business subscription.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct CopilotBusinessOrganizationDetails {
+pub struct CopilotOrganizationDetails {
   /// The organization policy for allowing or disallowing organization members to use Copilot within their CLI.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub cli: Option<CopilotBusinessOrganizationDetailsCli>,
+  pub cli: Option<CopilotOrganizationDetailsCli>,
   /// The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub ide_chat: Option<CopilotBusinessOrganizationDetailsIdeChat>,
+  pub ide_chat: Option<CopilotOrganizationDetailsIdeChat>,
   /// The organization policy for allowing or disallowing organization members to use Copilot features within github.com.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub platform_chat: Option<CopilotBusinessOrganizationDetailsPlatformChat>,
+  pub platform_chat: Option<CopilotOrganizationDetailsPlatformChat>,
   /// The organization policy for allowing or disallowing Copilot to make suggestions that match public code.
-  pub public_code_suggestions: CopilotBusinessOrganizationDetailsPublicCodeSuggestions,
-  pub seat_breakdown: CopilotBusinessSeatBreakdown,
+  pub public_code_suggestions: CopilotOrganizationDetailsPublicCodeSuggestions,
+  pub seat_breakdown: CopilotSeatBreakdown,
   /// The mode of assigning new seats.
-  pub seat_management_setting: CopilotBusinessOrganizationDetailsSeatManagementSetting,
+  pub seat_management_setting: CopilotOrganizationDetailsSeatManagementSetting,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotBusinessOrganizationDetails {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// Query for `List all Copilot seat assignments for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -19950,13 +18037,6 @@ pub struct CopilotListCopilotSeatsQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotListCopilotSeatsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "copilot",
@@ -19967,7 +18047,6 @@ impl CopilotListCopilotSeatsQuery {
   feature = "repos",
   feature = "issues",
   feature = "pulls",
-  feature = "webhooks",
 ))]
 /// Groups of organization members that gives permissions on specified repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20014,25 +18093,6 @@ pub struct TeamSimple {
   feature = "repos",
   feature = "issues",
   feature = "pulls",
-  feature = "webhooks",
-))]
-impl TeamSimple {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "copilot",
-  feature = "orgs",
-  feature = "security_advisories",
-  feature = "teams",
-  feature = "actions",
-  feature = "repos",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20054,25 +18114,6 @@ pub struct TeamPermissions {
   feature = "repos",
   feature = "issues",
   feature = "pulls",
-  feature = "webhooks",
-))]
-impl TeamPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "copilot",
-  feature = "orgs",
-  feature = "security_advisories",
-  feature = "teams",
-  feature = "actions",
-  feature = "repos",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
 ))]
 /// Groups of organization members that gives permissions on specified repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20104,25 +18145,7 @@ pub struct Team {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "copilot",
-  feature = "orgs",
-  feature = "security_advisories",
-  feature = "teams",
-  feature = "actions",
-  feature = "repos",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl Team {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "copilot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "copilot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrganizationPlan {
@@ -20143,14 +18166,7 @@ pub struct OrganizationPlan {
   pub space: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot", feature = "webhooks",))]
-impl OrganizationPlan {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "copilot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "copilot",))]
 /// GitHub account for managing multiple users, teams, and repositories
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20212,20 +18228,13 @@ pub struct Organization {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "copilot", feature = "webhooks",))]
-impl Organization {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// Information about a Copilot Business seat assignment for a user, team, or organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct CopilotBusinessSeatDetail {
+pub struct CopilotSeatDetails {
   /// The assignee that has been granted access to GitHub Copilot.
-  pub assignee: CopilotBusinessSeatDetailAssignee,
+  pub assignee: CopilotSeatDetailsAssignee,
   /// The team that granted access to GitHub Copilot to the assignee. This will be null if the user was assigned a seat individually.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -20251,32 +18260,18 @@ pub struct CopilotBusinessSeatDetail {
 }
 
 #[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotBusinessSeatDetail {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "copilot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CopilotListCopilotSeatsResponse {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub seats: Option<Vec<CopilotBusinessSeatDetail>>,
+  pub seats: Option<Vec<CopilotSeatDetails>>,
   /// Total number of Copilot seats for the organization currently being billed.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub total_seats: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotListCopilotSeatsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "copilot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20286,13 +18281,6 @@ pub struct CopilotAddCopilotSeatsForTeamsRequest {
 }
 
 #[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotAddCopilotSeatsForTeamsRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "copilot",))]
 /// The total number of seat assignments created.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20300,13 +18288,6 @@ pub struct CopilotAddCopilotSeatsForTeamsResponse {
   pub seats_created: i64,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotAddCopilotSeatsForTeamsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "copilot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20316,13 +18297,6 @@ pub struct CopilotCancelCopilotSeatAssignmentForTeamsRequest {
 }
 
 #[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotCancelCopilotSeatAssignmentForTeamsRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "copilot",))]
 /// The total number of seat assignments cancelled.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20330,13 +18304,6 @@ pub struct CopilotCancelCopilotSeatAssignmentForTeamsResponse {
   pub seats_cancelled: i64,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotCancelCopilotSeatAssignmentForTeamsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "copilot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20346,13 +18313,6 @@ pub struct CopilotAddCopilotSeatsForUsersRequest {
 }
 
 #[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotAddCopilotSeatsForUsersRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "copilot",))]
 /// The total number of seat assignments created.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20360,13 +18320,6 @@ pub struct CopilotAddCopilotSeatsForUsersResponse {
   pub seats_created: i64,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotAddCopilotSeatsForUsersResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "copilot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20376,13 +18329,6 @@ pub struct CopilotCancelCopilotSeatAssignmentForUsersRequest {
 }
 
 #[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotCancelCopilotSeatAssignmentForUsersRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "copilot",))]
 /// The total number of seat assignments cancelled.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20390,13 +18336,6 @@ pub struct CopilotCancelCopilotSeatAssignmentForUsersResponse {
   pub seats_cancelled: i64,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
-impl CopilotCancelCopilotSeatAssignmentForUsersResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// Query for `List Dependabot alerts for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20465,13 +18404,6 @@ pub struct DependabotListAlertsForOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotListAlertsForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot",))]
 /// Query for `List organization secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20487,17 +18419,10 @@ pub struct DependabotListOrgSecretsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotListOrgSecretsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot",))]
 /// Secrets for GitHub Dependabot for an organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct DependabotSecretForAnOrganization {
+pub struct OrganizationDependabotSecret {
   pub created_at: String,
   /// The name of the secret.
   pub name: String,
@@ -20506,31 +18431,17 @@ pub struct DependabotSecretForAnOrganization {
   pub selected_repositories_url: Option<String>,
   pub updated_at: String,
   /// Visibility of a secret
-  pub visibility: DependabotSecretForAnOrganizationVisibility,
+  pub visibility: OrganizationDependabotSecretVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotSecretForAnOrganization {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependabot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependabotListOrgSecretsResponse {
-  pub secrets: Vec<DependabotSecretForAnOrganization>,
+  pub secrets: Vec<OrganizationDependabotSecret>,
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotListOrgSecretsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// The public key used for setting Dependabot Secrets.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20542,13 +18453,6 @@ pub struct DependabotPublicKey {
   pub key_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotPublicKey {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependabot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20570,13 +18474,6 @@ pub struct DependabotCreateOrUpdateOrgSecretRequest {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotCreateOrUpdateOrgSecretRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot",))]
 /// Query for `List selected repositories for an organization secret`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20592,13 +18489,6 @@ pub struct DependabotListSelectedReposForOrgSecretQuery {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotListSelectedReposForOrgSecretQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependabotListSelectedReposForOrgSecretResponse {
@@ -20607,13 +18497,6 @@ pub struct DependabotListSelectedReposForOrgSecretResponse {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotListSelectedReposForOrgSecretResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependabotSetSelectedReposForOrgSecretRequest {
@@ -20621,13 +18504,6 @@ pub struct DependabotSetSelectedReposForOrgSecretRequest {
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotSetSelectedReposForOrgSecretRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "packages",))]
 /// A software package
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20653,13 +18529,6 @@ pub struct Package {
   pub visibility: PackageVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
-impl Package {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List public organization events`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20675,13 +18544,6 @@ pub struct ActivityListPublicOrgEventsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListPublicOrgEventsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List failed organization invitations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20697,13 +18559,6 @@ pub struct OrgsListFailedInvitationsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListFailedInvitationsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs", feature = "teams",))]
 /// Organization Invitation
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20733,13 +18588,6 @@ pub struct OrganizationInvitation {
   pub team_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "teams",))]
-impl OrganizationInvitation {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List organization webhooks`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20755,13 +18603,6 @@ pub struct OrgsListWebhooksQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListWebhooksQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20780,13 +18621,6 @@ pub struct OrgHookConfig {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgHookConfig {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Org Hook
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20808,13 +18642,6 @@ pub struct OrgHook {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgHook {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Key/value pairs to provide settings for this webhook.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20839,13 +18666,6 @@ pub struct OrgsCreateWebhookRequestConfig {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsCreateWebhookRequestConfig {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsCreateWebhookRequest {
@@ -20864,13 +18684,6 @@ pub struct OrgsCreateWebhookRequest {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsCreateWebhookRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 /// Key/value pairs to provide settings for this webhook.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20887,13 +18700,6 @@ pub struct OrgsUpdateWebhookRequestConfig {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsUpdateWebhookRequestConfig {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20916,13 +18722,6 @@ pub struct OrgsUpdateWebhookRequest {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsUpdateWebhookRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsUpdateWebhookConfigForOrgRequest {
@@ -20940,13 +18739,6 @@ pub struct OrgsUpdateWebhookConfigForOrgRequest {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsUpdateWebhookConfigForOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List deliveries for an organization webhook`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20966,13 +18758,6 @@ pub struct OrgsListWebhookDeliveriesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListWebhookDeliveriesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List app installations for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20988,13 +18773,6 @@ pub struct OrgsListAppInstallationsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListAppInstallationsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsListAppInstallationsResponse {
@@ -21002,60 +18780,32 @@ pub struct OrgsListAppInstallationsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListAppInstallationsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "interactions",))]
 /// Interaction limit settings.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct InteractionLimits {
+pub struct InteractionLimitResponse {
   pub expires_at: String,
   pub limit: InteractionGroup,
   pub origin: String,
 }
 
 #[cfg(any(feature = "full", feature = "interactions",))]
-impl InteractionLimits {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "interactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct InteractionsGetRestrictionsForOrgResponseItem2 {}
 
 #[cfg(any(feature = "full", feature = "interactions",))]
-impl InteractionsGetRestrictionsForOrgResponseItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "interactions",))]
 /// Limit interactions to a specific type of user for a specified duration
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct InteractionRestrictions {
+pub struct InteractionLimit {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub expiry: Option<InteractionExpiry>,
   pub limit: InteractionGroup,
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
-impl InteractionRestrictions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List pending organization invitations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21079,13 +18829,6 @@ pub struct OrgsListPendingInvitationsQuery {
   pub invitation_source: Option<OrgsListPendingInvitationsQueryInvitationSource>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListPendingInvitationsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21113,13 +18856,6 @@ pub struct OrgsCreateInvitationRequest {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsCreateInvitationRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List organization invitation teams`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21134,13 +18870,6 @@ pub struct OrgsListInvitationTeamsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListInvitationTeamsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List organization issues assigned to the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21180,13 +18909,6 @@ pub struct IssuesListForOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List organization members`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21210,13 +18932,6 @@ pub struct OrgsListMembersQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListMembersQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `List codespaces for a user in organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21233,13 +18948,6 @@ pub struct CodespacesGetCodespacesForUserInOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesGetCodespacesForUserInOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesGetCodespacesForUserInOrgResponse {
@@ -21247,13 +18955,6 @@ pub struct CodespacesGetCodespacesForUserInOrgResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesGetCodespacesForUserInOrgResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21261,13 +18962,6 @@ pub struct OrgMembershipPermissions {
   pub can_create_repository: bool,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgMembershipPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Org Membership
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21289,13 +18983,6 @@ pub struct OrgMembership {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgMembership {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsSetMembershipForUserRequest {
@@ -21307,13 +18994,6 @@ pub struct OrgsSetMembershipForUserRequest {
   pub role: Option<OrgsSetMembershipForUserRequestRole>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsSetMembershipForUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// Query for `List organization migrations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21331,13 +19011,6 @@ pub struct MigrationsListForOrgQuery {
   pub exclude: MigrationsListForOrgQueryExcludeArray,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsListForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// A migration.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21371,13 +19044,6 @@ pub struct Migration {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
-impl Migration {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "migrations",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21419,13 +19085,6 @@ pub struct MigrationsStartForOrgRequest {
 }
 
 #[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsStartForOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "migrations",))]
 /// Query for `Get an organization migration status`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21434,13 +19093,6 @@ pub struct MigrationsGetStatusForOrgQuery {
   pub exclude: MigrationsGetStatusForOrgQueryExcludeArray,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsGetStatusForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// Query for `List repositories in an organization migration`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21456,13 +19108,6 @@ pub struct MigrationsListReposForOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsListReposForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// A fine-grained permission that protects organization resources.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21472,13 +19117,6 @@ pub struct OrganizationFineGrainedPermission {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrganizationFineGrainedPermission {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Organization roles
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21504,13 +19142,6 @@ pub struct OrganizationRole {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrganizationRole {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsListOrgRolesResponse {
@@ -21525,13 +19156,6 @@ pub struct OrgsListOrgRolesResponse {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListOrgRolesResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsCreateCustomOrganizationRoleRequest {
@@ -21545,13 +19169,6 @@ pub struct OrgsCreateCustomOrganizationRoleRequest {
   pub permissions: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsCreateCustomOrganizationRoleRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21571,13 +19188,6 @@ pub struct OrgsPatchCustomOrganizationRoleRequest {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsPatchCustomOrganizationRoleRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List teams that are assigned to an organization role`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21593,13 +19203,6 @@ pub struct OrgsListOrgRoleTeamsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListOrgRoleTeamsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List users that are assigned to an organization role`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21614,13 +19217,6 @@ pub struct OrgsListOrgRoleUsersQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListOrgRoleUsersQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List outside collaborators for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21641,13 +19237,6 @@ pub struct OrgsListOutsideCollaboratorsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListOutsideCollaboratorsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsConvertMemberToOutsideCollaboratorRequest {
@@ -21659,24 +19248,10 @@ pub struct OrgsConvertMemberToOutsideCollaboratorRequest {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsConvertMemberToOutsideCollaboratorRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsConvertMemberToOutsideCollaboratorResponse {}
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsConvertMemberToOutsideCollaboratorResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "packages",))]
 /// Query for `List packages for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21702,13 +19277,6 @@ pub struct PackagesListPackagesForOrganizationQuery {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-impl PackagesListPackagesForOrganizationQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "packages",))]
 /// Query for `Restore a package for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21719,13 +19287,6 @@ pub struct PackagesRestorePackageForOrgQuery {
   pub token: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
-impl PackagesRestorePackageForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "packages",))]
 /// Query for `List package versions for a package owned by an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21746,26 +19307,12 @@ pub struct PackagesGetAllPackageVersionsForPackageOwnedByOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-impl PackagesGetAllPackageVersionsForPackageOwnedByOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "packages",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ContainerMetadata {
   pub tags: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
-impl ContainerMetadata {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "packages",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21775,13 +19322,6 @@ pub struct DockerMetadata {
   pub tag: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
-impl DockerMetadata {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "packages",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21795,13 +19335,6 @@ pub struct PackageVersionMetadata {
   pub package_type: PackageVersionMetadataPackageType,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
-impl PackageVersionMetadata {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "packages",))]
 /// A version of a software package
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21832,13 +19365,6 @@ pub struct PackageVersion {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
-impl PackageVersion {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List requests to access organization resources with fine-grained personal access tokens`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21881,17 +19407,10 @@ pub struct OrgsListPatGrantRequestsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListPatGrantRequestsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 /// Permissions requested, categorized by type of permission.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct SimpleOrganizationProgrammaticAccessGrantRequestPermissions {
+pub struct OrganizationProgrammaticAccessGrantRequestPermissions {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub organization: Option<serde_json::Value>,
@@ -21904,24 +19423,17 @@ pub struct SimpleOrganizationProgrammaticAccessGrantRequestPermissions {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl SimpleOrganizationProgrammaticAccessGrantRequestPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 /// Minimal representation of an organization programmatic access grant request for enumerations
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct SimpleOrganizationProgrammaticAccessGrantRequest {
+pub struct OrganizationProgrammaticAccessGrantRequest {
   /// Date and time when the request for access was created.
   pub created_at: String,
   /// Unique identifier of the request for access via fine-grained personal access token. The `pat_request_id` used to review PAT requests.
   pub id: i64,
   pub owner: SimpleUser,
   /// Permissions requested, categorized by type of permission.
-  pub permissions: SimpleOrganizationProgrammaticAccessGrantRequestPermissions,
+  pub permissions: OrganizationProgrammaticAccessGrantRequestPermissions,
   /// Reason for requesting access.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -21929,7 +19441,7 @@ pub struct SimpleOrganizationProgrammaticAccessGrantRequest {
   /// URL to the list of repositories requested to be accessed via fine-grained personal access token. Should only be followed when `repository_selection` is `subset`.
   pub repositories_url: String,
   /// Type of repository selection requested.
-  pub repository_selection: SimpleOrganizationProgrammaticAccessGrantRequestRepositorySelection,
+  pub repository_selection: OrganizationProgrammaticAccessGrantRequestRepositorySelection,
   /// Whether the associated fine-grained personal access token has expired.
   pub token_expired: bool,
   /// Date and time when the associated fine-grained personal access token expires.
@@ -21942,13 +19454,6 @@ pub struct SimpleOrganizationProgrammaticAccessGrantRequest {
   pub token_last_used_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl SimpleOrganizationProgrammaticAccessGrantRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21966,13 +19471,6 @@ pub struct OrgsReviewPatGrantRequestsInBulkRequest {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsReviewPatGrantRequestsInBulkRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsReviewPatGrantRequestRequest {
@@ -21984,13 +19482,6 @@ pub struct OrgsReviewPatGrantRequestRequest {
   pub reason: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsReviewPatGrantRequestRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List repositories requested to be accessed by a fine-grained personal access token`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22006,13 +19497,6 @@ pub struct OrgsListPatGrantRequestRepositoriesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListPatGrantRequestRepositoriesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List fine-grained personal access tokens with access to organization resources`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22055,13 +19539,6 @@ pub struct OrgsListPatGrantsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListPatGrantsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 /// Permissions requested, categorized by type of permission.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22077,13 +19554,6 @@ pub struct OrganizationProgrammaticAccessGrantPermissions {
   pub repository: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrganizationProgrammaticAccessGrantPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Minimal representation of an organization programmatic access grant for enumerations
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22113,13 +19583,6 @@ pub struct OrganizationProgrammaticAccessGrant {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrganizationProgrammaticAccessGrant {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsUpdatePatAccessesRequest {
@@ -22130,13 +19593,6 @@ pub struct OrgsUpdatePatAccessesRequest {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsUpdatePatAccessesRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsUpdatePatAccessRequest {
@@ -22144,13 +19600,6 @@ pub struct OrgsUpdatePatAccessRequest {
   pub action: OrgsUpdatePatAccessRequestAction,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsUpdatePatAccessRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List repositories a fine-grained personal access token has access to`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22166,13 +19615,6 @@ pub struct OrgsListPatGrantRepositoriesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListPatGrantRepositoriesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 /// Query for `List organization projects`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22193,13 +19635,6 @@ pub struct ProjectsListForOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsListForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
 /// Projects are a way to organize columns and cards of work.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22234,13 +19669,6 @@ pub struct Project {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
-impl Project {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22253,18 +19681,11 @@ pub struct ProjectsCreateForOrgRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsCreateForOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "orgs",))]
 /// Custom property defined on an organization
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct OrganizationCustomProperty {
+pub struct OrgCustomProperty {
   /// An ordered list of the allowed values of the property.
   /// The property can have up to 200 allowed values.
   #[serde(skip_serializing_if = "Option::is_none")]
@@ -22285,35 +19706,21 @@ pub struct OrganizationCustomProperty {
   #[builder(default, setter(strip_option))]
   pub required: Option<bool>,
   /// The type of the value for the property
-  pub value_type: OrganizationCustomPropertyValueType,
+  pub value_type: OrgCustomPropertyValueType,
   /// Who can edit the values of the property
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub values_editable_by: Option<OrganizationCustomPropertyValuesEditableBy>,
+  pub values_editable_by: Option<OrgCustomPropertyValuesEditableBy>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "webhooks",))]
-impl OrganizationCustomProperty {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsCreateOrUpdateCustomPropertiesRequest {
   /// The array of custom properties to create or update.
-  pub properties: Vec<OrganizationCustomProperty>,
+  pub properties: Vec<OrgCustomProperty>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsCreateOrUpdateCustomPropertiesRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22340,13 +19747,6 @@ pub struct OrgsCreateOrUpdateCustomPropertyRequest {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsCreateOrUpdateCustomPropertyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List custom property values for organization repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22365,19 +19765,7 @@ pub struct OrgsListCustomPropertiesValuesForReposQuery {
   pub repository_query: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListCustomPropertiesValuesForReposQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "orgs",
-  feature = "repos",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "repos",))]
 /// Custom property name and associated value
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22388,23 +19776,11 @@ pub struct CustomPropertyValue {
   pub value: serde_json::Value,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "orgs",
-  feature = "repos",
-  feature = "webhooks",
-))]
-impl CustomPropertyValue {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// List of custom property values for a repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct OrganizationRepositoryCustomPropertyValues {
+pub struct OrgRepoCustomPropertyValues {
   /// List of custom property names and associated values
   pub properties: Vec<CustomPropertyValue>,
   pub repository_full_name: String,
@@ -22412,13 +19788,6 @@ pub struct OrganizationRepositoryCustomPropertyValues {
   pub repository_name: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrganizationRepositoryCustomPropertyValues {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22429,13 +19798,6 @@ pub struct OrgsCreateOrUpdateCustomPropertiesValuesForReposRequest {
   pub repository_names: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsCreateOrUpdateCustomPropertiesValuesForReposRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List public organization members`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22451,13 +19813,6 @@ pub struct OrgsListPublicMembersQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListPublicMembersQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List organization repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22486,13 +19841,6 @@ pub struct ReposListForOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22611,18 +19959,11 @@ pub struct ReposCreateInOrgRequest {
   pub visibility: Option<ReposCreateInOrgRequestVisibility>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateInOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// Code of Conduct Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22640,19 +19981,7 @@ pub struct CodeOfConductSimple {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl CodeOfConductSimple {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "security_advisories",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22672,19 +20001,7 @@ pub struct FullRepositoryPermissions {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl FullRepositoryPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "security_advisories",
-  feature = "webhooks",
+  feature = "codespaces",
 ))]
 /// Full Repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22884,18 +20201,6 @@ pub struct FullRepository {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl FullRepository {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get all organization repository rulesets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -22912,13 +20217,6 @@ pub struct ReposGetOrgRulesetsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetOrgRulesetsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinksHtml {
@@ -22928,14 +20226,7 @@ pub struct RepositoryRulesetLinksHtml {
   pub href: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetLinksHtml {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinksSelf {
@@ -22945,14 +20236,7 @@ pub struct RepositoryRulesetLinksSelf {
   pub href: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetLinksSelf {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinks {
@@ -22965,14 +20249,7 @@ pub struct RepositoryRulesetLinks {
   pub self_: Option<RepositoryRulesetLinksSelf>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// An actor that can bypass rules in a ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22985,17 +20262,10 @@ pub struct RepositoryRulesetBypassActor {
   pub bypass_mode: RepositoryRulesetBypassActorBypassMode,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetBypassActor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryRulesetConditionsForRefNamesRefName {
+pub struct RepositoryRulesetConditionsRefName {
   /// Array of ref names or patterns to exclude. The condition will not pass if any of these patterns match.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -23006,34 +20276,20 @@ pub struct RepositoryRulesetConditionsForRefNamesRefName {
   pub include: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetConditionsForRefNamesRefName {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Parameters for a repository ruleset ref name condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryRulesetConditionsForRefNames {
+pub struct RepositoryRulesetConditions {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub ref_name: Option<RepositoryRulesetConditionsForRefNamesRefName>,
+  pub ref_name: Option<RepositoryRulesetConditionsRefName>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetConditionsForRefNames {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryRulesetConditionsForRepositoryNamesRepositoryName {
+pub struct RepositoryRulesetConditionsRepositoryNameTargetRepositoryName {
   /// Array of repository names or patterns to exclude. The condition will not pass if any of these patterns match.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -23048,181 +20304,104 @@ pub struct RepositoryRulesetConditionsForRepositoryNamesRepositoryName {
   pub protected: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetConditionsForRepositoryNamesRepositoryName {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Parameters for a repository name condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryRulesetConditionsForRepositoryNames {
-  pub repository_name: RepositoryRulesetConditionsForRepositoryNamesRepositoryName,
+pub struct RepositoryRulesetConditionsRepositoryNameTarget {
+  pub repository_name: RepositoryRulesetConditionsRepositoryNameTargetRepositoryName,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetConditionsForRepositoryNames {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryRulesetConditionsForRepositoryIDsRepositoryId {
+pub struct RepositoryRulesetConditionsRepositoryIdTargetRepositoryId {
   /// The repository IDs that the ruleset applies to. One of these IDs must match for the condition to pass.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub repository_ids: Option<Vec<i64>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetConditionsForRepositoryIDsRepositoryId {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Parameters for a repository ID condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryRulesetConditionsForRepositoryIDs {
-  pub repository_id: RepositoryRulesetConditionsForRepositoryIDsRepositoryId,
+pub struct RepositoryRulesetConditionsRepositoryIdTarget {
+  pub repository_id: RepositoryRulesetConditionsRepositoryIdTargetRepositoryId,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetConditionsForRepositoryIDs {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Parameters for a targeting a repository property
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryRulesetPropertyTargetingDefinition {
+pub struct RepositoryRulesetConditionsRepositoryPropertySpec {
   /// The name of the repository property to target
   pub name: String,
   /// The values to match for the repository property
   pub property_values: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetPropertyTargetingDefinition {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryRulesetConditionsForRepositoryPropertiesRepositoryProperty {
+pub struct RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty {
   /// The repository properties and values to exclude. The condition will not pass if any of these properties match.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub exclude: Option<Vec<RepositoryRulesetPropertyTargetingDefinition>>,
+  pub exclude: Option<Vec<RepositoryRulesetConditionsRepositoryPropertySpec>>,
   /// The repository properties and values to include. All of these properties must match for the condition to pass.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub include: Option<Vec<RepositoryRulesetPropertyTargetingDefinition>>,
+  pub include: Option<Vec<RepositoryRulesetConditionsRepositoryPropertySpec>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetConditionsForRepositoryPropertiesRepositoryProperty {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Parameters for a repository property condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryRulesetConditionsForRepositoryProperties {
-  pub repository_property: RepositoryRulesetConditionsForRepositoryPropertiesRepositoryProperty,
+pub struct RepositoryRulesetConditionsRepositoryPropertyTarget {
+  pub repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulesetConditionsForRepositoryProperties {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Only allow users with bypass permission to create matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct Creation {
+pub struct RepositoryRuleCreation {
   #[serde(rename = "type")]
-  pub type_: CreationType,
+  pub type_: RepositoryRuleCreationType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl Creation {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct UpdateParameters {
+pub struct RepositoryRuleUpdateParameters {
   /// Branch can pull changes from its upstream repository
   pub update_allows_fetch_and_merge: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl UpdateParameters {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Only allow users with bypass permission to update matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct Update {
+pub struct RepositoryRuleUpdate {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub parameters: Option<UpdateParameters>,
+  pub parameters: Option<RepositoryRuleUpdateParameters>,
   #[serde(rename = "type")]
-  pub type_: UpdateType,
+  pub type_: RepositoryRuleUpdateType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl Update {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Only allow users with bypass permissions to delete matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct Deletion {
+pub struct RepositoryRuleDeletion {
   #[serde(rename = "type")]
-  pub type_: DeletionType,
+  pub type_: RepositoryRuleDeletionType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl Deletion {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Prevent merge commits from being pushed to matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23231,14 +20410,7 @@ pub struct RepositoryRuleRequiredLinearHistory {
   pub type_: RepositoryRuleRequiredLinearHistoryType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleRequiredLinearHistory {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleRequiredDeploymentsParameters {
@@ -23246,14 +20418,7 @@ pub struct RepositoryRuleRequiredDeploymentsParameters {
   pub required_deployment_environments: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleRequiredDeploymentsParameters {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23265,14 +20430,7 @@ pub struct RepositoryRuleRequiredDeployments {
   pub type_: RepositoryRuleRequiredDeploymentsType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleRequiredDeployments {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Commits pushed to matching refs must have verified signatures.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23281,14 +20439,7 @@ pub struct RepositoryRuleRequiredSignatures {
   pub type_: RepositoryRuleRequiredSignaturesType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleRequiredSignatures {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulePullRequestParameters {
@@ -23304,14 +20455,7 @@ pub struct RepositoryRulePullRequestParameters {
   pub required_review_thread_resolution: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulePullRequestParameters {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23323,18 +20467,11 @@ pub struct RepositoryRulePullRequest {
   pub type_: RepositoryRulePullRequestType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRulePullRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Required status check
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct StatusCheckConfiguration {
+pub struct RepositoryRuleParamsStatusCheckConfiguration {
   /// The status check context name that must be present on the commit.
   pub context: String,
   /// The optional integration ID that this status check must originate from.
@@ -23343,31 +20480,17 @@ pub struct StatusCheckConfiguration {
   pub integration_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl StatusCheckConfiguration {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleRequiredStatusChecksParameters {
   /// Status checks that are required.
-  pub required_status_checks: Vec<StatusCheckConfiguration>,
+  pub required_status_checks: Vec<RepositoryRuleParamsStatusCheckConfiguration>,
   /// Whether pull requests targeting a matching branch must be tested with the latest code. This setting will not take effect unless at least one status check is enabled.
   pub strict_required_status_checks_policy: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleRequiredStatusChecksParameters {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23379,14 +20502,7 @@ pub struct RepositoryRuleRequiredStatusChecks {
   pub type_: RepositoryRuleRequiredStatusChecksType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleRequiredStatusChecks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Prevent users with push access from force pushing to refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23395,14 +20511,7 @@ pub struct RepositoryRuleNonFastForward {
   pub type_: RepositoryRuleNonFastForwardType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleNonFastForward {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitMessagePatternParameters {
@@ -23420,14 +20529,7 @@ pub struct RepositoryRuleCommitMessagePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleCommitMessagePatternParameters {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Parameters to be used for the commit_message_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23439,14 +20541,7 @@ pub struct RepositoryRuleCommitMessagePattern {
   pub type_: RepositoryRuleCommitMessagePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleCommitMessagePattern {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitAuthorEmailPatternParameters {
@@ -23464,14 +20559,7 @@ pub struct RepositoryRuleCommitAuthorEmailPatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleCommitAuthorEmailPatternParameters {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Parameters to be used for the commit_author_email_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23483,14 +20571,7 @@ pub struct RepositoryRuleCommitAuthorEmailPattern {
   pub type_: RepositoryRuleCommitAuthorEmailPatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleCommitAuthorEmailPattern {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitterEmailPatternParameters {
@@ -23508,14 +20589,7 @@ pub struct RepositoryRuleCommitterEmailPatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleCommitterEmailPatternParameters {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Parameters to be used for the committer_email_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23527,14 +20601,7 @@ pub struct RepositoryRuleCommitterEmailPattern {
   pub type_: RepositoryRuleCommitterEmailPatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleCommitterEmailPattern {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleBranchNamePatternParameters {
@@ -23552,14 +20619,7 @@ pub struct RepositoryRuleBranchNamePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleBranchNamePatternParameters {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Parameters to be used for the branch_name_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23571,14 +20631,7 @@ pub struct RepositoryRuleBranchNamePattern {
   pub type_: RepositoryRuleBranchNamePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleBranchNamePattern {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleTagNamePatternParameters {
@@ -23596,14 +20649,7 @@ pub struct RepositoryRuleTagNamePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleTagNamePatternParameters {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Parameters to be used for the tag_name_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23615,18 +20661,11 @@ pub struct RepositoryRuleTagNamePattern {
   pub type_: RepositoryRuleTagNamePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleTagNamePattern {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// A workflow that must run for this rule to pass
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct WorkflowFileReference {
+pub struct RepositoryRuleParamsWorkflowFileReference {
   /// The path to the workflow file
   pub path: String,
   /// The ref (branch or tag) of the workflow file to use
@@ -23642,48 +20681,27 @@ pub struct WorkflowFileReference {
   pub sha: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl WorkflowFileReference {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct WorkflowsParameters {
+pub struct RepositoryRuleWorkflowsParameters {
   /// Workflows that must pass for this rule to pass.
-  pub workflows: Vec<WorkflowFileReference>,
+  pub workflows: Vec<RepositoryRuleParamsWorkflowFileReference>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl WorkflowsParameters {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct Workflows {
+pub struct RepositoryRuleWorkflows {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub parameters: Option<WorkflowsParameters>,
+  pub parameters: Option<RepositoryRuleWorkflowsParameters>,
   #[serde(rename = "type")]
-  pub type_: WorkflowsType,
+  pub type_: RepositoryRuleWorkflowsType,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl Workflows {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// A set of rules to apply when specified conditions are met.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23733,13 +20751,6 @@ pub struct RepositoryRuleset {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl RepositoryRuleset {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23750,7 +20761,7 @@ pub struct ReposCreateOrgRulesetRequest {
   pub bypass_actors: Option<Vec<RepositoryRulesetBypassActor>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub conditions: Option<OrganizationRulesetConditions>,
+  pub conditions: Option<OrgRulesetConditions>,
   pub enforcement: RepositoryRuleEnforcement,
   /// The name of the ruleset.
   pub name: String,
@@ -23764,13 +20775,6 @@ pub struct ReposCreateOrgRulesetRequest {
   pub target: Option<ReposCreateOrgRulesetRequestTarget>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateOrgRulesetRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List organization rule suites`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -23804,13 +20808,6 @@ pub struct ReposGetOrgRuleSuitesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetOrgRuleSuitesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23862,13 +20859,6 @@ pub struct RuleSuitesItem {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl RuleSuitesItem {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RuleSuiteRuleEvaluationsRuleSource {
@@ -23887,13 +20877,6 @@ pub struct RuleSuiteRuleEvaluationsRuleSource {
   pub type_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl RuleSuiteRuleEvaluationsRuleSource {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23919,13 +20902,6 @@ pub struct RuleSuiteRuleEvaluations {
   pub rule_type: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl RuleSuiteRuleEvaluations {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Response
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -23982,13 +20958,6 @@ pub struct RuleSuite {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl RuleSuite {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateOrgRulesetRequest {
@@ -23998,7 +20967,7 @@ pub struct ReposUpdateOrgRulesetRequest {
   pub bypass_actors: Option<Vec<RepositoryRulesetBypassActor>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub conditions: Option<OrganizationRulesetConditions>,
+  pub conditions: Option<OrgRulesetConditions>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub enforcement: Option<RepositoryRuleEnforcement>,
@@ -24016,13 +20985,6 @@ pub struct ReposUpdateOrgRulesetRequest {
   pub target: Option<ReposUpdateOrgRulesetRequestTarget>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateOrgRulesetRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Query for `List secret scanning alerts for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -24072,13 +21034,6 @@ pub struct SecretScanningListAlertsForOrgQuery {
   pub validity: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
-impl SecretScanningListAlertsForOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// Query for `List repository security advisories for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -24111,17 +21066,6 @@ pub struct SecurityAdvisoriesListOrgRepositoryAdvisoriesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-impl SecurityAdvisoriesListOrgRepositoryAdvisoriesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCredits {
@@ -24135,22 +21079,7 @@ pub struct RepositoryAdvisoryCredits {
   pub type_: Option<SecurityAdvisoryCreditTypes>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl RepositoryAdvisoryCredits {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// A credit given to a user for a repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24162,22 +21091,7 @@ pub struct RepositoryAdvisoryCredit {
   pub user: SimpleUser,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl RepositoryAdvisoryCredit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCvss {
@@ -24191,22 +21105,7 @@ pub struct RepositoryAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl RepositoryAdvisoryCvss {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCwes {
@@ -24216,22 +21115,7 @@ pub struct RepositoryAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl RepositoryAdvisoryCwes {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryIdentifiers {
@@ -24242,22 +21126,7 @@ pub struct RepositoryAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl RepositoryAdvisoryIdentifiers {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisorySubmission {
@@ -24265,22 +21134,7 @@ pub struct RepositoryAdvisorySubmission {
   pub accepted: bool,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl RepositoryAdvisorySubmission {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24292,22 +21146,7 @@ pub struct RepositoryAdvisoryVulnerabilityPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl RepositoryAdvisoryVulnerabilityPackage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// A product affected by the vulnerability detailed in a repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24330,22 +21169,7 @@ pub struct RepositoryAdvisoryVulnerability {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl RepositoryAdvisoryVulnerability {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// A repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24437,17 +21261,6 @@ pub struct RepositoryAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "webhooks",
-))]
-impl RepositoryAdvisory {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "billing",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24518,13 +21331,6 @@ pub struct ActionsBillingUsageMinutesUsedBreakdown {
 }
 
 #[cfg(any(feature = "full", feature = "billing",))]
-impl ActionsBillingUsageMinutesUsedBreakdown {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "billing",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsBillingUsage {
@@ -24538,13 +21344,6 @@ pub struct ActionsBillingUsage {
 }
 
 #[cfg(any(feature = "full", feature = "billing",))]
-impl ActionsBillingUsage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "billing",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PackagesBillingUsage {
@@ -24557,13 +21356,6 @@ pub struct PackagesBillingUsage {
 }
 
 #[cfg(any(feature = "full", feature = "billing",))]
-impl PackagesBillingUsage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "billing",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CombinedBillingUsage {
@@ -24575,13 +21367,6 @@ pub struct CombinedBillingUsage {
   pub estimated_storage_for_month: i64,
 }
 
-#[cfg(any(feature = "full", feature = "billing",))]
-impl CombinedBillingUsage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List teams`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -24597,13 +21382,6 @@ pub struct TeamsListQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24651,13 +21429,6 @@ pub struct TeamsCreateRequest {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsCreateRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamOrganizationPlan {
@@ -24672,13 +21443,6 @@ pub struct TeamOrganizationPlan {
   pub space: i64,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamOrganizationPlan {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Team Organization
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -24793,17 +21557,10 @@ pub struct TeamOrganization {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamOrganization {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 /// Groups of organization members that gives permissions on specified repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct FullTeam {
+pub struct TeamFull {
   pub created_at: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -24823,7 +21580,7 @@ pub struct FullTeam {
   /// The notification setting the team has set
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub notification_setting: Option<FullTeamNotificationSetting>,
+  pub notification_setting: Option<TeamFullNotificationSetting>,
   pub organization: TeamOrganization,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -24833,7 +21590,7 @@ pub struct FullTeam {
   /// The level of privacy this team should have
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub privacy: Option<FullTeamPrivacy>,
+  pub privacy: Option<TeamFullPrivacy>,
   pub repos_count: i64,
   pub repositories_url: String,
   pub slug: String,
@@ -24842,13 +21599,6 @@ pub struct FullTeam {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl FullTeam {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24887,13 +21637,6 @@ pub struct TeamsUpdateInOrgRequest {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsUpdateInOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List discussions`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24916,13 +21659,6 @@ pub struct TeamsListDiscussionsInOrgQuery {
   pub pinned: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListDiscussionsInOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// A team discussion is a persistent record of a free-form conversation within a team.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -24961,13 +21697,6 @@ pub struct TeamDiscussion {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamDiscussion {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsCreateDiscussionInOrgRequest {
@@ -24982,13 +21711,6 @@ pub struct TeamsCreateDiscussionInOrgRequest {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsCreateDiscussionInOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsUpdateDiscussionInOrgRequest {
@@ -25002,13 +21724,6 @@ pub struct TeamsUpdateDiscussionInOrgRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsUpdateDiscussionInOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List discussion comments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25028,13 +21743,6 @@ pub struct TeamsListDiscussionCommentsInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListDiscussionCommentsInOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// A reply to a discussion within a team.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25065,13 +21773,6 @@ pub struct TeamDiscussionComment {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamDiscussionComment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsCreateDiscussionCommentInOrgRequest {
@@ -25080,13 +21781,6 @@ pub struct TeamsCreateDiscussionCommentInOrgRequest {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsCreateDiscussionCommentInOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsUpdateDiscussionCommentInOrgRequest {
@@ -25094,13 +21788,6 @@ pub struct TeamsUpdateDiscussionCommentInOrgRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsUpdateDiscussionCommentInOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// Query for `List reactions for a team discussion comment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25121,13 +21808,6 @@ pub struct ReactionsListForTeamDiscussionCommentInOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsListForTeamDiscussionCommentInOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "reactions",))]
 /// Reactions to conversations provide a way to help people express their feelings more simply and effectively.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25143,13 +21823,6 @@ pub struct Reaction {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-impl Reaction {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "reactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForTeamDiscussionCommentInOrgRequest {
@@ -25157,13 +21830,6 @@ pub struct ReactionsCreateForTeamDiscussionCommentInOrgRequest {
   pub content: ReactionsCreateForTeamDiscussionCommentInOrgRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsCreateForTeamDiscussionCommentInOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// Query for `List reactions for a team discussion`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25184,13 +21850,6 @@ pub struct ReactionsListForTeamDiscussionInOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsListForTeamDiscussionInOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "reactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForTeamDiscussionInOrgRequest {
@@ -25198,13 +21857,6 @@ pub struct ReactionsCreateForTeamDiscussionInOrgRequest {
   pub content: ReactionsCreateForTeamDiscussionInOrgRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsCreateForTeamDiscussionInOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List pending team invitations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25220,13 +21872,6 @@ pub struct TeamsListPendingInvitationsInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListPendingInvitationsInOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List team members`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25247,13 +21892,6 @@ pub struct TeamsListMembersInOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListMembersInOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 /// Team Membership
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25266,13 +21904,6 @@ pub struct TeamMembership {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamMembership {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateMembershipForUserInOrgRequest {
@@ -25282,13 +21913,6 @@ pub struct TeamsAddOrUpdateMembershipForUserInOrgRequest {
   pub role: Option<TeamsAddOrUpdateMembershipForUserInOrgRequestRole>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsAddOrUpdateMembershipForUserInOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List team projects`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25305,13 +21929,6 @@ pub struct TeamsListProjectsInOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListProjectsInOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamProjectPermissions {
@@ -25320,13 +21937,6 @@ pub struct TeamProjectPermissions {
   pub write: bool,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamProjectPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// A team's access to a project.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25359,13 +21969,6 @@ pub struct TeamProject {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamProject {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateProjectPermissionsInOrgRequest {
@@ -25375,13 +21978,6 @@ pub struct TeamsAddOrUpdateProjectPermissionsInOrgRequest {
   pub permission: Option<TeamsAddOrUpdateProjectPermissionsInOrgRequestPermission>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsAddOrUpdateProjectPermissionsInOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List team repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25398,13 +21994,6 @@ pub struct TeamsListReposInOrgQuery {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListReposInOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamRepositoryPermissions {
@@ -25419,13 +22008,6 @@ pub struct TeamRepositoryPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamRepositoryPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// A team's access to a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25592,13 +22174,6 @@ pub struct TeamRepository {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamRepository {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateRepoPermissionsInOrgRequest {
@@ -25608,13 +22183,6 @@ pub struct TeamsAddOrUpdateRepoPermissionsInOrgRequest {
   pub permission: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsAddOrUpdateRepoPermissionsInOrgRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List child teams`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25630,13 +22198,6 @@ pub struct TeamsListChildInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListChildInOrgQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25648,14 +22209,7 @@ pub struct OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest {
   pub query_suite: Option<OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestQuerySuite>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "projects",))]
 /// Project cards represent a scope of work.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25689,13 +22243,6 @@ pub struct ProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
-impl ProjectCard {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25711,13 +22258,6 @@ pub struct ProjectsUpdateCardRequest {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsUpdateCardRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsMoveCardRequest {
@@ -25730,25 +22270,11 @@ pub struct ProjectsMoveCardRequest {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsMoveCardRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsMoveCardResponse {}
 
 #[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsMoveCardResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
 /// Project columns contain cards of work.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25765,13 +22291,6 @@ pub struct ProjectColumn {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects", feature = "webhooks",))]
-impl ProjectColumn {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25780,13 +22299,6 @@ pub struct ProjectsUpdateColumnRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsUpdateColumnRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 /// Query for `List project cards`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25807,13 +22319,6 @@ pub struct ProjectsListCardsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsListCardsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsCreateCardRequestItem1 {
@@ -25823,13 +22328,6 @@ pub struct ProjectsCreateCardRequestItem1 {
   pub note: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsCreateCardRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25841,13 +22339,6 @@ pub struct ProjectsCreateCardRequestItem2 {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsCreateCardRequestItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsMoveColumnRequest {
@@ -25856,24 +22347,10 @@ pub struct ProjectsMoveColumnRequest {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsMoveColumnRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsMoveColumnResponse {}
 
-#[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsMoveColumnResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25901,13 +22378,6 @@ pub struct ProjectsUpdateRequest {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsUpdateRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects",))]
 /// Query for `List project collaborators`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25927,13 +22397,6 @@ pub struct ProjectsListCollaboratorsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsListCollaboratorsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsAddCollaboratorRequest {
@@ -25943,13 +22406,6 @@ pub struct ProjectsAddCollaboratorRequest {
   pub permission: Option<ProjectsAddCollaboratorRequestPermission>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsAddCollaboratorRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 /// Project Collaborator Permission
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25961,13 +22417,6 @@ pub struct ProjectCollaboratorPermission {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectCollaboratorPermission {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 /// Query for `List project columns`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -25984,13 +22433,6 @@ pub struct ProjectsListColumnsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsListColumnsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsCreateColumnRequest {
@@ -25998,13 +22440,6 @@ pub struct ProjectsCreateColumnRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsCreateColumnRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "rate_limit",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26015,13 +22450,6 @@ pub struct RateLimit {
   pub used: i64,
 }
 
-#[cfg(any(feature = "full", feature = "rate_limit",))]
-impl RateLimit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "rate_limit",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26055,13 +22483,6 @@ pub struct RateLimitOverviewResources {
 }
 
 #[cfg(any(feature = "full", feature = "rate_limit",))]
-impl RateLimitOverviewResources {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "rate_limit",))]
 /// Rate Limit Overview
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26070,13 +22491,6 @@ pub struct RateLimitOverview {
   pub resources: RateLimitOverviewResources,
 }
 
-#[cfg(any(feature = "full", feature = "rate_limit",))]
-impl RateLimitOverview {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see "[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)."
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26089,13 +22503,6 @@ pub struct ReposUpdateRequestSecurityAndAnalysisAdvancedSecurity {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateRequestSecurityAndAnalysisAdvancedSecurity {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Use the `status` property to enable or disable secret scanning for this repository. For more information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning)."
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26107,13 +22514,6 @@ pub struct ReposUpdateRequestSecurityAndAnalysisSecretScanning {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateRequestSecurityAndAnalysisSecretScanning {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Use the `status` property to enable or disable secret scanning push protection for this repository. For more information, see "[Protecting pushes with secret scanning](/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26124,13 +22524,6 @@ pub struct ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection {
   pub status: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Specify which security and analysis features to enable or disable for the repository.
 ///
@@ -26158,13 +22551,6 @@ pub struct ReposUpdateRequestSecurityAndAnalysis {
     Option<ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateRequestSecurityAndAnalysis {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26293,13 +22679,6 @@ pub struct ReposUpdateRequest {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List artifacts for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26319,13 +22698,6 @@ pub struct ActionsListArtifactsForRepoQuery {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListArtifactsForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26347,13 +22719,6 @@ pub struct ArtifactWorkflowRun {
   pub repository_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ArtifactWorkflowRun {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// An artifact
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26384,13 +22749,6 @@ pub struct Artifact {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl Artifact {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListArtifactsForRepoResponse {
@@ -26398,13 +22756,6 @@ pub struct ActionsListArtifactsForRepoResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListArtifactsForRepoResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List GitHub Actions caches for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26438,16 +22789,9 @@ pub struct ActionsGetActionsCacheListQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsGetActionsCacheListQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryActionsCachesActionsCaches {
+pub struct ActionsCacheListActionsCaches {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub created_at: Option<String>,
@@ -26473,30 +22817,16 @@ pub struct RepositoryActionsCachesActionsCaches {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl RepositoryActionsCachesActionsCaches {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 /// Repository actions caches
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryActionsCaches {
+pub struct ActionsCacheList {
   /// Array of caches
-  pub actions_caches: Vec<RepositoryActionsCachesActionsCaches>,
+  pub actions_caches: Vec<ActionsCacheListActionsCaches>,
   /// Total number of caches
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl RepositoryActionsCaches {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `Delete GitHub Actions caches for a repository (using a cache key)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26511,13 +22841,6 @@ pub struct ActionsDeleteActionsCacheByKeyQuery {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsDeleteActionsCacheByKeyQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26541,13 +22864,6 @@ pub struct JobSteps {
   pub status: JobStepsStatus,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl JobSteps {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Information of a job execution in a workflow run
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26619,13 +22935,6 @@ pub struct Job {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl Job {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsReRunJobForWorkflowRunRequest {
@@ -26636,12 +22945,18 @@ pub struct ActionsReRunJobForWorkflowRunRequest {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsReRunJobForWorkflowRunRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
+/// Actions OIDC subject customization for a repository
+#[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+#[builder(field_defaults(setter(into)))]
+pub struct OidcCustomSubRepo {
+  /// Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub include_claim_keys: Option<Vec<String>>,
+  /// Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored.
+  pub use_default: bool,
 }
+
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Actions OIDC subject customization for a repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26655,13 +22970,6 @@ pub struct ActionsOidcSubjectCustomizationForARepository {
   pub use_default: bool,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsOidcSubjectCustomizationForARepository {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List repository organization secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26678,13 +22986,6 @@ pub struct ActionsListRepoOrganizationSecretsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListRepoOrganizationSecretsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 /// Set secrets for GitHub Actions.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26696,13 +22997,6 @@ pub struct ActionsSecret {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsSecret {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListRepoOrganizationSecretsResponse {
@@ -26710,13 +23004,6 @@ pub struct ActionsListRepoOrganizationSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListRepoOrganizationSecretsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List repository organization variables`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26733,13 +23020,6 @@ pub struct ActionsListRepoOrganizationVariablesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListRepoOrganizationVariablesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsVariable {
@@ -26754,13 +23034,6 @@ pub struct ActionsVariable {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsVariable {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListRepoOrganizationVariablesResponse {
@@ -26768,13 +23041,6 @@ pub struct ActionsListRepoOrganizationVariablesResponse {
   pub variables: Vec<ActionsVariable>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListRepoOrganizationVariablesResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26789,13 +23055,6 @@ pub struct ActionsRepositoryPermissions {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsRepositoryPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetGithubActionsPermissionsRepositoryRequest {
@@ -26805,13 +23064,6 @@ pub struct ActionsSetGithubActionsPermissionsRepositoryRequest {
   pub enabled: bool,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsSetGithubActionsPermissionsRepositoryRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26823,13 +23075,6 @@ pub struct ActionsWorkflowAccessToRepository {
   pub access_level: ActionsWorkflowAccessToRepositoryAccessLevel,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsWorkflowAccessToRepository {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List self-hosted runners for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26850,27 +23095,13 @@ pub struct ActionsListSelfHostedRunnersForRepoQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListSelfHostedRunnersForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListSelfHostedRunnersForRepoResponse {
-  pub runners: Vec<SelfHostedRunners>,
+  pub runners: Vec<Runner>,
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListSelfHostedRunnersForRepoResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26888,13 +23119,6 @@ pub struct ActionsGenerateRunnerJitconfigForRepoRequest {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsGenerateRunnerJitconfigForRepoRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequest {
@@ -26903,13 +23127,6 @@ pub struct ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequest {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequest {
@@ -26917,13 +23134,6 @@ pub struct ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequest {
   pub labels: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List workflow runs for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26971,19 +23181,7 @@ pub struct ActionsListWorkflowRunsForRepoQuery {
   pub head_sha: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListWorkflowRunsForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
 /// Information about the Git author
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26994,24 +23192,7 @@ pub struct SimpleCommitAuthor {
   pub name: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
-impl SimpleCommitAuthor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
 /// Information about the Git committer
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27022,24 +23203,7 @@ pub struct SimpleCommitCommitter {
   pub name: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
-impl SimpleCommitCommitter {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
 /// A commit.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27062,24 +23226,7 @@ pub struct SimpleCommit {
   pub tree_id: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
-impl SimpleCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalBaseRepo {
@@ -27088,24 +23235,7 @@ pub struct PullRequestMinimalBaseRepo {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
-impl PullRequestMinimalBaseRepo {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalBase {
@@ -27115,24 +23245,7 @@ pub struct PullRequestMinimalBase {
   pub sha: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
-impl PullRequestMinimalBase {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalHeadRepo {
@@ -27141,24 +23254,7 @@ pub struct PullRequestMinimalHeadRepo {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
-impl PullRequestMinimalHeadRepo {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalHead {
@@ -27168,24 +23264,7 @@ pub struct PullRequestMinimalHead {
   pub sha: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
-impl PullRequestMinimalHead {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimal {
@@ -27196,19 +23275,7 @@ pub struct PullRequestMinimal {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "webhooks",
-))]
-impl PullRequestMinimal {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "actions",))]
 /// A workflow referenced/reused by the initial caller workflow
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27221,14 +23288,7 @@ pub struct ReferencedWorkflow {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
-impl ReferencedWorkflow {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "actions",))]
 /// An invocation of a workflow
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27322,13 +23382,6 @@ pub struct WorkflowRun {
   pub workflow_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
-impl WorkflowRun {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27337,13 +23390,6 @@ pub struct ActionsListWorkflowRunsForRepoResponse {
   pub workflow_runs: Vec<WorkflowRun>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListWorkflowRunsForRepoResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `Get a workflow run`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -27356,16 +23402,9 @@ pub struct ActionsGetWorkflowRunQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsGetWorkflowRunQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct EnvironmentApprovalEnvironments {
+pub struct EnvironmentApprovalsEnvironments {
   /// The time that the environment was created, in ISO 8601 format.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -27394,33 +23433,19 @@ pub struct EnvironmentApprovalEnvironments {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl EnvironmentApprovalEnvironments {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 /// An entry in the reviews log for environment deployments
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct EnvironmentApproval {
+pub struct EnvironmentApprovals {
   /// The comment submitted with the deployment review
   pub comment: String,
   /// The list of environments that were approved or rejected
-  pub environments: Vec<EnvironmentApprovalEnvironments>,
+  pub environments: Vec<EnvironmentApprovalsEnvironments>,
   /// Whether deployment to the environment(s) was approved or rejected or pending (with comments)
-  pub state: EnvironmentApprovalState,
+  pub state: EnvironmentApprovalsState,
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl EnvironmentApproval {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List workflow run artifacts`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -27441,13 +23466,6 @@ pub struct ActionsListWorkflowRunArtifactsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListWorkflowRunArtifactsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListWorkflowRunArtifactsResponse {
@@ -27455,13 +23473,6 @@ pub struct ActionsListWorkflowRunArtifactsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListWorkflowRunArtifactsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `Get a workflow run attempt`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -27473,13 +23484,6 @@ pub struct ActionsGetWorkflowRunAttemptQuery {
   pub exclude_pull_requests: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsGetWorkflowRunAttemptQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List jobs for a workflow run attempt`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -27496,13 +23500,6 @@ pub struct ActionsListJobsForWorkflowRunAttemptQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListJobsForWorkflowRunAttemptQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListJobsForWorkflowRunAttemptResponse {
@@ -27510,13 +23507,6 @@ pub struct ActionsListJobsForWorkflowRunAttemptResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListJobsForWorkflowRunAttemptResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27527,13 +23517,6 @@ pub struct ReviewCustomGatesCommentRequired {
   pub environment_name: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ReviewCustomGatesCommentRequired {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27548,13 +23531,6 @@ pub struct ReviewCustomGatesStateRequired {
   pub state: ReviewCustomGatesStateRequiredState,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ReviewCustomGatesStateRequired {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List jobs for a workflow run`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -27575,13 +23551,6 @@ pub struct ActionsListJobsForWorkflowRunQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListJobsForWorkflowRunQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListJobsForWorkflowRunResponse {
@@ -27589,13 +23558,6 @@ pub struct ActionsListJobsForWorkflowRunResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListJobsForWorkflowRunResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27620,13 +23582,6 @@ pub struct PendingDeploymentEnvironment {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl PendingDeploymentEnvironment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PendingDeploymentReviewers {
@@ -27639,13 +23594,6 @@ pub struct PendingDeploymentReviewers {
   pub type_: Option<DeploymentReviewerType>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl PendingDeploymentReviewers {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Details of a deployment that is waiting for protection rules to pass
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -27665,13 +23613,6 @@ pub struct PendingDeployment {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl PendingDeployment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsReviewPendingDeploymentsForRunRequest {
@@ -27683,20 +23624,7 @@ pub struct ActionsReviewPendingDeploymentsForRunRequest {
   pub state: ActionsReviewPendingDeploymentsForRunRequestState,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsReviewPendingDeploymentsForRunRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "repos",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "actions", feature = "repos",))]
 /// A request for a specific ref(branch,sha,tag) to be deployed
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27719,7 +23647,7 @@ pub struct Deployment {
   pub payload: serde_json::Value,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   /// Specifies if the given environment is one that end-users directly interact with. Default: false.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -27740,19 +23668,6 @@ pub struct Deployment {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "checks",
-  feature = "repos",
-  feature = "webhooks",
-))]
-impl Deployment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27764,13 +23679,6 @@ pub struct ActionsReRunWorkflowRequest {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsReRunWorkflowRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsReRunWorkflowFailedJobsRequest {
@@ -27781,13 +23689,6 @@ pub struct ActionsReRunWorkflowFailedJobsRequest {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsReRunWorkflowFailedJobsRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunUsageBillableMACOSJobRuns {
@@ -27795,13 +23696,6 @@ pub struct WorkflowRunUsageBillableMACOSJobRuns {
   pub job_id: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowRunUsageBillableMACOSJobRuns {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27814,13 +23708,6 @@ pub struct WorkflowRunUsageBillableMACOS {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowRunUsageBillableMACOS {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunUsageBillableUBUNTUJobRuns {
@@ -27828,13 +23715,6 @@ pub struct WorkflowRunUsageBillableUBUNTUJobRuns {
   pub job_id: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowRunUsageBillableUBUNTUJobRuns {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27847,13 +23727,6 @@ pub struct WorkflowRunUsageBillableUBUNTU {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowRunUsageBillableUBUNTU {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunUsageBillableWINDOWSJobRuns {
@@ -27861,13 +23734,6 @@ pub struct WorkflowRunUsageBillableWINDOWSJobRuns {
   pub job_id: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowRunUsageBillableWINDOWSJobRuns {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27879,13 +23745,6 @@ pub struct WorkflowRunUsageBillableWINDOWS {
   pub total_ms: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowRunUsageBillableWINDOWS {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27905,13 +23764,6 @@ pub struct WorkflowRunUsageBillable {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowRunUsageBillable {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 /// Workflow Run Usage
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27922,13 +23774,6 @@ pub struct WorkflowRunUsage {
   pub run_duration_ms: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowRunUsage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List repository secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -27945,13 +23790,6 @@ pub struct ActionsListRepoSecretsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListRepoSecretsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListRepoSecretsResponse {
@@ -27959,13 +23797,6 @@ pub struct ActionsListRepoSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListRepoSecretsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27980,13 +23811,6 @@ pub struct ActionsCreateOrUpdateRepoSecretRequest {
   pub key_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsCreateOrUpdateRepoSecretRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List repository variables`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -28003,13 +23827,6 @@ pub struct ActionsListRepoVariablesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListRepoVariablesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListRepoVariablesResponse {
@@ -28017,13 +23834,6 @@ pub struct ActionsListRepoVariablesResponse {
   pub variables: Vec<ActionsVariable>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListRepoVariablesResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28034,13 +23844,6 @@ pub struct ActionsCreateRepoVariableRequest {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsCreateRepoVariableRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28055,13 +23858,6 @@ pub struct ActionsUpdateRepoVariableRequest {
   pub value: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsUpdateRepoVariableRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List repository workflows`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -28078,13 +23874,6 @@ pub struct ActionsListRepoWorkflowsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListRepoWorkflowsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
 /// A GitHub Actions workflow
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28104,13 +23893,6 @@ pub struct Workflow {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "webhooks",))]
-impl Workflow {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28119,13 +23901,6 @@ pub struct ActionsListRepoWorkflowsResponse {
   pub workflows: Vec<Workflow>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListRepoWorkflowsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28139,13 +23914,6 @@ pub struct ActionsCreateWorkflowDispatchRequest {
   pub ref_: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsCreateWorkflowDispatchRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List workflow runs for a workflow`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -28194,13 +23962,6 @@ pub struct ActionsListWorkflowRunsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListWorkflowRunsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListWorkflowRunsResponse {
@@ -28208,13 +23969,6 @@ pub struct ActionsListWorkflowRunsResponse {
   pub workflow_runs: Vec<WorkflowRun>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListWorkflowRunsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28225,13 +23979,6 @@ pub struct WorkflowUsageBillableMACOS {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowUsageBillableMACOS {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowUsageBillableUBUNTU {
@@ -28241,13 +23988,6 @@ pub struct WorkflowUsageBillableUBUNTU {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowUsageBillableUBUNTU {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowUsageBillableWINDOWS {
@@ -28256,13 +23996,6 @@ pub struct WorkflowUsageBillableWINDOWS {
   pub total_ms: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowUsageBillableWINDOWS {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28282,13 +24015,6 @@ pub struct WorkflowUsageBillable {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowUsageBillable {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 /// Workflow Usage
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28296,13 +24022,6 @@ pub struct WorkflowUsage {
   pub billable: WorkflowUsageBillable,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl WorkflowUsage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List repository activities`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -28350,13 +24069,6 @@ pub struct ReposListActivitiesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListActivitiesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Activity
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28379,13 +24091,6 @@ pub struct Activity {
   pub timestamp: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl Activity {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List assignees`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -28401,18 +24106,11 @@ pub struct IssuesListAssigneesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListAssigneesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// An autolink reference.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct AutolinkReference {
+pub struct Autolink {
   pub id: i64,
   /// Whether this autolink reference matches alphanumeric characters. If false, this autolink reference only matches numeric characters.
   pub is_alphanumeric: bool,
@@ -28422,13 +24120,6 @@ pub struct AutolinkReference {
   pub url_template: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl AutolinkReference {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28444,13 +24135,6 @@ pub struct ReposCreateAutolinkRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateAutolinkRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Check Automated Security Fixes
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28461,13 +24145,6 @@ pub struct CheckAutomatedSecurityFixes {
   pub paused: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl CheckAutomatedSecurityFixes {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List branches`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -28488,13 +24165,6 @@ pub struct ReposListBranchesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListBranchesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ShortBranchCommit {
@@ -28502,13 +24172,6 @@ pub struct ShortBranchCommit {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ShortBranchCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28519,13 +24182,6 @@ pub struct BranchProtectionAllowDeletions {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl BranchProtectionAllowDeletions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchProtectionAllowForcePushes {
@@ -28534,13 +24190,6 @@ pub struct BranchProtectionAllowForcePushes {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl BranchProtectionAllowForcePushes {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -28552,13 +24201,6 @@ pub struct BranchProtectionAllowForkSyncing {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl BranchProtectionAllowForkSyncing {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchProtectionBlockCreations {
@@ -28568,13 +24210,6 @@ pub struct BranchProtectionBlockCreations {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl BranchProtectionBlockCreations {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Protected Branch Admin Enforced
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28583,13 +24218,6 @@ pub struct ProtectedBranchAdminEnforced {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchAdminEnforced {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -28601,13 +24229,6 @@ pub struct BranchProtectionLockBranch {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl BranchProtectionLockBranch {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchProtectionRequiredConversationResolution {
@@ -28616,13 +24237,6 @@ pub struct BranchProtectionRequiredConversationResolution {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl BranchProtectionRequiredConversationResolution {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28633,13 +24247,6 @@ pub struct BranchProtectionRequiredLinearHistory {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl BranchProtectionRequiredLinearHistory {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Allow specific users, teams, or apps to bypass pull request requirements.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28647,7 +24254,7 @@ pub struct ProtectedBranchPullRequestReviewBypassPullRequestAllowances {
   /// The list of apps allowed to bypass pull request requirements.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub apps: Option<Vec<GitHubApp>>,
+  pub apps: Option<Vec<Integration>>,
   /// The list of teams allowed to bypass pull request requirements.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -28659,20 +24266,13 @@ pub struct ProtectedBranchPullRequestReviewBypassPullRequestAllowances {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchPullRequestReviewBypassPullRequestAllowances {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchPullRequestReviewDismissalRestrictions {
   /// The list of apps with review dismissal access.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub apps: Option<Vec<GitHubApp>>,
+  pub apps: Option<Vec<Integration>>,
   /// The list of teams with review dismissal access.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -28692,13 +24292,6 @@ pub struct ProtectedBranchPullRequestReviewDismissalRestrictions {
   pub users_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchPullRequestReviewDismissalRestrictions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Protected Branch Pull Request Review
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -28727,13 +24320,6 @@ pub struct ProtectedBranchPullRequestReview {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchPullRequestReview {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchProtectionRequiredSignatures {
@@ -28741,13 +24327,6 @@ pub struct BranchProtectionRequiredSignatures {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl BranchProtectionRequiredSignatures {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28758,13 +24337,6 @@ pub struct ProtectedBranchRequiredStatusCheckChecks {
   pub context: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchRequiredStatusCheckChecks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Protected Branch Required Status Check
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -28786,13 +24358,6 @@ pub struct ProtectedBranchRequiredStatusCheck {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchRequiredStatusCheck {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28870,13 +24435,6 @@ pub struct BranchRestrictionPolicyAppsOwner {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl BranchRestrictionPolicyAppsOwner {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchRestrictionPolicyAppsPermissions {
@@ -28894,13 +24452,6 @@ pub struct BranchRestrictionPolicyAppsPermissions {
   pub single_file: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl BranchRestrictionPolicyAppsPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28943,13 +24494,6 @@ pub struct BranchRestrictionPolicyApps {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl BranchRestrictionPolicyApps {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28995,13 +24539,6 @@ pub struct BranchRestrictionPolicyTeams {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl BranchRestrictionPolicyTeams {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29064,13 +24601,6 @@ pub struct BranchRestrictionPolicyUsers {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl BranchRestrictionPolicyUsers {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Branch Restriction Policy
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29084,13 +24614,6 @@ pub struct BranchRestrictionPolicy {
   pub users_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl BranchRestrictionPolicy {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Branch Protection
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -29149,13 +24672,6 @@ pub struct BranchProtection {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl BranchProtection {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Short Branch
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29172,13 +24688,6 @@ pub struct ShortBranch {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ShortBranch {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchWithProtectionLinks {
@@ -29187,19 +24696,11 @@ pub struct BranchWithProtectionLinks {
   pub self_: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl BranchWithProtectionLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(
   feature = "full",
   feature = "repos",
   feature = "pulls",
   feature = "search",
-  feature = "webhooks",
 ))]
 /// Metaproperties for Git author/committer information.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -29216,25 +24717,7 @@ pub struct GitUser {
   pub name: Option<String>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "search",
-  feature = "webhooks",
-))]
-impl GitUser {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitCommitTree {
@@ -29245,22 +24728,9 @@ pub struct CommitCommitTree {
 #[cfg(any(
   feature = "full",
   feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl CommitCommitTree {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
   feature = "git",
   feature = "pulls",
   feature = "search",
-  feature = "webhooks",
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29275,26 +24745,7 @@ pub struct Verification {
   pub verified: bool,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "git",
-  feature = "pulls",
-  feature = "search",
-  feature = "webhooks",
-))]
-impl Verification {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitCommit {
@@ -29313,24 +24764,7 @@ pub struct CommitCommit {
   pub verification: Option<Verification>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl CommitCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 /// Diff Entry
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29352,24 +24786,7 @@ pub struct DiffEntry {
   pub status: DiffEntryStatus,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl DiffEntry {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitParents {
@@ -29380,24 +24797,7 @@ pub struct CommitParents {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl CommitParents {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitStats {
@@ -29412,24 +24812,7 @@ pub struct CommitStats {
   pub total: Option<i64>,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl CommitStats {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 /// Commit
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29455,18 +24838,6 @@ pub struct Commit {
   pub url: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl Commit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Branch With Protection
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -29488,13 +24859,6 @@ pub struct BranchWithProtection {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl BranchWithProtection {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Allow specific users, teams, or apps to bypass pull request requirements.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29514,13 +24878,6 @@ pub struct ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPul
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPullRequestAllowances {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29539,13 +24896,6 @@ pub struct ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsDismissal
   pub users: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsDismissalRestrictions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Require at least one approving review on a pull request, before merging. Set to `null` to disable.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -29580,13 +24930,6 @@ pub struct ReposUpdateBranchProtectionRequestRequiredPullRequestReviews {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateBranchProtectionRequestRequiredPullRequestReviews {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateBranchProtectionRequestRequiredStatusChecksChecks {
@@ -29598,13 +24941,6 @@ pub struct ReposUpdateBranchProtectionRequestRequiredStatusChecksChecks {
   pub context: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateBranchProtectionRequestRequiredStatusChecksChecks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Require status checks to pass before merging. Set to `null` to disable.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -29622,13 +24958,6 @@ pub struct ReposUpdateBranchProtectionRequestRequiredStatusChecks {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateBranchProtectionRequestRequiredStatusChecks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29643,13 +24972,6 @@ pub struct ReposUpdateBranchProtectionRequestRestrictions {
   pub users: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateBranchProtectionRequestRestrictions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29702,13 +25024,6 @@ pub struct ReposUpdateBranchProtectionRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateBranchProtectionRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchAllowDeletions {
@@ -29716,26 +25031,12 @@ pub struct ProtectedBranchAllowDeletions {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchAllowDeletions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchAllowForcePushes {
   pub enabled: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchAllowForcePushes {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -29747,26 +25048,12 @@ pub struct ProtectedBranchAllowForkSyncing {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchAllowForkSyncing {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchBlockCreations {
   pub enabled: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchBlockCreations {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29775,13 +25062,6 @@ pub struct ProtectedBranchEnforceAdmins {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchEnforceAdmins {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -29793,13 +25073,6 @@ pub struct ProtectedBranchLockBranch {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchLockBranch {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredConversationResolution {
@@ -29809,13 +25082,6 @@ pub struct ProtectedBranchRequiredConversationResolution {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchRequiredConversationResolution {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredLinearHistory {
@@ -29823,37 +25089,23 @@ pub struct ProtectedBranchRequiredLinearHistory {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchRequiredLinearHistory {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub apps: Option<Vec<GitHubApp>>,
+  pub apps: Option<Vec<Integration>>,
   pub teams: Vec<Team>,
   pub users: Vec<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub apps: Option<Vec<GitHubApp>>,
+  pub apps: Option<Vec<Integration>>,
   pub teams: Vec<Team>,
   pub teams_url: String,
   pub url: String,
@@ -29861,13 +25113,6 @@ pub struct ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
   pub users_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29897,13 +25142,6 @@ pub struct ProtectedBranchRequiredPullRequestReviews {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchRequiredPullRequestReviews {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredSignatures {
@@ -29911,13 +25149,6 @@ pub struct ProtectedBranchRequiredSignatures {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranchRequiredSignatures {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29928,13 +25159,6 @@ pub struct StatusCheckPolicyChecks {
   pub context: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl StatusCheckPolicyChecks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Status Check Policy
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -29947,13 +25171,6 @@ pub struct StatusCheckPolicy {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl StatusCheckPolicy {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Branch protections protect branches
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -30001,13 +25218,6 @@ pub struct ProtectedBranch {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ProtectedBranch {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Allow specific users, teams, or apps to bypass pull request requirements.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30027,13 +25237,6 @@ pub struct ReposUpdatePullRequestReviewProtectionRequestBypassPullRequestAllowan
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdatePullRequestReviewProtectionRequestBypassPullRequestAllowances {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30052,13 +25255,6 @@ pub struct ReposUpdatePullRequestReviewProtectionRequestDismissalRestrictions {
   pub users: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdatePullRequestReviewProtectionRequestDismissalRestrictions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30092,13 +25288,6 @@ pub struct ReposUpdatePullRequestReviewProtectionRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdatePullRequestReviewProtectionRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateStatusCheckProtectionRequestChecks {
@@ -30110,13 +25299,6 @@ pub struct ReposUpdateStatusCheckProtectionRequestChecks {
   pub context: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateStatusCheckProtectionRequestChecks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30137,13 +25319,6 @@ pub struct ReposUpdateStatusCheckProtectionRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateStatusCheckProtectionRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposAddStatusCheckContextsRequestItem1 {
@@ -30151,13 +25326,6 @@ pub struct ReposAddStatusCheckContextsRequestItem1 {
   pub contexts: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposAddStatusCheckContextsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30167,13 +25335,6 @@ pub struct ReposSetStatusCheckContextsRequestItem1 {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposSetStatusCheckContextsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposRemoveStatusCheckContextsRequestItem1 {
@@ -30181,13 +25342,6 @@ pub struct ReposRemoveStatusCheckContextsRequestItem1 {
   pub contexts: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposRemoveStatusCheckContextsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30197,13 +25351,6 @@ pub struct ReposAddAppAccessRestrictionsRequestItem1 {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposAddAppAccessRestrictionsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposSetAppAccessRestrictionsRequestItem1 {
@@ -30211,13 +25358,6 @@ pub struct ReposSetAppAccessRestrictionsRequestItem1 {
   pub apps: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposSetAppAccessRestrictionsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30227,13 +25367,6 @@ pub struct ReposRemoveAppAccessRestrictionsRequestItem1 {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposRemoveAppAccessRestrictionsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposAddTeamAccessRestrictionsRequestItem1 {
@@ -30241,13 +25374,6 @@ pub struct ReposAddTeamAccessRestrictionsRequestItem1 {
   pub teams: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposAddTeamAccessRestrictionsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30257,13 +25383,6 @@ pub struct ReposSetTeamAccessRestrictionsRequestItem1 {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposSetTeamAccessRestrictionsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposRemoveTeamAccessRestrictionsRequestItem1 {
@@ -30271,13 +25390,6 @@ pub struct ReposRemoveTeamAccessRestrictionsRequestItem1 {
   pub teams: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposRemoveTeamAccessRestrictionsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30287,13 +25399,6 @@ pub struct ReposAddUserAccessRestrictionsRequestItem1 {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposAddUserAccessRestrictionsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposSetUserAccessRestrictionsRequestItem1 {
@@ -30301,13 +25406,6 @@ pub struct ReposSetUserAccessRestrictionsRequestItem1 {
   pub users: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposSetUserAccessRestrictionsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30317,13 +25415,6 @@ pub struct ReposRemoveUserAccessRestrictionsRequestItem1 {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposRemoveUserAccessRestrictionsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposRenameBranchRequest {
@@ -30331,13 +25422,6 @@ pub struct ReposRenameBranchRequest {
   pub new_name: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposRenameBranchRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30345,13 +25429,6 @@ pub struct ChecksCreateRequestItem1 {
   pub status: ChecksCreateRequestItem1Status,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksCreateRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30362,27 +25439,49 @@ pub struct ChecksCreateRequestItem2 {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksCreateRequestItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckRunCheckSuite {
   pub id: i64,
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
-impl CheckRunCheckSuite {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
+#[cfg(any(feature = "full", feature = "checks",))]
+/// A deployment created as the result of an Actions check run from a workflow that references an environment
+#[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+#[builder(field_defaults(setter(into)))]
+pub struct DeploymentSimple {
+  pub created_at: String,
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub description: Option<String>,
+  /// Name for the target deployment environment.
+  pub environment: String,
+  /// Unique identifier of the deployment
+  pub id: i64,
+  pub node_id: String,
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub original_environment: Option<String>,
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub performed_via_github_app: Option<Integration>,
+  /// Specifies if the given environment is one that end-users directly interact with. Default: false.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub production_environment: Option<bool>,
+  pub repository_url: String,
+  pub statuses_url: String,
+  /// Parameter to specify a task to execute
+  pub task: String,
+  /// Specifies if the given environment is will no longer exist at some point in the future. Default: false.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub transient_environment: Option<bool>,
+  pub updated_at: String,
+  pub url: String,
 }
-#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
+
+#[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckRunOutput {
@@ -30399,21 +25498,14 @@ pub struct CheckRunOutput {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
-impl CheckRunOutput {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "checks",))]
 /// A check performed on the code of a given code change
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckRun {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub app: Option<GitHubApp>,
+  pub app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub check_suite: Option<CheckRunCheckSuite>,
@@ -30425,7 +25517,7 @@ pub struct CheckRun {
   pub conclusion: Option<CheckRunConclusion>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub deployment: Option<Deployment>,
+  pub deployment: Option<DeploymentSimple>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub details_url: Option<String>,
@@ -30453,13 +25545,6 @@ pub struct CheckRun {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "checks", feature = "webhooks",))]
-impl CheckRun {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30470,13 +25555,6 @@ pub struct ChecksUpdateRequestItem1 {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksUpdateRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksUpdateRequestItem2 {
@@ -30485,13 +25563,6 @@ pub struct ChecksUpdateRequestItem2 {
   pub status: Option<ChecksUpdateRequestItem2Status>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksUpdateRequestItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "checks",))]
 /// Query for `List check run annotations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -30507,13 +25578,6 @@ pub struct ChecksListAnnotationsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksListAnnotationsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "checks",))]
 /// Check Annotation
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -30544,13 +25608,6 @@ pub struct CheckAnnotation {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-impl CheckAnnotation {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksCreateSuiteRequest {
@@ -30558,13 +25615,6 @@ pub struct ChecksCreateSuiteRequest {
   pub head_sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksCreateSuiteRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "checks",))]
 /// A suite of checks performed on the code of a given code change
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -30575,7 +25625,7 @@ pub struct CheckSuite {
   pub after: Option<String>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub app: Option<GitHubApp>,
+  pub app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub before: Option<String>,
@@ -30618,13 +25668,6 @@ pub struct CheckSuite {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-impl CheckSuite {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksSetSuitesPreferencesRequestAutoTriggerChecks {
@@ -30634,13 +25677,6 @@ pub struct ChecksSetSuitesPreferencesRequestAutoTriggerChecks {
   pub setting: bool,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksSetSuitesPreferencesRequestAutoTriggerChecks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30652,13 +25688,6 @@ pub struct ChecksSetSuitesPreferencesRequest {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksSetSuitesPreferencesRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckSuitePreferencePreferencesAutoTriggerChecks {
@@ -30666,13 +25695,6 @@ pub struct CheckSuitePreferencePreferencesAutoTriggerChecks {
   pub setting: bool,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
-impl CheckSuitePreferencePreferencesAutoTriggerChecks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30683,13 +25705,6 @@ pub struct CheckSuitePreferencePreferences {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-impl CheckSuitePreferencePreferences {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "checks",))]
 /// Check suite configuration preferences for a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30698,13 +25713,6 @@ pub struct CheckSuitePreference {
   pub repository: MinimalRepository,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
-impl CheckSuitePreference {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "checks",))]
 /// Query for `List check runs in a check suite`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -30733,13 +25741,6 @@ pub struct ChecksListForSuiteQuery {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksListForSuiteQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksListForSuiteResponse {
@@ -30747,13 +25748,6 @@ pub struct ChecksListForSuiteResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksListForSuiteResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// Query for `List code scanning alerts for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -30799,13 +25793,6 @@ pub struct CodeScanningListAlertsForRepoQuery {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningListAlertsForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAlertItems {
@@ -30838,13 +25825,6 @@ pub struct CodeScanningAlertItems {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningAlertItems {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30888,13 +25868,6 @@ pub struct CodeScanningAlertRule {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningAlertRule {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAlert {
@@ -30928,13 +25901,6 @@ pub struct CodeScanningAlert {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningAlert {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningUpdateAlertRequest {
@@ -30947,13 +25913,6 @@ pub struct CodeScanningUpdateAlertRequest {
   pub state: CodeScanningAlertSetState,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningUpdateAlertRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// Query for `List instances of a code scanning alert`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -30974,13 +25933,6 @@ pub struct CodeScanningListAlertInstancesQuery {
   pub ref_: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningListAlertInstancesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// Query for `List code scanning analyses for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31022,13 +25974,6 @@ pub struct CodeScanningListRecentAnalysesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningListRecentAnalysesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAnalysis {
@@ -31057,13 +26002,6 @@ pub struct CodeScanningAnalysis {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningAnalysis {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 /// Query for `Delete a code scanning analysis from a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31075,17 +26013,10 @@ pub struct CodeScanningDeleteAnalysisQuery {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningDeleteAnalysisQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 /// Successful deletion of a code scanning analysis
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct AnalysisDeletion {
+pub struct CodeScanningAnalysisDeletion {
   /// Next deletable analysis in chain, with last analysis deletion confirmation
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -31097,17 +26028,10 @@ pub struct AnalysisDeletion {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl AnalysisDeletion {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 /// A CodeQL database.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct CodeQLDatabase {
+pub struct CodeScanningCodeqlDatabase {
   /// The commit SHA of the repository at the time the CodeQL database was created.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -31131,13 +26055,6 @@ pub struct CodeQLDatabase {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeQLDatabase {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// Configuration for code scanning default setup.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31166,13 +26083,6 @@ pub struct CodeScanningDefaultSetup {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningDefaultSetup {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 /// Configuration for code scanning default setup.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31192,13 +26102,6 @@ pub struct CodeScanningDefaultSetupUpdate {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningDefaultSetupUpdate {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 /// You can use `run_url` to track the status of the run. This includes a property status and conclusion.
 /// You should not rely on this always being an actions workflow run object.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31214,13 +26117,6 @@ pub struct CodeScanningDefaultSetupUpdateResponse {
   pub run_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningDefaultSetupUpdateResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31250,13 +26146,6 @@ pub struct CodeScanningUploadSarifRequest {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningUploadSarifRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningSarifsReceipt {
@@ -31269,13 +26158,6 @@ pub struct CodeScanningSarifsReceipt {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningSarifsReceipt {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31294,13 +26176,6 @@ pub struct CodeScanningSarifsStatus {
   pub processing_status: Option<CodeScanningSarifsStatusProcessingStatus>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
-impl CodeScanningSarifsStatus {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List CODEOWNERS errors`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31313,13 +26188,6 @@ pub struct ReposCodeownersErrorsQuery {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCodeownersErrorsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31345,13 +26213,6 @@ pub struct CodeownersErrorsErrors {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl CodeownersErrorsErrors {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// A list of errors found in a repo's CODEOWNERS file
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31359,13 +26220,6 @@ pub struct CodeownersErrors {
   pub errors: Vec<CodeownersErrorsErrors>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl CodeownersErrors {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `List codespaces in a repository for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31382,13 +26236,6 @@ pub struct CodespacesListInRepositoryForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListInRepositoryForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListInRepositoryForAuthenticatedUserResponse {
@@ -31396,13 +26243,6 @@ pub struct CodespacesListInRepositoryForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListInRepositoryForAuthenticatedUserResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31455,13 +26295,6 @@ pub struct CodespacesCreateWithRepoForAuthenticatedUserRequest {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesCreateWithRepoForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `List devcontainer configurations in a repository for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31477,13 +26310,6 @@ pub struct CodespacesListDevcontainersInRepositoryForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListDevcontainersInRepositoryForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainers {
@@ -31497,13 +26323,6 @@ pub struct CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDe
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainers {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse {
@@ -31512,13 +26331,6 @@ pub struct CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `List available machine types for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31540,13 +26352,6 @@ pub struct CodespacesRepoMachinesForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesRepoMachinesForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesRepoMachinesForAuthenticatedUserResponse {
@@ -31554,13 +26359,6 @@ pub struct CodespacesRepoMachinesForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesRepoMachinesForAuthenticatedUserResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `Get default attributes for a codespace`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31578,13 +26376,6 @@ pub struct CodespacesPreFlightWithRepoForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesPreFlightWithRepoForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesPreFlightWithRepoForAuthenticatedUserResponseDefaults {
@@ -31594,13 +26385,6 @@ pub struct CodespacesPreFlightWithRepoForAuthenticatedUserResponseDefaults {
   pub location: String,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesPreFlightWithRepoForAuthenticatedUserResponseDefaults {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31614,13 +26398,6 @@ pub struct CodespacesPreFlightWithRepoForAuthenticatedUserResponse {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesPreFlightWithRepoForAuthenticatedUserResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `Check if permissions defined by a devcontainer have been accepted by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31633,28 +26410,14 @@ pub struct CodespacesCheckPermissionsForDevcontainerQuery {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesCheckPermissionsForDevcontainerQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 /// Permission check result for a given devcontainer config.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct CodespacesPermissionsCheck {
+pub struct CodespacesPermissionsCheckForDevcontainer {
   /// Whether the user has accepted the permissions defined by the devcontainer config
   pub accepted: bool,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesPermissionsCheck {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `List repository secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31671,27 +26434,24 @@ pub struct CodespacesListRepoSecretsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListRepoSecretsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
+/// Set repository secrets for GitHub Codespaces.
+#[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+#[builder(field_defaults(setter(into)))]
+pub struct RepoCodespacesSecret {
+  pub created_at: String,
+  /// The name of the secret.
+  pub name: String,
+  pub updated_at: String,
 }
+
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListRepoSecretsResponse {
-  pub secrets: Vec<CodespacesSecret>,
+  pub secrets: Vec<RepoCodespacesSecret>,
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListRepoSecretsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31706,13 +26466,6 @@ pub struct CodespacesCreateOrUpdateRepoSecretRequest {
   pub key_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesCreateOrUpdateRepoSecretRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List repository collaborators`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31737,13 +26490,6 @@ pub struct ReposListCollaboratorsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListCollaboratorsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CollaboratorPermissions {
@@ -31758,13 +26504,6 @@ pub struct CollaboratorPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl CollaboratorPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Collaborator
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31804,13 +26543,6 @@ pub struct Collaborator {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl Collaborator {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposAddCollaboratorRequest {
@@ -31821,13 +26553,6 @@ pub struct ReposAddCollaboratorRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposAddCollaboratorRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "activity",))]
 /// Repository invitations let you manage who you collaborate with.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31854,13 +26579,6 @@ pub struct RepositoryInvitation {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "activity",))]
-impl RepositoryInvitation {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Repository Collaborator Permission
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31873,13 +26591,6 @@ pub struct RepositoryCollaboratorPermission {
   pub user: Option<Collaborator>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl RepositoryCollaboratorPermission {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List commit comments for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31895,13 +26606,6 @@ pub struct ReposListCommitCommentsForRepoQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListCommitCommentsForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos", feature = "issues",))]
 /// Commit Comment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31933,13 +26637,6 @@ pub struct CommitComment {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "issues",))]
-impl CommitComment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31948,13 +26645,6 @@ pub struct ReposUpdateCommitCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateCommitCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// Query for `List reactions for a commit comment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -31975,13 +26665,6 @@ pub struct ReactionsListForCommitCommentQuery {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsListForCommitCommentQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "reactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForCommitCommentRequest {
@@ -31989,13 +26672,6 @@ pub struct ReactionsCreateForCommitCommentRequest {
   pub content: ReactionsCreateForCommitCommentRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsCreateForCommitCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List commits`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32036,13 +26712,6 @@ pub struct ReposListCommitsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListCommitsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchShortCommit {
@@ -32050,13 +26719,6 @@ pub struct BranchShortCommit {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl BranchShortCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Branch Short
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32067,13 +26729,6 @@ pub struct BranchShort {
   pub protected: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl BranchShort {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List commit comments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32089,13 +26744,6 @@ pub struct ReposListCommentsForCommitQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListCommentsForCommitQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32117,13 +26765,6 @@ pub struct ReposCreateCommitCommentRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateCommitCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List pull requests associated with a commit`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32138,19 +26779,7 @@ pub struct ReposListPullRequestsAssociatedWithCommitQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListPullRequestsAssociatedWithCommitQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 /// Hypermedia Link
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32158,18 +26787,6 @@ pub struct Link {
   pub href: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl Link {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32186,18 +26803,6 @@ pub struct PullRequestSimpleLinks {
 }
 
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
-impl PullRequestSimpleLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
 /// The status of auto merging a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32211,18 +26816,6 @@ pub struct AutoMerge {
   pub merge_method: AutoMergeMergeMethod,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl AutoMerge {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32238,13 +26831,6 @@ pub struct PullRequestSimpleBase {
 }
 
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
-impl PullRequestSimpleBase {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestSimpleHead {
@@ -32258,13 +26844,6 @@ pub struct PullRequestSimpleHead {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
-impl PullRequestSimpleHead {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32281,13 +26860,6 @@ pub struct PullRequestSimpleLabels {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
-impl PullRequestSimpleLabels {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 /// Pull Request Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32359,13 +26931,6 @@ pub struct PullRequestSimple {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
-impl PullRequestSimple {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get a commit`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32381,13 +26946,6 @@ pub struct ReposGetCommitQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetCommitQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "checks",))]
 /// Query for `List check runs for a Git reference`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32419,13 +26977,6 @@ pub struct ChecksListForRefQuery {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksListForRefQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksListForRefResponse {
@@ -32433,13 +26984,6 @@ pub struct ChecksListForRefResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksListForRefResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "checks",))]
 /// Query for `List check suites for a Git reference`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32464,13 +27008,6 @@ pub struct ChecksListSuitesForRefQuery {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksListSuitesForRefQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "checks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksListSuitesForRefResponse {
@@ -32478,13 +27015,6 @@ pub struct ChecksListSuitesForRefResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
-impl ChecksListSuitesForRefResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get the combined status for a specific reference`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32500,13 +27030,6 @@ pub struct ReposGetCombinedStatusForRefQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetCombinedStatusForRefQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32533,13 +27056,6 @@ pub struct SimpleCommitStatus {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl SimpleCommitStatus {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Combined Commit Status
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32553,13 +27069,6 @@ pub struct CombinedCommitStatus {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl CombinedCommitStatus {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List commit statuses for a reference`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32575,13 +27084,6 @@ pub struct ReposListCommitStatusesForRefQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListCommitStatusesForRefQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The status of a commit.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32609,13 +27111,6 @@ pub struct Status {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl Status {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommunityHealthFile {
@@ -32623,13 +27118,6 @@ pub struct CommunityHealthFile {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl CommunityHealthFile {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32658,13 +27146,6 @@ pub struct CommunityProfileFiles {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl CommunityProfileFiles {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Community Profile
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32686,13 +27167,6 @@ pub struct CommunityProfile {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl CommunityProfile {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Compare two commits`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32707,13 +27181,6 @@ pub struct ReposCompareCommitsQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCompareCommitsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Commit Comparison
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32737,13 +27204,6 @@ pub struct CommitComparison {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl CommitComparison {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get repository content`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32755,13 +27215,6 @@ pub struct ReposGetContentQuery {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetContentQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32776,13 +27229,6 @@ pub struct ContentDirectoryItemLinks {
   pub self_: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ContentDirectoryItemLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32811,13 +27257,6 @@ pub struct ContentDirectoryItem {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ContentDirectoryItem {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ContentFileLinks {
@@ -32831,13 +27270,6 @@ pub struct ContentFileLinks {
   pub self_: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ContentFileLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Content File
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -32872,16 +27304,9 @@ pub struct ContentFile {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ContentFile {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct SymlinkContentLinks {
+pub struct ContentSymlinkLinks {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub git: Option<String>,
@@ -32893,19 +27318,12 @@ pub struct SymlinkContentLinks {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl SymlinkContentLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// An object describing a symlink
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct SymlinkContent {
+pub struct ContentSymlink {
   #[serde(rename = "_links")]
-  pub links: SymlinkContentLinks,
+  pub links: ContentSymlinkLinks,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub download_url: Option<String>,
@@ -32921,21 +27339,14 @@ pub struct SymlinkContent {
   pub size: i64,
   pub target: String,
   #[serde(rename = "type")]
-  pub type_: SymlinkContentType,
+  pub type_: ContentSymlinkType,
   pub url: String,
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl SymlinkContent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct SubmoduleContentLinks {
+pub struct ContentSubmoduleLinks {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub git: Option<String>,
@@ -32947,19 +27358,12 @@ pub struct SubmoduleContentLinks {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl SubmoduleContentLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// An object describing a submodule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct SubmoduleContent {
+pub struct ContentSubmodule {
   #[serde(rename = "_links")]
-  pub links: SubmoduleContentLinks,
+  pub links: ContentSubmoduleLinks,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub download_url: Option<String>,
@@ -32975,17 +27379,10 @@ pub struct SubmoduleContent {
   pub size: i64,
   pub submodule_git_url: String,
   #[serde(rename = "type")]
-  pub type_: SubmoduleContentType,
+  pub type_: ContentSubmoduleType,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl SubmoduleContent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -33001,13 +27398,6 @@ pub struct ReposCreateOrUpdateFileContentsRequestAuthor {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateOrUpdateFileContentsRequestAuthor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// The person that committed the file. Default: the authenticated user.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33021,13 +27411,6 @@ pub struct ReposCreateOrUpdateFileContentsRequestCommitter {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateOrUpdateFileContentsRequestCommitter {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33055,13 +27438,6 @@ pub struct ReposCreateOrUpdateFileContentsRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateOrUpdateFileContentsRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitCommitAuthor {
@@ -33076,13 +27452,6 @@ pub struct FileCommitCommitAuthor {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl FileCommitCommitAuthor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33099,13 +27468,6 @@ pub struct FileCommitCommitCommitter {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl FileCommitCommitCommitter {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitCommitParents {
@@ -33121,13 +27483,6 @@ pub struct FileCommitCommitParents {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl FileCommitCommitParents {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitCommitTree {
@@ -33139,13 +27494,6 @@ pub struct FileCommitCommitTree {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl FileCommitCommitTree {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33164,13 +27512,6 @@ pub struct FileCommitCommitVerification {
   pub verified: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl FileCommitCommitVerification {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33208,13 +27549,6 @@ pub struct FileCommitCommit {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl FileCommitCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitContentLinks {
@@ -33230,13 +27564,6 @@ pub struct FileCommitContentLinks {
   pub self_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl FileCommitContentLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33276,13 +27603,6 @@ pub struct FileCommitContent {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl FileCommitContent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// File Commit
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33293,13 +27613,6 @@ pub struct FileCommit {
   pub content: Option<FileCommitContent>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl FileCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// object containing information about the author.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -33316,13 +27629,6 @@ pub struct ReposDeleteFileRequestAuthor {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposDeleteFileRequestAuthor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// object containing information about the committer.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33337,13 +27643,6 @@ pub struct ReposDeleteFileRequestCommitter {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposDeleteFileRequestCommitter {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33367,13 +27666,6 @@ pub struct ReposDeleteFileRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposDeleteFileRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List repository contributors`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33392,13 +27684,6 @@ pub struct ReposListContributorsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListContributorsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Contributor
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -33466,13 +27751,6 @@ pub struct Contributor {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl Contributor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// Query for `List Dependabot alerts for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -33549,13 +27827,6 @@ pub struct DependabotListAlertsForRepoQuery {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotListAlertsForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
 /// Details for the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33573,14 +27844,7 @@ pub struct DependabotAlertDependency {
   pub scope: Option<DependabotAlertDependencyScope>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
-impl DependabotAlertDependency {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "dependabot",))]
 /// A Dependabot alert.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33618,13 +27882,6 @@ pub struct DependabotAlert {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot", feature = "webhooks",))]
-impl DependabotAlert {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependabot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33643,13 +27900,6 @@ pub struct DependabotUpdateAlertRequest {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotUpdateAlertRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot",))]
 /// Query for `List repository secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33665,13 +27915,6 @@ pub struct DependabotListRepoSecretsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotListRepoSecretsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot",))]
 /// Set secrets for Dependabot.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33683,13 +27926,6 @@ pub struct DependabotSecret {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotSecret {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependabot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependabotListRepoSecretsResponse {
@@ -33697,13 +27933,6 @@ pub struct DependabotListRepoSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotListRepoSecretsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependabot",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33718,13 +27947,6 @@ pub struct DependabotCreateOrUpdateRepoSecretRequest {
   pub key_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
-impl DependabotCreateOrUpdateRepoSecretRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
 /// Query for `Get a diff of the dependencies between commits`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -33737,13 +27959,6 @@ pub struct DependencyGraphDiffRangeQuery {
 }
 
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl DependencyGraphDiffRangeQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependencyGraphDiffItemVulnerabilities {
@@ -33753,13 +27968,6 @@ pub struct DependencyGraphDiffItemVulnerabilities {
   pub severity: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl DependencyGraphDiffItemVulnerabilities {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33784,16 +27992,9 @@ pub struct DependencyGraphDiffItem {
 }
 
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl DependencyGraphDiffItem {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct DependencyGraphSpdxSBOMSbomCreationInfo {
+pub struct DependencyGraphSpdxSbomSbomCreationInfo {
   /// The date and time the SPDX document was created.
   pub created: String,
   /// The tools that were used to generate the SPDX document.
@@ -33801,16 +28002,9 @@ pub struct DependencyGraphSpdxSBOMSbomCreationInfo {
 }
 
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl DependencyGraphSpdxSBOMSbomCreationInfo {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct DependencyGraphSpdxSBOMSbomPackagesExternalRefs {
+pub struct DependencyGraphSpdxSbomSbomPackagesExternalRefs {
   /// The category of reference to an external resource this reference refers to.
   #[serde(rename = "referenceCategory")]
   pub referencecategory: String,
@@ -33823,16 +28017,9 @@ pub struct DependencyGraphSpdxSBOMSbomPackagesExternalRefs {
 }
 
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl DependencyGraphSpdxSBOMSbomPackagesExternalRefs {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct DependencyGraphSpdxSBOMSbomPackages {
+pub struct DependencyGraphSpdxSbomSbomPackages {
   /// A unique SPDX identifier for the package.
   #[serde(rename = "SPDXID")]
   #[serde(skip_serializing_if = "Option::is_none")]
@@ -33847,7 +28034,7 @@ pub struct DependencyGraphSpdxSBOMSbomPackages {
   #[serde(rename = "externalRefs")]
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub externalrefs: Option<Vec<DependencyGraphSpdxSBOMSbomPackagesExternalRefs>>,
+  pub externalrefs: Option<Vec<DependencyGraphSpdxSbomSbomPackagesExternalRefs>>,
   /// Whether the package's file content has been subjected to
   /// analysis during the creation of the SPDX document.
   #[serde(rename = "filesAnalyzed")]
@@ -33882,21 +28069,14 @@ pub struct DependencyGraphSpdxSBOMSbomPackages {
 }
 
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl DependencyGraphSpdxSBOMSbomPackages {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct DependencyGraphSpdxSBOMSbom {
+pub struct DependencyGraphSpdxSbomSbom {
   /// The SPDX identifier for the SPDX document.
   #[serde(rename = "SPDXID")]
   pub spdxid: String,
   #[serde(rename = "creationInfo")]
-  pub creationinfo: DependencyGraphSpdxSBOMSbomCreationInfo,
+  pub creationinfo: DependencyGraphSpdxSbomSbomCreationInfo,
   /// The license under which the SPDX document is licensed.
   #[serde(rename = "dataLicense")]
   pub datalicense: String,
@@ -33908,34 +28088,20 @@ pub struct DependencyGraphSpdxSBOMSbom {
   pub documentnamespace: String,
   /// The name of the SPDX document.
   pub name: String,
-  pub packages: Vec<DependencyGraphSpdxSBOMSbomPackages>,
+  pub packages: Vec<DependencyGraphSpdxSbomSbomPackages>,
   /// The version of the SPDX specification that this document conforms to.
   #[serde(rename = "spdxVersion")]
   pub spdxversion: String,
 }
 
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl DependencyGraphSpdxSBOMSbom {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
 /// A schema for the SPDX JSON format returned by the Dependency Graph.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependencyGraphSpdxSbom {
-  pub sbom: DependencyGraphSpdxSBOMSbom,
+  pub sbom: DependencyGraphSpdxSbomSbom,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl DependencyGraphSpdxSbom {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
 /// A description of the detector used.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -33950,13 +28116,6 @@ pub struct SnapshotDetector {
 }
 
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl SnapshotDetector {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SnapshotJob {
@@ -33970,13 +28129,6 @@ pub struct SnapshotJob {
   pub id: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl SnapshotJob {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
 /// Create a new snapshot of a repository's dependencies.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34004,13 +28156,6 @@ pub struct Snapshot {
 }
 
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl Snapshot {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependencyGraphCreateRepositorySnapshotResponse {
@@ -34024,13 +28169,6 @@ pub struct DependencyGraphCreateRepositorySnapshotResponse {
   pub result: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
-impl DependencyGraphCreateRepositorySnapshotResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List deployments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34063,13 +28201,6 @@ pub struct ReposListDeploymentsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListDeploymentsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34111,13 +28242,6 @@ pub struct ReposCreateDeploymentRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateDeploymentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateDeploymentResponseAccepted {
@@ -34126,13 +28250,6 @@ pub struct ReposCreateDeploymentResponseAccepted {
   pub message: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateDeploymentResponseAccepted {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List deployment statuses`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34148,13 +28265,6 @@ pub struct ReposListDeploymentStatusesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListDeploymentStatusesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The status of a deployment.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34183,7 +28293,7 @@ pub struct DeploymentStatus {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   pub repository_url: String,
   /// The state of the status.
   pub state: DeploymentStatusState,
@@ -34193,13 +28303,6 @@ pub struct DeploymentStatus {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl DeploymentStatus {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34233,13 +28336,6 @@ pub struct ReposCreateDeploymentStatusRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateDeploymentStatusRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateDispatchEventRequest {
@@ -34251,13 +28347,6 @@ pub struct ReposCreateDispatchEventRequest {
   pub event_type: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateDispatchEventRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List environments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34274,13 +28363,6 @@ pub struct ReposGetAllEnvironmentsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetAllEnvironmentsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34291,13 +28373,6 @@ pub struct DeploymentBranchPolicySettings {
   pub protected_branches: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl DeploymentBranchPolicySettings {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34312,13 +28387,6 @@ pub struct EnvironmentProtectionRulesItem1 {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl EnvironmentProtectionRulesItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EnvironmentProtectionRulesItem2Reviewers {
@@ -34331,13 +28399,6 @@ pub struct EnvironmentProtectionRulesItem2Reviewers {
   pub type_: Option<DeploymentReviewerType>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl EnvironmentProtectionRulesItem2Reviewers {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34357,13 +28418,6 @@ pub struct EnvironmentProtectionRulesItem2 {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl EnvironmentProtectionRulesItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EnvironmentProtectionRulesItem3 {
@@ -34373,13 +28427,6 @@ pub struct EnvironmentProtectionRulesItem3 {
   pub type_: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl EnvironmentProtectionRulesItem3 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Details of a deployment environment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34406,13 +28453,6 @@ pub struct Environment {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl Environment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposGetAllEnvironmentsResponse {
@@ -34425,13 +28465,6 @@ pub struct ReposGetAllEnvironmentsResponse {
   pub total_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetAllEnvironmentsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34446,13 +28479,6 @@ pub struct ReposCreateOrUpdateEnvironmentRequestReviewers {
   pub type_: Option<DeploymentReviewerType>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateOrUpdateEnvironmentRequestReviewers {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34473,13 +28499,6 @@ pub struct ReposCreateOrUpdateEnvironmentRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateOrUpdateEnvironmentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List deployment branch policies`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34494,13 +28513,6 @@ pub struct ReposListDeploymentBranchPoliciesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListDeploymentBranchPoliciesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Details of a deployment branch or tag policy.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34525,13 +28537,6 @@ pub struct DeploymentBranchPolicy {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl DeploymentBranchPolicy {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposListDeploymentBranchPoliciesResponse {
@@ -34541,16 +28546,9 @@ pub struct ReposListDeploymentBranchPoliciesResponse {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListDeploymentBranchPoliciesResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct DeploymentBranchAndTagPolicyNamePattern {
+pub struct DeploymentBranchPolicyNamePatternWithType {
   /// The name pattern that branches or tags must match in order to deploy to the environment.
   ///
   /// Wildcard characters will not match `/`. For example, to match branches that begin with `release/` and contain an additional single slash, use `release/*/*`.
@@ -34560,16 +28558,9 @@ pub struct DeploymentBranchAndTagPolicyNamePattern {
   #[serde(rename = "type")]
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub type_: Option<DeploymentBranchAndTagPolicyNamePatternType>,
+  pub type_: Option<DeploymentBranchPolicyNamePatternWithTypeType>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl DeploymentBranchAndTagPolicyNamePattern {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34582,17 +28573,10 @@ pub struct DeploymentBranchPolicyNamePattern {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl DeploymentBranchPolicyNamePattern {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// A GitHub App that is providing a custom deployment protection rule.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct CustomDeploymentProtectionRuleApp {
+pub struct CustomDeploymentRuleApp {
   /// The unique identifier of the deployment protection rule integration.
   pub id: i64,
   /// The URL for the endpoint to get details about the app.
@@ -34604,18 +28588,11 @@ pub struct CustomDeploymentProtectionRuleApp {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl CustomDeploymentProtectionRuleApp {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Deployment protection rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DeploymentProtectionRule {
-  pub app: CustomDeploymentProtectionRuleApp,
+  pub app: CustomDeploymentRuleApp,
   /// Whether the deployment protection rule is enabled for the environment.
   pub enabled: bool,
   /// The unique identifier for the deployment protection rule.
@@ -34624,13 +28601,6 @@ pub struct DeploymentProtectionRule {
   pub node_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl DeploymentProtectionRule {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34645,13 +28615,6 @@ pub struct ReposGetAllDeploymentProtectionRulesResponse {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetAllDeploymentProtectionRulesResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateDeploymentProtectionRuleRequest {
@@ -34661,13 +28624,6 @@ pub struct ReposCreateDeploymentProtectionRuleRequest {
   pub integration_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateDeploymentProtectionRuleRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List custom deployment rule integrations available for an environment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34684,33 +28640,19 @@ pub struct ReposListCustomDeploymentRuleIntegrationsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListCustomDeploymentRuleIntegrationsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposListCustomDeploymentRuleIntegrationsResponse {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub available_custom_deployment_protection_rule_integrations:
-    Option<Vec<CustomDeploymentProtectionRuleApp>>,
+    Option<Vec<CustomDeploymentRuleApp>>,
   /// The total number of custom deployment protection rule integrations available for this environment.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub total_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListCustomDeploymentRuleIntegrationsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List environment secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34727,13 +28669,6 @@ pub struct ActionsListEnvironmentSecretsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListEnvironmentSecretsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListEnvironmentSecretsResponse {
@@ -34741,13 +28676,6 @@ pub struct ActionsListEnvironmentSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListEnvironmentSecretsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34758,13 +28686,6 @@ pub struct ActionsCreateOrUpdateEnvironmentSecretRequest {
   pub key_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsCreateOrUpdateEnvironmentSecretRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Query for `List environment variables`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34781,13 +28702,6 @@ pub struct ActionsListEnvironmentVariablesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListEnvironmentVariablesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListEnvironmentVariablesResponse {
@@ -34795,13 +28709,6 @@ pub struct ActionsListEnvironmentVariablesResponse {
   pub variables: Vec<ActionsVariable>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsListEnvironmentVariablesResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34812,13 +28719,6 @@ pub struct ActionsCreateEnvironmentVariableRequest {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsCreateEnvironmentVariableRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "actions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34833,13 +28733,6 @@ pub struct ActionsUpdateEnvironmentVariableRequest {
   pub value: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
-impl ActionsUpdateEnvironmentVariableRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List repository events`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34855,13 +28748,6 @@ pub struct ActivityListRepoEventsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListRepoEventsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List forks`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34882,13 +28768,6 @@ pub struct ReposListForksQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListForksQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateForkRequest {
@@ -34906,13 +28785,6 @@ pub struct ReposCreateForkRequest {
   pub organization: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateForkRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34926,13 +28798,6 @@ pub struct GitCreateBlobRequest {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitCreateBlobRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 /// Short Blob
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34941,13 +28806,6 @@ pub struct ShortBlob {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl ShortBlob {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 /// Blob
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -34967,13 +28825,6 @@ pub struct Blob {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl Blob {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 /// Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34988,13 +28839,6 @@ pub struct GitCreateCommitRequestAuthor {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitCreateCommitRequestAuthor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 /// Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -35014,13 +28858,6 @@ pub struct GitCreateCommitRequestCommitter {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitCreateCommitRequestCommitter {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35048,13 +28885,6 @@ pub struct GitCreateCommitRequest {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitCreateCommitRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 /// Identifying information for the git-user
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35067,13 +28897,6 @@ pub struct GitCommitAuthor {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitCommitAuthor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 /// Identifying information for the git-user
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -35088,13 +28911,6 @@ pub struct GitCommitCommitter {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitCommitCommitter {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCommitParents {
@@ -35105,13 +28921,6 @@ pub struct GitCommitParents {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitCommitParents {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCommitTree {
@@ -35120,13 +28929,6 @@ pub struct GitCommitTree {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitCommitTree {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35141,13 +28943,6 @@ pub struct GitCommitVerification {
   pub verified: bool,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitCommitVerification {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 /// Low-level Git commit operations within a repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -35170,16 +28965,9 @@ pub struct GitCommit {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct GitReferenceObject {
+pub struct GitRefObject {
   /// SHA for the reference
   pub sha: String,
   #[serde(rename = "type")]
@@ -35188,31 +28976,17 @@ pub struct GitReferenceObject {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitReferenceObject {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 /// Git references within a repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct GitReference {
+pub struct GitRef {
   pub node_id: String,
-  pub object: GitReferenceObject,
+  pub object: GitRefObject,
   #[serde(rename = "ref")]
   pub ref_: String,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitReference {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35225,13 +28999,6 @@ pub struct GitCreateRefRequest {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitCreateRefRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitUpdateRefRequest {
@@ -35243,13 +29010,6 @@ pub struct GitUpdateRefRequest {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitUpdateRefRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 /// An object with information about the individual creating the tag.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -35265,13 +29025,6 @@ pub struct GitCreateTagRequestTagger {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitCreateTagRequestTagger {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35292,13 +29045,6 @@ pub struct GitCreateTagRequest {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitCreateTagRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitTagObject {
@@ -35309,13 +29055,6 @@ pub struct GitTagObject {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitTagObject {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitTagTagger {
@@ -35324,13 +29063,6 @@ pub struct GitTagTagger {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitTagTagger {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 /// Metadata for a Git tag
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -35351,13 +29083,6 @@ pub struct GitTag {
   pub verification: Option<Verification>,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitTag {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35390,13 +29115,6 @@ pub struct GitCreateTreeRequestTree {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitCreateTreeRequestTree {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCreateTreeRequest {
@@ -35410,13 +29128,6 @@ pub struct GitCreateTreeRequest {
   pub tree: Vec<GitCreateTreeRequestTree>,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitCreateTreeRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "git",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35443,13 +29154,6 @@ pub struct GitTreeTree {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitTreeTree {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 /// The hierarchy between files in a Git repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35462,13 +29166,6 @@ pub struct GitTree {
 }
 
 #[cfg(any(feature = "full", feature = "git",))]
-impl GitTree {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "git",))]
 /// Query for `Get a tree`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35479,13 +29176,6 @@ pub struct GitGetTreeQuery {
   pub recursive: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
-impl GitGetTreeQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List repository webhooks`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -35502,13 +29192,6 @@ pub struct ReposListWebhooksQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListWebhooksQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct HookResponse {
@@ -35523,21 +29206,14 @@ pub struct HookResponse {
   pub status: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl HookResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// Webhooks for repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct Webhook {
+pub struct Hook {
   /// Determines whether the hook is actually triggered on pushes.
   pub active: bool,
-  pub config: WebhookConfiguration,
+  pub config: WebhookConfig,
   pub created_at: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -35557,13 +29233,6 @@ pub struct Webhook {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl Webhook {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Key/value pairs to provide settings for this webhook.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -35583,13 +29252,6 @@ pub struct ReposCreateWebhookRequestConfig {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateWebhookRequestConfig {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35613,13 +29275,6 @@ pub struct ReposCreateWebhookRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateWebhookRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateWebhookRequest {
@@ -35633,7 +29288,7 @@ pub struct ReposUpdateWebhookRequest {
   pub add_events: Option<Vec<String>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub config: Option<WebhookConfiguration>,
+  pub config: Option<WebhookConfig>,
   /// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -35644,13 +29299,6 @@ pub struct ReposUpdateWebhookRequest {
   pub remove_events: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateWebhookRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35670,13 +29318,6 @@ pub struct ReposUpdateWebhookConfigForRepoRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateWebhookConfigForRepoRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List deliveries for a repository webhook`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35694,13 +29335,6 @@ pub struct ReposListWebhookDeliveriesQuery {
   pub redelivery: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListWebhookDeliveriesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "migrations",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35716,13 +29350,6 @@ pub struct ImportProjectChoices {
   pub vcs: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
-impl ImportProjectChoices {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// A repository import from an external source.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -35789,13 +29416,6 @@ pub struct Import {
 }
 
 #[cfg(any(feature = "full", feature = "migrations",))]
-impl Import {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "migrations",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsStartImportRequest {
@@ -35820,13 +29440,6 @@ pub struct MigrationsStartImportRequest {
 }
 
 #[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsStartImportRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "migrations",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsUpdateImportRequest {
@@ -35849,13 +29462,6 @@ pub struct MigrationsUpdateImportRequest {
 }
 
 #[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsUpdateImportRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "migrations",))]
 /// Query for `Get commit authors`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35866,13 +29472,6 @@ pub struct MigrationsGetCommitAuthorsQuery {
   pub since: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsGetCommitAuthorsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// Porter Author
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -35888,13 +29487,6 @@ pub struct PorterAuthor {
 }
 
 #[cfg(any(feature = "full", feature = "migrations",))]
-impl PorterAuthor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "migrations",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsMapCommitAuthorRequest {
@@ -35909,13 +29501,6 @@ pub struct MigrationsMapCommitAuthorRequest {
 }
 
 #[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsMapCommitAuthorRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "migrations",))]
 /// Porter Large File
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35927,13 +29512,6 @@ pub struct PorterLargeFile {
 }
 
 #[cfg(any(feature = "full", feature = "migrations",))]
-impl PorterLargeFile {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "migrations",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsSetLfsPreferenceRequest {
@@ -35941,25 +29519,11 @@ pub struct MigrationsSetLfsPreferenceRequest {
   pub use_lfs: MigrationsSetLfsPreferenceRequestUseLfs,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsSetLfsPreferenceRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "interactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct InteractionsGetRestrictionsForRepoResponseItem2 {}
 
-#[cfg(any(feature = "full", feature = "interactions",))]
-impl InteractionsGetRestrictionsForRepoResponseItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List repository invitations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -35976,13 +29540,6 @@ pub struct ReposListInvitationsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListInvitationsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateInvitationRequest {
@@ -35992,13 +29549,6 @@ pub struct ReposUpdateInvitationRequest {
   pub permissions: Option<ReposUpdateInvitationRequestPermissions>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateInvitationRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List repository issues`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36051,13 +29601,6 @@ pub struct IssuesListForRepoQuery {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesCreateRequestLabelsItem2 {
@@ -36075,13 +29618,6 @@ pub struct IssuesCreateRequestLabelsItem2 {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesCreateRequestLabelsItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36110,13 +29646,6 @@ pub struct IssuesCreateRequest {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesCreateRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List issue comments for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36144,13 +29673,6 @@ pub struct IssuesListCommentsForRepoQuery {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListCommentsForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesUpdateCommentRequest {
@@ -36158,13 +29680,6 @@ pub struct IssuesUpdateCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesUpdateCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// Query for `List reactions for an issue comment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36185,13 +29700,6 @@ pub struct ReactionsListForIssueCommentQuery {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsListForIssueCommentQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "reactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForIssueCommentRequest {
@@ -36199,13 +29707,6 @@ pub struct ReactionsCreateForIssueCommentRequest {
   pub content: ReactionsCreateForIssueCommentRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsCreateForIssueCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List issue events for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36222,13 +29723,6 @@ pub struct IssuesListEventsForRepoQuery {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListEventsForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssueEventDismissedReview {
@@ -36243,13 +29737,6 @@ pub struct IssueEventDismissedReview {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssueEventDismissedReview {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 /// Issue Event Label
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36263,13 +29750,6 @@ pub struct IssueEventLabel {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssueEventLabel {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 /// Issue Event Milestone
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36277,13 +29757,6 @@ pub struct IssueEventMilestone {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssueEventMilestone {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Issue Event Project Card
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36300,13 +29773,6 @@ pub struct IssueEventProjectCard {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssueEventProjectCard {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 /// Issue Event Rename
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36315,13 +29781,6 @@ pub struct IssueEventRename {
   pub to: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssueEventRename {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36366,7 +29825,7 @@ pub struct IssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub project_card: Option<IssueEventProjectCard>,
@@ -36386,13 +29845,6 @@ pub struct IssueEvent {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesUpdateRequestLabelsItem2 {
@@ -36410,13 +29862,6 @@ pub struct IssuesUpdateRequestLabelsItem2 {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesUpdateRequestLabelsItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36455,13 +29900,6 @@ pub struct IssuesUpdateRequest {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesUpdateRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesAddAssigneesRequest {
@@ -36472,13 +29910,6 @@ pub struct IssuesAddAssigneesRequest {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesAddAssigneesRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesRemoveAssigneesRequest {
@@ -36488,13 +29919,6 @@ pub struct IssuesRemoveAssigneesRequest {
   pub assignees: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesRemoveAssigneesRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List issue comments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36515,13 +29939,6 @@ pub struct IssuesListCommentsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListCommentsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesCreateCommentRequest {
@@ -36529,13 +29946,6 @@ pub struct IssuesCreateCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesCreateCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List issue events`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36552,13 +29962,6 @@ pub struct IssuesListEventsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListEventsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct LabeledIssueEventLabel {
@@ -36566,13 +29969,6 @@ pub struct LabeledIssueEventLabel {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl LabeledIssueEventLabel {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Labeled Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36592,17 +29988,10 @@ pub struct LabeledIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl LabeledIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36611,13 +30000,6 @@ pub struct UnlabeledIssueEventLabel {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl UnlabeledIssueEventLabel {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Unlabeled Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36637,17 +30019,10 @@ pub struct UnlabeledIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl UnlabeledIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Assigned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36666,17 +30041,10 @@ pub struct AssignedIssueEvent {
   pub event: String,
   pub id: i64,
   pub node_id: String,
-  pub performed_via_github_app: GitHubApp,
+  pub performed_via_github_app: Integration,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl AssignedIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Unassigned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36697,17 +30065,10 @@ pub struct UnassignedIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl UnassignedIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36715,13 +30076,6 @@ pub struct MilestonedIssueEventMilestone {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl MilestonedIssueEventMilestone {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Milestoned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36741,17 +30095,10 @@ pub struct MilestonedIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl MilestonedIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36759,13 +30106,6 @@ pub struct DemilestonedIssueEventMilestone {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl DemilestonedIssueEventMilestone {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Demilestoned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36785,17 +30125,10 @@ pub struct DemilestonedIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl DemilestonedIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36804,13 +30137,6 @@ pub struct RenamedIssueEventRename {
   pub to: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl RenamedIssueEventRename {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Renamed Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36829,18 +30155,11 @@ pub struct RenamedIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   pub rename: RenamedIssueEventRename,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl RenamedIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Review Requested Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36859,7 +30178,7 @@ pub struct ReviewRequestedIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub requested_reviewer: Option<SimpleUser>,
@@ -36870,13 +30189,6 @@ pub struct ReviewRequestedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl ReviewRequestedIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Review Request Removed Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36895,7 +30207,7 @@ pub struct ReviewRequestRemovedIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub requested_reviewer: Option<SimpleUser>,
@@ -36906,13 +30218,6 @@ pub struct ReviewRequestRemovedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl ReviewRequestRemovedIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36927,13 +30232,6 @@ pub struct ReviewDismissedIssueEventDismissedReview {
   pub state: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl ReviewDismissedIssueEventDismissedReview {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Review Dismissed Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36953,17 +30251,10 @@ pub struct ReviewDismissedIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl ReviewDismissedIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Locked Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -36985,17 +30276,10 @@ pub struct LockedIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl LockedIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37010,13 +30294,6 @@ pub struct AddedToProjectIssueEventProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl AddedToProjectIssueEventProjectCard {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Added to Project Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37035,20 +30312,13 @@ pub struct AddedToProjectIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub project_card: Option<AddedToProjectIssueEventProjectCard>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl AddedToProjectIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37063,13 +30333,6 @@ pub struct MovedColumnInProjectIssueEventProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl MovedColumnInProjectIssueEventProjectCard {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Moved Column in Project Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37088,20 +30351,13 @@ pub struct MovedColumnInProjectIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub project_card: Option<MovedColumnInProjectIssueEventProjectCard>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl MovedColumnInProjectIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37116,13 +30372,6 @@ pub struct RemovedFromProjectIssueEventProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl RemovedFromProjectIssueEventProjectCard {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Removed from Project Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37141,20 +30390,13 @@ pub struct RemovedFromProjectIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub project_card: Option<RemovedFromProjectIssueEventProjectCard>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl RemovedFromProjectIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37169,13 +30411,6 @@ pub struct ConvertedNoteToIssueIssueEventProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl ConvertedNoteToIssueIssueEventProjectCard {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Converted Note to Issue Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37192,20 +30427,13 @@ pub struct ConvertedNoteToIssueIssueEvent {
   pub event: String,
   pub id: i64,
   pub node_id: String,
-  pub performed_via_github_app: GitHubApp,
+  pub performed_via_github_app: Integration,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub project_card: Option<ConvertedNoteToIssueIssueEventProjectCard>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl ConvertedNoteToIssueIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List labels for an issue`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37222,13 +30450,6 @@ pub struct IssuesListLabelsOnIssueQuery {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListLabelsOnIssueQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues", feature = "webhooks",))]
 /// Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37248,13 +30469,6 @@ pub struct Label {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "webhooks",))]
-impl Label {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37266,26 +30480,12 @@ pub struct IssuesAddLabelsRequestItem1 {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesAddLabelsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesAddLabelsRequestItem3Labels {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesAddLabelsRequestItem3Labels {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37296,26 +30496,12 @@ pub struct IssuesAddLabelsRequestItem3 {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesAddLabelsRequestItem3 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesAddLabelsRequestItem4 {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesAddLabelsRequestItem4 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37327,26 +30513,12 @@ pub struct IssuesSetLabelsRequestItem1 {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesSetLabelsRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesSetLabelsRequestItem3Labels {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesSetLabelsRequestItem3Labels {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37357,26 +30529,12 @@ pub struct IssuesSetLabelsRequestItem3 {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesSetLabelsRequestItem3 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesSetLabelsRequestItem4 {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesSetLabelsRequestItem4 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37391,13 +30549,6 @@ pub struct IssuesLockRequest {
   pub lock_reason: Option<IssuesLockRequestLockReason>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesLockRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// Query for `List reactions for an issue`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37418,13 +30569,6 @@ pub struct ReactionsListForIssueQuery {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsListForIssueQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "reactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForIssueRequest {
@@ -37432,13 +30576,6 @@ pub struct ReactionsCreateForIssueRequest {
   pub content: ReactionsCreateForIssueRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsCreateForIssueRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List timeline events for an issue`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37454,13 +30591,6 @@ pub struct IssuesListEventsForTimelineQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListEventsForTimelineQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Timeline Comment Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37487,7 +30617,7 @@ pub struct TimelineCommentEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub reactions: Option<ReactionRollup>,
@@ -37497,13 +30627,6 @@ pub struct TimelineCommentEvent {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineCommentEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37517,13 +30640,6 @@ pub struct TimelineCrossReferencedEventSource {
   pub type_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineCrossReferencedEventSource {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Timeline Cross Referenced Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37539,13 +30655,6 @@ pub struct TimelineCrossReferencedEvent {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineCrossReferencedEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 /// Identifying information for the git-user
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37558,13 +30667,6 @@ pub struct TimelineCommittedEventAuthor {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineCommittedEventAuthor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Identifying information for the git-user
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37579,13 +30681,6 @@ pub struct TimelineCommittedEventCommitter {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineCommittedEventCommitter {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TimelineCommittedEventParents {
@@ -37596,13 +30691,6 @@ pub struct TimelineCommittedEventParents {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineCommittedEventParents {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TimelineCommittedEventTree {
@@ -37611,13 +30699,6 @@ pub struct TimelineCommittedEventTree {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineCommittedEventTree {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37632,13 +30713,6 @@ pub struct TimelineCommittedEventVerification {
   pub verified: bool,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineCommittedEventVerification {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Timeline Committed Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37664,26 +30738,12 @@ pub struct TimelineCommittedEvent {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineCommittedEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TimelineReviewedEventLinksHtml {
   pub href: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineReviewedEventLinksHtml {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37692,13 +30752,6 @@ pub struct TimelineReviewedEventLinksPullRequest {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineReviewedEventLinksPullRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TimelineReviewedEventLinks {
@@ -37706,13 +30759,6 @@ pub struct TimelineReviewedEventLinks {
   pub pull_request: TimelineReviewedEventLinksPullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineReviewedEventLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Timeline Reviewed Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37746,91 +30792,28 @@ pub struct TimelineReviewedEvent {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineReviewedEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewCommentLinksHtml {
   pub href: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl PullRequestReviewCommentLinksHtml {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewCommentLinksPullRequest {
   pub href: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl PullRequestReviewCommentLinksPullRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewCommentLinksSelf {
   pub href: String,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl PullRequestReviewCommentLinksSelf {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewCommentLinks {
@@ -37840,24 +30823,7 @@ pub struct PullRequestReviewCommentLinks {
   pub self_: PullRequestReviewCommentLinksSelf,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl PullRequestReviewCommentLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 /// Pull Request Review Comments are comments on a portion of the Pull Request's diff.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37943,18 +30909,6 @@ pub struct PullRequestReviewComment {
   pub user: SimpleUser,
 }
 
-#[cfg(any(
-  feature = "full",
-  feature = "issues",
-  feature = "pulls",
-  feature = "webhooks",
-))]
-impl PullRequestReviewComment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Timeline Line Commented Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37971,13 +30925,6 @@ pub struct TimelineLineCommentedEvent {
   pub node_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineLineCommentedEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Timeline Commit Commented Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -37998,13 +30945,6 @@ pub struct TimelineCommitCommentedEvent {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineCommitCommentedEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 /// Timeline Assigned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -38023,17 +30963,10 @@ pub struct TimelineAssignedIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineAssignedIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Timeline Unassigned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38053,17 +30986,10 @@ pub struct TimelineUnassignedIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl TimelineUnassignedIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// State Change Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38082,20 +31008,13 @@ pub struct StateChangeIssueEvent {
   pub node_id: String,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub state_reason: Option<String>,
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl StateChangeIssueEvent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List deploy keys`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38111,13 +31030,6 @@ pub struct ReposListDeployKeysQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListDeployKeysQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// An SSH key granting access to a single repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38139,13 +31051,6 @@ pub struct DeployKey {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl DeployKey {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateDeployKeyRequest {
@@ -38163,13 +31068,6 @@ pub struct ReposCreateDeployKeyRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateDeployKeyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List labels for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38186,13 +31084,6 @@ pub struct IssuesListLabelsForRepoQuery {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListLabelsForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesCreateLabelRequest {
@@ -38208,13 +31099,6 @@ pub struct IssuesCreateLabelRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesCreateLabelRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -38233,13 +31117,6 @@ pub struct IssuesUpdateLabelRequest {
   pub new_name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesUpdateLabelRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "licenses",))]
 /// Query for `Get the license for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38252,13 +31129,6 @@ pub struct LicensesGetForRepoQuery {
   pub ref_: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "licenses",))]
-impl LicensesGetForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "licenses",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -38273,13 +31143,6 @@ pub struct LicenseContentLinks {
   pub self_: String,
 }
 
-#[cfg(any(feature = "full", feature = "licenses",))]
-impl LicenseContentLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "licenses",))]
 /// License Content
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38310,13 +31173,6 @@ pub struct LicenseContent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "licenses",))]
-impl LicenseContent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -38325,13 +31181,6 @@ pub struct ReposMergeUpstreamRequest {
   pub branch: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposMergeUpstreamRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Results of a successful merge upstream request
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38349,13 +31198,6 @@ pub struct MergedUpstream {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl MergedUpstream {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposMergeRequest {
@@ -38369,13 +31211,6 @@ pub struct ReposMergeRequest {
   pub head: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposMergeRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List milestones`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38404,13 +31239,6 @@ pub struct IssuesListMilestonesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListMilestonesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesCreateMilestoneRequest {
@@ -38430,13 +31258,6 @@ pub struct IssuesCreateMilestoneRequest {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesCreateMilestoneRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -38460,13 +31281,6 @@ pub struct IssuesUpdateMilestoneRequest {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesUpdateMilestoneRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List labels for issues in a milestone`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -38481,13 +31295,6 @@ pub struct IssuesListLabelsForMilestoneQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListLabelsForMilestoneQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List repository notifications for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38520,13 +31327,6 @@ pub struct ActivityListRepoNotificationsForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListRepoNotificationsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActivityMarkRepoNotificationsAsReadRequest {
@@ -38536,13 +31336,6 @@ pub struct ActivityMarkRepoNotificationsAsReadRequest {
   pub last_read_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityMarkRepoNotificationsAsReadRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -38555,13 +31348,6 @@ pub struct ActivityMarkRepoNotificationsAsReadResponse {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityMarkRepoNotificationsAsReadResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -38576,13 +31362,6 @@ pub struct PagesHttpsCertificate {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl PagesHttpsCertificate {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PagesSourceHash {
@@ -38591,21 +31370,14 @@ pub struct PagesSourceHash {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl PagesSourceHash {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// The configuration for GitHub Pages for a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct GitHubPages {
+pub struct Page {
   /// The process in which the Page will be built.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub build_type: Option<GitHubPagesBuildType>,
+  pub build_type: Option<PageBuildType>,
   /// The Pages site's custom domain
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -38630,7 +31402,7 @@ pub struct GitHubPages {
   /// The state if the domain is verified
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub protected_domain_state: Option<GitHubPagesProtectedDomainState>,
+  pub protected_domain_state: Option<PageProtectedDomainState>,
   /// Whether the GitHub Pages site is publicly visible. If set to `true`, the site is accessible to anyone on the internet. If set to `false`, the site will only be accessible to users who have at least `read` access to the repository that published the site.
   pub public: bool,
   #[serde(skip_serializing_if = "Option::is_none")]
@@ -38639,18 +31411,11 @@ pub struct GitHubPages {
   /// The status of the most recent build of the Page.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub status: Option<GitHubPagesStatus>,
+  pub status: Option<PageStatus>,
   /// The API address for accessing this Page resource.
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl GitHubPages {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List GitHub Pages builds`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38667,13 +31432,6 @@ pub struct ReposListPagesBuildsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListPagesBuildsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PageBuildError {
@@ -38682,13 +31440,6 @@ pub struct PageBuildError {
   pub message: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl PageBuildError {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Page Build
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38707,13 +31458,6 @@ pub struct PageBuild {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl PageBuild {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Page Build Status
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -38722,13 +31466,6 @@ pub struct PageBuildStatus {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl PageBuildStatus {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The object used to create GitHub Pages deployment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -38753,33 +31490,36 @@ pub struct ReposCreatePagesDeploymentRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreatePagesDeploymentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
+/// The GitHub Pages deployment status.
+#[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+#[builder(field_defaults(setter(into)))]
+pub struct PageDeployment {
+  /// The ID of the GitHub Pages deployment. This is the Git SHA of the deployed commit.
+  pub id: StringOrInteger,
+  /// The URI to the deployed GitHub Pages.
+  pub page_url: String,
+  /// The URI to the deployed GitHub Pages preview.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub preview_url: Option<String>,
+  /// The URI to monitor GitHub Pages deployment status.
+  pub status_url: String,
 }
+
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct GitHubPagesDeploymentStatus {
+pub struct PagesDeploymentStatus {
   /// The current status of the deployment.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub status: Option<GitHubPagesDeploymentStatusStatus>,
+  pub status: Option<PagesDeploymentStatusStatus>,
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl GitHubPagesDeploymentStatus {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct PagesHealthCheckStatusAltDomain {
+pub struct PagesHealthCheckAltDomain {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub caa_error: Option<String>,
@@ -38867,16 +31607,9 @@ pub struct PagesHealthCheckStatusAltDomain {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl PagesHealthCheckStatusAltDomain {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct PagesHealthCheckStatusDomain {
+pub struct PagesHealthCheckDomain {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub caa_error: Option<String>,
@@ -38963,33 +31696,19 @@ pub struct PagesHealthCheckStatusDomain {
   pub uri: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl PagesHealthCheckStatusDomain {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Pages Health Check Status
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct PagesHealthCheckStatus {
+pub struct PagesHealthCheck {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub alt_domain: Option<PagesHealthCheckStatusAltDomain>,
+  pub alt_domain: Option<PagesHealthCheckAltDomain>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub domain: Option<PagesHealthCheckStatusDomain>,
+  pub domain: Option<PagesHealthCheckDomain>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl PagesHealthCheckStatus {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -38998,13 +31717,6 @@ pub struct ReposCheckPrivateVulnerabilityReportingResponse {
   pub enabled: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCheckPrivateVulnerabilityReportingResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 /// Query for `List repository projects`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -39025,13 +31737,6 @@ pub struct ProjectsListForRepoQuery {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsListForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsCreateForRepoRequest {
@@ -39043,13 +31748,6 @@ pub struct ProjectsCreateForRepoRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsCreateForRepoRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -39058,13 +31756,6 @@ pub struct ReposCreateOrUpdateCustomPropertiesValuesRequest {
   pub properties: Vec<CustomPropertyValue>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateOrUpdateCustomPropertiesValuesRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// Query for `List pull requests`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -39101,13 +31792,6 @@ pub struct PullsListQuery {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsListQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsCreateRequest {
@@ -39142,13 +31826,6 @@ pub struct PullsCreateRequest {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsCreateRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestLinks {
@@ -39163,14 +31840,7 @@ pub struct PullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepoOwner {
@@ -39197,14 +31867,7 @@ pub struct PullRequestBaseRepoOwner {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestBaseRepoOwner {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepoPermissions {
@@ -39219,14 +31882,7 @@ pub struct PullRequestBaseRepoPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestBaseRepoPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepo {
@@ -39350,14 +32006,7 @@ pub struct PullRequestBaseRepo {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestBaseRepo {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseUser {
@@ -39384,14 +32033,7 @@ pub struct PullRequestBaseUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestBaseUser {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBase {
@@ -39403,14 +32045,7 @@ pub struct PullRequestBase {
   pub user: PullRequestBaseUser,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestBase {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoLicense {
@@ -39425,14 +32060,7 @@ pub struct PullRequestHeadRepoLicense {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestHeadRepoLicense {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoOwner {
@@ -39459,14 +32087,7 @@ pub struct PullRequestHeadRepoOwner {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestHeadRepoOwner {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoPermissions {
@@ -39481,14 +32102,7 @@ pub struct PullRequestHeadRepoPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestHeadRepoPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepo {
@@ -39612,14 +32226,7 @@ pub struct PullRequestHeadRepo {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestHeadRepo {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadUser {
@@ -39646,14 +32253,7 @@ pub struct PullRequestHeadUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestHeadUser {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHead {
@@ -39667,14 +32267,7 @@ pub struct PullRequestHead {
   pub user: PullRequestHeadUser,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestHead {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestLabels {
@@ -39690,14 +32283,7 @@ pub struct PullRequestLabels {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequestLabels {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "pulls",))]
 /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -39788,13 +32374,6 @@ pub struct PullRequest {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "pulls", feature = "webhooks",))]
-impl PullRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// Query for `List review comments in a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -39822,13 +32401,6 @@ pub struct PullsListReviewCommentsForRepoQuery {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsListReviewCommentsForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsUpdateReviewCommentRequest {
@@ -39836,13 +32408,6 @@ pub struct PullsUpdateReviewCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsUpdateReviewCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// Query for `List reactions for a pull request review comment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -39863,13 +32428,6 @@ pub struct ReactionsListForPullRequestReviewCommentQuery {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsListForPullRequestReviewCommentQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "reactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForPullRequestReviewCommentRequest {
@@ -39877,13 +32435,6 @@ pub struct ReactionsCreateForPullRequestReviewCommentRequest {
   pub content: ReactionsCreateForPullRequestReviewCommentRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsCreateForPullRequestReviewCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -39910,13 +32461,6 @@ pub struct PullsUpdateRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsUpdateRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -39963,13 +32507,6 @@ pub struct CodespacesCreateWithPrForAuthenticatedUserRequest {
   pub working_directory: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesCreateWithPrForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// Query for `List review comments on a pull request`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -39997,13 +32534,6 @@ pub struct PullsListReviewCommentsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsListReviewCommentsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40045,13 +32575,6 @@ pub struct PullsCreateReviewCommentRequest {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsCreateReviewCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsCreateReplyForReviewCommentRequest {
@@ -40059,13 +32582,6 @@ pub struct PullsCreateReplyForReviewCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsCreateReplyForReviewCommentRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// Query for `List commits on a pull request`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -40082,13 +32598,6 @@ pub struct PullsListCommitsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsListCommitsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 /// Query for `List pull requests files`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40103,13 +32612,6 @@ pub struct PullsListFilesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsListFilesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40133,13 +32635,6 @@ pub struct PullsMergeRequest {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsMergeRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 /// Pull Request Merge Result
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40150,13 +32645,6 @@ pub struct PullRequestMergeResult {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullRequestMergeResult {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 /// Pull Request Review Request
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40165,13 +32653,6 @@ pub struct PullRequestReviewRequest {
   pub users: Vec<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullRequestReviewRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40184,13 +32665,6 @@ pub struct PullsRemoveRequestedReviewersRequest {
   pub team_reviewers: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsRemoveRequestedReviewersRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// Query for `List reviews for a pull request`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -40207,26 +32681,12 @@ pub struct PullsListReviewsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsListReviewsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewLinksHtml {
   pub href: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullRequestReviewLinksHtml {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40235,13 +32695,6 @@ pub struct PullRequestReviewLinksPullRequest {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullRequestReviewLinksPullRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewLinks {
@@ -40249,13 +32702,6 @@ pub struct PullRequestReviewLinks {
   pub pull_request: PullRequestReviewLinksPullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullRequestReviewLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// Pull Request Reviews are reviews on pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -40291,13 +32737,6 @@ pub struct PullRequestReview {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullRequestReview {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsCreateReviewRequestComments {
@@ -40324,13 +32763,6 @@ pub struct PullsCreateReviewRequestComments {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsCreateReviewRequestComments {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsCreateReviewRequest {
@@ -40353,13 +32785,6 @@ pub struct PullsCreateReviewRequest {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsCreateReviewRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsUpdateReviewRequest {
@@ -40367,13 +32792,6 @@ pub struct PullsUpdateReviewRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsUpdateReviewRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// Query for `List comments for a pull request review`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -40390,16 +32808,9 @@ pub struct PullsListCommentsForReviewQuery {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsListCommentsForReviewQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct LegacyReviewCommentLinks {
+pub struct ReviewCommentLinks {
   pub html: Link,
   pub pull_request: Link,
   #[serde(rename = "self")]
@@ -40407,19 +32818,12 @@ pub struct LegacyReviewCommentLinks {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl LegacyReviewCommentLinks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 /// Legacy Review Comment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct LegacyReviewComment {
+pub struct ReviewComment {
   #[serde(rename = "_links")]
-  pub links: LegacyReviewCommentLinks,
+  pub links: ReviewCommentLinks,
   pub author_association: AuthorAssociation,
   pub body: String,
   #[serde(skip_serializing_if = "Option::is_none")]
@@ -40465,7 +32869,7 @@ pub struct LegacyReviewComment {
   /// The side of the first line of the range for a multi-line comment.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub side: Option<LegacyReviewCommentSide>,
+  pub side: Option<ReviewCommentSide>,
   /// The first line of the range for a multi-line comment.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -40473,7 +32877,7 @@ pub struct LegacyReviewComment {
   /// The side of the first line of the range for a multi-line comment.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub start_side: Option<LegacyReviewCommentStartSide>,
+  pub start_side: Option<ReviewCommentStartSide>,
   pub updated_at: String,
   pub url: String,
   #[serde(skip_serializing_if = "Option::is_none")]
@@ -40481,13 +32885,6 @@ pub struct LegacyReviewComment {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl LegacyReviewComment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40499,13 +32896,6 @@ pub struct PullsDismissReviewRequest {
   pub message: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsDismissReviewRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40519,13 +32909,6 @@ pub struct PullsSubmitReviewRequest {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsSubmitReviewRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsUpdateBranchRequest {
@@ -40535,13 +32918,6 @@ pub struct PullsUpdateBranchRequest {
   pub expected_head_sha: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsUpdateBranchRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "pulls",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40554,13 +32930,6 @@ pub struct PullsUpdateBranchResponse {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
-impl PullsUpdateBranchResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get a repository README`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -40574,13 +32943,6 @@ pub struct ReposGetReadmeQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetReadmeQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get a repository README for a directory`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40592,13 +32954,6 @@ pub struct ReposGetReadmeInDirectoryQuery {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetReadmeInDirectoryQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List releases`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -40615,13 +32970,6 @@ pub struct ReposListReleasesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListReleasesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
 /// Data related to a release.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40647,14 +32995,7 @@ pub struct ReleaseAsset {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl ReleaseAsset {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "repos",))]
 /// A release.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40709,13 +33050,6 @@ pub struct Release {
   pub zipball_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "webhooks",))]
-impl Release {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40757,13 +33091,6 @@ pub struct ReposCreateReleaseRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateReleaseRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateReleaseAssetRequest {
@@ -40780,13 +33107,6 @@ pub struct ReposUpdateReleaseAssetRequest {
   pub state: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateReleaseAssetRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40808,30 +33128,16 @@ pub struct ReposGenerateReleaseNotesRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGenerateReleaseNotesRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Generated name and body describing a release
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct GeneratedReleaseNotesContent {
+pub struct ReleaseNotesContent {
   /// The generated body describing the contents of the release supporting markdown formatting
   pub body: String,
   /// The generated name of the release
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl GeneratedReleaseNotesContent {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40871,13 +33177,6 @@ pub struct ReposUpdateReleaseRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateReleaseRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List release assets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40893,13 +33192,6 @@ pub struct ReposListReleaseAssetsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListReleaseAssetsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Upload a release asset`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -40910,13 +33202,6 @@ pub struct ReposUploadReleaseAssetQuery {
   pub label: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUploadReleaseAssetQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// Query for `List reactions for a release`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -40937,13 +33222,6 @@ pub struct ReactionsListForReleaseQuery {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsListForReleaseQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "reactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForReleaseRequest {
@@ -40951,13 +33229,6 @@ pub struct ReactionsCreateForReleaseRequest {
   pub content: ReactionsCreateForReleaseRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsCreateForReleaseRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get rules for a branch`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -40974,17 +33245,10 @@ pub struct ReposGetBranchRulesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetBranchRulesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct RepositoryRulesetDataForRule {
+pub struct RepositoryRuleRulesetInfo {
   /// The ID of the ruleset that includes this rule.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -40996,16 +33260,9 @@ pub struct RepositoryRulesetDataForRule {
   /// The type of source for the ruleset that includes this rule.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub ruleset_source_type: Option<RepositoryRulesetDataForRuleRulesetSourceType>,
+  pub ruleset_source_type: Option<RepositoryRuleRulesetInfoRulesetSourceType>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl RepositoryRulesetDataForRule {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get all repository rulesets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -41026,13 +33283,6 @@ pub struct ReposGetRepoRulesetsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetRepoRulesetsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateRepoRulesetRequest {
@@ -41042,7 +33292,7 @@ pub struct ReposCreateRepoRulesetRequest {
   pub bypass_actors: Option<Vec<RepositoryRulesetBypassActor>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub conditions: Option<RepositoryRulesetConditionsForRefNames>,
+  pub conditions: Option<RepositoryRulesetConditions>,
   pub enforcement: RepositoryRuleEnforcement,
   /// The name of the ruleset.
   pub name: String,
@@ -41056,13 +33306,6 @@ pub struct ReposCreateRepoRulesetRequest {
   pub target: Option<ReposCreateRepoRulesetRequestTarget>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateRepoRulesetRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List repository rule suites`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -41098,13 +33341,6 @@ pub struct ReposGetRepoRuleSuitesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetRepoRuleSuitesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get a repository ruleset`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41116,13 +33352,6 @@ pub struct ReposGetRepoRulesetQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetRepoRulesetQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateRepoRulesetRequest {
@@ -41132,7 +33361,7 @@ pub struct ReposUpdateRepoRulesetRequest {
   pub bypass_actors: Option<Vec<RepositoryRulesetBypassActor>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub conditions: Option<RepositoryRulesetConditionsForRefNames>,
+  pub conditions: Option<RepositoryRulesetConditions>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub enforcement: Option<RepositoryRuleEnforcement>,
@@ -41150,13 +33379,6 @@ pub struct ReposUpdateRepoRulesetRequest {
   pub target: Option<ReposUpdateRepoRulesetRequestTarget>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposUpdateRepoRulesetRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Query for `List secret scanning alerts for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -41206,13 +33428,6 @@ pub struct SecretScanningListAlertsForRepoQuery {
   pub validity: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
-impl SecretScanningListAlertsForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41284,13 +33499,6 @@ pub struct SecretScanningAlert {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
-impl SecretScanningAlert {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecretScanningUpdateAlertRequest {
@@ -41303,13 +33511,6 @@ pub struct SecretScanningUpdateAlertRequest {
   pub state: SecretScanningAlertState,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
-impl SecretScanningUpdateAlertRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Query for `List locations for a secret scanning alert`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -41326,13 +33527,6 @@ pub struct SecretScanningListLocationsForAlertQuery {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
-impl SecretScanningListLocationsForAlertQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
 /// Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41357,14 +33551,7 @@ pub struct SecretScanningLocationCommit {
   pub start_line: f64,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41389,14 +33576,7 @@ pub struct SecretScanningLocationWikiCommit {
   pub start_line: f64,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationWikiCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41405,14 +33585,7 @@ pub struct SecretScanningLocationIssueTitle {
   pub issue_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationIssueTitle {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41421,14 +33594,7 @@ pub struct SecretScanningLocationIssueBody {
   pub issue_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationIssueBody {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41437,14 +33603,7 @@ pub struct SecretScanningLocationIssueComment {
   pub issue_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationIssueComment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41453,14 +33612,7 @@ pub struct SecretScanningLocationDiscussionTitle {
   pub discussion_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationDiscussionTitle {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41469,14 +33621,7 @@ pub struct SecretScanningLocationDiscussionBody {
   pub discussion_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationDiscussionBody {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41485,14 +33630,7 @@ pub struct SecretScanningLocationDiscussionComment {
   pub discussion_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationDiscussionComment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41501,14 +33639,7 @@ pub struct SecretScanningLocationPullRequestTitle {
   pub pull_request_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationPullRequestTitle {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41517,14 +33648,7 @@ pub struct SecretScanningLocationPullRequestBody {
   pub pull_request_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationPullRequestBody {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41533,14 +33657,7 @@ pub struct SecretScanningLocationPullRequestComment {
   pub pull_request_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationPullRequestComment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41549,14 +33666,7 @@ pub struct SecretScanningLocationPullRequestReview {
   pub pull_request_review_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationPullRequestReview {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41565,14 +33675,7 @@ pub struct SecretScanningLocationPullRequestReviewComment {
   pub pull_request_review_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocationPullRequestReviewComment {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "secret_scanning",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecretScanningLocation {
@@ -41586,13 +33689,6 @@ pub struct SecretScanningLocation {
   pub type_: Option<SecretScanningLocationType>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning", feature = "webhooks",))]
-impl SecretScanningLocation {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// Query for `List repository security advisories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -41625,13 +33721,6 @@ pub struct SecurityAdvisoriesListRepositoryAdvisoriesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-impl SecurityAdvisoriesListRepositoryAdvisoriesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCreateCredits {
@@ -41641,13 +33730,6 @@ pub struct RepositoryAdvisoryCreateCredits {
   pub type_: SecurityAdvisoryCreditTypes,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl RepositoryAdvisoryCreateCredits {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -41660,13 +33742,6 @@ pub struct RepositoryAdvisoryCreateVulnerabilitiesPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl RepositoryAdvisoryCreateVulnerabilitiesPackage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41687,13 +33762,6 @@ pub struct RepositoryAdvisoryCreateVulnerabilities {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl RepositoryAdvisoryCreateVulnerabilities {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41731,13 +33799,6 @@ pub struct RepositoryAdvisoryCreate {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-impl RepositoryAdvisoryCreate {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41749,13 +33810,6 @@ pub struct PrivateVulnerabilityReportCreateVulnerabilitiesPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl PrivateVulnerabilityReportCreateVulnerabilitiesPackage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41776,13 +33830,6 @@ pub struct PrivateVulnerabilityReportCreateVulnerabilities {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl PrivateVulnerabilityReportCreateVulnerabilities {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41814,13 +33861,6 @@ pub struct PrivateVulnerabilityReportCreate {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-impl PrivateVulnerabilityReportCreate {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryUpdateCredits {
@@ -41830,13 +33870,6 @@ pub struct RepositoryAdvisoryUpdateCredits {
   pub type_: SecurityAdvisoryCreditTypes,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl RepositoryAdvisoryUpdateCredits {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -41849,13 +33882,6 @@ pub struct RepositoryAdvisoryUpdateVulnerabilitiesPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl RepositoryAdvisoryUpdateVulnerabilitiesPackage {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41876,13 +33902,6 @@ pub struct RepositoryAdvisoryUpdateVulnerabilities {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl RepositoryAdvisoryUpdateVulnerabilities {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41933,13 +33952,6 @@ pub struct RepositoryAdvisoryUpdate {
   pub vulnerabilities: Option<Vec<RepositoryAdvisoryUpdateVulnerabilities>>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
-impl RepositoryAdvisoryUpdate {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List stargazers`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -41956,13 +33968,6 @@ pub struct ActivityListStargazersForRepoQuery {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListStargazersForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 /// Stargazer
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -41973,13 +33978,6 @@ pub struct Stargazer {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl Stargazer {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Commit Activity
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -41990,13 +33988,6 @@ pub struct CommitActivity {
   pub week: i64,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl CommitActivity {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42016,13 +34007,6 @@ pub struct ContributorActivityWeeks {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ContributorActivityWeeks {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Contributor Activity
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42035,13 +34019,6 @@ pub struct ContributorActivity {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ContributorActivity {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ParticipationStats {
@@ -42049,13 +34026,6 @@ pub struct ParticipationStats {
   pub owner: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ParticipationStats {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42078,13 +34048,6 @@ pub struct ReposCreateCommitStatusRequest {
   pub target_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateCommitStatusRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List watchers`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42101,12 +34064,22 @@ pub struct ActivityListWatchersForRepoQuery {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListWatchersForRepoQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
+/// Repository invitations let you manage who you collaborate with.
+#[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+#[builder(field_defaults(setter(into)))]
+pub struct RepositorySubscription {
+  pub created_at: String,
+  /// Determines if all notifications should be blocked from this repository.
+  pub ignored: bool,
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub reason: Option<String>,
+  pub repository_url: String,
+  /// Determines if notifications should be received from this repository.
+  pub subscribed: bool,
+  pub url: String,
 }
+
 #[cfg(any(feature = "full", feature = "activity",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42121,13 +34094,6 @@ pub struct ActivitySetRepoSubscriptionRequest {
   pub subscribed: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivitySetRepoSubscriptionRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List repository tags`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42144,13 +34110,6 @@ pub struct ReposListTagsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListTagsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TagCommit {
@@ -42158,13 +34117,6 @@ pub struct TagCommit {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl TagCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Tag
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42177,13 +34129,6 @@ pub struct Tag {
   pub zipball_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl Tag {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Tag protection
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42205,13 +34150,6 @@ pub struct TagProtection {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl TagProtection {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateTagProtectionRequest {
@@ -42219,13 +34157,6 @@ pub struct ReposCreateTagProtectionRequest {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateTagProtectionRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List repository teams`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42242,13 +34173,6 @@ pub struct ReposListTeamsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListTeamsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get all repository topics`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42264,13 +34188,6 @@ pub struct ReposGetAllTopicsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetAllTopicsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// A topic aggregates entities that are related to a subject.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42279,13 +34196,6 @@ pub struct Topic {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl Topic {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposReplaceAllTopicsRequest {
@@ -42293,13 +34203,6 @@ pub struct ReposReplaceAllTopicsRequest {
   pub names: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposReplaceAllTopicsRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get repository clones`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42312,13 +34215,6 @@ pub struct ReposGetClonesQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetClonesQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct Traffic {
@@ -42327,13 +34223,6 @@ pub struct Traffic {
   pub uniques: i64,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl Traffic {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Clone Traffic
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42344,13 +34233,6 @@ pub struct CloneTraffic {
   pub uniques: i64,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl CloneTraffic {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Content Traffic
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42363,13 +34245,6 @@ pub struct ContentTraffic {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ContentTraffic {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Referrer Traffic
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42379,13 +34254,6 @@ pub struct ReferrerTraffic {
   pub uniques: i64,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReferrerTraffic {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `Get page views`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42398,13 +34266,6 @@ pub struct ReposGetViewsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposGetViewsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// View Traffic
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42414,13 +34275,6 @@ pub struct ViewTraffic {
   pub views: Vec<Traffic>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ViewTraffic {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42437,13 +34291,6 @@ pub struct ReposTransferRequest {
   pub team_ids: Option<Vec<i64>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposTransferRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42469,13 +34316,6 @@ pub struct ReposCreateUsingTemplateRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateUsingTemplateRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List public repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42486,13 +34326,6 @@ pub struct ReposListPublicQuery {
   pub since: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListPublicQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Query for `Search code`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42519,13 +34352,6 @@ pub struct SearchCodeQuery {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl SearchCodeQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchResultTextMatchesItemMatches {
@@ -42537,13 +34363,6 @@ pub struct SearchResultTextMatchesItemMatches {
   pub text: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchResultTextMatchesItemMatches {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42565,13 +34384,6 @@ pub struct SearchResultTextMatchesItem {
   pub property: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchResultTextMatchesItem {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Code Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42603,13 +34415,6 @@ pub struct CodeSearchResultItem {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl CodeSearchResultItem {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchCodeResponse {
@@ -42618,13 +34423,6 @@ pub struct SearchCodeResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchCodeResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Query for `Search commits`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42651,13 +34449,6 @@ pub struct SearchCommitsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl SearchCommitsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitSearchResultItemCommitAuthor {
@@ -42667,13 +34458,6 @@ pub struct CommitSearchResultItemCommitAuthor {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl CommitSearchResultItemCommitAuthor {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitSearchResultItemCommitTree {
@@ -42681,13 +34465,6 @@ pub struct CommitSearchResultItemCommitTree {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl CommitSearchResultItemCommitTree {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42706,13 +34483,6 @@ pub struct CommitSearchResultItemCommit {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl CommitSearchResultItemCommit {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitSearchResultItemParents {
@@ -42727,13 +34497,6 @@ pub struct CommitSearchResultItemParents {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl CommitSearchResultItemParents {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Commit Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42760,13 +34523,6 @@ pub struct CommitSearchResultItem {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl CommitSearchResultItem {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchCommitsResponse {
@@ -42775,13 +34531,6 @@ pub struct SearchCommitsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchCommitsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Query for `Search issues and pull requests`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42807,13 +34556,6 @@ pub struct SearchIssuesAndPullRequestsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchIssuesAndPullRequestsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -42843,13 +34585,6 @@ pub struct IssueSearchResultItemLabels {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl IssueSearchResultItemLabels {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssueSearchResultItemPullRequest {
@@ -42870,13 +34605,6 @@ pub struct IssueSearchResultItemPullRequest {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl IssueSearchResultItemPullRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Issue Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -42923,7 +34651,7 @@ pub struct IssueSearchResultItem {
   pub number: i64,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub performed_via_github_app: Option<GitHubApp>,
+  pub performed_via_github_app: Option<Integration>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub pull_request: Option<IssueSearchResultItemPullRequest>,
@@ -42954,13 +34682,6 @@ pub struct IssueSearchResultItem {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl IssueSearchResultItem {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchIssuesAndPullRequestsResponse {
@@ -42969,13 +34690,6 @@ pub struct SearchIssuesAndPullRequestsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchIssuesAndPullRequestsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Query for `Search labels`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43004,13 +34718,6 @@ pub struct SearchLabelsQuery {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl SearchLabelsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 /// Label Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -43032,13 +34739,6 @@ pub struct LabelSearchResultItem {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl LabelSearchResultItem {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchLabelsResponse {
@@ -43047,13 +34747,6 @@ pub struct SearchLabelsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchLabelsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Query for `Search repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43080,13 +34773,6 @@ pub struct SearchReposQuery {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl SearchReposQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepoSearchResultItemPermissions {
@@ -43101,13 +34787,6 @@ pub struct RepoSearchResultItemPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl RepoSearchResultItemPermissions {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Repo Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43249,13 +34928,6 @@ pub struct RepoSearchResultItem {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl RepoSearchResultItem {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchReposResponse {
@@ -43264,13 +34936,6 @@ pub struct SearchReposResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchReposResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Query for `Search topics`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43288,13 +34953,6 @@ pub struct SearchTopicsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchTopicsQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -43314,13 +34972,6 @@ pub struct TopicSearchResultItemAliasesTopicRelation {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl TopicSearchResultItemAliasesTopicRelation {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TopicSearchResultItemAliases {
@@ -43329,13 +34980,6 @@ pub struct TopicSearchResultItemAliases {
   pub topic_relation: Option<TopicSearchResultItemAliasesTopicRelation>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl TopicSearchResultItemAliases {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -43355,13 +34999,6 @@ pub struct TopicSearchResultItemRelatedTopicRelation {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl TopicSearchResultItemRelatedTopicRelation {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TopicSearchResultItemRelated {
@@ -43370,13 +35007,6 @@ pub struct TopicSearchResultItemRelated {
   pub topic_relation: Option<TopicSearchResultItemRelatedTopicRelation>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl TopicSearchResultItemRelated {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Topic Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43421,13 +35051,6 @@ pub struct TopicSearchResultItem {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl TopicSearchResultItem {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchTopicsResponse {
@@ -43436,13 +35059,6 @@ pub struct SearchTopicsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchTopicsResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// Query for `Search users`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43468,13 +35084,6 @@ pub struct SearchUsersQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchUsersQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "search",))]
 /// User Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43550,13 +35159,6 @@ pub struct UserSearchResultItem {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-impl UserSearchResultItem {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "search",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchUsersResponse {
@@ -43565,13 +35167,6 @@ pub struct SearchUsersResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
-impl SearchUsersResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -43608,13 +35203,6 @@ pub struct TeamsUpdateLegacyRequest {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsUpdateLegacyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List discussions (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -43634,13 +35222,6 @@ pub struct TeamsListDiscussionsLegacyQuery {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListDiscussionsLegacyQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsCreateDiscussionLegacyRequest {
@@ -43655,13 +35236,6 @@ pub struct TeamsCreateDiscussionLegacyRequest {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsCreateDiscussionLegacyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsUpdateDiscussionLegacyRequest {
@@ -43675,13 +35249,6 @@ pub struct TeamsUpdateDiscussionLegacyRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsUpdateDiscussionLegacyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List discussion comments (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43702,13 +35269,6 @@ pub struct TeamsListDiscussionCommentsLegacyQuery {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListDiscussionCommentsLegacyQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsCreateDiscussionCommentLegacyRequest {
@@ -43717,13 +35277,6 @@ pub struct TeamsCreateDiscussionCommentLegacyRequest {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsCreateDiscussionCommentLegacyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsUpdateDiscussionCommentLegacyRequest {
@@ -43731,13 +35284,6 @@ pub struct TeamsUpdateDiscussionCommentLegacyRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsUpdateDiscussionCommentLegacyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// Query for `List reactions for a team discussion comment (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43758,13 +35304,6 @@ pub struct ReactionsListForTeamDiscussionCommentLegacyQuery {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsListForTeamDiscussionCommentLegacyQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "reactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForTeamDiscussionCommentLegacyRequest {
@@ -43772,13 +35311,6 @@ pub struct ReactionsCreateForTeamDiscussionCommentLegacyRequest {
   pub content: ReactionsCreateForTeamDiscussionCommentLegacyRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsCreateForTeamDiscussionCommentLegacyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// Query for `List reactions for a team discussion (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43799,13 +35331,6 @@ pub struct ReactionsListForTeamDiscussionLegacyQuery {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsListForTeamDiscussionLegacyQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "reactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForTeamDiscussionLegacyRequest {
@@ -43813,13 +35338,6 @@ pub struct ReactionsCreateForTeamDiscussionLegacyRequest {
   pub content: ReactionsCreateForTeamDiscussionLegacyRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
-impl ReactionsCreateForTeamDiscussionLegacyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List pending team invitations (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43835,13 +35353,6 @@ pub struct TeamsListPendingInvitationsLegacyQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListPendingInvitationsLegacyQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List team members (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43862,13 +35373,6 @@ pub struct TeamsListMembersLegacyQuery {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListMembersLegacyQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateMembershipForUserLegacyRequest {
@@ -43878,13 +35382,6 @@ pub struct TeamsAddOrUpdateMembershipForUserLegacyRequest {
   pub role: Option<TeamsAddOrUpdateMembershipForUserLegacyRequestRole>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsAddOrUpdateMembershipForUserLegacyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List team projects (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43901,13 +35398,6 @@ pub struct TeamsListProjectsLegacyQuery {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListProjectsLegacyQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateProjectPermissionsLegacyRequest {
@@ -43917,13 +35407,6 @@ pub struct TeamsAddOrUpdateProjectPermissionsLegacyRequest {
   pub permission: Option<TeamsAddOrUpdateProjectPermissionsLegacyRequestPermission>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsAddOrUpdateProjectPermissionsLegacyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List team repositories (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43940,13 +35423,6 @@ pub struct TeamsListReposLegacyQuery {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListReposLegacyQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "teams",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateRepoPermissionsLegacyRequest {
@@ -43956,13 +35432,6 @@ pub struct TeamsAddOrUpdateRepoPermissionsLegacyRequest {
   pub permission: Option<TeamsAddOrUpdateRepoPermissionsLegacyRequestPermission>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsAddOrUpdateRepoPermissionsLegacyRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List child teams (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -43978,13 +35447,6 @@ pub struct TeamsListChildLegacyQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListChildLegacyQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -43995,13 +35457,6 @@ pub struct PrivateUserPlan {
   pub space: i64,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl PrivateUserPlan {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Private User
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44079,13 +35534,6 @@ pub struct PrivateUser {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl PrivateUser {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersUpdateAuthenticatedRequest {
@@ -44124,13 +35572,6 @@ pub struct UsersUpdateAuthenticatedRequest {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersUpdateAuthenticatedRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List users blocked by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44145,13 +35586,6 @@ pub struct UsersListBlockedByAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersListBlockedByAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `List codespaces for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44172,13 +35606,6 @@ pub struct CodespacesListForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListForAuthenticatedUserResponse {
@@ -44186,13 +35613,6 @@ pub struct CodespacesListForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListForAuthenticatedUserResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44247,13 +35667,6 @@ pub struct CodespacesCreateForAuthenticatedUserRequestItem1 {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesCreateForAuthenticatedUserRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 /// Pull request number for this codespace
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44264,13 +35677,6 @@ pub struct CodespacesCreateForAuthenticatedUserRequestItem2PullRequest {
   pub repository_id: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesCreateForAuthenticatedUserRequestItem2PullRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44304,13 +35710,6 @@ pub struct CodespacesCreateForAuthenticatedUserRequestItem2 {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesCreateForAuthenticatedUserRequestItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 /// Query for `List secrets for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44326,12 +35725,22 @@ pub struct CodespacesListSecretsForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListSecretsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
+/// Secrets for a GitHub Codespace.
+#[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+#[builder(field_defaults(setter(into)))]
+pub struct CodespacesSecret {
+  /// The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+  pub created_at: String,
+  /// The name of the secret
+  pub name: String,
+  /// The API URL at which the list of repositories this secret is visible to can be retrieved
+  pub selected_repositories_url: String,
+  /// The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
+  pub updated_at: String,
+  /// The type of repositories in the organization that the secret is visible to
+  pub visibility: CodespacesSecretVisibility,
 }
+
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44340,13 +35749,6 @@ pub struct CodespacesListSecretsForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListSecretsForAuthenticatedUserResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// The public key used for setting user Codespaces' Secrets.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44358,13 +35760,6 @@ pub struct CodespacesUserPublicKey {
   pub key_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesUserPublicKey {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44382,13 +35777,6 @@ pub struct CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListRepositoriesForSecretForAuthenticatedUserResponse {
@@ -44397,13 +35785,6 @@ pub struct CodespacesListRepositoriesForSecretForAuthenticatedUserResponse {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesListRepositoriesForSecretForAuthenticatedUserResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest {
@@ -44411,13 +35792,6 @@ pub struct CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest {
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44437,17 +35811,10 @@ pub struct CodespacesUpdateForAuthenticatedUserRequest {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesUpdateForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 /// An export of a codespace. Also, latest export details for a codespace can be fetched with id = latest
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
-pub struct FetchesInformationAboutAnExportOfACodespace {
+pub struct CodespaceExportDetails {
   /// Name of the exported branch
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -44479,13 +35846,6 @@ pub struct FetchesInformationAboutAnExportOfACodespace {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl FetchesInformationAboutAnExportOfACodespace {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesCodespaceMachinesForAuthenticatedUserResponse {
@@ -44493,13 +35853,6 @@ pub struct CodespacesCodespaceMachinesForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesCodespaceMachinesForAuthenticatedUserResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "codespaces",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44515,12 +35868,131 @@ pub struct CodespacesPublishForAuthenticatedUserRequest {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
-impl CodespacesPublishForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
+/// Details about the codespace's git repository.
+#[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+#[builder(field_defaults(setter(into)))]
+pub struct CodespaceWithFullRepositoryGitStatus {
+  /// The number of commits the local repository is ahead of the remote.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub ahead: Option<i64>,
+  /// The number of commits the local repository is behind the remote.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub behind: Option<i64>,
+  /// Whether the local repository has uncommitted changes.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub has_uncommitted_changes: Option<bool>,
+  /// Whether the local repository has unpushed changes.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub has_unpushed_changes: Option<bool>,
+  /// The current branch (or SHA if in detached HEAD state) of the local repository.
+  #[serde(rename = "ref")]
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub ref_: Option<String>,
 }
+
+#[cfg(any(feature = "full", feature = "codespaces",))]
+#[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+#[builder(field_defaults(setter(into)))]
+pub struct CodespaceWithFullRepositoryRuntimeConstraints {
+  /// The privacy settings a user can select from when forwarding a port.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub allowed_port_privacy_settings: Option<Vec<String>>,
+}
+
+#[cfg(any(feature = "full", feature = "codespaces",))]
+/// A codespace.
+#[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+#[builder(field_defaults(setter(into)))]
+pub struct CodespaceWithFullRepository {
+  pub billable_owner: SimpleUser,
+  pub created_at: String,
+  /// Path to devcontainer.json from repo root used to create Codespace.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub devcontainer_path: Option<String>,
+  /// Display name for this codespace.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub display_name: Option<String>,
+  /// UUID identifying this codespace's environment.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub environment_id: Option<String>,
+  /// Details about the codespace's git repository.
+  pub git_status: CodespaceWithFullRepositoryGitStatus,
+  pub id: i64,
+  /// The number of minutes of inactivity after which this codespace will be automatically stopped.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub idle_timeout_minutes: Option<i64>,
+  /// Text to show user when codespace idle timeout minutes has been overriden by an organization policy
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub idle_timeout_notice: Option<String>,
+  /// Last known time this codespace was started.
+  pub last_used_at: String,
+  /// The initally assigned location of a new codespace.
+  pub location: CodespaceWithFullRepositoryLocation,
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub machine: Option<CodespaceMachine>,
+  /// API URL to access available alternate machine types for this codespace.
+  pub machines_url: String,
+  /// Automatically generated name of this codespace.
+  pub name: String,
+  pub owner: SimpleUser,
+  /// Whether or not a codespace has a pending async operation. This would mean that the codespace is temporarily unavailable. The only thing that you can do with a codespace in this state is delete it.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub pending_operation: Option<bool>,
+  /// Text to show user when codespace is disabled by a pending operation
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub pending_operation_disabled_reason: Option<String>,
+  /// Whether the codespace was created from a prebuild.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub prebuild: Option<bool>,
+  /// API URL to publish this codespace to a new repository.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub publish_url: Option<String>,
+  /// API URL for the Pull Request associated with this codespace, if any.
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub pulls_url: Option<String>,
+  pub recent_folders: Vec<String>,
+  pub repository: FullRepository,
+  /// When a codespace will be auto-deleted based on the "retention_period_minutes" and "last_used_at"
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub retention_expires_at: Option<String>,
+  /// Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub retention_period_minutes: Option<i64>,
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub runtime_constraints: Option<CodespaceWithFullRepositoryRuntimeConstraints>,
+  /// API URL to start this codespace.
+  pub start_url: String,
+  /// State of this codespace.
+  pub state: CodespaceWithFullRepositoryState,
+  /// API URL to stop this codespace.
+  pub stop_url: String,
+  pub updated_at: String,
+  /// API URL for this codespace.
+  pub url: String,
+  /// URL to access this codespace on the web.
+  pub web_url: String,
+}
+
 #[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44529,13 +36001,6 @@ pub struct UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest {
   pub visibility: UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Email
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44549,13 +36014,6 @@ pub struct Email {
   pub visibility: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl Email {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List email addresses for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44572,13 +36030,6 @@ pub struct UsersListEmailsForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersListEmailsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersAddEmailForAuthenticatedUserRequestItem1 {
@@ -44586,13 +36037,6 @@ pub struct UsersAddEmailForAuthenticatedUserRequestItem1 {
   pub emails: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersAddEmailForAuthenticatedUserRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Deletes one or more email addresses from your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44602,13 +36046,6 @@ pub struct UsersDeleteEmailForAuthenticatedUserRequestItem1 {
   pub emails: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersDeleteEmailForAuthenticatedUserRequestItem1 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List followers of the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44625,13 +36062,6 @@ pub struct UsersListFollowersForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersListFollowersForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List the people the authenticated user follows`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44646,13 +36076,6 @@ pub struct UsersListFollowedByAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersListFollowedByAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List GPG keys for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44669,13 +36092,6 @@ pub struct UsersListGpgKeysForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersListGpgKeysForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GpgKeyEmails {
@@ -44688,13 +36104,6 @@ pub struct GpgKeyEmails {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl GpgKeyEmails {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GpgKeySubkeysEmails {
@@ -44706,13 +36115,6 @@ pub struct GpgKeySubkeysEmails {
   pub verified: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl GpgKeySubkeysEmails {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44762,13 +36164,6 @@ pub struct GpgKeySubkeys {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl GpgKeySubkeys {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 /// A unique encryption key
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44799,13 +36194,6 @@ pub struct GpgKey {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl GpgKey {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersCreateGpgKeyForAuthenticatedUserRequest {
@@ -44817,13 +36205,6 @@ pub struct UsersCreateGpgKeyForAuthenticatedUserRequest {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersCreateGpgKeyForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List app installations accessible to the user access token`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44840,13 +36221,6 @@ pub struct AppsListInstallationsForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListInstallationsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsListInstallationsForAuthenticatedUserResponse {
@@ -44854,13 +36228,6 @@ pub struct AppsListInstallationsForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListInstallationsForAuthenticatedUserResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List repositories accessible to the user access token`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44877,13 +36244,6 @@ pub struct AppsListInstallationReposForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListInstallationReposForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsListInstallationReposForAuthenticatedUserResponse {
@@ -44894,25 +36254,11 @@ pub struct AppsListInstallationReposForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListInstallationReposForAuthenticatedUserResponse {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "interactions",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct InteractionsGetRestrictionsForAuthenticatedUserResponseItem2 {}
 
-#[cfg(any(feature = "full", feature = "interactions",))]
-impl InteractionsGetRestrictionsForAuthenticatedUserResponseItem2 {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "issues",))]
 /// Query for `List user account issues assigned to the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44952,13 +36298,6 @@ pub struct IssuesListForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
-impl IssuesListForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List public SSH keys for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -44975,13 +36314,6 @@ pub struct UsersListPublicSshKeysForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersListPublicSshKeysForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 /// Key
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -44996,13 +36328,6 @@ pub struct Key {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl Key {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersCreatePublicSshKeyForAuthenticatedUserRequest {
@@ -45014,13 +36339,6 @@ pub struct UsersCreatePublicSshKeyForAuthenticatedUserRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersCreatePublicSshKeyForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List subscriptions for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45036,13 +36354,6 @@ pub struct AppsListSubscriptionsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListSubscriptionsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45063,13 +36374,6 @@ pub struct MarketplaceAccount {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl MarketplaceAccount {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "apps",))]
 /// User Marketplace Purchase
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45094,13 +36398,6 @@ pub struct UserMarketplacePurchase {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-impl UserMarketplacePurchase {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "apps",))]
 /// Query for `List subscriptions for the authenticated user (stubbed)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45115,13 +36412,6 @@ pub struct AppsListSubscriptionsForAuthenticatedUserStubbedQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
-impl AppsListSubscriptionsForAuthenticatedUserStubbedQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List organization memberships for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45142,13 +36432,6 @@ pub struct OrgsListMembershipsForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListMembershipsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "orgs",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsUpdateMembershipForAuthenticatedUserRequest {
@@ -45156,13 +36439,6 @@ pub struct OrgsUpdateMembershipForAuthenticatedUserRequest {
   pub state: OrgsUpdateMembershipForAuthenticatedUserRequestState,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsUpdateMembershipForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// Query for `List user migrations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45178,13 +36454,6 @@ pub struct MigrationsListForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsListForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "migrations",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45225,13 +36494,6 @@ pub struct MigrationsStartForAuthenticatedUserRequest {
 }
 
 #[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsStartForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "migrations",))]
 /// Query for `Get a user migration status`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45239,13 +36501,6 @@ pub struct MigrationsGetStatusForAuthenticatedUserQuery {
   pub exclude: StringArray,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsGetStatusForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// Query for `List repositories for a user migration`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45261,13 +36516,6 @@ pub struct MigrationsListReposForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
-impl MigrationsListReposForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List organizations for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45283,13 +36531,6 @@ pub struct OrgsListForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "packages",))]
 /// Query for `List packages for the authenticated user's namespace`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45315,13 +36556,6 @@ pub struct PackagesListPackagesForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-impl PackagesListPackagesForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "packages",))]
 /// Query for `Restore a package for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45332,13 +36566,6 @@ pub struct PackagesRestorePackageForAuthenticatedUserQuery {
   pub token: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
-impl PackagesRestorePackageForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "packages",))]
 /// Query for `List package versions for a package owned by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45358,13 +36585,6 @@ pub struct PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQuery 
   pub state: Option<PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQueryState>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
-impl PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45377,13 +36597,6 @@ pub struct ProjectsCreateForAuthenticatedUserRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsCreateForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List public email addresses for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45399,13 +36612,6 @@ pub struct UsersListPublicEmailsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersListPublicEmailsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List repositories for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45453,13 +36659,6 @@ pub struct ReposListForAuthenticatedUserQuery {
   pub before: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45573,13 +36772,6 @@ pub struct ReposCreateForAuthenticatedUserRequest {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-impl ReposCreateForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List repository invitations for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45594,13 +36786,6 @@ pub struct ReposListInvitationsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListInvitationsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List social accounts for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45617,13 +36802,6 @@ pub struct UsersListSocialAccountsForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersListSocialAccountsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 /// Social media account
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45633,13 +36811,6 @@ pub struct SocialAccount {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl SocialAccount {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersAddSocialAccountForAuthenticatedUserRequest {
@@ -45648,13 +36819,6 @@ pub struct UsersAddSocialAccountForAuthenticatedUserRequest {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersAddSocialAccountForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersDeleteSocialAccountForAuthenticatedUserRequest {
@@ -45662,13 +36826,6 @@ pub struct UsersDeleteSocialAccountForAuthenticatedUserRequest {
   pub account_urls: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersDeleteSocialAccountForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List SSH signing keys for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45685,13 +36842,6 @@ pub struct UsersListSshSigningKeysForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersListSshSigningKeysForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 /// A public SSH key used to sign Git commits
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45702,13 +36852,6 @@ pub struct SshSigningKey {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl SshSigningKey {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45721,13 +36864,6 @@ pub struct UsersCreateSshSigningKeyForAuthenticatedUserRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersCreateSshSigningKeyForAuthenticatedUserRequest {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List repositories starred by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45752,13 +36888,6 @@ pub struct ActivityListReposStarredByAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListReposStarredByAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List repositories watched by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45773,13 +36902,6 @@ pub struct ActivityListWatchedReposForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListWatchedReposForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "teams",))]
 /// Query for `List teams for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45795,13 +36917,6 @@ pub struct TeamsListForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
-impl TeamsListForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List users`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45817,13 +36932,6 @@ pub struct UsersListQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersListQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List events for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45840,13 +36948,6 @@ pub struct ActivityListEventsForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListEventsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List organization events for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45862,13 +36963,6 @@ pub struct ActivityListOrgEventsForAuthenticatedUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListOrgEventsForAuthenticatedUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List public events for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45883,13 +36977,6 @@ pub struct ActivityListPublicEventsForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListPublicEventsForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List followers of a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45906,13 +36993,6 @@ pub struct UsersListFollowersForUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersListFollowersForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List the people a user follows`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45927,13 +37007,6 @@ pub struct UsersListFollowingForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersListFollowingForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "gists",))]
 /// Query for `List gists for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45953,13 +37026,6 @@ pub struct GistsListForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
-impl GistsListForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List GPG keys for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -45976,13 +37042,6 @@ pub struct UsersListGpgKeysForUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersListGpgKeysForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 /// Query for `Get contextual information for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -45998,13 +37057,6 @@ pub struct UsersGetContextForUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersGetContextForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct HovercardContexts {
@@ -46013,13 +37065,6 @@ pub struct HovercardContexts {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl HovercardContexts {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 /// Hovercard
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -46027,13 +37072,6 @@ pub struct Hovercard {
   pub contexts: Vec<HovercardContexts>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl Hovercard {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List public keys for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -46050,13 +37088,6 @@ pub struct UsersListPublicKeysForUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersListPublicKeysForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 /// Key Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -46065,13 +37096,6 @@ pub struct KeySimple {
   pub key: String,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl KeySimple {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Query for `List organizations for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -46087,13 +37111,6 @@ pub struct OrgsListForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
-impl OrgsListForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "packages",))]
 /// Query for `List packages for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -46119,13 +37136,6 @@ pub struct PackagesListPackagesForUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-impl PackagesListPackagesForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "packages",))]
 /// Query for `Restore a package for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -46136,13 +37146,6 @@ pub struct PackagesRestorePackageForUserQuery {
   pub token: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
-impl PackagesRestorePackageForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "projects",))]
 /// Query for `List user projects`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -46162,13 +37165,6 @@ pub struct ProjectsListForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
-impl ProjectsListForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List events received by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -46185,13 +37181,6 @@ pub struct ActivityListReceivedEventsForUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListReceivedEventsForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List public events received by a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -46206,13 +37195,6 @@ pub struct ActivityListReceivedPublicEventsForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListReceivedPublicEventsForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Query for `List repositories for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -46241,13 +37223,6 @@ pub struct ReposListForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
-impl ReposListForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List social accounts for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -46264,13 +37239,6 @@ pub struct UsersListSocialAccountsForUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-impl UsersListSocialAccountsForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "users",))]
 /// Query for `List SSH signing keys for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -46285,13 +37253,6 @@ pub struct UsersListSshSigningKeysForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
-impl UsersListSshSigningKeysForUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List repositories starred by a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -46316,13 +37277,6 @@ pub struct ActivityListReposStarredByUserQuery {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListReposStarredByUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
-#[cfg(any(feature = "full", feature = "activity",))]
 /// Starred Repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -46331,13 +37285,6 @@ pub struct StarredRepository {
   pub starred_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
-impl StarredRepository {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
-}
 #[cfg(any(feature = "full", feature = "activity",))]
 /// Query for `List repositories watched by a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -46351,12 +37298,4 @@ pub struct ActivityListReposWatchedByUserQuery {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub page: Option<i64>,
-}
-
-#[cfg(any(feature = "full", feature = "activity",))]
-impl ActivityListReposWatchedByUserQuery {
-  #[deprecated(note = "This is no longer required due to the use of [`TypedBuilder`]")]
-  pub fn unwrap(self) -> Self {
-    self
-  }
 }

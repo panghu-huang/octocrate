@@ -334,12 +334,12 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), RepositoryInvitation> {
+  ) -> Request<(), (), RepositorySubscription> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/subscription");
 
-    Request::<(), (), RepositoryInvitation>::builder(&self.config)
+    Request::<(), (), RepositorySubscription>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -353,12 +353,12 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ActivitySetRepoSubscriptionRequest, (), RepositoryInvitation> {
+  ) -> Request<ActivitySetRepoSubscriptionRequest, (), RepositorySubscription> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/subscription");
 
-    Request::<ActivitySetRepoSubscriptionRequest, (), RepositoryInvitation>::builder(&self.config)
+    Request::<ActivitySetRepoSubscriptionRequest, (), RepositorySubscription>::builder(&self.config)
       .put(url)
       .build()
   }

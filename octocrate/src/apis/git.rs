@@ -176,13 +176,13 @@ impl GitHubGitAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<(), (), GitReferenceArray> {
+  ) -> Request<(), (), GitRefArray> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/git/matching-refs/{ref_}");
 
-    Request::<(), (), GitReferenceArray>::builder(&self.config)
+    Request::<(), (), GitRefArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -199,13 +199,13 @@ impl GitHubGitAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<(), (), GitReference> {
+  ) -> Request<(), (), GitRef> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/git/ref/{ref_}");
 
-    Request::<(), (), GitReference>::builder(&self.config)
+    Request::<(), (), GitRef>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -219,12 +219,12 @@ impl GitHubGitAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<GitCreateRefRequest, (), GitReference> {
+  ) -> Request<GitCreateRefRequest, (), GitRef> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/git/refs");
 
-    Request::<GitCreateRefRequest, (), GitReference>::builder(&self.config)
+    Request::<GitCreateRefRequest, (), GitRef>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -239,13 +239,13 @@ impl GitHubGitAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<GitUpdateRefRequest, (), GitReference> {
+  ) -> Request<GitUpdateRefRequest, (), GitRef> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/git/refs/{ref_}");
 
-    Request::<GitUpdateRefRequest, (), GitReference>::builder(&self.config)
+    Request::<GitUpdateRefRequest, (), GitRef>::builder(&self.config)
       .patch(url)
       .build()
   }

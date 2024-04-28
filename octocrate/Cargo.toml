@@ -104,7 +104,6 @@ path = "examples/issues.rs"
 required-features = ["issues"]
 test = true
 
-
 [[example]]
 name = "search"
 path = "examples/search.rs"

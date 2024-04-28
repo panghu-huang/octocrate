@@ -84,9 +84,7 @@ impl SchemaParser {
           return Some(ParsedData::Type(Type::new("WritePermission")));
         }
         (2, true, true) => {
-          return Some(ParsedData::Type(Type::new(
-            "ReadWritePermission",
-          )));
+          return Some(ParsedData::Type(Type::new("ReadWritePermission")));
         }
         _ => {}
       }

@@ -276,15 +276,17 @@ impl GitHubCodeScanningAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     analysis_id: impl Into<i64>,
-  ) -> Request<(), CodeScanningDeleteAnalysisQuery, AnalysisDeletion> {
+  ) -> Request<(), CodeScanningDeleteAnalysisQuery, CodeScanningAnalysisDeletion> {
     let owner = owner.into();
     let repo = repo.into();
     let analysis_id = analysis_id.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}");
 
-    Request::<(), CodeScanningDeleteAnalysisQuery, AnalysisDeletion>::builder(&self.config)
-      .delete(url)
-      .build()
+    Request::<(), CodeScanningDeleteAnalysisQuery, CodeScanningAnalysisDeletion>::builder(
+      &self.config,
+    )
+    .delete(url)
+    .build()
   }
 
   /// **List CodeQL databases for a repository**
@@ -298,12 +300,12 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), CodeQLDatabaseArray> {
+  ) -> Request<(), (), CodeScanningCodeqlDatabaseArray> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/codeql/databases");
 
-    Request::<(), (), CodeQLDatabaseArray>::builder(&self.config)
+    Request::<(), (), CodeScanningCodeqlDatabaseArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -326,13 +328,13 @@ impl GitHubCodeScanningAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     language: impl Into<String>,
-  ) -> Request<(), (), CodeQLDatabase> {
+  ) -> Request<(), (), CodeScanningCodeqlDatabase> {
     let owner = owner.into();
     let repo = repo.into();
     let language = language.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}");
 
-    Request::<(), (), CodeQLDatabase>::builder(&self.config)
+    Request::<(), (), CodeScanningCodeqlDatabase>::builder(&self.config)
       .get(url)
       .build()
   }
