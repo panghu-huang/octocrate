@@ -699,13 +699,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), IssuesListEventsForTimelineQuery, TimelineEventArray> {
+  ) -> Request<(), IssuesListEventsForTimelineQuery, TimelineIssueEventsArray> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/timeline");
 
-    Request::<(), IssuesListEventsForTimelineQuery, TimelineEventArray>::builder(&self.config)
+    Request::<(), IssuesListEventsForTimelineQuery, TimelineIssueEventsArray>::builder(&self.config)
       .get(url)
       .build()
   }

@@ -702,14 +702,14 @@ impl GitHubPullsAPI {
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
     review_id: impl Into<i64>,
-  ) -> Request<(), PullsListCommentsForReviewQuery, LegacyReviewCommentArray> {
+  ) -> Request<(), PullsListCommentsForReviewQuery, ReviewCommentArray> {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
     let review_id = review_id.into();
     let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments");
 
-    Request::<(), PullsListCommentsForReviewQuery, LegacyReviewCommentArray>::builder(&self.config)
+    Request::<(), PullsListCommentsForReviewQuery, ReviewCommentArray>::builder(&self.config)
       .get(url)
       .build()
   }

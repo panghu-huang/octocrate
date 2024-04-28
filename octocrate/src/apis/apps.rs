@@ -21,10 +21,10 @@ impl GitHubAppsAPI {
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-the-authenticated-app](https://docs.github.com/rest/apps/apps#get-the-authenticated-app)
-  pub fn get_authenticated(&self) -> Request<(), (), GitHubApp> {
+  pub fn get_authenticated(&self) -> Request<(), (), Integration> {
     let url = format!("/app");
 
-    Request::<(), (), GitHubApp>::builder(&self.config)
+    Request::<(), (), Integration>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -53,10 +53,10 @@ impl GitHubAppsAPI {
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app](https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app)
-  pub fn get_webhook_config_for_app(&self) -> Request<(), (), WebhookConfiguration> {
+  pub fn get_webhook_config_for_app(&self) -> Request<(), (), WebhookConfig> {
     let url = format!("/app/hook/config");
 
-    Request::<(), (), WebhookConfiguration>::builder(&self.config)
+    Request::<(), (), WebhookConfig>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -70,10 +70,10 @@ impl GitHubAppsAPI {
   /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app](https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app)
   pub fn update_webhook_config_for_app(
     &self,
-  ) -> Request<AppsUpdateWebhookConfigForAppRequest, (), WebhookConfiguration> {
+  ) -> Request<AppsUpdateWebhookConfigForAppRequest, (), WebhookConfig> {
     let url = format!("/app/hook/config");
 
-    Request::<AppsUpdateWebhookConfigForAppRequest, (), WebhookConfiguration>::builder(&self.config)
+    Request::<AppsUpdateWebhookConfigForAppRequest, (), WebhookConfig>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -87,10 +87,10 @@ impl GitHubAppsAPI {
   /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook](https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook)
   pub fn list_webhook_deliveries(
     &self,
-  ) -> Request<(), AppsListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray> {
+  ) -> Request<(), AppsListWebhookDeliveriesQuery, HookDeliveryItemArray> {
     let url = format!("/app/hook/deliveries");
 
-    Request::<(), AppsListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray>::builder(&self.config)
+    Request::<(), AppsListWebhookDeliveriesQuery, HookDeliveryItemArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -102,14 +102,11 @@ impl GitHubAppsAPI {
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook](https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook)
-  pub fn get_webhook_delivery(
-    &self,
-    delivery_id: impl Into<i64>,
-  ) -> Request<(), (), WebhookDelivery> {
+  pub fn get_webhook_delivery(&self, delivery_id: impl Into<i64>) -> Request<(), (), HookDelivery> {
     let delivery_id = delivery_id.into();
     let url = format!("/app/hook/deliveries/{delivery_id}");
 
-    Request::<(), (), WebhookDelivery>::builder(&self.config)
+    Request::<(), (), HookDelivery>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -364,11 +361,11 @@ impl GitHubAppsAPI {
   /// **Note**: The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-an-app](https://docs.github.com/rest/apps/apps#get-an-app)
-  pub fn get_by_slug(&self, app_slug: impl Into<String>) -> Request<(), (), GitHubApp> {
+  pub fn get_by_slug(&self, app_slug: impl Into<String>) -> Request<(), (), Integration> {
     let app_slug = app_slug.into();
     let url = format!("/apps/{app_slug}");
 
-    Request::<(), (), GitHubApp>::builder(&self.config)
+    Request::<(), (), Integration>::builder(&self.config)
       .get(url)
       .build()
   }

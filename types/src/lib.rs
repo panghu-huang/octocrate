@@ -1,15 +1,16 @@
 mod models;
-#[cfg(feature = "pagination")]
-mod pagination;
-mod webhooks;
 
 #[allow(unused_imports)]
 pub use models::*;
+
+pub mod webhooks;
+
+#[cfg(feature = "pagination")]
+mod pagination;
+
 #[cfg(feature = "pagination")]
 pub use pagination::*;
 use serde::{Deserialize, Serialize};
-#[allow(unused_imports)]
-pub use webhooks::*;
 
 /// Predefined types
 #[derive(Serialize, Deserialize, Debug, Clone)]

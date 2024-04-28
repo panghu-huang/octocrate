@@ -105,8 +105,6 @@ impl SchemaParser {
               return ParsedData::Struct(struct_.clone());
             }
 
-            // ctx.record_reference_type(&struct_name, struct_.clone());
-
             ParsedData::Type(Type::new_with_reference(&full_type, &struct_.name))
           }
           ParsedData::Enum(enum_) => {
@@ -123,8 +121,6 @@ impl SchemaParser {
             if enum_name == full_type {
               return ParsedData::Enum(enum_.clone());
             }
-
-            // ctx.record_reference_type(&enum_name, enum_.clone());
 
             ParsedData::Type(Type::new_with_reference(&full_type, &enum_.name))
           }
@@ -210,14 +206,12 @@ impl SchemaParser {
 
               enum_field.set_type_name(enum_name);
 
-              // ctx.record_reference_type(&enum_name, generated.clone());
               enum_field.reference(&generated.name);
 
               enum_.add_field(enum_field);
             }
             ParsedData::Type(type_) => {
               if check_if_same_name(&type_.type_name, &enum_) {
-                // has_same_name = true;
                 continue;
               }
 
@@ -225,11 +219,7 @@ impl SchemaParser {
                 is_optional = true;
               } else {
                 let type_name = match &type_.alias {
-                  Some(alias) => {
-                    // ctx.record_reference_type(alias, type_.clone());
-
-                    alias
-                  }
+                  Some(alias) => alias,
                   None => &type_.type_name,
                 };
 
@@ -247,17 +237,10 @@ impl SchemaParser {
           }
         }
 
-        // if has_same_name {
-        //   // println!("Found a struct or enum with the same name as the enum");
-        //   // return ParsedData::Type(Type::new(&"serde_json::Value".to_string()));
-        // }
-
         ctx.add_reference(&enum_.name, ParsedData::Enum(enum_.clone()));
 
         if is_optional {
           let type_name = schema_types.to_full_type_with_object(&enum_.name);
-
-          // ctx.record_reference_type(&enum_.name, enum_.clone());
 
           return ParsedData::Type(Type::new_with_reference(&type_name, &enum_.name));
         }

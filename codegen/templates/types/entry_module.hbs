@@ -1,16 +1,22 @@
 {{#each modules}}
-mod {{ this }};
+{{#if exports_all}}
+mod {{ name }};
+
+#[allow(unused_imports)]
+pub use {{ name }}::*;
+
+{{else}}
+pub mod {{ name }};
+
+{{/if}}
 {{/each}}
+
 #[cfg(feature = "pagination")]
 mod pagination;
 
 use serde::{Serialize, Deserialize};
 #[cfg(feature = "pagination")]
 pub use pagination::*;
-{{#each modules}}
-#[allow(unused_imports)]
-pub use {{ this }}::*;
-{{/each}}
 
 /// Predefined types
 #[derive(Serialize, Deserialize, Debug, Clone)]

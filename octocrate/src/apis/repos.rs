@@ -278,12 +278,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), AutolinkReferenceArray> {
+  ) -> Request<(), (), AutolinkArray> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/autolinks");
 
-    Request::<(), (), AutolinkReferenceArray>::builder(&self.config)
+    Request::<(), (), AutolinkArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -297,12 +297,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreateAutolinkRequest, (), AutolinkReference> {
+  ) -> Request<ReposCreateAutolinkRequest, (), Autolink> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/autolinks");
 
-    Request::<ReposCreateAutolinkRequest, (), AutolinkReference>::builder(&self.config)
+    Request::<ReposCreateAutolinkRequest, (), Autolink>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -319,13 +319,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     autolink_id: impl Into<i64>,
-  ) -> Request<(), (), AutolinkReference> {
+  ) -> Request<(), (), Autolink> {
     let owner = owner.into();
     let repo = repo.into();
     let autolink_id = autolink_id.into();
     let url = format!("/repos/{owner}/{repo}/autolinks/{autolink_id}");
 
-    Request::<(), (), AutolinkReference>::builder(&self.config)
+    Request::<(), (), Autolink>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -939,13 +939,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), GitHubAppArray> {
+  ) -> Request<(), (), IntegrationArray> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<(), (), GitHubAppArray>::builder(&self.config)
+    Request::<(), (), IntegrationArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -962,13 +962,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposAddAppAccessRestrictionsRequest, (), GitHubAppArray> {
+  ) -> Request<ReposAddAppAccessRestrictionsRequest, (), IntegrationArray> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<ReposAddAppAccessRestrictionsRequest, (), GitHubAppArray>::builder(&self.config)
+    Request::<ReposAddAppAccessRestrictionsRequest, (), IntegrationArray>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -985,13 +985,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposSetAppAccessRestrictionsRequest, (), GitHubAppArray> {
+  ) -> Request<ReposSetAppAccessRestrictionsRequest, (), IntegrationArray> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<ReposSetAppAccessRestrictionsRequest, (), GitHubAppArray>::builder(&self.config)
+    Request::<ReposSetAppAccessRestrictionsRequest, (), IntegrationArray>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1008,13 +1008,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposRemoveAppAccessRestrictionsRequest, (), GitHubAppArray> {
+  ) -> Request<ReposRemoveAppAccessRestrictionsRequest, (), IntegrationArray> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<ReposRemoveAppAccessRestrictionsRequest, (), GitHubAppArray>::builder(&self.config)
+    Request::<ReposRemoveAppAccessRestrictionsRequest, (), IntegrationArray>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -2375,14 +2375,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     environment_name: impl Into<String>,
-  ) -> Request<DeploymentBranchAndTagPolicyNamePattern, (), DeploymentBranchPolicy> {
+  ) -> Request<DeploymentBranchPolicyNamePatternWithType, (), DeploymentBranchPolicy> {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let url =
       format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies");
 
-    Request::<DeploymentBranchAndTagPolicyNamePattern, (), DeploymentBranchPolicy>::builder(
+    Request::<DeploymentBranchPolicyNamePatternWithType, (), DeploymentBranchPolicy>::builder(
       &self.config,
     )
     .post(url)
@@ -2663,12 +2663,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListWebhooksQuery, WebhookArray> {
+  ) -> Request<(), ReposListWebhooksQuery, HookArray> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/hooks");
 
-    Request::<(), ReposListWebhooksQuery, WebhookArray>::builder(&self.config)
+    Request::<(), ReposListWebhooksQuery, HookArray>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2683,12 +2683,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreateWebhookRequest, (), Webhook> {
+  ) -> Request<ReposCreateWebhookRequest, (), Hook> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/hooks");
 
-    Request::<ReposCreateWebhookRequest, (), Webhook>::builder(&self.config)
+    Request::<ReposCreateWebhookRequest, (), Hook>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -2703,13 +2703,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), (), Webhook> {
+  ) -> Request<(), (), Hook> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}");
 
-    Request::<(), (), Webhook>::builder(&self.config)
+    Request::<(), (), Hook>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2724,13 +2724,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<ReposUpdateWebhookRequest, (), Webhook> {
+  ) -> Request<ReposUpdateWebhookRequest, (), Hook> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}");
 
-    Request::<ReposUpdateWebhookRequest, (), Webhook>::builder(&self.config)
+    Request::<ReposUpdateWebhookRequest, (), Hook>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -2767,13 +2767,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), (), WebhookConfiguration> {
+  ) -> Request<(), (), WebhookConfig> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/config");
 
-    Request::<(), (), WebhookConfiguration>::builder(&self.config)
+    Request::<(), (), WebhookConfig>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2790,17 +2790,15 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfiguration> {
+  ) -> Request<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfig> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/config");
 
-    Request::<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfiguration>::builder(
-      &self.config,
-    )
-    .patch(url)
-    .build()
+    Request::<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfig>::builder(&self.config)
+      .patch(url)
+      .build()
   }
 
   /// **List deliveries for a repository webhook**
@@ -2813,17 +2811,15 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), ReposListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray> {
+  ) -> Request<(), ReposListWebhookDeliveriesQuery, HookDeliveryItemArray> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries");
 
-    Request::<(), ReposListWebhookDeliveriesQuery, SimpleWebhookDeliveryArray>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), ReposListWebhookDeliveriesQuery, HookDeliveryItemArray>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get a delivery for a repository webhook**
@@ -2837,14 +2833,14 @@ impl GitHubReposAPI {
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
     delivery_id: impl Into<i64>,
-  ) -> Request<(), (), WebhookDelivery> {
+  ) -> Request<(), (), HookDelivery> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let delivery_id = delivery_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}");
 
-    Request::<(), (), WebhookDelivery>::builder(&self.config)
+    Request::<(), (), HookDelivery>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3120,12 +3116,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), GitHubPages> {
+  ) -> Request<(), (), Page> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages");
 
-    Request::<(), (), GitHubPages>::builder(&self.config)
+    Request::<(), (), Page>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3143,12 +3139,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<serde_json::Value, (), GitHubPages> {
+  ) -> Request<serde_json::Value, (), Page> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages");
 
-    Request::<serde_json::Value, (), GitHubPages>::builder(&self.config)
+    Request::<serde_json::Value, (), Page>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -3296,12 +3292,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreatePagesDeploymentRequest, (), GitHubPages> {
+  ) -> Request<ReposCreatePagesDeploymentRequest, (), PageDeployment> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages/deployments");
 
-    Request::<ReposCreatePagesDeploymentRequest, (), GitHubPages>::builder(&self.config)
+    Request::<ReposCreatePagesDeploymentRequest, (), PageDeployment>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -3318,13 +3314,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     pages_deployment_id: impl Into<StringOrInteger>,
-  ) -> Request<(), (), GitHubPagesDeploymentStatus> {
+  ) -> Request<(), (), PagesDeploymentStatus> {
     let owner = owner.into();
     let repo = repo.into();
     let pages_deployment_id = pages_deployment_id.into();
     let url = format!("/repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}");
 
-    Request::<(), (), GitHubPagesDeploymentStatus>::builder(&self.config)
+    Request::<(), (), PagesDeploymentStatus>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3639,16 +3635,14 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposGenerateReleaseNotesRequest, (), GeneratedReleaseNotesContent> {
+  ) -> Request<ReposGenerateReleaseNotesRequest, (), ReleaseNotesContent> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/releases/generate-notes");
 
-    Request::<ReposGenerateReleaseNotesRequest, (), GeneratedReleaseNotesContent>::builder(
-      &self.config,
-    )
-    .post(url)
-    .build()
+    Request::<ReposGenerateReleaseNotesRequest, (), ReleaseNotesContent>::builder(&self.config)
+      .post(url)
+      .build()
   }
 
   /// **Get the latest release**
@@ -3832,13 +3826,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), ReposGetBranchRulesQuery, RepositoryRuleArray> {
+  ) -> Request<(), ReposGetBranchRulesQuery, RepositoryRuleDetailedArray> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/rules/branches/{branch}");
 
-    Request::<(), ReposGetBranchRulesQuery, RepositoryRuleArray>::builder(&self.config)
+    Request::<(), ReposGetBranchRulesQuery, RepositoryRuleDetailedArray>::builder(&self.config)
       .get(url)
       .build()
   }

@@ -1,7 +1,4 @@
-use super::{
-  context::ParseContext, ParsedData,
-  schema_parser::SchemaParser,
-};
+use super::{context::ParseContext, schema_parser::SchemaParser, ParsedData};
 use crate::{
   schemas::{parameters::Parameter, schema::SchemaDefinition},
   structures::types::Type,

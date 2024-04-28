@@ -406,12 +406,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     runner_id: impl Into<i64>,
-  ) -> Request<(), (), SelfHostedRunners> {
+  ) -> Request<(), (), Runner> {
     let org = org.into();
     let runner_id = runner_id.into();
     let url = format!("/orgs/{org}/actions/runners/{runner_id}");
 
-    Request::<(), (), SelfHostedRunners>::builder(&self.config)
+    Request::<(), (), Runner>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -620,12 +620,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), ActionsSecretForAnOrganization> {
+  ) -> Request<(), (), OrganizationActionsSecret> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/actions/secrets/{secret_name}");
 
-    Request::<(), (), ActionsSecretForAnOrganization>::builder(&self.config)
+    Request::<(), (), OrganizationActionsSecret>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -845,12 +845,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     name: impl Into<String>,
-  ) -> Request<(), (), ActionsVariableForAnOrganization> {
+  ) -> Request<(), (), OrganizationActionsVariable> {
     let org = org.into();
     let name = name.into();
     let url = format!("/orgs/{org}/actions/variables/{name}");
 
-    Request::<(), (), ActionsVariableForAnOrganization>::builder(&self.config)
+    Request::<(), (), OrganizationActionsVariable>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1144,12 +1144,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActionsGetActionsCacheListQuery, RepositoryActionsCaches> {
+  ) -> Request<(), ActionsGetActionsCacheListQuery, ActionsCacheList> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/caches");
 
-    Request::<(), ActionsGetActionsCacheListQuery, RepositoryActionsCaches>::builder(&self.config)
+    Request::<(), ActionsGetActionsCacheListQuery, ActionsCacheList>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1165,16 +1165,14 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActionsDeleteActionsCacheByKeyQuery, RepositoryActionsCaches> {
+  ) -> Request<(), ActionsDeleteActionsCacheByKeyQuery, ActionsCacheList> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/caches");
 
-    Request::<(), ActionsDeleteActionsCacheByKeyQuery, RepositoryActionsCaches>::builder(
-      &self.config,
-    )
-    .delete(url)
-    .build()
+    Request::<(), ActionsDeleteActionsCacheByKeyQuery, ActionsCacheList>::builder(&self.config)
+      .delete(url)
+      .build()
   }
 
   /// **Delete a GitHub Actions cache for a repository (using a cache ID)**
@@ -1285,12 +1283,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ActionsOidcSubjectCustomizationForARepository> {
+  ) -> Request<(), (), OidcCustomSubRepo> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/oidc/customization/sub");
 
-    Request::<(), (), ActionsOidcSubjectCustomizationForARepository>::builder(&self.config)
+    Request::<(), (), OidcCustomSubRepo>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1702,13 +1700,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     runner_id: impl Into<i64>,
-  ) -> Request<(), (), SelfHostedRunners> {
+  ) -> Request<(), (), Runner> {
     let owner = owner.into();
     let repo = repo.into();
     let runner_id = runner_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runners/{runner_id}");
 
-    Request::<(), (), SelfHostedRunners>::builder(&self.config)
+    Request::<(), (), Runner>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1962,13 +1960,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), (), EnvironmentApprovalArray> {
+  ) -> Request<(), (), EnvironmentApprovalsArray> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/approvals");
 
-    Request::<(), (), EnvironmentApprovalArray>::builder(&self.config)
+    Request::<(), (), EnvironmentApprovalsArray>::builder(&self.config)
       .get(url)
       .build()
   }

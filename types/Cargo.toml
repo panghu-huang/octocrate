@@ -11,6 +11,9 @@ readme.workspace = true
 description.workspace = true
 categories.workspace = true
 
+[lib]
+doctest = false
+
 [features]
 full = ["pagination"]
 apps = []

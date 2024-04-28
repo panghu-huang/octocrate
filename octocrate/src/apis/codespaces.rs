@@ -145,12 +145,12 @@ impl GitHubCodespacesAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), CodespacesSecret> {
+  ) -> Request<(), (), CodespacesOrgSecret> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/codespaces/secrets/{secret_name}");
 
-    Request::<(), (), CodespacesSecret>::builder(&self.config)
+    Request::<(), (), CodespacesOrgSecret>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -524,14 +524,22 @@ impl GitHubCodespacesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), CodespacesCheckPermissionsForDevcontainerQuery, CodespacesPermissionsCheck> {
+  ) -> Request<
+    (),
+    CodespacesCheckPermissionsForDevcontainerQuery,
+    CodespacesPermissionsCheckForDevcontainer,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/codespaces/permissions_check");
 
-    Request::<(), CodespacesCheckPermissionsForDevcontainerQuery, CodespacesPermissionsCheck>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      CodespacesCheckPermissionsForDevcontainerQuery,
+      CodespacesPermissionsCheckForDevcontainer,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **List repository secrets**
@@ -594,13 +602,13 @@ impl GitHubCodespacesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), CodespacesSecret> {
+  ) -> Request<(), (), RepoCodespacesSecret> {
     let owner = owner.into();
     let repo = repo.into();
     let secret_name = secret_name.into();
     let url = format!("/repos/{owner}/{repo}/codespaces/secrets/{secret_name}");
 
-    Request::<(), (), CodespacesSecret>::builder(&self.config)
+    Request::<(), (), RepoCodespacesSecret>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -991,11 +999,11 @@ impl GitHubCodespacesAPI {
   pub fn export_for_authenticated_user(
     &self,
     codespace_name: impl Into<String>,
-  ) -> Request<(), (), FetchesInformationAboutAnExportOfACodespace> {
+  ) -> Request<(), (), CodespaceExportDetails> {
     let codespace_name = codespace_name.into();
     let url = format!("/user/codespaces/{codespace_name}/exports");
 
-    Request::<(), (), FetchesInformationAboutAnExportOfACodespace>::builder(&self.config)
+    Request::<(), (), CodespaceExportDetails>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1011,12 +1019,12 @@ impl GitHubCodespacesAPI {
     &self,
     codespace_name: impl Into<String>,
     export_id: impl Into<String>,
-  ) -> Request<(), (), FetchesInformationAboutAnExportOfACodespace> {
+  ) -> Request<(), (), CodespaceExportDetails> {
     let codespace_name = codespace_name.into();
     let export_id = export_id.into();
     let url = format!("/user/codespaces/{codespace_name}/exports/{export_id}");
 
-    Request::<(), (), FetchesInformationAboutAnExportOfACodespace>::builder(&self.config)
+    Request::<(), (), CodespaceExportDetails>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1056,11 +1064,11 @@ impl GitHubCodespacesAPI {
   pub fn publish_for_authenticated_user(
     &self,
     codespace_name: impl Into<String>,
-  ) -> Request<CodespacesPublishForAuthenticatedUserRequest, (), Codespace> {
+  ) -> Request<CodespacesPublishForAuthenticatedUserRequest, (), CodespaceWithFullRepository> {
     let codespace_name = codespace_name.into();
     let url = format!("/user/codespaces/{codespace_name}/publish");
 
-    Request::<CodespacesPublishForAuthenticatedUserRequest, (), Codespace>::builder(&self.config)
+    Request::<CodespacesPublishForAuthenticatedUserRequest, (), CodespaceWithFullRepository>::builder(&self.config)
       .post(url)
       .build()
   }

@@ -6,6 +6,7 @@ mod schema_types;
 
 use super::{context::ParseContext, ParsedData};
 use crate::{
+  common::RenameRule,
   schemas::schema::{Schema, SchemaDefinition},
   structures::types::Type,
 };
@@ -48,7 +49,7 @@ impl SchemaParser {
         match ctx.reference_existing(&reference_id) {
           Some(parsed) => parsed.inner,
           None => {
-            let schema = ctx.get_component(&reference_id).unwrap_or_else(|| {
+            let mut schema = ctx.get_component(&reference_id).unwrap_or_else(|| {
               panic!("Failed to find reference schema with id: {}", reference_id)
             });
 
@@ -56,19 +57,17 @@ impl SchemaParser {
 
             self.prefixs = vec![];
 
-            let title = schema
-              .title
-              .clone()
-              .and_then(|title| {
-                if title.contains('_') {
-                  None
-                } else {
-                  Some(title)
-                }
-              })
-              .unwrap_or(reference_id.clone());
+            if schema.title.is_some() {
+              // Use the reference id as generated type name to avoid conflict
+              schema.title = Some(RenameRule::VariantName.apply(&reference_id));
+            }
 
-            let parsed = self.parse(ctx, &title, &SchemaDefinition::Schema(schema.clone()));
+            let parsed = self.parse(
+              ctx,
+              // Use the reference id as generated type name
+              &reference_id,
+              &SchemaDefinition::Schema(schema.clone()),
+            );
 
             self.prefixs = previous_prefixs;
 

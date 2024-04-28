@@ -1,0 +1,30 @@
+[
+  {
+    "label": "Run codegen",
+    "command": "cargo",
+    "args": ["run", "-p", "codegen"]
+  },
+  {
+    "label": "Run webhooks tests",
+    "command": "cargo",
+    "args": [
+      "test",
+      "--features",
+      "webhooks",
+      "-p",
+      "octocrate-types",
+      "--",
+      "--nocapture"
+    ]
+  },
+  {
+    "label": "Run octocrate api tests",
+    "command": "cargo",
+    "args": ["test", "--all-features", "--examples", "--", "--nocapture"]
+  },
+  {
+    "label": "Run all tests",
+    "command": "cargo",
+    "args": ["test", "--all-features", "--", "--nocapture"]
+  }
+]

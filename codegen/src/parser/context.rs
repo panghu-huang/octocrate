@@ -4,7 +4,7 @@ use crate::{
 };
 use indexmap::IndexMap;
 use indicatif::{ProgressBar, ProgressStyle};
-use std::sync::Mutex;
+use std::{borrow::BorrowMut, sync::Mutex};
 
 pub type IdentifierOrName = String;
 
@@ -19,12 +19,14 @@ pub enum Stage {
 #[derive(Debug, Clone)]
 pub struct TypeReference {
   pub name: String,
-  pub stage: Stage,
+  // pub stage: Stage,
   pub inner: ParsedData,
 }
 
 struct ParseContextInner {
   references: IndexMap<IdentifierOrName, TypeReference>,
+  // webhook types and api types can't share certain types, such as Repository / Committer and so on.
+  webhook_references: IndexMap<IdentifierOrName, TypeReference>,
   apis: IndexMap<APITag, Vec<API>>,
 }
 
@@ -60,30 +62,22 @@ impl ParseContext {
       progress_bar,
       inner: Mutex::new(ParseContextInner {
         references: IndexMap::new(),
+        webhook_references: IndexMap::new(),
         apis: IndexMap::new(),
       }),
     }
   }
 
-  #[allow(dead_code)]
-  pub fn default() -> Self {
-    Self {
-      stage: Stage::ParsingAPI,
-      working_tag: None,
-      progress_bar: ProgressBar::new_spinner(),
-      tags: IndexMap::new(),
-      api_description: APIDescription::default(),
-      inner: Mutex::new(ParseContextInner {
-        references: IndexMap::new(),
-        apis: IndexMap::new(),
-      }),
-    }
-  }
-
-  pub fn add_reference(&self, id: &IdentifierOrName, inner: ParsedData) {
+  pub fn add_reference(&self, id: &str, inner: ParsedData) {
     let mut guard = self.inner.lock().expect("Failed to lock the inner context");
 
-    if guard.references.get(id).is_some() {
+    let references = if self.stage == Stage::ParsingAPI {
+      guard.references.borrow_mut()
+    } else {
+      guard.webhook_references.borrow_mut()
+    };
+
+    if references.get(id).is_some() {
       drop(guard);
 
       self.reference_existing(id);
@@ -94,11 +88,11 @@ impl ParseContext {
         inner.add_tag(tag);
       }
 
-      guard.references.insert(
-        id.clone(),
+      references.insert(
+        id.to_owned(),
         TypeReference {
-          name: id.clone(),
-          stage: self.stage.clone(),
+          name: id.to_owned(),
+          // stage: self.stage.clone(),
           inner,
         },
       );
@@ -107,7 +101,11 @@ impl ParseContext {
 
   pub fn reference_existing(&self, name: &str) -> Option<TypeReference> {
     let mut guard = self.inner.lock().expect("Failed to lock the inner context");
-    let reference = guard.references.get_mut(name);
+    let reference = if self.stage == Stage::ParsingAPI {
+      guard.references.get_mut(name)
+    } else {
+      guard.webhook_references.get_mut(name)
+    };
 
     if self.working_tag.is_none() {
       return reference.cloned();
@@ -213,27 +211,25 @@ impl ParseContext {
   }
 
   pub fn get_references(&self) -> IndexMap<IdentifierOrName, ParsedData> {
-    self
-      .inner
-      .lock()
-      .expect("Failed to lock the inner context")
+    let guard = self.inner.lock().expect("Failed to lock the inner context");
+
+    guard
       .references
       .iter()
-      .filter(|(_, reference)| reference.stage == Stage::ParsingAPI)
       .map(|(name, reference)| (name.clone(), reference.inner.clone()))
       .collect()
   }
 
-  pub fn get_webhooks(&self) -> IndexMap<IdentifierOrName, ParsedData> {
-    self
-      .inner
-      .lock()
-      .expect("Failed to lock the inner context")
-      .references
+  pub fn get_webhook_references(&self) -> IndexMap<IdentifierOrName, ParsedData> {
+    let guard = self.inner.lock().expect("Failed to lock the inner context");
+
+    let webhooks: IndexMap<IdentifierOrName, ParsedData> = guard
+      .webhook_references
       .iter()
-      .filter(|(_, reference)| reference.stage == Stage::ParsingWebhook)
       .map(|(name, reference)| (name.clone(), reference.inner.clone()))
-      .collect()
+      .collect();
+
+    webhooks
   }
 
   pub fn get_component(&self, name: &str) -> Option<Schema> {
@@ -247,5 +243,22 @@ impl ParseContext {
       .parameters
       .get(name)
       .cloned()
+  }
+}
+
+impl Default for ParseContext {
+  fn default() -> Self {
+    Self {
+      stage: Stage::ParsingAPI,
+      working_tag: None,
+      progress_bar: ProgressBar::new_spinner(),
+      tags: IndexMap::new(),
+      api_description: APIDescription::default(),
+      inner: Mutex::new(ParseContextInner {
+        references: IndexMap::new(),
+        webhook_references: IndexMap::new(),
+        apis: IndexMap::new(),
+      }),
+    }
   }
 }

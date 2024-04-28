@@ -35,11 +35,11 @@ impl GitHubTeamsAPI {
   /// When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/about-teams)".
   ///
   /// *Documentation*: [https://docs.github.com/rest/teams/teams#create-a-team](https://docs.github.com/rest/teams/teams#create-a-team)
-  pub fn create(&self, org: impl Into<String>) -> Request<TeamsCreateRequest, (), FullTeam> {
+  pub fn create(&self, org: impl Into<String>) -> Request<TeamsCreateRequest, (), TeamFull> {
     let org = org.into();
     let url = format!("/orgs/{org}/teams");
 
-    Request::<TeamsCreateRequest, (), FullTeam>::builder(&self.config)
+    Request::<TeamsCreateRequest, (), TeamFull>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -55,12 +55,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), (), FullTeam> {
+  ) -> Request<(), (), TeamFull> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}");
 
-    Request::<(), (), FullTeam>::builder(&self.config)
+    Request::<(), (), TeamFull>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -76,12 +76,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<TeamsUpdateInOrgRequest, (), FullTeam> {
+  ) -> Request<TeamsUpdateInOrgRequest, (), TeamFull> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}");
 
-    Request::<TeamsUpdateInOrgRequest, (), FullTeam>::builder(&self.config)
+    Request::<TeamsUpdateInOrgRequest, (), TeamFull>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -731,11 +731,11 @@ impl GitHubTeamsAPI {
   /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the [Get a team by name](https://docs.github.com/rest/teams/teams#get-a-team-by-name) endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/teams/teams#get-a-team-legacy](https://docs.github.com/rest/teams/teams#get-a-team-legacy)
-  pub fn get_legacy(&self, team_id: impl Into<i64>) -> Request<(), (), FullTeam> {
+  pub fn get_legacy(&self, team_id: impl Into<i64>) -> Request<(), (), TeamFull> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}");
 
-    Request::<(), (), FullTeam>::builder(&self.config)
+    Request::<(), (), TeamFull>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -752,11 +752,11 @@ impl GitHubTeamsAPI {
   pub fn update_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<TeamsUpdateLegacyRequest, (), FullTeam> {
+  ) -> Request<TeamsUpdateLegacyRequest, (), TeamFull> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}");
 
-    Request::<TeamsUpdateLegacyRequest, (), FullTeam>::builder(&self.config)
+    Request::<TeamsUpdateLegacyRequest, (), TeamFull>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -1425,10 +1425,10 @@ impl GitHubTeamsAPI {
   /// *Documentation*: [https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user](https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<(), TeamsListForAuthenticatedUserQuery, FullTeamArray> {
+  ) -> Request<(), TeamsListForAuthenticatedUserQuery, TeamFullArray> {
     let url = format!("/user/teams");
 
-    Request::<(), TeamsListForAuthenticatedUserQuery, FullTeamArray>::builder(&self.config)
+    Request::<(), TeamsListForAuthenticatedUserQuery, TeamFullArray>::builder(&self.config)
       .get(url)
       .build()
   }
