@@ -20,7 +20,7 @@ pub struct Enum {
   pub fields: Vec<EnumField>,
   pub untagged: bool,
   tags: Vec<String>,
-  impl_to_string: bool,
+  copiable: bool,
 }
 
 impl Enum {
@@ -30,7 +30,7 @@ impl Enum {
       fields: vec![],
       description: None,
       untagged: false,
-      impl_to_string: false,
+      copiable: false,
       tags: vec!["full".to_string()],
     }
   }
@@ -38,8 +38,7 @@ impl Enum {
   pub fn add_field(&mut self, field: EnumField) {
     self.fields.push(field);
 
-    self.impl_to_string =
-      !self.fields.is_empty() && self.fields.iter().all(|f| f.type_name.is_none());
+    self.copiable = !self.fields.is_empty() && self.fields.iter().all(|f| f.type_name.is_none());
   }
 
   pub fn set_description(&mut self, description: &str) {

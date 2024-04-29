@@ -180,7 +180,7 @@ pub type WorkflowRunPullRequestsArray = Vec<WorkflowRunPullRequests>;
 
 /// Enumerations definition
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionConfigurationDisabledAction {
   #[serde(rename = "disabled")]
   Disabled,
@@ -201,7 +201,7 @@ impl ToString for WebhookBranchProtectionConfigurationDisabledAction {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryWebhooksMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -227,7 +227,7 @@ impl ToString for RepositoryWebhooksMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryWebhooksMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -251,7 +251,7 @@ impl ToString for RepositoryWebhooksMergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryWebhooksSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -277,7 +277,7 @@ impl ToString for RepositoryWebhooksSquashMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryWebhooksSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -301,7 +301,7 @@ impl ToString for RepositoryWebhooksSquashMergeCommitTitle {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryWebhooksTemplateRepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -327,7 +327,7 @@ impl ToString for RepositoryWebhooksTemplateRepositoryMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryWebhooksTemplateRepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -353,7 +353,7 @@ impl ToString for RepositoryWebhooksTemplateRepositoryMergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryWebhooksTemplateRepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -381,7 +381,7 @@ impl ToString for RepositoryWebhooksTemplateRepositorySquashMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryWebhooksTemplateRepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -402,7 +402,7 @@ impl ToString for RepositoryWebhooksTemplateRepositorySquashMergeCommitTitle {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionConfigurationEnabledAction {
   #[serde(rename = "enabled")]
   Enabled,
@@ -418,7 +418,7 @@ impl ToString for WebhookBranchProtectionConfigurationEnabledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -434,7 +434,7 @@ impl ToString for WebhookBranchProtectionRuleCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleAllowDeletionsEnforcementLevel {
   #[serde(rename = "off")]
   Off,
@@ -456,7 +456,7 @@ impl ToString for BranchProtectionRuleAllowDeletionsEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleAllowForcePushesEnforcementLevel {
   #[serde(rename = "off")]
   Off,
@@ -478,7 +478,7 @@ impl ToString for BranchProtectionRuleAllowForcePushesEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
   #[serde(rename = "off")]
   Off,
@@ -504,7 +504,7 @@ impl ToString for BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleMergeQueueEnforcementLevel {
   #[serde(rename = "off")]
   Off,
@@ -526,7 +526,7 @@ impl ToString for BranchProtectionRuleMergeQueueEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRulePullRequestReviewsEnforcementLevel {
   #[serde(rename = "off")]
   Off,
@@ -548,7 +548,7 @@ impl ToString for BranchProtectionRulePullRequestReviewsEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleRequiredConversationResolutionLevel {
   #[serde(rename = "off")]
   Off,
@@ -572,7 +572,7 @@ impl ToString for BranchProtectionRuleRequiredConversationResolutionLevel {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
   #[serde(rename = "off")]
   Off,
@@ -596,7 +596,7 @@ impl ToString for BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
   #[serde(rename = "off")]
   Off,
@@ -620,7 +620,7 @@ impl ToString for BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleSignatureRequirementEnforcementLevel {
   #[serde(rename = "off")]
   Off,
@@ -644,7 +644,7 @@ impl ToString for BranchProtectionRuleSignatureRequirementEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -660,7 +660,7 @@ impl ToString for WebhookBranchProtectionRuleDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -676,7 +676,7 @@ impl ToString for WebhookBranchProtectionRuleEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom {
   #[serde(rename = "off")]
   Off,
@@ -700,7 +700,7 @@ impl ToString
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom {
   #[serde(rename = "off")]
   Off,
@@ -722,7 +722,7 @@ impl ToString for WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEn
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunCompletedAction {
   #[serde(rename = "completed")]
   Completed,
@@ -738,7 +738,7 @@ impl ToString for WebhookCheckRunCompletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimpleCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
@@ -778,7 +778,7 @@ impl ToString for SimpleCheckSuiteConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisAdvancedSecurityStatus {
   #[serde(rename = "enabled")]
   Enabled,
@@ -798,7 +798,7 @@ impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The enablement status of Dependabot security updates for the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   #[serde(rename = "enabled")]
   Enabled,
@@ -817,7 +817,7 @@ impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisSecretScanningStatus {
   #[serde(rename = "enabled")]
   Enabled,
@@ -836,7 +836,7 @@ impl ToString for SecurityAndAnalysisSecretScanningStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
   #[serde(rename = "enabled")]
   Enabled,
@@ -855,7 +855,7 @@ impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimpleCheckSuiteStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -883,7 +883,7 @@ impl ToString for SimpleCheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckRunWithSimpleCheckSuiteConclusion {
   #[serde(rename = "waiting")]
   Waiting,
@@ -930,7 +930,7 @@ impl ToString for CheckRunWithSimpleCheckSuiteConclusion {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The phase of the lifecycle that the check is currently in.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckRunWithSimpleCheckSuiteStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -955,7 +955,7 @@ impl ToString for CheckRunWithSimpleCheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -971,7 +971,7 @@ impl ToString for WebhookCheckRunCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunRequestedActionAction {
   #[serde(rename = "requested_action")]
   RequestedAction,
@@ -987,7 +987,7 @@ impl ToString for WebhookCheckRunRequestedActionAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunRerequestedAction {
   #[serde(rename = "rerequested")]
   Rerequested,
@@ -1003,7 +1003,7 @@ impl ToString for WebhookCheckRunRerequestedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteCompletedAction {
   #[serde(rename = "completed")]
   Completed,
@@ -1019,7 +1019,7 @@ impl ToString for WebhookCheckSuiteCompletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppEvents {
   #[serde(rename = "branch_protection_rule")]
   BranchProtectionRule,
@@ -1188,7 +1188,7 @@ impl ToString for AppEvents {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum UserType {
   Bot,
   User,
@@ -1207,7 +1207,7 @@ impl ToString for UserType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppPermissionsOrganizationProjects {
   #[serde(rename = "read")]
   Read,
@@ -1229,7 +1229,7 @@ impl ToString for AppPermissionsOrganizationProjects {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppPermissionsRepositoryProjects {
   #[serde(rename = "read")]
   Read,
@@ -1252,7 +1252,7 @@ impl ToString for AppPermissionsRepositoryProjects {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has `completed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteCompletedCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
@@ -1297,7 +1297,7 @@ impl ToString for WebhookCheckSuiteCompletedCheckSuiteConclusion {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteCompletedCheckSuiteStatus {
   #[serde(rename = "requested")]
   Requested,
@@ -1325,7 +1325,7 @@ impl ToString for WebhookCheckSuiteCompletedCheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRequestedAction {
   #[serde(rename = "requested")]
   Requested,
@@ -1342,7 +1342,7 @@ impl ToString for WebhookCheckSuiteRequestedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRequestedCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
@@ -1382,7 +1382,7 @@ impl ToString for WebhookCheckSuiteRequestedCheckSuiteConclusion {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRequestedCheckSuiteStatus {
   #[serde(rename = "requested")]
   Requested,
@@ -1407,7 +1407,7 @@ impl ToString for WebhookCheckSuiteRequestedCheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRerequestedAction {
   #[serde(rename = "rerequested")]
   Rerequested,
@@ -1424,7 +1424,7 @@ impl ToString for WebhookCheckSuiteRerequestedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRerequestedCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
@@ -1461,7 +1461,7 @@ impl ToString for WebhookCheckSuiteRerequestedCheckSuiteConclusion {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRerequestedCheckSuiteStatus {
   #[serde(rename = "requested")]
   Requested,
@@ -1486,7 +1486,7 @@ impl ToString for WebhookCheckSuiteRerequestedCheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAction {
   #[serde(rename = "appeared_in_branch")]
   AppearedInBranch,
@@ -1505,7 +1505,7 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The reason for dismissing or closing the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
@@ -1534,7 +1534,7 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of a code scanning alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AlertInstanceState {
   #[serde(rename = "open")]
   Open,
@@ -1557,7 +1557,7 @@ impl ToString for AlertInstanceState {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
@@ -1583,7 +1583,7 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of a code scanning alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertState {
   #[serde(rename = "open")]
   Open,
@@ -1605,7 +1605,7 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertClosedByUserAction {
   #[serde(rename = "closed_by_user")]
   ClosedByUser,
@@ -1622,7 +1622,7 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The reason for dismissing or closing the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
@@ -1649,7 +1649,7 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
@@ -1675,7 +1675,7 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of a code scanning alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertClosedByUserAlertState {
   #[serde(rename = "dismissed")]
   Dismissed,
@@ -1694,7 +1694,7 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -1711,7 +1711,7 @@ impl ToString for WebhookCodeScanningAlertCreatedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertCreatedAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
@@ -1737,7 +1737,7 @@ impl ToString for WebhookCodeScanningAlertCreatedAlertRuleSeverity {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of a code scanning alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertCreatedAlertState {
   #[serde(rename = "open")]
   Open,
@@ -1756,7 +1756,7 @@ impl ToString for WebhookCodeScanningAlertCreatedAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertFixedAction {
   #[serde(rename = "fixed")]
   Fixed,
@@ -1773,7 +1773,7 @@ impl ToString for WebhookCodeScanningAlertFixedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The reason for dismissing or closing the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertFixedAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
@@ -1798,7 +1798,7 @@ impl ToString for WebhookCodeScanningAlertFixedAlertDismissedReason {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertFixedAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
@@ -1824,7 +1824,7 @@ impl ToString for WebhookCodeScanningAlertFixedAlertRuleSeverity {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of a code scanning alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertFixedAlertState {
   #[serde(rename = "fixed")]
   Fixed,
@@ -1840,7 +1840,7 @@ impl ToString for WebhookCodeScanningAlertFixedAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
@@ -1857,7 +1857,7 @@ impl ToString for WebhookCodeScanningAlertReopenedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
@@ -1883,7 +1883,7 @@ impl ToString for WebhookCodeScanningAlertReopenedAlertRuleSeverity {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of a code scanning alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedAlertState {
   #[serde(rename = "open")]
   Open,
@@ -1905,7 +1905,7 @@ impl ToString for WebhookCodeScanningAlertReopenedAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedByUserAction {
   #[serde(rename = "reopened_by_user")]
   ReopenedByUser,
@@ -1924,7 +1924,7 @@ impl ToString for WebhookCodeScanningAlertReopenedByUserAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
@@ -1950,7 +1950,7 @@ impl ToString for WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of a code scanning alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedByUserAlertState {
   #[serde(rename = "open")]
   Open,
@@ -1970,7 +1970,7 @@ impl ToString for WebhookCodeScanningAlertReopenedByUserAlertState {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The action performed. Can be `created`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCommitCommentCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -1987,7 +1987,7 @@ impl ToString for WebhookCommitCommentCreatedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCommitCommentCreatedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -2029,7 +2029,7 @@ impl ToString for WebhookCommitCommentCreatedCommentAuthorAssociation {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The type of Git ref object created in the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCreateRefType {
   #[serde(rename = "tag")]
   Tag,
@@ -2048,7 +2048,7 @@ impl ToString for WebhookCreateRefType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -2065,7 +2065,7 @@ impl ToString for WebhookCustomPropertyCreatedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The type of the value for the property
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgCustomPropertyValueType {
   #[serde(rename = "string")]
   String,
@@ -2085,7 +2085,7 @@ impl ToString for OrgCustomPropertyValueType {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// Who can edit the values of the property
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgCustomPropertyValuesEditableBy {
   #[serde(rename = "org_actors")]
   OrgActors,
@@ -2104,7 +2104,7 @@ impl ToString for OrgCustomPropertyValuesEditableBy {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -2120,7 +2120,7 @@ impl ToString for WebhookCustomPropertyDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
@@ -2136,7 +2136,7 @@ impl ToString for WebhookCustomPropertyUpdatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyValuesUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
@@ -2153,7 +2153,7 @@ impl ToString for WebhookCustomPropertyValuesUpdatedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The type of Git ref object deleted in the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeleteRefType {
   #[serde(rename = "tag")]
   Tag,
@@ -2172,7 +2172,7 @@ impl ToString for WebhookDeleteRefType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertAutoDismissedAction {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
@@ -2189,7 +2189,7 @@ impl ToString for WebhookDependabotAlertAutoDismissedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The execution scope of the vulnerable dependency.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertDependencyScope {
   #[serde(rename = "development")]
   Development,
@@ -2209,7 +2209,7 @@ impl ToString for DependabotAlertDependencyScope {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The reason that the alert was dismissed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
@@ -2238,7 +2238,7 @@ impl ToString for DependabotAlertDismissedReason {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The type of advisory identifier.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
@@ -2258,7 +2258,7 @@ impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The severity of the advisory.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityAdvisorySeverity {
   #[serde(rename = "low")]
   Low,
@@ -2284,7 +2284,7 @@ impl ToString for DependabotAlertSecurityAdvisorySeverity {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The severity of the vulnerability.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityVulnerabilitySeverity {
   #[serde(rename = "low")]
   Low,
@@ -2310,7 +2310,7 @@ impl ToString for DependabotAlertSecurityVulnerabilitySeverity {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The state of the Dependabot alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertState {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
@@ -2335,7 +2335,7 @@ impl ToString for DependabotAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertAutoReopenedAction {
   #[serde(rename = "auto_reopened")]
   AutoReopened,
@@ -2351,7 +2351,7 @@ impl ToString for WebhookDependabotAlertAutoReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -2367,7 +2367,7 @@ impl ToString for WebhookDependabotAlertCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertDismissedAction {
   #[serde(rename = "dismissed")]
   Dismissed,
@@ -2383,7 +2383,7 @@ impl ToString for WebhookDependabotAlertDismissedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertFixedAction {
   #[serde(rename = "fixed")]
   Fixed,
@@ -2399,7 +2399,7 @@ impl ToString for WebhookDependabotAlertFixedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertReintroducedAction {
   #[serde(rename = "reintroduced")]
   Reintroduced,
@@ -2415,7 +2415,7 @@ impl ToString for WebhookDependabotAlertReintroducedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
@@ -2431,7 +2431,7 @@ impl ToString for WebhookDependabotAlertReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeployKeyCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -2447,7 +2447,7 @@ impl ToString for WebhookDeployKeyCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeployKeyDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -2463,7 +2463,7 @@ impl ToString for WebhookDeployKeyDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -2479,7 +2479,7 @@ impl ToString for WebhookDeploymentCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentWorkflowRunConclusion {
   #[serde(rename = "success")]
   Success,
@@ -2513,7 +2513,7 @@ impl ToString for DeploymentWorkflowRunConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentWorkflowRunStatus {
   #[serde(rename = "requested")]
   Requested,
@@ -2544,7 +2544,7 @@ impl ToString for DeploymentWorkflowRunStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentProtectionRuleRequestedAction {
   #[serde(rename = "requested")]
   Requested,
@@ -2561,7 +2561,7 @@ impl ToString for WebhookDeploymentProtectionRuleRequestedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -2599,7 +2599,7 @@ impl ToString for AuthorAssociation {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The merge method to use.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AutoMergeMergeMethod {
   #[serde(rename = "merge")]
   Merge,
@@ -2622,7 +2622,7 @@ impl ToString for AutoMergeMergeMethod {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The state of the milestone.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MilestoneState {
   #[serde(rename = "open")]
   Open,
@@ -2642,7 +2642,7 @@ impl ToString for MilestoneState {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of this Pull Request. Either `open` or `closed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestState {
   #[serde(rename = "open")]
   Open,
@@ -2661,7 +2661,7 @@ impl ToString for PullRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewApprovedAction {
   #[serde(rename = "approved")]
   Approved,
@@ -2677,7 +2677,7 @@ impl ToString for WebhookDeploymentReviewApprovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewApprovedReviewersType {
   User,
 }
@@ -2692,7 +2692,7 @@ impl ToString for WebhookDeploymentReviewApprovedReviewersType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRejectedAction {
   #[serde(rename = "rejected")]
   Rejected,
@@ -2708,7 +2708,7 @@ impl ToString for WebhookDeploymentReviewRejectedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRejectedReviewersType {
   User,
 }
@@ -2723,7 +2723,7 @@ impl ToString for WebhookDeploymentReviewRejectedReviewersType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRequestedAction {
   #[serde(rename = "requested")]
   Requested,
@@ -2739,7 +2739,7 @@ impl ToString for WebhookDeploymentReviewRequestedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRequestedReviewersType {
   User,
   Team,
@@ -2756,7 +2756,7 @@ impl ToString for WebhookDeploymentReviewRequestedReviewersType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentStatusCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -2773,7 +2773,7 @@ impl ToString for WebhookDeploymentStatusCreatedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The result of the completed check run. This value will be `null` until the check run has completed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentStatusCreatedCheckRunConclusion {
   #[serde(rename = "success")]
   Success,
@@ -2813,7 +2813,7 @@ impl ToString for WebhookDeploymentStatusCreatedCheckRunConclusion {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentStatusCreatedCheckRunStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -2841,7 +2841,7 @@ impl ToString for WebhookDeploymentStatusCreatedCheckRunStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionAnsweredAction {
   #[serde(rename = "answered")]
   Answered,
@@ -2858,7 +2858,7 @@ impl ToString for WebhookDiscussionAnsweredAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionAnsweredAnswerAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -2898,7 +2898,7 @@ impl ToString for WebhookDiscussionAnsweredAnswerAuthorAssociation {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DiscussionAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -2938,7 +2938,7 @@ impl ToString for DiscussionAuthorAssociation {
 /// The current state of the discussion.
 /// `converting` means that the discussion is being converted from an issue.
 /// `transferring` means that the discussion is being transferred from another repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DiscussionState {
   #[serde(rename = "open")]
   Open,
@@ -2967,7 +2967,7 @@ impl ToString for DiscussionState {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The reason for the current state
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DiscussionStateReason {
   #[serde(rename = "resolved")]
   Resolved,
@@ -2992,7 +2992,7 @@ impl ToString for DiscussionStateReason {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCategoryChangedAction {
   #[serde(rename = "category_changed")]
   CategoryChanged,
@@ -3008,7 +3008,7 @@ impl ToString for WebhookDiscussionCategoryChangedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionClosedAction {
   #[serde(rename = "closed")]
   Closed,
@@ -3024,7 +3024,7 @@ impl ToString for WebhookDiscussionClosedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -3041,7 +3041,7 @@ impl ToString for WebhookDiscussionCommentCreatedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentCreatedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -3086,7 +3086,7 @@ impl ToString for WebhookDiscussionCommentCreatedCommentAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -3103,7 +3103,7 @@ impl ToString for WebhookDiscussionCommentDeletedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentDeletedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -3148,7 +3148,7 @@ impl ToString for WebhookDiscussionCommentDeletedCommentAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -3165,7 +3165,7 @@ impl ToString for WebhookDiscussionCommentEditedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentEditedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -3210,7 +3210,7 @@ impl ToString for WebhookDiscussionCommentEditedCommentAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -3232,7 +3232,7 @@ pub enum WebhookDiscussionCreatedDiscussionItem2Locked {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCreatedDiscussionItem2State {
   #[serde(rename = "open")]
   Open,
@@ -3263,7 +3263,7 @@ pub enum WebhookDiscussionCreatedDiscussion {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -3279,7 +3279,7 @@ impl ToString for WebhookDiscussionDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -3295,7 +3295,7 @@ impl ToString for WebhookDiscussionEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionLabeledAction {
   #[serde(rename = "labeled")]
   Labeled,
@@ -3311,7 +3311,7 @@ impl ToString for WebhookDiscussionLabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionLockedAction {
   #[serde(rename = "locked")]
   Locked,
@@ -3327,7 +3327,7 @@ impl ToString for WebhookDiscussionLockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionPinnedAction {
   #[serde(rename = "pinned")]
   Pinned,
@@ -3343,7 +3343,7 @@ impl ToString for WebhookDiscussionPinnedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
@@ -3359,7 +3359,7 @@ impl ToString for WebhookDiscussionReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionTransferredAction {
   #[serde(rename = "transferred")]
   Transferred,
@@ -3375,7 +3375,7 @@ impl ToString for WebhookDiscussionTransferredAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnansweredAction {
   #[serde(rename = "unanswered")]
   Unanswered,
@@ -3392,7 +3392,7 @@ impl ToString for WebhookDiscussionUnansweredAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnansweredOldAnswerAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -3437,7 +3437,7 @@ impl ToString for WebhookDiscussionUnansweredOldAnswerAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnlabeledAction {
   #[serde(rename = "unlabeled")]
   Unlabeled,
@@ -3453,7 +3453,7 @@ impl ToString for WebhookDiscussionUnlabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnlockedAction {
   #[serde(rename = "unlocked")]
   Unlocked,
@@ -3469,7 +3469,7 @@ impl ToString for WebhookDiscussionUnlockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnpinnedAction {
   #[serde(rename = "unpinned")]
   Unpinned,
@@ -3485,7 +3485,7 @@ impl ToString for WebhookDiscussionUnpinnedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryVisibility {
   #[serde(rename = "public")]
   Public,
@@ -3522,7 +3522,7 @@ pub enum WebhookForkForkee {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookGithubAppAuthorizationRevokedAction {
   #[serde(rename = "revoked")]
   Revoked,
@@ -3539,7 +3539,7 @@ impl ToString for WebhookGithubAppAuthorizationRevokedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The action that was performed on the page. Can be `created` or `edited`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookGollumPagesAction {
   #[serde(rename = "created")]
   Created,
@@ -3558,7 +3558,7 @@ impl ToString for WebhookGollumPagesAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -3585,7 +3585,7 @@ pub enum InstallationAccount {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// Describe whether all repositories have been selected or there's a selection involved
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum InstallationRepositorySelection {
   #[serde(rename = "all")]
   All,
@@ -3604,7 +3604,7 @@ impl ToString for InstallationRepositorySelection {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -3620,7 +3620,7 @@ impl ToString for WebhookInstallationDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationNewPermissionsAcceptedAction {
   #[serde(rename = "new_permissions_accepted")]
   NewPermissionsAccepted,
@@ -3638,7 +3638,7 @@ impl ToString for WebhookInstallationNewPermissionsAcceptedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationRepositoriesAddedAction {
   #[serde(rename = "added")]
   Added,
@@ -3655,7 +3655,7 @@ impl ToString for WebhookInstallationRepositoriesAddedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// Describe whether all repositories have been selected or there's a selection involved
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationRepositoriesAddedRepositorySelection {
   #[serde(rename = "all")]
   All,
@@ -3674,7 +3674,7 @@ impl ToString for WebhookInstallationRepositoriesAddedRepositorySelection {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationRepositoriesRemovedAction {
   #[serde(rename = "removed")]
   Removed,
@@ -3691,7 +3691,7 @@ impl ToString for WebhookInstallationRepositoriesRemovedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// Describe whether all repositories have been selected or there's a selection involved
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationRepositoriesRemovedRepositorySelection {
   #[serde(rename = "all")]
   All,
@@ -3710,7 +3710,7 @@ impl ToString for WebhookInstallationRepositoriesRemovedRepositorySelection {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationSuspendAction {
   #[serde(rename = "suspend")]
   Suspend,
@@ -3726,7 +3726,7 @@ impl ToString for WebhookInstallationSuspendAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationTargetRenamedAction {
   #[serde(rename = "renamed")]
   Renamed,
@@ -3742,7 +3742,7 @@ impl ToString for WebhookInstallationTargetRenamedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationUnsuspendAction {
   #[serde(rename = "unsuspend")]
   Unsuspend,
@@ -3758,7 +3758,7 @@ impl ToString for WebhookInstallationUnsuspendAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -3775,7 +3775,7 @@ impl ToString for WebhookIssueCommentCreatedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssueCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -3812,7 +3812,7 @@ impl ToString for IssueCommentAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssueActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
@@ -3838,7 +3838,7 @@ impl ToString for IssueActiveLockReason {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssueAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -3876,7 +3876,7 @@ impl ToString for IssueAuthorAssociation {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of the issue; either 'open' or 'closed'
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssueState {
   #[serde(rename = "open")]
   Open,
@@ -3896,7 +3896,7 @@ impl ToString for IssueState {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of the issue; either 'open' or 'closed'
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentCreatedIssueItem2State {
   #[serde(rename = "open")]
   Open,
@@ -3924,7 +3924,7 @@ pub enum WebhookIssueCommentCreatedIssue {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -3941,7 +3941,7 @@ impl ToString for WebhookIssueCommentDeletedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of the issue; either 'open' or 'closed'
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentDeletedIssueItem2State {
   #[serde(rename = "open")]
   Open,
@@ -3969,7 +3969,7 @@ pub enum WebhookIssueCommentDeletedIssue {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -3986,7 +3986,7 @@ impl ToString for WebhookIssueCommentEditedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of the issue; either 'open' or 'closed'
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentEditedIssueItem2State {
   #[serde(rename = "open")]
   Open,
@@ -4015,7 +4015,7 @@ pub enum WebhookIssueCommentEditedIssue {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The action that was performed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesAssignedAction {
   #[serde(rename = "assigned")]
   Assigned,
@@ -4032,7 +4032,7 @@ impl ToString for WebhookIssuesAssignedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The action that was performed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesClosedAction {
   #[serde(rename = "closed")]
   Closed,
@@ -4048,7 +4048,7 @@ impl ToString for WebhookIssuesClosedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesClosedIssueItem2State {
   #[serde(rename = "closed")]
   Closed,
@@ -4076,7 +4076,7 @@ pub enum WebhookIssuesClosedIssue {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -4092,7 +4092,7 @@ impl ToString for WebhookIssuesDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesDemilestonedAction {
   #[serde(rename = "demilestoned")]
   Demilestoned,
@@ -4117,7 +4117,7 @@ pub enum WebhookIssuesDemilestonedIssue {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -4133,7 +4133,7 @@ impl ToString for WebhookIssuesEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesLabeledAction {
   #[serde(rename = "labeled")]
   Labeled,
@@ -4149,7 +4149,7 @@ impl ToString for WebhookIssuesLabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesLockedAction {
   #[serde(rename = "locked")]
   Locked,
@@ -4165,7 +4165,7 @@ impl ToString for WebhookIssuesLockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesLockedIssueItem2ActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
@@ -4205,7 +4205,7 @@ pub enum WebhookIssuesLockedIssue {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesMilestonedAction {
   #[serde(rename = "milestoned")]
   Milestoned,
@@ -4230,7 +4230,7 @@ pub enum WebhookIssuesMilestonedIssue {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesOpenedAction {
   #[serde(rename = "opened")]
   Opened,
@@ -4246,7 +4246,7 @@ impl ToString for WebhookIssuesOpenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesPinnedAction {
   #[serde(rename = "pinned")]
   Pinned,
@@ -4262,7 +4262,7 @@ impl ToString for WebhookIssuesPinnedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
@@ -4278,7 +4278,7 @@ impl ToString for WebhookIssuesReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesReopenedIssueItem2State {
   #[serde(rename = "open")]
   Open,
@@ -4306,7 +4306,7 @@ pub enum WebhookIssuesReopenedIssue {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesTransferredAction {
   #[serde(rename = "transferred")]
   Transferred,
@@ -4323,7 +4323,7 @@ impl ToString for WebhookIssuesTransferredAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The action that was performed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesUnassignedAction {
   #[serde(rename = "unassigned")]
   Unassigned,
@@ -4339,7 +4339,7 @@ impl ToString for WebhookIssuesUnassignedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesUnlabeledAction {
   #[serde(rename = "unlabeled")]
   Unlabeled,
@@ -4355,7 +4355,7 @@ impl ToString for WebhookIssuesUnlabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesUnlockedAction {
   #[serde(rename = "unlocked")]
   Unlocked,
@@ -4386,7 +4386,7 @@ pub enum WebhookIssuesUnlockedIssue {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesUnpinnedAction {
   #[serde(rename = "unpinned")]
   Unpinned,
@@ -4402,7 +4402,7 @@ impl ToString for WebhookIssuesUnpinnedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookLabelCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -4418,7 +4418,7 @@ impl ToString for WebhookLabelCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookLabelDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -4434,7 +4434,7 @@ impl ToString for WebhookLabelDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookLabelEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -4450,7 +4450,7 @@ impl ToString for WebhookLabelEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseCancelledAction {
   #[serde(rename = "cancelled")]
   Cancelled,
@@ -4466,7 +4466,7 @@ impl ToString for WebhookMarketplacePurchaseCancelledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MarketplacePurchasePlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
@@ -4488,7 +4488,7 @@ impl ToString for MarketplacePurchasePlanPriceModel {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
@@ -4526,7 +4526,7 @@ pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchase {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseChangedAction {
   #[serde(rename = "changed")]
   Changed,
@@ -4542,7 +4542,7 @@ impl ToString for WebhookMarketplacePurchaseChangedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
@@ -4580,7 +4580,7 @@ pub enum WebhookMarketplacePurchaseChangedMarketplacePurchase {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePendingChangeAction {
   #[serde(rename = "pending_change")]
   PendingChange,
@@ -4596,7 +4596,7 @@ impl ToString for WebhookMarketplacePurchasePendingChangeAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
@@ -4634,7 +4634,7 @@ pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchase {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePendingChangeCancelledAction {
   #[serde(rename = "pending_change_cancelled")]
   PendingChangeCancelled,
@@ -4662,7 +4662,7 @@ pub enum WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchase {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePurchasedAction {
   #[serde(rename = "purchased")]
   Purchased,
@@ -4678,7 +4678,7 @@ impl ToString for WebhookMarketplacePurchasePurchasedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
@@ -4716,7 +4716,7 @@ pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchase {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberAddedAction {
   #[serde(rename = "added")]
   Added,
@@ -4732,7 +4732,7 @@ impl ToString for WebhookMemberAddedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberAddedChangesPermissionTo {
   #[serde(rename = "write")]
   Write,
@@ -4754,7 +4754,7 @@ impl ToString for WebhookMemberAddedChangesPermissionTo {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -4770,7 +4770,7 @@ impl ToString for WebhookMemberEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberRemovedAction {
   #[serde(rename = "removed")]
   Removed,
@@ -4786,7 +4786,7 @@ impl ToString for WebhookMemberRemovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMembershipAddedAction {
   #[serde(rename = "added")]
   Added,
@@ -4803,7 +4803,7 @@ impl ToString for WebhookMembershipAddedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The scope of the membership. Currently, can only be `team`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMembershipAddedScope {
   #[serde(rename = "team")]
   Team,
@@ -4819,7 +4819,7 @@ impl ToString for WebhookMembershipAddedScope {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
@@ -4839,7 +4839,7 @@ impl ToString for TeamNotificationSetting {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// Whether team members will receive notifications when their team is @mentioned
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamParentNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
@@ -4858,7 +4858,7 @@ impl ToString for TeamParentNotificationSetting {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamParentPrivacy {
   #[serde(rename = "open")]
   Open,
@@ -4880,7 +4880,7 @@ impl ToString for TeamParentPrivacy {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamPrivacy {
   #[serde(rename = "open")]
   Open,
@@ -4902,7 +4902,7 @@ impl ToString for TeamPrivacy {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMembershipRemovedAction {
   #[serde(rename = "removed")]
   Removed,
@@ -4919,7 +4919,7 @@ impl ToString for WebhookMembershipRemovedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The scope of the membership. Currently, can only be `team`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMembershipRemovedScope {
   #[serde(rename = "team")]
   Team,
@@ -4938,7 +4938,7 @@ impl ToString for WebhookMembershipRemovedScope {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMergeGroupChecksRequestedAction {
   #[serde(rename = "checks_requested")]
   ChecksRequested,
@@ -4954,7 +4954,7 @@ impl ToString for WebhookMergeGroupChecksRequestedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMergeGroupDestroyedAction {
   #[serde(rename = "destroyed")]
   Destroyed,
@@ -4971,7 +4971,7 @@ impl ToString for WebhookMergeGroupDestroyedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMergeGroupDestroyedReason {
   #[serde(rename = "merged")]
   Merged,
@@ -4993,7 +4993,7 @@ impl ToString for WebhookMergeGroupDestroyedReason {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMetaDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -5009,7 +5009,7 @@ impl ToString for WebhookMetaDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMetaDeletedHookConfigContentType {
   #[serde(rename = "json")]
   Json,
@@ -5028,7 +5028,7 @@ impl ToString for WebhookMetaDeletedHookConfigContentType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMetaDeletedHookEvents {
   #[serde(rename = "*")]
   Asterisk,
@@ -5205,7 +5205,7 @@ impl ToString for WebhookMetaDeletedHookEvents {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneClosedAction {
   #[serde(rename = "closed")]
   Closed,
@@ -5221,7 +5221,7 @@ impl ToString for WebhookMilestoneClosedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -5237,7 +5237,7 @@ impl ToString for WebhookMilestoneCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -5253,7 +5253,7 @@ impl ToString for WebhookMilestoneDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -5269,7 +5269,7 @@ impl ToString for WebhookMilestoneEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneOpenedAction {
   #[serde(rename = "opened")]
   Opened,
@@ -5285,7 +5285,7 @@ impl ToString for WebhookMilestoneOpenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrgBlockBlockedAction {
   #[serde(rename = "blocked")]
   Blocked,
@@ -5301,7 +5301,7 @@ impl ToString for WebhookOrgBlockBlockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrgBlockUnblockedAction {
   #[serde(rename = "unblocked")]
   Unblocked,
@@ -5317,7 +5317,7 @@ impl ToString for WebhookOrgBlockUnblockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -5333,7 +5333,7 @@ impl ToString for WebhookOrganizationDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationMemberAddedAction {
   #[serde(rename = "member_added")]
   MemberAdded,
@@ -5349,7 +5349,7 @@ impl ToString for WebhookOrganizationMemberAddedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationMemberInvitedAction {
   #[serde(rename = "member_invited")]
   MemberInvited,
@@ -5365,7 +5365,7 @@ impl ToString for WebhookOrganizationMemberInvitedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationMemberRemovedAction {
   #[serde(rename = "member_removed")]
   MemberRemoved,
@@ -5381,7 +5381,7 @@ impl ToString for WebhookOrganizationMemberRemovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationRenamedAction {
   #[serde(rename = "renamed")]
   Renamed,
@@ -5397,7 +5397,7 @@ impl ToString for WebhookOrganizationRenamedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPackagePublishedAction {
   #[serde(rename = "published")]
   Published,
@@ -5413,7 +5413,7 @@ impl ToString for WebhookPackagePublishedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPackageUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
@@ -5429,7 +5429,7 @@ impl ToString for WebhookPackageUpdatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestApprovedAction {
   #[serde(rename = "approved")]
   Approved,
@@ -5446,7 +5446,7 @@ impl ToString for WebhookPersonalAccessTokenRequestApprovedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// Type of repository selection requested.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PersonalAccessTokenRequestRepositorySelection {
   #[serde(rename = "none")]
   None,
@@ -5468,7 +5468,7 @@ impl ToString for PersonalAccessTokenRequestRepositorySelection {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestCancelledAction {
   #[serde(rename = "cancelled")]
   Cancelled,
@@ -5484,7 +5484,7 @@ impl ToString for WebhookPersonalAccessTokenRequestCancelledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -5500,7 +5500,7 @@ impl ToString for WebhookPersonalAccessTokenRequestCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestDeniedAction {
   #[serde(rename = "denied")]
   Denied,
@@ -5517,7 +5517,7 @@ impl ToString for WebhookPersonalAccessTokenRequestDeniedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The type of webhook. The only valid value is 'web'.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookName {
   #[serde(rename = "web")]
   Web,
@@ -5533,7 +5533,7 @@ impl ToString for WebhookName {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardConvertedAction {
   #[serde(rename = "converted")]
   Converted,
@@ -5549,7 +5549,7 @@ impl ToString for WebhookProjectCardConvertedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -5565,7 +5565,7 @@ impl ToString for WebhookProjectCardCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -5581,7 +5581,7 @@ impl ToString for WebhookProjectCardDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -5597,7 +5597,7 @@ impl ToString for WebhookProjectCardEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardMovedAction {
   #[serde(rename = "moved")]
   Moved,
@@ -5621,7 +5621,7 @@ pub enum WebhookProjectCardMovedProjectCard {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectClosedAction {
   #[serde(rename = "closed")]
   Closed,
@@ -5638,7 +5638,7 @@ impl ToString for WebhookProjectClosedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of the project; either 'open' or 'closed'
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectState {
   #[serde(rename = "open")]
   Open,
@@ -5657,7 +5657,7 @@ impl ToString for ProjectState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -5673,7 +5673,7 @@ impl ToString for WebhookProjectColumnCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -5689,7 +5689,7 @@ impl ToString for WebhookProjectColumnDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -5705,7 +5705,7 @@ impl ToString for WebhookProjectColumnEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnMovedAction {
   #[serde(rename = "moved")]
   Moved,
@@ -5721,7 +5721,7 @@ impl ToString for WebhookProjectColumnMovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -5737,7 +5737,7 @@ impl ToString for WebhookProjectCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -5753,7 +5753,7 @@ impl ToString for WebhookProjectDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -5769,7 +5769,7 @@ impl ToString for WebhookProjectEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
@@ -5785,7 +5785,7 @@ impl ToString for WebhookProjectReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectClosedAction {
   #[serde(rename = "closed")]
   Closed,
@@ -5801,7 +5801,7 @@ impl ToString for WebhookProjectsV2ProjectClosedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -5817,7 +5817,7 @@ impl ToString for WebhookProjectsV2ProjectCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -5833,7 +5833,7 @@ impl ToString for WebhookProjectsV2ProjectDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -5849,7 +5849,7 @@ impl ToString for WebhookProjectsV2ProjectEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemArchivedAction {
   #[serde(rename = "archived")]
   Archived,
@@ -5866,7 +5866,7 @@ impl ToString for WebhookProjectsV2ItemArchivedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The type of content tracked in a project item
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsV2ItemContentType {
   Issue,
   PullRequest,
@@ -5885,7 +5885,7 @@ impl ToString for ProjectsV2ItemContentType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemConvertedAction {
   #[serde(rename = "converted")]
   Converted,
@@ -5901,7 +5901,7 @@ impl ToString for WebhookProjectsV2ItemConvertedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -5917,7 +5917,7 @@ impl ToString for WebhookProjectsV2ItemCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -5933,7 +5933,7 @@ impl ToString for WebhookProjectsV2ItemDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -5957,7 +5957,7 @@ pub enum WebhookProjectsV2ItemEditedChanges {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemReorderedAction {
   #[serde(rename = "reordered")]
   Reordered,
@@ -5973,7 +5973,7 @@ impl ToString for WebhookProjectsV2ItemReorderedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemRestoredAction {
   #[serde(rename = "restored")]
   Restored,
@@ -5989,7 +5989,7 @@ impl ToString for WebhookProjectsV2ItemRestoredAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
@@ -6005,7 +6005,7 @@ impl ToString for WebhookProjectsV2ProjectReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestAssignedAction {
   #[serde(rename = "assigned")]
   Assigned,
@@ -6021,7 +6021,7 @@ impl ToString for WebhookPullRequestAssignedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
@@ -6047,7 +6047,7 @@ impl ToString for PullRequestActiveLockReason {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -6085,7 +6085,7 @@ impl ToString for PullRequestAuthorAssociation {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The merge method to use.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestAutoMergeMergeMethod {
   #[serde(rename = "merge")]
   Merge,
@@ -6107,7 +6107,7 @@ impl ToString for PullRequestAutoMergeMergeMethod {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestAutoMergeDisabledAction {
   #[serde(rename = "auto_merge_disabled")]
   AutoMergeDisabled,
@@ -6125,7 +6125,7 @@ impl ToString for WebhookPullRequestAutoMergeDisabledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestAutoMergeEnabledAction {
   #[serde(rename = "auto_merge_enabled")]
   AutoMergeEnabled,
@@ -6143,7 +6143,7 @@ impl ToString for WebhookPullRequestAutoMergeEnabledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestClosedAction {
   #[serde(rename = "closed")]
   Closed,
@@ -6163,7 +6163,7 @@ impl ToString for WebhookPullRequestClosedAction {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestClosedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6188,7 +6188,7 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitMessage {
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestClosedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6213,7 +6213,7 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6244,7 +6244,7 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessa
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6276,7 +6276,7 @@ pub enum WebhookPullRequestClosedPullRequest {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestConvertedToDraftAction {
   #[serde(rename = "converted_to_draft")]
   ConvertedToDraft,
@@ -6298,7 +6298,7 @@ impl ToString for WebhookPullRequestConvertedToDraftAction {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6329,7 +6329,7 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitM
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6356,7 +6356,7 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitT
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6381,7 +6381,7 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeC
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6415,7 +6415,7 @@ pub enum WebhookPullRequestConvertedToDraftPullRequest {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestDemilestonedAction {
   #[serde(rename = "demilestoned")]
   Demilestoned,
@@ -6431,7 +6431,7 @@ impl ToString for WebhookPullRequestDemilestonedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestDequeuedAction {
   #[serde(rename = "dequeued")]
   Dequeued,
@@ -6447,7 +6447,7 @@ impl ToString for WebhookPullRequestDequeuedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -6467,7 +6467,7 @@ impl ToString for WebhookPullRequestEditedAction {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestEditedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6492,7 +6492,7 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitMessage {
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestEditedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6517,7 +6517,7 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6548,7 +6548,7 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessa
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6580,7 +6580,7 @@ pub enum WebhookPullRequestEditedPullRequest {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestEnqueuedAction {
   #[serde(rename = "enqueued")]
   Enqueued,
@@ -6596,7 +6596,7 @@ impl ToString for WebhookPullRequestEnqueuedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestLabeledAction {
   #[serde(rename = "labeled")]
   Labeled,
@@ -6612,7 +6612,7 @@ impl ToString for WebhookPullRequestLabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestLockedAction {
   #[serde(rename = "locked")]
   Locked,
@@ -6628,7 +6628,7 @@ impl ToString for WebhookPullRequestLockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestMilestonedAction {
   #[serde(rename = "milestoned")]
   Milestoned,
@@ -6644,7 +6644,7 @@ impl ToString for WebhookPullRequestMilestonedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestOpenedAction {
   #[serde(rename = "opened")]
   Opened,
@@ -6664,7 +6664,7 @@ impl ToString for WebhookPullRequestOpenedAction {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestOpenedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6689,7 +6689,7 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitMessage {
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6714,7 +6714,7 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6745,7 +6745,7 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessa
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6777,7 +6777,7 @@ pub enum WebhookPullRequestOpenedPullRequest {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReadyForReviewAction {
   #[serde(rename = "ready_for_review")]
   ReadyForReview,
@@ -6797,7 +6797,7 @@ impl ToString for WebhookPullRequestReadyForReviewAction {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6828,7 +6828,7 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMes
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6855,7 +6855,7 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTit
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6886,7 +6886,7 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCom
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6920,7 +6920,7 @@ pub enum WebhookPullRequestReadyForReviewPullRequest {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
@@ -6940,7 +6940,7 @@ impl ToString for WebhookPullRequestReopenedAction {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6967,7 +6967,7 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage {
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6992,7 +6992,7 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -7023,7 +7023,7 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMes
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -7055,7 +7055,7 @@ pub enum WebhookPullRequestReopenedPullRequest {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -7072,7 +7072,7 @@ impl ToString for WebhookPullRequestReviewCommentCreatedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -7112,7 +7112,7 @@ impl ToString for PullRequestReviewCommentAuthorAssociation {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The side of the first line of the range for a multi-line comment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentSide {
   #[serde(rename = "LEFT")]
   Left,
@@ -7132,7 +7132,7 @@ impl ToString for PullRequestReviewCommentSide {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The side of the first line of the range for a multi-line comment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentStartSide {
   #[serde(rename = "LEFT")]
   Left,
@@ -7152,7 +7152,7 @@ impl ToString for PullRequestReviewCommentStartSide {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The level at which the comment is targeted, can be a diff line or a file.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentSubjectType {
   #[serde(rename = "line")]
   Line,
@@ -7171,7 +7171,7 @@ impl ToString for PullRequestReviewCommentSubjectType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
@@ -7203,7 +7203,7 @@ impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestActiveLockRea
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -7256,7 +7256,7 @@ impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssocia
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestState {
   #[serde(rename = "open")]
   Open,
@@ -7275,7 +7275,7 @@ impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -7291,7 +7291,7 @@ impl ToString for WebhookPullRequestReviewCommentDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
@@ -7323,7 +7323,7 @@ impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestActiveLockRea
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -7376,7 +7376,7 @@ impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssocia
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestState {
   #[serde(rename = "open")]
   Open,
@@ -7395,7 +7395,7 @@ impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -7411,7 +7411,7 @@ impl ToString for WebhookPullRequestReviewCommentEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
@@ -7443,7 +7443,7 @@ impl ToString for WebhookPullRequestReviewCommentEditedPullRequestActiveLockReas
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -7494,7 +7494,7 @@ impl ToString for WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociat
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentEditedPullRequestState {
   #[serde(rename = "open")]
   Open,
@@ -7513,7 +7513,7 @@ impl ToString for WebhookPullRequestReviewCommentEditedPullRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewDismissedAction {
   #[serde(rename = "dismissed")]
   Dismissed,
@@ -7529,7 +7529,7 @@ impl ToString for WebhookPullRequestReviewDismissedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimplePullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
@@ -7555,7 +7555,7 @@ impl ToString for SimplePullRequestActiveLockReason {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimplePullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -7594,7 +7594,7 @@ impl ToString for SimplePullRequestAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimplePullRequestState {
   #[serde(rename = "open")]
   Open,
@@ -7614,7 +7614,7 @@ impl ToString for SimplePullRequestState {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewDismissedReviewAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -7661,7 +7661,7 @@ impl ToString for WebhookPullRequestReviewDismissedReviewAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewDismissedReviewState {
   #[serde(rename = "dismissed")]
   Dismissed,
@@ -7685,7 +7685,7 @@ impl ToString for WebhookPullRequestReviewDismissedReviewState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -7702,7 +7702,7 @@ impl ToString for WebhookPullRequestReviewEditedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewEditedReviewAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -7747,7 +7747,7 @@ impl ToString for WebhookPullRequestReviewEditedReviewAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestRemovedItem1Action {
   #[serde(rename = "review_request_removed")]
   ReviewRequestRemoved,
@@ -7765,7 +7765,7 @@ impl ToString for WebhookPullRequestReviewRequestRemovedItem1Action {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestRemovedItem2Action {
   #[serde(rename = "review_request_removed")]
   ReviewRequestRemoved,
@@ -7791,7 +7791,7 @@ pub enum WebhookPullRequestReviewRequestRemoved {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestedItem1Action {
   #[serde(rename = "review_requested")]
   ReviewRequested,
@@ -7809,7 +7809,7 @@ impl ToString for WebhookPullRequestReviewRequestedItem1Action {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestedItem2Action {
   #[serde(rename = "review_requested")]
   ReviewRequested,
@@ -7835,7 +7835,7 @@ pub enum WebhookPullRequestReviewRequested {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewSubmittedAction {
   #[serde(rename = "submitted")]
   Submitted,
@@ -7852,7 +7852,7 @@ impl ToString for WebhookPullRequestReviewSubmittedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -7899,7 +7899,7 @@ impl ToString for WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewThreadResolvedAction {
   #[serde(rename = "resolved")]
   Resolved,
@@ -7915,7 +7915,7 @@ impl ToString for WebhookPullRequestReviewThreadResolvedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewThreadUnresolvedAction {
   #[serde(rename = "unresolved")]
   Unresolved,
@@ -7931,7 +7931,7 @@ impl ToString for WebhookPullRequestReviewThreadUnresolvedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestSynchronizeAction {
   #[serde(rename = "synchronize")]
   Synchronize,
@@ -7947,7 +7947,7 @@ impl ToString for WebhookPullRequestSynchronizeAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestUnassignedAction {
   #[serde(rename = "unassigned")]
   Unassigned,
@@ -7963,7 +7963,7 @@ impl ToString for WebhookPullRequestUnassignedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestUnlabeledAction {
   #[serde(rename = "unlabeled")]
   Unlabeled,
@@ -7979,7 +7979,7 @@ impl ToString for WebhookPullRequestUnlabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestUnlockedAction {
   #[serde(rename = "unlocked")]
   Unlocked,
@@ -7995,7 +7995,7 @@ impl ToString for WebhookPullRequestUnlockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRegistryPackagePublishedAction {
   #[serde(rename = "published")]
   Published,
@@ -8011,7 +8011,7 @@ impl ToString for WebhookRegistryPackagePublishedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRegistryPackageUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
@@ -8027,7 +8027,7 @@ impl ToString for WebhookRegistryPackageUpdatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -8044,7 +8044,7 @@ impl ToString for WebhookReleaseCreatedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// State of the release asset.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReleaseAssetState {
   #[serde(rename = "uploaded")]
   Uploaded,
@@ -8060,7 +8060,7 @@ impl ToString for ReleaseAssetState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -8076,7 +8076,7 @@ impl ToString for WebhookReleaseDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -8092,7 +8092,7 @@ impl ToString for WebhookReleaseEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleasePrereleasedAction {
   #[serde(rename = "prereleased")]
   Prereleased,
@@ -8124,7 +8124,7 @@ pub enum WebhookReleasePrereleasedRelease {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleasePublishedAction {
   #[serde(rename = "published")]
   Published,
@@ -8149,7 +8149,7 @@ pub enum WebhookReleasePublishedRelease {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseReleasedAction {
   #[serde(rename = "released")]
   Released,
@@ -8165,7 +8165,7 @@ impl ToString for WebhookReleaseReleasedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseUnpublishedAction {
   #[serde(rename = "unpublished")]
   Unpublished,
@@ -8190,7 +8190,7 @@ pub enum WebhookReleaseUnpublishedRelease {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryAdvisoryPublishedAction {
   #[serde(rename = "published")]
   Published,
@@ -8207,7 +8207,7 @@ impl ToString for WebhookRepositoryAdvisoryPublishedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The type of credit the user is receiving.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoryCreditTypes {
   #[serde(rename = "analyst")]
   Analyst,
@@ -8251,7 +8251,7 @@ impl ToString for SecurityAdvisoryCreditTypes {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The state of the user's acceptance of the credit.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryCreditState {
   #[serde(rename = "accepted")]
   Accepted,
@@ -8274,7 +8274,7 @@ impl ToString for RepositoryAdvisoryCreditState {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The type of identifier.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
@@ -8294,7 +8294,7 @@ impl ToString for RepositoryAdvisoryIdentifiersType {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The severity of the advisory.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisorySeverity {
   #[serde(rename = "critical")]
   Critical,
@@ -8320,7 +8320,7 @@ impl ToString for RepositoryAdvisorySeverity {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The state of the advisory.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryState {
   #[serde(rename = "published")]
   Published,
@@ -8349,7 +8349,7 @@ impl ToString for RepositoryAdvisoryState {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The package's language or package management ecosystem.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoryEcosystems {
   #[serde(rename = "rubygems")]
   Rubygems,
@@ -8401,7 +8401,7 @@ impl ToString for SecurityAdvisoryEcosystems {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryAdvisoryReportedAction {
   #[serde(rename = "reported")]
   Reported,
@@ -8417,7 +8417,7 @@ impl ToString for WebhookRepositoryAdvisoryReportedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryArchivedAction {
   #[serde(rename = "archived")]
   Archived,
@@ -8433,7 +8433,7 @@ impl ToString for WebhookRepositoryArchivedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -8449,7 +8449,7 @@ impl ToString for WebhookRepositoryCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -8465,7 +8465,7 @@ impl ToString for WebhookRepositoryDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -8481,7 +8481,7 @@ impl ToString for WebhookRepositoryEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryImportStatus {
   #[serde(rename = "success")]
   Success,
@@ -8503,7 +8503,7 @@ impl ToString for WebhookRepositoryImportStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryPrivatizedAction {
   #[serde(rename = "privatized")]
   Privatized,
@@ -8519,7 +8519,7 @@ impl ToString for WebhookRepositoryPrivatizedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryPublicizedAction {
   #[serde(rename = "publicized")]
   Publicized,
@@ -8535,7 +8535,7 @@ impl ToString for WebhookRepositoryPublicizedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRenamedAction {
   #[serde(rename = "renamed")]
   Renamed,
@@ -8551,7 +8551,7 @@ impl ToString for WebhookRepositoryRenamedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRulesetCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -8568,7 +8568,7 @@ impl ToString for WebhookRepositoryRulesetCreatedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The type of actor that can bypass a ruleset
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetBypassActorActorType {
   RepositoryRole,
   Team,
@@ -8590,7 +8590,7 @@ impl ToString for RepositoryRulesetBypassActorActorType {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetBypassActorBypassMode {
   #[serde(rename = "always")]
   Always,
@@ -8652,7 +8652,7 @@ pub enum OrgRulesetConditions {
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The bypass type of the user making the API request for this ruleset. This field is only returned when
 /// querying the repository-level endpoint.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetCurrentUserCanBypass {
   #[serde(rename = "always")]
   Always,
@@ -8675,7 +8675,7 @@ impl ToString for RepositoryRulesetCurrentUserCanBypass {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleEnforcement {
   #[serde(rename = "disabled")]
   Disabled,
@@ -8697,7 +8697,7 @@ impl ToString for RepositoryRuleEnforcement {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCreationType {
   #[serde(rename = "creation")]
   Creation,
@@ -8713,7 +8713,7 @@ impl ToString for RepositoryRuleCreationType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleUpdateType {
   #[serde(rename = "update")]
   Update,
@@ -8729,7 +8729,7 @@ impl ToString for RepositoryRuleUpdateType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleDeletionType {
   #[serde(rename = "deletion")]
   Deletion,
@@ -8745,7 +8745,7 @@ impl ToString for RepositoryRuleDeletionType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredLinearHistoryType {
   #[serde(rename = "required_linear_history")]
   RequiredLinearHistory,
@@ -8763,7 +8763,7 @@ impl ToString for RepositoryRuleRequiredLinearHistoryType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredDeploymentsType {
   #[serde(rename = "required_deployments")]
   RequiredDeployments,
@@ -8781,7 +8781,7 @@ impl ToString for RepositoryRuleRequiredDeploymentsType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredSignaturesType {
   #[serde(rename = "required_signatures")]
   RequiredSignatures,
@@ -8797,7 +8797,7 @@ impl ToString for RepositoryRuleRequiredSignaturesType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulePullRequestType {
   #[serde(rename = "pull_request")]
   PullRequest,
@@ -8813,7 +8813,7 @@ impl ToString for RepositoryRulePullRequestType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredStatusChecksType {
   #[serde(rename = "required_status_checks")]
   RequiredStatusChecks,
@@ -8831,7 +8831,7 @@ impl ToString for RepositoryRuleRequiredStatusChecksType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleNonFastForwardType {
   #[serde(rename = "non_fast_forward")]
   NonFastForward,
@@ -8848,7 +8848,7 @@ impl ToString for RepositoryRuleNonFastForwardType {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitMessagePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
@@ -8873,7 +8873,7 @@ impl ToString for RepositoryRuleCommitMessagePatternParametersOperator {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitMessagePatternType {
   #[serde(rename = "commit_message_pattern")]
   CommitMessagePattern,
@@ -8892,7 +8892,7 @@ impl ToString for RepositoryRuleCommitMessagePatternType {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
@@ -8919,7 +8919,7 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternParametersOperator {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitAuthorEmailPatternType {
   #[serde(rename = "commit_author_email_pattern")]
   CommitAuthorEmailPattern,
@@ -8938,7 +8938,7 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitterEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
@@ -8965,7 +8965,7 @@ impl ToString for RepositoryRuleCommitterEmailPatternParametersOperator {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitterEmailPatternType {
   #[serde(rename = "committer_email_pattern")]
   CommitterEmailPattern,
@@ -8984,7 +8984,7 @@ impl ToString for RepositoryRuleCommitterEmailPatternType {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleBranchNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
@@ -9009,7 +9009,7 @@ impl ToString for RepositoryRuleBranchNamePatternParametersOperator {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleBranchNamePatternType {
   #[serde(rename = "branch_name_pattern")]
   BranchNamePattern,
@@ -9026,7 +9026,7 @@ impl ToString for RepositoryRuleBranchNamePatternType {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleTagNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
@@ -9051,7 +9051,7 @@ impl ToString for RepositoryRuleTagNamePatternParametersOperator {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleTagNamePatternType {
   #[serde(rename = "tag_name_pattern")]
   TagNamePattern,
@@ -9067,7 +9067,7 @@ impl ToString for RepositoryRuleTagNamePatternType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleWorkflowsType {
   #[serde(rename = "workflows")]
   Workflows,
@@ -9120,7 +9120,7 @@ pub enum RepositoryRule {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The type of the source of the ruleset
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetSourceType {
   Repository,
   Organization,
@@ -9138,7 +9138,7 @@ impl ToString for RepositoryRulesetSourceType {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The target of the ruleset
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetTarget {
   #[serde(rename = "branch")]
   Branch,
@@ -9157,7 +9157,7 @@ impl ToString for RepositoryRulesetTarget {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRulesetDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -9173,7 +9173,7 @@ impl ToString for WebhookRepositoryRulesetDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRulesetEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -9189,7 +9189,7 @@ impl ToString for WebhookRepositoryRulesetEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryTransferredAction {
   #[serde(rename = "transferred")]
   Transferred,
@@ -9205,7 +9205,7 @@ impl ToString for WebhookRepositoryTransferredAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryUnarchivedAction {
   #[serde(rename = "unarchived")]
   Unarchived,
@@ -9221,7 +9221,7 @@ impl ToString for WebhookRepositoryUnarchivedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertCreateAction {
   #[serde(rename = "create")]
   Create,
@@ -9237,7 +9237,7 @@ impl ToString for WebhookRepositoryVulnerabilityAlertCreateAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryVulnerabilityAlertAlertState {
   #[serde(rename = "open")]
   Open,
@@ -9259,7 +9259,7 @@ impl ToString for RepositoryVulnerabilityAlertAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
   #[serde(rename = "open")]
   Open,
@@ -9286,7 +9286,7 @@ pub enum WebhookRepositoryVulnerabilityAlertCreateAlert {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertDismissAction {
   #[serde(rename = "dismiss")]
   Dismiss,
@@ -9302,7 +9302,7 @@ impl ToString for WebhookRepositoryVulnerabilityAlertDismissAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertDismissAlertItem2State {
   #[serde(rename = "dismissed")]
   Dismissed,
@@ -9331,7 +9331,7 @@ pub enum WebhookRepositoryVulnerabilityAlertDismissAlert {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertReopenAction {
   #[serde(rename = "reopen")]
   Reopen,
@@ -9347,7 +9347,7 @@ impl ToString for WebhookRepositoryVulnerabilityAlertReopenAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
   #[serde(rename = "open")]
   Open,
@@ -9374,7 +9374,7 @@ pub enum WebhookRepositoryVulnerabilityAlertReopenAlert {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertResolveAction {
   #[serde(rename = "resolve")]
   Resolve,
@@ -9390,7 +9390,7 @@ impl ToString for WebhookRepositoryVulnerabilityAlertResolveAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
   #[serde(rename = "fixed")]
   Fixed,
@@ -9420,7 +9420,7 @@ pub enum WebhookRepositoryVulnerabilityAlertResolveAlert {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -9437,7 +9437,7 @@ impl ToString for WebhookSecretScanningAlertCreatedAction {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The reason for resolving the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertResolutionWebhook {
   #[serde(rename = "false_positive")]
   FalsePositive,
@@ -9469,7 +9469,7 @@ impl ToString for SecretScanningAlertResolutionWebhook {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The token status as of the latest validity check.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertWebhookValidity {
   #[serde(rename = "active")]
   Active,
@@ -9491,7 +9491,7 @@ impl ToString for SecretScanningAlertWebhookValidity {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertLocationCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -9540,7 +9540,7 @@ pub enum SecretScanningLocationDetails {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningLocationType {
   #[serde(rename = "commit")]
   Commit,
@@ -9594,7 +9594,7 @@ impl ToString for SecretScanningLocationType {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
@@ -9610,7 +9610,7 @@ impl ToString for WebhookSecretScanningAlertReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertResolvedAction {
   #[serde(rename = "resolved")]
   Resolved,
@@ -9626,7 +9626,7 @@ impl ToString for WebhookSecretScanningAlertResolvedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertRevokedAction {
   #[serde(rename = "revoked")]
   Revoked,
@@ -9642,7 +9642,7 @@ impl ToString for WebhookSecretScanningAlertRevokedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertValidatedAction {
   #[serde(rename = "validated")]
   Validated,
@@ -9658,7 +9658,7 @@ impl ToString for WebhookSecretScanningAlertValidatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecurityAdvisoryPublishedAction {
   #[serde(rename = "published")]
   Published,
@@ -9674,7 +9674,7 @@ impl ToString for WebhookSecurityAdvisoryPublishedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecurityAdvisoryUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
@@ -9690,7 +9690,7 @@ impl ToString for WebhookSecurityAdvisoryUpdatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecurityAdvisoryWithdrawnAction {
   #[serde(rename = "withdrawn")]
   Withdrawn,
@@ -9711,7 +9711,7 @@ impl ToString for WebhookSecurityAdvisoryWithdrawnAction {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum FullRepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -9737,7 +9737,7 @@ impl ToString for FullRepositoryMergeCommitMessage {
 ///
 ///   - `PR_TITLE` - default to the pull request's title.
 ///   - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum FullRepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -9761,7 +9761,7 @@ impl ToString for FullRepositoryMergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum FullRepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -9787,7 +9787,7 @@ impl ToString for FullRepositorySquashMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum FullRepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -9806,7 +9806,7 @@ impl ToString for FullRepositorySquashMergeCommitTitle {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipCancelledAction {
   #[serde(rename = "cancelled")]
   Cancelled,
@@ -9822,7 +9822,7 @@ impl ToString for WebhookSponsorshipCancelledAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -9838,7 +9838,7 @@ impl ToString for WebhookSponsorshipCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -9854,7 +9854,7 @@ impl ToString for WebhookSponsorshipEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipPendingCancellationAction {
   #[serde(rename = "pending_cancellation")]
   PendingCancellation,
@@ -9872,7 +9872,7 @@ impl ToString for WebhookSponsorshipPendingCancellationAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipPendingTierChangeAction {
   #[serde(rename = "pending_tier_change")]
   PendingTierChange,
@@ -9890,7 +9890,7 @@ impl ToString for WebhookSponsorshipPendingTierChangeAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipTierChangedAction {
   #[serde(rename = "tier_changed")]
   TierChanged,
@@ -9906,7 +9906,7 @@ impl ToString for WebhookSponsorshipTierChangedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookStarCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -9922,7 +9922,7 @@ impl ToString for WebhookStarCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookStarDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -9956,7 +9956,7 @@ pub enum WebhookStatusCommitCommitCommitter {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookStatusCommitCommitVerificationReason {
   #[serde(rename = "expired_key")]
   ExpiredKey,
@@ -10023,7 +10023,7 @@ impl ToString for WebhookStatusCommitCommitVerificationReason {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The new state. Can be `pending`, `success`, `failure`, or `error`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookStatusState {
   #[serde(rename = "pending")]
   Pending,
@@ -10048,7 +10048,7 @@ impl ToString for WebhookStatusState {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamAddedToRepositoryAction {
   #[serde(rename = "added_to_repository")]
   AddedToRepository,
@@ -10064,7 +10064,7 @@ impl ToString for WebhookTeamAddedToRepositoryAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamCreatedAction {
   #[serde(rename = "created")]
   Created,
@@ -10080,7 +10080,7 @@ impl ToString for WebhookTeamCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
@@ -10096,7 +10096,7 @@ impl ToString for WebhookTeamDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamEditedAction {
   #[serde(rename = "edited")]
   Edited,
@@ -10112,7 +10112,7 @@ impl ToString for WebhookTeamEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamRemovedFromRepositoryAction {
   #[serde(rename = "removed_from_repository")]
   RemovedFromRepository,
@@ -10130,7 +10130,7 @@ impl ToString for WebhookTeamRemovedFromRepositoryAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWatchStartedAction {
   #[serde(rename = "started")]
   Started,
@@ -10146,7 +10146,7 @@ impl ToString for WebhookWatchStartedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobCompletedAction {
   #[serde(rename = "completed")]
   Completed,
@@ -10162,7 +10162,7 @@ impl ToString for WebhookWorkflowJobCompletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowJobConclusion {
   #[serde(rename = "success")]
   Success,
@@ -10197,7 +10197,7 @@ impl ToString for WorkflowJobConclusion {
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
 /// The current status of the job. Can be `queued`, `in_progress`, `waiting`, or `completed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowJobStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -10222,7 +10222,7 @@ impl ToString for WorkflowJobStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowStepConclusion {
   #[serde(rename = "failure")]
   Failure,
@@ -10247,7 +10247,7 @@ impl ToString for WorkflowStepConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowStepStatus {
   #[serde(rename = "in_progress")]
   InProgress,
@@ -10269,7 +10269,7 @@ impl ToString for WorkflowStepStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
   #[serde(rename = "success")]
   Success,
@@ -10314,7 +10314,7 @@ pub enum WebhookWorkflowJobCompletedWorkflowJob {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobInProgressAction {
   #[serde(rename = "in_progress")]
   InProgress,
@@ -10330,7 +10330,7 @@ impl ToString for WebhookWorkflowJobInProgressAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobInProgressWorkflowJobItem2Status {
   #[serde(rename = "in_progress")]
   InProgress,
@@ -10361,7 +10361,7 @@ pub enum WebhookWorkflowJobInProgressWorkflowJob {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobQueuedAction {
   #[serde(rename = "queued")]
   Queued,
@@ -10377,7 +10377,7 @@ impl ToString for WebhookWorkflowJobQueuedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobQueuedWorkflowJobStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -10402,7 +10402,7 @@ impl ToString for WebhookWorkflowJobQueuedWorkflowJobStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobWaitingAction {
   #[serde(rename = "waiting")]
   Waiting,
@@ -10418,7 +10418,7 @@ impl ToString for WebhookWorkflowJobWaitingAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobWaitingWorkflowJobStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -10443,7 +10443,7 @@ impl ToString for WebhookWorkflowJobWaitingWorkflowJobStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunCompletedAction {
   #[serde(rename = "completed")]
   Completed,
@@ -10459,7 +10459,7 @@ impl ToString for WebhookWorkflowRunCompletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowRunConclusion {
   #[serde(rename = "success")]
   Success,
@@ -10496,7 +10496,7 @@ impl ToString for WorkflowRunConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowRunStatus {
   #[serde(rename = "requested")]
   Requested,
@@ -10527,7 +10527,7 @@ impl ToString for WorkflowRunStatus {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
   #[serde(rename = "success")]
   Success,
@@ -10574,7 +10574,7 @@ pub enum WebhookWorkflowRunCompletedWorkflowRun {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunInProgressAction {
   #[serde(rename = "in_progress")]
   InProgress,
@@ -10590,7 +10590,7 @@ impl ToString for WebhookWorkflowRunInProgressAction {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
   #[serde(rename = "success")]
   Success,
@@ -10637,7 +10637,7 @@ pub enum WebhookWorkflowRunInProgressWorkflowRun {
 }
 
 #[cfg(any(feature = "full", feature = "webhooks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunRequestedAction {
   #[serde(rename = "requested")]
   Requested,

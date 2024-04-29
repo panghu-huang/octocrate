@@ -53,7 +53,7 @@ async fn create_issue_comment() {
   // Delete the comment
   api
     .issues
-    .delete_comment("panghu-huang", "octocrate", first_comment.id)
+    .delete_comment("panghu-huang", "octocrate", issue_comment.id)
     .send()
     .await
     .unwrap();

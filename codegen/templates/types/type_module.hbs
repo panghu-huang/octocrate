@@ -39,7 +39,7 @@ pub type {{ alias }} = {{ type_name }};
 /// {{this}}
 {{/each}}
 {{/if}}
-#[derive(Debug, Clone, Serialize, Deserialize{{#if impl_to_string }}, PartialEq{{/if}})]
+#[derive(Debug, Clone, Serialize, Deserialize{{#if copiable }}, PartialEq, Copy{{/if}})]
 {{#if untagged }}
 #[serde(untagged)]
 {{/if}}
@@ -60,7 +60,7 @@ pub enum {{ name }} {
   {{/if}}
   {{/each}}
 }
-{{#if impl_to_string }}
+{{#if copiable }}
 
 #[cfg(
   any(
