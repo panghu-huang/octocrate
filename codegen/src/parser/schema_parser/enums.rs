@@ -32,7 +32,7 @@ impl SchemaParser {
               enum_.add_field(enum_field);
             }
             StringOrBool::Bool(_) => {
-              let mut enum_field = EnumField::new(&"Boolean".to_string());
+              let mut enum_field = EnumField::new("Boolean");
 
               enum_field.set_type_name("bool");
 

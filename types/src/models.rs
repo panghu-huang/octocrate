@@ -540,7 +540,7 @@ pub type StarredRepositoryArray = Vec<StarredRepository>;
 
 /// Enumerations definition
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQueryType {
   #[serde(rename = "reviewed")]
   Reviewed,
@@ -562,7 +562,7 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQueryType {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQuerySeverity {
   #[serde(rename = "unknown")]
   Unknown,
@@ -590,7 +590,7 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQuerySeverity {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -609,7 +609,7 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQuerySort {
   #[serde(rename = "updated")]
   Updated,
@@ -629,7 +629,7 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQuerySort {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The type of credit the user is receiving.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoryCreditTypes {
   #[serde(rename = "analyst")]
   Analyst,
@@ -673,7 +673,7 @@ impl ToString for SecurityAdvisoryCreditTypes {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The type of identifier.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GlobalAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
@@ -693,7 +693,7 @@ impl ToString for GlobalAdvisoryIdentifiersType {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The severity of the advisory.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GlobalAdvisorySeverity {
   #[serde(rename = "critical")]
   Critical,
@@ -722,7 +722,7 @@ impl ToString for GlobalAdvisorySeverity {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The type of advisory.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GlobalAdvisoryType {
   #[serde(rename = "reviewed")]
   Reviewed,
@@ -745,7 +745,7 @@ impl ToString for GlobalAdvisoryType {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The package's language or package management ecosystem.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoryEcosystems {
   #[serde(rename = "rubygems")]
   Rubygems,
@@ -827,7 +827,7 @@ pub enum InstallationAccount {
 
 #[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 /// The level of permission to grant the access token for custom property management.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppPermissionsOrganizationCustomProperties {
   #[serde(rename = "read")]
   Read,
@@ -850,7 +850,7 @@ impl ToString for AppPermissionsOrganizationCustomProperties {
 
 #[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 /// The level of permission to grant the access token to manage organization projects and projects beta (where available).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppPermissionsOrganizationProjects {
   #[serde(rename = "read")]
   Read,
@@ -873,7 +873,7 @@ impl ToString for AppPermissionsOrganizationProjects {
 
 #[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 /// The level of permission to grant the access token to manage repository projects, columns, and cards.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppPermissionsRepositoryProjects {
   #[serde(rename = "read")]
   Read,
@@ -896,7 +896,7 @@ impl ToString for AppPermissionsRepositoryProjects {
 
 #[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
 /// Describe whether all repositories have been selected or there's a selection involved
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum InstallationRepositorySelection {
   #[serde(rename = "all")]
   All,
@@ -932,7 +932,7 @@ impl ToString for InstallationRepositorySelection {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -982,7 +982,7 @@ impl ToString for RepositoryMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -1030,7 +1030,7 @@ impl ToString for RepositoryMergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -1080,7 +1080,7 @@ impl ToString for RepositorySquashMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -1111,7 +1111,7 @@ impl ToString for RepositorySquashMergeCommitTitle {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum InstallationTokenRepositorySelection {
   #[serde(rename = "all")]
   All,
@@ -1131,7 +1131,7 @@ impl ToString for InstallationTokenRepositorySelection {
 
 #[cfg(any(feature = "full", feature = "apps",))]
 /// Describe whether all repositories have been selected or there's a selection involved
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ScopedInstallationRepositorySelection {
   #[serde(rename = "all")]
   All,
@@ -1151,7 +1151,7 @@ impl ToString for ScopedInstallationRepositorySelection {
 
 #[cfg(any(feature = "full", feature = "classroom",))]
 /// Whether it's a group assignment or individual assignment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ClassroomAssignmentType {
   #[serde(rename = "individual")]
   Individual,
@@ -1171,7 +1171,7 @@ impl ToString for ClassroomAssignmentType {
 
 #[cfg(any(feature = "full", feature = "classroom",))]
 /// Whether it's a Group Assignment or Individual Assignment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimpleClassroomAssignmentType {
   #[serde(rename = "individual")]
   Individual,
@@ -1190,7 +1190,7 @@ impl ToString for SimpleClassroomAssignmentType {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForEnterpriseQueryScope {
   #[serde(rename = "development")]
   Development,
@@ -1209,7 +1209,7 @@ impl ToString for DependabotListAlertsForEnterpriseQueryScope {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForEnterpriseQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -1228,7 +1228,7 @@ impl ToString for DependabotListAlertsForEnterpriseQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForEnterpriseQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -1248,7 +1248,7 @@ impl ToString for DependabotListAlertsForEnterpriseQueryDirection {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// The execution scope of the vulnerable dependency.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertWithRepositoryDependencyScope {
   #[serde(rename = "development")]
   Development,
@@ -1268,7 +1268,7 @@ impl ToString for DependabotAlertWithRepositoryDependencyScope {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// The reason that the alert was dismissed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertWithRepositoryDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
@@ -1297,7 +1297,7 @@ impl ToString for DependabotAlertWithRepositoryDismissedReason {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// The type of advisory identifier.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
@@ -1317,7 +1317,7 @@ impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// The severity of the advisory.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityAdvisorySeverity {
   #[serde(rename = "low")]
   Low,
@@ -1343,7 +1343,7 @@ impl ToString for DependabotAlertSecurityAdvisorySeverity {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// The severity of the vulnerability.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityVulnerabilitySeverity {
   #[serde(rename = "low")]
   Low,
@@ -1369,7 +1369,7 @@ impl ToString for DependabotAlertSecurityVulnerabilitySeverity {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// The state of the Dependabot alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertWithRepositoryState {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
@@ -1394,7 +1394,7 @@ impl ToString for DependabotAlertWithRepositoryState {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForEnterpriseQueryState {
   #[serde(rename = "open")]
   Open,
@@ -1413,7 +1413,7 @@ impl ToString for SecretScanningListAlertsForEnterpriseQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForEnterpriseQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -1432,7 +1432,7 @@ impl ToString for SecretScanningListAlertsForEnterpriseQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForEnterpriseQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -1452,7 +1452,7 @@ impl ToString for SecretScanningListAlertsForEnterpriseQueryDirection {
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// **Required when the `state` is `resolved`.** The reason for resolving the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertResolution {
   #[serde(rename = "false_positive")]
   FalsePositive,
@@ -1478,7 +1478,7 @@ impl ToString for SecretScanningAlertResolution {
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertState {
   #[serde(rename = "open")]
   Open,
@@ -1498,7 +1498,7 @@ impl ToString for SecretScanningAlertState {
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// The token status as of the latest validity check.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationSecretScanningAlertValidity {
   #[serde(rename = "active")]
   Active,
@@ -1529,7 +1529,7 @@ impl ToString for OrganizationSecretScanningAlertValidity {
   feature = "search",
 ))]
 /// How the author is associated with the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
@@ -1582,7 +1582,7 @@ impl ToString for AuthorAssociation {
   feature = "search",
 ))]
 /// The state of the milestone.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MilestoneState {
   #[serde(rename = "open")]
   Open,
@@ -1609,7 +1609,7 @@ impl ToString for MilestoneState {
 
 #[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
 /// The reason for the current state
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssueStateReason {
   #[serde(rename = "completed")]
   Completed,
@@ -1631,7 +1631,7 @@ impl ToString for IssueStateReason {
 }
 
 #[cfg(any(feature = "full", feature = "gists",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GistsCreateRequestPublicItem2 {
   #[serde(rename = "true")]
   True,
@@ -1650,7 +1650,7 @@ impl ToString for GistsCreateRequestPublicItem2 {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListQueryFilter {
   #[serde(rename = "assigned")]
   Assigned,
@@ -1681,7 +1681,7 @@ impl ToString for IssuesListQueryFilter {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListQueryState {
   #[serde(rename = "open")]
   Open,
@@ -1703,7 +1703,7 @@ impl ToString for IssuesListQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -1725,7 +1725,7 @@ impl ToString for IssuesListQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -1745,7 +1745,7 @@ impl ToString for IssuesListQueryDirection {
 
 #[cfg(any(feature = "full", feature = "markdown",))]
 /// The rendering mode.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MarkdownRenderRequestMode {
   #[serde(rename = "markdown")]
   Markdown,
@@ -1764,7 +1764,7 @@ impl ToString for MarkdownRenderRequestMode {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MarketplaceListingPlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
@@ -1786,7 +1786,7 @@ impl ToString for MarketplaceListingPlanPriceModel {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppsListAccountsForPlanQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -1805,7 +1805,7 @@ impl ToString for AppsListAccountsForPlanQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppsListAccountsForPlanQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -1824,7 +1824,7 @@ impl ToString for AppsListAccountsForPlanQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppsListAccountsForPlanStubbedQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -1843,7 +1843,7 @@ impl ToString for AppsListAccountsForPlanStubbedQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "apps",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppsListAccountsForPlanStubbedQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -1876,7 +1876,7 @@ impl ToString for AppsListAccountsForPlanStubbedQueryDirection {
   feature = "security_advisories",
   feature = "search",
 ))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisAdvancedSecurityStatus {
   #[serde(rename = "enabled")]
   Enabled,
@@ -1924,7 +1924,7 @@ impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
   feature = "search",
 ))]
 /// The enablement status of Dependabot security updates for the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   #[serde(rename = "enabled")]
   Enabled,
@@ -1971,7 +1971,7 @@ impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   feature = "security_advisories",
   feature = "search",
 ))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisSecretScanningStatus {
   #[serde(rename = "enabled")]
   Enabled,
@@ -2018,7 +2018,7 @@ impl ToString for SecurityAndAnalysisSecretScanningStatus {
   feature = "security_advisories",
   feature = "search",
 ))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
   #[serde(rename = "enabled")]
   Enabled,
@@ -2052,7 +2052,7 @@ impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Default permission level members have for organization repositories.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsUpdateRequestDefaultRepositoryPermission {
   #[serde(rename = "read")]
   Read,
@@ -2079,7 +2079,7 @@ impl ToString for OrgsUpdateRequestDefaultRepositoryPermission {
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Specifies which types of repositories non-admin organization members can create. `private` is only available to repositories that are part of an organization on GitHub Enterprise Cloud.
 /// **Note:** This parameter is deprecated and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in `members_can_create_repositories`. See the parameter deprecation notice in the operation description for details.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsUpdateRequestMembersAllowedRepositoryCreationType {
   #[serde(rename = "all")]
   All,
@@ -2102,7 +2102,7 @@ impl ToString for OrgsUpdateRequestMembersAllowedRepositoryCreationType {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// The permissions policy that controls the actions and reusable workflows that are allowed to run.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AllowedActions {
   #[serde(rename = "all")]
   All,
@@ -2125,7 +2125,7 @@ impl ToString for AllowedActions {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// The policy that controls the repositories in the organization that are allowed to run GitHub Actions.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum EnabledRepositories {
   #[serde(rename = "all")]
   All,
@@ -2148,7 +2148,7 @@ impl ToString for EnabledRepositories {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// The type of label. Read-only labels are applied automatically when the runner is configured.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RunnerLabelType {
   #[serde(rename = "read-only")]
   ReadOnly,
@@ -2168,7 +2168,7 @@ impl ToString for RunnerLabelType {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Describe whether all repositories have been selected or there's a selection involved
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AuthenticationTokenRepositorySelection {
   #[serde(rename = "all")]
   All,
@@ -2188,7 +2188,7 @@ impl ToString for AuthenticationTokenRepositorySelection {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Visibility of a secret
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationActionsSecretVisibility {
   #[serde(rename = "all")]
   All,
@@ -2211,7 +2211,7 @@ impl ToString for OrganizationActionsSecretVisibility {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsCreateOrUpdateOrgSecretRequestVisibility {
   #[serde(rename = "all")]
   All,
@@ -2234,7 +2234,7 @@ impl ToString for ActionsCreateOrUpdateOrgSecretRequestVisibility {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Visibility of a variable
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationActionsVariableVisibility {
   #[serde(rename = "all")]
   All,
@@ -2257,7 +2257,7 @@ impl ToString for OrganizationActionsVariableVisibility {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsCreateOrgVariableRequestVisibility {
   #[serde(rename = "all")]
   All,
@@ -2280,7 +2280,7 @@ impl ToString for ActionsCreateOrgVariableRequestVisibility {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsUpdateOrgVariableRequestVisibility {
   #[serde(rename = "all")]
   All,
@@ -2302,7 +2302,7 @@ impl ToString for ActionsUpdateOrgVariableRequestVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListAlertsForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -2321,7 +2321,7 @@ impl ToString for CodeScanningListAlertsForOrgQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListAlertsForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -2341,7 +2341,7 @@ impl ToString for CodeScanningListAlertsForOrgQuerySort {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// **Required when the state is dismissed.** The reason for dismissing or closing the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
@@ -2364,7 +2364,7 @@ impl ToString for CodeScanningAlertDismissedReason {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// A classification of the file. For example to identify it as generated.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertClassification {
   #[serde(rename = "source")]
   Source,
@@ -2390,7 +2390,7 @@ impl ToString for CodeScanningAlertClassification {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// State of a code scanning alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertState {
   #[serde(rename = "open")]
   Open,
@@ -2413,7 +2413,7 @@ impl ToString for CodeScanningAlertState {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// The security severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertRuleSummarySecuritySeverityLevel {
   #[serde(rename = "low")]
   Low,
@@ -2439,7 +2439,7 @@ impl ToString for CodeScanningAlertRuleSummarySecuritySeverityLevel {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// The severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertRuleSummarySeverity {
   #[serde(rename = "none")]
   None,
@@ -2465,7 +2465,7 @@ impl ToString for CodeScanningAlertRuleSummarySeverity {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// The initally assigned location of a new codespace.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceLocation {
   EastUs,
   SouthEastAsia,
@@ -2487,7 +2487,7 @@ impl ToString for CodespaceLocation {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceMachinePrebuildAvailability {
   #[serde(rename = "none")]
   None,
@@ -2510,7 +2510,7 @@ impl ToString for CodespaceMachinePrebuildAvailability {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// State of this codespace.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceState {
   Unknown,
   Created,
@@ -2558,7 +2558,7 @@ impl ToString for CodespaceState {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesSetCodespacesAccessRequestVisibility {
   #[serde(rename = "disabled")]
   Disabled,
@@ -2588,7 +2588,7 @@ impl ToString for CodespacesSetCodespacesAccessRequestVisibility {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// The type of repositories in the organization that the secret is visible to
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesOrgSecretVisibility {
   #[serde(rename = "all")]
   All,
@@ -2611,7 +2611,7 @@ impl ToString for CodespacesOrgSecretVisibility {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateOrUpdateOrgSecretRequestVisibility {
   #[serde(rename = "all")]
   All,
@@ -2634,7 +2634,7 @@ impl ToString for CodespacesCreateOrUpdateOrgSecretRequestVisibility {
 
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// The organization policy for allowing or disallowing organization members to use Copilot within their CLI.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CopilotOrganizationDetailsCli {
   #[serde(rename = "enabled")]
   Enabled,
@@ -2657,7 +2657,7 @@ impl ToString for CopilotOrganizationDetailsCli {
 
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CopilotOrganizationDetailsIdeChat {
   #[serde(rename = "enabled")]
   Enabled,
@@ -2680,7 +2680,7 @@ impl ToString for CopilotOrganizationDetailsIdeChat {
 
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// The organization policy for allowing or disallowing organization members to use Copilot features within github.com.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CopilotOrganizationDetailsPlatformChat {
   #[serde(rename = "enabled")]
   Enabled,
@@ -2703,7 +2703,7 @@ impl ToString for CopilotOrganizationDetailsPlatformChat {
 
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// The organization policy for allowing or disallowing Copilot to make suggestions that match public code.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CopilotOrganizationDetailsPublicCodeSuggestions {
   #[serde(rename = "allow")]
   Allow,
@@ -2729,7 +2729,7 @@ impl ToString for CopilotOrganizationDetailsPublicCodeSuggestions {
 
 #[cfg(any(feature = "full", feature = "copilot",))]
 /// The mode of assigning new seats.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CopilotOrganizationDetailsSeatManagementSetting {
   #[serde(rename = "assign_all")]
   AssignAll,
@@ -2768,7 +2768,7 @@ pub enum CopilotSeatDetailsAssignee {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForOrgQueryScope {
   #[serde(rename = "development")]
   Development,
@@ -2787,7 +2787,7 @@ impl ToString for DependabotListAlertsForOrgQueryScope {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -2806,7 +2806,7 @@ impl ToString for DependabotListAlertsForOrgQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -2826,7 +2826,7 @@ impl ToString for DependabotListAlertsForOrgQueryDirection {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// Visibility of a secret
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationDependabotSecretVisibility {
   #[serde(rename = "all")]
   All,
@@ -2849,7 +2849,7 @@ impl ToString for OrganizationDependabotSecretVisibility {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotCreateOrUpdateOrgSecretRequestVisibility {
   #[serde(rename = "all")]
   All,
@@ -2871,7 +2871,7 @@ impl ToString for DependabotCreateOrUpdateOrgSecretRequestVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagePackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -2902,7 +2902,7 @@ impl ToString for PackagePackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackageVisibility {
   #[serde(rename = "private")]
   Private,
@@ -2922,7 +2922,7 @@ impl ToString for PackageVisibility {
 
 #[cfg(any(feature = "full", feature = "interactions",))]
 /// The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum InteractionGroup {
   #[serde(rename = "existing_users")]
   ExistingUsers,
@@ -2954,7 +2954,7 @@ pub enum InteractionsGetRestrictionsForOrgResponse {
 
 #[cfg(any(feature = "full", feature = "interactions",))]
 /// The duration of the interaction restriction. Default: `one_day`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum InteractionExpiry {
   #[serde(rename = "one_day")]
   OneDay,
@@ -2982,7 +2982,7 @@ impl ToString for InteractionExpiry {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPendingInvitationsQueryRole {
   #[serde(rename = "all")]
   All,
@@ -3010,7 +3010,7 @@ impl ToString for OrgsListPendingInvitationsQueryRole {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPendingInvitationsQueryInvitationSource {
   #[serde(rename = "all")]
   All,
@@ -3037,7 +3037,7 @@ impl ToString for OrgsListPendingInvitationsQueryInvitationSource {
 ///  * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  
 ///  * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.
 ///  * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsCreateInvitationRequestRole {
   #[serde(rename = "admin")]
   Admin,
@@ -3062,7 +3062,7 @@ impl ToString for OrgsCreateInvitationRequestRole {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForOrgQueryFilter {
   #[serde(rename = "assigned")]
   Assigned,
@@ -3093,7 +3093,7 @@ impl ToString for IssuesListForOrgQueryFilter {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForOrgQueryState {
   #[serde(rename = "open")]
   Open,
@@ -3115,7 +3115,7 @@ impl ToString for IssuesListForOrgQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -3137,7 +3137,7 @@ impl ToString for IssuesListForOrgQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -3156,7 +3156,7 @@ impl ToString for IssuesListForOrgQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListMembersQueryFilter {
   #[serde(rename = "2fa_disabled")]
   TwoFADisabled,
@@ -3175,7 +3175,7 @@ impl ToString for OrgsListMembersQueryFilter {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListMembersQueryRole {
   #[serde(rename = "all")]
   All,
@@ -3198,7 +3198,7 @@ impl ToString for OrgsListMembersQueryRole {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// The user's membership type in the organization.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgMembershipRole {
   #[serde(rename = "admin")]
   Admin,
@@ -3221,7 +3221,7 @@ impl ToString for OrgMembershipRole {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgMembershipState {
   #[serde(rename = "active")]
   Active,
@@ -3243,7 +3243,7 @@ impl ToString for OrgMembershipState {
 /// The role to give the user in the organization. Can be one of:  
 ///  * `admin` - The user will become an owner of the organization.  
 ///  * `member` - The user will become a non-owner member of the organization.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsSetMembershipForUserRequestRole {
   #[serde(rename = "admin")]
   Admin,
@@ -3263,7 +3263,7 @@ impl ToString for OrgsSetMembershipForUserRequestRole {
 
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// Allowed values that can be passed to the exclude param.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsListForOrgQueryExclude {
   #[serde(rename = "repositories")]
   Repositories,
@@ -3279,7 +3279,7 @@ impl ToString for MigrationsListForOrgQueryExclude {
 }
 
 #[cfg(any(feature = "full", feature = "migrations",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsStartForOrgRequestExclude {
   #[serde(rename = "repositories")]
   Repositories,
@@ -3296,7 +3296,7 @@ impl ToString for MigrationsStartForOrgRequestExclude {
 
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// Allowed values that can be passed to the exclude param.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsGetStatusForOrgQueryExclude {
   #[serde(rename = "repositories")]
   Repositories,
@@ -3312,7 +3312,7 @@ impl ToString for MigrationsGetStatusForOrgQueryExclude {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListOutsideCollaboratorsQueryFilter {
   #[serde(rename = "2fa_disabled")]
   TwoFADisabled,
@@ -3331,7 +3331,7 @@ impl ToString for OrgsListOutsideCollaboratorsQueryFilter {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForOrganizationQueryPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -3362,7 +3362,7 @@ impl ToString for PackagesListPackagesForOrganizationQueryPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForOrganizationQueryVisibility {
   #[serde(rename = "public")]
   Public,
@@ -3384,7 +3384,7 @@ impl ToString for PackagesListPackagesForOrganizationQueryVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageForOrganizationParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -3415,7 +3415,7 @@ impl ToString for PackagesGetPackageForOrganizationParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -3446,7 +3446,7 @@ impl ToString for PackagesDeletePackageForOrgParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -3477,7 +3477,7 @@ impl ToString for PackagesRestorePackageForOrgParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -3520,7 +3520,7 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByOrgParametersPac
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByOrgQueryState {
   #[serde(rename = "active")]
   Active,
@@ -3539,7 +3539,7 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByOrgQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackageVersionMetadataPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -3570,7 +3570,7 @@ impl ToString for PackageVersionMetadataPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageVersionForOrganizationParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -3605,7 +3605,7 @@ impl ToString for PackagesGetPackageVersionForOrganizationParametersPackageType 
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageVersionForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -3636,7 +3636,7 @@ impl ToString for PackagesDeletePackageVersionForOrgParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageVersionForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -3669,7 +3669,7 @@ impl ToString for PackagesRestorePackageVersionForOrgParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPatGrantRequestsQuerySort {
   #[serde(rename = "created_at")]
   CreatedAt,
@@ -3685,7 +3685,7 @@ impl ToString for OrgsListPatGrantRequestsQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPatGrantRequestsQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -3705,7 +3705,7 @@ impl ToString for OrgsListPatGrantRequestsQueryDirection {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Type of repository selection requested.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationProgrammaticAccessGrantRequestRepositorySelection {
   #[serde(rename = "none")]
   None,
@@ -3728,7 +3728,7 @@ impl ToString for OrganizationProgrammaticAccessGrantRequestRepositorySelection 
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Action to apply to the requests.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsReviewPatGrantRequestsInBulkRequestAction {
   #[serde(rename = "approve")]
   Approve,
@@ -3748,7 +3748,7 @@ impl ToString for OrgsReviewPatGrantRequestsInBulkRequestAction {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Action to apply to the request.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsReviewPatGrantRequestRequestAction {
   #[serde(rename = "approve")]
   Approve,
@@ -3767,7 +3767,7 @@ impl ToString for OrgsReviewPatGrantRequestRequestAction {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPatGrantsQuerySort {
   #[serde(rename = "created_at")]
   CreatedAt,
@@ -3783,7 +3783,7 @@ impl ToString for OrgsListPatGrantsQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPatGrantsQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -3803,7 +3803,7 @@ impl ToString for OrgsListPatGrantsQueryDirection {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Type of repository selection requested.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationProgrammaticAccessGrantRepositorySelection {
   #[serde(rename = "none")]
   None,
@@ -3826,7 +3826,7 @@ impl ToString for OrganizationProgrammaticAccessGrantRepositorySelection {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Action to apply to the fine-grained personal access token.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsUpdatePatAccessesRequestAction {
   #[serde(rename = "revoke")]
   Revoke,
@@ -3843,7 +3843,7 @@ impl ToString for OrgsUpdatePatAccessesRequestAction {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Action to apply to the fine-grained personal access token.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsUpdatePatAccessRequestAction {
   #[serde(rename = "revoke")]
   Revoke,
@@ -3859,7 +3859,7 @@ impl ToString for OrgsUpdatePatAccessRequestAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsListForOrgQueryState {
   #[serde(rename = "open")]
   Open,
@@ -3882,7 +3882,7 @@ impl ToString for ProjectsListForOrgQueryState {
 
 #[cfg(any(feature = "full", feature = "projects",))]
 /// The baseline permission that all organization members have on this project. Only present if owner is an organization.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectOrganizationPermission {
   #[serde(rename = "read")]
   Read,
@@ -3908,7 +3908,7 @@ impl ToString for ProjectOrganizationPermission {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// The type of the value for the property
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgCustomPropertyValueType {
   #[serde(rename = "string")]
   String,
@@ -3928,7 +3928,7 @@ impl ToString for OrgCustomPropertyValueType {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// Who can edit the values of the property
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgCustomPropertyValuesEditableBy {
   #[serde(rename = "org_actors")]
   OrgActors,
@@ -3948,7 +3948,7 @@ impl ToString for OrgCustomPropertyValuesEditableBy {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// The type of the value for the property
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsCreateOrUpdateCustomPropertyRequestValueType {
   #[serde(rename = "string")]
   String,
@@ -3967,7 +3967,7 @@ impl ToString for OrgsCreateOrUpdateCustomPropertyRequestValueType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForOrgQueryType {
   #[serde(rename = "all")]
   All,
@@ -3998,7 +3998,7 @@ impl ToString for ReposListForOrgQueryType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -4023,7 +4023,7 @@ impl ToString for ReposListForOrgQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -4047,7 +4047,7 @@ impl ToString for ReposListForOrgQueryDirection {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateInOrgRequestMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -4073,7 +4073,7 @@ impl ToString for ReposCreateInOrgRequestMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateInOrgRequestMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -4097,7 +4097,7 @@ impl ToString for ReposCreateInOrgRequestMergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateInOrgRequestSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -4125,7 +4125,7 @@ impl ToString for ReposCreateInOrgRequestSquashMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateInOrgRequestSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -4147,7 +4147,7 @@ impl ToString for ReposCreateInOrgRequestSquashMergeCommitTitle {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The visibility of the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateInOrgRequestVisibility {
   #[serde(rename = "public")]
   Public,
@@ -4176,7 +4176,7 @@ impl ToString for ReposCreateInOrgRequestVisibility {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum FullRepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -4212,7 +4212,7 @@ impl ToString for FullRepositoryMergeCommitMessage {
 ///
 ///   - `PR_TITLE` - default to the pull request's title.
 ///   - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum FullRepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -4246,7 +4246,7 @@ impl ToString for FullRepositoryMergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum FullRepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -4282,7 +4282,7 @@ impl ToString for FullRepositorySquashMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum FullRepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -4307,7 +4307,7 @@ impl ToString for FullRepositorySquashMergeCommitTitle {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The type of actor that can bypass a ruleset
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetBypassActorActorType {
   RepositoryRole,
   Team,
@@ -4329,7 +4329,7 @@ impl ToString for RepositoryRulesetBypassActorActorType {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetBypassActorBypassMode {
   #[serde(rename = "always")]
   Always,
@@ -4391,7 +4391,7 @@ pub enum OrgRulesetConditions {
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The bypass type of the user making the API request for this ruleset. This field is only returned when
 /// querying the repository-level endpoint.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetCurrentUserCanBypass {
   #[serde(rename = "always")]
   Always,
@@ -4414,7 +4414,7 @@ impl ToString for RepositoryRulesetCurrentUserCanBypass {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleEnforcement {
   #[serde(rename = "disabled")]
   Disabled,
@@ -4436,7 +4436,7 @@ impl ToString for RepositoryRuleEnforcement {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCreationType {
   #[serde(rename = "creation")]
   Creation,
@@ -4452,7 +4452,7 @@ impl ToString for RepositoryRuleCreationType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleUpdateType {
   #[serde(rename = "update")]
   Update,
@@ -4468,7 +4468,7 @@ impl ToString for RepositoryRuleUpdateType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleDeletionType {
   #[serde(rename = "deletion")]
   Deletion,
@@ -4484,7 +4484,7 @@ impl ToString for RepositoryRuleDeletionType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredLinearHistoryType {
   #[serde(rename = "required_linear_history")]
   RequiredLinearHistory,
@@ -4502,7 +4502,7 @@ impl ToString for RepositoryRuleRequiredLinearHistoryType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredDeploymentsType {
   #[serde(rename = "required_deployments")]
   RequiredDeployments,
@@ -4520,7 +4520,7 @@ impl ToString for RepositoryRuleRequiredDeploymentsType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredSignaturesType {
   #[serde(rename = "required_signatures")]
   RequiredSignatures,
@@ -4536,7 +4536,7 @@ impl ToString for RepositoryRuleRequiredSignaturesType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulePullRequestType {
   #[serde(rename = "pull_request")]
   PullRequest,
@@ -4552,7 +4552,7 @@ impl ToString for RepositoryRulePullRequestType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredStatusChecksType {
   #[serde(rename = "required_status_checks")]
   RequiredStatusChecks,
@@ -4570,7 +4570,7 @@ impl ToString for RepositoryRuleRequiredStatusChecksType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleNonFastForwardType {
   #[serde(rename = "non_fast_forward")]
   NonFastForward,
@@ -4587,7 +4587,7 @@ impl ToString for RepositoryRuleNonFastForwardType {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitMessagePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
@@ -4612,7 +4612,7 @@ impl ToString for RepositoryRuleCommitMessagePatternParametersOperator {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitMessagePatternType {
   #[serde(rename = "commit_message_pattern")]
   CommitMessagePattern,
@@ -4631,7 +4631,7 @@ impl ToString for RepositoryRuleCommitMessagePatternType {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
@@ -4658,7 +4658,7 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternParametersOperator {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitAuthorEmailPatternType {
   #[serde(rename = "commit_author_email_pattern")]
   CommitAuthorEmailPattern,
@@ -4677,7 +4677,7 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitterEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
@@ -4704,7 +4704,7 @@ impl ToString for RepositoryRuleCommitterEmailPatternParametersOperator {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitterEmailPatternType {
   #[serde(rename = "committer_email_pattern")]
   CommitterEmailPattern,
@@ -4723,7 +4723,7 @@ impl ToString for RepositoryRuleCommitterEmailPatternType {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleBranchNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
@@ -4748,7 +4748,7 @@ impl ToString for RepositoryRuleBranchNamePatternParametersOperator {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleBranchNamePatternType {
   #[serde(rename = "branch_name_pattern")]
   BranchNamePattern,
@@ -4765,7 +4765,7 @@ impl ToString for RepositoryRuleBranchNamePatternType {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleTagNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
@@ -4790,7 +4790,7 @@ impl ToString for RepositoryRuleTagNamePatternParametersOperator {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleTagNamePatternType {
   #[serde(rename = "tag_name_pattern")]
   TagNamePattern,
@@ -4806,7 +4806,7 @@ impl ToString for RepositoryRuleTagNamePatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleWorkflowsType {
   #[serde(rename = "workflows")]
   Workflows,
@@ -4859,7 +4859,7 @@ pub enum RepositoryRule {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The type of the source of the ruleset
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetSourceType {
   Repository,
   Organization,
@@ -4877,7 +4877,7 @@ impl ToString for RepositoryRulesetSourceType {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The target of the ruleset
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetTarget {
   #[serde(rename = "branch")]
   Branch,
@@ -4897,7 +4897,7 @@ impl ToString for RepositoryRulesetTarget {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The target of the ruleset.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateOrgRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
@@ -4916,7 +4916,7 @@ impl ToString for ReposCreateOrgRulesetRequestTarget {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetOrgRuleSuitesQueryTimePeriod {
   #[serde(rename = "hour")]
   Hour,
@@ -4941,7 +4941,7 @@ impl ToString for ReposGetOrgRuleSuitesQueryTimePeriod {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetOrgRuleSuitesQueryRuleSuiteResult {
   #[serde(rename = "pass")]
   Pass,
@@ -4967,7 +4967,7 @@ impl ToString for ReposGetOrgRuleSuitesQueryRuleSuiteResult {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuitesItemEvaluationResult {
   #[serde(rename = "pass")]
   Pass,
@@ -4987,7 +4987,7 @@ impl ToString for RuleSuitesItemEvaluationResult {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The result of the rule evaluations for rules with the `active` enforcement status.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuitesItemResult {
   #[serde(rename = "pass")]
   Pass,
@@ -5010,7 +5010,7 @@ impl ToString for RuleSuitesItemResult {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuiteEvaluationResult {
   #[serde(rename = "pass")]
   Pass,
@@ -5030,7 +5030,7 @@ impl ToString for RuleSuiteEvaluationResult {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The result of the rule evaluations for rules with the `active` enforcement status.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuiteResult {
   #[serde(rename = "pass")]
   Pass,
@@ -5053,7 +5053,7 @@ impl ToString for RuleSuiteResult {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The enforcement level of this rule source.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuiteRuleEvaluationsEnforcement {
   #[serde(rename = "active")]
   Active,
@@ -5076,7 +5076,7 @@ impl ToString for RuleSuiteRuleEvaluationsEnforcement {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The result of the evaluation of the individual rule.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuiteRuleEvaluationsResult {
   #[serde(rename = "pass")]
   Pass,
@@ -5096,7 +5096,7 @@ impl ToString for RuleSuiteRuleEvaluationsResult {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The target of the ruleset.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateOrgRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
@@ -5115,7 +5115,7 @@ impl ToString for ReposUpdateOrgRulesetRequestTarget {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForOrgQueryState {
   #[serde(rename = "open")]
   Open,
@@ -5134,7 +5134,7 @@ impl ToString for SecretScanningListAlertsForOrgQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -5153,7 +5153,7 @@ impl ToString for SecretScanningListAlertsForOrgQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -5172,7 +5172,7 @@ impl ToString for SecretScanningListAlertsForOrgQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -5191,7 +5191,7 @@ impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListOrgRepositoryAdvisoriesQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -5213,7 +5213,7 @@ impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryState {
   #[serde(rename = "triage")]
   Triage,
@@ -5239,7 +5239,7 @@ impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryState {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The state of the user's acceptance of the credit.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryCreditState {
   #[serde(rename = "accepted")]
   Accepted,
@@ -5262,7 +5262,7 @@ impl ToString for RepositoryAdvisoryCreditState {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The type of identifier.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
@@ -5282,7 +5282,7 @@ impl ToString for RepositoryAdvisoryIdentifiersType {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The severity of the advisory.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisorySeverity {
   #[serde(rename = "critical")]
   Critical,
@@ -5308,7 +5308,7 @@ impl ToString for RepositoryAdvisorySeverity {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The state of the advisory.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryState {
   #[serde(rename = "published")]
   Published,
@@ -5340,7 +5340,7 @@ impl ToString for RepositoryAdvisoryState {
 ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
 ///  * `notifications_disabled` - no one receives notifications.  
 /// Default: `notifications_enabled`
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsCreateRequestNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
@@ -5364,7 +5364,7 @@ impl ToString for TeamsCreateRequestNotificationSetting {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsCreateRequestPermission {
   #[serde(rename = "pull")]
   Pull,
@@ -5391,7 +5391,7 @@ impl ToString for TeamsCreateRequestPermission {
 /// **For a parent or child team:**  
 ///  * `closed` - visible to all members of this organization.  
 /// Default for child team: `closed`
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsCreateRequestPrivacy {
   #[serde(rename = "secret")]
   Secret,
@@ -5411,7 +5411,7 @@ impl ToString for TeamsCreateRequestPrivacy {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// The notification setting the team has set
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamFullNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
@@ -5431,7 +5431,7 @@ impl ToString for TeamFullNotificationSetting {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// The level of privacy this team should have
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamFullPrivacy {
   #[serde(rename = "closed")]
   Closed,
@@ -5453,7 +5453,7 @@ impl ToString for TeamFullPrivacy {
 /// The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:
 ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
 ///  * `notifications_disabled` - no one receives notifications.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsUpdateInOrgRequestNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
@@ -5477,7 +5477,7 @@ impl ToString for TeamsUpdateInOrgRequestNotificationSetting {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsUpdateInOrgRequestPermission {
   #[serde(rename = "pull")]
   Pull,
@@ -5505,7 +5505,7 @@ impl ToString for TeamsUpdateInOrgRequestPermission {
 ///  * `closed` - visible to all members of this organization.  
 /// **For a parent or child team:**  
 ///  * `closed` - visible to all members of this organization.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsUpdateInOrgRequestPrivacy {
   #[serde(rename = "secret")]
   Secret,
@@ -5524,7 +5524,7 @@ impl ToString for TeamsUpdateInOrgRequestPrivacy {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListDiscussionsInOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -5543,7 +5543,7 @@ impl ToString for TeamsListDiscussionsInOrgQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListDiscussionCommentsInOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -5562,7 +5562,7 @@ impl ToString for TeamsListDiscussionCommentsInOrgQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForTeamDiscussionCommentInOrgQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -5600,7 +5600,7 @@ impl ToString for ReactionsListForTeamDiscussionCommentInOrgQueryContent {
 
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// The reaction to use
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -5638,7 +5638,7 @@ impl ToString for ReactionContent {
 
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForTeamDiscussionCommentInOrgRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -5677,7 +5677,7 @@ impl ToString for ReactionsCreateForTeamDiscussionCommentInOrgRequestContent {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForTeamDiscussionInOrgQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -5715,7 +5715,7 @@ impl ToString for ReactionsListForTeamDiscussionInOrgQueryContent {
 
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForTeamDiscussionInOrgRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -5752,7 +5752,7 @@ impl ToString for ReactionsCreateForTeamDiscussionInOrgRequestContent {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListMembersInOrgQueryRole {
   #[serde(rename = "member")]
   Member,
@@ -5775,7 +5775,7 @@ impl ToString for TeamsListMembersInOrgQueryRole {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// The role of the user in the team.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamMembershipRole {
   #[serde(rename = "member")]
   Member,
@@ -5795,7 +5795,7 @@ impl ToString for TeamMembershipRole {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// The state of the user's membership in the team.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamMembershipState {
   #[serde(rename = "active")]
   Active,
@@ -5815,7 +5815,7 @@ impl ToString for TeamMembershipState {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// The role that this user should have in the team.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsAddOrUpdateMembershipForUserInOrgRequestRole {
   #[serde(rename = "member")]
   Member,
@@ -5835,7 +5835,7 @@ impl ToString for TeamsAddOrUpdateMembershipForUserInOrgRequestRole {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsAddOrUpdateProjectPermissionsInOrgRequestPermission {
   #[serde(rename = "read")]
   Read,
@@ -5857,7 +5857,7 @@ impl ToString for TeamsAddOrUpdateProjectPermissionsInOrgRequestPermission {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersSecurityProduct {
   #[serde(rename = "dependency_graph")]
   DependencyGraph,
@@ -5891,7 +5891,7 @@ impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersSecur
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersEnablement {
   #[serde(rename = "enable_all")]
   EnableAll,
@@ -5916,7 +5916,7 @@ impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersEnabl
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.
 /// If you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestQuerySuite {
   #[serde(rename = "default")]
   Default,
@@ -5939,7 +5939,7 @@ impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestQuerySui
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsListCardsQueryArchivedState {
   #[serde(rename = "all")]
   All,
@@ -5970,7 +5970,7 @@ pub enum ProjectsCreateCardRequest {
 
 #[cfg(any(feature = "full", feature = "projects",))]
 /// The baseline permission that all organization members have on this project
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsUpdateRequestOrganizationPermission {
   #[serde(rename = "read")]
   Read,
@@ -5995,7 +5995,7 @@ impl ToString for ProjectsUpdateRequestOrganizationPermission {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsListCollaboratorsQueryAffiliation {
   #[serde(rename = "outside")]
   Outside,
@@ -6018,7 +6018,7 @@ impl ToString for ProjectsListCollaboratorsQueryAffiliation {
 
 #[cfg(any(feature = "full", feature = "projects",))]
 /// The permission to grant the collaborator.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsAddCollaboratorRequestPermission {
   #[serde(rename = "read")]
   Read,
@@ -6045,7 +6045,7 @@ impl ToString for ProjectsAddCollaboratorRequestPermission {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateRequestMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6071,7 +6071,7 @@ impl ToString for ReposUpdateRequestMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateRequestMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6095,7 +6095,7 @@ impl ToString for ReposUpdateRequestMergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateRequestSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -6121,7 +6121,7 @@ impl ToString for ReposUpdateRequestSquashMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateRequestSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -6141,7 +6141,7 @@ impl ToString for ReposUpdateRequestSquashMergeCommitTitle {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The visibility of the repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateRequestVisibility {
   #[serde(rename = "public")]
   Public,
@@ -6160,7 +6160,7 @@ impl ToString for ReposUpdateRequestVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsGetActionsCacheListQuerySort {
   #[serde(rename = "created_at")]
   CreatedAt,
@@ -6182,7 +6182,7 @@ impl ToString for ActionsGetActionsCacheListQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsGetActionsCacheListQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -6202,7 +6202,7 @@ impl ToString for ActionsGetActionsCacheListQueryDirection {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// The outcome of the job.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum JobConclusion {
   #[serde(rename = "success")]
   Success,
@@ -6237,7 +6237,7 @@ impl ToString for JobConclusion {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// The phase of the lifecycle that the job is currently in.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum JobStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -6269,7 +6269,7 @@ impl ToString for JobStatus {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// The phase of the lifecycle that the job is currently in.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum JobStepsStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -6295,7 +6295,7 @@ impl ToString for JobStepsStatus {
 /// repository.
 ///
 /// `none` means the access is only possible from workflows in this repository. `user` level access allows sharing across user owned private repositories only. `organization` level access allows sharing across the organization.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsWorkflowAccessToRepositoryAccessLevel {
   #[serde(rename = "none")]
   None,
@@ -6317,7 +6317,7 @@ impl ToString for ActionsWorkflowAccessToRepositoryAccessLevel {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsListWorkflowRunsForRepoQueryStatus {
   #[serde(rename = "completed")]
   Completed,
@@ -6373,7 +6373,7 @@ impl ToString for ActionsListWorkflowRunsForRepoQueryStatus {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Whether deployment to the environment(s) was approved or rejected or pending (with comments)
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum EnvironmentApprovalsState {
   #[serde(rename = "approved")]
   Approved,
@@ -6396,7 +6396,7 @@ impl ToString for EnvironmentApprovalsState {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Whether to approve or reject deployment to the specified environments.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReviewCustomGatesStateRequiredState {
   #[serde(rename = "approved")]
   Approved,
@@ -6423,7 +6423,7 @@ pub enum ActionsReviewCustomGatesForRunRequest {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsListJobsForWorkflowRunQueryFilter {
   #[serde(rename = "latest")]
   Latest,
@@ -6453,7 +6453,7 @@ pub enum PendingDeploymentReviewersReviewer {
 
 #[cfg(any(feature = "full", feature = "actions", feature = "repos",))]
 /// The type of reviewer.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentReviewerType {
   User,
   Team,
@@ -6471,7 +6471,7 @@ impl ToString for DeploymentReviewerType {
 
 #[cfg(any(feature = "full", feature = "actions",))]
 /// Whether to approve or reject deployment to the specified environments.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsReviewPendingDeploymentsForRunRequestState {
   #[serde(rename = "approved")]
   Approved,
@@ -6490,7 +6490,7 @@ impl ToString for ActionsReviewPendingDeploymentsForRunRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowState {
   #[serde(rename = "active")]
   Active,
@@ -6518,7 +6518,7 @@ impl ToString for WorkflowState {
 }
 
 #[cfg(any(feature = "full", feature = "actions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsListWorkflowRunsQueryStatus {
   #[serde(rename = "completed")]
   Completed,
@@ -6573,7 +6573,7 @@ impl ToString for ActionsListWorkflowRunsQueryStatus {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListActivitiesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -6592,7 +6592,7 @@ impl ToString for ReposListActivitiesQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListActivitiesQueryTimePeriod {
   #[serde(rename = "day")]
   Day,
@@ -6620,7 +6620,7 @@ impl ToString for ReposListActivitiesQueryTimePeriod {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListActivitiesQueryActivityType {
   #[serde(rename = "push")]
   Push,
@@ -6652,7 +6652,7 @@ impl ToString for ReposListActivitiesQueryActivityType {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The type of the activity that was performed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActivityActivityType {
   #[serde(rename = "push")]
   Push,
@@ -6683,7 +6683,7 @@ impl ToString for ActivityActivityType {
 }
 
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DiffEntryStatus {
   #[serde(rename = "added")]
   Added,
@@ -6813,7 +6813,7 @@ pub enum ReposRemoveUserAccessRestrictionsRequest {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksCreateRequestItem1Status {
   #[serde(rename = "completed")]
   Completed,
@@ -6829,7 +6829,7 @@ impl ToString for ChecksCreateRequestItem1Status {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksCreateRequestItem2Status {
   #[serde(rename = "queued")]
   Queued,
@@ -6856,7 +6856,7 @@ pub enum ChecksCreateRequest {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckRunConclusion {
   #[serde(rename = "success")]
   Success,
@@ -6891,7 +6891,7 @@ impl ToString for CheckRunConclusion {
 
 #[cfg(any(feature = "full", feature = "checks",))]
 /// The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckRunStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -6922,7 +6922,7 @@ impl ToString for CheckRunStatus {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksUpdateRequestItem1Status {
   #[serde(rename = "completed")]
   Completed,
@@ -6938,7 +6938,7 @@ impl ToString for ChecksUpdateRequestItem1Status {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksUpdateRequestItem2Status {
   #[serde(rename = "queued")]
   Queued,
@@ -6965,7 +6965,7 @@ pub enum ChecksUpdateRequest {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
@@ -7006,7 +7006,7 @@ impl ToString for CheckSuiteConclusion {
 
 #[cfg(any(feature = "full", feature = "checks",))]
 /// The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckSuiteStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -7037,7 +7037,7 @@ impl ToString for CheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksListForSuiteQueryStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -7059,7 +7059,7 @@ impl ToString for ChecksListForSuiteQueryStatus {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksListForSuiteQueryFilter {
   #[serde(rename = "latest")]
   Latest,
@@ -7078,7 +7078,7 @@ impl ToString for ChecksListForSuiteQueryFilter {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListAlertsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -7097,7 +7097,7 @@ impl ToString for CodeScanningListAlertsForRepoQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListAlertsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -7117,7 +7117,7 @@ impl ToString for CodeScanningListAlertsForRepoQuerySort {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// The security severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertRuleSecuritySeverityLevel {
   #[serde(rename = "low")]
   Low,
@@ -7143,7 +7143,7 @@ impl ToString for CodeScanningAlertRuleSecuritySeverityLevel {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// The severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
@@ -7169,7 +7169,7 @@ impl ToString for CodeScanningAlertRuleSeverity {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertSetState {
   #[serde(rename = "open")]
   Open,
@@ -7188,7 +7188,7 @@ impl ToString for CodeScanningAlertSetState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListRecentAnalysesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -7207,7 +7207,7 @@ impl ToString for CodeScanningListRecentAnalysesQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListRecentAnalysesQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -7223,7 +7223,7 @@ impl ToString for CodeScanningListRecentAnalysesQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupLanguages {
   #[serde(rename = "c-cpp")]
   CCpp,
@@ -7269,7 +7269,7 @@ impl ToString for CodeScanningDefaultSetupLanguages {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// CodeQL query suite to be used.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupQuerySuite {
   #[serde(rename = "default")]
   Default,
@@ -7289,7 +7289,7 @@ impl ToString for CodeScanningDefaultSetupQuerySuite {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// The frequency of the periodic analysis.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupSchedule {
   #[serde(rename = "weekly")]
   Weekly,
@@ -7306,7 +7306,7 @@ impl ToString for CodeScanningDefaultSetupSchedule {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// Code scanning default setup has been configured or not.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupState {
   #[serde(rename = "configured")]
   Configured,
@@ -7325,7 +7325,7 @@ impl ToString for CodeScanningDefaultSetupState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupUpdateLanguages {
   #[serde(rename = "c-cpp")]
   CCpp,
@@ -7365,7 +7365,7 @@ impl ToString for CodeScanningDefaultSetupUpdateLanguages {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// CodeQL query suite to be used.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupUpdateQuerySuite {
   #[serde(rename = "default")]
   Default,
@@ -7385,7 +7385,7 @@ impl ToString for CodeScanningDefaultSetupUpdateQuerySuite {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// The desired state of code scanning default setup.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupUpdateState {
   #[serde(rename = "configured")]
   Configured,
@@ -7412,7 +7412,7 @@ pub enum CodeScanningUpdateDefaultSetupResponse {
 
 #[cfg(any(feature = "full", feature = "code_scanning",))]
 /// `pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningSarifsStatusProcessingStatus {
   #[serde(rename = "pending")]
   Pending,
@@ -7435,7 +7435,7 @@ impl ToString for CodeScanningSarifsStatusProcessingStatus {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateWithRepoForAuthenticatedUserRequestGeo {
   EuropeWest,
   SoutheastAsia,
@@ -7460,7 +7460,7 @@ impl ToString for CodespacesCreateWithRepoForAuthenticatedUserRequestGeo {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListCollaboratorsQueryAffiliation {
   #[serde(rename = "outside")]
   Outside,
@@ -7482,7 +7482,7 @@ impl ToString for ReposListCollaboratorsQueryAffiliation {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListCollaboratorsQueryPermission {
   #[serde(rename = "pull")]
   Pull,
@@ -7511,7 +7511,7 @@ impl ToString for ReposListCollaboratorsQueryPermission {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The permission associated with the invitation.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryInvitationPermissions {
   #[serde(rename = "read")]
   Read,
@@ -7539,7 +7539,7 @@ impl ToString for RepositoryInvitationPermissions {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForCommitCommentQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -7577,7 +7577,7 @@ impl ToString for ReactionsListForCommitCommentQueryContent {
 
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForCommitCommentRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -7615,7 +7615,7 @@ impl ToString for ReactionsCreateForCommitCommentRequestContent {
 
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
 /// The merge method to use.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AutoMergeMergeMethod {
   #[serde(rename = "merge")]
   Merge,
@@ -7637,7 +7637,7 @@ impl ToString for AutoMergeMergeMethod {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksListForRefQueryStatus {
   #[serde(rename = "queued")]
   Queued,
@@ -7659,7 +7659,7 @@ impl ToString for ChecksListForRefQueryStatus {
 }
 
 #[cfg(any(feature = "full", feature = "checks",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksListForRefQueryFilter {
   #[serde(rename = "latest")]
   Latest,
@@ -7678,7 +7678,7 @@ impl ToString for ChecksListForRefQueryFilter {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CommitComparisonStatus {
   #[serde(rename = "diverged")]
   Diverged,
@@ -7703,7 +7703,7 @@ impl ToString for CommitComparisonStatus {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentDirectoryItemType {
   #[serde(rename = "dir")]
   Dir,
@@ -7728,7 +7728,7 @@ impl ToString for ContentDirectoryItemType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentFileType {
   #[serde(rename = "file")]
   File,
@@ -7744,7 +7744,7 @@ impl ToString for ContentFileType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentSymlinkType {
   #[serde(rename = "symlink")]
   Symlink,
@@ -7760,7 +7760,7 @@ impl ToString for ContentSymlinkType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentSubmoduleType {
   #[serde(rename = "submodule")]
   Submodule,
@@ -7789,7 +7789,7 @@ pub enum ReposGetContentResponse {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForRepoQueryScope {
   #[serde(rename = "development")]
   Development,
@@ -7808,7 +7808,7 @@ impl ToString for DependabotListAlertsForRepoQueryScope {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -7827,7 +7827,7 @@ impl ToString for DependabotListAlertsForRepoQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -7847,7 +7847,7 @@ impl ToString for DependabotListAlertsForRepoQueryDirection {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// The execution scope of the vulnerable dependency.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertDependencyScope {
   #[serde(rename = "development")]
   Development,
@@ -7867,7 +7867,7 @@ impl ToString for DependabotAlertDependencyScope {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// The reason that the alert was dismissed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
@@ -7896,7 +7896,7 @@ impl ToString for DependabotAlertDismissedReason {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// The state of the Dependabot alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertState {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
@@ -7922,7 +7922,7 @@ impl ToString for DependabotAlertState {
 
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// **Required when `state` is `dismissed`.** A reason for dismissing the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotUpdateAlertRequestDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
@@ -7952,7 +7952,7 @@ impl ToString for DependabotUpdateAlertRequestDismissedReason {
 #[cfg(any(feature = "full", feature = "dependabot",))]
 /// The state of the Dependabot alert.
 /// A `dismissed_reason` must be provided when setting the state to `dismissed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotUpdateAlertRequestState {
   #[serde(rename = "dismissed")]
   Dismissed,
@@ -7971,7 +7971,7 @@ impl ToString for DependabotUpdateAlertRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependencyGraphDiffItemChangeType {
   #[serde(rename = "added")]
   Added,
@@ -7991,7 +7991,7 @@ impl ToString for DependencyGraphDiffItemChangeType {
 
 #[cfg(any(feature = "full", feature = "dependency_graph",))]
 /// Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependencyGraphDiffItemScope {
   #[serde(rename = "unknown")]
   Unknown,
@@ -8021,7 +8021,7 @@ pub enum ReposCreateDeploymentResponse {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The state of the status.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentStatusState {
   #[serde(rename = "error")]
   Error,
@@ -8056,7 +8056,7 @@ impl ToString for DeploymentStatusState {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateDeploymentStatusRequestState {
   #[serde(rename = "error")]
   Error,
@@ -8110,7 +8110,7 @@ pub enum EnvironmentProtectionRules {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Whether this rule targets a branch or tag.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentBranchPolicyType {
   #[serde(rename = "branch")]
   Branch,
@@ -8130,7 +8130,7 @@ impl ToString for DeploymentBranchPolicyType {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Whether this rule targets a branch or tag
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentBranchPolicyNamePatternWithTypeType {
   #[serde(rename = "branch")]
   Branch,
@@ -8149,7 +8149,7 @@ impl ToString for DeploymentBranchPolicyNamePatternWithTypeType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForksQuerySort {
   #[serde(rename = "newest")]
   Newest,
@@ -8175,7 +8175,7 @@ impl ToString for ReposListForksQuerySort {
 
 #[cfg(any(feature = "full", feature = "git",))]
 /// The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GitCreateTagRequestType {
   #[serde(rename = "commit")]
   Commit,
@@ -8198,7 +8198,7 @@ impl ToString for GitCreateTagRequestType {
 
 #[cfg(any(feature = "full", feature = "git",))]
 /// The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GitCreateTreeRequestTreeMode {
   #[serde(rename = "100644")]
   _100644,
@@ -8227,7 +8227,7 @@ impl ToString for GitCreateTreeRequestTreeMode {
 
 #[cfg(any(feature = "full", feature = "git",))]
 /// Either `blob`, `tree`, or `commit`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GitCreateTreeRequestTreeType {
   #[serde(rename = "blob")]
   Blob,
@@ -8249,7 +8249,7 @@ impl ToString for GitCreateTreeRequestTreeType {
 }
 
 #[cfg(any(feature = "full", feature = "migrations",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ImportStatus {
   #[serde(rename = "auth")]
   Auth,
@@ -8311,7 +8311,7 @@ impl ToString for ImportStatus {
 
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsStartImportRequestVcs {
   #[serde(rename = "subversion")]
   Subversion,
@@ -8337,7 +8337,7 @@ impl ToString for MigrationsStartImportRequestVcs {
 
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// The type of version control system you are migrating from.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsUpdateImportRequestVcs {
   #[serde(rename = "subversion")]
   Subversion,
@@ -8363,7 +8363,7 @@ impl ToString for MigrationsUpdateImportRequestVcs {
 
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsSetLfsPreferenceRequestUseLfs {
   #[serde(rename = "opt_in")]
   OptIn,
@@ -8392,7 +8392,7 @@ pub enum InteractionsGetRestrictionsForRepoResponse {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateInvitationRequestPermissions {
   #[serde(rename = "read")]
   Read,
@@ -8420,7 +8420,7 @@ impl ToString for ReposUpdateInvitationRequestPermissions {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForRepoQueryState {
   #[serde(rename = "open")]
   Open,
@@ -8442,7 +8442,7 @@ impl ToString for IssuesListForRepoQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -8464,7 +8464,7 @@ impl ToString for IssuesListForRepoQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -8483,7 +8483,7 @@ impl ToString for IssuesListForRepoQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListCommentsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -8502,7 +8502,7 @@ impl ToString for IssuesListCommentsForRepoQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListCommentsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -8521,7 +8521,7 @@ impl ToString for IssuesListCommentsForRepoQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForIssueCommentQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -8559,7 +8559,7 @@ impl ToString for ReactionsListForIssueCommentQueryContent {
 
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForIssueCommentRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -8597,7 +8597,7 @@ impl ToString for ReactionsCreateForIssueCommentRequestContent {
 
 #[cfg(any(feature = "full", feature = "issues",))]
 /// The open or closed state of the issue.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesUpdateRequestState {
   #[serde(rename = "open")]
   Open,
@@ -8617,7 +8617,7 @@ impl ToString for IssuesUpdateRequestState {
 
 #[cfg(any(feature = "full", feature = "issues",))]
 /// The reason for the state change. Ignored unless `state` is changed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesUpdateRequestStateReason {
   #[serde(rename = "completed")]
   Completed,
@@ -8702,7 +8702,7 @@ pub enum IssuesSetLabelsRequest {
 ///  * `too heated`  
 ///  * `resolved`  
 ///  * `spam`
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesLockRequestLockReason {
   #[serde(rename = "off-topic")]
   OffTopic,
@@ -8727,7 +8727,7 @@ impl ToString for IssuesLockRequestLockReason {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForIssueQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -8765,7 +8765,7 @@ impl ToString for ReactionsListForIssueQueryContent {
 
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForIssueRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -8803,7 +8803,7 @@ impl ToString for ReactionsCreateForIssueRequestContent {
 
 #[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 /// The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentSide {
   #[serde(rename = "LEFT")]
   Left,
@@ -8823,7 +8823,7 @@ impl ToString for PullRequestReviewCommentSide {
 
 #[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 /// The side of the first line of the range for a multi-line comment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentStartSide {
   #[serde(rename = "LEFT")]
   Left,
@@ -8843,7 +8843,7 @@ impl ToString for PullRequestReviewCommentStartSide {
 
 #[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
 /// The level at which the comment is targeted, can be a diff line or a file.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentSubjectType {
   #[serde(rename = "line")]
   Line,
@@ -8912,7 +8912,7 @@ pub enum TimelineIssueEvents {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MergedUpstreamMergeType {
   #[serde(rename = "merge")]
   Merge,
@@ -8934,7 +8934,7 @@ impl ToString for MergedUpstreamMergeType {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListMilestonesQueryState {
   #[serde(rename = "open")]
   Open,
@@ -8956,7 +8956,7 @@ impl ToString for IssuesListMilestonesQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListMilestonesQuerySort {
   #[serde(rename = "due_on")]
   DueOn,
@@ -8975,7 +8975,7 @@ impl ToString for IssuesListMilestonesQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListMilestonesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -8995,7 +8995,7 @@ impl ToString for IssuesListMilestonesQueryDirection {
 
 #[cfg(any(feature = "full", feature = "issues",))]
 /// The state of the milestone. Either `open` or `closed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesCreateMilestoneRequestState {
   #[serde(rename = "open")]
   Open,
@@ -9015,7 +9015,7 @@ impl ToString for IssuesCreateMilestoneRequestState {
 
 #[cfg(any(feature = "full", feature = "issues",))]
 /// The state of the milestone. Either `open` or `closed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesUpdateMilestoneRequestState {
   #[serde(rename = "open")]
   Open,
@@ -9035,7 +9035,7 @@ impl ToString for IssuesUpdateMilestoneRequestState {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The process in which the Page will be built.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PageBuildType {
   #[serde(rename = "legacy")]
   Legacy,
@@ -9054,7 +9054,7 @@ impl ToString for PageBuildType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PagesHttpsCertificateState {
   #[serde(rename = "new")]
   New,
@@ -9104,7 +9104,7 @@ impl ToString for PagesHttpsCertificateState {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The state if the domain is verified
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PageProtectedDomainState {
   #[serde(rename = "pending")]
   Pending,
@@ -9127,7 +9127,7 @@ impl ToString for PageProtectedDomainState {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The status of the most recent build of the Page.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PageStatus {
   #[serde(rename = "built")]
   Built,
@@ -9150,7 +9150,7 @@ impl ToString for PageStatus {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The current status of the deployment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PagesDeploymentStatusStatus {
   #[serde(rename = "deployment_in_progress")]
   DeploymentInProgress,
@@ -9205,7 +9205,7 @@ pub enum ReposGetPagesHealthCheckResponse {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsListForRepoQueryState {
   #[serde(rename = "open")]
   Open,
@@ -9227,7 +9227,7 @@ impl ToString for ProjectsListForRepoQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListQueryState {
   #[serde(rename = "open")]
   Open,
@@ -9249,7 +9249,7 @@ impl ToString for PullsListQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -9274,7 +9274,7 @@ impl ToString for PullsListQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -9294,7 +9294,7 @@ impl ToString for PullsListQueryDirection {
 
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// State of this Pull Request. Either `open` or `closed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestState {
   #[serde(rename = "open")]
   Open,
@@ -9313,7 +9313,7 @@ impl ToString for PullRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListReviewCommentsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -9335,7 +9335,7 @@ impl ToString for PullsListReviewCommentsForRepoQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListReviewCommentsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -9354,7 +9354,7 @@ impl ToString for PullsListReviewCommentsForRepoQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForPullRequestReviewCommentQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -9392,7 +9392,7 @@ impl ToString for ReactionsListForPullRequestReviewCommentQueryContent {
 
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the pull request review comment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForPullRequestReviewCommentRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -9430,7 +9430,7 @@ impl ToString for ReactionsCreateForPullRequestReviewCommentRequestContent {
 
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// State of this Pull Request. Either `open` or `closed`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsUpdateRequestState {
   #[serde(rename = "open")]
   Open,
@@ -9450,7 +9450,7 @@ impl ToString for PullsUpdateRequestState {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateWithPrForAuthenticatedUserRequestGeo {
   EuropeWest,
   SoutheastAsia,
@@ -9473,7 +9473,7 @@ impl ToString for CodespacesCreateWithPrForAuthenticatedUserRequestGeo {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListReviewCommentsQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -9492,7 +9492,7 @@ impl ToString for PullsListReviewCommentsQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListReviewCommentsQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -9512,7 +9512,7 @@ impl ToString for PullsListReviewCommentsQueryDirection {
 
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// In a split diff view, the side of the diff that the pull request's changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see "[Diff view options](https://docs.github.com/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub Help documentation.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsCreateReviewCommentRequestSide {
   #[serde(rename = "LEFT")]
   Left,
@@ -9532,7 +9532,7 @@ impl ToString for PullsCreateReviewCommentRequestSide {
 
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// **Required when using multi-line comments unless using `in_reply_to`**. The `start_side` is the starting side of the diff that the comment applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation. See `side` in this table for additional context.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsCreateReviewCommentRequestStartSide {
   #[serde(rename = "LEFT")]
   Left,
@@ -9555,7 +9555,7 @@ impl ToString for PullsCreateReviewCommentRequestStartSide {
 
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// The level at which the comment is targeted.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsCreateReviewCommentRequestSubjectType {
   #[serde(rename = "line")]
   Line,
@@ -9575,7 +9575,7 @@ impl ToString for PullsCreateReviewCommentRequestSubjectType {
 
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// The merge method to use.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsMergeRequestMergeMethod {
   #[serde(rename = "merge")]
   Merge,
@@ -9598,7 +9598,7 @@ impl ToString for PullsMergeRequestMergeMethod {
 
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsCreateReviewRequestEvent {
   #[serde(rename = "APPROVE")]
   Approve,
@@ -9621,7 +9621,7 @@ impl ToString for PullsCreateReviewRequestEvent {
 
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// The side of the first line of the range for a multi-line comment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReviewCommentSide {
   #[serde(rename = "LEFT")]
   Left,
@@ -9641,7 +9641,7 @@ impl ToString for ReviewCommentSide {
 
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// The side of the first line of the range for a multi-line comment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReviewCommentStartSide {
   #[serde(rename = "LEFT")]
   Left,
@@ -9660,7 +9660,7 @@ impl ToString for ReviewCommentStartSide {
 }
 
 #[cfg(any(feature = "full", feature = "pulls",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsDismissReviewRequestEvent {
   #[serde(rename = "DISMISS")]
   Dismiss,
@@ -9677,7 +9677,7 @@ impl ToString for PullsDismissReviewRequestEvent {
 
 #[cfg(any(feature = "full", feature = "pulls",))]
 /// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsSubmitReviewRequestEvent {
   #[serde(rename = "APPROVE")]
   Approve,
@@ -9700,7 +9700,7 @@ impl ToString for PullsSubmitReviewRequestEvent {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// State of the release asset.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReleaseAssetState {
   #[serde(rename = "uploaded")]
   Uploaded,
@@ -9720,7 +9720,7 @@ impl ToString for ReleaseAssetState {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateReleaseRequestMakeLatest {
   #[serde(rename = "true")]
   True,
@@ -9743,7 +9743,7 @@ impl ToString for ReposCreateReleaseRequestMakeLatest {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateReleaseRequestMakeLatest {
   #[serde(rename = "true")]
   True,
@@ -9765,7 +9765,7 @@ impl ToString for ReposUpdateReleaseRequestMakeLatest {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForReleaseQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -9797,7 +9797,7 @@ impl ToString for ReactionsListForReleaseQueryContent {
 
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForReleaseRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -9829,7 +9829,7 @@ impl ToString for ReactionsCreateForReleaseRequestContent {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The type of source for the ruleset that includes this rule.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRulesetInfoRulesetSourceType {
   Repository,
   Organization,
@@ -10018,7 +10018,7 @@ pub enum RepositoryRuleDetailed {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The target of the ruleset.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateRepoRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
@@ -10037,7 +10037,7 @@ impl ToString for ReposCreateRepoRulesetRequestTarget {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetRepoRuleSuitesQueryTimePeriod {
   #[serde(rename = "hour")]
   Hour,
@@ -10062,7 +10062,7 @@ impl ToString for ReposGetRepoRuleSuitesQueryTimePeriod {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetRepoRuleSuitesQueryRuleSuiteResult {
   #[serde(rename = "pass")]
   Pass,
@@ -10088,7 +10088,7 @@ impl ToString for ReposGetRepoRuleSuitesQueryRuleSuiteResult {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The target of the ruleset.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateRepoRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
@@ -10107,7 +10107,7 @@ impl ToString for ReposUpdateRepoRulesetRequestTarget {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForRepoQueryState {
   #[serde(rename = "open")]
   Open,
@@ -10126,7 +10126,7 @@ impl ToString for SecretScanningListAlertsForRepoQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -10145,7 +10145,7 @@ impl ToString for SecretScanningListAlertsForRepoQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -10165,7 +10165,7 @@ impl ToString for SecretScanningListAlertsForRepoQueryDirection {
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// The token status as of the latest validity check.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertValidity {
   #[serde(rename = "active")]
   Active,
@@ -10220,7 +10220,7 @@ pub enum SecretScanningLocationDetails {
 
 #[cfg(any(feature = "full", feature = "secret_scanning",))]
 /// The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningLocationType {
   #[serde(rename = "commit")]
   Commit,
@@ -10274,7 +10274,7 @@ impl ToString for SecretScanningLocationType {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListRepositoryAdvisoriesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -10293,7 +10293,7 @@ impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListRepositoryAdvisoriesQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -10315,7 +10315,7 @@ impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListRepositoryAdvisoriesQueryState {
   #[serde(rename = "triage")]
   Triage,
@@ -10341,7 +10341,7 @@ impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQueryState {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryCreateSeverity {
   #[serde(rename = "critical")]
   Critical,
@@ -10367,7 +10367,7 @@ impl ToString for RepositoryAdvisoryCreateSeverity {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PrivateVulnerabilityReportCreateSeverity {
   #[serde(rename = "critical")]
   Critical,
@@ -10393,7 +10393,7 @@ impl ToString for PrivateVulnerabilityReportCreateSeverity {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryUpdateSeverity {
   #[serde(rename = "critical")]
   Critical,
@@ -10419,7 +10419,7 @@ impl ToString for RepositoryAdvisoryUpdateSeverity {
 
 #[cfg(any(feature = "full", feature = "security_advisories",))]
 /// The state of the advisory.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryUpdateState {
   #[serde(rename = "published")]
   Published,
@@ -10450,7 +10450,7 @@ pub enum ActivityListStargazersForRepoResponse {
 
 #[cfg(any(feature = "full", feature = "repos",))]
 /// The state of the status.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateCommitStatusRequestState {
   #[serde(rename = "error")]
   Error,
@@ -10475,7 +10475,7 @@ impl ToString for ReposCreateCommitStatusRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetClonesQueryPer {
   #[serde(rename = "day")]
   Day,
@@ -10494,7 +10494,7 @@ impl ToString for ReposGetClonesQueryPer {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetViewsQueryPer {
   #[serde(rename = "day")]
   Day,
@@ -10513,7 +10513,7 @@ impl ToString for ReposGetViewsQueryPer {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchCodeQuerySort {
   #[serde(rename = "indexed")]
   Indexed,
@@ -10529,7 +10529,7 @@ impl ToString for SearchCodeQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchCodeQueryOrder {
   #[serde(rename = "desc")]
   Desc,
@@ -10548,7 +10548,7 @@ impl ToString for SearchCodeQueryOrder {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchCommitsQuerySort {
   #[serde(rename = "author-date")]
   AuthorDate,
@@ -10567,7 +10567,7 @@ impl ToString for SearchCommitsQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchCommitsQueryOrder {
   #[serde(rename = "desc")]
   Desc,
@@ -10586,7 +10586,7 @@ impl ToString for SearchCommitsQueryOrder {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchIssuesAndPullRequestsQuerySort {
   #[serde(rename = "comments")]
   Comments,
@@ -10634,7 +10634,7 @@ impl ToString for SearchIssuesAndPullRequestsQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchIssuesAndPullRequestsQueryOrder {
   #[serde(rename = "desc")]
   Desc,
@@ -10653,7 +10653,7 @@ impl ToString for SearchIssuesAndPullRequestsQueryOrder {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchLabelsQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -10672,7 +10672,7 @@ impl ToString for SearchLabelsQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchLabelsQueryOrder {
   #[serde(rename = "desc")]
   Desc,
@@ -10691,7 +10691,7 @@ impl ToString for SearchLabelsQueryOrder {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchReposQuerySort {
   #[serde(rename = "stars")]
   Stars,
@@ -10716,7 +10716,7 @@ impl ToString for SearchReposQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchReposQueryOrder {
   #[serde(rename = "desc")]
   Desc,
@@ -10735,7 +10735,7 @@ impl ToString for SearchReposQueryOrder {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchUsersQuerySort {
   #[serde(rename = "followers")]
   Followers,
@@ -10757,7 +10757,7 @@ impl ToString for SearchUsersQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "search",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchUsersQueryOrder {
   #[serde(rename = "desc")]
   Desc,
@@ -10779,7 +10779,7 @@ impl ToString for SearchUsersQueryOrder {
 /// The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:
 ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
 ///  * `notifications_disabled` - no one receives notifications.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsUpdateLegacyRequestNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
@@ -10803,7 +10803,7 @@ impl ToString for TeamsUpdateLegacyRequestNotificationSetting {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsUpdateLegacyRequestPermission {
   #[serde(rename = "pull")]
   Pull,
@@ -10831,7 +10831,7 @@ impl ToString for TeamsUpdateLegacyRequestPermission {
 ///  * `closed` - visible to all members of this organization.  
 /// **For a parent or child team:**  
 ///  * `closed` - visible to all members of this organization.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsUpdateLegacyRequestPrivacy {
   #[serde(rename = "secret")]
   Secret,
@@ -10850,7 +10850,7 @@ impl ToString for TeamsUpdateLegacyRequestPrivacy {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListDiscussionsLegacyQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -10869,7 +10869,7 @@ impl ToString for TeamsListDiscussionsLegacyQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListDiscussionCommentsLegacyQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -10888,7 +10888,7 @@ impl ToString for TeamsListDiscussionCommentsLegacyQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForTeamDiscussionCommentLegacyQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -10926,7 +10926,7 @@ impl ToString for ReactionsListForTeamDiscussionCommentLegacyQueryContent {
 
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForTeamDiscussionCommentLegacyRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -10965,7 +10965,7 @@ impl ToString for ReactionsCreateForTeamDiscussionCommentLegacyRequestContent {
 }
 
 #[cfg(any(feature = "full", feature = "reactions",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForTeamDiscussionLegacyQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -11003,7 +11003,7 @@ impl ToString for ReactionsListForTeamDiscussionLegacyQueryContent {
 
 #[cfg(any(feature = "full", feature = "reactions",))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForTeamDiscussionLegacyRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
@@ -11040,7 +11040,7 @@ impl ToString for ReactionsCreateForTeamDiscussionLegacyRequestContent {
 }
 
 #[cfg(any(feature = "full", feature = "teams",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListMembersLegacyQueryRole {
   #[serde(rename = "member")]
   Member,
@@ -11063,7 +11063,7 @@ impl ToString for TeamsListMembersLegacyQueryRole {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// The role that this user should have in the team.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsAddOrUpdateMembershipForUserLegacyRequestRole {
   #[serde(rename = "member")]
   Member,
@@ -11083,7 +11083,7 @@ impl ToString for TeamsAddOrUpdateMembershipForUserLegacyRequestRole {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsAddOrUpdateProjectPermissionsLegacyRequestPermission {
   #[serde(rename = "read")]
   Read,
@@ -11106,7 +11106,7 @@ impl ToString for TeamsAddOrUpdateProjectPermissionsLegacyRequestPermission {
 
 #[cfg(any(feature = "full", feature = "teams",))]
 /// The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsAddOrUpdateRepoPermissionsLegacyRequestPermission {
   #[serde(rename = "pull")]
   Pull,
@@ -11139,7 +11139,7 @@ pub enum UsersGetAuthenticatedResponse {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateForAuthenticatedUserRequestItem1Geo {
   EuropeWest,
   SoutheastAsia,
@@ -11163,7 +11163,7 @@ impl ToString for CodespacesCreateForAuthenticatedUserRequestItem1Geo {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateForAuthenticatedUserRequestItem2Geo {
   EuropeWest,
   SoutheastAsia,
@@ -11199,7 +11199,7 @@ pub enum CodespacesCreateForAuthenticatedUserRequest {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// The type of repositories in the organization that the secret is visible to
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesSecretVisibility {
   #[serde(rename = "all")]
   All,
@@ -11222,7 +11222,7 @@ impl ToString for CodespacesSecretVisibility {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// The initally assigned location of a new codespace.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceWithFullRepositoryLocation {
   EastUs,
   SouthEastAsia,
@@ -11244,7 +11244,7 @@ impl ToString for CodespaceWithFullRepositoryLocation {
 
 #[cfg(any(feature = "full", feature = "codespaces",))]
 /// State of this codespace.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceWithFullRepositoryState {
   Unknown,
   Created,
@@ -11292,7 +11292,7 @@ impl ToString for CodespaceWithFullRepositoryState {
 
 #[cfg(any(feature = "full", feature = "users",))]
 /// Denotes whether an email is publicly visible.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility {
   #[serde(rename = "public")]
   Public,
@@ -11347,7 +11347,7 @@ pub enum InteractionsGetRestrictionsForAuthenticatedUserResponse {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForAuthenticatedUserQueryFilter {
   #[serde(rename = "assigned")]
   Assigned,
@@ -11378,7 +11378,7 @@ impl ToString for IssuesListForAuthenticatedUserQueryFilter {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForAuthenticatedUserQueryState {
   #[serde(rename = "open")]
   Open,
@@ -11400,7 +11400,7 @@ impl ToString for IssuesListForAuthenticatedUserQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForAuthenticatedUserQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -11422,7 +11422,7 @@ impl ToString for IssuesListForAuthenticatedUserQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "issues",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForAuthenticatedUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -11441,7 +11441,7 @@ impl ToString for IssuesListForAuthenticatedUserQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "orgs",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListMembershipsForAuthenticatedUserQueryState {
   #[serde(rename = "active")]
   Active,
@@ -11461,7 +11461,7 @@ impl ToString for OrgsListMembershipsForAuthenticatedUserQueryState {
 
 #[cfg(any(feature = "full", feature = "orgs",))]
 /// The state that the membership should be in. Only `"active"` will be accepted.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsUpdateMembershipForAuthenticatedUserRequestState {
   #[serde(rename = "active")]
   Active,
@@ -11478,7 +11478,7 @@ impl ToString for OrgsUpdateMembershipForAuthenticatedUserRequestState {
 
 #[cfg(any(feature = "full", feature = "migrations",))]
 /// Allowed values that can be passed to the exclude param.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsStartForAuthenticatedUserRequestExclude {
   #[serde(rename = "repositories")]
   Repositories,
@@ -11494,7 +11494,7 @@ impl ToString for MigrationsStartForAuthenticatedUserRequestExclude {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForAuthenticatedUserQueryPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -11527,7 +11527,7 @@ impl ToString for PackagesListPackagesForAuthenticatedUserQueryPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForAuthenticatedUserQueryVisibility {
   #[serde(rename = "public")]
   Public,
@@ -11549,7 +11549,7 @@ impl ToString for PackagesListPackagesForAuthenticatedUserQueryVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -11584,7 +11584,7 @@ impl ToString for PackagesGetPackageForAuthenticatedUserParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -11621,7 +11621,7 @@ impl ToString for PackagesDeletePackageForAuthenticatedUserParametersPackageType
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -11658,7 +11658,7 @@ impl ToString for PackagesRestorePackageForAuthenticatedUserParametersPackageTyp
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -11691,7 +11691,7 @@ impl ToString
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQueryState {
   #[serde(rename = "active")]
   Active,
@@ -11714,7 +11714,7 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUse
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageVersionForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -11755,7 +11755,7 @@ impl ToString for PackagesGetPackageVersionForAuthenticatedUserParametersPackage
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageVersionForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -11798,7 +11798,7 @@ impl ToString for PackagesDeletePackageVersionForAuthenticatedUserParametersPack
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageVersionForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -11841,7 +11841,7 @@ impl ToString for PackagesRestorePackageVersionForAuthenticatedUserParametersPac
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForAuthenticatedUserQueryVisibility {
   #[serde(rename = "all")]
   All,
@@ -11863,7 +11863,7 @@ impl ToString for ReposListForAuthenticatedUserQueryVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForAuthenticatedUserQueryType {
   #[serde(rename = "all")]
   All,
@@ -11891,7 +11891,7 @@ impl ToString for ReposListForAuthenticatedUserQueryType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForAuthenticatedUserQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -11916,7 +11916,7 @@ impl ToString for ReposListForAuthenticatedUserQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForAuthenticatedUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -11940,7 +11940,7 @@ impl ToString for ReposListForAuthenticatedUserQueryDirection {
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateForAuthenticatedUserRequestMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -11966,7 +11966,7 @@ impl ToString for ReposCreateForAuthenticatedUserRequestMergeCommitMessage {
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateForAuthenticatedUserRequestMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -11992,7 +11992,7 @@ impl ToString for ReposCreateForAuthenticatedUserRequestMergeCommitTitle {
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
 /// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateForAuthenticatedUserRequestSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
@@ -12022,7 +12022,7 @@ impl ToString for ReposCreateForAuthenticatedUserRequestSquashMergeCommitMessage
 ///
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateForAuthenticatedUserRequestSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
@@ -12045,7 +12045,7 @@ impl ToString for ReposCreateForAuthenticatedUserRequestSquashMergeCommitTitle {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActivityListReposStarredByAuthenticatedUserQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -12064,7 +12064,7 @@ impl ToString for ActivityListReposStarredByAuthenticatedUserQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActivityListReposStarredByAuthenticatedUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -12093,7 +12093,7 @@ pub enum UsersGetByUsernameResponse {
 }
 
 #[cfg(any(feature = "full", feature = "users",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum UsersGetContextForUserQuerySubjectType {
   #[serde(rename = "organization")]
   Organization,
@@ -12118,7 +12118,7 @@ impl ToString for UsersGetContextForUserQuerySubjectType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForUserQueryPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -12149,7 +12149,7 @@ impl ToString for PackagesListPackagesForUserQueryPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForUserQueryVisibility {
   #[serde(rename = "public")]
   Public,
@@ -12171,7 +12171,7 @@ impl ToString for PackagesListPackagesForUserQueryVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -12202,7 +12202,7 @@ impl ToString for PackagesGetPackageForUserParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -12233,7 +12233,7 @@ impl ToString for PackagesDeletePackageForUserParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -12264,7 +12264,7 @@ impl ToString for PackagesRestorePackageForUserParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -12307,7 +12307,7 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByUserParametersPa
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageVersionForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -12338,7 +12338,7 @@ impl ToString for PackagesGetPackageVersionForUserParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageVersionForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -12371,7 +12371,7 @@ impl ToString for PackagesDeletePackageVersionForUserParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "packages",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageVersionForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
@@ -12404,7 +12404,7 @@ impl ToString for PackagesRestorePackageVersionForUserParametersPackageType {
 }
 
 #[cfg(any(feature = "full", feature = "projects",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsListForUserQueryState {
   #[serde(rename = "open")]
   Open,
@@ -12426,7 +12426,7 @@ impl ToString for ProjectsListForUserQueryState {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForUserQueryType {
   #[serde(rename = "all")]
   All,
@@ -12448,7 +12448,7 @@ impl ToString for ReposListForUserQueryType {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForUserQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -12473,7 +12473,7 @@ impl ToString for ReposListForUserQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "repos",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
@@ -12492,7 +12492,7 @@ impl ToString for ReposListForUserQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActivityListReposStarredByUserQuerySort {
   #[serde(rename = "created")]
   Created,
@@ -12511,7 +12511,7 @@ impl ToString for ActivityListReposStarredByUserQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "activity",))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActivityListReposStarredByUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
