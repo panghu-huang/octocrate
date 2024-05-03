@@ -1,6 +1,7 @@
 use indexmap::IndexMap;
 
 use crate::{
+  common::RenameRule,
   parser::{api::API, context::ParseContext, schema_parser::SchemaParser, ParsedData},
   schemas::{schema::SchemaDefinition, APIDescription},
   structures::enums::{Enum, EnumField},
@@ -35,7 +36,7 @@ impl Codegen {
       parse_context.add_tag_description(&tag.name, &tag.description);
     }
 
-    // Parse paths
+    // Parse API paths
     let paths = &api_description.paths;
 
     for (path, path_item) in paths {
@@ -54,99 +55,8 @@ impl Codegen {
       }
     }
 
-    let mut schema_parser = SchemaParser::new();
-
-    let mut webhook_event = Enum::new("WebhookEvent");
-
-    webhook_event.untagged();
-
-    // {
-    //   pull_request: Enum {
-    //     Opened(PullRequestOpened),
-    //     Closed(PullRequestClosed),
-    //   }
-    // }
-    let mut webhook_categories: IndexMap<String, Enum> = IndexMap::new();
-
-    for (name, webhook) in &api_description.webhooks {
-      parse_context.start_parsing_webhook(name);
-
-      let webhook = webhook
-        .post
-        .clone()
-        .unwrap_or_else(|| panic!("No post for webhook {}", name));
-
-      let request_body = webhook
-        .request_body
-        .clone()
-        .unwrap_or_else(|| panic!("No request body for webhook {}", name));
-
-      let body_schema: Option<SchemaDefinition> = request_body.into();
-
-      if let Some(body_schema) = body_schema {
-        let parsed = schema_parser.parse(&mut parse_context, name, &body_schema);
-
-        match &parsed {
-          ParsedData::Struct(struct_) => {
-            let mut field = EnumField::new(name);
-
-            field.set_type_name(&struct_.name);
-          }
-          ParsedData::Enum(generated) => {
-            let mut field = EnumField::new(name);
-
-            field.set_type_name(&generated.name);
-          }
-          _ => panic!("Expected struct or enum for webhook {}", name),
-        }
-
-        let mut parts = webhook.operation_id.split('/');
-
-        let category = parts.next().unwrap_or_else(|| {
-          panic!("No category found in operationId for webhook {}", name);
-        });
-
-        if let Some(type_) = parts.next() {
-          let category_webhook = webhook_categories
-            .entry(category.to_string())
-            .or_insert_with(|| {
-              let mut enum_ = Enum::new(&format!("webhook_{}_event", category));
-
-              enum_.untagged();
-
-              let mut field = EnumField::new(category);
-
-              field.set_type_name(&enum_.name);
-
-              webhook_event.add_field(field);
-
-              enum_
-            });
-
-          let mut field = EnumField::new(type_);
-
-          field.set_type_name(&parsed.name());
-
-          category_webhook.add_field(field);
-        } else {
-          let mut field = EnumField::new(category);
-
-          field.set_type_name(&parsed.name());
-
-          webhook_event.add_field(field);
-        }
-
-        parse_context.add_reference(&parsed.name(), parsed);
-      } else {
-        panic!("No body schema found for webhook {}", name);
-      }
-    }
-
-    for enum_ in webhook_categories.values() {
-      parse_context.add_reference(&enum_.name, ParsedData::Enum(enum_.clone()));
-    }
-
-    parse_context.add_reference("WebhookEvent", ParsedData::Enum(webhook_event));
+    // Parse webhooks
+    self.parse_webhooks(&mut parse_context, &api_description);
 
     parse_context.finish_parsing();
 
@@ -285,4 +195,110 @@ impl Codegen {
 
     println!("Finished writing");
   }
+
+  fn parse_webhooks(&self, parse_context: &mut ParseContext, api_description: &APIDescription) {
+    let mut schema_parser = SchemaParser::new();
+
+    let mut webhook_event = Enum::new("WebhookEvent");
+
+    webhook_event.untagged();
+
+    // {
+    //   pull_request: Enum {
+    //     Opened(PullRequestOpened),
+    //     Closed(PullRequestClosed),
+    //   }
+    // }
+    let mut webhook_categories: IndexMap<String, Enum> = IndexMap::new();
+
+    for (name, webhook) in &api_description.webhooks {
+      parse_context.start_parsing_webhook(name);
+
+      let webhook = webhook
+        .post
+        .clone()
+        .unwrap_or_else(|| panic!("No post for webhook {}", name));
+
+      let request_body = webhook
+        .request_body
+        .clone()
+        .unwrap_or_else(|| panic!("No request body for webhook {}", name));
+
+      let body_schema: Option<SchemaDefinition> = request_body.into();
+
+      let mut parts = webhook.operation_id.split('/');
+
+      let category = parts.next().unwrap_or_else(|| {
+        panic!("No category found in operationId for webhook {}", name);
+      });
+
+      parse_context.set_working_tag(&webhook_feature_name(category));
+
+      if let Some(body_schema) = body_schema {
+        let parsed = schema_parser.parse(parse_context, name, &body_schema);
+
+        match &parsed {
+          ParsedData::Struct(struct_) => {
+            let mut field = EnumField::new(name);
+
+            field.set_type_name(&struct_.name);
+          }
+          ParsedData::Enum(generated) => {
+            let mut field = EnumField::new(name);
+
+            field.set_type_name(&generated.name);
+          }
+          _ => panic!("Expected struct or enum for webhook {}", name),
+        }
+
+        if let Some(type_) = parts.next() {
+          let category_webhook = webhook_categories
+            .entry(category.to_string())
+            .or_insert_with(|| {
+              let mut enum_ = Enum::new(&format!("webhook_{}_event", category));
+
+              enum_.untagged();
+
+              let mut field = EnumField::new(category);
+
+              field.set_type_name(&enum_.name);
+              field.add_tag(&webhook_feature_name(category));
+
+              webhook_event.add_field(field);
+
+              enum_
+            });
+
+          let mut field = EnumField::new(type_);
+
+          field.set_type_name(&parsed.name());
+
+          category_webhook.add_field(field);
+        } else {
+          let mut field = EnumField::new(category);
+
+          field.set_type_name(&parsed.name());
+          field.add_tag(&webhook_feature_name(category));
+
+          webhook_event.add_field(field);
+        }
+
+        parse_context.add_reference(&parsed.name(), parsed);
+      } else {
+        panic!("No body schema found for webhook {}", name);
+      }
+    }
+
+    for enum_ in webhook_categories.values() {
+      parse_context.add_reference(&enum_.name, ParsedData::Enum(enum_.clone()));
+    }
+
+    parse_context.set_working_tag("webhook_event");
+
+    parse_context.add_reference("WebhookEvent", ParsedData::Enum(webhook_event));
+  }
+}
+
+fn webhook_feature_name(name: &str) -> String {
+  RenameRule::FieldName.apply(&format!("webhook_{}", name))
 }

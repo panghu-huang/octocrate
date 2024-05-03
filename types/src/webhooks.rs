@@ -6,187 +6,234 @@ use serde::{Deserialize, Serialize};
 use typed_builder::TypedBuilder;
 
 /// Types definition
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_custom_property",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_fork",
+  feature = "webhook_installation",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_package",
+  feature = "webhook_ping",
+  feature = "webhook_push",
+  feature = "webhook_registry_package",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_workflow_job"
+))]
 pub type StringArray = Vec<String>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 pub type PullRequestMinimalArray = Vec<PullRequestMinimal>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 pub type AppEventsArray = Vec<AppEvents>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 pub type CheckRunPullRequestArray = Vec<CheckRunPullRequest>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property_values"))]
 pub type CustomPropertyValueArray = Vec<CustomPropertyValue>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 pub type DependabotAlertSecurityAdvisoryCwesArray = Vec<DependabotAlertSecurityAdvisoryCwes>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 pub type DependabotAlertSecurityAdvisoryIdentifiersArray =
   Vec<DependabotAlertSecurityAdvisoryIdentifiers>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 pub type DependabotAlertSecurityAdvisoryReferencesArray =
   Vec<DependabotAlertSecurityAdvisoryReferences>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 pub type DependabotAlertSecurityVulnerabilityArray = Vec<DependabotAlertSecurityVulnerability>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_protection_rule"))]
 pub type PullRequestLabelsArray = Vec<PullRequestLabels>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_protection_rule"))]
 pub type PullRequestArray = Vec<PullRequest>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 pub type WebhookDeploymentReviewApprovedReviewersArray =
   Vec<WebhookDeploymentReviewApprovedReviewers>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 pub type WebhookDeploymentReviewApprovedWorkflowJobRunsArray =
   Vec<WebhookDeploymentReviewApprovedWorkflowJobRuns>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 pub type WebhookDeploymentReviewRejectedReviewersArray =
   Vec<WebhookDeploymentReviewRejectedReviewers>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 pub type WebhookDeploymentReviewRejectedWorkflowJobRunsArray =
   Vec<WebhookDeploymentReviewRejectedWorkflowJobRuns>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 pub type WebhookDeploymentReviewRequestedReviewersArray =
   Vec<WebhookDeploymentReviewRequestedReviewers>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_fork",
+  feature = "webhook_package",
+  feature = "webhook_registry_package"
+))]
 pub type SerdeJsonValueArray = Vec<serde_json::Value>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_gollum"))]
 pub type WebhookGollumPagesArray = Vec<WebhookGollumPages>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 pub type WebhookInstallationCreatedRepositoriesArray = Vec<WebhookInstallationCreatedRepositories>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 pub type WebhookInstallationDeletedRepositoriesArray = Vec<WebhookInstallationDeletedRepositories>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 pub type WebhookInstallationNewPermissionsAcceptedRepositoriesArray =
   Vec<WebhookInstallationNewPermissionsAcceptedRepositories>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 pub type WebhookInstallationRepositoriesAddedRepositoriesAddedArray =
   Vec<WebhookInstallationRepositoriesAddedRepositoriesAdded>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 pub type WebhookInstallationRepositoriesAddedRepositoriesRemovedArray =
   Vec<WebhookInstallationRepositoriesAddedRepositoriesRemoved>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 pub type WebhookInstallationRepositoriesRemovedRepositoriesAddedArray =
   Vec<WebhookInstallationRepositoriesRemovedRepositoriesAdded>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 pub type WebhookInstallationRepositoriesRemovedRepositoriesRemovedArray =
   Vec<WebhookInstallationRepositoriesRemovedRepositoriesRemoved>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 pub type WebhookInstallationSuspendRepositoriesArray = Vec<WebhookInstallationSuspendRepositories>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 pub type WebhookInstallationUnsuspendRepositoriesArray =
   Vec<WebhookInstallationUnsuspendRepositories>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_issue_comment",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 pub type LabelArray = Vec<Label>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_meta"))]
 pub type WebhookMetaDeletedHookEventsArray = Vec<WebhookMetaDeletedHookEvents>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 pub type WebhookPackagePublishedPackagePackageVersionDockerMetadataArray =
   Vec<WebhookPackagePublishedPackagePackageVersionDockerMetadata>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 pub type WebhookPackagePublishedPackagePackageVersionPackageFilesArray =
   Vec<WebhookPackagePublishedPackagePackageVersionPackageFiles>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_package",
+  feature = "webhook_registry_package"
+))]
 pub type WebhookRubygemsMetadataArray = Vec<WebhookRubygemsMetadata>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 pub type WebhookPackageUpdatedPackagePackageVersionDockerMetadataArray =
   Vec<WebhookPackageUpdatedPackagePackageVersionDockerMetadata>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 pub type WebhookPackageUpdatedPackagePackageVersionPackageFilesArray =
   Vec<WebhookPackageUpdatedPackagePackageVersionPackageFiles>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 pub type TeamArray = Vec<Team>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_thread"))]
 pub type PullRequestReviewCommentArray = Vec<PullRequestReviewComment>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_push"))]
 pub type CommitArray = Vec<Commit>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 pub type WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadataArray =
   Vec<WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadata>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 pub type WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFilesArray =
   Vec<WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFiles>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 pub type WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFilesArray =
   Vec<WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFiles>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 pub type ReleaseAssetArray = Vec<ReleaseAsset>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 pub type RepositoryAdvisoryIdentifiersArray = Vec<RepositoryAdvisoryIdentifiers>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 pub type RepositoryRulesetBypassActorArray = Vec<RepositoryRulesetBypassActor>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 pub type I64Array = Vec<i64>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 pub type RepositoryRulesetConditionsRepositoryPropertySpecArray =
   Vec<RepositoryRulesetConditionsRepositoryPropertySpec>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 pub type RepositoryRuleParamsStatusCheckConfigurationArray =
   Vec<RepositoryRuleParamsStatusCheckConfiguration>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 pub type RepositoryRuleParamsWorkflowFileReferenceArray =
   Vec<RepositoryRuleParamsWorkflowFileReference>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 pub type RepositoryRuleArray = Vec<RepositoryRule>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 pub type RepositoryRulesetConditionsArray = Vec<RepositoryRulesetConditions>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 pub type WebhookRepositoryRulesetEditedChangesConditionsUpdatedArray =
   Vec<WebhookRepositoryRulesetEditedChangesConditionsUpdated>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 pub type WebhookRepositoryRulesetEditedChangesRulesUpdatedArray =
   Vec<WebhookRepositoryRulesetEditedChangesRulesUpdated>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwesArray =
   Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwes>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiersArray =
   Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiers>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryReferencesArray =
   Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryReferences>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesArray =
   Vec<WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilities>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwesArray =
   Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwes>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiersArray =
   Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiers>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryReferencesArray =
   Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryReferences>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesArray =
   Vec<WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilities>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwesArray =
   Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwes>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiersArray =
   Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiers>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferencesArray =
   Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferences>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 pub type WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesArray =
   Vec<WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilities>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 pub type WebhookStatusBranchesArray = Vec<WebhookStatusBranches>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 pub type WebhookStatusCommitParentsArray = Vec<WebhookStatusCommitParents>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 pub type WorkflowStepArray = Vec<WorkflowStep>;
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 pub type WorkflowRunPullRequestsArray = Vec<WorkflowRunPullRequests>;
 
 /// Enumerations definition
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_configuration"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionConfigurationDisabledAction {
   #[serde(rename = "disabled")]
   Disabled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_configuration"))]
 impl ToString for WebhookBranchProtectionConfigurationDisabledAction {
   fn to_string(&self) -> String {
     match self {
@@ -195,7 +242,72 @@ impl ToString for WebhookBranchProtectionConfigurationDisabledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// The default value for a merge commit message.
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -205,13 +317,80 @@ impl ToString for WebhookBranchProtectionConfigurationDisabledAction {
 pub enum RepositoryWebhooksMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 impl ToString for RepositoryWebhooksMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -222,7 +401,72 @@ impl ToString for RepositoryWebhooksMergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// The default value for a merge commit title.
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -231,11 +475,77 @@ impl ToString for RepositoryWebhooksMergeCommitMessage {
 pub enum RepositoryWebhooksMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 impl ToString for RepositoryWebhooksMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -245,7 +555,72 @@ impl ToString for RepositoryWebhooksMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// The default value for a squash merge commit message:
 ///
 /// - `PR_BODY` - default to the pull request's body.
@@ -255,13 +630,80 @@ impl ToString for RepositoryWebhooksMergeCommitTitle {
 pub enum RepositoryWebhooksSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 impl ToString for RepositoryWebhooksSquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -272,7 +714,72 @@ impl ToString for RepositoryWebhooksSquashMergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// The default value for a squash merge commit title:
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -281,11 +788,77 @@ impl ToString for RepositoryWebhooksSquashMergeCommitMessage {
 pub enum RepositoryWebhooksSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 impl ToString for RepositoryWebhooksSquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -295,7 +868,72 @@ impl ToString for RepositoryWebhooksSquashMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// The default value for a merge commit message.
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -305,13 +943,80 @@ impl ToString for RepositoryWebhooksSquashMergeCommitTitle {
 pub enum RepositoryWebhooksTemplateRepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 impl ToString for RepositoryWebhooksTemplateRepositoryMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -322,7 +1027,72 @@ impl ToString for RepositoryWebhooksTemplateRepositoryMergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// The default value for a merge commit title.
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -331,11 +1101,77 @@ impl ToString for RepositoryWebhooksTemplateRepositoryMergeCommitMessage {
 pub enum RepositoryWebhooksTemplateRepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 impl ToString for RepositoryWebhooksTemplateRepositoryMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -347,7 +1183,72 @@ impl ToString for RepositoryWebhooksTemplateRepositoryMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// The default value for a squash merge commit message:
 ///
 /// - `PR_BODY` - default to the pull request's body.
@@ -357,13 +1258,80 @@ impl ToString for RepositoryWebhooksTemplateRepositoryMergeCommitTitle {
 pub enum RepositoryWebhooksTemplateRepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 impl ToString for RepositoryWebhooksTemplateRepositorySquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -376,7 +1344,72 @@ impl ToString for RepositoryWebhooksTemplateRepositorySquashMergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// The default value for a squash merge commit title:
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -385,11 +1418,77 @@ impl ToString for RepositoryWebhooksTemplateRepositorySquashMergeCommitMessage {
 pub enum RepositoryWebhooksTemplateRepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 impl ToString for RepositoryWebhooksTemplateRepositorySquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -401,14 +1500,14 @@ impl ToString for RepositoryWebhooksTemplateRepositorySquashMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_configuration"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionConfigurationEnabledAction {
   #[serde(rename = "enabled")]
   Enabled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_configuration"))]
 impl ToString for WebhookBranchProtectionConfigurationEnabledAction {
   fn to_string(&self) -> String {
     match self {
@@ -417,14 +1516,14 @@ impl ToString for WebhookBranchProtectionConfigurationEnabledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for WebhookBranchProtectionRuleCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -433,18 +1532,20 @@ impl ToString for WebhookBranchProtectionRuleCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleAllowDeletionsEnforcementLevel {
   #[serde(rename = "off")]
   Off,
+
   #[serde(rename = "non_admins")]
   NonAdmins,
+
   #[serde(rename = "everyone")]
   Everyone,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for BranchProtectionRuleAllowDeletionsEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -455,18 +1556,20 @@ impl ToString for BranchProtectionRuleAllowDeletionsEnforcementLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleAllowForcePushesEnforcementLevel {
   #[serde(rename = "off")]
   Off,
+
   #[serde(rename = "non_admins")]
   NonAdmins,
+
   #[serde(rename = "everyone")]
   Everyone,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for BranchProtectionRuleAllowForcePushesEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -477,18 +1580,20 @@ impl ToString for BranchProtectionRuleAllowForcePushesEnforcementLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
   #[serde(rename = "off")]
   Off,
+
   #[serde(rename = "non_admins")]
   NonAdmins,
+
   #[serde(rename = "everyone")]
   Everyone,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -503,18 +1608,20 @@ impl ToString for BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleMergeQueueEnforcementLevel {
   #[serde(rename = "off")]
   Off,
+
   #[serde(rename = "non_admins")]
   NonAdmins,
+
   #[serde(rename = "everyone")]
   Everyone,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for BranchProtectionRuleMergeQueueEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -525,18 +1632,20 @@ impl ToString for BranchProtectionRuleMergeQueueEnforcementLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRulePullRequestReviewsEnforcementLevel {
   #[serde(rename = "off")]
   Off,
+
   #[serde(rename = "non_admins")]
   NonAdmins,
+
   #[serde(rename = "everyone")]
   Everyone,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for BranchProtectionRulePullRequestReviewsEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -547,18 +1656,20 @@ impl ToString for BranchProtectionRulePullRequestReviewsEnforcementLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleRequiredConversationResolutionLevel {
   #[serde(rename = "off")]
   Off,
+
   #[serde(rename = "non_admins")]
   NonAdmins,
+
   #[serde(rename = "everyone")]
   Everyone,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for BranchProtectionRuleRequiredConversationResolutionLevel {
   fn to_string(&self) -> String {
     match self {
@@ -571,18 +1682,20 @@ impl ToString for BranchProtectionRuleRequiredConversationResolutionLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
   #[serde(rename = "off")]
   Off,
+
   #[serde(rename = "non_admins")]
   NonAdmins,
+
   #[serde(rename = "everyone")]
   Everyone,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -595,18 +1708,20 @@ impl ToString for BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
   #[serde(rename = "off")]
   Off,
+
   #[serde(rename = "non_admins")]
   NonAdmins,
+
   #[serde(rename = "everyone")]
   Everyone,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -619,18 +1734,20 @@ impl ToString for BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleSignatureRequirementEnforcementLevel {
   #[serde(rename = "off")]
   Off,
+
   #[serde(rename = "non_admins")]
   NonAdmins,
+
   #[serde(rename = "everyone")]
   Everyone,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for BranchProtectionRuleSignatureRequirementEnforcementLevel {
   fn to_string(&self) -> String {
     match self {
@@ -643,14 +1760,14 @@ impl ToString for BranchProtectionRuleSignatureRequirementEnforcementLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for WebhookBranchProtectionRuleDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -659,14 +1776,14 @@ impl ToString for WebhookBranchProtectionRuleDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for WebhookBranchProtectionRuleEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -675,18 +1792,20 @@ impl ToString for WebhookBranchProtectionRuleEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom {
   #[serde(rename = "off")]
   Off,
+
   #[serde(rename = "non_admins")]
   NonAdmins,
+
   #[serde(rename = "everyone")]
   Everyone,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString
   for WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom
 {
@@ -699,18 +1818,20 @@ impl ToString
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom {
   #[serde(rename = "off")]
   Off,
+
   #[serde(rename = "non_admins")]
   NonAdmins,
+
   #[serde(rename = "everyone")]
   Everyone,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 impl ToString for WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom {
   fn to_string(&self) -> String {
     match self {
@@ -721,14 +1842,14 @@ impl ToString for WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEn
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunCompletedAction {
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 impl ToString for WebhookCheckRunCompletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -737,30 +1858,38 @@ impl ToString for WebhookCheckRunCompletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimpleCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "stale")]
   Stale,
+
   #[serde(rename = "startup_failure")]
   StartupFailure,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 impl ToString for SimpleCheckSuiteConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -777,16 +1906,25 @@ impl ToString for SimpleCheckSuiteConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisAdvancedSecurityStatus {
   #[serde(rename = "enabled")]
   Enabled,
+
   #[serde(rename = "disabled")]
   Disabled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
   fn to_string(&self) -> String {
     match self {
@@ -796,17 +1934,26 @@ impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 /// The enablement status of Dependabot security updates for the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   #[serde(rename = "enabled")]
   Enabled,
+
   #[serde(rename = "disabled")]
   Disabled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   fn to_string(&self) -> String {
     match self {
@@ -816,16 +1963,25 @@ impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisSecretScanningStatus {
   #[serde(rename = "enabled")]
   Enabled,
+
   #[serde(rename = "disabled")]
   Disabled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 impl ToString for SecurityAndAnalysisSecretScanningStatus {
   fn to_string(&self) -> String {
     match self {
@@ -835,16 +1991,25 @@ impl ToString for SecurityAndAnalysisSecretScanningStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
   #[serde(rename = "enabled")]
   Enabled,
+
   #[serde(rename = "disabled")]
   Disabled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
   fn to_string(&self) -> String {
     match self {
@@ -854,22 +2019,26 @@ impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimpleCheckSuiteStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "pending")]
   Pending,
+
   #[serde(rename = "waiting")]
   Waiting,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 impl ToString for SimpleCheckSuiteStatus {
   fn to_string(&self) -> String {
     match self {
@@ -882,34 +2051,44 @@ impl ToString for SimpleCheckSuiteStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckRunWithSimpleCheckSuiteConclusion {
   #[serde(rename = "waiting")]
   Waiting,
+
   #[serde(rename = "pending")]
   Pending,
+
   #[serde(rename = "startup_failure")]
   StartupFailure,
+
   #[serde(rename = "stale")]
   Stale,
+
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 impl ToString for CheckRunWithSimpleCheckSuiteConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -928,21 +2107,24 @@ impl ToString for CheckRunWithSimpleCheckSuiteConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 /// The phase of the lifecycle that the check is currently in.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckRunWithSimpleCheckSuiteStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 impl ToString for CheckRunWithSimpleCheckSuiteStatus {
   fn to_string(&self) -> String {
     match self {
@@ -954,14 +2136,14 @@ impl ToString for CheckRunWithSimpleCheckSuiteStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 impl ToString for WebhookCheckRunCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -970,14 +2152,14 @@ impl ToString for WebhookCheckRunCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunRequestedActionAction {
   #[serde(rename = "requested_action")]
   RequestedAction,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 impl ToString for WebhookCheckRunRequestedActionAction {
   fn to_string(&self) -> String {
     match self {
@@ -986,14 +2168,14 @@ impl ToString for WebhookCheckRunRequestedActionAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunRerequestedAction {
   #[serde(rename = "rerequested")]
   Rerequested,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 impl ToString for WebhookCheckRunRerequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1002,14 +2184,14 @@ impl ToString for WebhookCheckRunRerequestedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteCompletedAction {
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 impl ToString for WebhookCheckSuiteCompletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1018,116 +2200,185 @@ impl ToString for WebhookCheckSuiteCompletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_status",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_workflow_job"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppEvents {
   #[serde(rename = "branch_protection_rule")]
   BranchProtectionRule,
+
   #[serde(rename = "check_run")]
   CheckRun,
+
   #[serde(rename = "check_suite")]
   CheckSuite,
+
   #[serde(rename = "code_scanning_alert")]
   CodeScanningAlert,
+
   #[serde(rename = "commit_comment")]
   CommitComment,
+
   #[serde(rename = "content_reference")]
   ContentReference,
+
   #[serde(rename = "create")]
   Create,
+
   #[serde(rename = "delete")]
   Delete,
+
   #[serde(rename = "deployment")]
   Deployment,
+
   #[serde(rename = "deployment_review")]
   DeploymentReview,
+
   #[serde(rename = "deployment_status")]
   DeploymentStatus,
+
   #[serde(rename = "deploy_key")]
   DeployKey,
+
   #[serde(rename = "discussion")]
   Discussion,
+
   #[serde(rename = "discussion_comment")]
   DiscussionComment,
+
   #[serde(rename = "fork")]
   Fork,
+
   #[serde(rename = "gollum")]
   Gollum,
+
   #[serde(rename = "issues")]
   Issues,
+
   #[serde(rename = "issue_comment")]
   IssueComment,
+
   #[serde(rename = "label")]
   Label,
+
   #[serde(rename = "member")]
   Member,
+
   #[serde(rename = "membership")]
   Membership,
+
   #[serde(rename = "milestone")]
   Milestone,
+
   #[serde(rename = "organization")]
   Organization,
+
   #[serde(rename = "org_block")]
   OrgBlock,
+
   #[serde(rename = "page_build")]
   PageBuild,
+
   #[serde(rename = "project")]
   Project,
+
   #[serde(rename = "project_card")]
   ProjectCard,
+
   #[serde(rename = "project_column")]
   ProjectColumn,
+
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "pull_request")]
   PullRequest,
+
   #[serde(rename = "pull_request_review")]
   PullRequestReview,
+
   #[serde(rename = "pull_request_review_comment")]
   PullRequestReviewComment,
+
   #[serde(rename = "push")]
   Push,
+
   #[serde(rename = "registry_package")]
   RegistryPackage,
+
   #[serde(rename = "release")]
   Release,
+
   #[serde(rename = "repository")]
   Repository,
+
   #[serde(rename = "repository_dispatch")]
   RepositoryDispatch,
+
   #[serde(rename = "secret_scanning_alert")]
   SecretScanningAlert,
+
   #[serde(rename = "star")]
   Star,
+
   #[serde(rename = "status")]
   Status,
+
   #[serde(rename = "team")]
   Team,
+
   #[serde(rename = "team_add")]
   TeamAdd,
+
   #[serde(rename = "watch")]
   Watch,
+
   #[serde(rename = "workflow_dispatch")]
   WorkflowDispatch,
+
   #[serde(rename = "workflow_run")]
   WorkflowRun,
+
   #[serde(rename = "merge_group")]
   MergeGroup,
+
   #[serde(rename = "pull_request_review_thread")]
   PullRequestReviewThread,
+
   #[serde(rename = "workflow_job")]
   WorkflowJob,
+
   #[serde(rename = "merge_queue_entry")]
   MergeQueueEntry,
+
   #[serde(rename = "security_and_analysis")]
   SecurityAndAnalysis,
+
   #[serde(rename = "projects_v2_item")]
   ProjectsV2Item,
+
   #[serde(rename = "secret_scanning_alert_location")]
   SecretScanningAlertLocation,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_status",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_workflow_job"
+))]
 impl ToString for AppEvents {
   fn to_string(&self) -> String {
     match self {
@@ -1187,15 +2438,93 @@ impl ToString for AppEvents {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_release",
+  feature = "webhook_repository",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_sponsorship",
+  feature = "webhook_status",
+  feature = "webhook_team",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum UserType {
   Bot,
+
   User,
+
   Organization,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_release",
+  feature = "webhook_repository",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_sponsorship",
+  feature = "webhook_status",
+  feature = "webhook_team",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 impl ToString for UserType {
   fn to_string(&self) -> String {
     match self {
@@ -1206,18 +2535,42 @@ impl ToString for UserType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_status",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_workflow_job"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppPermissionsOrganizationProjects {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_status",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_workflow_job"
+))]
 impl ToString for AppPermissionsOrganizationProjects {
   fn to_string(&self) -> String {
     match self {
@@ -1228,18 +2581,42 @@ impl ToString for AppPermissionsOrganizationProjects {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_status",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_workflow_job"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppPermissionsRepositoryProjects {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_status",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_workflow_job"
+))]
 impl ToString for AppPermissionsRepositoryProjects {
   fn to_string(&self) -> String {
     match self {
@@ -1250,31 +2627,39 @@ impl ToString for AppPermissionsRepositoryProjects {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteCompletedCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "stale")]
   Stale,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "startup_failure")]
   StartupFailure,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 impl ToString for WebhookCheckSuiteCompletedCheckSuiteConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -1295,23 +2680,27 @@ impl ToString for WebhookCheckSuiteCompletedCheckSuiteConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteCompletedCheckSuiteStatus {
   #[serde(rename = "requested")]
   Requested,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 impl ToString for WebhookCheckSuiteCompletedCheckSuiteStatus {
   fn to_string(&self) -> String {
     match self {
@@ -1324,14 +2713,14 @@ impl ToString for WebhookCheckSuiteCompletedCheckSuiteStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRequestedAction {
   #[serde(rename = "requested")]
   Requested,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 impl ToString for WebhookCheckSuiteRequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1340,29 +2729,36 @@ impl ToString for WebhookCheckSuiteRequestedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRequestedCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "stale")]
   Stale,
+
   #[serde(rename = "skipped")]
   Skipped,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 impl ToString for WebhookCheckSuiteRequestedCheckSuiteConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -1380,21 +2776,24 @@ impl ToString for WebhookCheckSuiteRequestedCheckSuiteConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRequestedCheckSuiteStatus {
   #[serde(rename = "requested")]
   Requested,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "queued")]
   Queued,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 impl ToString for WebhookCheckSuiteRequestedCheckSuiteStatus {
   fn to_string(&self) -> String {
     match self {
@@ -1406,14 +2805,14 @@ impl ToString for WebhookCheckSuiteRequestedCheckSuiteStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRerequestedAction {
   #[serde(rename = "rerequested")]
   Rerequested,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 impl ToString for WebhookCheckSuiteRerequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1422,27 +2821,33 @@ impl ToString for WebhookCheckSuiteRerequestedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRerequestedCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "stale")]
   Stale,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 impl ToString for WebhookCheckSuiteRerequestedCheckSuiteConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -1459,21 +2864,24 @@ impl ToString for WebhookCheckSuiteRerequestedCheckSuiteConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRerequestedCheckSuiteStatus {
   #[serde(rename = "requested")]
   Requested,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "queued")]
   Queued,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 impl ToString for WebhookCheckSuiteRerequestedCheckSuiteStatus {
   fn to_string(&self) -> String {
     match self {
@@ -1485,14 +2893,14 @@ impl ToString for WebhookCheckSuiteRerequestedCheckSuiteStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAction {
   #[serde(rename = "appeared_in_branch")]
   AppearedInBranch,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertAppearedInBranchAction {
   fn to_string(&self) -> String {
     match self {
@@ -1503,19 +2911,21 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
+
   #[serde(rename = "won't fix")]
   WonTFix,
+
   #[serde(rename = "used in tests")]
   UsedInTests,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
   fn to_string(&self) -> String {
     match self {
@@ -1532,19 +2942,21 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AlertInstanceState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "dismissed")]
   Dismissed,
+
   #[serde(rename = "fixed")]
   Fixed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for AlertInstanceState {
   fn to_string(&self) -> String {
     match self {
@@ -1555,21 +2967,24 @@ impl ToString for AlertInstanceState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "note")]
   Note,
+
   #[serde(rename = "warning")]
   Warning,
+
   #[serde(rename = "error")]
   Error,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1581,19 +2996,21 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "dismissed")]
   Dismissed,
+
   #[serde(rename = "fixed")]
   Fixed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -1604,14 +3021,14 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertClosedByUserAction {
   #[serde(rename = "closed_by_user")]
   ClosedByUser,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertClosedByUserAction {
   fn to_string(&self) -> String {
     match self {
@@ -1620,19 +3037,21 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
+
   #[serde(rename = "won't fix")]
   WonTFix,
+
   #[serde(rename = "used in tests")]
   UsedInTests,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
   fn to_string(&self) -> String {
     match self {
@@ -1647,21 +3066,24 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "note")]
   Note,
+
   #[serde(rename = "warning")]
   Warning,
+
   #[serde(rename = "error")]
   Error,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1673,17 +3095,18 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertClosedByUserAlertState {
   #[serde(rename = "dismissed")]
   Dismissed,
+
   #[serde(rename = "fixed")]
   Fixed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertClosedByUserAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -1693,14 +3116,14 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAlertState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1709,21 +3132,24 @@ impl ToString for WebhookCodeScanningAlertCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertCreatedAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "note")]
   Note,
+
   #[serde(rename = "warning")]
   Warning,
+
   #[serde(rename = "error")]
   Error,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertCreatedAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1735,17 +3161,18 @@ impl ToString for WebhookCodeScanningAlertCreatedAlertRuleSeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertCreatedAlertState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "dismissed")]
   Dismissed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertCreatedAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -1755,14 +3182,14 @@ impl ToString for WebhookCodeScanningAlertCreatedAlertState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertFixedAction {
   #[serde(rename = "fixed")]
   Fixed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertFixedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1771,19 +3198,21 @@ impl ToString for WebhookCodeScanningAlertFixedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertFixedAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
+
   #[serde(rename = "won't fix")]
   WonTFix,
+
   #[serde(rename = "used in tests")]
   UsedInTests,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertFixedAlertDismissedReason {
   fn to_string(&self) -> String {
     match self {
@@ -1796,21 +3225,24 @@ impl ToString for WebhookCodeScanningAlertFixedAlertDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertFixedAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "note")]
   Note,
+
   #[serde(rename = "warning")]
   Warning,
+
   #[serde(rename = "error")]
   Error,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertFixedAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1822,7 +3254,7 @@ impl ToString for WebhookCodeScanningAlertFixedAlertRuleSeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertFixedAlertState {
@@ -1830,7 +3262,7 @@ pub enum WebhookCodeScanningAlertFixedAlertState {
   Fixed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertFixedAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -1839,14 +3271,14 @@ impl ToString for WebhookCodeScanningAlertFixedAlertState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1855,21 +3287,24 @@ impl ToString for WebhookCodeScanningAlertReopenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "note")]
   Note,
+
   #[serde(rename = "warning")]
   Warning,
+
   #[serde(rename = "error")]
   Error,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertReopenedAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1881,19 +3316,21 @@ impl ToString for WebhookCodeScanningAlertReopenedAlertRuleSeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedAlertState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "dismissed")]
   Dismissed,
+
   #[serde(rename = "fixed")]
   Fixed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertReopenedAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -1904,14 +3341,14 @@ impl ToString for WebhookCodeScanningAlertReopenedAlertState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedByUserAction {
   #[serde(rename = "reopened_by_user")]
   ReopenedByUser,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertReopenedByUserAction {
   fn to_string(&self) -> String {
     match self {
@@ -1922,21 +3359,24 @@ impl ToString for WebhookCodeScanningAlertReopenedByUserAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "note")]
   Note,
+
   #[serde(rename = "warning")]
   Warning,
+
   #[serde(rename = "error")]
   Error,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1948,17 +3388,18 @@ impl ToString for WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedByUserAlertState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "fixed")]
   Fixed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 impl ToString for WebhookCodeScanningAlertReopenedByUserAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -1968,7 +3409,7 @@ impl ToString for WebhookCodeScanningAlertReopenedByUserAlertState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_commit_comment"))]
 /// The action performed. Can be `created`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCommitCommentCreatedAction {
@@ -1976,7 +3417,7 @@ pub enum WebhookCommitCommentCreatedAction {
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_commit_comment"))]
 impl ToString for WebhookCommitCommentCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -1985,29 +3426,36 @@ impl ToString for WebhookCommitCommentCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_commit_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCommitCommentCreatedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_commit_comment"))]
 impl ToString for WebhookCommitCommentCreatedCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -2027,17 +3475,18 @@ impl ToString for WebhookCommitCommentCreatedCommentAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_create"))]
 /// The type of Git ref object created in the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCreateRefType {
   #[serde(rename = "tag")]
   Tag,
+
   #[serde(rename = "branch")]
   Branch,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_create"))]
 impl ToString for WebhookCreateRefType {
   fn to_string(&self) -> String {
     match self {
@@ -2047,14 +3496,14 @@ impl ToString for WebhookCreateRefType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 impl ToString for WebhookCustomPropertyCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2063,17 +3512,18 @@ impl ToString for WebhookCustomPropertyCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 /// The type of the value for the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgCustomPropertyValueType {
   #[serde(rename = "string")]
   String,
+
   #[serde(rename = "single_select")]
   SingleSelect,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 impl ToString for OrgCustomPropertyValueType {
   fn to_string(&self) -> String {
     match self {
@@ -2083,17 +3533,18 @@ impl ToString for OrgCustomPropertyValueType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 /// Who can edit the values of the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgCustomPropertyValuesEditableBy {
   #[serde(rename = "org_actors")]
   OrgActors,
+
   #[serde(rename = "org_and_repo_actors")]
   OrgAndRepoActors,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 impl ToString for OrgCustomPropertyValuesEditableBy {
   fn to_string(&self) -> String {
     match self {
@@ -2103,14 +3554,14 @@ impl ToString for OrgCustomPropertyValuesEditableBy {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 impl ToString for WebhookCustomPropertyDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2119,14 +3570,14 @@ impl ToString for WebhookCustomPropertyDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 impl ToString for WebhookCustomPropertyUpdatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2135,14 +3586,14 @@ impl ToString for WebhookCustomPropertyUpdatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property_values"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyValuesUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property_values"))]
 impl ToString for WebhookCustomPropertyValuesUpdatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2151,17 +3602,18 @@ impl ToString for WebhookCustomPropertyValuesUpdatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_delete"))]
 /// The type of Git ref object deleted in the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeleteRefType {
   #[serde(rename = "tag")]
   Tag,
+
   #[serde(rename = "branch")]
   Branch,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_delete"))]
 impl ToString for WebhookDeleteRefType {
   fn to_string(&self) -> String {
     match self {
@@ -2171,14 +3623,14 @@ impl ToString for WebhookDeleteRefType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertAutoDismissedAction {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for WebhookDependabotAlertAutoDismissedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2187,17 +3639,18 @@ impl ToString for WebhookDependabotAlertAutoDismissedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// The execution scope of the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertDependencyScope {
   #[serde(rename = "development")]
   Development,
+
   #[serde(rename = "runtime")]
   Runtime,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for DependabotAlertDependencyScope {
   fn to_string(&self) -> String {
     match self {
@@ -2207,23 +3660,27 @@ impl ToString for DependabotAlertDependencyScope {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// The reason that the alert was dismissed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
+
   #[serde(rename = "inaccurate")]
   Inaccurate,
+
   #[serde(rename = "no_bandwidth")]
   NoBandwidth,
+
   #[serde(rename = "not_used")]
   NotUsed,
+
   #[serde(rename = "tolerable_risk")]
   TolerableRisk,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for DependabotAlertDismissedReason {
   fn to_string(&self) -> String {
     match self {
@@ -2236,17 +3693,18 @@ impl ToString for DependabotAlertDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// The type of advisory identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
+
   #[serde(rename = "GHSA")]
   Ghsa,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
   fn to_string(&self) -> String {
     match self {
@@ -2256,21 +3714,24 @@ impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityAdvisorySeverity {
   #[serde(rename = "low")]
   Low,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "critical")]
   Critical,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for DependabotAlertSecurityAdvisorySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -2282,21 +3743,24 @@ impl ToString for DependabotAlertSecurityAdvisorySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// The severity of the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityVulnerabilitySeverity {
   #[serde(rename = "low")]
   Low,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "critical")]
   Critical,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for DependabotAlertSecurityVulnerabilitySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -2308,21 +3772,24 @@ impl ToString for DependabotAlertSecurityVulnerabilitySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// The state of the Dependabot alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertState {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
+
   #[serde(rename = "dismissed")]
   Dismissed,
+
   #[serde(rename = "fixed")]
   Fixed,
+
   #[serde(rename = "open")]
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for DependabotAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -2334,14 +3801,14 @@ impl ToString for DependabotAlertState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertAutoReopenedAction {
   #[serde(rename = "auto_reopened")]
   AutoReopened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for WebhookDependabotAlertAutoReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2350,14 +3817,14 @@ impl ToString for WebhookDependabotAlertAutoReopenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for WebhookDependabotAlertCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2366,14 +3833,14 @@ impl ToString for WebhookDependabotAlertCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertDismissedAction {
   #[serde(rename = "dismissed")]
   Dismissed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for WebhookDependabotAlertDismissedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2382,14 +3849,14 @@ impl ToString for WebhookDependabotAlertDismissedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertFixedAction {
   #[serde(rename = "fixed")]
   Fixed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for WebhookDependabotAlertFixedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2398,14 +3865,14 @@ impl ToString for WebhookDependabotAlertFixedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertReintroducedAction {
   #[serde(rename = "reintroduced")]
   Reintroduced,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for WebhookDependabotAlertReintroducedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2414,14 +3881,14 @@ impl ToString for WebhookDependabotAlertReintroducedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 impl ToString for WebhookDependabotAlertReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2430,14 +3897,14 @@ impl ToString for WebhookDependabotAlertReopenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deploy_key"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeployKeyCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deploy_key"))]
 impl ToString for WebhookDeployKeyCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2446,14 +3913,14 @@ impl ToString for WebhookDeployKeyCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deploy_key"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeployKeyDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deploy_key"))]
 impl ToString for WebhookDeployKeyDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2462,14 +3929,14 @@ impl ToString for WebhookDeployKeyDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment"))]
 impl ToString for WebhookDeploymentCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2478,26 +3945,42 @@ impl ToString for WebhookDeploymentCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentWorkflowRunConclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "stale")]
   Stale,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 impl ToString for DeploymentWorkflowRunConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -2512,24 +3995,39 @@ impl ToString for DeploymentWorkflowRunConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentWorkflowRunStatus {
   #[serde(rename = "requested")]
   Requested,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "waiting")]
   Waiting,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 impl ToString for DeploymentWorkflowRunStatus {
   fn to_string(&self) -> String {
     match self {
@@ -2543,14 +4041,14 @@ impl ToString for DeploymentWorkflowRunStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentProtectionRuleRequestedAction {
   #[serde(rename = "requested")]
   Requested,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_protection_rule"))]
 impl ToString for WebhookDeploymentProtectionRuleRequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2559,29 +4057,44 @@ impl ToString for WebhookDeploymentProtectionRuleRequestedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 impl ToString for AuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -2597,19 +4110,29 @@ impl ToString for AuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 /// The merge method to use.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AutoMergeMergeMethod {
   #[serde(rename = "merge")]
   Merge,
+
   #[serde(rename = "squash")]
   Squash,
+
   #[serde(rename = "rebase")]
   Rebase,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 impl ToString for AutoMergeMergeMethod {
   fn to_string(&self) -> String {
     match self {
@@ -2620,17 +4143,38 @@ impl ToString for AutoMergeMergeMethod {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_milestone",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 /// The state of the milestone.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MilestoneState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_milestone",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 impl ToString for MilestoneState {
   fn to_string(&self) -> String {
     match self {
@@ -2640,17 +4184,26 @@ impl ToString for MilestoneState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 /// State of this Pull Request. Either `open` or `closed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 impl ToString for PullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -2660,14 +4213,14 @@ impl ToString for PullRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewApprovedAction {
   #[serde(rename = "approved")]
   Approved,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 impl ToString for WebhookDeploymentReviewApprovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2676,13 +4229,13 @@ impl ToString for WebhookDeploymentReviewApprovedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewApprovedReviewersType {
   User,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 impl ToString for WebhookDeploymentReviewApprovedReviewersType {
   fn to_string(&self) -> String {
     match self {
@@ -2691,14 +4244,14 @@ impl ToString for WebhookDeploymentReviewApprovedReviewersType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRejectedAction {
   #[serde(rename = "rejected")]
   Rejected,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 impl ToString for WebhookDeploymentReviewRejectedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2707,13 +4260,13 @@ impl ToString for WebhookDeploymentReviewRejectedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRejectedReviewersType {
   User,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 impl ToString for WebhookDeploymentReviewRejectedReviewersType {
   fn to_string(&self) -> String {
     match self {
@@ -2722,14 +4275,14 @@ impl ToString for WebhookDeploymentReviewRejectedReviewersType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRequestedAction {
   #[serde(rename = "requested")]
   Requested,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 impl ToString for WebhookDeploymentReviewRequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2738,14 +4291,15 @@ impl ToString for WebhookDeploymentReviewRequestedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRequestedReviewersType {
   User,
+
   Team,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 impl ToString for WebhookDeploymentReviewRequestedReviewersType {
   fn to_string(&self) -> String {
     match self {
@@ -2755,14 +4309,14 @@ impl ToString for WebhookDeploymentReviewRequestedReviewersType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentStatusCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_status"))]
 impl ToString for WebhookDeploymentStatusCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -2771,29 +4325,36 @@ impl ToString for WebhookDeploymentStatusCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_status"))]
 /// The result of the completed check run. This value will be `null` until the check run has completed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentStatusCreatedCheckRunConclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "stale")]
   Stale,
+
   #[serde(rename = "skipped")]
   Skipped,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_status"))]
 impl ToString for WebhookDeploymentStatusCreatedCheckRunConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -2811,23 +4372,27 @@ impl ToString for WebhookDeploymentStatusCreatedCheckRunConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_status"))]
 /// The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentStatusCreatedCheckRunStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "waiting")]
   Waiting,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_status"))]
 impl ToString for WebhookDeploymentStatusCreatedCheckRunStatus {
   fn to_string(&self) -> String {
     match self {
@@ -2840,14 +4405,14 @@ impl ToString for WebhookDeploymentStatusCreatedCheckRunStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionAnsweredAction {
   #[serde(rename = "answered")]
   Answered,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionAnsweredAction {
   fn to_string(&self) -> String {
     match self {
@@ -2856,29 +4421,36 @@ impl ToString for WebhookDiscussionAnsweredAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionAnsweredAnswerAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionAnsweredAnswerAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -2896,29 +4468,44 @@ impl ToString for WebhookDiscussionAnsweredAnswerAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment"
+))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DiscussionAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment"
+))]
 impl ToString for DiscussionAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -2934,7 +4521,11 @@ impl ToString for DiscussionAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment"
+))]
 /// The current state of the discussion.
 /// `converting` means that the discussion is being converted from an issue.
 /// `transferring` means that the discussion is being transferred from another repository.
@@ -2942,17 +4533,25 @@ impl ToString for DiscussionAuthorAssociation {
 pub enum DiscussionState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "locked")]
   Locked,
+
   #[serde(rename = "converting")]
   Converting,
+
   #[serde(rename = "transferring")]
   Transferring,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment"
+))]
 impl ToString for DiscussionState {
   fn to_string(&self) -> String {
     match self {
@@ -2965,21 +4564,32 @@ impl ToString for DiscussionState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment"
+))]
 /// The reason for the current state
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DiscussionStateReason {
   #[serde(rename = "resolved")]
   Resolved,
+
   #[serde(rename = "outdated")]
   Outdated,
+
   #[serde(rename = "duplicate")]
   Duplicate,
+
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment"
+))]
 impl ToString for DiscussionStateReason {
   fn to_string(&self) -> String {
     match self {
@@ -2991,14 +4601,14 @@ impl ToString for DiscussionStateReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCategoryChangedAction {
   #[serde(rename = "category_changed")]
   CategoryChanged,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionCategoryChangedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3007,14 +4617,14 @@ impl ToString for WebhookDiscussionCategoryChangedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionClosedAction {
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionClosedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3023,14 +4633,14 @@ impl ToString for WebhookDiscussionClosedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 impl ToString for WebhookDiscussionCommentCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3039,29 +4649,36 @@ impl ToString for WebhookDiscussionCommentCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentCreatedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 impl ToString for WebhookDiscussionCommentCreatedCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -3085,14 +4702,14 @@ impl ToString for WebhookDiscussionCommentCreatedCommentAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 impl ToString for WebhookDiscussionCommentDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3101,29 +4718,36 @@ impl ToString for WebhookDiscussionCommentDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentDeletedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 impl ToString for WebhookDiscussionCommentDeletedCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -3147,14 +4771,14 @@ impl ToString for WebhookDiscussionCommentDeletedCommentAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 impl ToString for WebhookDiscussionCommentEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3163,29 +4787,36 @@ impl ToString for WebhookDiscussionCommentEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentEditedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 impl ToString for WebhookDiscussionCommentEditedCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -3209,14 +4840,14 @@ impl ToString for WebhookDiscussionCommentEditedCommentAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3225,24 +4856,26 @@ impl ToString for WebhookDiscussionCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum WebhookDiscussionCreatedDiscussionItem2Locked {
   Boolean(bool),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCreatedDiscussionItem2State {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "converting")]
   Converting,
+
   #[serde(rename = "transferring")]
   Transferring,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionCreatedDiscussionItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -3253,23 +4886,24 @@ impl ToString for WebhookDiscussionCreatedDiscussionItem2State {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookDiscussionCreatedDiscussion {
   /// A Discussion in a repository.
   Discussion(Discussion),
+
   WebhookDiscussionCreatedDiscussionItem2(WebhookDiscussionCreatedDiscussionItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3278,14 +4912,14 @@ impl ToString for WebhookDiscussionDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3294,14 +4928,14 @@ impl ToString for WebhookDiscussionEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionLabeledAction {
   #[serde(rename = "labeled")]
   Labeled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionLabeledAction {
   fn to_string(&self) -> String {
     match self {
@@ -3310,14 +4944,14 @@ impl ToString for WebhookDiscussionLabeledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionLockedAction {
   #[serde(rename = "locked")]
   Locked,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionLockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3326,14 +4960,14 @@ impl ToString for WebhookDiscussionLockedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionPinnedAction {
   #[serde(rename = "pinned")]
   Pinned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionPinnedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3342,14 +4976,14 @@ impl ToString for WebhookDiscussionPinnedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3358,14 +4992,14 @@ impl ToString for WebhookDiscussionReopenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionTransferredAction {
   #[serde(rename = "transferred")]
   Transferred,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionTransferredAction {
   fn to_string(&self) -> String {
     match self {
@@ -3374,14 +5008,14 @@ impl ToString for WebhookDiscussionTransferredAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnansweredAction {
   #[serde(rename = "unanswered")]
   Unanswered,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionUnansweredAction {
   fn to_string(&self) -> String {
     match self {
@@ -3390,29 +5024,36 @@ impl ToString for WebhookDiscussionUnansweredAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnansweredOldAnswerAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionUnansweredOldAnswerAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -3436,14 +5077,14 @@ impl ToString for WebhookDiscussionUnansweredOldAnswerAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnlabeledAction {
   #[serde(rename = "unlabeled")]
   Unlabeled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionUnlabeledAction {
   fn to_string(&self) -> String {
     match self {
@@ -3452,14 +5093,14 @@ impl ToString for WebhookDiscussionUnlabeledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnlockedAction {
   #[serde(rename = "unlocked")]
   Unlocked,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionUnlockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3468,14 +5109,14 @@ impl ToString for WebhookDiscussionUnlockedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnpinnedAction {
   #[serde(rename = "unpinned")]
   Unpinned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 impl ToString for WebhookDiscussionUnpinnedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3484,18 +5125,42 @@ impl ToString for WebhookDiscussionUnpinnedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_fork",
+  feature = "webhook_issues",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_team"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryVisibility {
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "internal")]
   Internal,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_fork",
+  feature = "webhook_issues",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_team"
+))]
 impl ToString for RepositoryVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -3506,29 +5171,30 @@ impl ToString for RepositoryVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_fork"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum WebhookForkForkeeItem2Fork {
   Boolean(bool),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_fork"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookForkForkee {
   /// A git repository
   Repository(Repository),
+
   WebhookForkForkeeItem2(WebhookForkForkeeItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_github_app_authorization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookGithubAppAuthorizationRevokedAction {
   #[serde(rename = "revoked")]
   Revoked,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_github_app_authorization"))]
 impl ToString for WebhookGithubAppAuthorizationRevokedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3537,17 +5203,18 @@ impl ToString for WebhookGithubAppAuthorizationRevokedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_gollum"))]
 /// The action that was performed on the page. Can be `created` or `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookGollumPagesAction {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_gollum"))]
 impl ToString for WebhookGollumPagesAction {
   fn to_string(&self) -> String {
     match self {
@@ -3557,14 +5224,14 @@ impl ToString for WebhookGollumPagesAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 impl ToString for WebhookInstallationCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3573,27 +5240,41 @@ impl ToString for WebhookInstallationCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum InstallationAccount {
   /// A GitHub user.
   SimpleUser(SimpleUser),
+
   /// An enterprise on GitHub.
   Enterprise(Enterprise),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories"
+))]
 /// Describe whether all repositories have been selected or there's a selection involved
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum InstallationRepositorySelection {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories"
+))]
 impl ToString for InstallationRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -3603,14 +5284,14 @@ impl ToString for InstallationRepositorySelection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 impl ToString for WebhookInstallationDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3619,14 +5300,14 @@ impl ToString for WebhookInstallationDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationNewPermissionsAcceptedAction {
   #[serde(rename = "new_permissions_accepted")]
   NewPermissionsAccepted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 impl ToString for WebhookInstallationNewPermissionsAcceptedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3637,14 +5318,14 @@ impl ToString for WebhookInstallationNewPermissionsAcceptedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationRepositoriesAddedAction {
   #[serde(rename = "added")]
   Added,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 impl ToString for WebhookInstallationRepositoriesAddedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3653,17 +5334,18 @@ impl ToString for WebhookInstallationRepositoriesAddedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 /// Describe whether all repositories have been selected or there's a selection involved
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationRepositoriesAddedRepositorySelection {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 impl ToString for WebhookInstallationRepositoriesAddedRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -3673,14 +5355,14 @@ impl ToString for WebhookInstallationRepositoriesAddedRepositorySelection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationRepositoriesRemovedAction {
   #[serde(rename = "removed")]
   Removed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 impl ToString for WebhookInstallationRepositoriesRemovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3689,17 +5371,18 @@ impl ToString for WebhookInstallationRepositoriesRemovedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 /// Describe whether all repositories have been selected or there's a selection involved
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationRepositoriesRemovedRepositorySelection {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 impl ToString for WebhookInstallationRepositoriesRemovedRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -3709,14 +5392,14 @@ impl ToString for WebhookInstallationRepositoriesRemovedRepositorySelection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationSuspendAction {
   #[serde(rename = "suspend")]
   Suspend,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 impl ToString for WebhookInstallationSuspendAction {
   fn to_string(&self) -> String {
     match self {
@@ -3725,14 +5408,14 @@ impl ToString for WebhookInstallationSuspendAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_target"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationTargetRenamedAction {
   #[serde(rename = "renamed")]
   Renamed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_target"))]
 impl ToString for WebhookInstallationTargetRenamedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3741,14 +5424,14 @@ impl ToString for WebhookInstallationTargetRenamedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationUnsuspendAction {
   #[serde(rename = "unsuspend")]
   Unsuspend,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 impl ToString for WebhookInstallationUnsuspendAction {
   fn to_string(&self) -> String {
     match self {
@@ -3757,14 +5440,14 @@ impl ToString for WebhookInstallationUnsuspendAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 impl ToString for WebhookIssueCommentCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3773,29 +5456,36 @@ impl ToString for WebhookIssueCommentCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssueCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 impl ToString for IssueCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -3811,20 +5501,31 @@ impl ToString for IssueCommentAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssueActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
+
   #[serde(rename = "off-topic")]
   OffTopic,
+
   #[serde(rename = "too heated")]
   TooHeated,
+
   #[serde(rename = "spam")]
   Spam,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues"
+))]
 impl ToString for IssueActiveLockReason {
   fn to_string(&self) -> String {
     match self {
@@ -3836,29 +5537,44 @@ impl ToString for IssueActiveLockReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues"
+))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssueAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues"
+))]
 impl ToString for IssueAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -3874,17 +5590,26 @@ impl ToString for IssueAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues"
+))]
 /// State of the issue; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssueState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues"
+))]
 impl ToString for IssueState {
   fn to_string(&self) -> String {
     match self {
@@ -3894,17 +5619,18 @@ impl ToString for IssueState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 /// State of the issue; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentCreatedIssueItem2State {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 impl ToString for WebhookIssueCommentCreatedIssueItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -3914,23 +5640,24 @@ impl ToString for WebhookIssueCommentCreatedIssueItem2State {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssueCommentCreatedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
+
   WebhookIssueCommentCreatedIssueItem2(WebhookIssueCommentCreatedIssueItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 impl ToString for WebhookIssueCommentDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3939,17 +5666,18 @@ impl ToString for WebhookIssueCommentDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 /// State of the issue; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentDeletedIssueItem2State {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 impl ToString for WebhookIssueCommentDeletedIssueItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -3959,23 +5687,24 @@ impl ToString for WebhookIssueCommentDeletedIssueItem2State {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssueCommentDeletedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
+
   WebhookIssueCommentDeletedIssueItem2(WebhookIssueCommentDeletedIssueItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 impl ToString for WebhookIssueCommentEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -3984,17 +5713,18 @@ impl ToString for WebhookIssueCommentEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 /// State of the issue; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentEditedIssueItem2State {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 impl ToString for WebhookIssueCommentEditedIssueItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -4004,16 +5734,17 @@ impl ToString for WebhookIssueCommentEditedIssueItem2State {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssueCommentEditedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
+
   WebhookIssueCommentEditedIssueItem2(WebhookIssueCommentEditedIssueItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 /// The action that was performed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesAssignedAction {
@@ -4021,7 +5752,7 @@ pub enum WebhookIssuesAssignedAction {
   Assigned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesAssignedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4030,7 +5761,7 @@ impl ToString for WebhookIssuesAssignedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 /// The action that was performed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesClosedAction {
@@ -4038,7 +5769,7 @@ pub enum WebhookIssuesClosedAction {
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesClosedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4047,16 +5778,17 @@ impl ToString for WebhookIssuesClosedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesClosedIssueItem2State {
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "open")]
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesClosedIssueItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -4066,23 +5798,24 @@ impl ToString for WebhookIssuesClosedIssueItem2State {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssuesClosedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
+
   WebhookIssuesClosedIssueItem2(WebhookIssuesClosedIssueItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4091,14 +5824,14 @@ impl ToString for WebhookIssuesDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesDemilestonedAction {
   #[serde(rename = "demilestoned")]
   Demilestoned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesDemilestonedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4107,23 +5840,24 @@ impl ToString for WebhookIssuesDemilestonedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssuesDemilestonedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
+
   WebhookIssuesDemilestonedIssueItem2(WebhookIssuesDemilestonedIssueItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4132,14 +5866,14 @@ impl ToString for WebhookIssuesEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesLabeledAction {
   #[serde(rename = "labeled")]
   Labeled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesLabeledAction {
   fn to_string(&self) -> String {
     match self {
@@ -4148,14 +5882,14 @@ impl ToString for WebhookIssuesLabeledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesLockedAction {
   #[serde(rename = "locked")]
   Locked,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesLockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4164,20 +5898,23 @@ impl ToString for WebhookIssuesLockedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesLockedIssueItem2ActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
+
   #[serde(rename = "off-topic")]
   OffTopic,
+
   #[serde(rename = "too heated")]
   TooHeated,
+
   #[serde(rename = "spam")]
   Spam,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesLockedIssueItem2ActiveLockReason {
   fn to_string(&self) -> String {
     match self {
@@ -4189,29 +5926,30 @@ impl ToString for WebhookIssuesLockedIssueItem2ActiveLockReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum WebhookIssuesLockedIssueItem2Locked {
   Boolean(bool),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssuesLockedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
+
   WebhookIssuesLockedIssueItem2(WebhookIssuesLockedIssueItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesMilestonedAction {
   #[serde(rename = "milestoned")]
   Milestoned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesMilestonedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4220,23 +5958,24 @@ impl ToString for WebhookIssuesMilestonedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssuesMilestonedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
+
   WebhookIssuesMilestonedIssueItem2(WebhookIssuesMilestonedIssueItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesOpenedAction {
   #[serde(rename = "opened")]
   Opened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesOpenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4245,14 +5984,14 @@ impl ToString for WebhookIssuesOpenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesPinnedAction {
   #[serde(rename = "pinned")]
   Pinned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesPinnedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4261,14 +6000,14 @@ impl ToString for WebhookIssuesPinnedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4277,16 +6016,17 @@ impl ToString for WebhookIssuesReopenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesReopenedIssueItem2State {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesReopenedIssueItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -4296,23 +6036,24 @@ impl ToString for WebhookIssuesReopenedIssueItem2State {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssuesReopenedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
+
   WebhookIssuesReopenedIssueItem2(WebhookIssuesReopenedIssueItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesTransferredAction {
   #[serde(rename = "transferred")]
   Transferred,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesTransferredAction {
   fn to_string(&self) -> String {
     match self {
@@ -4321,7 +6062,7 @@ impl ToString for WebhookIssuesTransferredAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 /// The action that was performed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesUnassignedAction {
@@ -4329,7 +6070,7 @@ pub enum WebhookIssuesUnassignedAction {
   Unassigned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesUnassignedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4338,14 +6079,14 @@ impl ToString for WebhookIssuesUnassignedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesUnlabeledAction {
   #[serde(rename = "unlabeled")]
   Unlabeled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesUnlabeledAction {
   fn to_string(&self) -> String {
     match self {
@@ -4354,14 +6095,14 @@ impl ToString for WebhookIssuesUnlabeledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesUnlockedAction {
   #[serde(rename = "unlocked")]
   Unlocked,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesUnlockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4370,29 +6111,30 @@ impl ToString for WebhookIssuesUnlockedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum WebhookIssuesUnlockedIssueItem2Locked {
   Boolean(bool),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssuesUnlockedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
+
   WebhookIssuesUnlockedIssueItem2(WebhookIssuesUnlockedIssueItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesUnpinnedAction {
   #[serde(rename = "unpinned")]
   Unpinned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 impl ToString for WebhookIssuesUnpinnedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4401,14 +6143,14 @@ impl ToString for WebhookIssuesUnpinnedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookLabelCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 impl ToString for WebhookLabelCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4417,14 +6159,14 @@ impl ToString for WebhookLabelCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookLabelDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 impl ToString for WebhookLabelDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4433,14 +6175,14 @@ impl ToString for WebhookLabelDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookLabelEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 impl ToString for WebhookLabelEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4449,14 +6191,14 @@ impl ToString for WebhookLabelEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseCancelledAction {
   #[serde(rename = "cancelled")]
   Cancelled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 impl ToString for WebhookMarketplacePurchaseCancelledAction {
   fn to_string(&self) -> String {
     match self {
@@ -4465,18 +6207,20 @@ impl ToString for WebhookMarketplacePurchaseCancelledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MarketplacePurchasePlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
+
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
+
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 impl ToString for MarketplacePurchasePlanPriceModel {
   fn to_string(&self) -> String {
     match self {
@@ -4487,18 +6231,20 @@ impl ToString for MarketplacePurchasePlanPriceModel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
+
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
+
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 impl ToString for WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel {
   fn to_string(&self) -> String {
     match self {
@@ -4515,24 +6261,25 @@ impl ToString for WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Pla
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
+
   WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2(
     WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseChangedAction {
   #[serde(rename = "changed")]
   Changed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 impl ToString for WebhookMarketplacePurchaseChangedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4541,18 +6288,20 @@ impl ToString for WebhookMarketplacePurchaseChangedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
+
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
+
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 impl ToString for WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel {
   fn to_string(&self) -> String {
     match self {
@@ -4569,24 +6318,25 @@ impl ToString for WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanP
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchaseChangedMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
+
   WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2(
     WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePendingChangeAction {
   #[serde(rename = "pending_change")]
   PendingChange,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 impl ToString for WebhookMarketplacePurchasePendingChangeAction {
   fn to_string(&self) -> String {
     match self {
@@ -4595,18 +6345,20 @@ impl ToString for WebhookMarketplacePurchasePendingChangeAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
+
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
+
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 impl ToString for WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel {
   fn to_string(&self) -> String {
     match self {
@@ -4623,24 +6375,25 @@ impl ToString for WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
+
   WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2(
     WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePendingChangeCancelledAction {
   #[serde(rename = "pending_change_cancelled")]
   PendingChangeCancelled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 impl ToString for WebhookMarketplacePurchasePendingChangeCancelledAction {
   fn to_string(&self) -> String {
     match self {
@@ -4651,24 +6404,25 @@ impl ToString for WebhookMarketplacePurchasePendingChangeCancelledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
+
   WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2(
     WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePurchasedAction {
   #[serde(rename = "purchased")]
   Purchased,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 impl ToString for WebhookMarketplacePurchasePurchasedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4677,18 +6431,20 @@ impl ToString for WebhookMarketplacePurchasePurchasedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
+
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
+
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 impl ToString for WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel {
   fn to_string(&self) -> String {
     match self {
@@ -4705,24 +6461,25 @@ impl ToString for WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Pla
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
+
   WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2(
     WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberAddedAction {
   #[serde(rename = "added")]
   Added,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 impl ToString for WebhookMemberAddedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4731,18 +6488,20 @@ impl ToString for WebhookMemberAddedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberAddedChangesPermissionTo {
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
+
   #[serde(rename = "read")]
   Read,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 impl ToString for WebhookMemberAddedChangesPermissionTo {
   fn to_string(&self) -> String {
     match self {
@@ -4753,14 +6512,14 @@ impl ToString for WebhookMemberAddedChangesPermissionTo {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 impl ToString for WebhookMemberEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4769,14 +6528,14 @@ impl ToString for WebhookMemberEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberRemovedAction {
   #[serde(rename = "removed")]
   Removed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 impl ToString for WebhookMemberRemovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4785,14 +6544,14 @@ impl ToString for WebhookMemberRemovedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_membership"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMembershipAddedAction {
   #[serde(rename = "added")]
   Added,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_membership"))]
 impl ToString for WebhookMembershipAddedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4801,7 +6560,7 @@ impl ToString for WebhookMembershipAddedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_membership"))]
 /// The scope of the membership. Currently, can only be `team`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMembershipAddedScope {
@@ -4809,7 +6568,7 @@ pub enum WebhookMembershipAddedScope {
   Team,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_membership"))]
 impl ToString for WebhookMembershipAddedScope {
   fn to_string(&self) -> String {
     match self {
@@ -4818,16 +6577,37 @@ impl ToString for WebhookMembershipAddedScope {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_membership",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_team_add",
+  feature = "webhook_team"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
+
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_membership",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_team_add",
+  feature = "webhook_team"
+))]
 impl ToString for TeamNotificationSetting {
   fn to_string(&self) -> String {
     match self {
@@ -4837,17 +6617,38 @@ impl ToString for TeamNotificationSetting {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_membership",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_team_add",
+  feature = "webhook_team"
+))]
 /// Whether team members will receive notifications when their team is @mentioned
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamParentNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
+
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_membership",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_team_add",
+  feature = "webhook_team"
+))]
 impl ToString for TeamParentNotificationSetting {
   fn to_string(&self) -> String {
     match self {
@@ -4857,18 +6658,40 @@ impl ToString for TeamParentNotificationSetting {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_membership",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_team_add",
+  feature = "webhook_team"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamParentPrivacy {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "secret")]
   Secret,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_membership",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_team_add",
+  feature = "webhook_team"
+))]
 impl ToString for TeamParentPrivacy {
   fn to_string(&self) -> String {
     match self {
@@ -4879,18 +6702,40 @@ impl ToString for TeamParentPrivacy {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_membership",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_team_add",
+  feature = "webhook_team"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamPrivacy {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "secret")]
   Secret,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_membership",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_team_add",
+  feature = "webhook_team"
+))]
 impl ToString for TeamPrivacy {
   fn to_string(&self) -> String {
     match self {
@@ -4901,14 +6746,14 @@ impl ToString for TeamPrivacy {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_membership"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMembershipRemovedAction {
   #[serde(rename = "removed")]
   Removed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_membership"))]
 impl ToString for WebhookMembershipRemovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4917,17 +6762,18 @@ impl ToString for WebhookMembershipRemovedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_membership"))]
 /// The scope of the membership. Currently, can only be `team`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMembershipRemovedScope {
   #[serde(rename = "team")]
   Team,
+
   #[serde(rename = "organization")]
   Organization,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_membership"))]
 impl ToString for WebhookMembershipRemovedScope {
   fn to_string(&self) -> String {
     match self {
@@ -4937,14 +6783,14 @@ impl ToString for WebhookMembershipRemovedScope {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_merge_group"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMergeGroupChecksRequestedAction {
   #[serde(rename = "checks_requested")]
   ChecksRequested,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_merge_group"))]
 impl ToString for WebhookMergeGroupChecksRequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4953,14 +6799,14 @@ impl ToString for WebhookMergeGroupChecksRequestedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_merge_group"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMergeGroupDestroyedAction {
   #[serde(rename = "destroyed")]
   Destroyed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_merge_group"))]
 impl ToString for WebhookMergeGroupDestroyedAction {
   fn to_string(&self) -> String {
     match self {
@@ -4969,19 +6815,21 @@ impl ToString for WebhookMergeGroupDestroyedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_merge_group"))]
 /// Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMergeGroupDestroyedReason {
   #[serde(rename = "merged")]
   Merged,
+
   #[serde(rename = "invalidated")]
   Invalidated,
+
   #[serde(rename = "dequeued")]
   Dequeued,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_merge_group"))]
 impl ToString for WebhookMergeGroupDestroyedReason {
   fn to_string(&self) -> String {
     match self {
@@ -4992,14 +6840,14 @@ impl ToString for WebhookMergeGroupDestroyedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_meta"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMetaDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_meta"))]
 impl ToString for WebhookMetaDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5008,16 +6856,17 @@ impl ToString for WebhookMetaDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_meta"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMetaDeletedHookConfigContentType {
   #[serde(rename = "json")]
   Json,
+
   #[serde(rename = "form")]
   Form,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_meta"))]
 impl ToString for WebhookMetaDeletedHookConfigContentType {
   fn to_string(&self) -> String {
     match self {
@@ -5027,116 +6876,167 @@ impl ToString for WebhookMetaDeletedHookConfigContentType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_meta"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMetaDeletedHookEvents {
   #[serde(rename = "*")]
   Asterisk,
+
   #[serde(rename = "branch_protection_rule")]
   BranchProtectionRule,
+
   #[serde(rename = "check_run")]
   CheckRun,
+
   #[serde(rename = "check_suite")]
   CheckSuite,
+
   #[serde(rename = "code_scanning_alert")]
   CodeScanningAlert,
+
   #[serde(rename = "commit_comment")]
   CommitComment,
+
   #[serde(rename = "create")]
   Create,
+
   #[serde(rename = "delete")]
   Delete,
+
   #[serde(rename = "deployment")]
   Deployment,
+
   #[serde(rename = "deployment_status")]
   DeploymentStatus,
+
   #[serde(rename = "deploy_key")]
   DeployKey,
+
   #[serde(rename = "discussion")]
   Discussion,
+
   #[serde(rename = "discussion_comment")]
   DiscussionComment,
+
   #[serde(rename = "fork")]
   Fork,
+
   #[serde(rename = "gollum")]
   Gollum,
+
   #[serde(rename = "issues")]
   Issues,
+
   #[serde(rename = "issue_comment")]
   IssueComment,
+
   #[serde(rename = "label")]
   Label,
+
   #[serde(rename = "member")]
   Member,
+
   #[serde(rename = "membership")]
   Membership,
+
   #[serde(rename = "meta")]
   Meta,
+
   #[serde(rename = "milestone")]
   Milestone,
+
   #[serde(rename = "organization")]
   Organization,
+
   #[serde(rename = "org_block")]
   OrgBlock,
+
   #[serde(rename = "package")]
   Package,
+
   #[serde(rename = "page_build")]
   PageBuild,
+
   #[serde(rename = "project")]
   Project,
+
   #[serde(rename = "project_card")]
   ProjectCard,
+
   #[serde(rename = "project_column")]
   ProjectColumn,
+
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "pull_request")]
   PullRequest,
+
   #[serde(rename = "pull_request_review")]
   PullRequestReview,
+
   #[serde(rename = "pull_request_review_comment")]
   PullRequestReviewComment,
+
   #[serde(rename = "pull_request_review_thread")]
   PullRequestReviewThread,
+
   #[serde(rename = "push")]
   Push,
+
   #[serde(rename = "registry_package")]
   RegistryPackage,
+
   #[serde(rename = "release")]
   Release,
+
   #[serde(rename = "repository")]
   Repository,
+
   #[serde(rename = "repository_import")]
   RepositoryImport,
+
   #[serde(rename = "repository_vulnerability_alert")]
   RepositoryVulnerabilityAlert,
+
   #[serde(rename = "secret_scanning_alert")]
   SecretScanningAlert,
+
   #[serde(rename = "secret_scanning_alert_location")]
   SecretScanningAlertLocation,
+
   #[serde(rename = "security_and_analysis")]
   SecurityAndAnalysis,
+
   #[serde(rename = "star")]
   Star,
+
   #[serde(rename = "status")]
   Status,
+
   #[serde(rename = "team")]
   Team,
+
   #[serde(rename = "team_add")]
   TeamAdd,
+
   #[serde(rename = "watch")]
   Watch,
+
   #[serde(rename = "workflow_job")]
   WorkflowJob,
+
   #[serde(rename = "workflow_run")]
   WorkflowRun,
+
   #[serde(rename = "repository_dispatch")]
   RepositoryDispatch,
+
   #[serde(rename = "projects_v2_item")]
   ProjectsV2Item,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_meta"))]
 impl ToString for WebhookMetaDeletedHookEvents {
   fn to_string(&self) -> String {
     match self {
@@ -5204,14 +7104,14 @@ impl ToString for WebhookMetaDeletedHookEvents {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneClosedAction {
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 impl ToString for WebhookMilestoneClosedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5220,14 +7120,14 @@ impl ToString for WebhookMilestoneClosedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 impl ToString for WebhookMilestoneCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5236,14 +7136,14 @@ impl ToString for WebhookMilestoneCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 impl ToString for WebhookMilestoneDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5252,14 +7152,14 @@ impl ToString for WebhookMilestoneDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 impl ToString for WebhookMilestoneEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5268,14 +7168,14 @@ impl ToString for WebhookMilestoneEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneOpenedAction {
   #[serde(rename = "opened")]
   Opened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 impl ToString for WebhookMilestoneOpenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5284,14 +7184,14 @@ impl ToString for WebhookMilestoneOpenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_org_block"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrgBlockBlockedAction {
   #[serde(rename = "blocked")]
   Blocked,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_org_block"))]
 impl ToString for WebhookOrgBlockBlockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5300,14 +7200,14 @@ impl ToString for WebhookOrgBlockBlockedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_org_block"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrgBlockUnblockedAction {
   #[serde(rename = "unblocked")]
   Unblocked,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_org_block"))]
 impl ToString for WebhookOrgBlockUnblockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5316,14 +7216,14 @@ impl ToString for WebhookOrgBlockUnblockedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 impl ToString for WebhookOrganizationDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5332,14 +7232,14 @@ impl ToString for WebhookOrganizationDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationMemberAddedAction {
   #[serde(rename = "member_added")]
   MemberAdded,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 impl ToString for WebhookOrganizationMemberAddedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5348,14 +7248,14 @@ impl ToString for WebhookOrganizationMemberAddedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationMemberInvitedAction {
   #[serde(rename = "member_invited")]
   MemberInvited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 impl ToString for WebhookOrganizationMemberInvitedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5364,14 +7264,14 @@ impl ToString for WebhookOrganizationMemberInvitedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationMemberRemovedAction {
   #[serde(rename = "member_removed")]
   MemberRemoved,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 impl ToString for WebhookOrganizationMemberRemovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5380,14 +7280,14 @@ impl ToString for WebhookOrganizationMemberRemovedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationRenamedAction {
   #[serde(rename = "renamed")]
   Renamed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 impl ToString for WebhookOrganizationRenamedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5396,14 +7296,14 @@ impl ToString for WebhookOrganizationRenamedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPackagePublishedAction {
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 impl ToString for WebhookPackagePublishedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5412,14 +7312,14 @@ impl ToString for WebhookPackagePublishedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPackageUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 impl ToString for WebhookPackageUpdatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5428,14 +7328,14 @@ impl ToString for WebhookPackageUpdatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestApprovedAction {
   #[serde(rename = "approved")]
   Approved,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 impl ToString for WebhookPersonalAccessTokenRequestApprovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5444,19 +7344,21 @@ impl ToString for WebhookPersonalAccessTokenRequestApprovedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 /// Type of repository selection requested.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PersonalAccessTokenRequestRepositorySelection {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "subset")]
   Subset,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 impl ToString for PersonalAccessTokenRequestRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -5467,14 +7369,14 @@ impl ToString for PersonalAccessTokenRequestRepositorySelection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestCancelledAction {
   #[serde(rename = "cancelled")]
   Cancelled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 impl ToString for WebhookPersonalAccessTokenRequestCancelledAction {
   fn to_string(&self) -> String {
     match self {
@@ -5483,14 +7385,14 @@ impl ToString for WebhookPersonalAccessTokenRequestCancelledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 impl ToString for WebhookPersonalAccessTokenRequestCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5499,14 +7401,14 @@ impl ToString for WebhookPersonalAccessTokenRequestCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestDeniedAction {
   #[serde(rename = "denied")]
   Denied,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 impl ToString for WebhookPersonalAccessTokenRequestDeniedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5515,7 +7417,7 @@ impl ToString for WebhookPersonalAccessTokenRequestDeniedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_ping"))]
 /// The type of webhook. The only valid value is 'web'.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookName {
@@ -5523,7 +7425,7 @@ pub enum WebhookName {
   Web,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_ping"))]
 impl ToString for WebhookName {
   fn to_string(&self) -> String {
     match self {
@@ -5532,14 +7434,14 @@ impl ToString for WebhookName {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardConvertedAction {
   #[serde(rename = "converted")]
   Converted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 impl ToString for WebhookProjectCardConvertedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5548,14 +7450,14 @@ impl ToString for WebhookProjectCardConvertedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 impl ToString for WebhookProjectCardCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5564,14 +7466,14 @@ impl ToString for WebhookProjectCardCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 impl ToString for WebhookProjectCardDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5580,14 +7482,14 @@ impl ToString for WebhookProjectCardDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 impl ToString for WebhookProjectCardEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5596,14 +7498,14 @@ impl ToString for WebhookProjectCardEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardMovedAction {
   #[serde(rename = "moved")]
   Moved,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 impl ToString for WebhookProjectCardMovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5612,22 +7514,23 @@ impl ToString for WebhookProjectCardMovedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookProjectCardMovedProjectCard {
   ProjectCard(ProjectCard),
+
   WebhookProjectCardMovedProjectCardItem2(WebhookProjectCardMovedProjectCardItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectClosedAction {
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 impl ToString for WebhookProjectClosedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5636,17 +7539,18 @@ impl ToString for WebhookProjectClosedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 /// State of the project; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 impl ToString for ProjectState {
   fn to_string(&self) -> String {
     match self {
@@ -5656,14 +7560,14 @@ impl ToString for ProjectState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 impl ToString for WebhookProjectColumnCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5672,14 +7576,14 @@ impl ToString for WebhookProjectColumnCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 impl ToString for WebhookProjectColumnDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5688,14 +7592,14 @@ impl ToString for WebhookProjectColumnDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 impl ToString for WebhookProjectColumnEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5704,14 +7608,14 @@ impl ToString for WebhookProjectColumnEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnMovedAction {
   #[serde(rename = "moved")]
   Moved,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 impl ToString for WebhookProjectColumnMovedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5720,14 +7624,14 @@ impl ToString for WebhookProjectColumnMovedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 impl ToString for WebhookProjectCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5736,14 +7640,14 @@ impl ToString for WebhookProjectCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 impl ToString for WebhookProjectDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5752,14 +7656,14 @@ impl ToString for WebhookProjectDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 impl ToString for WebhookProjectEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5768,14 +7672,14 @@ impl ToString for WebhookProjectEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 impl ToString for WebhookProjectReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5784,14 +7688,14 @@ impl ToString for WebhookProjectReopenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectClosedAction {
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 impl ToString for WebhookProjectsV2ProjectClosedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5800,14 +7704,14 @@ impl ToString for WebhookProjectsV2ProjectClosedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 impl ToString for WebhookProjectsV2ProjectCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5816,14 +7720,14 @@ impl ToString for WebhookProjectsV2ProjectCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 impl ToString for WebhookProjectsV2ProjectDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5832,14 +7736,14 @@ impl ToString for WebhookProjectsV2ProjectDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 impl ToString for WebhookProjectsV2ProjectEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5848,14 +7752,14 @@ impl ToString for WebhookProjectsV2ProjectEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemArchivedAction {
   #[serde(rename = "archived")]
   Archived,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 impl ToString for WebhookProjectsV2ItemArchivedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5864,16 +7768,18 @@ impl ToString for WebhookProjectsV2ItemArchivedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 /// The type of content tracked in a project item
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsV2ItemContentType {
   Issue,
+
   PullRequest,
+
   DraftIssue,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 impl ToString for ProjectsV2ItemContentType {
   fn to_string(&self) -> String {
     match self {
@@ -5884,14 +7790,14 @@ impl ToString for ProjectsV2ItemContentType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemConvertedAction {
   #[serde(rename = "converted")]
   Converted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 impl ToString for WebhookProjectsV2ItemConvertedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5900,14 +7806,14 @@ impl ToString for WebhookProjectsV2ItemConvertedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 impl ToString for WebhookProjectsV2ItemCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5916,14 +7822,14 @@ impl ToString for WebhookProjectsV2ItemCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 impl ToString for WebhookProjectsV2ItemDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5932,14 +7838,14 @@ impl ToString for WebhookProjectsV2ItemDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 impl ToString for WebhookProjectsV2ItemEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5948,22 +7854,23 @@ impl ToString for WebhookProjectsV2ItemEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookProjectsV2ItemEditedChanges {
   WebhookProjectsV2ItemEditedChangesItem1(WebhookProjectsV2ItemEditedChangesItem1),
+
   WebhookProjectsV2ItemEditedChangesItem2(WebhookProjectsV2ItemEditedChangesItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemReorderedAction {
   #[serde(rename = "reordered")]
   Reordered,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 impl ToString for WebhookProjectsV2ItemReorderedAction {
   fn to_string(&self) -> String {
     match self {
@@ -5972,14 +7879,14 @@ impl ToString for WebhookProjectsV2ItemReorderedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemRestoredAction {
   #[serde(rename = "restored")]
   Restored,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 impl ToString for WebhookProjectsV2ItemRestoredAction {
   fn to_string(&self) -> String {
     match self {
@@ -5988,14 +7895,14 @@ impl ToString for WebhookProjectsV2ItemRestoredAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 impl ToString for WebhookProjectsV2ProjectReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6004,14 +7911,14 @@ impl ToString for WebhookProjectsV2ProjectReopenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestAssignedAction {
   #[serde(rename = "assigned")]
   Assigned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestAssignedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6020,20 +7927,23 @@ impl ToString for WebhookPullRequestAssignedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
+
   #[serde(rename = "off-topic")]
   OffTopic,
+
   #[serde(rename = "too heated")]
   TooHeated,
+
   #[serde(rename = "spam")]
   Spam,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for PullRequestActiveLockReason {
   fn to_string(&self) -> String {
     match self {
@@ -6045,29 +7955,36 @@ impl ToString for PullRequestActiveLockReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for PullRequestAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -6083,19 +8000,33 @@ impl ToString for PullRequestAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 /// The merge method to use.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestAutoMergeMergeMethod {
   #[serde(rename = "merge")]
   Merge,
+
   #[serde(rename = "squash")]
   Squash,
+
   #[serde(rename = "rebase")]
   Rebase,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 impl ToString for PullRequestAutoMergeMergeMethod {
   fn to_string(&self) -> String {
     match self {
@@ -6106,14 +8037,14 @@ impl ToString for PullRequestAutoMergeMergeMethod {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestAutoMergeDisabledAction {
   #[serde(rename = "auto_merge_disabled")]
   AutoMergeDisabled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestAutoMergeDisabledAction {
   fn to_string(&self) -> String {
     match self {
@@ -6124,14 +8055,14 @@ impl ToString for WebhookPullRequestAutoMergeDisabledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestAutoMergeEnabledAction {
   #[serde(rename = "auto_merge_enabled")]
   AutoMergeEnabled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestAutoMergeEnabledAction {
   fn to_string(&self) -> String {
     match self {
@@ -6142,14 +8073,14 @@ impl ToString for WebhookPullRequestAutoMergeEnabledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestClosedAction {
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestClosedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6158,7 +8089,7 @@ impl ToString for WebhookPullRequestClosedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -6167,13 +8098,15 @@ impl ToString for WebhookPullRequestClosedAction {
 pub enum WebhookPullRequestClosedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6184,7 +8117,7 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
@@ -6192,11 +8125,12 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitMessage {
 pub enum WebhookPullRequestClosedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6208,7 +8142,7 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -6217,13 +8151,15 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitTitle {
 pub enum WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6240,7 +8176,7 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessa
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -6248,11 +8184,12 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessa
 pub enum WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6266,23 +8203,24 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestClosedPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
+
   WebhookPullRequestClosedPullRequestItem2(WebhookPullRequestClosedPullRequestItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestConvertedToDraftAction {
   #[serde(rename = "converted_to_draft")]
   ConvertedToDraft,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestConvertedToDraftAction {
   fn to_string(&self) -> String {
     match self {
@@ -6293,7 +8231,7 @@ impl ToString for WebhookPullRequestConvertedToDraftAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -6302,13 +8240,15 @@ impl ToString for WebhookPullRequestConvertedToDraftAction {
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6325,7 +8265,7 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitM
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
@@ -6333,11 +8273,12 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitM
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6351,7 +8292,7 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitT
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -6360,13 +8301,15 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitT
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6377,7 +8320,7 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeC
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -6385,11 +8328,12 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeC
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6403,25 +8347,26 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeC
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestConvertedToDraftPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
+
   WebhookPullRequestConvertedToDraftPullRequestItem2(
     WebhookPullRequestConvertedToDraftPullRequestItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestDemilestonedAction {
   #[serde(rename = "demilestoned")]
   Demilestoned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestDemilestonedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6430,14 +8375,14 @@ impl ToString for WebhookPullRequestDemilestonedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestDequeuedAction {
   #[serde(rename = "dequeued")]
   Dequeued,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestDequeuedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6446,14 +8391,14 @@ impl ToString for WebhookPullRequestDequeuedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6462,7 +8407,7 @@ impl ToString for WebhookPullRequestEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -6471,13 +8416,15 @@ impl ToString for WebhookPullRequestEditedAction {
 pub enum WebhookPullRequestEditedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6488,7 +8435,7 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
@@ -6496,11 +8443,12 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitMessage {
 pub enum WebhookPullRequestEditedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6512,7 +8460,7 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -6521,13 +8469,15 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitTitle {
 pub enum WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6544,7 +8494,7 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessa
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -6552,11 +8502,12 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessa
 pub enum WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6570,23 +8521,24 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestEditedPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
+
   WebhookPullRequestEditedPullRequestItem2(WebhookPullRequestEditedPullRequestItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestEnqueuedAction {
   #[serde(rename = "enqueued")]
   Enqueued,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestEnqueuedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6595,14 +8547,14 @@ impl ToString for WebhookPullRequestEnqueuedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestLabeledAction {
   #[serde(rename = "labeled")]
   Labeled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestLabeledAction {
   fn to_string(&self) -> String {
     match self {
@@ -6611,14 +8563,14 @@ impl ToString for WebhookPullRequestLabeledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestLockedAction {
   #[serde(rename = "locked")]
   Locked,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestLockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6627,14 +8579,14 @@ impl ToString for WebhookPullRequestLockedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestMilestonedAction {
   #[serde(rename = "milestoned")]
   Milestoned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestMilestonedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6643,14 +8595,14 @@ impl ToString for WebhookPullRequestMilestonedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestOpenedAction {
   #[serde(rename = "opened")]
   Opened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestOpenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6659,7 +8611,7 @@ impl ToString for WebhookPullRequestOpenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -6668,13 +8620,15 @@ impl ToString for WebhookPullRequestOpenedAction {
 pub enum WebhookPullRequestOpenedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6685,7 +8639,7 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
@@ -6693,11 +8647,12 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitMessage {
 pub enum WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6709,7 +8664,7 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -6718,13 +8673,15 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle {
 pub enum WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6741,7 +8698,7 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessa
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -6749,11 +8706,12 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessa
 pub enum WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6767,23 +8725,24 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestOpenedPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
+
   WebhookPullRequestOpenedPullRequestItem2(WebhookPullRequestOpenedPullRequestItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReadyForReviewAction {
   #[serde(rename = "ready_for_review")]
   ReadyForReview,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReadyForReviewAction {
   fn to_string(&self) -> String {
     match self {
@@ -6792,7 +8751,7 @@ impl ToString for WebhookPullRequestReadyForReviewAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -6801,13 +8760,15 @@ impl ToString for WebhookPullRequestReadyForReviewAction {
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6824,7 +8785,7 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMes
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
@@ -6832,11 +8793,12 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMes
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6850,7 +8812,7 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTit
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -6859,13 +8821,15 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTit
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6882,7 +8846,7 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCom
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -6890,11 +8854,12 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCom
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6908,25 +8873,26 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCom
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestReadyForReviewPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
+
   WebhookPullRequestReadyForReviewPullRequestItem2(
     WebhookPullRequestReadyForReviewPullRequestItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -6935,7 +8901,7 @@ impl ToString for WebhookPullRequestReopenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit message.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `PR_BODY` - default to the pull request's body.
@@ -6944,13 +8910,15 @@ impl ToString for WebhookPullRequestReopenedAction {
 pub enum WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6963,7 +8931,7 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a merge commit title.
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., "Merge pull request #123 from branch-name").
@@ -6971,11 +8939,12 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage {
 pub enum WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6987,7 +8956,7 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit message:
 /// - `PR_BODY` - default to the pull request's body.
 /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
@@ -6996,13 +8965,15 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle {
 pub enum WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -7019,7 +8990,7 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMes
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The default value for a squash merge commit title:
 /// - `PR_TITLE` - default to the pull request's title.
 /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
@@ -7027,11 +8998,12 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMes
 pub enum WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -7045,23 +9017,24 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTit
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestReopenedPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
+
   WebhookPullRequestReopenedPullRequestItem2(WebhookPullRequestReopenedPullRequestItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7070,29 +9043,44 @@ impl ToString for WebhookPullRequestReviewCommentCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review_thread"
+))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review_thread"
+))]
 impl ToString for PullRequestReviewCommentAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -7110,17 +9098,26 @@ impl ToString for PullRequestReviewCommentAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review_thread"
+))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentSide {
   #[serde(rename = "LEFT")]
   Left,
+
   #[serde(rename = "RIGHT")]
   Right,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review_thread"
+))]
 impl ToString for PullRequestReviewCommentSide {
   fn to_string(&self) -> String {
     match self {
@@ -7130,17 +9127,26 @@ impl ToString for PullRequestReviewCommentSide {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review_thread"
+))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentStartSide {
   #[serde(rename = "LEFT")]
   Left,
+
   #[serde(rename = "RIGHT")]
   Right,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review_thread"
+))]
 impl ToString for PullRequestReviewCommentStartSide {
   fn to_string(&self) -> String {
     match self {
@@ -7150,17 +9156,26 @@ impl ToString for PullRequestReviewCommentStartSide {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review_thread"
+))]
 /// The level at which the comment is targeted, can be a diff line or a file.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentSubjectType {
   #[serde(rename = "line")]
   Line,
+
   #[serde(rename = "file")]
   File,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review_thread"
+))]
 impl ToString for PullRequestReviewCommentSubjectType {
   fn to_string(&self) -> String {
     match self {
@@ -7170,20 +9185,23 @@ impl ToString for PullRequestReviewCommentSubjectType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
+
   #[serde(rename = "off-topic")]
   OffTopic,
+
   #[serde(rename = "too heated")]
   TooHeated,
+
   #[serde(rename = "spam")]
   Spam,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason {
   fn to_string(&self) -> String {
     match self {
@@ -7201,29 +9219,36 @@ impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestActiveLockRea
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -7255,16 +9280,17 @@ impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssocia
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -7274,14 +9300,14 @@ impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7290,20 +9316,23 @@ impl ToString for WebhookPullRequestReviewCommentDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
+
   #[serde(rename = "off-topic")]
   OffTopic,
+
   #[serde(rename = "too heated")]
   TooHeated,
+
   #[serde(rename = "spam")]
   Spam,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason {
   fn to_string(&self) -> String {
     match self {
@@ -7321,29 +9350,36 @@ impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestActiveLockRea
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -7375,16 +9411,17 @@ impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssocia
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -7394,14 +9431,14 @@ impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7410,20 +9447,23 @@ impl ToString for WebhookPullRequestReviewCommentEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
+
   #[serde(rename = "off-topic")]
   OffTopic,
+
   #[serde(rename = "too heated")]
   TooHeated,
+
   #[serde(rename = "spam")]
   Spam,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason {
   fn to_string(&self) -> String {
     match self {
@@ -7441,29 +9481,36 @@ impl ToString for WebhookPullRequestReviewCommentEditedPullRequestActiveLockReas
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -7493,16 +9540,17 @@ impl ToString for WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociat
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentEditedPullRequestState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 impl ToString for WebhookPullRequestReviewCommentEditedPullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -7512,14 +9560,14 @@ impl ToString for WebhookPullRequestReviewCommentEditedPullRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewDismissedAction {
   #[serde(rename = "dismissed")]
   Dismissed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 impl ToString for WebhookPullRequestReviewDismissedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7528,20 +9576,31 @@ impl ToString for WebhookPullRequestReviewDismissedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimplePullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
+
   #[serde(rename = "off-topic")]
   OffTopic,
+
   #[serde(rename = "too heated")]
   TooHeated,
+
   #[serde(rename = "spam")]
   Spam,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 impl ToString for SimplePullRequestActiveLockReason {
   fn to_string(&self) -> String {
     match self {
@@ -7553,29 +9612,44 @@ impl ToString for SimplePullRequestActiveLockReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimplePullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 impl ToString for SimplePullRequestAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -7593,16 +9667,25 @@ impl ToString for SimplePullRequestAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimplePullRequestState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 impl ToString for SimplePullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -7612,29 +9695,36 @@ impl ToString for SimplePullRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewDismissedReviewAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 impl ToString for WebhookPullRequestReviewDismissedReviewAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -7660,18 +9750,20 @@ impl ToString for WebhookPullRequestReviewDismissedReviewAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewDismissedReviewState {
   #[serde(rename = "dismissed")]
   Dismissed,
+
   #[serde(rename = "approved")]
   Approved,
+
   #[serde(rename = "changes_requested")]
   ChangesRequested,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 impl ToString for WebhookPullRequestReviewDismissedReviewState {
   fn to_string(&self) -> String {
     match self {
@@ -7684,14 +9776,14 @@ impl ToString for WebhookPullRequestReviewDismissedReviewState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 impl ToString for WebhookPullRequestReviewEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7700,29 +9792,36 @@ impl ToString for WebhookPullRequestReviewEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewEditedReviewAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 impl ToString for WebhookPullRequestReviewEditedReviewAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -7746,14 +9845,14 @@ impl ToString for WebhookPullRequestReviewEditedReviewAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestRemovedItem1Action {
   #[serde(rename = "review_request_removed")]
   ReviewRequestRemoved,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReviewRequestRemovedItem1Action {
   fn to_string(&self) -> String {
     match self {
@@ -7764,14 +9863,14 @@ impl ToString for WebhookPullRequestReviewRequestRemovedItem1Action {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestRemovedItem2Action {
   #[serde(rename = "review_request_removed")]
   ReviewRequestRemoved,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReviewRequestRemovedItem2Action {
   fn to_string(&self) -> String {
     match self {
@@ -7782,22 +9881,23 @@ impl ToString for WebhookPullRequestReviewRequestRemovedItem2Action {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewRequestRemoved {
   WebhookPullRequestReviewRequestRemovedItem1(WebhookPullRequestReviewRequestRemovedItem1),
+
   WebhookPullRequestReviewRequestRemovedItem2(WebhookPullRequestReviewRequestRemovedItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestedItem1Action {
   #[serde(rename = "review_requested")]
   ReviewRequested,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReviewRequestedItem1Action {
   fn to_string(&self) -> String {
     match self {
@@ -7808,14 +9908,14 @@ impl ToString for WebhookPullRequestReviewRequestedItem1Action {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestedItem2Action {
   #[serde(rename = "review_requested")]
   ReviewRequested,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestReviewRequestedItem2Action {
   fn to_string(&self) -> String {
     match self {
@@ -7826,22 +9926,23 @@ impl ToString for WebhookPullRequestReviewRequestedItem2Action {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewRequested {
   WebhookPullRequestReviewRequestedItem1(WebhookPullRequestReviewRequestedItem1),
+
   WebhookPullRequestReviewRequestedItem2(WebhookPullRequestReviewRequestedItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewSubmittedAction {
   #[serde(rename = "submitted")]
   Submitted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 impl ToString for WebhookPullRequestReviewSubmittedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7850,29 +9951,36 @@ impl ToString for WebhookPullRequestReviewSubmittedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 impl ToString for WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
   fn to_string(&self) -> String {
     match self {
@@ -7898,14 +10006,14 @@ impl ToString for WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_thread"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewThreadResolvedAction {
   #[serde(rename = "resolved")]
   Resolved,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_thread"))]
 impl ToString for WebhookPullRequestReviewThreadResolvedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7914,14 +10022,14 @@ impl ToString for WebhookPullRequestReviewThreadResolvedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_thread"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewThreadUnresolvedAction {
   #[serde(rename = "unresolved")]
   Unresolved,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_thread"))]
 impl ToString for WebhookPullRequestReviewThreadUnresolvedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7930,14 +10038,14 @@ impl ToString for WebhookPullRequestReviewThreadUnresolvedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestSynchronizeAction {
   #[serde(rename = "synchronize")]
   Synchronize,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestSynchronizeAction {
   fn to_string(&self) -> String {
     match self {
@@ -7946,14 +10054,14 @@ impl ToString for WebhookPullRequestSynchronizeAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestUnassignedAction {
   #[serde(rename = "unassigned")]
   Unassigned,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestUnassignedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7962,14 +10070,14 @@ impl ToString for WebhookPullRequestUnassignedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestUnlabeledAction {
   #[serde(rename = "unlabeled")]
   Unlabeled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestUnlabeledAction {
   fn to_string(&self) -> String {
     match self {
@@ -7978,14 +10086,14 @@ impl ToString for WebhookPullRequestUnlabeledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestUnlockedAction {
   #[serde(rename = "unlocked")]
   Unlocked,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 impl ToString for WebhookPullRequestUnlockedAction {
   fn to_string(&self) -> String {
     match self {
@@ -7994,14 +10102,14 @@ impl ToString for WebhookPullRequestUnlockedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRegistryPackagePublishedAction {
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 impl ToString for WebhookRegistryPackagePublishedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8010,14 +10118,14 @@ impl ToString for WebhookRegistryPackagePublishedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRegistryPackageUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 impl ToString for WebhookRegistryPackageUpdatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8026,14 +10134,14 @@ impl ToString for WebhookRegistryPackageUpdatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 impl ToString for WebhookReleaseCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8042,7 +10150,7 @@ impl ToString for WebhookReleaseCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 /// State of the release asset.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReleaseAssetState {
@@ -8050,7 +10158,7 @@ pub enum ReleaseAssetState {
   Uploaded,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 impl ToString for ReleaseAssetState {
   fn to_string(&self) -> String {
     match self {
@@ -8059,14 +10167,14 @@ impl ToString for ReleaseAssetState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 impl ToString for WebhookReleaseDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8075,14 +10183,14 @@ impl ToString for WebhookReleaseDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 impl ToString for WebhookReleaseEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8091,14 +10199,14 @@ impl ToString for WebhookReleaseEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleasePrereleasedAction {
   #[serde(rename = "prereleased")]
   Prereleased,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 impl ToString for WebhookReleasePrereleasedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8107,30 +10215,31 @@ impl ToString for WebhookReleasePrereleasedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 /// Whether the release is identified as a prerelease or a full release.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum WebhookReleasePrereleasedReleaseItem2Prerelease {
   Boolean(bool),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookReleasePrereleasedRelease {
   /// The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.
   Release(Release),
+
   WebhookReleasePrereleasedReleaseItem2(WebhookReleasePrereleasedReleaseItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleasePublishedAction {
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 impl ToString for WebhookReleasePublishedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8139,23 +10248,24 @@ impl ToString for WebhookReleasePublishedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookReleasePublishedRelease {
   /// The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.
   Release(Release),
+
   WebhookReleasePublishedReleaseItem2(WebhookReleasePublishedReleaseItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseReleasedAction {
   #[serde(rename = "released")]
   Released,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 impl ToString for WebhookReleaseReleasedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8164,14 +10274,14 @@ impl ToString for WebhookReleaseReleasedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseUnpublishedAction {
   #[serde(rename = "unpublished")]
   Unpublished,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 impl ToString for WebhookReleaseUnpublishedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8180,23 +10290,24 @@ impl ToString for WebhookReleaseUnpublishedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookReleaseUnpublishedRelease {
   /// The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.
   Release(Release),
+
   WebhookReleaseUnpublishedReleaseItem2(WebhookReleaseUnpublishedReleaseItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryAdvisoryPublishedAction {
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 impl ToString for WebhookRepositoryAdvisoryPublishedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8205,33 +10316,42 @@ impl ToString for WebhookRepositoryAdvisoryPublishedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 /// The type of credit the user is receiving.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoryCreditTypes {
   #[serde(rename = "analyst")]
   Analyst,
+
   #[serde(rename = "finder")]
   Finder,
+
   #[serde(rename = "reporter")]
   Reporter,
+
   #[serde(rename = "coordinator")]
   Coordinator,
+
   #[serde(rename = "remediation_developer")]
   RemediationDeveloper,
+
   #[serde(rename = "remediation_reviewer")]
   RemediationReviewer,
+
   #[serde(rename = "remediation_verifier")]
   RemediationVerifier,
+
   #[serde(rename = "tool")]
   Tool,
+
   #[serde(rename = "sponsor")]
   Sponsor,
+
   #[serde(rename = "other")]
   Other,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 impl ToString for SecurityAdvisoryCreditTypes {
   fn to_string(&self) -> String {
     match self {
@@ -8249,19 +10369,21 @@ impl ToString for SecurityAdvisoryCreditTypes {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 /// The state of the user's acceptance of the credit.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryCreditState {
   #[serde(rename = "accepted")]
   Accepted,
+
   #[serde(rename = "declined")]
   Declined,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 impl ToString for RepositoryAdvisoryCreditState {
   fn to_string(&self) -> String {
     match self {
@@ -8272,17 +10394,18 @@ impl ToString for RepositoryAdvisoryCreditState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 /// The type of identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
+
   #[serde(rename = "GHSA")]
   Ghsa,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 impl ToString for RepositoryAdvisoryIdentifiersType {
   fn to_string(&self) -> String {
     match self {
@@ -8292,21 +10415,24 @@ impl ToString for RepositoryAdvisoryIdentifiersType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisorySeverity {
   #[serde(rename = "critical")]
   Critical,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "low")]
   Low,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 impl ToString for RepositoryAdvisorySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -8318,23 +10444,27 @@ impl ToString for RepositoryAdvisorySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 /// The state of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryState {
   #[serde(rename = "published")]
   Published,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "withdrawn")]
   Withdrawn,
+
   #[serde(rename = "draft")]
   Draft,
+
   #[serde(rename = "triage")]
   Triage,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 impl ToString for RepositoryAdvisoryState {
   fn to_string(&self) -> String {
     match self {
@@ -8347,39 +10477,51 @@ impl ToString for RepositoryAdvisoryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 /// The package's language or package management ecosystem.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoryEcosystems {
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "pip")]
   Pip,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "composer")]
   Composer,
+
   #[serde(rename = "go")]
   Go,
+
   #[serde(rename = "rust")]
   Rust,
+
   #[serde(rename = "erlang")]
   Erlang,
+
   #[serde(rename = "actions")]
   Actions,
+
   #[serde(rename = "pub")]
   Pub,
+
   #[serde(rename = "other")]
   Other,
+
   #[serde(rename = "swift")]
   Swift,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 impl ToString for SecurityAdvisoryEcosystems {
   fn to_string(&self) -> String {
     match self {
@@ -8400,14 +10542,14 @@ impl ToString for SecurityAdvisoryEcosystems {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryAdvisoryReportedAction {
   #[serde(rename = "reported")]
   Reported,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 impl ToString for WebhookRepositoryAdvisoryReportedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8416,14 +10558,14 @@ impl ToString for WebhookRepositoryAdvisoryReportedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryArchivedAction {
   #[serde(rename = "archived")]
   Archived,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 impl ToString for WebhookRepositoryArchivedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8432,14 +10574,14 @@ impl ToString for WebhookRepositoryArchivedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 impl ToString for WebhookRepositoryCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8448,14 +10590,14 @@ impl ToString for WebhookRepositoryCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 impl ToString for WebhookRepositoryDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8464,14 +10606,14 @@ impl ToString for WebhookRepositoryDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 impl ToString for WebhookRepositoryEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8480,18 +10622,20 @@ impl ToString for WebhookRepositoryEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_import"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryImportStatus {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "failure")]
   Failure,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_import"))]
 impl ToString for WebhookRepositoryImportStatus {
   fn to_string(&self) -> String {
     match self {
@@ -8502,14 +10646,14 @@ impl ToString for WebhookRepositoryImportStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryPrivatizedAction {
   #[serde(rename = "privatized")]
   Privatized,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 impl ToString for WebhookRepositoryPrivatizedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8518,14 +10662,14 @@ impl ToString for WebhookRepositoryPrivatizedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryPublicizedAction {
   #[serde(rename = "publicized")]
   Publicized,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 impl ToString for WebhookRepositoryPublicizedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8534,14 +10678,14 @@ impl ToString for WebhookRepositoryPublicizedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRenamedAction {
   #[serde(rename = "renamed")]
   Renamed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 impl ToString for WebhookRepositoryRenamedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8550,14 +10694,14 @@ impl ToString for WebhookRepositoryRenamedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRulesetCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for WebhookRepositoryRulesetCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -8566,17 +10710,20 @@ impl ToString for WebhookRepositoryRulesetCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// The type of actor that can bypass a ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetBypassActorActorType {
   RepositoryRole,
+
   Team,
+
   Integration,
+
   OrganizationAdmin,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRulesetBypassActorActorType {
   fn to_string(&self) -> String {
     match self {
@@ -8588,17 +10735,18 @@ impl ToString for RepositoryRulesetBypassActorActorType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetBypassActorBypassMode {
   #[serde(rename = "always")]
   Always,
+
   #[serde(rename = "pull_request")]
   PullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRulesetBypassActorBypassMode {
   fn to_string(&self) -> String {
     match self {
@@ -8608,61 +10756,68 @@ impl ToString for RepositoryRulesetBypassActorBypassMode {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrgRulesetConditionsItem1 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
+
   /// Parameters for a repository name condition
   RepositoryRulesetConditionsRepositoryNameTarget(RepositoryRulesetConditionsRepositoryNameTarget),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrgRulesetConditionsItem2 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
+
   /// Parameters for a repository ID condition
   RepositoryRulesetConditionsRepositoryIdTarget(RepositoryRulesetConditionsRepositoryIdTarget),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrgRulesetConditionsItem3 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
+
   /// Parameters for a repository property condition
   RepositoryRulesetConditionsRepositoryPropertyTarget(
     RepositoryRulesetConditionsRepositoryPropertyTarget,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrgRulesetConditions {
   OrgRulesetConditionsItem1(OrgRulesetConditionsItem1),
+
   OrgRulesetConditionsItem2(OrgRulesetConditionsItem2),
+
   OrgRulesetConditionsItem3(OrgRulesetConditionsItem3),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// The bypass type of the user making the API request for this ruleset. This field is only returned when
 /// querying the repository-level endpoint.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetCurrentUserCanBypass {
   #[serde(rename = "always")]
   Always,
+
   #[serde(rename = "pull_requests_only")]
   PullRequestsOnly,
+
   #[serde(rename = "never")]
   Never,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRulesetCurrentUserCanBypass {
   fn to_string(&self) -> String {
     match self {
@@ -8673,19 +10828,21 @@ impl ToString for RepositoryRulesetCurrentUserCanBypass {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleEnforcement {
   #[serde(rename = "disabled")]
   Disabled,
+
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "evaluate")]
   Evaluate,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleEnforcement {
   fn to_string(&self) -> String {
     match self {
@@ -8696,14 +10853,14 @@ impl ToString for RepositoryRuleEnforcement {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCreationType {
   #[serde(rename = "creation")]
   Creation,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleCreationType {
   fn to_string(&self) -> String {
     match self {
@@ -8712,14 +10869,14 @@ impl ToString for RepositoryRuleCreationType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleUpdateType {
   #[serde(rename = "update")]
   Update,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleUpdateType {
   fn to_string(&self) -> String {
     match self {
@@ -8728,14 +10885,14 @@ impl ToString for RepositoryRuleUpdateType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleDeletionType {
   #[serde(rename = "deletion")]
   Deletion,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleDeletionType {
   fn to_string(&self) -> String {
     match self {
@@ -8744,14 +10901,14 @@ impl ToString for RepositoryRuleDeletionType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredLinearHistoryType {
   #[serde(rename = "required_linear_history")]
   RequiredLinearHistory,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleRequiredLinearHistoryType {
   fn to_string(&self) -> String {
     match self {
@@ -8762,14 +10919,14 @@ impl ToString for RepositoryRuleRequiredLinearHistoryType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredDeploymentsType {
   #[serde(rename = "required_deployments")]
   RequiredDeployments,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleRequiredDeploymentsType {
   fn to_string(&self) -> String {
     match self {
@@ -8780,14 +10937,14 @@ impl ToString for RepositoryRuleRequiredDeploymentsType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredSignaturesType {
   #[serde(rename = "required_signatures")]
   RequiredSignatures,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleRequiredSignaturesType {
   fn to_string(&self) -> String {
     match self {
@@ -8796,14 +10953,14 @@ impl ToString for RepositoryRuleRequiredSignaturesType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulePullRequestType {
   #[serde(rename = "pull_request")]
   PullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRulePullRequestType {
   fn to_string(&self) -> String {
     match self {
@@ -8812,14 +10969,14 @@ impl ToString for RepositoryRulePullRequestType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredStatusChecksType {
   #[serde(rename = "required_status_checks")]
   RequiredStatusChecks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleRequiredStatusChecksType {
   fn to_string(&self) -> String {
     match self {
@@ -8830,14 +10987,14 @@ impl ToString for RepositoryRuleRequiredStatusChecksType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleNonFastForwardType {
   #[serde(rename = "non_fast_forward")]
   NonFastForward,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleNonFastForwardType {
   fn to_string(&self) -> String {
     match self {
@@ -8846,21 +11003,24 @@ impl ToString for RepositoryRuleNonFastForwardType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitMessagePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
+
   #[serde(rename = "ends_with")]
   EndsWith,
+
   #[serde(rename = "contains")]
   Contains,
+
   #[serde(rename = "regex")]
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleCommitMessagePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -8872,14 +11032,14 @@ impl ToString for RepositoryRuleCommitMessagePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitMessagePatternType {
   #[serde(rename = "commit_message_pattern")]
   CommitMessagePattern,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleCommitMessagePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -8890,21 +11050,24 @@ impl ToString for RepositoryRuleCommitMessagePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
+
   #[serde(rename = "ends_with")]
   EndsWith,
+
   #[serde(rename = "contains")]
   Contains,
+
   #[serde(rename = "regex")]
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -8918,14 +11081,14 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitAuthorEmailPatternType {
   #[serde(rename = "commit_author_email_pattern")]
   CommitAuthorEmailPattern,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
   fn to_string(&self) -> String {
     match self {
@@ -8936,21 +11099,24 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitterEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
+
   #[serde(rename = "ends_with")]
   EndsWith,
+
   #[serde(rename = "contains")]
   Contains,
+
   #[serde(rename = "regex")]
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleCommitterEmailPatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -8964,14 +11130,14 @@ impl ToString for RepositoryRuleCommitterEmailPatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitterEmailPatternType {
   #[serde(rename = "committer_email_pattern")]
   CommitterEmailPattern,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleCommitterEmailPatternType {
   fn to_string(&self) -> String {
     match self {
@@ -8982,21 +11148,24 @@ impl ToString for RepositoryRuleCommitterEmailPatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleBranchNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
+
   #[serde(rename = "ends_with")]
   EndsWith,
+
   #[serde(rename = "contains")]
   Contains,
+
   #[serde(rename = "regex")]
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleBranchNamePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -9008,14 +11177,14 @@ impl ToString for RepositoryRuleBranchNamePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleBranchNamePatternType {
   #[serde(rename = "branch_name_pattern")]
   BranchNamePattern,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleBranchNamePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -9024,21 +11193,24 @@ impl ToString for RepositoryRuleBranchNamePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleTagNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
+
   #[serde(rename = "ends_with")]
   EndsWith,
+
   #[serde(rename = "contains")]
   Contains,
+
   #[serde(rename = "regex")]
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleTagNamePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -9050,14 +11222,14 @@ impl ToString for RepositoryRuleTagNamePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleTagNamePatternType {
   #[serde(rename = "tag_name_pattern")]
   TagNamePattern,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleTagNamePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -9066,14 +11238,14 @@ impl ToString for RepositoryRuleTagNamePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleWorkflowsType {
   #[serde(rename = "workflows")]
   Workflows,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRuleWorkflowsType {
   fn to_string(&self) -> String {
     match self {
@@ -9082,51 +11254,66 @@ impl ToString for RepositoryRuleWorkflowsType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRule {
   /// Only allow users with bypass permission to create matching refs.
   RepositoryRuleCreation(RepositoryRuleCreation),
+
   /// Only allow users with bypass permission to update matching refs.
   RepositoryRuleUpdate(RepositoryRuleUpdate),
+
   /// Only allow users with bypass permissions to delete matching refs.
   RepositoryRuleDeletion(RepositoryRuleDeletion),
+
   /// Prevent merge commits from being pushed to matching refs.
   RepositoryRuleRequiredLinearHistory(RepositoryRuleRequiredLinearHistory),
+
   /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
   RepositoryRuleRequiredDeployments(RepositoryRuleRequiredDeployments),
+
   /// Commits pushed to matching refs must have verified signatures.
   RepositoryRuleRequiredSignatures(RepositoryRuleRequiredSignatures),
+
   /// Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
   RepositoryRulePullRequest(RepositoryRulePullRequest),
+
   /// Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
   RepositoryRuleRequiredStatusChecks(RepositoryRuleRequiredStatusChecks),
+
   /// Prevent users with push access from force pushing to refs.
   RepositoryRuleNonFastForward(RepositoryRuleNonFastForward),
+
   /// Parameters to be used for the commit_message_pattern rule
   RepositoryRuleCommitMessagePattern(RepositoryRuleCommitMessagePattern),
+
   /// Parameters to be used for the commit_author_email_pattern rule
   RepositoryRuleCommitAuthorEmailPattern(RepositoryRuleCommitAuthorEmailPattern),
+
   /// Parameters to be used for the committer_email_pattern rule
   RepositoryRuleCommitterEmailPattern(RepositoryRuleCommitterEmailPattern),
+
   /// Parameters to be used for the branch_name_pattern rule
   RepositoryRuleBranchNamePattern(RepositoryRuleBranchNamePattern),
+
   /// Parameters to be used for the tag_name_pattern rule
   RepositoryRuleTagNamePattern(RepositoryRuleTagNamePattern),
+
   /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
   RepositoryRuleWorkflows(RepositoryRuleWorkflows),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// The type of the source of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetSourceType {
   Repository,
+
   Organization,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRulesetSourceType {
   fn to_string(&self) -> String {
     match self {
@@ -9136,17 +11323,18 @@ impl ToString for RepositoryRulesetSourceType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// The target of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetTarget {
   #[serde(rename = "branch")]
   Branch,
+
   #[serde(rename = "tag")]
   Tag,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for RepositoryRulesetTarget {
   fn to_string(&self) -> String {
     match self {
@@ -9156,14 +11344,14 @@ impl ToString for RepositoryRulesetTarget {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRulesetDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for WebhookRepositoryRulesetDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9172,14 +11360,14 @@ impl ToString for WebhookRepositoryRulesetDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRulesetEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 impl ToString for WebhookRepositoryRulesetEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9188,14 +11376,14 @@ impl ToString for WebhookRepositoryRulesetEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryTransferredAction {
   #[serde(rename = "transferred")]
   Transferred,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 impl ToString for WebhookRepositoryTransferredAction {
   fn to_string(&self) -> String {
     match self {
@@ -9204,14 +11392,14 @@ impl ToString for WebhookRepositoryTransferredAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryUnarchivedAction {
   #[serde(rename = "unarchived")]
   Unarchived,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 impl ToString for WebhookRepositoryUnarchivedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9220,14 +11408,14 @@ impl ToString for WebhookRepositoryUnarchivedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertCreateAction {
   #[serde(rename = "create")]
   Create,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 impl ToString for WebhookRepositoryVulnerabilityAlertCreateAction {
   fn to_string(&self) -> String {
     match self {
@@ -9236,18 +11424,20 @@ impl ToString for WebhookRepositoryVulnerabilityAlertCreateAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryVulnerabilityAlertAlertState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "dismissed")]
   Dismissed,
+
   #[serde(rename = "fixed")]
   Fixed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 impl ToString for RepositoryVulnerabilityAlertAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -9258,14 +11448,14 @@ impl ToString for RepositoryVulnerabilityAlertAlertState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
   #[serde(rename = "open")]
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 impl ToString for WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -9274,25 +11464,26 @@ impl ToString for WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryVulnerabilityAlertCreateAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
+
   WebhookRepositoryVulnerabilityAlertCreateAlertItem2(
     WebhookRepositoryVulnerabilityAlertCreateAlertItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertDismissAction {
   #[serde(rename = "dismiss")]
   Dismiss,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 impl ToString for WebhookRepositoryVulnerabilityAlertDismissAction {
   fn to_string(&self) -> String {
     match self {
@@ -9301,14 +11492,14 @@ impl ToString for WebhookRepositoryVulnerabilityAlertDismissAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertDismissAlertItem2State {
   #[serde(rename = "dismissed")]
   Dismissed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 impl ToString for WebhookRepositoryVulnerabilityAlertDismissAlertItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -9319,25 +11510,26 @@ impl ToString for WebhookRepositoryVulnerabilityAlertDismissAlertItem2State {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryVulnerabilityAlertDismissAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
+
   WebhookRepositoryVulnerabilityAlertDismissAlertItem2(
     WebhookRepositoryVulnerabilityAlertDismissAlertItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertReopenAction {
   #[serde(rename = "reopen")]
   Reopen,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 impl ToString for WebhookRepositoryVulnerabilityAlertReopenAction {
   fn to_string(&self) -> String {
     match self {
@@ -9346,14 +11538,14 @@ impl ToString for WebhookRepositoryVulnerabilityAlertReopenAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
   #[serde(rename = "open")]
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 impl ToString for WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -9362,25 +11554,26 @@ impl ToString for WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryVulnerabilityAlertReopenAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
+
   WebhookRepositoryVulnerabilityAlertReopenAlertItem2(
     WebhookRepositoryVulnerabilityAlertReopenAlertItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertResolveAction {
   #[serde(rename = "resolve")]
   Resolve,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 impl ToString for WebhookRepositoryVulnerabilityAlertResolveAction {
   fn to_string(&self) -> String {
     match self {
@@ -9389,16 +11582,17 @@ impl ToString for WebhookRepositoryVulnerabilityAlertResolveAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
   #[serde(rename = "fixed")]
   Fixed,
+
   #[serde(rename = "open")]
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 impl ToString for WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
   fn to_string(&self) -> String {
     match self {
@@ -9408,25 +11602,26 @@ impl ToString for WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryVulnerabilityAlertResolveAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
+
   WebhookRepositoryVulnerabilityAlertResolveAlertItem2(
     WebhookRepositoryVulnerabilityAlertResolveAlertItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 impl ToString for WebhookSecretScanningAlertCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9435,25 +11630,38 @@ impl ToString for WebhookSecretScanningAlertCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location"
+))]
 /// The reason for resolving the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertResolutionWebhook {
   #[serde(rename = "false_positive")]
   FalsePositive,
+
   #[serde(rename = "wont_fix")]
   WontFix,
+
   #[serde(rename = "revoked")]
   Revoked,
+
   #[serde(rename = "used_in_tests")]
   UsedInTests,
+
   #[serde(rename = "pattern_deleted")]
   PatternDeleted,
+
   #[serde(rename = "pattern_edited")]
   PatternEdited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location"
+))]
 impl ToString for SecretScanningAlertResolutionWebhook {
   fn to_string(&self) -> String {
     match self {
@@ -9467,19 +11675,29 @@ impl ToString for SecretScanningAlertResolutionWebhook {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location"
+))]
 /// The token status as of the latest validity check.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertWebhookValidity {
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "inactive")]
   Inactive,
+
   #[serde(rename = "unknown")]
   Unknown,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location"
+))]
 impl ToString for SecretScanningAlertWebhookValidity {
   fn to_string(&self) -> String {
     match self {
@@ -9490,14 +11708,14 @@ impl ToString for SecretScanningAlertWebhookValidity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertLocationCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 impl ToString for WebhookSecretScanningAlertLocationCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9506,71 +11724,95 @@ impl ToString for WebhookSecretScanningAlertLocationCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum SecretScanningLocationDetails {
   /// Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.
   SecretScanningLocationCommit(SecretScanningLocationCommit),
+
   /// Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki.
   SecretScanningLocationWikiCommit(SecretScanningLocationWikiCommit),
+
   /// Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.
   SecretScanningLocationIssueTitle(SecretScanningLocationIssueTitle),
+
   /// Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.
   SecretScanningLocationIssueBody(SecretScanningLocationIssueBody),
+
   /// Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.
   SecretScanningLocationIssueComment(SecretScanningLocationIssueComment),
+
   /// Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion.
   SecretScanningLocationDiscussionTitle(SecretScanningLocationDiscussionTitle),
+
   /// Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
   SecretScanningLocationDiscussionBody(SecretScanningLocationDiscussionBody),
+
   /// Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion.
   SecretScanningLocationDiscussionComment(SecretScanningLocationDiscussionComment),
+
   /// Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request.
   SecretScanningLocationPullRequestTitle(SecretScanningLocationPullRequestTitle),
+
   /// Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request.
   SecretScanningLocationPullRequestBody(SecretScanningLocationPullRequestBody),
+
   /// Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request.
   SecretScanningLocationPullRequestComment(SecretScanningLocationPullRequestComment),
+
   /// Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request.
   SecretScanningLocationPullRequestReview(SecretScanningLocationPullRequestReview),
+
   /// Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request.
   SecretScanningLocationPullRequestReviewComment(SecretScanningLocationPullRequestReviewComment),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningLocationType {
   #[serde(rename = "commit")]
   Commit,
+
   #[serde(rename = "wiki_commit")]
   WikiCommit,
+
   #[serde(rename = "issue_title")]
   IssueTitle,
+
   #[serde(rename = "issue_body")]
   IssueBody,
+
   #[serde(rename = "issue_comment")]
   IssueComment,
+
   #[serde(rename = "discussion_title")]
   DiscussionTitle,
+
   #[serde(rename = "discussion_body")]
   DiscussionBody,
+
   #[serde(rename = "discussion_comment")]
   DiscussionComment,
+
   #[serde(rename = "pull_request_title")]
   PullRequestTitle,
+
   #[serde(rename = "pull_request_body")]
   PullRequestBody,
+
   #[serde(rename = "pull_request_comment")]
   PullRequestComment,
+
   #[serde(rename = "pull_request_review")]
   PullRequestReview,
+
   #[serde(rename = "pull_request_review_comment")]
   PullRequestReviewComment,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 impl ToString for SecretScanningLocationType {
   fn to_string(&self) -> String {
     match self {
@@ -9593,14 +11835,14 @@ impl ToString for SecretScanningLocationType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertReopenedAction {
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 impl ToString for WebhookSecretScanningAlertReopenedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9609,14 +11851,14 @@ impl ToString for WebhookSecretScanningAlertReopenedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertResolvedAction {
   #[serde(rename = "resolved")]
   Resolved,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 impl ToString for WebhookSecretScanningAlertResolvedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9625,14 +11867,14 @@ impl ToString for WebhookSecretScanningAlertResolvedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertRevokedAction {
   #[serde(rename = "revoked")]
   Revoked,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 impl ToString for WebhookSecretScanningAlertRevokedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9641,14 +11883,14 @@ impl ToString for WebhookSecretScanningAlertRevokedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertValidatedAction {
   #[serde(rename = "validated")]
   Validated,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 impl ToString for WebhookSecretScanningAlertValidatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9657,14 +11899,14 @@ impl ToString for WebhookSecretScanningAlertValidatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecurityAdvisoryPublishedAction {
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 impl ToString for WebhookSecurityAdvisoryPublishedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9673,14 +11915,14 @@ impl ToString for WebhookSecurityAdvisoryPublishedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecurityAdvisoryUpdatedAction {
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 impl ToString for WebhookSecurityAdvisoryUpdatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9689,14 +11931,14 @@ impl ToString for WebhookSecurityAdvisoryUpdatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecurityAdvisoryWithdrawnAction {
   #[serde(rename = "withdrawn")]
   Withdrawn,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 impl ToString for WebhookSecurityAdvisoryWithdrawnAction {
   fn to_string(&self) -> String {
     match self {
@@ -9705,7 +11947,7 @@ impl ToString for WebhookSecurityAdvisoryWithdrawnAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 /// The default value for a merge commit message.
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -9715,13 +11957,15 @@ impl ToString for WebhookSecurityAdvisoryWithdrawnAction {
 pub enum FullRepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 impl ToString for FullRepositoryMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -9732,7 +11976,7 @@ impl ToString for FullRepositoryMergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 /// The default value for a merge commit title.
 ///
 ///   - `PR_TITLE` - default to the pull request's title.
@@ -9741,11 +11985,12 @@ impl ToString for FullRepositoryMergeCommitMessage {
 pub enum FullRepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 impl ToString for FullRepositoryMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -9755,7 +12000,7 @@ impl ToString for FullRepositoryMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 /// The default value for a squash merge commit message:
 ///
 /// - `PR_BODY` - default to the pull request's body.
@@ -9765,13 +12010,15 @@ impl ToString for FullRepositoryMergeCommitTitle {
 pub enum FullRepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 impl ToString for FullRepositorySquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -9782,7 +12029,7 @@ impl ToString for FullRepositorySquashMergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 /// The default value for a squash merge commit title:
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -9791,11 +12038,12 @@ impl ToString for FullRepositorySquashMergeCommitMessage {
 pub enum FullRepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 impl ToString for FullRepositorySquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -9805,14 +12053,14 @@ impl ToString for FullRepositorySquashMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipCancelledAction {
   #[serde(rename = "cancelled")]
   Cancelled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 impl ToString for WebhookSponsorshipCancelledAction {
   fn to_string(&self) -> String {
     match self {
@@ -9821,14 +12069,14 @@ impl ToString for WebhookSponsorshipCancelledAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 impl ToString for WebhookSponsorshipCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9837,14 +12085,14 @@ impl ToString for WebhookSponsorshipCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 impl ToString for WebhookSponsorshipEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9853,14 +12101,14 @@ impl ToString for WebhookSponsorshipEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipPendingCancellationAction {
   #[serde(rename = "pending_cancellation")]
   PendingCancellation,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 impl ToString for WebhookSponsorshipPendingCancellationAction {
   fn to_string(&self) -> String {
     match self {
@@ -9871,14 +12119,14 @@ impl ToString for WebhookSponsorshipPendingCancellationAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipPendingTierChangeAction {
   #[serde(rename = "pending_tier_change")]
   PendingTierChange,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 impl ToString for WebhookSponsorshipPendingTierChangeAction {
   fn to_string(&self) -> String {
     match self {
@@ -9889,14 +12137,14 @@ impl ToString for WebhookSponsorshipPendingTierChangeAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipTierChangedAction {
   #[serde(rename = "tier_changed")]
   TierChanged,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 impl ToString for WebhookSponsorshipTierChangedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9905,14 +12153,14 @@ impl ToString for WebhookSponsorshipTierChangedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_star"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookStarCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_star"))]
 impl ToString for WebhookStarCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9921,14 +12169,14 @@ impl ToString for WebhookStarCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_star"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookStarDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_star"))]
 impl ToString for WebhookStarDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -9937,60 +12185,76 @@ impl ToString for WebhookStarDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookStatusCommitCommitAuthor {
   /// Metaproperties for Git author/committer information.
   Committer(Committer),
+
   WebhookStatusCommitCommitAuthorItem2(WebhookStatusCommitCommitAuthorItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookStatusCommitCommitCommitter {
   /// Metaproperties for Git author/committer information.
   Committer(Committer),
+
   WebhookStatusCommitCommitCommitterItem2(WebhookStatusCommitCommitCommitterItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookStatusCommitCommitVerificationReason {
   #[serde(rename = "expired_key")]
   ExpiredKey,
+
   #[serde(rename = "not_signing_key")]
   NotSigningKey,
+
   #[serde(rename = "gpgverify_error")]
   GpgverifyError,
+
   #[serde(rename = "gpgverify_unavailable")]
   GpgverifyUnavailable,
+
   #[serde(rename = "unsigned")]
   Unsigned,
+
   #[serde(rename = "unknown_signature_type")]
   UnknownSignatureType,
+
   #[serde(rename = "no_user")]
   NoUser,
+
   #[serde(rename = "unverified_email")]
   UnverifiedEmail,
+
   #[serde(rename = "bad_email")]
   BadEmail,
+
   #[serde(rename = "unknown_key")]
   UnknownKey,
+
   #[serde(rename = "malformed_signature")]
   MalformedSignature,
+
   #[serde(rename = "invalid")]
   Invalid,
+
   #[serde(rename = "valid")]
   Valid,
+
   #[serde(rename = "bad_cert")]
   BadCert,
+
   #[serde(rename = "ocsp_pending")]
   OcspPending,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 impl ToString for WebhookStatusCommitCommitVerificationReason {
   fn to_string(&self) -> String {
     match self {
@@ -10021,21 +12285,24 @@ impl ToString for WebhookStatusCommitCommitVerificationReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 /// The new state. Can be `pending`, `success`, `failure`, or `error`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookStatusState {
   #[serde(rename = "pending")]
   Pending,
+
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "error")]
   Error,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 impl ToString for WebhookStatusState {
   fn to_string(&self) -> String {
     match self {
@@ -10047,14 +12314,14 @@ impl ToString for WebhookStatusState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamAddedToRepositoryAction {
   #[serde(rename = "added_to_repository")]
   AddedToRepository,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 impl ToString for WebhookTeamAddedToRepositoryAction {
   fn to_string(&self) -> String {
     match self {
@@ -10063,14 +12330,14 @@ impl ToString for WebhookTeamAddedToRepositoryAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamCreatedAction {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 impl ToString for WebhookTeamCreatedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10079,14 +12346,14 @@ impl ToString for WebhookTeamCreatedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamDeletedAction {
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 impl ToString for WebhookTeamDeletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10095,14 +12362,14 @@ impl ToString for WebhookTeamDeletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamEditedAction {
   #[serde(rename = "edited")]
   Edited,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 impl ToString for WebhookTeamEditedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10111,14 +12378,14 @@ impl ToString for WebhookTeamEditedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamRemovedFromRepositoryAction {
   #[serde(rename = "removed_from_repository")]
   RemovedFromRepository,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 impl ToString for WebhookTeamRemovedFromRepositoryAction {
   fn to_string(&self) -> String {
     match self {
@@ -10129,14 +12396,14 @@ impl ToString for WebhookTeamRemovedFromRepositoryAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_watch"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWatchStartedAction {
   #[serde(rename = "started")]
   Started,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_watch"))]
 impl ToString for WebhookWatchStartedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10145,14 +12412,14 @@ impl ToString for WebhookWatchStartedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobCompletedAction {
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WebhookWorkflowJobCompletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10161,26 +12428,32 @@ impl ToString for WebhookWorkflowJobCompletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowJobConclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "timed_out")]
   TimedOut,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WorkflowJobConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -10195,21 +12468,24 @@ impl ToString for WorkflowJobConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 /// The current status of the job. Can be `queued`, `in_progress`, `waiting`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowJobStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "waiting")]
   Waiting,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WorkflowJobStatus {
   fn to_string(&self) -> String {
     match self {
@@ -10221,20 +12497,23 @@ impl ToString for WorkflowJobStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowStepConclusion {
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "cancelled")]
   Cancelled,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WorkflowStepConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -10246,18 +12525,20 @@ impl ToString for WorkflowStepConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowStepStatus {
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "queued")]
   Queued,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WorkflowStepStatus {
   fn to_string(&self) -> String {
     match self {
@@ -10268,26 +12549,32 @@ impl ToString for WorkflowStepStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "timed_out")]
   TimedOut,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
   fn to_string(&self) -> String {
     match self {
@@ -10304,23 +12591,24 @@ impl ToString for WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookWorkflowJobCompletedWorkflowJob {
   /// The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`, and `started_at` are the same as those in a [`check_run`](#check_run) object.
   WorkflowJob(WorkflowJob),
+
   WebhookWorkflowJobCompletedWorkflowJobItem2(WebhookWorkflowJobCompletedWorkflowJobItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobInProgressAction {
   #[serde(rename = "in_progress")]
   InProgress,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WebhookWorkflowJobInProgressAction {
   fn to_string(&self) -> String {
     match self {
@@ -10329,18 +12617,20 @@ impl ToString for WebhookWorkflowJobInProgressAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobInProgressWorkflowJobItem2Status {
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "queued")]
   Queued,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WebhookWorkflowJobInProgressWorkflowJobItem2Status {
   fn to_string(&self) -> String {
     match self {
@@ -10351,23 +12641,24 @@ impl ToString for WebhookWorkflowJobInProgressWorkflowJobItem2Status {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookWorkflowJobInProgressWorkflowJob {
   /// The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`, and `started_at` are the same as those in a [`check_run`](#check_run) object.
   WorkflowJob(WorkflowJob),
+
   WebhookWorkflowJobInProgressWorkflowJobItem2(WebhookWorkflowJobInProgressWorkflowJobItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobQueuedAction {
   #[serde(rename = "queued")]
   Queued,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WebhookWorkflowJobQueuedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10376,20 +12667,23 @@ impl ToString for WebhookWorkflowJobQueuedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobQueuedWorkflowJobStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "waiting")]
   Waiting,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WebhookWorkflowJobQueuedWorkflowJobStatus {
   fn to_string(&self) -> String {
     match self {
@@ -10401,14 +12695,14 @@ impl ToString for WebhookWorkflowJobQueuedWorkflowJobStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobWaitingAction {
   #[serde(rename = "waiting")]
   Waiting,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WebhookWorkflowJobWaitingAction {
   fn to_string(&self) -> String {
     match self {
@@ -10417,20 +12711,23 @@ impl ToString for WebhookWorkflowJobWaitingAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobWaitingWorkflowJobStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "waiting")]
   Waiting,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 impl ToString for WebhookWorkflowJobWaitingWorkflowJobStatus {
   fn to_string(&self) -> String {
     match self {
@@ -10442,14 +12739,14 @@ impl ToString for WebhookWorkflowJobWaitingWorkflowJobStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunCompletedAction {
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 impl ToString for WebhookWorkflowRunCompletedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10458,28 +12755,35 @@ impl ToString for WebhookWorkflowRunCompletedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowRunConclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "stale")]
   Stale,
+
   #[serde(rename = "skipped")]
   Skipped,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 impl ToString for WorkflowRunConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -10495,24 +12799,29 @@ impl ToString for WorkflowRunConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowRunStatus {
   #[serde(rename = "requested")]
   Requested,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "pending")]
   Pending,
+
   #[serde(rename = "waiting")]
   Waiting,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 impl ToString for WorkflowRunStatus {
   fn to_string(&self) -> String {
     match self {
@@ -10526,28 +12835,35 @@ impl ToString for WorkflowRunStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "stale")]
   Stale,
+
   #[serde(rename = "skipped")]
   Skipped,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 impl ToString for WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
   fn to_string(&self) -> String {
     match self {
@@ -10565,22 +12881,23 @@ impl ToString for WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookWorkflowRunCompletedWorkflowRun {
   WorkflowRun(WorkflowRun),
+
   WebhookWorkflowRunCompletedWorkflowRunItem2(WebhookWorkflowRunCompletedWorkflowRunItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunInProgressAction {
   #[serde(rename = "in_progress")]
   InProgress,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 impl ToString for WebhookWorkflowRunInProgressAction {
   fn to_string(&self) -> String {
     match self {
@@ -10589,28 +12906,35 @@ impl ToString for WebhookWorkflowRunInProgressAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "stale")]
   Stale,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 impl ToString for WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
   fn to_string(&self) -> String {
     match self {
@@ -10628,22 +12952,23 @@ impl ToString for WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookWorkflowRunInProgressWorkflowRun {
   WorkflowRun(WorkflowRun),
+
   WebhookWorkflowRunInProgressWorkflowRunItem2(WebhookWorkflowRunInProgressWorkflowRunItem2),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunRequestedAction {
   #[serde(rename = "requested")]
   Requested,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 impl ToString for WebhookWorkflowRunRequestedAction {
   fn to_string(&self) -> String {
     match self {
@@ -10652,664 +12977,972 @@ impl ToString for WebhookWorkflowRunRequestedAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookBranchProtectionConfigurationEvent {
   Disabled(WebhookBranchProtectionConfigurationDisabled),
+
   Enabled(WebhookBranchProtectionConfigurationEnabled),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookBranchProtectionRuleEvent {
   Created(WebhookBranchProtectionRuleCreated),
+
   Deleted(WebhookBranchProtectionRuleDeleted),
+
   Edited(WebhookBranchProtectionRuleEdited),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookCheckRunEvent {
   Completed(WebhookCheckRunCompleted),
+
   Created(WebhookCheckRunCreated),
+
   RequestedAction(WebhookCheckRunRequestedAction),
+
   Rerequested(WebhookCheckRunRerequested),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookCheckSuiteEvent {
   Completed(WebhookCheckSuiteCompleted),
+
   Requested(WebhookCheckSuiteRequested),
+
   Rerequested(WebhookCheckSuiteRerequested),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookCodeScanningAlertEvent {
   AppearedInBranch(WebhookCodeScanningAlertAppearedInBranch),
+
   ClosedByUser(WebhookCodeScanningAlertClosedByUser),
+
   Created(WebhookCodeScanningAlertCreated),
+
   Fixed(WebhookCodeScanningAlertFixed),
+
   Reopened(WebhookCodeScanningAlertReopened),
+
   ReopenedByUser(WebhookCodeScanningAlertReopenedByUser),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookCommitCommentEvent {
   Created(WebhookCommitCommentCreated),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookCustomPropertyEvent {
   Created(WebhookCustomPropertyCreated),
+
   Deleted(WebhookCustomPropertyDeleted),
+
   Updated(WebhookCustomPropertyUpdated),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookCustomPropertyValuesEvent {
   Updated(WebhookCustomPropertyValuesUpdated),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookDependabotAlertEvent {
   AutoDismissed(WebhookDependabotAlertAutoDismissed),
+
   AutoReopened(WebhookDependabotAlertAutoReopened),
+
   Created(WebhookDependabotAlertCreated),
+
   Dismissed(WebhookDependabotAlertDismissed),
+
   Fixed(WebhookDependabotAlertFixed),
+
   Reintroduced(WebhookDependabotAlertReintroduced),
+
   Reopened(WebhookDependabotAlertReopened),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookDeployKeyEvent {
   Created(WebhookDeployKeyCreated),
+
   Deleted(WebhookDeployKeyDeleted),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookDeploymentEvent {
   Created(WebhookDeploymentCreated),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookDeploymentProtectionRuleEvent {
   Requested(WebhookDeploymentProtectionRuleRequested),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookDeploymentReviewEvent {
   Approved(WebhookDeploymentReviewApproved),
+
   Rejected(WebhookDeploymentReviewRejected),
+
   Requested(WebhookDeploymentReviewRequested),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookDeploymentStatusEvent {
   Created(WebhookDeploymentStatusCreated),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookDiscussionEvent {
   Answered(WebhookDiscussionAnswered),
+
   CategoryChanged(WebhookDiscussionCategoryChanged),
+
   Closed(WebhookDiscussionClosed),
+
   Created(WebhookDiscussionCreated),
+
   Deleted(WebhookDiscussionDeleted),
+
   Edited(WebhookDiscussionEdited),
+
   Labeled(WebhookDiscussionLabeled),
+
   Locked(WebhookDiscussionLocked),
+
   Pinned(WebhookDiscussionPinned),
+
   Reopened(WebhookDiscussionReopened),
+
   Transferred(WebhookDiscussionTransferred),
+
   Unanswered(WebhookDiscussionUnanswered),
+
   Unlabeled(WebhookDiscussionUnlabeled),
+
   Unlocked(WebhookDiscussionUnlocked),
+
   Unpinned(WebhookDiscussionUnpinned),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookDiscussionCommentEvent {
   Created(WebhookDiscussionCommentCreated),
+
   Deleted(WebhookDiscussionCommentDeleted),
+
   Edited(WebhookDiscussionCommentEdited),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookGithubAppAuthorizationEvent {
   Revoked(WebhookGithubAppAuthorizationRevoked),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookInstallationEvent {
   Created(WebhookInstallationCreated),
+
   Deleted(WebhookInstallationDeleted),
+
   NewPermissionsAccepted(WebhookInstallationNewPermissionsAccepted),
+
   Suspend(WebhookInstallationSuspend),
+
   Unsuspend(WebhookInstallationUnsuspend),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookInstallationRepositoriesEvent {
   Added(WebhookInstallationRepositoriesAdded),
+
   Removed(WebhookInstallationRepositoriesRemoved),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookInstallationTargetEvent {
   Renamed(WebhookInstallationTargetRenamed),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssueCommentEvent {
   Created(WebhookIssueCommentCreated),
+
   Deleted(WebhookIssueCommentDeleted),
+
   Edited(WebhookIssueCommentEdited),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookIssuesEvent {
   Assigned(WebhookIssuesAssigned),
+
   Closed(WebhookIssuesClosed),
+
   Deleted(WebhookIssuesDeleted),
+
   Demilestoned(WebhookIssuesDemilestoned),
+
   Edited(WebhookIssuesEdited),
+
   Labeled(WebhookIssuesLabeled),
+
   Locked(WebhookIssuesLocked),
+
   Milestoned(WebhookIssuesMilestoned),
+
   Opened(WebhookIssuesOpened),
+
   Pinned(WebhookIssuesPinned),
+
   Reopened(WebhookIssuesReopened),
+
   Transferred(WebhookIssuesTransferred),
+
   Unassigned(WebhookIssuesUnassigned),
+
   Unlabeled(WebhookIssuesUnlabeled),
+
   Unlocked(WebhookIssuesUnlocked),
+
   Unpinned(WebhookIssuesUnpinned),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookLabelEvent {
   Created(WebhookLabelCreated),
+
   Deleted(WebhookLabelDeleted),
+
   Edited(WebhookLabelEdited),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchaseEvent {
   Cancelled(WebhookMarketplacePurchaseCancelled),
+
   Changed(WebhookMarketplacePurchaseChanged),
+
   PendingChange(WebhookMarketplacePurchasePendingChange),
+
   PendingChangeCancelled(WebhookMarketplacePurchasePendingChangeCancelled),
+
   Purchased(WebhookMarketplacePurchasePurchased),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMemberEvent {
   Added(WebhookMemberAdded),
+
   Edited(WebhookMemberEdited),
+
   Removed(WebhookMemberRemoved),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMembershipEvent {
   Added(WebhookMembershipAdded),
+
   Removed(WebhookMembershipRemoved),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMergeGroupEvent {
   ChecksRequested(WebhookMergeGroupChecksRequested),
+
   Destroyed(WebhookMergeGroupDestroyed),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMetaEvent {
   Deleted(WebhookMetaDeleted),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookMilestoneEvent {
   Closed(WebhookMilestoneClosed),
+
   Created(WebhookMilestoneCreated),
+
   Deleted(WebhookMilestoneDeleted),
+
   Edited(WebhookMilestoneEdited),
+
   Opened(WebhookMilestoneOpened),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookOrgBlockEvent {
   Blocked(WebhookOrgBlockBlocked),
+
   Unblocked(WebhookOrgBlockUnblocked),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookOrganizationEvent {
   Deleted(WebhookOrganizationDeleted),
+
   MemberAdded(WebhookOrganizationMemberAdded),
+
   MemberInvited(WebhookOrganizationMemberInvited),
+
   MemberRemoved(WebhookOrganizationMemberRemoved),
+
   Renamed(WebhookOrganizationRenamed),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPackageEvent {
   Published(WebhookPackagePublished),
+
   Updated(WebhookPackageUpdated),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPersonalAccessTokenRequestEvent {
   Approved(WebhookPersonalAccessTokenRequestApproved),
+
   Cancelled(WebhookPersonalAccessTokenRequestCancelled),
+
   Created(WebhookPersonalAccessTokenRequestCreated),
+
   Denied(WebhookPersonalAccessTokenRequestDenied),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookProjectCardEvent {
   Converted(WebhookProjectCardConverted),
+
   Created(WebhookProjectCardCreated),
+
   Deleted(WebhookProjectCardDeleted),
+
   Edited(WebhookProjectCardEdited),
+
   Moved(WebhookProjectCardMoved),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookProjectEvent {
   Closed(WebhookProjectClosed),
+
   Created(WebhookProjectCreated),
+
   Deleted(WebhookProjectDeleted),
+
   Edited(WebhookProjectEdited),
+
   Reopened(WebhookProjectReopened),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookProjectColumnEvent {
   Created(WebhookProjectColumnCreated),
+
   Deleted(WebhookProjectColumnDeleted),
+
   Edited(WebhookProjectColumnEdited),
+
   Moved(WebhookProjectColumnMoved),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookProjectsV2Event {
   Closed(WebhookProjectsV2ProjectClosed),
+
   Created(WebhookProjectsV2ProjectCreated),
+
   Deleted(WebhookProjectsV2ProjectDeleted),
+
   Edited(WebhookProjectsV2ProjectEdited),
+
   Reopened(WebhookProjectsV2ProjectReopened),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookProjectsV2ItemEvent {
   Archived(WebhookProjectsV2ItemArchived),
+
   Converted(WebhookProjectsV2ItemConverted),
+
   Created(WebhookProjectsV2ItemCreated),
+
   Deleted(WebhookProjectsV2ItemDeleted),
+
   Edited(WebhookProjectsV2ItemEdited),
+
   Reordered(WebhookProjectsV2ItemReordered),
+
   Restored(WebhookProjectsV2ItemRestored),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestEvent {
   Assigned(WebhookPullRequestAssigned),
+
   AutoMergeDisabled(WebhookPullRequestAutoMergeDisabled),
+
   AutoMergeEnabled(WebhookPullRequestAutoMergeEnabled),
+
   Closed(WebhookPullRequestClosed),
+
   ConvertedToDraft(WebhookPullRequestConvertedToDraft),
+
   Demilestoned(WebhookPullRequestDemilestoned),
+
   Dequeued(WebhookPullRequestDequeued),
+
   Edited(WebhookPullRequestEdited),
+
   Enqueued(WebhookPullRequestEnqueued),
+
   Labeled(WebhookPullRequestLabeled),
+
   Locked(WebhookPullRequestLocked),
+
   Milestoned(WebhookPullRequestMilestoned),
+
   Opened(WebhookPullRequestOpened),
+
   ReadyForReview(WebhookPullRequestReadyForReview),
+
   Reopened(WebhookPullRequestReopened),
+
   ReviewRequestRemoved(WebhookPullRequestReviewRequestRemoved),
+
   ReviewRequested(WebhookPullRequestReviewRequested),
+
   Synchronize(WebhookPullRequestSynchronize),
+
   Unassigned(WebhookPullRequestUnassigned),
+
   Unlabeled(WebhookPullRequestUnlabeled),
+
   Unlocked(WebhookPullRequestUnlocked),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewCommentEvent {
   Created(WebhookPullRequestReviewCommentCreated),
+
   Deleted(WebhookPullRequestReviewCommentDeleted),
+
   Edited(WebhookPullRequestReviewCommentEdited),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewEvent {
   Dismissed(WebhookPullRequestReviewDismissed),
+
   Edited(WebhookPullRequestReviewEdited),
+
   Submitted(WebhookPullRequestReviewSubmitted),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewThreadEvent {
   Resolved(WebhookPullRequestReviewThreadResolved),
+
   Unresolved(WebhookPullRequestReviewThreadUnresolved),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRegistryPackageEvent {
   Published(WebhookRegistryPackagePublished),
+
   Updated(WebhookRegistryPackageUpdated),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookReleaseEvent {
   Created(WebhookReleaseCreated),
+
   Deleted(WebhookReleaseDeleted),
+
   Edited(WebhookReleaseEdited),
+
   Prereleased(WebhookReleasePrereleased),
+
   Published(WebhookReleasePublished),
+
   Released(WebhookReleaseReleased),
+
   Unpublished(WebhookReleaseUnpublished),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryAdvisoryEvent {
   Published(WebhookRepositoryAdvisoryPublished),
+
   Reported(WebhookRepositoryAdvisoryReported),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryEvent {
   Archived(WebhookRepositoryArchived),
+
   Created(WebhookRepositoryCreated),
+
   Deleted(WebhookRepositoryDeleted),
+
   Edited(WebhookRepositoryEdited),
+
   Privatized(WebhookRepositoryPrivatized),
+
   Publicized(WebhookRepositoryPublicized),
+
   Renamed(WebhookRepositoryRenamed),
+
   Transferred(WebhookRepositoryTransferred),
+
   Unarchived(WebhookRepositoryUnarchived),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryDispatchEvent {
   SampleCollected(WebhookRepositoryDispatchSample),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryRulesetEvent {
   Created(WebhookRepositoryRulesetCreated),
+
   Deleted(WebhookRepositoryRulesetDeleted),
+
   Edited(WebhookRepositoryRulesetEdited),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookRepositoryVulnerabilityAlertEvent {
   Create(WebhookRepositoryVulnerabilityAlertCreate),
+
   Dismiss(WebhookRepositoryVulnerabilityAlertDismiss),
+
   Reopen(WebhookRepositoryVulnerabilityAlertReopen),
+
   Resolve(WebhookRepositoryVulnerabilityAlertResolve),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookSecretScanningAlertEvent {
   Created(WebhookSecretScanningAlertCreated),
+
   Reopened(WebhookSecretScanningAlertReopened),
+
   Resolved(WebhookSecretScanningAlertResolved),
+
   Revoked(WebhookSecretScanningAlertRevoked),
+
   Validated(WebhookSecretScanningAlertValidated),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookSecretScanningAlertLocationEvent {
   Created(WebhookSecretScanningAlertLocationCreated),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookSecurityAdvisoryEvent {
   Published(WebhookSecurityAdvisoryPublished),
+
   Updated(WebhookSecurityAdvisoryUpdated),
+
   Withdrawn(WebhookSecurityAdvisoryWithdrawn),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookSponsorshipEvent {
   Cancelled(WebhookSponsorshipCancelled),
+
   Created(WebhookSponsorshipCreated),
+
   Edited(WebhookSponsorshipEdited),
+
   PendingCancellation(WebhookSponsorshipPendingCancellation),
+
   PendingTierChange(WebhookSponsorshipPendingTierChange),
+
   TierChanged(WebhookSponsorshipTierChanged),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookStarEvent {
   Created(WebhookStarCreated),
+
   Deleted(WebhookStarDeleted),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookTeamEvent {
   AddedToRepository(WebhookTeamAddedToRepository),
+
   Created(WebhookTeamCreated),
+
   Deleted(WebhookTeamDeleted),
+
   Edited(WebhookTeamEdited),
+
   RemovedFromRepository(WebhookTeamRemovedFromRepository),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookWatchEvent {
   Started(WebhookWatchStarted),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookWorkflowJobEvent {
   Completed(WebhookWorkflowJobCompleted),
+
   InProgress(WebhookWorkflowJobInProgress),
+
   Queued(WebhookWorkflowJobQueued),
+
   Waiting(WebhookWorkflowJobWaiting),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookWorkflowRunEvent {
   Completed(WebhookWorkflowRunCompleted),
+
   InProgress(WebhookWorkflowRunInProgress),
+
   Requested(WebhookWorkflowRunRequested),
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_event"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookEvent {
+  #[cfg(feature = "webhook_branch_protection_configuration")]
   BranchProtectionConfiguration(WebhookBranchProtectionConfigurationEvent),
+  #[cfg(feature = "webhook_branch_protection_rule")]
   BranchProtectionRule(WebhookBranchProtectionRuleEvent),
+  #[cfg(feature = "webhook_check_run")]
   CheckRun(WebhookCheckRunEvent),
+  #[cfg(feature = "webhook_check_suite")]
   CheckSuite(WebhookCheckSuiteEvent),
+  #[cfg(feature = "webhook_code_scanning_alert")]
   CodeScanningAlert(WebhookCodeScanningAlertEvent),
+  #[cfg(feature = "webhook_commit_comment")]
   CommitComment(WebhookCommitCommentEvent),
+  #[cfg(feature = "webhook_create")]
   Create(WebhookCreate),
+  #[cfg(feature = "webhook_custom_property")]
   CustomProperty(WebhookCustomPropertyEvent),
+  #[cfg(feature = "webhook_custom_property_values")]
   CustomPropertyValues(WebhookCustomPropertyValuesEvent),
+  #[cfg(feature = "webhook_delete")]
   Delete(WebhookDelete),
+  #[cfg(feature = "webhook_dependabot_alert")]
   DependabotAlert(WebhookDependabotAlertEvent),
+  #[cfg(feature = "webhook_deploy_key")]
   DeployKey(WebhookDeployKeyEvent),
+  #[cfg(feature = "webhook_deployment")]
   Deployment(WebhookDeploymentEvent),
+  #[cfg(feature = "webhook_deployment_protection_rule")]
   DeploymentProtectionRule(WebhookDeploymentProtectionRuleEvent),
+  #[cfg(feature = "webhook_deployment_review")]
   DeploymentReview(WebhookDeploymentReviewEvent),
+  #[cfg(feature = "webhook_deployment_status")]
   DeploymentStatus(WebhookDeploymentStatusEvent),
+  #[cfg(feature = "webhook_discussion")]
   Discussion(WebhookDiscussionEvent),
+  #[cfg(feature = "webhook_discussion_comment")]
   DiscussionComment(WebhookDiscussionCommentEvent),
+  #[cfg(feature = "webhook_fork")]
   Fork(WebhookFork),
+  #[cfg(feature = "webhook_github_app_authorization")]
   GithubAppAuthorization(WebhookGithubAppAuthorizationEvent),
+  #[cfg(feature = "webhook_gollum")]
   Gollum(WebhookGollum),
+  #[cfg(feature = "webhook_installation")]
   Installation(WebhookInstallationEvent),
+  #[cfg(feature = "webhook_installation_repositories")]
   InstallationRepositories(WebhookInstallationRepositoriesEvent),
+  #[cfg(feature = "webhook_installation_target")]
   InstallationTarget(WebhookInstallationTargetEvent),
+  #[cfg(feature = "webhook_issue_comment")]
   IssueComment(WebhookIssueCommentEvent),
+  #[cfg(feature = "webhook_issues")]
   Issues(WebhookIssuesEvent),
+  #[cfg(feature = "webhook_label")]
   Label(WebhookLabelEvent),
+  #[cfg(feature = "webhook_marketplace_purchase")]
   MarketplacePurchase(WebhookMarketplacePurchaseEvent),
+  #[cfg(feature = "webhook_member")]
   Member(WebhookMemberEvent),
+  #[cfg(feature = "webhook_membership")]
   Membership(WebhookMembershipEvent),
+  #[cfg(feature = "webhook_merge_group")]
   MergeGroup(WebhookMergeGroupEvent),
+  #[cfg(feature = "webhook_meta")]
   Meta(WebhookMetaEvent),
+  #[cfg(feature = "webhook_milestone")]
   Milestone(WebhookMilestoneEvent),
+  #[cfg(feature = "webhook_org_block")]
   OrgBlock(WebhookOrgBlockEvent),
+  #[cfg(feature = "webhook_organization")]
   Organization(WebhookOrganizationEvent),
+  #[cfg(feature = "webhook_package")]
   Package(WebhookPackageEvent),
+  #[cfg(feature = "webhook_page_build")]
   PageBuild(WebhookPageBuild),
+  #[cfg(feature = "webhook_personal_access_token_request")]
   PersonalAccessTokenRequest(WebhookPersonalAccessTokenRequestEvent),
+  #[cfg(feature = "webhook_ping")]
   Ping(WebhookPing),
+  #[cfg(feature = "webhook_project_card")]
   ProjectCard(WebhookProjectCardEvent),
+  #[cfg(feature = "webhook_project")]
   Project(WebhookProjectEvent),
+  #[cfg(feature = "webhook_project_column")]
   ProjectColumn(WebhookProjectColumnEvent),
+  #[cfg(feature = "webhook_projects_v2")]
   ProjectsV2(WebhookProjectsV2Event),
+  #[cfg(feature = "webhook_projects_v2_item")]
   ProjectsV2Item(WebhookProjectsV2ItemEvent),
+  #[cfg(feature = "webhook_public")]
   Public(WebhookPublic),
+  #[cfg(feature = "webhook_pull_request")]
   PullRequest(WebhookPullRequestEvent),
+  #[cfg(feature = "webhook_pull_request_review_comment")]
   PullRequestReviewComment(WebhookPullRequestReviewCommentEvent),
+  #[cfg(feature = "webhook_pull_request_review")]
   PullRequestReview(WebhookPullRequestReviewEvent),
+  #[cfg(feature = "webhook_pull_request_review_thread")]
   PullRequestReviewThread(WebhookPullRequestReviewThreadEvent),
+  #[cfg(feature = "webhook_push")]
   Push(WebhookPush),
+  #[cfg(feature = "webhook_registry_package")]
   RegistryPackage(WebhookRegistryPackageEvent),
+  #[cfg(feature = "webhook_release")]
   Release(WebhookReleaseEvent),
+  #[cfg(feature = "webhook_repository_advisory")]
   RepositoryAdvisory(WebhookRepositoryAdvisoryEvent),
+  #[cfg(feature = "webhook_repository")]
   Repository(WebhookRepositoryEvent),
+  #[cfg(feature = "webhook_repository_dispatch")]
   RepositoryDispatch(WebhookRepositoryDispatchEvent),
+  #[cfg(feature = "webhook_repository_import")]
   RepositoryImport(WebhookRepositoryImport),
+  #[cfg(feature = "webhook_repository_ruleset")]
   RepositoryRuleset(WebhookRepositoryRulesetEvent),
+  #[cfg(feature = "webhook_repository_vulnerability_alert")]
   RepositoryVulnerabilityAlert(WebhookRepositoryVulnerabilityAlertEvent),
+  #[cfg(feature = "webhook_secret_scanning_alert")]
   SecretScanningAlert(WebhookSecretScanningAlertEvent),
+  #[cfg(feature = "webhook_secret_scanning_alert_location")]
   SecretScanningAlertLocation(WebhookSecretScanningAlertLocationEvent),
+  #[cfg(feature = "webhook_security_advisory")]
   SecurityAdvisory(WebhookSecurityAdvisoryEvent),
+  #[cfg(feature = "webhook_security_and_analysis")]
   SecurityAndAnalysis(WebhookSecurityAndAnalysis),
+  #[cfg(feature = "webhook_sponsorship")]
   Sponsorship(WebhookSponsorshipEvent),
+  #[cfg(feature = "webhook_star")]
   Star(WebhookStarEvent),
+  #[cfg(feature = "webhook_status")]
   Status(WebhookStatus),
+  #[cfg(feature = "webhook_team_add")]
   TeamAdd(WebhookTeamAdd),
+  #[cfg(feature = "webhook_team")]
   Team(WebhookTeamEvent),
+  #[cfg(feature = "webhook_watch")]
   Watch(WebhookWatchEvent),
+  #[cfg(feature = "webhook_workflow_dispatch")]
   WorkflowDispatch(WebhookWorkflowDispatch),
+  #[cfg(feature = "webhook_workflow_job")]
   WorkflowJob(WebhookWorkflowJobEvent),
+  #[cfg(feature = "webhook_workflow_run")]
   WorkflowRun(WebhookWorkflowRunEvent),
 }
 
 /// Structs definition
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_security_advisory",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_team",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// An enterprise on GitHub. Webhook payloads contain the `enterprise` property when the webhook is configured
 /// on an enterprise account or an organization that's part of an enterprise account. For more information,
 /// see "[About enterprise accounts](https://docs.github.com/admin/overview/about-enterprise-accounts)."
@@ -11342,7 +13975,76 @@ pub struct EnterpriseWebhooks {
   pub website_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_personal_access_token_request",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_projects_v2",
+  feature = "webhook_projects_v2_item",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_team",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// The GitHub App installation. Webhook payloads contain the `installation` property when the event is configured
 /// for and sent to a GitHub App. For more information,
 /// see "[Using webhooks with GitHub Apps](https://docs.github.com/apps/creating-github-apps/registering-a-github-app/using-webhooks-with-github-apps)."
@@ -11355,7 +14057,79 @@ pub struct SimpleInstallation {
   pub node_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_personal_access_token_request",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_projects_v2",
+  feature = "webhook_projects_v2_item",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_team",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// A GitHub organization. Webhook payloads contain the `organization` property when the webhook is configured for an
 /// organization, or when the event occurs from activity in a repository owned by an organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -11377,7 +14151,73 @@ pub struct OrganizationSimpleWebhooks {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// License Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -11396,7 +14236,76 @@ pub struct LicenseSimple {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_personal_access_token_request",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_projects_v2",
+  feature = "webhook_projects_v2_item",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// A GitHub user.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -11433,7 +14342,72 @@ pub struct SimpleUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryWebhooksPermissions {
@@ -11448,7 +14422,72 @@ pub struct RepositoryWebhooksPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryWebhooksTemplateRepositoryOwner {
@@ -11509,7 +14548,72 @@ pub struct RepositoryWebhooksTemplateRepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryWebhooksTemplateRepositoryPermissions {
@@ -11530,7 +14634,72 @@ pub struct RepositoryWebhooksTemplateRepositoryPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryWebhooksTemplateRepository {
@@ -11816,7 +14985,72 @@ pub struct RepositoryWebhooksTemplateRepository {
   pub watchers_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// The repository on GitHub where the event occurred. Webhook payloads contain the `repository` property
 /// when the event occurs from activity in a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -12037,7 +15271,79 @@ pub struct RepositoryWebhooks {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_branch_protection_configuration",
+  feature = "webhook_branch_protection_rule",
+  feature = "webhook_check_run",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_create",
+  feature = "webhook_custom_property",
+  feature = "webhook_custom_property_values",
+  feature = "webhook_delete",
+  feature = "webhook_dependabot_alert",
+  feature = "webhook_deploy_key",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_github_app_authorization",
+  feature = "webhook_gollum",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_installation_target",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_marketplace_purchase",
+  feature = "webhook_member",
+  feature = "webhook_merge_group",
+  feature = "webhook_meta",
+  feature = "webhook_milestone",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_personal_access_token_request",
+  feature = "webhook_ping",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_project_column",
+  feature = "webhook_projects_v2",
+  feature = "webhook_projects_v2_item",
+  feature = "webhook_public",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_registry_package",
+  feature = "webhook_release",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_repository",
+  feature = "webhook_repository_dispatch",
+  feature = "webhook_repository_import",
+  feature = "webhook_repository_ruleset",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location",
+  feature = "webhook_security_advisory",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_sponsorship",
+  feature = "webhook_star",
+  feature = "webhook_status",
+  feature = "webhook_team_add",
+  feature = "webhook_team",
+  feature = "webhook_watch",
+  feature = "webhook_workflow_dispatch",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 /// The GitHub user that triggered the event. This property is included in every webhook payload.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12074,7 +15380,7 @@ pub struct SimpleUserWebhooks {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_configuration"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionConfigurationDisabled {
@@ -12092,7 +15398,7 @@ pub struct WebhookBranchProtectionConfigurationDisabled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_configuration"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionConfigurationEnabled {
@@ -12110,7 +15416,7 @@ pub struct WebhookBranchProtectionConfigurationEnabled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 /// The branch protection rule. Includes a `name` and all the [branch protection settings](https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#about-branch-protection-settings) applied to branches that match the name. Binary settings are boolean. Multi-level configurations are one of `off`, `non_admins`, or `everyone`. Actor and build lists are arrays of strings.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12154,7 +15460,7 @@ pub struct BranchProtectionRule {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionRuleCreated {
@@ -12174,7 +15480,7 @@ pub struct WebhookBranchProtectionRuleCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionRuleDeleted {
@@ -12194,7 +15500,7 @@ pub struct WebhookBranchProtectionRuleDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionRuleEditedChangesAdminEnforced {
@@ -12203,14 +15509,14 @@ pub struct WebhookBranchProtectionRuleEditedChangesAdminEnforced {
   pub from: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionRuleEditedChangesAuthorizedActorNames {
   pub from: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionRuleEditedChangesAuthorizedActorsOnly {
@@ -12219,7 +15525,7 @@ pub struct WebhookBranchProtectionRuleEditedChangesAuthorizedActorsOnly {
   pub from: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionRuleEditedChangesAuthorizedDismissalActorsOnly {
@@ -12228,28 +15534,28 @@ pub struct WebhookBranchProtectionRuleEditedChangesAuthorizedDismissalActorsOnly
   pub from: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevel {
   pub from: WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionRuleEditedChangesRequiredStatusChecks {
   pub from: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevel {
   pub from: WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 /// If the action was `edited`, the changes to the rule.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12280,7 +15586,7 @@ pub struct WebhookBranchProtectionRuleEditedChanges {
     Option<WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevel>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookBranchProtectionRuleEdited {
@@ -12304,7 +15610,11 @@ pub struct WebhookBranchProtectionRuleEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_issue_comment"
+))]
 /// The set of permissions for the GitHub app
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12326,7 +15636,11 @@ pub struct IntegrationPermissions {
   pub metadata: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_issue_comment"
+))]
 /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12372,7 +15686,7 @@ pub struct Integration {
   pub webhook_secret: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalBaseRepo {
@@ -12381,7 +15695,7 @@ pub struct PullRequestMinimalBaseRepo {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalBase {
@@ -12391,7 +15705,7 @@ pub struct PullRequestMinimalBase {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalHeadRepo {
@@ -12400,7 +15714,7 @@ pub struct PullRequestMinimalHeadRepo {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalHead {
@@ -12410,7 +15724,7 @@ pub struct PullRequestMinimalHead {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimal {
@@ -12421,7 +15735,7 @@ pub struct PullRequestMinimal {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 /// Code Of Conduct
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12437,7 +15751,7 @@ pub struct CodeOfConduct {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MinimalRepositoryLicense {
@@ -12458,7 +15772,7 @@ pub struct MinimalRepositoryLicense {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MinimalRepositoryPermissions {
@@ -12479,7 +15793,11 @@ pub struct MinimalRepositoryPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecurityAndAnalysisAdvancedSecurity {
@@ -12488,7 +15806,11 @@ pub struct SecurityAndAnalysisAdvancedSecurity {
   pub status: Option<SecurityAndAnalysisAdvancedSecurityStatus>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 /// Enable or disable Dependabot security updates for the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12499,7 +15821,11 @@ pub struct SecurityAndAnalysisDependabotSecurityUpdates {
   pub status: Option<SecurityAndAnalysisDependabotSecurityUpdatesStatus>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecurityAndAnalysisSecretScanning {
@@ -12508,7 +15834,11 @@ pub struct SecurityAndAnalysisSecretScanning {
   pub status: Option<SecurityAndAnalysisSecretScanningStatus>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecurityAndAnalysisSecretScanningPushProtection {
@@ -12517,7 +15847,11 @@ pub struct SecurityAndAnalysisSecretScanningPushProtection {
   pub status: Option<SecurityAndAnalysisSecretScanningPushProtectionStatus>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_run",
+  feature = "webhook_security_and_analysis"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecurityAndAnalysis {
@@ -12536,7 +15870,7 @@ pub struct SecurityAndAnalysis {
   pub secret_scanning_push_protection: Option<SecurityAndAnalysisSecretScanningPushProtection>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 /// Minimal Repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12715,7 +16049,7 @@ pub struct MinimalRepository {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 /// A suite of checks performed on the code of a given code change
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12765,7 +16099,7 @@ pub struct SimpleCheckSuite {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 /// A deployment created as the result of an Actions check run from a workflow that references an environment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12801,7 +16135,7 @@ pub struct DeploymentSimple {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckRunWithSimpleCheckSuiteOutput {
@@ -12818,7 +16152,7 @@ pub struct CheckRunWithSimpleCheckSuiteOutput {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 /// A check performed on the code of a given code change
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12854,7 +16188,7 @@ pub struct CheckRunWithSimpleCheckSuite {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCheckRunCompleted {
@@ -12872,7 +16206,7 @@ pub struct WebhookCheckRunCompleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCheckRunCreated {
@@ -12890,7 +16224,7 @@ pub struct WebhookCheckRunCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 /// The action requested by the user.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12901,7 +16235,7 @@ pub struct WebhookCheckRunRequestedActionRequestedAction {
   pub identifier: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCheckRunRequestedAction {
@@ -12921,7 +16255,7 @@ pub struct WebhookCheckRunRequestedAction {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCheckRunRerequested {
@@ -12939,7 +16273,45 @@ pub struct WebhookCheckRunRerequested {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_code_scanning_alert",
+  feature = "webhook_commit_comment",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_fork",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_member",
+  feature = "webhook_membership",
+  feature = "webhook_org_block",
+  feature = "webhook_organization",
+  feature = "webhook_package",
+  feature = "webhook_page_build",
+  feature = "webhook_project_card",
+  feature = "webhook_project",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_release",
+  feature = "webhook_repository",
+  feature = "webhook_repository_vulnerability_alert",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_sponsorship",
+  feature = "webhook_status",
+  feature = "webhook_team",
+  feature = "webhook_workflow_job",
+  feature = "webhook_workflow_run"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct User {
@@ -13005,7 +16377,18 @@ pub struct User {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_status",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_workflow_job"
+))]
 /// The set of permissions for the GitHub app
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13117,7 +16500,16 @@ pub struct AppPermissions {
   pub workflows: Option<ReadWritePermission>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_status",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_workflow_job"
+))]
 /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13159,7 +16551,14 @@ pub struct App {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_merge_group",
+  feature = "webhook_push",
+  feature = "webhook_status",
+  feature = "webhook_workflow_run"
+))]
 /// Metaproperties for Git author/committer information.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13177,7 +16576,12 @@ pub struct Committer {
   pub username: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_merge_group",
+  feature = "webhook_workflow_run"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SimpleCommit {
@@ -13191,7 +16595,14 @@ pub struct SimpleCommit {
   pub tree_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status",
+  feature = "webhook_workflow_run"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepoRef {
@@ -13200,7 +16611,13 @@ pub struct RepoRef {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckRunPullRequestBase {
@@ -13210,7 +16627,13 @@ pub struct CheckRunPullRequestBase {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckRunPullRequestHead {
@@ -13220,7 +16643,13 @@ pub struct CheckRunPullRequestHead {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_check_suite",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckRunPullRequest {
@@ -13231,7 +16660,7 @@ pub struct CheckRunPullRequest {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 /// The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13277,7 +16706,7 @@ pub struct WebhookCheckSuiteCompletedCheckSuite {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCheckSuiteCompleted {
@@ -13297,7 +16726,7 @@ pub struct WebhookCheckSuiteCompleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 /// The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13343,7 +16772,7 @@ pub struct WebhookCheckSuiteRequestedCheckSuite {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCheckSuiteRequested {
@@ -13363,7 +16792,7 @@ pub struct WebhookCheckSuiteRequested {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 /// The [check_suite](https://docs.github.com/rest/checks/suites#get-a-check-suite).
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13409,7 +16838,7 @@ pub struct WebhookCheckSuiteRerequestedCheckSuite {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_check_suite"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCheckSuiteRerequested {
@@ -13429,7 +16858,7 @@ pub struct WebhookCheckSuiteRerequested {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AlertInstanceLocation {
@@ -13450,7 +16879,7 @@ pub struct AlertInstanceLocation {
   pub start_line: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AlertInstanceMessage {
@@ -13459,7 +16888,7 @@ pub struct AlertInstanceMessage {
   pub text: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AlertInstance {
@@ -13490,7 +16919,7 @@ pub struct AlertInstance {
   pub state: AlertInstanceState,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertAppearedInBranchAlertRule {
@@ -13504,7 +16933,7 @@ pub struct WebhookCodeScanningAlertAppearedInBranchAlertRule {
   pub severity: Option<WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertAppearedInBranchAlertTool {
@@ -13516,7 +16945,7 @@ pub struct WebhookCodeScanningAlertAppearedInBranchAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13548,7 +16977,7 @@ pub struct WebhookCodeScanningAlertAppearedInBranchAlert {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertAppearedInBranch {
@@ -13573,7 +17002,7 @@ pub struct WebhookCodeScanningAlertAppearedInBranch {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertClosedByUserAlertRule {
@@ -13603,7 +17032,7 @@ pub struct WebhookCodeScanningAlertClosedByUserAlertRule {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertClosedByUserAlertTool {
@@ -13618,7 +17047,7 @@ pub struct WebhookCodeScanningAlertClosedByUserAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13648,7 +17077,7 @@ pub struct WebhookCodeScanningAlertClosedByUserAlert {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertClosedByUser {
@@ -13673,7 +17102,7 @@ pub struct WebhookCodeScanningAlertClosedByUser {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertCreatedAlertRule {
@@ -13703,7 +17132,7 @@ pub struct WebhookCodeScanningAlertCreatedAlertRule {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertCreatedAlertTool {
@@ -13718,7 +17147,7 @@ pub struct WebhookCodeScanningAlertCreatedAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13760,7 +17189,7 @@ pub struct WebhookCodeScanningAlertCreatedAlert {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertCreated {
@@ -13785,7 +17214,7 @@ pub struct WebhookCodeScanningAlertCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertFixedAlertRule {
@@ -13815,7 +17244,7 @@ pub struct WebhookCodeScanningAlertFixedAlertRule {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertFixedAlertTool {
@@ -13830,7 +17259,7 @@ pub struct WebhookCodeScanningAlertFixedAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13865,7 +17294,7 @@ pub struct WebhookCodeScanningAlertFixedAlert {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertFixed {
@@ -13890,7 +17319,7 @@ pub struct WebhookCodeScanningAlertFixed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertReopenedAlertRule {
@@ -13920,7 +17349,7 @@ pub struct WebhookCodeScanningAlertReopenedAlertRule {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertReopenedAlertTool {
@@ -13935,7 +17364,7 @@ pub struct WebhookCodeScanningAlertReopenedAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13967,7 +17396,7 @@ pub struct WebhookCodeScanningAlertReopenedAlert {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertReopened {
@@ -13998,7 +17427,7 @@ pub struct WebhookCodeScanningAlertReopened {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertReopenedByUserAlertRule {
@@ -14012,7 +17441,7 @@ pub struct WebhookCodeScanningAlertReopenedByUserAlertRule {
   pub severity: Option<WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertReopenedByUserAlertTool {
@@ -14024,7 +17453,7 @@ pub struct WebhookCodeScanningAlertReopenedByUserAlertTool {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 /// The code scanning alert involved in the event.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14050,7 +17479,7 @@ pub struct WebhookCodeScanningAlertReopenedByUserAlert {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCodeScanningAlertReopenedByUser {
@@ -14075,7 +17504,17 @@ pub struct WebhookCodeScanningAlertReopenedByUser {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_commit_comment",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_release"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct Reactions {
@@ -14093,7 +17532,7 @@ pub struct Reactions {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_commit_comment"))]
 /// The [commit comment](https://docs.github.com/rest/commits/comments#get-a-commit-comment) resource.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14132,7 +17571,7 @@ pub struct WebhookCommitCommentCreatedComment {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_commit_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCommitCommentCreated {
@@ -14153,7 +17592,7 @@ pub struct WebhookCommitCommentCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_create"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCreate {
@@ -14183,7 +17622,7 @@ pub struct WebhookCreate {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 /// Custom property defined on an organization
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14215,7 +17654,7 @@ pub struct OrgCustomProperty {
   pub values_editable_by: Option<OrgCustomPropertyValuesEditableBy>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCustomPropertyCreated {
@@ -14233,7 +17672,7 @@ pub struct WebhookCustomPropertyCreated {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCustomPropertyDeletedDefinition {
@@ -14241,7 +17680,7 @@ pub struct WebhookCustomPropertyDeletedDefinition {
   pub property_name: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCustomPropertyDeleted {
@@ -14259,7 +17698,7 @@ pub struct WebhookCustomPropertyDeleted {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCustomPropertyUpdated {
@@ -14277,7 +17716,7 @@ pub struct WebhookCustomPropertyUpdated {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property_values"))]
 /// Custom property name and associated value
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14288,7 +17727,7 @@ pub struct CustomPropertyValue {
   pub value: serde_json::Value,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_custom_property_values"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookCustomPropertyValuesUpdated {
@@ -14310,7 +17749,7 @@ pub struct WebhookCustomPropertyValuesUpdated {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_delete"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDelete {
@@ -14334,7 +17773,7 @@ pub struct WebhookDelete {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// Details for the vulnerable package.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14345,7 +17784,7 @@ pub struct DependabotAlertPackage {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// Details for the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14363,7 +17802,7 @@ pub struct DependabotAlertDependency {
   pub scope: Option<DependabotAlertDependencyScope>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// Details for the advisory pertaining to the Common Vulnerability Scoring System.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14376,7 +17815,7 @@ pub struct DependabotAlertSecurityAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// A CWE weakness assigned to the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14387,7 +17826,7 @@ pub struct DependabotAlertSecurityAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// An advisory identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14399,7 +17838,7 @@ pub struct DependabotAlertSecurityAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// A link to additional advisory information.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14408,7 +17847,7 @@ pub struct DependabotAlertSecurityAdvisoryReferences {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// Details pertaining to the package version that patches this vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14417,7 +17856,7 @@ pub struct DependabotAlertSecurityVulnerabilityFirstPatchedVersion {
   pub identifier: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// Details pertaining to one vulnerable version range for the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14433,7 +17872,7 @@ pub struct DependabotAlertSecurityVulnerability {
   pub vulnerable_version_range: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// Details for the GitHub Security Advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14470,7 +17909,7 @@ pub struct DependabotAlertSecurityAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 /// A Dependabot alert.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14508,7 +17947,7 @@ pub struct DependabotAlert {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDependabotAlertAutoDismissed {
@@ -14527,7 +17966,7 @@ pub struct WebhookDependabotAlertAutoDismissed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDependabotAlertAutoReopened {
@@ -14546,7 +17985,7 @@ pub struct WebhookDependabotAlertAutoReopened {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDependabotAlertCreated {
@@ -14565,7 +18004,7 @@ pub struct WebhookDependabotAlertCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDependabotAlertDismissed {
@@ -14584,7 +18023,7 @@ pub struct WebhookDependabotAlertDismissed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDependabotAlertFixed {
@@ -14603,7 +18042,7 @@ pub struct WebhookDependabotAlertFixed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDependabotAlertReintroduced {
@@ -14622,7 +18061,7 @@ pub struct WebhookDependabotAlertReintroduced {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDependabotAlertReopened {
@@ -14641,7 +18080,7 @@ pub struct WebhookDependabotAlertReopened {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deploy_key"))]
 /// The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14661,7 +18100,7 @@ pub struct WebhookDeployKeyCreatedKey {
   pub verified: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deploy_key"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeployKeyCreated {
@@ -14681,7 +18120,7 @@ pub struct WebhookDeployKeyCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deploy_key"))]
 /// The [`deploy key`](https://docs.github.com/rest/deploy-keys/deploy-keys#get-a-deploy-key) resource.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14701,7 +18140,7 @@ pub struct WebhookDeployKeyDeletedKey {
   pub verified: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deploy_key"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeployKeyDeleted {
@@ -14721,7 +18160,13 @@ pub struct WebhookDeployKeyDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_deployment_status",
+  feature = "webhook_workflow_job"
+))]
 /// The [deployment](https://docs.github.com/rest/deployments/deployments#list-deployments).
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14758,7 +18203,12 @@ pub struct Deployment {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_status",
+  feature = "webhook_workflow_run"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct Workflow {
@@ -14774,7 +18224,12 @@ pub struct Workflow {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DeploymentWorkflowRunHeadRepositoryOwner {
@@ -14835,7 +18290,12 @@ pub struct DeploymentWorkflowRunHeadRepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DeploymentWorkflowRunHeadRepository {
@@ -14979,7 +18439,12 @@ pub struct DeploymentWorkflowRunHeadRepository {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DeploymentWorkflowRunReferencedWorkflows {
@@ -14991,7 +18456,12 @@ pub struct DeploymentWorkflowRunReferencedWorkflows {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DeploymentWorkflowRunRepositoryOwner {
@@ -15052,7 +18522,12 @@ pub struct DeploymentWorkflowRunRepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DeploymentWorkflowRunRepository {
@@ -15196,7 +18671,12 @@ pub struct DeploymentWorkflowRunRepository {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment",
+  feature = "webhook_deployment_review",
+  feature = "webhook_deployment_status"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DeploymentWorkflowRun {
@@ -15267,7 +18747,7 @@ pub struct DeploymentWorkflowRun {
   pub workflow_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentCreated {
@@ -15293,7 +18773,14 @@ pub struct WebhookDeploymentCreated {
   pub workflow_run: Option<DeploymentWorkflowRun>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 /// Hypermedia Link
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15301,7 +18788,11 @@ pub struct Link {
   pub href: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestLinks {
@@ -15316,7 +18807,11 @@ pub struct PullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 /// The status of auto merging a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15330,7 +18825,11 @@ pub struct AutoMerge {
   pub merge_method: AutoMergeMergeMethod,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepoOwner {
@@ -15357,7 +18856,11 @@ pub struct PullRequestBaseRepoOwner {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepoPermissions {
@@ -15372,7 +18875,11 @@ pub struct PullRequestBaseRepoPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepo {
@@ -15496,7 +19003,11 @@ pub struct PullRequestBaseRepo {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseUser {
@@ -15523,7 +19034,11 @@ pub struct PullRequestBaseUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBase {
@@ -15535,7 +19050,11 @@ pub struct PullRequestBase {
   pub user: PullRequestBaseUser,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoLicense {
@@ -15550,7 +19069,11 @@ pub struct PullRequestHeadRepoLicense {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoOwner {
@@ -15577,7 +19100,11 @@ pub struct PullRequestHeadRepoOwner {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoPermissions {
@@ -15592,7 +19119,11 @@ pub struct PullRequestHeadRepoPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepo {
@@ -15716,7 +19247,11 @@ pub struct PullRequestHeadRepo {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadUser {
@@ -15743,7 +19278,11 @@ pub struct PullRequestHeadUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHead {
@@ -15757,7 +19296,11 @@ pub struct PullRequestHead {
   pub user: PullRequestHeadUser,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestLabels {
@@ -15773,7 +19316,17 @@ pub struct PullRequestLabels {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_milestone",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 /// A collection of related issues and pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15807,7 +19360,11 @@ pub struct Milestone {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 /// Groups of organization members that gives permissions on specified repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15843,7 +19400,11 @@ pub struct TeamSimple {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_deployment_protection_rule",
+  feature = "webhook_pull_request"
+))]
 /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15934,7 +19495,7 @@ pub struct PullRequest {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentProtectionRuleRequested {
@@ -15973,7 +19534,7 @@ pub struct WebhookDeploymentProtectionRuleRequested {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewApprovedApprover {
@@ -16034,7 +19595,7 @@ pub struct WebhookDeploymentReviewApprovedApprover {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewApprovedReviewers {
@@ -16047,7 +19608,7 @@ pub struct WebhookDeploymentReviewApprovedReviewers {
   pub type_: Option<WebhookDeploymentReviewApprovedReviewersType>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewApprovedWorkflowJobRun {
@@ -16061,7 +19622,7 @@ pub struct WebhookDeploymentReviewApprovedWorkflowJobRun {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewApprovedWorkflowJobRuns {
@@ -16091,7 +19652,7 @@ pub struct WebhookDeploymentReviewApprovedWorkflowJobRuns {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewApproved {
@@ -16126,7 +19687,7 @@ pub struct WebhookDeploymentReviewApproved {
   pub workflow_run: Option<DeploymentWorkflowRun>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewRejectedApprover {
@@ -16187,7 +19748,7 @@ pub struct WebhookDeploymentReviewRejectedApprover {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewRejectedReviewers {
@@ -16200,7 +19761,7 @@ pub struct WebhookDeploymentReviewRejectedReviewers {
   pub type_: Option<WebhookDeploymentReviewRejectedReviewersType>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewRejectedWorkflowJobRun {
@@ -16214,7 +19775,7 @@ pub struct WebhookDeploymentReviewRejectedWorkflowJobRun {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewRejectedWorkflowJobRuns {
@@ -16244,7 +19805,7 @@ pub struct WebhookDeploymentReviewRejectedWorkflowJobRuns {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewRejected {
@@ -16279,7 +19840,7 @@ pub struct WebhookDeploymentReviewRejected {
   pub workflow_run: Option<DeploymentWorkflowRun>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewRequestedReviewers {
@@ -16292,7 +19853,7 @@ pub struct WebhookDeploymentReviewRequestedReviewers {
   pub type_: Option<WebhookDeploymentReviewRequestedReviewersType>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewRequestedWorkflowJobRun {
@@ -16308,7 +19869,7 @@ pub struct WebhookDeploymentReviewRequestedWorkflowJobRun {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentReviewRequested {
@@ -16334,7 +19895,7 @@ pub struct WebhookDeploymentReviewRequested {
   pub workflow_run: Option<DeploymentWorkflowRun>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentStatusCreatedCheckRun {
@@ -16361,7 +19922,7 @@ pub struct WebhookDeploymentStatusCreatedCheckRun {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_status"))]
 /// The [deployment status](https://docs.github.com/rest/deployments/statuses#list-deployment-statuses).
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16395,7 +19956,7 @@ pub struct WebhookDeploymentStatusCreatedDeploymentStatus {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_deployment_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDeploymentStatusCreated {
@@ -16426,7 +19987,7 @@ pub struct WebhookDeploymentStatusCreated {
   pub workflow_run: Option<DeploymentWorkflowRun>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionAnsweredAnswer {
@@ -16450,7 +20011,11 @@ pub struct WebhookDiscussionAnsweredAnswer {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DiscussionCategory {
@@ -16468,7 +20033,11 @@ pub struct DiscussionCategory {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_discussion",
+  feature = "webhook_discussion_comment"
+))]
 /// A Discussion in a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16518,7 +20087,7 @@ pub struct Discussion {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionAnswered {
@@ -16538,7 +20107,7 @@ pub struct WebhookDiscussionAnswered {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCategoryChangedChangesCategoryFrom {
@@ -16556,21 +20125,21 @@ pub struct WebhookDiscussionCategoryChangedChangesCategoryFrom {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCategoryChangedChangesCategory {
   pub from: WebhookDiscussionCategoryChangedChangesCategoryFrom,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCategoryChangedChanges {
   pub category: WebhookDiscussionCategoryChangedChangesCategory,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCategoryChanged {
@@ -16590,7 +20159,7 @@ pub struct WebhookDiscussionCategoryChanged {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionClosed {
@@ -16609,7 +20178,7 @@ pub struct WebhookDiscussionClosed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCommentCreatedComment {
@@ -16633,7 +20202,7 @@ pub struct WebhookDiscussionCommentCreatedComment {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCommentCreated {
@@ -16653,7 +20222,7 @@ pub struct WebhookDiscussionCommentCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCommentDeletedComment {
@@ -16677,7 +20246,7 @@ pub struct WebhookDiscussionCommentDeletedComment {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCommentDeleted {
@@ -16697,21 +20266,21 @@ pub struct WebhookDiscussionCommentDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCommentEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCommentEditedChanges {
   pub body: WebhookDiscussionCommentEditedChangesBody,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCommentEditedComment {
@@ -16735,7 +20304,7 @@ pub struct WebhookDiscussionCommentEditedComment {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCommentEdited {
@@ -16756,7 +20325,7 @@ pub struct WebhookDiscussionCommentEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCreatedDiscussionItem2Category {
@@ -16792,7 +20361,7 @@ pub struct WebhookDiscussionCreatedDiscussionItem2Category {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCreatedDiscussionItem2Reactions {
@@ -16830,7 +20399,7 @@ pub struct WebhookDiscussionCreatedDiscussionItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCreatedDiscussionItem2User {
@@ -16891,7 +20460,7 @@ pub struct WebhookDiscussionCreatedDiscussionItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCreatedDiscussionItem2 {
@@ -16952,7 +20521,7 @@ pub struct WebhookDiscussionCreatedDiscussionItem2 {
   pub user: Option<WebhookDiscussionCreatedDiscussionItem2User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionCreated {
@@ -16971,7 +20540,7 @@ pub struct WebhookDiscussionCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionDeleted {
@@ -16990,21 +20559,21 @@ pub struct WebhookDiscussionDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionEditedChangesTitle {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionEditedChanges {
@@ -17016,7 +20585,7 @@ pub struct WebhookDiscussionEditedChanges {
   pub title: Option<WebhookDiscussionEditedChangesTitle>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionEdited {
@@ -17038,7 +20607,17 @@ pub struct WebhookDiscussionEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_discussion",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues",
+  feature = "webhook_label",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct Label {
@@ -17057,7 +20636,7 @@ pub struct Label {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionLabeled {
@@ -17077,7 +20656,7 @@ pub struct WebhookDiscussionLabeled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionLocked {
@@ -17096,7 +20675,7 @@ pub struct WebhookDiscussionLocked {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionPinned {
@@ -17115,7 +20694,7 @@ pub struct WebhookDiscussionPinned {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionReopened {
@@ -17134,7 +20713,7 @@ pub struct WebhookDiscussionReopened {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionTransferredChanges {
@@ -17142,7 +20721,7 @@ pub struct WebhookDiscussionTransferredChanges {
   pub new_repository: RepositoryWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionTransferred {
@@ -17162,7 +20741,7 @@ pub struct WebhookDiscussionTransferred {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionUnansweredOldAnswer {
@@ -17186,7 +20765,7 @@ pub struct WebhookDiscussionUnansweredOldAnswer {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionUnanswered {
@@ -17202,7 +20781,7 @@ pub struct WebhookDiscussionUnanswered {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionUnlabeled {
@@ -17222,7 +20801,7 @@ pub struct WebhookDiscussionUnlabeled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionUnlocked {
@@ -17241,7 +20820,7 @@ pub struct WebhookDiscussionUnlocked {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookDiscussionUnpinned {
@@ -17260,7 +20839,18 @@ pub struct WebhookDiscussionUnpinned {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_fork",
+  feature = "webhook_issues",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_team"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct License {
@@ -17273,7 +20863,18 @@ pub struct License {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_fork",
+  feature = "webhook_issues",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_team"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryPermissions {
@@ -17288,7 +20889,18 @@ pub struct RepositoryPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_fork",
+  feature = "webhook_issues",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_push",
+  feature = "webhook_security_and_analysis",
+  feature = "webhook_team"
+))]
 /// A git repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17452,7 +21064,7 @@ pub struct Repository {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_fork"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookForkForkeeItem2Owner {
@@ -17513,7 +21125,7 @@ pub struct WebhookForkForkeeItem2Owner {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_fork"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookForkForkeeItem2 {
@@ -17753,7 +21365,7 @@ pub struct WebhookForkForkeeItem2 {
   pub watchers_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_fork"))]
 /// A user forks a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17773,7 +21385,7 @@ pub struct WebhookFork {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_github_app_authorization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookGithubAppAuthorizationRevoked {
@@ -17781,7 +21393,7 @@ pub struct WebhookGithubAppAuthorizationRevoked {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_gollum"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookGollumPages {
@@ -17800,7 +21412,7 @@ pub struct WebhookGollumPages {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_gollum"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookGollum {
@@ -17819,7 +21431,11 @@ pub struct WebhookGollum {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories"
+))]
 /// An enterprise on GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17849,7 +21465,11 @@ pub struct Enterprise {
   pub website_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_installation",
+  feature = "webhook_installation_repositories"
+))]
 /// Installation
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17891,7 +21511,7 @@ pub struct Installation {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationCreatedRepositories {
@@ -17905,7 +21525,7 @@ pub struct WebhookInstallationCreatedRepositories {
   pub private: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationCreated {
@@ -17930,7 +21550,7 @@ pub struct WebhookInstallationCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationDeletedRepositories {
@@ -17944,7 +21564,7 @@ pub struct WebhookInstallationDeletedRepositories {
   pub private: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationDeleted {
@@ -17969,7 +21589,7 @@ pub struct WebhookInstallationDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationNewPermissionsAcceptedRepositories {
@@ -17983,7 +21603,7 @@ pub struct WebhookInstallationNewPermissionsAcceptedRepositories {
   pub private: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationNewPermissionsAccepted {
@@ -18008,7 +21628,7 @@ pub struct WebhookInstallationNewPermissionsAccepted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationRepositoriesAddedRepositoriesAdded {
@@ -18022,7 +21642,7 @@ pub struct WebhookInstallationRepositoriesAddedRepositoriesAdded {
   pub private: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationRepositoriesAddedRepositoriesRemoved {
@@ -18046,7 +21666,7 @@ pub struct WebhookInstallationRepositoriesAddedRepositoriesRemoved {
   pub private: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationRepositoriesAdded {
@@ -18073,7 +21693,7 @@ pub struct WebhookInstallationRepositoriesAdded {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationRepositoriesRemovedRepositoriesAdded {
@@ -18087,7 +21707,7 @@ pub struct WebhookInstallationRepositoriesRemovedRepositoriesAdded {
   pub private: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationRepositoriesRemovedRepositoriesRemoved {
@@ -18101,7 +21721,7 @@ pub struct WebhookInstallationRepositoriesRemovedRepositoriesRemoved {
   pub private: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_repositories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationRepositoriesRemoved {
@@ -18128,7 +21748,7 @@ pub struct WebhookInstallationRepositoriesRemoved {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationSuspendRepositories {
@@ -18142,7 +21762,7 @@ pub struct WebhookInstallationSuspendRepositories {
   pub private: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationSuspend {
@@ -18167,7 +21787,7 @@ pub struct WebhookInstallationSuspend {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_target"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationTargetRenamedAccount {
@@ -18274,21 +21894,21 @@ pub struct WebhookInstallationTargetRenamedAccount {
   pub website_url: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_target"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationTargetRenamedChangesLogin {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_target"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationTargetRenamedChangesSlug {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_target"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationTargetRenamedChanges {
@@ -18300,7 +21920,7 @@ pub struct WebhookInstallationTargetRenamedChanges {
   pub slug: Option<WebhookInstallationTargetRenamedChangesSlug>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation_target"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationTargetRenamed {
@@ -18323,7 +21943,7 @@ pub struct WebhookInstallationTargetRenamed {
   pub target_type: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationUnsuspendRepositories {
@@ -18337,7 +21957,7 @@ pub struct WebhookInstallationUnsuspendRepositories {
   pub private: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookInstallationUnsuspend {
@@ -18362,7 +21982,7 @@ pub struct WebhookInstallationUnsuspend {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 /// The [comment](https://docs.github.com/rest/issues/comments#get-an-issue-comment) itself.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18389,7 +22009,11 @@ pub struct IssueComment {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuePullRequest {
@@ -18410,7 +22034,11 @@ pub struct IssuePullRequest {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_issue_comment",
+  feature = "webhook_issues"
+))]
 /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18482,7 +22110,7 @@ pub struct Issue {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentCreatedIssueItem2Reactions {
@@ -18520,7 +22148,7 @@ pub struct WebhookIssueCommentCreatedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentCreatedIssueItem2User {
@@ -18581,7 +22209,7 @@ pub struct WebhookIssueCommentCreatedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentCreatedIssueItem2 {
@@ -18663,7 +22291,7 @@ pub struct WebhookIssueCommentCreatedIssueItem2 {
   pub user: Option<WebhookIssueCommentCreatedIssueItem2User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentCreated {
@@ -18685,7 +22313,7 @@ pub struct WebhookIssueCommentCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentDeletedIssueItem2Reactions {
@@ -18723,7 +22351,7 @@ pub struct WebhookIssueCommentDeletedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentDeletedIssueItem2User {
@@ -18784,7 +22412,7 @@ pub struct WebhookIssueCommentDeletedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentDeletedIssueItem2 {
@@ -18866,7 +22494,7 @@ pub struct WebhookIssueCommentDeletedIssueItem2 {
   pub user: Option<WebhookIssueCommentDeletedIssueItem2User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentDeleted {
@@ -18888,7 +22516,7 @@ pub struct WebhookIssueCommentDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentEditedChangesBody {
@@ -18896,7 +22524,7 @@ pub struct WebhookIssueCommentEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 /// The changes to the comment.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18906,7 +22534,7 @@ pub struct WebhookIssueCommentEditedChanges {
   pub body: Option<WebhookIssueCommentEditedChangesBody>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentEditedIssueItem2Reactions {
@@ -18944,7 +22572,7 @@ pub struct WebhookIssueCommentEditedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentEditedIssueItem2User {
@@ -19005,7 +22633,7 @@ pub struct WebhookIssueCommentEditedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentEditedIssueItem2 {
@@ -19087,7 +22715,7 @@ pub struct WebhookIssueCommentEditedIssueItem2 {
   pub user: Option<WebhookIssueCommentEditedIssueItem2User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssueCommentEdited {
@@ -19111,7 +22739,7 @@ pub struct WebhookIssueCommentEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesAssigned {
@@ -19135,7 +22763,7 @@ pub struct WebhookIssuesAssigned {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesClosedIssueItem2Reactions {
@@ -19173,7 +22801,7 @@ pub struct WebhookIssuesClosedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesClosedIssueItem2User {
@@ -19234,7 +22862,7 @@ pub struct WebhookIssuesClosedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesClosedIssueItem2 {
@@ -19319,7 +22947,7 @@ pub struct WebhookIssuesClosedIssueItem2 {
   pub user: Option<WebhookIssuesClosedIssueItem2User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesClosed {
@@ -19340,7 +22968,7 @@ pub struct WebhookIssuesClosed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesDeleted {
@@ -19360,7 +22988,7 @@ pub struct WebhookIssuesDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesDemilestonedIssueItem2Reactions {
@@ -19398,7 +23026,7 @@ pub struct WebhookIssuesDemilestonedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesDemilestonedIssueItem2User {
@@ -19459,7 +23087,7 @@ pub struct WebhookIssuesDemilestonedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesDemilestonedIssueItem2 {
@@ -19547,7 +23175,7 @@ pub struct WebhookIssuesDemilestonedIssueItem2 {
   pub user: Option<WebhookIssuesDemilestonedIssueItem2User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesDemilestoned {
@@ -19570,7 +23198,7 @@ pub struct WebhookIssuesDemilestoned {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesEditedChangesBody {
@@ -19578,7 +23206,7 @@ pub struct WebhookIssuesEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesEditedChangesTitle {
@@ -19586,7 +23214,7 @@ pub struct WebhookIssuesEditedChangesTitle {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 /// The changes to the issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19599,7 +23227,7 @@ pub struct WebhookIssuesEditedChanges {
   pub title: Option<WebhookIssuesEditedChangesTitle>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesEdited {
@@ -19624,7 +23252,7 @@ pub struct WebhookIssuesEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesLabeled {
@@ -19647,7 +23275,7 @@ pub struct WebhookIssuesLabeled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesLockedIssueItem2Reactions {
@@ -19685,7 +23313,7 @@ pub struct WebhookIssuesLockedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesLockedIssueItem2User {
@@ -19746,7 +23374,7 @@ pub struct WebhookIssuesLockedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesLockedIssueItem2 {
@@ -19831,7 +23459,7 @@ pub struct WebhookIssuesLockedIssueItem2 {
   pub user: Option<WebhookIssuesLockedIssueItem2User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesLocked {
@@ -19850,7 +23478,7 @@ pub struct WebhookIssuesLocked {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesMilestonedIssueItem2Reactions {
@@ -19888,7 +23516,7 @@ pub struct WebhookIssuesMilestonedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesMilestonedIssueItem2User {
@@ -19949,7 +23577,7 @@ pub struct WebhookIssuesMilestonedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesMilestonedIssueItem2 {
@@ -20035,7 +23663,7 @@ pub struct WebhookIssuesMilestonedIssueItem2 {
   pub user: Option<WebhookIssuesMilestonedIssueItem2User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesMilestoned {
@@ -20056,7 +23684,7 @@ pub struct WebhookIssuesMilestoned {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesOpenedChanges {
@@ -20068,7 +23696,7 @@ pub struct WebhookIssuesOpenedChanges {
   pub old_repository: Repository,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesOpened {
@@ -20091,7 +23719,7 @@ pub struct WebhookIssuesOpened {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesPinned {
@@ -20111,7 +23739,7 @@ pub struct WebhookIssuesPinned {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesReopenedIssueItem2Reactions {
@@ -20149,7 +23777,7 @@ pub struct WebhookIssuesReopenedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesReopenedIssueItem2User {
@@ -20210,7 +23838,7 @@ pub struct WebhookIssuesReopenedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesReopenedIssueItem2 {
@@ -20295,7 +23923,7 @@ pub struct WebhookIssuesReopenedIssueItem2 {
   pub user: Option<WebhookIssuesReopenedIssueItem2User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesReopened {
@@ -20314,7 +23942,7 @@ pub struct WebhookIssuesReopened {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesTransferredChanges {
@@ -20324,7 +23952,7 @@ pub struct WebhookIssuesTransferredChanges {
   pub new_repository: Repository,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesTransferred {
@@ -20345,7 +23973,7 @@ pub struct WebhookIssuesTransferred {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesUnassigned {
@@ -20369,7 +23997,7 @@ pub struct WebhookIssuesUnassigned {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesUnlabeled {
@@ -20392,7 +24020,7 @@ pub struct WebhookIssuesUnlabeled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesUnlockedIssueItem2Reactions {
@@ -20430,7 +24058,7 @@ pub struct WebhookIssuesUnlockedIssueItem2Reactions {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesUnlockedIssueItem2User {
@@ -20491,7 +24119,7 @@ pub struct WebhookIssuesUnlockedIssueItem2User {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesUnlockedIssueItem2 {
@@ -20574,7 +24202,7 @@ pub struct WebhookIssuesUnlockedIssueItem2 {
   pub user: Option<WebhookIssuesUnlockedIssueItem2User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesUnlocked {
@@ -20593,7 +24221,7 @@ pub struct WebhookIssuesUnlocked {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookIssuesUnpinned {
@@ -20613,7 +24241,7 @@ pub struct WebhookIssuesUnpinned {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookLabelCreated {
@@ -20634,7 +24262,7 @@ pub struct WebhookLabelCreated {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookLabelDeleted {
@@ -20653,7 +24281,7 @@ pub struct WebhookLabelDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookLabelEditedChangesColor {
@@ -20661,7 +24289,7 @@ pub struct WebhookLabelEditedChangesColor {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookLabelEditedChangesDescription {
@@ -20669,7 +24297,7 @@ pub struct WebhookLabelEditedChangesDescription {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookLabelEditedChangesName {
@@ -20677,7 +24305,7 @@ pub struct WebhookLabelEditedChangesName {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 /// The changes to the label if the action was `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20693,7 +24321,7 @@ pub struct WebhookLabelEditedChanges {
   pub name: Option<WebhookLabelEditedChangesName>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookLabelEdited {
@@ -20716,7 +24344,7 @@ pub struct WebhookLabelEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MarketplacePurchaseAccount {
@@ -20730,7 +24358,7 @@ pub struct MarketplacePurchaseAccount {
   pub type_: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MarketplacePurchasePlan {
@@ -20747,7 +24375,7 @@ pub struct MarketplacePurchasePlan {
   pub yearly_price_in_cents: i64,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MarketplacePurchase {
@@ -20764,7 +24392,7 @@ pub struct MarketplacePurchase {
   pub unit_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Account {
@@ -20786,7 +24414,7 @@ pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Account {
   pub type_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Plan {
@@ -20820,7 +24448,7 @@ pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Plan {
   pub yearly_price_in_cents: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2 {
@@ -20847,7 +24475,7 @@ pub struct WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2 {
   pub unit_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchaseCancelled {
@@ -20872,7 +24500,7 @@ pub struct WebhookMarketplacePurchaseCancelled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Account {
@@ -20894,7 +24522,7 @@ pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Account {
   pub type_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Plan {
@@ -20927,7 +24555,7 @@ pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2Plan {
   pub yearly_price_in_cents: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2 {
@@ -20954,7 +24582,7 @@ pub struct WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2 {
   pub unit_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchaseChanged {
@@ -20979,7 +24607,7 @@ pub struct WebhookMarketplacePurchaseChanged {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Account {
@@ -21001,7 +24629,7 @@ pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Accoun
   pub type_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Plan {
@@ -21035,7 +24663,7 @@ pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2Plan {
   pub yearly_price_in_cents: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2 {
@@ -21062,7 +24690,7 @@ pub struct WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2 {
   pub unit_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchasePendingChange {
@@ -21087,14 +24715,14 @@ pub struct WebhookMarketplacePurchasePendingChange {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2 {
   pub next_billing_date: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchasePendingChangeCancelled {
@@ -21119,7 +24747,7 @@ pub struct WebhookMarketplacePurchasePendingChangeCancelled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Account {
@@ -21141,7 +24769,7 @@ pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Account {
   pub type_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Plan {
@@ -21175,7 +24803,7 @@ pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Plan {
   pub yearly_price_in_cents: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2 {
@@ -21202,7 +24830,7 @@ pub struct WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2 {
   pub unit_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMarketplacePurchasePurchased {
@@ -21227,7 +24855,7 @@ pub struct WebhookMarketplacePurchasePurchased {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 /// This field is included for legacy purposes; use the `role_name` field instead. The `maintain`
 /// role is mapped to `write` and the `triage` role is mapped to `read`. To determine the role
 /// assigned to the collaborator, use the `role_name` field instead, which will provide the full
@@ -21238,7 +24866,7 @@ pub struct WebhookMemberAddedChangesPermission {
   pub to: WebhookMemberAddedChangesPermissionTo,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 /// The role assigned to the collaborator.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21246,7 +24874,7 @@ pub struct WebhookMemberAddedChangesRoleName {
   pub to: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMemberAddedChanges {
@@ -21263,7 +24891,7 @@ pub struct WebhookMemberAddedChanges {
   pub role_name: Option<WebhookMemberAddedChangesRoleName>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMemberAdded {
@@ -21287,7 +24915,7 @@ pub struct WebhookMemberAdded {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMemberEditedChangesOldPermission {
@@ -21295,7 +24923,7 @@ pub struct WebhookMemberEditedChangesOldPermission {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMemberEditedChangesPermission {
@@ -21307,7 +24935,7 @@ pub struct WebhookMemberEditedChangesPermission {
   pub to: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 /// The changes to the collaborator permissions
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21320,7 +24948,7 @@ pub struct WebhookMemberEditedChanges {
   pub permission: Option<WebhookMemberEditedChangesPermission>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMemberEdited {
@@ -21343,7 +24971,7 @@ pub struct WebhookMemberEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMemberRemoved {
@@ -21364,7 +24992,17 @@ pub struct WebhookMemberRemoved {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_membership",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_team_add",
+  feature = "webhook_team"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamParent {
@@ -21390,7 +25028,17 @@ pub struct TeamParent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_membership",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread",
+  feature = "webhook_repository_advisory",
+  feature = "webhook_team_add",
+  feature = "webhook_team"
+))]
 /// Groups of organization members that gives permissions on specified repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21440,7 +25088,7 @@ pub struct Team {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_membership"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMembershipAdded {
@@ -21467,7 +25115,7 @@ pub struct WebhookMembershipAdded {
   pub team: Team,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_membership"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMembershipRemoved {
@@ -21494,7 +25142,7 @@ pub struct WebhookMembershipRemoved {
   pub team: Team,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_merge_group"))]
 /// A group of pull requests that the merge queue has grouped together to be merged.
 ///
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -21511,7 +25159,7 @@ pub struct MergeGroup {
   pub head_sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_merge_group"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMergeGroupChecksRequested {
@@ -21531,7 +25179,7 @@ pub struct WebhookMergeGroupChecksRequested {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_merge_group"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMergeGroupDestroyed {
@@ -21555,7 +25203,7 @@ pub struct WebhookMergeGroupDestroyed {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_meta"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMetaDeletedHookConfig {
@@ -21567,7 +25215,7 @@ pub struct WebhookMetaDeletedHookConfig {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_meta"))]
 /// The modified webhook. This will contain different keys based on the type of webhook it is: repository, organization, business, app, or GitHub Marketplace.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21583,7 +25231,7 @@ pub struct WebhookMetaDeletedHook {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_meta"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMetaDeleted {
@@ -21609,7 +25257,7 @@ pub struct WebhookMetaDeleted {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMilestoneClosed {
@@ -21629,7 +25277,7 @@ pub struct WebhookMilestoneClosed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMilestoneCreated {
@@ -21649,7 +25297,7 @@ pub struct WebhookMilestoneCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMilestoneDeleted {
@@ -21669,7 +25317,7 @@ pub struct WebhookMilestoneDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMilestoneEditedChangesDescription {
@@ -21677,7 +25325,7 @@ pub struct WebhookMilestoneEditedChangesDescription {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMilestoneEditedChangesDueOn {
@@ -21685,7 +25333,7 @@ pub struct WebhookMilestoneEditedChangesDueOn {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMilestoneEditedChangesTitle {
@@ -21693,7 +25341,7 @@ pub struct WebhookMilestoneEditedChangesTitle {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 /// The changes to the milestone if the action was `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21709,7 +25357,7 @@ pub struct WebhookMilestoneEditedChanges {
   pub title: Option<WebhookMilestoneEditedChangesTitle>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMilestoneEdited {
@@ -21731,7 +25379,7 @@ pub struct WebhookMilestoneEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookMilestoneOpened {
@@ -21751,7 +25399,7 @@ pub struct WebhookMilestoneOpened {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_org_block"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookOrgBlockBlocked {
@@ -21772,7 +25420,7 @@ pub struct WebhookOrgBlockBlocked {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_org_block"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookOrgBlockUnblocked {
@@ -21793,7 +25441,7 @@ pub struct WebhookOrgBlockUnblocked {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 /// The membership between the user and the organization. Not present when the action is `member_invited`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21807,7 +25455,7 @@ pub struct Membership {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookOrganizationDeleted {
@@ -21829,7 +25477,7 @@ pub struct WebhookOrganizationDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookOrganizationMemberAdded {
@@ -21849,7 +25497,7 @@ pub struct WebhookOrganizationMemberAdded {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 /// The invitation for the user or email if the action is `member_invited`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21880,7 +25528,7 @@ pub struct WebhookOrganizationMemberInvitedInvitation {
   pub team_count: f64,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookOrganizationMemberInvited {
@@ -21903,7 +25551,7 @@ pub struct WebhookOrganizationMemberInvited {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookOrganizationMemberRemoved {
@@ -21923,7 +25571,7 @@ pub struct WebhookOrganizationMemberRemoved {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookOrganizationRenamedChangesLogin {
@@ -21932,7 +25580,7 @@ pub struct WebhookOrganizationRenamedChangesLogin {
   pub from: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookOrganizationRenamedChanges {
@@ -21941,7 +25589,7 @@ pub struct WebhookOrganizationRenamedChanges {
   pub login: Option<WebhookOrganizationRenamedChangesLogin>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookOrganizationRenamed {
@@ -21966,7 +25614,7 @@ pub struct WebhookOrganizationRenamed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackagePublishedPackagePackageVersionContainerMetadataTag {
@@ -21978,7 +25626,7 @@ pub struct WebhookPackagePublishedPackagePackageVersionContainerMetadataTag {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackagePublishedPackagePackageVersionContainerMetadata {
@@ -21993,7 +25641,7 @@ pub struct WebhookPackagePublishedPackagePackageVersionContainerMetadata {
   pub tag: Option<WebhookPackagePublishedPackagePackageVersionContainerMetadataTag>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackagePublishedPackagePackageVersionDockerMetadata {
@@ -22002,7 +25650,7 @@ pub struct WebhookPackagePublishedPackagePackageVersionDockerMetadata {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackagePublishedPackagePackageVersionNpmMetadata {
@@ -22119,7 +25767,7 @@ pub struct WebhookPackagePublishedPackagePackageVersionNpmMetadata {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackagePublishedPackagePackageVersionNugetMetadataValueItem4 {
@@ -22138,7 +25786,7 @@ pub struct WebhookPackagePublishedPackagePackageVersionNugetMetadataValueItem4 {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackagePublishedPackagePackageVersionNugetMetadata {
@@ -22153,7 +25801,7 @@ pub struct WebhookPackagePublishedPackagePackageVersionNugetMetadata {
   pub value: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackagePublishedPackagePackageVersionPackageFiles {
@@ -22178,7 +25826,7 @@ pub struct WebhookPackagePublishedPackagePackageVersionPackageFiles {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackagePublishedPackagePackageVersionRelease {
@@ -22199,7 +25847,11 @@ pub struct WebhookPackagePublishedPackagePackageVersionRelease {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_package",
+  feature = "webhook_registry_package"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRubygemsMetadataVersionInfo {
@@ -22208,7 +25860,11 @@ pub struct WebhookRubygemsMetadataVersionInfo {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_package",
+  feature = "webhook_registry_package"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRubygemsMetadata {
@@ -22244,7 +25900,7 @@ pub struct WebhookRubygemsMetadata {
   pub version_info: Option<WebhookRubygemsMetadataVersionInfo>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackagePublishedPackagePackageVersion {
@@ -22316,7 +25972,7 @@ pub struct WebhookPackagePublishedPackagePackageVersion {
   pub version: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackagePublishedPackageRegistry {
@@ -22328,7 +25984,7 @@ pub struct WebhookPackagePublishedPackageRegistry {
   pub vendor: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 /// Information about the package.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22359,7 +26015,7 @@ pub struct WebhookPackagePublishedPackage {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackagePublished {
@@ -22381,7 +26037,7 @@ pub struct WebhookPackagePublished {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackageUpdatedPackagePackageVersionDockerMetadata {
@@ -22390,7 +26046,7 @@ pub struct WebhookPackageUpdatedPackagePackageVersionDockerMetadata {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackageUpdatedPackagePackageVersionPackageFiles {
@@ -22411,7 +26067,7 @@ pub struct WebhookPackageUpdatedPackagePackageVersionPackageFiles {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackageUpdatedPackagePackageVersionRelease {
@@ -22430,7 +26086,7 @@ pub struct WebhookPackageUpdatedPackagePackageVersionRelease {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackageUpdatedPackagePackageVersion {
@@ -22481,7 +26137,7 @@ pub struct WebhookPackageUpdatedPackagePackageVersion {
   pub version: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackageUpdatedPackageRegistry {
@@ -22493,7 +26149,7 @@ pub struct WebhookPackageUpdatedPackageRegistry {
   pub vendor: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 /// Information about the package.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22518,7 +26174,7 @@ pub struct WebhookPackageUpdatedPackage {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPackageUpdated {
@@ -22538,7 +26194,7 @@ pub struct WebhookPackageUpdated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_page_build"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPageBuildBuildError {
@@ -22547,7 +26203,7 @@ pub struct WebhookPageBuildBuildError {
   pub message: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_page_build"))]
 /// The [List GitHub Pages builds](https://docs.github.com/rest/pages/pages#list-github-pages-builds) itself.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22566,7 +26222,7 @@ pub struct WebhookPageBuildBuild {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_page_build"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPageBuild {
@@ -22587,7 +26243,7 @@ pub struct WebhookPageBuild {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 /// New requested permissions, categorized by type of permission.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22603,7 +26259,7 @@ pub struct PersonalAccessTokenRequestPermissionsAdded {
   pub repository: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 /// Permissions requested, categorized by type of permission. This field incorporates `permissions_added` and `permissions_upgraded`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22619,7 +26275,7 @@ pub struct PersonalAccessTokenRequestPermissionsResult {
   pub repository: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 /// Requested permissions that elevate access for a previously approved request for access, categorized by type of permission.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22635,7 +26291,7 @@ pub struct PersonalAccessTokenRequestPermissionsUpgraded {
   pub repository: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PersonalAccessTokenRequestRepositories {
@@ -22649,7 +26305,7 @@ pub struct PersonalAccessTokenRequestRepositories {
   pub private: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 /// Details of a Personal Access Token Request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22687,7 +26343,7 @@ pub struct PersonalAccessTokenRequest {
   pub token_last_used_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPersonalAccessTokenRequestApproved {
@@ -22698,7 +26354,7 @@ pub struct WebhookPersonalAccessTokenRequestApproved {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPersonalAccessTokenRequestCancelled {
@@ -22709,7 +26365,7 @@ pub struct WebhookPersonalAccessTokenRequestCancelled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPersonalAccessTokenRequestCreated {
@@ -22720,7 +26376,7 @@ pub struct WebhookPersonalAccessTokenRequestCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPersonalAccessTokenRequestDenied {
@@ -22731,7 +26387,7 @@ pub struct WebhookPersonalAccessTokenRequestDenied {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_ping"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookConfig {
@@ -22749,7 +26405,7 @@ pub struct WebhookConfig {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_ping"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct HookResponse {
@@ -22764,7 +26420,7 @@ pub struct HookResponse {
   pub status: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_ping"))]
 /// The webhook that is being pinged
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22803,7 +26459,7 @@ pub struct Webhook {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_ping"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPing {
@@ -22830,21 +26486,21 @@ pub struct WebhookPing {
   pub zen: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardConvertedChangesNote {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardConvertedChanges {
   pub note: WebhookProjectCardConvertedChangesNote,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectCard {
@@ -22873,7 +26529,7 @@ pub struct ProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardConverted {
@@ -22895,7 +26551,7 @@ pub struct WebhookProjectCardConverted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardCreated {
@@ -22916,7 +26572,7 @@ pub struct WebhookProjectCardCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardDeleted {
@@ -22937,7 +26593,7 @@ pub struct WebhookProjectCardDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardEditedChangesNote {
@@ -22946,14 +26602,14 @@ pub struct WebhookProjectCardEditedChangesNote {
   pub from: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardEditedChanges {
   pub note: WebhookProjectCardEditedChangesNote,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardEdited {
@@ -22975,21 +26631,21 @@ pub struct WebhookProjectCardEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardMovedChangesColumnId {
   pub from: i64,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardMovedChanges {
   pub column_id: WebhookProjectCardMovedChangesColumnId,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardMovedProjectCardItem2Creator {
@@ -23050,7 +26706,7 @@ pub struct WebhookProjectCardMovedProjectCardItem2Creator {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardMovedProjectCardItem2 {
@@ -23092,7 +26748,7 @@ pub struct WebhookProjectCardMovedProjectCardItem2 {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCardMoved {
@@ -23116,7 +26772,7 @@ pub struct WebhookProjectCardMoved {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct Project {
@@ -23142,7 +26798,7 @@ pub struct Project {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectClosed {
@@ -23163,7 +26819,7 @@ pub struct WebhookProjectClosed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectColumn {
@@ -23182,7 +26838,7 @@ pub struct ProjectColumn {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectColumnCreated {
@@ -23205,7 +26861,7 @@ pub struct WebhookProjectColumnCreated {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectColumnDeleted {
@@ -23228,14 +26884,14 @@ pub struct WebhookProjectColumnDeleted {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectColumnEditedChangesName {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectColumnEditedChanges {
@@ -23244,7 +26900,7 @@ pub struct WebhookProjectColumnEditedChanges {
   pub name: Option<WebhookProjectColumnEditedChangesName>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectColumnEdited {
@@ -23268,7 +26924,7 @@ pub struct WebhookProjectColumnEdited {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectColumnMoved {
@@ -23289,7 +26945,7 @@ pub struct WebhookProjectColumnMoved {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectCreated {
@@ -23310,7 +26966,7 @@ pub struct WebhookProjectCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectDeleted {
@@ -23333,7 +26989,7 @@ pub struct WebhookProjectDeleted {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectEditedChangesBody {
@@ -23341,7 +26997,7 @@ pub struct WebhookProjectEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectEditedChangesName {
@@ -23349,7 +27005,7 @@ pub struct WebhookProjectEditedChangesName {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 /// The changes to the project if the action was `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23362,7 +27018,7 @@ pub struct WebhookProjectEditedChanges {
   pub name: Option<WebhookProjectEditedChangesName>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectEdited {
@@ -23389,7 +27045,7 @@ pub struct WebhookProjectEdited {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectReopened {
@@ -23410,7 +27066,7 @@ pub struct WebhookProjectReopened {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 /// A projects v2 project
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23441,7 +27097,7 @@ pub struct ProjectsV2 {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ProjectClosed {
@@ -23454,7 +27110,7 @@ pub struct WebhookProjectsV2ProjectClosed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 /// A project was created
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23468,7 +27124,7 @@ pub struct WebhookProjectsV2ProjectCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ProjectDeleted {
@@ -23481,7 +27137,7 @@ pub struct WebhookProjectsV2ProjectDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ProjectEditedChangesDescription {
@@ -23493,7 +27149,7 @@ pub struct WebhookProjectsV2ProjectEditedChangesDescription {
   pub to: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ProjectEditedChangesPublic {
@@ -23505,7 +27161,7 @@ pub struct WebhookProjectsV2ProjectEditedChangesPublic {
   pub to: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ProjectEditedChangesShortDescription {
@@ -23517,7 +27173,7 @@ pub struct WebhookProjectsV2ProjectEditedChangesShortDescription {
   pub to: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ProjectEditedChangesTitle {
@@ -23529,7 +27185,7 @@ pub struct WebhookProjectsV2ProjectEditedChangesTitle {
   pub to: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ProjectEditedChanges {
@@ -23547,7 +27203,7 @@ pub struct WebhookProjectsV2ProjectEditedChanges {
   pub title: Option<WebhookProjectsV2ProjectEditedChangesTitle>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ProjectEdited {
@@ -23561,7 +27217,7 @@ pub struct WebhookProjectsV2ProjectEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemArchivedChangesArchivedAt {
@@ -23573,7 +27229,7 @@ pub struct WebhookProjectsV2ItemArchivedChangesArchivedAt {
   pub to: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemArchivedChanges {
@@ -23582,7 +27238,7 @@ pub struct WebhookProjectsV2ItemArchivedChanges {
   pub archived_at: Option<WebhookProjectsV2ItemArchivedChangesArchivedAt>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 /// An item belonging to a project
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23606,7 +27262,7 @@ pub struct ProjectsV2Item {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemArchived {
@@ -23620,7 +27276,7 @@ pub struct WebhookProjectsV2ItemArchived {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemConvertedChangesContentType {
@@ -23632,7 +27288,7 @@ pub struct WebhookProjectsV2ItemConvertedChangesContentType {
   pub to: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemConvertedChanges {
@@ -23641,7 +27297,7 @@ pub struct WebhookProjectsV2ItemConvertedChanges {
   pub content_type: Option<WebhookProjectsV2ItemConvertedChangesContentType>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemConverted {
@@ -23655,7 +27311,7 @@ pub struct WebhookProjectsV2ItemConverted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemCreated {
@@ -23668,7 +27324,7 @@ pub struct WebhookProjectsV2ItemCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemDeleted {
@@ -23681,7 +27337,7 @@ pub struct WebhookProjectsV2ItemDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemEditedChangesItem1FieldValue {
@@ -23693,14 +27349,14 @@ pub struct WebhookProjectsV2ItemEditedChangesItem1FieldValue {
   pub field_type: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemEditedChangesItem1 {
   pub field_value: WebhookProjectsV2ItemEditedChangesItem1FieldValue,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemEditedChangesItem2Body {
@@ -23712,14 +27368,14 @@ pub struct WebhookProjectsV2ItemEditedChangesItem2Body {
   pub to: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemEditedChangesItem2 {
   pub body: WebhookProjectsV2ItemEditedChangesItem2Body,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemEdited {
@@ -23735,7 +27391,7 @@ pub struct WebhookProjectsV2ItemEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeId {
@@ -23747,7 +27403,7 @@ pub struct WebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeId {
   pub to: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemReorderedChanges {
@@ -23757,7 +27413,7 @@ pub struct WebhookProjectsV2ItemReorderedChanges {
     Option<WebhookProjectsV2ItemReorderedChangesPreviousProjectsV2ItemNodeId>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemReordered {
@@ -23771,7 +27427,7 @@ pub struct WebhookProjectsV2ItemReordered {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemRestoredChangesArchivedAt {
@@ -23783,7 +27439,7 @@ pub struct WebhookProjectsV2ItemRestoredChangesArchivedAt {
   pub to: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemRestoredChanges {
@@ -23792,7 +27448,7 @@ pub struct WebhookProjectsV2ItemRestoredChanges {
   pub archived_at: Option<WebhookProjectsV2ItemRestoredChangesArchivedAt>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ItemRestored {
@@ -23806,7 +27462,7 @@ pub struct WebhookProjectsV2ItemRestored {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookProjectsV2ProjectReopened {
@@ -23819,7 +27475,7 @@ pub struct WebhookProjectsV2ProjectReopened {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_public"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPublic {
@@ -23836,7 +27492,13 @@ pub struct WebhookPublic {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 /// The status of auto merging a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23856,7 +27518,7 @@ pub struct PullRequestAutoMerge {
   pub merge_method: PullRequestAutoMergeMergeMethod,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestAssigned {
@@ -23880,7 +27542,7 @@ pub struct WebhookPullRequestAssigned {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestAutoMergeDisabled {
@@ -23901,7 +27563,7 @@ pub struct WebhookPullRequestAutoMergeDisabled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestAutoMergeEnabled {
@@ -23924,7 +27586,7 @@ pub struct WebhookPullRequestAutoMergeEnabled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestClosedPullRequestItem2 {
@@ -23974,7 +27636,7 @@ pub struct WebhookPullRequestClosedPullRequestItem2 {
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestClosed {
@@ -23995,7 +27657,7 @@ pub struct WebhookPullRequestClosed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestConvertedToDraftPullRequestItem2 {
@@ -24047,7 +27709,7 @@ pub struct WebhookPullRequestConvertedToDraftPullRequestItem2 {
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestConvertedToDraft {
@@ -24068,7 +27730,7 @@ pub struct WebhookPullRequestConvertedToDraft {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestDemilestoned {
@@ -24091,7 +27753,7 @@ pub struct WebhookPullRequestDemilestoned {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestDequeued {
@@ -24112,21 +27774,21 @@ pub struct WebhookPullRequestDequeued {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestEditedChangesBaseRef {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestEditedChangesBaseSha {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestEditedChangesBase {
@@ -24135,7 +27797,7 @@ pub struct WebhookPullRequestEditedChangesBase {
   pub sha: WebhookPullRequestEditedChangesBaseSha,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestEditedChangesBody {
@@ -24143,7 +27805,7 @@ pub struct WebhookPullRequestEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestEditedChangesTitle {
@@ -24151,7 +27813,7 @@ pub struct WebhookPullRequestEditedChangesTitle {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 /// The changes to the comment if the action was `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24167,7 +27829,7 @@ pub struct WebhookPullRequestEditedChanges {
   pub title: Option<WebhookPullRequestEditedChangesTitle>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestEditedPullRequestItem2 {
@@ -24217,7 +27879,7 @@ pub struct WebhookPullRequestEditedPullRequestItem2 {
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestEdited {
@@ -24242,7 +27904,7 @@ pub struct WebhookPullRequestEdited {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestEnqueued {
@@ -24262,7 +27924,7 @@ pub struct WebhookPullRequestEnqueued {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestLabeled {
@@ -24286,7 +27948,7 @@ pub struct WebhookPullRequestLabeled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestLocked {
@@ -24307,7 +27969,7 @@ pub struct WebhookPullRequestLocked {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestMilestoned {
@@ -24330,7 +27992,7 @@ pub struct WebhookPullRequestMilestoned {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestOpenedPullRequestItem2 {
@@ -24380,7 +28042,7 @@ pub struct WebhookPullRequestOpenedPullRequestItem2 {
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestOpened {
@@ -24401,7 +28063,7 @@ pub struct WebhookPullRequestOpened {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReadyForReviewPullRequestItem2 {
@@ -24452,7 +28114,7 @@ pub struct WebhookPullRequestReadyForReviewPullRequestItem2 {
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReadyForReview {
@@ -24473,7 +28135,7 @@ pub struct WebhookPullRequestReadyForReview {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReopenedPullRequestItem2 {
@@ -24523,7 +28185,7 @@ pub struct WebhookPullRequestReopenedPullRequestItem2 {
   pub use_squash_pr_title_as_default: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReopened {
@@ -24544,7 +28206,11 @@ pub struct WebhookPullRequestReopened {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review_thread"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewCommentLinks {
@@ -24554,7 +28220,11 @@ pub struct PullRequestReviewCommentLinks {
   pub self_: Link,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review_comment",
+  feature = "webhook_pull_request_review_thread"
+))]
 /// The [comment](https://docs.github.com/rest/pulls/comments#get-a-review-comment-for-a-pull-request) itself.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24631,7 +28301,7 @@ pub struct PullRequestReviewComment {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentCreatedPullRequestLinks {
@@ -24646,7 +28316,7 @@ pub struct WebhookPullRequestReviewCommentCreatedPullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentCreatedPullRequestBase {
@@ -24661,7 +28331,7 @@ pub struct WebhookPullRequestReviewCommentCreatedPullRequestBase {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentCreatedPullRequestHead {
@@ -24678,7 +28348,7 @@ pub struct WebhookPullRequestReviewCommentCreatedPullRequestHead {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentCreatedPullRequest {
@@ -24744,7 +28414,7 @@ pub struct WebhookPullRequestReviewCommentCreatedPullRequest {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentCreated {
@@ -24765,7 +28435,7 @@ pub struct WebhookPullRequestReviewCommentCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentDeletedPullRequestLinks {
@@ -24780,7 +28450,7 @@ pub struct WebhookPullRequestReviewCommentDeletedPullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentDeletedPullRequestBase {
@@ -24795,7 +28465,7 @@ pub struct WebhookPullRequestReviewCommentDeletedPullRequestBase {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentDeletedPullRequestHead {
@@ -24812,7 +28482,7 @@ pub struct WebhookPullRequestReviewCommentDeletedPullRequestHead {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentDeletedPullRequest {
@@ -24878,7 +28548,7 @@ pub struct WebhookPullRequestReviewCommentDeletedPullRequest {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentDeleted {
@@ -24899,7 +28569,7 @@ pub struct WebhookPullRequestReviewCommentDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentEditedChangesBody {
@@ -24907,7 +28577,7 @@ pub struct WebhookPullRequestReviewCommentEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 /// The changes to the comment.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24917,7 +28587,7 @@ pub struct WebhookPullRequestReviewCommentEditedChanges {
   pub body: Option<WebhookPullRequestReviewCommentEditedChangesBody>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentEditedPullRequestLinks {
@@ -24932,7 +28602,7 @@ pub struct WebhookPullRequestReviewCommentEditedPullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentEditedPullRequestBase {
@@ -24947,7 +28617,7 @@ pub struct WebhookPullRequestReviewCommentEditedPullRequestBase {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentEditedPullRequestHead {
@@ -24964,7 +28634,7 @@ pub struct WebhookPullRequestReviewCommentEditedPullRequestHead {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentEditedPullRequest {
@@ -25030,7 +28700,7 @@ pub struct WebhookPullRequestReviewCommentEditedPullRequest {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewCommentEdited {
@@ -25053,7 +28723,11 @@ pub struct WebhookPullRequestReviewCommentEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SimplePullRequestLinks {
@@ -25068,7 +28742,11 @@ pub struct SimplePullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SimplePullRequestBase {
@@ -25083,7 +28761,11 @@ pub struct SimplePullRequestBase {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SimplePullRequestHead {
@@ -25100,7 +28782,11 @@ pub struct SimplePullRequestHead {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_pull_request_review",
+  feature = "webhook_pull_request_review_thread"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SimplePullRequest {
@@ -25164,7 +28850,7 @@ pub struct SimplePullRequest {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewDismissedReviewLinks {
@@ -25172,7 +28858,7 @@ pub struct WebhookPullRequestReviewDismissedReviewLinks {
   pub pull_request: Link,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 /// The review that was affected.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25199,7 +28885,7 @@ pub struct WebhookPullRequestReviewDismissedReview {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewDismissed {
@@ -25220,7 +28906,7 @@ pub struct WebhookPullRequestReviewDismissed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewEditedChangesBody {
@@ -25228,7 +28914,7 @@ pub struct WebhookPullRequestReviewEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewEditedChanges {
@@ -25237,7 +28923,7 @@ pub struct WebhookPullRequestReviewEditedChanges {
   pub body: Option<WebhookPullRequestReviewEditedChangesBody>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewEditedReviewLinks {
@@ -25245,7 +28931,7 @@ pub struct WebhookPullRequestReviewEditedReviewLinks {
   pub pull_request: Link,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 /// The review that was affected.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25274,7 +28960,7 @@ pub struct WebhookPullRequestReviewEditedReview {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewEdited {
@@ -25296,7 +28982,7 @@ pub struct WebhookPullRequestReviewEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewRequestRemovedItem1 {
@@ -25320,7 +29006,7 @@ pub struct WebhookPullRequestReviewRequestRemovedItem1 {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewRequestRemovedItem2 {
@@ -25343,7 +29029,7 @@ pub struct WebhookPullRequestReviewRequestRemovedItem2 {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewRequestedItem1 {
@@ -25367,7 +29053,7 @@ pub struct WebhookPullRequestReviewRequestedItem1 {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewRequestedItem2 {
@@ -25390,7 +29076,7 @@ pub struct WebhookPullRequestReviewRequestedItem2 {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewSubmittedReviewLinks {
@@ -25398,7 +29084,7 @@ pub struct WebhookPullRequestReviewSubmittedReviewLinks {
   pub pull_request: Link,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 /// The review that was affected.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25427,7 +29113,7 @@ pub struct WebhookPullRequestReviewSubmittedReview {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewSubmitted {
@@ -25448,7 +29134,7 @@ pub struct WebhookPullRequestReviewSubmitted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_thread"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewThreadResolvedThread {
@@ -25456,7 +29142,7 @@ pub struct WebhookPullRequestReviewThreadResolvedThread {
   pub node_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_thread"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewThreadResolved {
@@ -25478,7 +29164,7 @@ pub struct WebhookPullRequestReviewThreadResolved {
   pub thread: WebhookPullRequestReviewThreadResolvedThread,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_thread"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewThreadUnresolvedThread {
@@ -25486,7 +29172,7 @@ pub struct WebhookPullRequestReviewThreadUnresolvedThread {
   pub node_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request_review_thread"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestReviewThreadUnresolved {
@@ -25508,7 +29194,7 @@ pub struct WebhookPullRequestReviewThreadUnresolved {
   pub thread: WebhookPullRequestReviewThreadUnresolvedThread,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestSynchronize {
@@ -25531,7 +29217,7 @@ pub struct WebhookPullRequestSynchronize {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestUnassigned {
@@ -25557,7 +29243,7 @@ pub struct WebhookPullRequestUnassigned {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestUnlabeled {
@@ -25581,7 +29267,7 @@ pub struct WebhookPullRequestUnlabeled {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPullRequestUnlocked {
@@ -25602,7 +29288,7 @@ pub struct WebhookPullRequestUnlocked {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_push"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct Commit {
@@ -25634,7 +29320,7 @@ pub struct Commit {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_push"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookPush {
@@ -25679,7 +29365,7 @@ pub struct WebhookPush {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackageOwner {
@@ -25704,7 +29390,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackageOwner {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionAuthor {
@@ -25729,7 +29415,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionAuthor {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataTag {
@@ -25741,7 +29427,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainer
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadata {
@@ -25756,7 +29442,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainer
   pub tag: Option<WebhookRegistryPackagePublishedRegistryPackagePackageVersionContainerMetadataTag>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMetadata {
@@ -25765,7 +29451,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionDockerMet
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetadata {
@@ -25882,7 +29568,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNpmMetada
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadataValueItem4 {
@@ -25901,7 +29587,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMeta
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMetadata {
@@ -25916,7 +29602,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionNugetMeta
   pub value: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFiles {
@@ -25941,7 +29627,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionPackageFi
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionReleaseAuthor {
@@ -26002,7 +29688,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionReleaseAu
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease {
@@ -26041,7 +29727,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersionRelease {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
@@ -26111,7 +29797,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackagePackageVersion {
   pub version: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackageRegistry {
@@ -26133,7 +29819,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackageRegistry {
   pub vendor: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublishedRegistryPackage {
@@ -26161,7 +29847,7 @@ pub struct WebhookRegistryPackagePublishedRegistryPackage {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackagePublished {
@@ -26182,7 +29868,7 @@ pub struct WebhookRegistryPackagePublished {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackageOwner {
@@ -26207,7 +29893,7 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackageOwner {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionAuthor {
@@ -26232,7 +29918,7 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionAuthor {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionDockerMetadata {
@@ -26241,7 +29927,7 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionDockerMetad
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFiles {
@@ -26280,7 +29966,7 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionPackageFile
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionReleaseAuthor {
@@ -26305,7 +29991,7 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionReleaseAuth
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease {
@@ -26322,7 +30008,7 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersionRelease {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
@@ -26367,7 +30053,7 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackagePackageVersion {
   pub version: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackageUpdatedRegistryPackage {
@@ -26387,7 +30073,7 @@ pub struct WebhookRegistryPackageUpdatedRegistryPackage {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRegistryPackageUpdated {
@@ -26408,7 +30094,7 @@ pub struct WebhookRegistryPackageUpdated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 /// Data related to a release.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26434,7 +30120,7 @@ pub struct ReleaseAsset {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 /// The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26483,7 +30169,7 @@ pub struct Release {
   pub zipball_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleaseCreated {
@@ -26503,7 +30189,7 @@ pub struct WebhookReleaseCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleaseDeleted {
@@ -26523,7 +30209,7 @@ pub struct WebhookReleaseDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleaseEditedChangesBody {
@@ -26531,7 +30217,7 @@ pub struct WebhookReleaseEditedChangesBody {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleaseEditedChangesMakeLatest {
@@ -26539,7 +30225,7 @@ pub struct WebhookReleaseEditedChangesMakeLatest {
   pub to: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleaseEditedChangesName {
@@ -26547,7 +30233,7 @@ pub struct WebhookReleaseEditedChangesName {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleaseEditedChanges {
@@ -26562,7 +30248,7 @@ pub struct WebhookReleaseEditedChanges {
   pub name: Option<WebhookReleaseEditedChangesName>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleaseEdited {
@@ -26585,7 +30271,7 @@ pub struct WebhookReleaseEdited {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleasePrereleasedReleaseItem2Author {
@@ -26646,7 +30332,7 @@ pub struct WebhookReleasePrereleasedReleaseItem2Author {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleasePrereleasedReleaseItem2 {
@@ -26705,7 +30391,7 @@ pub struct WebhookReleasePrereleasedReleaseItem2 {
   pub zipball_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleasePrereleased {
@@ -26726,7 +30412,7 @@ pub struct WebhookReleasePrereleased {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleasePublishedReleaseItem2Author {
@@ -26787,7 +30473,7 @@ pub struct WebhookReleasePublishedReleaseItem2Author {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleasePublishedReleaseItem2 {
@@ -26847,7 +30533,7 @@ pub struct WebhookReleasePublishedReleaseItem2 {
   pub zipball_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleasePublished {
@@ -26868,7 +30554,7 @@ pub struct WebhookReleasePublished {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleaseReleased {
@@ -26890,7 +30576,7 @@ pub struct WebhookReleaseReleased {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleaseUnpublishedReleaseItem2Author {
@@ -26951,7 +30637,7 @@ pub struct WebhookReleaseUnpublishedReleaseItem2Author {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleaseUnpublishedReleaseItem2 {
@@ -27011,7 +30697,7 @@ pub struct WebhookReleaseUnpublishedReleaseItem2 {
   pub zipball_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookReleaseUnpublished {
@@ -27032,7 +30718,7 @@ pub struct WebhookReleaseUnpublished {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCredits {
@@ -27046,7 +30732,7 @@ pub struct RepositoryAdvisoryCredits {
   pub type_: Option<SecurityAdvisoryCreditTypes>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 /// A credit given to a user for a repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27058,7 +30744,7 @@ pub struct RepositoryAdvisoryCredit {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCvss {
@@ -27072,7 +30758,7 @@ pub struct RepositoryAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCwes {
@@ -27082,7 +30768,7 @@ pub struct RepositoryAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryIdentifiers {
@@ -27093,7 +30779,7 @@ pub struct RepositoryAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 /// A GitHub repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27193,7 +30879,7 @@ pub struct SimpleRepository {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisorySubmission {
@@ -27201,7 +30887,7 @@ pub struct RepositoryAdvisorySubmission {
   pub accepted: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27213,7 +30899,7 @@ pub struct RepositoryAdvisoryVulnerabilityPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 /// A product affected by the vulnerability detailed in a repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27236,7 +30922,7 @@ pub struct RepositoryAdvisoryVulnerability {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 /// A repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27328,7 +31014,7 @@ pub struct RepositoryAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryAdvisoryPublished {
@@ -27349,7 +31035,7 @@ pub struct WebhookRepositoryAdvisoryPublished {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryAdvisoryReported {
@@ -27370,7 +31056,7 @@ pub struct WebhookRepositoryAdvisoryReported {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryArchived {
@@ -27388,7 +31074,7 @@ pub struct WebhookRepositoryArchived {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryCreated {
@@ -27406,7 +31092,7 @@ pub struct WebhookRepositoryCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryDeleted {
@@ -27424,7 +31110,7 @@ pub struct WebhookRepositoryDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_dispatch"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryDispatchSample {
@@ -27446,14 +31132,14 @@ pub struct WebhookRepositoryDispatchSample {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryEditedChangesDefaultBranch {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryEditedChangesDescription {
@@ -27462,7 +31148,7 @@ pub struct WebhookRepositoryEditedChangesDescription {
   pub from: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryEditedChangesHomepage {
@@ -27471,7 +31157,7 @@ pub struct WebhookRepositoryEditedChangesHomepage {
   pub from: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryEditedChangesTopics {
@@ -27480,7 +31166,7 @@ pub struct WebhookRepositoryEditedChangesTopics {
   pub from: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryEditedChanges {
@@ -27498,7 +31184,7 @@ pub struct WebhookRepositoryEditedChanges {
   pub topics: Option<WebhookRepositoryEditedChangesTopics>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryEdited {
@@ -27517,7 +31203,7 @@ pub struct WebhookRepositoryEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_import"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryImport {
@@ -27535,7 +31221,7 @@ pub struct WebhookRepositoryImport {
   pub status: WebhookRepositoryImportStatus,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryPrivatized {
@@ -27553,7 +31239,7 @@ pub struct WebhookRepositoryPrivatized {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryPublicized {
@@ -27571,28 +31257,28 @@ pub struct WebhookRepositoryPublicized {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRenamedChangesRepositoryName {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRenamedChangesRepository {
   pub name: WebhookRepositoryRenamedChangesRepositoryName,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRenamedChanges {
   pub repository: WebhookRepositoryRenamedChangesRepository,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRenamed {
@@ -27611,7 +31297,7 @@ pub struct WebhookRepositoryRenamed {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinksHtml {
@@ -27621,7 +31307,7 @@ pub struct RepositoryRulesetLinksHtml {
   pub href: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinksSelf {
@@ -27631,7 +31317,7 @@ pub struct RepositoryRulesetLinksSelf {
   pub href: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinks {
@@ -27644,7 +31330,7 @@ pub struct RepositoryRulesetLinks {
   pub self_: Option<RepositoryRulesetLinksSelf>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// An actor that can bypass rules in a ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27657,7 +31343,7 @@ pub struct RepositoryRulesetBypassActor {
   pub bypass_mode: RepositoryRulesetBypassActorBypassMode,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsRefName {
@@ -27671,7 +31357,7 @@ pub struct RepositoryRulesetConditionsRefName {
   pub include: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Parameters for a repository ruleset ref name condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27681,7 +31367,7 @@ pub struct RepositoryRulesetConditions {
   pub ref_name: Option<RepositoryRulesetConditionsRefName>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsRepositoryNameTargetRepositoryName {
@@ -27699,7 +31385,7 @@ pub struct RepositoryRulesetConditionsRepositoryNameTargetRepositoryName {
   pub protected: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Parameters for a repository name condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27707,7 +31393,7 @@ pub struct RepositoryRulesetConditionsRepositoryNameTarget {
   pub repository_name: RepositoryRulesetConditionsRepositoryNameTargetRepositoryName,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsRepositoryIdTargetRepositoryId {
@@ -27717,7 +31403,7 @@ pub struct RepositoryRulesetConditionsRepositoryIdTargetRepositoryId {
   pub repository_ids: Option<Vec<i64>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Parameters for a repository ID condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27725,7 +31411,7 @@ pub struct RepositoryRulesetConditionsRepositoryIdTarget {
   pub repository_id: RepositoryRulesetConditionsRepositoryIdTargetRepositoryId,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Parameters for a targeting a repository property
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27736,7 +31422,7 @@ pub struct RepositoryRulesetConditionsRepositoryPropertySpec {
   pub property_values: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty {
@@ -27750,7 +31436,7 @@ pub struct RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty
   pub include: Option<Vec<RepositoryRulesetConditionsRepositoryPropertySpec>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Parameters for a repository property condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27758,7 +31444,7 @@ pub struct RepositoryRulesetConditionsRepositoryPropertyTarget {
   pub repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Only allow users with bypass permission to create matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27767,7 +31453,7 @@ pub struct RepositoryRuleCreation {
   pub type_: RepositoryRuleCreationType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleUpdateParameters {
@@ -27775,7 +31461,7 @@ pub struct RepositoryRuleUpdateParameters {
   pub update_allows_fetch_and_merge: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Only allow users with bypass permission to update matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27787,7 +31473,7 @@ pub struct RepositoryRuleUpdate {
   pub type_: RepositoryRuleUpdateType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Only allow users with bypass permissions to delete matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27796,7 +31482,7 @@ pub struct RepositoryRuleDeletion {
   pub type_: RepositoryRuleDeletionType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Prevent merge commits from being pushed to matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27805,7 +31491,7 @@ pub struct RepositoryRuleRequiredLinearHistory {
   pub type_: RepositoryRuleRequiredLinearHistoryType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleRequiredDeploymentsParameters {
@@ -27813,7 +31499,7 @@ pub struct RepositoryRuleRequiredDeploymentsParameters {
   pub required_deployment_environments: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27825,7 +31511,7 @@ pub struct RepositoryRuleRequiredDeployments {
   pub type_: RepositoryRuleRequiredDeploymentsType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Commits pushed to matching refs must have verified signatures.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27834,7 +31520,7 @@ pub struct RepositoryRuleRequiredSignatures {
   pub type_: RepositoryRuleRequiredSignaturesType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulePullRequestParameters {
@@ -27850,7 +31536,7 @@ pub struct RepositoryRulePullRequestParameters {
   pub required_review_thread_resolution: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27862,7 +31548,7 @@ pub struct RepositoryRulePullRequest {
   pub type_: RepositoryRulePullRequestType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Required status check
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27875,7 +31561,7 @@ pub struct RepositoryRuleParamsStatusCheckConfiguration {
   pub integration_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleRequiredStatusChecksParameters {
@@ -27885,7 +31571,7 @@ pub struct RepositoryRuleRequiredStatusChecksParameters {
   pub strict_required_status_checks_policy: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27897,7 +31583,7 @@ pub struct RepositoryRuleRequiredStatusChecks {
   pub type_: RepositoryRuleRequiredStatusChecksType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Prevent users with push access from force pushing to refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27906,7 +31592,7 @@ pub struct RepositoryRuleNonFastForward {
   pub type_: RepositoryRuleNonFastForwardType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitMessagePatternParameters {
@@ -27924,7 +31610,7 @@ pub struct RepositoryRuleCommitMessagePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Parameters to be used for the commit_message_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27936,7 +31622,7 @@ pub struct RepositoryRuleCommitMessagePattern {
   pub type_: RepositoryRuleCommitMessagePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitAuthorEmailPatternParameters {
@@ -27954,7 +31640,7 @@ pub struct RepositoryRuleCommitAuthorEmailPatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Parameters to be used for the commit_author_email_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27966,7 +31652,7 @@ pub struct RepositoryRuleCommitAuthorEmailPattern {
   pub type_: RepositoryRuleCommitAuthorEmailPatternType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitterEmailPatternParameters {
@@ -27984,7 +31670,7 @@ pub struct RepositoryRuleCommitterEmailPatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Parameters to be used for the committer_email_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27996,7 +31682,7 @@ pub struct RepositoryRuleCommitterEmailPattern {
   pub type_: RepositoryRuleCommitterEmailPatternType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleBranchNamePatternParameters {
@@ -28014,7 +31700,7 @@ pub struct RepositoryRuleBranchNamePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Parameters to be used for the branch_name_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28026,7 +31712,7 @@ pub struct RepositoryRuleBranchNamePattern {
   pub type_: RepositoryRuleBranchNamePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleTagNamePatternParameters {
@@ -28044,7 +31730,7 @@ pub struct RepositoryRuleTagNamePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Parameters to be used for the tag_name_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28056,7 +31742,7 @@ pub struct RepositoryRuleTagNamePattern {
   pub type_: RepositoryRuleTagNamePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// A workflow that must run for this rule to pass
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28076,7 +31762,7 @@ pub struct RepositoryRuleParamsWorkflowFileReference {
   pub sha: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleWorkflowsParameters {
@@ -28084,7 +31770,7 @@ pub struct RepositoryRuleWorkflowsParameters {
   pub workflows: Vec<RepositoryRuleParamsWorkflowFileReference>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28096,7 +31782,7 @@ pub struct RepositoryRuleWorkflows {
   pub type_: RepositoryRuleWorkflowsType,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 /// A set of rules to apply when specified conditions are met.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28146,7 +31832,7 @@ pub struct RepositoryRuleset {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetCreated {
@@ -28167,7 +31853,7 @@ pub struct WebhookRepositoryRulesetCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetDeleted {
@@ -28188,7 +31874,7 @@ pub struct WebhookRepositoryRulesetDeleted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdatedChangesConditionType {
@@ -28197,7 +31883,7 @@ pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdatedChangesConditio
   pub from: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdatedChangesExclude {
@@ -28206,7 +31892,7 @@ pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdatedChangesExclude 
   pub from: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdatedChangesInclude {
@@ -28215,7 +31901,7 @@ pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdatedChangesInclude 
   pub from: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdatedChangesTarget {
@@ -28224,7 +31910,7 @@ pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdatedChangesTarget {
   pub from: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdatedChanges {
@@ -28243,7 +31929,7 @@ pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdatedChanges {
   pub target: Option<WebhookRepositoryRulesetEditedChangesConditionsUpdatedChangesTarget>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdated {
@@ -28255,7 +31941,7 @@ pub struct WebhookRepositoryRulesetEditedChangesConditionsUpdated {
   pub condition: Option<RepositoryRulesetConditions>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesConditions {
@@ -28270,7 +31956,7 @@ pub struct WebhookRepositoryRulesetEditedChangesConditions {
   pub updated: Option<Vec<WebhookRepositoryRulesetEditedChangesConditionsUpdated>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesEnforcement {
@@ -28279,7 +31965,7 @@ pub struct WebhookRepositoryRulesetEditedChangesEnforcement {
   pub from: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesName {
@@ -28288,7 +31974,7 @@ pub struct WebhookRepositoryRulesetEditedChangesName {
   pub from: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesRulesUpdatedChangesConfiguration {
@@ -28297,7 +31983,7 @@ pub struct WebhookRepositoryRulesetEditedChangesRulesUpdatedChangesConfiguration
   pub from: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesRulesUpdatedChangesPattern {
@@ -28306,7 +31992,7 @@ pub struct WebhookRepositoryRulesetEditedChangesRulesUpdatedChangesPattern {
   pub from: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesRulesUpdatedChangesRuleType {
@@ -28315,7 +32001,7 @@ pub struct WebhookRepositoryRulesetEditedChangesRulesUpdatedChangesRuleType {
   pub from: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesRulesUpdatedChanges {
@@ -28330,7 +32016,7 @@ pub struct WebhookRepositoryRulesetEditedChangesRulesUpdatedChanges {
   pub rule_type: Option<WebhookRepositoryRulesetEditedChangesRulesUpdatedChangesRuleType>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesRulesUpdated {
@@ -28342,7 +32028,7 @@ pub struct WebhookRepositoryRulesetEditedChangesRulesUpdated {
   pub rule: Option<RepositoryRule>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChangesRules {
@@ -28357,7 +32043,7 @@ pub struct WebhookRepositoryRulesetEditedChangesRules {
   pub updated: Option<Vec<WebhookRepositoryRulesetEditedChangesRulesUpdated>>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEditedChanges {
@@ -28375,7 +32061,7 @@ pub struct WebhookRepositoryRulesetEditedChanges {
   pub rules: Option<WebhookRepositoryRulesetEditedChangesRules>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryRulesetEdited {
@@ -28399,7 +32085,7 @@ pub struct WebhookRepositoryRulesetEdited {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct Organization {
@@ -28422,7 +32108,7 @@ pub struct Organization {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryTransferredChangesOwnerFrom {
@@ -28434,21 +32120,21 @@ pub struct WebhookRepositoryTransferredChangesOwnerFrom {
   pub user: Option<User>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryTransferredChangesOwner {
   pub from: WebhookRepositoryTransferredChangesOwnerFrom,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryTransferredChanges {
   pub owner: WebhookRepositoryTransferredChangesOwner,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryTransferred {
@@ -28467,7 +32153,7 @@ pub struct WebhookRepositoryTransferred {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryUnarchived {
@@ -28485,7 +32171,7 @@ pub struct WebhookRepositoryUnarchived {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 /// The security alert of the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28523,7 +32209,7 @@ pub struct RepositoryVulnerabilityAlertAlert {
   pub state: RepositoryVulnerabilityAlertAlertState,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryVulnerabilityAlertCreateAlertItem2 {
@@ -28563,7 +32249,7 @@ pub struct WebhookRepositoryVulnerabilityAlertCreateAlertItem2 {
   pub state: WebhookRepositoryVulnerabilityAlertCreateAlertItem2State,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryVulnerabilityAlertCreate {
@@ -28582,7 +32268,7 @@ pub struct WebhookRepositoryVulnerabilityAlertCreate {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryVulnerabilityAlertDismissAlertItem2 {
@@ -28630,7 +32316,7 @@ pub struct WebhookRepositoryVulnerabilityAlertDismissAlertItem2 {
   pub state: WebhookRepositoryVulnerabilityAlertDismissAlertItem2State,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryVulnerabilityAlertDismiss {
@@ -28649,7 +32335,7 @@ pub struct WebhookRepositoryVulnerabilityAlertDismiss {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryVulnerabilityAlertReopenAlertItem2 {
@@ -28689,7 +32375,7 @@ pub struct WebhookRepositoryVulnerabilityAlertReopenAlertItem2 {
   pub state: WebhookRepositoryVulnerabilityAlertReopenAlertItem2State,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryVulnerabilityAlertReopen {
@@ -28708,7 +32394,7 @@ pub struct WebhookRepositoryVulnerabilityAlertReopen {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryVulnerabilityAlertResolveAlertItem2 {
@@ -28754,7 +32440,7 @@ pub struct WebhookRepositoryVulnerabilityAlertResolveAlertItem2 {
   pub state: WebhookRepositoryVulnerabilityAlertResolveAlertItem2State,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookRepositoryVulnerabilityAlertResolve {
@@ -28773,7 +32459,11 @@ pub struct WebhookRepositoryVulnerabilityAlertResolve {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_secret_scanning_alert",
+  feature = "webhook_secret_scanning_alert_location"
+))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecretScanningAlertWebhook {
@@ -28831,7 +32521,7 @@ pub struct SecretScanningAlertWebhook {
   pub validity: Option<SecretScanningAlertWebhookValidity>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecretScanningAlertCreated {
@@ -28852,7 +32542,7 @@ pub struct WebhookSecretScanningAlertCreated {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28877,7 +32567,7 @@ pub struct SecretScanningLocationCommit {
   pub start_line: f64,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28902,7 +32592,7 @@ pub struct SecretScanningLocationWikiCommit {
   pub start_line: f64,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28911,7 +32601,7 @@ pub struct SecretScanningLocationIssueTitle {
   pub issue_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28920,7 +32610,7 @@ pub struct SecretScanningLocationIssueBody {
   pub issue_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28929,7 +32619,7 @@ pub struct SecretScanningLocationIssueComment {
   pub issue_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28938,7 +32628,7 @@ pub struct SecretScanningLocationDiscussionTitle {
   pub discussion_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28947,7 +32637,7 @@ pub struct SecretScanningLocationDiscussionBody {
   pub discussion_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28956,7 +32646,7 @@ pub struct SecretScanningLocationDiscussionComment {
   pub discussion_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28965,7 +32655,7 @@ pub struct SecretScanningLocationPullRequestTitle {
   pub pull_request_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28974,7 +32664,7 @@ pub struct SecretScanningLocationPullRequestBody {
   pub pull_request_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28983,7 +32673,7 @@ pub struct SecretScanningLocationPullRequestComment {
   pub pull_request_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28992,7 +32682,7 @@ pub struct SecretScanningLocationPullRequestReview {
   pub pull_request_review_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 /// Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29001,7 +32691,7 @@ pub struct SecretScanningLocationPullRequestReviewComment {
   pub pull_request_review_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecretScanningLocation {
@@ -29015,7 +32705,7 @@ pub struct SecretScanningLocation {
   pub type_: Option<SecretScanningLocationType>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert_location"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecretScanningAlertLocationCreated {
@@ -29034,7 +32724,7 @@ pub struct WebhookSecretScanningAlertLocationCreated {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecretScanningAlertReopened {
@@ -29055,7 +32745,7 @@ pub struct WebhookSecretScanningAlertReopened {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecretScanningAlertResolved {
@@ -29076,7 +32766,7 @@ pub struct WebhookSecretScanningAlertResolved {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecretScanningAlertRevoked {
@@ -29097,7 +32787,7 @@ pub struct WebhookSecretScanningAlertRevoked {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecretScanningAlertValidated {
@@ -29118,7 +32808,7 @@ pub struct WebhookSecretScanningAlertValidated {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryCvss {
@@ -29128,7 +32818,7 @@ pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwes {
@@ -29136,7 +32826,7 @@ pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiers {
@@ -29145,21 +32835,21 @@ pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryReferences {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesFirstPatchedVersion {
   pub identifier: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesPackage {
@@ -29167,7 +32857,7 @@ pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilitiesPackag
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilities {
@@ -29180,7 +32870,7 @@ pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisoryVulnerabilities {
   pub vulnerable_version_range: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 /// The details of the security advisory, including summary, description, and severity.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29201,7 +32891,7 @@ pub struct WebhookSecurityAdvisoryPublishedSecurityAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryPublished {
@@ -29225,7 +32915,7 @@ pub struct WebhookSecurityAdvisoryPublished {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCvss {
@@ -29235,7 +32925,7 @@ pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwes {
@@ -29243,7 +32933,7 @@ pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiers {
@@ -29252,21 +32942,21 @@ pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryReferences {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesFirstPatchedVersion {
   pub identifier: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesPackage {
@@ -29274,7 +32964,7 @@ pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilitiesPackage 
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilities {
@@ -29287,7 +32977,7 @@ pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisoryVulnerabilities {
   pub vulnerable_version_range: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 /// The details of the security advisory, including summary, description, and severity.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29308,7 +32998,7 @@ pub struct WebhookSecurityAdvisoryUpdatedSecurityAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryUpdated {
@@ -29332,7 +33022,7 @@ pub struct WebhookSecurityAdvisoryUpdated {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss {
@@ -29342,7 +33032,7 @@ pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwes {
@@ -29350,7 +33040,7 @@ pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiers {
@@ -29359,21 +33049,21 @@ pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryReferences {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesFirstPatchedVersion {
   pub identifier: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesPackage {
@@ -29381,7 +33071,7 @@ pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilitiesPackag
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilities {
@@ -29394,7 +33084,7 @@ pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisoryVulnerabilities {
   pub vulnerable_version_range: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 /// The details of the security advisory, including summary, description, and severity.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29413,7 +33103,7 @@ pub struct WebhookSecurityAdvisoryWithdrawnSecurityAdvisory {
   pub withdrawn_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAdvisoryWithdrawn {
@@ -29437,7 +33127,7 @@ pub struct WebhookSecurityAdvisoryWithdrawn {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAndAnalysisChangesFrom {
@@ -29446,7 +33136,7 @@ pub struct WebhookSecurityAndAnalysisChangesFrom {
   pub security_and_analysis: Option<SecurityAndAnalysis>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAndAnalysisChanges {
@@ -29455,7 +33145,7 @@ pub struct WebhookSecurityAndAnalysisChanges {
   pub from: Option<WebhookSecurityAndAnalysisChangesFrom>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 /// Code of Conduct Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29468,7 +33158,7 @@ pub struct CodeOfConductSimple {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FullRepositoryPermissions {
@@ -29483,7 +33173,7 @@ pub struct FullRepositoryPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 /// Full Repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29682,7 +33372,7 @@ pub struct FullRepository {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_security_and_analysis"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSecurityAndAnalysis {
@@ -29702,7 +33392,7 @@ pub struct WebhookSecurityAndAnalysis {
   pub sender: Option<SimpleUserWebhooks>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipCancelledSponsorshipMaintainer {
@@ -29763,7 +33453,7 @@ pub struct WebhookSponsorshipCancelledSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 /// The `tier_changed` and `pending_tier_change` will include the original tier before the change or pending change. For more information, see the pending tier change payload.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29783,7 +33473,7 @@ pub struct SponsorshipTier {
   pub node_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipCancelledSponsorship {
@@ -29803,7 +33493,7 @@ pub struct WebhookSponsorshipCancelledSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipCancelled {
@@ -29824,7 +33514,7 @@ pub struct WebhookSponsorshipCancelled {
   pub sponsorship: WebhookSponsorshipCancelledSponsorship,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipCreatedSponsorshipMaintainer {
@@ -29885,7 +33575,7 @@ pub struct WebhookSponsorshipCreatedSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipCreatedSponsorship {
@@ -29905,7 +33595,7 @@ pub struct WebhookSponsorshipCreatedSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipCreated {
@@ -29926,7 +33616,7 @@ pub struct WebhookSponsorshipCreated {
   pub sponsorship: WebhookSponsorshipCreatedSponsorship,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipEditedChangesPrivacyLevel {
@@ -29934,7 +33624,7 @@ pub struct WebhookSponsorshipEditedChangesPrivacyLevel {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipEditedChanges {
@@ -29943,7 +33633,7 @@ pub struct WebhookSponsorshipEditedChanges {
   pub privacy_level: Option<WebhookSponsorshipEditedChangesPrivacyLevel>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipEditedSponsorshipMaintainer {
@@ -30004,7 +33694,7 @@ pub struct WebhookSponsorshipEditedSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipEditedSponsorship {
@@ -30024,7 +33714,7 @@ pub struct WebhookSponsorshipEditedSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipEdited {
@@ -30046,7 +33736,7 @@ pub struct WebhookSponsorshipEdited {
   pub sponsorship: WebhookSponsorshipEditedSponsorship,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipPendingCancellationSponsorshipMaintainer {
@@ -30107,7 +33797,7 @@ pub struct WebhookSponsorshipPendingCancellationSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipPendingCancellationSponsorship {
@@ -30127,7 +33817,7 @@ pub struct WebhookSponsorshipPendingCancellationSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipPendingCancellation {
@@ -30152,7 +33842,7 @@ pub struct WebhookSponsorshipPendingCancellation {
   pub sponsorship: WebhookSponsorshipPendingCancellationSponsorship,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipPendingTierChangeChangesTier {
@@ -30160,14 +33850,14 @@ pub struct WebhookSponsorshipPendingTierChangeChangesTier {
   pub from: SponsorshipTier,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipPendingTierChangeChanges {
   pub tier: WebhookSponsorshipPendingTierChangeChangesTier,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipPendingTierChangeSponsorshipMaintainer {
@@ -30228,7 +33918,7 @@ pub struct WebhookSponsorshipPendingTierChangeSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipPendingTierChangeSponsorship {
@@ -30248,7 +33938,7 @@ pub struct WebhookSponsorshipPendingTierChangeSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipPendingTierChange {
@@ -30274,7 +33964,7 @@ pub struct WebhookSponsorshipPendingTierChange {
   pub sponsorship: WebhookSponsorshipPendingTierChangeSponsorship,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipTierChangedChangesTier {
@@ -30282,14 +33972,14 @@ pub struct WebhookSponsorshipTierChangedChangesTier {
   pub from: SponsorshipTier,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipTierChangedChanges {
   pub tier: WebhookSponsorshipTierChangedChangesTier,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipTierChangedSponsorshipMaintainer {
@@ -30350,7 +34040,7 @@ pub struct WebhookSponsorshipTierChangedSponsorshipMaintainer {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipTierChangedSponsorship {
@@ -30370,7 +34060,7 @@ pub struct WebhookSponsorshipTierChangedSponsorship {
   pub tier: SponsorshipTier,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookSponsorshipTierChanged {
@@ -30392,7 +34082,7 @@ pub struct WebhookSponsorshipTierChanged {
   pub sponsorship: WebhookSponsorshipTierChangedSponsorship,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_star"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStarCreated {
@@ -30414,7 +34104,7 @@ pub struct WebhookStarCreated {
   pub starred_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_star"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStarDeleted {
@@ -30434,7 +34124,7 @@ pub struct WebhookStarDeleted {
   pub starred_at: serde_json::Value,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStatusBranchesCommit {
@@ -30446,7 +34136,7 @@ pub struct WebhookStatusBranchesCommit {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStatusBranches {
@@ -30455,7 +34145,7 @@ pub struct WebhookStatusBranches {
   pub protected: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStatusCommitCommitAuthorItem2 {
@@ -30468,7 +34158,7 @@ pub struct WebhookStatusCommitCommitAuthorItem2 {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStatusCommitCommitCommitterItem2 {
@@ -30481,7 +34171,7 @@ pub struct WebhookStatusCommitCommitCommitterItem2 {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStatusCommitCommitTree {
@@ -30489,7 +34179,7 @@ pub struct WebhookStatusCommitCommitTree {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStatusCommitCommitVerification {
@@ -30503,7 +34193,7 @@ pub struct WebhookStatusCommitCommitVerification {
   pub verified: bool,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStatusCommitCommit {
@@ -30516,7 +34206,7 @@ pub struct WebhookStatusCommitCommit {
   pub verification: WebhookStatusCommitCommitVerification,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStatusCommitParents {
@@ -30525,7 +34215,7 @@ pub struct WebhookStatusCommitParents {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStatusCommit {
@@ -30544,7 +34234,7 @@ pub struct WebhookStatusCommit {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookStatus {
@@ -30585,7 +34275,7 @@ pub struct WebhookStatus {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team_add"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamAdd {
@@ -30604,7 +34294,7 @@ pub struct WebhookTeamAdd {
   pub team: Team,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamAddedToRepository {
@@ -30627,7 +34317,7 @@ pub struct WebhookTeamAddedToRepository {
   pub team: Team,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamCreated {
@@ -30648,7 +34338,7 @@ pub struct WebhookTeamCreated {
   pub team: Team,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamDeleted {
@@ -30671,7 +34361,7 @@ pub struct WebhookTeamDeleted {
   pub team: Team,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamEditedChangesDescription {
@@ -30679,7 +34369,7 @@ pub struct WebhookTeamEditedChangesDescription {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamEditedChangesName {
@@ -30687,7 +34377,7 @@ pub struct WebhookTeamEditedChangesName {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamEditedChangesNotificationSetting {
@@ -30695,7 +34385,7 @@ pub struct WebhookTeamEditedChangesNotificationSetting {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamEditedChangesPrivacy {
@@ -30703,7 +34393,7 @@ pub struct WebhookTeamEditedChangesPrivacy {
   pub from: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamEditedChangesRepositoryPermissionsFrom {
@@ -30721,21 +34411,21 @@ pub struct WebhookTeamEditedChangesRepositoryPermissionsFrom {
   pub push: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamEditedChangesRepositoryPermissions {
   pub from: WebhookTeamEditedChangesRepositoryPermissionsFrom,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamEditedChangesRepository {
   pub permissions: WebhookTeamEditedChangesRepositoryPermissions,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 /// The changes to the team if the action was `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30757,7 +34447,7 @@ pub struct WebhookTeamEditedChanges {
   pub repository: Option<WebhookTeamEditedChangesRepository>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamEdited {
@@ -30780,7 +34470,7 @@ pub struct WebhookTeamEdited {
   pub team: Team,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookTeamRemovedFromRepository {
@@ -30801,7 +34491,7 @@ pub struct WebhookTeamRemovedFromRepository {
   pub team: Team,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_watch"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWatchStarted {
@@ -30819,7 +34509,7 @@ pub struct WebhookWatchStarted {
   pub sender: SimpleUserWebhooks,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_dispatch"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowDispatch {
@@ -30842,7 +34532,7 @@ pub struct WebhookWorkflowDispatch {
   pub workflow: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowStep {
@@ -30860,7 +34550,7 @@ pub struct WorkflowStep {
   pub status: WorkflowStepStatus,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 /// The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`, and `started_at` are the same as those in a [`check_run`](#check_run) object.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30915,7 +34605,7 @@ pub struct WorkflowJob {
   pub workflow_name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowJobCompletedWorkflowJobItem2 {
@@ -30991,7 +34681,7 @@ pub struct WebhookWorkflowJobCompletedWorkflowJobItem2 {
   pub workflow_name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowJobCompleted {
@@ -31013,7 +34703,7 @@ pub struct WebhookWorkflowJobCompleted {
   pub workflow_job: WebhookWorkflowJobCompletedWorkflowJob,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowJobInProgressWorkflowJobItem2 {
@@ -31087,7 +34777,7 @@ pub struct WebhookWorkflowJobInProgressWorkflowJobItem2 {
   pub workflow_name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowJobInProgress {
@@ -31109,7 +34799,7 @@ pub struct WebhookWorkflowJobInProgress {
   pub workflow_job: WebhookWorkflowJobInProgressWorkflowJob,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowJobQueuedWorkflowJob {
@@ -31157,7 +34847,7 @@ pub struct WebhookWorkflowJobQueuedWorkflowJob {
   pub workflow_name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowJobQueued {
@@ -31179,7 +34869,7 @@ pub struct WebhookWorkflowJobQueued {
   pub workflow_job: WebhookWorkflowJobQueuedWorkflowJob,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowJobWaitingWorkflowJob {
@@ -31227,7 +34917,7 @@ pub struct WebhookWorkflowJobWaitingWorkflowJob {
   pub workflow_name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowJobWaiting {
@@ -31249,7 +34939,7 @@ pub struct WebhookWorkflowJobWaiting {
   pub workflow_job: WebhookWorkflowJobWaitingWorkflowJob,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryLite {
@@ -31308,7 +34998,7 @@ pub struct RepositoryLite {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunPullRequestsBase {
@@ -31318,7 +35008,7 @@ pub struct WorkflowRunPullRequestsBase {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunPullRequestsHead {
@@ -31328,7 +35018,7 @@ pub struct WorkflowRunPullRequestsHead {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunPullRequests {
@@ -31339,7 +35029,7 @@ pub struct WorkflowRunPullRequests {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunReferencedWorkflows {
@@ -31351,7 +35041,7 @@ pub struct WorkflowRunReferencedWorkflows {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRun {
@@ -31405,7 +35095,7 @@ pub struct WorkflowRun {
   pub workflow_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2Actor {
@@ -31466,7 +35156,7 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2Actor {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitAuthor {
@@ -31478,7 +35168,7 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitAuthor {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitCommitter {
@@ -31490,7 +35180,7 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommitCommitter {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommit {
@@ -31514,7 +35204,7 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadCommit {
   pub tree_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepositoryOwner {
@@ -31575,7 +35265,7 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepository {
@@ -31719,7 +35409,7 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2HeadRepository {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2ReferencedWorkflows {
@@ -31731,7 +35421,7 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2ReferencedWorkflows {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2RepositoryOwner {
@@ -31792,7 +35482,7 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2RepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2Repository {
@@ -31936,7 +35626,7 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2Repository {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2TriggeringActor {
@@ -31997,7 +35687,7 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2TriggeringActor {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompletedWorkflowRunItem2 {
@@ -32104,7 +35794,7 @@ pub struct WebhookWorkflowRunCompletedWorkflowRunItem2 {
   pub workflow_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunCompleted {
@@ -32126,7 +35816,7 @@ pub struct WebhookWorkflowRunCompleted {
   pub workflow_run: WebhookWorkflowRunCompletedWorkflowRun,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2Actor {
@@ -32187,7 +35877,7 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2Actor {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitAuthor {
@@ -32199,7 +35889,7 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitAuthor {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitCommitter {
@@ -32211,7 +35901,7 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommitCommitter {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommit {
@@ -32235,7 +35925,7 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadCommit {
   pub tree_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepositoryOwner {
@@ -32296,7 +35986,7 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepository {
@@ -32440,7 +36130,7 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2HeadRepository {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2ReferencedWorkflows {
@@ -32452,7 +36142,7 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2ReferencedWorkflows {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2RepositoryOwner {
@@ -32513,7 +36203,7 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2RepositoryOwner {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2Repository {
@@ -32657,7 +36347,7 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2Repository {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2TriggeringActor {
@@ -32718,7 +36408,7 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2TriggeringActor {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgressWorkflowRunItem2 {
@@ -32827,7 +36517,7 @@ pub struct WebhookWorkflowRunInProgressWorkflowRunItem2 {
   pub workflow_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunInProgress {
@@ -32849,7 +36539,7 @@ pub struct WebhookWorkflowRunInProgress {
   pub workflow_run: WebhookWorkflowRunInProgressWorkflowRun,
 }
 
-#[cfg(any(feature = "full", feature = "webhooks",))]
+#[cfg(any(feature = "full", feature = "webhook_workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WebhookWorkflowRunRequested {
