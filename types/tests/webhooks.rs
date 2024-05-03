@@ -1,24 +1,42 @@
-#[cfg(any(feature = "full", feature = "webhooks"))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_event",
+  feature = "webhook_push",
+  feature = "webhook_pull_request",
+  feature = "webhook_workflow_run",
+  feature = "webhook_create"
+))]
 use octocrate_types::webhooks::*;
 
-#[cfg(any(feature = "full", feature = "webhooks"))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_event",
+  feature = "webhook_push",
+  feature = "webhook_pull_request",
+  feature = "webhook_workflow_run",
+  feature = "webhook_create"
+))]
 fn parse_webhook_event(event: &str, data: &str) -> WebhookEvent {
   match event {
+    #[cfg(feature = "webhook_push")]
     "push" => {
       let push_evnet: WebhookPush = serde_json::from_str(data).unwrap();
 
       WebhookEvent::Push(push_evnet)
     }
+    #[cfg(feature = "webhook_pull_request")]
     "pull_request" => {
       let pull_request: WebhookPullRequestEvent = serde_json::from_str(data).unwrap();
 
       WebhookEvent::PullRequest(pull_request)
     }
+    #[cfg(feature = "webhook_workflow_run")]
     "workflow_run" => {
       let workflow_run: WebhookWorkflowRunEvent = serde_json::from_str(data).unwrap();
 
       WebhookEvent::WorkflowRun(workflow_run)
     }
+    #[cfg(feature = "webhook_create")]
     "create" => {
       let create: WebhookCreate = serde_json::from_str(data).unwrap();
 
@@ -30,7 +48,7 @@ fn parse_webhook_event(event: &str, data: &str) -> WebhookEvent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks"))]
+#[cfg(any(feature = "full", feature = "webhook_event", feature = "webhook_push"))]
 #[test]
 fn test_webhook_push_event() {
   let push = include_str!("./webhooks/push.json");
@@ -51,7 +69,11 @@ fn test_webhook_push_event() {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks"))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_event",
+  feature = "webhook_pull_request",
+))]
 #[test]
 fn test_webhook_pull_request_opened_event() {
   let pull_request = include_str!("./webhooks/pull_request.json");
@@ -76,7 +98,11 @@ fn test_webhook_pull_request_opened_event() {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks"))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_event",
+  feature = "webhook_workflow_run",
+))]
 #[test]
 fn test_webhook_workflow_run_completed_event() {
   let workflow_run = include_str!("./webhooks/workflow_run.json");
@@ -93,7 +119,11 @@ fn test_webhook_workflow_run_completed_event() {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhooks"))]
+#[cfg(any(
+  feature = "full",
+  feature = "webhook_event",
+  feature = "webhook_create"
+))]
 #[test]
 fn test_webhook_create_event() {
   let create = include_str!("./webhooks/create.json");

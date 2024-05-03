@@ -8,13 +8,7 @@ use super::*;
 /// Types definition
 {{#each types }}
 {{#if alias }}
-#[cfg(
-  any(
-    {{#each tags }}
-    feature = "{{ this }}",
-    {{/each}}
-  )
-)]
+{{render_features_cfg tags}}
 {{#if description }}
 {{#each (split_lines description)}}
 /// {{this}}
@@ -27,13 +21,7 @@ pub type {{ alias }} = {{ type_name }};
 {{#if enums }}
 /// Enumerations definition
 {{#each enums }}
-#[cfg(
-  any(
-    {{#each tags }}
-    feature = "{{ this }}",
-    {{/each}}
-  )
-)]
+{{render_features_cfg tags}}
 {{#if description }}
 {{#each (split_lines description)}}
 /// {{this}}
@@ -45,6 +33,7 @@ pub type {{ alias }} = {{ type_name }};
 {{/if}}
 pub enum {{ name }} {
   {{#each fields }}
+  {{render_features_cfg tags}}
   {{#if description }}
   {{#each (split_lines description)}}
   /// {{this}}
@@ -62,13 +51,7 @@ pub enum {{ name }} {
 }
 {{#if copiable }}
 
-#[cfg(
-  any(
-    {{#each tags }}
-    feature = "{{ this }}",
-    {{/each}}
-  )
-)]
+{{render_features_cfg tags}}
 impl ToString for {{ name }} {
   fn to_string(&self) -> String {
     match self {
@@ -90,13 +73,7 @@ impl ToString for {{ name }} {
 {{#if structs }}
 /// Structs definition
 {{#each structs }}
-#[cfg(
-  any(
-    {{#each tags }}
-    feature = "{{ this }}",
-    {{/each}}
-  )
-)]
+{{render_features_cfg tags}}
 {{#if description}}
 {{#each (split_lines description)}}
 /// {{this}}

@@ -29,21 +29,21 @@ use typed_builder::TypedBuilder;
   feature = "issues",
   feature = "pulls",
   feature = "search",
-  feature = "users",
+  feature = "users"
 ))]
 pub type StringArray = Vec<String>;
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 pub type GlobalAdvisoryArray = Vec<GlobalAdvisory>;
 #[cfg(any(
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "repos",
+  feature = "repos"
 ))]
 pub type HookDeliveryItemArray = Vec<HookDeliveryItem>;
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 pub type IntegrationInstallationRequestArray = Vec<IntegrationInstallationRequest>;
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 pub type InstallationArray = Vec<Installation>;
 #[cfg(any(
   feature = "full",
@@ -53,7 +53,7 @@ pub type InstallationArray = Vec<Installation>;
   feature = "dependabot",
   feature = "orgs",
   feature = "repos",
-  feature = "search",
+  feature = "search"
 ))]
 pub type I64Array = Vec<i64>;
 #[cfg(any(
@@ -62,72 +62,72 @@ pub type I64Array = Vec<i64>;
   feature = "actions",
   feature = "migrations",
   feature = "repos",
-  feature = "activity",
+  feature = "activity"
 ))]
 pub type RepositoryArray = Vec<Repository>;
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 pub type SimpleClassroomUserArray = Vec<SimpleClassroomUser>;
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 pub type ClassroomAcceptedAssignmentArray = Vec<ClassroomAcceptedAssignment>;
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 pub type ClassroomAssignmentGradeArray = Vec<ClassroomAssignmentGrade>;
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 pub type SimpleClassroomArray = Vec<SimpleClassroom>;
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 pub type SimpleClassroomAssignmentArray = Vec<SimpleClassroomAssignment>;
-#[cfg(any(feature = "full", feature = "codes_of_conduct",))]
+#[cfg(any(feature = "full", feature = "codes_of_conduct"))]
 pub type CodeOfConductArray = Vec<CodeOfConduct>;
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 pub type DependabotAlertSecurityAdvisoryCwesArray = Vec<DependabotAlertSecurityAdvisoryCwes>;
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 pub type DependabotAlertSecurityAdvisoryIdentifiersArray =
   Vec<DependabotAlertSecurityAdvisoryIdentifiers>;
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 pub type DependabotAlertSecurityAdvisoryReferencesArray =
   Vec<DependabotAlertSecurityAdvisoryReferences>;
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 pub type DependabotAlertSecurityVulnerabilityArray = Vec<DependabotAlertSecurityVulnerability>;
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 pub type DependabotAlertWithRepositoryArray = Vec<DependabotAlertWithRepository>;
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 pub type OrganizationSecretScanningAlertArray = Vec<OrganizationSecretScanningAlert>;
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 pub type EventPayloadPagesArray = Vec<EventPayloadPages>;
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 pub type EventArray = Vec<Event>;
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 pub type LinkWithTypeArray = Vec<LinkWithType>;
-#[cfg(any(feature = "full", feature = "gists", feature = "users",))]
+#[cfg(any(feature = "full", feature = "gists", feature = "users"))]
 pub type SerdeJsonValueArray = Vec<serde_json::Value>;
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 pub type BaseGistArray = Vec<BaseGist>;
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 pub type GistCommentArray = Vec<GistComment>;
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 pub type GistCommitArray = Vec<GistCommit>;
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 pub type GistSimpleArray = Vec<GistSimple>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type IssueArray = Vec<Issue>;
-#[cfg(any(feature = "full", feature = "licenses",))]
+#[cfg(any(feature = "full", feature = "licenses"))]
 pub type LicenseSimpleArray = Vec<LicenseSimple>;
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 pub type MarketplaceListingPlanArray = Vec<MarketplaceListingPlan>;
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 pub type MarketplacePurchaseArray = Vec<MarketplacePurchase>;
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 pub type ThreadArray = Vec<Thread>;
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 pub type OrganizationSimpleArray = Vec<OrganizationSimple>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type ActionsCacheUsageByRepositoryArray = Vec<ActionsCacheUsageByRepository>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type RunnerLabelArray = Vec<RunnerLabel>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type RunnerArray = Vec<Runner>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type RunnerApplicationArray = Vec<RunnerApplication>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type OrganizationActionsSecretArray = Vec<OrganizationActionsSecret>;
 #[cfg(any(
   feature = "full",
@@ -138,10 +138,10 @@ pub type OrganizationActionsSecretArray = Vec<OrganizationActionsSecret>;
   feature = "orgs",
   feature = "repos",
   feature = "teams",
-  feature = "activity",
+  feature = "activity"
 ))]
 pub type MinimalRepositoryArray = Vec<MinimalRepository>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type OrganizationActionsVariableArray = Vec<OrganizationActionsVariable>;
 #[cfg(any(
   feature = "full",
@@ -152,405 +152,407 @@ pub type OrganizationActionsVariableArray = Vec<OrganizationActionsVariable>;
   feature = "repos",
   feature = "pulls",
   feature = "activity",
-  feature = "users",
+  feature = "users"
 ))]
 pub type SimpleUserArray = Vec<SimpleUser>;
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 pub type CodeScanningOrganizationAlertItemsArray = Vec<CodeScanningOrganizationAlertItems>;
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 pub type CodespaceArray = Vec<Codespace>;
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 pub type CodespacesOrgSecretArray = Vec<CodespacesOrgSecret>;
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 pub type CopilotSeatDetailsArray = Vec<CopilotSeatDetails>;
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 pub type OrganizationDependabotSecretArray = Vec<OrganizationDependabotSecret>;
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 pub type PackageArray = Vec<Package>;
-#[cfg(any(feature = "full", feature = "orgs", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "teams"))]
 pub type OrganizationInvitationArray = Vec<OrganizationInvitation>;
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 pub type OrgHookArray = Vec<OrgHook>;
 #[cfg(any(
   feature = "full",
   feature = "orgs",
   feature = "teams",
   feature = "repos",
-  feature = "pulls",
+  feature = "pulls"
 ))]
 pub type TeamArray = Vec<Team>;
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 pub type MigrationsListForOrgQueryExcludeArray = Vec<MigrationsListForOrgQueryExclude>;
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 pub type MigrationArray = Vec<Migration>;
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 pub type MigrationsStartForOrgRequestExcludeArray = Vec<MigrationsStartForOrgRequestExclude>;
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 pub type MigrationsGetStatusForOrgQueryExcludeArray = Vec<MigrationsGetStatusForOrgQueryExclude>;
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 pub type OrganizationFineGrainedPermissionArray = Vec<OrganizationFineGrainedPermission>;
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 pub type OrganizationRoleArray = Vec<OrganizationRole>;
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 pub type PackageVersionArray = Vec<PackageVersion>;
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 pub type OrganizationProgrammaticAccessGrantRequestArray =
   Vec<OrganizationProgrammaticAccessGrantRequest>;
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 pub type OrganizationProgrammaticAccessGrantArray = Vec<OrganizationProgrammaticAccessGrant>;
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 pub type ProjectArray = Vec<Project>;
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 pub type OrgCustomPropertyArray = Vec<OrgCustomProperty>;
-#[cfg(any(feature = "full", feature = "orgs", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "repos"))]
 pub type CustomPropertyValueArray = Vec<CustomPropertyValue>;
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 pub type OrgRepoCustomPropertyValuesArray = Vec<OrgRepoCustomPropertyValues>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type RepositoryRulesetBypassActorArray = Vec<RepositoryRulesetBypassActor>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type RepositoryRulesetConditionsRepositoryPropertySpecArray =
   Vec<RepositoryRulesetConditionsRepositoryPropertySpec>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type RepositoryRuleParamsStatusCheckConfigurationArray =
   Vec<RepositoryRuleParamsStatusCheckConfiguration>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type RepositoryRuleParamsWorkflowFileReferenceArray =
   Vec<RepositoryRuleParamsWorkflowFileReference>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type RepositoryRuleArray = Vec<RepositoryRule>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type RepositoryRulesetArray = Vec<RepositoryRuleset>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type RuleSuites = Vec<RuleSuitesItem>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type RuleSuiteRuleEvaluationsArray = Vec<RuleSuiteRuleEvaluations>;
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 pub type RepositoryAdvisoryIdentifiersArray = Vec<RepositoryAdvisoryIdentifiers>;
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 pub type RepositoryAdvisoryArray = Vec<RepositoryAdvisory>;
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 pub type TeamSimpleArray = Vec<TeamSimple>;
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 pub type TeamDiscussionArray = Vec<TeamDiscussion>;
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 pub type TeamDiscussionCommentArray = Vec<TeamDiscussionComment>;
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 pub type ReactionArray = Vec<Reaction>;
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 pub type TeamProjectArray = Vec<TeamProject>;
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 pub type ProjectCardArray = Vec<ProjectCard>;
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 pub type ProjectColumnArray = Vec<ProjectColumn>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type ArtifactArray = Vec<Artifact>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type ActionsCacheListActionsCachesArray = Vec<ActionsCacheListActionsCaches>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type JobStepsArray = Vec<JobSteps>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type ActionsSecretArray = Vec<ActionsSecret>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type ActionsVariableArray = Vec<ActionsVariable>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type WorkflowRunArray = Vec<WorkflowRun>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type EnvironmentApprovalsEnvironmentsArray = Vec<EnvironmentApprovalsEnvironments>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type EnvironmentApprovalsArray = Vec<EnvironmentApprovals>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type JobArray = Vec<Job>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type PendingDeploymentReviewersArray = Vec<PendingDeploymentReviewers>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type PendingDeploymentArray = Vec<PendingDeployment>;
-#[cfg(any(feature = "full", feature = "actions", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "repos"))]
 pub type DeploymentArray = Vec<Deployment>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type WorkflowRunUsageBillableMACOSJobRunsArray = Vec<WorkflowRunUsageBillableMACOSJobRuns>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type WorkflowRunUsageBillableUBUNTUJobRunsArray = Vec<WorkflowRunUsageBillableUBUNTUJobRuns>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type WorkflowRunUsageBillableWINDOWSJobRunsArray = Vec<WorkflowRunUsageBillableWINDOWSJobRuns>;
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 pub type WorkflowArray = Vec<Workflow>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ActivityArray = Vec<Activity>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type AutolinkArray = Vec<Autolink>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type IntegrationArray = Vec<Integration>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ProtectedBranchRequiredStatusCheckChecksArray =
   Vec<ProtectedBranchRequiredStatusCheckChecks>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type BranchRestrictionPolicyAppsArray = Vec<BranchRestrictionPolicyApps>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type BranchRestrictionPolicyTeamsArray = Vec<BranchRestrictionPolicyTeams>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type BranchRestrictionPolicyUsersArray = Vec<BranchRestrictionPolicyUsers>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ShortBranchArray = Vec<ShortBranch>;
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 pub type DiffEntryArray = Vec<DiffEntry>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type CommitParentsArray = Vec<CommitParents>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ReposUpdateBranchProtectionRequestRequiredStatusChecksChecksArray =
   Vec<ReposUpdateBranchProtectionRequestRequiredStatusChecksChecks>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type StatusCheckPolicyChecksArray = Vec<StatusCheckPolicyChecks>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ReposUpdateStatusCheckProtectionRequestChecksArray =
   Vec<ReposUpdateStatusCheckProtectionRequestChecks>;
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 pub type PullRequestMinimalArray = Vec<PullRequestMinimal>;
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 pub type CheckAnnotationArray = Vec<CheckAnnotation>;
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 pub type ChecksSetSuitesPreferencesRequestAutoTriggerChecksArray =
   Vec<ChecksSetSuitesPreferencesRequestAutoTriggerChecks>;
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 pub type CheckSuitePreferencePreferencesAutoTriggerChecksArray =
   Vec<CheckSuitePreferencePreferencesAutoTriggerChecks>;
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 pub type CheckRunArray = Vec<CheckRun>;
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 pub type CodeScanningAlertItemsArray = Vec<CodeScanningAlertItems>;
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 pub type CodeScanningAlertInstanceArray = Vec<CodeScanningAlertInstance>;
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 pub type CodeScanningAnalysisArray = Vec<CodeScanningAnalysis>;
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 pub type CodeScanningCodeqlDatabaseArray = Vec<CodeScanningCodeqlDatabase>;
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 pub type CodeScanningDefaultSetupLanguagesArray = Vec<CodeScanningDefaultSetupLanguages>;
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 pub type CodeScanningDefaultSetupUpdateLanguagesArray =
   Vec<CodeScanningDefaultSetupUpdateLanguages>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type CodeownersErrorsErrorsArray = Vec<CodeownersErrorsErrors>;
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 pub type CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersArray =
   Vec<CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainers>;
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 pub type CodespaceMachineArray = Vec<CodespaceMachine>;
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 pub type RepoCodespacesSecretArray = Vec<RepoCodespacesSecret>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type CollaboratorArray = Vec<Collaborator>;
-#[cfg(any(feature = "full", feature = "repos", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "issues"))]
 pub type CommitCommentArray = Vec<CommitComment>;
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 pub type CommitArray = Vec<Commit>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type BranchShortArray = Vec<BranchShort>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type PullRequestSimpleLabelsArray = Vec<PullRequestSimpleLabels>;
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 pub type PullRequestSimpleArray = Vec<PullRequestSimple>;
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 pub type CheckSuiteArray = Vec<CheckSuite>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type SimpleCommitStatusArray = Vec<SimpleCommitStatus>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type StatusArray = Vec<Status>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ContentDirectory = Vec<ContentDirectoryItem>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type FileCommitCommitParentsArray = Vec<FileCommitCommitParents>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ContributorArray = Vec<Contributor>;
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 pub type DependabotAlertArray = Vec<DependabotAlert>;
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 pub type DependabotSecretArray = Vec<DependabotSecret>;
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 pub type DependencyGraphDiffItemVulnerabilitiesArray = Vec<DependencyGraphDiffItemVulnerabilities>;
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 pub type DependencyGraphDiff = Vec<DependencyGraphDiffItem>;
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 pub type DependencyGraphSpdxSbomSbomPackagesExternalRefsArray =
   Vec<DependencyGraphSpdxSbomSbomPackagesExternalRefs>;
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 pub type DependencyGraphSpdxSbomSbomPackagesArray = Vec<DependencyGraphSpdxSbomSbomPackages>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type DeploymentStatusArray = Vec<DeploymentStatus>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type EnvironmentProtectionRulesItem2ReviewersArray =
   Vec<EnvironmentProtectionRulesItem2Reviewers>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type EnvironmentProtectionRulesArray = Vec<EnvironmentProtectionRules>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type EnvironmentArray = Vec<Environment>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type DeploymentBranchPolicyArray = Vec<DeploymentBranchPolicy>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type DeploymentProtectionRuleArray = Vec<DeploymentProtectionRule>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type CustomDeploymentRuleAppArray = Vec<CustomDeploymentRuleApp>;
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 pub type GitCommitParentsArray = Vec<GitCommitParents>;
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 pub type GitRefArray = Vec<GitRef>;
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 pub type GitCreateTreeRequestTreeArray = Vec<GitCreateTreeRequestTree>;
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 pub type GitTreeTreeArray = Vec<GitTreeTree>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type HookArray = Vec<Hook>;
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 pub type ImportProjectChoicesArray = Vec<ImportProjectChoices>;
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 pub type PorterAuthorArray = Vec<PorterAuthor>;
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 pub type PorterLargeFileArray = Vec<PorterLargeFile>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type RepositoryInvitationArray = Vec<RepositoryInvitation>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type IssueCommentArray = Vec<IssueComment>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type IssueEventArray = Vec<IssueEvent>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type IssueEventForIssueArray = Vec<IssueEventForIssue>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type LabelArray = Vec<Label>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type IssuesAddLabelsRequestItem3LabelsArray = Vec<IssuesAddLabelsRequestItem3Labels>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type IssuesAddLabelsRequestItem4Array = Vec<IssuesAddLabelsRequestItem4>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type IssuesSetLabelsRequestItem3LabelsArray = Vec<IssuesSetLabelsRequestItem3Labels>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type IssuesSetLabelsRequestItem4Array = Vec<IssuesSetLabelsRequestItem4>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type TimelineCommittedEventParentsArray = Vec<TimelineCommittedEventParents>;
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 pub type PullRequestReviewCommentArray = Vec<PullRequestReviewComment>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type TimelineIssueEventsArray = Vec<TimelineIssueEvents>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type DeployKeyArray = Vec<DeployKey>;
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 pub type MilestoneArray = Vec<Milestone>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type PageBuildArray = Vec<PageBuild>;
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 pub type PullRequestLabelsArray = Vec<PullRequestLabels>;
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 pub type PullRequestReviewArray = Vec<PullRequestReview>;
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 pub type PullsCreateReviewRequestCommentsArray = Vec<PullsCreateReviewRequestComments>;
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 pub type ReviewCommentArray = Vec<ReviewComment>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ReleaseAssetArray = Vec<ReleaseAsset>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ReleaseArray = Vec<Release>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type RepositoryRuleDetailedArray = Vec<RepositoryRuleDetailed>;
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 pub type SecretScanningAlertArray = Vec<SecretScanningAlert>;
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 pub type SecretScanningLocationArray = Vec<SecretScanningLocation>;
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 pub type RepositoryAdvisoryCreateVulnerabilitiesArray =
   Vec<RepositoryAdvisoryCreateVulnerabilities>;
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 pub type RepositoryAdvisoryUpdateVulnerabilitiesArray =
   Vec<RepositoryAdvisoryUpdateVulnerabilities>;
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 pub type StargazerArray = Vec<Stargazer>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type CodeFrequencyStat = Vec<i64>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type CommitActivityArray = Vec<CommitActivity>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ContributorActivityWeeksArray = Vec<ContributorActivityWeeks>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ContributorActivityArray = Vec<ContributorActivity>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type TagArray = Vec<Tag>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type TagProtectionArray = Vec<TagProtection>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type TrafficArray = Vec<Traffic>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ContentTrafficArray = Vec<ContentTraffic>;
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 pub type ReferrerTrafficArray = Vec<ReferrerTraffic>;
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 pub type SearchResultTextMatchesItemMatchesArray = Vec<SearchResultTextMatchesItemMatches>;
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 pub type SearchResultTextMatches = Vec<SearchResultTextMatchesItem>;
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 pub type CodeSearchResultItemArray = Vec<CodeSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 pub type CommitSearchResultItemParentsArray = Vec<CommitSearchResultItemParents>;
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 pub type CommitSearchResultItemArray = Vec<CommitSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 pub type IssueSearchResultItemLabelsArray = Vec<IssueSearchResultItemLabels>;
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 pub type IssueSearchResultItemArray = Vec<IssueSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 pub type LabelSearchResultItemArray = Vec<LabelSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 pub type RepoSearchResultItemArray = Vec<RepoSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 pub type TopicSearchResultItemArray = Vec<TopicSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 pub type UserSearchResultItemArray = Vec<UserSearchResultItem>;
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 pub type CodespacesSecretArray = Vec<CodespacesSecret>;
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 pub type StringOrIntegerArray = Vec<StringOrInteger>;
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 pub type EmailArray = Vec<Email>;
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 pub type GpgKeyEmailsArray = Vec<GpgKeyEmails>;
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 pub type GpgKeySubkeysEmailsArray = Vec<GpgKeySubkeysEmails>;
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 pub type GpgKeySubkeysArray = Vec<GpgKeySubkeys>;
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 pub type GpgKeyArray = Vec<GpgKey>;
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 pub type KeyArray = Vec<Key>;
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 pub type UserMarketplacePurchaseArray = Vec<UserMarketplacePurchase>;
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 pub type OrgMembershipArray = Vec<OrgMembership>;
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 pub type MigrationsStartForAuthenticatedUserRequestExcludeArray =
   Vec<MigrationsStartForAuthenticatedUserRequestExclude>;
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 pub type SocialAccountArray = Vec<SocialAccount>;
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 pub type SshSigningKeyArray = Vec<SshSigningKey>;
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 pub type TeamFullArray = Vec<TeamFull>;
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 pub type HovercardContextsArray = Vec<HovercardContexts>;
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 pub type KeySimpleArray = Vec<KeySimple>;
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 pub type StarredRepositoryArray = Vec<StarredRepository>;
 
 /// Enumerations definition
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQueryType {
   #[serde(rename = "reviewed")]
   Reviewed,
+
   #[serde(rename = "malware")]
   Malware,
+
   #[serde(rename = "unreviewed")]
   Unreviewed,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQueryType {
   fn to_string(&self) -> String {
     match self {
@@ -561,22 +563,26 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQueryType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQuerySeverity {
   #[serde(rename = "unknown")]
   Unknown,
+
   #[serde(rename = "low")]
   Low,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "critical")]
   Critical,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQuerySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -589,16 +595,17 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQuerySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -608,16 +615,17 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQuerySort {
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -627,33 +635,42 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The type of credit the user is receiving.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoryCreditTypes {
   #[serde(rename = "analyst")]
   Analyst,
+
   #[serde(rename = "finder")]
   Finder,
+
   #[serde(rename = "reporter")]
   Reporter,
+
   #[serde(rename = "coordinator")]
   Coordinator,
+
   #[serde(rename = "remediation_developer")]
   RemediationDeveloper,
+
   #[serde(rename = "remediation_reviewer")]
   RemediationReviewer,
+
   #[serde(rename = "remediation_verifier")]
   RemediationVerifier,
+
   #[serde(rename = "tool")]
   Tool,
+
   #[serde(rename = "sponsor")]
   Sponsor,
+
   #[serde(rename = "other")]
   Other,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoryCreditTypes {
   fn to_string(&self) -> String {
     match self {
@@ -671,17 +688,18 @@ impl ToString for SecurityAdvisoryCreditTypes {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The type of identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GlobalAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
+
   #[serde(rename = "GHSA")]
   Ghsa,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for GlobalAdvisoryIdentifiersType {
   fn to_string(&self) -> String {
     match self {
@@ -691,23 +709,27 @@ impl ToString for GlobalAdvisoryIdentifiersType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GlobalAdvisorySeverity {
   #[serde(rename = "critical")]
   Critical,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "low")]
   Low,
+
   #[serde(rename = "unknown")]
   Unknown,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for GlobalAdvisorySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -720,19 +742,21 @@ impl ToString for GlobalAdvisorySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The type of advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GlobalAdvisoryType {
   #[serde(rename = "reviewed")]
   Reviewed,
+
   #[serde(rename = "unreviewed")]
   Unreviewed,
+
   #[serde(rename = "malware")]
   Malware,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for GlobalAdvisoryType {
   fn to_string(&self) -> String {
     match self {
@@ -743,39 +767,51 @@ impl ToString for GlobalAdvisoryType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The package's language or package management ecosystem.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoryEcosystems {
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "pip")]
   Pip,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "composer")]
   Composer,
+
   #[serde(rename = "go")]
   Go,
+
   #[serde(rename = "rust")]
   Rust,
+
   #[serde(rename = "erlang")]
   Erlang,
+
   #[serde(rename = "actions")]
   Actions,
+
   #[serde(rename = "pub")]
   Pub,
+
   #[serde(rename = "other")]
   Other,
+
   #[serde(rename = "swift")]
   Swift,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoryEcosystems {
   fn to_string(&self) -> String {
     match self {
@@ -796,48 +832,53 @@ impl ToString for SecurityAdvisoryEcosystems {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum AppsCreateFromManifestResponse {
   /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
   Integration(Integration),
+
   AppsCreateFromManifestResponseItem2(AppsCreateFromManifestResponseItem2),
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum IntegrationInstallationRequestAccount {
   /// A GitHub user.
   SimpleUser(SimpleUser),
+
   /// An enterprise on GitHub.
   Enterprise(Enterprise),
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum InstallationAccount {
   /// A GitHub user.
   SimpleUser(SimpleUser),
+
   /// An enterprise on GitHub.
   Enterprise(Enterprise),
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 /// The level of permission to grant the access token for custom property management.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppPermissionsOrganizationCustomProperties {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 impl ToString for AppPermissionsOrganizationCustomProperties {
   fn to_string(&self) -> String {
     match self {
@@ -848,19 +889,21 @@ impl ToString for AppPermissionsOrganizationCustomProperties {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 /// The level of permission to grant the access token to manage organization projects and projects beta (where available).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppPermissionsOrganizationProjects {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 impl ToString for AppPermissionsOrganizationProjects {
   fn to_string(&self) -> String {
     match self {
@@ -871,19 +914,21 @@ impl ToString for AppPermissionsOrganizationProjects {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 /// The level of permission to grant the access token to manage repository projects, columns, and cards.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppPermissionsRepositoryProjects {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 impl ToString for AppPermissionsRepositoryProjects {
   fn to_string(&self) -> String {
     match self {
@@ -894,17 +939,18 @@ impl ToString for AppPermissionsRepositoryProjects {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 /// Describe whether all repositories have been selected or there's a selection involved
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum InstallationRepositorySelection {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 impl ToString for InstallationRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -925,7 +971,7 @@ impl ToString for InstallationRepositorySelection {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// The default value for a merge commit message.
 ///
@@ -936,8 +982,10 @@ impl ToString for InstallationRepositorySelection {
 pub enum RepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -953,7 +1001,7 @@ pub enum RepositoryMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 impl ToString for RepositoryMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -976,7 +1024,7 @@ impl ToString for RepositoryMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// The default value for a merge commit title.
 ///
@@ -986,6 +1034,7 @@ impl ToString for RepositoryMergeCommitMessage {
 pub enum RepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -1001,7 +1050,7 @@ pub enum RepositoryMergeCommitTitle {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 impl ToString for RepositoryMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -1023,7 +1072,7 @@ impl ToString for RepositoryMergeCommitTitle {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// The default value for a squash merge commit message:
 ///
@@ -1034,8 +1083,10 @@ impl ToString for RepositoryMergeCommitTitle {
 pub enum RepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -1051,7 +1102,7 @@ pub enum RepositorySquashMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 impl ToString for RepositorySquashMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -1074,7 +1125,7 @@ impl ToString for RepositorySquashMergeCommitMessage {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// The default value for a squash merge commit title:
 ///
@@ -1084,6 +1135,7 @@ impl ToString for RepositorySquashMergeCommitMessage {
 pub enum RepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -1099,7 +1151,7 @@ pub enum RepositorySquashMergeCommitTitle {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 impl ToString for RepositorySquashMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -1110,16 +1162,17 @@ impl ToString for RepositorySquashMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum InstallationTokenRepositorySelection {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 impl ToString for InstallationTokenRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -1129,17 +1182,18 @@ impl ToString for InstallationTokenRepositorySelection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Describe whether all repositories have been selected or there's a selection involved
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ScopedInstallationRepositorySelection {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 impl ToString for ScopedInstallationRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -1149,17 +1203,18 @@ impl ToString for ScopedInstallationRepositorySelection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// Whether it's a group assignment or individual assignment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ClassroomAssignmentType {
   #[serde(rename = "individual")]
   Individual,
+
   #[serde(rename = "group")]
   Group,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 impl ToString for ClassroomAssignmentType {
   fn to_string(&self) -> String {
     match self {
@@ -1169,17 +1224,18 @@ impl ToString for ClassroomAssignmentType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// Whether it's a Group Assignment or Individual Assignment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimpleClassroomAssignmentType {
   #[serde(rename = "individual")]
   Individual,
+
   #[serde(rename = "group")]
   Group,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 impl ToString for SimpleClassroomAssignmentType {
   fn to_string(&self) -> String {
     match self {
@@ -1189,16 +1245,17 @@ impl ToString for SimpleClassroomAssignmentType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForEnterpriseQueryScope {
   #[serde(rename = "development")]
   Development,
+
   #[serde(rename = "runtime")]
   Runtime,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotListAlertsForEnterpriseQueryScope {
   fn to_string(&self) -> String {
     match self {
@@ -1208,16 +1265,17 @@ impl ToString for DependabotListAlertsForEnterpriseQueryScope {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForEnterpriseQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotListAlertsForEnterpriseQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -1227,16 +1285,17 @@ impl ToString for DependabotListAlertsForEnterpriseQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForEnterpriseQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotListAlertsForEnterpriseQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -1246,17 +1305,18 @@ impl ToString for DependabotListAlertsForEnterpriseQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// The execution scope of the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertWithRepositoryDependencyScope {
   #[serde(rename = "development")]
   Development,
+
   #[serde(rename = "runtime")]
   Runtime,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotAlertWithRepositoryDependencyScope {
   fn to_string(&self) -> String {
     match self {
@@ -1266,23 +1326,27 @@ impl ToString for DependabotAlertWithRepositoryDependencyScope {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// The reason that the alert was dismissed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertWithRepositoryDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
+
   #[serde(rename = "inaccurate")]
   Inaccurate,
+
   #[serde(rename = "no_bandwidth")]
   NoBandwidth,
+
   #[serde(rename = "not_used")]
   NotUsed,
+
   #[serde(rename = "tolerable_risk")]
   TolerableRisk,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotAlertWithRepositoryDismissedReason {
   fn to_string(&self) -> String {
     match self {
@@ -1295,17 +1359,18 @@ impl ToString for DependabotAlertWithRepositoryDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// The type of advisory identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
+
   #[serde(rename = "GHSA")]
   Ghsa,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
   fn to_string(&self) -> String {
     match self {
@@ -1315,21 +1380,24 @@ impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityAdvisorySeverity {
   #[serde(rename = "low")]
   Low,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "critical")]
   Critical,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotAlertSecurityAdvisorySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1341,21 +1409,24 @@ impl ToString for DependabotAlertSecurityAdvisorySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// The severity of the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSecurityVulnerabilitySeverity {
   #[serde(rename = "low")]
   Low,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "critical")]
   Critical,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotAlertSecurityVulnerabilitySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -1367,21 +1438,24 @@ impl ToString for DependabotAlertSecurityVulnerabilitySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// The state of the Dependabot alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertWithRepositoryState {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
+
   #[serde(rename = "dismissed")]
   Dismissed,
+
   #[serde(rename = "fixed")]
   Fixed,
+
   #[serde(rename = "open")]
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotAlertWithRepositoryState {
   fn to_string(&self) -> String {
     match self {
@@ -1393,16 +1467,17 @@ impl ToString for DependabotAlertWithRepositoryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForEnterpriseQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "resolved")]
   Resolved,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningListAlertsForEnterpriseQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -1412,16 +1487,17 @@ impl ToString for SecretScanningListAlertsForEnterpriseQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForEnterpriseQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningListAlertsForEnterpriseQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -1431,16 +1507,17 @@ impl ToString for SecretScanningListAlertsForEnterpriseQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForEnterpriseQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningListAlertsForEnterpriseQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -1450,21 +1527,24 @@ impl ToString for SecretScanningListAlertsForEnterpriseQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// **Required when the `state` is `resolved`.** The reason for resolving the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertResolution {
   #[serde(rename = "false_positive")]
   FalsePositive,
+
   #[serde(rename = "wont_fix")]
   WontFix,
+
   #[serde(rename = "revoked")]
   Revoked,
+
   #[serde(rename = "used_in_tests")]
   UsedInTests,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningAlertResolution {
   fn to_string(&self) -> String {
     match self {
@@ -1476,17 +1556,18 @@ impl ToString for SecretScanningAlertResolution {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "resolved")]
   Resolved,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -1496,19 +1577,21 @@ impl ToString for SecretScanningAlertState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// The token status as of the latest validity check.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationSecretScanningAlertValidity {
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "inactive")]
   Inactive,
+
   #[serde(rename = "unknown")]
   Unknown,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for OrganizationSecretScanningAlertValidity {
   fn to_string(&self) -> String {
     match self {
@@ -1526,25 +1609,32 @@ impl ToString for OrganizationSecretScanningAlertValidity {
   feature = "issues",
   feature = "repos",
   feature = "pulls",
-  feature = "search",
+  feature = "search"
 ))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
+
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
+
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
+
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
+
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
+
   #[serde(rename = "MEMBER")]
   Member,
+
   #[serde(rename = "NONE")]
   None,
+
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -1556,7 +1646,7 @@ pub enum AuthorAssociation {
   feature = "issues",
   feature = "repos",
   feature = "pulls",
-  feature = "search",
+  feature = "search"
 ))]
 impl ToString for AuthorAssociation {
   fn to_string(&self) -> String {
@@ -1579,13 +1669,14 @@ impl ToString for AuthorAssociation {
   feature = "issues",
   feature = "repos",
   feature = "pulls",
-  feature = "search",
+  feature = "search"
 ))]
 /// The state of the milestone.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MilestoneState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
@@ -1596,7 +1687,7 @@ pub enum MilestoneState {
   feature = "issues",
   feature = "repos",
   feature = "pulls",
-  feature = "search",
+  feature = "search"
 ))]
 impl ToString for MilestoneState {
   fn to_string(&self) -> String {
@@ -1607,19 +1698,21 @@ impl ToString for MilestoneState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues"))]
 /// The reason for the current state
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssueStateReason {
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "reopened")]
   Reopened,
+
   #[serde(rename = "not_planned")]
   NotPlanned,
 }
 
-#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues"))]
 impl ToString for IssueStateReason {
   fn to_string(&self) -> String {
     match self {
@@ -1630,16 +1723,17 @@ impl ToString for IssueStateReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GistsCreateRequestPublicItem2 {
   #[serde(rename = "true")]
   True,
+
   #[serde(rename = "false")]
   False,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 impl ToString for GistsCreateRequestPublicItem2 {
   fn to_string(&self) -> String {
     match self {
@@ -1649,24 +1743,29 @@ impl ToString for GistsCreateRequestPublicItem2 {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListQueryFilter {
   #[serde(rename = "assigned")]
   Assigned,
+
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "mentioned")]
   Mentioned,
+
   #[serde(rename = "subscribed")]
   Subscribed,
+
   #[serde(rename = "repos")]
   Repos,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListQueryFilter {
   fn to_string(&self) -> String {
     match self {
@@ -1680,18 +1779,20 @@ impl ToString for IssuesListQueryFilter {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -1702,18 +1803,20 @@ impl ToString for IssuesListQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "comments")]
   Comments,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -1724,16 +1827,17 @@ impl ToString for IssuesListQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -1743,17 +1847,18 @@ impl ToString for IssuesListQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "markdown",))]
+#[cfg(any(feature = "full", feature = "markdown"))]
 /// The rendering mode.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MarkdownRenderRequestMode {
   #[serde(rename = "markdown")]
   Markdown,
+
   #[serde(rename = "gfm")]
   Gfm,
 }
 
-#[cfg(any(feature = "full", feature = "markdown",))]
+#[cfg(any(feature = "full", feature = "markdown"))]
 impl ToString for MarkdownRenderRequestMode {
   fn to_string(&self) -> String {
     match self {
@@ -1763,18 +1868,20 @@ impl ToString for MarkdownRenderRequestMode {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MarketplaceListingPlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
+
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
+
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 impl ToString for MarketplaceListingPlanPriceModel {
   fn to_string(&self) -> String {
     match self {
@@ -1785,16 +1892,17 @@ impl ToString for MarketplaceListingPlanPriceModel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppsListAccountsForPlanQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 impl ToString for AppsListAccountsForPlanQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -1804,16 +1912,17 @@ impl ToString for AppsListAccountsForPlanQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppsListAccountsForPlanQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 impl ToString for AppsListAccountsForPlanQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -1823,16 +1932,17 @@ impl ToString for AppsListAccountsForPlanQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppsListAccountsForPlanStubbedQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 impl ToString for AppsListAccountsForPlanStubbedQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -1842,16 +1952,17 @@ impl ToString for AppsListAccountsForPlanStubbedQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AppsListAccountsForPlanStubbedQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 impl ToString for AppsListAccountsForPlanStubbedQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -1874,12 +1985,13 @@ impl ToString for AppsListAccountsForPlanStubbedQueryDirection {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisAdvancedSecurityStatus {
   #[serde(rename = "enabled")]
   Enabled,
+
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -1897,7 +2009,7 @@ pub enum SecurityAndAnalysisAdvancedSecurityStatus {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
   fn to_string(&self) -> String {
@@ -1921,13 +2033,14 @@ impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 /// The enablement status of Dependabot security updates for the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   #[serde(rename = "enabled")]
   Enabled,
+
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -1945,7 +2058,7 @@ pub enum SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   fn to_string(&self) -> String {
@@ -1969,12 +2082,13 @@ impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisSecretScanningStatus {
   #[serde(rename = "enabled")]
   Enabled,
+
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -1992,7 +2106,7 @@ pub enum SecurityAndAnalysisSecretScanningStatus {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 impl ToString for SecurityAndAnalysisSecretScanningStatus {
   fn to_string(&self) -> String {
@@ -2016,12 +2130,13 @@ impl ToString for SecurityAndAnalysisSecretScanningStatus {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
   #[serde(rename = "enabled")]
   Enabled,
+
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -2039,7 +2154,7 @@ pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
   fn to_string(&self) -> String {
@@ -2050,21 +2165,24 @@ impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Default permission level members have for organization repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsUpdateRequestDefaultRepositoryPermission {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
+
   #[serde(rename = "none")]
   None,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsUpdateRequestDefaultRepositoryPermission {
   fn to_string(&self) -> String {
     match self {
@@ -2076,20 +2194,22 @@ impl ToString for OrgsUpdateRequestDefaultRepositoryPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Specifies which types of repositories non-admin organization members can create. `private` is only available to repositories that are part of an organization on GitHub Enterprise Cloud.
 /// **Note:** This parameter is deprecated and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in `members_can_create_repositories`. See the parameter deprecation notice in the operation description for details.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsUpdateRequestMembersAllowedRepositoryCreationType {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "none")]
   None,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsUpdateRequestMembersAllowedRepositoryCreationType {
   fn to_string(&self) -> String {
     match self {
@@ -2100,19 +2220,21 @@ impl ToString for OrgsUpdateRequestMembersAllowedRepositoryCreationType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// The permissions policy that controls the actions and reusable workflows that are allowed to run.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AllowedActions {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "local_only")]
   LocalOnly,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for AllowedActions {
   fn to_string(&self) -> String {
     match self {
@@ -2123,19 +2245,21 @@ impl ToString for AllowedActions {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// The policy that controls the repositories in the organization that are allowed to run GitHub Actions.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum EnabledRepositories {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for EnabledRepositories {
   fn to_string(&self) -> String {
     match self {
@@ -2146,17 +2270,18 @@ impl ToString for EnabledRepositories {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// The type of label. Read-only labels are applied automatically when the runner is configured.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RunnerLabelType {
   #[serde(rename = "read-only")]
   ReadOnly,
+
   #[serde(rename = "custom")]
   Custom,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for RunnerLabelType {
   fn to_string(&self) -> String {
     match self {
@@ -2166,17 +2291,18 @@ impl ToString for RunnerLabelType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Describe whether all repositories have been selected or there's a selection involved
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AuthenticationTokenRepositorySelection {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for AuthenticationTokenRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -2186,19 +2312,21 @@ impl ToString for AuthenticationTokenRepositorySelection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Visibility of a secret
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationActionsSecretVisibility {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for OrganizationActionsSecretVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -2209,19 +2337,21 @@ impl ToString for OrganizationActionsSecretVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsCreateOrUpdateOrgSecretRequestVisibility {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for ActionsCreateOrUpdateOrgSecretRequestVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -2232,19 +2362,21 @@ impl ToString for ActionsCreateOrUpdateOrgSecretRequestVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Visibility of a variable
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationActionsVariableVisibility {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for OrganizationActionsVariableVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -2255,19 +2387,21 @@ impl ToString for OrganizationActionsVariableVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsCreateOrgVariableRequestVisibility {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for ActionsCreateOrgVariableRequestVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -2278,19 +2412,21 @@ impl ToString for ActionsCreateOrgVariableRequestVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsUpdateOrgVariableRequestVisibility {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for ActionsUpdateOrgVariableRequestVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -2301,16 +2437,17 @@ impl ToString for ActionsUpdateOrgVariableRequestVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListAlertsForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningListAlertsForOrgQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -2320,16 +2457,17 @@ impl ToString for CodeScanningListAlertsForOrgQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListAlertsForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningListAlertsForOrgQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -2339,19 +2477,21 @@ impl ToString for CodeScanningListAlertsForOrgQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// **Required when the state is dismissed.** The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
+
   #[serde(rename = "won't fix")]
   WonTFix,
+
   #[serde(rename = "used in tests")]
   UsedInTests,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningAlertDismissedReason {
   fn to_string(&self) -> String {
     match self {
@@ -2362,21 +2502,24 @@ impl ToString for CodeScanningAlertDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// A classification of the file. For example to identify it as generated.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertClassification {
   #[serde(rename = "source")]
   Source,
+
   #[serde(rename = "generated")]
   Generated,
+
   #[serde(rename = "test")]
   Test,
+
   #[serde(rename = "library")]
   Library,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningAlertClassification {
   fn to_string(&self) -> String {
     match self {
@@ -2388,19 +2531,21 @@ impl ToString for CodeScanningAlertClassification {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "dismissed")]
   Dismissed,
+
   #[serde(rename = "fixed")]
   Fixed,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -2411,21 +2556,24 @@ impl ToString for CodeScanningAlertState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The security severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertRuleSummarySecuritySeverityLevel {
   #[serde(rename = "low")]
   Low,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "critical")]
   Critical,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningAlertRuleSummarySecuritySeverityLevel {
   fn to_string(&self) -> String {
     match self {
@@ -2437,21 +2585,24 @@ impl ToString for CodeScanningAlertRuleSummarySecuritySeverityLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertRuleSummarySeverity {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "note")]
   Note,
+
   #[serde(rename = "warning")]
   Warning,
+
   #[serde(rename = "error")]
   Error,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningAlertRuleSummarySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -2463,17 +2614,20 @@ impl ToString for CodeScanningAlertRuleSummarySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// The initally assigned location of a new codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceLocation {
   EastUs,
+
   SouthEastAsia,
+
   WestEurope,
+
   WestUs2,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespaceLocation {
   fn to_string(&self) -> String {
     match self {
@@ -2485,19 +2639,21 @@ impl ToString for CodespaceLocation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceMachinePrebuildAvailability {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "ready")]
   Ready,
+
   #[serde(rename = "in_progress")]
   InProgress,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespaceMachinePrebuildAvailability {
   fn to_string(&self) -> String {
     match self {
@@ -2508,30 +2664,46 @@ impl ToString for CodespaceMachinePrebuildAvailability {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// State of this codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceState {
   Unknown,
+
   Created,
+
   Queued,
+
   Provisioning,
+
   Available,
+
   Awaiting,
+
   Unavailable,
+
   Deleted,
+
   Moved,
+
   Shutdown,
+
   Archived,
+
   Starting,
+
   ShuttingDown,
+
   Failed,
+
   Exporting,
+
   Updating,
+
   Rebuilding,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespaceState {
   fn to_string(&self) -> String {
     match self {
@@ -2556,21 +2728,24 @@ impl ToString for CodespaceState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesSetCodespacesAccessRequestVisibility {
   #[serde(rename = "disabled")]
   Disabled,
+
   #[serde(rename = "selected_members")]
   SelectedMembers,
+
   #[serde(rename = "all_members")]
   AllMembers,
+
   #[serde(rename = "all_members_and_outside_collaborators")]
   AllMembersAndOutsideCollaborators,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespacesSetCodespacesAccessRequestVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -2586,19 +2761,21 @@ impl ToString for CodespacesSetCodespacesAccessRequestVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// The type of repositories in the organization that the secret is visible to
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesOrgSecretVisibility {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespacesOrgSecretVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -2609,19 +2786,21 @@ impl ToString for CodespacesOrgSecretVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateOrUpdateOrgSecretRequestVisibility {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespacesCreateOrUpdateOrgSecretRequestVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -2632,19 +2811,21 @@ impl ToString for CodespacesCreateOrUpdateOrgSecretRequestVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// The organization policy for allowing or disallowing organization members to use Copilot within their CLI.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CopilotOrganizationDetailsCli {
   #[serde(rename = "enabled")]
   Enabled,
+
   #[serde(rename = "disabled")]
   Disabled,
+
   #[serde(rename = "unconfigured")]
   Unconfigured,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 impl ToString for CopilotOrganizationDetailsCli {
   fn to_string(&self) -> String {
     match self {
@@ -2655,19 +2836,21 @@ impl ToString for CopilotOrganizationDetailsCli {
   }
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CopilotOrganizationDetailsIdeChat {
   #[serde(rename = "enabled")]
   Enabled,
+
   #[serde(rename = "disabled")]
   Disabled,
+
   #[serde(rename = "unconfigured")]
   Unconfigured,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 impl ToString for CopilotOrganizationDetailsIdeChat {
   fn to_string(&self) -> String {
     match self {
@@ -2678,19 +2861,21 @@ impl ToString for CopilotOrganizationDetailsIdeChat {
   }
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// The organization policy for allowing or disallowing organization members to use Copilot features within github.com.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CopilotOrganizationDetailsPlatformChat {
   #[serde(rename = "enabled")]
   Enabled,
+
   #[serde(rename = "disabled")]
   Disabled,
+
   #[serde(rename = "unconfigured")]
   Unconfigured,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 impl ToString for CopilotOrganizationDetailsPlatformChat {
   fn to_string(&self) -> String {
     match self {
@@ -2701,21 +2886,24 @@ impl ToString for CopilotOrganizationDetailsPlatformChat {
   }
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// The organization policy for allowing or disallowing Copilot to make suggestions that match public code.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CopilotOrganizationDetailsPublicCodeSuggestions {
   #[serde(rename = "allow")]
   Allow,
+
   #[serde(rename = "block")]
   Block,
+
   #[serde(rename = "unconfigured")]
   Unconfigured,
+
   #[serde(rename = "unknown")]
   Unknown,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 impl ToString for CopilotOrganizationDetailsPublicCodeSuggestions {
   fn to_string(&self) -> String {
     match self {
@@ -2727,21 +2915,24 @@ impl ToString for CopilotOrganizationDetailsPublicCodeSuggestions {
   }
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// The mode of assigning new seats.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CopilotOrganizationDetailsSeatManagementSetting {
   #[serde(rename = "assign_all")]
   AssignAll,
+
   #[serde(rename = "assign_selected")]
   AssignSelected,
+
   #[serde(rename = "disabled")]
   Disabled,
+
   #[serde(rename = "unconfigured")]
   Unconfigured,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 impl ToString for CopilotOrganizationDetailsSeatManagementSetting {
   fn to_string(&self) -> String {
     match self {
@@ -2755,28 +2946,31 @@ impl ToString for CopilotOrganizationDetailsSeatManagementSetting {
   }
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CopilotSeatDetailsAssignee {
   /// A GitHub user.
   SimpleUser(SimpleUser),
+
   /// Groups of organization members that gives permissions on specified repositories.
   Team(Team),
+
   /// GitHub account for managing multiple users, teams, and repositories
   Organization(Organization),
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForOrgQueryScope {
   #[serde(rename = "development")]
   Development,
+
   #[serde(rename = "runtime")]
   Runtime,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotListAlertsForOrgQueryScope {
   fn to_string(&self) -> String {
     match self {
@@ -2786,16 +2980,17 @@ impl ToString for DependabotListAlertsForOrgQueryScope {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotListAlertsForOrgQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -2805,16 +3000,17 @@ impl ToString for DependabotListAlertsForOrgQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotListAlertsForOrgQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -2824,19 +3020,21 @@ impl ToString for DependabotListAlertsForOrgQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Visibility of a secret
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationDependabotSecretVisibility {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for OrganizationDependabotSecretVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -2847,19 +3045,21 @@ impl ToString for OrganizationDependabotSecretVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotCreateOrUpdateOrgSecretRequestVisibility {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotCreateOrUpdateOrgSecretRequestVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -2870,24 +3070,29 @@ impl ToString for DependabotCreateOrUpdateOrgSecretRequestVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagePackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagePackageType {
   fn to_string(&self) -> String {
     match self {
@@ -2901,16 +3106,17 @@ impl ToString for PackagePackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackageVisibility {
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "public")]
   Public,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackageVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -2920,19 +3126,21 @@ impl ToString for PackageVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 /// The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum InteractionGroup {
   #[serde(rename = "existing_users")]
   ExistingUsers,
+
   #[serde(rename = "contributors_only")]
   ContributorsOnly,
+
   #[serde(rename = "collaborators_only")]
   CollaboratorsOnly,
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 impl ToString for InteractionGroup {
   fn to_string(&self) -> String {
     match self {
@@ -2943,32 +3151,37 @@ impl ToString for InteractionGroup {
   }
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum InteractionsGetRestrictionsForOrgResponse {
   /// Interaction limit settings.
   InteractionLimitResponse(InteractionLimitResponse),
+
   InteractionsGetRestrictionsForOrgResponseItem2(InteractionsGetRestrictionsForOrgResponseItem2),
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 /// The duration of the interaction restriction. Default: `one_day`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum InteractionExpiry {
   #[serde(rename = "one_day")]
   OneDay,
+
   #[serde(rename = "three_days")]
   ThreeDays,
+
   #[serde(rename = "one_week")]
   OneWeek,
+
   #[serde(rename = "one_month")]
   OneMonth,
+
   #[serde(rename = "six_months")]
   SixMonths,
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 impl ToString for InteractionExpiry {
   fn to_string(&self) -> String {
     match self {
@@ -2981,22 +3194,26 @@ impl ToString for InteractionExpiry {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPendingInvitationsQueryRole {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "admin")]
   Admin,
+
   #[serde(rename = "direct_member")]
   DirectMember,
+
   #[serde(rename = "billing_manager")]
   BillingManager,
+
   #[serde(rename = "hiring_manager")]
   HiringManager,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsListPendingInvitationsQueryRole {
   fn to_string(&self) -> String {
     match self {
@@ -3009,18 +3226,20 @@ impl ToString for OrgsListPendingInvitationsQueryRole {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPendingInvitationsQueryInvitationSource {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "member")]
   Member,
+
   #[serde(rename = "scim")]
   Scim,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsListPendingInvitationsQueryInvitationSource {
   fn to_string(&self) -> String {
     match self {
@@ -3031,7 +3250,7 @@ impl ToString for OrgsListPendingInvitationsQueryInvitationSource {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// The role for the new member.
 ///  * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  
 ///  * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  
@@ -3041,15 +3260,18 @@ impl ToString for OrgsListPendingInvitationsQueryInvitationSource {
 pub enum OrgsCreateInvitationRequestRole {
   #[serde(rename = "admin")]
   Admin,
+
   #[serde(rename = "direct_member")]
   DirectMember,
+
   #[serde(rename = "billing_manager")]
   BillingManager,
+
   #[serde(rename = "reinstate")]
   Reinstate,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsCreateInvitationRequestRole {
   fn to_string(&self) -> String {
     match self {
@@ -3061,24 +3283,29 @@ impl ToString for OrgsCreateInvitationRequestRole {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForOrgQueryFilter {
   #[serde(rename = "assigned")]
   Assigned,
+
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "mentioned")]
   Mentioned,
+
   #[serde(rename = "subscribed")]
   Subscribed,
+
   #[serde(rename = "repos")]
   Repos,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListForOrgQueryFilter {
   fn to_string(&self) -> String {
     match self {
@@ -3092,18 +3319,20 @@ impl ToString for IssuesListForOrgQueryFilter {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForOrgQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListForOrgQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -3114,18 +3343,20 @@ impl ToString for IssuesListForOrgQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "comments")]
   Comments,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListForOrgQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -3136,16 +3367,17 @@ impl ToString for IssuesListForOrgQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListForOrgQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -3155,16 +3387,17 @@ impl ToString for IssuesListForOrgQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListMembersQueryFilter {
   #[serde(rename = "2fa_disabled")]
   TwoFADisabled,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsListMembersQueryFilter {
   fn to_string(&self) -> String {
     match self {
@@ -3174,18 +3407,20 @@ impl ToString for OrgsListMembersQueryFilter {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListMembersQueryRole {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "admin")]
   Admin,
+
   #[serde(rename = "member")]
   Member,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsListMembersQueryRole {
   fn to_string(&self) -> String {
     match self {
@@ -3196,19 +3431,21 @@ impl ToString for OrgsListMembersQueryRole {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// The user's membership type in the organization.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgMembershipRole {
   #[serde(rename = "admin")]
   Admin,
+
   #[serde(rename = "member")]
   Member,
+
   #[serde(rename = "billing_manager")]
   BillingManager,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgMembershipRole {
   fn to_string(&self) -> String {
     match self {
@@ -3219,17 +3456,18 @@ impl ToString for OrgMembershipRole {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgMembershipState {
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgMembershipState {
   fn to_string(&self) -> String {
     match self {
@@ -3239,7 +3477,7 @@ impl ToString for OrgMembershipState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// The role to give the user in the organization. Can be one of:  
 ///  * `admin` - The user will become an owner of the organization.  
 ///  * `member` - The user will become a non-owner member of the organization.
@@ -3247,11 +3485,12 @@ impl ToString for OrgMembershipState {
 pub enum OrgsSetMembershipForUserRequestRole {
   #[serde(rename = "admin")]
   Admin,
+
   #[serde(rename = "member")]
   Member,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsSetMembershipForUserRequestRole {
   fn to_string(&self) -> String {
     match self {
@@ -3261,7 +3500,7 @@ impl ToString for OrgsSetMembershipForUserRequestRole {
   }
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Allowed values that can be passed to the exclude param.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsListForOrgQueryExclude {
@@ -3269,7 +3508,7 @@ pub enum MigrationsListForOrgQueryExclude {
   Repositories,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 impl ToString for MigrationsListForOrgQueryExclude {
   fn to_string(&self) -> String {
     match self {
@@ -3278,14 +3517,14 @@ impl ToString for MigrationsListForOrgQueryExclude {
   }
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsStartForOrgRequestExclude {
   #[serde(rename = "repositories")]
   Repositories,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 impl ToString for MigrationsStartForOrgRequestExclude {
   fn to_string(&self) -> String {
     match self {
@@ -3294,7 +3533,7 @@ impl ToString for MigrationsStartForOrgRequestExclude {
   }
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Allowed values that can be passed to the exclude param.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsGetStatusForOrgQueryExclude {
@@ -3302,7 +3541,7 @@ pub enum MigrationsGetStatusForOrgQueryExclude {
   Repositories,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 impl ToString for MigrationsGetStatusForOrgQueryExclude {
   fn to_string(&self) -> String {
     match self {
@@ -3311,16 +3550,17 @@ impl ToString for MigrationsGetStatusForOrgQueryExclude {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListOutsideCollaboratorsQueryFilter {
   #[serde(rename = "2fa_disabled")]
   TwoFADisabled,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsListOutsideCollaboratorsQueryFilter {
   fn to_string(&self) -> String {
     match self {
@@ -3330,24 +3570,29 @@ impl ToString for OrgsListOutsideCollaboratorsQueryFilter {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForOrganizationQueryPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesListPackagesForOrganizationQueryPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -3361,18 +3606,20 @@ impl ToString for PackagesListPackagesForOrganizationQueryPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForOrganizationQueryVisibility {
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "internal")]
   Internal,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesListPackagesForOrganizationQueryVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -3383,24 +3630,29 @@ impl ToString for PackagesListPackagesForOrganizationQueryVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageForOrganizationParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesGetPackageForOrganizationParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -3414,24 +3666,29 @@ impl ToString for PackagesGetPackageForOrganizationParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesDeletePackageForOrgParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -3445,24 +3702,29 @@ impl ToString for PackagesDeletePackageForOrgParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesRestorePackageForOrgParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -3476,24 +3738,29 @@ impl ToString for PackagesRestorePackageForOrgParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByOrgParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -3519,16 +3786,17 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByOrgParametersPac
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByOrgQueryState {
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByOrgQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -3538,24 +3806,29 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByOrgQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackageVersionMetadataPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackageVersionMetadataPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -3569,24 +3842,29 @@ impl ToString for PackageVersionMetadataPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageVersionForOrganizationParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesGetPackageVersionForOrganizationParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -3604,24 +3882,29 @@ impl ToString for PackagesGetPackageVersionForOrganizationParametersPackageType 
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageVersionForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesDeletePackageVersionForOrgParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -3635,24 +3918,29 @@ impl ToString for PackagesDeletePackageVersionForOrgParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageVersionForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesRestorePackageVersionForOrgParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -3668,14 +3956,14 @@ impl ToString for PackagesRestorePackageVersionForOrgParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPatGrantRequestsQuerySort {
   #[serde(rename = "created_at")]
   CreatedAt,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsListPatGrantRequestsQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -3684,16 +3972,17 @@ impl ToString for OrgsListPatGrantRequestsQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPatGrantRequestsQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsListPatGrantRequestsQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -3703,19 +3992,21 @@ impl ToString for OrgsListPatGrantRequestsQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Type of repository selection requested.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationProgrammaticAccessGrantRequestRepositorySelection {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "subset")]
   Subset,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrganizationProgrammaticAccessGrantRequestRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -3726,17 +4017,18 @@ impl ToString for OrganizationProgrammaticAccessGrantRequestRepositorySelection 
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Action to apply to the requests.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsReviewPatGrantRequestsInBulkRequestAction {
   #[serde(rename = "approve")]
   Approve,
+
   #[serde(rename = "deny")]
   Deny,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsReviewPatGrantRequestsInBulkRequestAction {
   fn to_string(&self) -> String {
     match self {
@@ -3746,17 +4038,18 @@ impl ToString for OrgsReviewPatGrantRequestsInBulkRequestAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Action to apply to the request.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsReviewPatGrantRequestRequestAction {
   #[serde(rename = "approve")]
   Approve,
+
   #[serde(rename = "deny")]
   Deny,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsReviewPatGrantRequestRequestAction {
   fn to_string(&self) -> String {
     match self {
@@ -3766,14 +4059,14 @@ impl ToString for OrgsReviewPatGrantRequestRequestAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPatGrantsQuerySort {
   #[serde(rename = "created_at")]
   CreatedAt,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsListPatGrantsQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -3782,16 +4075,17 @@ impl ToString for OrgsListPatGrantsQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListPatGrantsQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsListPatGrantsQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -3801,19 +4095,21 @@ impl ToString for OrgsListPatGrantsQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Type of repository selection requested.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrganizationProgrammaticAccessGrantRepositorySelection {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "subset")]
   Subset,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrganizationProgrammaticAccessGrantRepositorySelection {
   fn to_string(&self) -> String {
     match self {
@@ -3824,7 +4120,7 @@ impl ToString for OrganizationProgrammaticAccessGrantRepositorySelection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Action to apply to the fine-grained personal access token.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsUpdatePatAccessesRequestAction {
@@ -3832,7 +4128,7 @@ pub enum OrgsUpdatePatAccessesRequestAction {
   Revoke,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsUpdatePatAccessesRequestAction {
   fn to_string(&self) -> String {
     match self {
@@ -3841,7 +4137,7 @@ impl ToString for OrgsUpdatePatAccessesRequestAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Action to apply to the fine-grained personal access token.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsUpdatePatAccessRequestAction {
@@ -3849,7 +4145,7 @@ pub enum OrgsUpdatePatAccessRequestAction {
   Revoke,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsUpdatePatAccessRequestAction {
   fn to_string(&self) -> String {
     match self {
@@ -3858,18 +4154,20 @@ impl ToString for OrgsUpdatePatAccessRequestAction {
   }
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsListForOrgQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 impl ToString for ProjectsListForOrgQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -3880,21 +4178,24 @@ impl ToString for ProjectsListForOrgQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// The baseline permission that all organization members have on this project. Only present if owner is an organization.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectOrganizationPermission {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
+
   #[serde(rename = "none")]
   None,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 impl ToString for ProjectOrganizationPermission {
   fn to_string(&self) -> String {
     match self {
@@ -3906,17 +4207,18 @@ impl ToString for ProjectOrganizationPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// The type of the value for the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgCustomPropertyValueType {
   #[serde(rename = "string")]
   String,
+
   #[serde(rename = "single_select")]
   SingleSelect,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgCustomPropertyValueType {
   fn to_string(&self) -> String {
     match self {
@@ -3926,17 +4228,18 @@ impl ToString for OrgCustomPropertyValueType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Who can edit the values of the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgCustomPropertyValuesEditableBy {
   #[serde(rename = "org_actors")]
   OrgActors,
+
   #[serde(rename = "org_and_repo_actors")]
   OrgAndRepoActors,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgCustomPropertyValuesEditableBy {
   fn to_string(&self) -> String {
     match self {
@@ -3946,17 +4249,18 @@ impl ToString for OrgCustomPropertyValuesEditableBy {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// The type of the value for the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsCreateOrUpdateCustomPropertyRequestValueType {
   #[serde(rename = "string")]
   String,
+
   #[serde(rename = "single_select")]
   SingleSelect,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsCreateOrUpdateCustomPropertyRequestValueType {
   fn to_string(&self) -> String {
     match self {
@@ -3966,24 +4270,29 @@ impl ToString for OrgsCreateOrUpdateCustomPropertyRequestValueType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForOrgQueryType {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "forks")]
   Forks,
+
   #[serde(rename = "sources")]
   Sources,
+
   #[serde(rename = "member")]
   Member,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListForOrgQueryType {
   fn to_string(&self) -> String {
     match self {
@@ -3997,20 +4306,23 @@ impl ToString for ReposListForOrgQueryType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "pushed")]
   Pushed,
+
   #[serde(rename = "full_name")]
   FullName,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListForOrgQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -4022,16 +4334,17 @@ impl ToString for ReposListForOrgQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListForOrgQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -4041,7 +4354,7 @@ impl ToString for ReposListForOrgQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a merge commit message.
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -4051,13 +4364,15 @@ impl ToString for ReposListForOrgQueryDirection {
 pub enum ReposCreateInOrgRequestMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateInOrgRequestMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -4068,7 +4383,7 @@ impl ToString for ReposCreateInOrgRequestMergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a merge commit title.
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -4077,11 +4392,12 @@ impl ToString for ReposCreateInOrgRequestMergeCommitMessage {
 pub enum ReposCreateInOrgRequestMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateInOrgRequestMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -4091,7 +4407,7 @@ impl ToString for ReposCreateInOrgRequestMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a squash merge commit message:
 ///
 /// - `PR_BODY` - default to the pull request's body.
@@ -4101,13 +4417,15 @@ impl ToString for ReposCreateInOrgRequestMergeCommitTitle {
 pub enum ReposCreateInOrgRequestSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateInOrgRequestSquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -4120,7 +4438,7 @@ impl ToString for ReposCreateInOrgRequestSquashMergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a squash merge commit title:
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -4129,11 +4447,12 @@ impl ToString for ReposCreateInOrgRequestSquashMergeCommitMessage {
 pub enum ReposCreateInOrgRequestSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateInOrgRequestSquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -4145,17 +4464,18 @@ impl ToString for ReposCreateInOrgRequestSquashMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The visibility of the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateInOrgRequestVisibility {
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "private")]
   Private,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateInOrgRequestVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -4169,7 +4489,7 @@ impl ToString for ReposCreateInOrgRequestVisibility {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// The default value for a merge commit message.
 ///
@@ -4180,8 +4500,10 @@ impl ToString for ReposCreateInOrgRequestVisibility {
 pub enum FullRepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -4190,7 +4512,7 @@ pub enum FullRepositoryMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 impl ToString for FullRepositoryMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -4206,7 +4528,7 @@ impl ToString for FullRepositoryMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// The default value for a merge commit title.
 ///
@@ -4216,6 +4538,7 @@ impl ToString for FullRepositoryMergeCommitMessage {
 pub enum FullRepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -4224,7 +4547,7 @@ pub enum FullRepositoryMergeCommitTitle {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 impl ToString for FullRepositoryMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -4239,7 +4562,7 @@ impl ToString for FullRepositoryMergeCommitTitle {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// The default value for a squash merge commit message:
 ///
@@ -4250,8 +4573,10 @@ impl ToString for FullRepositoryMergeCommitTitle {
 pub enum FullRepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -4260,7 +4585,7 @@ pub enum FullRepositorySquashMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 impl ToString for FullRepositorySquashMergeCommitMessage {
   fn to_string(&self) -> String {
@@ -4276,7 +4601,7 @@ impl ToString for FullRepositorySquashMergeCommitMessage {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// The default value for a squash merge commit title:
 ///
@@ -4286,6 +4611,7 @@ impl ToString for FullRepositorySquashMergeCommitMessage {
 pub enum FullRepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -4294,7 +4620,7 @@ pub enum FullRepositorySquashMergeCommitTitle {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 impl ToString for FullRepositorySquashMergeCommitTitle {
   fn to_string(&self) -> String {
@@ -4305,17 +4631,20 @@ impl ToString for FullRepositorySquashMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The type of actor that can bypass a ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetBypassActorActorType {
   RepositoryRole,
+
   Team,
+
   Integration,
+
   OrganizationAdmin,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRulesetBypassActorActorType {
   fn to_string(&self) -> String {
     match self {
@@ -4327,17 +4656,18 @@ impl ToString for RepositoryRulesetBypassActorActorType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetBypassActorBypassMode {
   #[serde(rename = "always")]
   Always,
+
   #[serde(rename = "pull_request")]
   PullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRulesetBypassActorBypassMode {
   fn to_string(&self) -> String {
     match self {
@@ -4347,61 +4677,68 @@ impl ToString for RepositoryRulesetBypassActorBypassMode {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrgRulesetConditionsItem1 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
+
   /// Parameters for a repository name condition
   RepositoryRulesetConditionsRepositoryNameTarget(RepositoryRulesetConditionsRepositoryNameTarget),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrgRulesetConditionsItem2 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
+
   /// Parameters for a repository ID condition
   RepositoryRulesetConditionsRepositoryIdTarget(RepositoryRulesetConditionsRepositoryIdTarget),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrgRulesetConditionsItem3 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
+
   /// Parameters for a repository property condition
   RepositoryRulesetConditionsRepositoryPropertyTarget(
     RepositoryRulesetConditionsRepositoryPropertyTarget,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum OrgRulesetConditions {
   OrgRulesetConditionsItem1(OrgRulesetConditionsItem1),
+
   OrgRulesetConditionsItem2(OrgRulesetConditionsItem2),
+
   OrgRulesetConditionsItem3(OrgRulesetConditionsItem3),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The bypass type of the user making the API request for this ruleset. This field is only returned when
 /// querying the repository-level endpoint.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetCurrentUserCanBypass {
   #[serde(rename = "always")]
   Always,
+
   #[serde(rename = "pull_requests_only")]
   PullRequestsOnly,
+
   #[serde(rename = "never")]
   Never,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRulesetCurrentUserCanBypass {
   fn to_string(&self) -> String {
     match self {
@@ -4412,19 +4749,21 @@ impl ToString for RepositoryRulesetCurrentUserCanBypass {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleEnforcement {
   #[serde(rename = "disabled")]
   Disabled,
+
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "evaluate")]
   Evaluate,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleEnforcement {
   fn to_string(&self) -> String {
     match self {
@@ -4435,14 +4774,14 @@ impl ToString for RepositoryRuleEnforcement {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCreationType {
   #[serde(rename = "creation")]
   Creation,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleCreationType {
   fn to_string(&self) -> String {
     match self {
@@ -4451,14 +4790,14 @@ impl ToString for RepositoryRuleCreationType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleUpdateType {
   #[serde(rename = "update")]
   Update,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleUpdateType {
   fn to_string(&self) -> String {
     match self {
@@ -4467,14 +4806,14 @@ impl ToString for RepositoryRuleUpdateType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleDeletionType {
   #[serde(rename = "deletion")]
   Deletion,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleDeletionType {
   fn to_string(&self) -> String {
     match self {
@@ -4483,14 +4822,14 @@ impl ToString for RepositoryRuleDeletionType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredLinearHistoryType {
   #[serde(rename = "required_linear_history")]
   RequiredLinearHistory,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleRequiredLinearHistoryType {
   fn to_string(&self) -> String {
     match self {
@@ -4501,14 +4840,14 @@ impl ToString for RepositoryRuleRequiredLinearHistoryType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredDeploymentsType {
   #[serde(rename = "required_deployments")]
   RequiredDeployments,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleRequiredDeploymentsType {
   fn to_string(&self) -> String {
     match self {
@@ -4519,14 +4858,14 @@ impl ToString for RepositoryRuleRequiredDeploymentsType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredSignaturesType {
   #[serde(rename = "required_signatures")]
   RequiredSignatures,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleRequiredSignaturesType {
   fn to_string(&self) -> String {
     match self {
@@ -4535,14 +4874,14 @@ impl ToString for RepositoryRuleRequiredSignaturesType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulePullRequestType {
   #[serde(rename = "pull_request")]
   PullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRulePullRequestType {
   fn to_string(&self) -> String {
     match self {
@@ -4551,14 +4890,14 @@ impl ToString for RepositoryRulePullRequestType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredStatusChecksType {
   #[serde(rename = "required_status_checks")]
   RequiredStatusChecks,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleRequiredStatusChecksType {
   fn to_string(&self) -> String {
     match self {
@@ -4569,14 +4908,14 @@ impl ToString for RepositoryRuleRequiredStatusChecksType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleNonFastForwardType {
   #[serde(rename = "non_fast_forward")]
   NonFastForward,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleNonFastForwardType {
   fn to_string(&self) -> String {
     match self {
@@ -4585,21 +4924,24 @@ impl ToString for RepositoryRuleNonFastForwardType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitMessagePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
+
   #[serde(rename = "ends_with")]
   EndsWith,
+
   #[serde(rename = "contains")]
   Contains,
+
   #[serde(rename = "regex")]
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleCommitMessagePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4611,14 +4953,14 @@ impl ToString for RepositoryRuleCommitMessagePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitMessagePatternType {
   #[serde(rename = "commit_message_pattern")]
   CommitMessagePattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleCommitMessagePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4629,21 +4971,24 @@ impl ToString for RepositoryRuleCommitMessagePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
+
   #[serde(rename = "ends_with")]
   EndsWith,
+
   #[serde(rename = "contains")]
   Contains,
+
   #[serde(rename = "regex")]
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4657,14 +5002,14 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitAuthorEmailPatternType {
   #[serde(rename = "commit_author_email_pattern")]
   CommitAuthorEmailPattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4675,21 +5020,24 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitterEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
+
   #[serde(rename = "ends_with")]
   EndsWith,
+
   #[serde(rename = "contains")]
   Contains,
+
   #[serde(rename = "regex")]
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleCommitterEmailPatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4703,14 +5051,14 @@ impl ToString for RepositoryRuleCommitterEmailPatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitterEmailPatternType {
   #[serde(rename = "committer_email_pattern")]
   CommitterEmailPattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleCommitterEmailPatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4721,21 +5069,24 @@ impl ToString for RepositoryRuleCommitterEmailPatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleBranchNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
+
   #[serde(rename = "ends_with")]
   EndsWith,
+
   #[serde(rename = "contains")]
   Contains,
+
   #[serde(rename = "regex")]
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleBranchNamePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4747,14 +5098,14 @@ impl ToString for RepositoryRuleBranchNamePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleBranchNamePatternType {
   #[serde(rename = "branch_name_pattern")]
   BranchNamePattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleBranchNamePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4763,21 +5114,24 @@ impl ToString for RepositoryRuleBranchNamePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The operator to use for matching.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleTagNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
+
   #[serde(rename = "ends_with")]
   EndsWith,
+
   #[serde(rename = "contains")]
   Contains,
+
   #[serde(rename = "regex")]
   Regex,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleTagNamePatternParametersOperator {
   fn to_string(&self) -> String {
     match self {
@@ -4789,14 +5143,14 @@ impl ToString for RepositoryRuleTagNamePatternParametersOperator {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleTagNamePatternType {
   #[serde(rename = "tag_name_pattern")]
   TagNamePattern,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleTagNamePatternType {
   fn to_string(&self) -> String {
     match self {
@@ -4805,14 +5159,14 @@ impl ToString for RepositoryRuleTagNamePatternType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleWorkflowsType {
   #[serde(rename = "workflows")]
   Workflows,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleWorkflowsType {
   fn to_string(&self) -> String {
     match self {
@@ -4821,51 +5175,66 @@ impl ToString for RepositoryRuleWorkflowsType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRule {
   /// Only allow users with bypass permission to create matching refs.
   RepositoryRuleCreation(RepositoryRuleCreation),
+
   /// Only allow users with bypass permission to update matching refs.
   RepositoryRuleUpdate(RepositoryRuleUpdate),
+
   /// Only allow users with bypass permissions to delete matching refs.
   RepositoryRuleDeletion(RepositoryRuleDeletion),
+
   /// Prevent merge commits from being pushed to matching refs.
   RepositoryRuleRequiredLinearHistory(RepositoryRuleRequiredLinearHistory),
+
   /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
   RepositoryRuleRequiredDeployments(RepositoryRuleRequiredDeployments),
+
   /// Commits pushed to matching refs must have verified signatures.
   RepositoryRuleRequiredSignatures(RepositoryRuleRequiredSignatures),
+
   /// Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
   RepositoryRulePullRequest(RepositoryRulePullRequest),
+
   /// Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
   RepositoryRuleRequiredStatusChecks(RepositoryRuleRequiredStatusChecks),
+
   /// Prevent users with push access from force pushing to refs.
   RepositoryRuleNonFastForward(RepositoryRuleNonFastForward),
+
   /// Parameters to be used for the commit_message_pattern rule
   RepositoryRuleCommitMessagePattern(RepositoryRuleCommitMessagePattern),
+
   /// Parameters to be used for the commit_author_email_pattern rule
   RepositoryRuleCommitAuthorEmailPattern(RepositoryRuleCommitAuthorEmailPattern),
+
   /// Parameters to be used for the committer_email_pattern rule
   RepositoryRuleCommitterEmailPattern(RepositoryRuleCommitterEmailPattern),
+
   /// Parameters to be used for the branch_name_pattern rule
   RepositoryRuleBranchNamePattern(RepositoryRuleBranchNamePattern),
+
   /// Parameters to be used for the tag_name_pattern rule
   RepositoryRuleTagNamePattern(RepositoryRuleTagNamePattern),
+
   /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
   RepositoryRuleWorkflows(RepositoryRuleWorkflows),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The type of the source of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetSourceType {
   Repository,
+
   Organization,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRulesetSourceType {
   fn to_string(&self) -> String {
     match self {
@@ -4875,17 +5244,18 @@ impl ToString for RepositoryRulesetSourceType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The target of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetTarget {
   #[serde(rename = "branch")]
   Branch,
+
   #[serde(rename = "tag")]
   Tag,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRulesetTarget {
   fn to_string(&self) -> String {
     match self {
@@ -4895,17 +5265,18 @@ impl ToString for RepositoryRulesetTarget {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The target of the ruleset.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateOrgRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
+
   #[serde(rename = "tag")]
   Tag,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateOrgRulesetRequestTarget {
   fn to_string(&self) -> String {
     match self {
@@ -4915,20 +5286,23 @@ impl ToString for ReposCreateOrgRulesetRequestTarget {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetOrgRuleSuitesQueryTimePeriod {
   #[serde(rename = "hour")]
   Hour,
+
   #[serde(rename = "day")]
   Day,
+
   #[serde(rename = "week")]
   Week,
+
   #[serde(rename = "month")]
   Month,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposGetOrgRuleSuitesQueryTimePeriod {
   fn to_string(&self) -> String {
     match self {
@@ -4940,20 +5314,23 @@ impl ToString for ReposGetOrgRuleSuitesQueryTimePeriod {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetOrgRuleSuitesQueryRuleSuiteResult {
   #[serde(rename = "pass")]
   Pass,
+
   #[serde(rename = "fail")]
   Fail,
+
   #[serde(rename = "bypass")]
   Bypass,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposGetOrgRuleSuitesQueryRuleSuiteResult {
   fn to_string(&self) -> String {
     match self {
@@ -4965,17 +5342,18 @@ impl ToString for ReposGetOrgRuleSuitesQueryRuleSuiteResult {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuitesItemEvaluationResult {
   #[serde(rename = "pass")]
   Pass,
+
   #[serde(rename = "fail")]
   Fail,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RuleSuitesItemEvaluationResult {
   fn to_string(&self) -> String {
     match self {
@@ -4985,19 +5363,21 @@ impl ToString for RuleSuitesItemEvaluationResult {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The result of the rule evaluations for rules with the `active` enforcement status.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuitesItemResult {
   #[serde(rename = "pass")]
   Pass,
+
   #[serde(rename = "fail")]
   Fail,
+
   #[serde(rename = "bypass")]
   Bypass,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RuleSuitesItemResult {
   fn to_string(&self) -> String {
     match self {
@@ -5008,17 +5388,18 @@ impl ToString for RuleSuitesItemResult {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuiteEvaluationResult {
   #[serde(rename = "pass")]
   Pass,
+
   #[serde(rename = "fail")]
   Fail,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RuleSuiteEvaluationResult {
   fn to_string(&self) -> String {
     match self {
@@ -5028,19 +5409,21 @@ impl ToString for RuleSuiteEvaluationResult {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The result of the rule evaluations for rules with the `active` enforcement status.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuiteResult {
   #[serde(rename = "pass")]
   Pass,
+
   #[serde(rename = "fail")]
   Fail,
+
   #[serde(rename = "bypass")]
   Bypass,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RuleSuiteResult {
   fn to_string(&self) -> String {
     match self {
@@ -5051,19 +5434,21 @@ impl ToString for RuleSuiteResult {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The enforcement level of this rule source.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuiteRuleEvaluationsEnforcement {
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "evaluate")]
   Evaluate,
+
   #[serde(rename = "deleted ruleset")]
   DeletedRuleset,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RuleSuiteRuleEvaluationsEnforcement {
   fn to_string(&self) -> String {
     match self {
@@ -5074,17 +5459,18 @@ impl ToString for RuleSuiteRuleEvaluationsEnforcement {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The result of the evaluation of the individual rule.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuiteRuleEvaluationsResult {
   #[serde(rename = "pass")]
   Pass,
+
   #[serde(rename = "fail")]
   Fail,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RuleSuiteRuleEvaluationsResult {
   fn to_string(&self) -> String {
     match self {
@@ -5094,17 +5480,18 @@ impl ToString for RuleSuiteRuleEvaluationsResult {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The target of the ruleset.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateOrgRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
+
   #[serde(rename = "tag")]
   Tag,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposUpdateOrgRulesetRequestTarget {
   fn to_string(&self) -> String {
     match self {
@@ -5114,16 +5501,17 @@ impl ToString for ReposUpdateOrgRulesetRequestTarget {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForOrgQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "resolved")]
   Resolved,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningListAlertsForOrgQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -5133,16 +5521,17 @@ impl ToString for SecretScanningListAlertsForOrgQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningListAlertsForOrgQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -5152,16 +5541,17 @@ impl ToString for SecretScanningListAlertsForOrgQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningListAlertsForOrgQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -5171,16 +5561,17 @@ impl ToString for SecretScanningListAlertsForOrgQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -5190,18 +5581,20 @@ impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListOrgRepositoryAdvisoriesQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -5212,20 +5605,23 @@ impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryState {
   #[serde(rename = "triage")]
   Triage,
+
   #[serde(rename = "draft")]
   Draft,
+
   #[serde(rename = "published")]
   Published,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -5237,19 +5633,21 @@ impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The state of the user's acceptance of the credit.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryCreditState {
   #[serde(rename = "accepted")]
   Accepted,
+
   #[serde(rename = "declined")]
   Declined,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for RepositoryAdvisoryCreditState {
   fn to_string(&self) -> String {
     match self {
@@ -5260,17 +5658,18 @@ impl ToString for RepositoryAdvisoryCreditState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The type of identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
+
   #[serde(rename = "GHSA")]
   Ghsa,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for RepositoryAdvisoryIdentifiersType {
   fn to_string(&self) -> String {
     match self {
@@ -5280,21 +5679,24 @@ impl ToString for RepositoryAdvisoryIdentifiersType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisorySeverity {
   #[serde(rename = "critical")]
   Critical,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "low")]
   Low,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for RepositoryAdvisorySeverity {
   fn to_string(&self) -> String {
     match self {
@@ -5306,23 +5708,27 @@ impl ToString for RepositoryAdvisorySeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The state of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryState {
   #[serde(rename = "published")]
   Published,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "withdrawn")]
   Withdrawn,
+
   #[serde(rename = "draft")]
   Draft,
+
   #[serde(rename = "triage")]
   Triage,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for RepositoryAdvisoryState {
   fn to_string(&self) -> String {
     match self {
@@ -5335,7 +5741,7 @@ impl ToString for RepositoryAdvisoryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The notification setting the team has chosen. The options are:  
 ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
 ///  * `notifications_disabled` - no one receives notifications.  
@@ -5344,11 +5750,12 @@ impl ToString for RepositoryAdvisoryState {
 pub enum TeamsCreateRequestNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
+
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsCreateRequestNotificationSetting {
   fn to_string(&self) -> String {
     match self {
@@ -5362,17 +5769,18 @@ impl ToString for TeamsCreateRequestNotificationSetting {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsCreateRequestPermission {
   #[serde(rename = "pull")]
   Pull,
+
   #[serde(rename = "push")]
   Push,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsCreateRequestPermission {
   fn to_string(&self) -> String {
     match self {
@@ -5382,7 +5790,7 @@ impl ToString for TeamsCreateRequestPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The level of privacy this team should have. The options are:  
 /// **For a non-nested team:**  
 ///  * `secret` - only visible to organization owners and members of this team.  
@@ -5395,11 +5803,12 @@ impl ToString for TeamsCreateRequestPermission {
 pub enum TeamsCreateRequestPrivacy {
   #[serde(rename = "secret")]
   Secret,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsCreateRequestPrivacy {
   fn to_string(&self) -> String {
     match self {
@@ -5409,17 +5818,18 @@ impl ToString for TeamsCreateRequestPrivacy {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The notification setting the team has set
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamFullNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
+
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamFullNotificationSetting {
   fn to_string(&self) -> String {
     match self {
@@ -5429,17 +5839,18 @@ impl ToString for TeamFullNotificationSetting {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The level of privacy this team should have
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamFullPrivacy {
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "secret")]
   Secret,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamFullPrivacy {
   fn to_string(&self) -> String {
     match self {
@@ -5449,7 +5860,7 @@ impl ToString for TeamFullPrivacy {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:
 ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
 ///  * `notifications_disabled` - no one receives notifications.
@@ -5457,11 +5868,12 @@ impl ToString for TeamFullPrivacy {
 pub enum TeamsUpdateInOrgRequestNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
+
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsUpdateInOrgRequestNotificationSetting {
   fn to_string(&self) -> String {
     match self {
@@ -5475,19 +5887,21 @@ impl ToString for TeamsUpdateInOrgRequestNotificationSetting {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsUpdateInOrgRequestPermission {
   #[serde(rename = "pull")]
   Pull,
+
   #[serde(rename = "push")]
   Push,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsUpdateInOrgRequestPermission {
   fn to_string(&self) -> String {
     match self {
@@ -5498,7 +5912,7 @@ impl ToString for TeamsUpdateInOrgRequestPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  
 /// **For a non-nested team:**  
 ///  * `secret` - only visible to organization owners and members of this team.  
@@ -5509,11 +5923,12 @@ impl ToString for TeamsUpdateInOrgRequestPermission {
 pub enum TeamsUpdateInOrgRequestPrivacy {
   #[serde(rename = "secret")]
   Secret,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsUpdateInOrgRequestPrivacy {
   fn to_string(&self) -> String {
     match self {
@@ -5523,16 +5938,17 @@ impl ToString for TeamsUpdateInOrgRequestPrivacy {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListDiscussionsInOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsListDiscussionsInOrgQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -5542,16 +5958,17 @@ impl ToString for TeamsListDiscussionsInOrgQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListDiscussionCommentsInOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsListDiscussionCommentsInOrgQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -5561,28 +5978,35 @@ impl ToString for TeamsListDiscussionCommentsInOrgQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForTeamDiscussionCommentInOrgQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsListForTeamDiscussionCommentInOrgQueryContent {
   fn to_string(&self) -> String {
     match self {
@@ -5598,29 +6022,36 @@ impl ToString for ReactionsListForTeamDiscussionCommentInOrgQueryContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// The reaction to use
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionContent {
   fn to_string(&self) -> String {
     match self {
@@ -5636,29 +6067,36 @@ impl ToString for ReactionContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForTeamDiscussionCommentInOrgRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsCreateForTeamDiscussionCommentInOrgRequestContent {
   fn to_string(&self) -> String {
     match self {
@@ -5676,28 +6114,35 @@ impl ToString for ReactionsCreateForTeamDiscussionCommentInOrgRequestContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForTeamDiscussionInOrgQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsListForTeamDiscussionInOrgQueryContent {
   fn to_string(&self) -> String {
     match self {
@@ -5713,29 +6158,36 @@ impl ToString for ReactionsListForTeamDiscussionInOrgQueryContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForTeamDiscussionInOrgRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsCreateForTeamDiscussionInOrgRequestContent {
   fn to_string(&self) -> String {
     match self {
@@ -5751,18 +6203,20 @@ impl ToString for ReactionsCreateForTeamDiscussionInOrgRequestContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListMembersInOrgQueryRole {
   #[serde(rename = "member")]
   Member,
+
   #[serde(rename = "maintainer")]
   Maintainer,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsListMembersInOrgQueryRole {
   fn to_string(&self) -> String {
     match self {
@@ -5773,17 +6227,18 @@ impl ToString for TeamsListMembersInOrgQueryRole {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The role of the user in the team.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamMembershipRole {
   #[serde(rename = "member")]
   Member,
+
   #[serde(rename = "maintainer")]
   Maintainer,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamMembershipRole {
   fn to_string(&self) -> String {
     match self {
@@ -5793,17 +6248,18 @@ impl ToString for TeamMembershipRole {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The state of the user's membership in the team.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamMembershipState {
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamMembershipState {
   fn to_string(&self) -> String {
     match self {
@@ -5813,17 +6269,18 @@ impl ToString for TeamMembershipState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The role that this user should have in the team.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsAddOrUpdateMembershipForUserInOrgRequestRole {
   #[serde(rename = "member")]
   Member,
+
   #[serde(rename = "maintainer")]
   Maintainer,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsAddOrUpdateMembershipForUserInOrgRequestRole {
   fn to_string(&self) -> String {
     match self {
@@ -5833,19 +6290,21 @@ impl ToString for TeamsAddOrUpdateMembershipForUserInOrgRequestRole {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsAddOrUpdateProjectPermissionsInOrgRequestPermission {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsAddOrUpdateProjectPermissionsInOrgRequestPermission {
   fn to_string(&self) -> String {
     match self {
@@ -5856,26 +6315,32 @@ impl ToString for TeamsAddOrUpdateProjectPermissionsInOrgRequestPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersSecurityProduct {
   #[serde(rename = "dependency_graph")]
   DependencyGraph,
+
   #[serde(rename = "dependabot_alerts")]
   DependabotAlerts,
+
   #[serde(rename = "dependabot_security_updates")]
   DependabotSecurityUpdates,
+
   #[serde(rename = "advanced_security")]
   AdvancedSecurity,
+
   #[serde(rename = "code_scanning_default_setup")]
   CodeScanningDefaultSetup,
+
   #[serde(rename = "secret_scanning")]
   SecretScanning,
+
   #[serde(rename = "secret_scanning_push_protection")]
   SecretScanningPushProtection,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersSecurityProduct {
   fn to_string(&self) -> String {
     match self {
@@ -5890,16 +6355,17 @@ impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersSecur
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersEnablement {
   #[serde(rename = "enable_all")]
   EnableAll,
+
   #[serde(rename = "disable_all")]
   DisableAll,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersEnablement {
   fn to_string(&self) -> String {
     match self {
@@ -5913,18 +6379,19 @@ impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersEnabl
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.
 /// If you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestQuerySuite {
   #[serde(rename = "default")]
   Default,
+
   #[serde(rename = "extended")]
   Extended,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestQuerySuite {
   fn to_string(&self) -> String {
     match self {
@@ -5938,18 +6405,20 @@ impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestQuerySui
   }
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsListCardsQueryArchivedState {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "archived")]
   Archived,
+
   #[serde(rename = "not_archived")]
   NotArchived,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 impl ToString for ProjectsListCardsQueryArchivedState {
   fn to_string(&self) -> String {
     match self {
@@ -5960,29 +6429,33 @@ impl ToString for ProjectsListCardsQueryArchivedState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ProjectsCreateCardRequest {
   ProjectsCreateCardRequestItem1(ProjectsCreateCardRequestItem1),
+
   ProjectsCreateCardRequestItem2(ProjectsCreateCardRequestItem2),
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// The baseline permission that all organization members have on this project
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsUpdateRequestOrganizationPermission {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
+
   #[serde(rename = "none")]
   None,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 impl ToString for ProjectsUpdateRequestOrganizationPermission {
   fn to_string(&self) -> String {
     match self {
@@ -5994,18 +6467,20 @@ impl ToString for ProjectsUpdateRequestOrganizationPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsListCollaboratorsQueryAffiliation {
   #[serde(rename = "outside")]
   Outside,
+
   #[serde(rename = "direct")]
   Direct,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 impl ToString for ProjectsListCollaboratorsQueryAffiliation {
   fn to_string(&self) -> String {
     match self {
@@ -6016,19 +6491,21 @@ impl ToString for ProjectsListCollaboratorsQueryAffiliation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// The permission to grant the collaborator.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsAddCollaboratorRequestPermission {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 impl ToString for ProjectsAddCollaboratorRequestPermission {
   fn to_string(&self) -> String {
     match self {
@@ -6039,7 +6516,7 @@ impl ToString for ProjectsAddCollaboratorRequestPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a merge commit message.
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -6049,13 +6526,15 @@ impl ToString for ProjectsAddCollaboratorRequestPermission {
 pub enum ReposUpdateRequestMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposUpdateRequestMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6066,7 +6545,7 @@ impl ToString for ReposUpdateRequestMergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a merge commit title.
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -6075,11 +6554,12 @@ impl ToString for ReposUpdateRequestMergeCommitMessage {
 pub enum ReposUpdateRequestMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposUpdateRequestMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6089,7 +6569,7 @@ impl ToString for ReposUpdateRequestMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a squash merge commit message:
 ///
 /// - `PR_BODY` - default to the pull request's body.
@@ -6099,13 +6579,15 @@ impl ToString for ReposUpdateRequestMergeCommitTitle {
 pub enum ReposUpdateRequestSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposUpdateRequestSquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -6116,7 +6598,7 @@ impl ToString for ReposUpdateRequestSquashMergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a squash merge commit title:
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -6125,11 +6607,12 @@ impl ToString for ReposUpdateRequestSquashMergeCommitMessage {
 pub enum ReposUpdateRequestSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposUpdateRequestSquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -6139,17 +6622,18 @@ impl ToString for ReposUpdateRequestSquashMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The visibility of the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateRequestVisibility {
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "private")]
   Private,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposUpdateRequestVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -6159,18 +6643,20 @@ impl ToString for ReposUpdateRequestVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsGetActionsCacheListQuerySort {
   #[serde(rename = "created_at")]
   CreatedAt,
+
   #[serde(rename = "last_accessed_at")]
   LastAccessedAt,
+
   #[serde(rename = "size_in_bytes")]
   SizeInBytes,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for ActionsGetActionsCacheListQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -6181,16 +6667,17 @@ impl ToString for ActionsGetActionsCacheListQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsGetActionsCacheListQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for ActionsGetActionsCacheListQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -6200,27 +6687,33 @@ impl ToString for ActionsGetActionsCacheListQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// The outcome of the job.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum JobConclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for JobConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -6235,25 +6728,30 @@ impl ToString for JobConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// The phase of the lifecycle that the job is currently in.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum JobStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "waiting")]
   Waiting,
+
   #[serde(rename = "requested")]
   Requested,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for JobStatus {
   fn to_string(&self) -> String {
     match self {
@@ -6267,19 +6765,21 @@ impl ToString for JobStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// The phase of the lifecycle that the job is currently in.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum JobStepsStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for JobStepsStatus {
   fn to_string(&self) -> String {
     match self {
@@ -6290,7 +6790,7 @@ impl ToString for JobStepsStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the
 /// repository.
 ///
@@ -6299,13 +6799,15 @@ impl ToString for JobStepsStatus {
 pub enum ActionsWorkflowAccessToRepositoryAccessLevel {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "user")]
   User,
+
   #[serde(rename = "organization")]
   Organization,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for ActionsWorkflowAccessToRepositoryAccessLevel {
   fn to_string(&self) -> String {
     match self {
@@ -6316,40 +6818,53 @@ impl ToString for ActionsWorkflowAccessToRepositoryAccessLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsListWorkflowRunsForRepoQueryStatus {
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "stale")]
   Stale,
+
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "requested")]
   Requested,
+
   #[serde(rename = "waiting")]
   Waiting,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for ActionsListWorkflowRunsForRepoQueryStatus {
   fn to_string(&self) -> String {
     match self {
@@ -6371,19 +6886,21 @@ impl ToString for ActionsListWorkflowRunsForRepoQueryStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Whether deployment to the environment(s) was approved or rejected or pending (with comments)
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum EnvironmentApprovalsState {
   #[serde(rename = "approved")]
   Approved,
+
   #[serde(rename = "rejected")]
   Rejected,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for EnvironmentApprovalsState {
   fn to_string(&self) -> String {
     match self {
@@ -6394,17 +6911,18 @@ impl ToString for EnvironmentApprovalsState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Whether to approve or reject deployment to the specified environments.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReviewCustomGatesStateRequiredState {
   #[serde(rename = "approved")]
   Approved,
+
   #[serde(rename = "rejected")]
   Rejected,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for ReviewCustomGatesStateRequiredState {
   fn to_string(&self) -> String {
     match self {
@@ -6414,24 +6932,26 @@ impl ToString for ReviewCustomGatesStateRequiredState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ActionsReviewCustomGatesForRunRequest {
   ReviewCustomGatesCommentRequired(ReviewCustomGatesCommentRequired),
+
   ReviewCustomGatesStateRequired(ReviewCustomGatesStateRequired),
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsListJobsForWorkflowRunQueryFilter {
   #[serde(rename = "latest")]
   Latest,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for ActionsListJobsForWorkflowRunQueryFilter {
   fn to_string(&self) -> String {
     match self {
@@ -6441,25 +6961,27 @@ impl ToString for ActionsListJobsForWorkflowRunQueryFilter {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum PendingDeploymentReviewersReviewer {
   /// A GitHub user.
   SimpleUser(SimpleUser),
+
   /// Groups of organization members that gives permissions on specified repositories.
   Team(Team),
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "repos"))]
 /// The type of reviewer.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentReviewerType {
   User,
+
   Team,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "repos"))]
 impl ToString for DeploymentReviewerType {
   fn to_string(&self) -> String {
     match self {
@@ -6469,17 +6991,18 @@ impl ToString for DeploymentReviewerType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Whether to approve or reject deployment to the specified environments.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsReviewPendingDeploymentsForRunRequestState {
   #[serde(rename = "approved")]
   Approved,
+
   #[serde(rename = "rejected")]
   Rejected,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for ActionsReviewPendingDeploymentsForRunRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -6489,22 +7012,26 @@ impl ToString for ActionsReviewPendingDeploymentsForRunRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowState {
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "deleted")]
   Deleted,
+
   #[serde(rename = "disabled_fork")]
   DisabledFork,
+
   #[serde(rename = "disabled_inactivity")]
   DisabledInactivity,
+
   #[serde(rename = "disabled_manually")]
   DisabledManually,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for WorkflowState {
   fn to_string(&self) -> String {
     match self {
@@ -6517,40 +7044,53 @@ impl ToString for WorkflowState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsListWorkflowRunsQueryStatus {
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "stale")]
   Stale,
+
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "requested")]
   Requested,
+
   #[serde(rename = "waiting")]
   Waiting,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 impl ToString for ActionsListWorkflowRunsQueryStatus {
   fn to_string(&self) -> String {
     match self {
@@ -6572,16 +7112,17 @@ impl ToString for ActionsListWorkflowRunsQueryStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListActivitiesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListActivitiesQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -6591,22 +7132,26 @@ impl ToString for ReposListActivitiesQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListActivitiesQueryTimePeriod {
   #[serde(rename = "day")]
   Day,
+
   #[serde(rename = "week")]
   Week,
+
   #[serde(rename = "month")]
   Month,
+
   #[serde(rename = "quarter")]
   Quarter,
+
   #[serde(rename = "year")]
   Year,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListActivitiesQueryTimePeriod {
   fn to_string(&self) -> String {
     match self {
@@ -6619,24 +7164,29 @@ impl ToString for ReposListActivitiesQueryTimePeriod {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListActivitiesQueryActivityType {
   #[serde(rename = "push")]
   Push,
+
   #[serde(rename = "force_push")]
   ForcePush,
+
   #[serde(rename = "branch_creation")]
   BranchCreation,
+
   #[serde(rename = "branch_deletion")]
   BranchDeletion,
+
   #[serde(rename = "pr_merge")]
   PrMerge,
+
   #[serde(rename = "merge_queue_merge")]
   MergeQueueMerge,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListActivitiesQueryActivityType {
   fn to_string(&self) -> String {
     match self {
@@ -6650,25 +7200,30 @@ impl ToString for ReposListActivitiesQueryActivityType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The type of the activity that was performed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActivityActivityType {
   #[serde(rename = "push")]
   Push,
+
   #[serde(rename = "force_push")]
   ForcePush,
+
   #[serde(rename = "branch_deletion")]
   BranchDeletion,
+
   #[serde(rename = "branch_creation")]
   BranchCreation,
+
   #[serde(rename = "pr_merge")]
   PrMerge,
+
   #[serde(rename = "merge_queue_merge")]
   MergeQueueMerge,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ActivityActivityType {
   fn to_string(&self) -> String {
     match self {
@@ -6682,26 +7237,32 @@ impl ToString for ActivityActivityType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DiffEntryStatus {
   #[serde(rename = "added")]
   Added,
+
   #[serde(rename = "removed")]
   Removed,
+
   #[serde(rename = "modified")]
   Modified,
+
   #[serde(rename = "renamed")]
   Renamed,
+
   #[serde(rename = "copied")]
   Copied,
+
   #[serde(rename = "changed")]
   Changed,
+
   #[serde(rename = "unchanged")]
   Unchanged,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 impl ToString for DiffEntryStatus {
   fn to_string(&self) -> String {
     match self {
@@ -6716,110 +7277,122 @@ impl ToString for DiffEntryStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposAddStatusCheckContextsRequest {
   ReposAddStatusCheckContextsRequestItem1(ReposAddStatusCheckContextsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposSetStatusCheckContextsRequest {
   ReposSetStatusCheckContextsRequestItem1(ReposSetStatusCheckContextsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposRemoveStatusCheckContextsRequest {
   ReposRemoveStatusCheckContextsRequestItem1(ReposRemoveStatusCheckContextsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposAddAppAccessRestrictionsRequest {
   ReposAddAppAccessRestrictionsRequestItem1(ReposAddAppAccessRestrictionsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposSetAppAccessRestrictionsRequest {
   ReposSetAppAccessRestrictionsRequestItem1(ReposSetAppAccessRestrictionsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposRemoveAppAccessRestrictionsRequest {
   ReposRemoveAppAccessRestrictionsRequestItem1(ReposRemoveAppAccessRestrictionsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposAddTeamAccessRestrictionsRequest {
   ReposAddTeamAccessRestrictionsRequestItem1(ReposAddTeamAccessRestrictionsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposSetTeamAccessRestrictionsRequest {
   ReposSetTeamAccessRestrictionsRequestItem1(ReposSetTeamAccessRestrictionsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposRemoveTeamAccessRestrictionsRequest {
   ReposRemoveTeamAccessRestrictionsRequestItem1(ReposRemoveTeamAccessRestrictionsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposAddUserAccessRestrictionsRequest {
   ReposAddUserAccessRestrictionsRequestItem1(ReposAddUserAccessRestrictionsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposSetUserAccessRestrictionsRequest {
   ReposSetUserAccessRestrictionsRequestItem1(ReposSetUserAccessRestrictionsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposRemoveUserAccessRestrictionsRequest {
   ReposRemoveUserAccessRestrictionsRequestItem1(ReposRemoveUserAccessRestrictionsRequestItem1),
+
   StringArray(StringArray),
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksCreateRequestItem1Status {
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for ChecksCreateRequestItem1Status {
   fn to_string(&self) -> String {
     match self {
@@ -6828,16 +7401,17 @@ impl ToString for ChecksCreateRequestItem1Status {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksCreateRequestItem2Status {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for ChecksCreateRequestItem2Status {
   fn to_string(&self) -> String {
     match self {
@@ -6847,34 +7421,41 @@ impl ToString for ChecksCreateRequestItem2Status {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ChecksCreateRequest {
   ChecksCreateRequestItem1(ChecksCreateRequestItem1),
+
   ChecksCreateRequestItem2(ChecksCreateRequestItem2),
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckRunConclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for CheckRunConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -6889,25 +7470,30 @@ impl ToString for CheckRunConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 /// The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckRunStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "waiting")]
   Waiting,
+
   #[serde(rename = "requested")]
   Requested,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for CheckRunStatus {
   fn to_string(&self) -> String {
     match self {
@@ -6921,14 +7507,14 @@ impl ToString for CheckRunStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksUpdateRequestItem1Status {
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for ChecksUpdateRequestItem1Status {
   fn to_string(&self) -> String {
     match self {
@@ -6937,16 +7523,17 @@ impl ToString for ChecksUpdateRequestItem1Status {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksUpdateRequestItem2Status {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for ChecksUpdateRequestItem2Status {
   fn to_string(&self) -> String {
     match self {
@@ -6956,38 +7543,47 @@ impl ToString for ChecksUpdateRequestItem2Status {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ChecksUpdateRequest {
   ChecksUpdateRequestItem1(ChecksUpdateRequestItem1),
+
   ChecksUpdateRequestItem2(ChecksUpdateRequestItem2),
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "neutral")]
   Neutral,
+
   #[serde(rename = "cancelled")]
   Cancelled,
+
   #[serde(rename = "skipped")]
   Skipped,
+
   #[serde(rename = "timed_out")]
   TimedOut,
+
   #[serde(rename = "action_required")]
   ActionRequired,
+
   #[serde(rename = "startup_failure")]
   StartupFailure,
+
   #[serde(rename = "stale")]
   Stale,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for CheckSuiteConclusion {
   fn to_string(&self) -> String {
     match self {
@@ -7004,25 +7600,30 @@ impl ToString for CheckSuiteConclusion {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 /// The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckSuiteStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "waiting")]
   Waiting,
+
   #[serde(rename = "requested")]
   Requested,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for CheckSuiteStatus {
   fn to_string(&self) -> String {
     match self {
@@ -7036,18 +7637,20 @@ impl ToString for CheckSuiteStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksListForSuiteQueryStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for ChecksListForSuiteQueryStatus {
   fn to_string(&self) -> String {
     match self {
@@ -7058,16 +7661,17 @@ impl ToString for ChecksListForSuiteQueryStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksListForSuiteQueryFilter {
   #[serde(rename = "latest")]
   Latest,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for ChecksListForSuiteQueryFilter {
   fn to_string(&self) -> String {
     match self {
@@ -7077,16 +7681,17 @@ impl ToString for ChecksListForSuiteQueryFilter {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListAlertsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningListAlertsForRepoQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -7096,16 +7701,17 @@ impl ToString for CodeScanningListAlertsForRepoQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListAlertsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningListAlertsForRepoQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -7115,21 +7721,24 @@ impl ToString for CodeScanningListAlertsForRepoQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The security severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertRuleSecuritySeverityLevel {
   #[serde(rename = "low")]
   Low,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "critical")]
   Critical,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningAlertRuleSecuritySeverityLevel {
   fn to_string(&self) -> String {
     match self {
@@ -7141,21 +7750,24 @@ impl ToString for CodeScanningAlertRuleSecuritySeverityLevel {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "note")]
   Note,
+
   #[serde(rename = "warning")]
   Warning,
+
   #[serde(rename = "error")]
   Error,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningAlertRuleSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -7167,17 +7779,18 @@ impl ToString for CodeScanningAlertRuleSeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertSetState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "dismissed")]
   Dismissed,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningAlertSetState {
   fn to_string(&self) -> String {
     match self {
@@ -7187,16 +7800,17 @@ impl ToString for CodeScanningAlertSetState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListRecentAnalysesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningListRecentAnalysesQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -7206,14 +7820,14 @@ impl ToString for CodeScanningListRecentAnalysesQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListRecentAnalysesQuerySort {
   #[serde(rename = "created")]
   Created,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningListRecentAnalysesQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -7222,32 +7836,41 @@ impl ToString for CodeScanningListRecentAnalysesQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupLanguages {
   #[serde(rename = "c-cpp")]
   CCpp,
+
   #[serde(rename = "csharp")]
   Csharp,
+
   #[serde(rename = "go")]
   Go,
+
   #[serde(rename = "java-kotlin")]
   JavaKotlin,
+
   #[serde(rename = "javascript-typescript")]
   JavascriptTypescript,
+
   #[serde(rename = "javascript")]
   Javascript,
+
   #[serde(rename = "python")]
   Python,
+
   #[serde(rename = "ruby")]
   Ruby,
+
   #[serde(rename = "typescript")]
   Typescript,
+
   #[serde(rename = "swift")]
   Swift,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningDefaultSetupLanguages {
   fn to_string(&self) -> String {
     match self {
@@ -7267,17 +7890,18 @@ impl ToString for CodeScanningDefaultSetupLanguages {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// CodeQL query suite to be used.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupQuerySuite {
   #[serde(rename = "default")]
   Default,
+
   #[serde(rename = "extended")]
   Extended,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningDefaultSetupQuerySuite {
   fn to_string(&self) -> String {
     match self {
@@ -7287,7 +7911,7 @@ impl ToString for CodeScanningDefaultSetupQuerySuite {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The frequency of the periodic analysis.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupSchedule {
@@ -7295,7 +7919,7 @@ pub enum CodeScanningDefaultSetupSchedule {
   Weekly,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningDefaultSetupSchedule {
   fn to_string(&self) -> String {
     match self {
@@ -7304,17 +7928,18 @@ impl ToString for CodeScanningDefaultSetupSchedule {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Code scanning default setup has been configured or not.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupState {
   #[serde(rename = "configured")]
   Configured,
+
   #[serde(rename = "not-configured")]
   NotConfigured,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningDefaultSetupState {
   fn to_string(&self) -> String {
     match self {
@@ -7324,28 +7949,35 @@ impl ToString for CodeScanningDefaultSetupState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupUpdateLanguages {
   #[serde(rename = "c-cpp")]
   CCpp,
+
   #[serde(rename = "csharp")]
   Csharp,
+
   #[serde(rename = "go")]
   Go,
+
   #[serde(rename = "java-kotlin")]
   JavaKotlin,
+
   #[serde(rename = "javascript-typescript")]
   JavascriptTypescript,
+
   #[serde(rename = "python")]
   Python,
+
   #[serde(rename = "ruby")]
   Ruby,
+
   #[serde(rename = "swift")]
   Swift,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningDefaultSetupUpdateLanguages {
   fn to_string(&self) -> String {
     match self {
@@ -7363,17 +7995,18 @@ impl ToString for CodeScanningDefaultSetupUpdateLanguages {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// CodeQL query suite to be used.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupUpdateQuerySuite {
   #[serde(rename = "default")]
   Default,
+
   #[serde(rename = "extended")]
   Extended,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningDefaultSetupUpdateQuerySuite {
   fn to_string(&self) -> String {
     match self {
@@ -7383,17 +8016,18 @@ impl ToString for CodeScanningDefaultSetupUpdateQuerySuite {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The desired state of code scanning default setup.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupUpdateState {
   #[serde(rename = "configured")]
   Configured,
+
   #[serde(rename = "not-configured")]
   NotConfigured,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningDefaultSetupUpdateState {
   fn to_string(&self) -> String {
     match self {
@@ -7403,26 +8037,29 @@ impl ToString for CodeScanningDefaultSetupUpdateState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum CodeScanningUpdateDefaultSetupResponse {
   Success(EmptyObject),
+
   Accepted(CodeScanningDefaultSetupUpdateResponse),
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// `pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningSarifsStatusProcessingStatus {
   #[serde(rename = "pending")]
   Pending,
+
   #[serde(rename = "complete")]
   Complete,
+
   #[serde(rename = "failed")]
   Failed,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 impl ToString for CodeScanningSarifsStatusProcessingStatus {
   fn to_string(&self) -> String {
     match self {
@@ -7433,17 +8070,20 @@ impl ToString for CodeScanningSarifsStatusProcessingStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateWithRepoForAuthenticatedUserRequestGeo {
   EuropeWest,
+
   SoutheastAsia,
+
   UsEast,
+
   UsWest,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespacesCreateWithRepoForAuthenticatedUserRequestGeo {
   fn to_string(&self) -> String {
     match self {
@@ -7459,18 +8099,20 @@ impl ToString for CodespacesCreateWithRepoForAuthenticatedUserRequestGeo {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListCollaboratorsQueryAffiliation {
   #[serde(rename = "outside")]
   Outside,
+
   #[serde(rename = "direct")]
   Direct,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListCollaboratorsQueryAffiliation {
   fn to_string(&self) -> String {
     match self {
@@ -7481,22 +8123,26 @@ impl ToString for ReposListCollaboratorsQueryAffiliation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListCollaboratorsQueryPermission {
   #[serde(rename = "pull")]
   Pull,
+
   #[serde(rename = "triage")]
   Triage,
+
   #[serde(rename = "push")]
   Push,
+
   #[serde(rename = "maintain")]
   Maintain,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListCollaboratorsQueryPermission {
   fn to_string(&self) -> String {
     match self {
@@ -7509,23 +8155,27 @@ impl ToString for ReposListCollaboratorsQueryPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The permission associated with the invitation.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryInvitationPermissions {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
+
   #[serde(rename = "triage")]
   Triage,
+
   #[serde(rename = "maintain")]
   Maintain,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryInvitationPermissions {
   fn to_string(&self) -> String {
     match self {
@@ -7538,28 +8188,35 @@ impl ToString for RepositoryInvitationPermissions {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForCommitCommentQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsListForCommitCommentQueryContent {
   fn to_string(&self) -> String {
     match self {
@@ -7575,29 +8232,36 @@ impl ToString for ReactionsListForCommitCommentQueryContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForCommitCommentRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsCreateForCommitCommentRequestContent {
   fn to_string(&self) -> String {
     match self {
@@ -7613,19 +8277,21 @@ impl ToString for ReactionsCreateForCommitCommentRequestContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 /// The merge method to use.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum AutoMergeMergeMethod {
   #[serde(rename = "merge")]
   Merge,
+
   #[serde(rename = "squash")]
   Squash,
+
   #[serde(rename = "rebase")]
   Rebase,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 impl ToString for AutoMergeMergeMethod {
   fn to_string(&self) -> String {
     match self {
@@ -7636,18 +8302,20 @@ impl ToString for AutoMergeMergeMethod {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksListForRefQueryStatus {
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "completed")]
   Completed,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for ChecksListForRefQueryStatus {
   fn to_string(&self) -> String {
     match self {
@@ -7658,16 +8326,17 @@ impl ToString for ChecksListForRefQueryStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ChecksListForRefQueryFilter {
   #[serde(rename = "latest")]
   Latest,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 impl ToString for ChecksListForRefQueryFilter {
   fn to_string(&self) -> String {
     match self {
@@ -7677,20 +8346,23 @@ impl ToString for ChecksListForRefQueryFilter {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CommitComparisonStatus {
   #[serde(rename = "diverged")]
   Diverged,
+
   #[serde(rename = "ahead")]
   Ahead,
+
   #[serde(rename = "behind")]
   Behind,
+
   #[serde(rename = "identical")]
   Identical,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for CommitComparisonStatus {
   fn to_string(&self) -> String {
     match self {
@@ -7702,20 +8374,23 @@ impl ToString for CommitComparisonStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentDirectoryItemType {
   #[serde(rename = "dir")]
   Dir,
+
   #[serde(rename = "file")]
   File,
+
   #[serde(rename = "submodule")]
   Submodule,
+
   #[serde(rename = "symlink")]
   Symlink,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ContentDirectoryItemType {
   fn to_string(&self) -> String {
     match self {
@@ -7727,14 +8402,14 @@ impl ToString for ContentDirectoryItemType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentFileType {
   #[serde(rename = "file")]
   File,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ContentFileType {
   fn to_string(&self) -> String {
     match self {
@@ -7743,14 +8418,14 @@ impl ToString for ContentFileType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentSymlinkType {
   #[serde(rename = "symlink")]
   Symlink,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ContentSymlinkType {
   fn to_string(&self) -> String {
     match self {
@@ -7759,14 +8434,14 @@ impl ToString for ContentSymlinkType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentSubmoduleType {
   #[serde(rename = "submodule")]
   Submodule,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ContentSubmoduleType {
   fn to_string(&self) -> String {
     match self {
@@ -7775,29 +8450,33 @@ impl ToString for ContentSubmoduleType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposGetContentResponse {
   ContentDirectory(ContentDirectory),
+
   /// Content File
   ContentFile(ContentFile),
+
   /// An object describing a symlink
   ContentSymlink(ContentSymlink),
+
   /// An object describing a submodule
   ContentSubmodule(ContentSubmodule),
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForRepoQueryScope {
   #[serde(rename = "development")]
   Development,
+
   #[serde(rename = "runtime")]
   Runtime,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotListAlertsForRepoQueryScope {
   fn to_string(&self) -> String {
     match self {
@@ -7807,16 +8486,17 @@ impl ToString for DependabotListAlertsForRepoQueryScope {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotListAlertsForRepoQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -7826,16 +8506,17 @@ impl ToString for DependabotListAlertsForRepoQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotListAlertsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotListAlertsForRepoQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -7845,17 +8526,18 @@ impl ToString for DependabotListAlertsForRepoQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// The execution scope of the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertDependencyScope {
   #[serde(rename = "development")]
   Development,
+
   #[serde(rename = "runtime")]
   Runtime,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotAlertDependencyScope {
   fn to_string(&self) -> String {
     match self {
@@ -7865,23 +8547,27 @@ impl ToString for DependabotAlertDependencyScope {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// The reason that the alert was dismissed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
+
   #[serde(rename = "inaccurate")]
   Inaccurate,
+
   #[serde(rename = "no_bandwidth")]
   NoBandwidth,
+
   #[serde(rename = "not_used")]
   NotUsed,
+
   #[serde(rename = "tolerable_risk")]
   TolerableRisk,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotAlertDismissedReason {
   fn to_string(&self) -> String {
     match self {
@@ -7894,21 +8580,24 @@ impl ToString for DependabotAlertDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// The state of the Dependabot alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertState {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
+
   #[serde(rename = "dismissed")]
   Dismissed,
+
   #[serde(rename = "fixed")]
   Fixed,
+
   #[serde(rename = "open")]
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotAlertState {
   fn to_string(&self) -> String {
     match self {
@@ -7920,23 +8609,27 @@ impl ToString for DependabotAlertState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// **Required when `state` is `dismissed`.** A reason for dismissing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotUpdateAlertRequestDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
+
   #[serde(rename = "inaccurate")]
   Inaccurate,
+
   #[serde(rename = "no_bandwidth")]
   NoBandwidth,
+
   #[serde(rename = "not_used")]
   NotUsed,
+
   #[serde(rename = "tolerable_risk")]
   TolerableRisk,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotUpdateAlertRequestDismissedReason {
   fn to_string(&self) -> String {
     match self {
@@ -7949,18 +8642,19 @@ impl ToString for DependabotUpdateAlertRequestDismissedReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// The state of the Dependabot alert.
 /// A `dismissed_reason` must be provided when setting the state to `dismissed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotUpdateAlertRequestState {
   #[serde(rename = "dismissed")]
   Dismissed,
+
   #[serde(rename = "open")]
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 impl ToString for DependabotUpdateAlertRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -7970,16 +8664,17 @@ impl ToString for DependabotUpdateAlertRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependencyGraphDiffItemChangeType {
   #[serde(rename = "added")]
   Added,
+
   #[serde(rename = "removed")]
   Removed,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 impl ToString for DependencyGraphDiffItemChangeType {
   fn to_string(&self) -> String {
     match self {
@@ -7989,19 +8684,21 @@ impl ToString for DependencyGraphDiffItemChangeType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 /// Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependencyGraphDiffItemScope {
   #[serde(rename = "unknown")]
   Unknown,
+
   #[serde(rename = "runtime")]
   Runtime,
+
   #[serde(rename = "development")]
   Development,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 impl ToString for DependencyGraphDiffItemScope {
   fn to_string(&self) -> String {
     match self {
@@ -8012,34 +8709,41 @@ impl ToString for DependencyGraphDiffItemScope {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum ReposCreateDeploymentResponse {
   Created(Deployment),
+
   Accepted(ReposCreateDeploymentResponseAccepted),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The state of the status.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentStatusState {
   #[serde(rename = "error")]
   Error,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "inactive")]
   Inactive,
+
   #[serde(rename = "pending")]
   Pending,
+
   #[serde(rename = "success")]
   Success,
+
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "in_progress")]
   InProgress,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for DeploymentStatusState {
   fn to_string(&self) -> String {
     match self {
@@ -8054,27 +8758,33 @@ impl ToString for DeploymentStatusState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateDeploymentStatusRequestState {
   #[serde(rename = "error")]
   Error,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "inactive")]
   Inactive,
+
   #[serde(rename = "in_progress")]
   InProgress,
+
   #[serde(rename = "queued")]
   Queued,
+
   #[serde(rename = "pending")]
   Pending,
+
   #[serde(rename = "success")]
   Success,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateDeploymentStatusRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -8089,36 +8799,40 @@ impl ToString for ReposCreateDeploymentStatusRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum EnvironmentProtectionRulesItem2ReviewersReviewer {
   /// A GitHub user.
   SimpleUser(SimpleUser),
+
   /// Groups of organization members that gives permissions on specified repositories.
   Team(Team),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum EnvironmentProtectionRules {
   EnvironmentProtectionRulesItem1(EnvironmentProtectionRulesItem1),
+
   EnvironmentProtectionRulesItem2(EnvironmentProtectionRulesItem2),
+
   EnvironmentProtectionRulesItem3(EnvironmentProtectionRulesItem3),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Whether this rule targets a branch or tag.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentBranchPolicyType {
   #[serde(rename = "branch")]
   Branch,
+
   #[serde(rename = "tag")]
   Tag,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for DeploymentBranchPolicyType {
   fn to_string(&self) -> String {
     match self {
@@ -8128,17 +8842,18 @@ impl ToString for DeploymentBranchPolicyType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Whether this rule targets a branch or tag
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentBranchPolicyNamePatternWithTypeType {
   #[serde(rename = "branch")]
   Branch,
+
   #[serde(rename = "tag")]
   Tag,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for DeploymentBranchPolicyNamePatternWithTypeType {
   fn to_string(&self) -> String {
     match self {
@@ -8148,20 +8863,23 @@ impl ToString for DeploymentBranchPolicyNamePatternWithTypeType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForksQuerySort {
   #[serde(rename = "newest")]
   Newest,
+
   #[serde(rename = "oldest")]
   Oldest,
+
   #[serde(rename = "stargazers")]
   Stargazers,
+
   #[serde(rename = "watchers")]
   Watchers,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListForksQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -8173,19 +8891,21 @@ impl ToString for ReposListForksQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GitCreateTagRequestType {
   #[serde(rename = "commit")]
   Commit,
+
   #[serde(rename = "tree")]
   Tree,
+
   #[serde(rename = "blob")]
   Blob,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 impl ToString for GitCreateTagRequestType {
   fn to_string(&self) -> String {
     match self {
@@ -8196,23 +8916,27 @@ impl ToString for GitCreateTagRequestType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GitCreateTreeRequestTreeMode {
   #[serde(rename = "100644")]
   _100644,
+
   #[serde(rename = "100755")]
   _100755,
+
   #[serde(rename = "040000")]
   _040000,
+
   #[serde(rename = "160000")]
   _160000,
+
   #[serde(rename = "120000")]
   _120000,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 impl ToString for GitCreateTreeRequestTreeMode {
   fn to_string(&self) -> String {
     match self {
@@ -8225,19 +8949,21 @@ impl ToString for GitCreateTreeRequestTreeMode {
   }
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// Either `blob`, `tree`, or `commit`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GitCreateTreeRequestTreeType {
   #[serde(rename = "blob")]
   Blob,
+
   #[serde(rename = "tree")]
   Tree,
+
   #[serde(rename = "commit")]
   Commit,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 impl ToString for GitCreateTreeRequestTreeType {
   fn to_string(&self) -> String {
     match self {
@@ -8248,44 +8974,59 @@ impl ToString for GitCreateTreeRequestTreeType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ImportStatus {
   #[serde(rename = "auth")]
   Auth,
+
   #[serde(rename = "error")]
   Error,
+
   #[serde(rename = "none")]
   None,
+
   #[serde(rename = "detecting")]
   Detecting,
+
   #[serde(rename = "choose")]
   Choose,
+
   #[serde(rename = "auth_failed")]
   AuthFailed,
+
   #[serde(rename = "importing")]
   Importing,
+
   #[serde(rename = "mapping")]
   Mapping,
+
   #[serde(rename = "waiting_to_push")]
   WaitingToPush,
+
   #[serde(rename = "pushing")]
   Pushing,
+
   #[serde(rename = "complete")]
   Complete,
+
   #[serde(rename = "setup")]
   Setup,
+
   #[serde(rename = "unknown")]
   Unknown,
+
   #[serde(rename = "detection_found_multiple")]
   DetectionFoundMultiple,
+
   #[serde(rename = "detection_found_nothing")]
   DetectionFoundNothing,
+
   #[serde(rename = "detection_needs_auth")]
   DetectionNeedsAuth,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 impl ToString for ImportStatus {
   fn to_string(&self) -> String {
     match self {
@@ -8309,21 +9050,24 @@ impl ToString for ImportStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsStartImportRequestVcs {
   #[serde(rename = "subversion")]
   Subversion,
+
   #[serde(rename = "git")]
   Git,
+
   #[serde(rename = "mercurial")]
   Mercurial,
+
   #[serde(rename = "tfvc")]
   Tfvc,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 impl ToString for MigrationsStartImportRequestVcs {
   fn to_string(&self) -> String {
     match self {
@@ -8335,21 +9079,24 @@ impl ToString for MigrationsStartImportRequestVcs {
   }
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// The type of version control system you are migrating from.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsUpdateImportRequestVcs {
   #[serde(rename = "subversion")]
   Subversion,
+
   #[serde(rename = "tfvc")]
   Tfvc,
+
   #[serde(rename = "git")]
   Git,
+
   #[serde(rename = "mercurial")]
   Mercurial,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 impl ToString for MigrationsUpdateImportRequestVcs {
   fn to_string(&self) -> String {
     match self {
@@ -8361,17 +9108,18 @@ impl ToString for MigrationsUpdateImportRequestVcs {
   }
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsSetLfsPreferenceRequestUseLfs {
   #[serde(rename = "opt_in")]
   OptIn,
+
   #[serde(rename = "opt_out")]
   OptOut,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 impl ToString for MigrationsSetLfsPreferenceRequestUseLfs {
   fn to_string(&self) -> String {
     match self {
@@ -8381,32 +9129,37 @@ impl ToString for MigrationsSetLfsPreferenceRequestUseLfs {
   }
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum InteractionsGetRestrictionsForRepoResponse {
   /// Interaction limit settings.
   InteractionLimitResponse(InteractionLimitResponse),
+
   InteractionsGetRestrictionsForRepoResponseItem2(InteractionsGetRestrictionsForRepoResponseItem2),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateInvitationRequestPermissions {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "maintain")]
   Maintain,
+
   #[serde(rename = "triage")]
   Triage,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposUpdateInvitationRequestPermissions {
   fn to_string(&self) -> String {
     match self {
@@ -8419,18 +9172,20 @@ impl ToString for ReposUpdateInvitationRequestPermissions {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForRepoQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListForRepoQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -8441,18 +9196,20 @@ impl ToString for IssuesListForRepoQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "comments")]
   Comments,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListForRepoQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -8463,16 +9220,17 @@ impl ToString for IssuesListForRepoQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListForRepoQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -8482,16 +9240,17 @@ impl ToString for IssuesListForRepoQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListCommentsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListCommentsForRepoQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -8501,16 +9260,17 @@ impl ToString for IssuesListCommentsForRepoQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListCommentsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListCommentsForRepoQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -8520,28 +9280,35 @@ impl ToString for IssuesListCommentsForRepoQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForIssueCommentQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsListForIssueCommentQueryContent {
   fn to_string(&self) -> String {
     match self {
@@ -8557,29 +9324,36 @@ impl ToString for ReactionsListForIssueCommentQueryContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForIssueCommentRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsCreateForIssueCommentRequestContent {
   fn to_string(&self) -> String {
     match self {
@@ -8595,17 +9369,18 @@ impl ToString for ReactionsCreateForIssueCommentRequestContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// The open or closed state of the issue.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesUpdateRequestState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesUpdateRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -8615,19 +9390,21 @@ impl ToString for IssuesUpdateRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// The reason for the state change. Ignored unless `state` is changed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesUpdateRequestStateReason {
   #[serde(rename = "completed")]
   Completed,
+
   #[serde(rename = "not_planned")]
   NotPlanned,
+
   #[serde(rename = "reopened")]
   Reopened,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesUpdateRequestStateReason {
   fn to_string(&self) -> String {
     match self {
@@ -8638,65 +9415,87 @@ impl ToString for IssuesUpdateRequestStateReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum IssueEventForIssue {
   /// Labeled Issue Event
   LabeledIssueEvent(LabeledIssueEvent),
+
   /// Unlabeled Issue Event
   UnlabeledIssueEvent(UnlabeledIssueEvent),
+
   /// Assigned Issue Event
   AssignedIssueEvent(AssignedIssueEvent),
+
   /// Unassigned Issue Event
   UnassignedIssueEvent(UnassignedIssueEvent),
+
   /// Milestoned Issue Event
   MilestonedIssueEvent(MilestonedIssueEvent),
+
   /// Demilestoned Issue Event
   DemilestonedIssueEvent(DemilestonedIssueEvent),
+
   /// Renamed Issue Event
   RenamedIssueEvent(RenamedIssueEvent),
+
   /// Review Requested Issue Event
   ReviewRequestedIssueEvent(ReviewRequestedIssueEvent),
+
   /// Review Request Removed Issue Event
   ReviewRequestRemovedIssueEvent(ReviewRequestRemovedIssueEvent),
+
   /// Review Dismissed Issue Event
   ReviewDismissedIssueEvent(ReviewDismissedIssueEvent),
+
   /// Locked Issue Event
   LockedIssueEvent(LockedIssueEvent),
+
   /// Added to Project Issue Event
   AddedToProjectIssueEvent(AddedToProjectIssueEvent),
+
   /// Moved Column in Project Issue Event
   MovedColumnInProjectIssueEvent(MovedColumnInProjectIssueEvent),
+
   /// Removed from Project Issue Event
   RemovedFromProjectIssueEvent(RemovedFromProjectIssueEvent),
+
   /// Converted Note to Issue Issue Event
   ConvertedNoteToIssueIssueEvent(ConvertedNoteToIssueIssueEvent),
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum IssuesAddLabelsRequest {
   IssuesAddLabelsRequestItem1(IssuesAddLabelsRequestItem1),
+
   StringArray(StringArray),
+
   IssuesAddLabelsRequestItem3(IssuesAddLabelsRequestItem3),
+
   IssuesAddLabelsRequestItem4Array(IssuesAddLabelsRequestItem4Array),
+
   String(String),
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum IssuesSetLabelsRequest {
   IssuesSetLabelsRequestItem1(IssuesSetLabelsRequestItem1),
+
   StringArray(StringArray),
+
   IssuesSetLabelsRequestItem3(IssuesSetLabelsRequestItem3),
+
   IssuesSetLabelsRequestItem4Array(IssuesSetLabelsRequestItem4Array),
+
   String(String),
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  
 ///  * `off-topic`  
 ///  * `too heated`  
@@ -8706,15 +9505,18 @@ pub enum IssuesSetLabelsRequest {
 pub enum IssuesLockRequestLockReason {
   #[serde(rename = "off-topic")]
   OffTopic,
+
   #[serde(rename = "too heated")]
   TooHeated,
+
   #[serde(rename = "resolved")]
   Resolved,
+
   #[serde(rename = "spam")]
   Spam,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesLockRequestLockReason {
   fn to_string(&self) -> String {
     match self {
@@ -8726,28 +9528,35 @@ impl ToString for IssuesLockRequestLockReason {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForIssueQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsListForIssueQueryContent {
   fn to_string(&self) -> String {
     match self {
@@ -8763,29 +9572,36 @@ impl ToString for ReactionsListForIssueQueryContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForIssueRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsCreateForIssueRequestContent {
   fn to_string(&self) -> String {
     match self {
@@ -8801,17 +9617,18 @@ impl ToString for ReactionsCreateForIssueRequestContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 /// The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentSide {
   #[serde(rename = "LEFT")]
   Left,
+
   #[serde(rename = "RIGHT")]
   Right,
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 impl ToString for PullRequestReviewCommentSide {
   fn to_string(&self) -> String {
     match self {
@@ -8821,17 +9638,18 @@ impl ToString for PullRequestReviewCommentSide {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentStartSide {
   #[serde(rename = "LEFT")]
   Left,
+
   #[serde(rename = "RIGHT")]
   Right,
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 impl ToString for PullRequestReviewCommentStartSide {
   fn to_string(&self) -> String {
     match self {
@@ -8841,17 +9659,18 @@ impl ToString for PullRequestReviewCommentStartSide {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 /// The level at which the comment is targeted, can be a diff line or a file.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestReviewCommentSubjectType {
   #[serde(rename = "line")]
   Line,
+
   #[serde(rename = "file")]
   File,
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 impl ToString for PullRequestReviewCommentSubjectType {
   fn to_string(&self) -> String {
     match self {
@@ -8861,68 +9680,91 @@ impl ToString for PullRequestReviewCommentSubjectType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum TimelineIssueEvents {
   /// Labeled Issue Event
   LabeledIssueEvent(LabeledIssueEvent),
+
   /// Unlabeled Issue Event
   UnlabeledIssueEvent(UnlabeledIssueEvent),
+
   /// Milestoned Issue Event
   MilestonedIssueEvent(MilestonedIssueEvent),
+
   /// Demilestoned Issue Event
   DemilestonedIssueEvent(DemilestonedIssueEvent),
+
   /// Renamed Issue Event
   RenamedIssueEvent(RenamedIssueEvent),
+
   /// Review Requested Issue Event
   ReviewRequestedIssueEvent(ReviewRequestedIssueEvent),
+
   /// Review Request Removed Issue Event
   ReviewRequestRemovedIssueEvent(ReviewRequestRemovedIssueEvent),
+
   /// Review Dismissed Issue Event
   ReviewDismissedIssueEvent(ReviewDismissedIssueEvent),
+
   /// Locked Issue Event
   LockedIssueEvent(LockedIssueEvent),
+
   /// Added to Project Issue Event
   AddedToProjectIssueEvent(AddedToProjectIssueEvent),
+
   /// Moved Column in Project Issue Event
   MovedColumnInProjectIssueEvent(MovedColumnInProjectIssueEvent),
+
   /// Removed from Project Issue Event
   RemovedFromProjectIssueEvent(RemovedFromProjectIssueEvent),
+
   /// Converted Note to Issue Issue Event
   ConvertedNoteToIssueIssueEvent(ConvertedNoteToIssueIssueEvent),
+
   /// Timeline Comment Event
   TimelineCommentEvent(TimelineCommentEvent),
+
   /// Timeline Cross Referenced Event
   TimelineCrossReferencedEvent(TimelineCrossReferencedEvent),
+
   /// Timeline Committed Event
   TimelineCommittedEvent(TimelineCommittedEvent),
+
   /// Timeline Reviewed Event
   TimelineReviewedEvent(TimelineReviewedEvent),
+
   /// Timeline Line Commented Event
   TimelineLineCommentedEvent(TimelineLineCommentedEvent),
+
   /// Timeline Commit Commented Event
   TimelineCommitCommentedEvent(TimelineCommitCommentedEvent),
+
   /// Timeline Assigned Issue Event
   TimelineAssignedIssueEvent(TimelineAssignedIssueEvent),
+
   /// Timeline Unassigned Issue Event
   TimelineUnassignedIssueEvent(TimelineUnassignedIssueEvent),
+
   /// State Change Issue Event
   StateChangeIssueEvent(StateChangeIssueEvent),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MergedUpstreamMergeType {
   #[serde(rename = "merge")]
   Merge,
+
   #[serde(rename = "fast-forward")]
   FastForward,
+
   #[serde(rename = "none")]
   None,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for MergedUpstreamMergeType {
   fn to_string(&self) -> String {
     match self {
@@ -8933,18 +9775,20 @@ impl ToString for MergedUpstreamMergeType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListMilestonesQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListMilestonesQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -8955,16 +9799,17 @@ impl ToString for IssuesListMilestonesQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListMilestonesQuerySort {
   #[serde(rename = "due_on")]
   DueOn,
+
   #[serde(rename = "completeness")]
   Completeness,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListMilestonesQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -8974,16 +9819,17 @@ impl ToString for IssuesListMilestonesQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListMilestonesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListMilestonesQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -8993,17 +9839,18 @@ impl ToString for IssuesListMilestonesQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// The state of the milestone. Either `open` or `closed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesCreateMilestoneRequestState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesCreateMilestoneRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -9013,17 +9860,18 @@ impl ToString for IssuesCreateMilestoneRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// The state of the milestone. Either `open` or `closed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesUpdateMilestoneRequestState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesUpdateMilestoneRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -9033,17 +9881,18 @@ impl ToString for IssuesUpdateMilestoneRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The process in which the Page will be built.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PageBuildType {
   #[serde(rename = "legacy")]
   Legacy,
+
   #[serde(rename = "workflow")]
   Workflow,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for PageBuildType {
   fn to_string(&self) -> String {
     match self {
@@ -9053,36 +9902,47 @@ impl ToString for PageBuildType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PagesHttpsCertificateState {
   #[serde(rename = "new")]
   New,
+
   #[serde(rename = "authorization_created")]
   AuthorizationCreated,
+
   #[serde(rename = "authorization_pending")]
   AuthorizationPending,
+
   #[serde(rename = "authorized")]
   Authorized,
+
   #[serde(rename = "authorization_revoked")]
   AuthorizationRevoked,
+
   #[serde(rename = "issued")]
   Issued,
+
   #[serde(rename = "uploaded")]
   Uploaded,
+
   #[serde(rename = "approved")]
   Approved,
+
   #[serde(rename = "errored")]
   Errored,
+
   #[serde(rename = "bad_authz")]
   BadAuthz,
+
   #[serde(rename = "destroy_pending")]
   DestroyPending,
+
   #[serde(rename = "dns_changed")]
   DnsChanged,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for PagesHttpsCertificateState {
   fn to_string(&self) -> String {
     match self {
@@ -9102,19 +9962,21 @@ impl ToString for PagesHttpsCertificateState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The state if the domain is verified
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PageProtectedDomainState {
   #[serde(rename = "pending")]
   Pending,
+
   #[serde(rename = "verified")]
   Verified,
+
   #[serde(rename = "unverified")]
   Unverified,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for PageProtectedDomainState {
   fn to_string(&self) -> String {
     match self {
@@ -9125,19 +9987,21 @@ impl ToString for PageProtectedDomainState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The status of the most recent build of the Page.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PageStatus {
   #[serde(rename = "built")]
   Built,
+
   #[serde(rename = "building")]
   Building,
+
   #[serde(rename = "errored")]
   Errored,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for PageStatus {
   fn to_string(&self) -> String {
     match self {
@@ -9148,35 +10012,45 @@ impl ToString for PageStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The current status of the deployment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PagesDeploymentStatusStatus {
   #[serde(rename = "deployment_in_progress")]
   DeploymentInProgress,
+
   #[serde(rename = "syncing_files")]
   SyncingFiles,
+
   #[serde(rename = "finished_file_sync")]
   FinishedFileSync,
+
   #[serde(rename = "updating_pages")]
   UpdatingPages,
+
   #[serde(rename = "purging_cdn")]
   PurgingCdn,
+
   #[serde(rename = "deployment_cancelled")]
   DeploymentCancelled,
+
   #[serde(rename = "deployment_failed")]
   DeploymentFailed,
+
   #[serde(rename = "deployment_content_failed")]
   DeploymentContentFailed,
+
   #[serde(rename = "deployment_attempt_error")]
   DeploymentAttemptError,
+
   #[serde(rename = "deployment_lost")]
   DeploymentLost,
+
   #[serde(rename = "succeed")]
   Succeed,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for PagesDeploymentStatusStatus {
   fn to_string(&self) -> String {
     match self {
@@ -9197,25 +10071,28 @@ impl ToString for PagesDeploymentStatusStatus {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum ReposGetPagesHealthCheckResponse {
   Success(PagesHealthCheck),
+
   Accepted(EmptyObject),
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsListForRepoQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 impl ToString for ProjectsListForRepoQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -9226,18 +10103,20 @@ impl ToString for ProjectsListForRepoQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsListQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -9248,20 +10127,23 @@ impl ToString for PullsListQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "popularity")]
   Popularity,
+
   #[serde(rename = "long-running")]
   LongRunning,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsListQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -9273,16 +10155,17 @@ impl ToString for PullsListQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsListQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -9292,17 +10175,18 @@ impl ToString for PullsListQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// State of this Pull Request. Either `open` or `closed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -9312,18 +10196,20 @@ impl ToString for PullRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListReviewCommentsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "created_at")]
   CreatedAt,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsListReviewCommentsForRepoQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -9334,16 +10220,17 @@ impl ToString for PullsListReviewCommentsForRepoQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListReviewCommentsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsListReviewCommentsForRepoQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -9353,28 +10240,35 @@ impl ToString for PullsListReviewCommentsForRepoQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForPullRequestReviewCommentQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsListForPullRequestReviewCommentQueryContent {
   fn to_string(&self) -> String {
     match self {
@@ -9390,29 +10284,36 @@ impl ToString for ReactionsListForPullRequestReviewCommentQueryContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the pull request review comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForPullRequestReviewCommentRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsCreateForPullRequestReviewCommentRequestContent {
   fn to_string(&self) -> String {
     match self {
@@ -9428,17 +10329,18 @@ impl ToString for ReactionsCreateForPullRequestReviewCommentRequestContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// State of this Pull Request. Either `open` or `closed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsUpdateRequestState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsUpdateRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -9448,17 +10350,20 @@ impl ToString for PullsUpdateRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateWithPrForAuthenticatedUserRequestGeo {
   EuropeWest,
+
   SoutheastAsia,
+
   UsEast,
+
   UsWest,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespacesCreateWithPrForAuthenticatedUserRequestGeo {
   fn to_string(&self) -> String {
     match self {
@@ -9472,16 +10377,17 @@ impl ToString for CodespacesCreateWithPrForAuthenticatedUserRequestGeo {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListReviewCommentsQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsListReviewCommentsQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -9491,16 +10397,17 @@ impl ToString for PullsListReviewCommentsQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsListReviewCommentsQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsListReviewCommentsQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -9510,17 +10417,18 @@ impl ToString for PullsListReviewCommentsQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// In a split diff view, the side of the diff that the pull request's changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see "[Diff view options](https://docs.github.com/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub Help documentation.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsCreateReviewCommentRequestSide {
   #[serde(rename = "LEFT")]
   Left,
+
   #[serde(rename = "RIGHT")]
   Right,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsCreateReviewCommentRequestSide {
   fn to_string(&self) -> String {
     match self {
@@ -9530,19 +10438,21 @@ impl ToString for PullsCreateReviewCommentRequestSide {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// **Required when using multi-line comments unless using `in_reply_to`**. The `start_side` is the starting side of the diff that the comment applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation. See `side` in this table for additional context.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsCreateReviewCommentRequestStartSide {
   #[serde(rename = "LEFT")]
   Left,
+
   #[serde(rename = "RIGHT")]
   Right,
+
   #[serde(rename = "side")]
   Side,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsCreateReviewCommentRequestStartSide {
   fn to_string(&self) -> String {
     match self {
@@ -9553,17 +10463,18 @@ impl ToString for PullsCreateReviewCommentRequestStartSide {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// The level at which the comment is targeted.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsCreateReviewCommentRequestSubjectType {
   #[serde(rename = "line")]
   Line,
+
   #[serde(rename = "file")]
   File,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsCreateReviewCommentRequestSubjectType {
   fn to_string(&self) -> String {
     match self {
@@ -9573,19 +10484,21 @@ impl ToString for PullsCreateReviewCommentRequestSubjectType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// The merge method to use.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsMergeRequestMergeMethod {
   #[serde(rename = "merge")]
   Merge,
+
   #[serde(rename = "squash")]
   Squash,
+
   #[serde(rename = "rebase")]
   Rebase,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsMergeRequestMergeMethod {
   fn to_string(&self) -> String {
     match self {
@@ -9596,19 +10509,21 @@ impl ToString for PullsMergeRequestMergeMethod {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsCreateReviewRequestEvent {
   #[serde(rename = "APPROVE")]
   Approve,
+
   #[serde(rename = "REQUEST_CHANGES")]
   RequestChanges,
+
   #[serde(rename = "COMMENT")]
   Comment,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsCreateReviewRequestEvent {
   fn to_string(&self) -> String {
     match self {
@@ -9619,17 +10534,18 @@ impl ToString for PullsCreateReviewRequestEvent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReviewCommentSide {
   #[serde(rename = "LEFT")]
   Left,
+
   #[serde(rename = "RIGHT")]
   Right,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for ReviewCommentSide {
   fn to_string(&self) -> String {
     match self {
@@ -9639,17 +10555,18 @@ impl ToString for ReviewCommentSide {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReviewCommentStartSide {
   #[serde(rename = "LEFT")]
   Left,
+
   #[serde(rename = "RIGHT")]
   Right,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for ReviewCommentStartSide {
   fn to_string(&self) -> String {
     match self {
@@ -9659,14 +10576,14 @@ impl ToString for ReviewCommentStartSide {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsDismissReviewRequestEvent {
   #[serde(rename = "DISMISS")]
   Dismiss,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsDismissReviewRequestEvent {
   fn to_string(&self) -> String {
     match self {
@@ -9675,19 +10592,21 @@ impl ToString for PullsDismissReviewRequestEvent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullsSubmitReviewRequestEvent {
   #[serde(rename = "APPROVE")]
   Approve,
+
   #[serde(rename = "REQUEST_CHANGES")]
   RequestChanges,
+
   #[serde(rename = "COMMENT")]
   Comment,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 impl ToString for PullsSubmitReviewRequestEvent {
   fn to_string(&self) -> String {
     match self {
@@ -9698,17 +10617,18 @@ impl ToString for PullsSubmitReviewRequestEvent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// State of the release asset.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReleaseAssetState {
   #[serde(rename = "uploaded")]
   Uploaded,
+
   #[serde(rename = "open")]
   Open,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReleaseAssetState {
   fn to_string(&self) -> String {
     match self {
@@ -9718,19 +10638,21 @@ impl ToString for ReleaseAssetState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateReleaseRequestMakeLatest {
   #[serde(rename = "true")]
   True,
+
   #[serde(rename = "false")]
   False,
+
   #[serde(rename = "legacy")]
   Legacy,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateReleaseRequestMakeLatest {
   fn to_string(&self) -> String {
     match self {
@@ -9741,19 +10663,21 @@ impl ToString for ReposCreateReleaseRequestMakeLatest {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateReleaseRequestMakeLatest {
   #[serde(rename = "true")]
   True,
+
   #[serde(rename = "false")]
   False,
+
   #[serde(rename = "legacy")]
   Legacy,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposUpdateReleaseRequestMakeLatest {
   fn to_string(&self) -> String {
     match self {
@@ -9764,24 +10688,29 @@ impl ToString for ReposUpdateReleaseRequestMakeLatest {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForReleaseQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsListForReleaseQueryContent {
   fn to_string(&self) -> String {
     match self {
@@ -9795,25 +10724,30 @@ impl ToString for ReactionsListForReleaseQueryContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForReleaseRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsCreateForReleaseRequestContent {
   fn to_string(&self) -> String {
     match self {
@@ -9827,15 +10761,16 @@ impl ToString for ReactionsCreateForReleaseRequestContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The type of source for the ruleset that includes this rule.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRulesetInfoRulesetSourceType {
   Repository,
+
   Organization,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for RepositoryRuleRulesetInfoRulesetSourceType {
   fn to_string(&self) -> String {
     match self {
@@ -9845,188 +10780,218 @@ impl ToString for RepositoryRuleRulesetInfoRulesetSourceType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem1 {
   /// Only allow users with bypass permission to create matching refs.
   RepositoryRuleCreation(RepositoryRuleCreation),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem2 {
   /// Only allow users with bypass permission to update matching refs.
   RepositoryRuleUpdate(RepositoryRuleUpdate),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem3 {
   /// Only allow users with bypass permissions to delete matching refs.
   RepositoryRuleDeletion(RepositoryRuleDeletion),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem4 {
   /// Prevent merge commits from being pushed to matching refs.
   RepositoryRuleRequiredLinearHistory(RepositoryRuleRequiredLinearHistory),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem5 {
   /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
   RepositoryRuleRequiredDeployments(RepositoryRuleRequiredDeployments),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem6 {
   /// Commits pushed to matching refs must have verified signatures.
   RepositoryRuleRequiredSignatures(RepositoryRuleRequiredSignatures),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem7 {
   /// Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
   RepositoryRulePullRequest(RepositoryRulePullRequest),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem8 {
   /// Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
   RepositoryRuleRequiredStatusChecks(RepositoryRuleRequiredStatusChecks),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem9 {
   /// Prevent users with push access from force pushing to refs.
   RepositoryRuleNonFastForward(RepositoryRuleNonFastForward),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem10 {
   /// Parameters to be used for the commit_message_pattern rule
   RepositoryRuleCommitMessagePattern(RepositoryRuleCommitMessagePattern),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem11 {
   /// Parameters to be used for the commit_author_email_pattern rule
   RepositoryRuleCommitAuthorEmailPattern(RepositoryRuleCommitAuthorEmailPattern),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem12 {
   /// Parameters to be used for the committer_email_pattern rule
   RepositoryRuleCommitterEmailPattern(RepositoryRuleCommitterEmailPattern),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem13 {
   /// Parameters to be used for the branch_name_pattern rule
   RepositoryRuleBranchNamePattern(RepositoryRuleBranchNamePattern),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem14 {
   /// Parameters to be used for the tag_name_pattern rule
   RepositoryRuleTagNamePattern(RepositoryRuleTagNamePattern),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailedItem15 {
   /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
   RepositoryRuleWorkflows(RepositoryRuleWorkflows),
+
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum RepositoryRuleDetailed {
   RepositoryRuleDetailedItem1(RepositoryRuleDetailedItem1),
+
   RepositoryRuleDetailedItem2(RepositoryRuleDetailedItem2),
+
   RepositoryRuleDetailedItem3(RepositoryRuleDetailedItem3),
+
   RepositoryRuleDetailedItem4(RepositoryRuleDetailedItem4),
+
   RepositoryRuleDetailedItem5(RepositoryRuleDetailedItem5),
+
   RepositoryRuleDetailedItem6(RepositoryRuleDetailedItem6),
+
   RepositoryRuleDetailedItem7(RepositoryRuleDetailedItem7),
+
   RepositoryRuleDetailedItem8(RepositoryRuleDetailedItem8),
+
   RepositoryRuleDetailedItem9(RepositoryRuleDetailedItem9),
+
   RepositoryRuleDetailedItem10(RepositoryRuleDetailedItem10),
+
   RepositoryRuleDetailedItem11(RepositoryRuleDetailedItem11),
+
   RepositoryRuleDetailedItem12(RepositoryRuleDetailedItem12),
+
   RepositoryRuleDetailedItem13(RepositoryRuleDetailedItem13),
+
   RepositoryRuleDetailedItem14(RepositoryRuleDetailedItem14),
+
   RepositoryRuleDetailedItem15(RepositoryRuleDetailedItem15),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The target of the ruleset.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateRepoRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
+
   #[serde(rename = "tag")]
   Tag,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateRepoRulesetRequestTarget {
   fn to_string(&self) -> String {
     match self {
@@ -10036,20 +11001,23 @@ impl ToString for ReposCreateRepoRulesetRequestTarget {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetRepoRuleSuitesQueryTimePeriod {
   #[serde(rename = "hour")]
   Hour,
+
   #[serde(rename = "day")]
   Day,
+
   #[serde(rename = "week")]
   Week,
+
   #[serde(rename = "month")]
   Month,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposGetRepoRuleSuitesQueryTimePeriod {
   fn to_string(&self) -> String {
     match self {
@@ -10061,20 +11029,23 @@ impl ToString for ReposGetRepoRuleSuitesQueryTimePeriod {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetRepoRuleSuitesQueryRuleSuiteResult {
   #[serde(rename = "pass")]
   Pass,
+
   #[serde(rename = "fail")]
   Fail,
+
   #[serde(rename = "bypass")]
   Bypass,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposGetRepoRuleSuitesQueryRuleSuiteResult {
   fn to_string(&self) -> String {
     match self {
@@ -10086,17 +11057,18 @@ impl ToString for ReposGetRepoRuleSuitesQueryRuleSuiteResult {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The target of the ruleset.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposUpdateRepoRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
+
   #[serde(rename = "tag")]
   Tag,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposUpdateRepoRulesetRequestTarget {
   fn to_string(&self) -> String {
     match self {
@@ -10106,16 +11078,17 @@ impl ToString for ReposUpdateRepoRulesetRequestTarget {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForRepoQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "resolved")]
   Resolved,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningListAlertsForRepoQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -10125,16 +11098,17 @@ impl ToString for SecretScanningListAlertsForRepoQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningListAlertsForRepoQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -10144,16 +11118,17 @@ impl ToString for SecretScanningListAlertsForRepoQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningListAlertsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningListAlertsForRepoQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -10163,19 +11138,21 @@ impl ToString for SecretScanningListAlertsForRepoQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// The token status as of the latest validity check.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertValidity {
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "inactive")]
   Inactive,
+
   #[serde(rename = "unknown")]
   Unknown,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningAlertValidity {
   fn to_string(&self) -> String {
     match self {
@@ -10186,71 +11163,95 @@ impl ToString for SecretScanningAlertValidity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum SecretScanningLocationDetails {
   /// Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.
   SecretScanningLocationCommit(SecretScanningLocationCommit),
+
   /// Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki.
   SecretScanningLocationWikiCommit(SecretScanningLocationWikiCommit),
+
   /// Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.
   SecretScanningLocationIssueTitle(SecretScanningLocationIssueTitle),
+
   /// Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.
   SecretScanningLocationIssueBody(SecretScanningLocationIssueBody),
+
   /// Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.
   SecretScanningLocationIssueComment(SecretScanningLocationIssueComment),
+
   /// Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion.
   SecretScanningLocationDiscussionTitle(SecretScanningLocationDiscussionTitle),
+
   /// Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
   SecretScanningLocationDiscussionBody(SecretScanningLocationDiscussionBody),
+
   /// Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion.
   SecretScanningLocationDiscussionComment(SecretScanningLocationDiscussionComment),
+
   /// Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request.
   SecretScanningLocationPullRequestTitle(SecretScanningLocationPullRequestTitle),
+
   /// Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request.
   SecretScanningLocationPullRequestBody(SecretScanningLocationPullRequestBody),
+
   /// Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request.
   SecretScanningLocationPullRequestComment(SecretScanningLocationPullRequestComment),
+
   /// Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request.
   SecretScanningLocationPullRequestReview(SecretScanningLocationPullRequestReview),
+
   /// Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request.
   SecretScanningLocationPullRequestReviewComment(SecretScanningLocationPullRequestReviewComment),
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningLocationType {
   #[serde(rename = "commit")]
   Commit,
+
   #[serde(rename = "wiki_commit")]
   WikiCommit,
+
   #[serde(rename = "issue_title")]
   IssueTitle,
+
   #[serde(rename = "issue_body")]
   IssueBody,
+
   #[serde(rename = "issue_comment")]
   IssueComment,
+
   #[serde(rename = "discussion_title")]
   DiscussionTitle,
+
   #[serde(rename = "discussion_body")]
   DiscussionBody,
+
   #[serde(rename = "discussion_comment")]
   DiscussionComment,
+
   #[serde(rename = "pull_request_title")]
   PullRequestTitle,
+
   #[serde(rename = "pull_request_body")]
   PullRequestBody,
+
   #[serde(rename = "pull_request_comment")]
   PullRequestComment,
+
   #[serde(rename = "pull_request_review")]
   PullRequestReview,
+
   #[serde(rename = "pull_request_review_comment")]
   PullRequestReviewComment,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 impl ToString for SecretScanningLocationType {
   fn to_string(&self) -> String {
     match self {
@@ -10273,16 +11274,17 @@ impl ToString for SecretScanningLocationType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListRepositoryAdvisoriesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -10292,18 +11294,20 @@ impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListRepositoryAdvisoriesQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "published")]
   Published,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -10314,20 +11318,23 @@ impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListRepositoryAdvisoriesQueryState {
   #[serde(rename = "triage")]
   Triage,
+
   #[serde(rename = "draft")]
   Draft,
+
   #[serde(rename = "published")]
   Published,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -10339,21 +11346,24 @@ impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryCreateSeverity {
   #[serde(rename = "critical")]
   Critical,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "low")]
   Low,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for RepositoryAdvisoryCreateSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -10365,21 +11375,24 @@ impl ToString for RepositoryAdvisoryCreateSeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PrivateVulnerabilityReportCreateSeverity {
   #[serde(rename = "critical")]
   Critical,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "low")]
   Low,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for PrivateVulnerabilityReportCreateSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -10391,21 +11404,24 @@ impl ToString for PrivateVulnerabilityReportCreateSeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryUpdateSeverity {
   #[serde(rename = "critical")]
   Critical,
+
   #[serde(rename = "high")]
   High,
+
   #[serde(rename = "medium")]
   Medium,
+
   #[serde(rename = "low")]
   Low,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for RepositoryAdvisoryUpdateSeverity {
   fn to_string(&self) -> String {
     match self {
@@ -10417,19 +11433,21 @@ impl ToString for RepositoryAdvisoryUpdateSeverity {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The state of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryAdvisoryUpdateState {
   #[serde(rename = "published")]
   Published,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "draft")]
   Draft,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 impl ToString for RepositoryAdvisoryUpdateState {
   fn to_string(&self) -> String {
     match self {
@@ -10440,29 +11458,33 @@ impl ToString for RepositoryAdvisoryUpdateState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ActivityListStargazersForRepoResponse {
   SimpleUserArray(SimpleUserArray),
+
   StargazerArray(StargazerArray),
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The state of the status.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposCreateCommitStatusRequestState {
   #[serde(rename = "error")]
   Error,
+
   #[serde(rename = "failure")]
   Failure,
+
   #[serde(rename = "pending")]
   Pending,
+
   #[serde(rename = "success")]
   Success,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateCommitStatusRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -10474,16 +11496,17 @@ impl ToString for ReposCreateCommitStatusRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetClonesQueryPer {
   #[serde(rename = "day")]
   Day,
+
   #[serde(rename = "week")]
   Week,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposGetClonesQueryPer {
   fn to_string(&self) -> String {
     match self {
@@ -10493,16 +11516,17 @@ impl ToString for ReposGetClonesQueryPer {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposGetViewsQueryPer {
   #[serde(rename = "day")]
   Day,
+
   #[serde(rename = "week")]
   Week,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposGetViewsQueryPer {
   fn to_string(&self) -> String {
     match self {
@@ -10512,14 +11536,14 @@ impl ToString for ReposGetViewsQueryPer {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchCodeQuerySort {
   #[serde(rename = "indexed")]
   Indexed,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchCodeQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -10528,16 +11552,17 @@ impl ToString for SearchCodeQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchCodeQueryOrder {
   #[serde(rename = "desc")]
   Desc,
+
   #[serde(rename = "asc")]
   Asc,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchCodeQueryOrder {
   fn to_string(&self) -> String {
     match self {
@@ -10547,16 +11572,17 @@ impl ToString for SearchCodeQueryOrder {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchCommitsQuerySort {
   #[serde(rename = "author-date")]
   AuthorDate,
+
   #[serde(rename = "committer-date")]
   CommitterDate,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchCommitsQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -10566,16 +11592,17 @@ impl ToString for SearchCommitsQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchCommitsQueryOrder {
   #[serde(rename = "desc")]
   Desc,
+
   #[serde(rename = "asc")]
   Asc,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchCommitsQueryOrder {
   fn to_string(&self) -> String {
     match self {
@@ -10585,34 +11612,44 @@ impl ToString for SearchCommitsQueryOrder {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchIssuesAndPullRequestsQuerySort {
   #[serde(rename = "comments")]
   Comments,
+
   #[serde(rename = "reactions")]
   Reactions,
+
   #[serde(rename = "reactions-+1")]
   ReactionsMinusPlusOne,
+
   #[serde(rename = "reactions--1")]
   ReactionsMinusMinusOne,
+
   #[serde(rename = "reactions-smile")]
   ReactionsSmile,
+
   #[serde(rename = "reactions-thinking_face")]
   ReactionsThinkingFace,
+
   #[serde(rename = "reactions-heart")]
   ReactionsHeart,
+
   #[serde(rename = "reactions-tada")]
   ReactionsTada,
+
   #[serde(rename = "interactions")]
   Interactions,
+
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchIssuesAndPullRequestsQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -10633,16 +11670,17 @@ impl ToString for SearchIssuesAndPullRequestsQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchIssuesAndPullRequestsQueryOrder {
   #[serde(rename = "desc")]
   Desc,
+
   #[serde(rename = "asc")]
   Asc,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchIssuesAndPullRequestsQueryOrder {
   fn to_string(&self) -> String {
     match self {
@@ -10652,16 +11690,17 @@ impl ToString for SearchIssuesAndPullRequestsQueryOrder {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchLabelsQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchLabelsQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -10671,16 +11710,17 @@ impl ToString for SearchLabelsQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchLabelsQueryOrder {
   #[serde(rename = "desc")]
   Desc,
+
   #[serde(rename = "asc")]
   Asc,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchLabelsQueryOrder {
   fn to_string(&self) -> String {
     match self {
@@ -10690,20 +11730,23 @@ impl ToString for SearchLabelsQueryOrder {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchReposQuerySort {
   #[serde(rename = "stars")]
   Stars,
+
   #[serde(rename = "forks")]
   Forks,
+
   #[serde(rename = "help-wanted-issues")]
   HelpWantedIssues,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchReposQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -10715,16 +11758,17 @@ impl ToString for SearchReposQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchReposQueryOrder {
   #[serde(rename = "desc")]
   Desc,
+
   #[serde(rename = "asc")]
   Asc,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchReposQueryOrder {
   fn to_string(&self) -> String {
     match self {
@@ -10734,18 +11778,20 @@ impl ToString for SearchReposQueryOrder {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchUsersQuerySort {
   #[serde(rename = "followers")]
   Followers,
+
   #[serde(rename = "repositories")]
   Repositories,
+
   #[serde(rename = "joined")]
   Joined,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchUsersQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -10756,16 +11802,17 @@ impl ToString for SearchUsersQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SearchUsersQueryOrder {
   #[serde(rename = "desc")]
   Desc,
+
   #[serde(rename = "asc")]
   Asc,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 impl ToString for SearchUsersQueryOrder {
   fn to_string(&self) -> String {
     match self {
@@ -10775,7 +11822,7 @@ impl ToString for SearchUsersQueryOrder {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:
 ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
 ///  * `notifications_disabled` - no one receives notifications.
@@ -10783,11 +11830,12 @@ impl ToString for SearchUsersQueryOrder {
 pub enum TeamsUpdateLegacyRequestNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
+
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsUpdateLegacyRequestNotificationSetting {
   fn to_string(&self) -> String {
     match self {
@@ -10801,19 +11849,21 @@ impl ToString for TeamsUpdateLegacyRequestNotificationSetting {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsUpdateLegacyRequestPermission {
   #[serde(rename = "pull")]
   Pull,
+
   #[serde(rename = "push")]
   Push,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsUpdateLegacyRequestPermission {
   fn to_string(&self) -> String {
     match self {
@@ -10824,7 +11874,7 @@ impl ToString for TeamsUpdateLegacyRequestPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  
 /// **For a non-nested team:**  
 ///  * `secret` - only visible to organization owners and members of this team.  
@@ -10835,11 +11885,12 @@ impl ToString for TeamsUpdateLegacyRequestPermission {
 pub enum TeamsUpdateLegacyRequestPrivacy {
   #[serde(rename = "secret")]
   Secret,
+
   #[serde(rename = "closed")]
   Closed,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsUpdateLegacyRequestPrivacy {
   fn to_string(&self) -> String {
     match self {
@@ -10849,16 +11900,17 @@ impl ToString for TeamsUpdateLegacyRequestPrivacy {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListDiscussionsLegacyQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsListDiscussionsLegacyQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -10868,16 +11920,17 @@ impl ToString for TeamsListDiscussionsLegacyQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListDiscussionCommentsLegacyQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsListDiscussionCommentsLegacyQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -10887,28 +11940,35 @@ impl ToString for TeamsListDiscussionCommentsLegacyQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForTeamDiscussionCommentLegacyQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsListForTeamDiscussionCommentLegacyQueryContent {
   fn to_string(&self) -> String {
     match self {
@@ -10924,29 +11984,36 @@ impl ToString for ReactionsListForTeamDiscussionCommentLegacyQueryContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForTeamDiscussionCommentLegacyRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsCreateForTeamDiscussionCommentLegacyRequestContent {
   fn to_string(&self) -> String {
     match self {
@@ -10964,28 +12031,35 @@ impl ToString for ReactionsCreateForTeamDiscussionCommentLegacyRequestContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsListForTeamDiscussionLegacyQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsListForTeamDiscussionLegacyQueryContent {
   fn to_string(&self) -> String {
     match self {
@@ -11001,29 +12075,36 @@ impl ToString for ReactionsListForTeamDiscussionLegacyQueryContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReactionsCreateForTeamDiscussionLegacyRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
+
   #[serde(rename = "-1")]
   MinusOne,
+
   #[serde(rename = "laugh")]
   Laugh,
+
   #[serde(rename = "confused")]
   Confused,
+
   #[serde(rename = "heart")]
   Heart,
+
   #[serde(rename = "hooray")]
   Hooray,
+
   #[serde(rename = "rocket")]
   Rocket,
+
   #[serde(rename = "eyes")]
   Eyes,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 impl ToString for ReactionsCreateForTeamDiscussionLegacyRequestContent {
   fn to_string(&self) -> String {
     match self {
@@ -11039,18 +12120,20 @@ impl ToString for ReactionsCreateForTeamDiscussionLegacyRequestContent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsListMembersLegacyQueryRole {
   #[serde(rename = "member")]
   Member,
+
   #[serde(rename = "maintainer")]
   Maintainer,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsListMembersLegacyQueryRole {
   fn to_string(&self) -> String {
     match self {
@@ -11061,17 +12144,18 @@ impl ToString for TeamsListMembersLegacyQueryRole {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The role that this user should have in the team.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsAddOrUpdateMembershipForUserLegacyRequestRole {
   #[serde(rename = "member")]
   Member,
+
   #[serde(rename = "maintainer")]
   Maintainer,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsAddOrUpdateMembershipForUserLegacyRequestRole {
   fn to_string(&self) -> String {
     match self {
@@ -11081,19 +12165,21 @@ impl ToString for TeamsAddOrUpdateMembershipForUserLegacyRequestRole {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsAddOrUpdateProjectPermissionsLegacyRequestPermission {
   #[serde(rename = "read")]
   Read,
+
   #[serde(rename = "write")]
   Write,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsAddOrUpdateProjectPermissionsLegacyRequestPermission {
   fn to_string(&self) -> String {
     match self {
@@ -11104,19 +12190,21 @@ impl ToString for TeamsAddOrUpdateProjectPermissionsLegacyRequestPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TeamsAddOrUpdateRepoPermissionsLegacyRequestPermission {
   #[serde(rename = "pull")]
   Pull,
+
   #[serde(rename = "push")]
   Push,
+
   #[serde(rename = "admin")]
   Admin,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 impl ToString for TeamsAddOrUpdateRepoPermissionsLegacyRequestPermission {
   fn to_string(&self) -> String {
     match self {
@@ -11127,27 +12215,31 @@ impl ToString for TeamsAddOrUpdateRepoPermissionsLegacyRequestPermission {
   }
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum UsersGetAuthenticatedResponse {
   /// Private User
   PrivateUser(PrivateUser),
+
   /// Public User
   PublicUser(PublicUser),
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateForAuthenticatedUserRequestItem1Geo {
   EuropeWest,
+
   SoutheastAsia,
+
   UsEast,
+
   UsWest,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespacesCreateForAuthenticatedUserRequestItem1Geo {
   fn to_string(&self) -> String {
     match self {
@@ -11161,17 +12253,20 @@ impl ToString for CodespacesCreateForAuthenticatedUserRequestItem1Geo {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateForAuthenticatedUserRequestItem2Geo {
   EuropeWest,
+
   SoutheastAsia,
+
   UsEast,
+
   UsWest,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespacesCreateForAuthenticatedUserRequestItem2Geo {
   fn to_string(&self) -> String {
     match self {
@@ -11185,31 +12280,34 @@ impl ToString for CodespacesCreateForAuthenticatedUserRequestItem2Geo {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum CodespacesCreateForAuthenticatedUserRequest {
   CodespacesCreateForAuthenticatedUserRequestItem1(
     CodespacesCreateForAuthenticatedUserRequestItem1,
   ),
+
   CodespacesCreateForAuthenticatedUserRequestItem2(
     CodespacesCreateForAuthenticatedUserRequestItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// The type of repositories in the organization that the secret is visible to
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesSecretVisibility {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "selected")]
   Selected,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespacesSecretVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -11220,17 +12318,20 @@ impl ToString for CodespacesSecretVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// The initally assigned location of a new codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceWithFullRepositoryLocation {
   EastUs,
+
   SouthEastAsia,
+
   WestEurope,
+
   WestUs2,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespaceWithFullRepositoryLocation {
   fn to_string(&self) -> String {
     match self {
@@ -11242,30 +12343,46 @@ impl ToString for CodespaceWithFullRepositoryLocation {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// State of this codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceWithFullRepositoryState {
   Unknown,
+
   Created,
+
   Queued,
+
   Provisioning,
+
   Available,
+
   Awaiting,
+
   Unavailable,
+
   Deleted,
+
   Moved,
+
   Shutdown,
+
   Archived,
+
   Starting,
+
   ShuttingDown,
+
   Failed,
+
   Exporting,
+
   Updating,
+
   Rebuilding,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 impl ToString for CodespaceWithFullRepositoryState {
   fn to_string(&self) -> String {
     match self {
@@ -11290,17 +12407,18 @@ impl ToString for CodespaceWithFullRepositoryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Denotes whether an email is publicly visible.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility {
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "private")]
   Private,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 impl ToString for UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -11314,16 +12432,18 @@ impl ToString for UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestVisib
   }
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum UsersAddEmailForAuthenticatedUserRequest {
   UsersAddEmailForAuthenticatedUserRequestItem1(UsersAddEmailForAuthenticatedUserRequestItem1),
+
   StringArray(StringArray),
+
   String(String),
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum UsersDeleteEmailForAuthenticatedUserRequest {
@@ -11331,39 +12451,47 @@ pub enum UsersDeleteEmailForAuthenticatedUserRequest {
   UsersDeleteEmailForAuthenticatedUserRequestItem1(
     UsersDeleteEmailForAuthenticatedUserRequestItem1,
   ),
+
   StringArray(StringArray),
+
   String(String),
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum InteractionsGetRestrictionsForAuthenticatedUserResponse {
   /// Interaction limit settings.
   InteractionLimitResponse(InteractionLimitResponse),
+
   InteractionsGetRestrictionsForAuthenticatedUserResponseItem2(
     InteractionsGetRestrictionsForAuthenticatedUserResponseItem2,
   ),
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForAuthenticatedUserQueryFilter {
   #[serde(rename = "assigned")]
   Assigned,
+
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "mentioned")]
   Mentioned,
+
   #[serde(rename = "subscribed")]
   Subscribed,
+
   #[serde(rename = "repos")]
   Repos,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListForAuthenticatedUserQueryFilter {
   fn to_string(&self) -> String {
     match self {
@@ -11377,18 +12505,20 @@ impl ToString for IssuesListForAuthenticatedUserQueryFilter {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForAuthenticatedUserQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListForAuthenticatedUserQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -11399,18 +12529,20 @@ impl ToString for IssuesListForAuthenticatedUserQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForAuthenticatedUserQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "comments")]
   Comments,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListForAuthenticatedUserQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -11421,16 +12553,17 @@ impl ToString for IssuesListForAuthenticatedUserQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssuesListForAuthenticatedUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 impl ToString for IssuesListForAuthenticatedUserQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -11440,16 +12573,17 @@ impl ToString for IssuesListForAuthenticatedUserQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsListMembershipsForAuthenticatedUserQueryState {
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "pending")]
   Pending,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsListMembershipsForAuthenticatedUserQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -11459,7 +12593,7 @@ impl ToString for OrgsListMembershipsForAuthenticatedUserQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// The state that the membership should be in. Only `"active"` will be accepted.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgsUpdateMembershipForAuthenticatedUserRequestState {
@@ -11467,7 +12601,7 @@ pub enum OrgsUpdateMembershipForAuthenticatedUserRequestState {
   Active,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 impl ToString for OrgsUpdateMembershipForAuthenticatedUserRequestState {
   fn to_string(&self) -> String {
     match self {
@@ -11476,7 +12610,7 @@ impl ToString for OrgsUpdateMembershipForAuthenticatedUserRequestState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Allowed values that can be passed to the exclude param.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MigrationsStartForAuthenticatedUserRequestExclude {
@@ -11484,7 +12618,7 @@ pub enum MigrationsStartForAuthenticatedUserRequestExclude {
   Repositories,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 impl ToString for MigrationsStartForAuthenticatedUserRequestExclude {
   fn to_string(&self) -> String {
     match self {
@@ -11493,24 +12627,29 @@ impl ToString for MigrationsStartForAuthenticatedUserRequestExclude {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForAuthenticatedUserQueryPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesListPackagesForAuthenticatedUserQueryPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -11526,18 +12665,20 @@ impl ToString for PackagesListPackagesForAuthenticatedUserQueryPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForAuthenticatedUserQueryVisibility {
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "internal")]
   Internal,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesListPackagesForAuthenticatedUserQueryVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -11548,24 +12689,29 @@ impl ToString for PackagesListPackagesForAuthenticatedUserQueryVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesGetPackageForAuthenticatedUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -11583,24 +12729,29 @@ impl ToString for PackagesGetPackageForAuthenticatedUserParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesDeletePackageForAuthenticatedUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -11620,24 +12771,29 @@ impl ToString for PackagesDeletePackageForAuthenticatedUserParametersPackageType
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesRestorePackageForAuthenticatedUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -11657,24 +12813,29 @@ impl ToString for PackagesRestorePackageForAuthenticatedUserParametersPackageTyp
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString
   for PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParametersPackageType
 {
@@ -11690,16 +12851,17 @@ impl ToString
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQueryState {
   #[serde(rename = "active")]
   Active,
+
   #[serde(rename = "deleted")]
   Deleted,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -11713,24 +12875,29 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUse
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageVersionForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesGetPackageVersionForAuthenticatedUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -11754,24 +12921,29 @@ impl ToString for PackagesGetPackageVersionForAuthenticatedUserParametersPackage
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageVersionForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesDeletePackageVersionForAuthenticatedUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -11797,24 +12969,29 @@ impl ToString for PackagesDeletePackageVersionForAuthenticatedUserParametersPack
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageVersionForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesRestorePackageVersionForAuthenticatedUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -11840,18 +13017,20 @@ impl ToString for PackagesRestorePackageVersionForAuthenticatedUserParametersPac
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForAuthenticatedUserQueryVisibility {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "private")]
   Private,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListForAuthenticatedUserQueryVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -11862,22 +13041,26 @@ impl ToString for ReposListForAuthenticatedUserQueryVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForAuthenticatedUserQueryType {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "owner")]
   Owner,
+
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "member")]
   Member,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListForAuthenticatedUserQueryType {
   fn to_string(&self) -> String {
     match self {
@@ -11890,20 +13073,23 @@ impl ToString for ReposListForAuthenticatedUserQueryType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForAuthenticatedUserQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "pushed")]
   Pushed,
+
   #[serde(rename = "full_name")]
   FullName,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListForAuthenticatedUserQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -11915,16 +13101,17 @@ impl ToString for ReposListForAuthenticatedUserQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForAuthenticatedUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListForAuthenticatedUserQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -11934,7 +13121,7 @@ impl ToString for ReposListForAuthenticatedUserQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a merge commit message.
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -11944,13 +13131,15 @@ impl ToString for ReposListForAuthenticatedUserQueryDirection {
 pub enum ReposCreateForAuthenticatedUserRequestMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateForAuthenticatedUserRequestMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -11961,7 +13150,7 @@ impl ToString for ReposCreateForAuthenticatedUserRequestMergeCommitMessage {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a merge commit title.
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -11970,11 +13159,12 @@ impl ToString for ReposCreateForAuthenticatedUserRequestMergeCommitMessage {
 pub enum ReposCreateForAuthenticatedUserRequestMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateForAuthenticatedUserRequestMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -11986,7 +13176,7 @@ impl ToString for ReposCreateForAuthenticatedUserRequestMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a squash merge commit message:
 ///
 /// - `PR_BODY` - default to the pull request's body.
@@ -11996,13 +13186,15 @@ impl ToString for ReposCreateForAuthenticatedUserRequestMergeCommitTitle {
 pub enum ReposCreateForAuthenticatedUserRequestSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
+
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
+
   #[serde(rename = "BLANK")]
   Blank,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateForAuthenticatedUserRequestSquashMergeCommitMessage {
   fn to_string(&self) -> String {
     match self {
@@ -12017,7 +13209,7 @@ impl ToString for ReposCreateForAuthenticatedUserRequestSquashMergeCommitMessage
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The default value for a squash merge commit title:
 ///
 /// - `PR_TITLE` - default to the pull request's title.
@@ -12026,11 +13218,12 @@ impl ToString for ReposCreateForAuthenticatedUserRequestSquashMergeCommitMessage
 pub enum ReposCreateForAuthenticatedUserRequestSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
+
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposCreateForAuthenticatedUserRequestSquashMergeCommitTitle {
   fn to_string(&self) -> String {
     match self {
@@ -12044,16 +13237,17 @@ impl ToString for ReposCreateForAuthenticatedUserRequestSquashMergeCommitTitle {
   }
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActivityListReposStarredByAuthenticatedUserQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 impl ToString for ActivityListReposStarredByAuthenticatedUserQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -12063,16 +13257,17 @@ impl ToString for ActivityListReposStarredByAuthenticatedUserQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActivityListReposStarredByAuthenticatedUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 impl ToString for ActivityListReposStarredByAuthenticatedUserQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -12082,30 +13277,34 @@ impl ToString for ActivityListReposStarredByAuthenticatedUserQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum UsersGetByUsernameResponse {
   /// Private User
   PrivateUser(PrivateUser),
+
   /// Public User
   PublicUser(PublicUser),
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum UsersGetContextForUserQuerySubjectType {
   #[serde(rename = "organization")]
   Organization,
+
   #[serde(rename = "repository")]
   Repository,
+
   #[serde(rename = "issue")]
   Issue,
+
   #[serde(rename = "pull_request")]
   PullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 impl ToString for UsersGetContextForUserQuerySubjectType {
   fn to_string(&self) -> String {
     match self {
@@ -12117,24 +13316,29 @@ impl ToString for UsersGetContextForUserQuerySubjectType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForUserQueryPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesListPackagesForUserQueryPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -12148,18 +13352,20 @@ impl ToString for PackagesListPackagesForUserQueryPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesListPackagesForUserQueryVisibility {
   #[serde(rename = "public")]
   Public,
+
   #[serde(rename = "private")]
   Private,
+
   #[serde(rename = "internal")]
   Internal,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesListPackagesForUserQueryVisibility {
   fn to_string(&self) -> String {
     match self {
@@ -12170,24 +13376,29 @@ impl ToString for PackagesListPackagesForUserQueryVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesGetPackageForUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -12201,24 +13412,29 @@ impl ToString for PackagesGetPackageForUserParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesDeletePackageForUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -12232,24 +13448,29 @@ impl ToString for PackagesDeletePackageForUserParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesRestorePackageForUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -12263,24 +13484,29 @@ impl ToString for PackagesRestorePackageForUserParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -12306,24 +13532,29 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByUserParametersPa
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesGetPackageVersionForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesGetPackageVersionForUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -12337,24 +13568,29 @@ impl ToString for PackagesGetPackageVersionForUserParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesDeletePackageVersionForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesDeletePackageVersionForUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -12370,24 +13606,29 @@ impl ToString for PackagesDeletePackageVersionForUserParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackagesRestorePackageVersionForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
+
   #[serde(rename = "maven")]
   Maven,
+
   #[serde(rename = "rubygems")]
   Rubygems,
+
   #[serde(rename = "docker")]
   Docker,
+
   #[serde(rename = "nuget")]
   Nuget,
+
   #[serde(rename = "container")]
   Container,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 impl ToString for PackagesRestorePackageVersionForUserParametersPackageType {
   fn to_string(&self) -> String {
     match self {
@@ -12403,18 +13644,20 @@ impl ToString for PackagesRestorePackageVersionForUserParametersPackageType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsListForUserQueryState {
   #[serde(rename = "open")]
   Open,
+
   #[serde(rename = "closed")]
   Closed,
+
   #[serde(rename = "all")]
   All,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 impl ToString for ProjectsListForUserQueryState {
   fn to_string(&self) -> String {
     match self {
@@ -12425,18 +13668,20 @@ impl ToString for ProjectsListForUserQueryState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForUserQueryType {
   #[serde(rename = "all")]
   All,
+
   #[serde(rename = "owner")]
   Owner,
+
   #[serde(rename = "member")]
   Member,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListForUserQueryType {
   fn to_string(&self) -> String {
     match self {
@@ -12447,20 +13692,23 @@ impl ToString for ReposListForUserQueryType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForUserQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
+
   #[serde(rename = "pushed")]
   Pushed,
+
   #[serde(rename = "full_name")]
   FullName,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListForUserQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -12472,16 +13720,17 @@ impl ToString for ReposListForUserQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ReposListForUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 impl ToString for ReposListForUserQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -12491,16 +13740,17 @@ impl ToString for ReposListForUserQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActivityListReposStarredByUserQuerySort {
   #[serde(rename = "created")]
   Created,
+
   #[serde(rename = "updated")]
   Updated,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 impl ToString for ActivityListReposStarredByUserQuerySort {
   fn to_string(&self) -> String {
     match self {
@@ -12510,16 +13760,17 @@ impl ToString for ActivityListReposStarredByUserQuerySort {
   }
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActivityListReposStarredByUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
+
   #[serde(rename = "desc")]
   Desc,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 impl ToString for ActivityListReposStarredByUserQueryDirection {
   fn to_string(&self) -> String {
     match self {
@@ -12529,16 +13780,17 @@ impl ToString for ActivityListReposStarredByUserQueryDirection {
   }
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ActivityListReposStarredByUserResponse {
   StarredRepositoryArray(StarredRepositoryArray),
+
   RepositoryArray(RepositoryArray),
 }
 
 /// Structs definition
-#[cfg(any(feature = "full", feature = "meta",))]
+#[cfg(any(feature = "full", feature = "meta"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct Root {
@@ -12581,7 +13833,7 @@ pub struct Root {
   pub user_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// Query for `List global security advisories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12687,7 +13939,7 @@ pub struct SecurityAdvisoriesListGlobalAdvisoriesQuery {
   feature = "checks",
   feature = "pulls",
   feature = "search",
-  feature = "users",
+  feature = "users"
 ))]
 /// A GitHub user.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -12725,7 +13977,7 @@ pub struct SimpleUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GlobalAdvisoryCredits {
@@ -12734,7 +13986,7 @@ pub struct GlobalAdvisoryCredits {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GlobalAdvisoryCvss {
@@ -12748,7 +14000,7 @@ pub struct GlobalAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GlobalAdvisoryCwes {
@@ -12758,7 +14010,7 @@ pub struct GlobalAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GlobalAdvisoryIdentifiers {
@@ -12769,7 +14021,7 @@ pub struct GlobalAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12781,7 +14033,7 @@ pub struct GlobalAdvisoryVulnerabilitiesPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GlobalAdvisoryVulnerabilities {
@@ -12803,7 +14055,7 @@ pub struct GlobalAdvisoryVulnerabilities {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// A GitHub Security Advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -12884,7 +14136,7 @@ pub struct GlobalAdvisory {
   feature = "actions",
   feature = "repos",
   feature = "checks",
-  feature = "search",
+  feature = "search"
 ))]
 /// The set of permissions for the GitHub app
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -12915,7 +14167,7 @@ pub struct IntegrationPermissions {
   feature = "actions",
   feature = "repos",
   feature = "checks",
-  feature = "search",
+  feature = "search"
 ))]
 /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -12962,7 +14214,7 @@ pub struct Integration {
   pub webhook_secret: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsCreateFromManifestResponseItem2 {
@@ -12978,7 +14230,7 @@ pub struct AppsCreateFromManifestResponseItem2 {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "repos",
+  feature = "repos"
 ))]
 /// Configuration object of the webhook
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -12998,7 +14250,7 @@ pub struct WebhookConfig {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsUpdateWebhookConfigForAppRequest {
@@ -13016,7 +14268,7 @@ pub struct AppsUpdateWebhookConfigForAppRequest {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List deliveries for an app webhook`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13038,7 +14290,7 @@ pub struct AppsListWebhookDeliveriesQuery {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "repos",
+  feature = "repos"
 ))]
 /// Delivery made by a webhook, without request and response information.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13078,7 +14330,7 @@ pub struct HookDeliveryItem {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "repos",
+  feature = "repos"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13097,7 +14349,7 @@ pub struct HookDeliveryRequest {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "repos",
+  feature = "repos"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13116,7 +14368,7 @@ pub struct HookDeliveryResponse {
   feature = "full",
   feature = "apps",
   feature = "orgs",
-  feature = "repos",
+  feature = "repos"
 ))]
 /// Delivery made by a webhook.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13158,7 +14410,7 @@ pub struct HookDelivery {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List installation requests for the authenticated app`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13173,7 +14425,7 @@ pub struct AppsListInstallationRequestsForAuthenticatedAppQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 /// An enterprise on GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13203,7 +14455,7 @@ pub struct Enterprise {
   pub website_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Request to install an integration on a target
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13218,7 +14470,7 @@ pub struct IntegrationInstallationRequest {
   pub requester: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List installations for the authenticated app`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13240,7 +14492,7 @@ pub struct AppsListInstallationsQuery {
   pub outdated: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 /// The permissions granted to the user access token.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13439,7 +14691,7 @@ pub struct AppPermissions {
   pub workflows: Option<WritePermission>,
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 /// Installation
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13481,7 +14733,7 @@ pub struct Installation {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsCreateInstallationAccessTokenRequest {
@@ -13511,7 +14763,7 @@ pub struct AppsCreateInstallationAccessTokenRequest {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// License Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13542,7 +14794,7 @@ pub struct LicenseSimple {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13569,7 +14821,7 @@ pub struct RepositoryPermissions {
   feature = "pulls",
   feature = "security_advisories",
   feature = "search",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// A repository on GitHub.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -13774,7 +15026,7 @@ pub struct Repository {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Authentication token for a GitHub App installed on a user or org.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13801,7 +15053,7 @@ pub struct InstallationToken {
   pub token: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsDeleteAuthorizationRequest {
@@ -13809,7 +15061,7 @@ pub struct AppsDeleteAuthorizationRequest {
   pub access_token: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsCheckTokenRequest {
@@ -13817,7 +15069,7 @@ pub struct AppsCheckTokenRequest {
   pub access_token: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AuthorizationApp {
@@ -13826,7 +15078,7 @@ pub struct AuthorizationApp {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ScopedInstallation {
@@ -13846,7 +15098,7 @@ pub struct ScopedInstallation {
   pub single_file_paths: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// The authorization for an OAuth app, GitHub App, or a Personal Access Token.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13887,7 +15139,7 @@ pub struct Authorization {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsResetTokenRequest {
@@ -13895,7 +15147,7 @@ pub struct AppsResetTokenRequest {
   pub access_token: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsDeleteTokenRequest {
@@ -13903,7 +15155,7 @@ pub struct AppsDeleteTokenRequest {
   pub access_token: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsScopeTokenRequest {
@@ -13930,7 +15182,7 @@ pub struct AppsScopeTokenRequest {
   pub target_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// A GitHub organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13945,7 +15197,7 @@ pub struct SimpleClassroomOrganization {
   pub node_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// A GitHub Classroom classroom
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13961,7 +15213,7 @@ pub struct Classroom {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// A GitHub repository view for Classroom
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -13980,7 +15232,7 @@ pub struct SimpleClassroomRepository {
   pub private: bool,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// A GitHub Classroom assignment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14030,7 +15282,7 @@ pub struct ClassroomAssignment {
   pub type_: ClassroomAssignmentType,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// Query for `List accepted assignments for an assignment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14045,7 +15297,7 @@ pub struct ClassroomListAcceptedAssigmentsForAnAssignmentQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// A GitHub Classroom classroom
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14060,7 +15312,7 @@ pub struct SimpleClassroom {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// A GitHub Classroom assignment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14109,7 +15361,7 @@ pub struct SimpleClassroomAssignment {
   pub type_: SimpleClassroomAssignmentType,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// A GitHub user simplified for Classroom.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14120,7 +15372,7 @@ pub struct SimpleClassroomUser {
   pub login: String,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// A GitHub Classroom accepted assignment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14140,7 +15392,7 @@ pub struct ClassroomAcceptedAssignment {
   pub submitted: bool,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// Grade for a student or groups GitHub Classroom assignment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14171,7 +15423,7 @@ pub struct ClassroomAssignmentGrade {
   pub submission_timestamp: String,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// Query for `List classrooms`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14186,7 +15438,7 @@ pub struct ClassroomListClassroomsQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "classroom",))]
+#[cfg(any(feature = "full", feature = "classroom"))]
 /// Query for `List assignments for a classroom`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14214,7 +15466,7 @@ pub struct ClassroomListAssignmentsForAClassroomQuery {
   feature = "repos",
   feature = "teams",
   feature = "checks",
-  feature = "search",
+  feature = "search"
 ))]
 /// Code Of Conduct
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14231,7 +15483,7 @@ pub struct CodeOfConduct {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Query for `List Dependabot alerts for an enterprise`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14298,7 +15550,7 @@ pub struct DependabotListAlertsForEnterpriseQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Details for the vulnerable package.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14309,7 +15561,7 @@ pub struct DependabotAlertPackage {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Details for the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14332,7 +15584,7 @@ pub struct DependabotAlertWithRepositoryDependency {
   feature = "dependabot",
   feature = "secret_scanning",
   feature = "code_scanning",
-  feature = "security_advisories",
+  feature = "security_advisories"
 ))]
 /// A GitHub repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14433,7 +15685,7 @@ pub struct SimpleRepository {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Details for the advisory pertaining to the Common Vulnerability Scoring System.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14446,7 +15698,7 @@ pub struct DependabotAlertSecurityAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// A CWE weakness assigned to the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14457,7 +15709,7 @@ pub struct DependabotAlertSecurityAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// An advisory identifier.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14469,7 +15721,7 @@ pub struct DependabotAlertSecurityAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// A link to additional advisory information.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14478,7 +15730,7 @@ pub struct DependabotAlertSecurityAdvisoryReferences {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Details pertaining to the package version that patches this vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14487,7 +15739,7 @@ pub struct DependabotAlertSecurityVulnerabilityFirstPatchedVersion {
   pub identifier: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Details pertaining to one vulnerable version range for the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14503,7 +15755,7 @@ pub struct DependabotAlertSecurityVulnerability {
   pub vulnerable_version_range: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Details for the GitHub Security Advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14540,7 +15792,7 @@ pub struct DependabotAlertSecurityAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// A Dependabot alert.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14579,7 +15831,7 @@ pub struct DependabotAlertWithRepository {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Query for `List secret scanning alerts for an enterprise`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14624,7 +15876,7 @@ pub struct SecretScanningListAlertsForEnterpriseQuery {
   pub validity: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrganizationSecretScanningAlert {
@@ -14697,7 +15949,7 @@ pub struct OrganizationSecretScanningAlert {
   pub validity: Option<OrganizationSecretScanningAlertValidity>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List public events`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14712,7 +15964,7 @@ pub struct ActivityListPublicEventsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Actor
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14736,7 +15988,7 @@ pub struct Actor {
   feature = "teams",
   feature = "repos",
   feature = "pulls",
-  feature = "search",
+  feature = "search"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14755,7 +16007,7 @@ pub struct ReactionRollup {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues"))]
 /// Comments provide a way for people to collaborate on an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14791,7 +16043,7 @@ pub struct IssueComment {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssueLabelsItem2 {
@@ -14825,7 +16077,7 @@ pub struct IssueLabelsItem2 {
   feature = "issues",
   feature = "repos",
   feature = "pulls",
-  feature = "search",
+  feature = "search"
 ))]
 /// A collection of related issues and pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -14860,7 +16112,7 @@ pub struct Milestone {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuePullRequest {
@@ -14881,7 +16133,7 @@ pub struct IssuePullRequest {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "activity", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "activity", feature = "issues"))]
 /// Issues are a great way to keep track of tasks, enhancements, and bugs for your projects.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -14963,7 +16215,7 @@ pub struct Issue {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EventPayloadPages {
@@ -14987,7 +16239,7 @@ pub struct EventPayloadPages {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EventPayload {
@@ -15005,7 +16257,7 @@ pub struct EventPayload {
   pub pages: Option<Vec<EventPayloadPages>>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EventRepo {
@@ -15014,7 +16266,7 @@ pub struct EventRepo {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15036,7 +16288,7 @@ pub struct Event {
   pub type_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Hypermedia Link with Type
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15046,7 +16298,7 @@ pub struct LinkWithType {
   pub type_: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FeedLinks {
@@ -15078,7 +16330,7 @@ pub struct FeedLinks {
   pub user: LinkWithType,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Feed
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15115,7 +16367,7 @@ pub struct Feed {
   pub user_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Query for `List gists for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15134,7 +16386,7 @@ pub struct GistsListQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Base Gist
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15173,7 +16425,7 @@ pub struct BaseGist {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistsCreateRequest {
@@ -15188,7 +16440,7 @@ pub struct GistsCreateRequest {
   pub public: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Gist
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15227,7 +16479,7 @@ pub struct Gist {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "gists", feature = "users",))]
+#[cfg(any(feature = "full", feature = "gists", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PublicUserPlan {
@@ -15237,7 +16489,7 @@ pub struct PublicUserPlan {
   pub space: i64,
 }
 
-#[cfg(any(feature = "full", feature = "gists", feature = "users",))]
+#[cfg(any(feature = "full", feature = "gists", feature = "users"))]
 /// Public User
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15316,7 +16568,7 @@ pub struct PublicUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistSimpleForks {
@@ -15337,7 +16589,7 @@ pub struct GistSimpleForks {
   pub user: Option<PublicUser>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistHistoryChangeStatus {
@@ -15352,7 +16604,7 @@ pub struct GistHistoryChangeStatus {
   pub total: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Gist History
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15374,7 +16626,7 @@ pub struct GistHistory {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Gist Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15445,7 +16697,7 @@ pub struct GistSimple {
   pub user: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Query for `List public gists`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15464,7 +16716,7 @@ pub struct GistsListPublicQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Query for `List starred gists`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15483,7 +16735,7 @@ pub struct GistsListStarredQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistsUpdateRequest {
@@ -15501,7 +16753,7 @@ pub struct GistsUpdateRequest {
   pub files: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Query for `List gist comments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15516,7 +16768,7 @@ pub struct GistsListCommentsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// A comment made to a gist.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15534,7 +16786,7 @@ pub struct GistComment {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistsCreateCommentRequest {
@@ -15542,7 +16794,7 @@ pub struct GistsCreateCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistsUpdateCommentRequest {
@@ -15550,7 +16802,7 @@ pub struct GistsUpdateCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Query for `List gist commits`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15565,7 +16817,7 @@ pub struct GistsListCommitsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GistCommitChangeStatus {
@@ -15580,7 +16832,7 @@ pub struct GistCommitChangeStatus {
   pub total: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Gist Commit
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15594,7 +16846,7 @@ pub struct GistCommit {
   pub version: String,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Query for `List gist forks`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15609,7 +16861,7 @@ pub struct GistsListForksQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gitignore",))]
+#[cfg(any(feature = "full", feature = "gitignore"))]
 /// Gitignore Template
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15618,7 +16870,7 @@ pub struct GitignoreTemplate {
   pub source: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List repositories accessible to the app installation`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15633,7 +16885,7 @@ pub struct AppsListReposAccessibleToInstallationQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsListReposAccessibleToInstallationResponse {
@@ -15644,7 +16896,7 @@ pub struct AppsListReposAccessibleToInstallationResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List issues assigned to the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15695,7 +16947,7 @@ pub struct IssuesListQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "licenses",))]
+#[cfg(any(feature = "full", feature = "licenses"))]
 /// Query for `Get all commonly used licenses`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15713,7 +16965,7 @@ pub struct LicensesGetAllCommonlyUsedQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "licenses",))]
+#[cfg(any(feature = "full", feature = "licenses"))]
 /// License
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15737,7 +16989,7 @@ pub struct License {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "markdown",))]
+#[cfg(any(feature = "full", feature = "markdown"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MarkdownRenderRequest {
@@ -15753,7 +17005,7 @@ pub struct MarkdownRenderRequest {
   pub text: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Marketplace Listing Plan
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15775,7 +17027,7 @@ pub struct MarketplaceListingPlan {
   pub yearly_price_in_cents: i64,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MarketplacePurchaseMarketplacePendingChange {
@@ -15796,7 +17048,7 @@ pub struct MarketplacePurchaseMarketplacePendingChange {
   pub unit_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MarketplacePurchaseMarketplacePurchase {
@@ -15826,7 +17078,7 @@ pub struct MarketplacePurchaseMarketplacePurchase {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Marketplace Purchase
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15848,7 +17100,7 @@ pub struct MarketplacePurchase {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List plans`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15863,7 +17115,7 @@ pub struct AppsListPlansQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List accounts for a plan`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15886,7 +17138,7 @@ pub struct AppsListAccountsForPlanQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List plans (stubbed)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15901,7 +17153,7 @@ pub struct AppsListPlansStubbedQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List accounts for a plan (stubbed)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -15924,7 +17176,7 @@ pub struct AppsListAccountsForPlanStubbedQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "meta",))]
+#[cfg(any(feature = "full", feature = "meta"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ApiOverviewDomains {
@@ -15945,7 +17197,7 @@ pub struct ApiOverviewDomains {
   pub website: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "meta",))]
+#[cfg(any(feature = "full", feature = "meta"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ApiOverviewSshKeyFingerprints {
@@ -15967,7 +17219,7 @@ pub struct ApiOverviewSshKeyFingerprints {
   pub sha256_rsa: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "meta",))]
+#[cfg(any(feature = "full", feature = "meta"))]
 /// Api Overview
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16014,7 +17266,7 @@ pub struct ApiOverview {
   pub web: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List public events for a network of repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16029,7 +17281,7 @@ pub struct ActivityListPublicEventsForRepoNetworkQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List notifications for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16072,7 +17324,7 @@ pub struct ActivityListNotificationsForAuthenticatedUserQuery {
   feature = "repos",
   feature = "teams",
   feature = "checks",
-  feature = "search",
+  feature = "search"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16106,7 +17358,7 @@ pub struct MinimalRepositoryLicense {
   feature = "repos",
   feature = "teams",
   feature = "checks",
-  feature = "search",
+  feature = "search"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16141,7 +17393,7 @@ pub struct MinimalRepositoryPermissions {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16164,7 +17416,7 @@ pub struct SecurityAndAnalysisAdvancedSecurity {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 /// Enable or disable Dependabot security updates for the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16189,7 +17441,7 @@ pub struct SecurityAndAnalysisDependabotSecurityUpdates {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16212,7 +17464,7 @@ pub struct SecurityAndAnalysisSecretScanning {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16235,7 +17487,7 @@ pub struct SecurityAndAnalysisSecretScanningPushProtection {
   feature = "teams",
   feature = "checks",
   feature = "security_advisories",
-  feature = "search",
+  feature = "search"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16267,7 +17519,7 @@ pub struct SecurityAndAnalysis {
   feature = "repos",
   feature = "teams",
   feature = "checks",
-  feature = "search",
+  feature = "search"
 ))]
 /// Minimal Repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -16447,7 +17699,7 @@ pub struct MinimalRepository {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ThreadSubject {
@@ -16458,7 +17710,7 @@ pub struct ThreadSubject {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Thread
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16476,7 +17728,7 @@ pub struct Thread {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActivityMarkNotificationsAsReadRequest {
@@ -16490,7 +17742,7 @@ pub struct ActivityMarkNotificationsAsReadRequest {
   pub read: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActivityMarkNotificationsAsReadResponse {
@@ -16499,7 +17751,7 @@ pub struct ActivityMarkNotificationsAsReadResponse {
   pub message: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Thread Subscription
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16521,7 +17773,7 @@ pub struct ThreadSubscription {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActivitySetThreadSubscriptionRequest {
@@ -16531,7 +17783,7 @@ pub struct ActivitySetThreadSubscriptionRequest {
   pub ignored: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "meta",))]
+#[cfg(any(feature = "full", feature = "meta"))]
 /// Query for `Get Octocat`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16542,7 +17794,7 @@ pub struct MetaGetOctocatQuery {
   pub s: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List organizations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16557,7 +17809,7 @@ pub struct OrgsListQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// A GitHub organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16578,7 +17830,7 @@ pub struct OrganizationSimple {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrganizationFullPlan {
@@ -16593,7 +17845,7 @@ pub struct OrganizationFullPlan {
   pub space: i64,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Organization Full
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16755,7 +18007,7 @@ pub struct OrganizationFull {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsUpdateRequest {
@@ -16902,7 +18154,7 @@ pub struct OrgsUpdateRequest {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsCacheUsageOrgEnterprise {
@@ -16912,7 +18164,7 @@ pub struct ActionsCacheUsageOrgEnterprise {
   pub total_active_caches_size_in_bytes: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List repositories with GitHub Actions cache usage for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16927,7 +18179,7 @@ pub struct ActionsGetActionsCacheUsageByRepoForOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// GitHub Actions Cache Usage by repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16940,7 +18192,7 @@ pub struct ActionsCacheUsageByRepository {
   pub full_name: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsGetActionsCacheUsageByRepoForOrgResponse {
@@ -16948,7 +18200,7 @@ pub struct ActionsGetActionsCacheUsageByRepoForOrgResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "oidc",))]
+#[cfg(any(feature = "full", feature = "oidc"))]
 /// Actions OIDC Subject customization
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -16965,14 +18217,14 @@ pub struct OidcCustomSub {
   feature = "dependabot",
   feature = "checks",
   feature = "code_scanning",
-  feature = "repos",
+  feature = "repos"
 ))]
 /// An object without any properties.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EmptyObject {}
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsOrganizationPermissions {
@@ -16989,7 +18241,7 @@ pub struct ActionsOrganizationPermissions {
   pub selected_repositories_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetGithubActionsPermissionsOrganizationRequest {
@@ -16999,7 +18251,7 @@ pub struct ActionsSetGithubActionsPermissionsOrganizationRequest {
   pub enabled_repositories: EnabledRepositories,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List selected repositories enabled for GitHub Actions in an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17014,7 +18266,7 @@ pub struct ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationQuery 
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse {
@@ -17022,7 +18274,7 @@ pub struct ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRespon
   pub total_count: f64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest {
@@ -17030,7 +18282,7 @@ pub struct ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SelectedActions {
@@ -17050,7 +18302,7 @@ pub struct SelectedActions {
   pub verified_allowed: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsGetDefaultWorkflowPermissions {
@@ -17058,7 +18310,7 @@ pub struct ActionsGetDefaultWorkflowPermissions {
   pub default_workflow_permissions: ReadWritePermission,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetDefaultWorkflowPermissions {
@@ -17070,7 +18322,7 @@ pub struct ActionsSetDefaultWorkflowPermissions {
   pub default_workflow_permissions: Option<ReadWritePermission>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List self-hosted runners for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17089,7 +18341,7 @@ pub struct ActionsListSelfHostedRunnersForOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// A label for a self hosted runner
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17107,7 +18359,7 @@ pub struct RunnerLabel {
   pub type_: Option<RunnerLabelType>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// A self hosted runner
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17128,7 +18380,7 @@ pub struct Runner {
   pub status: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListSelfHostedRunnersForOrgResponse {
@@ -17136,7 +18388,7 @@ pub struct ActionsListSelfHostedRunnersForOrgResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Runner Application
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17154,7 +18406,7 @@ pub struct RunnerApplication {
   pub temp_download_token: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsGenerateRunnerJitconfigForOrgRequest {
@@ -17170,7 +18422,7 @@ pub struct ActionsGenerateRunnerJitconfigForOrgRequest {
   pub work_folder: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Authentication Token
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17195,7 +18447,7 @@ pub struct AuthenticationToken {
   pub token: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequest {
@@ -17203,7 +18455,7 @@ pub struct ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequest {
   pub labels: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequest {
@@ -17211,7 +18463,7 @@ pub struct ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequest {
   pub labels: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List organization secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17226,7 +18478,7 @@ pub struct ActionsListOrgSecretsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Secrets for GitHub Actions for an organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17242,7 +18494,7 @@ pub struct OrganizationActionsSecret {
   pub visibility: OrganizationActionsSecretVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListOrgSecretsResponse {
@@ -17250,7 +18502,7 @@ pub struct ActionsListOrgSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// The public key used for setting Actions Secrets.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17273,7 +18525,7 @@ pub struct ActionsPublicKey {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsCreateOrUpdateOrgSecretRequest {
@@ -17293,7 +18545,7 @@ pub struct ActionsCreateOrUpdateOrgSecretRequest {
   pub visibility: ActionsCreateOrUpdateOrgSecretRequestVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List selected repositories for an organization secret`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17308,7 +18560,7 @@ pub struct ActionsListSelectedReposForOrgSecretQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListSelectedReposForOrgSecretResponse {
@@ -17316,7 +18568,7 @@ pub struct ActionsListSelectedReposForOrgSecretResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetSelectedReposForOrgSecretRequest {
@@ -17324,7 +18576,7 @@ pub struct ActionsSetSelectedReposForOrgSecretRequest {
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List organization variables`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17339,7 +18591,7 @@ pub struct ActionsListOrgVariablesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Organization variable for GitHub Actions.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17359,7 +18611,7 @@ pub struct OrganizationActionsVariable {
   pub visibility: OrganizationActionsVariableVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListOrgVariablesResponse {
@@ -17367,7 +18619,7 @@ pub struct ActionsListOrgVariablesResponse {
   pub variables: Vec<OrganizationActionsVariable>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsCreateOrgVariableRequest {
@@ -17383,7 +18635,7 @@ pub struct ActionsCreateOrgVariableRequest {
   pub visibility: ActionsCreateOrgVariableRequestVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsUpdateOrgVariableRequest {
@@ -17405,7 +18657,7 @@ pub struct ActionsUpdateOrgVariableRequest {
   pub visibility: Option<ActionsUpdateOrgVariableRequestVisibility>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List selected repositories for an organization variable`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17420,7 +18672,7 @@ pub struct ActionsListSelectedReposForOrgVariableQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListSelectedReposForOrgVariableResponse {
@@ -17428,7 +18680,7 @@ pub struct ActionsListSelectedReposForOrgVariableResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetSelectedReposForOrgVariableRequest {
@@ -17436,7 +18688,7 @@ pub struct ActionsSetSelectedReposForOrgVariableRequest {
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List users blocked by an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17451,7 +18703,7 @@ pub struct OrgsListBlockedUsersQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Query for `List code scanning alerts for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17498,7 +18750,7 @@ pub struct CodeScanningListAlertsForOrgQuery {
   pub severity: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Describe a region within a file for the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17520,7 +18772,7 @@ pub struct CodeScanningAlertLocation {
   pub start_line: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAlertInstanceMessage {
@@ -17529,7 +18781,7 @@ pub struct CodeScanningAlertInstanceMessage {
   pub text: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAlertInstance {
@@ -17568,7 +18820,7 @@ pub struct CodeScanningAlertInstance {
   pub state: Option<CodeScanningAlertState>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAlertRuleSummary {
@@ -17598,7 +18850,7 @@ pub struct CodeScanningAlertRuleSummary {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAnalysisTool {
@@ -17613,7 +18865,7 @@ pub struct CodeScanningAnalysisTool {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningOrganizationAlertItems {
@@ -17647,7 +18899,7 @@ pub struct CodeScanningOrganizationAlertItems {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `List codespaces for the organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17662,7 +18914,7 @@ pub struct CodespacesListInOrganizationQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Details about the codespace's git repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17690,7 +18942,7 @@ pub struct CodespaceGitStatus {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// A description of the machine powering a codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17713,7 +18965,7 @@ pub struct CodespaceMachine {
   pub storage_in_bytes: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespaceRuntimeConstraints {
@@ -17723,7 +18975,7 @@ pub struct CodespaceRuntimeConstraints {
   pub allowed_port_privacy_settings: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// A codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17815,7 +19067,7 @@ pub struct Codespace {
   pub web_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListInOrganizationResponse {
@@ -17823,7 +19075,7 @@ pub struct CodespacesListInOrganizationResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesSetCodespacesAccessRequest {
@@ -17835,7 +19087,7 @@ pub struct CodespacesSetCodespacesAccessRequest {
   pub visibility: CodespacesSetCodespacesAccessRequestVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesSetCodespacesAccessUsersRequest {
@@ -17843,7 +19095,7 @@ pub struct CodespacesSetCodespacesAccessUsersRequest {
   pub selected_usernames: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesDeleteCodespacesAccessUsersRequest {
@@ -17851,7 +19103,7 @@ pub struct CodespacesDeleteCodespacesAccessUsersRequest {
   pub selected_usernames: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `List organization secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17866,7 +19118,7 @@ pub struct CodespacesListOrgSecretsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Secrets for a GitHub Codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17885,7 +19137,7 @@ pub struct CodespacesOrgSecret {
   pub visibility: CodespacesOrgSecretVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListOrgSecretsResponse {
@@ -17893,7 +19145,7 @@ pub struct CodespacesListOrgSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// The public key used for setting Codespaces secrets.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17916,7 +19168,7 @@ pub struct CodespacesPublicKey {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesCreateOrUpdateOrgSecretRequest {
@@ -17936,7 +19188,7 @@ pub struct CodespacesCreateOrUpdateOrgSecretRequest {
   pub visibility: CodespacesCreateOrUpdateOrgSecretRequestVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `List selected repositories for an organization secret`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17951,7 +19203,7 @@ pub struct CodespacesListSelectedReposForOrgSecretQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListSelectedReposForOrgSecretResponse {
@@ -17959,7 +19211,7 @@ pub struct CodespacesListSelectedReposForOrgSecretResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesSetSelectedReposForOrgSecretRequest {
@@ -17967,7 +19219,7 @@ pub struct CodespacesSetSelectedReposForOrgSecretRequest {
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// The breakdown of Copilot Business seats for the organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -17998,7 +19250,7 @@ pub struct CopilotSeatBreakdown {
   pub total: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// Information about the seat breakdown and policies set for an organization with a Copilot Business subscription.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18022,7 +19274,7 @@ pub struct CopilotOrganizationDetails {
   pub seat_management_setting: CopilotOrganizationDetailsSeatManagementSetting,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// Query for `List all Copilot seat assignments for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18046,7 +19298,7 @@ pub struct CopilotListCopilotSeatsQuery {
   feature = "actions",
   feature = "repos",
   feature = "issues",
-  feature = "pulls",
+  feature = "pulls"
 ))]
 /// Groups of organization members that gives permissions on specified repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -18092,7 +19344,7 @@ pub struct TeamSimple {
   feature = "actions",
   feature = "repos",
   feature = "issues",
-  feature = "pulls",
+  feature = "pulls"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18113,7 +19365,7 @@ pub struct TeamPermissions {
   feature = "actions",
   feature = "repos",
   feature = "issues",
-  feature = "pulls",
+  feature = "pulls"
 ))]
 /// Groups of organization members that gives permissions on specified repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -18145,7 +19397,7 @@ pub struct Team {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrganizationPlan {
@@ -18166,7 +19418,7 @@ pub struct OrganizationPlan {
   pub space: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// GitHub account for managing multiple users, teams, and repositories
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18228,7 +19480,7 @@ pub struct Organization {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// Information about a Copilot Business seat assignment for a user, team, or organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18259,7 +19511,7 @@ pub struct CopilotSeatDetails {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CopilotListCopilotSeatsResponse {
@@ -18272,7 +19524,7 @@ pub struct CopilotListCopilotSeatsResponse {
   pub total_seats: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CopilotAddCopilotSeatsForTeamsRequest {
@@ -18280,7 +19532,7 @@ pub struct CopilotAddCopilotSeatsForTeamsRequest {
   pub selected_teams: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// The total number of seat assignments created.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18288,7 +19540,7 @@ pub struct CopilotAddCopilotSeatsForTeamsResponse {
   pub seats_created: i64,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CopilotCancelCopilotSeatAssignmentForTeamsRequest {
@@ -18296,7 +19548,7 @@ pub struct CopilotCancelCopilotSeatAssignmentForTeamsRequest {
   pub selected_teams: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// The total number of seat assignments cancelled.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18304,7 +19556,7 @@ pub struct CopilotCancelCopilotSeatAssignmentForTeamsResponse {
   pub seats_cancelled: i64,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CopilotAddCopilotSeatsForUsersRequest {
@@ -18312,7 +19564,7 @@ pub struct CopilotAddCopilotSeatsForUsersRequest {
   pub selected_usernames: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// The total number of seat assignments created.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18320,7 +19572,7 @@ pub struct CopilotAddCopilotSeatsForUsersResponse {
   pub seats_created: i64,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CopilotCancelCopilotSeatAssignmentForUsersRequest {
@@ -18328,7 +19580,7 @@ pub struct CopilotCancelCopilotSeatAssignmentForUsersRequest {
   pub selected_usernames: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "copilot",))]
+#[cfg(any(feature = "full", feature = "copilot"))]
 /// The total number of seat assignments cancelled.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18336,7 +19588,7 @@ pub struct CopilotCancelCopilotSeatAssignmentForUsersResponse {
   pub seats_cancelled: i64,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Query for `List Dependabot alerts for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18403,7 +19655,7 @@ pub struct DependabotListAlertsForOrgQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Query for `List organization secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18418,7 +19670,7 @@ pub struct DependabotListOrgSecretsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Secrets for GitHub Dependabot for an organization.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18434,7 +19686,7 @@ pub struct OrganizationDependabotSecret {
   pub visibility: OrganizationDependabotSecretVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependabotListOrgSecretsResponse {
@@ -18442,7 +19694,7 @@ pub struct DependabotListOrgSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// The public key used for setting Dependabot Secrets.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18453,7 +19705,7 @@ pub struct DependabotPublicKey {
   pub key_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependabotCreateOrUpdateOrgSecretRequest {
@@ -18473,7 +19725,7 @@ pub struct DependabotCreateOrUpdateOrgSecretRequest {
   pub visibility: DependabotCreateOrUpdateOrgSecretRequestVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Query for `List selected repositories for an organization secret`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18488,7 +19740,7 @@ pub struct DependabotListSelectedReposForOrgSecretQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependabotListSelectedReposForOrgSecretResponse {
@@ -18496,7 +19748,7 @@ pub struct DependabotListSelectedReposForOrgSecretResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependabotSetSelectedReposForOrgSecretRequest {
@@ -18504,7 +19756,7 @@ pub struct DependabotSetSelectedReposForOrgSecretRequest {
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 /// A software package
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18529,7 +19781,7 @@ pub struct Package {
   pub visibility: PackageVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List public organization events`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18544,7 +19796,7 @@ pub struct ActivityListPublicOrgEventsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List failed organization invitations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18559,7 +19811,7 @@ pub struct OrgsListFailedInvitationsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "teams"))]
 /// Organization Invitation
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18588,7 +19840,7 @@ pub struct OrganizationInvitation {
   pub team_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List organization webhooks`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18603,7 +19855,7 @@ pub struct OrgsListWebhooksQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgHookConfig {
@@ -18621,7 +19873,7 @@ pub struct OrgHookConfig {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Org Hook
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18642,7 +19894,7 @@ pub struct OrgHook {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Key/value pairs to provide settings for this webhook.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18665,7 +19917,7 @@ pub struct OrgsCreateWebhookRequestConfig {
   pub username: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsCreateWebhookRequest {
@@ -18683,7 +19935,7 @@ pub struct OrgsCreateWebhookRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Key/value pairs to provide settings for this webhook.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18700,7 +19952,7 @@ pub struct OrgsUpdateWebhookRequestConfig {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsUpdateWebhookRequest {
@@ -18721,7 +19973,7 @@ pub struct OrgsUpdateWebhookRequest {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsUpdateWebhookConfigForOrgRequest {
@@ -18739,7 +19991,7 @@ pub struct OrgsUpdateWebhookConfigForOrgRequest {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List deliveries for an organization webhook`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18757,7 +20009,7 @@ pub struct OrgsListWebhookDeliveriesQuery {
   pub redelivery: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List app installations for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18772,7 +20024,7 @@ pub struct OrgsListAppInstallationsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsListAppInstallationsResponse {
@@ -18780,7 +20032,7 @@ pub struct OrgsListAppInstallationsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 /// Interaction limit settings.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18790,12 +20042,12 @@ pub struct InteractionLimitResponse {
   pub origin: String,
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct InteractionsGetRestrictionsForOrgResponseItem2 {}
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 /// Limit interactions to a specific type of user for a specified duration
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18806,7 +20058,7 @@ pub struct InteractionLimit {
   pub limit: InteractionGroup,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List pending organization invitations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18829,7 +20081,7 @@ pub struct OrgsListPendingInvitationsQuery {
   pub invitation_source: Option<OrgsListPendingInvitationsQueryInvitationSource>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsCreateInvitationRequest {
@@ -18855,7 +20107,7 @@ pub struct OrgsCreateInvitationRequest {
   pub team_ids: Option<Vec<i64>>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List organization invitation teams`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18870,7 +20122,7 @@ pub struct OrgsListInvitationTeamsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List organization issues assigned to the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18909,7 +20161,7 @@ pub struct IssuesListForOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List organization members`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18932,7 +20184,7 @@ pub struct OrgsListMembersQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `List codespaces for a user in organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18947,7 +20199,7 @@ pub struct CodespacesGetCodespacesForUserInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesGetCodespacesForUserInOrgResponse {
@@ -18955,14 +20207,14 @@ pub struct CodespacesGetCodespacesForUserInOrgResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgMembershipPermissions {
   pub can_create_repository: bool,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Org Membership
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -18982,7 +20234,7 @@ pub struct OrgMembership {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsSetMembershipForUserRequest {
@@ -18994,7 +20246,7 @@ pub struct OrgsSetMembershipForUserRequest {
   pub role: Option<OrgsSetMembershipForUserRequestRole>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Query for `List organization migrations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19011,7 +20263,7 @@ pub struct MigrationsListForOrgQuery {
   pub exclude: MigrationsListForOrgQueryExcludeArray,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// A migration.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19044,7 +20296,7 @@ pub struct Migration {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsStartForOrgRequest {
@@ -19084,7 +20336,7 @@ pub struct MigrationsStartForOrgRequest {
   pub repositories: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Query for `Get an organization migration status`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19093,7 +20345,7 @@ pub struct MigrationsGetStatusForOrgQuery {
   pub exclude: MigrationsGetStatusForOrgQueryExcludeArray,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Query for `List repositories in an organization migration`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19108,7 +20360,7 @@ pub struct MigrationsListReposForOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// A fine-grained permission that protects organization resources.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19117,7 +20369,7 @@ pub struct OrganizationFineGrainedPermission {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Organization roles
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19141,7 +20393,7 @@ pub struct OrganizationRole {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsListOrgRolesResponse {
@@ -19155,7 +20407,7 @@ pub struct OrgsListOrgRolesResponse {
   pub total_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsCreateCustomOrganizationRoleRequest {
@@ -19169,7 +20421,7 @@ pub struct OrgsCreateCustomOrganizationRoleRequest {
   pub permissions: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsPatchCustomOrganizationRoleRequest {
@@ -19187,7 +20439,7 @@ pub struct OrgsPatchCustomOrganizationRoleRequest {
   pub permissions: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List teams that are assigned to an organization role`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19202,7 +20454,7 @@ pub struct OrgsListOrgRoleTeamsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List users that are assigned to an organization role`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19217,7 +20469,7 @@ pub struct OrgsListOrgRoleUsersQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List outside collaborators for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19236,7 +20488,7 @@ pub struct OrgsListOutsideCollaboratorsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsConvertMemberToOutsideCollaboratorRequest {
@@ -19247,12 +20499,12 @@ pub struct OrgsConvertMemberToOutsideCollaboratorRequest {
   pub async_: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsConvertMemberToOutsideCollaboratorResponse {}
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 /// Query for `List packages for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19276,7 +20528,7 @@ pub struct PackagesListPackagesForOrganizationQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 /// Query for `Restore a package for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19287,7 +20539,7 @@ pub struct PackagesRestorePackageForOrgQuery {
   pub token: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 /// Query for `List package versions for a package owned by an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19306,14 +20558,14 @@ pub struct PackagesGetAllPackageVersionsForPackageOwnedByOrgQuery {
   pub state: Option<PackagesGetAllPackageVersionsForPackageOwnedByOrgQueryState>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ContainerMetadata {
   pub tags: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DockerMetadata {
@@ -19322,7 +20574,7 @@ pub struct DockerMetadata {
   pub tag: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PackageVersionMetadata {
@@ -19335,7 +20587,7 @@ pub struct PackageVersionMetadata {
   pub package_type: PackageVersionMetadataPackageType,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 /// A version of a software package
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19365,7 +20617,7 @@ pub struct PackageVersion {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List requests to access organization resources with fine-grained personal access tokens`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19406,7 +20658,7 @@ pub struct OrgsListPatGrantRequestsQuery {
   pub last_used_after: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Permissions requested, categorized by type of permission.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19422,7 +20674,7 @@ pub struct OrganizationProgrammaticAccessGrantRequestPermissions {
   pub repository: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Minimal representation of an organization programmatic access grant request for enumerations
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19454,7 +20706,7 @@ pub struct OrganizationProgrammaticAccessGrantRequest {
   pub token_last_used_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsReviewPatGrantRequestsInBulkRequest {
@@ -19470,7 +20722,7 @@ pub struct OrgsReviewPatGrantRequestsInBulkRequest {
   pub reason: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsReviewPatGrantRequestRequest {
@@ -19482,7 +20734,7 @@ pub struct OrgsReviewPatGrantRequestRequest {
   pub reason: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List repositories requested to be accessed by a fine-grained personal access token`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19497,7 +20749,7 @@ pub struct OrgsListPatGrantRequestRepositoriesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List fine-grained personal access tokens with access to organization resources`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19538,7 +20790,7 @@ pub struct OrgsListPatGrantsQuery {
   pub last_used_after: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Permissions requested, categorized by type of permission.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19554,7 +20806,7 @@ pub struct OrganizationProgrammaticAccessGrantPermissions {
   pub repository: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Minimal representation of an organization programmatic access grant for enumerations
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19582,7 +20834,7 @@ pub struct OrganizationProgrammaticAccessGrant {
   pub token_last_used_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsUpdatePatAccessesRequest {
@@ -19592,7 +20844,7 @@ pub struct OrgsUpdatePatAccessesRequest {
   pub pat_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsUpdatePatAccessRequest {
@@ -19600,7 +20852,7 @@ pub struct OrgsUpdatePatAccessRequest {
   pub action: OrgsUpdatePatAccessRequestAction,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List repositories a fine-grained personal access token has access to`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19615,7 +20867,7 @@ pub struct OrgsListPatGrantRepositoriesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// Query for `List organization projects`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19634,7 +20886,7 @@ pub struct ProjectsListForOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// Projects are a way to organize columns and cards of work.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19669,7 +20921,7 @@ pub struct Project {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsCreateForOrgRequest {
@@ -19681,7 +20933,7 @@ pub struct ProjectsCreateForOrgRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Custom property defined on an organization
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19713,7 +20965,7 @@ pub struct OrgCustomProperty {
   pub values_editable_by: Option<OrgCustomPropertyValuesEditableBy>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsCreateOrUpdateCustomPropertiesRequest {
@@ -19721,7 +20973,7 @@ pub struct OrgsCreateOrUpdateCustomPropertiesRequest {
   pub properties: Vec<OrgCustomProperty>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsCreateOrUpdateCustomPropertyRequest {
@@ -19746,7 +20998,7 @@ pub struct OrgsCreateOrUpdateCustomPropertyRequest {
   pub value_type: OrgsCreateOrUpdateCustomPropertyRequestValueType,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List custom property values for organization repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19765,7 +21017,7 @@ pub struct OrgsListCustomPropertiesValuesForReposQuery {
   pub repository_query: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "orgs", feature = "repos"))]
 /// Custom property name and associated value
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19776,7 +21028,7 @@ pub struct CustomPropertyValue {
   pub value: serde_json::Value,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// List of custom property values for a repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19788,7 +21040,7 @@ pub struct OrgRepoCustomPropertyValues {
   pub repository_name: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsCreateOrUpdateCustomPropertiesValuesForReposRequest {
@@ -19798,7 +21050,7 @@ pub struct OrgsCreateOrUpdateCustomPropertiesValuesForReposRequest {
   pub repository_names: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List public organization members`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19813,7 +21065,7 @@ pub struct OrgsListPublicMembersQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List organization repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -19841,7 +21093,7 @@ pub struct ReposListForOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateInOrgRequest {
@@ -19963,7 +21215,7 @@ pub struct ReposCreateInOrgRequest {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// Code of Conduct Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -19981,7 +21233,7 @@ pub struct CodeOfConductSimple {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20001,7 +21253,7 @@ pub struct FullRepositoryPermissions {
   feature = "full",
   feature = "repos",
   feature = "security_advisories",
-  feature = "codespaces",
+  feature = "codespaces"
 ))]
 /// Full Repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -20201,7 +21453,7 @@ pub struct FullRepository {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get all organization repository rulesets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20216,7 +21468,7 @@ pub struct ReposGetOrgRulesetsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinksHtml {
@@ -20226,7 +21478,7 @@ pub struct RepositoryRulesetLinksHtml {
   pub href: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinksSelf {
@@ -20236,7 +21488,7 @@ pub struct RepositoryRulesetLinksSelf {
   pub href: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetLinks {
@@ -20249,7 +21501,7 @@ pub struct RepositoryRulesetLinks {
   pub self_: Option<RepositoryRulesetLinksSelf>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// An actor that can bypass rules in a ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20262,7 +21514,7 @@ pub struct RepositoryRulesetBypassActor {
   pub bypass_mode: RepositoryRulesetBypassActorBypassMode,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsRefName {
@@ -20276,7 +21528,7 @@ pub struct RepositoryRulesetConditionsRefName {
   pub include: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Parameters for a repository ruleset ref name condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20286,7 +21538,7 @@ pub struct RepositoryRulesetConditions {
   pub ref_name: Option<RepositoryRulesetConditionsRefName>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsRepositoryNameTargetRepositoryName {
@@ -20304,7 +21556,7 @@ pub struct RepositoryRulesetConditionsRepositoryNameTargetRepositoryName {
   pub protected: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Parameters for a repository name condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20312,7 +21564,7 @@ pub struct RepositoryRulesetConditionsRepositoryNameTarget {
   pub repository_name: RepositoryRulesetConditionsRepositoryNameTargetRepositoryName,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsRepositoryIdTargetRepositoryId {
@@ -20322,7 +21574,7 @@ pub struct RepositoryRulesetConditionsRepositoryIdTargetRepositoryId {
   pub repository_ids: Option<Vec<i64>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Parameters for a repository ID condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20330,7 +21582,7 @@ pub struct RepositoryRulesetConditionsRepositoryIdTarget {
   pub repository_id: RepositoryRulesetConditionsRepositoryIdTargetRepositoryId,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Parameters for a targeting a repository property
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20341,7 +21593,7 @@ pub struct RepositoryRulesetConditionsRepositoryPropertySpec {
   pub property_values: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty {
@@ -20355,7 +21607,7 @@ pub struct RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty
   pub include: Option<Vec<RepositoryRulesetConditionsRepositoryPropertySpec>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Parameters for a repository property condition
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20363,7 +21615,7 @@ pub struct RepositoryRulesetConditionsRepositoryPropertyTarget {
   pub repository_property: RepositoryRulesetConditionsRepositoryPropertyTargetRepositoryProperty,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Only allow users with bypass permission to create matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20372,7 +21624,7 @@ pub struct RepositoryRuleCreation {
   pub type_: RepositoryRuleCreationType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleUpdateParameters {
@@ -20380,7 +21632,7 @@ pub struct RepositoryRuleUpdateParameters {
   pub update_allows_fetch_and_merge: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Only allow users with bypass permission to update matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20392,7 +21644,7 @@ pub struct RepositoryRuleUpdate {
   pub type_: RepositoryRuleUpdateType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Only allow users with bypass permissions to delete matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20401,7 +21653,7 @@ pub struct RepositoryRuleDeletion {
   pub type_: RepositoryRuleDeletionType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Prevent merge commits from being pushed to matching refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20410,7 +21662,7 @@ pub struct RepositoryRuleRequiredLinearHistory {
   pub type_: RepositoryRuleRequiredLinearHistoryType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleRequiredDeploymentsParameters {
@@ -20418,7 +21670,7 @@ pub struct RepositoryRuleRequiredDeploymentsParameters {
   pub required_deployment_environments: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20430,7 +21682,7 @@ pub struct RepositoryRuleRequiredDeployments {
   pub type_: RepositoryRuleRequiredDeploymentsType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Commits pushed to matching refs must have verified signatures.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20439,7 +21691,7 @@ pub struct RepositoryRuleRequiredSignatures {
   pub type_: RepositoryRuleRequiredSignaturesType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRulePullRequestParameters {
@@ -20455,7 +21707,7 @@ pub struct RepositoryRulePullRequestParameters {
   pub required_review_thread_resolution: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20467,7 +21719,7 @@ pub struct RepositoryRulePullRequest {
   pub type_: RepositoryRulePullRequestType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Required status check
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20480,7 +21732,7 @@ pub struct RepositoryRuleParamsStatusCheckConfiguration {
   pub integration_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleRequiredStatusChecksParameters {
@@ -20490,7 +21742,7 @@ pub struct RepositoryRuleRequiredStatusChecksParameters {
   pub strict_required_status_checks_policy: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20502,7 +21754,7 @@ pub struct RepositoryRuleRequiredStatusChecks {
   pub type_: RepositoryRuleRequiredStatusChecksType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Prevent users with push access from force pushing to refs.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20511,7 +21763,7 @@ pub struct RepositoryRuleNonFastForward {
   pub type_: RepositoryRuleNonFastForwardType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitMessagePatternParameters {
@@ -20529,7 +21781,7 @@ pub struct RepositoryRuleCommitMessagePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Parameters to be used for the commit_message_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20541,7 +21793,7 @@ pub struct RepositoryRuleCommitMessagePattern {
   pub type_: RepositoryRuleCommitMessagePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitAuthorEmailPatternParameters {
@@ -20559,7 +21811,7 @@ pub struct RepositoryRuleCommitAuthorEmailPatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Parameters to be used for the commit_author_email_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20571,7 +21823,7 @@ pub struct RepositoryRuleCommitAuthorEmailPattern {
   pub type_: RepositoryRuleCommitAuthorEmailPatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleCommitterEmailPatternParameters {
@@ -20589,7 +21841,7 @@ pub struct RepositoryRuleCommitterEmailPatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Parameters to be used for the committer_email_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20601,7 +21853,7 @@ pub struct RepositoryRuleCommitterEmailPattern {
   pub type_: RepositoryRuleCommitterEmailPatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleBranchNamePatternParameters {
@@ -20619,7 +21871,7 @@ pub struct RepositoryRuleBranchNamePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Parameters to be used for the branch_name_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20631,7 +21883,7 @@ pub struct RepositoryRuleBranchNamePattern {
   pub type_: RepositoryRuleBranchNamePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleTagNamePatternParameters {
@@ -20649,7 +21901,7 @@ pub struct RepositoryRuleTagNamePatternParameters {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Parameters to be used for the tag_name_pattern rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20661,7 +21913,7 @@ pub struct RepositoryRuleTagNamePattern {
   pub type_: RepositoryRuleTagNamePatternType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// A workflow that must run for this rule to pass
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20681,7 +21933,7 @@ pub struct RepositoryRuleParamsWorkflowFileReference {
   pub sha: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryRuleWorkflowsParameters {
@@ -20689,7 +21941,7 @@ pub struct RepositoryRuleWorkflowsParameters {
   pub workflows: Vec<RepositoryRuleParamsWorkflowFileReference>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20701,7 +21953,7 @@ pub struct RepositoryRuleWorkflows {
   pub type_: RepositoryRuleWorkflowsType,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// A set of rules to apply when specified conditions are met.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20751,7 +22003,7 @@ pub struct RepositoryRuleset {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateOrgRulesetRequest {
@@ -20775,7 +22027,7 @@ pub struct ReposCreateOrgRulesetRequest {
   pub target: Option<ReposCreateOrgRulesetRequestTarget>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List organization rule suites`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20808,7 +22060,7 @@ pub struct ReposGetOrgRuleSuitesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RuleSuitesItem {
@@ -20858,7 +22110,7 @@ pub struct RuleSuitesItem {
   pub result: Option<RuleSuitesItemResult>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RuleSuiteRuleEvaluationsRuleSource {
@@ -20877,7 +22129,7 @@ pub struct RuleSuiteRuleEvaluationsRuleSource {
   pub type_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RuleSuiteRuleEvaluations {
@@ -20902,7 +22154,7 @@ pub struct RuleSuiteRuleEvaluations {
   pub rule_type: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Response
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -20957,7 +22209,7 @@ pub struct RuleSuite {
   pub rule_evaluations: Option<Vec<RuleSuiteRuleEvaluations>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateOrgRulesetRequest {
@@ -20985,7 +22237,7 @@ pub struct ReposUpdateOrgRulesetRequest {
   pub target: Option<ReposUpdateOrgRulesetRequestTarget>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Query for `List secret scanning alerts for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21034,7 +22286,7 @@ pub struct SecretScanningListAlertsForOrgQuery {
   pub validity: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// Query for `List repository security advisories for an organization`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21065,7 +22317,7 @@ pub struct SecurityAdvisoriesListOrgRepositoryAdvisoriesQuery {
   pub state: Option<SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryState>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCredits {
@@ -21079,7 +22331,7 @@ pub struct RepositoryAdvisoryCredits {
   pub type_: Option<SecurityAdvisoryCreditTypes>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// A credit given to a user for a repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21091,7 +22343,7 @@ pub struct RepositoryAdvisoryCredit {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCvss {
@@ -21105,7 +22357,7 @@ pub struct RepositoryAdvisoryCvss {
   pub vector_string: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCwes {
@@ -21115,7 +22367,7 @@ pub struct RepositoryAdvisoryCwes {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryIdentifiers {
@@ -21126,7 +22378,7 @@ pub struct RepositoryAdvisoryIdentifiers {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisorySubmission {
@@ -21134,7 +22386,7 @@ pub struct RepositoryAdvisorySubmission {
   pub accepted: bool,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21146,7 +22398,7 @@ pub struct RepositoryAdvisoryVulnerabilityPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// A product affected by the vulnerability detailed in a repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21169,7 +22421,7 @@ pub struct RepositoryAdvisoryVulnerability {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// A repository security advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21261,7 +22513,7 @@ pub struct RepositoryAdvisory {
   pub withdrawn_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "billing",))]
+#[cfg(any(feature = "full", feature = "billing"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsBillingUsageMinutesUsedBreakdown {
@@ -21330,7 +22582,7 @@ pub struct ActionsBillingUsageMinutesUsedBreakdown {
   pub windows_8_core: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "billing",))]
+#[cfg(any(feature = "full", feature = "billing"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsBillingUsage {
@@ -21343,7 +22595,7 @@ pub struct ActionsBillingUsage {
   pub total_paid_minutes_used: i64,
 }
 
-#[cfg(any(feature = "full", feature = "billing",))]
+#[cfg(any(feature = "full", feature = "billing"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PackagesBillingUsage {
@@ -21355,7 +22607,7 @@ pub struct PackagesBillingUsage {
   pub total_paid_gigabytes_bandwidth_used: i64,
 }
 
-#[cfg(any(feature = "full", feature = "billing",))]
+#[cfg(any(feature = "full", feature = "billing"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CombinedBillingUsage {
@@ -21367,7 +22619,7 @@ pub struct CombinedBillingUsage {
   pub estimated_storage_for_month: i64,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List teams`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21382,7 +22634,7 @@ pub struct TeamsListQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsCreateRequest {
@@ -21428,7 +22680,7 @@ pub struct TeamsCreateRequest {
   pub repo_names: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamOrganizationPlan {
@@ -21443,7 +22695,7 @@ pub struct TeamOrganizationPlan {
   pub space: i64,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Team Organization
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21556,7 +22808,7 @@ pub struct TeamOrganization {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Groups of organization members that gives permissions on specified repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21599,7 +22851,7 @@ pub struct TeamFull {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsUpdateInOrgRequest {
@@ -21636,7 +22888,7 @@ pub struct TeamsUpdateInOrgRequest {
   pub privacy: Option<TeamsUpdateInOrgRequestPrivacy>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List discussions`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21659,7 +22911,7 @@ pub struct TeamsListDiscussionsInOrgQuery {
   pub pinned: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// A team discussion is a persistent record of a free-form conversation within a team.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21696,7 +22948,7 @@ pub struct TeamDiscussion {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsCreateDiscussionInOrgRequest {
@@ -21710,7 +22962,7 @@ pub struct TeamsCreateDiscussionInOrgRequest {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsUpdateDiscussionInOrgRequest {
@@ -21724,7 +22976,7 @@ pub struct TeamsUpdateDiscussionInOrgRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List discussion comments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21743,7 +22995,7 @@ pub struct TeamsListDiscussionCommentsInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// A reply to a discussion within a team.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21772,7 +23024,7 @@ pub struct TeamDiscussionComment {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsCreateDiscussionCommentInOrgRequest {
@@ -21780,7 +23032,7 @@ pub struct TeamsCreateDiscussionCommentInOrgRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsUpdateDiscussionCommentInOrgRequest {
@@ -21788,7 +23040,7 @@ pub struct TeamsUpdateDiscussionCommentInOrgRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// Query for `List reactions for a team discussion comment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21807,7 +23059,7 @@ pub struct ReactionsListForTeamDiscussionCommentInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// Reactions to conversations provide a way to help people express their feelings more simply and effectively.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21822,7 +23074,7 @@ pub struct Reaction {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForTeamDiscussionCommentInOrgRequest {
@@ -21830,7 +23082,7 @@ pub struct ReactionsCreateForTeamDiscussionCommentInOrgRequest {
   pub content: ReactionsCreateForTeamDiscussionCommentInOrgRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// Query for `List reactions for a team discussion`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21849,7 +23101,7 @@ pub struct ReactionsListForTeamDiscussionInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForTeamDiscussionInOrgRequest {
@@ -21857,7 +23109,7 @@ pub struct ReactionsCreateForTeamDiscussionInOrgRequest {
   pub content: ReactionsCreateForTeamDiscussionInOrgRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List pending team invitations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21872,7 +23124,7 @@ pub struct TeamsListPendingInvitationsInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List team members`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21891,7 +23143,7 @@ pub struct TeamsListMembersInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Team Membership
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21903,7 +23155,7 @@ pub struct TeamMembership {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateMembershipForUserInOrgRequest {
@@ -21913,7 +23165,7 @@ pub struct TeamsAddOrUpdateMembershipForUserInOrgRequest {
   pub role: Option<TeamsAddOrUpdateMembershipForUserInOrgRequestRole>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List team projects`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21928,7 +23180,7 @@ pub struct TeamsListProjectsInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamProjectPermissions {
@@ -21937,7 +23189,7 @@ pub struct TeamProjectPermissions {
   pub write: bool,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// A team's access to a project.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21968,7 +23220,7 @@ pub struct TeamProject {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateProjectPermissionsInOrgRequest {
@@ -21978,7 +23230,7 @@ pub struct TeamsAddOrUpdateProjectPermissionsInOrgRequest {
   pub permission: Option<TeamsAddOrUpdateProjectPermissionsInOrgRequestPermission>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List team repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -21993,7 +23245,7 @@ pub struct TeamsListReposInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamRepositoryPermissions {
@@ -22008,7 +23260,7 @@ pub struct TeamRepositoryPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// A team's access to a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22173,7 +23425,7 @@ pub struct TeamRepository {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateRepoPermissionsInOrgRequest {
@@ -22183,7 +23435,7 @@ pub struct TeamsAddOrUpdateRepoPermissionsInOrgRequest {
   pub permission: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List child teams`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22198,7 +23450,7 @@ pub struct TeamsListChildInOrgQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest {
@@ -22209,7 +23461,7 @@ pub struct OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest {
   pub query_suite: Option<OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestQuerySuite>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// Project cards represent a scope of work.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22243,7 +23495,7 @@ pub struct ProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsUpdateCardRequest {
@@ -22257,7 +23509,7 @@ pub struct ProjectsUpdateCardRequest {
   pub note: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsMoveCardRequest {
@@ -22269,12 +23521,12 @@ pub struct ProjectsMoveCardRequest {
   pub position: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsMoveCardResponse {}
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// Project columns contain cards of work.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22291,7 +23543,7 @@ pub struct ProjectColumn {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsUpdateColumnRequest {
@@ -22299,7 +23551,7 @@ pub struct ProjectsUpdateColumnRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// Query for `List project cards`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22318,7 +23570,7 @@ pub struct ProjectsListCardsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsCreateCardRequestItem1 {
@@ -22328,7 +23580,7 @@ pub struct ProjectsCreateCardRequestItem1 {
   pub note: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsCreateCardRequestItem2 {
@@ -22338,7 +23590,7 @@ pub struct ProjectsCreateCardRequestItem2 {
   pub content_type: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsMoveColumnRequest {
@@ -22346,12 +23598,12 @@ pub struct ProjectsMoveColumnRequest {
   pub position: String,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsMoveColumnResponse {}
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsUpdateRequest {
@@ -22377,7 +23629,7 @@ pub struct ProjectsUpdateRequest {
   pub state: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// Query for `List project collaborators`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22396,7 +23648,7 @@ pub struct ProjectsListCollaboratorsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsAddCollaboratorRequest {
@@ -22406,7 +23658,7 @@ pub struct ProjectsAddCollaboratorRequest {
   pub permission: Option<ProjectsAddCollaboratorRequestPermission>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// Project Collaborator Permission
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22417,7 +23669,7 @@ pub struct ProjectCollaboratorPermission {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// Query for `List project columns`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22432,7 +23684,7 @@ pub struct ProjectsListColumnsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsCreateColumnRequest {
@@ -22440,7 +23692,7 @@ pub struct ProjectsCreateColumnRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "rate_limit",))]
+#[cfg(any(feature = "full", feature = "rate_limit"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RateLimit {
@@ -22450,7 +23702,7 @@ pub struct RateLimit {
   pub used: i64,
 }
 
-#[cfg(any(feature = "full", feature = "rate_limit",))]
+#[cfg(any(feature = "full", feature = "rate_limit"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RateLimitOverviewResources {
@@ -22482,7 +23734,7 @@ pub struct RateLimitOverviewResources {
   pub source_import: Option<RateLimit>,
 }
 
-#[cfg(any(feature = "full", feature = "rate_limit",))]
+#[cfg(any(feature = "full", feature = "rate_limit"))]
 /// Rate Limit Overview
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22491,7 +23743,7 @@ pub struct RateLimitOverview {
   pub resources: RateLimitOverviewResources,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see "[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)."
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22502,7 +23754,7 @@ pub struct ReposUpdateRequestSecurityAndAnalysisAdvancedSecurity {
   pub status: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Use the `status` property to enable or disable secret scanning for this repository. For more information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning)."
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22513,7 +23765,7 @@ pub struct ReposUpdateRequestSecurityAndAnalysisSecretScanning {
   pub status: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Use the `status` property to enable or disable secret scanning push protection for this repository. For more information, see "[Protecting pushes with secret scanning](/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22524,7 +23776,7 @@ pub struct ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection {
   pub status: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Specify which security and analysis features to enable or disable for the repository.
 ///
 /// To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
@@ -22551,7 +23803,7 @@ pub struct ReposUpdateRequestSecurityAndAnalysis {
     Option<ReposUpdateRequestSecurityAndAnalysisSecretScanningPushProtection>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateRequest {
@@ -22679,7 +23931,7 @@ pub struct ReposUpdateRequest {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List artifacts for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22698,7 +23950,7 @@ pub struct ActionsListArtifactsForRepoQuery {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ArtifactWorkflowRun {
@@ -22719,7 +23971,7 @@ pub struct ArtifactWorkflowRun {
   pub repository_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// An artifact
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22748,7 +24000,7 @@ pub struct Artifact {
   pub workflow_run: Option<ArtifactWorkflowRun>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListArtifactsForRepoResponse {
@@ -22756,7 +24008,7 @@ pub struct ActionsListArtifactsForRepoResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List GitHub Actions caches for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22788,7 +24040,7 @@ pub struct ActionsGetActionsCacheListQuery {
   pub direction: Option<ActionsGetActionsCacheListQueryDirection>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsCacheListActionsCaches {
@@ -22816,7 +24068,7 @@ pub struct ActionsCacheListActionsCaches {
   pub version: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Repository actions caches
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22827,7 +24079,7 @@ pub struct ActionsCacheList {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `Delete GitHub Actions caches for a repository (using a cache key)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22841,7 +24093,7 @@ pub struct ActionsDeleteActionsCacheByKeyQuery {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct JobSteps {
@@ -22864,7 +24116,7 @@ pub struct JobSteps {
   pub status: JobStepsStatus,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Information of a job execution in a workflow run
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22934,7 +24186,7 @@ pub struct Job {
   pub workflow_name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsReRunJobForWorkflowRunRequest {
@@ -22944,7 +24196,7 @@ pub struct ActionsReRunJobForWorkflowRunRequest {
   pub enable_debug_logging: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Actions OIDC subject customization for a repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22957,7 +24209,7 @@ pub struct OidcCustomSubRepo {
   pub use_default: bool,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Actions OIDC subject customization for a repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22970,7 +24222,7 @@ pub struct ActionsOidcSubjectCustomizationForARepository {
   pub use_default: bool,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List repository organization secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22985,7 +24237,7 @@ pub struct ActionsListRepoOrganizationSecretsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Set secrets for GitHub Actions.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -22996,7 +24248,7 @@ pub struct ActionsSecret {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListRepoOrganizationSecretsResponse {
@@ -23004,7 +24256,7 @@ pub struct ActionsListRepoOrganizationSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List repository organization variables`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23019,7 +24271,7 @@ pub struct ActionsListRepoOrganizationVariablesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsVariable {
@@ -23033,7 +24285,7 @@ pub struct ActionsVariable {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListRepoOrganizationVariablesResponse {
@@ -23041,7 +24293,7 @@ pub struct ActionsListRepoOrganizationVariablesResponse {
   pub variables: Vec<ActionsVariable>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsRepositoryPermissions {
@@ -23054,7 +24306,7 @@ pub struct ActionsRepositoryPermissions {
   pub selected_actions_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetGithubActionsPermissionsRepositoryRequest {
@@ -23064,7 +24316,7 @@ pub struct ActionsSetGithubActionsPermissionsRepositoryRequest {
   pub enabled: bool,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsWorkflowAccessToRepository {
@@ -23075,7 +24327,7 @@ pub struct ActionsWorkflowAccessToRepository {
   pub access_level: ActionsWorkflowAccessToRepositoryAccessLevel,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List self-hosted runners for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23094,7 +24346,7 @@ pub struct ActionsListSelfHostedRunnersForRepoQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListSelfHostedRunnersForRepoResponse {
@@ -23102,7 +24354,7 @@ pub struct ActionsListSelfHostedRunnersForRepoResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsGenerateRunnerJitconfigForRepoRequest {
@@ -23118,7 +24370,7 @@ pub struct ActionsGenerateRunnerJitconfigForRepoRequest {
   pub work_folder: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequest {
@@ -23126,7 +24378,7 @@ pub struct ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequest {
   pub labels: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequest {
@@ -23134,7 +24386,7 @@ pub struct ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequest {
   pub labels: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List workflow runs for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23181,7 +24433,7 @@ pub struct ActionsListWorkflowRunsForRepoQuery {
   pub head_sha: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks"))]
 /// Information about the Git author
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23192,7 +24444,7 @@ pub struct SimpleCommitAuthor {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks"))]
 /// Information about the Git committer
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23203,7 +24455,7 @@ pub struct SimpleCommitCommitter {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks"))]
 /// A commit.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23226,7 +24478,7 @@ pub struct SimpleCommit {
   pub tree_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalBaseRepo {
@@ -23235,7 +24487,7 @@ pub struct PullRequestMinimalBaseRepo {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalBase {
@@ -23245,7 +24497,7 @@ pub struct PullRequestMinimalBase {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalHeadRepo {
@@ -23254,7 +24506,7 @@ pub struct PullRequestMinimalHeadRepo {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimalHead {
@@ -23264,7 +24516,7 @@ pub struct PullRequestMinimalHead {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestMinimal {
@@ -23275,7 +24527,7 @@ pub struct PullRequestMinimal {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// A workflow referenced/reused by the initial caller workflow
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23288,7 +24540,7 @@ pub struct ReferencedWorkflow {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// An invocation of a workflow
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23382,7 +24634,7 @@ pub struct WorkflowRun {
   pub workflow_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListWorkflowRunsForRepoResponse {
@@ -23390,7 +24642,7 @@ pub struct ActionsListWorkflowRunsForRepoResponse {
   pub workflow_runs: Vec<WorkflowRun>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `Get a workflow run`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23401,7 +24653,7 @@ pub struct ActionsGetWorkflowRunQuery {
   pub exclude_pull_requests: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EnvironmentApprovalsEnvironments {
@@ -23432,7 +24684,7 @@ pub struct EnvironmentApprovalsEnvironments {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// An entry in the reviews log for environment deployments
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23446,7 +24698,7 @@ pub struct EnvironmentApprovals {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List workflow run artifacts`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23465,7 +24717,7 @@ pub struct ActionsListWorkflowRunArtifactsQuery {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListWorkflowRunArtifactsResponse {
@@ -23473,7 +24725,7 @@ pub struct ActionsListWorkflowRunArtifactsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `Get a workflow run attempt`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23484,7 +24736,7 @@ pub struct ActionsGetWorkflowRunAttemptQuery {
   pub exclude_pull_requests: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List jobs for a workflow run attempt`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23499,7 +24751,7 @@ pub struct ActionsListJobsForWorkflowRunAttemptQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListJobsForWorkflowRunAttemptResponse {
@@ -23507,7 +24759,7 @@ pub struct ActionsListJobsForWorkflowRunAttemptResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReviewCustomGatesCommentRequired {
@@ -23517,7 +24769,7 @@ pub struct ReviewCustomGatesCommentRequired {
   pub environment_name: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReviewCustomGatesStateRequired {
@@ -23531,7 +24783,7 @@ pub struct ReviewCustomGatesStateRequired {
   pub state: ReviewCustomGatesStateRequiredState,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List jobs for a workflow run`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23550,7 +24802,7 @@ pub struct ActionsListJobsForWorkflowRunQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListJobsForWorkflowRunResponse {
@@ -23558,7 +24810,7 @@ pub struct ActionsListJobsForWorkflowRunResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PendingDeploymentEnvironment {
@@ -23581,7 +24833,7 @@ pub struct PendingDeploymentEnvironment {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PendingDeploymentReviewers {
@@ -23594,7 +24846,7 @@ pub struct PendingDeploymentReviewers {
   pub type_: Option<DeploymentReviewerType>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Details of a deployment that is waiting for protection rules to pass
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23612,7 +24864,7 @@ pub struct PendingDeployment {
   pub wait_timer_started_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsReviewPendingDeploymentsForRunRequest {
@@ -23624,7 +24876,7 @@ pub struct ActionsReviewPendingDeploymentsForRunRequest {
   pub state: ActionsReviewPendingDeploymentsForRunRequestState,
 }
 
-#[cfg(any(feature = "full", feature = "actions", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "actions", feature = "repos"))]
 /// A request for a specific ref(branch,sha,tag) to be deployed
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23668,7 +24920,7 @@ pub struct Deployment {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsReRunWorkflowRequest {
@@ -23678,7 +24930,7 @@ pub struct ActionsReRunWorkflowRequest {
   pub enable_debug_logging: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsReRunWorkflowFailedJobsRequest {
@@ -23688,7 +24940,7 @@ pub struct ActionsReRunWorkflowFailedJobsRequest {
   pub enable_debug_logging: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunUsageBillableMACOSJobRuns {
@@ -23696,7 +24948,7 @@ pub struct WorkflowRunUsageBillableMACOSJobRuns {
   pub job_id: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunUsageBillableMACOS {
@@ -23707,7 +24959,7 @@ pub struct WorkflowRunUsageBillableMACOS {
   pub total_ms: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunUsageBillableUBUNTUJobRuns {
@@ -23715,7 +24967,7 @@ pub struct WorkflowRunUsageBillableUBUNTUJobRuns {
   pub job_id: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunUsageBillableUBUNTU {
@@ -23726,7 +24978,7 @@ pub struct WorkflowRunUsageBillableUBUNTU {
   pub total_ms: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunUsageBillableWINDOWSJobRuns {
@@ -23734,7 +24986,7 @@ pub struct WorkflowRunUsageBillableWINDOWSJobRuns {
   pub job_id: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunUsageBillableWINDOWS {
@@ -23745,7 +24997,7 @@ pub struct WorkflowRunUsageBillableWINDOWS {
   pub total_ms: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowRunUsageBillable {
@@ -23763,7 +25015,7 @@ pub struct WorkflowRunUsageBillable {
   pub windows: Option<WorkflowRunUsageBillableWINDOWS>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Workflow Run Usage
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23774,7 +25026,7 @@ pub struct WorkflowRunUsage {
   pub run_duration_ms: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List repository secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23789,7 +25041,7 @@ pub struct ActionsListRepoSecretsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListRepoSecretsResponse {
@@ -23797,7 +25049,7 @@ pub struct ActionsListRepoSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsCreateOrUpdateRepoSecretRequest {
@@ -23811,7 +25063,7 @@ pub struct ActionsCreateOrUpdateRepoSecretRequest {
   pub key_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List repository variables`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23826,7 +25078,7 @@ pub struct ActionsListRepoVariablesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListRepoVariablesResponse {
@@ -23834,7 +25086,7 @@ pub struct ActionsListRepoVariablesResponse {
   pub variables: Vec<ActionsVariable>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsCreateRepoVariableRequest {
@@ -23844,7 +25096,7 @@ pub struct ActionsCreateRepoVariableRequest {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsUpdateRepoVariableRequest {
@@ -23858,7 +25110,7 @@ pub struct ActionsUpdateRepoVariableRequest {
   pub value: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List repository workflows`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23873,7 +25125,7 @@ pub struct ActionsListRepoWorkflowsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// A GitHub Actions workflow
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23893,7 +25145,7 @@ pub struct Workflow {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListRepoWorkflowsResponse {
@@ -23901,7 +25153,7 @@ pub struct ActionsListRepoWorkflowsResponse {
   pub workflows: Vec<Workflow>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsCreateWorkflowDispatchRequest {
@@ -23914,7 +25166,7 @@ pub struct ActionsCreateWorkflowDispatchRequest {
   pub ref_: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List workflow runs for a workflow`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -23961,7 +25213,7 @@ pub struct ActionsListWorkflowRunsQuery {
   pub head_sha: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListWorkflowRunsResponse {
@@ -23969,7 +25221,7 @@ pub struct ActionsListWorkflowRunsResponse {
   pub workflow_runs: Vec<WorkflowRun>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowUsageBillableMACOS {
@@ -23978,7 +25230,7 @@ pub struct WorkflowUsageBillableMACOS {
   pub total_ms: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowUsageBillableUBUNTU {
@@ -23987,7 +25239,7 @@ pub struct WorkflowUsageBillableUBUNTU {
   pub total_ms: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowUsageBillableWINDOWS {
@@ -23996,7 +25248,7 @@ pub struct WorkflowUsageBillableWINDOWS {
   pub total_ms: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct WorkflowUsageBillable {
@@ -24014,7 +25266,7 @@ pub struct WorkflowUsageBillable {
   pub windows: Option<WorkflowUsageBillableWINDOWS>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Workflow Usage
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24022,7 +25274,7 @@ pub struct WorkflowUsage {
   pub billable: WorkflowUsageBillable,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List repository activities`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24068,7 +25320,7 @@ pub struct ReposListActivitiesQuery {
   pub activity_type: Option<ReposListActivitiesQueryActivityType>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Activity
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24091,7 +25343,7 @@ pub struct Activity {
   pub timestamp: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List assignees`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24106,7 +25358,7 @@ pub struct IssuesListAssigneesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// An autolink reference.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24120,7 +25372,7 @@ pub struct Autolink {
   pub url_template: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateAutolinkRequest {
@@ -24134,7 +25386,7 @@ pub struct ReposCreateAutolinkRequest {
   pub url_template: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Check Automated Security Fixes
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24145,7 +25397,7 @@ pub struct CheckAutomatedSecurityFixes {
   pub paused: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List branches`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24164,7 +25416,7 @@ pub struct ReposListBranchesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ShortBranchCommit {
@@ -24172,7 +25424,7 @@ pub struct ShortBranchCommit {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchProtectionAllowDeletions {
@@ -24181,7 +25433,7 @@ pub struct BranchProtectionAllowDeletions {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchProtectionAllowForcePushes {
@@ -24190,7 +25442,7 @@ pub struct BranchProtectionAllowForcePushes {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24200,7 +25452,7 @@ pub struct BranchProtectionAllowForkSyncing {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchProtectionBlockCreations {
@@ -24209,7 +25461,7 @@ pub struct BranchProtectionBlockCreations {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Protected Branch Admin Enforced
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24218,7 +25470,7 @@ pub struct ProtectedBranchAdminEnforced {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24228,7 +25480,7 @@ pub struct BranchProtectionLockBranch {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchProtectionRequiredConversationResolution {
@@ -24237,7 +25489,7 @@ pub struct BranchProtectionRequiredConversationResolution {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchProtectionRequiredLinearHistory {
@@ -24246,7 +25498,7 @@ pub struct BranchProtectionRequiredLinearHistory {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Allow specific users, teams, or apps to bypass pull request requirements.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24265,7 +25517,7 @@ pub struct ProtectedBranchPullRequestReviewBypassPullRequestAllowances {
   pub users: Option<Vec<SimpleUser>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchPullRequestReviewDismissalRestrictions {
@@ -24292,7 +25544,7 @@ pub struct ProtectedBranchPullRequestReviewDismissalRestrictions {
   pub users_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Protected Branch Pull Request Review
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24319,7 +25571,7 @@ pub struct ProtectedBranchPullRequestReview {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchProtectionRequiredSignatures {
@@ -24327,7 +25579,7 @@ pub struct BranchProtectionRequiredSignatures {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredStatusCheckChecks {
@@ -24337,7 +25589,7 @@ pub struct ProtectedBranchRequiredStatusCheckChecks {
   pub context: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Protected Branch Required Status Check
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24358,7 +25610,7 @@ pub struct ProtectedBranchRequiredStatusCheck {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchRestrictionPolicyAppsOwner {
@@ -24434,7 +25686,7 @@ pub struct BranchRestrictionPolicyAppsOwner {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchRestrictionPolicyAppsPermissions {
@@ -24452,7 +25704,7 @@ pub struct BranchRestrictionPolicyAppsPermissions {
   pub single_file: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchRestrictionPolicyApps {
@@ -24494,7 +25746,7 @@ pub struct BranchRestrictionPolicyApps {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchRestrictionPolicyTeams {
@@ -24539,7 +25791,7 @@ pub struct BranchRestrictionPolicyTeams {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchRestrictionPolicyUsers {
@@ -24600,7 +25852,7 @@ pub struct BranchRestrictionPolicyUsers {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Branch Restriction Policy
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24614,7 +25866,7 @@ pub struct BranchRestrictionPolicy {
   pub users_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Branch Protection
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24671,7 +25923,7 @@ pub struct BranchProtection {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Short Branch
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24687,7 +25939,7 @@ pub struct ShortBranch {
   pub protection_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchWithProtectionLinks {
@@ -24700,7 +25952,7 @@ pub struct BranchWithProtectionLinks {
   feature = "full",
   feature = "repos",
   feature = "pulls",
-  feature = "search",
+  feature = "search"
 ))]
 /// Metaproperties for Git author/committer information.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -24717,7 +25969,7 @@ pub struct GitUser {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitCommitTree {
@@ -24730,7 +25982,7 @@ pub struct CommitCommitTree {
   feature = "repos",
   feature = "git",
   feature = "pulls",
-  feature = "search",
+  feature = "search"
 ))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24745,7 +25997,7 @@ pub struct Verification {
   pub verified: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitCommit {
@@ -24764,7 +26016,7 @@ pub struct CommitCommit {
   pub verification: Option<Verification>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 /// Diff Entry
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24786,7 +26038,7 @@ pub struct DiffEntry {
   pub status: DiffEntryStatus,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitParents {
@@ -24797,7 +26049,7 @@ pub struct CommitParents {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitStats {
@@ -24812,7 +26064,7 @@ pub struct CommitStats {
   pub total: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 /// Commit
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24838,7 +26090,7 @@ pub struct Commit {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Branch With Protection
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24858,7 +26110,7 @@ pub struct BranchWithProtection {
   pub required_approving_review_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Allow specific users, teams, or apps to bypass pull request requirements.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24877,7 +26129,7 @@ pub struct ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsBypassPul
   pub users: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24896,7 +26148,7 @@ pub struct ReposUpdateBranchProtectionRequestRequiredPullRequestReviewsDismissal
   pub users: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Require at least one approving review on a pull request, before merging. Set to `null` to disable.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24929,7 +26181,7 @@ pub struct ReposUpdateBranchProtectionRequestRequiredPullRequestReviews {
   pub required_approving_review_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateBranchProtectionRequestRequiredStatusChecksChecks {
@@ -24941,7 +26193,7 @@ pub struct ReposUpdateBranchProtectionRequestRequiredStatusChecksChecks {
   pub context: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Require status checks to pass before merging. Set to `null` to disable.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24957,7 +26209,7 @@ pub struct ReposUpdateBranchProtectionRequestRequiredStatusChecks {
   pub strict: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -24972,7 +26224,7 @@ pub struct ReposUpdateBranchProtectionRequestRestrictions {
   pub users: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateBranchProtectionRequest {
@@ -25023,21 +26275,21 @@ pub struct ReposUpdateBranchProtectionRequest {
   pub restrictions: Option<ReposUpdateBranchProtectionRequestRestrictions>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchAllowDeletions {
   pub enabled: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchAllowForcePushes {
   pub enabled: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25047,14 +26299,14 @@ pub struct ProtectedBranchAllowForkSyncing {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchBlockCreations {
   pub enabled: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchEnforceAdmins {
@@ -25062,7 +26314,7 @@ pub struct ProtectedBranchEnforceAdmins {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25072,7 +26324,7 @@ pub struct ProtectedBranchLockBranch {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredConversationResolution {
@@ -25081,14 +26333,14 @@ pub struct ProtectedBranchRequiredConversationResolution {
   pub enabled: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredLinearHistory {
   pub enabled: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances {
@@ -25099,7 +26351,7 @@ pub struct ProtectedBranchRequiredPullRequestReviewsBypassPullRequestAllowances 
   pub users: Vec<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
@@ -25113,7 +26365,7 @@ pub struct ProtectedBranchRequiredPullRequestReviewsDismissalRestrictions {
   pub users_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredPullRequestReviews {
@@ -25141,7 +26393,7 @@ pub struct ProtectedBranchRequiredPullRequestReviews {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProtectedBranchRequiredSignatures {
@@ -25149,7 +26401,7 @@ pub struct ProtectedBranchRequiredSignatures {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct StatusCheckPolicyChecks {
@@ -25159,7 +26411,7 @@ pub struct StatusCheckPolicyChecks {
   pub context: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Status Check Policy
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25171,7 +26423,7 @@ pub struct StatusCheckPolicy {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Branch protections protect branches
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25217,7 +26469,7 @@ pub struct ProtectedBranch {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Allow specific users, teams, or apps to bypass pull request requirements.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25236,7 +26488,7 @@ pub struct ReposUpdatePullRequestReviewProtectionRequestBypassPullRequestAllowan
   pub users: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25255,7 +26507,7 @@ pub struct ReposUpdatePullRequestReviewProtectionRequestDismissalRestrictions {
   pub users: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdatePullRequestReviewProtectionRequest {
@@ -25287,7 +26539,7 @@ pub struct ReposUpdatePullRequestReviewProtectionRequest {
   pub required_approving_review_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateStatusCheckProtectionRequestChecks {
@@ -25299,7 +26551,7 @@ pub struct ReposUpdateStatusCheckProtectionRequestChecks {
   pub context: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateStatusCheckProtectionRequest {
@@ -25318,7 +26570,7 @@ pub struct ReposUpdateStatusCheckProtectionRequest {
   pub strict: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposAddStatusCheckContextsRequestItem1 {
@@ -25326,7 +26578,7 @@ pub struct ReposAddStatusCheckContextsRequestItem1 {
   pub contexts: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposSetStatusCheckContextsRequestItem1 {
@@ -25334,7 +26586,7 @@ pub struct ReposSetStatusCheckContextsRequestItem1 {
   pub contexts: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposRemoveStatusCheckContextsRequestItem1 {
@@ -25342,7 +26594,7 @@ pub struct ReposRemoveStatusCheckContextsRequestItem1 {
   pub contexts: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposAddAppAccessRestrictionsRequestItem1 {
@@ -25350,7 +26602,7 @@ pub struct ReposAddAppAccessRestrictionsRequestItem1 {
   pub apps: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposSetAppAccessRestrictionsRequestItem1 {
@@ -25358,7 +26610,7 @@ pub struct ReposSetAppAccessRestrictionsRequestItem1 {
   pub apps: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposRemoveAppAccessRestrictionsRequestItem1 {
@@ -25366,7 +26618,7 @@ pub struct ReposRemoveAppAccessRestrictionsRequestItem1 {
   pub apps: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposAddTeamAccessRestrictionsRequestItem1 {
@@ -25374,7 +26626,7 @@ pub struct ReposAddTeamAccessRestrictionsRequestItem1 {
   pub teams: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposSetTeamAccessRestrictionsRequestItem1 {
@@ -25382,7 +26634,7 @@ pub struct ReposSetTeamAccessRestrictionsRequestItem1 {
   pub teams: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposRemoveTeamAccessRestrictionsRequestItem1 {
@@ -25390,7 +26642,7 @@ pub struct ReposRemoveTeamAccessRestrictionsRequestItem1 {
   pub teams: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposAddUserAccessRestrictionsRequestItem1 {
@@ -25398,7 +26650,7 @@ pub struct ReposAddUserAccessRestrictionsRequestItem1 {
   pub users: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposSetUserAccessRestrictionsRequestItem1 {
@@ -25406,7 +26658,7 @@ pub struct ReposSetUserAccessRestrictionsRequestItem1 {
   pub users: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposRemoveUserAccessRestrictionsRequestItem1 {
@@ -25414,7 +26666,7 @@ pub struct ReposRemoveUserAccessRestrictionsRequestItem1 {
   pub users: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposRenameBranchRequest {
@@ -25422,14 +26674,14 @@ pub struct ReposRenameBranchRequest {
   pub new_name: String,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksCreateRequestItem1 {
   pub status: ChecksCreateRequestItem1Status,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksCreateRequestItem2 {
@@ -25438,14 +26690,14 @@ pub struct ChecksCreateRequestItem2 {
   pub status: Option<ChecksCreateRequestItem2Status>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckRunCheckSuite {
   pub id: i64,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 /// A deployment created as the result of an Actions check run from a workflow that references an environment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25481,7 +26733,7 @@ pub struct DeploymentSimple {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckRunOutput {
@@ -25498,7 +26750,7 @@ pub struct CheckRunOutput {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 /// A check performed on the code of a given code change
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25545,7 +26797,7 @@ pub struct CheckRun {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksUpdateRequestItem1 {
@@ -25554,7 +26806,7 @@ pub struct ChecksUpdateRequestItem1 {
   pub status: Option<ChecksUpdateRequestItem1Status>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksUpdateRequestItem2 {
@@ -25563,7 +26815,7 @@ pub struct ChecksUpdateRequestItem2 {
   pub status: Option<ChecksUpdateRequestItem2Status>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 /// Query for `List check run annotations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25578,7 +26830,7 @@ pub struct ChecksListAnnotationsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 /// Check Annotation
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25607,7 +26859,7 @@ pub struct CheckAnnotation {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksCreateSuiteRequest {
@@ -25615,7 +26867,7 @@ pub struct ChecksCreateSuiteRequest {
   pub head_sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 /// A suite of checks performed on the code of a given code change
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25667,7 +26919,7 @@ pub struct CheckSuite {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksSetSuitesPreferencesRequestAutoTriggerChecks {
@@ -25677,7 +26929,7 @@ pub struct ChecksSetSuitesPreferencesRequestAutoTriggerChecks {
   pub setting: bool,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksSetSuitesPreferencesRequest {
@@ -25687,7 +26939,7 @@ pub struct ChecksSetSuitesPreferencesRequest {
   pub auto_trigger_checks: Option<Vec<ChecksSetSuitesPreferencesRequestAutoTriggerChecks>>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckSuitePreferencePreferencesAutoTriggerChecks {
@@ -25695,7 +26947,7 @@ pub struct CheckSuitePreferencePreferencesAutoTriggerChecks {
   pub setting: bool,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CheckSuitePreferencePreferences {
@@ -25704,7 +26956,7 @@ pub struct CheckSuitePreferencePreferences {
   pub auto_trigger_checks: Option<Vec<CheckSuitePreferencePreferencesAutoTriggerChecks>>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 /// Check suite configuration preferences for a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25713,7 +26965,7 @@ pub struct CheckSuitePreference {
   pub repository: MinimalRepository,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 /// Query for `List check runs in a check suite`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25740,7 +26992,7 @@ pub struct ChecksListForSuiteQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksListForSuiteResponse {
@@ -25748,7 +27000,7 @@ pub struct ChecksListForSuiteResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Query for `List code scanning alerts for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25792,7 +27044,7 @@ pub struct CodeScanningListAlertsForRepoQuery {
   pub severity: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAlertItems {
@@ -25825,7 +27077,7 @@ pub struct CodeScanningAlertItems {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAlertRule {
@@ -25867,7 +27119,7 @@ pub struct CodeScanningAlertRule {
   pub tags: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAlert {
@@ -25900,7 +27152,7 @@ pub struct CodeScanningAlert {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningUpdateAlertRequest {
@@ -25913,7 +27165,7 @@ pub struct CodeScanningUpdateAlertRequest {
   pub state: CodeScanningAlertSetState,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Query for `List instances of a code scanning alert`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25933,7 +27185,7 @@ pub struct CodeScanningListAlertInstancesQuery {
   pub ref_: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Query for `List code scanning analyses for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -25973,7 +27225,7 @@ pub struct CodeScanningListRecentAnalysesQuery {
   pub sort: Option<CodeScanningListRecentAnalysesQuerySort>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningAnalysis {
@@ -26001,7 +27253,7 @@ pub struct CodeScanningAnalysis {
   pub warning: String,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Query for `Delete a code scanning analysis from a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26012,7 +27264,7 @@ pub struct CodeScanningDeleteAnalysisQuery {
   pub confirm_delete: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Successful deletion of a code scanning analysis
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26027,7 +27279,7 @@ pub struct CodeScanningAnalysisDeletion {
   pub next_analysis_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// A CodeQL database.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26055,7 +27307,7 @@ pub struct CodeScanningCodeqlDatabase {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Configuration for code scanning default setup.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26082,7 +27334,7 @@ pub struct CodeScanningDefaultSetup {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Configuration for code scanning default setup.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26101,7 +27353,7 @@ pub struct CodeScanningDefaultSetupUpdate {
   pub state: Option<CodeScanningDefaultSetupUpdateState>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// You can use `run_url` to track the status of the run. This includes a property status and conclusion.
 /// You should not rely on this always being an actions workflow run object.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
@@ -26117,7 +27369,7 @@ pub struct CodeScanningDefaultSetupUpdateResponse {
   pub run_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningUploadSarifRequest {
@@ -26145,7 +27397,7 @@ pub struct CodeScanningUploadSarifRequest {
   pub validate: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningSarifsReceipt {
@@ -26158,7 +27410,7 @@ pub struct CodeScanningSarifsReceipt {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "code_scanning",))]
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeScanningSarifsStatus {
@@ -26176,7 +27428,7 @@ pub struct CodeScanningSarifsStatus {
   pub processing_status: Option<CodeScanningSarifsStatusProcessingStatus>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List CODEOWNERS errors`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26188,7 +27440,7 @@ pub struct ReposCodeownersErrorsQuery {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodeownersErrorsErrors {
@@ -26212,7 +27464,7 @@ pub struct CodeownersErrorsErrors {
   pub suggestion: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// A list of errors found in a repo's CODEOWNERS file
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26220,7 +27472,7 @@ pub struct CodeownersErrors {
   pub errors: Vec<CodeownersErrorsErrors>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `List codespaces in a repository for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26235,7 +27487,7 @@ pub struct CodespacesListInRepositoryForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListInRepositoryForAuthenticatedUserResponse {
@@ -26243,7 +27495,7 @@ pub struct CodespacesListInRepositoryForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesCreateWithRepoForAuthenticatedUserRequest {
@@ -26294,7 +27546,7 @@ pub struct CodespacesCreateWithRepoForAuthenticatedUserRequest {
   pub working_directory: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `List devcontainer configurations in a repository for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26309,7 +27561,7 @@ pub struct CodespacesListDevcontainersInRepositoryForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainers {
@@ -26322,7 +27574,7 @@ pub struct CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDe
   pub path: String,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse {
@@ -26331,7 +27583,7 @@ pub struct CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `List available machine types for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26351,7 +27603,7 @@ pub struct CodespacesRepoMachinesForAuthenticatedUserQuery {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesRepoMachinesForAuthenticatedUserResponse {
@@ -26359,7 +27611,7 @@ pub struct CodespacesRepoMachinesForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `Get default attributes for a codespace`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26375,7 +27627,7 @@ pub struct CodespacesPreFlightWithRepoForAuthenticatedUserQuery {
   pub client_ip: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesPreFlightWithRepoForAuthenticatedUserResponseDefaults {
@@ -26385,7 +27637,7 @@ pub struct CodespacesPreFlightWithRepoForAuthenticatedUserResponseDefaults {
   pub location: String,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesPreFlightWithRepoForAuthenticatedUserResponse {
@@ -26397,7 +27649,7 @@ pub struct CodespacesPreFlightWithRepoForAuthenticatedUserResponse {
   pub defaults: Option<CodespacesPreFlightWithRepoForAuthenticatedUserResponseDefaults>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `Check if permissions defined by a devcontainer have been accepted by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26409,7 +27661,7 @@ pub struct CodespacesCheckPermissionsForDevcontainerQuery {
   pub devcontainer_path: String,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Permission check result for a given devcontainer config.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26418,7 +27670,7 @@ pub struct CodespacesPermissionsCheckForDevcontainer {
   pub accepted: bool,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `List repository secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26433,7 +27685,7 @@ pub struct CodespacesListRepoSecretsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Set repository secrets for GitHub Codespaces.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26444,7 +27696,7 @@ pub struct RepoCodespacesSecret {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListRepoSecretsResponse {
@@ -26452,7 +27704,7 @@ pub struct CodespacesListRepoSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesCreateOrUpdateRepoSecretRequest {
@@ -26466,7 +27718,7 @@ pub struct CodespacesCreateOrUpdateRepoSecretRequest {
   pub key_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List repository collaborators`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26489,7 +27741,7 @@ pub struct ReposListCollaboratorsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CollaboratorPermissions {
@@ -26504,7 +27756,7 @@ pub struct CollaboratorPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Collaborator
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26542,7 +27794,7 @@ pub struct Collaborator {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposAddCollaboratorRequest {
@@ -26552,7 +27804,7 @@ pub struct ReposAddCollaboratorRequest {
   pub permission: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Repository invitations let you manage who you collaborate with.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26579,7 +27831,7 @@ pub struct RepositoryInvitation {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Repository Collaborator Permission
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26591,7 +27843,7 @@ pub struct RepositoryCollaboratorPermission {
   pub user: Option<Collaborator>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List commit comments for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26606,7 +27858,7 @@ pub struct ReposListCommitCommentsForRepoQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "issues"))]
 /// Commit Comment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26637,7 +27889,7 @@ pub struct CommitComment {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateCommitCommentRequest {
@@ -26645,7 +27897,7 @@ pub struct ReposUpdateCommitCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// Query for `List reactions for a commit comment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26664,7 +27916,7 @@ pub struct ReactionsListForCommitCommentQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForCommitCommentRequest {
@@ -26672,7 +27924,7 @@ pub struct ReactionsCreateForCommitCommentRequest {
   pub content: ReactionsCreateForCommitCommentRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List commits`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26711,7 +27963,7 @@ pub struct ReposListCommitsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct BranchShortCommit {
@@ -26719,7 +27971,7 @@ pub struct BranchShortCommit {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Branch Short
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26729,7 +27981,7 @@ pub struct BranchShort {
   pub protected: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List commit comments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26744,7 +27996,7 @@ pub struct ReposListCommentsForCommitQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateCommitCommentRequest {
@@ -26764,7 +28016,7 @@ pub struct ReposCreateCommitCommentRequest {
   pub position: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List pull requests associated with a commit`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26779,7 +28031,7 @@ pub struct ReposListPullRequestsAssociatedWithCommitQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 /// Hypermedia Link
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26787,7 +28039,7 @@ pub struct Link {
   pub href: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestSimpleLinks {
@@ -26802,7 +28054,7 @@ pub struct PullRequestSimpleLinks {
   pub statuses: Link,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 /// The status of auto merging a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26816,7 +28068,7 @@ pub struct AutoMerge {
   pub merge_method: AutoMergeMergeMethod,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestSimpleBase {
@@ -26830,7 +28082,7 @@ pub struct PullRequestSimpleBase {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestSimpleHead {
@@ -26844,7 +28096,7 @@ pub struct PullRequestSimpleHead {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestSimpleLabels {
@@ -26860,7 +28112,7 @@ pub struct PullRequestSimpleLabels {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 /// Pull Request Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26931,7 +28183,7 @@ pub struct PullRequestSimple {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get a commit`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26946,7 +28198,7 @@ pub struct ReposGetCommitQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 /// Query for `List check runs for a Git reference`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -26976,7 +28228,7 @@ pub struct ChecksListForRefQuery {
   pub app_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksListForRefResponse {
@@ -26984,7 +28236,7 @@ pub struct ChecksListForRefResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 /// Query for `List check suites for a Git reference`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27007,7 +28259,7 @@ pub struct ChecksListSuitesForRefQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "checks",))]
+#[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ChecksListSuitesForRefResponse {
@@ -27015,7 +28267,7 @@ pub struct ChecksListSuitesForRefResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get the combined status for a specific reference`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27030,7 +28282,7 @@ pub struct ReposGetCombinedStatusForRefQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SimpleCommitStatus {
@@ -27055,7 +28307,7 @@ pub struct SimpleCommitStatus {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Combined Commit Status
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27069,7 +28321,7 @@ pub struct CombinedCommitStatus {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List commit statuses for a reference`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27084,7 +28336,7 @@ pub struct ReposListCommitStatusesForRefQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The status of a commit.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27110,7 +28362,7 @@ pub struct Status {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommunityHealthFile {
@@ -27118,7 +28370,7 @@ pub struct CommunityHealthFile {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommunityProfileFiles {
@@ -27145,7 +28397,7 @@ pub struct CommunityProfileFiles {
   pub readme: Option<CommunityHealthFile>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Community Profile
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27166,7 +28418,7 @@ pub struct CommunityProfile {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Compare two commits`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27181,7 +28433,7 @@ pub struct ReposCompareCommitsQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Commit Comparison
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27203,7 +28455,7 @@ pub struct CommitComparison {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get repository content`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27215,7 +28467,7 @@ pub struct ReposGetContentQuery {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ContentDirectoryItemLinks {
@@ -27229,7 +28481,7 @@ pub struct ContentDirectoryItemLinks {
   pub self_: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ContentDirectoryItem {
@@ -27256,7 +28508,7 @@ pub struct ContentDirectoryItem {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ContentFileLinks {
@@ -27270,7 +28522,7 @@ pub struct ContentFileLinks {
   pub self_: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Content File
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27303,7 +28555,7 @@ pub struct ContentFile {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ContentSymlinkLinks {
@@ -27317,7 +28569,7 @@ pub struct ContentSymlinkLinks {
   pub self_: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// An object describing a symlink
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27343,7 +28595,7 @@ pub struct ContentSymlink {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ContentSubmoduleLinks {
@@ -27357,7 +28609,7 @@ pub struct ContentSubmoduleLinks {
   pub self_: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// An object describing a submodule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27383,7 +28635,7 @@ pub struct ContentSubmodule {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27397,7 +28649,7 @@ pub struct ReposCreateOrUpdateFileContentsRequestAuthor {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The person that committed the file. Default: the authenticated user.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27411,7 +28663,7 @@ pub struct ReposCreateOrUpdateFileContentsRequestCommitter {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateOrUpdateFileContentsRequest {
@@ -27437,7 +28689,7 @@ pub struct ReposCreateOrUpdateFileContentsRequest {
   pub sha: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitCommitAuthor {
@@ -27452,7 +28704,7 @@ pub struct FileCommitCommitAuthor {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitCommitCommitter {
@@ -27467,7 +28719,7 @@ pub struct FileCommitCommitCommitter {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitCommitParents {
@@ -27482,7 +28734,7 @@ pub struct FileCommitCommitParents {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitCommitTree {
@@ -27494,7 +28746,7 @@ pub struct FileCommitCommitTree {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitCommitVerification {
@@ -27512,7 +28764,7 @@ pub struct FileCommitCommitVerification {
   pub verified: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitCommit {
@@ -27548,7 +28800,7 @@ pub struct FileCommitCommit {
   pub verification: Option<FileCommitCommitVerification>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitContentLinks {
@@ -27564,7 +28816,7 @@ pub struct FileCommitContentLinks {
   pub self_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct FileCommitContent {
@@ -27602,7 +28854,7 @@ pub struct FileCommitContent {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// File Commit
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27613,7 +28865,7 @@ pub struct FileCommit {
   pub content: Option<FileCommitContent>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// object containing information about the author.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27628,7 +28880,7 @@ pub struct ReposDeleteFileRequestAuthor {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// object containing information about the committer.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27643,7 +28895,7 @@ pub struct ReposDeleteFileRequestCommitter {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposDeleteFileRequest {
@@ -27665,7 +28917,7 @@ pub struct ReposDeleteFileRequest {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List repository contributors`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27684,7 +28936,7 @@ pub struct ReposListContributorsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Contributor
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27751,7 +29003,7 @@ pub struct Contributor {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Query for `List Dependabot alerts for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27826,7 +29078,7 @@ pub struct DependabotListAlertsForRepoQuery {
   pub last: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Details for the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27844,7 +29096,7 @@ pub struct DependabotAlertDependency {
   pub scope: Option<DependabotAlertDependencyScope>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// A Dependabot alert.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27882,7 +29134,7 @@ pub struct DependabotAlert {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependabotUpdateAlertRequest {
@@ -27899,7 +29151,7 @@ pub struct DependabotUpdateAlertRequest {
   pub state: DependabotUpdateAlertRequestState,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Query for `List repository secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27914,7 +29166,7 @@ pub struct DependabotListRepoSecretsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 /// Set secrets for Dependabot.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27925,7 +29177,7 @@ pub struct DependabotSecret {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependabotListRepoSecretsResponse {
@@ -27933,7 +29185,7 @@ pub struct DependabotListRepoSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "dependabot",))]
+#[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependabotCreateOrUpdateRepoSecretRequest {
@@ -27947,7 +29199,7 @@ pub struct DependabotCreateOrUpdateRepoSecretRequest {
   pub key_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 /// Query for `Get a diff of the dependencies between commits`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -27958,7 +29210,7 @@ pub struct DependencyGraphDiffRangeQuery {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependencyGraphDiffItemVulnerabilities {
@@ -27968,7 +29220,7 @@ pub struct DependencyGraphDiffItemVulnerabilities {
   pub severity: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependencyGraphDiffItem {
@@ -27991,7 +29243,7 @@ pub struct DependencyGraphDiffItem {
   pub vulnerabilities: Vec<DependencyGraphDiffItemVulnerabilities>,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependencyGraphSpdxSbomSbomCreationInfo {
@@ -28001,7 +29253,7 @@ pub struct DependencyGraphSpdxSbomSbomCreationInfo {
   pub creators: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependencyGraphSpdxSbomSbomPackagesExternalRefs {
@@ -28016,7 +29268,7 @@ pub struct DependencyGraphSpdxSbomSbomPackagesExternalRefs {
   pub referencetype: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependencyGraphSpdxSbomSbomPackages {
@@ -28068,7 +29320,7 @@ pub struct DependencyGraphSpdxSbomSbomPackages {
   pub versioninfo: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependencyGraphSpdxSbomSbom {
@@ -28094,7 +29346,7 @@ pub struct DependencyGraphSpdxSbomSbom {
   pub spdxversion: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 /// A schema for the SPDX JSON format returned by the Dependency Graph.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28102,7 +29354,7 @@ pub struct DependencyGraphSpdxSbom {
   pub sbom: DependencyGraphSpdxSbomSbom,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 /// A description of the detector used.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28115,7 +29367,7 @@ pub struct SnapshotDetector {
   pub version: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SnapshotJob {
@@ -28129,7 +29381,7 @@ pub struct SnapshotJob {
   pub id: String,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 /// Create a new snapshot of a repository's dependencies.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28155,7 +29407,7 @@ pub struct Snapshot {
   pub version: i64,
 }
 
-#[cfg(any(feature = "full", feature = "dependency_graph",))]
+#[cfg(any(feature = "full", feature = "dependency_graph"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DependencyGraphCreateRepositorySnapshotResponse {
@@ -28169,7 +29421,7 @@ pub struct DependencyGraphCreateRepositorySnapshotResponse {
   pub result: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List deployments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28201,7 +29453,7 @@ pub struct ReposListDeploymentsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateDeploymentRequest {
@@ -28241,7 +29493,7 @@ pub struct ReposCreateDeploymentRequest {
   pub transient_environment: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateDeploymentResponseAccepted {
@@ -28250,7 +29502,7 @@ pub struct ReposCreateDeploymentResponseAccepted {
   pub message: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List deployment statuses`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28265,7 +29517,7 @@ pub struct ReposListDeploymentStatusesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The status of a deployment.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28303,7 +29555,7 @@ pub struct DeploymentStatus {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateDeploymentStatusRequest {
@@ -28335,7 +29587,7 @@ pub struct ReposCreateDeploymentStatusRequest {
   pub target_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateDispatchEventRequest {
@@ -28347,7 +29599,7 @@ pub struct ReposCreateDispatchEventRequest {
   pub event_type: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List environments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28362,7 +29614,7 @@ pub struct ReposGetAllEnvironmentsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The type of deployment branch policy for this environment. To allow all branches to deploy, set to `null`.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28373,7 +29625,7 @@ pub struct DeploymentBranchPolicySettings {
   pub protected_branches: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EnvironmentProtectionRulesItem1 {
@@ -28386,7 +29638,7 @@ pub struct EnvironmentProtectionRulesItem1 {
   pub wait_timer: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EnvironmentProtectionRulesItem2Reviewers {
@@ -28399,7 +29651,7 @@ pub struct EnvironmentProtectionRulesItem2Reviewers {
   pub type_: Option<DeploymentReviewerType>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EnvironmentProtectionRulesItem2 {
@@ -28417,7 +29669,7 @@ pub struct EnvironmentProtectionRulesItem2 {
   pub type_: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct EnvironmentProtectionRulesItem3 {
@@ -28427,7 +29679,7 @@ pub struct EnvironmentProtectionRulesItem3 {
   pub type_: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Details of a deployment environment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28452,7 +29704,7 @@ pub struct Environment {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposGetAllEnvironmentsResponse {
@@ -28465,7 +29717,7 @@ pub struct ReposGetAllEnvironmentsResponse {
   pub total_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateOrUpdateEnvironmentRequestReviewers {
@@ -28479,7 +29731,7 @@ pub struct ReposCreateOrUpdateEnvironmentRequestReviewers {
   pub type_: Option<DeploymentReviewerType>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateOrUpdateEnvironmentRequest {
@@ -28498,7 +29750,7 @@ pub struct ReposCreateOrUpdateEnvironmentRequest {
   pub wait_timer: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List deployment branch policies`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28513,7 +29765,7 @@ pub struct ReposListDeploymentBranchPoliciesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Details of a deployment branch or tag policy.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28536,7 +29788,7 @@ pub struct DeploymentBranchPolicy {
   pub type_: Option<DeploymentBranchPolicyType>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposListDeploymentBranchPoliciesResponse {
@@ -28545,7 +29797,7 @@ pub struct ReposListDeploymentBranchPoliciesResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DeploymentBranchPolicyNamePatternWithType {
@@ -28561,7 +29813,7 @@ pub struct DeploymentBranchPolicyNamePatternWithType {
   pub type_: Option<DeploymentBranchPolicyNamePatternWithTypeType>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DeploymentBranchPolicyNamePattern {
@@ -28572,7 +29824,7 @@ pub struct DeploymentBranchPolicyNamePattern {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// A GitHub App that is providing a custom deployment protection rule.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28587,7 +29839,7 @@ pub struct CustomDeploymentRuleApp {
   pub slug: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Deployment protection rule
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28601,7 +29853,7 @@ pub struct DeploymentProtectionRule {
   pub node_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposGetAllDeploymentProtectionRulesResponse {
@@ -28614,7 +29866,7 @@ pub struct ReposGetAllDeploymentProtectionRulesResponse {
   pub total_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateDeploymentProtectionRuleRequest {
@@ -28624,7 +29876,7 @@ pub struct ReposCreateDeploymentProtectionRuleRequest {
   pub integration_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List custom deployment rule integrations available for an environment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28639,7 +29891,7 @@ pub struct ReposListCustomDeploymentRuleIntegrationsQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposListCustomDeploymentRuleIntegrationsResponse {
@@ -28653,7 +29905,7 @@ pub struct ReposListCustomDeploymentRuleIntegrationsResponse {
   pub total_count: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List environment secrets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28668,7 +29920,7 @@ pub struct ActionsListEnvironmentSecretsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListEnvironmentSecretsResponse {
@@ -28676,7 +29928,7 @@ pub struct ActionsListEnvironmentSecretsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsCreateOrUpdateEnvironmentSecretRequest {
@@ -28686,7 +29938,7 @@ pub struct ActionsCreateOrUpdateEnvironmentSecretRequest {
   pub key_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 /// Query for `List environment variables`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28701,7 +29953,7 @@ pub struct ActionsListEnvironmentVariablesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsListEnvironmentVariablesResponse {
@@ -28709,7 +29961,7 @@ pub struct ActionsListEnvironmentVariablesResponse {
   pub variables: Vec<ActionsVariable>,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsCreateEnvironmentVariableRequest {
@@ -28719,7 +29971,7 @@ pub struct ActionsCreateEnvironmentVariableRequest {
   pub value: String,
 }
 
-#[cfg(any(feature = "full", feature = "actions",))]
+#[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActionsUpdateEnvironmentVariableRequest {
@@ -28733,7 +29985,7 @@ pub struct ActionsUpdateEnvironmentVariableRequest {
   pub value: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List repository events`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28748,7 +30000,7 @@ pub struct ActivityListRepoEventsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List forks`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28767,7 +30019,7 @@ pub struct ReposListForksQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateForkRequest {
@@ -28785,7 +30037,7 @@ pub struct ReposCreateForkRequest {
   pub organization: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCreateBlobRequest {
@@ -28797,7 +30049,7 @@ pub struct GitCreateBlobRequest {
   pub encoding: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// Short Blob
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28806,7 +30058,7 @@ pub struct ShortBlob {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// Blob
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28824,7 +30076,7 @@ pub struct Blob {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28839,7 +30091,7 @@ pub struct GitCreateCommitRequestAuthor {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28858,7 +30110,7 @@ pub struct GitCreateCommitRequestCommitter {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCreateCommitRequest {
@@ -28884,7 +30136,7 @@ pub struct GitCreateCommitRequest {
   pub tree: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// Identifying information for the git-user
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28897,7 +30149,7 @@ pub struct GitCommitAuthor {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// Identifying information for the git-user
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28910,7 +30162,7 @@ pub struct GitCommitCommitter {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCommitParents {
@@ -28920,7 +30172,7 @@ pub struct GitCommitParents {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCommitTree {
@@ -28929,7 +30181,7 @@ pub struct GitCommitTree {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCommitVerification {
@@ -28943,7 +30195,7 @@ pub struct GitCommitVerification {
   pub verified: bool,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// Low-level Git commit operations within a repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28964,7 +30216,7 @@ pub struct GitCommit {
   pub verification: GitCommitVerification,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitRefObject {
@@ -28975,7 +30227,7 @@ pub struct GitRefObject {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// Git references within a repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -28987,7 +30239,7 @@ pub struct GitRef {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCreateRefRequest {
@@ -28998,7 +30250,7 @@ pub struct GitCreateRefRequest {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitUpdateRefRequest {
@@ -29010,7 +30262,7 @@ pub struct GitUpdateRefRequest {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// An object with information about the individual creating the tag.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29025,7 +30277,7 @@ pub struct GitCreateTagRequestTagger {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCreateTagRequest {
@@ -29044,7 +30296,7 @@ pub struct GitCreateTagRequest {
   pub type_: GitCreateTagRequestType,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitTagObject {
@@ -29054,7 +30306,7 @@ pub struct GitTagObject {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitTagTagger {
@@ -29063,7 +30315,7 @@ pub struct GitTagTagger {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// Metadata for a Git tag
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29083,7 +30335,7 @@ pub struct GitTag {
   pub verification: Option<Verification>,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCreateTreeRequestTree {
@@ -29114,7 +30366,7 @@ pub struct GitCreateTreeRequestTree {
   pub type_: Option<GitCreateTreeRequestTreeType>,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitCreateTreeRequest {
@@ -29128,7 +30380,7 @@ pub struct GitCreateTreeRequest {
   pub tree: Vec<GitCreateTreeRequestTree>,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GitTreeTree {
@@ -29153,7 +30405,7 @@ pub struct GitTreeTree {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// The hierarchy between files in a Git repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29165,7 +30417,7 @@ pub struct GitTree {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "git",))]
+#[cfg(any(feature = "full", feature = "git"))]
 /// Query for `Get a tree`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29176,7 +30428,7 @@ pub struct GitGetTreeQuery {
   pub recursive: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List repository webhooks`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29191,7 +30443,7 @@ pub struct ReposListWebhooksQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct HookResponse {
@@ -29206,7 +30458,7 @@ pub struct HookResponse {
   pub status: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Webhooks for repositories.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29233,7 +30485,7 @@ pub struct Hook {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Key/value pairs to provide settings for this webhook.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29252,7 +30504,7 @@ pub struct ReposCreateWebhookRequestConfig {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateWebhookRequest {
@@ -29274,7 +30526,7 @@ pub struct ReposCreateWebhookRequest {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateWebhookRequest {
@@ -29299,7 +30551,7 @@ pub struct ReposUpdateWebhookRequest {
   pub remove_events: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateWebhookConfigForRepoRequest {
@@ -29317,7 +30569,7 @@ pub struct ReposUpdateWebhookConfigForRepoRequest {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List deliveries for a repository webhook`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29335,7 +30587,7 @@ pub struct ReposListWebhookDeliveriesQuery {
   pub redelivery: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ImportProjectChoices {
@@ -29350,7 +30602,7 @@ pub struct ImportProjectChoices {
   pub vcs: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// A repository import from an external source.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29415,7 +30667,7 @@ pub struct Import {
   pub vcs_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsStartImportRequest {
@@ -29439,7 +30691,7 @@ pub struct MigrationsStartImportRequest {
   pub vcs_username: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsUpdateImportRequest {
@@ -29461,7 +30713,7 @@ pub struct MigrationsUpdateImportRequest {
   pub vcs_username: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Query for `Get commit authors`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29472,7 +30724,7 @@ pub struct MigrationsGetCommitAuthorsQuery {
   pub since: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Porter Author
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29486,7 +30738,7 @@ pub struct PorterAuthor {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsMapCommitAuthorRequest {
@@ -29500,7 +30752,7 @@ pub struct MigrationsMapCommitAuthorRequest {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Porter Large File
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29511,7 +30763,7 @@ pub struct PorterLargeFile {
   pub size: i64,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsSetLfsPreferenceRequest {
@@ -29519,12 +30771,12 @@ pub struct MigrationsSetLfsPreferenceRequest {
   pub use_lfs: MigrationsSetLfsPreferenceRequestUseLfs,
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct InteractionsGetRestrictionsForRepoResponseItem2 {}
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List repository invitations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29539,7 +30791,7 @@ pub struct ReposListInvitationsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateInvitationRequest {
@@ -29549,7 +30801,7 @@ pub struct ReposUpdateInvitationRequest {
   pub permissions: Option<ReposUpdateInvitationRequestPermissions>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List repository issues`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29600,7 +30852,7 @@ pub struct IssuesListForRepoQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesCreateRequestLabelsItem2 {
@@ -29618,7 +30870,7 @@ pub struct IssuesCreateRequestLabelsItem2 {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesCreateRequest {
@@ -29645,7 +30897,7 @@ pub struct IssuesCreateRequest {
   pub title: StringOrInteger,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List issue comments for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29672,7 +30924,7 @@ pub struct IssuesListCommentsForRepoQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesUpdateCommentRequest {
@@ -29680,7 +30932,7 @@ pub struct IssuesUpdateCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// Query for `List reactions for an issue comment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29699,7 +30951,7 @@ pub struct ReactionsListForIssueCommentQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForIssueCommentRequest {
@@ -29707,7 +30959,7 @@ pub struct ReactionsCreateForIssueCommentRequest {
   pub content: ReactionsCreateForIssueCommentRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List issue events for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29722,7 +30974,7 @@ pub struct IssuesListEventsForRepoQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssueEventDismissedReview {
@@ -29736,7 +30988,7 @@ pub struct IssueEventDismissedReview {
   pub state: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Issue Event Label
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29749,7 +31001,7 @@ pub struct IssueEventLabel {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Issue Event Milestone
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29757,7 +31009,7 @@ pub struct IssueEventMilestone {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Issue Event Project Card
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29772,7 +31024,7 @@ pub struct IssueEventProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Issue Event Rename
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29781,7 +31033,7 @@ pub struct IssueEventRename {
   pub to: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29844,7 +31096,7 @@ pub struct IssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesUpdateRequestLabelsItem2 {
@@ -29862,7 +31114,7 @@ pub struct IssuesUpdateRequestLabelsItem2 {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesUpdateRequest {
@@ -29899,7 +31151,7 @@ pub struct IssuesUpdateRequest {
   pub title: Option<StringOrInteger>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesAddAssigneesRequest {
@@ -29909,7 +31161,7 @@ pub struct IssuesAddAssigneesRequest {
   pub assignees: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesRemoveAssigneesRequest {
@@ -29919,7 +31171,7 @@ pub struct IssuesRemoveAssigneesRequest {
   pub assignees: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List issue comments`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29938,7 +31190,7 @@ pub struct IssuesListCommentsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesCreateCommentRequest {
@@ -29946,7 +31198,7 @@ pub struct IssuesCreateCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List issue events`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29961,7 +31213,7 @@ pub struct IssuesListEventsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct LabeledIssueEventLabel {
@@ -29969,7 +31221,7 @@ pub struct LabeledIssueEventLabel {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Labeled Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -29992,7 +31244,7 @@ pub struct LabeledIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UnlabeledIssueEventLabel {
@@ -30000,7 +31252,7 @@ pub struct UnlabeledIssueEventLabel {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Unlabeled Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30023,7 +31275,7 @@ pub struct UnlabeledIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Assigned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30045,7 +31297,7 @@ pub struct AssignedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Unassigned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30069,14 +31321,14 @@ pub struct UnassignedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MilestonedIssueEventMilestone {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Milestoned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30099,14 +31351,14 @@ pub struct MilestonedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct DemilestonedIssueEventMilestone {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Demilestoned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30129,7 +31381,7 @@ pub struct DemilestonedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RenamedIssueEventRename {
@@ -30137,7 +31389,7 @@ pub struct RenamedIssueEventRename {
   pub to: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Renamed Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30160,7 +31412,7 @@ pub struct RenamedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Review Requested Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30189,7 +31441,7 @@ pub struct ReviewRequestedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Review Request Removed Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30218,7 +31470,7 @@ pub struct ReviewRequestRemovedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReviewDismissedIssueEventDismissedReview {
@@ -30232,7 +31484,7 @@ pub struct ReviewDismissedIssueEventDismissedReview {
   pub state: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Review Dismissed Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30255,7 +31507,7 @@ pub struct ReviewDismissedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Locked Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30280,7 +31532,7 @@ pub struct LockedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AddedToProjectIssueEventProjectCard {
@@ -30294,7 +31546,7 @@ pub struct AddedToProjectIssueEventProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Added to Project Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30319,7 +31571,7 @@ pub struct AddedToProjectIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MovedColumnInProjectIssueEventProjectCard {
@@ -30333,7 +31585,7 @@ pub struct MovedColumnInProjectIssueEventProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Moved Column in Project Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30358,7 +31610,7 @@ pub struct MovedColumnInProjectIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RemovedFromProjectIssueEventProjectCard {
@@ -30372,7 +31624,7 @@ pub struct RemovedFromProjectIssueEventProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Removed from Project Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30397,7 +31649,7 @@ pub struct RemovedFromProjectIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ConvertedNoteToIssueIssueEventProjectCard {
@@ -30411,7 +31663,7 @@ pub struct ConvertedNoteToIssueIssueEventProjectCard {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Converted Note to Issue Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30434,7 +31686,7 @@ pub struct ConvertedNoteToIssueIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List labels for an issue`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30449,7 +31701,7 @@ pub struct IssuesListLabelsOnIssueQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Color-coded labels help you categorize and filter your issues (just like labels in Gmail).
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30469,7 +31721,7 @@ pub struct Label {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesAddLabelsRequestItem1 {
@@ -30479,14 +31731,14 @@ pub struct IssuesAddLabelsRequestItem1 {
   pub labels: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesAddLabelsRequestItem3Labels {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesAddLabelsRequestItem3 {
@@ -30495,14 +31747,14 @@ pub struct IssuesAddLabelsRequestItem3 {
   pub labels: Option<Vec<IssuesAddLabelsRequestItem3Labels>>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesAddLabelsRequestItem4 {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesSetLabelsRequestItem1 {
@@ -30512,14 +31764,14 @@ pub struct IssuesSetLabelsRequestItem1 {
   pub labels: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesSetLabelsRequestItem3Labels {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesSetLabelsRequestItem3 {
@@ -30528,14 +31780,14 @@ pub struct IssuesSetLabelsRequestItem3 {
   pub labels: Option<Vec<IssuesSetLabelsRequestItem3Labels>>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesSetLabelsRequestItem4 {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesLockRequest {
@@ -30549,7 +31801,7 @@ pub struct IssuesLockRequest {
   pub lock_reason: Option<IssuesLockRequestLockReason>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// Query for `List reactions for an issue`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30568,7 +31820,7 @@ pub struct ReactionsListForIssueQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForIssueRequest {
@@ -30576,7 +31828,7 @@ pub struct ReactionsCreateForIssueRequest {
   pub content: ReactionsCreateForIssueRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List timeline events for an issue`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30591,7 +31843,7 @@ pub struct IssuesListEventsForTimelineQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Timeline Comment Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30627,7 +31879,7 @@ pub struct TimelineCommentEvent {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TimelineCrossReferencedEventSource {
@@ -30640,7 +31892,7 @@ pub struct TimelineCrossReferencedEventSource {
   pub type_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Timeline Cross Referenced Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30654,7 +31906,7 @@ pub struct TimelineCrossReferencedEvent {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Identifying information for the git-user
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30667,7 +31919,7 @@ pub struct TimelineCommittedEventAuthor {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Identifying information for the git-user
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30680,7 +31932,7 @@ pub struct TimelineCommittedEventCommitter {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TimelineCommittedEventParents {
@@ -30690,7 +31942,7 @@ pub struct TimelineCommittedEventParents {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TimelineCommittedEventTree {
@@ -30699,7 +31951,7 @@ pub struct TimelineCommittedEventTree {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TimelineCommittedEventVerification {
@@ -30713,7 +31965,7 @@ pub struct TimelineCommittedEventVerification {
   pub verified: bool,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Timeline Committed Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30737,21 +31989,21 @@ pub struct TimelineCommittedEvent {
   pub verification: TimelineCommittedEventVerification,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TimelineReviewedEventLinksHtml {
   pub href: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TimelineReviewedEventLinksPullRequest {
   pub href: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TimelineReviewedEventLinks {
@@ -30759,7 +32011,7 @@ pub struct TimelineReviewedEventLinks {
   pub pull_request: TimelineReviewedEventLinksPullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Timeline Reviewed Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30792,28 +32044,28 @@ pub struct TimelineReviewedEvent {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewCommentLinksHtml {
   pub href: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewCommentLinksPullRequest {
   pub href: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewCommentLinksSelf {
   pub href: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewCommentLinks {
@@ -30823,7 +32075,7 @@ pub struct PullRequestReviewCommentLinks {
   pub self_: PullRequestReviewCommentLinksSelf,
 }
 
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 /// Pull Request Review Comments are comments on a portion of the Pull Request's diff.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30909,7 +32161,7 @@ pub struct PullRequestReviewComment {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Timeline Line Commented Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30925,7 +32177,7 @@ pub struct TimelineLineCommentedEvent {
   pub node_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Timeline Commit Commented Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30944,7 +32196,7 @@ pub struct TimelineCommitCommentedEvent {
   pub node_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Timeline Assigned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30967,7 +32219,7 @@ pub struct TimelineAssignedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Timeline Unassigned Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -30990,7 +32242,7 @@ pub struct TimelineUnassignedIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// State Change Issue Event
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31015,7 +32267,7 @@ pub struct StateChangeIssueEvent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List deploy keys`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31030,7 +32282,7 @@ pub struct ReposListDeployKeysQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// An SSH key granting access to a single repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31050,7 +32302,7 @@ pub struct DeployKey {
   pub verified: bool,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateDeployKeyRequest {
@@ -31068,7 +32320,7 @@ pub struct ReposCreateDeployKeyRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List labels for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31083,7 +32335,7 @@ pub struct IssuesListLabelsForRepoQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesCreateLabelRequest {
@@ -31099,7 +32351,7 @@ pub struct IssuesCreateLabelRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesUpdateLabelRequest {
@@ -31117,7 +32369,7 @@ pub struct IssuesUpdateLabelRequest {
   pub new_name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "licenses",))]
+#[cfg(any(feature = "full", feature = "licenses"))]
 /// Query for `Get the license for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31129,7 +32381,7 @@ pub struct LicensesGetForRepoQuery {
   pub ref_: Option<serde_json::Value>,
 }
 
-#[cfg(any(feature = "full", feature = "licenses",))]
+#[cfg(any(feature = "full", feature = "licenses"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct LicenseContentLinks {
@@ -31143,7 +32395,7 @@ pub struct LicenseContentLinks {
   pub self_: String,
 }
 
-#[cfg(any(feature = "full", feature = "licenses",))]
+#[cfg(any(feature = "full", feature = "licenses"))]
 /// License Content
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31173,7 +32425,7 @@ pub struct LicenseContent {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposMergeUpstreamRequest {
@@ -31181,7 +32433,7 @@ pub struct ReposMergeUpstreamRequest {
   pub branch: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Results of a successful merge upstream request
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31197,7 +32449,7 @@ pub struct MergedUpstream {
   pub message: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposMergeRequest {
@@ -31211,7 +32463,7 @@ pub struct ReposMergeRequest {
   pub head: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List milestones`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31238,7 +32490,7 @@ pub struct IssuesListMilestonesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesCreateMilestoneRequest {
@@ -31258,7 +32510,7 @@ pub struct IssuesCreateMilestoneRequest {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssuesUpdateMilestoneRequest {
@@ -31280,7 +32532,7 @@ pub struct IssuesUpdateMilestoneRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List labels for issues in a milestone`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31295,7 +32547,7 @@ pub struct IssuesListLabelsForMilestoneQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List repository notifications for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31326,7 +32578,7 @@ pub struct ActivityListRepoNotificationsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActivityMarkRepoNotificationsAsReadRequest {
@@ -31336,7 +32588,7 @@ pub struct ActivityMarkRepoNotificationsAsReadRequest {
   pub last_read_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActivityMarkRepoNotificationsAsReadResponse {
@@ -31348,7 +32600,7 @@ pub struct ActivityMarkRepoNotificationsAsReadResponse {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PagesHttpsCertificate {
@@ -31361,7 +32613,7 @@ pub struct PagesHttpsCertificate {
   pub state: PagesHttpsCertificateState,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PagesSourceHash {
@@ -31369,7 +32621,7 @@ pub struct PagesSourceHash {
   pub path: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The configuration for GitHub Pages for a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31416,7 +32668,7 @@ pub struct Page {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List GitHub Pages builds`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31431,7 +32683,7 @@ pub struct ReposListPagesBuildsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PageBuildError {
@@ -31440,7 +32692,7 @@ pub struct PageBuildError {
   pub message: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Page Build
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31457,7 +32709,7 @@ pub struct PageBuild {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Page Build Status
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31466,7 +32718,7 @@ pub struct PageBuildStatus {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The object used to create GitHub Pages deployment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31489,7 +32741,7 @@ pub struct ReposCreatePagesDeploymentRequest {
   pub pages_build_version: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// The GitHub Pages deployment status.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31506,7 +32758,7 @@ pub struct PageDeployment {
   pub status_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PagesDeploymentStatus {
@@ -31516,7 +32768,7 @@ pub struct PagesDeploymentStatus {
   pub status: Option<PagesDeploymentStatusStatus>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PagesHealthCheckAltDomain {
@@ -31606,7 +32858,7 @@ pub struct PagesHealthCheckAltDomain {
   pub uri: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PagesHealthCheckDomain {
@@ -31696,7 +32948,7 @@ pub struct PagesHealthCheckDomain {
   pub uri: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Pages Health Check Status
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31709,7 +32961,7 @@ pub struct PagesHealthCheck {
   pub domain: Option<PagesHealthCheckDomain>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCheckPrivateVulnerabilityReportingResponse {
@@ -31717,7 +32969,7 @@ pub struct ReposCheckPrivateVulnerabilityReportingResponse {
   pub enabled: bool,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// Query for `List repository projects`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31736,7 +32988,7 @@ pub struct ProjectsListForRepoQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsCreateForRepoRequest {
@@ -31748,7 +33000,7 @@ pub struct ProjectsCreateForRepoRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateOrUpdateCustomPropertiesValuesRequest {
@@ -31756,7 +33008,7 @@ pub struct ReposCreateOrUpdateCustomPropertiesValuesRequest {
   pub properties: Vec<CustomPropertyValue>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Query for `List pull requests`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -31791,7 +33043,7 @@ pub struct PullsListQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsCreateRequest {
@@ -31825,7 +33077,7 @@ pub struct PullsCreateRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestLinks {
@@ -31840,7 +33092,7 @@ pub struct PullRequestLinks {
   pub statuses: Link,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepoOwner {
@@ -31867,7 +33119,7 @@ pub struct PullRequestBaseRepoOwner {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepoPermissions {
@@ -31882,7 +33134,7 @@ pub struct PullRequestBaseRepoPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseRepo {
@@ -32006,7 +33258,7 @@ pub struct PullRequestBaseRepo {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBaseUser {
@@ -32033,7 +33285,7 @@ pub struct PullRequestBaseUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestBase {
@@ -32045,7 +33297,7 @@ pub struct PullRequestBase {
   pub user: PullRequestBaseUser,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoLicense {
@@ -32060,7 +33312,7 @@ pub struct PullRequestHeadRepoLicense {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoOwner {
@@ -32087,7 +33339,7 @@ pub struct PullRequestHeadRepoOwner {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepoPermissions {
@@ -32102,7 +33354,7 @@ pub struct PullRequestHeadRepoPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadRepo {
@@ -32226,7 +33478,7 @@ pub struct PullRequestHeadRepo {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHeadUser {
@@ -32253,7 +33505,7 @@ pub struct PullRequestHeadUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestHead {
@@ -32267,7 +33519,7 @@ pub struct PullRequestHead {
   pub user: PullRequestHeadUser,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestLabels {
@@ -32283,7 +33535,7 @@ pub struct PullRequestLabels {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32374,7 +33626,7 @@ pub struct PullRequest {
   pub user: SimpleUser,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Query for `List review comments in a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32400,7 +33652,7 @@ pub struct PullsListReviewCommentsForRepoQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsUpdateReviewCommentRequest {
@@ -32408,7 +33660,7 @@ pub struct PullsUpdateReviewCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// Query for `List reactions for a pull request review comment`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32427,7 +33679,7 @@ pub struct ReactionsListForPullRequestReviewCommentQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForPullRequestReviewCommentRequest {
@@ -32435,7 +33687,7 @@ pub struct ReactionsCreateForPullRequestReviewCommentRequest {
   pub content: ReactionsCreateForPullRequestReviewCommentRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsUpdateRequest {
@@ -32461,7 +33713,7 @@ pub struct PullsUpdateRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesCreateWithPrForAuthenticatedUserRequest {
@@ -32507,7 +33759,7 @@ pub struct CodespacesCreateWithPrForAuthenticatedUserRequest {
   pub working_directory: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Query for `List review comments on a pull request`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32534,7 +33786,7 @@ pub struct PullsListReviewCommentsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsCreateReviewCommentRequest {
@@ -32574,7 +33826,7 @@ pub struct PullsCreateReviewCommentRequest {
   pub subject_type: Option<PullsCreateReviewCommentRequestSubjectType>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsCreateReplyForReviewCommentRequest {
@@ -32582,7 +33834,7 @@ pub struct PullsCreateReplyForReviewCommentRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Query for `List commits on a pull request`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32597,7 +33849,7 @@ pub struct PullsListCommitsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Query for `List pull requests files`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32612,7 +33864,7 @@ pub struct PullsListFilesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsMergeRequest {
@@ -32634,7 +33886,7 @@ pub struct PullsMergeRequest {
   pub sha: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Pull Request Merge Result
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32644,7 +33896,7 @@ pub struct PullRequestMergeResult {
   pub sha: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Pull Request Review Request
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32653,7 +33905,7 @@ pub struct PullRequestReviewRequest {
   pub users: Vec<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsRemoveRequestedReviewersRequest {
@@ -32665,7 +33917,7 @@ pub struct PullsRemoveRequestedReviewersRequest {
   pub team_reviewers: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Query for `List reviews for a pull request`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32680,21 +33932,21 @@ pub struct PullsListReviewsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewLinksHtml {
   pub href: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewLinksPullRequest {
   pub href: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullRequestReviewLinks {
@@ -32702,7 +33954,7 @@ pub struct PullRequestReviewLinks {
   pub pull_request: PullRequestReviewLinksPullRequest,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Pull Request Reviews are reviews on pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32736,7 +33988,7 @@ pub struct PullRequestReview {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsCreateReviewRequestComments {
@@ -32762,7 +34014,7 @@ pub struct PullsCreateReviewRequestComments {
   pub start_side: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsCreateReviewRequest {
@@ -32784,7 +34036,7 @@ pub struct PullsCreateReviewRequest {
   pub event: Option<PullsCreateReviewRequestEvent>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsUpdateReviewRequest {
@@ -32792,7 +34044,7 @@ pub struct PullsUpdateReviewRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Query for `List comments for a pull request review`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32807,7 +34059,7 @@ pub struct PullsListCommentsForReviewQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReviewCommentLinks {
@@ -32817,7 +34069,7 @@ pub struct ReviewCommentLinks {
   pub self_: Link,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 /// Legacy Review Comment
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32885,7 +34137,7 @@ pub struct ReviewComment {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsDismissReviewRequest {
@@ -32896,7 +34148,7 @@ pub struct PullsDismissReviewRequest {
   pub message: String,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsSubmitReviewRequest {
@@ -32908,7 +34160,7 @@ pub struct PullsSubmitReviewRequest {
   pub event: PullsSubmitReviewRequestEvent,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsUpdateBranchRequest {
@@ -32918,7 +34170,7 @@ pub struct PullsUpdateBranchRequest {
   pub expected_head_sha: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "pulls",))]
+#[cfg(any(feature = "full", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PullsUpdateBranchResponse {
@@ -32930,7 +34182,7 @@ pub struct PullsUpdateBranchResponse {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get a repository README`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32942,7 +34194,7 @@ pub struct ReposGetReadmeQuery {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get a repository README for a directory`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32954,7 +34206,7 @@ pub struct ReposGetReadmeInDirectoryQuery {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List releases`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32969,7 +34221,7 @@ pub struct ReposListReleasesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Data related to a release.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -32995,7 +34247,7 @@ pub struct ReleaseAsset {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// A release.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33050,7 +34302,7 @@ pub struct Release {
   pub zipball_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateReleaseRequest {
@@ -33090,7 +34342,7 @@ pub struct ReposCreateReleaseRequest {
   pub target_commitish: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateReleaseAssetRequest {
@@ -33107,7 +34359,7 @@ pub struct ReposUpdateReleaseAssetRequest {
   pub state: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposGenerateReleaseNotesRequest {
@@ -33127,7 +34379,7 @@ pub struct ReposGenerateReleaseNotesRequest {
   pub target_commitish: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Generated name and body describing a release
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33138,7 +34390,7 @@ pub struct ReleaseNotesContent {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateReleaseRequest {
@@ -33176,7 +34428,7 @@ pub struct ReposUpdateReleaseRequest {
   pub target_commitish: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List release assets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33191,7 +34443,7 @@ pub struct ReposListReleaseAssetsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Upload a release asset`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33202,7 +34454,7 @@ pub struct ReposUploadReleaseAssetQuery {
   pub label: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// Query for `List reactions for a release`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33221,7 +34473,7 @@ pub struct ReactionsListForReleaseQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForReleaseRequest {
@@ -33229,7 +34481,7 @@ pub struct ReactionsCreateForReleaseRequest {
   pub content: ReactionsCreateForReleaseRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get rules for a branch`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33244,7 +34496,7 @@ pub struct ReposGetBranchRulesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33263,7 +34515,7 @@ pub struct RepositoryRuleRulesetInfo {
   pub ruleset_source_type: Option<RepositoryRuleRulesetInfoRulesetSourceType>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get all repository rulesets`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33282,7 +34534,7 @@ pub struct ReposGetRepoRulesetsQuery {
   pub includes_parents: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateRepoRulesetRequest {
@@ -33306,7 +34558,7 @@ pub struct ReposCreateRepoRulesetRequest {
   pub target: Option<ReposCreateRepoRulesetRequestTarget>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List repository rule suites`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33340,7 +34592,7 @@ pub struct ReposGetRepoRuleSuitesQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get a repository ruleset`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33351,7 +34603,7 @@ pub struct ReposGetRepoRulesetQuery {
   pub includes_parents: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposUpdateRepoRulesetRequest {
@@ -33379,7 +34631,7 @@ pub struct ReposUpdateRepoRulesetRequest {
   pub target: Option<ReposUpdateRepoRulesetRequestTarget>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Query for `List secret scanning alerts for a repository`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33428,7 +34680,7 @@ pub struct SecretScanningListAlertsForRepoQuery {
   pub validity: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecretScanningAlert {
@@ -33498,7 +34750,7 @@ pub struct SecretScanningAlert {
   pub validity: Option<SecretScanningAlertValidity>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecretScanningUpdateAlertRequest {
@@ -33511,7 +34763,7 @@ pub struct SecretScanningUpdateAlertRequest {
   pub state: SecretScanningAlertState,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Query for `List locations for a secret scanning alert`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33526,7 +34778,7 @@ pub struct SecretScanningListLocationsForAlertQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33551,7 +34803,7 @@ pub struct SecretScanningLocationCommit {
   pub start_line: f64,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33576,7 +34828,7 @@ pub struct SecretScanningLocationWikiCommit {
   pub start_line: f64,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33585,7 +34837,7 @@ pub struct SecretScanningLocationIssueTitle {
   pub issue_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33594,7 +34846,7 @@ pub struct SecretScanningLocationIssueBody {
   pub issue_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33603,7 +34855,7 @@ pub struct SecretScanningLocationIssueComment {
   pub issue_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33612,7 +34864,7 @@ pub struct SecretScanningLocationDiscussionTitle {
   pub discussion_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33621,7 +34873,7 @@ pub struct SecretScanningLocationDiscussionBody {
   pub discussion_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33630,7 +34882,7 @@ pub struct SecretScanningLocationDiscussionComment {
   pub discussion_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33639,7 +34891,7 @@ pub struct SecretScanningLocationPullRequestTitle {
   pub pull_request_title_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33648,7 +34900,7 @@ pub struct SecretScanningLocationPullRequestBody {
   pub pull_request_body_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33657,7 +34909,7 @@ pub struct SecretScanningLocationPullRequestComment {
   pub pull_request_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33666,7 +34918,7 @@ pub struct SecretScanningLocationPullRequestReview {
   pub pull_request_review_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33675,7 +34927,7 @@ pub struct SecretScanningLocationPullRequestReviewComment {
   pub pull_request_review_comment_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "secret_scanning",))]
+#[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SecretScanningLocation {
@@ -33689,7 +34941,7 @@ pub struct SecretScanningLocation {
   pub type_: Option<SecretScanningLocationType>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// Query for `List repository security advisories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33720,7 +34972,7 @@ pub struct SecurityAdvisoriesListRepositoryAdvisoriesQuery {
   pub state: Option<SecurityAdvisoriesListRepositoryAdvisoriesQueryState>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCreateCredits {
@@ -33730,7 +34982,7 @@ pub struct RepositoryAdvisoryCreateCredits {
   pub type_: SecurityAdvisoryCreditTypes,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33742,7 +34994,7 @@ pub struct RepositoryAdvisoryCreateVulnerabilitiesPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCreateVulnerabilities {
@@ -33762,7 +35014,7 @@ pub struct RepositoryAdvisoryCreateVulnerabilities {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryCreate {
@@ -33798,7 +35050,7 @@ pub struct RepositoryAdvisoryCreate {
   pub vulnerabilities: Vec<RepositoryAdvisoryCreateVulnerabilities>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33810,7 +35062,7 @@ pub struct PrivateVulnerabilityReportCreateVulnerabilitiesPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PrivateVulnerabilityReportCreateVulnerabilities {
@@ -33830,7 +35082,7 @@ pub struct PrivateVulnerabilityReportCreateVulnerabilities {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PrivateVulnerabilityReportCreate {
@@ -33860,7 +35112,7 @@ pub struct PrivateVulnerabilityReportCreate {
   pub vulnerabilities: Option<Vec<PrivateVulnerabilityReportCreateVulnerabilities>>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryUpdateCredits {
@@ -33870,7 +35122,7 @@ pub struct RepositoryAdvisoryUpdateCredits {
   pub type_: SecurityAdvisoryCreditTypes,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The name of the package affected by the vulnerability.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33882,7 +35134,7 @@ pub struct RepositoryAdvisoryUpdateVulnerabilitiesPackage {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryUpdateVulnerabilities {
@@ -33902,7 +35154,7 @@ pub struct RepositoryAdvisoryUpdateVulnerabilities {
   pub vulnerable_version_range: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories",))]
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepositoryAdvisoryUpdate {
@@ -33952,7 +35204,7 @@ pub struct RepositoryAdvisoryUpdate {
   pub vulnerabilities: Option<Vec<RepositoryAdvisoryUpdateVulnerabilities>>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List stargazers`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33967,7 +35219,7 @@ pub struct ActivityListStargazersForRepoQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Stargazer
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33978,7 +35230,7 @@ pub struct Stargazer {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Commit Activity
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -33988,7 +35240,7 @@ pub struct CommitActivity {
   pub week: i64,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ContributorActivityWeeks {
@@ -34006,7 +35258,7 @@ pub struct ContributorActivityWeeks {
   pub w: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Contributor Activity
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34018,7 +35270,7 @@ pub struct ContributorActivity {
   pub weeks: Vec<ContributorActivityWeeks>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ParticipationStats {
@@ -34026,7 +35278,7 @@ pub struct ParticipationStats {
   pub owner: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateCommitStatusRequest {
@@ -34048,7 +35300,7 @@ pub struct ReposCreateCommitStatusRequest {
   pub target_url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List watchers`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34063,7 +35315,7 @@ pub struct ActivityListWatchersForRepoQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Repository invitations let you manage who you collaborate with.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34080,7 +35332,7 @@ pub struct RepositorySubscription {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ActivitySetRepoSubscriptionRequest {
@@ -34094,7 +35346,7 @@ pub struct ActivitySetRepoSubscriptionRequest {
   pub subscribed: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List repository tags`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34109,7 +35361,7 @@ pub struct ReposListTagsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TagCommit {
@@ -34117,7 +35369,7 @@ pub struct TagCommit {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Tag
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34129,7 +35381,7 @@ pub struct Tag {
   pub zipball_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Tag protection
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34149,7 +35401,7 @@ pub struct TagProtection {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateTagProtectionRequest {
@@ -34157,7 +35409,7 @@ pub struct ReposCreateTagProtectionRequest {
   pub pattern: String,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List repository teams`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34172,7 +35424,7 @@ pub struct ReposListTeamsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get all repository topics`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34187,7 +35439,7 @@ pub struct ReposGetAllTopicsQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// A topic aggregates entities that are related to a subject.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34195,7 +35447,7 @@ pub struct Topic {
   pub names: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposReplaceAllTopicsRequest {
@@ -34203,7 +35455,7 @@ pub struct ReposReplaceAllTopicsRequest {
   pub names: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get repository clones`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34214,7 +35466,7 @@ pub struct ReposGetClonesQuery {
   pub per: Option<ReposGetClonesQueryPer>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct Traffic {
@@ -34223,7 +35475,7 @@ pub struct Traffic {
   pub uniques: i64,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Clone Traffic
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34233,7 +35485,7 @@ pub struct CloneTraffic {
   pub uniques: i64,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Content Traffic
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34244,7 +35496,7 @@ pub struct ContentTraffic {
   pub uniques: i64,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Referrer Traffic
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34254,7 +35506,7 @@ pub struct ReferrerTraffic {
   pub uniques: i64,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `Get page views`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34265,7 +35517,7 @@ pub struct ReposGetViewsQuery {
   pub per: Option<ReposGetViewsQueryPer>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// View Traffic
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34275,7 +35527,7 @@ pub struct ViewTraffic {
   pub views: Vec<Traffic>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposTransferRequest {
@@ -34291,7 +35543,7 @@ pub struct ReposTransferRequest {
   pub team_ids: Option<Vec<i64>>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateUsingTemplateRequest {
@@ -34315,7 +35567,7 @@ pub struct ReposCreateUsingTemplateRequest {
   pub private: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List public repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34326,7 +35578,7 @@ pub struct ReposListPublicQuery {
   pub since: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Query for `Search code`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34351,7 +35603,7 @@ pub struct SearchCodeQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchResultTextMatchesItemMatches {
@@ -34363,7 +35615,7 @@ pub struct SearchResultTextMatchesItemMatches {
   pub text: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchResultTextMatchesItem {
@@ -34384,7 +35636,7 @@ pub struct SearchResultTextMatchesItem {
   pub property: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Code Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34414,7 +35666,7 @@ pub struct CodeSearchResultItem {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchCodeResponse {
@@ -34423,7 +35675,7 @@ pub struct SearchCodeResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Query for `Search commits`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34448,7 +35700,7 @@ pub struct SearchCommitsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitSearchResultItemCommitAuthor {
@@ -34457,7 +35709,7 @@ pub struct CommitSearchResultItemCommitAuthor {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitSearchResultItemCommitTree {
@@ -34465,7 +35717,7 @@ pub struct CommitSearchResultItemCommitTree {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitSearchResultItemCommit {
@@ -34482,7 +35734,7 @@ pub struct CommitSearchResultItemCommit {
   pub verification: Option<Verification>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CommitSearchResultItemParents {
@@ -34497,7 +35749,7 @@ pub struct CommitSearchResultItemParents {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Commit Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34522,7 +35774,7 @@ pub struct CommitSearchResultItem {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchCommitsResponse {
@@ -34531,7 +35783,7 @@ pub struct SearchCommitsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Query for `Search issues and pull requests`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34556,7 +35808,7 @@ pub struct SearchIssuesAndPullRequestsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssueSearchResultItemLabels {
@@ -34584,7 +35836,7 @@ pub struct IssueSearchResultItemLabels {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct IssueSearchResultItemPullRequest {
@@ -34605,7 +35857,7 @@ pub struct IssueSearchResultItemPullRequest {
   pub url: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Issue Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34681,7 +35933,7 @@ pub struct IssueSearchResultItem {
   pub user: Option<SimpleUser>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchIssuesAndPullRequestsResponse {
@@ -34690,7 +35942,7 @@ pub struct SearchIssuesAndPullRequestsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Query for `Search labels`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34717,7 +35969,7 @@ pub struct SearchLabelsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Label Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34738,7 +35990,7 @@ pub struct LabelSearchResultItem {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchLabelsResponse {
@@ -34747,7 +35999,7 @@ pub struct SearchLabelsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Query for `Search repositories`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34772,7 +36024,7 @@ pub struct SearchReposQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct RepoSearchResultItemPermissions {
@@ -34787,7 +36039,7 @@ pub struct RepoSearchResultItemPermissions {
   pub triage: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Repo Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34927,7 +36179,7 @@ pub struct RepoSearchResultItem {
   pub web_commit_signoff_required: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchReposResponse {
@@ -34936,7 +36188,7 @@ pub struct SearchReposResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Query for `Search topics`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -34953,7 +36205,7 @@ pub struct SearchTopicsQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TopicSearchResultItemAliasesTopicRelation {
@@ -34971,7 +36223,7 @@ pub struct TopicSearchResultItemAliasesTopicRelation {
   pub topic_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TopicSearchResultItemAliases {
@@ -34980,7 +36232,7 @@ pub struct TopicSearchResultItemAliases {
   pub topic_relation: Option<TopicSearchResultItemAliasesTopicRelation>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TopicSearchResultItemRelatedTopicRelation {
@@ -34998,7 +36250,7 @@ pub struct TopicSearchResultItemRelatedTopicRelation {
   pub topic_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TopicSearchResultItemRelated {
@@ -35007,7 +36259,7 @@ pub struct TopicSearchResultItemRelated {
   pub topic_relation: Option<TopicSearchResultItemRelatedTopicRelation>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Topic Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35050,7 +36302,7 @@ pub struct TopicSearchResultItem {
   pub updated_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchTopicsResponse {
@@ -35059,7 +36311,7 @@ pub struct SearchTopicsResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// Query for `Search users`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35084,7 +36336,7 @@ pub struct SearchUsersQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 /// User Search Result Item
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35158,7 +36410,7 @@ pub struct UserSearchResultItem {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "search",))]
+#[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct SearchUsersResponse {
@@ -35167,7 +36419,7 @@ pub struct SearchUsersResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsUpdateLegacyRequest {
@@ -35202,7 +36454,7 @@ pub struct TeamsUpdateLegacyRequest {
   pub privacy: Option<TeamsUpdateLegacyRequestPrivacy>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List discussions (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35221,7 +36473,7 @@ pub struct TeamsListDiscussionsLegacyQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsCreateDiscussionLegacyRequest {
@@ -35235,7 +36487,7 @@ pub struct TeamsCreateDiscussionLegacyRequest {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsUpdateDiscussionLegacyRequest {
@@ -35249,7 +36501,7 @@ pub struct TeamsUpdateDiscussionLegacyRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List discussion comments (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35268,7 +36520,7 @@ pub struct TeamsListDiscussionCommentsLegacyQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsCreateDiscussionCommentLegacyRequest {
@@ -35276,7 +36528,7 @@ pub struct TeamsCreateDiscussionCommentLegacyRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsUpdateDiscussionCommentLegacyRequest {
@@ -35284,7 +36536,7 @@ pub struct TeamsUpdateDiscussionCommentLegacyRequest {
   pub body: String,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// Query for `List reactions for a team discussion comment (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35303,7 +36555,7 @@ pub struct ReactionsListForTeamDiscussionCommentLegacyQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForTeamDiscussionCommentLegacyRequest {
@@ -35311,7 +36563,7 @@ pub struct ReactionsCreateForTeamDiscussionCommentLegacyRequest {
   pub content: ReactionsCreateForTeamDiscussionCommentLegacyRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 /// Query for `List reactions for a team discussion (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35330,7 +36582,7 @@ pub struct ReactionsListForTeamDiscussionLegacyQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "reactions",))]
+#[cfg(any(feature = "full", feature = "reactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReactionsCreateForTeamDiscussionLegacyRequest {
@@ -35338,7 +36590,7 @@ pub struct ReactionsCreateForTeamDiscussionLegacyRequest {
   pub content: ReactionsCreateForTeamDiscussionLegacyRequestContent,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List pending team invitations (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35353,7 +36605,7 @@ pub struct TeamsListPendingInvitationsLegacyQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List team members (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35372,7 +36624,7 @@ pub struct TeamsListMembersLegacyQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateMembershipForUserLegacyRequest {
@@ -35382,7 +36634,7 @@ pub struct TeamsAddOrUpdateMembershipForUserLegacyRequest {
   pub role: Option<TeamsAddOrUpdateMembershipForUserLegacyRequestRole>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List team projects (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35397,7 +36649,7 @@ pub struct TeamsListProjectsLegacyQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateProjectPermissionsLegacyRequest {
@@ -35407,7 +36659,7 @@ pub struct TeamsAddOrUpdateProjectPermissionsLegacyRequest {
   pub permission: Option<TeamsAddOrUpdateProjectPermissionsLegacyRequestPermission>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List team repositories (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35422,7 +36674,7 @@ pub struct TeamsListReposLegacyQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct TeamsAddOrUpdateRepoPermissionsLegacyRequest {
@@ -35432,7 +36684,7 @@ pub struct TeamsAddOrUpdateRepoPermissionsLegacyRequest {
   pub permission: Option<TeamsAddOrUpdateRepoPermissionsLegacyRequestPermission>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List child teams (Legacy)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35447,7 +36699,7 @@ pub struct TeamsListChildLegacyQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct PrivateUserPlan {
@@ -35457,7 +36709,7 @@ pub struct PrivateUserPlan {
   pub space: i64,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Private User
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35533,7 +36785,7 @@ pub struct PrivateUser {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersUpdateAuthenticatedRequest {
@@ -35571,7 +36823,7 @@ pub struct UsersUpdateAuthenticatedRequest {
   pub twitter_username: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List users blocked by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35586,7 +36838,7 @@ pub struct UsersListBlockedByAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `List codespaces for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35605,7 +36857,7 @@ pub struct CodespacesListForAuthenticatedUserQuery {
   pub repository_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListForAuthenticatedUserResponse {
@@ -35613,7 +36865,7 @@ pub struct CodespacesListForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesCreateForAuthenticatedUserRequestItem1 {
@@ -35666,7 +36918,7 @@ pub struct CodespacesCreateForAuthenticatedUserRequestItem1 {
   pub working_directory: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Pull request number for this codespace
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35677,7 +36929,7 @@ pub struct CodespacesCreateForAuthenticatedUserRequestItem2PullRequest {
   pub repository_id: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesCreateForAuthenticatedUserRequestItem2 {
@@ -35709,7 +36961,7 @@ pub struct CodespacesCreateForAuthenticatedUserRequestItem2 {
   pub working_directory: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Query for `List secrets for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35724,7 +36976,7 @@ pub struct CodespacesListSecretsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Secrets for a GitHub Codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35741,7 +36993,7 @@ pub struct CodespacesSecret {
   pub visibility: CodespacesSecretVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListSecretsForAuthenticatedUserResponse {
@@ -35749,7 +37001,7 @@ pub struct CodespacesListSecretsForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// The public key used for setting user Codespaces' Secrets.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35760,7 +37012,7 @@ pub struct CodespacesUserPublicKey {
   pub key_id: String,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest {
@@ -35776,7 +37028,7 @@ pub struct CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest {
   pub selected_repository_ids: Option<Vec<StringOrInteger>>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesListRepositoriesForSecretForAuthenticatedUserResponse {
@@ -35784,7 +37036,7 @@ pub struct CodespacesListRepositoriesForSecretForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest {
@@ -35792,7 +37044,7 @@ pub struct CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest {
   pub selected_repository_ids: Vec<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesUpdateForAuthenticatedUserRequest {
@@ -35810,7 +37062,7 @@ pub struct CodespacesUpdateForAuthenticatedUserRequest {
   pub recent_folders: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// An export of a codespace. Also, latest export details for a codespace can be fetched with id = latest
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35845,7 +37097,7 @@ pub struct CodespaceExportDetails {
   pub state: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesCodespaceMachinesForAuthenticatedUserResponse {
@@ -35853,7 +37105,7 @@ pub struct CodespacesCodespaceMachinesForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespacesPublishForAuthenticatedUserRequest {
@@ -35867,7 +37119,7 @@ pub struct CodespacesPublishForAuthenticatedUserRequest {
   pub private: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// Details about the codespace's git repository.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35895,7 +37147,7 @@ pub struct CodespaceWithFullRepositoryGitStatus {
   pub ref_: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct CodespaceWithFullRepositoryRuntimeConstraints {
@@ -35905,7 +37157,7 @@ pub struct CodespaceWithFullRepositoryRuntimeConstraints {
   pub allowed_port_privacy_settings: Option<Vec<String>>,
 }
 
-#[cfg(any(feature = "full", feature = "codespaces",))]
+#[cfg(any(feature = "full", feature = "codespaces"))]
 /// A codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -35993,7 +37245,7 @@ pub struct CodespaceWithFullRepository {
   pub web_url: String,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest {
@@ -36001,7 +37253,7 @@ pub struct UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest {
   pub visibility: UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Email
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36014,7 +37266,7 @@ pub struct Email {
   pub visibility: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List email addresses for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36029,7 +37281,7 @@ pub struct UsersListEmailsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersAddEmailForAuthenticatedUserRequestItem1 {
@@ -36037,7 +37289,7 @@ pub struct UsersAddEmailForAuthenticatedUserRequestItem1 {
   pub emails: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Deletes one or more email addresses from your GitHub account. Must contain at least one email address. **Note:** Alternatively, you can pass a single email address or an `array` of emails addresses directly, but we recommend that you pass an object using the `emails` key.
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36046,7 +37298,7 @@ pub struct UsersDeleteEmailForAuthenticatedUserRequestItem1 {
   pub emails: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List followers of the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36061,7 +37313,7 @@ pub struct UsersListFollowersForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List the people the authenticated user follows`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36076,7 +37328,7 @@ pub struct UsersListFollowedByAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List GPG keys for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36091,7 +37343,7 @@ pub struct UsersListGpgKeysForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GpgKeyEmails {
@@ -36103,7 +37355,7 @@ pub struct GpgKeyEmails {
   pub verified: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GpgKeySubkeysEmails {
@@ -36115,7 +37367,7 @@ pub struct GpgKeySubkeysEmails {
   pub verified: Option<bool>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct GpgKeySubkeys {
@@ -36163,7 +37415,7 @@ pub struct GpgKeySubkeys {
   pub subkeys: Option<Vec<serde_json::Value>>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// A unique encryption key
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36193,7 +37445,7 @@ pub struct GpgKey {
   pub subkeys: Vec<GpgKeySubkeys>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersCreateGpgKeyForAuthenticatedUserRequest {
@@ -36205,7 +37457,7 @@ pub struct UsersCreateGpgKeyForAuthenticatedUserRequest {
   pub name: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List app installations accessible to the user access token`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36220,7 +37472,7 @@ pub struct AppsListInstallationsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsListInstallationsForAuthenticatedUserResponse {
@@ -36228,7 +37480,7 @@ pub struct AppsListInstallationsForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List repositories accessible to the user access token`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36243,7 +37495,7 @@ pub struct AppsListInstallationReposForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct AppsListInstallationReposForAuthenticatedUserResponse {
@@ -36254,12 +37506,12 @@ pub struct AppsListInstallationReposForAuthenticatedUserResponse {
   pub total_count: i64,
 }
 
-#[cfg(any(feature = "full", feature = "interactions",))]
+#[cfg(any(feature = "full", feature = "interactions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct InteractionsGetRestrictionsForAuthenticatedUserResponseItem2 {}
 
-#[cfg(any(feature = "full", feature = "issues",))]
+#[cfg(any(feature = "full", feature = "issues"))]
 /// Query for `List user account issues assigned to the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36298,7 +37550,7 @@ pub struct IssuesListForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List public SSH keys for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36313,7 +37565,7 @@ pub struct UsersListPublicSshKeysForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Key
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36327,7 +37579,7 @@ pub struct Key {
   pub verified: bool,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersCreatePublicSshKeyForAuthenticatedUserRequest {
@@ -36339,7 +37591,7 @@ pub struct UsersCreatePublicSshKeyForAuthenticatedUserRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List subscriptions for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36354,7 +37606,7 @@ pub struct AppsListSubscriptionsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MarketplaceAccount {
@@ -36374,7 +37626,7 @@ pub struct MarketplaceAccount {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// User Marketplace Purchase
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36397,7 +37649,7 @@ pub struct UserMarketplacePurchase {
   pub updated_at: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "apps",))]
+#[cfg(any(feature = "full", feature = "apps"))]
 /// Query for `List subscriptions for the authenticated user (stubbed)`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36412,7 +37664,7 @@ pub struct AppsListSubscriptionsForAuthenticatedUserStubbedQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List organization memberships for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36431,7 +37683,7 @@ pub struct OrgsListMembershipsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct OrgsUpdateMembershipForAuthenticatedUserRequest {
@@ -36439,7 +37691,7 @@ pub struct OrgsUpdateMembershipForAuthenticatedUserRequest {
   pub state: OrgsUpdateMembershipForAuthenticatedUserRequestState,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Query for `List user migrations`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36454,7 +37706,7 @@ pub struct MigrationsListForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsStartForAuthenticatedUserRequest {
@@ -36493,7 +37745,7 @@ pub struct MigrationsStartForAuthenticatedUserRequest {
   pub repositories: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Query for `Get a user migration status`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36501,7 +37753,7 @@ pub struct MigrationsGetStatusForAuthenticatedUserQuery {
   pub exclude: StringArray,
 }
 
-#[cfg(any(feature = "full", feature = "migrations",))]
+#[cfg(any(feature = "full", feature = "migrations"))]
 /// Query for `List repositories for a user migration`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36516,7 +37768,7 @@ pub struct MigrationsListReposForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List organizations for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36531,7 +37783,7 @@ pub struct OrgsListForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 /// Query for `List packages for the authenticated user's namespace`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36555,7 +37807,7 @@ pub struct PackagesListPackagesForAuthenticatedUserQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 /// Query for `Restore a package for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36566,7 +37818,7 @@ pub struct PackagesRestorePackageForAuthenticatedUserQuery {
   pub token: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 /// Query for `List package versions for a package owned by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36585,7 +37837,7 @@ pub struct PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQuery 
   pub state: Option<PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQueryState>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ProjectsCreateForAuthenticatedUserRequest {
@@ -36597,7 +37849,7 @@ pub struct ProjectsCreateForAuthenticatedUserRequest {
   pub name: String,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List public email addresses for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36612,7 +37864,7 @@ pub struct UsersListPublicEmailsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List repositories for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36659,7 +37911,7 @@ pub struct ReposListForAuthenticatedUserQuery {
   pub before: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct ReposCreateForAuthenticatedUserRequest {
@@ -36771,7 +38023,7 @@ pub struct ReposCreateForAuthenticatedUserRequest {
   pub team_id: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List repository invitations for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36786,7 +38038,7 @@ pub struct ReposListInvitationsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List social accounts for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36801,7 +38053,7 @@ pub struct UsersListSocialAccountsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Social media account
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36810,7 +38062,7 @@ pub struct SocialAccount {
   pub url: String,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersAddSocialAccountForAuthenticatedUserRequest {
@@ -36818,7 +38070,7 @@ pub struct UsersAddSocialAccountForAuthenticatedUserRequest {
   pub account_urls: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersDeleteSocialAccountForAuthenticatedUserRequest {
@@ -36826,7 +38078,7 @@ pub struct UsersDeleteSocialAccountForAuthenticatedUserRequest {
   pub account_urls: Vec<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List SSH signing keys for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36841,7 +38093,7 @@ pub struct UsersListSshSigningKeysForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// A public SSH key used to sign Git commits
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36852,7 +38104,7 @@ pub struct SshSigningKey {
   pub title: String,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct UsersCreateSshSigningKeyForAuthenticatedUserRequest {
@@ -36864,7 +38116,7 @@ pub struct UsersCreateSshSigningKeyForAuthenticatedUserRequest {
   pub title: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List repositories starred by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36887,7 +38139,7 @@ pub struct ActivityListReposStarredByAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List repositories watched by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36902,7 +38154,7 @@ pub struct ActivityListWatchedReposForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "teams",))]
+#[cfg(any(feature = "full", feature = "teams"))]
 /// Query for `List teams for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36917,7 +38169,7 @@ pub struct TeamsListForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List users`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36932,7 +38184,7 @@ pub struct UsersListQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List events for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36947,7 +38199,7 @@ pub struct ActivityListEventsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List organization events for the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36962,7 +38214,7 @@ pub struct ActivityListOrgEventsForAuthenticatedUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List public events for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36977,7 +38229,7 @@ pub struct ActivityListPublicEventsForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List followers of a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -36992,7 +38244,7 @@ pub struct UsersListFollowersForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List the people a user follows`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37007,7 +38259,7 @@ pub struct UsersListFollowingForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "gists",))]
+#[cfg(any(feature = "full", feature = "gists"))]
 /// Query for `List gists for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37026,7 +38278,7 @@ pub struct GistsListForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List GPG keys for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37041,7 +38293,7 @@ pub struct UsersListGpgKeysForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `Get contextual information for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37056,7 +38308,7 @@ pub struct UsersGetContextForUserQuery {
   pub subject_id: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct HovercardContexts {
@@ -37064,7 +38316,7 @@ pub struct HovercardContexts {
   pub octicon: String,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Hovercard
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37072,7 +38324,7 @@ pub struct Hovercard {
   pub contexts: Vec<HovercardContexts>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List public keys for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37087,7 +38339,7 @@ pub struct UsersListPublicKeysForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Key Simple
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37096,7 +38348,7 @@ pub struct KeySimple {
   pub key: String,
 }
 
-#[cfg(any(feature = "full", feature = "orgs",))]
+#[cfg(any(feature = "full", feature = "orgs"))]
 /// Query for `List organizations for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37111,7 +38363,7 @@ pub struct OrgsListForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 /// Query for `List packages for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37135,7 +38387,7 @@ pub struct PackagesListPackagesForUserQuery {
   pub per_page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "packages",))]
+#[cfg(any(feature = "full", feature = "packages"))]
 /// Query for `Restore a package for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37146,7 +38398,7 @@ pub struct PackagesRestorePackageForUserQuery {
   pub token: Option<String>,
 }
 
-#[cfg(any(feature = "full", feature = "projects",))]
+#[cfg(any(feature = "full", feature = "projects"))]
 /// Query for `List user projects`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37165,7 +38417,7 @@ pub struct ProjectsListForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List events received by the authenticated user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37180,7 +38432,7 @@ pub struct ActivityListReceivedEventsForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List public events received by a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37195,7 +38447,7 @@ pub struct ActivityListReceivedPublicEventsForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "repos",))]
+#[cfg(any(feature = "full", feature = "repos"))]
 /// Query for `List repositories for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37223,7 +38475,7 @@ pub struct ReposListForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List social accounts for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37238,7 +38490,7 @@ pub struct UsersListSocialAccountsForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "users",))]
+#[cfg(any(feature = "full", feature = "users"))]
 /// Query for `List SSH signing keys for a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37253,7 +38505,7 @@ pub struct UsersListSshSigningKeysForUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List repositories starred by a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37276,7 +38528,7 @@ pub struct ActivityListReposStarredByUserQuery {
   pub page: Option<i64>,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Starred Repository
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
@@ -37285,7 +38537,7 @@ pub struct StarredRepository {
   pub starred_at: String,
 }
 
-#[cfg(any(feature = "full", feature = "activity",))]
+#[cfg(any(feature = "full", feature = "activity"))]
 /// Query for `List repositories watched by a user`
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]

@@ -11,6 +11,7 @@ pub struct EnumField {
   pub type_name: Option<String>,
   pub description: Option<String>,
   pub reference: Option<String>,
+  pub tags: Vec<String>,
 }
 
 #[derive(Clone, Debug, Serialize)]
@@ -71,6 +72,7 @@ impl EnumField {
         type_name: None,
         description: None,
         reference: None,
+        tags: vec![],
       }
     } else {
       Self {
@@ -79,6 +81,7 @@ impl EnumField {
         type_name: None,
         description: None,
         reference: None,
+        tags: vec![],
       }
     }
   }
@@ -93,5 +96,11 @@ impl EnumField {
 
   pub fn set_type_name(&mut self, type_name: &str) {
     self.type_name = Some(type_name.to_owned());
+  }
+
+  pub fn add_tag(&mut self, tag: &String) {
+    if !self.tags.contains(tag) {
+      self.tags.push(tag.clone());
+    }
   }
 }
