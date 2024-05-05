@@ -12,6 +12,7 @@ description.workspace = true
 categories.workspace = true
 
 [features]
+default = ["octocrate-core/default-tls"]
 full = ["octocrate-types/full", "pagination", "chrono"]
 apps = ["octocrate-types/apps", "chrono"]
 actions = ["octocrate-types/actions"]
@@ -52,6 +53,7 @@ classroom = ["octocrate-types/classroom"]
 desktop = ["octocrate-types/desktop"]
 webhooks = ["octocrate-types/webhooks"]
 pagination = ["octocrate-types/pagination", "octocrate-core/pagination"]
+rustls-tls = ["octocrate-core/rustls-tls"]
 
 [lib]
 doctest = false

@@ -16,10 +16,12 @@ categories.workspace = true
 full = ["octocrate-types/full"]
 apps = ["octocrate-types/apps"]
 pagination = ["octocrate-types/pagination"]
+default-tls = ["reqwest/default-tls"]
+rustls-tls = ["reqwest/rustls-tls"]
 
 [dependencies]
 serde_json = { workspace = true }
-reqwest = { workspace = true, features = ["json"] }
+reqwest = { workspace = true, default-features = false, features = ["json", "charset", "http2", "macos-system-configuration"] }
 serde = { workspace = true, features = ["derive"] }
 thiserror = { workspace = true }
 jsonwebtoken = { workspace = true, features = ["use_pem"] }
