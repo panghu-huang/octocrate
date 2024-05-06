@@ -270,14 +270,14 @@ impl TryFrom<&String> for Method {
   }
 }
 
-impl ToString for Method {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for Method {
+  fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
     match &self {
-      Method::GET => "get".to_string(),
-      Method::POST => "post".to_string(),
-      Method::PUT => "put".to_string(),
-      Method::PATCH => "patch".to_string(),
-      Method::DELETE => "delete".to_string(),
+      Method::GET => write!(f, "get"),
+      Method::POST => write!(f, "post"),
+      Method::PUT => write!(f, "put"),
+      Method::PATCH => write!(f, "patch"),
+      Method::DELETE => write!(f, "delete"),
     }
   }
 }

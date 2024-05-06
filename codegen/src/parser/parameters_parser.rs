@@ -62,7 +62,7 @@ impl ParametersParser {
           field.set_description(description);
         }
 
-        field.reference = type_.reference.clone();
+        field.reference.clone_from(&type_.reference);
 
         field
       }

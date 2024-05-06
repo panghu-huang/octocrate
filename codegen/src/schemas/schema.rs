@@ -73,16 +73,16 @@ impl TryFrom<&String> for SchemaType {
   }
 }
 
-impl ToString for SchemaType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SchemaType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SchemaType::Null => "null".to_string(),
-      SchemaType::Integer => "integer".to_string(),
-      SchemaType::String => "string".to_string(),
-      SchemaType::Object => "object".to_string(),
-      SchemaType::Array => "array".to_string(),
-      SchemaType::Boolean => "boolean".to_string(),
-      SchemaType::Number => "number".to_string(),
+      SchemaType::Null => write!(f, "null"),
+      SchemaType::Integer => write!(f, "integer"),
+      SchemaType::String => write!(f, "string"),
+      SchemaType::Object => write!(f, "object"),
+      SchemaType::Array => write!(f, "array"),
+      SchemaType::Boolean => write!(f, "boolean"),
+      SchemaType::Number => write!(f, "number"),
     }
   }
 }
