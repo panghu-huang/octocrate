@@ -544,10 +544,8 @@ pub type StarredRepositoryArray = Vec<StarredRepository>;
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQueryType {
   #[serde(rename = "reviewed")]
   Reviewed,
-
   #[serde(rename = "malware")]
   Malware,
-
   #[serde(rename = "unreviewed")]
   Unreviewed,
 }
@@ -564,20 +562,69 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQueryType {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
+/// The package's language or package management ecosystem.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+pub enum SecurityAdvisoryEcosystems {
+  #[serde(rename = "rubygems")]
+  Rubygems,
+  #[serde(rename = "npm")]
+  Npm,
+  #[serde(rename = "pip")]
+  Pip,
+  #[serde(rename = "maven")]
+  Maven,
+  #[serde(rename = "nuget")]
+  Nuget,
+  #[serde(rename = "composer")]
+  Composer,
+  #[serde(rename = "go")]
+  Go,
+  #[serde(rename = "rust")]
+  Rust,
+  #[serde(rename = "erlang")]
+  Erlang,
+  #[serde(rename = "actions")]
+  Actions,
+  #[serde(rename = "pub")]
+  Pub,
+  #[serde(rename = "other")]
+  Other,
+  #[serde(rename = "swift")]
+  Swift,
+}
+
+#[cfg(any(feature = "full", feature = "security_advisories"))]
+impl ToString for SecurityAdvisoryEcosystems {
+  fn to_string(&self) -> String {
+    match self {
+      SecurityAdvisoryEcosystems::Rubygems => "rubygems".to_string(),
+      SecurityAdvisoryEcosystems::Npm => "npm".to_string(),
+      SecurityAdvisoryEcosystems::Pip => "pip".to_string(),
+      SecurityAdvisoryEcosystems::Maven => "maven".to_string(),
+      SecurityAdvisoryEcosystems::Nuget => "nuget".to_string(),
+      SecurityAdvisoryEcosystems::Composer => "composer".to_string(),
+      SecurityAdvisoryEcosystems::Go => "go".to_string(),
+      SecurityAdvisoryEcosystems::Rust => "rust".to_string(),
+      SecurityAdvisoryEcosystems::Erlang => "erlang".to_string(),
+      SecurityAdvisoryEcosystems::Actions => "actions".to_string(),
+      SecurityAdvisoryEcosystems::Pub => "pub".to_string(),
+      SecurityAdvisoryEcosystems::Other => "other".to_string(),
+      SecurityAdvisoryEcosystems::Swift => "swift".to_string(),
+    }
+  }
+}
+
+#[cfg(any(feature = "full", feature = "security_advisories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQuerySeverity {
   #[serde(rename = "unknown")]
   Unknown,
-
   #[serde(rename = "low")]
   Low,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "critical")]
   Critical,
 }
@@ -600,7 +647,6 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQuerySeverity {
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -620,7 +666,6 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQueryDirection {
 pub enum SecurityAdvisoriesListGlobalAdvisoriesQuerySort {
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "published")]
   Published,
 }
@@ -641,31 +686,22 @@ impl ToString for SecurityAdvisoriesListGlobalAdvisoriesQuerySort {
 pub enum SecurityAdvisoryCreditTypes {
   #[serde(rename = "analyst")]
   Analyst,
-
   #[serde(rename = "finder")]
   Finder,
-
   #[serde(rename = "reporter")]
   Reporter,
-
   #[serde(rename = "coordinator")]
   Coordinator,
-
   #[serde(rename = "remediation_developer")]
   RemediationDeveloper,
-
   #[serde(rename = "remediation_reviewer")]
   RemediationReviewer,
-
   #[serde(rename = "remediation_verifier")]
   RemediationVerifier,
-
   #[serde(rename = "tool")]
   Tool,
-
   #[serde(rename = "sponsor")]
   Sponsor,
-
   #[serde(rename = "other")]
   Other,
 }
@@ -694,7 +730,6 @@ impl ToString for SecurityAdvisoryCreditTypes {
 pub enum GlobalAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
-
   #[serde(rename = "GHSA")]
   Ghsa,
 }
@@ -715,16 +750,12 @@ impl ToString for GlobalAdvisoryIdentifiersType {
 pub enum GlobalAdvisorySeverity {
   #[serde(rename = "critical")]
   Critical,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "low")]
   Low,
-
   #[serde(rename = "unknown")]
   Unknown,
 }
@@ -748,10 +779,8 @@ impl ToString for GlobalAdvisorySeverity {
 pub enum GlobalAdvisoryType {
   #[serde(rename = "reviewed")]
   Reviewed,
-
   #[serde(rename = "unreviewed")]
   Unreviewed,
-
   #[serde(rename = "malware")]
   Malware,
 }
@@ -767,78 +796,12 @@ impl ToString for GlobalAdvisoryType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "security_advisories"))]
-/// The package's language or package management ecosystem.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum SecurityAdvisoryEcosystems {
-  #[serde(rename = "rubygems")]
-  Rubygems,
-
-  #[serde(rename = "npm")]
-  Npm,
-
-  #[serde(rename = "pip")]
-  Pip,
-
-  #[serde(rename = "maven")]
-  Maven,
-
-  #[serde(rename = "nuget")]
-  Nuget,
-
-  #[serde(rename = "composer")]
-  Composer,
-
-  #[serde(rename = "go")]
-  Go,
-
-  #[serde(rename = "rust")]
-  Rust,
-
-  #[serde(rename = "erlang")]
-  Erlang,
-
-  #[serde(rename = "actions")]
-  Actions,
-
-  #[serde(rename = "pub")]
-  Pub,
-
-  #[serde(rename = "other")]
-  Other,
-
-  #[serde(rename = "swift")]
-  Swift,
-}
-
-#[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for SecurityAdvisoryEcosystems {
-  fn to_string(&self) -> String {
-    match self {
-      SecurityAdvisoryEcosystems::Rubygems => "rubygems".to_string(),
-      SecurityAdvisoryEcosystems::Npm => "npm".to_string(),
-      SecurityAdvisoryEcosystems::Pip => "pip".to_string(),
-      SecurityAdvisoryEcosystems::Maven => "maven".to_string(),
-      SecurityAdvisoryEcosystems::Nuget => "nuget".to_string(),
-      SecurityAdvisoryEcosystems::Composer => "composer".to_string(),
-      SecurityAdvisoryEcosystems::Go => "go".to_string(),
-      SecurityAdvisoryEcosystems::Rust => "rust".to_string(),
-      SecurityAdvisoryEcosystems::Erlang => "erlang".to_string(),
-      SecurityAdvisoryEcosystems::Actions => "actions".to_string(),
-      SecurityAdvisoryEcosystems::Pub => "pub".to_string(),
-      SecurityAdvisoryEcosystems::Other => "other".to_string(),
-      SecurityAdvisoryEcosystems::Swift => "swift".to_string(),
-    }
-  }
-}
-
 #[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum AppsCreateFromManifestResponse {
   /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
   Integration(Integration),
-
   AppsCreateFromManifestResponseItem2(AppsCreateFromManifestResponseItem2),
 }
 
@@ -848,7 +811,6 @@ pub enum AppsCreateFromManifestResponse {
 pub enum IntegrationInstallationRequestAccount {
   /// A GitHub user.
   SimpleUser(SimpleUser),
-
   /// An enterprise on GitHub.
   Enterprise(Enterprise),
 }
@@ -859,7 +821,6 @@ pub enum IntegrationInstallationRequestAccount {
 pub enum InstallationAccount {
   /// A GitHub user.
   SimpleUser(SimpleUser),
-
   /// An enterprise on GitHub.
   Enterprise(Enterprise),
 }
@@ -870,10 +831,8 @@ pub enum InstallationAccount {
 pub enum AppPermissionsOrganizationCustomProperties {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -895,10 +854,8 @@ impl ToString for AppPermissionsOrganizationCustomProperties {
 pub enum AppPermissionsOrganizationProjects {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -920,10 +877,8 @@ impl ToString for AppPermissionsOrganizationProjects {
 pub enum AppPermissionsRepositoryProjects {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -945,7 +900,6 @@ impl ToString for AppPermissionsRepositoryProjects {
 pub enum InstallationRepositorySelection {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -982,10 +936,8 @@ impl ToString for InstallationRepositorySelection {
 pub enum RepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -1034,7 +986,6 @@ impl ToString for RepositoryMergeCommitMessage {
 pub enum RepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -1083,10 +1034,8 @@ impl ToString for RepositoryMergeCommitTitle {
 pub enum RepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -1135,7 +1084,6 @@ impl ToString for RepositorySquashMergeCommitMessage {
 pub enum RepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -1167,7 +1115,6 @@ impl ToString for RepositorySquashMergeCommitTitle {
 pub enum InstallationTokenRepositorySelection {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -1188,7 +1135,6 @@ impl ToString for InstallationTokenRepositorySelection {
 pub enum ScopedInstallationRepositorySelection {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -1209,7 +1155,6 @@ impl ToString for ScopedInstallationRepositorySelection {
 pub enum ClassroomAssignmentType {
   #[serde(rename = "individual")]
   Individual,
-
   #[serde(rename = "group")]
   Group,
 }
@@ -1230,7 +1175,6 @@ impl ToString for ClassroomAssignmentType {
 pub enum SimpleClassroomAssignmentType {
   #[serde(rename = "individual")]
   Individual,
-
   #[serde(rename = "group")]
   Group,
 }
@@ -1250,7 +1194,6 @@ impl ToString for SimpleClassroomAssignmentType {
 pub enum DependabotListAlertsForEnterpriseQueryScope {
   #[serde(rename = "development")]
   Development,
-
   #[serde(rename = "runtime")]
   Runtime,
 }
@@ -1270,7 +1213,6 @@ impl ToString for DependabotListAlertsForEnterpriseQueryScope {
 pub enum DependabotListAlertsForEnterpriseQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -1290,7 +1232,6 @@ impl ToString for DependabotListAlertsForEnterpriseQuerySort {
 pub enum DependabotListAlertsForEnterpriseQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -1311,7 +1252,6 @@ impl ToString for DependabotListAlertsForEnterpriseQueryDirection {
 pub enum DependabotAlertWithRepositoryDependencyScope {
   #[serde(rename = "development")]
   Development,
-
   #[serde(rename = "runtime")]
   Runtime,
 }
@@ -1332,16 +1272,12 @@ impl ToString for DependabotAlertWithRepositoryDependencyScope {
 pub enum DependabotAlertWithRepositoryDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
-
   #[serde(rename = "inaccurate")]
   Inaccurate,
-
   #[serde(rename = "no_bandwidth")]
   NoBandwidth,
-
   #[serde(rename = "not_used")]
   NotUsed,
-
   #[serde(rename = "tolerable_risk")]
   TolerableRisk,
 }
@@ -1365,7 +1301,6 @@ impl ToString for DependabotAlertWithRepositoryDismissedReason {
 pub enum DependabotAlertSecurityAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
-
   #[serde(rename = "GHSA")]
   Ghsa,
 }
@@ -1386,13 +1321,10 @@ impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
 pub enum DependabotAlertSecurityAdvisorySeverity {
   #[serde(rename = "low")]
   Low,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "critical")]
   Critical,
 }
@@ -1415,13 +1347,10 @@ impl ToString for DependabotAlertSecurityAdvisorySeverity {
 pub enum DependabotAlertSecurityVulnerabilitySeverity {
   #[serde(rename = "low")]
   Low,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "critical")]
   Critical,
 }
@@ -1444,13 +1373,10 @@ impl ToString for DependabotAlertSecurityVulnerabilitySeverity {
 pub enum DependabotAlertWithRepositoryState {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
-
   #[serde(rename = "dismissed")]
   Dismissed,
-
   #[serde(rename = "fixed")]
   Fixed,
-
   #[serde(rename = "open")]
   Open,
 }
@@ -1472,7 +1398,6 @@ impl ToString for DependabotAlertWithRepositoryState {
 pub enum SecretScanningListAlertsForEnterpriseQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "resolved")]
   Resolved,
 }
@@ -1492,7 +1417,6 @@ impl ToString for SecretScanningListAlertsForEnterpriseQueryState {
 pub enum SecretScanningListAlertsForEnterpriseQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -1512,7 +1436,6 @@ impl ToString for SecretScanningListAlertsForEnterpriseQuerySort {
 pub enum SecretScanningListAlertsForEnterpriseQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -1533,13 +1456,10 @@ impl ToString for SecretScanningListAlertsForEnterpriseQueryDirection {
 pub enum SecretScanningAlertResolution {
   #[serde(rename = "false_positive")]
   FalsePositive,
-
   #[serde(rename = "wont_fix")]
   WontFix,
-
   #[serde(rename = "revoked")]
   Revoked,
-
   #[serde(rename = "used_in_tests")]
   UsedInTests,
 }
@@ -1562,7 +1482,6 @@ impl ToString for SecretScanningAlertResolution {
 pub enum SecretScanningAlertState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "resolved")]
   Resolved,
 }
@@ -1583,10 +1502,8 @@ impl ToString for SecretScanningAlertState {
 pub enum OrganizationSecretScanningAlertValidity {
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "inactive")]
   Inactive,
-
   #[serde(rename = "unknown")]
   Unknown,
 }
@@ -1616,25 +1533,18 @@ impl ToString for OrganizationSecretScanningAlertValidity {
 pub enum AuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -1676,7 +1586,6 @@ impl ToString for AuthorAssociation {
 pub enum MilestoneState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -1704,10 +1613,8 @@ impl ToString for MilestoneState {
 pub enum IssueStateReason {
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "reopened")]
   Reopened,
-
   #[serde(rename = "not_planned")]
   NotPlanned,
 }
@@ -1728,7 +1635,6 @@ impl ToString for IssueStateReason {
 pub enum GistsCreateRequestPublicItem2 {
   #[serde(rename = "true")]
   True,
-
   #[serde(rename = "false")]
   False,
 }
@@ -1748,19 +1654,14 @@ impl ToString for GistsCreateRequestPublicItem2 {
 pub enum IssuesListQueryFilter {
   #[serde(rename = "assigned")]
   Assigned,
-
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "mentioned")]
   Mentioned,
-
   #[serde(rename = "subscribed")]
   Subscribed,
-
   #[serde(rename = "repos")]
   Repos,
-
   #[serde(rename = "all")]
   All,
 }
@@ -1784,10 +1685,8 @@ impl ToString for IssuesListQueryFilter {
 pub enum IssuesListQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "all")]
   All,
 }
@@ -1808,10 +1707,8 @@ impl ToString for IssuesListQueryState {
 pub enum IssuesListQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "comments")]
   Comments,
 }
@@ -1832,7 +1729,6 @@ impl ToString for IssuesListQuerySort {
 pub enum IssuesListQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -1853,7 +1749,6 @@ impl ToString for IssuesListQueryDirection {
 pub enum MarkdownRenderRequestMode {
   #[serde(rename = "markdown")]
   Markdown,
-
   #[serde(rename = "gfm")]
   Gfm,
 }
@@ -1873,10 +1768,8 @@ impl ToString for MarkdownRenderRequestMode {
 pub enum MarketplaceListingPlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
-
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
-
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
@@ -1897,7 +1790,6 @@ impl ToString for MarketplaceListingPlanPriceModel {
 pub enum AppsListAccountsForPlanQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -1917,7 +1809,6 @@ impl ToString for AppsListAccountsForPlanQuerySort {
 pub enum AppsListAccountsForPlanQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -1937,7 +1828,6 @@ impl ToString for AppsListAccountsForPlanQueryDirection {
 pub enum AppsListAccountsForPlanStubbedQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -1957,7 +1847,6 @@ impl ToString for AppsListAccountsForPlanStubbedQuerySort {
 pub enum AppsListAccountsForPlanStubbedQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -1991,7 +1880,6 @@ impl ToString for AppsListAccountsForPlanStubbedQueryDirection {
 pub enum SecurityAndAnalysisAdvancedSecurityStatus {
   #[serde(rename = "enabled")]
   Enabled,
-
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -2040,7 +1928,6 @@ impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
 pub enum SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   #[serde(rename = "enabled")]
   Enabled,
-
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -2088,7 +1975,6 @@ impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
 pub enum SecurityAndAnalysisSecretScanningStatus {
   #[serde(rename = "enabled")]
   Enabled,
-
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -2136,7 +2022,6 @@ impl ToString for SecurityAndAnalysisSecretScanningStatus {
 pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
   #[serde(rename = "enabled")]
   Enabled,
-
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -2171,13 +2056,10 @@ impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
 pub enum OrgsUpdateRequestDefaultRepositoryPermission {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
-
   #[serde(rename = "none")]
   None,
 }
@@ -2201,10 +2083,8 @@ impl ToString for OrgsUpdateRequestDefaultRepositoryPermission {
 pub enum OrgsUpdateRequestMembersAllowedRepositoryCreationType {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "none")]
   None,
 }
@@ -2226,10 +2106,8 @@ impl ToString for OrgsUpdateRequestMembersAllowedRepositoryCreationType {
 pub enum AllowedActions {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "local_only")]
   LocalOnly,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -2251,10 +2129,8 @@ impl ToString for AllowedActions {
 pub enum EnabledRepositories {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -2276,7 +2152,6 @@ impl ToString for EnabledRepositories {
 pub enum RunnerLabelType {
   #[serde(rename = "read-only")]
   ReadOnly,
-
   #[serde(rename = "custom")]
   Custom,
 }
@@ -2297,7 +2172,6 @@ impl ToString for RunnerLabelType {
 pub enum AuthenticationTokenRepositorySelection {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -2318,10 +2192,8 @@ impl ToString for AuthenticationTokenRepositorySelection {
 pub enum OrganizationActionsSecretVisibility {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -2343,10 +2215,8 @@ impl ToString for OrganizationActionsSecretVisibility {
 pub enum ActionsCreateOrUpdateOrgSecretRequestVisibility {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -2368,10 +2238,8 @@ impl ToString for ActionsCreateOrUpdateOrgSecretRequestVisibility {
 pub enum OrganizationActionsVariableVisibility {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -2393,10 +2261,8 @@ impl ToString for OrganizationActionsVariableVisibility {
 pub enum ActionsCreateOrgVariableRequestVisibility {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -2418,10 +2284,8 @@ impl ToString for ActionsCreateOrgVariableRequestVisibility {
 pub enum ActionsUpdateOrgVariableRequestVisibility {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -2442,7 +2306,6 @@ impl ToString for ActionsUpdateOrgVariableRequestVisibility {
 pub enum CodeScanningListAlertsForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -2458,11 +2321,36 @@ impl ToString for CodeScanningListAlertsForOrgQueryDirection {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
+/// State of a code scanning alert.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+pub enum CodeScanningAlertStateQuery {
+  #[serde(rename = "open")]
+  Open,
+  #[serde(rename = "closed")]
+  Closed,
+  #[serde(rename = "dismissed")]
+  Dismissed,
+  #[serde(rename = "fixed")]
+  Fixed,
+}
+
+#[cfg(any(feature = "full", feature = "code_scanning"))]
+impl ToString for CodeScanningAlertStateQuery {
+  fn to_string(&self) -> String {
+    match self {
+      CodeScanningAlertStateQuery::Open => "open".to_string(),
+      CodeScanningAlertStateQuery::Closed => "closed".to_string(),
+      CodeScanningAlertStateQuery::Dismissed => "dismissed".to_string(),
+      CodeScanningAlertStateQuery::Fixed => "fixed".to_string(),
+    }
+  }
+}
+
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningListAlertsForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -2478,15 +2366,48 @@ impl ToString for CodeScanningListAlertsForOrgQuerySort {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
+/// Severity of a code scanning alert.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+pub enum CodeScanningAlertSeverity {
+  #[serde(rename = "critical")]
+  Critical,
+  #[serde(rename = "high")]
+  High,
+  #[serde(rename = "medium")]
+  Medium,
+  #[serde(rename = "low")]
+  Low,
+  #[serde(rename = "warning")]
+  Warning,
+  #[serde(rename = "note")]
+  Note,
+  #[serde(rename = "error")]
+  Error,
+}
+
+#[cfg(any(feature = "full", feature = "code_scanning"))]
+impl ToString for CodeScanningAlertSeverity {
+  fn to_string(&self) -> String {
+    match self {
+      CodeScanningAlertSeverity::Critical => "critical".to_string(),
+      CodeScanningAlertSeverity::High => "high".to_string(),
+      CodeScanningAlertSeverity::Medium => "medium".to_string(),
+      CodeScanningAlertSeverity::Low => "low".to_string(),
+      CodeScanningAlertSeverity::Warning => "warning".to_string(),
+      CodeScanningAlertSeverity::Note => "note".to_string(),
+      CodeScanningAlertSeverity::Error => "error".to_string(),
+    }
+  }
+}
+
+#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// **Required when the state is dismissed.** The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
-
   #[serde(rename = "won't fix")]
   WonTFix,
-
   #[serde(rename = "used in tests")]
   UsedInTests,
 }
@@ -2508,13 +2429,10 @@ impl ToString for CodeScanningAlertDismissedReason {
 pub enum CodeScanningAlertClassification {
   #[serde(rename = "source")]
   Source,
-
   #[serde(rename = "generated")]
   Generated,
-
   #[serde(rename = "test")]
   Test,
-
   #[serde(rename = "library")]
   Library,
 }
@@ -2537,10 +2455,8 @@ impl ToString for CodeScanningAlertClassification {
 pub enum CodeScanningAlertState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "dismissed")]
   Dismissed,
-
   #[serde(rename = "fixed")]
   Fixed,
 }
@@ -2562,13 +2478,10 @@ impl ToString for CodeScanningAlertState {
 pub enum CodeScanningAlertRuleSummarySecuritySeverityLevel {
   #[serde(rename = "low")]
   Low,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "critical")]
   Critical,
 }
@@ -2591,13 +2504,10 @@ impl ToString for CodeScanningAlertRuleSummarySecuritySeverityLevel {
 pub enum CodeScanningAlertRuleSummarySeverity {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "note")]
   Note,
-
   #[serde(rename = "warning")]
   Warning,
-
   #[serde(rename = "error")]
   Error,
 }
@@ -2619,11 +2529,8 @@ impl ToString for CodeScanningAlertRuleSummarySeverity {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceLocation {
   EastUs,
-
   SouthEastAsia,
-
   WestEurope,
-
   WestUs2,
 }
 
@@ -2645,10 +2552,8 @@ impl ToString for CodespaceLocation {
 pub enum CodespaceMachinePrebuildAvailability {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "ready")]
   Ready,
-
   #[serde(rename = "in_progress")]
   InProgress,
 }
@@ -2669,37 +2574,21 @@ impl ToString for CodespaceMachinePrebuildAvailability {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceState {
   Unknown,
-
   Created,
-
   Queued,
-
   Provisioning,
-
   Available,
-
   Awaiting,
-
   Unavailable,
-
   Deleted,
-
   Moved,
-
   Shutdown,
-
   Archived,
-
   Starting,
-
   ShuttingDown,
-
   Failed,
-
   Exporting,
-
   Updating,
-
   Rebuilding,
 }
 
@@ -2734,13 +2623,10 @@ impl ToString for CodespaceState {
 pub enum CodespacesSetCodespacesAccessRequestVisibility {
   #[serde(rename = "disabled")]
   Disabled,
-
   #[serde(rename = "selected_members")]
   SelectedMembers,
-
   #[serde(rename = "all_members")]
   AllMembers,
-
   #[serde(rename = "all_members_and_outside_collaborators")]
   AllMembersAndOutsideCollaborators,
 }
@@ -2767,10 +2653,8 @@ impl ToString for CodespacesSetCodespacesAccessRequestVisibility {
 pub enum CodespacesOrgSecretVisibility {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -2792,10 +2676,8 @@ impl ToString for CodespacesOrgSecretVisibility {
 pub enum CodespacesCreateOrUpdateOrgSecretRequestVisibility {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -2817,10 +2699,8 @@ impl ToString for CodespacesCreateOrUpdateOrgSecretRequestVisibility {
 pub enum CopilotOrganizationDetailsCli {
   #[serde(rename = "enabled")]
   Enabled,
-
   #[serde(rename = "disabled")]
   Disabled,
-
   #[serde(rename = "unconfigured")]
   Unconfigured,
 }
@@ -2842,10 +2722,8 @@ impl ToString for CopilotOrganizationDetailsCli {
 pub enum CopilotOrganizationDetailsIdeChat {
   #[serde(rename = "enabled")]
   Enabled,
-
   #[serde(rename = "disabled")]
   Disabled,
-
   #[serde(rename = "unconfigured")]
   Unconfigured,
 }
@@ -2867,10 +2745,8 @@ impl ToString for CopilotOrganizationDetailsIdeChat {
 pub enum CopilotOrganizationDetailsPlatformChat {
   #[serde(rename = "enabled")]
   Enabled,
-
   #[serde(rename = "disabled")]
   Disabled,
-
   #[serde(rename = "unconfigured")]
   Unconfigured,
 }
@@ -2892,13 +2768,10 @@ impl ToString for CopilotOrganizationDetailsPlatformChat {
 pub enum CopilotOrganizationDetailsPublicCodeSuggestions {
   #[serde(rename = "allow")]
   Allow,
-
   #[serde(rename = "block")]
   Block,
-
   #[serde(rename = "unconfigured")]
   Unconfigured,
-
   #[serde(rename = "unknown")]
   Unknown,
 }
@@ -2921,13 +2794,10 @@ impl ToString for CopilotOrganizationDetailsPublicCodeSuggestions {
 pub enum CopilotOrganizationDetailsSeatManagementSetting {
   #[serde(rename = "assign_all")]
   AssignAll,
-
   #[serde(rename = "assign_selected")]
   AssignSelected,
-
   #[serde(rename = "disabled")]
   Disabled,
-
   #[serde(rename = "unconfigured")]
   Unconfigured,
 }
@@ -2952,10 +2822,8 @@ impl ToString for CopilotOrganizationDetailsSeatManagementSetting {
 pub enum CopilotSeatDetailsAssignee {
   /// A GitHub user.
   SimpleUser(SimpleUser),
-
   /// Groups of organization members that gives permissions on specified repositories.
   Team(Team),
-
   /// GitHub account for managing multiple users, teams, and repositories
   Organization(Organization),
 }
@@ -2965,7 +2833,6 @@ pub enum CopilotSeatDetailsAssignee {
 pub enum DependabotListAlertsForOrgQueryScope {
   #[serde(rename = "development")]
   Development,
-
   #[serde(rename = "runtime")]
   Runtime,
 }
@@ -2985,7 +2852,6 @@ impl ToString for DependabotListAlertsForOrgQueryScope {
 pub enum DependabotListAlertsForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -3005,7 +2871,6 @@ impl ToString for DependabotListAlertsForOrgQuerySort {
 pub enum DependabotListAlertsForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -3026,10 +2891,8 @@ impl ToString for DependabotListAlertsForOrgQueryDirection {
 pub enum OrganizationDependabotSecretVisibility {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -3051,10 +2914,8 @@ impl ToString for OrganizationDependabotSecretVisibility {
 pub enum DependabotCreateOrUpdateOrgSecretRequestVisibility {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -3075,19 +2936,14 @@ impl ToString for DependabotCreateOrUpdateOrgSecretRequestVisibility {
 pub enum PackagePackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -3111,7 +2967,6 @@ impl ToString for PackagePackageType {
 pub enum PackageVisibility {
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "public")]
   Public,
 }
@@ -3132,10 +2987,8 @@ impl ToString for PackageVisibility {
 pub enum InteractionGroup {
   #[serde(rename = "existing_users")]
   ExistingUsers,
-
   #[serde(rename = "contributors_only")]
   ContributorsOnly,
-
   #[serde(rename = "collaborators_only")]
   CollaboratorsOnly,
 }
@@ -3157,7 +3010,6 @@ impl ToString for InteractionGroup {
 pub enum InteractionsGetRestrictionsForOrgResponse {
   /// Interaction limit settings.
   InteractionLimitResponse(InteractionLimitResponse),
-
   InteractionsGetRestrictionsForOrgResponseItem2(InteractionsGetRestrictionsForOrgResponseItem2),
 }
 
@@ -3167,16 +3019,12 @@ pub enum InteractionsGetRestrictionsForOrgResponse {
 pub enum InteractionExpiry {
   #[serde(rename = "one_day")]
   OneDay,
-
   #[serde(rename = "three_days")]
   ThreeDays,
-
   #[serde(rename = "one_week")]
   OneWeek,
-
   #[serde(rename = "one_month")]
   OneMonth,
-
   #[serde(rename = "six_months")]
   SixMonths,
 }
@@ -3199,16 +3047,12 @@ impl ToString for InteractionExpiry {
 pub enum OrgsListPendingInvitationsQueryRole {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "admin")]
   Admin,
-
   #[serde(rename = "direct_member")]
   DirectMember,
-
   #[serde(rename = "billing_manager")]
   BillingManager,
-
   #[serde(rename = "hiring_manager")]
   HiringManager,
 }
@@ -3231,10 +3075,8 @@ impl ToString for OrgsListPendingInvitationsQueryRole {
 pub enum OrgsListPendingInvitationsQueryInvitationSource {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "member")]
   Member,
-
   #[serde(rename = "scim")]
   Scim,
 }
@@ -3260,13 +3102,10 @@ impl ToString for OrgsListPendingInvitationsQueryInvitationSource {
 pub enum OrgsCreateInvitationRequestRole {
   #[serde(rename = "admin")]
   Admin,
-
   #[serde(rename = "direct_member")]
   DirectMember,
-
   #[serde(rename = "billing_manager")]
   BillingManager,
-
   #[serde(rename = "reinstate")]
   Reinstate,
 }
@@ -3288,19 +3127,14 @@ impl ToString for OrgsCreateInvitationRequestRole {
 pub enum IssuesListForOrgQueryFilter {
   #[serde(rename = "assigned")]
   Assigned,
-
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "mentioned")]
   Mentioned,
-
   #[serde(rename = "subscribed")]
   Subscribed,
-
   #[serde(rename = "repos")]
   Repos,
-
   #[serde(rename = "all")]
   All,
 }
@@ -3324,10 +3158,8 @@ impl ToString for IssuesListForOrgQueryFilter {
 pub enum IssuesListForOrgQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "all")]
   All,
 }
@@ -3348,10 +3180,8 @@ impl ToString for IssuesListForOrgQueryState {
 pub enum IssuesListForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "comments")]
   Comments,
 }
@@ -3372,7 +3202,6 @@ impl ToString for IssuesListForOrgQuerySort {
 pub enum IssuesListForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -3392,7 +3221,6 @@ impl ToString for IssuesListForOrgQueryDirection {
 pub enum OrgsListMembersQueryFilter {
   #[serde(rename = "2fa_disabled")]
   TwoFADisabled,
-
   #[serde(rename = "all")]
   All,
 }
@@ -3412,10 +3240,8 @@ impl ToString for OrgsListMembersQueryFilter {
 pub enum OrgsListMembersQueryRole {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "admin")]
   Admin,
-
   #[serde(rename = "member")]
   Member,
 }
@@ -3437,10 +3263,8 @@ impl ToString for OrgsListMembersQueryRole {
 pub enum OrgMembershipRole {
   #[serde(rename = "admin")]
   Admin,
-
   #[serde(rename = "member")]
   Member,
-
   #[serde(rename = "billing_manager")]
   BillingManager,
 }
@@ -3462,7 +3286,6 @@ impl ToString for OrgMembershipRole {
 pub enum OrgMembershipState {
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -3485,7 +3308,6 @@ impl ToString for OrgMembershipState {
 pub enum OrgsSetMembershipForUserRequestRole {
   #[serde(rename = "admin")]
   Admin,
-
   #[serde(rename = "member")]
   Member,
 }
@@ -3555,7 +3377,6 @@ impl ToString for MigrationsGetStatusForOrgQueryExclude {
 pub enum OrgsListOutsideCollaboratorsQueryFilter {
   #[serde(rename = "2fa_disabled")]
   TwoFADisabled,
-
   #[serde(rename = "all")]
   All,
 }
@@ -3575,19 +3396,14 @@ impl ToString for OrgsListOutsideCollaboratorsQueryFilter {
 pub enum PackagesListPackagesForOrganizationQueryPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -3611,10 +3427,8 @@ impl ToString for PackagesListPackagesForOrganizationQueryPackageType {
 pub enum PackagesListPackagesForOrganizationQueryVisibility {
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "internal")]
   Internal,
 }
@@ -3635,19 +3449,14 @@ impl ToString for PackagesListPackagesForOrganizationQueryVisibility {
 pub enum PackagesGetPackageForOrganizationParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -3671,19 +3480,14 @@ impl ToString for PackagesGetPackageForOrganizationParametersPackageType {
 pub enum PackagesDeletePackageForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -3707,19 +3511,14 @@ impl ToString for PackagesDeletePackageForOrgParametersPackageType {
 pub enum PackagesRestorePackageForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -3743,19 +3542,14 @@ impl ToString for PackagesRestorePackageForOrgParametersPackageType {
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -3791,7 +3585,6 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByOrgParametersPac
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByOrgQueryState {
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "deleted")]
   Deleted,
 }
@@ -3811,19 +3604,14 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByOrgQueryState {
 pub enum PackageVersionMetadataPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -3847,19 +3635,14 @@ impl ToString for PackageVersionMetadataPackageType {
 pub enum PackagesGetPackageVersionForOrganizationParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -3887,19 +3670,14 @@ impl ToString for PackagesGetPackageVersionForOrganizationParametersPackageType 
 pub enum PackagesDeletePackageVersionForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -3923,19 +3701,14 @@ impl ToString for PackagesDeletePackageVersionForOrgParametersPackageType {
 pub enum PackagesRestorePackageVersionForOrgParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -3977,7 +3750,6 @@ impl ToString for OrgsListPatGrantRequestsQuerySort {
 pub enum OrgsListPatGrantRequestsQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -3998,10 +3770,8 @@ impl ToString for OrgsListPatGrantRequestsQueryDirection {
 pub enum OrganizationProgrammaticAccessGrantRequestRepositorySelection {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "subset")]
   Subset,
 }
@@ -4023,7 +3793,6 @@ impl ToString for OrganizationProgrammaticAccessGrantRequestRepositorySelection 
 pub enum OrgsReviewPatGrantRequestsInBulkRequestAction {
   #[serde(rename = "approve")]
   Approve,
-
   #[serde(rename = "deny")]
   Deny,
 }
@@ -4044,7 +3813,6 @@ impl ToString for OrgsReviewPatGrantRequestsInBulkRequestAction {
 pub enum OrgsReviewPatGrantRequestRequestAction {
   #[serde(rename = "approve")]
   Approve,
-
   #[serde(rename = "deny")]
   Deny,
 }
@@ -4080,7 +3848,6 @@ impl ToString for OrgsListPatGrantsQuerySort {
 pub enum OrgsListPatGrantsQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -4101,10 +3868,8 @@ impl ToString for OrgsListPatGrantsQueryDirection {
 pub enum OrganizationProgrammaticAccessGrantRepositorySelection {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "subset")]
   Subset,
 }
@@ -4159,10 +3924,8 @@ impl ToString for OrgsUpdatePatAccessRequestAction {
 pub enum ProjectsListForOrgQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "all")]
   All,
 }
@@ -4184,13 +3947,10 @@ impl ToString for ProjectsListForOrgQueryState {
 pub enum ProjectOrganizationPermission {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
-
   #[serde(rename = "none")]
   None,
 }
@@ -4213,7 +3973,6 @@ impl ToString for ProjectOrganizationPermission {
 pub enum OrgCustomPropertyValueType {
   #[serde(rename = "string")]
   String,
-
   #[serde(rename = "single_select")]
   SingleSelect,
 }
@@ -4234,7 +3993,6 @@ impl ToString for OrgCustomPropertyValueType {
 pub enum OrgCustomPropertyValuesEditableBy {
   #[serde(rename = "org_actors")]
   OrgActors,
-
   #[serde(rename = "org_and_repo_actors")]
   OrgAndRepoActors,
 }
@@ -4255,7 +4013,6 @@ impl ToString for OrgCustomPropertyValuesEditableBy {
 pub enum OrgsCreateOrUpdateCustomPropertyRequestValueType {
   #[serde(rename = "string")]
   String,
-
   #[serde(rename = "single_select")]
   SingleSelect,
 }
@@ -4275,19 +4032,14 @@ impl ToString for OrgsCreateOrUpdateCustomPropertyRequestValueType {
 pub enum ReposListForOrgQueryType {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "forks")]
   Forks,
-
   #[serde(rename = "sources")]
   Sources,
-
   #[serde(rename = "member")]
   Member,
 }
@@ -4311,13 +4063,10 @@ impl ToString for ReposListForOrgQueryType {
 pub enum ReposListForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "pushed")]
   Pushed,
-
   #[serde(rename = "full_name")]
   FullName,
 }
@@ -4339,7 +4088,6 @@ impl ToString for ReposListForOrgQuerySort {
 pub enum ReposListForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -4364,10 +4112,8 @@ impl ToString for ReposListForOrgQueryDirection {
 pub enum ReposCreateInOrgRequestMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -4392,7 +4138,6 @@ impl ToString for ReposCreateInOrgRequestMergeCommitMessage {
 pub enum ReposCreateInOrgRequestMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -4417,10 +4162,8 @@ impl ToString for ReposCreateInOrgRequestMergeCommitTitle {
 pub enum ReposCreateInOrgRequestSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -4447,7 +4190,6 @@ impl ToString for ReposCreateInOrgRequestSquashMergeCommitMessage {
 pub enum ReposCreateInOrgRequestSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -4470,7 +4212,6 @@ impl ToString for ReposCreateInOrgRequestSquashMergeCommitTitle {
 pub enum ReposCreateInOrgRequestVisibility {
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "private")]
   Private,
 }
@@ -4500,10 +4241,8 @@ impl ToString for ReposCreateInOrgRequestVisibility {
 pub enum FullRepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -4538,7 +4277,6 @@ impl ToString for FullRepositoryMergeCommitMessage {
 pub enum FullRepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -4573,10 +4311,8 @@ impl ToString for FullRepositoryMergeCommitTitle {
 pub enum FullRepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -4611,7 +4347,6 @@ impl ToString for FullRepositorySquashMergeCommitMessage {
 pub enum FullRepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -4636,11 +4371,8 @@ impl ToString for FullRepositorySquashMergeCommitTitle {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetBypassActorActorType {
   RepositoryRole,
-
   Team,
-
   Integration,
-
   OrganizationAdmin,
 }
 
@@ -4662,7 +4394,6 @@ impl ToString for RepositoryRulesetBypassActorActorType {
 pub enum RepositoryRulesetBypassActorBypassMode {
   #[serde(rename = "always")]
   Always,
-
   #[serde(rename = "pull_request")]
   PullRequest,
 }
@@ -4683,7 +4414,6 @@ impl ToString for RepositoryRulesetBypassActorBypassMode {
 pub enum OrgRulesetConditionsItem1 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
-
   /// Parameters for a repository name condition
   RepositoryRulesetConditionsRepositoryNameTarget(RepositoryRulesetConditionsRepositoryNameTarget),
 }
@@ -4694,7 +4424,6 @@ pub enum OrgRulesetConditionsItem1 {
 pub enum OrgRulesetConditionsItem2 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
-
   /// Parameters for a repository ID condition
   RepositoryRulesetConditionsRepositoryIdTarget(RepositoryRulesetConditionsRepositoryIdTarget),
 }
@@ -4705,7 +4434,6 @@ pub enum OrgRulesetConditionsItem2 {
 pub enum OrgRulesetConditionsItem3 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
-
   /// Parameters for a repository property condition
   RepositoryRulesetConditionsRepositoryPropertyTarget(
     RepositoryRulesetConditionsRepositoryPropertyTarget,
@@ -4717,9 +4445,7 @@ pub enum OrgRulesetConditionsItem3 {
 #[serde(untagged)]
 pub enum OrgRulesetConditions {
   OrgRulesetConditionsItem1(OrgRulesetConditionsItem1),
-
   OrgRulesetConditionsItem2(OrgRulesetConditionsItem2),
-
   OrgRulesetConditionsItem3(OrgRulesetConditionsItem3),
 }
 
@@ -4730,10 +4456,8 @@ pub enum OrgRulesetConditions {
 pub enum RepositoryRulesetCurrentUserCanBypass {
   #[serde(rename = "always")]
   Always,
-
   #[serde(rename = "pull_requests_only")]
   PullRequestsOnly,
-
   #[serde(rename = "never")]
   Never,
 }
@@ -4755,10 +4479,8 @@ impl ToString for RepositoryRulesetCurrentUserCanBypass {
 pub enum RepositoryRuleEnforcement {
   #[serde(rename = "disabled")]
   Disabled,
-
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "evaluate")]
   Evaluate,
 }
@@ -4930,13 +4652,10 @@ impl ToString for RepositoryRuleNonFastForwardType {
 pub enum RepositoryRuleCommitMessagePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
-
   #[serde(rename = "ends_with")]
   EndsWith,
-
   #[serde(rename = "contains")]
   Contains,
-
   #[serde(rename = "regex")]
   Regex,
 }
@@ -4977,13 +4696,10 @@ impl ToString for RepositoryRuleCommitMessagePatternType {
 pub enum RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
-
   #[serde(rename = "ends_with")]
   EndsWith,
-
   #[serde(rename = "contains")]
   Contains,
-
   #[serde(rename = "regex")]
   Regex,
 }
@@ -5026,13 +4742,10 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
 pub enum RepositoryRuleCommitterEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
-
   #[serde(rename = "ends_with")]
   EndsWith,
-
   #[serde(rename = "contains")]
   Contains,
-
   #[serde(rename = "regex")]
   Regex,
 }
@@ -5075,13 +4788,10 @@ impl ToString for RepositoryRuleCommitterEmailPatternType {
 pub enum RepositoryRuleBranchNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
-
   #[serde(rename = "ends_with")]
   EndsWith,
-
   #[serde(rename = "contains")]
   Contains,
-
   #[serde(rename = "regex")]
   Regex,
 }
@@ -5120,13 +4830,10 @@ impl ToString for RepositoryRuleBranchNamePatternType {
 pub enum RepositoryRuleTagNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
-
   #[serde(rename = "ends_with")]
   EndsWith,
-
   #[serde(rename = "contains")]
   Contains,
-
   #[serde(rename = "regex")]
   Regex,
 }
@@ -5181,46 +4888,32 @@ impl ToString for RepositoryRuleWorkflowsType {
 pub enum RepositoryRule {
   /// Only allow users with bypass permission to create matching refs.
   RepositoryRuleCreation(RepositoryRuleCreation),
-
   /// Only allow users with bypass permission to update matching refs.
   RepositoryRuleUpdate(RepositoryRuleUpdate),
-
   /// Only allow users with bypass permissions to delete matching refs.
   RepositoryRuleDeletion(RepositoryRuleDeletion),
-
   /// Prevent merge commits from being pushed to matching refs.
   RepositoryRuleRequiredLinearHistory(RepositoryRuleRequiredLinearHistory),
-
   /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
   RepositoryRuleRequiredDeployments(RepositoryRuleRequiredDeployments),
-
   /// Commits pushed to matching refs must have verified signatures.
   RepositoryRuleRequiredSignatures(RepositoryRuleRequiredSignatures),
-
   /// Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
   RepositoryRulePullRequest(RepositoryRulePullRequest),
-
   /// Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
   RepositoryRuleRequiredStatusChecks(RepositoryRuleRequiredStatusChecks),
-
   /// Prevent users with push access from force pushing to refs.
   RepositoryRuleNonFastForward(RepositoryRuleNonFastForward),
-
   /// Parameters to be used for the commit_message_pattern rule
   RepositoryRuleCommitMessagePattern(RepositoryRuleCommitMessagePattern),
-
   /// Parameters to be used for the commit_author_email_pattern rule
   RepositoryRuleCommitAuthorEmailPattern(RepositoryRuleCommitAuthorEmailPattern),
-
   /// Parameters to be used for the committer_email_pattern rule
   RepositoryRuleCommitterEmailPattern(RepositoryRuleCommitterEmailPattern),
-
   /// Parameters to be used for the branch_name_pattern rule
   RepositoryRuleBranchNamePattern(RepositoryRuleBranchNamePattern),
-
   /// Parameters to be used for the tag_name_pattern rule
   RepositoryRuleTagNamePattern(RepositoryRuleTagNamePattern),
-
   /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
   RepositoryRuleWorkflows(RepositoryRuleWorkflows),
 }
@@ -5230,7 +4923,6 @@ pub enum RepositoryRule {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetSourceType {
   Repository,
-
   Organization,
 }
 
@@ -5250,7 +4942,6 @@ impl ToString for RepositoryRulesetSourceType {
 pub enum RepositoryRulesetTarget {
   #[serde(rename = "branch")]
   Branch,
-
   #[serde(rename = "tag")]
   Tag,
 }
@@ -5271,7 +4962,6 @@ impl ToString for RepositoryRulesetTarget {
 pub enum ReposCreateOrgRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
-
   #[serde(rename = "tag")]
   Tag,
 }
@@ -5291,13 +4981,10 @@ impl ToString for ReposCreateOrgRulesetRequestTarget {
 pub enum ReposGetOrgRuleSuitesQueryTimePeriod {
   #[serde(rename = "hour")]
   Hour,
-
   #[serde(rename = "day")]
   Day,
-
   #[serde(rename = "week")]
   Week,
-
   #[serde(rename = "month")]
   Month,
 }
@@ -5319,13 +5006,10 @@ impl ToString for ReposGetOrgRuleSuitesQueryTimePeriod {
 pub enum ReposGetOrgRuleSuitesQueryRuleSuiteResult {
   #[serde(rename = "pass")]
   Pass,
-
   #[serde(rename = "fail")]
   Fail,
-
   #[serde(rename = "bypass")]
   Bypass,
-
   #[serde(rename = "all")]
   All,
 }
@@ -5348,7 +5032,6 @@ impl ToString for ReposGetOrgRuleSuitesQueryRuleSuiteResult {
 pub enum RuleSuitesItemEvaluationResult {
   #[serde(rename = "pass")]
   Pass,
-
   #[serde(rename = "fail")]
   Fail,
 }
@@ -5369,10 +5052,8 @@ impl ToString for RuleSuitesItemEvaluationResult {
 pub enum RuleSuitesItemResult {
   #[serde(rename = "pass")]
   Pass,
-
   #[serde(rename = "fail")]
   Fail,
-
   #[serde(rename = "bypass")]
   Bypass,
 }
@@ -5394,7 +5075,6 @@ impl ToString for RuleSuitesItemResult {
 pub enum RuleSuiteEvaluationResult {
   #[serde(rename = "pass")]
   Pass,
-
   #[serde(rename = "fail")]
   Fail,
 }
@@ -5415,10 +5095,8 @@ impl ToString for RuleSuiteEvaluationResult {
 pub enum RuleSuiteResult {
   #[serde(rename = "pass")]
   Pass,
-
   #[serde(rename = "fail")]
   Fail,
-
   #[serde(rename = "bypass")]
   Bypass,
 }
@@ -5440,10 +5118,8 @@ impl ToString for RuleSuiteResult {
 pub enum RuleSuiteRuleEvaluationsEnforcement {
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "evaluate")]
   Evaluate,
-
   #[serde(rename = "deleted ruleset")]
   DeletedRuleset,
 }
@@ -5465,7 +5141,6 @@ impl ToString for RuleSuiteRuleEvaluationsEnforcement {
 pub enum RuleSuiteRuleEvaluationsResult {
   #[serde(rename = "pass")]
   Pass,
-
   #[serde(rename = "fail")]
   Fail,
 }
@@ -5486,7 +5161,6 @@ impl ToString for RuleSuiteRuleEvaluationsResult {
 pub enum ReposUpdateOrgRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
-
   #[serde(rename = "tag")]
   Tag,
 }
@@ -5506,7 +5180,6 @@ impl ToString for ReposUpdateOrgRulesetRequestTarget {
 pub enum SecretScanningListAlertsForOrgQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "resolved")]
   Resolved,
 }
@@ -5526,7 +5199,6 @@ impl ToString for SecretScanningListAlertsForOrgQueryState {
 pub enum SecretScanningListAlertsForOrgQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -5546,7 +5218,6 @@ impl ToString for SecretScanningListAlertsForOrgQuerySort {
 pub enum SecretScanningListAlertsForOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -5566,7 +5237,6 @@ impl ToString for SecretScanningListAlertsForOrgQueryDirection {
 pub enum SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -5586,10 +5256,8 @@ impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryDirection {
 pub enum SecurityAdvisoriesListOrgRepositoryAdvisoriesQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "published")]
   Published,
 }
@@ -5610,13 +5278,10 @@ impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQuerySort {
 pub enum SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryState {
   #[serde(rename = "triage")]
   Triage,
-
   #[serde(rename = "draft")]
   Draft,
-
   #[serde(rename = "published")]
   Published,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -5639,10 +5304,8 @@ impl ToString for SecurityAdvisoriesListOrgRepositoryAdvisoriesQueryState {
 pub enum RepositoryAdvisoryCreditState {
   #[serde(rename = "accepted")]
   Accepted,
-
   #[serde(rename = "declined")]
   Declined,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -5664,7 +5327,6 @@ impl ToString for RepositoryAdvisoryCreditState {
 pub enum RepositoryAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
-
   #[serde(rename = "GHSA")]
   Ghsa,
 }
@@ -5685,13 +5347,10 @@ impl ToString for RepositoryAdvisoryIdentifiersType {
 pub enum RepositoryAdvisorySeverity {
   #[serde(rename = "critical")]
   Critical,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "low")]
   Low,
 }
@@ -5714,16 +5373,12 @@ impl ToString for RepositoryAdvisorySeverity {
 pub enum RepositoryAdvisoryState {
   #[serde(rename = "published")]
   Published,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "withdrawn")]
   Withdrawn,
-
   #[serde(rename = "draft")]
   Draft,
-
   #[serde(rename = "triage")]
   Triage,
 }
@@ -5750,7 +5405,6 @@ impl ToString for RepositoryAdvisoryState {
 pub enum TeamsCreateRequestNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
-
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
@@ -5775,7 +5429,6 @@ impl ToString for TeamsCreateRequestNotificationSetting {
 pub enum TeamsCreateRequestPermission {
   #[serde(rename = "pull")]
   Pull,
-
   #[serde(rename = "push")]
   Push,
 }
@@ -5803,7 +5456,6 @@ impl ToString for TeamsCreateRequestPermission {
 pub enum TeamsCreateRequestPrivacy {
   #[serde(rename = "secret")]
   Secret,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -5824,7 +5476,6 @@ impl ToString for TeamsCreateRequestPrivacy {
 pub enum TeamFullNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
-
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
@@ -5845,7 +5496,6 @@ impl ToString for TeamFullNotificationSetting {
 pub enum TeamFullPrivacy {
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "secret")]
   Secret,
 }
@@ -5868,7 +5518,6 @@ impl ToString for TeamFullPrivacy {
 pub enum TeamsUpdateInOrgRequestNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
-
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
@@ -5893,10 +5542,8 @@ impl ToString for TeamsUpdateInOrgRequestNotificationSetting {
 pub enum TeamsUpdateInOrgRequestPermission {
   #[serde(rename = "pull")]
   Pull,
-
   #[serde(rename = "push")]
   Push,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -5923,7 +5570,6 @@ impl ToString for TeamsUpdateInOrgRequestPermission {
 pub enum TeamsUpdateInOrgRequestPrivacy {
   #[serde(rename = "secret")]
   Secret,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -5943,7 +5589,6 @@ impl ToString for TeamsUpdateInOrgRequestPrivacy {
 pub enum TeamsListDiscussionsInOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -5963,7 +5608,6 @@ impl ToString for TeamsListDiscussionsInOrgQueryDirection {
 pub enum TeamsListDiscussionCommentsInOrgQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -5983,25 +5627,18 @@ impl ToString for TeamsListDiscussionCommentsInOrgQueryDirection {
 pub enum ReactionsListForTeamDiscussionCommentInOrgQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -6028,25 +5665,18 @@ impl ToString for ReactionsListForTeamDiscussionCommentInOrgQueryContent {
 pub enum ReactionContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -6073,25 +5703,18 @@ impl ToString for ReactionContent {
 pub enum ReactionsCreateForTeamDiscussionCommentInOrgRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -6119,25 +5742,18 @@ impl ToString for ReactionsCreateForTeamDiscussionCommentInOrgRequestContent {
 pub enum ReactionsListForTeamDiscussionInOrgQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -6164,25 +5780,18 @@ impl ToString for ReactionsListForTeamDiscussionInOrgQueryContent {
 pub enum ReactionsCreateForTeamDiscussionInOrgRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -6208,10 +5817,8 @@ impl ToString for ReactionsCreateForTeamDiscussionInOrgRequestContent {
 pub enum TeamsListMembersInOrgQueryRole {
   #[serde(rename = "member")]
   Member,
-
   #[serde(rename = "maintainer")]
   Maintainer,
-
   #[serde(rename = "all")]
   All,
 }
@@ -6233,7 +5840,6 @@ impl ToString for TeamsListMembersInOrgQueryRole {
 pub enum TeamMembershipRole {
   #[serde(rename = "member")]
   Member,
-
   #[serde(rename = "maintainer")]
   Maintainer,
 }
@@ -6254,7 +5860,6 @@ impl ToString for TeamMembershipRole {
 pub enum TeamMembershipState {
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -6275,7 +5880,6 @@ impl ToString for TeamMembershipState {
 pub enum TeamsAddOrUpdateMembershipForUserInOrgRequestRole {
   #[serde(rename = "member")]
   Member,
-
   #[serde(rename = "maintainer")]
   Maintainer,
 }
@@ -6296,10 +5900,8 @@ impl ToString for TeamsAddOrUpdateMembershipForUserInOrgRequestRole {
 pub enum TeamsAddOrUpdateProjectPermissionsInOrgRequestPermission {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -6320,22 +5922,16 @@ impl ToString for TeamsAddOrUpdateProjectPermissionsInOrgRequestPermission {
 pub enum OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersSecurityProduct {
   #[serde(rename = "dependency_graph")]
   DependencyGraph,
-
   #[serde(rename = "dependabot_alerts")]
   DependabotAlerts,
-
   #[serde(rename = "dependabot_security_updates")]
   DependabotSecurityUpdates,
-
   #[serde(rename = "advanced_security")]
   AdvancedSecurity,
-
   #[serde(rename = "code_scanning_default_setup")]
   CodeScanningDefaultSetup,
-
   #[serde(rename = "secret_scanning")]
   SecretScanning,
-
   #[serde(rename = "secret_scanning_push_protection")]
   SecretScanningPushProtection,
 }
@@ -6360,7 +5956,6 @@ impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersSecur
 pub enum OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersEnablement {
   #[serde(rename = "enable_all")]
   EnableAll,
-
   #[serde(rename = "disable_all")]
   DisableAll,
 }
@@ -6386,7 +5981,6 @@ impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersEnabl
 pub enum OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestQuerySuite {
   #[serde(rename = "default")]
   Default,
-
   #[serde(rename = "extended")]
   Extended,
 }
@@ -6410,10 +6004,8 @@ impl ToString for OrgsEnableOrDisableSecurityProductOnAllOrgReposRequestQuerySui
 pub enum ProjectsListCardsQueryArchivedState {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "archived")]
   Archived,
-
   #[serde(rename = "not_archived")]
   NotArchived,
 }
@@ -6434,7 +6026,6 @@ impl ToString for ProjectsListCardsQueryArchivedState {
 #[serde(untagged)]
 pub enum ProjectsCreateCardRequest {
   ProjectsCreateCardRequestItem1(ProjectsCreateCardRequestItem1),
-
   ProjectsCreateCardRequestItem2(ProjectsCreateCardRequestItem2),
 }
 
@@ -6444,13 +6035,10 @@ pub enum ProjectsCreateCardRequest {
 pub enum ProjectsUpdateRequestOrganizationPermission {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
-
   #[serde(rename = "none")]
   None,
 }
@@ -6472,10 +6060,8 @@ impl ToString for ProjectsUpdateRequestOrganizationPermission {
 pub enum ProjectsListCollaboratorsQueryAffiliation {
   #[serde(rename = "outside")]
   Outside,
-
   #[serde(rename = "direct")]
   Direct,
-
   #[serde(rename = "all")]
   All,
 }
@@ -6497,10 +6083,8 @@ impl ToString for ProjectsListCollaboratorsQueryAffiliation {
 pub enum ProjectsAddCollaboratorRequestPermission {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -6526,10 +6110,8 @@ impl ToString for ProjectsAddCollaboratorRequestPermission {
 pub enum ReposUpdateRequestMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -6554,7 +6136,6 @@ impl ToString for ReposUpdateRequestMergeCommitMessage {
 pub enum ReposUpdateRequestMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -6579,10 +6160,8 @@ impl ToString for ReposUpdateRequestMergeCommitTitle {
 pub enum ReposUpdateRequestSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -6607,7 +6186,6 @@ impl ToString for ReposUpdateRequestSquashMergeCommitMessage {
 pub enum ReposUpdateRequestSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -6628,7 +6206,6 @@ impl ToString for ReposUpdateRequestSquashMergeCommitTitle {
 pub enum ReposUpdateRequestVisibility {
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "private")]
   Private,
 }
@@ -6648,10 +6225,8 @@ impl ToString for ReposUpdateRequestVisibility {
 pub enum ActionsGetActionsCacheListQuerySort {
   #[serde(rename = "created_at")]
   CreatedAt,
-
   #[serde(rename = "last_accessed_at")]
   LastAccessedAt,
-
   #[serde(rename = "size_in_bytes")]
   SizeInBytes,
 }
@@ -6672,7 +6247,6 @@ impl ToString for ActionsGetActionsCacheListQuerySort {
 pub enum ActionsGetActionsCacheListQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -6693,22 +6267,16 @@ impl ToString for ActionsGetActionsCacheListQueryDirection {
 pub enum JobConclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
 }
@@ -6734,19 +6302,14 @@ impl ToString for JobConclusion {
 pub enum JobStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "waiting")]
   Waiting,
-
   #[serde(rename = "requested")]
   Requested,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -6771,10 +6334,8 @@ impl ToString for JobStatus {
 pub enum JobStepsStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
 }
@@ -6799,10 +6360,8 @@ impl ToString for JobStepsStatus {
 pub enum ActionsWorkflowAccessToRepositoryAccessLevel {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "user")]
   User,
-
   #[serde(rename = "organization")]
   Organization,
 }
@@ -6823,43 +6382,30 @@ impl ToString for ActionsWorkflowAccessToRepositoryAccessLevel {
 pub enum ActionsListWorkflowRunsForRepoQueryStatus {
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "stale")]
   Stale,
-
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "requested")]
   Requested,
-
   #[serde(rename = "waiting")]
   Waiting,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -6892,10 +6438,8 @@ impl ToString for ActionsListWorkflowRunsForRepoQueryStatus {
 pub enum EnvironmentApprovalsState {
   #[serde(rename = "approved")]
   Approved,
-
   #[serde(rename = "rejected")]
   Rejected,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -6917,7 +6461,6 @@ impl ToString for EnvironmentApprovalsState {
 pub enum ReviewCustomGatesStateRequiredState {
   #[serde(rename = "approved")]
   Approved,
-
   #[serde(rename = "rejected")]
   Rejected,
 }
@@ -6937,7 +6480,6 @@ impl ToString for ReviewCustomGatesStateRequiredState {
 #[serde(untagged)]
 pub enum ActionsReviewCustomGatesForRunRequest {
   ReviewCustomGatesCommentRequired(ReviewCustomGatesCommentRequired),
-
   ReviewCustomGatesStateRequired(ReviewCustomGatesStateRequired),
 }
 
@@ -6946,7 +6488,6 @@ pub enum ActionsReviewCustomGatesForRunRequest {
 pub enum ActionsListJobsForWorkflowRunQueryFilter {
   #[serde(rename = "latest")]
   Latest,
-
   #[serde(rename = "all")]
   All,
 }
@@ -6967,7 +6508,6 @@ impl ToString for ActionsListJobsForWorkflowRunQueryFilter {
 pub enum PendingDeploymentReviewersReviewer {
   /// A GitHub user.
   SimpleUser(SimpleUser),
-
   /// Groups of organization members that gives permissions on specified repositories.
   Team(Team),
 }
@@ -6977,7 +6517,6 @@ pub enum PendingDeploymentReviewersReviewer {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DeploymentReviewerType {
   User,
-
   Team,
 }
 
@@ -6997,7 +6536,6 @@ impl ToString for DeploymentReviewerType {
 pub enum ActionsReviewPendingDeploymentsForRunRequestState {
   #[serde(rename = "approved")]
   Approved,
-
   #[serde(rename = "rejected")]
   Rejected,
 }
@@ -7017,16 +6555,12 @@ impl ToString for ActionsReviewPendingDeploymentsForRunRequestState {
 pub enum WorkflowState {
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "deleted")]
   Deleted,
-
   #[serde(rename = "disabled_fork")]
   DisabledFork,
-
   #[serde(rename = "disabled_inactivity")]
   DisabledInactivity,
-
   #[serde(rename = "disabled_manually")]
   DisabledManually,
 }
@@ -7049,43 +6583,30 @@ impl ToString for WorkflowState {
 pub enum ActionsListWorkflowRunsQueryStatus {
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "stale")]
   Stale,
-
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "requested")]
   Requested,
-
   #[serde(rename = "waiting")]
   Waiting,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -7117,7 +6638,6 @@ impl ToString for ActionsListWorkflowRunsQueryStatus {
 pub enum ReposListActivitiesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -7137,16 +6657,12 @@ impl ToString for ReposListActivitiesQueryDirection {
 pub enum ReposListActivitiesQueryTimePeriod {
   #[serde(rename = "day")]
   Day,
-
   #[serde(rename = "week")]
   Week,
-
   #[serde(rename = "month")]
   Month,
-
   #[serde(rename = "quarter")]
   Quarter,
-
   #[serde(rename = "year")]
   Year,
 }
@@ -7169,19 +6685,14 @@ impl ToString for ReposListActivitiesQueryTimePeriod {
 pub enum ReposListActivitiesQueryActivityType {
   #[serde(rename = "push")]
   Push,
-
   #[serde(rename = "force_push")]
   ForcePush,
-
   #[serde(rename = "branch_creation")]
   BranchCreation,
-
   #[serde(rename = "branch_deletion")]
   BranchDeletion,
-
   #[serde(rename = "pr_merge")]
   PrMerge,
-
   #[serde(rename = "merge_queue_merge")]
   MergeQueueMerge,
 }
@@ -7206,19 +6717,14 @@ impl ToString for ReposListActivitiesQueryActivityType {
 pub enum ActivityActivityType {
   #[serde(rename = "push")]
   Push,
-
   #[serde(rename = "force_push")]
   ForcePush,
-
   #[serde(rename = "branch_deletion")]
   BranchDeletion,
-
   #[serde(rename = "branch_creation")]
   BranchCreation,
-
   #[serde(rename = "pr_merge")]
   PrMerge,
-
   #[serde(rename = "merge_queue_merge")]
   MergeQueueMerge,
 }
@@ -7242,22 +6748,16 @@ impl ToString for ActivityActivityType {
 pub enum DiffEntryStatus {
   #[serde(rename = "added")]
   Added,
-
   #[serde(rename = "removed")]
   Removed,
-
   #[serde(rename = "modified")]
   Modified,
-
   #[serde(rename = "renamed")]
   Renamed,
-
   #[serde(rename = "copied")]
   Copied,
-
   #[serde(rename = "changed")]
   Changed,
-
   #[serde(rename = "unchanged")]
   Unchanged,
 }
@@ -7282,7 +6782,6 @@ impl ToString for DiffEntryStatus {
 #[serde(untagged)]
 pub enum ReposAddStatusCheckContextsRequest {
   ReposAddStatusCheckContextsRequestItem1(ReposAddStatusCheckContextsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7291,7 +6790,6 @@ pub enum ReposAddStatusCheckContextsRequest {
 #[serde(untagged)]
 pub enum ReposSetStatusCheckContextsRequest {
   ReposSetStatusCheckContextsRequestItem1(ReposSetStatusCheckContextsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7300,7 +6798,6 @@ pub enum ReposSetStatusCheckContextsRequest {
 #[serde(untagged)]
 pub enum ReposRemoveStatusCheckContextsRequest {
   ReposRemoveStatusCheckContextsRequestItem1(ReposRemoveStatusCheckContextsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7309,7 +6806,6 @@ pub enum ReposRemoveStatusCheckContextsRequest {
 #[serde(untagged)]
 pub enum ReposAddAppAccessRestrictionsRequest {
   ReposAddAppAccessRestrictionsRequestItem1(ReposAddAppAccessRestrictionsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7318,7 +6814,6 @@ pub enum ReposAddAppAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposSetAppAccessRestrictionsRequest {
   ReposSetAppAccessRestrictionsRequestItem1(ReposSetAppAccessRestrictionsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7327,7 +6822,6 @@ pub enum ReposSetAppAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposRemoveAppAccessRestrictionsRequest {
   ReposRemoveAppAccessRestrictionsRequestItem1(ReposRemoveAppAccessRestrictionsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7336,7 +6830,6 @@ pub enum ReposRemoveAppAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposAddTeamAccessRestrictionsRequest {
   ReposAddTeamAccessRestrictionsRequestItem1(ReposAddTeamAccessRestrictionsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7345,7 +6838,6 @@ pub enum ReposAddTeamAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposSetTeamAccessRestrictionsRequest {
   ReposSetTeamAccessRestrictionsRequestItem1(ReposSetTeamAccessRestrictionsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7354,7 +6846,6 @@ pub enum ReposSetTeamAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposRemoveTeamAccessRestrictionsRequest {
   ReposRemoveTeamAccessRestrictionsRequestItem1(ReposRemoveTeamAccessRestrictionsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7363,7 +6854,6 @@ pub enum ReposRemoveTeamAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposAddUserAccessRestrictionsRequest {
   ReposAddUserAccessRestrictionsRequestItem1(ReposAddUserAccessRestrictionsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7372,7 +6862,6 @@ pub enum ReposAddUserAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposSetUserAccessRestrictionsRequest {
   ReposSetUserAccessRestrictionsRequestItem1(ReposSetUserAccessRestrictionsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7381,7 +6870,6 @@ pub enum ReposSetUserAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposRemoveUserAccessRestrictionsRequest {
   ReposRemoveUserAccessRestrictionsRequestItem1(ReposRemoveUserAccessRestrictionsRequestItem1),
-
   StringArray(StringArray),
 }
 
@@ -7406,7 +6894,6 @@ impl ToString for ChecksCreateRequestItem1Status {
 pub enum ChecksCreateRequestItem2Status {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
 }
@@ -7426,7 +6913,6 @@ impl ToString for ChecksCreateRequestItem2Status {
 #[serde(untagged)]
 pub enum ChecksCreateRequest {
   ChecksCreateRequestItem1(ChecksCreateRequestItem1),
-
   ChecksCreateRequestItem2(ChecksCreateRequestItem2),
 }
 
@@ -7435,22 +6921,16 @@ pub enum ChecksCreateRequest {
 pub enum CheckRunConclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
 }
@@ -7476,19 +6956,14 @@ impl ToString for CheckRunConclusion {
 pub enum CheckRunStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "waiting")]
   Waiting,
-
   #[serde(rename = "requested")]
   Requested,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -7528,7 +7003,6 @@ impl ToString for ChecksUpdateRequestItem1Status {
 pub enum ChecksUpdateRequestItem2Status {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
 }
@@ -7548,7 +7022,6 @@ impl ToString for ChecksUpdateRequestItem2Status {
 #[serde(untagged)]
 pub enum ChecksUpdateRequest {
   ChecksUpdateRequestItem1(ChecksUpdateRequestItem1),
-
   ChecksUpdateRequestItem2(ChecksUpdateRequestItem2),
 }
 
@@ -7557,28 +7030,20 @@ pub enum ChecksUpdateRequest {
 pub enum CheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "startup_failure")]
   StartupFailure,
-
   #[serde(rename = "stale")]
   Stale,
 }
@@ -7606,19 +7071,14 @@ impl ToString for CheckSuiteConclusion {
 pub enum CheckSuiteStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "waiting")]
   Waiting,
-
   #[serde(rename = "requested")]
   Requested,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -7642,10 +7102,8 @@ impl ToString for CheckSuiteStatus {
 pub enum ChecksListForSuiteQueryStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
 }
@@ -7666,7 +7124,6 @@ impl ToString for ChecksListForSuiteQueryStatus {
 pub enum ChecksListForSuiteQueryFilter {
   #[serde(rename = "latest")]
   Latest,
-
   #[serde(rename = "all")]
   All,
 }
@@ -7686,7 +7143,6 @@ impl ToString for ChecksListForSuiteQueryFilter {
 pub enum CodeScanningListAlertsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -7706,7 +7162,6 @@ impl ToString for CodeScanningListAlertsForRepoQueryDirection {
 pub enum CodeScanningListAlertsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -7727,13 +7182,10 @@ impl ToString for CodeScanningListAlertsForRepoQuerySort {
 pub enum CodeScanningAlertRuleSecuritySeverityLevel {
   #[serde(rename = "low")]
   Low,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "critical")]
   Critical,
 }
@@ -7756,13 +7208,10 @@ impl ToString for CodeScanningAlertRuleSecuritySeverityLevel {
 pub enum CodeScanningAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "note")]
   Note,
-
   #[serde(rename = "warning")]
   Warning,
-
   #[serde(rename = "error")]
   Error,
 }
@@ -7785,7 +7234,6 @@ impl ToString for CodeScanningAlertRuleSeverity {
 pub enum CodeScanningAlertSetState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "dismissed")]
   Dismissed,
 }
@@ -7805,7 +7253,6 @@ impl ToString for CodeScanningAlertSetState {
 pub enum CodeScanningListRecentAnalysesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -7841,31 +7288,22 @@ impl ToString for CodeScanningListRecentAnalysesQuerySort {
 pub enum CodeScanningDefaultSetupLanguages {
   #[serde(rename = "c-cpp")]
   CCpp,
-
   #[serde(rename = "csharp")]
   Csharp,
-
   #[serde(rename = "go")]
   Go,
-
   #[serde(rename = "java-kotlin")]
   JavaKotlin,
-
   #[serde(rename = "javascript-typescript")]
   JavascriptTypescript,
-
   #[serde(rename = "javascript")]
   Javascript,
-
   #[serde(rename = "python")]
   Python,
-
   #[serde(rename = "ruby")]
   Ruby,
-
   #[serde(rename = "typescript")]
   Typescript,
-
   #[serde(rename = "swift")]
   Swift,
 }
@@ -7896,7 +7334,6 @@ impl ToString for CodeScanningDefaultSetupLanguages {
 pub enum CodeScanningDefaultSetupQuerySuite {
   #[serde(rename = "default")]
   Default,
-
   #[serde(rename = "extended")]
   Extended,
 }
@@ -7934,7 +7371,6 @@ impl ToString for CodeScanningDefaultSetupSchedule {
 pub enum CodeScanningDefaultSetupState {
   #[serde(rename = "configured")]
   Configured,
-
   #[serde(rename = "not-configured")]
   NotConfigured,
 }
@@ -7954,25 +7390,18 @@ impl ToString for CodeScanningDefaultSetupState {
 pub enum CodeScanningDefaultSetupUpdateLanguages {
   #[serde(rename = "c-cpp")]
   CCpp,
-
   #[serde(rename = "csharp")]
   Csharp,
-
   #[serde(rename = "go")]
   Go,
-
   #[serde(rename = "java-kotlin")]
   JavaKotlin,
-
   #[serde(rename = "javascript-typescript")]
   JavascriptTypescript,
-
   #[serde(rename = "python")]
   Python,
-
   #[serde(rename = "ruby")]
   Ruby,
-
   #[serde(rename = "swift")]
   Swift,
 }
@@ -8001,7 +7430,6 @@ impl ToString for CodeScanningDefaultSetupUpdateLanguages {
 pub enum CodeScanningDefaultSetupUpdateQuerySuite {
   #[serde(rename = "default")]
   Default,
-
   #[serde(rename = "extended")]
   Extended,
 }
@@ -8022,7 +7450,6 @@ impl ToString for CodeScanningDefaultSetupUpdateQuerySuite {
 pub enum CodeScanningDefaultSetupUpdateState {
   #[serde(rename = "configured")]
   Configured,
-
   #[serde(rename = "not-configured")]
   NotConfigured,
 }
@@ -8041,7 +7468,6 @@ impl ToString for CodeScanningDefaultSetupUpdateState {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum CodeScanningUpdateDefaultSetupResponse {
   Success(EmptyObject),
-
   Accepted(CodeScanningDefaultSetupUpdateResponse),
 }
 
@@ -8051,10 +7477,8 @@ pub enum CodeScanningUpdateDefaultSetupResponse {
 pub enum CodeScanningSarifsStatusProcessingStatus {
   #[serde(rename = "pending")]
   Pending,
-
   #[serde(rename = "complete")]
   Complete,
-
   #[serde(rename = "failed")]
   Failed,
 }
@@ -8075,11 +7499,8 @@ impl ToString for CodeScanningSarifsStatusProcessingStatus {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateWithRepoForAuthenticatedUserRequestGeo {
   EuropeWest,
-
   SoutheastAsia,
-
   UsEast,
-
   UsWest,
 }
 
@@ -8104,10 +7525,8 @@ impl ToString for CodespacesCreateWithRepoForAuthenticatedUserRequestGeo {
 pub enum ReposListCollaboratorsQueryAffiliation {
   #[serde(rename = "outside")]
   Outside,
-
   #[serde(rename = "direct")]
   Direct,
-
   #[serde(rename = "all")]
   All,
 }
@@ -8128,16 +7547,12 @@ impl ToString for ReposListCollaboratorsQueryAffiliation {
 pub enum ReposListCollaboratorsQueryPermission {
   #[serde(rename = "pull")]
   Pull,
-
   #[serde(rename = "triage")]
   Triage,
-
   #[serde(rename = "push")]
   Push,
-
   #[serde(rename = "maintain")]
   Maintain,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -8161,16 +7576,12 @@ impl ToString for ReposListCollaboratorsQueryPermission {
 pub enum RepositoryInvitationPermissions {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
-
   #[serde(rename = "triage")]
   Triage,
-
   #[serde(rename = "maintain")]
   Maintain,
 }
@@ -8193,25 +7604,18 @@ impl ToString for RepositoryInvitationPermissions {
 pub enum ReactionsListForCommitCommentQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -8238,25 +7642,18 @@ impl ToString for ReactionsListForCommitCommentQueryContent {
 pub enum ReactionsCreateForCommitCommentRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -8283,10 +7680,8 @@ impl ToString for ReactionsCreateForCommitCommentRequestContent {
 pub enum AutoMergeMergeMethod {
   #[serde(rename = "merge")]
   Merge,
-
   #[serde(rename = "squash")]
   Squash,
-
   #[serde(rename = "rebase")]
   Rebase,
 }
@@ -8307,10 +7702,8 @@ impl ToString for AutoMergeMergeMethod {
 pub enum ChecksListForRefQueryStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
 }
@@ -8331,7 +7724,6 @@ impl ToString for ChecksListForRefQueryStatus {
 pub enum ChecksListForRefQueryFilter {
   #[serde(rename = "latest")]
   Latest,
-
   #[serde(rename = "all")]
   All,
 }
@@ -8351,13 +7743,10 @@ impl ToString for ChecksListForRefQueryFilter {
 pub enum CommitComparisonStatus {
   #[serde(rename = "diverged")]
   Diverged,
-
   #[serde(rename = "ahead")]
   Ahead,
-
   #[serde(rename = "behind")]
   Behind,
-
   #[serde(rename = "identical")]
   Identical,
 }
@@ -8379,13 +7768,10 @@ impl ToString for CommitComparisonStatus {
 pub enum ContentDirectoryItemType {
   #[serde(rename = "dir")]
   Dir,
-
   #[serde(rename = "file")]
   File,
-
   #[serde(rename = "submodule")]
   Submodule,
-
   #[serde(rename = "symlink")]
   Symlink,
 }
@@ -8455,13 +7841,10 @@ impl ToString for ContentSubmoduleType {
 #[serde(untagged)]
 pub enum ReposGetContentResponse {
   ContentDirectory(ContentDirectory),
-
   /// Content File
   ContentFile(ContentFile),
-
   /// An object describing a symlink
   ContentSymlink(ContentSymlink),
-
   /// An object describing a submodule
   ContentSubmodule(ContentSubmodule),
 }
@@ -8471,7 +7854,6 @@ pub enum ReposGetContentResponse {
 pub enum DependabotListAlertsForRepoQueryScope {
   #[serde(rename = "development")]
   Development,
-
   #[serde(rename = "runtime")]
   Runtime,
 }
@@ -8491,7 +7873,6 @@ impl ToString for DependabotListAlertsForRepoQueryScope {
 pub enum DependabotListAlertsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -8511,7 +7892,6 @@ impl ToString for DependabotListAlertsForRepoQuerySort {
 pub enum DependabotListAlertsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -8532,7 +7912,6 @@ impl ToString for DependabotListAlertsForRepoQueryDirection {
 pub enum DependabotAlertDependencyScope {
   #[serde(rename = "development")]
   Development,
-
   #[serde(rename = "runtime")]
   Runtime,
 }
@@ -8553,16 +7932,12 @@ impl ToString for DependabotAlertDependencyScope {
 pub enum DependabotAlertDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
-
   #[serde(rename = "inaccurate")]
   Inaccurate,
-
   #[serde(rename = "no_bandwidth")]
   NoBandwidth,
-
   #[serde(rename = "not_used")]
   NotUsed,
-
   #[serde(rename = "tolerable_risk")]
   TolerableRisk,
 }
@@ -8586,13 +7961,10 @@ impl ToString for DependabotAlertDismissedReason {
 pub enum DependabotAlertState {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
-
   #[serde(rename = "dismissed")]
   Dismissed,
-
   #[serde(rename = "fixed")]
   Fixed,
-
   #[serde(rename = "open")]
   Open,
 }
@@ -8615,16 +7987,12 @@ impl ToString for DependabotAlertState {
 pub enum DependabotUpdateAlertRequestDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
-
   #[serde(rename = "inaccurate")]
   Inaccurate,
-
   #[serde(rename = "no_bandwidth")]
   NoBandwidth,
-
   #[serde(rename = "not_used")]
   NotUsed,
-
   #[serde(rename = "tolerable_risk")]
   TolerableRisk,
 }
@@ -8649,7 +8017,6 @@ impl ToString for DependabotUpdateAlertRequestDismissedReason {
 pub enum DependabotUpdateAlertRequestState {
   #[serde(rename = "dismissed")]
   Dismissed,
-
   #[serde(rename = "open")]
   Open,
 }
@@ -8669,7 +8036,6 @@ impl ToString for DependabotUpdateAlertRequestState {
 pub enum DependencyGraphDiffItemChangeType {
   #[serde(rename = "added")]
   Added,
-
   #[serde(rename = "removed")]
   Removed,
 }
@@ -8690,10 +8056,8 @@ impl ToString for DependencyGraphDiffItemChangeType {
 pub enum DependencyGraphDiffItemScope {
   #[serde(rename = "unknown")]
   Unknown,
-
   #[serde(rename = "runtime")]
   Runtime,
-
   #[serde(rename = "development")]
   Development,
 }
@@ -8713,7 +8077,6 @@ impl ToString for DependencyGraphDiffItemScope {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum ReposCreateDeploymentResponse {
   Created(Deployment),
-
   Accepted(ReposCreateDeploymentResponseAccepted),
 }
 
@@ -8723,22 +8086,16 @@ pub enum ReposCreateDeploymentResponse {
 pub enum DeploymentStatusState {
   #[serde(rename = "error")]
   Error,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "inactive")]
   Inactive,
-
   #[serde(rename = "pending")]
   Pending,
-
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
 }
@@ -8764,22 +8121,16 @@ impl ToString for DeploymentStatusState {
 pub enum ReposCreateDeploymentStatusRequestState {
   #[serde(rename = "error")]
   Error,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "inactive")]
   Inactive,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "pending")]
   Pending,
-
   #[serde(rename = "success")]
   Success,
 }
@@ -8805,7 +8156,6 @@ impl ToString for ReposCreateDeploymentStatusRequestState {
 pub enum EnvironmentProtectionRulesItem2ReviewersReviewer {
   /// A GitHub user.
   SimpleUser(SimpleUser),
-
   /// Groups of organization members that gives permissions on specified repositories.
   Team(Team),
 }
@@ -8815,9 +8165,7 @@ pub enum EnvironmentProtectionRulesItem2ReviewersReviewer {
 #[serde(untagged)]
 pub enum EnvironmentProtectionRules {
   EnvironmentProtectionRulesItem1(EnvironmentProtectionRulesItem1),
-
   EnvironmentProtectionRulesItem2(EnvironmentProtectionRulesItem2),
-
   EnvironmentProtectionRulesItem3(EnvironmentProtectionRulesItem3),
 }
 
@@ -8827,7 +8175,6 @@ pub enum EnvironmentProtectionRules {
 pub enum DeploymentBranchPolicyType {
   #[serde(rename = "branch")]
   Branch,
-
   #[serde(rename = "tag")]
   Tag,
 }
@@ -8848,7 +8195,6 @@ impl ToString for DeploymentBranchPolicyType {
 pub enum DeploymentBranchPolicyNamePatternWithTypeType {
   #[serde(rename = "branch")]
   Branch,
-
   #[serde(rename = "tag")]
   Tag,
 }
@@ -8868,13 +8214,10 @@ impl ToString for DeploymentBranchPolicyNamePatternWithTypeType {
 pub enum ReposListForksQuerySort {
   #[serde(rename = "newest")]
   Newest,
-
   #[serde(rename = "oldest")]
   Oldest,
-
   #[serde(rename = "stargazers")]
   Stargazers,
-
   #[serde(rename = "watchers")]
   Watchers,
 }
@@ -8897,10 +8240,8 @@ impl ToString for ReposListForksQuerySort {
 pub enum GitCreateTagRequestType {
   #[serde(rename = "commit")]
   Commit,
-
   #[serde(rename = "tree")]
   Tree,
-
   #[serde(rename = "blob")]
   Blob,
 }
@@ -8922,16 +8263,12 @@ impl ToString for GitCreateTagRequestType {
 pub enum GitCreateTreeRequestTreeMode {
   #[serde(rename = "100644")]
   _100644,
-
   #[serde(rename = "100755")]
   _100755,
-
   #[serde(rename = "040000")]
   _040000,
-
   #[serde(rename = "160000")]
   _160000,
-
   #[serde(rename = "120000")]
   _120000,
 }
@@ -8955,10 +8292,8 @@ impl ToString for GitCreateTreeRequestTreeMode {
 pub enum GitCreateTreeRequestTreeType {
   #[serde(rename = "blob")]
   Blob,
-
   #[serde(rename = "tree")]
   Tree,
-
   #[serde(rename = "commit")]
   Commit,
 }
@@ -8979,49 +8314,34 @@ impl ToString for GitCreateTreeRequestTreeType {
 pub enum ImportStatus {
   #[serde(rename = "auth")]
   Auth,
-
   #[serde(rename = "error")]
   Error,
-
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "detecting")]
   Detecting,
-
   #[serde(rename = "choose")]
   Choose,
-
   #[serde(rename = "auth_failed")]
   AuthFailed,
-
   #[serde(rename = "importing")]
   Importing,
-
   #[serde(rename = "mapping")]
   Mapping,
-
   #[serde(rename = "waiting_to_push")]
   WaitingToPush,
-
   #[serde(rename = "pushing")]
   Pushing,
-
   #[serde(rename = "complete")]
   Complete,
-
   #[serde(rename = "setup")]
   Setup,
-
   #[serde(rename = "unknown")]
   Unknown,
-
   #[serde(rename = "detection_found_multiple")]
   DetectionFoundMultiple,
-
   #[serde(rename = "detection_found_nothing")]
   DetectionFoundNothing,
-
   #[serde(rename = "detection_needs_auth")]
   DetectionNeedsAuth,
 }
@@ -9056,13 +8376,10 @@ impl ToString for ImportStatus {
 pub enum MigrationsStartImportRequestVcs {
   #[serde(rename = "subversion")]
   Subversion,
-
   #[serde(rename = "git")]
   Git,
-
   #[serde(rename = "mercurial")]
   Mercurial,
-
   #[serde(rename = "tfvc")]
   Tfvc,
 }
@@ -9085,13 +8402,10 @@ impl ToString for MigrationsStartImportRequestVcs {
 pub enum MigrationsUpdateImportRequestVcs {
   #[serde(rename = "subversion")]
   Subversion,
-
   #[serde(rename = "tfvc")]
   Tfvc,
-
   #[serde(rename = "git")]
   Git,
-
   #[serde(rename = "mercurial")]
   Mercurial,
 }
@@ -9114,7 +8428,6 @@ impl ToString for MigrationsUpdateImportRequestVcs {
 pub enum MigrationsSetLfsPreferenceRequestUseLfs {
   #[serde(rename = "opt_in")]
   OptIn,
-
   #[serde(rename = "opt_out")]
   OptOut,
 }
@@ -9135,7 +8448,6 @@ impl ToString for MigrationsSetLfsPreferenceRequestUseLfs {
 pub enum InteractionsGetRestrictionsForRepoResponse {
   /// Interaction limit settings.
   InteractionLimitResponse(InteractionLimitResponse),
-
   InteractionsGetRestrictionsForRepoResponseItem2(InteractionsGetRestrictionsForRepoResponseItem2),
 }
 
@@ -9145,16 +8457,12 @@ pub enum InteractionsGetRestrictionsForRepoResponse {
 pub enum ReposUpdateInvitationRequestPermissions {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "maintain")]
   Maintain,
-
   #[serde(rename = "triage")]
   Triage,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -9177,10 +8485,8 @@ impl ToString for ReposUpdateInvitationRequestPermissions {
 pub enum IssuesListForRepoQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "all")]
   All,
 }
@@ -9201,10 +8507,8 @@ impl ToString for IssuesListForRepoQueryState {
 pub enum IssuesListForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "comments")]
   Comments,
 }
@@ -9225,7 +8529,6 @@ impl ToString for IssuesListForRepoQuerySort {
 pub enum IssuesListForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -9245,7 +8548,6 @@ impl ToString for IssuesListForRepoQueryDirection {
 pub enum IssuesListCommentsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -9265,7 +8567,6 @@ impl ToString for IssuesListCommentsForRepoQuerySort {
 pub enum IssuesListCommentsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -9285,25 +8586,18 @@ impl ToString for IssuesListCommentsForRepoQueryDirection {
 pub enum ReactionsListForIssueCommentQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -9330,25 +8624,18 @@ impl ToString for ReactionsListForIssueCommentQueryContent {
 pub enum ReactionsCreateForIssueCommentRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -9375,7 +8662,6 @@ impl ToString for ReactionsCreateForIssueCommentRequestContent {
 pub enum IssuesUpdateRequestState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -9396,10 +8682,8 @@ impl ToString for IssuesUpdateRequestState {
 pub enum IssuesUpdateRequestStateReason {
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "not_planned")]
   NotPlanned,
-
   #[serde(rename = "reopened")]
   Reopened,
 }
@@ -9421,46 +8705,32 @@ impl ToString for IssuesUpdateRequestStateReason {
 pub enum IssueEventForIssue {
   /// Labeled Issue Event
   LabeledIssueEvent(LabeledIssueEvent),
-
   /// Unlabeled Issue Event
   UnlabeledIssueEvent(UnlabeledIssueEvent),
-
   /// Assigned Issue Event
   AssignedIssueEvent(AssignedIssueEvent),
-
   /// Unassigned Issue Event
   UnassignedIssueEvent(UnassignedIssueEvent),
-
   /// Milestoned Issue Event
   MilestonedIssueEvent(MilestonedIssueEvent),
-
   /// Demilestoned Issue Event
   DemilestonedIssueEvent(DemilestonedIssueEvent),
-
   /// Renamed Issue Event
   RenamedIssueEvent(RenamedIssueEvent),
-
   /// Review Requested Issue Event
   ReviewRequestedIssueEvent(ReviewRequestedIssueEvent),
-
   /// Review Request Removed Issue Event
   ReviewRequestRemovedIssueEvent(ReviewRequestRemovedIssueEvent),
-
   /// Review Dismissed Issue Event
   ReviewDismissedIssueEvent(ReviewDismissedIssueEvent),
-
   /// Locked Issue Event
   LockedIssueEvent(LockedIssueEvent),
-
   /// Added to Project Issue Event
   AddedToProjectIssueEvent(AddedToProjectIssueEvent),
-
   /// Moved Column in Project Issue Event
   MovedColumnInProjectIssueEvent(MovedColumnInProjectIssueEvent),
-
   /// Removed from Project Issue Event
   RemovedFromProjectIssueEvent(RemovedFromProjectIssueEvent),
-
   /// Converted Note to Issue Issue Event
   ConvertedNoteToIssueIssueEvent(ConvertedNoteToIssueIssueEvent),
 }
@@ -9470,13 +8740,9 @@ pub enum IssueEventForIssue {
 #[serde(untagged)]
 pub enum IssuesAddLabelsRequest {
   IssuesAddLabelsRequestItem1(IssuesAddLabelsRequestItem1),
-
   StringArray(StringArray),
-
   IssuesAddLabelsRequestItem3(IssuesAddLabelsRequestItem3),
-
   IssuesAddLabelsRequestItem4Array(IssuesAddLabelsRequestItem4Array),
-
   String(String),
 }
 
@@ -9485,13 +8751,9 @@ pub enum IssuesAddLabelsRequest {
 #[serde(untagged)]
 pub enum IssuesSetLabelsRequest {
   IssuesSetLabelsRequestItem1(IssuesSetLabelsRequestItem1),
-
   StringArray(StringArray),
-
   IssuesSetLabelsRequestItem3(IssuesSetLabelsRequestItem3),
-
   IssuesSetLabelsRequestItem4Array(IssuesSetLabelsRequestItem4Array),
-
   String(String),
 }
 
@@ -9505,13 +8767,10 @@ pub enum IssuesSetLabelsRequest {
 pub enum IssuesLockRequestLockReason {
   #[serde(rename = "off-topic")]
   OffTopic,
-
   #[serde(rename = "too heated")]
   TooHeated,
-
   #[serde(rename = "resolved")]
   Resolved,
-
   #[serde(rename = "spam")]
   Spam,
 }
@@ -9533,25 +8792,18 @@ impl ToString for IssuesLockRequestLockReason {
 pub enum ReactionsListForIssueQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -9578,25 +8830,18 @@ impl ToString for ReactionsListForIssueQueryContent {
 pub enum ReactionsCreateForIssueRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -9623,7 +8868,6 @@ impl ToString for ReactionsCreateForIssueRequestContent {
 pub enum PullRequestReviewCommentSide {
   #[serde(rename = "LEFT")]
   Left,
-
   #[serde(rename = "RIGHT")]
   Right,
 }
@@ -9644,7 +8888,6 @@ impl ToString for PullRequestReviewCommentSide {
 pub enum PullRequestReviewCommentStartSide {
   #[serde(rename = "LEFT")]
   Left,
-
   #[serde(rename = "RIGHT")]
   Right,
 }
@@ -9665,7 +8908,6 @@ impl ToString for PullRequestReviewCommentStartSide {
 pub enum PullRequestReviewCommentSubjectType {
   #[serde(rename = "line")]
   Line,
-
   #[serde(rename = "file")]
   File,
 }
@@ -9686,67 +8928,46 @@ impl ToString for PullRequestReviewCommentSubjectType {
 pub enum TimelineIssueEvents {
   /// Labeled Issue Event
   LabeledIssueEvent(LabeledIssueEvent),
-
   /// Unlabeled Issue Event
   UnlabeledIssueEvent(UnlabeledIssueEvent),
-
   /// Milestoned Issue Event
   MilestonedIssueEvent(MilestonedIssueEvent),
-
   /// Demilestoned Issue Event
   DemilestonedIssueEvent(DemilestonedIssueEvent),
-
   /// Renamed Issue Event
   RenamedIssueEvent(RenamedIssueEvent),
-
   /// Review Requested Issue Event
   ReviewRequestedIssueEvent(ReviewRequestedIssueEvent),
-
   /// Review Request Removed Issue Event
   ReviewRequestRemovedIssueEvent(ReviewRequestRemovedIssueEvent),
-
   /// Review Dismissed Issue Event
   ReviewDismissedIssueEvent(ReviewDismissedIssueEvent),
-
   /// Locked Issue Event
   LockedIssueEvent(LockedIssueEvent),
-
   /// Added to Project Issue Event
   AddedToProjectIssueEvent(AddedToProjectIssueEvent),
-
   /// Moved Column in Project Issue Event
   MovedColumnInProjectIssueEvent(MovedColumnInProjectIssueEvent),
-
   /// Removed from Project Issue Event
   RemovedFromProjectIssueEvent(RemovedFromProjectIssueEvent),
-
   /// Converted Note to Issue Issue Event
   ConvertedNoteToIssueIssueEvent(ConvertedNoteToIssueIssueEvent),
-
   /// Timeline Comment Event
   TimelineCommentEvent(TimelineCommentEvent),
-
   /// Timeline Cross Referenced Event
   TimelineCrossReferencedEvent(TimelineCrossReferencedEvent),
-
   /// Timeline Committed Event
   TimelineCommittedEvent(TimelineCommittedEvent),
-
   /// Timeline Reviewed Event
   TimelineReviewedEvent(TimelineReviewedEvent),
-
   /// Timeline Line Commented Event
   TimelineLineCommentedEvent(TimelineLineCommentedEvent),
-
   /// Timeline Commit Commented Event
   TimelineCommitCommentedEvent(TimelineCommitCommentedEvent),
-
   /// Timeline Assigned Issue Event
   TimelineAssignedIssueEvent(TimelineAssignedIssueEvent),
-
   /// Timeline Unassigned Issue Event
   TimelineUnassignedIssueEvent(TimelineUnassignedIssueEvent),
-
   /// State Change Issue Event
   StateChangeIssueEvent(StateChangeIssueEvent),
 }
@@ -9756,10 +8977,8 @@ pub enum TimelineIssueEvents {
 pub enum MergedUpstreamMergeType {
   #[serde(rename = "merge")]
   Merge,
-
   #[serde(rename = "fast-forward")]
   FastForward,
-
   #[serde(rename = "none")]
   None,
 }
@@ -9780,10 +8999,8 @@ impl ToString for MergedUpstreamMergeType {
 pub enum IssuesListMilestonesQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "all")]
   All,
 }
@@ -9804,7 +9021,6 @@ impl ToString for IssuesListMilestonesQueryState {
 pub enum IssuesListMilestonesQuerySort {
   #[serde(rename = "due_on")]
   DueOn,
-
   #[serde(rename = "completeness")]
   Completeness,
 }
@@ -9824,7 +9040,6 @@ impl ToString for IssuesListMilestonesQuerySort {
 pub enum IssuesListMilestonesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -9845,7 +9060,6 @@ impl ToString for IssuesListMilestonesQueryDirection {
 pub enum IssuesCreateMilestoneRequestState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -9866,7 +9080,6 @@ impl ToString for IssuesCreateMilestoneRequestState {
 pub enum IssuesUpdateMilestoneRequestState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -9887,7 +9100,6 @@ impl ToString for IssuesUpdateMilestoneRequestState {
 pub enum PageBuildType {
   #[serde(rename = "legacy")]
   Legacy,
-
   #[serde(rename = "workflow")]
   Workflow,
 }
@@ -9907,37 +9119,26 @@ impl ToString for PageBuildType {
 pub enum PagesHttpsCertificateState {
   #[serde(rename = "new")]
   New,
-
   #[serde(rename = "authorization_created")]
   AuthorizationCreated,
-
   #[serde(rename = "authorization_pending")]
   AuthorizationPending,
-
   #[serde(rename = "authorized")]
   Authorized,
-
   #[serde(rename = "authorization_revoked")]
   AuthorizationRevoked,
-
   #[serde(rename = "issued")]
   Issued,
-
   #[serde(rename = "uploaded")]
   Uploaded,
-
   #[serde(rename = "approved")]
   Approved,
-
   #[serde(rename = "errored")]
   Errored,
-
   #[serde(rename = "bad_authz")]
   BadAuthz,
-
   #[serde(rename = "destroy_pending")]
   DestroyPending,
-
   #[serde(rename = "dns_changed")]
   DnsChanged,
 }
@@ -9968,10 +9169,8 @@ impl ToString for PagesHttpsCertificateState {
 pub enum PageProtectedDomainState {
   #[serde(rename = "pending")]
   Pending,
-
   #[serde(rename = "verified")]
   Verified,
-
   #[serde(rename = "unverified")]
   Unverified,
 }
@@ -9993,10 +9192,8 @@ impl ToString for PageProtectedDomainState {
 pub enum PageStatus {
   #[serde(rename = "built")]
   Built,
-
   #[serde(rename = "building")]
   Building,
-
   #[serde(rename = "errored")]
   Errored,
 }
@@ -10018,34 +9215,24 @@ impl ToString for PageStatus {
 pub enum PagesDeploymentStatusStatus {
   #[serde(rename = "deployment_in_progress")]
   DeploymentInProgress,
-
   #[serde(rename = "syncing_files")]
   SyncingFiles,
-
   #[serde(rename = "finished_file_sync")]
   FinishedFileSync,
-
   #[serde(rename = "updating_pages")]
   UpdatingPages,
-
   #[serde(rename = "purging_cdn")]
   PurgingCdn,
-
   #[serde(rename = "deployment_cancelled")]
   DeploymentCancelled,
-
   #[serde(rename = "deployment_failed")]
   DeploymentFailed,
-
   #[serde(rename = "deployment_content_failed")]
   DeploymentContentFailed,
-
   #[serde(rename = "deployment_attempt_error")]
   DeploymentAttemptError,
-
   #[serde(rename = "deployment_lost")]
   DeploymentLost,
-
   #[serde(rename = "succeed")]
   Succeed,
 }
@@ -10075,7 +9262,6 @@ impl ToString for PagesDeploymentStatusStatus {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum ReposGetPagesHealthCheckResponse {
   Success(PagesHealthCheck),
-
   Accepted(EmptyObject),
 }
 
@@ -10084,10 +9270,8 @@ pub enum ReposGetPagesHealthCheckResponse {
 pub enum ProjectsListForRepoQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "all")]
   All,
 }
@@ -10108,10 +9292,8 @@ impl ToString for ProjectsListForRepoQueryState {
 pub enum PullsListQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "all")]
   All,
 }
@@ -10132,13 +9314,10 @@ impl ToString for PullsListQueryState {
 pub enum PullsListQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "popularity")]
   Popularity,
-
   #[serde(rename = "long-running")]
   LongRunning,
 }
@@ -10160,7 +9339,6 @@ impl ToString for PullsListQuerySort {
 pub enum PullsListQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -10181,7 +9359,6 @@ impl ToString for PullsListQueryDirection {
 pub enum PullRequestState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -10201,10 +9378,8 @@ impl ToString for PullRequestState {
 pub enum PullsListReviewCommentsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "created_at")]
   CreatedAt,
 }
@@ -10225,7 +9400,6 @@ impl ToString for PullsListReviewCommentsForRepoQuerySort {
 pub enum PullsListReviewCommentsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -10245,25 +9419,18 @@ impl ToString for PullsListReviewCommentsForRepoQueryDirection {
 pub enum ReactionsListForPullRequestReviewCommentQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -10290,25 +9457,18 @@ impl ToString for ReactionsListForPullRequestReviewCommentQueryContent {
 pub enum ReactionsCreateForPullRequestReviewCommentRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -10335,7 +9495,6 @@ impl ToString for ReactionsCreateForPullRequestReviewCommentRequestContent {
 pub enum PullsUpdateRequestState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -10355,11 +9514,8 @@ impl ToString for PullsUpdateRequestState {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateWithPrForAuthenticatedUserRequestGeo {
   EuropeWest,
-
   SoutheastAsia,
-
   UsEast,
-
   UsWest,
 }
 
@@ -10382,7 +9538,6 @@ impl ToString for CodespacesCreateWithPrForAuthenticatedUserRequestGeo {
 pub enum PullsListReviewCommentsQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -10402,7 +9557,6 @@ impl ToString for PullsListReviewCommentsQuerySort {
 pub enum PullsListReviewCommentsQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -10423,7 +9577,6 @@ impl ToString for PullsListReviewCommentsQueryDirection {
 pub enum PullsCreateReviewCommentRequestSide {
   #[serde(rename = "LEFT")]
   Left,
-
   #[serde(rename = "RIGHT")]
   Right,
 }
@@ -10444,10 +9597,8 @@ impl ToString for PullsCreateReviewCommentRequestSide {
 pub enum PullsCreateReviewCommentRequestStartSide {
   #[serde(rename = "LEFT")]
   Left,
-
   #[serde(rename = "RIGHT")]
   Right,
-
   #[serde(rename = "side")]
   Side,
 }
@@ -10469,7 +9620,6 @@ impl ToString for PullsCreateReviewCommentRequestStartSide {
 pub enum PullsCreateReviewCommentRequestSubjectType {
   #[serde(rename = "line")]
   Line,
-
   #[serde(rename = "file")]
   File,
 }
@@ -10490,10 +9640,8 @@ impl ToString for PullsCreateReviewCommentRequestSubjectType {
 pub enum PullsMergeRequestMergeMethod {
   #[serde(rename = "merge")]
   Merge,
-
   #[serde(rename = "squash")]
   Squash,
-
   #[serde(rename = "rebase")]
   Rebase,
 }
@@ -10515,10 +9663,8 @@ impl ToString for PullsMergeRequestMergeMethod {
 pub enum PullsCreateReviewRequestEvent {
   #[serde(rename = "APPROVE")]
   Approve,
-
   #[serde(rename = "REQUEST_CHANGES")]
   RequestChanges,
-
   #[serde(rename = "COMMENT")]
   Comment,
 }
@@ -10540,7 +9686,6 @@ impl ToString for PullsCreateReviewRequestEvent {
 pub enum ReviewCommentSide {
   #[serde(rename = "LEFT")]
   Left,
-
   #[serde(rename = "RIGHT")]
   Right,
 }
@@ -10561,7 +9706,6 @@ impl ToString for ReviewCommentSide {
 pub enum ReviewCommentStartSide {
   #[serde(rename = "LEFT")]
   Left,
-
   #[serde(rename = "RIGHT")]
   Right,
 }
@@ -10598,10 +9742,8 @@ impl ToString for PullsDismissReviewRequestEvent {
 pub enum PullsSubmitReviewRequestEvent {
   #[serde(rename = "APPROVE")]
   Approve,
-
   #[serde(rename = "REQUEST_CHANGES")]
   RequestChanges,
-
   #[serde(rename = "COMMENT")]
   Comment,
 }
@@ -10623,7 +9765,6 @@ impl ToString for PullsSubmitReviewRequestEvent {
 pub enum ReleaseAssetState {
   #[serde(rename = "uploaded")]
   Uploaded,
-
   #[serde(rename = "open")]
   Open,
 }
@@ -10644,10 +9785,8 @@ impl ToString for ReleaseAssetState {
 pub enum ReposCreateReleaseRequestMakeLatest {
   #[serde(rename = "true")]
   True,
-
   #[serde(rename = "false")]
   False,
-
   #[serde(rename = "legacy")]
   Legacy,
 }
@@ -10669,10 +9808,8 @@ impl ToString for ReposCreateReleaseRequestMakeLatest {
 pub enum ReposUpdateReleaseRequestMakeLatest {
   #[serde(rename = "true")]
   True,
-
   #[serde(rename = "false")]
   False,
-
   #[serde(rename = "legacy")]
   Legacy,
 }
@@ -10693,19 +9830,14 @@ impl ToString for ReposUpdateReleaseRequestMakeLatest {
 pub enum ReactionsListForReleaseQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -10730,19 +9862,14 @@ impl ToString for ReactionsListForReleaseQueryContent {
 pub enum ReactionsCreateForReleaseRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -10766,7 +9893,6 @@ impl ToString for ReactionsCreateForReleaseRequestContent {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRulesetInfoRulesetSourceType {
   Repository,
-
   Organization,
 }
 
@@ -10786,7 +9912,6 @@ impl ToString for RepositoryRuleRulesetInfoRulesetSourceType {
 pub enum RepositoryRuleDetailedItem1 {
   /// Only allow users with bypass permission to create matching refs.
   RepositoryRuleCreation(RepositoryRuleCreation),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10797,7 +9922,6 @@ pub enum RepositoryRuleDetailedItem1 {
 pub enum RepositoryRuleDetailedItem2 {
   /// Only allow users with bypass permission to update matching refs.
   RepositoryRuleUpdate(RepositoryRuleUpdate),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10808,7 +9932,6 @@ pub enum RepositoryRuleDetailedItem2 {
 pub enum RepositoryRuleDetailedItem3 {
   /// Only allow users with bypass permissions to delete matching refs.
   RepositoryRuleDeletion(RepositoryRuleDeletion),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10819,7 +9942,6 @@ pub enum RepositoryRuleDetailedItem3 {
 pub enum RepositoryRuleDetailedItem4 {
   /// Prevent merge commits from being pushed to matching refs.
   RepositoryRuleRequiredLinearHistory(RepositoryRuleRequiredLinearHistory),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10830,7 +9952,6 @@ pub enum RepositoryRuleDetailedItem4 {
 pub enum RepositoryRuleDetailedItem5 {
   /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
   RepositoryRuleRequiredDeployments(RepositoryRuleRequiredDeployments),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10841,7 +9962,6 @@ pub enum RepositoryRuleDetailedItem5 {
 pub enum RepositoryRuleDetailedItem6 {
   /// Commits pushed to matching refs must have verified signatures.
   RepositoryRuleRequiredSignatures(RepositoryRuleRequiredSignatures),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10852,7 +9972,6 @@ pub enum RepositoryRuleDetailedItem6 {
 pub enum RepositoryRuleDetailedItem7 {
   /// Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
   RepositoryRulePullRequest(RepositoryRulePullRequest),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10863,7 +9982,6 @@ pub enum RepositoryRuleDetailedItem7 {
 pub enum RepositoryRuleDetailedItem8 {
   /// Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
   RepositoryRuleRequiredStatusChecks(RepositoryRuleRequiredStatusChecks),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10874,7 +9992,6 @@ pub enum RepositoryRuleDetailedItem8 {
 pub enum RepositoryRuleDetailedItem9 {
   /// Prevent users with push access from force pushing to refs.
   RepositoryRuleNonFastForward(RepositoryRuleNonFastForward),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10885,7 +10002,6 @@ pub enum RepositoryRuleDetailedItem9 {
 pub enum RepositoryRuleDetailedItem10 {
   /// Parameters to be used for the commit_message_pattern rule
   RepositoryRuleCommitMessagePattern(RepositoryRuleCommitMessagePattern),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10896,7 +10012,6 @@ pub enum RepositoryRuleDetailedItem10 {
 pub enum RepositoryRuleDetailedItem11 {
   /// Parameters to be used for the commit_author_email_pattern rule
   RepositoryRuleCommitAuthorEmailPattern(RepositoryRuleCommitAuthorEmailPattern),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10907,7 +10022,6 @@ pub enum RepositoryRuleDetailedItem11 {
 pub enum RepositoryRuleDetailedItem12 {
   /// Parameters to be used for the committer_email_pattern rule
   RepositoryRuleCommitterEmailPattern(RepositoryRuleCommitterEmailPattern),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10918,7 +10032,6 @@ pub enum RepositoryRuleDetailedItem12 {
 pub enum RepositoryRuleDetailedItem13 {
   /// Parameters to be used for the branch_name_pattern rule
   RepositoryRuleBranchNamePattern(RepositoryRuleBranchNamePattern),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10929,7 +10042,6 @@ pub enum RepositoryRuleDetailedItem13 {
 pub enum RepositoryRuleDetailedItem14 {
   /// Parameters to be used for the tag_name_pattern rule
   RepositoryRuleTagNamePattern(RepositoryRuleTagNamePattern),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10940,7 +10052,6 @@ pub enum RepositoryRuleDetailedItem14 {
 pub enum RepositoryRuleDetailedItem15 {
   /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
   RepositoryRuleWorkflows(RepositoryRuleWorkflows),
-
   /// User-defined metadata to store domain-specific information limited to 8 keys with scalar values.
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
@@ -10950,33 +10061,19 @@ pub enum RepositoryRuleDetailedItem15 {
 #[serde(untagged)]
 pub enum RepositoryRuleDetailed {
   RepositoryRuleDetailedItem1(RepositoryRuleDetailedItem1),
-
   RepositoryRuleDetailedItem2(RepositoryRuleDetailedItem2),
-
   RepositoryRuleDetailedItem3(RepositoryRuleDetailedItem3),
-
   RepositoryRuleDetailedItem4(RepositoryRuleDetailedItem4),
-
   RepositoryRuleDetailedItem5(RepositoryRuleDetailedItem5),
-
   RepositoryRuleDetailedItem6(RepositoryRuleDetailedItem6),
-
   RepositoryRuleDetailedItem7(RepositoryRuleDetailedItem7),
-
   RepositoryRuleDetailedItem8(RepositoryRuleDetailedItem8),
-
   RepositoryRuleDetailedItem9(RepositoryRuleDetailedItem9),
-
   RepositoryRuleDetailedItem10(RepositoryRuleDetailedItem10),
-
   RepositoryRuleDetailedItem11(RepositoryRuleDetailedItem11),
-
   RepositoryRuleDetailedItem12(RepositoryRuleDetailedItem12),
-
   RepositoryRuleDetailedItem13(RepositoryRuleDetailedItem13),
-
   RepositoryRuleDetailedItem14(RepositoryRuleDetailedItem14),
-
   RepositoryRuleDetailedItem15(RepositoryRuleDetailedItem15),
 }
 
@@ -10986,7 +10083,6 @@ pub enum RepositoryRuleDetailed {
 pub enum ReposCreateRepoRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
-
   #[serde(rename = "tag")]
   Tag,
 }
@@ -11006,13 +10102,10 @@ impl ToString for ReposCreateRepoRulesetRequestTarget {
 pub enum ReposGetRepoRuleSuitesQueryTimePeriod {
   #[serde(rename = "hour")]
   Hour,
-
   #[serde(rename = "day")]
   Day,
-
   #[serde(rename = "week")]
   Week,
-
   #[serde(rename = "month")]
   Month,
 }
@@ -11034,13 +10127,10 @@ impl ToString for ReposGetRepoRuleSuitesQueryTimePeriod {
 pub enum ReposGetRepoRuleSuitesQueryRuleSuiteResult {
   #[serde(rename = "pass")]
   Pass,
-
   #[serde(rename = "fail")]
   Fail,
-
   #[serde(rename = "bypass")]
   Bypass,
-
   #[serde(rename = "all")]
   All,
 }
@@ -11063,7 +10153,6 @@ impl ToString for ReposGetRepoRuleSuitesQueryRuleSuiteResult {
 pub enum ReposUpdateRepoRulesetRequestTarget {
   #[serde(rename = "branch")]
   Branch,
-
   #[serde(rename = "tag")]
   Tag,
 }
@@ -11083,7 +10172,6 @@ impl ToString for ReposUpdateRepoRulesetRequestTarget {
 pub enum SecretScanningListAlertsForRepoQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "resolved")]
   Resolved,
 }
@@ -11103,7 +10191,6 @@ impl ToString for SecretScanningListAlertsForRepoQueryState {
 pub enum SecretScanningListAlertsForRepoQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -11123,7 +10210,6 @@ impl ToString for SecretScanningListAlertsForRepoQuerySort {
 pub enum SecretScanningListAlertsForRepoQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -11144,10 +10230,8 @@ impl ToString for SecretScanningListAlertsForRepoQueryDirection {
 pub enum SecretScanningAlertValidity {
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "inactive")]
   Inactive,
-
   #[serde(rename = "unknown")]
   Unknown,
 }
@@ -11169,40 +10253,28 @@ impl ToString for SecretScanningAlertValidity {
 pub enum SecretScanningLocationDetails {
   /// Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.
   SecretScanningLocationCommit(SecretScanningLocationCommit),
-
   /// Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki.
   SecretScanningLocationWikiCommit(SecretScanningLocationWikiCommit),
-
   /// Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.
   SecretScanningLocationIssueTitle(SecretScanningLocationIssueTitle),
-
   /// Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.
   SecretScanningLocationIssueBody(SecretScanningLocationIssueBody),
-
   /// Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.
   SecretScanningLocationIssueComment(SecretScanningLocationIssueComment),
-
   /// Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion.
   SecretScanningLocationDiscussionTitle(SecretScanningLocationDiscussionTitle),
-
   /// Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
   SecretScanningLocationDiscussionBody(SecretScanningLocationDiscussionBody),
-
   /// Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion.
   SecretScanningLocationDiscussionComment(SecretScanningLocationDiscussionComment),
-
   /// Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request.
   SecretScanningLocationPullRequestTitle(SecretScanningLocationPullRequestTitle),
-
   /// Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request.
   SecretScanningLocationPullRequestBody(SecretScanningLocationPullRequestBody),
-
   /// Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request.
   SecretScanningLocationPullRequestComment(SecretScanningLocationPullRequestComment),
-
   /// Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request.
   SecretScanningLocationPullRequestReview(SecretScanningLocationPullRequestReview),
-
   /// Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request.
   SecretScanningLocationPullRequestReviewComment(SecretScanningLocationPullRequestReviewComment),
 }
@@ -11213,40 +10285,28 @@ pub enum SecretScanningLocationDetails {
 pub enum SecretScanningLocationType {
   #[serde(rename = "commit")]
   Commit,
-
   #[serde(rename = "wiki_commit")]
   WikiCommit,
-
   #[serde(rename = "issue_title")]
   IssueTitle,
-
   #[serde(rename = "issue_body")]
   IssueBody,
-
   #[serde(rename = "issue_comment")]
   IssueComment,
-
   #[serde(rename = "discussion_title")]
   DiscussionTitle,
-
   #[serde(rename = "discussion_body")]
   DiscussionBody,
-
   #[serde(rename = "discussion_comment")]
   DiscussionComment,
-
   #[serde(rename = "pull_request_title")]
   PullRequestTitle,
-
   #[serde(rename = "pull_request_body")]
   PullRequestBody,
-
   #[serde(rename = "pull_request_comment")]
   PullRequestComment,
-
   #[serde(rename = "pull_request_review")]
   PullRequestReview,
-
   #[serde(rename = "pull_request_review_comment")]
   PullRequestReviewComment,
 }
@@ -11279,7 +10339,6 @@ impl ToString for SecretScanningLocationType {
 pub enum SecurityAdvisoriesListRepositoryAdvisoriesQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -11299,10 +10358,8 @@ impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQueryDirection {
 pub enum SecurityAdvisoriesListRepositoryAdvisoriesQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "published")]
   Published,
 }
@@ -11323,13 +10380,10 @@ impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQuerySort {
 pub enum SecurityAdvisoriesListRepositoryAdvisoriesQueryState {
   #[serde(rename = "triage")]
   Triage,
-
   #[serde(rename = "draft")]
   Draft,
-
   #[serde(rename = "published")]
   Published,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -11352,13 +10406,10 @@ impl ToString for SecurityAdvisoriesListRepositoryAdvisoriesQueryState {
 pub enum RepositoryAdvisoryCreateSeverity {
   #[serde(rename = "critical")]
   Critical,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "low")]
   Low,
 }
@@ -11381,13 +10432,10 @@ impl ToString for RepositoryAdvisoryCreateSeverity {
 pub enum PrivateVulnerabilityReportCreateSeverity {
   #[serde(rename = "critical")]
   Critical,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "low")]
   Low,
 }
@@ -11410,13 +10458,10 @@ impl ToString for PrivateVulnerabilityReportCreateSeverity {
 pub enum RepositoryAdvisoryUpdateSeverity {
   #[serde(rename = "critical")]
   Critical,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "low")]
   Low,
 }
@@ -11439,10 +10484,8 @@ impl ToString for RepositoryAdvisoryUpdateSeverity {
 pub enum RepositoryAdvisoryUpdateState {
   #[serde(rename = "published")]
   Published,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "draft")]
   Draft,
 }
@@ -11463,7 +10506,6 @@ impl ToString for RepositoryAdvisoryUpdateState {
 #[serde(untagged)]
 pub enum ActivityListStargazersForRepoResponse {
   SimpleUserArray(SimpleUserArray),
-
   StargazerArray(StargazerArray),
 }
 
@@ -11473,13 +10515,10 @@ pub enum ActivityListStargazersForRepoResponse {
 pub enum ReposCreateCommitStatusRequestState {
   #[serde(rename = "error")]
   Error,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "pending")]
   Pending,
-
   #[serde(rename = "success")]
   Success,
 }
@@ -11501,7 +10540,6 @@ impl ToString for ReposCreateCommitStatusRequestState {
 pub enum ReposGetClonesQueryPer {
   #[serde(rename = "day")]
   Day,
-
   #[serde(rename = "week")]
   Week,
 }
@@ -11521,7 +10559,6 @@ impl ToString for ReposGetClonesQueryPer {
 pub enum ReposGetViewsQueryPer {
   #[serde(rename = "day")]
   Day,
-
   #[serde(rename = "week")]
   Week,
 }
@@ -11557,7 +10594,6 @@ impl ToString for SearchCodeQuerySort {
 pub enum SearchCodeQueryOrder {
   #[serde(rename = "desc")]
   Desc,
-
   #[serde(rename = "asc")]
   Asc,
 }
@@ -11577,7 +10613,6 @@ impl ToString for SearchCodeQueryOrder {
 pub enum SearchCommitsQuerySort {
   #[serde(rename = "author-date")]
   AuthorDate,
-
   #[serde(rename = "committer-date")]
   CommitterDate,
 }
@@ -11597,7 +10632,6 @@ impl ToString for SearchCommitsQuerySort {
 pub enum SearchCommitsQueryOrder {
   #[serde(rename = "desc")]
   Desc,
-
   #[serde(rename = "asc")]
   Asc,
 }
@@ -11617,34 +10651,24 @@ impl ToString for SearchCommitsQueryOrder {
 pub enum SearchIssuesAndPullRequestsQuerySort {
   #[serde(rename = "comments")]
   Comments,
-
   #[serde(rename = "reactions")]
   Reactions,
-
   #[serde(rename = "reactions-+1")]
   ReactionsMinusPlusOne,
-
   #[serde(rename = "reactions--1")]
   ReactionsMinusMinusOne,
-
   #[serde(rename = "reactions-smile")]
   ReactionsSmile,
-
   #[serde(rename = "reactions-thinking_face")]
   ReactionsThinkingFace,
-
   #[serde(rename = "reactions-heart")]
   ReactionsHeart,
-
   #[serde(rename = "reactions-tada")]
   ReactionsTada,
-
   #[serde(rename = "interactions")]
   Interactions,
-
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -11675,7 +10699,6 @@ impl ToString for SearchIssuesAndPullRequestsQuerySort {
 pub enum SearchIssuesAndPullRequestsQueryOrder {
   #[serde(rename = "desc")]
   Desc,
-
   #[serde(rename = "asc")]
   Asc,
 }
@@ -11695,7 +10718,6 @@ impl ToString for SearchIssuesAndPullRequestsQueryOrder {
 pub enum SearchLabelsQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -11715,7 +10737,6 @@ impl ToString for SearchLabelsQuerySort {
 pub enum SearchLabelsQueryOrder {
   #[serde(rename = "desc")]
   Desc,
-
   #[serde(rename = "asc")]
   Asc,
 }
@@ -11735,13 +10756,10 @@ impl ToString for SearchLabelsQueryOrder {
 pub enum SearchReposQuerySort {
   #[serde(rename = "stars")]
   Stars,
-
   #[serde(rename = "forks")]
   Forks,
-
   #[serde(rename = "help-wanted-issues")]
   HelpWantedIssues,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -11763,7 +10781,6 @@ impl ToString for SearchReposQuerySort {
 pub enum SearchReposQueryOrder {
   #[serde(rename = "desc")]
   Desc,
-
   #[serde(rename = "asc")]
   Asc,
 }
@@ -11783,10 +10800,8 @@ impl ToString for SearchReposQueryOrder {
 pub enum SearchUsersQuerySort {
   #[serde(rename = "followers")]
   Followers,
-
   #[serde(rename = "repositories")]
   Repositories,
-
   #[serde(rename = "joined")]
   Joined,
 }
@@ -11807,7 +10822,6 @@ impl ToString for SearchUsersQuerySort {
 pub enum SearchUsersQueryOrder {
   #[serde(rename = "desc")]
   Desc,
-
   #[serde(rename = "asc")]
   Asc,
 }
@@ -11830,7 +10844,6 @@ impl ToString for SearchUsersQueryOrder {
 pub enum TeamsUpdateLegacyRequestNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
-
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
@@ -11855,10 +10868,8 @@ impl ToString for TeamsUpdateLegacyRequestNotificationSetting {
 pub enum TeamsUpdateLegacyRequestPermission {
   #[serde(rename = "pull")]
   Pull,
-
   #[serde(rename = "push")]
   Push,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -11885,7 +10896,6 @@ impl ToString for TeamsUpdateLegacyRequestPermission {
 pub enum TeamsUpdateLegacyRequestPrivacy {
   #[serde(rename = "secret")]
   Secret,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -11905,7 +10915,6 @@ impl ToString for TeamsUpdateLegacyRequestPrivacy {
 pub enum TeamsListDiscussionsLegacyQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -11925,7 +10934,6 @@ impl ToString for TeamsListDiscussionsLegacyQueryDirection {
 pub enum TeamsListDiscussionCommentsLegacyQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -11945,25 +10953,18 @@ impl ToString for TeamsListDiscussionCommentsLegacyQueryDirection {
 pub enum ReactionsListForTeamDiscussionCommentLegacyQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -11990,25 +10991,18 @@ impl ToString for ReactionsListForTeamDiscussionCommentLegacyQueryContent {
 pub enum ReactionsCreateForTeamDiscussionCommentLegacyRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -12036,25 +11030,18 @@ impl ToString for ReactionsCreateForTeamDiscussionCommentLegacyRequestContent {
 pub enum ReactionsListForTeamDiscussionLegacyQueryContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -12081,25 +11068,18 @@ impl ToString for ReactionsListForTeamDiscussionLegacyQueryContent {
 pub enum ReactionsCreateForTeamDiscussionLegacyRequestContent {
   #[serde(rename = "+1")]
   PlusOne,
-
   #[serde(rename = "-1")]
   MinusOne,
-
   #[serde(rename = "laugh")]
   Laugh,
-
   #[serde(rename = "confused")]
   Confused,
-
   #[serde(rename = "heart")]
   Heart,
-
   #[serde(rename = "hooray")]
   Hooray,
-
   #[serde(rename = "rocket")]
   Rocket,
-
   #[serde(rename = "eyes")]
   Eyes,
 }
@@ -12125,10 +11105,8 @@ impl ToString for ReactionsCreateForTeamDiscussionLegacyRequestContent {
 pub enum TeamsListMembersLegacyQueryRole {
   #[serde(rename = "member")]
   Member,
-
   #[serde(rename = "maintainer")]
   Maintainer,
-
   #[serde(rename = "all")]
   All,
 }
@@ -12150,7 +11128,6 @@ impl ToString for TeamsListMembersLegacyQueryRole {
 pub enum TeamsAddOrUpdateMembershipForUserLegacyRequestRole {
   #[serde(rename = "member")]
   Member,
-
   #[serde(rename = "maintainer")]
   Maintainer,
 }
@@ -12171,10 +11148,8 @@ impl ToString for TeamsAddOrUpdateMembershipForUserLegacyRequestRole {
 pub enum TeamsAddOrUpdateProjectPermissionsLegacyRequestPermission {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -12196,10 +11171,8 @@ impl ToString for TeamsAddOrUpdateProjectPermissionsLegacyRequestPermission {
 pub enum TeamsAddOrUpdateRepoPermissionsLegacyRequestPermission {
   #[serde(rename = "pull")]
   Pull,
-
   #[serde(rename = "push")]
   Push,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -12221,7 +11194,6 @@ impl ToString for TeamsAddOrUpdateRepoPermissionsLegacyRequestPermission {
 pub enum UsersGetAuthenticatedResponse {
   /// Private User
   PrivateUser(PrivateUser),
-
   /// Public User
   PublicUser(PublicUser),
 }
@@ -12231,11 +11203,8 @@ pub enum UsersGetAuthenticatedResponse {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateForAuthenticatedUserRequestItem1Geo {
   EuropeWest,
-
   SoutheastAsia,
-
   UsEast,
-
   UsWest,
 }
 
@@ -12258,11 +11227,8 @@ impl ToString for CodespacesCreateForAuthenticatedUserRequestItem1Geo {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespacesCreateForAuthenticatedUserRequestItem2Geo {
   EuropeWest,
-
   SoutheastAsia,
-
   UsEast,
-
   UsWest,
 }
 
@@ -12287,7 +11253,6 @@ pub enum CodespacesCreateForAuthenticatedUserRequest {
   CodespacesCreateForAuthenticatedUserRequestItem1(
     CodespacesCreateForAuthenticatedUserRequestItem1,
   ),
-
   CodespacesCreateForAuthenticatedUserRequestItem2(
     CodespacesCreateForAuthenticatedUserRequestItem2,
   ),
@@ -12299,10 +11264,8 @@ pub enum CodespacesCreateForAuthenticatedUserRequest {
 pub enum CodespacesSecretVisibility {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -12323,11 +11286,8 @@ impl ToString for CodespacesSecretVisibility {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceWithFullRepositoryLocation {
   EastUs,
-
   SouthEastAsia,
-
   WestEurope,
-
   WestUs2,
 }
 
@@ -12348,37 +11308,21 @@ impl ToString for CodespaceWithFullRepositoryLocation {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceWithFullRepositoryState {
   Unknown,
-
   Created,
-
   Queued,
-
   Provisioning,
-
   Available,
-
   Awaiting,
-
   Unavailable,
-
   Deleted,
-
   Moved,
-
   Shutdown,
-
   Archived,
-
   Starting,
-
   ShuttingDown,
-
   Failed,
-
   Exporting,
-
   Updating,
-
   Rebuilding,
 }
 
@@ -12413,7 +11357,6 @@ impl ToString for CodespaceWithFullRepositoryState {
 pub enum UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestVisibility {
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "private")]
   Private,
 }
@@ -12437,9 +11380,7 @@ impl ToString for UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestVisib
 #[serde(untagged)]
 pub enum UsersAddEmailForAuthenticatedUserRequest {
   UsersAddEmailForAuthenticatedUserRequestItem1(UsersAddEmailForAuthenticatedUserRequestItem1),
-
   StringArray(StringArray),
-
   String(String),
 }
 
@@ -12451,9 +11392,7 @@ pub enum UsersDeleteEmailForAuthenticatedUserRequest {
   UsersDeleteEmailForAuthenticatedUserRequestItem1(
     UsersDeleteEmailForAuthenticatedUserRequestItem1,
   ),
-
   StringArray(StringArray),
-
   String(String),
 }
 
@@ -12463,7 +11402,6 @@ pub enum UsersDeleteEmailForAuthenticatedUserRequest {
 pub enum InteractionsGetRestrictionsForAuthenticatedUserResponse {
   /// Interaction limit settings.
   InteractionLimitResponse(InteractionLimitResponse),
-
   InteractionsGetRestrictionsForAuthenticatedUserResponseItem2(
     InteractionsGetRestrictionsForAuthenticatedUserResponseItem2,
   ),
@@ -12474,19 +11412,14 @@ pub enum InteractionsGetRestrictionsForAuthenticatedUserResponse {
 pub enum IssuesListForAuthenticatedUserQueryFilter {
   #[serde(rename = "assigned")]
   Assigned,
-
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "mentioned")]
   Mentioned,
-
   #[serde(rename = "subscribed")]
   Subscribed,
-
   #[serde(rename = "repos")]
   Repos,
-
   #[serde(rename = "all")]
   All,
 }
@@ -12510,10 +11443,8 @@ impl ToString for IssuesListForAuthenticatedUserQueryFilter {
 pub enum IssuesListForAuthenticatedUserQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "all")]
   All,
 }
@@ -12534,10 +11465,8 @@ impl ToString for IssuesListForAuthenticatedUserQueryState {
 pub enum IssuesListForAuthenticatedUserQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "comments")]
   Comments,
 }
@@ -12558,7 +11487,6 @@ impl ToString for IssuesListForAuthenticatedUserQuerySort {
 pub enum IssuesListForAuthenticatedUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -12578,7 +11506,6 @@ impl ToString for IssuesListForAuthenticatedUserQueryDirection {
 pub enum OrgsListMembershipsForAuthenticatedUserQueryState {
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -12632,19 +11559,14 @@ impl ToString for MigrationsStartForAuthenticatedUserRequestExclude {
 pub enum PackagesListPackagesForAuthenticatedUserQueryPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -12670,10 +11592,8 @@ impl ToString for PackagesListPackagesForAuthenticatedUserQueryPackageType {
 pub enum PackagesListPackagesForAuthenticatedUserQueryVisibility {
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "internal")]
   Internal,
 }
@@ -12694,19 +11614,14 @@ impl ToString for PackagesListPackagesForAuthenticatedUserQueryVisibility {
 pub enum PackagesGetPackageForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -12734,19 +11649,14 @@ impl ToString for PackagesGetPackageForAuthenticatedUserParametersPackageType {
 pub enum PackagesDeletePackageForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -12776,19 +11686,14 @@ impl ToString for PackagesDeletePackageForAuthenticatedUserParametersPackageType
 pub enum PackagesRestorePackageForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -12818,19 +11723,14 @@ impl ToString for PackagesRestorePackageForAuthenticatedUserParametersPackageTyp
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -12856,7 +11756,6 @@ impl ToString
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQueryState {
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "deleted")]
   Deleted,
 }
@@ -12880,19 +11779,14 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUse
 pub enum PackagesGetPackageVersionForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -12926,19 +11820,14 @@ impl ToString for PackagesGetPackageVersionForAuthenticatedUserParametersPackage
 pub enum PackagesDeletePackageVersionForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -12974,19 +11863,14 @@ impl ToString for PackagesDeletePackageVersionForAuthenticatedUserParametersPack
 pub enum PackagesRestorePackageVersionForAuthenticatedUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -13022,10 +11906,8 @@ impl ToString for PackagesRestorePackageVersionForAuthenticatedUserParametersPac
 pub enum ReposListForAuthenticatedUserQueryVisibility {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "private")]
   Private,
 }
@@ -13046,16 +11928,12 @@ impl ToString for ReposListForAuthenticatedUserQueryVisibility {
 pub enum ReposListForAuthenticatedUserQueryType {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "owner")]
   Owner,
-
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "member")]
   Member,
 }
@@ -13078,13 +11956,10 @@ impl ToString for ReposListForAuthenticatedUserQueryType {
 pub enum ReposListForAuthenticatedUserQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "pushed")]
   Pushed,
-
   #[serde(rename = "full_name")]
   FullName,
 }
@@ -13106,7 +11981,6 @@ impl ToString for ReposListForAuthenticatedUserQuerySort {
 pub enum ReposListForAuthenticatedUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -13131,10 +12005,8 @@ impl ToString for ReposListForAuthenticatedUserQueryDirection {
 pub enum ReposCreateForAuthenticatedUserRequestMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -13159,7 +12031,6 @@ impl ToString for ReposCreateForAuthenticatedUserRequestMergeCommitMessage {
 pub enum ReposCreateForAuthenticatedUserRequestMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -13186,10 +12057,8 @@ impl ToString for ReposCreateForAuthenticatedUserRequestMergeCommitTitle {
 pub enum ReposCreateForAuthenticatedUserRequestSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -13218,7 +12087,6 @@ impl ToString for ReposCreateForAuthenticatedUserRequestSquashMergeCommitMessage
 pub enum ReposCreateForAuthenticatedUserRequestSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -13242,7 +12110,6 @@ impl ToString for ReposCreateForAuthenticatedUserRequestSquashMergeCommitTitle {
 pub enum ActivityListReposStarredByAuthenticatedUserQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -13262,7 +12129,6 @@ impl ToString for ActivityListReposStarredByAuthenticatedUserQuerySort {
 pub enum ActivityListReposStarredByAuthenticatedUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -13283,7 +12149,6 @@ impl ToString for ActivityListReposStarredByAuthenticatedUserQueryDirection {
 pub enum UsersGetByUsernameResponse {
   /// Private User
   PrivateUser(PrivateUser),
-
   /// Public User
   PublicUser(PublicUser),
 }
@@ -13293,13 +12158,10 @@ pub enum UsersGetByUsernameResponse {
 pub enum UsersGetContextForUserQuerySubjectType {
   #[serde(rename = "organization")]
   Organization,
-
   #[serde(rename = "repository")]
   Repository,
-
   #[serde(rename = "issue")]
   Issue,
-
   #[serde(rename = "pull_request")]
   PullRequest,
 }
@@ -13321,19 +12183,14 @@ impl ToString for UsersGetContextForUserQuerySubjectType {
 pub enum PackagesListPackagesForUserQueryPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -13357,10 +12214,8 @@ impl ToString for PackagesListPackagesForUserQueryPackageType {
 pub enum PackagesListPackagesForUserQueryVisibility {
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "internal")]
   Internal,
 }
@@ -13381,19 +12236,14 @@ impl ToString for PackagesListPackagesForUserQueryVisibility {
 pub enum PackagesGetPackageForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -13417,19 +12267,14 @@ impl ToString for PackagesGetPackageForUserParametersPackageType {
 pub enum PackagesDeletePackageForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -13453,19 +12298,14 @@ impl ToString for PackagesDeletePackageForUserParametersPackageType {
 pub enum PackagesRestorePackageForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -13489,19 +12329,14 @@ impl ToString for PackagesRestorePackageForUserParametersPackageType {
 pub enum PackagesGetAllPackageVersionsForPackageOwnedByUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -13537,19 +12372,14 @@ impl ToString for PackagesGetAllPackageVersionsForPackageOwnedByUserParametersPa
 pub enum PackagesGetPackageVersionForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -13573,19 +12403,14 @@ impl ToString for PackagesGetPackageVersionForUserParametersPackageType {
 pub enum PackagesDeletePackageVersionForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -13611,19 +12436,14 @@ impl ToString for PackagesDeletePackageVersionForUserParametersPackageType {
 pub enum PackagesRestorePackageVersionForUserParametersPackageType {
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "docker")]
   Docker,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "container")]
   Container,
 }
@@ -13649,10 +12469,8 @@ impl ToString for PackagesRestorePackageVersionForUserParametersPackageType {
 pub enum ProjectsListForUserQueryState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "all")]
   All,
 }
@@ -13673,10 +12491,8 @@ impl ToString for ProjectsListForUserQueryState {
 pub enum ReposListForUserQueryType {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "owner")]
   Owner,
-
   #[serde(rename = "member")]
   Member,
 }
@@ -13697,13 +12513,10 @@ impl ToString for ReposListForUserQueryType {
 pub enum ReposListForUserQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
-
   #[serde(rename = "pushed")]
   Pushed,
-
   #[serde(rename = "full_name")]
   FullName,
 }
@@ -13725,7 +12538,6 @@ impl ToString for ReposListForUserQuerySort {
 pub enum ReposListForUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -13745,7 +12557,6 @@ impl ToString for ReposListForUserQueryDirection {
 pub enum ActivityListReposStarredByUserQuerySort {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "updated")]
   Updated,
 }
@@ -13765,7 +12576,6 @@ impl ToString for ActivityListReposStarredByUserQuerySort {
 pub enum ActivityListReposStarredByUserQueryDirection {
   #[serde(rename = "asc")]
   Asc,
-
   #[serde(rename = "desc")]
   Desc,
 }
@@ -13785,7 +12595,6 @@ impl ToString for ActivityListReposStarredByUserQueryDirection {
 #[serde(untagged)]
 pub enum ActivityListReposStarredByUserResponse {
   StarredRepositoryArray(StarredRepositoryArray),
-
   RepositoryArray(RepositoryArray),
 }
 
@@ -13854,7 +12663,7 @@ pub struct SecurityAdvisoriesListGlobalAdvisoriesQuery {
   /// If specified, only advisories for these ecosystems will be returned.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub ecosystem: Option<serde_json::Value>,
+  pub ecosystem: Option<SecurityAdvisoryEcosystems>,
   /// If specified, only advisories with these severities will be returned.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -18711,11 +17520,11 @@ pub struct CodeScanningListAlertsForOrgQuery {
   /// The name of a code scanning tool. Only results by this tool will be listed. You can specify the tool by using either `tool_name` or `tool_guid`, but not both.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub tool_name: Option<serde_json::Value>,
+  pub tool_name: Option<String>,
   /// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code scanning tools may not include a GUID in their analysis data. You can specify the tool by using either `tool_guid` or `tool_name`, but not both.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub tool_guid: Option<serde_json::Value>,
+  pub tool_guid: Option<String>,
   /// A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results before this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -18739,7 +17548,7 @@ pub struct CodeScanningListAlertsForOrgQuery {
   /// If specified, only code scanning alerts with this state will be returned.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub state: Option<serde_json::Value>,
+  pub state: Option<CodeScanningAlertStateQuery>,
   /// The property by which to sort the results.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -18747,7 +17556,7 @@ pub struct CodeScanningListAlertsForOrgQuery {
   /// If specified, only code scanning alerts with this severity will be returned.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub severity: Option<serde_json::Value>,
+  pub severity: Option<CodeScanningAlertSeverity>,
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
@@ -27008,11 +25817,11 @@ pub struct CodeScanningListAlertsForRepoQuery {
   /// The name of a code scanning tool. Only results by this tool will be listed. You can specify the tool by using either `tool_name` or `tool_guid`, but not both.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub tool_name: Option<serde_json::Value>,
+  pub tool_name: Option<String>,
   /// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code scanning tools may not include a GUID in their analysis data. You can specify the tool by using either `tool_guid` or `tool_name`, but not both.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub tool_guid: Option<serde_json::Value>,
+  pub tool_guid: Option<String>,
   /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -27025,7 +25834,7 @@ pub struct CodeScanningListAlertsForRepoQuery {
   #[serde(rename = "ref")]
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub ref_: Option<serde_json::Value>,
+  pub ref_: Option<String>,
   /// The direction to sort the results by.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -27037,11 +25846,11 @@ pub struct CodeScanningListAlertsForRepoQuery {
   /// If specified, only code scanning alerts with this state will be returned.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub state: Option<serde_json::Value>,
+  pub state: Option<CodeScanningAlertStateQuery>,
   /// If specified, only code scanning alerts with this severity will be returned.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub severity: Option<serde_json::Value>,
+  pub severity: Option<CodeScanningAlertSeverity>,
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
@@ -27182,7 +25991,7 @@ pub struct CodeScanningListAlertInstancesQuery {
   #[serde(rename = "ref")]
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub ref_: Option<serde_json::Value>,
+  pub ref_: Option<String>,
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
@@ -27193,11 +26002,11 @@ pub struct CodeScanningListRecentAnalysesQuery {
   /// The name of a code scanning tool. Only results by this tool will be listed. You can specify the tool by using either `tool_name` or `tool_guid`, but not both.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub tool_name: Option<serde_json::Value>,
+  pub tool_name: Option<String>,
   /// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code scanning tools may not include a GUID in their analysis data. You can specify the tool by using either `tool_guid` or `tool_name`, but not both.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub tool_guid: Option<serde_json::Value>,
+  pub tool_guid: Option<String>,
   /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -27210,11 +26019,11 @@ pub struct CodeScanningListRecentAnalysesQuery {
   #[serde(rename = "ref")]
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub ref_: Option<serde_json::Value>,
+  pub ref_: Option<String>,
   /// Filter analyses belonging to the same SARIF upload.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub sarif_id: Option<serde_json::Value>,
+  pub sarif_id: Option<String>,
   /// The direction to sort the results by.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -32378,7 +31187,7 @@ pub struct LicensesGetForRepoQuery {
   #[serde(rename = "ref")]
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub ref_: Option<serde_json::Value>,
+  pub ref_: Option<String>,
 }
 
 #[cfg(any(feature = "full", feature = "licenses"))]

@@ -317,10 +317,8 @@ impl ToString for WebhookBranchProtectionConfigurationDisabledAction {
 pub enum RepositoryWebhooksMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -475,7 +473,6 @@ impl ToString for RepositoryWebhooksMergeCommitMessage {
 pub enum RepositoryWebhooksMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -630,10 +627,8 @@ impl ToString for RepositoryWebhooksMergeCommitTitle {
 pub enum RepositoryWebhooksSquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -788,7 +783,6 @@ impl ToString for RepositoryWebhooksSquashMergeCommitMessage {
 pub enum RepositoryWebhooksSquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -943,10 +937,8 @@ impl ToString for RepositoryWebhooksSquashMergeCommitTitle {
 pub enum RepositoryWebhooksTemplateRepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -1101,7 +1093,6 @@ impl ToString for RepositoryWebhooksTemplateRepositoryMergeCommitMessage {
 pub enum RepositoryWebhooksTemplateRepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -1258,10 +1249,8 @@ impl ToString for RepositoryWebhooksTemplateRepositoryMergeCommitTitle {
 pub enum RepositoryWebhooksTemplateRepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -1418,7 +1407,6 @@ impl ToString for RepositoryWebhooksTemplateRepositorySquashMergeCommitMessage {
 pub enum RepositoryWebhooksTemplateRepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -1537,10 +1525,8 @@ impl ToString for WebhookBranchProtectionRuleCreatedAction {
 pub enum BranchProtectionRuleAllowDeletionsEnforcementLevel {
   #[serde(rename = "off")]
   Off,
-
   #[serde(rename = "non_admins")]
   NonAdmins,
-
   #[serde(rename = "everyone")]
   Everyone,
 }
@@ -1561,10 +1547,8 @@ impl ToString for BranchProtectionRuleAllowDeletionsEnforcementLevel {
 pub enum BranchProtectionRuleAllowForcePushesEnforcementLevel {
   #[serde(rename = "off")]
   Off,
-
   #[serde(rename = "non_admins")]
   NonAdmins,
-
   #[serde(rename = "everyone")]
   Everyone,
 }
@@ -1585,10 +1569,8 @@ impl ToString for BranchProtectionRuleAllowForcePushesEnforcementLevel {
 pub enum BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
   #[serde(rename = "off")]
   Off,
-
   #[serde(rename = "non_admins")]
   NonAdmins,
-
   #[serde(rename = "everyone")]
   Everyone,
 }
@@ -1613,10 +1595,8 @@ impl ToString for BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
 pub enum BranchProtectionRuleMergeQueueEnforcementLevel {
   #[serde(rename = "off")]
   Off,
-
   #[serde(rename = "non_admins")]
   NonAdmins,
-
   #[serde(rename = "everyone")]
   Everyone,
 }
@@ -1637,10 +1617,8 @@ impl ToString for BranchProtectionRuleMergeQueueEnforcementLevel {
 pub enum BranchProtectionRulePullRequestReviewsEnforcementLevel {
   #[serde(rename = "off")]
   Off,
-
   #[serde(rename = "non_admins")]
   NonAdmins,
-
   #[serde(rename = "everyone")]
   Everyone,
 }
@@ -1661,10 +1639,8 @@ impl ToString for BranchProtectionRulePullRequestReviewsEnforcementLevel {
 pub enum BranchProtectionRuleRequiredConversationResolutionLevel {
   #[serde(rename = "off")]
   Off,
-
   #[serde(rename = "non_admins")]
   NonAdmins,
-
   #[serde(rename = "everyone")]
   Everyone,
 }
@@ -1687,10 +1663,8 @@ impl ToString for BranchProtectionRuleRequiredConversationResolutionLevel {
 pub enum BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
   #[serde(rename = "off")]
   Off,
-
   #[serde(rename = "non_admins")]
   NonAdmins,
-
   #[serde(rename = "everyone")]
   Everyone,
 }
@@ -1713,10 +1687,8 @@ impl ToString for BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
 pub enum BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
   #[serde(rename = "off")]
   Off,
-
   #[serde(rename = "non_admins")]
   NonAdmins,
-
   #[serde(rename = "everyone")]
   Everyone,
 }
@@ -1739,10 +1711,8 @@ impl ToString for BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
 pub enum BranchProtectionRuleSignatureRequirementEnforcementLevel {
   #[serde(rename = "off")]
   Off,
-
   #[serde(rename = "non_admins")]
   NonAdmins,
-
   #[serde(rename = "everyone")]
   Everyone,
 }
@@ -1797,10 +1767,8 @@ impl ToString for WebhookBranchProtectionRuleEditedAction {
 pub enum WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom {
   #[serde(rename = "off")]
   Off,
-
   #[serde(rename = "non_admins")]
   NonAdmins,
-
   #[serde(rename = "everyone")]
   Everyone,
 }
@@ -1823,10 +1791,8 @@ impl ToString
 pub enum WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom {
   #[serde(rename = "off")]
   Off,
-
   #[serde(rename = "non_admins")]
   NonAdmins,
-
   #[serde(rename = "everyone")]
   Everyone,
 }
@@ -1863,28 +1829,20 @@ impl ToString for WebhookCheckRunCompletedAction {
 pub enum SimpleCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "stale")]
   Stale,
-
   #[serde(rename = "startup_failure")]
   StartupFailure,
 }
@@ -1915,7 +1873,6 @@ impl ToString for SimpleCheckSuiteConclusion {
 pub enum SecurityAndAnalysisAdvancedSecurityStatus {
   #[serde(rename = "enabled")]
   Enabled,
-
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -1944,7 +1901,6 @@ impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
 pub enum SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   #[serde(rename = "enabled")]
   Enabled,
-
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -1972,7 +1928,6 @@ impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
 pub enum SecurityAndAnalysisSecretScanningStatus {
   #[serde(rename = "enabled")]
   Enabled,
-
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -2000,7 +1955,6 @@ impl ToString for SecurityAndAnalysisSecretScanningStatus {
 pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
   #[serde(rename = "enabled")]
   Enabled,
-
   #[serde(rename = "disabled")]
   Disabled,
 }
@@ -2024,16 +1978,12 @@ impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
 pub enum SimpleCheckSuiteStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "pending")]
   Pending,
-
   #[serde(rename = "waiting")]
   Waiting,
 }
@@ -2056,34 +2006,24 @@ impl ToString for SimpleCheckSuiteStatus {
 pub enum CheckRunWithSimpleCheckSuiteConclusion {
   #[serde(rename = "waiting")]
   Waiting,
-
   #[serde(rename = "pending")]
   Pending,
-
   #[serde(rename = "startup_failure")]
   StartupFailure,
-
   #[serde(rename = "stale")]
   Stale,
-
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
 }
@@ -2113,13 +2053,10 @@ impl ToString for CheckRunWithSimpleCheckSuiteConclusion {
 pub enum CheckRunWithSimpleCheckSuiteStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -2214,157 +2151,106 @@ impl ToString for WebhookCheckSuiteCompletedAction {
 pub enum AppEvents {
   #[serde(rename = "branch_protection_rule")]
   BranchProtectionRule,
-
   #[serde(rename = "check_run")]
   CheckRun,
-
   #[serde(rename = "check_suite")]
   CheckSuite,
-
   #[serde(rename = "code_scanning_alert")]
   CodeScanningAlert,
-
   #[serde(rename = "commit_comment")]
   CommitComment,
-
   #[serde(rename = "content_reference")]
   ContentReference,
-
   #[serde(rename = "create")]
   Create,
-
   #[serde(rename = "delete")]
   Delete,
-
   #[serde(rename = "deployment")]
   Deployment,
-
   #[serde(rename = "deployment_review")]
   DeploymentReview,
-
   #[serde(rename = "deployment_status")]
   DeploymentStatus,
-
   #[serde(rename = "deploy_key")]
   DeployKey,
-
   #[serde(rename = "discussion")]
   Discussion,
-
   #[serde(rename = "discussion_comment")]
   DiscussionComment,
-
   #[serde(rename = "fork")]
   Fork,
-
   #[serde(rename = "gollum")]
   Gollum,
-
   #[serde(rename = "issues")]
   Issues,
-
   #[serde(rename = "issue_comment")]
   IssueComment,
-
   #[serde(rename = "label")]
   Label,
-
   #[serde(rename = "member")]
   Member,
-
   #[serde(rename = "membership")]
   Membership,
-
   #[serde(rename = "milestone")]
   Milestone,
-
   #[serde(rename = "organization")]
   Organization,
-
   #[serde(rename = "org_block")]
   OrgBlock,
-
   #[serde(rename = "page_build")]
   PageBuild,
-
   #[serde(rename = "project")]
   Project,
-
   #[serde(rename = "project_card")]
   ProjectCard,
-
   #[serde(rename = "project_column")]
   ProjectColumn,
-
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "pull_request")]
   PullRequest,
-
   #[serde(rename = "pull_request_review")]
   PullRequestReview,
-
   #[serde(rename = "pull_request_review_comment")]
   PullRequestReviewComment,
-
   #[serde(rename = "push")]
   Push,
-
   #[serde(rename = "registry_package")]
   RegistryPackage,
-
   #[serde(rename = "release")]
   Release,
-
   #[serde(rename = "repository")]
   Repository,
-
   #[serde(rename = "repository_dispatch")]
   RepositoryDispatch,
-
   #[serde(rename = "secret_scanning_alert")]
   SecretScanningAlert,
-
   #[serde(rename = "star")]
   Star,
-
   #[serde(rename = "status")]
   Status,
-
   #[serde(rename = "team")]
   Team,
-
   #[serde(rename = "team_add")]
   TeamAdd,
-
   #[serde(rename = "watch")]
   Watch,
-
   #[serde(rename = "workflow_dispatch")]
   WorkflowDispatch,
-
   #[serde(rename = "workflow_run")]
   WorkflowRun,
-
   #[serde(rename = "merge_group")]
   MergeGroup,
-
   #[serde(rename = "pull_request_review_thread")]
   PullRequestReviewThread,
-
   #[serde(rename = "workflow_job")]
   WorkflowJob,
-
   #[serde(rename = "merge_queue_entry")]
   MergeQueueEntry,
-
   #[serde(rename = "security_and_analysis")]
   SecurityAndAnalysis,
-
   #[serde(rename = "projects_v2_item")]
   ProjectsV2Item,
-
   #[serde(rename = "secret_scanning_alert_location")]
   SecretScanningAlertLocation,
 }
@@ -2480,9 +2366,7 @@ impl ToString for AppEvents {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum UserType {
   Bot,
-
   User,
-
   Organization,
 }
 
@@ -2551,10 +2435,8 @@ impl ToString for UserType {
 pub enum AppPermissionsOrganizationProjects {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -2597,10 +2479,8 @@ impl ToString for AppPermissionsOrganizationProjects {
 pub enum AppPermissionsRepositoryProjects {
   #[serde(rename = "read")]
   Read,
-
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
 }
@@ -2633,28 +2513,20 @@ impl ToString for AppPermissionsRepositoryProjects {
 pub enum WebhookCheckSuiteCompletedCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "stale")]
   Stale,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "startup_failure")]
   StartupFailure,
 }
@@ -2686,16 +2558,12 @@ impl ToString for WebhookCheckSuiteCompletedCheckSuiteConclusion {
 pub enum WebhookCheckSuiteCompletedCheckSuiteStatus {
   #[serde(rename = "requested")]
   Requested,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -2735,25 +2603,18 @@ impl ToString for WebhookCheckSuiteRequestedAction {
 pub enum WebhookCheckSuiteRequestedCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "stale")]
   Stale,
-
   #[serde(rename = "skipped")]
   Skipped,
 }
@@ -2782,13 +2643,10 @@ impl ToString for WebhookCheckSuiteRequestedCheckSuiteConclusion {
 pub enum WebhookCheckSuiteRequestedCheckSuiteStatus {
   #[serde(rename = "requested")]
   Requested,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "queued")]
   Queued,
 }
@@ -2827,22 +2685,16 @@ impl ToString for WebhookCheckSuiteRerequestedAction {
 pub enum WebhookCheckSuiteRerequestedCheckSuiteConclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "stale")]
   Stale,
 }
@@ -2870,13 +2722,10 @@ impl ToString for WebhookCheckSuiteRerequestedCheckSuiteConclusion {
 pub enum WebhookCheckSuiteRerequestedCheckSuiteStatus {
   #[serde(rename = "requested")]
   Requested,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "queued")]
   Queued,
 }
@@ -2917,10 +2766,8 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAction {
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
-
   #[serde(rename = "won't fix")]
   WonTFix,
-
   #[serde(rename = "used in tests")]
   UsedInTests,
 }
@@ -2948,10 +2795,8 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
 pub enum AlertInstanceState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "dismissed")]
   Dismissed,
-
   #[serde(rename = "fixed")]
   Fixed,
 }
@@ -2973,13 +2818,10 @@ impl ToString for AlertInstanceState {
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "note")]
   Note,
-
   #[serde(rename = "warning")]
   Warning,
-
   #[serde(rename = "error")]
   Error,
 }
@@ -3002,10 +2844,8 @@ impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
 pub enum WebhookCodeScanningAlertAppearedInBranchAlertState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "dismissed")]
   Dismissed,
-
   #[serde(rename = "fixed")]
   Fixed,
 }
@@ -3043,10 +2883,8 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAction {
 pub enum WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
-
   #[serde(rename = "won't fix")]
   WonTFix,
-
   #[serde(rename = "used in tests")]
   UsedInTests,
 }
@@ -3072,13 +2910,10 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
 pub enum WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "note")]
   Note,
-
   #[serde(rename = "warning")]
   Warning,
-
   #[serde(rename = "error")]
   Error,
 }
@@ -3101,7 +2936,6 @@ impl ToString for WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
 pub enum WebhookCodeScanningAlertClosedByUserAlertState {
   #[serde(rename = "dismissed")]
   Dismissed,
-
   #[serde(rename = "fixed")]
   Fixed,
 }
@@ -3138,13 +2972,10 @@ impl ToString for WebhookCodeScanningAlertCreatedAction {
 pub enum WebhookCodeScanningAlertCreatedAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "note")]
   Note,
-
   #[serde(rename = "warning")]
   Warning,
-
   #[serde(rename = "error")]
   Error,
 }
@@ -3167,7 +2998,6 @@ impl ToString for WebhookCodeScanningAlertCreatedAlertRuleSeverity {
 pub enum WebhookCodeScanningAlertCreatedAlertState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "dismissed")]
   Dismissed,
 }
@@ -3204,10 +3034,8 @@ impl ToString for WebhookCodeScanningAlertFixedAction {
 pub enum WebhookCodeScanningAlertFixedAlertDismissedReason {
   #[serde(rename = "false positive")]
   FalsePositive,
-
   #[serde(rename = "won't fix")]
   WonTFix,
-
   #[serde(rename = "used in tests")]
   UsedInTests,
 }
@@ -3231,13 +3059,10 @@ impl ToString for WebhookCodeScanningAlertFixedAlertDismissedReason {
 pub enum WebhookCodeScanningAlertFixedAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "note")]
   Note,
-
   #[serde(rename = "warning")]
   Warning,
-
   #[serde(rename = "error")]
   Error,
 }
@@ -3293,13 +3118,10 @@ impl ToString for WebhookCodeScanningAlertReopenedAction {
 pub enum WebhookCodeScanningAlertReopenedAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "note")]
   Note,
-
   #[serde(rename = "warning")]
   Warning,
-
   #[serde(rename = "error")]
   Error,
 }
@@ -3322,10 +3144,8 @@ impl ToString for WebhookCodeScanningAlertReopenedAlertRuleSeverity {
 pub enum WebhookCodeScanningAlertReopenedAlertState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "dismissed")]
   Dismissed,
-
   #[serde(rename = "fixed")]
   Fixed,
 }
@@ -3365,13 +3185,10 @@ impl ToString for WebhookCodeScanningAlertReopenedByUserAction {
 pub enum WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "note")]
   Note,
-
   #[serde(rename = "warning")]
   Warning,
-
   #[serde(rename = "error")]
   Error,
 }
@@ -3394,7 +3211,6 @@ impl ToString for WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
 pub enum WebhookCodeScanningAlertReopenedByUserAlertState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "fixed")]
   Fixed,
 }
@@ -3432,25 +3248,18 @@ impl ToString for WebhookCommitCommentCreatedAction {
 pub enum WebhookCommitCommentCreatedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -3481,7 +3290,6 @@ impl ToString for WebhookCommitCommentCreatedCommentAuthorAssociation {
 pub enum WebhookCreateRefType {
   #[serde(rename = "tag")]
   Tag,
-
   #[serde(rename = "branch")]
   Branch,
 }
@@ -3518,7 +3326,6 @@ impl ToString for WebhookCustomPropertyCreatedAction {
 pub enum OrgCustomPropertyValueType {
   #[serde(rename = "string")]
   String,
-
   #[serde(rename = "single_select")]
   SingleSelect,
 }
@@ -3539,7 +3346,6 @@ impl ToString for OrgCustomPropertyValueType {
 pub enum OrgCustomPropertyValuesEditableBy {
   #[serde(rename = "org_actors")]
   OrgActors,
-
   #[serde(rename = "org_and_repo_actors")]
   OrgAndRepoActors,
 }
@@ -3608,7 +3414,6 @@ impl ToString for WebhookCustomPropertyValuesUpdatedAction {
 pub enum WebhookDeleteRefType {
   #[serde(rename = "tag")]
   Tag,
-
   #[serde(rename = "branch")]
   Branch,
 }
@@ -3645,7 +3450,6 @@ impl ToString for WebhookDependabotAlertAutoDismissedAction {
 pub enum DependabotAlertDependencyScope {
   #[serde(rename = "development")]
   Development,
-
   #[serde(rename = "runtime")]
   Runtime,
 }
@@ -3666,16 +3470,12 @@ impl ToString for DependabotAlertDependencyScope {
 pub enum DependabotAlertDismissedReason {
   #[serde(rename = "fix_started")]
   FixStarted,
-
   #[serde(rename = "inaccurate")]
   Inaccurate,
-
   #[serde(rename = "no_bandwidth")]
   NoBandwidth,
-
   #[serde(rename = "not_used")]
   NotUsed,
-
   #[serde(rename = "tolerable_risk")]
   TolerableRisk,
 }
@@ -3699,7 +3499,6 @@ impl ToString for DependabotAlertDismissedReason {
 pub enum DependabotAlertSecurityAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
-
   #[serde(rename = "GHSA")]
   Ghsa,
 }
@@ -3720,13 +3519,10 @@ impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
 pub enum DependabotAlertSecurityAdvisorySeverity {
   #[serde(rename = "low")]
   Low,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "critical")]
   Critical,
 }
@@ -3749,13 +3545,10 @@ impl ToString for DependabotAlertSecurityAdvisorySeverity {
 pub enum DependabotAlertSecurityVulnerabilitySeverity {
   #[serde(rename = "low")]
   Low,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "critical")]
   Critical,
 }
@@ -3778,13 +3571,10 @@ impl ToString for DependabotAlertSecurityVulnerabilitySeverity {
 pub enum DependabotAlertState {
   #[serde(rename = "auto_dismissed")]
   AutoDismissed,
-
   #[serde(rename = "dismissed")]
   Dismissed,
-
   #[serde(rename = "fixed")]
   Fixed,
-
   #[serde(rename = "open")]
   Open,
 }
@@ -3955,22 +3745,16 @@ impl ToString for WebhookDeploymentCreatedAction {
 pub enum DeploymentWorkflowRunConclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "stale")]
   Stale,
 }
@@ -4005,19 +3789,14 @@ impl ToString for DeploymentWorkflowRunConclusion {
 pub enum DeploymentWorkflowRunStatus {
   #[serde(rename = "requested")]
   Requested,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "waiting")]
   Waiting,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -4067,25 +3846,18 @@ impl ToString for WebhookDeploymentProtectionRuleRequestedAction {
 pub enum AuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -4120,10 +3892,8 @@ impl ToString for AuthorAssociation {
 pub enum AutoMergeMergeMethod {
   #[serde(rename = "merge")]
   Merge,
-
   #[serde(rename = "squash")]
   Squash,
-
   #[serde(rename = "rebase")]
   Rebase,
 }
@@ -4159,7 +3929,6 @@ impl ToString for AutoMergeMergeMethod {
 pub enum MilestoneState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -4194,7 +3963,6 @@ impl ToString for MilestoneState {
 pub enum PullRequestState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -4295,7 +4063,6 @@ impl ToString for WebhookDeploymentReviewRequestedAction {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRequestedReviewersType {
   User,
-
   Team,
 }
 
@@ -4331,25 +4098,18 @@ impl ToString for WebhookDeploymentStatusCreatedAction {
 pub enum WebhookDeploymentStatusCreatedCheckRunConclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "stale")]
   Stale,
-
   #[serde(rename = "skipped")]
   Skipped,
 }
@@ -4378,16 +4138,12 @@ impl ToString for WebhookDeploymentStatusCreatedCheckRunConclusion {
 pub enum WebhookDeploymentStatusCreatedCheckRunStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "waiting")]
   Waiting,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -4427,25 +4183,18 @@ impl ToString for WebhookDiscussionAnsweredAction {
 pub enum WebhookDiscussionAnsweredAnswerAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -4478,25 +4227,18 @@ impl ToString for WebhookDiscussionAnsweredAnswerAuthorAssociation {
 pub enum DiscussionAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -4533,16 +4275,12 @@ impl ToString for DiscussionAuthorAssociation {
 pub enum DiscussionState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "locked")]
   Locked,
-
   #[serde(rename = "converting")]
   Converting,
-
   #[serde(rename = "transferring")]
   Transferring,
 }
@@ -4574,13 +4312,10 @@ impl ToString for DiscussionState {
 pub enum DiscussionStateReason {
   #[serde(rename = "resolved")]
   Resolved,
-
   #[serde(rename = "outdated")]
   Outdated,
-
   #[serde(rename = "duplicate")]
   Duplicate,
-
   #[serde(rename = "reopened")]
   Reopened,
 }
@@ -4655,25 +4390,18 @@ impl ToString for WebhookDiscussionCommentCreatedAction {
 pub enum WebhookDiscussionCommentCreatedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -4724,25 +4452,18 @@ impl ToString for WebhookDiscussionCommentDeletedAction {
 pub enum WebhookDiscussionCommentDeletedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -4793,25 +4514,18 @@ impl ToString for WebhookDiscussionCommentEditedAction {
 pub enum WebhookDiscussionCommentEditedCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -4867,10 +4581,8 @@ pub enum WebhookDiscussionCreatedDiscussionItem2Locked {
 pub enum WebhookDiscussionCreatedDiscussionItem2State {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "converting")]
   Converting,
-
   #[serde(rename = "transferring")]
   Transferring,
 }
@@ -4892,7 +4604,6 @@ impl ToString for WebhookDiscussionCreatedDiscussionItem2State {
 pub enum WebhookDiscussionCreatedDiscussion {
   /// A Discussion in a repository.
   Discussion(Discussion),
-
   WebhookDiscussionCreatedDiscussionItem2(WebhookDiscussionCreatedDiscussionItem2),
 }
 
@@ -5030,25 +4741,18 @@ impl ToString for WebhookDiscussionUnansweredAction {
 pub enum WebhookDiscussionUnansweredOldAnswerAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -5141,10 +4845,8 @@ impl ToString for WebhookDiscussionUnpinnedAction {
 pub enum RepositoryVisibility {
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "private")]
   Private,
-
   #[serde(rename = "internal")]
   Internal,
 }
@@ -5183,7 +4885,6 @@ pub enum WebhookForkForkeeItem2Fork {
 pub enum WebhookForkForkee {
   /// A git repository
   Repository(Repository),
-
   WebhookForkForkeeItem2(WebhookForkForkeeItem2),
 }
 
@@ -5209,7 +4910,6 @@ impl ToString for WebhookGithubAppAuthorizationRevokedAction {
 pub enum WebhookGollumPagesAction {
   #[serde(rename = "created")]
   Created,
-
   #[serde(rename = "edited")]
   Edited,
 }
@@ -5250,7 +4950,6 @@ impl ToString for WebhookInstallationCreatedAction {
 pub enum InstallationAccount {
   /// A GitHub user.
   SimpleUser(SimpleUser),
-
   /// An enterprise on GitHub.
   Enterprise(Enterprise),
 }
@@ -5265,7 +4964,6 @@ pub enum InstallationAccount {
 pub enum InstallationRepositorySelection {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -5340,7 +5038,6 @@ impl ToString for WebhookInstallationRepositoriesAddedAction {
 pub enum WebhookInstallationRepositoriesAddedRepositorySelection {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -5377,7 +5074,6 @@ impl ToString for WebhookInstallationRepositoriesRemovedAction {
 pub enum WebhookInstallationRepositoriesRemovedRepositorySelection {
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "selected")]
   Selected,
 }
@@ -5462,25 +5158,18 @@ impl ToString for WebhookIssueCommentCreatedAction {
 pub enum IssueCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -5510,13 +5199,10 @@ impl ToString for IssueCommentAuthorAssociation {
 pub enum IssueActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
-
   #[serde(rename = "off-topic")]
   OffTopic,
-
   #[serde(rename = "too heated")]
   TooHeated,
-
   #[serde(rename = "spam")]
   Spam,
 }
@@ -5547,25 +5233,18 @@ impl ToString for IssueActiveLockReason {
 pub enum IssueAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -5600,7 +5279,6 @@ impl ToString for IssueAuthorAssociation {
 pub enum IssueState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -5625,7 +5303,6 @@ impl ToString for IssueState {
 pub enum WebhookIssueCommentCreatedIssueItem2State {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -5646,7 +5323,6 @@ impl ToString for WebhookIssueCommentCreatedIssueItem2State {
 pub enum WebhookIssueCommentCreatedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
-
   WebhookIssueCommentCreatedIssueItem2(WebhookIssueCommentCreatedIssueItem2),
 }
 
@@ -5672,7 +5348,6 @@ impl ToString for WebhookIssueCommentDeletedAction {
 pub enum WebhookIssueCommentDeletedIssueItem2State {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -5693,7 +5368,6 @@ impl ToString for WebhookIssueCommentDeletedIssueItem2State {
 pub enum WebhookIssueCommentDeletedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
-
   WebhookIssueCommentDeletedIssueItem2(WebhookIssueCommentDeletedIssueItem2),
 }
 
@@ -5719,7 +5393,6 @@ impl ToString for WebhookIssueCommentEditedAction {
 pub enum WebhookIssueCommentEditedIssueItem2State {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -5740,7 +5413,6 @@ impl ToString for WebhookIssueCommentEditedIssueItem2State {
 pub enum WebhookIssueCommentEditedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
-
   WebhookIssueCommentEditedIssueItem2(WebhookIssueCommentEditedIssueItem2),
 }
 
@@ -5783,7 +5455,6 @@ impl ToString for WebhookIssuesClosedAction {
 pub enum WebhookIssuesClosedIssueItem2State {
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "open")]
   Open,
 }
@@ -5804,7 +5475,6 @@ impl ToString for WebhookIssuesClosedIssueItem2State {
 pub enum WebhookIssuesClosedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
-
   WebhookIssuesClosedIssueItem2(WebhookIssuesClosedIssueItem2),
 }
 
@@ -5846,7 +5516,6 @@ impl ToString for WebhookIssuesDemilestonedAction {
 pub enum WebhookIssuesDemilestonedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
-
   WebhookIssuesDemilestonedIssueItem2(WebhookIssuesDemilestonedIssueItem2),
 }
 
@@ -5903,13 +5572,10 @@ impl ToString for WebhookIssuesLockedAction {
 pub enum WebhookIssuesLockedIssueItem2ActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
-
   #[serde(rename = "off-topic")]
   OffTopic,
-
   #[serde(rename = "too heated")]
   TooHeated,
-
   #[serde(rename = "spam")]
   Spam,
 }
@@ -5938,7 +5604,6 @@ pub enum WebhookIssuesLockedIssueItem2Locked {
 pub enum WebhookIssuesLockedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
-
   WebhookIssuesLockedIssueItem2(WebhookIssuesLockedIssueItem2),
 }
 
@@ -5964,7 +5629,6 @@ impl ToString for WebhookIssuesMilestonedAction {
 pub enum WebhookIssuesMilestonedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
-
   WebhookIssuesMilestonedIssueItem2(WebhookIssuesMilestonedIssueItem2),
 }
 
@@ -6021,7 +5685,6 @@ impl ToString for WebhookIssuesReopenedAction {
 pub enum WebhookIssuesReopenedIssueItem2State {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -6042,7 +5705,6 @@ impl ToString for WebhookIssuesReopenedIssueItem2State {
 pub enum WebhookIssuesReopenedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
-
   WebhookIssuesReopenedIssueItem2(WebhookIssuesReopenedIssueItem2),
 }
 
@@ -6123,7 +5785,6 @@ pub enum WebhookIssuesUnlockedIssueItem2Locked {
 pub enum WebhookIssuesUnlockedIssue {
   /// The [issue](https://docs.github.com/rest/issues/issues#get-an-issue) itself.
   Issue(Issue),
-
   WebhookIssuesUnlockedIssueItem2(WebhookIssuesUnlockedIssueItem2),
 }
 
@@ -6212,10 +5873,8 @@ impl ToString for WebhookMarketplacePurchaseCancelledAction {
 pub enum MarketplacePurchasePlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
-
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
-
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
@@ -6236,10 +5895,8 @@ impl ToString for MarketplacePurchasePlanPriceModel {
 pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
-
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
-
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
@@ -6266,7 +5923,6 @@ impl ToString for WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2Pla
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
-
   WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2(
     WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2,
   ),
@@ -6293,10 +5949,8 @@ impl ToString for WebhookMarketplacePurchaseChangedAction {
 pub enum WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
-
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
-
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
@@ -6323,7 +5977,6 @@ impl ToString for WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanP
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchaseChangedMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
-
   WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2(
     WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2,
   ),
@@ -6350,10 +6003,8 @@ impl ToString for WebhookMarketplacePurchasePendingChangeAction {
 pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
-
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
-
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
@@ -6380,7 +6031,6 @@ impl ToString for WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
-
   WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2(
     WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2,
   ),
@@ -6409,7 +6059,6 @@ impl ToString for WebhookMarketplacePurchasePendingChangeCancelledAction {
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
-
   WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2(
     WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchaseItem2,
   ),
@@ -6436,10 +6085,8 @@ impl ToString for WebhookMarketplacePurchasePurchasedAction {
 pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel {
   #[serde(rename = "FREE")]
   Free,
-
   #[serde(rename = "FLAT_RATE")]
   FlatRate,
-
   #[serde(rename = "PER_UNIT")]
   PerUnit,
 }
@@ -6466,7 +6113,6 @@ impl ToString for WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2Pla
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchase {
   MarketplacePurchase(MarketplacePurchase),
-
   WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2(
     WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2,
   ),
@@ -6493,10 +6139,8 @@ impl ToString for WebhookMemberAddedAction {
 pub enum WebhookMemberAddedChangesPermissionTo {
   #[serde(rename = "write")]
   Write,
-
   #[serde(rename = "admin")]
   Admin,
-
   #[serde(rename = "read")]
   Read,
 }
@@ -6592,7 +6236,6 @@ impl ToString for WebhookMembershipAddedScope {
 pub enum TeamNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
-
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
@@ -6633,7 +6276,6 @@ impl ToString for TeamNotificationSetting {
 pub enum TeamParentNotificationSetting {
   #[serde(rename = "notifications_enabled")]
   NotificationsEnabled,
-
   #[serde(rename = "notifications_disabled")]
   NotificationsDisabled,
 }
@@ -6673,10 +6315,8 @@ impl ToString for TeamParentNotificationSetting {
 pub enum TeamParentPrivacy {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "secret")]
   Secret,
 }
@@ -6717,10 +6357,8 @@ impl ToString for TeamParentPrivacy {
 pub enum TeamPrivacy {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "secret")]
   Secret,
 }
@@ -6768,7 +6406,6 @@ impl ToString for WebhookMembershipRemovedAction {
 pub enum WebhookMembershipRemovedScope {
   #[serde(rename = "team")]
   Team,
-
   #[serde(rename = "organization")]
   Organization,
 }
@@ -6821,10 +6458,8 @@ impl ToString for WebhookMergeGroupDestroyedAction {
 pub enum WebhookMergeGroupDestroyedReason {
   #[serde(rename = "merged")]
   Merged,
-
   #[serde(rename = "invalidated")]
   Invalidated,
-
   #[serde(rename = "dequeued")]
   Dequeued,
 }
@@ -6861,7 +6496,6 @@ impl ToString for WebhookMetaDeletedAction {
 pub enum WebhookMetaDeletedHookConfigContentType {
   #[serde(rename = "json")]
   Json,
-
   #[serde(rename = "form")]
   Form,
 }
@@ -6881,157 +6515,106 @@ impl ToString for WebhookMetaDeletedHookConfigContentType {
 pub enum WebhookMetaDeletedHookEvents {
   #[serde(rename = "*")]
   Asterisk,
-
   #[serde(rename = "branch_protection_rule")]
   BranchProtectionRule,
-
   #[serde(rename = "check_run")]
   CheckRun,
-
   #[serde(rename = "check_suite")]
   CheckSuite,
-
   #[serde(rename = "code_scanning_alert")]
   CodeScanningAlert,
-
   #[serde(rename = "commit_comment")]
   CommitComment,
-
   #[serde(rename = "create")]
   Create,
-
   #[serde(rename = "delete")]
   Delete,
-
   #[serde(rename = "deployment")]
   Deployment,
-
   #[serde(rename = "deployment_status")]
   DeploymentStatus,
-
   #[serde(rename = "deploy_key")]
   DeployKey,
-
   #[serde(rename = "discussion")]
   Discussion,
-
   #[serde(rename = "discussion_comment")]
   DiscussionComment,
-
   #[serde(rename = "fork")]
   Fork,
-
   #[serde(rename = "gollum")]
   Gollum,
-
   #[serde(rename = "issues")]
   Issues,
-
   #[serde(rename = "issue_comment")]
   IssueComment,
-
   #[serde(rename = "label")]
   Label,
-
   #[serde(rename = "member")]
   Member,
-
   #[serde(rename = "membership")]
   Membership,
-
   #[serde(rename = "meta")]
   Meta,
-
   #[serde(rename = "milestone")]
   Milestone,
-
   #[serde(rename = "organization")]
   Organization,
-
   #[serde(rename = "org_block")]
   OrgBlock,
-
   #[serde(rename = "package")]
   Package,
-
   #[serde(rename = "page_build")]
   PageBuild,
-
   #[serde(rename = "project")]
   Project,
-
   #[serde(rename = "project_card")]
   ProjectCard,
-
   #[serde(rename = "project_column")]
   ProjectColumn,
-
   #[serde(rename = "public")]
   Public,
-
   #[serde(rename = "pull_request")]
   PullRequest,
-
   #[serde(rename = "pull_request_review")]
   PullRequestReview,
-
   #[serde(rename = "pull_request_review_comment")]
   PullRequestReviewComment,
-
   #[serde(rename = "pull_request_review_thread")]
   PullRequestReviewThread,
-
   #[serde(rename = "push")]
   Push,
-
   #[serde(rename = "registry_package")]
   RegistryPackage,
-
   #[serde(rename = "release")]
   Release,
-
   #[serde(rename = "repository")]
   Repository,
-
   #[serde(rename = "repository_import")]
   RepositoryImport,
-
   #[serde(rename = "repository_vulnerability_alert")]
   RepositoryVulnerabilityAlert,
-
   #[serde(rename = "secret_scanning_alert")]
   SecretScanningAlert,
-
   #[serde(rename = "secret_scanning_alert_location")]
   SecretScanningAlertLocation,
-
   #[serde(rename = "security_and_analysis")]
   SecurityAndAnalysis,
-
   #[serde(rename = "star")]
   Star,
-
   #[serde(rename = "status")]
   Status,
-
   #[serde(rename = "team")]
   Team,
-
   #[serde(rename = "team_add")]
   TeamAdd,
-
   #[serde(rename = "watch")]
   Watch,
-
   #[serde(rename = "workflow_job")]
   WorkflowJob,
-
   #[serde(rename = "workflow_run")]
   WorkflowRun,
-
   #[serde(rename = "repository_dispatch")]
   RepositoryDispatch,
-
   #[serde(rename = "projects_v2_item")]
   ProjectsV2Item,
 }
@@ -7350,10 +6933,8 @@ impl ToString for WebhookPersonalAccessTokenRequestApprovedAction {
 pub enum PersonalAccessTokenRequestRepositorySelection {
   #[serde(rename = "none")]
   None,
-
   #[serde(rename = "all")]
   All,
-
   #[serde(rename = "subset")]
   Subset,
 }
@@ -7519,7 +7100,6 @@ impl ToString for WebhookProjectCardMovedAction {
 #[serde(untagged)]
 pub enum WebhookProjectCardMovedProjectCard {
   ProjectCard(ProjectCard),
-
   WebhookProjectCardMovedProjectCardItem2(WebhookProjectCardMovedProjectCardItem2),
 }
 
@@ -7545,7 +7125,6 @@ impl ToString for WebhookProjectClosedAction {
 pub enum ProjectState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -7773,9 +7352,7 @@ impl ToString for WebhookProjectsV2ItemArchivedAction {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ProjectsV2ItemContentType {
   Issue,
-
   PullRequest,
-
   DraftIssue,
 }
 
@@ -7859,7 +7436,6 @@ impl ToString for WebhookProjectsV2ItemEditedAction {
 #[serde(untagged)]
 pub enum WebhookProjectsV2ItemEditedChanges {
   WebhookProjectsV2ItemEditedChangesItem1(WebhookProjectsV2ItemEditedChangesItem1),
-
   WebhookProjectsV2ItemEditedChangesItem2(WebhookProjectsV2ItemEditedChangesItem2),
 }
 
@@ -7932,13 +7508,10 @@ impl ToString for WebhookPullRequestAssignedAction {
 pub enum PullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
-
   #[serde(rename = "off-topic")]
   OffTopic,
-
   #[serde(rename = "too heated")]
   TooHeated,
-
   #[serde(rename = "spam")]
   Spam,
 }
@@ -7961,25 +7534,18 @@ impl ToString for PullRequestActiveLockReason {
 pub enum PullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -8012,10 +7578,8 @@ impl ToString for PullRequestAuthorAssociation {
 pub enum PullRequestAutoMergeMergeMethod {
   #[serde(rename = "merge")]
   Merge,
-
   #[serde(rename = "squash")]
   Squash,
-
   #[serde(rename = "rebase")]
   Rebase,
 }
@@ -8098,10 +7662,8 @@ impl ToString for WebhookPullRequestClosedAction {
 pub enum WebhookPullRequestClosedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8125,7 +7687,6 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitMessage {
 pub enum WebhookPullRequestClosedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -8151,10 +7712,8 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2MergeCommitTitle {
 pub enum WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8184,7 +7743,6 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2SquashMergeCommitMessa
 pub enum WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -8209,7 +7767,6 @@ impl ToString for WebhookPullRequestClosedPullRequestItem2SquashMergeCommitTitle
 pub enum WebhookPullRequestClosedPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
-
   WebhookPullRequestClosedPullRequestItem2(WebhookPullRequestClosedPullRequestItem2),
 }
 
@@ -8240,10 +7797,8 @@ impl ToString for WebhookPullRequestConvertedToDraftAction {
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8273,7 +7828,6 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitM
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -8301,10 +7855,8 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2MergeCommitT
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8328,7 +7880,6 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeC
 pub enum WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -8353,7 +7904,6 @@ impl ToString for WebhookPullRequestConvertedToDraftPullRequestItem2SquashMergeC
 pub enum WebhookPullRequestConvertedToDraftPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
-
   WebhookPullRequestConvertedToDraftPullRequestItem2(
     WebhookPullRequestConvertedToDraftPullRequestItem2,
   ),
@@ -8416,10 +7966,8 @@ impl ToString for WebhookPullRequestEditedAction {
 pub enum WebhookPullRequestEditedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8443,7 +7991,6 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitMessage {
 pub enum WebhookPullRequestEditedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -8469,10 +8016,8 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2MergeCommitTitle {
 pub enum WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8502,7 +8047,6 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2SquashMergeCommitMessa
 pub enum WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -8527,7 +8071,6 @@ impl ToString for WebhookPullRequestEditedPullRequestItem2SquashMergeCommitTitle
 pub enum WebhookPullRequestEditedPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
-
   WebhookPullRequestEditedPullRequestItem2(WebhookPullRequestEditedPullRequestItem2),
 }
 
@@ -8620,10 +8163,8 @@ impl ToString for WebhookPullRequestOpenedAction {
 pub enum WebhookPullRequestOpenedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8647,7 +8188,6 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitMessage {
 pub enum WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -8673,10 +8213,8 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2MergeCommitTitle {
 pub enum WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8706,7 +8244,6 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitMessa
 pub enum WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -8731,7 +8268,6 @@ impl ToString for WebhookPullRequestOpenedPullRequestItem2SquashMergeCommitTitle
 pub enum WebhookPullRequestOpenedPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
-
   WebhookPullRequestOpenedPullRequestItem2(WebhookPullRequestOpenedPullRequestItem2),
 }
 
@@ -8760,10 +8296,8 @@ impl ToString for WebhookPullRequestReadyForReviewAction {
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8793,7 +8327,6 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitMes
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -8821,10 +8354,8 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2MergeCommitTit
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8854,7 +8385,6 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCom
 pub enum WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -8879,7 +8409,6 @@ impl ToString for WebhookPullRequestReadyForReviewPullRequestItem2SquashMergeCom
 pub enum WebhookPullRequestReadyForReviewPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
-
   WebhookPullRequestReadyForReviewPullRequestItem2(
     WebhookPullRequestReadyForReviewPullRequestItem2,
   ),
@@ -8910,10 +8439,8 @@ impl ToString for WebhookPullRequestReopenedAction {
 pub enum WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8939,7 +8466,6 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitMessage {
 pub enum WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -8965,10 +8491,8 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2MergeCommitTitle {
 pub enum WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -8998,7 +8522,6 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitMes
 pub enum WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -9023,7 +8546,6 @@ impl ToString for WebhookPullRequestReopenedPullRequestItem2SquashMergeCommitTit
 pub enum WebhookPullRequestReopenedPullRequest {
   /// Pull requests let you tell others about changes you've pushed to a repository on GitHub. Once a pull request is sent, interested parties can review the set of changes, discuss potential modifications, and even push follow-up commits if necessary.
   PullRequest(PullRequest),
-
   WebhookPullRequestReopenedPullRequestItem2(WebhookPullRequestReopenedPullRequestItem2),
 }
 
@@ -9053,25 +8575,18 @@ impl ToString for WebhookPullRequestReviewCommentCreatedAction {
 pub enum PullRequestReviewCommentAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -9108,7 +8623,6 @@ impl ToString for PullRequestReviewCommentAuthorAssociation {
 pub enum PullRequestReviewCommentSide {
   #[serde(rename = "LEFT")]
   Left,
-
   #[serde(rename = "RIGHT")]
   Right,
 }
@@ -9137,7 +8651,6 @@ impl ToString for PullRequestReviewCommentSide {
 pub enum PullRequestReviewCommentStartSide {
   #[serde(rename = "LEFT")]
   Left,
-
   #[serde(rename = "RIGHT")]
   Right,
 }
@@ -9166,7 +8679,6 @@ impl ToString for PullRequestReviewCommentStartSide {
 pub enum PullRequestReviewCommentSubjectType {
   #[serde(rename = "line")]
   Line,
-
   #[serde(rename = "file")]
   File,
 }
@@ -9190,13 +8702,10 @@ impl ToString for PullRequestReviewCommentSubjectType {
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
-
   #[serde(rename = "off-topic")]
   OffTopic,
-
   #[serde(rename = "too heated")]
   TooHeated,
-
   #[serde(rename = "spam")]
   Spam,
 }
@@ -9225,25 +8734,18 @@ impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestActiveLockRea
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -9285,7 +8787,6 @@ impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssocia
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -9321,13 +8822,10 @@ impl ToString for WebhookPullRequestReviewCommentDeletedAction {
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
-
   #[serde(rename = "off-topic")]
   OffTopic,
-
   #[serde(rename = "too heated")]
   TooHeated,
-
   #[serde(rename = "spam")]
   Spam,
 }
@@ -9356,25 +8854,18 @@ impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestActiveLockRea
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -9416,7 +8907,6 @@ impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssocia
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -9452,13 +8942,10 @@ impl ToString for WebhookPullRequestReviewCommentEditedAction {
 pub enum WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
-
   #[serde(rename = "off-topic")]
   OffTopic,
-
   #[serde(rename = "too heated")]
   TooHeated,
-
   #[serde(rename = "spam")]
   Spam,
 }
@@ -9487,25 +8974,18 @@ impl ToString for WebhookPullRequestReviewCommentEditedPullRequestActiveLockReas
 pub enum WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -9545,7 +9025,6 @@ impl ToString for WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociat
 pub enum WebhookPullRequestReviewCommentEditedPullRequestState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -9585,13 +9064,10 @@ impl ToString for WebhookPullRequestReviewDismissedAction {
 pub enum SimplePullRequestActiveLockReason {
   #[serde(rename = "resolved")]
   Resolved,
-
   #[serde(rename = "off-topic")]
   OffTopic,
-
   #[serde(rename = "too heated")]
   TooHeated,
-
   #[serde(rename = "spam")]
   Spam,
 }
@@ -9622,25 +9098,18 @@ impl ToString for SimplePullRequestActiveLockReason {
 pub enum SimplePullRequestAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -9676,7 +9145,6 @@ impl ToString for SimplePullRequestAuthorAssociation {
 pub enum SimplePullRequestState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "closed")]
   Closed,
 }
@@ -9701,25 +9169,18 @@ impl ToString for SimplePullRequestState {
 pub enum WebhookPullRequestReviewDismissedReviewAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -9755,10 +9216,8 @@ impl ToString for WebhookPullRequestReviewDismissedReviewAuthorAssociation {
 pub enum WebhookPullRequestReviewDismissedReviewState {
   #[serde(rename = "dismissed")]
   Dismissed,
-
   #[serde(rename = "approved")]
   Approved,
-
   #[serde(rename = "changes_requested")]
   ChangesRequested,
 }
@@ -9798,25 +9257,18 @@ impl ToString for WebhookPullRequestReviewEditedAction {
 pub enum WebhookPullRequestReviewEditedReviewAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -9886,7 +9338,6 @@ impl ToString for WebhookPullRequestReviewRequestRemovedItem2Action {
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewRequestRemoved {
   WebhookPullRequestReviewRequestRemovedItem1(WebhookPullRequestReviewRequestRemovedItem1),
-
   WebhookPullRequestReviewRequestRemovedItem2(WebhookPullRequestReviewRequestRemovedItem2),
 }
 
@@ -9931,7 +9382,6 @@ impl ToString for WebhookPullRequestReviewRequestedItem2Action {
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewRequested {
   WebhookPullRequestReviewRequestedItem1(WebhookPullRequestReviewRequestedItem1),
-
   WebhookPullRequestReviewRequestedItem2(WebhookPullRequestReviewRequestedItem2),
 }
 
@@ -9957,25 +9407,18 @@ impl ToString for WebhookPullRequestReviewSubmittedAction {
 pub enum WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
   #[serde(rename = "COLLABORATOR")]
   Collaborator,
-
   #[serde(rename = "CONTRIBUTOR")]
   Contributor,
-
   #[serde(rename = "FIRST_TIMER")]
   FirstTimer,
-
   #[serde(rename = "FIRST_TIME_CONTRIBUTOR")]
   FirstTimeContributor,
-
   #[serde(rename = "MANNEQUIN")]
   Mannequin,
-
   #[serde(rename = "MEMBER")]
   Member,
-
   #[serde(rename = "NONE")]
   None,
-
   #[serde(rename = "OWNER")]
   Owner,
 }
@@ -10228,7 +9671,6 @@ pub enum WebhookReleasePrereleasedReleaseItem2Prerelease {
 pub enum WebhookReleasePrereleasedRelease {
   /// The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.
   Release(Release),
-
   WebhookReleasePrereleasedReleaseItem2(WebhookReleasePrereleasedReleaseItem2),
 }
 
@@ -10254,7 +9696,6 @@ impl ToString for WebhookReleasePublishedAction {
 pub enum WebhookReleasePublishedRelease {
   /// The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.
   Release(Release),
-
   WebhookReleasePublishedReleaseItem2(WebhookReleasePublishedReleaseItem2),
 }
 
@@ -10296,7 +9737,6 @@ impl ToString for WebhookReleaseUnpublishedAction {
 pub enum WebhookReleaseUnpublishedRelease {
   /// The [release](https://docs.github.com/rest/releases/releases/#get-a-release) object.
   Release(Release),
-
   WebhookReleaseUnpublishedReleaseItem2(WebhookReleaseUnpublishedReleaseItem2),
 }
 
@@ -10322,31 +9762,22 @@ impl ToString for WebhookRepositoryAdvisoryPublishedAction {
 pub enum SecurityAdvisoryCreditTypes {
   #[serde(rename = "analyst")]
   Analyst,
-
   #[serde(rename = "finder")]
   Finder,
-
   #[serde(rename = "reporter")]
   Reporter,
-
   #[serde(rename = "coordinator")]
   Coordinator,
-
   #[serde(rename = "remediation_developer")]
   RemediationDeveloper,
-
   #[serde(rename = "remediation_reviewer")]
   RemediationReviewer,
-
   #[serde(rename = "remediation_verifier")]
   RemediationVerifier,
-
   #[serde(rename = "tool")]
   Tool,
-
   #[serde(rename = "sponsor")]
   Sponsor,
-
   #[serde(rename = "other")]
   Other,
 }
@@ -10375,10 +9806,8 @@ impl ToString for SecurityAdvisoryCreditTypes {
 pub enum RepositoryAdvisoryCreditState {
   #[serde(rename = "accepted")]
   Accepted,
-
   #[serde(rename = "declined")]
   Declined,
-
   #[serde(rename = "pending")]
   Pending,
 }
@@ -10400,7 +9829,6 @@ impl ToString for RepositoryAdvisoryCreditState {
 pub enum RepositoryAdvisoryIdentifiersType {
   #[serde(rename = "CVE")]
   Cve,
-
   #[serde(rename = "GHSA")]
   Ghsa,
 }
@@ -10421,13 +9849,10 @@ impl ToString for RepositoryAdvisoryIdentifiersType {
 pub enum RepositoryAdvisorySeverity {
   #[serde(rename = "critical")]
   Critical,
-
   #[serde(rename = "high")]
   High,
-
   #[serde(rename = "medium")]
   Medium,
-
   #[serde(rename = "low")]
   Low,
 }
@@ -10450,16 +9875,12 @@ impl ToString for RepositoryAdvisorySeverity {
 pub enum RepositoryAdvisoryState {
   #[serde(rename = "published")]
   Published,
-
   #[serde(rename = "closed")]
   Closed,
-
   #[serde(rename = "withdrawn")]
   Withdrawn,
-
   #[serde(rename = "draft")]
   Draft,
-
   #[serde(rename = "triage")]
   Triage,
 }
@@ -10483,40 +9904,28 @@ impl ToString for RepositoryAdvisoryState {
 pub enum SecurityAdvisoryEcosystems {
   #[serde(rename = "rubygems")]
   Rubygems,
-
   #[serde(rename = "npm")]
   Npm,
-
   #[serde(rename = "pip")]
   Pip,
-
   #[serde(rename = "maven")]
   Maven,
-
   #[serde(rename = "nuget")]
   Nuget,
-
   #[serde(rename = "composer")]
   Composer,
-
   #[serde(rename = "go")]
   Go,
-
   #[serde(rename = "rust")]
   Rust,
-
   #[serde(rename = "erlang")]
   Erlang,
-
   #[serde(rename = "actions")]
   Actions,
-
   #[serde(rename = "pub")]
   Pub,
-
   #[serde(rename = "other")]
   Other,
-
   #[serde(rename = "swift")]
   Swift,
 }
@@ -10627,10 +10036,8 @@ impl ToString for WebhookRepositoryEditedAction {
 pub enum WebhookRepositoryImportStatus {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "failure")]
   Failure,
 }
@@ -10715,11 +10122,8 @@ impl ToString for WebhookRepositoryRulesetCreatedAction {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetBypassActorActorType {
   RepositoryRole,
-
   Team,
-
   Integration,
-
   OrganizationAdmin,
 }
 
@@ -10741,7 +10145,6 @@ impl ToString for RepositoryRulesetBypassActorActorType {
 pub enum RepositoryRulesetBypassActorBypassMode {
   #[serde(rename = "always")]
   Always,
-
   #[serde(rename = "pull_request")]
   PullRequest,
 }
@@ -10762,7 +10165,6 @@ impl ToString for RepositoryRulesetBypassActorBypassMode {
 pub enum OrgRulesetConditionsItem1 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
-
   /// Parameters for a repository name condition
   RepositoryRulesetConditionsRepositoryNameTarget(RepositoryRulesetConditionsRepositoryNameTarget),
 }
@@ -10773,7 +10175,6 @@ pub enum OrgRulesetConditionsItem1 {
 pub enum OrgRulesetConditionsItem2 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
-
   /// Parameters for a repository ID condition
   RepositoryRulesetConditionsRepositoryIdTarget(RepositoryRulesetConditionsRepositoryIdTarget),
 }
@@ -10784,7 +10185,6 @@ pub enum OrgRulesetConditionsItem2 {
 pub enum OrgRulesetConditionsItem3 {
   /// Parameters for a repository ruleset ref name condition
   RepositoryRulesetConditions(RepositoryRulesetConditions),
-
   /// Parameters for a repository property condition
   RepositoryRulesetConditionsRepositoryPropertyTarget(
     RepositoryRulesetConditionsRepositoryPropertyTarget,
@@ -10796,9 +10196,7 @@ pub enum OrgRulesetConditionsItem3 {
 #[serde(untagged)]
 pub enum OrgRulesetConditions {
   OrgRulesetConditionsItem1(OrgRulesetConditionsItem1),
-
   OrgRulesetConditionsItem2(OrgRulesetConditionsItem2),
-
   OrgRulesetConditionsItem3(OrgRulesetConditionsItem3),
 }
 
@@ -10809,10 +10207,8 @@ pub enum OrgRulesetConditions {
 pub enum RepositoryRulesetCurrentUserCanBypass {
   #[serde(rename = "always")]
   Always,
-
   #[serde(rename = "pull_requests_only")]
   PullRequestsOnly,
-
   #[serde(rename = "never")]
   Never,
 }
@@ -10834,10 +10230,8 @@ impl ToString for RepositoryRulesetCurrentUserCanBypass {
 pub enum RepositoryRuleEnforcement {
   #[serde(rename = "disabled")]
   Disabled,
-
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "evaluate")]
   Evaluate,
 }
@@ -11009,13 +10403,10 @@ impl ToString for RepositoryRuleNonFastForwardType {
 pub enum RepositoryRuleCommitMessagePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
-
   #[serde(rename = "ends_with")]
   EndsWith,
-
   #[serde(rename = "contains")]
   Contains,
-
   #[serde(rename = "regex")]
   Regex,
 }
@@ -11056,13 +10447,10 @@ impl ToString for RepositoryRuleCommitMessagePatternType {
 pub enum RepositoryRuleCommitAuthorEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
-
   #[serde(rename = "ends_with")]
   EndsWith,
-
   #[serde(rename = "contains")]
   Contains,
-
   #[serde(rename = "regex")]
   Regex,
 }
@@ -11105,13 +10493,10 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
 pub enum RepositoryRuleCommitterEmailPatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
-
   #[serde(rename = "ends_with")]
   EndsWith,
-
   #[serde(rename = "contains")]
   Contains,
-
   #[serde(rename = "regex")]
   Regex,
 }
@@ -11154,13 +10539,10 @@ impl ToString for RepositoryRuleCommitterEmailPatternType {
 pub enum RepositoryRuleBranchNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
-
   #[serde(rename = "ends_with")]
   EndsWith,
-
   #[serde(rename = "contains")]
   Contains,
-
   #[serde(rename = "regex")]
   Regex,
 }
@@ -11199,13 +10581,10 @@ impl ToString for RepositoryRuleBranchNamePatternType {
 pub enum RepositoryRuleTagNamePatternParametersOperator {
   #[serde(rename = "starts_with")]
   StartsWith,
-
   #[serde(rename = "ends_with")]
   EndsWith,
-
   #[serde(rename = "contains")]
   Contains,
-
   #[serde(rename = "regex")]
   Regex,
 }
@@ -11260,46 +10639,32 @@ impl ToString for RepositoryRuleWorkflowsType {
 pub enum RepositoryRule {
   /// Only allow users with bypass permission to create matching refs.
   RepositoryRuleCreation(RepositoryRuleCreation),
-
   /// Only allow users with bypass permission to update matching refs.
   RepositoryRuleUpdate(RepositoryRuleUpdate),
-
   /// Only allow users with bypass permissions to delete matching refs.
   RepositoryRuleDeletion(RepositoryRuleDeletion),
-
   /// Prevent merge commits from being pushed to matching refs.
   RepositoryRuleRequiredLinearHistory(RepositoryRuleRequiredLinearHistory),
-
   /// Choose which environments must be successfully deployed to before refs can be pushed into a ref that matches this rule.
   RepositoryRuleRequiredDeployments(RepositoryRuleRequiredDeployments),
-
   /// Commits pushed to matching refs must have verified signatures.
   RepositoryRuleRequiredSignatures(RepositoryRuleRequiredSignatures),
-
   /// Require all commits be made to a non-target branch and submitted via a pull request before they can be merged.
   RepositoryRulePullRequest(RepositoryRulePullRequest),
-
   /// Choose which status checks must pass before the ref is updated. When enabled, commits must first be pushed to another ref where the checks pass.
   RepositoryRuleRequiredStatusChecks(RepositoryRuleRequiredStatusChecks),
-
   /// Prevent users with push access from force pushing to refs.
   RepositoryRuleNonFastForward(RepositoryRuleNonFastForward),
-
   /// Parameters to be used for the commit_message_pattern rule
   RepositoryRuleCommitMessagePattern(RepositoryRuleCommitMessagePattern),
-
   /// Parameters to be used for the commit_author_email_pattern rule
   RepositoryRuleCommitAuthorEmailPattern(RepositoryRuleCommitAuthorEmailPattern),
-
   /// Parameters to be used for the committer_email_pattern rule
   RepositoryRuleCommitterEmailPattern(RepositoryRuleCommitterEmailPattern),
-
   /// Parameters to be used for the branch_name_pattern rule
   RepositoryRuleBranchNamePattern(RepositoryRuleBranchNamePattern),
-
   /// Parameters to be used for the tag_name_pattern rule
   RepositoryRuleTagNamePattern(RepositoryRuleTagNamePattern),
-
   /// Require all changes made to a targeted branch to pass the specified workflows before they can be merged.
   RepositoryRuleWorkflows(RepositoryRuleWorkflows),
 }
@@ -11309,7 +10674,6 @@ pub enum RepositoryRule {
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulesetSourceType {
   Repository,
-
   Organization,
 }
 
@@ -11329,7 +10693,6 @@ impl ToString for RepositoryRulesetSourceType {
 pub enum RepositoryRulesetTarget {
   #[serde(rename = "branch")]
   Branch,
-
   #[serde(rename = "tag")]
   Tag,
 }
@@ -11429,10 +10792,8 @@ impl ToString for WebhookRepositoryVulnerabilityAlertCreateAction {
 pub enum RepositoryVulnerabilityAlertAlertState {
   #[serde(rename = "open")]
   Open,
-
   #[serde(rename = "dismissed")]
   Dismissed,
-
   #[serde(rename = "fixed")]
   Fixed,
 }
@@ -11470,7 +10831,6 @@ impl ToString for WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
 pub enum WebhookRepositoryVulnerabilityAlertCreateAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
-
   WebhookRepositoryVulnerabilityAlertCreateAlertItem2(
     WebhookRepositoryVulnerabilityAlertCreateAlertItem2,
   ),
@@ -11516,7 +10876,6 @@ impl ToString for WebhookRepositoryVulnerabilityAlertDismissAlertItem2State {
 pub enum WebhookRepositoryVulnerabilityAlertDismissAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
-
   WebhookRepositoryVulnerabilityAlertDismissAlertItem2(
     WebhookRepositoryVulnerabilityAlertDismissAlertItem2,
   ),
@@ -11560,7 +10919,6 @@ impl ToString for WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
 pub enum WebhookRepositoryVulnerabilityAlertReopenAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
-
   WebhookRepositoryVulnerabilityAlertReopenAlertItem2(
     WebhookRepositoryVulnerabilityAlertReopenAlertItem2,
   ),
@@ -11587,7 +10945,6 @@ impl ToString for WebhookRepositoryVulnerabilityAlertResolveAction {
 pub enum WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
   #[serde(rename = "fixed")]
   Fixed,
-
   #[serde(rename = "open")]
   Open,
 }
@@ -11608,7 +10965,6 @@ impl ToString for WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
 pub enum WebhookRepositoryVulnerabilityAlertResolveAlert {
   /// The security alert of the vulnerable dependency.
   RepositoryVulnerabilityAlertAlert(RepositoryVulnerabilityAlertAlert),
-
   WebhookRepositoryVulnerabilityAlertResolveAlertItem2(
     WebhookRepositoryVulnerabilityAlertResolveAlertItem2,
   ),
@@ -11640,19 +10996,14 @@ impl ToString for WebhookSecretScanningAlertCreatedAction {
 pub enum SecretScanningAlertResolutionWebhook {
   #[serde(rename = "false_positive")]
   FalsePositive,
-
   #[serde(rename = "wont_fix")]
   WontFix,
-
   #[serde(rename = "revoked")]
   Revoked,
-
   #[serde(rename = "used_in_tests")]
   UsedInTests,
-
   #[serde(rename = "pattern_deleted")]
   PatternDeleted,
-
   #[serde(rename = "pattern_edited")]
   PatternEdited,
 }
@@ -11685,10 +11036,8 @@ impl ToString for SecretScanningAlertResolutionWebhook {
 pub enum SecretScanningAlertWebhookValidity {
   #[serde(rename = "active")]
   Active,
-
   #[serde(rename = "inactive")]
   Inactive,
-
   #[serde(rename = "unknown")]
   Unknown,
 }
@@ -11730,40 +11079,28 @@ impl ToString for WebhookSecretScanningAlertLocationCreatedAction {
 pub enum SecretScanningLocationDetails {
   /// Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository.
   SecretScanningLocationCommit(SecretScanningLocationCommit),
-
   /// Represents a 'wiki_commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository wiki.
   SecretScanningLocationWikiCommit(SecretScanningLocationWikiCommit),
-
   /// Represents an 'issue_title' secret scanning location type. This location type shows that a secret was detected in the title of an issue.
   SecretScanningLocationIssueTitle(SecretScanningLocationIssueTitle),
-
   /// Represents an 'issue_body' secret scanning location type. This location type shows that a secret was detected in the body of an issue.
   SecretScanningLocationIssueBody(SecretScanningLocationIssueBody),
-
   /// Represents an 'issue_comment' secret scanning location type. This location type shows that a secret was detected in a comment on an issue.
   SecretScanningLocationIssueComment(SecretScanningLocationIssueComment),
-
   /// Represents a 'discussion_title' secret scanning location type. This location type shows that a secret was detected in the title of a discussion.
   SecretScanningLocationDiscussionTitle(SecretScanningLocationDiscussionTitle),
-
   /// Represents a 'discussion_body' secret scanning location type. This location type shows that a secret was detected in the body of a discussion.
   SecretScanningLocationDiscussionBody(SecretScanningLocationDiscussionBody),
-
   /// Represents a 'discussion_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a discussion.
   SecretScanningLocationDiscussionComment(SecretScanningLocationDiscussionComment),
-
   /// Represents a 'pull_request_title' secret scanning location type. This location type shows that a secret was detected in the title of a pull request.
   SecretScanningLocationPullRequestTitle(SecretScanningLocationPullRequestTitle),
-
   /// Represents a 'pull_request_body' secret scanning location type. This location type shows that a secret was detected in the body of a pull request.
   SecretScanningLocationPullRequestBody(SecretScanningLocationPullRequestBody),
-
   /// Represents a 'pull_request_comment' secret scanning location type. This location type shows that a secret was detected in a comment on a pull request.
   SecretScanningLocationPullRequestComment(SecretScanningLocationPullRequestComment),
-
   /// Represents a 'pull_request_review' secret scanning location type. This location type shows that a secret was detected in a review on a pull request.
   SecretScanningLocationPullRequestReview(SecretScanningLocationPullRequestReview),
-
   /// Represents a 'pull_request_review_comment' secret scanning location type. This location type shows that a secret was detected in a review comment on a pull request.
   SecretScanningLocationPullRequestReviewComment(SecretScanningLocationPullRequestReviewComment),
 }
@@ -11774,40 +11111,28 @@ pub enum SecretScanningLocationDetails {
 pub enum SecretScanningLocationType {
   #[serde(rename = "commit")]
   Commit,
-
   #[serde(rename = "wiki_commit")]
   WikiCommit,
-
   #[serde(rename = "issue_title")]
   IssueTitle,
-
   #[serde(rename = "issue_body")]
   IssueBody,
-
   #[serde(rename = "issue_comment")]
   IssueComment,
-
   #[serde(rename = "discussion_title")]
   DiscussionTitle,
-
   #[serde(rename = "discussion_body")]
   DiscussionBody,
-
   #[serde(rename = "discussion_comment")]
   DiscussionComment,
-
   #[serde(rename = "pull_request_title")]
   PullRequestTitle,
-
   #[serde(rename = "pull_request_body")]
   PullRequestBody,
-
   #[serde(rename = "pull_request_comment")]
   PullRequestComment,
-
   #[serde(rename = "pull_request_review")]
   PullRequestReview,
-
   #[serde(rename = "pull_request_review_comment")]
   PullRequestReviewComment,
 }
@@ -11957,10 +11282,8 @@ impl ToString for WebhookSecurityAdvisoryWithdrawnAction {
 pub enum FullRepositoryMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -11985,7 +11308,6 @@ impl ToString for FullRepositoryMergeCommitMessage {
 pub enum FullRepositoryMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "MERGE_MESSAGE")]
   MergeMessage,
 }
@@ -12010,10 +11332,8 @@ impl ToString for FullRepositoryMergeCommitTitle {
 pub enum FullRepositorySquashMergeCommitMessage {
   #[serde(rename = "PR_BODY")]
   PrBody,
-
   #[serde(rename = "COMMIT_MESSAGES")]
   CommitMessages,
-
   #[serde(rename = "BLANK")]
   Blank,
 }
@@ -12038,7 +11358,6 @@ impl ToString for FullRepositorySquashMergeCommitMessage {
 pub enum FullRepositorySquashMergeCommitTitle {
   #[serde(rename = "PR_TITLE")]
   PrTitle,
-
   #[serde(rename = "COMMIT_OR_PR_TITLE")]
   CommitOrPrTitle,
 }
@@ -12191,7 +11510,6 @@ impl ToString for WebhookStarDeletedAction {
 pub enum WebhookStatusCommitCommitAuthor {
   /// Metaproperties for Git author/committer information.
   Committer(Committer),
-
   WebhookStatusCommitCommitAuthorItem2(WebhookStatusCommitCommitAuthorItem2),
 }
 
@@ -12201,7 +11519,6 @@ pub enum WebhookStatusCommitCommitAuthor {
 pub enum WebhookStatusCommitCommitCommitter {
   /// Metaproperties for Git author/committer information.
   Committer(Committer),
-
   WebhookStatusCommitCommitCommitterItem2(WebhookStatusCommitCommitCommitterItem2),
 }
 
@@ -12210,46 +11527,32 @@ pub enum WebhookStatusCommitCommitCommitter {
 pub enum WebhookStatusCommitCommitVerificationReason {
   #[serde(rename = "expired_key")]
   ExpiredKey,
-
   #[serde(rename = "not_signing_key")]
   NotSigningKey,
-
   #[serde(rename = "gpgverify_error")]
   GpgverifyError,
-
   #[serde(rename = "gpgverify_unavailable")]
   GpgverifyUnavailable,
-
   #[serde(rename = "unsigned")]
   Unsigned,
-
   #[serde(rename = "unknown_signature_type")]
   UnknownSignatureType,
-
   #[serde(rename = "no_user")]
   NoUser,
-
   #[serde(rename = "unverified_email")]
   UnverifiedEmail,
-
   #[serde(rename = "bad_email")]
   BadEmail,
-
   #[serde(rename = "unknown_key")]
   UnknownKey,
-
   #[serde(rename = "malformed_signature")]
   MalformedSignature,
-
   #[serde(rename = "invalid")]
   Invalid,
-
   #[serde(rename = "valid")]
   Valid,
-
   #[serde(rename = "bad_cert")]
   BadCert,
-
   #[serde(rename = "ocsp_pending")]
   OcspPending,
 }
@@ -12291,13 +11594,10 @@ impl ToString for WebhookStatusCommitCommitVerificationReason {
 pub enum WebhookStatusState {
   #[serde(rename = "pending")]
   Pending,
-
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "error")]
   Error,
 }
@@ -12433,22 +11733,16 @@ impl ToString for WebhookWorkflowJobCompletedAction {
 pub enum WorkflowJobConclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "timed_out")]
   TimedOut,
 }
@@ -12474,13 +11768,10 @@ impl ToString for WorkflowJobConclusion {
 pub enum WorkflowJobStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "waiting")]
   Waiting,
 }
@@ -12502,13 +11793,10 @@ impl ToString for WorkflowJobStatus {
 pub enum WorkflowStepConclusion {
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "cancelled")]
   Cancelled,
 }
@@ -12530,10 +11818,8 @@ impl ToString for WorkflowStepConclusion {
 pub enum WorkflowStepStatus {
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "queued")]
   Queued,
 }
@@ -12554,22 +11840,16 @@ impl ToString for WorkflowStepStatus {
 pub enum WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "timed_out")]
   TimedOut,
 }
@@ -12597,7 +11877,6 @@ impl ToString for WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
 pub enum WebhookWorkflowJobCompletedWorkflowJob {
   /// The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`, and `started_at` are the same as those in a [`check_run`](#check_run) object.
   WorkflowJob(WorkflowJob),
-
   WebhookWorkflowJobCompletedWorkflowJobItem2(WebhookWorkflowJobCompletedWorkflowJobItem2),
 }
 
@@ -12622,10 +11901,8 @@ impl ToString for WebhookWorkflowJobInProgressAction {
 pub enum WebhookWorkflowJobInProgressWorkflowJobItem2Status {
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "queued")]
   Queued,
 }
@@ -12647,7 +11924,6 @@ impl ToString for WebhookWorkflowJobInProgressWorkflowJobItem2Status {
 pub enum WebhookWorkflowJobInProgressWorkflowJob {
   /// The workflow job. Many `workflow_job` keys, such as `head_sha`, `conclusion`, and `started_at` are the same as those in a [`check_run`](#check_run) object.
   WorkflowJob(WorkflowJob),
-
   WebhookWorkflowJobInProgressWorkflowJobItem2(WebhookWorkflowJobInProgressWorkflowJobItem2),
 }
 
@@ -12672,13 +11948,10 @@ impl ToString for WebhookWorkflowJobQueuedAction {
 pub enum WebhookWorkflowJobQueuedWorkflowJobStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "waiting")]
   Waiting,
 }
@@ -12716,13 +11989,10 @@ impl ToString for WebhookWorkflowJobWaitingAction {
 pub enum WebhookWorkflowJobWaitingWorkflowJobStatus {
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "waiting")]
   Waiting,
 }
@@ -12760,25 +12030,18 @@ impl ToString for WebhookWorkflowRunCompletedAction {
 pub enum WorkflowRunConclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "stale")]
   Stale,
-
   #[serde(rename = "skipped")]
   Skipped,
 }
@@ -12804,19 +12067,14 @@ impl ToString for WorkflowRunConclusion {
 pub enum WorkflowRunStatus {
   #[serde(rename = "requested")]
   Requested,
-
   #[serde(rename = "in_progress")]
   InProgress,
-
   #[serde(rename = "completed")]
   Completed,
-
   #[serde(rename = "queued")]
   Queued,
-
   #[serde(rename = "pending")]
   Pending,
-
   #[serde(rename = "waiting")]
   Waiting,
 }
@@ -12840,25 +12098,18 @@ impl ToString for WorkflowRunStatus {
 pub enum WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "stale")]
   Stale,
-
   #[serde(rename = "skipped")]
   Skipped,
 }
@@ -12886,7 +12137,6 @@ impl ToString for WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
 #[serde(untagged)]
 pub enum WebhookWorkflowRunCompletedWorkflowRun {
   WorkflowRun(WorkflowRun),
-
   WebhookWorkflowRunCompletedWorkflowRunItem2(WebhookWorkflowRunCompletedWorkflowRunItem2),
 }
 
@@ -12911,25 +12161,18 @@ impl ToString for WebhookWorkflowRunInProgressAction {
 pub enum WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
   #[serde(rename = "success")]
   Success,
-
   #[serde(rename = "failure")]
   Failure,
-
   #[serde(rename = "neutral")]
   Neutral,
-
   #[serde(rename = "cancelled")]
   Cancelled,
-
   #[serde(rename = "timed_out")]
   TimedOut,
-
   #[serde(rename = "action_required")]
   ActionRequired,
-
   #[serde(rename = "skipped")]
   Skipped,
-
   #[serde(rename = "stale")]
   Stale,
 }
@@ -12957,7 +12200,6 @@ impl ToString for WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
 #[serde(untagged)]
 pub enum WebhookWorkflowRunInProgressWorkflowRun {
   WorkflowRun(WorkflowRun),
-
   WebhookWorkflowRunInProgressWorkflowRunItem2(WebhookWorkflowRunInProgressWorkflowRunItem2),
 }
 
@@ -12982,7 +12224,6 @@ impl ToString for WebhookWorkflowRunRequestedAction {
 #[serde(untagged)]
 pub enum WebhookBranchProtectionConfigurationEvent {
   Disabled(WebhookBranchProtectionConfigurationDisabled),
-
   Enabled(WebhookBranchProtectionConfigurationEnabled),
 }
 
@@ -12991,9 +12232,7 @@ pub enum WebhookBranchProtectionConfigurationEvent {
 #[serde(untagged)]
 pub enum WebhookBranchProtectionRuleEvent {
   Created(WebhookBranchProtectionRuleCreated),
-
   Deleted(WebhookBranchProtectionRuleDeleted),
-
   Edited(WebhookBranchProtectionRuleEdited),
 }
 
@@ -13002,11 +12241,8 @@ pub enum WebhookBranchProtectionRuleEvent {
 #[serde(untagged)]
 pub enum WebhookCheckRunEvent {
   Completed(WebhookCheckRunCompleted),
-
   Created(WebhookCheckRunCreated),
-
   RequestedAction(WebhookCheckRunRequestedAction),
-
   Rerequested(WebhookCheckRunRerequested),
 }
 
@@ -13015,9 +12251,7 @@ pub enum WebhookCheckRunEvent {
 #[serde(untagged)]
 pub enum WebhookCheckSuiteEvent {
   Completed(WebhookCheckSuiteCompleted),
-
   Requested(WebhookCheckSuiteRequested),
-
   Rerequested(WebhookCheckSuiteRerequested),
 }
 
@@ -13026,15 +12260,10 @@ pub enum WebhookCheckSuiteEvent {
 #[serde(untagged)]
 pub enum WebhookCodeScanningAlertEvent {
   AppearedInBranch(WebhookCodeScanningAlertAppearedInBranch),
-
   ClosedByUser(WebhookCodeScanningAlertClosedByUser),
-
   Created(WebhookCodeScanningAlertCreated),
-
   Fixed(WebhookCodeScanningAlertFixed),
-
   Reopened(WebhookCodeScanningAlertReopened),
-
   ReopenedByUser(WebhookCodeScanningAlertReopenedByUser),
 }
 
@@ -13050,9 +12279,7 @@ pub enum WebhookCommitCommentEvent {
 #[serde(untagged)]
 pub enum WebhookCustomPropertyEvent {
   Created(WebhookCustomPropertyCreated),
-
   Deleted(WebhookCustomPropertyDeleted),
-
   Updated(WebhookCustomPropertyUpdated),
 }
 
@@ -13068,17 +12295,11 @@ pub enum WebhookCustomPropertyValuesEvent {
 #[serde(untagged)]
 pub enum WebhookDependabotAlertEvent {
   AutoDismissed(WebhookDependabotAlertAutoDismissed),
-
   AutoReopened(WebhookDependabotAlertAutoReopened),
-
   Created(WebhookDependabotAlertCreated),
-
   Dismissed(WebhookDependabotAlertDismissed),
-
   Fixed(WebhookDependabotAlertFixed),
-
   Reintroduced(WebhookDependabotAlertReintroduced),
-
   Reopened(WebhookDependabotAlertReopened),
 }
 
@@ -13087,7 +12308,6 @@ pub enum WebhookDependabotAlertEvent {
 #[serde(untagged)]
 pub enum WebhookDeployKeyEvent {
   Created(WebhookDeployKeyCreated),
-
   Deleted(WebhookDeployKeyDeleted),
 }
 
@@ -13110,9 +12330,7 @@ pub enum WebhookDeploymentProtectionRuleEvent {
 #[serde(untagged)]
 pub enum WebhookDeploymentReviewEvent {
   Approved(WebhookDeploymentReviewApproved),
-
   Rejected(WebhookDeploymentReviewRejected),
-
   Requested(WebhookDeploymentReviewRequested),
 }
 
@@ -13128,33 +12346,19 @@ pub enum WebhookDeploymentStatusEvent {
 #[serde(untagged)]
 pub enum WebhookDiscussionEvent {
   Answered(WebhookDiscussionAnswered),
-
   CategoryChanged(WebhookDiscussionCategoryChanged),
-
   Closed(WebhookDiscussionClosed),
-
   Created(WebhookDiscussionCreated),
-
   Deleted(WebhookDiscussionDeleted),
-
   Edited(WebhookDiscussionEdited),
-
   Labeled(WebhookDiscussionLabeled),
-
   Locked(WebhookDiscussionLocked),
-
   Pinned(WebhookDiscussionPinned),
-
   Reopened(WebhookDiscussionReopened),
-
   Transferred(WebhookDiscussionTransferred),
-
   Unanswered(WebhookDiscussionUnanswered),
-
   Unlabeled(WebhookDiscussionUnlabeled),
-
   Unlocked(WebhookDiscussionUnlocked),
-
   Unpinned(WebhookDiscussionUnpinned),
 }
 
@@ -13163,9 +12367,7 @@ pub enum WebhookDiscussionEvent {
 #[serde(untagged)]
 pub enum WebhookDiscussionCommentEvent {
   Created(WebhookDiscussionCommentCreated),
-
   Deleted(WebhookDiscussionCommentDeleted),
-
   Edited(WebhookDiscussionCommentEdited),
 }
 
@@ -13181,13 +12383,9 @@ pub enum WebhookGithubAppAuthorizationEvent {
 #[serde(untagged)]
 pub enum WebhookInstallationEvent {
   Created(WebhookInstallationCreated),
-
   Deleted(WebhookInstallationDeleted),
-
   NewPermissionsAccepted(WebhookInstallationNewPermissionsAccepted),
-
   Suspend(WebhookInstallationSuspend),
-
   Unsuspend(WebhookInstallationUnsuspend),
 }
 
@@ -13196,7 +12394,6 @@ pub enum WebhookInstallationEvent {
 #[serde(untagged)]
 pub enum WebhookInstallationRepositoriesEvent {
   Added(WebhookInstallationRepositoriesAdded),
-
   Removed(WebhookInstallationRepositoriesRemoved),
 }
 
@@ -13212,9 +12409,7 @@ pub enum WebhookInstallationTargetEvent {
 #[serde(untagged)]
 pub enum WebhookIssueCommentEvent {
   Created(WebhookIssueCommentCreated),
-
   Deleted(WebhookIssueCommentDeleted),
-
   Edited(WebhookIssueCommentEdited),
 }
 
@@ -13223,35 +12418,20 @@ pub enum WebhookIssueCommentEvent {
 #[serde(untagged)]
 pub enum WebhookIssuesEvent {
   Assigned(WebhookIssuesAssigned),
-
   Closed(WebhookIssuesClosed),
-
   Deleted(WebhookIssuesDeleted),
-
   Demilestoned(WebhookIssuesDemilestoned),
-
   Edited(WebhookIssuesEdited),
-
   Labeled(WebhookIssuesLabeled),
-
   Locked(WebhookIssuesLocked),
-
   Milestoned(WebhookIssuesMilestoned),
-
   Opened(WebhookIssuesOpened),
-
   Pinned(WebhookIssuesPinned),
-
   Reopened(WebhookIssuesReopened),
-
   Transferred(WebhookIssuesTransferred),
-
   Unassigned(WebhookIssuesUnassigned),
-
   Unlabeled(WebhookIssuesUnlabeled),
-
   Unlocked(WebhookIssuesUnlocked),
-
   Unpinned(WebhookIssuesUnpinned),
 }
 
@@ -13260,9 +12440,7 @@ pub enum WebhookIssuesEvent {
 #[serde(untagged)]
 pub enum WebhookLabelEvent {
   Created(WebhookLabelCreated),
-
   Deleted(WebhookLabelDeleted),
-
   Edited(WebhookLabelEdited),
 }
 
@@ -13271,13 +12449,9 @@ pub enum WebhookLabelEvent {
 #[serde(untagged)]
 pub enum WebhookMarketplacePurchaseEvent {
   Cancelled(WebhookMarketplacePurchaseCancelled),
-
   Changed(WebhookMarketplacePurchaseChanged),
-
   PendingChange(WebhookMarketplacePurchasePendingChange),
-
   PendingChangeCancelled(WebhookMarketplacePurchasePendingChangeCancelled),
-
   Purchased(WebhookMarketplacePurchasePurchased),
 }
 
@@ -13286,9 +12460,7 @@ pub enum WebhookMarketplacePurchaseEvent {
 #[serde(untagged)]
 pub enum WebhookMemberEvent {
   Added(WebhookMemberAdded),
-
   Edited(WebhookMemberEdited),
-
   Removed(WebhookMemberRemoved),
 }
 
@@ -13297,7 +12469,6 @@ pub enum WebhookMemberEvent {
 #[serde(untagged)]
 pub enum WebhookMembershipEvent {
   Added(WebhookMembershipAdded),
-
   Removed(WebhookMembershipRemoved),
 }
 
@@ -13306,7 +12477,6 @@ pub enum WebhookMembershipEvent {
 #[serde(untagged)]
 pub enum WebhookMergeGroupEvent {
   ChecksRequested(WebhookMergeGroupChecksRequested),
-
   Destroyed(WebhookMergeGroupDestroyed),
 }
 
@@ -13322,13 +12492,9 @@ pub enum WebhookMetaEvent {
 #[serde(untagged)]
 pub enum WebhookMilestoneEvent {
   Closed(WebhookMilestoneClosed),
-
   Created(WebhookMilestoneCreated),
-
   Deleted(WebhookMilestoneDeleted),
-
   Edited(WebhookMilestoneEdited),
-
   Opened(WebhookMilestoneOpened),
 }
 
@@ -13337,7 +12503,6 @@ pub enum WebhookMilestoneEvent {
 #[serde(untagged)]
 pub enum WebhookOrgBlockEvent {
   Blocked(WebhookOrgBlockBlocked),
-
   Unblocked(WebhookOrgBlockUnblocked),
 }
 
@@ -13346,13 +12511,9 @@ pub enum WebhookOrgBlockEvent {
 #[serde(untagged)]
 pub enum WebhookOrganizationEvent {
   Deleted(WebhookOrganizationDeleted),
-
   MemberAdded(WebhookOrganizationMemberAdded),
-
   MemberInvited(WebhookOrganizationMemberInvited),
-
   MemberRemoved(WebhookOrganizationMemberRemoved),
-
   Renamed(WebhookOrganizationRenamed),
 }
 
@@ -13361,7 +12522,6 @@ pub enum WebhookOrganizationEvent {
 #[serde(untagged)]
 pub enum WebhookPackageEvent {
   Published(WebhookPackagePublished),
-
   Updated(WebhookPackageUpdated),
 }
 
@@ -13370,11 +12530,8 @@ pub enum WebhookPackageEvent {
 #[serde(untagged)]
 pub enum WebhookPersonalAccessTokenRequestEvent {
   Approved(WebhookPersonalAccessTokenRequestApproved),
-
   Cancelled(WebhookPersonalAccessTokenRequestCancelled),
-
   Created(WebhookPersonalAccessTokenRequestCreated),
-
   Denied(WebhookPersonalAccessTokenRequestDenied),
 }
 
@@ -13383,13 +12540,9 @@ pub enum WebhookPersonalAccessTokenRequestEvent {
 #[serde(untagged)]
 pub enum WebhookProjectCardEvent {
   Converted(WebhookProjectCardConverted),
-
   Created(WebhookProjectCardCreated),
-
   Deleted(WebhookProjectCardDeleted),
-
   Edited(WebhookProjectCardEdited),
-
   Moved(WebhookProjectCardMoved),
 }
 
@@ -13398,13 +12551,9 @@ pub enum WebhookProjectCardEvent {
 #[serde(untagged)]
 pub enum WebhookProjectEvent {
   Closed(WebhookProjectClosed),
-
   Created(WebhookProjectCreated),
-
   Deleted(WebhookProjectDeleted),
-
   Edited(WebhookProjectEdited),
-
   Reopened(WebhookProjectReopened),
 }
 
@@ -13413,11 +12562,8 @@ pub enum WebhookProjectEvent {
 #[serde(untagged)]
 pub enum WebhookProjectColumnEvent {
   Created(WebhookProjectColumnCreated),
-
   Deleted(WebhookProjectColumnDeleted),
-
   Edited(WebhookProjectColumnEdited),
-
   Moved(WebhookProjectColumnMoved),
 }
 
@@ -13426,13 +12572,9 @@ pub enum WebhookProjectColumnEvent {
 #[serde(untagged)]
 pub enum WebhookProjectsV2Event {
   Closed(WebhookProjectsV2ProjectClosed),
-
   Created(WebhookProjectsV2ProjectCreated),
-
   Deleted(WebhookProjectsV2ProjectDeleted),
-
   Edited(WebhookProjectsV2ProjectEdited),
-
   Reopened(WebhookProjectsV2ProjectReopened),
 }
 
@@ -13441,17 +12583,11 @@ pub enum WebhookProjectsV2Event {
 #[serde(untagged)]
 pub enum WebhookProjectsV2ItemEvent {
   Archived(WebhookProjectsV2ItemArchived),
-
   Converted(WebhookProjectsV2ItemConverted),
-
   Created(WebhookProjectsV2ItemCreated),
-
   Deleted(WebhookProjectsV2ItemDeleted),
-
   Edited(WebhookProjectsV2ItemEdited),
-
   Reordered(WebhookProjectsV2ItemReordered),
-
   Restored(WebhookProjectsV2ItemRestored),
 }
 
@@ -13460,45 +12596,25 @@ pub enum WebhookProjectsV2ItemEvent {
 #[serde(untagged)]
 pub enum WebhookPullRequestEvent {
   Assigned(WebhookPullRequestAssigned),
-
   AutoMergeDisabled(WebhookPullRequestAutoMergeDisabled),
-
   AutoMergeEnabled(WebhookPullRequestAutoMergeEnabled),
-
   Closed(WebhookPullRequestClosed),
-
   ConvertedToDraft(WebhookPullRequestConvertedToDraft),
-
   Demilestoned(WebhookPullRequestDemilestoned),
-
   Dequeued(WebhookPullRequestDequeued),
-
   Edited(WebhookPullRequestEdited),
-
   Enqueued(WebhookPullRequestEnqueued),
-
   Labeled(WebhookPullRequestLabeled),
-
   Locked(WebhookPullRequestLocked),
-
   Milestoned(WebhookPullRequestMilestoned),
-
   Opened(WebhookPullRequestOpened),
-
   ReadyForReview(WebhookPullRequestReadyForReview),
-
   Reopened(WebhookPullRequestReopened),
-
   ReviewRequestRemoved(WebhookPullRequestReviewRequestRemoved),
-
   ReviewRequested(WebhookPullRequestReviewRequested),
-
   Synchronize(WebhookPullRequestSynchronize),
-
   Unassigned(WebhookPullRequestUnassigned),
-
   Unlabeled(WebhookPullRequestUnlabeled),
-
   Unlocked(WebhookPullRequestUnlocked),
 }
 
@@ -13507,9 +12623,7 @@ pub enum WebhookPullRequestEvent {
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewCommentEvent {
   Created(WebhookPullRequestReviewCommentCreated),
-
   Deleted(WebhookPullRequestReviewCommentDeleted),
-
   Edited(WebhookPullRequestReviewCommentEdited),
 }
 
@@ -13518,9 +12632,7 @@ pub enum WebhookPullRequestReviewCommentEvent {
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewEvent {
   Dismissed(WebhookPullRequestReviewDismissed),
-
   Edited(WebhookPullRequestReviewEdited),
-
   Submitted(WebhookPullRequestReviewSubmitted),
 }
 
@@ -13529,7 +12641,6 @@ pub enum WebhookPullRequestReviewEvent {
 #[serde(untagged)]
 pub enum WebhookPullRequestReviewThreadEvent {
   Resolved(WebhookPullRequestReviewThreadResolved),
-
   Unresolved(WebhookPullRequestReviewThreadUnresolved),
 }
 
@@ -13538,7 +12649,6 @@ pub enum WebhookPullRequestReviewThreadEvent {
 #[serde(untagged)]
 pub enum WebhookRegistryPackageEvent {
   Published(WebhookRegistryPackagePublished),
-
   Updated(WebhookRegistryPackageUpdated),
 }
 
@@ -13547,17 +12657,11 @@ pub enum WebhookRegistryPackageEvent {
 #[serde(untagged)]
 pub enum WebhookReleaseEvent {
   Created(WebhookReleaseCreated),
-
   Deleted(WebhookReleaseDeleted),
-
   Edited(WebhookReleaseEdited),
-
   Prereleased(WebhookReleasePrereleased),
-
   Published(WebhookReleasePublished),
-
   Released(WebhookReleaseReleased),
-
   Unpublished(WebhookReleaseUnpublished),
 }
 
@@ -13566,7 +12670,6 @@ pub enum WebhookReleaseEvent {
 #[serde(untagged)]
 pub enum WebhookRepositoryAdvisoryEvent {
   Published(WebhookRepositoryAdvisoryPublished),
-
   Reported(WebhookRepositoryAdvisoryReported),
 }
 
@@ -13575,21 +12678,13 @@ pub enum WebhookRepositoryAdvisoryEvent {
 #[serde(untagged)]
 pub enum WebhookRepositoryEvent {
   Archived(WebhookRepositoryArchived),
-
   Created(WebhookRepositoryCreated),
-
   Deleted(WebhookRepositoryDeleted),
-
   Edited(WebhookRepositoryEdited),
-
   Privatized(WebhookRepositoryPrivatized),
-
   Publicized(WebhookRepositoryPublicized),
-
   Renamed(WebhookRepositoryRenamed),
-
   Transferred(WebhookRepositoryTransferred),
-
   Unarchived(WebhookRepositoryUnarchived),
 }
 
@@ -13605,9 +12700,7 @@ pub enum WebhookRepositoryDispatchEvent {
 #[serde(untagged)]
 pub enum WebhookRepositoryRulesetEvent {
   Created(WebhookRepositoryRulesetCreated),
-
   Deleted(WebhookRepositoryRulesetDeleted),
-
   Edited(WebhookRepositoryRulesetEdited),
 }
 
@@ -13616,11 +12709,8 @@ pub enum WebhookRepositoryRulesetEvent {
 #[serde(untagged)]
 pub enum WebhookRepositoryVulnerabilityAlertEvent {
   Create(WebhookRepositoryVulnerabilityAlertCreate),
-
   Dismiss(WebhookRepositoryVulnerabilityAlertDismiss),
-
   Reopen(WebhookRepositoryVulnerabilityAlertReopen),
-
   Resolve(WebhookRepositoryVulnerabilityAlertResolve),
 }
 
@@ -13629,13 +12719,9 @@ pub enum WebhookRepositoryVulnerabilityAlertEvent {
 #[serde(untagged)]
 pub enum WebhookSecretScanningAlertEvent {
   Created(WebhookSecretScanningAlertCreated),
-
   Reopened(WebhookSecretScanningAlertReopened),
-
   Resolved(WebhookSecretScanningAlertResolved),
-
   Revoked(WebhookSecretScanningAlertRevoked),
-
   Validated(WebhookSecretScanningAlertValidated),
 }
 
@@ -13651,9 +12737,7 @@ pub enum WebhookSecretScanningAlertLocationEvent {
 #[serde(untagged)]
 pub enum WebhookSecurityAdvisoryEvent {
   Published(WebhookSecurityAdvisoryPublished),
-
   Updated(WebhookSecurityAdvisoryUpdated),
-
   Withdrawn(WebhookSecurityAdvisoryWithdrawn),
 }
 
@@ -13662,15 +12746,10 @@ pub enum WebhookSecurityAdvisoryEvent {
 #[serde(untagged)]
 pub enum WebhookSponsorshipEvent {
   Cancelled(WebhookSponsorshipCancelled),
-
   Created(WebhookSponsorshipCreated),
-
   Edited(WebhookSponsorshipEdited),
-
   PendingCancellation(WebhookSponsorshipPendingCancellation),
-
   PendingTierChange(WebhookSponsorshipPendingTierChange),
-
   TierChanged(WebhookSponsorshipTierChanged),
 }
 
@@ -13679,7 +12758,6 @@ pub enum WebhookSponsorshipEvent {
 #[serde(untagged)]
 pub enum WebhookStarEvent {
   Created(WebhookStarCreated),
-
   Deleted(WebhookStarDeleted),
 }
 
@@ -13688,13 +12766,9 @@ pub enum WebhookStarEvent {
 #[serde(untagged)]
 pub enum WebhookTeamEvent {
   AddedToRepository(WebhookTeamAddedToRepository),
-
   Created(WebhookTeamCreated),
-
   Deleted(WebhookTeamDeleted),
-
   Edited(WebhookTeamEdited),
-
   RemovedFromRepository(WebhookTeamRemovedFromRepository),
 }
 
@@ -13710,11 +12784,8 @@ pub enum WebhookWatchEvent {
 #[serde(untagged)]
 pub enum WebhookWorkflowJobEvent {
   Completed(WebhookWorkflowJobCompleted),
-
   InProgress(WebhookWorkflowJobInProgress),
-
   Queued(WebhookWorkflowJobQueued),
-
   Waiting(WebhookWorkflowJobWaiting),
 }
 
@@ -13723,9 +12794,7 @@ pub enum WebhookWorkflowJobEvent {
 #[serde(untagged)]
 pub enum WebhookWorkflowRunEvent {
   Completed(WebhookWorkflowRunCompleted),
-
   InProgress(WebhookWorkflowRunInProgress),
-
   Requested(WebhookWorkflowRunRequested),
 }
 

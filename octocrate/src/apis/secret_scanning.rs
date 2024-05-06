@@ -96,7 +96,7 @@ impl GitHubSecretScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    alert_number: impl Into<serde_json::Value>,
+    alert_number: impl Into<i64>,
   ) -> Request<(), (), SecretScanningAlert> {
     let owner = owner.into();
     let repo = repo.into();
@@ -121,7 +121,7 @@ impl GitHubSecretScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    alert_number: impl Into<serde_json::Value>,
+    alert_number: impl Into<i64>,
   ) -> Request<SecretScanningUpdateAlertRequest, (), SecretScanningAlert> {
     let owner = owner.into();
     let repo = repo.into();
@@ -146,7 +146,7 @@ impl GitHubSecretScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    alert_number: impl Into<serde_json::Value>,
+    alert_number: impl Into<i64>,
   ) -> Request<(), SecretScanningListLocationsForAlertQuery, SecretScanningLocationArray> {
     let owner = owner.into();
     let repo = repo.into();

@@ -31,15 +31,17 @@ impl Enum {
       fields: vec![],
       description: None,
       untagged: false,
-      copiable: false,
+      copiable: true,
       tags: vec!["full".to_string()],
     }
   }
 
   pub fn add_field(&mut self, field: EnumField) {
-    self.fields.push(field);
+    if self.copiable && field.type_name.is_some() {
+      self.copiable = false;
+    }
 
-    self.copiable = !self.fields.is_empty() && self.fields.iter().all(|f| f.type_name.is_none());
+    self.fields.push(field);
   }
 
   pub fn set_description(&mut self, description: &str) {

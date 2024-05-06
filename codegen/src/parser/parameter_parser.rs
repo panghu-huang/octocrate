@@ -1,8 +1,5 @@
 use super::{context::ParseContext, schema_parser::SchemaParser, ParsedData};
-use crate::{
-  schemas::{parameters::Parameter, schema::SchemaDefinition},
-  structures::types::Type,
-};
+use crate::{schemas::parameters::Parameter, structures::types::Type};
 
 #[derive(Debug, Clone)]
 pub struct ParameterParser<'a> {
@@ -19,11 +16,7 @@ impl<'a> ParameterParser<'a> {
     let parameter = &self.parameter;
     let is_required = parameter.required.unwrap_or(false);
 
-    let generated_struct = schema_parser.parse(
-      ctx,
-      name,
-      &SchemaDefinition::Schema(parameter.schema.clone()),
-    );
+    let generated_struct = schema_parser.parse(ctx, name, &parameter.schema);
 
     match &generated_struct {
       ParsedData::Type(type_) => {

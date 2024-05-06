@@ -294,7 +294,7 @@ impl GitHubDependabotAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    alert_number: impl Into<serde_json::Value>,
+    alert_number: impl Into<i64>,
   ) -> Request<(), (), DependabotAlert> {
     let owner = owner.into();
     let repo = repo.into();
@@ -317,7 +317,7 @@ impl GitHubDependabotAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    alert_number: impl Into<serde_json::Value>,
+    alert_number: impl Into<i64>,
   ) -> Request<DependabotUpdateAlertRequest, (), DependabotAlert> {
     let owner = owner.into();
     let repo = repo.into();

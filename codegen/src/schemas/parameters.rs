@@ -1,4 +1,4 @@
-use super::{refs::Reference, schema::Schema};
+use super::{refs::Reference, schema::SchemaDefinition};
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
@@ -15,7 +15,7 @@ pub struct Parameter {
   #[serde(rename = "in")]
   pub position: Position,
   pub required: Option<bool>,
-  pub schema: Schema,
+  pub schema: SchemaDefinition,
 }
 
 #[derive(Deserialize, Clone, Debug)]
