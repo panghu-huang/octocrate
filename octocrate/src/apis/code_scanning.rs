@@ -72,7 +72,7 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    alert_number: impl Into<serde_json::Value>,
+    alert_number: impl Into<i64>,
   ) -> Request<(), (), CodeScanningAlert> {
     let owner = owner.into();
     let repo = repo.into();
@@ -94,7 +94,7 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    alert_number: impl Into<serde_json::Value>,
+    alert_number: impl Into<i64>,
   ) -> Request<CodeScanningUpdateAlertRequest, (), CodeScanningAlert> {
     let owner = owner.into();
     let repo = repo.into();
@@ -117,7 +117,7 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-    alert_number: impl Into<serde_json::Value>,
+    alert_number: impl Into<i64>,
   ) -> Request<(), CodeScanningListAlertInstancesQuery, CodeScanningAlertInstanceArray> {
     let owner = owner.into();
     let repo = repo.into();

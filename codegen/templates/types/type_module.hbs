@@ -33,7 +33,9 @@ pub type {{ alias }} = {{ type_name }};
 {{/if}}
 pub enum {{ name }} {
   {{#each fields }}
+  {{#if tags}}
   {{render_features_cfg tags}}
+  {{/if}}
   {{#if description }}
   {{#each (split_lines description)}}
   /// {{this}}

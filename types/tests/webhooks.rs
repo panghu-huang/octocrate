@@ -10,11 +10,15 @@ use octocrate_types::webhooks::*;
 
 #[cfg(any(
   feature = "full",
-  feature = "webhook_event",
-  feature = "webhook_push",
-  feature = "webhook_pull_request",
-  feature = "webhook_workflow_run",
-  feature = "webhook_create"
+  all(
+    feature = "webhook_event",
+    any(
+      feature = "webhook_push",
+      feature = "webhook_pull_request",
+      feature = "webhook_workflow_run",
+      feature = "webhook_create"
+    )
+  )
 ))]
 fn parse_webhook_event(event: &str, data: &str) -> WebhookEvent {
   match event {
@@ -48,7 +52,10 @@ fn parse_webhook_event(event: &str, data: &str) -> WebhookEvent {
   }
 }
 
-#[cfg(any(feature = "full", feature = "webhook_event", feature = "webhook_push"))]
+#[cfg(any(
+  feature = "full",
+  all(feature = "webhook_event", feature = "webhook_push")
+))]
 #[test]
 fn test_webhook_push_event() {
   let push = include_str!("./webhooks/push.json");
@@ -71,8 +78,7 @@ fn test_webhook_push_event() {
 
 #[cfg(any(
   feature = "full",
-  feature = "webhook_event",
-  feature = "webhook_pull_request",
+  all(feature = "webhook_event", feature = "webhook_pull_request")
 ))]
 #[test]
 fn test_webhook_pull_request_opened_event() {
@@ -100,8 +106,7 @@ fn test_webhook_pull_request_opened_event() {
 
 #[cfg(any(
   feature = "full",
-  feature = "webhook_event",
-  feature = "webhook_workflow_run",
+  all(feature = "webhook_event", feature = "webhook_workflow_run")
 ))]
 #[test]
 fn test_webhook_workflow_run_completed_event() {
@@ -121,8 +126,7 @@ fn test_webhook_workflow_run_completed_event() {
 
 #[cfg(any(
   feature = "full",
-  feature = "webhook_event",
-  feature = "webhook_create"
+  all(feature = "webhook_event", feature = "webhook_create")
 ))]
 #[test]
 fn test_webhook_create_event() {
