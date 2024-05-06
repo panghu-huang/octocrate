@@ -37,7 +37,6 @@ impl Enum {
   }
 
   pub fn add_field(&mut self, field: EnumField) {
-    // self.copiable = self.fields.iter().all(|f| f.type_name.is_none());
     if self.copiable && field.type_name.is_some() {
       self.copiable = false;
     }
