@@ -54,7 +54,7 @@ impl SchemaParser {
 
     let struct_or_enum_count = parsed
       .iter()
-      .filter(|parsed| is_struct_or_enum(parsed))
+      .filter(|parsed| is_data_structure(parsed))
       .count();
 
     match struct_or_enum_count {
@@ -64,7 +64,7 @@ impl SchemaParser {
         ParsedData::Type(Type::new(&type_name))
       }
       1 => {
-        let struct_or_enum_index = parsed.iter().position(is_struct_or_enum).unwrap();
+        let struct_or_enum_index = parsed.iter().position(is_data_structure).unwrap();
 
         let struct_or_enum = parsed.get(struct_or_enum_index).unwrap();
         let schema = &schemas.get(struct_or_enum_index).unwrap();
@@ -248,7 +248,7 @@ impl SchemaParser {
   }
 }
 
-fn is_struct_or_enum(parsed: &ParsedData) -> bool {
+fn is_data_structure(parsed: &ParsedData) -> bool {
   match parsed {
     ParsedData::Struct(_) | ParsedData::Enum(_) => true,
     ParsedData::Type(type_) => type_.type_name.starts_with("Vec<"),
