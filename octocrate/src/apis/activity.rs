@@ -19,10 +19,10 @@ impl GitHubActivityAPI {
   /// We delay the public events feed by five minutes, which means the most recent event returned by the public events API actually occurred at least five minutes ago.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/events#list-public-events](https://docs.github.com/rest/activity/events#list-public-events)
-  pub fn list_public_events(&self) -> Request<(), ActivityListPublicEventsQuery, EventArray> {
+  pub fn list_public_events(&self) -> Request<(), ActivityListPublicEventsQuery, Vec<Event>> {
     let url = format!("/events");
 
-    Request::<(), ActivityListPublicEventsQuery, EventArray>::builder(&self.config)
+    Request::<(), ActivityListPublicEventsQuery, Vec<Event>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -60,12 +60,12 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActivityListPublicEventsForRepoNetworkQuery, EventArray> {
+  ) -> Request<(), ActivityListPublicEventsForRepoNetworkQuery, Vec<Event>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/networks/{owner}/{repo}/events");
 
-    Request::<(), ActivityListPublicEventsForRepoNetworkQuery, EventArray>::builder(&self.config)
+    Request::<(), ActivityListPublicEventsForRepoNetworkQuery, Vec<Event>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -77,10 +77,10 @@ impl GitHubActivityAPI {
   /// *Documentation*: [https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)
   pub fn list_notifications_for_authenticated_user(
     &self,
-  ) -> Request<(), ActivityListNotificationsForAuthenticatedUserQuery, ThreadArray> {
+  ) -> Request<(), ActivityListNotificationsForAuthenticatedUserQuery, Vec<Thread>> {
     let url = format!("/notifications");
 
-    Request::<(), ActivityListNotificationsForAuthenticatedUserQuery, ThreadArray>::builder(
+    Request::<(), ActivityListNotificationsForAuthenticatedUserQuery, Vec<Thread>>::builder(
       &self.config,
     )
     .get(url)
@@ -206,11 +206,11 @@ impl GitHubActivityAPI {
   pub fn list_public_org_events(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), ActivityListPublicOrgEventsQuery, EventArray> {
+  ) -> Request<(), ActivityListPublicOrgEventsQuery, Vec<Event>> {
     let org = org.into();
     let url = format!("/orgs/{org}/events");
 
-    Request::<(), ActivityListPublicOrgEventsQuery, EventArray>::builder(&self.config)
+    Request::<(), ActivityListPublicOrgEventsQuery, Vec<Event>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -225,12 +225,12 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActivityListRepoEventsQuery, EventArray> {
+  ) -> Request<(), ActivityListRepoEventsQuery, Vec<Event>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/events");
 
-    Request::<(), ActivityListRepoEventsQuery, EventArray>::builder(&self.config)
+    Request::<(), ActivityListRepoEventsQuery, Vec<Event>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -244,12 +244,12 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActivityListRepoNotificationsForAuthenticatedUserQuery, ThreadArray> {
+  ) -> Request<(), ActivityListRepoNotificationsForAuthenticatedUserQuery, Vec<Thread>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/notifications");
 
-    Request::<(), ActivityListRepoNotificationsForAuthenticatedUserQuery, ThreadArray>::builder(
+    Request::<(), ActivityListRepoNotificationsForAuthenticatedUserQuery, Vec<Thread>>::builder(
       &self.config,
     )
     .get(url)
@@ -315,12 +315,12 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActivityListWatchersForRepoQuery, SimpleUserArray> {
+  ) -> Request<(), ActivityListWatchersForRepoQuery, Vec<SimpleUser>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/subscribers");
 
-    Request::<(), ActivityListWatchersForRepoQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), ActivityListWatchersForRepoQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -393,10 +393,10 @@ impl GitHubActivityAPI {
   /// *Documentation*: [https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user](https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user)
   pub fn list_repos_starred_by_authenticated_user(
     &self,
-  ) -> Request<(), ActivityListReposStarredByAuthenticatedUserQuery, RepositoryArray> {
+  ) -> Request<(), ActivityListReposStarredByAuthenticatedUserQuery, Vec<Repository>> {
     let url = format!("/user/starred");
 
-    Request::<(), ActivityListReposStarredByAuthenticatedUserQuery, RepositoryArray>::builder(
+    Request::<(), ActivityListReposStarredByAuthenticatedUserQuery, Vec<Repository>>::builder(
       &self.config,
     )
     .get(url)
@@ -467,10 +467,10 @@ impl GitHubActivityAPI {
   /// *Documentation*: [https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user](https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user)
   pub fn list_watched_repos_for_authenticated_user(
     &self,
-  ) -> Request<(), ActivityListWatchedReposForAuthenticatedUserQuery, MinimalRepositoryArray> {
+  ) -> Request<(), ActivityListWatchedReposForAuthenticatedUserQuery, Vec<MinimalRepository>> {
     let url = format!("/user/subscriptions");
 
-    Request::<(), ActivityListWatchedReposForAuthenticatedUserQuery, MinimalRepositoryArray>::builder(&self.config)
+    Request::<(), ActivityListWatchedReposForAuthenticatedUserQuery, Vec<MinimalRepository>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -483,11 +483,11 @@ impl GitHubActivityAPI {
   pub fn list_events_for_authenticated_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ActivityListEventsForAuthenticatedUserQuery, EventArray> {
+  ) -> Request<(), ActivityListEventsForAuthenticatedUserQuery, Vec<Event>> {
     let username = username.into();
     let url = format!("/users/{username}/events");
 
-    Request::<(), ActivityListEventsForAuthenticatedUserQuery, EventArray>::builder(&self.config)
+    Request::<(), ActivityListEventsForAuthenticatedUserQuery, Vec<Event>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -501,12 +501,12 @@ impl GitHubActivityAPI {
     &self,
     username: impl Into<String>,
     org: impl Into<String>,
-  ) -> Request<(), ActivityListOrgEventsForAuthenticatedUserQuery, EventArray> {
+  ) -> Request<(), ActivityListOrgEventsForAuthenticatedUserQuery, Vec<Event>> {
     let username = username.into();
     let org = org.into();
     let url = format!("/users/{username}/events/orgs/{org}");
 
-    Request::<(), ActivityListOrgEventsForAuthenticatedUserQuery, EventArray>::builder(&self.config)
+    Request::<(), ActivityListOrgEventsForAuthenticatedUserQuery, Vec<Event>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -518,11 +518,11 @@ impl GitHubActivityAPI {
   pub fn list_public_events_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ActivityListPublicEventsForUserQuery, EventArray> {
+  ) -> Request<(), ActivityListPublicEventsForUserQuery, Vec<Event>> {
     let username = username.into();
     let url = format!("/users/{username}/events/public");
 
-    Request::<(), ActivityListPublicEventsForUserQuery, EventArray>::builder(&self.config)
+    Request::<(), ActivityListPublicEventsForUserQuery, Vec<Event>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -535,11 +535,11 @@ impl GitHubActivityAPI {
   pub fn list_received_events_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ActivityListReceivedEventsForUserQuery, EventArray> {
+  ) -> Request<(), ActivityListReceivedEventsForUserQuery, Vec<Event>> {
     let username = username.into();
     let url = format!("/users/{username}/received_events");
 
-    Request::<(), ActivityListReceivedEventsForUserQuery, EventArray>::builder(&self.config)
+    Request::<(), ActivityListReceivedEventsForUserQuery, Vec<Event>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -551,11 +551,11 @@ impl GitHubActivityAPI {
   pub fn list_received_public_events_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ActivityListReceivedPublicEventsForUserQuery, EventArray> {
+  ) -> Request<(), ActivityListReceivedPublicEventsForUserQuery, Vec<Event>> {
     let username = username.into();
     let url = format!("/users/{username}/received_events/public");
 
-    Request::<(), ActivityListReceivedPublicEventsForUserQuery, EventArray>::builder(&self.config)
+    Request::<(), ActivityListReceivedPublicEventsForUserQuery, Vec<Event>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -589,11 +589,11 @@ impl GitHubActivityAPI {
   pub fn list_repos_watched_by_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ActivityListReposWatchedByUserQuery, MinimalRepositoryArray> {
+  ) -> Request<(), ActivityListReposWatchedByUserQuery, Vec<MinimalRepository>> {
     let username = username.into();
     let url = format!("/users/{username}/subscriptions");
 
-    Request::<(), ActivityListReposWatchedByUserQuery, MinimalRepositoryArray>::builder(
+    Request::<(), ActivityListReposWatchedByUserQuery, Vec<MinimalRepository>>::builder(
       &self.config,
     )
     .get(url)

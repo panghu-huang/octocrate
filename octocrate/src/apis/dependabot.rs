@@ -28,11 +28,11 @@ impl GitHubDependabotAPI {
   pub fn list_alerts_for_enterprise(
     &self,
     enterprise: impl Into<String>,
-  ) -> Request<(), DependabotListAlertsForEnterpriseQuery, DependabotAlertWithRepositoryArray> {
+  ) -> Request<(), DependabotListAlertsForEnterpriseQuery, Vec<DependabotAlertWithRepository>> {
     let enterprise = enterprise.into();
     let url = format!("/enterprises/{enterprise}/dependabot/alerts");
 
-    Request::<(), DependabotListAlertsForEnterpriseQuery, DependabotAlertWithRepositoryArray>::builder(&self.config)
+    Request::<(), DependabotListAlertsForEnterpriseQuery, Vec<DependabotAlertWithRepository>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -49,11 +49,11 @@ impl GitHubDependabotAPI {
   pub fn list_alerts_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), DependabotListAlertsForOrgQuery, DependabotAlertWithRepositoryArray> {
+  ) -> Request<(), DependabotListAlertsForOrgQuery, Vec<DependabotAlertWithRepository>> {
     let org = org.into();
     let url = format!("/orgs/{org}/dependabot/alerts");
 
-    Request::<(), DependabotListAlertsForOrgQuery, DependabotAlertWithRepositoryArray>::builder(
+    Request::<(), DependabotListAlertsForOrgQuery, Vec<DependabotAlertWithRepository>>::builder(
       &self.config,
     )
     .get(url)
@@ -275,12 +275,12 @@ impl GitHubDependabotAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), DependabotListAlertsForRepoQuery, DependabotAlertArray> {
+  ) -> Request<(), DependabotListAlertsForRepoQuery, Vec<DependabotAlert>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/dependabot/alerts");
 
-    Request::<(), DependabotListAlertsForRepoQuery, DependabotAlertArray>::builder(&self.config)
+    Request::<(), DependabotListAlertsForRepoQuery, Vec<DependabotAlert>>::builder(&self.config)
       .get(url)
       .build()
   }

@@ -32,7 +32,13 @@ impl TypeModule {
     match parsed {
       ParsedData::Enum(e) => self.enums.push(e.clone()),
       ParsedData::Struct(s) => self.structs.push(s.clone()),
-      ParsedData::Type(t) => self.types.push(t.clone()),
+      ParsedData::Type(t) => {
+        // Only add types that have an alias
+        // having an alias --> pub type Alias = Type;
+        if t.alias.is_some() {
+          self.types.push(t.clone());
+        }
+      }
     }
   }
 }

@@ -19,10 +19,10 @@ impl GitHubGistsAPI {
   /// Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user](https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user)
-  pub fn list(&self) -> Request<(), GistsListQuery, BaseGistArray> {
+  pub fn list(&self) -> Request<(), GistsListQuery, Vec<BaseGist>> {
     let url = format!("/gists");
 
-    Request::<(), GistsListQuery, BaseGistArray>::builder(&self.config)
+    Request::<(), GistsListQuery, Vec<BaseGist>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -49,10 +49,10 @@ impl GitHubGistsAPI {
   /// Note: With [pagination](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-public-gists](https://docs.github.com/rest/gists/gists#list-public-gists)
-  pub fn list_public(&self) -> Request<(), GistsListPublicQuery, BaseGistArray> {
+  pub fn list_public(&self) -> Request<(), GistsListPublicQuery, Vec<BaseGist>> {
     let url = format!("/gists/public");
 
-    Request::<(), GistsListPublicQuery, BaseGistArray>::builder(&self.config)
+    Request::<(), GistsListPublicQuery, Vec<BaseGist>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -62,10 +62,10 @@ impl GitHubGistsAPI {
   /// List the authenticated user's starred gists:
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-starred-gists](https://docs.github.com/rest/gists/gists#list-starred-gists)
-  pub fn list_starred(&self) -> Request<(), GistsListStarredQuery, BaseGistArray> {
+  pub fn list_starred(&self) -> Request<(), GistsListStarredQuery, Vec<BaseGist>> {
     let url = format!("/gists/starred");
 
-    Request::<(), GistsListStarredQuery, BaseGistArray>::builder(&self.config)
+    Request::<(), GistsListStarredQuery, Vec<BaseGist>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -138,11 +138,11 @@ impl GitHubGistsAPI {
   pub fn list_comments(
     &self,
     gist_id: impl Into<String>,
-  ) -> Request<(), GistsListCommentsQuery, GistCommentArray> {
+  ) -> Request<(), GistsListCommentsQuery, Vec<GistComment>> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/comments");
 
-    Request::<(), GistsListCommentsQuery, GistCommentArray>::builder(&self.config)
+    Request::<(), GistsListCommentsQuery, Vec<GistComment>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -242,11 +242,11 @@ impl GitHubGistsAPI {
   pub fn list_commits(
     &self,
     gist_id: impl Into<String>,
-  ) -> Request<(), GistsListCommitsQuery, GistCommitArray> {
+  ) -> Request<(), GistsListCommitsQuery, Vec<GistCommit>> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/commits");
 
-    Request::<(), GistsListCommitsQuery, GistCommitArray>::builder(&self.config)
+    Request::<(), GistsListCommitsQuery, Vec<GistCommit>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -258,11 +258,11 @@ impl GitHubGistsAPI {
   pub fn list_forks(
     &self,
     gist_id: impl Into<String>,
-  ) -> Request<(), GistsListForksQuery, GistSimpleArray> {
+  ) -> Request<(), GistsListForksQuery, Vec<GistSimple>> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/forks");
 
-    Request::<(), GistsListForksQuery, GistSimpleArray>::builder(&self.config)
+    Request::<(), GistsListForksQuery, Vec<GistSimple>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -352,11 +352,11 @@ impl GitHubGistsAPI {
   pub fn list_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), GistsListForUserQuery, BaseGistArray> {
+  ) -> Request<(), GistsListForUserQuery, Vec<BaseGist>> {
     let username = username.into();
     let url = format!("/users/{username}/gists");
 
-    Request::<(), GistsListForUserQuery, BaseGistArray>::builder(&self.config)
+    Request::<(), GistsListForUserQuery, Vec<BaseGist>>::builder(&self.config)
       .get(url)
       .build()
   }

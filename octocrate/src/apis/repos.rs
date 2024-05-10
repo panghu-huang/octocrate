@@ -24,11 +24,11 @@ impl GitHubReposAPI {
   pub fn list_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), ReposListForOrgQuery, MinimalRepositoryArray> {
+  ) -> Request<(), ReposListForOrgQuery, Vec<MinimalRepository>> {
     let org = org.into();
     let url = format!("/orgs/{org}/repos");
 
-    Request::<(), ReposListForOrgQuery, MinimalRepositoryArray>::builder(&self.config)
+    Request::<(), ReposListForOrgQuery, Vec<MinimalRepository>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -60,11 +60,11 @@ impl GitHubReposAPI {
   pub fn get_org_rulesets(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), ReposGetOrgRulesetsQuery, RepositoryRulesetArray> {
+  ) -> Request<(), ReposGetOrgRulesetsQuery, Vec<RepositoryRuleset>> {
     let org = org.into();
     let url = format!("/orgs/{org}/rulesets");
 
-    Request::<(), ReposGetOrgRulesetsQuery, RepositoryRulesetArray>::builder(&self.config)
+    Request::<(), ReposGetOrgRulesetsQuery, Vec<RepositoryRuleset>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -257,12 +257,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListActivitiesQuery, ActivityArray> {
+  ) -> Request<(), ReposListActivitiesQuery, Vec<Activity>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/activity");
 
-    Request::<(), ReposListActivitiesQuery, ActivityArray>::builder(&self.config)
+    Request::<(), ReposListActivitiesQuery, Vec<Activity>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -278,12 +278,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), AutolinkArray> {
+  ) -> Request<(), (), Vec<Autolink>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/autolinks");
 
-    Request::<(), (), AutolinkArray>::builder(&self.config)
+    Request::<(), (), Vec<Autolink>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -418,12 +418,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListBranchesQuery, ShortBranchArray> {
+  ) -> Request<(), ReposListBranchesQuery, Vec<ShortBranch>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/branches");
 
-    Request::<(), ReposListBranchesQuery, ShortBranchArray>::builder(&self.config)
+    Request::<(), ReposListBranchesQuery, Vec<ShortBranch>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -801,14 +801,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), StringArray> {
+  ) -> Request<(), (), Vec<String>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url =
       format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
-    Request::<(), (), StringArray>::builder(&self.config)
+    Request::<(), (), Vec<String>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -823,14 +823,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposAddStatusCheckContextsRequest, (), StringArray> {
+  ) -> Request<ReposAddStatusCheckContextsRequest, (), Vec<String>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url =
       format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
-    Request::<ReposAddStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
+    Request::<ReposAddStatusCheckContextsRequest, (), Vec<String>>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -845,14 +845,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposSetStatusCheckContextsRequest, (), StringArray> {
+  ) -> Request<ReposSetStatusCheckContextsRequest, (), Vec<String>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url =
       format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
-    Request::<ReposSetStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
+    Request::<ReposSetStatusCheckContextsRequest, (), Vec<String>>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -867,14 +867,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposRemoveStatusCheckContextsRequest, (), StringArray> {
+  ) -> Request<ReposRemoveStatusCheckContextsRequest, (), Vec<String>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url =
       format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
-    Request::<ReposRemoveStatusCheckContextsRequest, (), StringArray>::builder(&self.config)
+    Request::<ReposRemoveStatusCheckContextsRequest, (), Vec<String>>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -939,13 +939,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), IntegrationArray> {
+  ) -> Request<(), (), Vec<Integration>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<(), (), IntegrationArray>::builder(&self.config)
+    Request::<(), (), Vec<Integration>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -962,13 +962,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposAddAppAccessRestrictionsRequest, (), IntegrationArray> {
+  ) -> Request<ReposAddAppAccessRestrictionsRequest, (), Vec<Integration>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<ReposAddAppAccessRestrictionsRequest, (), IntegrationArray>::builder(&self.config)
+    Request::<ReposAddAppAccessRestrictionsRequest, (), Vec<Integration>>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -985,13 +985,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposSetAppAccessRestrictionsRequest, (), IntegrationArray> {
+  ) -> Request<ReposSetAppAccessRestrictionsRequest, (), Vec<Integration>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<ReposSetAppAccessRestrictionsRequest, (), IntegrationArray>::builder(&self.config)
+    Request::<ReposSetAppAccessRestrictionsRequest, (), Vec<Integration>>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1008,13 +1008,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposRemoveAppAccessRestrictionsRequest, (), IntegrationArray> {
+  ) -> Request<ReposRemoveAppAccessRestrictionsRequest, (), Vec<Integration>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<ReposRemoveAppAccessRestrictionsRequest, (), IntegrationArray>::builder(&self.config)
+    Request::<ReposRemoveAppAccessRestrictionsRequest, (), Vec<Integration>>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -1031,13 +1031,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), TeamArray> {
+  ) -> Request<(), (), Vec<Team>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
 
-    Request::<(), (), TeamArray>::builder(&self.config)
+    Request::<(), (), Vec<Team>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1054,13 +1054,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposAddTeamAccessRestrictionsRequest, (), TeamArray> {
+  ) -> Request<ReposAddTeamAccessRestrictionsRequest, (), Vec<Team>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
 
-    Request::<ReposAddTeamAccessRestrictionsRequest, (), TeamArray>::builder(&self.config)
+    Request::<ReposAddTeamAccessRestrictionsRequest, (), Vec<Team>>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1077,13 +1077,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposSetTeamAccessRestrictionsRequest, (), TeamArray> {
+  ) -> Request<ReposSetTeamAccessRestrictionsRequest, (), Vec<Team>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
 
-    Request::<ReposSetTeamAccessRestrictionsRequest, (), TeamArray>::builder(&self.config)
+    Request::<ReposSetTeamAccessRestrictionsRequest, (), Vec<Team>>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1100,13 +1100,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposRemoveTeamAccessRestrictionsRequest, (), TeamArray> {
+  ) -> Request<ReposRemoveTeamAccessRestrictionsRequest, (), Vec<Team>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
 
-    Request::<ReposRemoveTeamAccessRestrictionsRequest, (), TeamArray>::builder(&self.config)
+    Request::<ReposRemoveTeamAccessRestrictionsRequest, (), Vec<Team>>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -1123,13 +1123,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), SimpleUserArray> {
+  ) -> Request<(), (), Vec<SimpleUser>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
 
-    Request::<(), (), SimpleUserArray>::builder(&self.config)
+    Request::<(), (), Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1150,13 +1150,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposAddUserAccessRestrictionsRequest, (), SimpleUserArray> {
+  ) -> Request<ReposAddUserAccessRestrictionsRequest, (), Vec<SimpleUser>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
 
-    Request::<ReposAddUserAccessRestrictionsRequest, (), SimpleUserArray>::builder(&self.config)
+    Request::<ReposAddUserAccessRestrictionsRequest, (), Vec<SimpleUser>>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1177,13 +1177,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposSetUserAccessRestrictionsRequest, (), SimpleUserArray> {
+  ) -> Request<ReposSetUserAccessRestrictionsRequest, (), Vec<SimpleUser>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
 
-    Request::<ReposSetUserAccessRestrictionsRequest, (), SimpleUserArray>::builder(&self.config)
+    Request::<ReposSetUserAccessRestrictionsRequest, (), Vec<SimpleUser>>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1204,13 +1204,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposRemoveUserAccessRestrictionsRequest, (), SimpleUserArray> {
+  ) -> Request<ReposRemoveUserAccessRestrictionsRequest, (), Vec<SimpleUser>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
 
-    Request::<ReposRemoveUserAccessRestrictionsRequest, (), SimpleUserArray>::builder(&self.config)
+    Request::<ReposRemoveUserAccessRestrictionsRequest, (), Vec<SimpleUser>>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -1281,12 +1281,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListCollaboratorsQuery, CollaboratorArray> {
+  ) -> Request<(), ReposListCollaboratorsQuery, Vec<Collaborator>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/collaborators");
 
-    Request::<(), ReposListCollaboratorsQuery, CollaboratorArray>::builder(&self.config)
+    Request::<(), ReposListCollaboratorsQuery, Vec<Collaborator>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1443,12 +1443,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListCommitCommentsForRepoQuery, CommitCommentArray> {
+  ) -> Request<(), ReposListCommitCommentsForRepoQuery, Vec<CommitComment>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/comments");
 
-    Request::<(), ReposListCommitCommentsForRepoQuery, CommitCommentArray>::builder(&self.config)
+    Request::<(), ReposListCommitCommentsForRepoQuery, Vec<CommitComment>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1565,12 +1565,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListCommitsQuery, CommitArray> {
+  ) -> Request<(), ReposListCommitsQuery, Vec<Commit>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/commits");
 
-    Request::<(), ReposListCommitsQuery, CommitArray>::builder(&self.config)
+    Request::<(), ReposListCommitsQuery, Vec<Commit>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1587,13 +1587,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     commit_sha: impl Into<String>,
-  ) -> Request<(), (), BranchShortArray> {
+  ) -> Request<(), (), Vec<BranchShort>> {
     let owner = owner.into();
     let repo = repo.into();
     let commit_sha = commit_sha.into();
     let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head");
 
-    Request::<(), (), BranchShortArray>::builder(&self.config)
+    Request::<(), (), Vec<BranchShort>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1615,13 +1615,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     commit_sha: impl Into<String>,
-  ) -> Request<(), ReposListCommentsForCommitQuery, CommitCommentArray> {
+  ) -> Request<(), ReposListCommentsForCommitQuery, Vec<CommitComment>> {
     let owner = owner.into();
     let repo = repo.into();
     let commit_sha = commit_sha.into();
     let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/comments");
 
-    Request::<(), ReposListCommentsForCommitQuery, CommitCommentArray>::builder(&self.config)
+    Request::<(), ReposListCommentsForCommitQuery, Vec<CommitComment>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1668,13 +1668,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     commit_sha: impl Into<String>,
-  ) -> Request<(), ReposListPullRequestsAssociatedWithCommitQuery, PullRequestSimpleArray> {
+  ) -> Request<(), ReposListPullRequestsAssociatedWithCommitQuery, Vec<PullRequestSimple>> {
     let owner = owner.into();
     let repo = repo.into();
     let commit_sha = commit_sha.into();
     let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/pulls");
 
-    Request::<(), ReposListPullRequestsAssociatedWithCommitQuery, PullRequestSimpleArray>::builder(
+    Request::<(), ReposListPullRequestsAssociatedWithCommitQuery, Vec<PullRequestSimple>>::builder(
       &self.config,
     )
     .get(url)
@@ -1779,13 +1779,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<(), ReposListCommitStatusesForRefQuery, StatusArray> {
+  ) -> Request<(), ReposListCommitStatusesForRefQuery, Vec<Status>> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/commits/{ref_}/statuses");
 
-    Request::<(), ReposListCommitStatusesForRefQuery, StatusArray>::builder(&self.config)
+    Request::<(), ReposListCommitStatusesForRefQuery, Vec<Status>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1999,12 +1999,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListContributorsQuery, ContributorArray> {
+  ) -> Request<(), ReposListContributorsQuery, Vec<Contributor>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/contributors");
 
-    Request::<(), ReposListContributorsQuery, ContributorArray>::builder(&self.config)
+    Request::<(), ReposListContributorsQuery, Vec<Contributor>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2018,12 +2018,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListDeploymentsQuery, DeploymentArray> {
+  ) -> Request<(), ReposListDeploymentsQuery, Vec<Deployment>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/deployments");
 
-    Request::<(), ReposListDeploymentsQuery, DeploymentArray>::builder(&self.config)
+    Request::<(), ReposListDeploymentsQuery, Vec<Deployment>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2156,13 +2156,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     deployment_id: impl Into<i64>,
-  ) -> Request<(), ReposListDeploymentStatusesQuery, DeploymentStatusArray> {
+  ) -> Request<(), ReposListDeploymentStatusesQuery, Vec<DeploymentStatus>> {
     let owner = owner.into();
     let repo = repo.into();
     let deployment_id = deployment_id.into();
     let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses");
 
-    Request::<(), ReposListDeploymentStatusesQuery, DeploymentStatusArray>::builder(&self.config)
+    Request::<(), ReposListDeploymentStatusesQuery, Vec<DeploymentStatus>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2621,12 +2621,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListForksQuery, MinimalRepositoryArray> {
+  ) -> Request<(), ReposListForksQuery, Vec<MinimalRepository>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/forks");
 
-    Request::<(), ReposListForksQuery, MinimalRepositoryArray>::builder(&self.config)
+    Request::<(), ReposListForksQuery, Vec<MinimalRepository>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2663,12 +2663,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListWebhooksQuery, HookArray> {
+  ) -> Request<(), ReposListWebhooksQuery, Vec<Hook>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/hooks");
 
-    Request::<(), ReposListWebhooksQuery, HookArray>::builder(&self.config)
+    Request::<(), ReposListWebhooksQuery, Vec<Hook>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2811,13 +2811,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), ReposListWebhookDeliveriesQuery, HookDeliveryItemArray> {
+  ) -> Request<(), ReposListWebhookDeliveriesQuery, Vec<HookDeliveryItem>> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries");
 
-    Request::<(), ReposListWebhookDeliveriesQuery, HookDeliveryItemArray>::builder(&self.config)
+    Request::<(), ReposListWebhookDeliveriesQuery, Vec<HookDeliveryItem>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2921,12 +2921,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListInvitationsQuery, RepositoryInvitationArray> {
+  ) -> Request<(), ReposListInvitationsQuery, Vec<RepositoryInvitation>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/invitations");
 
-    Request::<(), ReposListInvitationsQuery, RepositoryInvitationArray>::builder(&self.config)
+    Request::<(), ReposListInvitationsQuery, Vec<RepositoryInvitation>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2979,12 +2979,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListDeployKeysQuery, DeployKeyArray> {
+  ) -> Request<(), ReposListDeployKeysQuery, Vec<DeployKey>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/keys");
 
-    Request::<(), ReposListDeployKeysQuery, DeployKeyArray>::builder(&self.config)
+    Request::<(), ReposListDeployKeysQuery, Vec<DeployKey>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3206,12 +3206,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListPagesBuildsQuery, PageBuildArray> {
+  ) -> Request<(), ReposListPagesBuildsQuery, Vec<PageBuild>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages/builds");
 
-    Request::<(), ReposListPagesBuildsQuery, PageBuildArray>::builder(&self.config)
+    Request::<(), ReposListPagesBuildsQuery, Vec<PageBuild>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3440,12 +3440,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), CustomPropertyValueArray> {
+  ) -> Request<(), (), Vec<CustomPropertyValue>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/properties/values");
 
-    Request::<(), (), CustomPropertyValueArray>::builder(&self.config)
+    Request::<(), (), Vec<CustomPropertyValue>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3533,12 +3533,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListReleasesQuery, ReleaseArray> {
+  ) -> Request<(), ReposListReleasesQuery, Vec<Release>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/releases");
 
-    Request::<(), ReposListReleasesQuery, ReleaseArray>::builder(&self.config)
+    Request::<(), ReposListReleasesQuery, Vec<Release>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3763,13 +3763,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     release_id: impl Into<i64>,
-  ) -> Request<(), ReposListReleaseAssetsQuery, ReleaseAssetArray> {
+  ) -> Request<(), ReposListReleaseAssetsQuery, Vec<ReleaseAsset>> {
     let owner = owner.into();
     let repo = repo.into();
     let release_id = release_id.into();
     let url = format!("/repos/{owner}/{repo}/releases/{release_id}/assets");
 
-    Request::<(), ReposListReleaseAssetsQuery, ReleaseAssetArray>::builder(&self.config)
+    Request::<(), ReposListReleaseAssetsQuery, Vec<ReleaseAsset>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3826,13 +3826,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), ReposGetBranchRulesQuery, RepositoryRuleDetailedArray> {
+  ) -> Request<(), ReposGetBranchRulesQuery, Vec<RepositoryRuleDetailed>> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/rules/branches/{branch}");
 
-    Request::<(), ReposGetBranchRulesQuery, RepositoryRuleDetailedArray>::builder(&self.config)
+    Request::<(), ReposGetBranchRulesQuery, Vec<RepositoryRuleDetailed>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3846,12 +3846,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposGetRepoRulesetsQuery, RepositoryRulesetArray> {
+  ) -> Request<(), ReposGetRepoRulesetsQuery, Vec<RepositoryRuleset>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/rulesets");
 
-    Request::<(), ReposGetRepoRulesetsQuery, RepositoryRulesetArray>::builder(&self.config)
+    Request::<(), ReposGetRepoRulesetsQuery, Vec<RepositoryRuleset>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4013,12 +4013,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), CommitActivityArray> {
+  ) -> Request<(), (), Vec<CommitActivity>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/stats/commit_activity");
 
-    Request::<(), (), CommitActivityArray>::builder(&self.config)
+    Request::<(), (), Vec<CommitActivity>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4040,12 +4040,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ContributorActivityArray> {
+  ) -> Request<(), (), Vec<ContributorActivity>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/stats/contributors");
 
-    Request::<(), (), ContributorActivityArray>::builder(&self.config)
+    Request::<(), (), Vec<ContributorActivity>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4129,12 +4129,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListTagsQuery, TagArray> {
+  ) -> Request<(), ReposListTagsQuery, Vec<Tag>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/tags");
 
-    Request::<(), ReposListTagsQuery, TagArray>::builder(&self.config)
+    Request::<(), ReposListTagsQuery, Vec<Tag>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4150,12 +4150,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), TagProtectionArray> {
+  ) -> Request<(), (), Vec<TagProtection>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/tags/protection");
 
-    Request::<(), (), TagProtectionArray>::builder(&self.config)
+    Request::<(), (), Vec<TagProtection>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4239,12 +4239,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListTeamsQuery, TeamArray> {
+  ) -> Request<(), ReposListTeamsQuery, Vec<Team>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/teams");
 
-    Request::<(), ReposListTeamsQuery, TeamArray>::builder(&self.config)
+    Request::<(), ReposListTeamsQuery, Vec<Team>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4313,12 +4313,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ContentTrafficArray> {
+  ) -> Request<(), (), Vec<ContentTraffic>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/traffic/popular/paths");
 
-    Request::<(), (), ContentTrafficArray>::builder(&self.config)
+    Request::<(), (), Vec<ContentTraffic>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4332,12 +4332,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ReferrerTrafficArray> {
+  ) -> Request<(), (), Vec<ReferrerTraffic>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/traffic/popular/referrers");
 
-    Request::<(), (), ReferrerTrafficArray>::builder(&self.config)
+    Request::<(), (), Vec<ReferrerTraffic>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4494,10 +4494,10 @@ impl GitHubReposAPI {
   /// - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of repositories.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-public-repositories](https://docs.github.com/rest/repos/repos#list-public-repositories)
-  pub fn list_public(&self) -> Request<(), ReposListPublicQuery, MinimalRepositoryArray> {
+  pub fn list_public(&self) -> Request<(), ReposListPublicQuery, Vec<MinimalRepository>> {
     let url = format!("/repositories");
 
-    Request::<(), ReposListPublicQuery, MinimalRepositoryArray>::builder(&self.config)
+    Request::<(), ReposListPublicQuery, Vec<MinimalRepository>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4511,10 +4511,10 @@ impl GitHubReposAPI {
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user](https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<(), ReposListForAuthenticatedUserQuery, RepositoryArray> {
+  ) -> Request<(), ReposListForAuthenticatedUserQuery, Vec<Repository>> {
     let url = format!("/user/repos");
 
-    Request::<(), ReposListForAuthenticatedUserQuery, RepositoryArray>::builder(&self.config)
+    Request::<(), ReposListForAuthenticatedUserQuery, Vec<Repository>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4543,10 +4543,10 @@ impl GitHubReposAPI {
   /// *Documentation*: [https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user](https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user)
   pub fn list_invitations_for_authenticated_user(
     &self,
-  ) -> Request<(), ReposListInvitationsForAuthenticatedUserQuery, RepositoryInvitationArray> {
+  ) -> Request<(), ReposListInvitationsForAuthenticatedUserQuery, Vec<RepositoryInvitation>> {
     let url = format!("/user/repository_invitations");
 
-    Request::<(), ReposListInvitationsForAuthenticatedUserQuery, RepositoryInvitationArray>::builder(&self.config)
+    Request::<(), ReposListInvitationsForAuthenticatedUserQuery, Vec<RepositoryInvitation>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4591,11 +4591,11 @@ impl GitHubReposAPI {
   pub fn list_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ReposListForUserQuery, MinimalRepositoryArray> {
+  ) -> Request<(), ReposListForUserQuery, Vec<MinimalRepository>> {
     let username = username.into();
     let url = format!("/users/{username}/repos");
 
-    Request::<(), ReposListForUserQuery, MinimalRepositoryArray>::builder(&self.config)
+    Request::<(), ReposListForUserQuery, Vec<MinimalRepository>>::builder(&self.config)
       .get(url)
       .build()
   }

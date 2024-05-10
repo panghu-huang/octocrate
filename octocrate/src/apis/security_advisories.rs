@@ -22,10 +22,10 @@ impl GitHubSecurityAdvisoriesAPI {
   /// *Documentation*: [https://docs.github.com/rest/security-advisories/global-advisories#list-global-security-advisories](https://docs.github.com/rest/security-advisories/global-advisories#list-global-security-advisories)
   pub fn list_global_advisories(
     &self,
-  ) -> Request<(), SecurityAdvisoriesListGlobalAdvisoriesQuery, GlobalAdvisoryArray> {
+  ) -> Request<(), SecurityAdvisoriesListGlobalAdvisoriesQuery, Vec<GlobalAdvisory>> {
     let url = format!("/advisories");
 
-    Request::<(), SecurityAdvisoriesListGlobalAdvisoriesQuery, GlobalAdvisoryArray>::builder(
+    Request::<(), SecurityAdvisoriesListGlobalAdvisoriesQuery, Vec<GlobalAdvisory>>::builder(
       &self.config,
     )
     .get(url)
@@ -58,11 +58,11 @@ impl GitHubSecurityAdvisoriesAPI {
   pub fn list_org_repository_advisories(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), SecurityAdvisoriesListOrgRepositoryAdvisoriesQuery, RepositoryAdvisoryArray> {
+  ) -> Request<(), SecurityAdvisoriesListOrgRepositoryAdvisoriesQuery, Vec<RepositoryAdvisory>> {
     let org = org.into();
     let url = format!("/orgs/{org}/security-advisories");
 
-    Request::<(), SecurityAdvisoriesListOrgRepositoryAdvisoriesQuery, RepositoryAdvisoryArray>::builder(&self.config)
+    Request::<(), SecurityAdvisoriesListOrgRepositoryAdvisoriesQuery, Vec<RepositoryAdvisory>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -80,12 +80,12 @@ impl GitHubSecurityAdvisoriesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), SecurityAdvisoriesListRepositoryAdvisoriesQuery, RepositoryAdvisoryArray> {
+  ) -> Request<(), SecurityAdvisoriesListRepositoryAdvisoriesQuery, Vec<RepositoryAdvisory>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/security-advisories");
 
-    Request::<(), SecurityAdvisoriesListRepositoryAdvisoriesQuery, RepositoryAdvisoryArray>::builder(&self.config)
+    Request::<(), SecurityAdvisoriesListRepositoryAdvisoriesQuery, Vec<RepositoryAdvisory>>::builder(&self.config)
       .get(url)
       .build()
   }

@@ -42,7 +42,7 @@ impl GitHubClassroomAPI {
   ) -> Request<
     (),
     ClassroomListAcceptedAssigmentsForAnAssignmentQuery,
-    ClassroomAcceptedAssignmentArray,
+    Vec<ClassroomAcceptedAssignment>,
   > {
     let assignment_id = assignment_id.into();
     let url = format!("/assignments/{assignment_id}/accepted_assignments");
@@ -50,7 +50,7 @@ impl GitHubClassroomAPI {
     Request::<
       (),
       ClassroomListAcceptedAssigmentsForAnAssignmentQuery,
-      ClassroomAcceptedAssignmentArray,
+      Vec<ClassroomAcceptedAssignment>,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -64,11 +64,11 @@ impl GitHubClassroomAPI {
   pub fn get_assignment_grades(
     &self,
     assignment_id: impl Into<i64>,
-  ) -> Request<(), (), ClassroomAssignmentGradeArray> {
+  ) -> Request<(), (), Vec<ClassroomAssignmentGrade>> {
     let assignment_id = assignment_id.into();
     let url = format!("/assignments/{assignment_id}/grades");
 
-    Request::<(), (), ClassroomAssignmentGradeArray>::builder(&self.config)
+    Request::<(), (), Vec<ClassroomAssignmentGrade>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -78,10 +78,10 @@ impl GitHubClassroomAPI {
   /// Lists GitHub Classroom classrooms for the current user. Classrooms will only be returned if the current user is an administrator of one or more GitHub Classrooms.
   ///
   /// *Documentation*: [https://docs.github.com/rest/classroom/classroom#list-classrooms](https://docs.github.com/rest/classroom/classroom#list-classrooms)
-  pub fn list_classrooms(&self) -> Request<(), ClassroomListClassroomsQuery, SimpleClassroomArray> {
+  pub fn list_classrooms(&self) -> Request<(), ClassroomListClassroomsQuery, Vec<SimpleClassroom>> {
     let url = format!("/classrooms");
 
-    Request::<(), ClassroomListClassroomsQuery, SimpleClassroomArray>::builder(&self.config)
+    Request::<(), ClassroomListClassroomsQuery, Vec<SimpleClassroom>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -108,11 +108,11 @@ impl GitHubClassroomAPI {
   pub fn list_assignments_for_a_classroom(
     &self,
     classroom_id: impl Into<i64>,
-  ) -> Request<(), ClassroomListAssignmentsForAClassroomQuery, SimpleClassroomAssignmentArray> {
+  ) -> Request<(), ClassroomListAssignmentsForAClassroomQuery, Vec<SimpleClassroomAssignment>> {
     let classroom_id = classroom_id.into();
     let url = format!("/classrooms/{classroom_id}/assignments");
 
-    Request::<(), ClassroomListAssignmentsForAClassroomQuery, SimpleClassroomAssignmentArray>::builder(&self.config)
+    Request::<(), ClassroomListAssignmentsForAClassroomQuery, Vec<SimpleClassroomAssignment>>::builder(&self.config)
       .get(url)
       .build()
   }

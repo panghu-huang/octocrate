@@ -33,10 +33,10 @@ impl GitHubIssuesAPI {
   /// - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
   ///
   /// *Documentation*: [https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user](https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user)
-  pub fn list(&self) -> Request<(), IssuesListQuery, IssueArray> {
+  pub fn list(&self) -> Request<(), IssuesListQuery, Vec<Issue>> {
     let url = format!("/issues");
 
-    Request::<(), IssuesListQuery, IssueArray>::builder(&self.config)
+    Request::<(), IssuesListQuery, Vec<Issue>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -61,11 +61,11 @@ impl GitHubIssuesAPI {
   pub fn list_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), IssuesListForOrgQuery, IssueArray> {
+  ) -> Request<(), IssuesListForOrgQuery, Vec<Issue>> {
     let org = org.into();
     let url = format!("/orgs/{org}/issues");
 
-    Request::<(), IssuesListForOrgQuery, IssueArray>::builder(&self.config)
+    Request::<(), IssuesListForOrgQuery, Vec<Issue>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -79,12 +79,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListAssigneesQuery, SimpleUserArray> {
+  ) -> Request<(), IssuesListAssigneesQuery, Vec<SimpleUser>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/assignees");
 
-    Request::<(), IssuesListAssigneesQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), IssuesListAssigneesQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -135,12 +135,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListForRepoQuery, IssueArray> {
+  ) -> Request<(), IssuesListForRepoQuery, Vec<Issue>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/issues");
 
-    Request::<(), IssuesListForRepoQuery, IssueArray>::builder(&self.config)
+    Request::<(), IssuesListForRepoQuery, Vec<Issue>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -192,12 +192,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListCommentsForRepoQuery, IssueCommentArray> {
+  ) -> Request<(), IssuesListCommentsForRepoQuery, Vec<IssueComment>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/issues/comments");
 
-    Request::<(), IssuesListCommentsForRepoQuery, IssueCommentArray>::builder(&self.config)
+    Request::<(), IssuesListCommentsForRepoQuery, Vec<IssueComment>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -288,12 +288,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListEventsForRepoQuery, IssueEventArray> {
+  ) -> Request<(), IssuesListEventsForRepoQuery, Vec<IssueEvent>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/issues/events");
 
-    Request::<(), IssuesListEventsForRepoQuery, IssueEventArray>::builder(&self.config)
+    Request::<(), IssuesListEventsForRepoQuery, Vec<IssueEvent>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -473,13 +473,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), IssuesListCommentsQuery, IssueCommentArray> {
+  ) -> Request<(), IssuesListCommentsQuery, Vec<IssueComment>> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/comments");
 
-    Request::<(), IssuesListCommentsQuery, IssueCommentArray>::builder(&self.config)
+    Request::<(), IssuesListCommentsQuery, Vec<IssueComment>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -527,13 +527,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), IssuesListEventsQuery, IssueEventForIssueArray> {
+  ) -> Request<(), IssuesListEventsQuery, Vec<IssueEventForIssue>> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/events");
 
-    Request::<(), IssuesListEventsQuery, IssueEventForIssueArray>::builder(&self.config)
+    Request::<(), IssuesListEventsQuery, Vec<IssueEventForIssue>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -548,13 +548,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), IssuesListLabelsOnIssueQuery, LabelArray> {
+  ) -> Request<(), IssuesListLabelsOnIssueQuery, Vec<Label>> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/labels");
 
-    Request::<(), IssuesListLabelsOnIssueQuery, LabelArray>::builder(&self.config)
+    Request::<(), IssuesListLabelsOnIssueQuery, Vec<Label>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -569,13 +569,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<IssuesAddLabelsRequest, (), LabelArray> {
+  ) -> Request<IssuesAddLabelsRequest, (), Vec<Label>> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/labels");
 
-    Request::<IssuesAddLabelsRequest, (), LabelArray>::builder(&self.config)
+    Request::<IssuesAddLabelsRequest, (), Vec<Label>>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -590,13 +590,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<IssuesSetLabelsRequest, (), LabelArray> {
+  ) -> Request<IssuesSetLabelsRequest, (), Vec<Label>> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/labels");
 
-    Request::<IssuesSetLabelsRequest, (), LabelArray>::builder(&self.config)
+    Request::<IssuesSetLabelsRequest, (), Vec<Label>>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -633,14 +633,14 @@ impl GitHubIssuesAPI {
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
     name: impl Into<String>,
-  ) -> Request<(), (), LabelArray> {
+  ) -> Request<(), (), Vec<Label>> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let name = name.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}");
 
-    Request::<(), (), LabelArray>::builder(&self.config)
+    Request::<(), (), Vec<Label>>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -699,13 +699,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), IssuesListEventsForTimelineQuery, TimelineIssueEventsArray> {
+  ) -> Request<(), IssuesListEventsForTimelineQuery, Vec<TimelineIssueEvents>> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/timeline");
 
-    Request::<(), IssuesListEventsForTimelineQuery, TimelineIssueEventsArray>::builder(&self.config)
+    Request::<(), IssuesListEventsForTimelineQuery, Vec<TimelineIssueEvents>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -719,12 +719,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListLabelsForRepoQuery, LabelArray> {
+  ) -> Request<(), IssuesListLabelsForRepoQuery, Vec<Label>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/labels");
 
-    Request::<(), IssuesListLabelsForRepoQuery, LabelArray>::builder(&self.config)
+    Request::<(), IssuesListLabelsForRepoQuery, Vec<Label>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -820,12 +820,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListMilestonesQuery, MilestoneArray> {
+  ) -> Request<(), IssuesListMilestonesQuery, Vec<Milestone>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/milestones");
 
-    Request::<(), IssuesListMilestonesQuery, MilestoneArray>::builder(&self.config)
+    Request::<(), IssuesListMilestonesQuery, Vec<Milestone>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -921,13 +921,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     milestone_number: impl Into<i64>,
-  ) -> Request<(), IssuesListLabelsForMilestoneQuery, LabelArray> {
+  ) -> Request<(), IssuesListLabelsForMilestoneQuery, Vec<Label>> {
     let owner = owner.into();
     let repo = repo.into();
     let milestone_number = milestone_number.into();
     let url = format!("/repos/{owner}/{repo}/milestones/{milestone_number}/labels");
 
-    Request::<(), IssuesListLabelsForMilestoneQuery, LabelArray>::builder(&self.config)
+    Request::<(), IssuesListLabelsForMilestoneQuery, Vec<Label>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -951,10 +951,10 @@ impl GitHubIssuesAPI {
   /// *Documentation*: [https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user](https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<(), IssuesListForAuthenticatedUserQuery, IssueArray> {
+  ) -> Request<(), IssuesListForAuthenticatedUserQuery, Vec<Issue>> {
     let url = format!("/user/issues");
 
-    Request::<(), IssuesListForAuthenticatedUserQuery, IssueArray>::builder(&self.config)
+    Request::<(), IssuesListForAuthenticatedUserQuery, Vec<Issue>>::builder(&self.config)
       .get(url)
       .build()
   }

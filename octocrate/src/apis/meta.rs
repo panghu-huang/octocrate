@@ -64,10 +64,10 @@ impl GitHubMetaAPI {
   /// Get all supported GitHub API versions.
   ///
   /// *Documentation*: [https://docs.github.com/rest/meta/meta#get-all-api-versions](https://docs.github.com/rest/meta/meta#get-all-api-versions)
-  pub fn get_all_versions(&self) -> Request<(), (), StringArray> {
+  pub fn get_all_versions(&self) -> Request<(), (), Vec<String>> {
     let url = format!("/versions");
 
-    Request::<(), (), StringArray>::builder(&self.config)
+    Request::<(), (), Vec<String>>::builder(&self.config)
       .get(url)
       .build()
   }

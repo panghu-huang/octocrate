@@ -54,11 +54,7 @@ impl SchemaParser {
 
     let struct_or_enum_count = parsed
       .iter()
-      .filter(|p| match p {
-        ParsedData::Struct(_) => true,
-        ParsedData::Enum(_) => true,
-        ParsedData::Type(type_) => type_.alias.is_some(),
-      })
+      .filter(|parsed| is_data_structure(parsed))
       .count();
 
     match struct_or_enum_count {
@@ -68,14 +64,7 @@ impl SchemaParser {
         ParsedData::Type(Type::new(&type_name))
       }
       1 => {
-        let struct_or_enum_index = parsed
-          .iter()
-          .position(|p| match p {
-            ParsedData::Struct(_) => true,
-            ParsedData::Enum(_) => true,
-            ParsedData::Type(type_) => type_.alias.is_some(),
-          })
-          .unwrap();
+        let struct_or_enum_index = parsed.iter().position(is_data_structure).unwrap();
 
         let struct_or_enum = parsed.get(struct_or_enum_index).unwrap();
         let schema = &schemas.get(struct_or_enum_index).unwrap();
@@ -125,6 +114,10 @@ impl SchemaParser {
             ParsedData::Type(Type::new_with_reference(&full_type, &enum_.name))
           }
           ParsedData::Type(type_) => {
+            if type_.alias.is_none() {
+              return ParsedData::Type(type_.clone());
+            }
+
             let type_name = type_.alias.clone().unwrap();
             let full_type = schema_types.to_full_type_with_object(&type_name);
 
@@ -140,7 +133,6 @@ impl SchemaParser {
         let enum_name = self.prefixs.join("_");
         let mut enum_ = Enum::new(&enum_name);
         let mut is_optional = false;
-        // let mut has_same_name = false;
 
         enum_.untagged();
 
@@ -169,7 +161,6 @@ impl SchemaParser {
               let struct_name = &struct_.name;
 
               if check_if_same_name(struct_name, &enum_) {
-                // has_same_name = true;
                 continue;
               }
 
@@ -179,7 +170,6 @@ impl SchemaParser {
                 enum_field.set_description(description);
               }
 
-              // ctx.record_reference_type(&struct_name, struct_.clone());
               enum_field.reference(&struct_.name);
 
               enum_field.set_type_name(struct_name);
@@ -194,7 +184,6 @@ impl SchemaParser {
 
               let enum_name = &generated.name;
               if check_if_same_name(enum_name, &enum_) {
-                // has_same_name = true;
                 continue;
               }
 
@@ -218,18 +207,26 @@ impl SchemaParser {
               if type_.type_name == "Null" {
                 is_optional = true;
               } else {
-                let type_name = match &type_.alias {
-                  Some(alias) => alias,
-                  None => &type_.type_name,
+                let alias = match &type_.alias {
+                  Some(alias) => alias.clone(),
+                  None => {
+                    if type_.type_name.starts_with("Vec<") {
+                      let inner = type_.type_name.replace("Vec<", "").replace('>', "");
+
+                      format!("{}Array", inner)
+                    } else {
+                      type_.type_name.clone()
+                    }
+                  }
                 };
 
-                let mut enum_field = EnumField::new(type_name);
+                let mut enum_field = EnumField::new(&alias);
 
                 if let Some(reference) = &type_.reference {
                   enum_field.reference(reference);
                 }
 
-                enum_field.set_type_name(type_name);
+                enum_field.set_type_name(&type_.type_name);
 
                 enum_.add_field(enum_field);
               }
@@ -248,6 +245,13 @@ impl SchemaParser {
         ParsedData::Enum(enum_)
       }
     }
+  }
+}
+
+fn is_data_structure(parsed: &ParsedData) -> bool {
+  match parsed {
+    ParsedData::Struct(_) | ParsedData::Enum(_) => true,
+    ParsedData::Type(type_) => type_.type_name.starts_with("Vec<"),
   }
 }
 
@@ -365,7 +369,10 @@ mod schema_parser_one_of_like_tests {
       for (index, field) in enum_.fields.iter().enumerate() {
         if index == 0 {
           assert_eq!(field.name, "ContentDirectory");
-          assert_eq!(field.type_name.as_ref().unwrap(), "ContentDirectory");
+          assert_eq!(
+            field.type_name.as_ref().unwrap(),
+            "Vec<ContentDirectoryItem>"
+          );
         } else {
           assert_eq!(field.name, "ContentFile");
           assert_eq!(field.type_name.as_ref().unwrap(), "ContentFile");
@@ -481,10 +488,10 @@ mod schema_parser_one_of_like_tests {
       for (index, field) in enum_.fields.iter().enumerate() {
         if index == 0 {
           assert_eq!(field.name, "StarredRepositoryArray");
-          assert_eq!(field.type_name.as_ref().unwrap(), "StarredRepositoryArray");
+          assert_eq!(field.type_name.as_ref().unwrap(), "Vec<StarredRepository>");
         } else {
           assert_eq!(field.name, "RepositoryArray");
-          assert_eq!(field.type_name.as_ref().unwrap(), "RepositoryArray");
+          assert_eq!(field.type_name.as_ref().unwrap(), "Vec<Repository>");
         }
       }
     } else {
@@ -550,11 +557,12 @@ mod schema_parser_one_of_like_tests {
           assert_eq!(field.type_name.as_ref().unwrap(), "RequestBodyItem1");
         } else {
           assert_eq!(field.name, "StringArray");
-          assert_eq!(field.type_name.as_ref().unwrap(), "StringArray");
+          assert_eq!(field.type_name.as_ref().unwrap(), "Vec<String>");
         }
       }
     } else {
       println!("{:#?}", generated);
+      println!("{:#?}", parse_context.get_references());
       panic!("Expected enum");
     }
   }

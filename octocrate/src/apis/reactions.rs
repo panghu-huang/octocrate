@@ -29,14 +29,14 @@ impl GitHubReactionsAPI {
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
     comment_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForTeamDiscussionCommentInOrgQuery, ReactionArray> {
+  ) -> Request<(), ReactionsListForTeamDiscussionCommentInOrgQuery, Vec<Reaction>> {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
     let comment_number = comment_number.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions");
 
-    Request::<(), ReactionsListForTeamDiscussionCommentInOrgQuery, ReactionArray>::builder(
+    Request::<(), ReactionsListForTeamDiscussionCommentInOrgQuery, Vec<Reaction>>::builder(
       &self.config,
     )
     .get(url)
@@ -117,13 +117,13 @@ impl GitHubReactionsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForTeamDiscussionInOrgQuery, ReactionArray> {
+  ) -> Request<(), ReactionsListForTeamDiscussionInOrgQuery, Vec<Reaction>> {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions");
 
-    Request::<(), ReactionsListForTeamDiscussionInOrgQuery, ReactionArray>::builder(&self.config)
+    Request::<(), ReactionsListForTeamDiscussionInOrgQuery, Vec<Reaction>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -194,13 +194,13 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<(), ReactionsListForCommitCommentQuery, ReactionArray> {
+  ) -> Request<(), ReactionsListForCommitCommentQuery, Vec<Reaction>> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/comments/{comment_id}/reactions");
 
-    Request::<(), ReactionsListForCommitCommentQuery, ReactionArray>::builder(&self.config)
+    Request::<(), ReactionsListForCommitCommentQuery, Vec<Reaction>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -261,13 +261,13 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<(), ReactionsListForIssueCommentQuery, ReactionArray> {
+  ) -> Request<(), ReactionsListForIssueCommentQuery, Vec<Reaction>> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions");
 
-    Request::<(), ReactionsListForIssueCommentQuery, ReactionArray>::builder(&self.config)
+    Request::<(), ReactionsListForIssueCommentQuery, Vec<Reaction>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -328,13 +328,13 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForIssueQuery, ReactionArray> {
+  ) -> Request<(), ReactionsListForIssueQuery, Vec<Reaction>> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/reactions");
 
-    Request::<(), ReactionsListForIssueQuery, ReactionArray>::builder(&self.config)
+    Request::<(), ReactionsListForIssueQuery, Vec<Reaction>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -395,13 +395,13 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<(), ReactionsListForPullRequestReviewCommentQuery, ReactionArray> {
+  ) -> Request<(), ReactionsListForPullRequestReviewCommentQuery, Vec<Reaction>> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions");
 
-    Request::<(), ReactionsListForPullRequestReviewCommentQuery, ReactionArray>::builder(
+    Request::<(), ReactionsListForPullRequestReviewCommentQuery, Vec<Reaction>>::builder(
       &self.config,
     )
     .get(url)
@@ -466,13 +466,13 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     release_id: impl Into<i64>,
-  ) -> Request<(), ReactionsListForReleaseQuery, ReactionArray> {
+  ) -> Request<(), ReactionsListForReleaseQuery, Vec<Reaction>> {
     let owner = owner.into();
     let repo = repo.into();
     let release_id = release_id.into();
     let url = format!("/repos/{owner}/{repo}/releases/{release_id}/reactions");
 
-    Request::<(), ReactionsListForReleaseQuery, ReactionArray>::builder(&self.config)
+    Request::<(), ReactionsListForReleaseQuery, Vec<Reaction>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -537,7 +537,7 @@ impl GitHubReactionsAPI {
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
     comment_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForTeamDiscussionCommentLegacyQuery, ReactionArray> {
+  ) -> Request<(), ReactionsListForTeamDiscussionCommentLegacyQuery, Vec<Reaction>> {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let comment_number = comment_number.into();
@@ -545,7 +545,7 @@ impl GitHubReactionsAPI {
       "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
     );
 
-    Request::<(), ReactionsListForTeamDiscussionCommentLegacyQuery, ReactionArray>::builder(
+    Request::<(), ReactionsListForTeamDiscussionCommentLegacyQuery, Vec<Reaction>>::builder(
       &self.config,
     )
     .get(url)
@@ -596,12 +596,12 @@ impl GitHubReactionsAPI {
     &self,
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForTeamDiscussionLegacyQuery, ReactionArray> {
+  ) -> Request<(), ReactionsListForTeamDiscussionLegacyQuery, Vec<Reaction>> {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let url = format!("/teams/{team_id}/discussions/{discussion_number}/reactions");
 
-    Request::<(), ReactionsListForTeamDiscussionLegacyQuery, ReactionArray>::builder(&self.config)
+    Request::<(), ReactionsListForTeamDiscussionLegacyQuery, Vec<Reaction>>::builder(&self.config)
       .get(url)
       .build()
   }

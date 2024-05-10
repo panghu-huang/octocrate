@@ -87,10 +87,10 @@ impl GitHubAppsAPI {
   /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook](https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook)
   pub fn list_webhook_deliveries(
     &self,
-  ) -> Request<(), AppsListWebhookDeliveriesQuery, HookDeliveryItemArray> {
+  ) -> Request<(), AppsListWebhookDeliveriesQuery, Vec<HookDeliveryItem>> {
     let url = format!("/app/hook/deliveries");
 
-    Request::<(), AppsListWebhookDeliveriesQuery, HookDeliveryItemArray>::builder(&self.config)
+    Request::<(), AppsListWebhookDeliveriesQuery, Vec<HookDeliveryItem>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -140,14 +140,14 @@ impl GitHubAppsAPI {
   ) -> Request<
     (),
     AppsListInstallationRequestsForAuthenticatedAppQuery,
-    IntegrationInstallationRequestArray,
+    Vec<IntegrationInstallationRequest>,
   > {
     let url = format!("/app/installation-requests");
 
     Request::<
       (),
       AppsListInstallationRequestsForAuthenticatedAppQuery,
-      IntegrationInstallationRequestArray,
+      Vec<IntegrationInstallationRequest>,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -160,10 +160,10 @@ impl GitHubAppsAPI {
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app)
-  pub fn list_installations(&self) -> Request<(), AppsListInstallationsQuery, InstallationArray> {
+  pub fn list_installations(&self) -> Request<(), AppsListInstallationsQuery, Vec<Installation>> {
     let url = format!("/app/installations");
 
-    Request::<(), AppsListInstallationsQuery, InstallationArray>::builder(&self.config)
+    Request::<(), AppsListInstallationsQuery, Vec<Installation>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -434,10 +434,10 @@ impl GitHubAppsAPI {
   /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-plans](https://docs.github.com/rest/apps/marketplace#list-plans)
-  pub fn list_plans(&self) -> Request<(), AppsListPlansQuery, MarketplaceListingPlanArray> {
+  pub fn list_plans(&self) -> Request<(), AppsListPlansQuery, Vec<MarketplaceListingPlan>> {
     let url = format!("/marketplace_listing/plans");
 
-    Request::<(), AppsListPlansQuery, MarketplaceListingPlanArray>::builder(&self.config)
+    Request::<(), AppsListPlansQuery, Vec<MarketplaceListingPlan>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -452,11 +452,11 @@ impl GitHubAppsAPI {
   pub fn list_accounts_for_plan(
     &self,
     plan_id: impl Into<i64>,
-  ) -> Request<(), AppsListAccountsForPlanQuery, MarketplacePurchaseArray> {
+  ) -> Request<(), AppsListAccountsForPlanQuery, Vec<MarketplacePurchase>> {
     let plan_id = plan_id.into();
     let url = format!("/marketplace_listing/plans/{plan_id}/accounts");
 
-    Request::<(), AppsListAccountsForPlanQuery, MarketplacePurchaseArray>::builder(&self.config)
+    Request::<(), AppsListAccountsForPlanQuery, Vec<MarketplacePurchase>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -489,10 +489,10 @@ impl GitHubAppsAPI {
   /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-plans-stubbed](https://docs.github.com/rest/apps/marketplace#list-plans-stubbed)
   pub fn list_plans_stubbed(
     &self,
-  ) -> Request<(), AppsListPlansStubbedQuery, MarketplaceListingPlanArray> {
+  ) -> Request<(), AppsListPlansStubbedQuery, Vec<MarketplaceListingPlan>> {
     let url = format!("/marketplace_listing/stubbed/plans");
 
-    Request::<(), AppsListPlansStubbedQuery, MarketplaceListingPlanArray>::builder(&self.config)
+    Request::<(), AppsListPlansStubbedQuery, Vec<MarketplaceListingPlan>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -507,11 +507,11 @@ impl GitHubAppsAPI {
   pub fn list_accounts_for_plan_stubbed(
     &self,
     plan_id: impl Into<i64>,
-  ) -> Request<(), AppsListAccountsForPlanStubbedQuery, MarketplacePurchaseArray> {
+  ) -> Request<(), AppsListAccountsForPlanStubbedQuery, Vec<MarketplacePurchase>> {
     let plan_id = plan_id.into();
     let url = format!("/marketplace_listing/stubbed/plans/{plan_id}/accounts");
 
-    Request::<(), AppsListAccountsForPlanStubbedQuery, MarketplacePurchaseArray>::builder(
+    Request::<(), AppsListAccountsForPlanStubbedQuery, Vec<MarketplacePurchase>>::builder(
       &self.config,
     )
     .get(url)
@@ -656,10 +656,10 @@ impl GitHubAppsAPI {
   /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user](https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user)
   pub fn list_subscriptions_for_authenticated_user(
     &self,
-  ) -> Request<(), AppsListSubscriptionsForAuthenticatedUserQuery, UserMarketplacePurchaseArray> {
+  ) -> Request<(), AppsListSubscriptionsForAuthenticatedUserQuery, Vec<UserMarketplacePurchase>> {
     let url = format!("/user/marketplace_purchases");
 
-    Request::<(), AppsListSubscriptionsForAuthenticatedUserQuery, UserMarketplacePurchaseArray>::builder(&self.config)
+    Request::<(), AppsListSubscriptionsForAuthenticatedUserQuery, Vec<UserMarketplacePurchase>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -674,11 +674,11 @@ impl GitHubAppsAPI {
   ) -> Request<
     (),
     AppsListSubscriptionsForAuthenticatedUserStubbedQuery,
-    UserMarketplacePurchaseArray,
+    Vec<UserMarketplacePurchase>,
   > {
     let url = format!("/user/marketplace_purchases/stubbed");
 
-    Request::<(), AppsListSubscriptionsForAuthenticatedUserStubbedQuery, UserMarketplacePurchaseArray>::builder(&self.config)
+    Request::<(), AppsListSubscriptionsForAuthenticatedUserStubbedQuery, Vec<UserMarketplacePurchase>>::builder(&self.config)
       .get(url)
       .build()
   }

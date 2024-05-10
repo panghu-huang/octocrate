@@ -27,12 +27,12 @@ impl GitHubSecretScanningAPI {
   pub fn list_alerts_for_enterprise(
     &self,
     enterprise: impl Into<String>,
-  ) -> Request<(), SecretScanningListAlertsForEnterpriseQuery, OrganizationSecretScanningAlertArray>
+  ) -> Request<(), SecretScanningListAlertsForEnterpriseQuery, Vec<OrganizationSecretScanningAlert>>
   {
     let enterprise = enterprise.into();
     let url = format!("/enterprises/{enterprise}/secret-scanning/alerts");
 
-    Request::<(), SecretScanningListAlertsForEnterpriseQuery, OrganizationSecretScanningAlertArray>::builder(&self.config)
+    Request::<(), SecretScanningListAlertsForEnterpriseQuery, Vec<OrganizationSecretScanningAlert>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -49,11 +49,11 @@ impl GitHubSecretScanningAPI {
   pub fn list_alerts_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), SecretScanningListAlertsForOrgQuery, OrganizationSecretScanningAlertArray> {
+  ) -> Request<(), SecretScanningListAlertsForOrgQuery, Vec<OrganizationSecretScanningAlert>> {
     let org = org.into();
     let url = format!("/orgs/{org}/secret-scanning/alerts");
 
-    Request::<(), SecretScanningListAlertsForOrgQuery, OrganizationSecretScanningAlertArray>::builder(&self.config)
+    Request::<(), SecretScanningListAlertsForOrgQuery, Vec<OrganizationSecretScanningAlert>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -71,12 +71,12 @@ impl GitHubSecretScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), SecretScanningListAlertsForRepoQuery, SecretScanningAlertArray> {
+  ) -> Request<(), SecretScanningListAlertsForRepoQuery, Vec<SecretScanningAlert>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/secret-scanning/alerts");
 
-    Request::<(), SecretScanningListAlertsForRepoQuery, SecretScanningAlertArray>::builder(
+    Request::<(), SecretScanningListAlertsForRepoQuery, Vec<SecretScanningAlert>>::builder(
       &self.config,
     )
     .get(url)
@@ -147,13 +147,13 @@ impl GitHubSecretScanningAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     alert_number: impl Into<i64>,
-  ) -> Request<(), SecretScanningListLocationsForAlertQuery, SecretScanningLocationArray> {
+  ) -> Request<(), SecretScanningListLocationsForAlertQuery, Vec<SecretScanningLocation>> {
     let owner = owner.into();
     let repo = repo.into();
     let alert_number = alert_number.into();
     let url = format!("/repos/{owner}/{repo}/secret-scanning/alerts/{alert_number}/locations");
 
-    Request::<(), SecretScanningListLocationsForAlertQuery, SecretScanningLocationArray>::builder(
+    Request::<(), SecretScanningListLocationsForAlertQuery, Vec<SecretScanningLocation>>::builder(
       &self.config,
     )
     .get(url)

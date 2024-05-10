@@ -5,6 +5,7 @@ use typed_builder::TypedBuilder;
 #[allow(unused_imports)]
 use super::*;
 
+{{#if types }}
 /// Types definition
 {{#each types }}
 {{#if alias }}
@@ -17,6 +18,7 @@ use super::*;
 pub type {{ alias }} = {{ type_name }};
 {{/if}}
 {{/each}}
+{{/if}}
 
 {{#if enums }}
 /// Enumerations definition

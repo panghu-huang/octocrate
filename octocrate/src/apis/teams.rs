@@ -19,11 +19,11 @@ impl GitHubTeamsAPI {
   /// Lists all teams in an organization that are visible to the authenticated user.
   ///
   /// *Documentation*: [https://docs.github.com/rest/teams/teams#list-teams](https://docs.github.com/rest/teams/teams#list-teams)
-  pub fn list(&self, org: impl Into<String>) -> Request<(), TeamsListQuery, TeamArray> {
+  pub fn list(&self, org: impl Into<String>) -> Request<(), TeamsListQuery, Vec<Team>> {
     let org = org.into();
     let url = format!("/orgs/{org}/teams");
 
-    Request::<(), TeamsListQuery, TeamArray>::builder(&self.config)
+    Request::<(), TeamsListQuery, Vec<Team>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -122,12 +122,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListDiscussionsInOrgQuery, TeamDiscussionArray> {
+  ) -> Request<(), TeamsListDiscussionsInOrgQuery, Vec<TeamDiscussion>> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions");
 
-    Request::<(), TeamsListDiscussionsInOrgQuery, TeamDiscussionArray>::builder(&self.config)
+    Request::<(), TeamsListDiscussionsInOrgQuery, Vec<TeamDiscussion>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -246,13 +246,13 @@ impl GitHubTeamsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
-  ) -> Request<(), TeamsListDiscussionCommentsInOrgQuery, TeamDiscussionCommentArray> {
+  ) -> Request<(), TeamsListDiscussionCommentsInOrgQuery, Vec<TeamDiscussionComment>> {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments");
 
-    Request::<(), TeamsListDiscussionCommentsInOrgQuery, TeamDiscussionCommentArray>::builder(
+    Request::<(), TeamsListDiscussionCommentsInOrgQuery, Vec<TeamDiscussionComment>>::builder(
       &self.config,
     )
     .get(url)
@@ -388,12 +388,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListPendingInvitationsInOrgQuery, OrganizationInvitationArray> {
+  ) -> Request<(), TeamsListPendingInvitationsInOrgQuery, Vec<OrganizationInvitation>> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/invitations");
 
-    Request::<(), TeamsListPendingInvitationsInOrgQuery, OrganizationInvitationArray>::builder(
+    Request::<(), TeamsListPendingInvitationsInOrgQuery, Vec<OrganizationInvitation>>::builder(
       &self.config,
     )
     .get(url)
@@ -411,12 +411,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListMembersInOrgQuery, SimpleUserArray> {
+  ) -> Request<(), TeamsListMembersInOrgQuery, Vec<SimpleUser>> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/members");
 
-    Request::<(), TeamsListMembersInOrgQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), TeamsListMembersInOrgQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -522,12 +522,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListProjectsInOrgQuery, TeamProjectArray> {
+  ) -> Request<(), TeamsListProjectsInOrgQuery, Vec<TeamProject>> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/projects");
 
-    Request::<(), TeamsListProjectsInOrgQuery, TeamProjectArray>::builder(&self.config)
+    Request::<(), TeamsListProjectsInOrgQuery, Vec<TeamProject>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -612,12 +612,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListReposInOrgQuery, MinimalRepositoryArray> {
+  ) -> Request<(), TeamsListReposInOrgQuery, Vec<MinimalRepository>> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/repos");
 
-    Request::<(), TeamsListReposInOrgQuery, MinimalRepositoryArray>::builder(&self.config)
+    Request::<(), TeamsListReposInOrgQuery, Vec<MinimalRepository>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -716,12 +716,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListChildInOrgQuery, TeamArray> {
+  ) -> Request<(), TeamsListChildInOrgQuery, Vec<Team>> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/teams");
 
-    Request::<(), TeamsListChildInOrgQuery, TeamArray>::builder(&self.config)
+    Request::<(), TeamsListChildInOrgQuery, Vec<Team>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -791,11 +791,11 @@ impl GitHubTeamsAPI {
   pub fn list_discussions_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListDiscussionsLegacyQuery, TeamDiscussionArray> {
+  ) -> Request<(), TeamsListDiscussionsLegacyQuery, Vec<TeamDiscussion>> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/discussions");
 
-    Request::<(), TeamsListDiscussionsLegacyQuery, TeamDiscussionArray>::builder(&self.config)
+    Request::<(), TeamsListDiscussionsLegacyQuery, Vec<TeamDiscussion>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -905,12 +905,12 @@ impl GitHubTeamsAPI {
     &self,
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
-  ) -> Request<(), TeamsListDiscussionCommentsLegacyQuery, TeamDiscussionCommentArray> {
+  ) -> Request<(), TeamsListDiscussionCommentsLegacyQuery, Vec<TeamDiscussionComment>> {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let url = format!("/teams/{team_id}/discussions/{discussion_number}/comments");
 
-    Request::<(), TeamsListDiscussionCommentsLegacyQuery, TeamDiscussionCommentArray>::builder(
+    Request::<(), TeamsListDiscussionCommentsLegacyQuery, Vec<TeamDiscussionComment>>::builder(
       &self.config,
     )
     .get(url)
@@ -1031,11 +1031,11 @@ impl GitHubTeamsAPI {
   pub fn list_pending_invitations_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListPendingInvitationsLegacyQuery, OrganizationInvitationArray> {
+  ) -> Request<(), TeamsListPendingInvitationsLegacyQuery, Vec<OrganizationInvitation>> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/invitations");
 
-    Request::<(), TeamsListPendingInvitationsLegacyQuery, OrganizationInvitationArray>::builder(
+    Request::<(), TeamsListPendingInvitationsLegacyQuery, Vec<OrganizationInvitation>>::builder(
       &self.config,
     )
     .get(url)
@@ -1052,11 +1052,11 @@ impl GitHubTeamsAPI {
   pub fn list_members_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListMembersLegacyQuery, SimpleUserArray> {
+  ) -> Request<(), TeamsListMembersLegacyQuery, Vec<SimpleUser>> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/members");
 
-    Request::<(), TeamsListMembersLegacyQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), TeamsListMembersLegacyQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1234,11 +1234,11 @@ impl GitHubTeamsAPI {
   pub fn list_projects_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListProjectsLegacyQuery, TeamProjectArray> {
+  ) -> Request<(), TeamsListProjectsLegacyQuery, Vec<TeamProject>> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/projects");
 
-    Request::<(), TeamsListProjectsLegacyQuery, TeamProjectArray>::builder(&self.config)
+    Request::<(), TeamsListProjectsLegacyQuery, Vec<TeamProject>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1314,11 +1314,11 @@ impl GitHubTeamsAPI {
   pub fn list_repos_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListReposLegacyQuery, MinimalRepositoryArray> {
+  ) -> Request<(), TeamsListReposLegacyQuery, Vec<MinimalRepository>> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/repos");
 
-    Request::<(), TeamsListReposLegacyQuery, MinimalRepositoryArray>::builder(&self.config)
+    Request::<(), TeamsListReposLegacyQuery, Vec<MinimalRepository>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1404,11 +1404,11 @@ impl GitHubTeamsAPI {
   pub fn list_child_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListChildLegacyQuery, TeamArray> {
+  ) -> Request<(), TeamsListChildLegacyQuery, Vec<Team>> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/teams");
 
-    Request::<(), TeamsListChildLegacyQuery, TeamArray>::builder(&self.config)
+    Request::<(), TeamsListChildLegacyQuery, Vec<Team>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1425,10 +1425,10 @@ impl GitHubTeamsAPI {
   /// *Documentation*: [https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user](https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<(), TeamsListForAuthenticatedUserQuery, TeamFullArray> {
+  ) -> Request<(), TeamsListForAuthenticatedUserQuery, Vec<TeamFull>> {
     let url = format!("/user/teams");
 
-    Request::<(), TeamsListForAuthenticatedUserQuery, TeamFullArray>::builder(&self.config)
+    Request::<(), TeamsListForAuthenticatedUserQuery, Vec<TeamFull>>::builder(&self.config)
       .get(url)
       .build()
   }
