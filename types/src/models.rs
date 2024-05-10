@@ -6,537 +6,16 @@ use serde::{Deserialize, Serialize};
 use typed_builder::TypedBuilder;
 
 /// Types definition
-#[cfg(any(
-  feature = "full",
-  feature = "security_advisories",
-  feature = "apps",
-  feature = "activity",
-  feature = "gitignore",
-  feature = "licenses",
-  feature = "meta",
-  feature = "oidc",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "copilot",
-  feature = "dependabot",
-  feature = "orgs",
-  feature = "migrations",
-  feature = "packages",
-  feature = "repos",
-  feature = "teams",
-  feature = "dependency_graph",
-  feature = "git",
-  feature = "issues",
-  feature = "pulls",
-  feature = "search",
-  feature = "users"
-))]
-pub type StringArray = Vec<String>;
-#[cfg(any(feature = "full", feature = "security_advisories"))]
-pub type GlobalAdvisoryArray = Vec<GlobalAdvisory>;
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "orgs",
-  feature = "repos"
-))]
-pub type HookDeliveryItemArray = Vec<HookDeliveryItem>;
-#[cfg(any(feature = "full", feature = "apps"))]
-pub type IntegrationInstallationRequestArray = Vec<IntegrationInstallationRequest>;
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
-pub type InstallationArray = Vec<Installation>;
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "orgs",
-  feature = "repos",
-  feature = "search"
-))]
-pub type I64Array = Vec<i64>;
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "activity"
-))]
-pub type RepositoryArray = Vec<Repository>;
-#[cfg(any(feature = "full", feature = "classroom"))]
-pub type SimpleClassroomUserArray = Vec<SimpleClassroomUser>;
-#[cfg(any(feature = "full", feature = "classroom"))]
-pub type ClassroomAcceptedAssignmentArray = Vec<ClassroomAcceptedAssignment>;
-#[cfg(any(feature = "full", feature = "classroom"))]
-pub type ClassroomAssignmentGradeArray = Vec<ClassroomAssignmentGrade>;
-#[cfg(any(feature = "full", feature = "classroom"))]
-pub type SimpleClassroomArray = Vec<SimpleClassroom>;
-#[cfg(any(feature = "full", feature = "classroom"))]
-pub type SimpleClassroomAssignmentArray = Vec<SimpleClassroomAssignment>;
-#[cfg(any(feature = "full", feature = "codes_of_conduct"))]
-pub type CodeOfConductArray = Vec<CodeOfConduct>;
-#[cfg(any(feature = "full", feature = "dependabot"))]
-pub type DependabotAlertSecurityAdvisoryCwesArray = Vec<DependabotAlertSecurityAdvisoryCwes>;
-#[cfg(any(feature = "full", feature = "dependabot"))]
-pub type DependabotAlertSecurityAdvisoryIdentifiersArray =
-  Vec<DependabotAlertSecurityAdvisoryIdentifiers>;
-#[cfg(any(feature = "full", feature = "dependabot"))]
-pub type DependabotAlertSecurityAdvisoryReferencesArray =
-  Vec<DependabotAlertSecurityAdvisoryReferences>;
-#[cfg(any(feature = "full", feature = "dependabot"))]
-pub type DependabotAlertSecurityVulnerabilityArray = Vec<DependabotAlertSecurityVulnerability>;
-#[cfg(any(feature = "full", feature = "dependabot"))]
-pub type DependabotAlertWithRepositoryArray = Vec<DependabotAlertWithRepository>;
-#[cfg(any(feature = "full", feature = "secret_scanning"))]
-pub type OrganizationSecretScanningAlertArray = Vec<OrganizationSecretScanningAlert>;
-#[cfg(any(feature = "full", feature = "activity"))]
-pub type EventPayloadPagesArray = Vec<EventPayloadPages>;
-#[cfg(any(feature = "full", feature = "activity"))]
-pub type EventArray = Vec<Event>;
-#[cfg(any(feature = "full", feature = "activity"))]
-pub type LinkWithTypeArray = Vec<LinkWithType>;
-#[cfg(any(feature = "full", feature = "gists", feature = "users"))]
-pub type SerdeJsonValueArray = Vec<serde_json::Value>;
-#[cfg(any(feature = "full", feature = "gists"))]
-pub type BaseGistArray = Vec<BaseGist>;
-#[cfg(any(feature = "full", feature = "gists"))]
-pub type GistCommentArray = Vec<GistComment>;
-#[cfg(any(feature = "full", feature = "gists"))]
-pub type GistCommitArray = Vec<GistCommit>;
-#[cfg(any(feature = "full", feature = "gists"))]
-pub type GistSimpleArray = Vec<GistSimple>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type IssueArray = Vec<Issue>;
-#[cfg(any(feature = "full", feature = "licenses"))]
-pub type LicenseSimpleArray = Vec<LicenseSimple>;
-#[cfg(any(feature = "full", feature = "apps"))]
-pub type MarketplaceListingPlanArray = Vec<MarketplaceListingPlan>;
-#[cfg(any(feature = "full", feature = "apps"))]
-pub type MarketplacePurchaseArray = Vec<MarketplacePurchase>;
-#[cfg(any(feature = "full", feature = "activity"))]
-pub type ThreadArray = Vec<Thread>;
-#[cfg(any(feature = "full", feature = "orgs"))]
-pub type OrganizationSimpleArray = Vec<OrganizationSimple>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type ActionsCacheUsageByRepositoryArray = Vec<ActionsCacheUsageByRepository>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type RunnerLabelArray = Vec<RunnerLabel>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type RunnerArray = Vec<Runner>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type RunnerApplicationArray = Vec<RunnerApplication>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type OrganizationActionsSecretArray = Vec<OrganizationActionsSecret>;
-#[cfg(any(
-  feature = "full",
-  feature = "actions",
-  feature = "codespaces",
-  feature = "dependabot",
-  feature = "migrations",
-  feature = "orgs",
-  feature = "repos",
-  feature = "teams",
-  feature = "activity"
-))]
-pub type MinimalRepositoryArray = Vec<MinimalRepository>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type OrganizationActionsVariableArray = Vec<OrganizationActionsVariable>;
-#[cfg(any(
-  feature = "full",
-  feature = "orgs",
-  feature = "teams",
-  feature = "projects",
-  feature = "issues",
-  feature = "repos",
-  feature = "pulls",
-  feature = "activity",
-  feature = "users"
-))]
-pub type SimpleUserArray = Vec<SimpleUser>;
-#[cfg(any(feature = "full", feature = "code_scanning"))]
-pub type CodeScanningOrganizationAlertItemsArray = Vec<CodeScanningOrganizationAlertItems>;
-#[cfg(any(feature = "full", feature = "codespaces"))]
-pub type CodespaceArray = Vec<Codespace>;
-#[cfg(any(feature = "full", feature = "codespaces"))]
-pub type CodespacesOrgSecretArray = Vec<CodespacesOrgSecret>;
-#[cfg(any(feature = "full", feature = "copilot"))]
-pub type CopilotSeatDetailsArray = Vec<CopilotSeatDetails>;
-#[cfg(any(feature = "full", feature = "dependabot"))]
-pub type OrganizationDependabotSecretArray = Vec<OrganizationDependabotSecret>;
-#[cfg(any(feature = "full", feature = "packages"))]
-pub type PackageArray = Vec<Package>;
-#[cfg(any(feature = "full", feature = "orgs", feature = "teams"))]
-pub type OrganizationInvitationArray = Vec<OrganizationInvitation>;
-#[cfg(any(feature = "full", feature = "orgs"))]
-pub type OrgHookArray = Vec<OrgHook>;
-#[cfg(any(
-  feature = "full",
-  feature = "orgs",
-  feature = "teams",
-  feature = "repos",
-  feature = "pulls"
-))]
-pub type TeamArray = Vec<Team>;
-#[cfg(any(feature = "full", feature = "migrations"))]
-pub type MigrationsListForOrgQueryExcludeArray = Vec<MigrationsListForOrgQueryExclude>;
-#[cfg(any(feature = "full", feature = "migrations"))]
-pub type MigrationArray = Vec<Migration>;
-#[cfg(any(feature = "full", feature = "migrations"))]
-pub type MigrationsStartForOrgRequestExcludeArray = Vec<MigrationsStartForOrgRequestExclude>;
-#[cfg(any(feature = "full", feature = "migrations"))]
-pub type MigrationsGetStatusForOrgQueryExcludeArray = Vec<MigrationsGetStatusForOrgQueryExclude>;
-#[cfg(any(feature = "full", feature = "orgs"))]
-pub type OrganizationFineGrainedPermissionArray = Vec<OrganizationFineGrainedPermission>;
-#[cfg(any(feature = "full", feature = "orgs"))]
-pub type OrganizationRoleArray = Vec<OrganizationRole>;
-#[cfg(any(feature = "full", feature = "packages"))]
-pub type PackageVersionArray = Vec<PackageVersion>;
-#[cfg(any(feature = "full", feature = "orgs"))]
-pub type OrganizationProgrammaticAccessGrantRequestArray =
-  Vec<OrganizationProgrammaticAccessGrantRequest>;
-#[cfg(any(feature = "full", feature = "orgs"))]
-pub type OrganizationProgrammaticAccessGrantArray = Vec<OrganizationProgrammaticAccessGrant>;
-#[cfg(any(feature = "full", feature = "projects"))]
-pub type ProjectArray = Vec<Project>;
-#[cfg(any(feature = "full", feature = "orgs"))]
-pub type OrgCustomPropertyArray = Vec<OrgCustomProperty>;
-#[cfg(any(feature = "full", feature = "orgs", feature = "repos"))]
-pub type CustomPropertyValueArray = Vec<CustomPropertyValue>;
-#[cfg(any(feature = "full", feature = "orgs"))]
-pub type OrgRepoCustomPropertyValuesArray = Vec<OrgRepoCustomPropertyValues>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type RepositoryRulesetBypassActorArray = Vec<RepositoryRulesetBypassActor>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type RepositoryRulesetConditionsRepositoryPropertySpecArray =
-  Vec<RepositoryRulesetConditionsRepositoryPropertySpec>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type RepositoryRuleParamsStatusCheckConfigurationArray =
-  Vec<RepositoryRuleParamsStatusCheckConfiguration>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type RepositoryRuleParamsWorkflowFileReferenceArray =
-  Vec<RepositoryRuleParamsWorkflowFileReference>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type RepositoryRuleArray = Vec<RepositoryRule>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type RepositoryRulesetArray = Vec<RepositoryRuleset>;
 #[cfg(any(feature = "full", feature = "repos"))]
 pub type RuleSuites = Vec<RuleSuitesItem>;
 #[cfg(any(feature = "full", feature = "repos"))]
-pub type RuleSuiteRuleEvaluationsArray = Vec<RuleSuiteRuleEvaluations>;
-#[cfg(any(feature = "full", feature = "security_advisories"))]
-pub type RepositoryAdvisoryIdentifiersArray = Vec<RepositoryAdvisoryIdentifiers>;
-#[cfg(any(feature = "full", feature = "security_advisories"))]
-pub type RepositoryAdvisoryArray = Vec<RepositoryAdvisory>;
-#[cfg(any(feature = "full", feature = "orgs"))]
-pub type TeamSimpleArray = Vec<TeamSimple>;
-#[cfg(any(feature = "full", feature = "teams"))]
-pub type TeamDiscussionArray = Vec<TeamDiscussion>;
-#[cfg(any(feature = "full", feature = "teams"))]
-pub type TeamDiscussionCommentArray = Vec<TeamDiscussionComment>;
-#[cfg(any(feature = "full", feature = "reactions"))]
-pub type ReactionArray = Vec<Reaction>;
-#[cfg(any(feature = "full", feature = "teams"))]
-pub type TeamProjectArray = Vec<TeamProject>;
-#[cfg(any(feature = "full", feature = "projects"))]
-pub type ProjectCardArray = Vec<ProjectCard>;
-#[cfg(any(feature = "full", feature = "projects"))]
-pub type ProjectColumnArray = Vec<ProjectColumn>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type ArtifactArray = Vec<Artifact>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type ActionsCacheListActionsCachesArray = Vec<ActionsCacheListActionsCaches>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type JobStepsArray = Vec<JobSteps>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type ActionsSecretArray = Vec<ActionsSecret>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type ActionsVariableArray = Vec<ActionsVariable>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type WorkflowRunArray = Vec<WorkflowRun>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type EnvironmentApprovalsEnvironmentsArray = Vec<EnvironmentApprovalsEnvironments>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type EnvironmentApprovalsArray = Vec<EnvironmentApprovals>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type JobArray = Vec<Job>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type PendingDeploymentReviewersArray = Vec<PendingDeploymentReviewers>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type PendingDeploymentArray = Vec<PendingDeployment>;
-#[cfg(any(feature = "full", feature = "actions", feature = "repos"))]
-pub type DeploymentArray = Vec<Deployment>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type WorkflowRunUsageBillableMACOSJobRunsArray = Vec<WorkflowRunUsageBillableMACOSJobRuns>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type WorkflowRunUsageBillableUBUNTUJobRunsArray = Vec<WorkflowRunUsageBillableUBUNTUJobRuns>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type WorkflowRunUsageBillableWINDOWSJobRunsArray = Vec<WorkflowRunUsageBillableWINDOWSJobRuns>;
-#[cfg(any(feature = "full", feature = "actions"))]
-pub type WorkflowArray = Vec<Workflow>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ActivityArray = Vec<Activity>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type AutolinkArray = Vec<Autolink>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type IntegrationArray = Vec<Integration>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ProtectedBranchRequiredStatusCheckChecksArray =
-  Vec<ProtectedBranchRequiredStatusCheckChecks>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type BranchRestrictionPolicyAppsArray = Vec<BranchRestrictionPolicyApps>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type BranchRestrictionPolicyTeamsArray = Vec<BranchRestrictionPolicyTeams>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type BranchRestrictionPolicyUsersArray = Vec<BranchRestrictionPolicyUsers>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ShortBranchArray = Vec<ShortBranch>;
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
-pub type DiffEntryArray = Vec<DiffEntry>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type CommitParentsArray = Vec<CommitParents>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ReposUpdateBranchProtectionRequestRequiredStatusChecksChecksArray =
-  Vec<ReposUpdateBranchProtectionRequestRequiredStatusChecksChecks>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type StatusCheckPolicyChecksArray = Vec<StatusCheckPolicyChecks>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ReposUpdateStatusCheckProtectionRequestChecksArray =
-  Vec<ReposUpdateStatusCheckProtectionRequestChecks>;
-#[cfg(any(feature = "full", feature = "checks"))]
-pub type PullRequestMinimalArray = Vec<PullRequestMinimal>;
-#[cfg(any(feature = "full", feature = "checks"))]
-pub type CheckAnnotationArray = Vec<CheckAnnotation>;
-#[cfg(any(feature = "full", feature = "checks"))]
-pub type ChecksSetSuitesPreferencesRequestAutoTriggerChecksArray =
-  Vec<ChecksSetSuitesPreferencesRequestAutoTriggerChecks>;
-#[cfg(any(feature = "full", feature = "checks"))]
-pub type CheckSuitePreferencePreferencesAutoTriggerChecksArray =
-  Vec<CheckSuitePreferencePreferencesAutoTriggerChecks>;
-#[cfg(any(feature = "full", feature = "checks"))]
-pub type CheckRunArray = Vec<CheckRun>;
-#[cfg(any(feature = "full", feature = "code_scanning"))]
-pub type CodeScanningAlertItemsArray = Vec<CodeScanningAlertItems>;
-#[cfg(any(feature = "full", feature = "code_scanning"))]
-pub type CodeScanningAlertInstanceArray = Vec<CodeScanningAlertInstance>;
-#[cfg(any(feature = "full", feature = "code_scanning"))]
-pub type CodeScanningAnalysisArray = Vec<CodeScanningAnalysis>;
-#[cfg(any(feature = "full", feature = "code_scanning"))]
-pub type CodeScanningCodeqlDatabaseArray = Vec<CodeScanningCodeqlDatabase>;
-#[cfg(any(feature = "full", feature = "code_scanning"))]
-pub type CodeScanningDefaultSetupLanguagesArray = Vec<CodeScanningDefaultSetupLanguages>;
-#[cfg(any(feature = "full", feature = "code_scanning"))]
-pub type CodeScanningDefaultSetupUpdateLanguagesArray =
-  Vec<CodeScanningDefaultSetupUpdateLanguages>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type CodeownersErrorsErrorsArray = Vec<CodeownersErrorsErrors>;
-#[cfg(any(feature = "full", feature = "codespaces"))]
-pub type CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainersArray =
-  Vec<CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponseDevcontainers>;
-#[cfg(any(feature = "full", feature = "codespaces"))]
-pub type CodespaceMachineArray = Vec<CodespaceMachine>;
-#[cfg(any(feature = "full", feature = "codespaces"))]
-pub type RepoCodespacesSecretArray = Vec<RepoCodespacesSecret>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type CollaboratorArray = Vec<Collaborator>;
-#[cfg(any(feature = "full", feature = "repos", feature = "issues"))]
-pub type CommitCommentArray = Vec<CommitComment>;
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
-pub type CommitArray = Vec<Commit>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type BranchShortArray = Vec<BranchShort>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type PullRequestSimpleLabelsArray = Vec<PullRequestSimpleLabels>;
-#[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
-pub type PullRequestSimpleArray = Vec<PullRequestSimple>;
-#[cfg(any(feature = "full", feature = "checks"))]
-pub type CheckSuiteArray = Vec<CheckSuite>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type SimpleCommitStatusArray = Vec<SimpleCommitStatus>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type StatusArray = Vec<Status>;
-#[cfg(any(feature = "full", feature = "repos"))]
 pub type ContentDirectory = Vec<ContentDirectoryItem>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type FileCommitCommitParentsArray = Vec<FileCommitCommitParents>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ContributorArray = Vec<Contributor>;
-#[cfg(any(feature = "full", feature = "dependabot"))]
-pub type DependabotAlertArray = Vec<DependabotAlert>;
-#[cfg(any(feature = "full", feature = "dependabot"))]
-pub type DependabotSecretArray = Vec<DependabotSecret>;
-#[cfg(any(feature = "full", feature = "dependency_graph"))]
-pub type DependencyGraphDiffItemVulnerabilitiesArray = Vec<DependencyGraphDiffItemVulnerabilities>;
 #[cfg(any(feature = "full", feature = "dependency_graph"))]
 pub type DependencyGraphDiff = Vec<DependencyGraphDiffItem>;
-#[cfg(any(feature = "full", feature = "dependency_graph"))]
-pub type DependencyGraphSpdxSbomSbomPackagesExternalRefsArray =
-  Vec<DependencyGraphSpdxSbomSbomPackagesExternalRefs>;
-#[cfg(any(feature = "full", feature = "dependency_graph"))]
-pub type DependencyGraphSpdxSbomSbomPackagesArray = Vec<DependencyGraphSpdxSbomSbomPackages>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type DeploymentStatusArray = Vec<DeploymentStatus>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type EnvironmentProtectionRulesItem2ReviewersArray =
-  Vec<EnvironmentProtectionRulesItem2Reviewers>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type EnvironmentProtectionRulesArray = Vec<EnvironmentProtectionRules>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type EnvironmentArray = Vec<Environment>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type DeploymentBranchPolicyArray = Vec<DeploymentBranchPolicy>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type DeploymentProtectionRuleArray = Vec<DeploymentProtectionRule>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type CustomDeploymentRuleAppArray = Vec<CustomDeploymentRuleApp>;
-#[cfg(any(feature = "full", feature = "git"))]
-pub type GitCommitParentsArray = Vec<GitCommitParents>;
-#[cfg(any(feature = "full", feature = "git"))]
-pub type GitRefArray = Vec<GitRef>;
-#[cfg(any(feature = "full", feature = "git"))]
-pub type GitCreateTreeRequestTreeArray = Vec<GitCreateTreeRequestTree>;
-#[cfg(any(feature = "full", feature = "git"))]
-pub type GitTreeTreeArray = Vec<GitTreeTree>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type HookArray = Vec<Hook>;
-#[cfg(any(feature = "full", feature = "migrations"))]
-pub type ImportProjectChoicesArray = Vec<ImportProjectChoices>;
-#[cfg(any(feature = "full", feature = "migrations"))]
-pub type PorterAuthorArray = Vec<PorterAuthor>;
-#[cfg(any(feature = "full", feature = "migrations"))]
-pub type PorterLargeFileArray = Vec<PorterLargeFile>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type RepositoryInvitationArray = Vec<RepositoryInvitation>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type IssueCommentArray = Vec<IssueComment>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type IssueEventArray = Vec<IssueEvent>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type IssueEventForIssueArray = Vec<IssueEventForIssue>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type LabelArray = Vec<Label>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type IssuesAddLabelsRequestItem3LabelsArray = Vec<IssuesAddLabelsRequestItem3Labels>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type IssuesAddLabelsRequestItem4Array = Vec<IssuesAddLabelsRequestItem4>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type IssuesSetLabelsRequestItem3LabelsArray = Vec<IssuesSetLabelsRequestItem3Labels>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type IssuesSetLabelsRequestItem4Array = Vec<IssuesSetLabelsRequestItem4>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type TimelineCommittedEventParentsArray = Vec<TimelineCommittedEventParents>;
-#[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
-pub type PullRequestReviewCommentArray = Vec<PullRequestReviewComment>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type TimelineIssueEventsArray = Vec<TimelineIssueEvents>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type DeployKeyArray = Vec<DeployKey>;
-#[cfg(any(feature = "full", feature = "issues"))]
-pub type MilestoneArray = Vec<Milestone>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type PageBuildArray = Vec<PageBuild>;
-#[cfg(any(feature = "full", feature = "pulls"))]
-pub type PullRequestLabelsArray = Vec<PullRequestLabels>;
-#[cfg(any(feature = "full", feature = "pulls"))]
-pub type PullRequestReviewArray = Vec<PullRequestReview>;
-#[cfg(any(feature = "full", feature = "pulls"))]
-pub type PullsCreateReviewRequestCommentsArray = Vec<PullsCreateReviewRequestComments>;
-#[cfg(any(feature = "full", feature = "pulls"))]
-pub type ReviewCommentArray = Vec<ReviewComment>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ReleaseAssetArray = Vec<ReleaseAsset>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ReleaseArray = Vec<Release>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type RepositoryRuleDetailedArray = Vec<RepositoryRuleDetailed>;
-#[cfg(any(feature = "full", feature = "secret_scanning"))]
-pub type SecretScanningAlertArray = Vec<SecretScanningAlert>;
-#[cfg(any(feature = "full", feature = "secret_scanning"))]
-pub type SecretScanningLocationArray = Vec<SecretScanningLocation>;
-#[cfg(any(feature = "full", feature = "security_advisories"))]
-pub type RepositoryAdvisoryCreateVulnerabilitiesArray =
-  Vec<RepositoryAdvisoryCreateVulnerabilities>;
-#[cfg(any(feature = "full", feature = "security_advisories"))]
-pub type RepositoryAdvisoryUpdateVulnerabilitiesArray =
-  Vec<RepositoryAdvisoryUpdateVulnerabilities>;
-#[cfg(any(feature = "full", feature = "activity"))]
-pub type StargazerArray = Vec<Stargazer>;
 #[cfg(any(feature = "full", feature = "repos"))]
 pub type CodeFrequencyStat = Vec<i64>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type CommitActivityArray = Vec<CommitActivity>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ContributorActivityWeeksArray = Vec<ContributorActivityWeeks>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ContributorActivityArray = Vec<ContributorActivity>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type TagArray = Vec<Tag>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type TagProtectionArray = Vec<TagProtection>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type TrafficArray = Vec<Traffic>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ContentTrafficArray = Vec<ContentTraffic>;
-#[cfg(any(feature = "full", feature = "repos"))]
-pub type ReferrerTrafficArray = Vec<ReferrerTraffic>;
-#[cfg(any(feature = "full", feature = "search"))]
-pub type SearchResultTextMatchesItemMatchesArray = Vec<SearchResultTextMatchesItemMatches>;
 #[cfg(any(feature = "full", feature = "search"))]
 pub type SearchResultTextMatches = Vec<SearchResultTextMatchesItem>;
-#[cfg(any(feature = "full", feature = "search"))]
-pub type CodeSearchResultItemArray = Vec<CodeSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search"))]
-pub type CommitSearchResultItemParentsArray = Vec<CommitSearchResultItemParents>;
-#[cfg(any(feature = "full", feature = "search"))]
-pub type CommitSearchResultItemArray = Vec<CommitSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search"))]
-pub type IssueSearchResultItemLabelsArray = Vec<IssueSearchResultItemLabels>;
-#[cfg(any(feature = "full", feature = "search"))]
-pub type IssueSearchResultItemArray = Vec<IssueSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search"))]
-pub type LabelSearchResultItemArray = Vec<LabelSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search"))]
-pub type RepoSearchResultItemArray = Vec<RepoSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search"))]
-pub type TopicSearchResultItemArray = Vec<TopicSearchResultItem>;
-#[cfg(any(feature = "full", feature = "search"))]
-pub type UserSearchResultItemArray = Vec<UserSearchResultItem>;
-#[cfg(any(feature = "full", feature = "codespaces"))]
-pub type CodespacesSecretArray = Vec<CodespacesSecret>;
-#[cfg(any(feature = "full", feature = "codespaces"))]
-pub type StringOrIntegerArray = Vec<StringOrInteger>;
-#[cfg(any(feature = "full", feature = "users"))]
-pub type EmailArray = Vec<Email>;
-#[cfg(any(feature = "full", feature = "users"))]
-pub type GpgKeyEmailsArray = Vec<GpgKeyEmails>;
-#[cfg(any(feature = "full", feature = "users"))]
-pub type GpgKeySubkeysEmailsArray = Vec<GpgKeySubkeysEmails>;
-#[cfg(any(feature = "full", feature = "users"))]
-pub type GpgKeySubkeysArray = Vec<GpgKeySubkeys>;
-#[cfg(any(feature = "full", feature = "users"))]
-pub type GpgKeyArray = Vec<GpgKey>;
-#[cfg(any(feature = "full", feature = "users"))]
-pub type KeyArray = Vec<Key>;
-#[cfg(any(feature = "full", feature = "apps"))]
-pub type UserMarketplacePurchaseArray = Vec<UserMarketplacePurchase>;
-#[cfg(any(feature = "full", feature = "orgs"))]
-pub type OrgMembershipArray = Vec<OrgMembership>;
-#[cfg(any(feature = "full", feature = "migrations"))]
-pub type MigrationsStartForAuthenticatedUserRequestExcludeArray =
-  Vec<MigrationsStartForAuthenticatedUserRequestExclude>;
-#[cfg(any(feature = "full", feature = "users"))]
-pub type SocialAccountArray = Vec<SocialAccount>;
-#[cfg(any(feature = "full", feature = "users"))]
-pub type SshSigningKeyArray = Vec<SshSigningKey>;
-#[cfg(any(feature = "full", feature = "teams"))]
-pub type TeamFullArray = Vec<TeamFull>;
-#[cfg(any(feature = "full", feature = "users"))]
-pub type HovercardContextsArray = Vec<HovercardContexts>;
-#[cfg(any(feature = "full", feature = "users"))]
-pub type KeySimpleArray = Vec<KeySimple>;
-#[cfg(any(feature = "full", feature = "activity"))]
-pub type StarredRepositoryArray = Vec<StarredRepository>;
 
 /// Enumerations definition
 #[cfg(any(feature = "full", feature = "security_advisories"))]
@@ -6782,7 +6261,7 @@ impl ToString for DiffEntryStatus {
 #[serde(untagged)]
 pub enum ReposAddStatusCheckContextsRequest {
   ReposAddStatusCheckContextsRequestItem1(ReposAddStatusCheckContextsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -6790,7 +6269,7 @@ pub enum ReposAddStatusCheckContextsRequest {
 #[serde(untagged)]
 pub enum ReposSetStatusCheckContextsRequest {
   ReposSetStatusCheckContextsRequestItem1(ReposSetStatusCheckContextsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -6798,7 +6277,7 @@ pub enum ReposSetStatusCheckContextsRequest {
 #[serde(untagged)]
 pub enum ReposRemoveStatusCheckContextsRequest {
   ReposRemoveStatusCheckContextsRequestItem1(ReposRemoveStatusCheckContextsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -6806,7 +6285,7 @@ pub enum ReposRemoveStatusCheckContextsRequest {
 #[serde(untagged)]
 pub enum ReposAddAppAccessRestrictionsRequest {
   ReposAddAppAccessRestrictionsRequestItem1(ReposAddAppAccessRestrictionsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -6814,7 +6293,7 @@ pub enum ReposAddAppAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposSetAppAccessRestrictionsRequest {
   ReposSetAppAccessRestrictionsRequestItem1(ReposSetAppAccessRestrictionsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -6822,7 +6301,7 @@ pub enum ReposSetAppAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposRemoveAppAccessRestrictionsRequest {
   ReposRemoveAppAccessRestrictionsRequestItem1(ReposRemoveAppAccessRestrictionsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -6830,7 +6309,7 @@ pub enum ReposRemoveAppAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposAddTeamAccessRestrictionsRequest {
   ReposAddTeamAccessRestrictionsRequestItem1(ReposAddTeamAccessRestrictionsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -6838,7 +6317,7 @@ pub enum ReposAddTeamAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposSetTeamAccessRestrictionsRequest {
   ReposSetTeamAccessRestrictionsRequestItem1(ReposSetTeamAccessRestrictionsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -6846,7 +6325,7 @@ pub enum ReposSetTeamAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposRemoveTeamAccessRestrictionsRequest {
   ReposRemoveTeamAccessRestrictionsRequestItem1(ReposRemoveTeamAccessRestrictionsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -6854,7 +6333,7 @@ pub enum ReposRemoveTeamAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposAddUserAccessRestrictionsRequest {
   ReposAddUserAccessRestrictionsRequestItem1(ReposAddUserAccessRestrictionsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -6862,7 +6341,7 @@ pub enum ReposAddUserAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposSetUserAccessRestrictionsRequest {
   ReposSetUserAccessRestrictionsRequestItem1(ReposSetUserAccessRestrictionsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -6870,7 +6349,7 @@ pub enum ReposSetUserAccessRestrictionsRequest {
 #[serde(untagged)]
 pub enum ReposRemoveUserAccessRestrictionsRequest {
   ReposRemoveUserAccessRestrictionsRequestItem1(ReposRemoveUserAccessRestrictionsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
 }
 
 #[cfg(any(feature = "full", feature = "checks"))]
@@ -7840,7 +7319,7 @@ impl ToString for ContentSubmoduleType {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ReposGetContentResponse {
-  ContentDirectory(ContentDirectory),
+  ContentDirectory(Vec<ContentDirectoryItem>),
   /// Content File
   ContentFile(ContentFile),
   /// An object describing a symlink
@@ -8740,9 +8219,9 @@ pub enum IssueEventForIssue {
 #[serde(untagged)]
 pub enum IssuesAddLabelsRequest {
   IssuesAddLabelsRequestItem1(IssuesAddLabelsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
   IssuesAddLabelsRequestItem3(IssuesAddLabelsRequestItem3),
-  IssuesAddLabelsRequestItem4Array(IssuesAddLabelsRequestItem4Array),
+  IssuesAddLabelsRequestItem4Array(Vec<IssuesAddLabelsRequestItem4>),
   String(String),
 }
 
@@ -8751,9 +8230,9 @@ pub enum IssuesAddLabelsRequest {
 #[serde(untagged)]
 pub enum IssuesSetLabelsRequest {
   IssuesSetLabelsRequestItem1(IssuesSetLabelsRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
   IssuesSetLabelsRequestItem3(IssuesSetLabelsRequestItem3),
-  IssuesSetLabelsRequestItem4Array(IssuesSetLabelsRequestItem4Array),
+  IssuesSetLabelsRequestItem4Array(Vec<IssuesSetLabelsRequestItem4>),
   String(String),
 }
 
@@ -10505,8 +9984,8 @@ impl ToString for RepositoryAdvisoryUpdateState {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ActivityListStargazersForRepoResponse {
-  SimpleUserArray(SimpleUserArray),
-  StargazerArray(StargazerArray),
+  SimpleUserArray(Vec<SimpleUser>),
+  StargazerArray(Vec<Stargazer>),
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
@@ -11380,7 +10859,7 @@ impl ToString for UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequestVisib
 #[serde(untagged)]
 pub enum UsersAddEmailForAuthenticatedUserRequest {
   UsersAddEmailForAuthenticatedUserRequestItem1(UsersAddEmailForAuthenticatedUserRequestItem1),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
   String(String),
 }
 
@@ -11392,7 +10871,7 @@ pub enum UsersDeleteEmailForAuthenticatedUserRequest {
   UsersDeleteEmailForAuthenticatedUserRequestItem1(
     UsersDeleteEmailForAuthenticatedUserRequestItem1,
   ),
-  StringArray(StringArray),
+  StringArray(Vec<String>),
   String(String),
 }
 
@@ -12594,8 +12073,8 @@ impl ToString for ActivityListReposStarredByUserQueryDirection {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum ActivityListReposStarredByUserResponse {
-  StarredRepositoryArray(StarredRepositoryArray),
-  RepositoryArray(RepositoryArray),
+  StarredRepositoryArray(Vec<StarredRepository>),
+  RepositoryArray(Vec<Repository>),
 }
 
 /// Structs definition
@@ -12673,7 +12152,7 @@ pub struct SecurityAdvisoriesListGlobalAdvisoriesQuery {
   /// Example: `cwes=79,284,22` or `cwes[]=79&cwes[]=284&cwes[]=22`
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub cwes: Option<serde_json::Value>,
+  pub cwes: Option<Vec<String>>,
   /// Whether to only return advisories that have been withdrawn.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -12684,7 +12163,7 @@ pub struct SecurityAdvisoriesListGlobalAdvisoriesQuery {
   /// Example: `affects=package1,package2@1.0.0,package3@^2.0.0` or `affects[]=package1&affects[]=package2@1.0.0`
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub affects: Option<serde_json::Value>,
+  pub affects: Option<Vec<String>>,
   /// If specified, only return advisories that were published on a date or date range.
   ///
   /// For more information on the syntax of the date range, see "[Understanding the search syntax](https://docs.github.com/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax#query-for-dates)."
@@ -19069,7 +18548,9 @@ pub struct MigrationsListForOrgQuery {
   #[builder(default, setter(strip_option))]
   pub page: Option<i64>,
   /// Exclude attributes from the API response to improve performance
-  pub exclude: MigrationsListForOrgQueryExcludeArray,
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub exclude: Option<Vec<MigrationsListForOrgQueryExclude>>,
 }
 
 #[cfg(any(feature = "full", feature = "migrations"))]
@@ -19151,7 +18632,9 @@ pub struct MigrationsStartForOrgRequest {
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsGetStatusForOrgQuery {
   /// Exclude attributes from the API response to improve performance
-  pub exclude: MigrationsGetStatusForOrgQueryExcludeArray,
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub exclude: Option<Vec<MigrationsGetStatusForOrgQueryExclude>>,
 }
 
 #[cfg(any(feature = "full", feature = "migrations"))]
@@ -19448,7 +18931,9 @@ pub struct OrgsListPatGrantRequestsQuery {
   #[builder(default, setter(strip_option))]
   pub direction: Option<OrgsListPatGrantRequestsQueryDirection>,
   /// A list of owner usernames to use to filter the results.
-  pub owner: StringArray,
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub owner: Option<Vec<String>>,
   /// The name of the repository to use to filter the results.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -19580,7 +19065,9 @@ pub struct OrgsListPatGrantsQuery {
   #[builder(default, setter(strip_option))]
   pub direction: Option<OrgsListPatGrantsQueryDirection>,
   /// A list of owner usernames to use to filter the results.
-  pub owner: StringArray,
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub owner: Option<Vec<String>>,
   /// The name of the repository to use to filter the results.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -19755,7 +19242,7 @@ pub struct OrgCustomProperty {
   /// Default value of the property
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub default_value: Option<serde_json::Value>,
+  pub default_value: Option<Vec<String>>,
   /// Short description of the property
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -19794,7 +19281,7 @@ pub struct OrgsCreateOrUpdateCustomPropertyRequest {
   /// Default value of the property
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub default_value: Option<serde_json::Value>,
+  pub default_value: Option<Vec<String>>,
   /// Short description of the property
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -19834,7 +19321,7 @@ pub struct CustomPropertyValue {
   /// The name of the property
   pub property_name: String,
   /// The value assigned to the property
-  pub value: serde_json::Value,
+  pub value: Vec<String>,
 }
 
 #[cfg(any(feature = "full", feature = "orgs"))]
@@ -36559,7 +36046,9 @@ pub struct MigrationsStartForAuthenticatedUserRequest {
 #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
 #[builder(field_defaults(setter(into)))]
 pub struct MigrationsGetStatusForAuthenticatedUserQuery {
-  pub exclude: StringArray,
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  pub exclude: Option<Vec<String>>,
 }
 
 #[cfg(any(feature = "full", feature = "migrations"))]

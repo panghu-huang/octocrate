@@ -38,12 +38,12 @@ impl GitHubPullsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), PullsListQuery, PullRequestSimpleArray> {
+  ) -> Request<(), PullsListQuery, Vec<PullRequestSimple>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pulls");
 
-    Request::<(), PullsListQuery, PullRequestSimpleArray>::builder(&self.config)
+    Request::<(), PullsListQuery, Vec<PullRequestSimple>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -96,12 +96,12 @@ impl GitHubPullsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), PullsListReviewCommentsForRepoQuery, PullRequestReviewCommentArray> {
+  ) -> Request<(), PullsListReviewCommentsForRepoQuery, Vec<PullRequestReviewComment>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pulls/comments");
 
-    Request::<(), PullsListReviewCommentsForRepoQuery, PullRequestReviewCommentArray>::builder(
+    Request::<(), PullsListReviewCommentsForRepoQuery, Vec<PullRequestReviewComment>>::builder(
       &self.config,
     )
     .get(url)
@@ -277,13 +277,13 @@ impl GitHubPullsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
-  ) -> Request<(), PullsListReviewCommentsQuery, PullRequestReviewCommentArray> {
+  ) -> Request<(), PullsListReviewCommentsQuery, Vec<PullRequestReviewComment>> {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
     let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/comments");
 
-    Request::<(), PullsListReviewCommentsQuery, PullRequestReviewCommentArray>::builder(
+    Request::<(), PullsListReviewCommentsQuery, Vec<PullRequestReviewComment>>::builder(
       &self.config,
     )
     .get(url)
@@ -380,13 +380,13 @@ impl GitHubPullsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
-  ) -> Request<(), PullsListCommitsQuery, CommitArray> {
+  ) -> Request<(), PullsListCommitsQuery, Vec<Commit>> {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
     let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/commits");
 
-    Request::<(), PullsListCommitsQuery, CommitArray>::builder(&self.config)
+    Request::<(), PullsListCommitsQuery, Vec<Commit>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -412,13 +412,13 @@ impl GitHubPullsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
-  ) -> Request<(), PullsListFilesQuery, DiffEntryArray> {
+  ) -> Request<(), PullsListFilesQuery, Vec<DiffEntry>> {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
     let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/files");
 
-    Request::<(), PullsListFilesQuery, DiffEntryArray>::builder(&self.config)
+    Request::<(), PullsListFilesQuery, Vec<DiffEntry>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -547,13 +547,13 @@ impl GitHubPullsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
-  ) -> Request<(), PullsListReviewsQuery, PullRequestReviewArray> {
+  ) -> Request<(), PullsListReviewsQuery, Vec<PullRequestReview>> {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
     let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews");
 
-    Request::<(), PullsListReviewsQuery, PullRequestReviewArray>::builder(&self.config)
+    Request::<(), PullsListReviewsQuery, Vec<PullRequestReview>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -702,14 +702,14 @@ impl GitHubPullsAPI {
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
     review_id: impl Into<i64>,
-  ) -> Request<(), PullsListCommentsForReviewQuery, ReviewCommentArray> {
+  ) -> Request<(), PullsListCommentsForReviewQuery, Vec<ReviewComment>> {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
     let review_id = review_id.into();
     let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments");
 
-    Request::<(), PullsListCommentsForReviewQuery, ReviewCommentArray>::builder(&self.config)
+    Request::<(), PullsListCommentsForReviewQuery, Vec<ReviewComment>>::builder(&self.config)
       .get(url)
       .build()
   }

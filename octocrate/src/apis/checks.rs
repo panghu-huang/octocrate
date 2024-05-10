@@ -101,13 +101,13 @@ impl GitHubChecksAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     check_run_id: impl Into<i64>,
-  ) -> Request<(), ChecksListAnnotationsQuery, CheckAnnotationArray> {
+  ) -> Request<(), ChecksListAnnotationsQuery, Vec<CheckAnnotation>> {
     let owner = owner.into();
     let repo = repo.into();
     let check_run_id = check_run_id.into();
     let url = format!("/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations");
 
-    Request::<(), ChecksListAnnotationsQuery, CheckAnnotationArray>::builder(&self.config)
+    Request::<(), ChecksListAnnotationsQuery, Vec<CheckAnnotation>>::builder(&self.config)
       .get(url)
       .build()
   }

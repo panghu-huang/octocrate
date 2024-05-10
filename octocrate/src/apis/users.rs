@@ -47,10 +47,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/blocking#list-users-blocked-by-the-authenticated-user](https://docs.github.com/rest/users/blocking#list-users-blocked-by-the-authenticated-user)
   pub fn list_blocked_by_authenticated_user(
     &self,
-  ) -> Request<(), UsersListBlockedByAuthenticatedUserQuery, SimpleUserArray> {
+  ) -> Request<(), UsersListBlockedByAuthenticatedUserQuery, Vec<SimpleUser>> {
     let url = format!("/user/blocks");
 
-    Request::<(), UsersListBlockedByAuthenticatedUserQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), UsersListBlockedByAuthenticatedUserQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -104,10 +104,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user](https://docs.github.com/rest/users/emails#set-primary-email-visibility-for-the-authenticated-user)
   pub fn set_primary_email_visibility_for_authenticated_user(
     &self,
-  ) -> Request<UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest, (), EmailArray> {
+  ) -> Request<UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest, (), Vec<Email>> {
     let url = format!("/user/email/visibility");
 
-    Request::<UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest, (), EmailArray>::builder(
+    Request::<UsersSetPrimaryEmailVisibilityForAuthenticatedUserRequest, (), Vec<Email>>::builder(
       &self.config,
     )
     .patch(url)
@@ -124,10 +124,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/emails#list-email-addresses-for-the-authenticated-user](https://docs.github.com/rest/users/emails#list-email-addresses-for-the-authenticated-user)
   pub fn list_emails_for_authenticated_user(
     &self,
-  ) -> Request<(), UsersListEmailsForAuthenticatedUserQuery, EmailArray> {
+  ) -> Request<(), UsersListEmailsForAuthenticatedUserQuery, Vec<Email>> {
     let url = format!("/user/emails");
 
-    Request::<(), UsersListEmailsForAuthenticatedUserQuery, EmailArray>::builder(&self.config)
+    Request::<(), UsersListEmailsForAuthenticatedUserQuery, Vec<Email>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -139,10 +139,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/emails#add-an-email-address-for-the-authenticated-user](https://docs.github.com/rest/users/emails#add-an-email-address-for-the-authenticated-user)
   pub fn add_email_for_authenticated_user(
     &self,
-  ) -> Request<UsersAddEmailForAuthenticatedUserRequest, (), EmailArray> {
+  ) -> Request<UsersAddEmailForAuthenticatedUserRequest, (), Vec<Email>> {
     let url = format!("/user/emails");
 
-    Request::<UsersAddEmailForAuthenticatedUserRequest, (), EmailArray>::builder(&self.config)
+    Request::<UsersAddEmailForAuthenticatedUserRequest, (), Vec<Email>>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -169,10 +169,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/followers#list-followers-of-the-authenticated-user](https://docs.github.com/rest/users/followers#list-followers-of-the-authenticated-user)
   pub fn list_followers_for_authenticated_user(
     &self,
-  ) -> Request<(), UsersListFollowersForAuthenticatedUserQuery, SimpleUserArray> {
+  ) -> Request<(), UsersListFollowersForAuthenticatedUserQuery, Vec<SimpleUser>> {
     let url = format!("/user/followers");
 
-    Request::<(), UsersListFollowersForAuthenticatedUserQuery, SimpleUserArray>::builder(
+    Request::<(), UsersListFollowersForAuthenticatedUserQuery, Vec<SimpleUser>>::builder(
       &self.config,
     )
     .get(url)
@@ -186,10 +186,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/followers#list-the-people-the-authenticated-user-follows](https://docs.github.com/rest/users/followers#list-the-people-the-authenticated-user-follows)
   pub fn list_followed_by_authenticated_user(
     &self,
-  ) -> Request<(), UsersListFollowedByAuthenticatedUserQuery, SimpleUserArray> {
+  ) -> Request<(), UsersListFollowedByAuthenticatedUserQuery, Vec<SimpleUser>> {
     let url = format!("/user/following");
 
-    Request::<(), UsersListFollowedByAuthenticatedUserQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), UsersListFollowedByAuthenticatedUserQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -249,10 +249,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user](https://docs.github.com/rest/users/gpg-keys#list-gpg-keys-for-the-authenticated-user)
   pub fn list_gpg_keys_for_authenticated_user(
     &self,
-  ) -> Request<(), UsersListGpgKeysForAuthenticatedUserQuery, GpgKeyArray> {
+  ) -> Request<(), UsersListGpgKeysForAuthenticatedUserQuery, Vec<GpgKey>> {
     let url = format!("/user/gpg_keys");
 
-    Request::<(), UsersListGpgKeysForAuthenticatedUserQuery, GpgKeyArray>::builder(&self.config)
+    Request::<(), UsersListGpgKeysForAuthenticatedUserQuery, Vec<GpgKey>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -321,10 +321,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user](https://docs.github.com/rest/users/keys#list-public-ssh-keys-for-the-authenticated-user)
   pub fn list_public_ssh_keys_for_authenticated_user(
     &self,
-  ) -> Request<(), UsersListPublicSshKeysForAuthenticatedUserQuery, KeyArray> {
+  ) -> Request<(), UsersListPublicSshKeysForAuthenticatedUserQuery, Vec<Key>> {
     let url = format!("/user/keys");
 
-    Request::<(), UsersListPublicSshKeysForAuthenticatedUserQuery, KeyArray>::builder(&self.config)
+    Request::<(), UsersListPublicSshKeysForAuthenticatedUserQuery, Vec<Key>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -395,10 +395,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/emails#list-public-email-addresses-for-the-authenticated-user](https://docs.github.com/rest/users/emails#list-public-email-addresses-for-the-authenticated-user)
   pub fn list_public_emails_for_authenticated_user(
     &self,
-  ) -> Request<(), UsersListPublicEmailsForAuthenticatedUserQuery, EmailArray> {
+  ) -> Request<(), UsersListPublicEmailsForAuthenticatedUserQuery, Vec<Email>> {
     let url = format!("/user/public_emails");
 
-    Request::<(), UsersListPublicEmailsForAuthenticatedUserQuery, EmailArray>::builder(&self.config)
+    Request::<(), UsersListPublicEmailsForAuthenticatedUserQuery, Vec<Email>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -410,10 +410,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-the-authenticated-user](https://docs.github.com/rest/users/social-accounts#list-social-accounts-for-the-authenticated-user)
   pub fn list_social_accounts_for_authenticated_user(
     &self,
-  ) -> Request<(), UsersListSocialAccountsForAuthenticatedUserQuery, SocialAccountArray> {
+  ) -> Request<(), UsersListSocialAccountsForAuthenticatedUserQuery, Vec<SocialAccount>> {
     let url = format!("/user/social_accounts");
 
-    Request::<(), UsersListSocialAccountsForAuthenticatedUserQuery, SocialAccountArray>::builder(
+    Request::<(), UsersListSocialAccountsForAuthenticatedUserQuery, Vec<SocialAccount>>::builder(
       &self.config,
     )
     .get(url)
@@ -429,10 +429,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/social-accounts#add-social-accounts-for-the-authenticated-user](https://docs.github.com/rest/users/social-accounts#add-social-accounts-for-the-authenticated-user)
   pub fn add_social_account_for_authenticated_user(
     &self,
-  ) -> Request<UsersAddSocialAccountForAuthenticatedUserRequest, (), SocialAccountArray> {
+  ) -> Request<UsersAddSocialAccountForAuthenticatedUserRequest, (), Vec<SocialAccount>> {
     let url = format!("/user/social_accounts");
 
-    Request::<UsersAddSocialAccountForAuthenticatedUserRequest, (), SocialAccountArray>::builder(
+    Request::<UsersAddSocialAccountForAuthenticatedUserRequest, (), Vec<SocialAccount>>::builder(
       &self.config,
     )
     .post(url)
@@ -467,10 +467,10 @@ impl GitHubUsersAPI {
   /// *Documentation*: [https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user](https://docs.github.com/rest/users/ssh-signing-keys#list-ssh-signing-keys-for-the-authenticated-user)
   pub fn list_ssh_signing_keys_for_authenticated_user(
     &self,
-  ) -> Request<(), UsersListSshSigningKeysForAuthenticatedUserQuery, SshSigningKeyArray> {
+  ) -> Request<(), UsersListSshSigningKeysForAuthenticatedUserQuery, Vec<SshSigningKey>> {
     let url = format!("/user/ssh_signing_keys");
 
-    Request::<(), UsersListSshSigningKeysForAuthenticatedUserQuery, SshSigningKeyArray>::builder(
+    Request::<(), UsersListSshSigningKeysForAuthenticatedUserQuery, Vec<SshSigningKey>>::builder(
       &self.config,
     )
     .get(url)
@@ -541,10 +541,10 @@ impl GitHubUsersAPI {
   /// Note: Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of users.
   ///
   /// *Documentation*: [https://docs.github.com/rest/users/users#list-users](https://docs.github.com/rest/users/users#list-users)
-  pub fn list(&self) -> Request<(), UsersListQuery, SimpleUserArray> {
+  pub fn list(&self) -> Request<(), UsersListQuery, Vec<SimpleUser>> {
     let url = format!("/users");
 
-    Request::<(), UsersListQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), UsersListQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -578,11 +578,11 @@ impl GitHubUsersAPI {
   pub fn list_followers_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), UsersListFollowersForUserQuery, SimpleUserArray> {
+  ) -> Request<(), UsersListFollowersForUserQuery, Vec<SimpleUser>> {
     let username = username.into();
     let url = format!("/users/{username}/followers");
 
-    Request::<(), UsersListFollowersForUserQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), UsersListFollowersForUserQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -595,11 +595,11 @@ impl GitHubUsersAPI {
   pub fn list_following_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), UsersListFollowingForUserQuery, SimpleUserArray> {
+  ) -> Request<(), UsersListFollowingForUserQuery, Vec<SimpleUser>> {
     let username = username.into();
     let url = format!("/users/{username}/following");
 
-    Request::<(), UsersListFollowingForUserQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), UsersListFollowingForUserQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -630,11 +630,11 @@ impl GitHubUsersAPI {
   pub fn list_gpg_keys_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), UsersListGpgKeysForUserQuery, GpgKeyArray> {
+  ) -> Request<(), UsersListGpgKeysForUserQuery, Vec<GpgKey>> {
     let username = username.into();
     let url = format!("/users/{username}/gpg_keys");
 
-    Request::<(), UsersListGpgKeysForUserQuery, GpgKeyArray>::builder(&self.config)
+    Request::<(), UsersListGpgKeysForUserQuery, Vec<GpgKey>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -668,11 +668,11 @@ impl GitHubUsersAPI {
   pub fn list_public_keys_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), UsersListPublicKeysForUserQuery, KeySimpleArray> {
+  ) -> Request<(), UsersListPublicKeysForUserQuery, Vec<KeySimple>> {
     let username = username.into();
     let url = format!("/users/{username}/keys");
 
-    Request::<(), UsersListPublicKeysForUserQuery, KeySimpleArray>::builder(&self.config)
+    Request::<(), UsersListPublicKeysForUserQuery, Vec<KeySimple>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -685,11 +685,11 @@ impl GitHubUsersAPI {
   pub fn list_social_accounts_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), UsersListSocialAccountsForUserQuery, SocialAccountArray> {
+  ) -> Request<(), UsersListSocialAccountsForUserQuery, Vec<SocialAccount>> {
     let username = username.into();
     let url = format!("/users/{username}/social_accounts");
 
-    Request::<(), UsersListSocialAccountsForUserQuery, SocialAccountArray>::builder(&self.config)
+    Request::<(), UsersListSocialAccountsForUserQuery, Vec<SocialAccount>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -702,11 +702,11 @@ impl GitHubUsersAPI {
   pub fn list_ssh_signing_keys_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), UsersListSshSigningKeysForUserQuery, SshSigningKeyArray> {
+  ) -> Request<(), UsersListSshSigningKeysForUserQuery, Vec<SshSigningKey>> {
     let username = username.into();
     let url = format!("/users/{username}/ssh_signing_keys");
 
-    Request::<(), UsersListSshSigningKeysForUserQuery, SshSigningKeyArray>::builder(&self.config)
+    Request::<(), UsersListSshSigningKeysForUserQuery, Vec<SshSigningKey>>::builder(&self.config)
       .get(url)
       .build()
   }

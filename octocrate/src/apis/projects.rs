@@ -22,11 +22,11 @@ impl GitHubProjectsAPI {
   pub fn list_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), ProjectsListForOrgQuery, ProjectArray> {
+  ) -> Request<(), ProjectsListForOrgQuery, Vec<Project>> {
     let org = org.into();
     let url = format!("/orgs/{org}/projects");
 
-    Request::<(), ProjectsListForOrgQuery, ProjectArray>::builder(&self.config)
+    Request::<(), ProjectsListForOrgQuery, Vec<Project>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -160,11 +160,11 @@ impl GitHubProjectsAPI {
   pub fn list_cards(
     &self,
     column_id: impl Into<i64>,
-  ) -> Request<(), ProjectsListCardsQuery, ProjectCardArray> {
+  ) -> Request<(), ProjectsListCardsQuery, Vec<ProjectCard>> {
     let column_id = column_id.into();
     let url = format!("/projects/columns/{column_id}/cards");
 
-    Request::<(), ProjectsListCardsQuery, ProjectCardArray>::builder(&self.config)
+    Request::<(), ProjectsListCardsQuery, Vec<ProjectCard>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -251,11 +251,11 @@ impl GitHubProjectsAPI {
   pub fn list_collaborators(
     &self,
     project_id: impl Into<i64>,
-  ) -> Request<(), ProjectsListCollaboratorsQuery, SimpleUserArray> {
+  ) -> Request<(), ProjectsListCollaboratorsQuery, Vec<SimpleUser>> {
     let project_id = project_id.into();
     let url = format!("/projects/{project_id}/collaborators");
 
-    Request::<(), ProjectsListCollaboratorsQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), ProjectsListCollaboratorsQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -325,11 +325,11 @@ impl GitHubProjectsAPI {
   pub fn list_columns(
     &self,
     project_id: impl Into<i64>,
-  ) -> Request<(), ProjectsListColumnsQuery, ProjectColumnArray> {
+  ) -> Request<(), ProjectsListColumnsQuery, Vec<ProjectColumn>> {
     let project_id = project_id.into();
     let url = format!("/projects/{project_id}/columns");
 
-    Request::<(), ProjectsListColumnsQuery, ProjectColumnArray>::builder(&self.config)
+    Request::<(), ProjectsListColumnsQuery, Vec<ProjectColumn>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -360,12 +360,12 @@ impl GitHubProjectsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ProjectsListForRepoQuery, ProjectArray> {
+  ) -> Request<(), ProjectsListForRepoQuery, Vec<Project>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/projects");
 
-    Request::<(), ProjectsListForRepoQuery, ProjectArray>::builder(&self.config)
+    Request::<(), ProjectsListForRepoQuery, Vec<Project>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -412,11 +412,11 @@ impl GitHubProjectsAPI {
   pub fn list_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ProjectsListForUserQuery, ProjectArray> {
+  ) -> Request<(), ProjectsListForUserQuery, Vec<Project>> {
     let username = username.into();
     let url = format!("/users/{username}/projects");
 
-    Request::<(), ProjectsListForUserQuery, ProjectArray>::builder(&self.config)
+    Request::<(), ProjectsListForUserQuery, Vec<Project>>::builder(&self.config)
       .get(url)
       .build()
   }

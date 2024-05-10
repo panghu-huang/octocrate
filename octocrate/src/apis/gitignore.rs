@@ -19,10 +19,10 @@ impl GitHubGitignoreAPI {
   /// List all templates available to pass as an option when [creating a repository](https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user).
   ///
   /// *Documentation*: [https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates](https://docs.github.com/rest/gitignore/gitignore#get-all-gitignore-templates)
-  pub fn get_all_templates(&self) -> Request<(), (), StringArray> {
+  pub fn get_all_templates(&self) -> Request<(), (), Vec<String>> {
     let url = format!("/gitignore/templates");
 
-    Request::<(), (), StringArray>::builder(&self.config)
+    Request::<(), (), Vec<String>>::builder(&self.config)
       .get(url)
       .build()
   }

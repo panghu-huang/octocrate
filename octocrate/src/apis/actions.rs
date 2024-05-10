@@ -309,11 +309,11 @@ impl GitHubActionsAPI {
   pub fn list_runner_applications_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), RunnerApplicationArray> {
+  ) -> Request<(), (), Vec<RunnerApplication>> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/runners/downloads");
 
-    Request::<(), (), RunnerApplicationArray>::builder(&self.config)
+    Request::<(), (), Vec<RunnerApplication>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1595,12 +1595,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), RunnerApplicationArray> {
+  ) -> Request<(), (), Vec<RunnerApplication>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/runners/downloads");
 
-    Request::<(), (), RunnerApplicationArray>::builder(&self.config)
+    Request::<(), (), Vec<RunnerApplication>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1960,13 +1960,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), (), EnvironmentApprovalsArray> {
+  ) -> Request<(), (), Vec<EnvironmentApprovals>> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/approvals");
 
-    Request::<(), (), EnvironmentApprovalsArray>::builder(&self.config)
+    Request::<(), (), Vec<EnvironmentApprovals>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2273,13 +2273,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), (), PendingDeploymentArray> {
+  ) -> Request<(), (), Vec<PendingDeployment>> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments");
 
-    Request::<(), (), PendingDeploymentArray>::builder(&self.config)
+    Request::<(), (), Vec<PendingDeployment>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2298,13 +2298,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<ActionsReviewPendingDeploymentsForRunRequest, (), DeploymentArray> {
+  ) -> Request<ActionsReviewPendingDeploymentsForRunRequest, (), Vec<Deployment>> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments");
 
-    Request::<ActionsReviewPendingDeploymentsForRunRequest, (), DeploymentArray>::builder(
+    Request::<ActionsReviewPendingDeploymentsForRunRequest, (), Vec<Deployment>>::builder(
       &self.config,
     )
     .post(url)

@@ -25,11 +25,11 @@ impl GitHubCodeScanningAPI {
   pub fn list_alerts_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), CodeScanningListAlertsForOrgQuery, CodeScanningOrganizationAlertItemsArray> {
+  ) -> Request<(), CodeScanningListAlertsForOrgQuery, Vec<CodeScanningOrganizationAlertItems>> {
     let org = org.into();
     let url = format!("/orgs/{org}/code-scanning/alerts");
 
-    Request::<(), CodeScanningListAlertsForOrgQuery, CodeScanningOrganizationAlertItemsArray>::builder(&self.config)
+    Request::<(), CodeScanningListAlertsForOrgQuery, Vec<CodeScanningOrganizationAlertItems>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -49,12 +49,12 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), CodeScanningListAlertsForRepoQuery, CodeScanningAlertItemsArray> {
+  ) -> Request<(), CodeScanningListAlertsForRepoQuery, Vec<CodeScanningAlertItems>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/alerts");
 
-    Request::<(), CodeScanningListAlertsForRepoQuery, CodeScanningAlertItemsArray>::builder(
+    Request::<(), CodeScanningListAlertsForRepoQuery, Vec<CodeScanningAlertItems>>::builder(
       &self.config,
     )
     .get(url)
@@ -118,13 +118,13 @@ impl GitHubCodeScanningAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     alert_number: impl Into<i64>,
-  ) -> Request<(), CodeScanningListAlertInstancesQuery, CodeScanningAlertInstanceArray> {
+  ) -> Request<(), CodeScanningListAlertInstancesQuery, Vec<CodeScanningAlertInstance>> {
     let owner = owner.into();
     let repo = repo.into();
     let alert_number = alert_number.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances");
 
-    Request::<(), CodeScanningListAlertInstancesQuery, CodeScanningAlertInstanceArray>::builder(
+    Request::<(), CodeScanningListAlertInstancesQuery, Vec<CodeScanningAlertInstance>>::builder(
       &self.config,
     )
     .get(url)
@@ -154,12 +154,12 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), CodeScanningListRecentAnalysesQuery, CodeScanningAnalysisArray> {
+  ) -> Request<(), CodeScanningListRecentAnalysesQuery, Vec<CodeScanningAnalysis>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/analyses");
 
-    Request::<(), CodeScanningListRecentAnalysesQuery, CodeScanningAnalysisArray>::builder(
+    Request::<(), CodeScanningListRecentAnalysesQuery, Vec<CodeScanningAnalysis>>::builder(
       &self.config,
     )
     .get(url)
@@ -300,12 +300,12 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), CodeScanningCodeqlDatabaseArray> {
+  ) -> Request<(), (), Vec<CodeScanningCodeqlDatabase>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/codeql/databases");
 
-    Request::<(), (), CodeScanningCodeqlDatabaseArray>::builder(&self.config)
+    Request::<(), (), Vec<CodeScanningCodeqlDatabase>>::builder(&self.config)
       .get(url)
       .build()
   }

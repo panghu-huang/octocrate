@@ -24,11 +24,11 @@ impl GitHubMigrationsAPI {
   pub fn list_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), MigrationsListForOrgQuery, MigrationArray> {
+  ) -> Request<(), MigrationsListForOrgQuery, Vec<Migration>> {
     let org = org.into();
     let url = format!("/orgs/{org}/migrations");
 
-    Request::<(), MigrationsListForOrgQuery, MigrationArray>::builder(&self.config)
+    Request::<(), MigrationsListForOrgQuery, Vec<Migration>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -144,12 +144,12 @@ impl GitHubMigrationsAPI {
     &self,
     org: impl Into<String>,
     migration_id: impl Into<i64>,
-  ) -> Request<(), MigrationsListReposForOrgQuery, MinimalRepositoryArray> {
+  ) -> Request<(), MigrationsListReposForOrgQuery, Vec<MinimalRepository>> {
     let org = org.into();
     let migration_id = migration_id.into();
     let url = format!("/orgs/{org}/migrations/{migration_id}/repositories");
 
-    Request::<(), MigrationsListReposForOrgQuery, MinimalRepositoryArray>::builder(&self.config)
+    Request::<(), MigrationsListReposForOrgQuery, Vec<MinimalRepository>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -293,12 +293,12 @@ impl GitHubMigrationsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), MigrationsGetCommitAuthorsQuery, PorterAuthorArray> {
+  ) -> Request<(), MigrationsGetCommitAuthorsQuery, Vec<PorterAuthor>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/import/authors");
 
-    Request::<(), MigrationsGetCommitAuthorsQuery, PorterAuthorArray>::builder(&self.config)
+    Request::<(), MigrationsGetCommitAuthorsQuery, Vec<PorterAuthor>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -340,12 +340,12 @@ impl GitHubMigrationsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), PorterLargeFileArray> {
+  ) -> Request<(), (), Vec<PorterLargeFile>> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/import/large_files");
 
-    Request::<(), (), PorterLargeFileArray>::builder(&self.config)
+    Request::<(), (), Vec<PorterLargeFile>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -383,10 +383,10 @@ impl GitHubMigrationsAPI {
   /// *Documentation*: [https://docs.github.com/rest/migrations/users#list-user-migrations](https://docs.github.com/rest/migrations/users#list-user-migrations)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<(), MigrationsListForAuthenticatedUserQuery, MigrationArray> {
+  ) -> Request<(), MigrationsListForAuthenticatedUserQuery, Vec<Migration>> {
     let url = format!("/user/migrations");
 
-    Request::<(), MigrationsListForAuthenticatedUserQuery, MigrationArray>::builder(&self.config)
+    Request::<(), MigrationsListForAuthenticatedUserQuery, Vec<Migration>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -511,11 +511,11 @@ impl GitHubMigrationsAPI {
   pub fn list_repos_for_authenticated_user(
     &self,
     migration_id: impl Into<i64>,
-  ) -> Request<(), MigrationsListReposForAuthenticatedUserQuery, MinimalRepositoryArray> {
+  ) -> Request<(), MigrationsListReposForAuthenticatedUserQuery, Vec<MinimalRepository>> {
     let migration_id = migration_id.into();
     let url = format!("/user/migrations/{migration_id}/repositories");
 
-    Request::<(), MigrationsListReposForAuthenticatedUserQuery, MinimalRepositoryArray>::builder(
+    Request::<(), MigrationsListReposForAuthenticatedUserQuery, Vec<MinimalRepository>>::builder(
       &self.config,
     )
     .get(url)

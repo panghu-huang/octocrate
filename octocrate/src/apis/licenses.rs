@@ -21,10 +21,10 @@ impl GitHubLicensesAPI {
   /// *Documentation*: [https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses](https://docs.github.com/rest/licenses/licenses#get-all-commonly-used-licenses)
   pub fn get_all_commonly_used(
     &self,
-  ) -> Request<(), LicensesGetAllCommonlyUsedQuery, LicenseSimpleArray> {
+  ) -> Request<(), LicensesGetAllCommonlyUsedQuery, Vec<LicenseSimple>> {
     let url = format!("/licenses");
 
-    Request::<(), LicensesGetAllCommonlyUsedQuery, LicenseSimpleArray>::builder(&self.config)
+    Request::<(), LicensesGetAllCommonlyUsedQuery, Vec<LicenseSimple>>::builder(&self.config)
       .get(url)
       .build()
   }

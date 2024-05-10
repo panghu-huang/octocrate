@@ -18,10 +18,10 @@ impl GitHubCodesOfConductAPI {
   /// Returns array of all GitHub's codes of conduct.
   ///
   /// *Documentation*: [https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct](https://docs.github.com/rest/codes-of-conduct/codes-of-conduct#get-all-codes-of-conduct)
-  pub fn get_all_codes_of_conduct(&self) -> Request<(), (), CodeOfConductArray> {
+  pub fn get_all_codes_of_conduct(&self) -> Request<(), (), Vec<CodeOfConduct>> {
     let url = format!("/codes_of_conduct");
 
-    Request::<(), (), CodeOfConductArray>::builder(&self.config)
+    Request::<(), (), Vec<CodeOfConduct>>::builder(&self.config)
       .get(url)
       .build()
   }

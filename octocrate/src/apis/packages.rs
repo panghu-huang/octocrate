@@ -24,11 +24,11 @@ impl GitHubPackagesAPI {
   pub fn list_docker_migration_conflicting_packages_for_organization(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), PackageArray> {
+  ) -> Request<(), (), Vec<Package>> {
     let org = org.into();
     let url = format!("/orgs/{org}/docker/conflicts");
 
-    Request::<(), (), PackageArray>::builder(&self.config)
+    Request::<(), (), Vec<Package>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -43,11 +43,11 @@ impl GitHubPackagesAPI {
   pub fn list_packages_for_organization(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), PackagesListPackagesForOrganizationQuery, PackageArray> {
+  ) -> Request<(), PackagesListPackagesForOrganizationQuery, Vec<Package>> {
     let org = org.into();
     let url = format!("/orgs/{org}/packages");
 
-    Request::<(), PackagesListPackagesForOrganizationQuery, PackageArray>::builder(&self.config)
+    Request::<(), PackagesListPackagesForOrganizationQuery, Vec<Package>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -144,14 +144,14 @@ impl GitHubPackagesAPI {
     package_type: impl Into<PackagesGetAllPackageVersionsForPackageOwnedByOrgParametersPackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
-  ) -> Request<(), PackagesGetAllPackageVersionsForPackageOwnedByOrgQuery, PackageVersionArray> {
+  ) -> Request<(), PackagesGetAllPackageVersionsForPackageOwnedByOrgQuery, Vec<PackageVersion>> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let org = org.into();
     let package_type = package_type.to_string();
     let url = format!("/orgs/{org}/packages/{package_type}/{package_name}/versions");
 
-    Request::<(), PackagesGetAllPackageVersionsForPackageOwnedByOrgQuery, PackageVersionArray>::builder(&self.config)
+    Request::<(), PackagesGetAllPackageVersionsForPackageOwnedByOrgQuery, Vec<PackageVersion>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -255,10 +255,10 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user](https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user)
   pub fn list_docker_migration_conflicting_packages_for_authenticated_user(
     &self,
-  ) -> Request<(), (), PackageArray> {
+  ) -> Request<(), (), Vec<Package>> {
     let url = format!("/user/docker/conflicts");
 
-    Request::<(), (), PackageArray>::builder(&self.config)
+    Request::<(), (), Vec<Package>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -272,10 +272,10 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace](https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace)
   pub fn list_packages_for_authenticated_user(
     &self,
-  ) -> Request<(), PackagesListPackagesForAuthenticatedUserQuery, PackageArray> {
+  ) -> Request<(), PackagesListPackagesForAuthenticatedUserQuery, Vec<Package>> {
     let url = format!("/user/packages");
 
-    Request::<(), PackagesListPackagesForAuthenticatedUserQuery, PackageArray>::builder(
+    Request::<(), PackagesListPackagesForAuthenticatedUserQuery, Vec<Package>>::builder(
       &self.config,
     )
     .get(url)
@@ -368,7 +368,7 @@ impl GitHubPackagesAPI {
   ) -> Request<
     (),
     PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQuery,
-    PackageVersionArray,
+    Vec<PackageVersion>,
   > {
     let package_type = package_type.into();
     let package_name = package_name.into();
@@ -378,7 +378,7 @@ impl GitHubPackagesAPI {
     Request::<
       (),
       PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQuery,
-      PackageVersionArray,
+      Vec<PackageVersion>,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -473,11 +473,11 @@ impl GitHubPackagesAPI {
   pub fn list_docker_migration_conflicting_packages_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), (), PackageArray> {
+  ) -> Request<(), (), Vec<Package>> {
     let username = username.into();
     let url = format!("/users/{username}/docker/conflicts");
 
-    Request::<(), (), PackageArray>::builder(&self.config)
+    Request::<(), (), Vec<Package>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -492,11 +492,11 @@ impl GitHubPackagesAPI {
   pub fn list_packages_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), PackagesListPackagesForUserQuery, PackageArray> {
+  ) -> Request<(), PackagesListPackagesForUserQuery, Vec<Package>> {
     let username = username.into();
     let url = format!("/users/{username}/packages");
 
-    Request::<(), PackagesListPackagesForUserQuery, PackageArray>::builder(&self.config)
+    Request::<(), PackagesListPackagesForUserQuery, Vec<Package>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -593,14 +593,14 @@ impl GitHubPackagesAPI {
     package_type: impl Into<PackagesGetAllPackageVersionsForPackageOwnedByUserParametersPackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<(), (), PackageVersionArray> {
+  ) -> Request<(), (), Vec<PackageVersion>> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let username = username.into();
     let package_type = package_type.to_string();
     let url = format!("/users/{username}/packages/{package_type}/{package_name}/versions");
 
-    Request::<(), (), PackageVersionArray>::builder(&self.config)
+    Request::<(), (), Vec<PackageVersion>>::builder(&self.config)
       .get(url)
       .build()
   }

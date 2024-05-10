@@ -21,10 +21,10 @@ impl GitHubOrgsAPI {
   /// **Note:** Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of organizations.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#list-organizations](https://docs.github.com/rest/orgs/orgs#list-organizations)
-  pub fn list(&self) -> Request<(), OrgsListQuery, OrganizationSimpleArray> {
+  pub fn list(&self) -> Request<(), OrgsListQuery, Vec<OrganizationSimple>> {
     let url = format!("/organizations");
 
-    Request::<(), OrgsListQuery, OrganizationSimpleArray>::builder(&self.config)
+    Request::<(), OrgsListQuery, Vec<OrganizationSimple>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -121,11 +121,11 @@ impl GitHubOrgsAPI {
   pub fn list_blocked_users(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListBlockedUsersQuery, SimpleUserArray> {
+  ) -> Request<(), OrgsListBlockedUsersQuery, Vec<SimpleUser>> {
     let org = org.into();
     let url = format!("/orgs/{org}/blocks");
 
-    Request::<(), OrgsListBlockedUsersQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), OrgsListBlockedUsersQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -195,11 +195,11 @@ impl GitHubOrgsAPI {
   pub fn list_failed_invitations(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListFailedInvitationsQuery, OrganizationInvitationArray> {
+  ) -> Request<(), OrgsListFailedInvitationsQuery, Vec<OrganizationInvitation>> {
     let org = org.into();
     let url = format!("/orgs/{org}/failed_invitations");
 
-    Request::<(), OrgsListFailedInvitationsQuery, OrganizationInvitationArray>::builder(
+    Request::<(), OrgsListFailedInvitationsQuery, Vec<OrganizationInvitation>>::builder(
       &self.config,
     )
     .get(url)
@@ -217,11 +217,11 @@ impl GitHubOrgsAPI {
   pub fn list_webhooks(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListWebhooksQuery, OrgHookArray> {
+  ) -> Request<(), OrgsListWebhooksQuery, Vec<OrgHook>> {
     let org = org.into();
     let url = format!("/orgs/{org}/hooks");
 
-    Request::<(), OrgsListWebhooksQuery, OrgHookArray>::builder(&self.config)
+    Request::<(), OrgsListWebhooksQuery, Vec<OrgHook>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -385,12 +385,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), OrgsListWebhookDeliveriesQuery, HookDeliveryItemArray> {
+  ) -> Request<(), OrgsListWebhookDeliveriesQuery, Vec<HookDeliveryItem>> {
     let org = org.into();
     let hook_id = hook_id.into();
     let url = format!("/orgs/{org}/hooks/{hook_id}/deliveries");
 
-    Request::<(), OrgsListWebhookDeliveriesQuery, HookDeliveryItemArray>::builder(&self.config)
+    Request::<(), OrgsListWebhookDeliveriesQuery, Vec<HookDeliveryItem>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -504,11 +504,11 @@ impl GitHubOrgsAPI {
   pub fn list_pending_invitations(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListPendingInvitationsQuery, OrganizationInvitationArray> {
+  ) -> Request<(), OrgsListPendingInvitationsQuery, Vec<OrganizationInvitation>> {
     let org = org.into();
     let url = format!("/orgs/{org}/invitations");
 
-    Request::<(), OrgsListPendingInvitationsQuery, OrganizationInvitationArray>::builder(
+    Request::<(), OrgsListPendingInvitationsQuery, Vec<OrganizationInvitation>>::builder(
       &self.config,
     )
     .get(url)
@@ -565,12 +565,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     invitation_id: impl Into<i64>,
-  ) -> Request<(), OrgsListInvitationTeamsQuery, TeamArray> {
+  ) -> Request<(), OrgsListInvitationTeamsQuery, Vec<Team>> {
     let org = org.into();
     let invitation_id = invitation_id.into();
     let url = format!("/orgs/{org}/invitations/{invitation_id}/teams");
 
-    Request::<(), OrgsListInvitationTeamsQuery, TeamArray>::builder(&self.config)
+    Request::<(), OrgsListInvitationTeamsQuery, Vec<Team>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -583,11 +583,11 @@ impl GitHubOrgsAPI {
   pub fn list_members(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListMembersQuery, SimpleUserArray> {
+  ) -> Request<(), OrgsListMembersQuery, Vec<SimpleUser>> {
     let org = org.into();
     let url = format!("/orgs/{org}/members");
 
-    Request::<(), OrgsListMembersQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), OrgsListMembersQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -714,11 +714,11 @@ impl GitHubOrgsAPI {
   pub fn list_organization_fine_grained_permissions(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), OrganizationFineGrainedPermissionArray> {
+  ) -> Request<(), (), Vec<OrganizationFineGrainedPermission>> {
     let org = org.into();
     let url = format!("/orgs/{org}/organization-fine-grained-permissions");
 
-    Request::<(), (), OrganizationFineGrainedPermissionArray>::builder(&self.config)
+    Request::<(), (), Vec<OrganizationFineGrainedPermission>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1009,12 +1009,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     role_id: impl Into<i64>,
-  ) -> Request<(), OrgsListOrgRoleTeamsQuery, TeamArray> {
+  ) -> Request<(), OrgsListOrgRoleTeamsQuery, Vec<Team>> {
     let org = org.into();
     let role_id = role_id.into();
     let url = format!("/orgs/{org}/organization-roles/{role_id}/teams");
 
-    Request::<(), OrgsListOrgRoleTeamsQuery, TeamArray>::builder(&self.config)
+    Request::<(), OrgsListOrgRoleTeamsQuery, Vec<Team>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1032,12 +1032,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     role_id: impl Into<i64>,
-  ) -> Request<(), OrgsListOrgRoleUsersQuery, SimpleUserArray> {
+  ) -> Request<(), OrgsListOrgRoleUsersQuery, Vec<SimpleUser>> {
     let org = org.into();
     let role_id = role_id.into();
     let url = format!("/orgs/{org}/organization-roles/{role_id}/users");
 
-    Request::<(), OrgsListOrgRoleUsersQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), OrgsListOrgRoleUsersQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1050,11 +1050,11 @@ impl GitHubOrgsAPI {
   pub fn list_outside_collaborators(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListOutsideCollaboratorsQuery, SimpleUserArray> {
+  ) -> Request<(), OrgsListOutsideCollaboratorsQuery, Vec<SimpleUser>> {
     let org = org.into();
     let url = format!("/orgs/{org}/outside_collaborators");
 
-    Request::<(), OrgsListOutsideCollaboratorsQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), OrgsListOutsideCollaboratorsQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1115,12 +1115,12 @@ impl GitHubOrgsAPI {
   pub fn list_pat_grant_requests(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListPatGrantRequestsQuery, OrganizationProgrammaticAccessGrantRequestArray>
+  ) -> Request<(), OrgsListPatGrantRequestsQuery, Vec<OrganizationProgrammaticAccessGrantRequest>>
   {
     let org = org.into();
     let url = format!("/orgs/{org}/personal-access-token-requests");
 
-    Request::<(), OrgsListPatGrantRequestsQuery, OrganizationProgrammaticAccessGrantRequestArray>::builder(&self.config)
+    Request::<(), OrgsListPatGrantRequestsQuery, Vec<OrganizationProgrammaticAccessGrantRequest>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1176,12 +1176,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     pat_request_id: impl Into<i64>,
-  ) -> Request<(), OrgsListPatGrantRequestRepositoriesQuery, MinimalRepositoryArray> {
+  ) -> Request<(), OrgsListPatGrantRequestRepositoriesQuery, Vec<MinimalRepository>> {
     let org = org.into();
     let pat_request_id = pat_request_id.into();
     let url = format!("/orgs/{org}/personal-access-token-requests/{pat_request_id}/repositories");
 
-    Request::<(), OrgsListPatGrantRequestRepositoriesQuery, MinimalRepositoryArray>::builder(
+    Request::<(), OrgsListPatGrantRequestRepositoriesQuery, Vec<MinimalRepository>>::builder(
       &self.config,
     )
     .get(url)
@@ -1198,11 +1198,11 @@ impl GitHubOrgsAPI {
   pub fn list_pat_grants(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListPatGrantsQuery, OrganizationProgrammaticAccessGrantArray> {
+  ) -> Request<(), OrgsListPatGrantsQuery, Vec<OrganizationProgrammaticAccessGrant>> {
     let org = org.into();
     let url = format!("/orgs/{org}/personal-access-tokens");
 
-    Request::<(), OrgsListPatGrantsQuery, OrganizationProgrammaticAccessGrantArray>::builder(
+    Request::<(), OrgsListPatGrantsQuery, Vec<OrganizationProgrammaticAccessGrant>>::builder(
       &self.config,
     )
     .get(url)
@@ -1260,12 +1260,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     pat_id: impl Into<i64>,
-  ) -> Request<(), OrgsListPatGrantRepositoriesQuery, MinimalRepositoryArray> {
+  ) -> Request<(), OrgsListPatGrantRepositoriesQuery, Vec<MinimalRepository>> {
     let org = org.into();
     let pat_id = pat_id.into();
     let url = format!("/orgs/{org}/personal-access-tokens/{pat_id}/repositories");
 
-    Request::<(), OrgsListPatGrantRepositoriesQuery, MinimalRepositoryArray>::builder(&self.config)
+    Request::<(), OrgsListPatGrantRepositoriesQuery, Vec<MinimalRepository>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1279,11 +1279,11 @@ impl GitHubOrgsAPI {
   pub fn get_all_custom_properties(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), OrgCustomPropertyArray> {
+  ) -> Request<(), (), Vec<OrgCustomProperty>> {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/schema");
 
-    Request::<(), (), OrgCustomPropertyArray>::builder(&self.config)
+    Request::<(), (), Vec<OrgCustomProperty>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1300,11 +1300,11 @@ impl GitHubOrgsAPI {
   pub fn create_or_update_custom_properties(
     &self,
     org: impl Into<String>,
-  ) -> Request<OrgsCreateOrUpdateCustomPropertiesRequest, (), OrgCustomPropertyArray> {
+  ) -> Request<OrgsCreateOrUpdateCustomPropertiesRequest, (), Vec<OrgCustomProperty>> {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/schema");
 
-    Request::<OrgsCreateOrUpdateCustomPropertiesRequest, (), OrgCustomPropertyArray>::builder(
+    Request::<OrgsCreateOrUpdateCustomPropertiesRequest, (), Vec<OrgCustomProperty>>::builder(
       &self.config,
     )
     .patch(url)
@@ -1386,12 +1386,12 @@ impl GitHubOrgsAPI {
   pub fn list_custom_properties_values_for_repos(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListCustomPropertiesValuesForReposQuery, OrgRepoCustomPropertyValuesArray>
+  ) -> Request<(), OrgsListCustomPropertiesValuesForReposQuery, Vec<OrgRepoCustomPropertyValues>>
   {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/values");
 
-    Request::<(), OrgsListCustomPropertiesValuesForReposQuery, OrgRepoCustomPropertyValuesArray>::builder(&self.config)
+    Request::<(), OrgsListCustomPropertiesValuesForReposQuery, Vec<OrgRepoCustomPropertyValues>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1432,11 +1432,11 @@ impl GitHubOrgsAPI {
   pub fn list_public_members(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListPublicMembersQuery, SimpleUserArray> {
+  ) -> Request<(), OrgsListPublicMembersQuery, Vec<SimpleUser>> {
     let org = org.into();
     let url = format!("/orgs/{org}/public_members");
 
-    Request::<(), OrgsListPublicMembersQuery, SimpleUserArray>::builder(&self.config)
+    Request::<(), OrgsListPublicMembersQuery, Vec<SimpleUser>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1512,11 +1512,11 @@ impl GitHubOrgsAPI {
   pub fn list_security_manager_teams(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), TeamSimpleArray> {
+  ) -> Request<(), (), Vec<TeamSimple>> {
     let org = org.into();
     let url = format!("/orgs/{org}/security-managers");
 
-    Request::<(), (), TeamSimpleArray>::builder(&self.config)
+    Request::<(), (), Vec<TeamSimple>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1605,10 +1605,10 @@ impl GitHubOrgsAPI {
   /// *Documentation*: [https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user](https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user)
   pub fn list_memberships_for_authenticated_user(
     &self,
-  ) -> Request<(), OrgsListMembershipsForAuthenticatedUserQuery, OrgMembershipArray> {
+  ) -> Request<(), OrgsListMembershipsForAuthenticatedUserQuery, Vec<OrgMembership>> {
     let url = format!("/user/memberships/orgs");
 
-    Request::<(), OrgsListMembershipsForAuthenticatedUserQuery, OrgMembershipArray>::builder(
+    Request::<(), OrgsListMembershipsForAuthenticatedUserQuery, Vec<OrgMembership>>::builder(
       &self.config,
     )
     .get(url)
@@ -1660,10 +1660,10 @@ impl GitHubOrgsAPI {
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user](https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<(), OrgsListForAuthenticatedUserQuery, OrganizationSimpleArray> {
+  ) -> Request<(), OrgsListForAuthenticatedUserQuery, Vec<OrganizationSimple>> {
     let url = format!("/user/orgs");
 
-    Request::<(), OrgsListForAuthenticatedUserQuery, OrganizationSimpleArray>::builder(&self.config)
+    Request::<(), OrgsListForAuthenticatedUserQuery, Vec<OrganizationSimple>>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1678,11 +1678,11 @@ impl GitHubOrgsAPI {
   pub fn list_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), OrgsListForUserQuery, OrganizationSimpleArray> {
+  ) -> Request<(), OrgsListForUserQuery, Vec<OrganizationSimple>> {
     let username = username.into();
     let url = format!("/users/{username}/orgs");
 
-    Request::<(), OrgsListForUserQuery, OrganizationSimpleArray>::builder(&self.config)
+    Request::<(), OrgsListForUserQuery, Vec<OrganizationSimple>>::builder(&self.config)
       .get(url)
       .build()
   }

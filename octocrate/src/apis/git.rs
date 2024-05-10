@@ -176,13 +176,13 @@ impl GitHubGitAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<(), (), GitRefArray> {
+  ) -> Request<(), (), Vec<GitRef>> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/git/matching-refs/{ref_}");
 
-    Request::<(), (), GitRefArray>::builder(&self.config)
+    Request::<(), (), Vec<GitRef>>::builder(&self.config)
       .get(url)
       .build()
   }
