@@ -11,7 +11,6 @@ async fn test_list_user_repositories() {
 
   let personal_access_token = PersonalAccessToken::new(personal_access_token);
 
-  // Use the personal access token to create issue comments
   let config = APIConfig::with_token(personal_access_token).shared();
 
   let api = GitHubAPI::new(&config);
@@ -58,7 +57,6 @@ async fn test_get_repository() {
 
   let personal_access_token = PersonalAccessToken::new(personal_access_token);
 
-  // Use the personal access token to create issue comments
   let config = APIConfig::with_token(personal_access_token).shared();
 
   let api = GitHubAPI::new(&config);
@@ -84,7 +82,6 @@ async fn test_get_repository_file_content() {
 
   let personal_access_token = PersonalAccessToken::new(personal_access_token);
 
-  // Use the personal access token to create issue comments
   let config = APIConfig::with_token(personal_access_token).shared();
 
   let api = GitHubAPI::new(&config);
@@ -116,7 +113,6 @@ async fn test_get_repository_dir_content() {
 
   let personal_access_token = PersonalAccessToken::new(personal_access_token);
 
-  // Use the personal access token to create issue comments
   let config = APIConfig::with_token(personal_access_token).shared();
 
   let api = GitHubAPI::new(&config);

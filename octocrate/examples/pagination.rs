@@ -1,7 +1,7 @@
+use octocrate::{APIConfig, GitHubAPI, PersonalAccessToken, ReposListForUserQuery};
+
 #[tokio::test]
 async fn test_pagination() {
-  use octocrate::{APIConfig, GitHubAPI, PersonalAccessToken, ReposListForUserQuery};
-
   dotenv::dotenv().ok();
 
   let personal_access_token =
@@ -9,7 +9,6 @@ async fn test_pagination() {
 
   let personal_access_token = PersonalAccessToken::new(personal_access_token);
 
-  // Use the personal access token to create issue comments
   let config = APIConfig::with_token(personal_access_token).shared();
 
   let api = GitHubAPI::new(&config);

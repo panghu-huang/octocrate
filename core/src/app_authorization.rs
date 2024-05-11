@@ -29,10 +29,10 @@ pub struct AppAuthorization {
 }
 
 impl AppAuthorization {
-  pub fn new(app_id: String, private_key: String) -> Self {
+  pub fn new(app_id: impl Into<String>, private_key: impl Into<String>) -> Self {
     Self {
-      app_id,
-      private_key,
+      app_id: app_id.into(),
+      private_key: private_key.into(),
       inner: AppAuthorizationInner {
         token: Mutex::new(None),
       },
