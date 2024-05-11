@@ -5,8 +5,10 @@ pub struct PersonalAccessToken {
 }
 
 impl PersonalAccessToken {
-  pub fn new(token: String) -> Self {
-    Self { token }
+  pub fn new(token: impl Into<String>) -> Self {
+    Self {
+      token: token.into(),
+    }
   }
 }
 

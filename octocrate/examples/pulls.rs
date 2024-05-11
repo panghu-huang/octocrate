@@ -11,7 +11,6 @@ async fn test_list_pull_request() {
 
   let personal_access_token = PersonalAccessToken::new(personal_access_token);
 
-  // Use the personal access token to create issue comments
   let config = APIConfig::with_token(personal_access_token).shared();
 
   let api = GitHubAPI::new(&config);
@@ -41,7 +40,6 @@ async fn test_get_pull_request() {
 
   let personal_access_token = PersonalAccessToken::new(personal_access_token);
 
-  // Use the personal access token to create issue comments
   let config = APIConfig::with_token(personal_access_token).shared();
 
   let api = GitHubAPI::new(&config);
@@ -65,7 +63,6 @@ async fn test_list_pull_request_changed_files() {
 
   let personal_access_token = PersonalAccessToken::new(personal_access_token);
 
-  // Use the personal access token to create issue comments
   let config = APIConfig::with_token(personal_access_token).shared();
 
   let api = GitHubAPI::new(&config);
@@ -90,7 +87,6 @@ async fn test_check_if_pull_request_has_been_merged() {
 
   let personal_access_token = PersonalAccessToken::new(personal_access_token);
 
-  // Use the personal access token to create issue comments
   let config = APIConfig::with_token(personal_access_token).shared();
 
   let api = GitHubAPI::new(&config);
