@@ -1,72 +1,72 @@
 # Octocrate
 
-octocrate is a comprehensive GitHub REST API library based on Rust.
+octocrate 是一个基于 Rust 的完整的 GitHub REST API 库。
 
 ![octocrate](https://img.shields.io/crates/v/octocrate.svg)
 ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 [English](./README.md) | [简体中文](./README_zh-CN.md)
 
-## Features
+## 特性
 
-- Fully compliant with the official documentation at [GitHub REST API Documentation](https://docs.github.com/en/rest?apiVersion=2022-11-28)
-- Complete type restrictions for Body / Query parameters
-- Utilizes feature flags for individual API dependencies
-- Supports GitHub app requests for installation API
-- Supports installation access tokens and personal access tokens
-- Defines all Webhooks event types
+- 完全对标官方文档 [GitHub REST API Documentation](https://docs.github.com/en/rest?apiVersion=2022-11-28)
+- 对 Body / Query 参数拥有完整的类型限制
+- 支持利用 feature 单独引用某个 API 依赖
+- 支持 GitHub app 请求 installation API
+- 支持 installation access token 和 personal access token
+- 定义了所有的 Webhooks 事件类型
 
-## Dependencies
+## 依赖
 
 ```toml
 [dependencies]
 octocrate = "1.0"
 ```
 
-Use features to selectively import the required APIs:
+通过 features 按需引入所需要的 API：
 
 ```toml
 octocrate = { version = "1.0", features = ["repos", "git", "pulls", "issues", "users", "search"] }
 ```
 
-Or use the `full` feature to import all APIs and Webhooks (note: this will increase compilation time):
+或者通过 `full` 特性引入所有的 API 和 Webhooks（注意这会增加编译时间）：
 
 ```toml
 octocrate = { version = "1.0", features = ["full"] }
 ```
 
-### Type Dependencies
+### 类型依赖
 
-You can also import only types without using the corresponding APIs:
+octocrate 同样支持只引入类型而不使用对应的 API：
 
 ```toml
 octocrate-types = "1.0"
 ```
 
-Use features to selectively import the required types:
+通过 features 按需引入所需要的类型：
 
 ```toml
 octocrate-types = { version = "1.0", features = ["repos", "git", "pulls", "issues", "users", "search"] }
 ```
 
-Import Webhooks types:
+引入 Webhooks 类型：
 
 ```toml
 octocrate-types = { version = "1.0", features = ["webhook_pull_request", "webhook_push"] }
 ```
 
-You can check the [octocrate-types documentation](https://docs.rs/crate/octocrate-types/latest/features) for all supported features and types.
+你可以查看 [octocrate-types 文档](https://docs.rs/crate/octocrate-types/latest/features) 了解所有支持的 features 和类型。
 
-## Example
+## 示例
 
-Create a default GitHub API configuration and use it to get a repository's Pull Request:
+创建一个默认的 GitHub API 配置并使用它来获取一个仓库的 Pull Request：
 
 ```rust
 use octocrate::{APIConfig, Error, GitHubAPI};
 
 #[tokio::main]
 async fn main() {
-  // Create a default GitHub API configuration
+  // 创建一个默认的 GitHub API 配置
   let config = APIConfig::default().shared();
 
   let api = GitHubAPI::new(&config);
@@ -82,18 +82,18 @@ async fn main() {
 }
 ```
 
-#### Directly import the corresponding API
+#### 直接引入对应的 API
 
 ```rust
-// Import the repos API instead of GitHubAPI
+// 引入 GitHubReposAPI
 use octocrate::{repos::GitHubReposAPI, APIConfig, GitHubAPI, PersonalAccessToken};
 
 #[tokio::main]
 async fn main() {
-  // Create a personal access token
+  // 创建一个 personal access token
   let personal_access_token = PersonalAccessToken::new("YOUR_PERSONAL_ACCESS_TOKEN");
 
-  // Use the personal access token to create a API configuration
+  // 使用 personal access token 创建一个 API 配置
   let config = APIConfig::with_token(personal_access_token).shared();
 
   let repos_api = GitHubReposAPI::new(&config);
@@ -110,7 +110,7 @@ async fn main() {
 }
 ```
 
-#### Using GitHub App
+#### 使用 GitHub App
 
 ```rust
 use octocrate::{APIConfig, AppAuthorization, GitHubAPI};
@@ -120,15 +120,15 @@ async fn main() {
   let app_id = 12345;
   let private_key = "YOUR_PRIVATE_KEY";
 
-  // Create a GitHub App authorization
+  // 创建一个 GitHub App 授权
   let app_authorization = AppAuthorization::new(app_id, private_key);
 
-  // Use the GitHub App authorization to create an API configuration
+  // 使用 GitHub App 授权创建一个 API 配置
   let config = APIConfig::with_token(app_authorization).shared();
 
   let api = GitHubAPI::new(&config);
 
-  // Get the Installation for a repository
+  // 获取仓库仓库的 Installation
   let installation = api
     .apps
     .get_repo_installation("panghu-huang", "octocrate")
@@ -136,7 +136,7 @@ async fn main() {
     .await
     .unwrap();
 
-  // Get the Installation Access Token for this Installation
+  // 获取这个 Installation 的 Installation Access Token
   let installation_token = api
     .apps
     .create_installation_access_token(installation.id)
@@ -144,7 +144,7 @@ async fn main() {
     .await
     .unwrap();
 
-  // Use the Installation Access Token to create a new API configuration
+  // 使用 Installation Access Token 创建一个新的 API 配置
   let config = APIConfig::with_token(installation_token).shared();
 
   let api = GitHubAPI::new(&config);
@@ -160,7 +160,7 @@ async fn main() {
 }
 ```
 
-#### Request Body Parameters
+#### 请求 Body 参数
 
 ```rust
 use octocrate::{
@@ -175,13 +175,12 @@ async fn main() {
 
   let api = GitHubAPI::new(&config);
 
-  // Create a comment request
+  // 创建一个 Issue Comment 请求
   // https://github.com/panghu-huang/octocrate/pull/1#issuecomment-2041280635
   let comment = IssuesCreateCommentRequest {
     body: "Hello, world! (Created by octocrate)".to_string(),
   };
 
-  // Create a comment on the issue
   let issue_comment = api
     .issues
     .create_comment("panghu-huang", "octocrate", 1)
@@ -192,7 +191,7 @@ async fn main() {
 }
 ```
 
-#### Request Query Parameters
+#### 请求 Query 参数
 
 ```rust
 use octocrate::{
@@ -207,7 +206,7 @@ async fn main() {
 
   let api = GitHubAPI::new(&config);
 
-  // Use builder pattern to construct query parameters
+  // 使用构建器创建一个 Pull Request 列表查询
   let query = PullsListQuery::builder()
     .state(PullsListQueryState::Open)
     .per_page(10)
@@ -225,12 +224,12 @@ async fn main() {
 }
 ```
 
-You can find more example code in the [octocrate/examples](./octocrate/examples) directory.
+你可以在 [octocrate/examples](./octocrate/examples) 目录下找到更多的示例。
 
-## Contributing
+## 贡献
 
-Contributions are welcome! Feel free to open issues or submit pull requests to improve the project.
+欢迎随时提交 issue 或者 pull request 来改进项目。
 
-## License
+## 许可证
 
-This project is licensed under the MIT License.
+这个项目是根据 MIT 许可证发布的。

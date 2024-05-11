@@ -1,4 +1,4 @@
-use octocrate::{repos::GitHubReposAPI, APIConfig, GitHubAPI, PersonalAccessToken};
+use octocrate::{repos::GitHubReposAPI, APIConfig, PersonalAccessToken};
 
 #[tokio::test]
 async fn get_commit() {
