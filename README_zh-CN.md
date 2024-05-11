@@ -117,7 +117,7 @@ use octocrate::{APIConfig, AppAuthorization, GitHubAPI};
 
 #[tokio::main]
 async fn main() {
-  let app_id = 12345;
+  let app_id = "YOUR_APP_ID";
   let private_key = "YOUR_PRIVATE_KEY";
 
   // 创建一个 GitHub App 授权
