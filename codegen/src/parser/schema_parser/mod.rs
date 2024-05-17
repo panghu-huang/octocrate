@@ -13,21 +13,36 @@ use crate::{
 use schema_types::SchemaTypes;
 
 pub struct SchemaParser {
+  // Use prefixs to record the path of the current schema, used to generate the name of the schema without a title
+  // ```rust
+  // struct A {
+  //   // The name here is generated through prefixs, a_b -> A_B -> AB
+  //   b: AB,
+  // }
+  //
+  // struct AB {}
+  // ```
   prefixs: Vec<String>,
+  // Use is_scoped to mark whether the current schema is a type unique to an API (non-global)
+  is_scoped: bool,
 }
 
 impl SchemaParser {
   pub fn new() -> Self {
-    Self { prefixs: vec![] }
+    Self {
+      prefixs: vec![],
+      // Default is_scoped to true
+      is_scoped: true,
+    }
   }
 
   pub fn parse(
     &mut self,
     ctx: &mut ParseContext,
-    prefix_name: &String,
+    prefix_name: &str,
     schema: &SchemaDefinition,
   ) -> ParsedData {
-    self.prefixs.push(prefix_name.to_string());
+    self.prefixs.push(prefix_name.to_owned());
 
     let parsed = self.parse_schema_definition(ctx, schema);
 
@@ -41,12 +56,16 @@ impl SchemaParser {
     ctx: &mut ParseContext,
     schema: &SchemaDefinition,
   ) -> ParsedData {
+    let last_is_scoped = self.is_scoped;
+
     match schema {
       SchemaDefinition::Schema(schema) => self.parse_schema(ctx, schema),
       SchemaDefinition::Ref(reference) => {
+        // If the reference is a global reference, set is_scoped to false
+        self.is_scoped = false;
         let reference_id = reference.get_reference_id();
 
-        match ctx.reference_existing(&reference_id) {
+        let parsed = match ctx.reference_existing(&reference_id) {
           Some(parsed) => parsed.inner,
           None => {
             let mut schema = ctx.get_component(&reference_id).unwrap_or_else(|| {
@@ -71,11 +90,15 @@ impl SchemaParser {
 
             self.prefixs = previous_prefixs;
 
-            ctx.add_reference(&parsed.name(), parsed.clone());
+            self.add_reference(ctx, &parsed.name(), parsed.clone());
 
             parsed
           }
-        }
+        };
+
+        self.is_scoped = last_is_scoped;
+
+        parsed
       }
     }
   }
@@ -106,6 +129,14 @@ impl SchemaParser {
     let type_name = schema_types.to_full_type();
 
     ParsedData::Type(Type::new(&type_name))
+  }
+
+  fn add_reference(&self, ctx: &mut ParseContext, name: &str, reference: ParsedData) {
+    if self.is_scoped {
+      ctx.add_scoped_reference(name, reference);
+    } else {
+      ctx.add_reference(name, reference);
+    }
   }
 }
 

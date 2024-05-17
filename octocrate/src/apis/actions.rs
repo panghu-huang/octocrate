@@ -1,6 +1,1837 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod get_actions_cache_usage_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsCacheUsageOrgEnterprise;
+}
+
+pub mod get_actions_cache_usage_by_repo_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub repository_cache_usages: Vec<ActionsCacheUsageByRepository>,
+    pub total_count: i64,
+  }
+}
+
+pub mod get_github_actions_permissions_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsOrganizationPermissions;
+}
+
+pub mod set_github_actions_permissions_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allowed_actions: Option<AllowedActions>,
+    pub enabled_repositories: EnabledRepositories,
+  }
+}
+
+pub mod list_selected_repositories_enabled_github_actions_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub repositories: Vec<Repository>,
+    pub total_count: f64,
+  }
+}
+
+pub mod set_selected_repositories_enabled_github_actions_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// List of repository IDs to enable for GitHub Actions.
+    pub selected_repository_ids: Vec<i64>,
+  }
+}
+
+pub mod enable_selected_repository_github_actions_organization {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod disable_selected_repository_github_actions_organization {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_allowed_actions_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = SelectedActions;
+}
+
+pub mod set_allowed_actions_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = SelectedActions;
+}
+
+pub mod get_github_actions_default_workflow_permissions_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsGetDefaultWorkflowPermissions;
+}
+
+pub mod set_github_actions_default_workflow_permissions_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = ActionsSetDefaultWorkflowPermissions;
+}
+
+pub mod list_self_hosted_runners_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The name of a self-hosted runner.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub runners: Vec<Runner>,
+    pub total_count: i64,
+  }
+}
+
+pub mod list_runner_applications_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<RunnerApplication>;
+}
+
+pub mod generate_runner_jitconfig_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.
+    pub labels: Vec<String>,
+    /// The name of the new runner.
+    pub name: String,
+    /// The ID of the runner group to register the runner to.
+    pub runner_group_id: i64,
+    /// The working directory to be used for job execution, relative to the runner install directory.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub work_folder: Option<String>,
+  }
+}
+
+pub mod create_registration_token_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = AuthenticationToken;
+}
+
+pub mod create_remove_token_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = AuthenticationToken;
+}
+
+pub mod get_self_hosted_runner_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Runner;
+}
+
+pub mod delete_self_hosted_runner_from_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_labels_for_self_hosted_runner_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod add_custom_labels_to_self_hosted_runner_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The names of the custom labels to add to the runner.
+    pub labels: Vec<String>,
+  }
+}
+
+pub mod set_custom_labels_for_self_hosted_runner_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.
+    pub labels: Vec<String>,
+  }
+}
+
+pub mod remove_all_custom_labels_from_self_hosted_runner_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_custom_label_from_self_hosted_runner_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_org_secrets {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub secrets: Vec<OrganizationActionsSecret>,
+    pub total_count: i64,
+  }
+}
+
+pub mod get_org_public_key {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsPublicKey;
+}
+
+pub mod get_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrganizationActionsSecret;
+}
+
+pub mod create_or_update_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestVisibility {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "selected")]
+    Selected,
+  }
+
+  impl ToString for RequestVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        RequestVisibility::All => "all".to_string(),
+        RequestVisibility::Private => "private".to_string(),
+        RequestVisibility::Selected => "selected".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/actions/secrets#get-an-organization-public-key) endpoint.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub encrypted_value: Option<String>,
+    /// ID of the key you used to encrypt the secret.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub key_id: Option<String>,
+    /// An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/actions/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub selected_repository_ids: Option<Vec<i64>>,
+    /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
+    pub visibility: RequestVisibility,
+  }
+}
+
+pub mod delete_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_selected_repos_for_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub repositories: Vec<MinimalRepository>,
+    pub total_count: i64,
+  }
+}
+
+pub mod set_selected_repos_for_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.
+    pub selected_repository_ids: Vec<i64>,
+  }
+}
+
+pub mod add_selected_repo_to_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_selected_repo_from_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_org_variables {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 30). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub total_count: i64,
+    pub variables: Vec<OrganizationActionsVariable>,
+  }
+}
+
+pub mod create_org_variable {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  /// The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestVisibility {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "selected")]
+    Selected,
+  }
+
+  impl ToString for RequestVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        RequestVisibility::All => "all".to_string(),
+        RequestVisibility::Private => "private".to_string(),
+        RequestVisibility::Selected => "selected".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The name of the variable.
+    pub name: String,
+    /// An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub selected_repository_ids: Option<Vec<i64>>,
+    /// The value of the variable.
+    pub value: String,
+    /// The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.
+    pub visibility: RequestVisibility,
+  }
+}
+
+pub mod get_org_variable {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrganizationActionsVariable;
+}
+
+pub mod update_org_variable {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestVisibility {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "selected")]
+    Selected,
+  }
+
+  impl ToString for RequestVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        RequestVisibility::All => "all".to_string(),
+        RequestVisibility::Private => "private".to_string(),
+        RequestVisibility::Selected => "selected".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The name of the variable.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub selected_repository_ids: Option<Vec<i64>>,
+    /// The value of the variable.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub value: Option<String>,
+    /// The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub visibility: Option<RequestVisibility>,
+  }
+}
+
+pub mod delete_org_variable {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_selected_repos_for_org_variable {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub repositories: Vec<MinimalRepository>,
+    pub total_count: i64,
+  }
+}
+
+pub mod set_selected_repos_for_org_variable {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The IDs of the repositories that can access the organization variable.
+    pub selected_repository_ids: Vec<i64>,
+  }
+}
+
+pub mod add_selected_repo_to_org_variable {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_selected_repo_from_org_variable {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_artifacts_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The name field of an artifact. When specified, only artifacts with this name will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub artifacts: Vec<Artifact>,
+    pub total_count: i64,
+  }
+}
+
+pub mod get_artifact {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Artifact;
+}
+
+pub mod delete_artifact {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod download_artifact {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_actions_cache_usage {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsCacheUsageByRepository;
+}
+
+pub mod get_actions_cache_list {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsCacheList;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created_at")]
+    CreatedAt,
+    #[serde(rename = "last_accessed_at")]
+    LastAccessedAt,
+    #[serde(rename = "size_in_bytes")]
+    SizeInBytes,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::CreatedAt => "created_at".to_string(),
+        QuerySort::LastAccessedAt => "last_accessed_at".to_string(),
+        QuerySort::SizeInBytes => "size_in_bytes".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The full Git reference for narrowing down the cache. The `ref` for a branch should be formatted as `refs/heads/<branch name>`. To reference a pull request use `refs/pull/<number>/merge`.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+    /// An explicit key or prefix for identifying the cache
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub key: Option<String>,
+    /// The property to sort the results by. `created_at` means when the cache was created. `last_accessed_at` means when the cache was last accessed. `size_in_bytes` is the size of the cache in bytes.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+  }
+}
+
+pub mod delete_actions_cache_by_key {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsCacheList;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// A key for identifying the cache.
+    pub key: String,
+    /// The full Git reference for narrowing down the cache. The `ref` for a branch should be formatted as `refs/heads/<branch name>`. To reference a pull request use `refs/pull/<number>/merge`.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+  }
+}
+
+pub mod delete_actions_cache_by_id {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_job_for_workflow_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Job;
+}
+
+pub mod download_job_logs_for_workflow_run {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod re_run_job_for_workflow_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Whether to enable debug logging for the re-run.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub enable_debug_logging: Option<bool>,
+  }
+}
+
+pub mod get_custom_oidc_sub_claim_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OidcCustomSubRepo;
+}
+
+pub mod set_custom_oidc_sub_claim_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = ActionsOidcSubjectCustomizationForARepository;
+  pub type Response = EmptyObject;
+
+  /// Actions OIDC subject customization for a repository
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct ActionsOidcSubjectCustomizationForARepository {
+    /// Array of unique strings. Each claim key can only contain alphanumeric characters and underscores.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub include_claim_keys: Option<Vec<String>>,
+    /// Whether to use the default template or not. If `true`, the `include_claim_keys` field is ignored.
+    pub use_default: bool,
+  }
+}
+
+pub mod list_repo_organization_secrets {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub secrets: Vec<ActionsSecret>,
+    pub total_count: i64,
+  }
+}
+
+pub mod list_repo_organization_variables {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 30). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub total_count: i64,
+    pub variables: Vec<ActionsVariable>,
+  }
+}
+
+pub mod get_github_actions_permissions_repository {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsRepositoryPermissions;
+}
+
+pub mod set_github_actions_permissions_repository {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allowed_actions: Option<AllowedActions>,
+    pub enabled: bool,
+  }
+}
+
+pub mod get_workflow_access_to_repository {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsWorkflowAccessToRepository;
+}
+
+pub mod set_workflow_access_to_repository {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = ActionsWorkflowAccessToRepository;
+}
+
+pub mod get_allowed_actions_repository {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = SelectedActions;
+}
+
+pub mod set_allowed_actions_repository {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = SelectedActions;
+}
+
+pub mod get_github_actions_default_workflow_permissions_repository {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsGetDefaultWorkflowPermissions;
+}
+
+pub mod set_github_actions_default_workflow_permissions_repository {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = ActionsSetDefaultWorkflowPermissions;
+}
+
+pub mod list_self_hosted_runners_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The name of a self-hosted runner.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub runners: Vec<Runner>,
+    pub total_count: i64,
+  }
+}
+
+pub mod list_runner_applications_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<RunnerApplication>;
+}
+
+pub mod generate_runner_jitconfig_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The names of the custom labels to add to the runner. **Minimum items**: 1. **Maximum items**: 100.
+    pub labels: Vec<String>,
+    /// The name of the new runner.
+    pub name: String,
+    /// The ID of the runner group to register the runner to.
+    pub runner_group_id: i64,
+    /// The working directory to be used for job execution, relative to the runner install directory.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub work_folder: Option<String>,
+  }
+}
+
+pub mod create_registration_token_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = AuthenticationToken;
+}
+
+pub mod create_remove_token_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = AuthenticationToken;
+}
+
+pub mod get_self_hosted_runner_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Runner;
+}
+
+pub mod delete_self_hosted_runner_from_repo {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_labels_for_self_hosted_runner_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod add_custom_labels_to_self_hosted_runner_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The names of the custom labels to add to the runner.
+    pub labels: Vec<String>,
+  }
+}
+
+pub mod set_custom_labels_for_self_hosted_runner_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.
+    pub labels: Vec<String>,
+  }
+}
+
+pub mod remove_all_custom_labels_from_self_hosted_runner_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_custom_label_from_self_hosted_runner_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_workflow_runs_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryStatus {
+    #[serde(rename = "completed")]
+    Completed,
+    #[serde(rename = "action_required")]
+    ActionRequired,
+    #[serde(rename = "cancelled")]
+    Cancelled,
+    #[serde(rename = "failure")]
+    Failure,
+    #[serde(rename = "neutral")]
+    Neutral,
+    #[serde(rename = "skipped")]
+    Skipped,
+    #[serde(rename = "stale")]
+    Stale,
+    #[serde(rename = "success")]
+    Success,
+    #[serde(rename = "timed_out")]
+    TimedOut,
+    #[serde(rename = "in_progress")]
+    InProgress,
+    #[serde(rename = "queued")]
+    Queued,
+    #[serde(rename = "requested")]
+    Requested,
+    #[serde(rename = "waiting")]
+    Waiting,
+    #[serde(rename = "pending")]
+    Pending,
+  }
+
+  impl ToString for QueryStatus {
+    fn to_string(&self) -> String {
+      match self {
+        QueryStatus::Completed => "completed".to_string(),
+        QueryStatus::ActionRequired => "action_required".to_string(),
+        QueryStatus::Cancelled => "cancelled".to_string(),
+        QueryStatus::Failure => "failure".to_string(),
+        QueryStatus::Neutral => "neutral".to_string(),
+        QueryStatus::Skipped => "skipped".to_string(),
+        QueryStatus::Stale => "stale".to_string(),
+        QueryStatus::Success => "success".to_string(),
+        QueryStatus::TimedOut => "timed_out".to_string(),
+        QueryStatus::InProgress => "in_progress".to_string(),
+        QueryStatus::Queued => "queued".to_string(),
+        QueryStatus::Requested => "requested".to_string(),
+        QueryStatus::Waiting => "waiting".to_string(),
+        QueryStatus::Pending => "pending".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns someone's workflow runs. Use the login for the user who created the `push` associated with the check suite or workflow run.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub actor: Option<String>,
+    /// Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub branch: Option<String>,
+    /// Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or `issue`. For more information, see "[Events that trigger workflows](https://docs.github.com/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub event: Option<String>,
+    /// Returns workflow runs with the check run `status` or `conclusion` that you specify. For example, a conclusion can be `success` or a status can be `in_progress`. Only GitHub Actions can set a status of `waiting`, `pending`, or `requested`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub status: Option<QueryStatus>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// Returns workflow runs created within the given date-time range. For more information on the syntax, see "[Understanding the search syntax](https://docs.github.com/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax#query-for-dates)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub created: Option<String>,
+    /// If `true` pull requests are omitted from the response (empty array).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_pull_requests: Option<bool>,
+    /// Returns workflow runs with the `check_suite_id` that you specify.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub check_suite_id: Option<i64>,
+    /// Only returns workflow runs that are associated with the specified `head_sha`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub head_sha: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub total_count: i64,
+    pub workflow_runs: Vec<WorkflowRun>,
+  }
+}
+
+pub mod get_workflow_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = WorkflowRun;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// If `true` pull requests are omitted from the response (empty array).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_pull_requests: Option<bool>,
+  }
+}
+
+pub mod delete_workflow_run {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_reviews_for_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<EnvironmentApprovals>;
+}
+
+pub mod approve_workflow_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+}
+
+pub mod list_workflow_run_artifacts {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The name field of an artifact. When specified, only artifacts with this name will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub artifacts: Vec<Artifact>,
+    pub total_count: i64,
+  }
+}
+
+pub mod get_workflow_run_attempt {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = WorkflowRun;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// If `true` pull requests are omitted from the response (empty array).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_pull_requests: Option<bool>,
+  }
+}
+
+pub mod list_jobs_for_workflow_run_attempt {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub jobs: Vec<Job>,
+    pub total_count: i64,
+  }
+}
+
+pub mod download_workflow_run_attempt_logs {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod cancel_workflow_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+}
+
+pub mod review_custom_gates_for_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    ReviewCustomGatesCommentRequired(ReviewCustomGatesCommentRequired),
+    ReviewCustomGatesStateRequired(ReviewCustomGatesStateRequired),
+  }
+}
+
+pub mod force_cancel_workflow_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+}
+
+pub mod list_jobs_for_workflow_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryFilter {
+    #[serde(rename = "latest")]
+    Latest,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryFilter {
+    fn to_string(&self) -> String {
+      match self {
+        QueryFilter::Latest => "latest".to_string(),
+        QueryFilter::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Filters jobs by their `completed_at` timestamp. `latest` returns jobs from the most recent execution of the workflow run. `all` returns all jobs for a workflow run, including from old executions of the workflow run.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub filter: Option<QueryFilter>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub jobs: Vec<Job>,
+    pub total_count: i64,
+  }
+}
+
+pub mod download_workflow_run_logs {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod delete_workflow_run_logs {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_pending_deployments_for_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<PendingDeployment>;
+}
+
+pub mod review_pending_deployments_for_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Deployment>;
+
+  /// Whether to approve or reject deployment to the specified environments.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestState {
+    #[serde(rename = "approved")]
+    Approved,
+    #[serde(rename = "rejected")]
+    Rejected,
+  }
+
+  impl ToString for RequestState {
+    fn to_string(&self) -> String {
+      match self {
+        RequestState::Approved => "approved".to_string(),
+        RequestState::Rejected => "rejected".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// A comment to accompany the deployment review
+    pub comment: String,
+    /// The list of environment ids to approve or reject
+    pub environment_ids: Vec<i64>,
+    /// Whether to approve or reject deployment to the specified environments.
+    pub state: RequestState,
+  }
+}
+
+pub mod re_run_workflow {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Whether to enable debug logging for the re-run.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub enable_debug_logging: Option<bool>,
+  }
+}
+
+pub mod re_run_workflow_failed_jobs {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Whether to enable debug logging for the re-run.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub enable_debug_logging: Option<bool>,
+  }
+}
+
+pub mod get_workflow_run_usage {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = WorkflowRunUsage;
+}
+
+pub mod list_repo_secrets {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub secrets: Vec<ActionsSecret>,
+    pub total_count: i64,
+  }
+}
+
+pub mod get_repo_public_key {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsPublicKey;
+}
+
+pub mod get_repo_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsSecret;
+}
+
+pub mod create_or_update_repo_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/actions/secrets#get-a-repository-public-key) endpoint.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub encrypted_value: Option<String>,
+    /// ID of the key you used to encrypt the secret.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub key_id: Option<String>,
+  }
+}
+
+pub mod delete_repo_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_repo_variables {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 30). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub total_count: i64,
+    pub variables: Vec<ActionsVariable>,
+  }
+}
+
+pub mod create_repo_variable {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The name of the variable.
+    pub name: String,
+    /// The value of the variable.
+    pub value: String,
+  }
+}
+
+pub mod get_repo_variable {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsVariable;
+}
+
+pub mod update_repo_variable {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The name of the variable.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// The value of the variable.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub value: Option<String>,
+  }
+}
+
+pub mod delete_repo_variable {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_repo_workflows {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub total_count: i64,
+    pub workflows: Vec<Workflow>,
+  }
+}
+
+pub mod get_workflow {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Workflow;
+}
+
+pub mod disable_workflow {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod create_workflow_dispatch {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Input keys and values configured in the workflow file. The maximum number of properties is 10. Any default properties configured in the workflow file will be used when `inputs` are omitted.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub inputs: Option<serde_json::Value>,
+    /// The git reference for the workflow. The reference can be a branch or tag name.
+    #[serde(rename = "ref")]
+    pub ref_: String,
+  }
+}
+
+pub mod enable_workflow {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_workflow_runs {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryStatus {
+    #[serde(rename = "completed")]
+    Completed,
+    #[serde(rename = "action_required")]
+    ActionRequired,
+    #[serde(rename = "cancelled")]
+    Cancelled,
+    #[serde(rename = "failure")]
+    Failure,
+    #[serde(rename = "neutral")]
+    Neutral,
+    #[serde(rename = "skipped")]
+    Skipped,
+    #[serde(rename = "stale")]
+    Stale,
+    #[serde(rename = "success")]
+    Success,
+    #[serde(rename = "timed_out")]
+    TimedOut,
+    #[serde(rename = "in_progress")]
+    InProgress,
+    #[serde(rename = "queued")]
+    Queued,
+    #[serde(rename = "requested")]
+    Requested,
+    #[serde(rename = "waiting")]
+    Waiting,
+    #[serde(rename = "pending")]
+    Pending,
+  }
+
+  impl ToString for QueryStatus {
+    fn to_string(&self) -> String {
+      match self {
+        QueryStatus::Completed => "completed".to_string(),
+        QueryStatus::ActionRequired => "action_required".to_string(),
+        QueryStatus::Cancelled => "cancelled".to_string(),
+        QueryStatus::Failure => "failure".to_string(),
+        QueryStatus::Neutral => "neutral".to_string(),
+        QueryStatus::Skipped => "skipped".to_string(),
+        QueryStatus::Stale => "stale".to_string(),
+        QueryStatus::Success => "success".to_string(),
+        QueryStatus::TimedOut => "timed_out".to_string(),
+        QueryStatus::InProgress => "in_progress".to_string(),
+        QueryStatus::Queued => "queued".to_string(),
+        QueryStatus::Requested => "requested".to_string(),
+        QueryStatus::Waiting => "waiting".to_string(),
+        QueryStatus::Pending => "pending".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns someone's workflow runs. Use the login for the user who created the `push` associated with the check suite or workflow run.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub actor: Option<String>,
+    /// Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub branch: Option<String>,
+    /// Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or `issue`. For more information, see "[Events that trigger workflows](https://docs.github.com/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub event: Option<String>,
+    /// Returns workflow runs with the check run `status` or `conclusion` that you specify. For example, a conclusion can be `success` or a status can be `in_progress`. Only GitHub Actions can set a status of `waiting`, `pending`, or `requested`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub status: Option<QueryStatus>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// Returns workflow runs created within the given date-time range. For more information on the syntax, see "[Understanding the search syntax](https://docs.github.com/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax#query-for-dates)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub created: Option<String>,
+    /// If `true` pull requests are omitted from the response (empty array).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_pull_requests: Option<bool>,
+    /// Returns workflow runs with the `check_suite_id` that you specify.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub check_suite_id: Option<i64>,
+    /// Only returns workflow runs that are associated with the specified `head_sha`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub head_sha: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub total_count: i64,
+    pub workflow_runs: Vec<WorkflowRun>,
+  }
+}
+
+pub mod get_workflow_usage {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = WorkflowUsage;
+}
+
+pub mod list_environment_secrets {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub secrets: Vec<ActionsSecret>,
+    pub total_count: i64,
+  }
+}
+
+pub mod get_environment_public_key {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsPublicKey;
+}
+
+pub mod get_environment_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsSecret;
+}
+
+pub mod create_or_update_environment_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an environment public key](https://docs.github.com/rest/actions/secrets#get-an-environment-public-key) endpoint.
+    pub encrypted_value: String,
+    /// ID of the key you used to encrypt the secret.
+    pub key_id: String,
+  }
+}
+
+pub mod delete_environment_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_environment_variables {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 30). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub total_count: i64,
+    pub variables: Vec<ActionsVariable>,
+  }
+}
+
+pub mod create_environment_variable {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The name of the variable.
+    pub name: String,
+    /// The value of the variable.
+    pub value: String,
+  }
+}
+
+pub mod get_environment_variable {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsVariable;
+}
+
+pub mod update_environment_variable {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The name of the variable.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// The value of the variable.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub value: Option<String>,
+  }
+}
+
+pub mod delete_environment_variable {
+  #[allow(unused_imports)]
+  use super::*;
+}
 
 /// Endpoints to manage GitHub Actions using the REST API.
 pub struct GitHubActionsAPI {
@@ -25,11 +1856,11 @@ impl GitHubActionsAPI {
   pub fn get_actions_cache_usage_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), ActionsCacheUsageOrgEnterprise> {
+  ) -> Request<(), (), get_actions_cache_usage_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/cache/usage");
 
-    Request::<(), (), ActionsCacheUsageOrgEnterprise>::builder(&self.config)
+    Request::<(), (), get_actions_cache_usage_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -47,16 +1878,16 @@ impl GitHubActionsAPI {
     org: impl Into<String>,
   ) -> Request<
     (),
-    ActionsGetActionsCacheUsageByRepoForOrgQuery,
-    ActionsGetActionsCacheUsageByRepoForOrgResponse,
+    get_actions_cache_usage_by_repo_for_org::Query,
+    get_actions_cache_usage_by_repo_for_org::Response,
   > {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/cache/usage-by-repository");
 
     Request::<
       (),
-      ActionsGetActionsCacheUsageByRepoForOrgQuery,
-      ActionsGetActionsCacheUsageByRepoForOrgResponse,
+      get_actions_cache_usage_by_repo_for_org::Query,
+      get_actions_cache_usage_by_repo_for_org::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -72,11 +1903,11 @@ impl GitHubActionsAPI {
   pub fn get_github_actions_permissions_organization(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), ActionsOrganizationPermissions> {
+  ) -> Request<(), (), get_github_actions_permissions_organization::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/permissions");
 
-    Request::<(), (), ActionsOrganizationPermissions>::builder(&self.config)
+    Request::<(), (), get_github_actions_permissions_organization::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -91,11 +1922,11 @@ impl GitHubActionsAPI {
   pub fn set_github_actions_permissions_organization(
     &self,
     org: impl Into<String>,
-  ) -> NoContentRequest<ActionsSetGithubActionsPermissionsOrganizationRequest, ()> {
+  ) -> NoContentRequest<set_github_actions_permissions_organization::Request, ()> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/permissions");
 
-    NoContentRequest::<ActionsSetGithubActionsPermissionsOrganizationRequest, ()>::builder(
+    NoContentRequest::<set_github_actions_permissions_organization::Request, ()>::builder(
       &self.config,
     )
     .put(url)
@@ -114,16 +1945,16 @@ impl GitHubActionsAPI {
     org: impl Into<String>,
   ) -> Request<
     (),
-    ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationQuery,
-    ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
+    list_selected_repositories_enabled_github_actions_organization::Query,
+    list_selected_repositories_enabled_github_actions_organization::Response,
   > {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/permissions/repositories");
 
     Request::<
       (),
-      ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationQuery,
-      ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationResponse,
+      list_selected_repositories_enabled_github_actions_organization::Query,
+      list_selected_repositories_enabled_github_actions_organization::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -140,12 +1971,12 @@ impl GitHubActionsAPI {
   pub fn set_selected_repositories_enabled_github_actions_organization(
     &self,
     org: impl Into<String>,
-  ) -> NoContentRequest<ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest, ()>
+  ) -> NoContentRequest<set_selected_repositories_enabled_github_actions_organization::Request, ()>
   {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/permissions/repositories");
 
-    NoContentRequest::<ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest, ()>::builder(&self.config)
+    NoContentRequest::<set_selected_repositories_enabled_github_actions_organization::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -202,11 +2033,11 @@ impl GitHubActionsAPI {
   pub fn get_allowed_actions_organization(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), SelectedActions> {
+  ) -> Request<(), (), get_allowed_actions_organization::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/permissions/selected-actions");
 
-    Request::<(), (), SelectedActions>::builder(&self.config)
+    Request::<(), (), get_allowed_actions_organization::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -221,11 +2052,11 @@ impl GitHubActionsAPI {
   pub fn set_allowed_actions_organization(
     &self,
     org: impl Into<String>,
-  ) -> NoContentRequest<SelectedActions, ()> {
+  ) -> NoContentRequest<set_allowed_actions_organization::Request, ()> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/permissions/selected-actions");
 
-    NoContentRequest::<SelectedActions, ()>::builder(&self.config)
+    NoContentRequest::<set_allowed_actions_organization::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -242,11 +2073,11 @@ impl GitHubActionsAPI {
   pub fn get_github_actions_default_workflow_permissions_organization(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), ActionsGetDefaultWorkflowPermissions> {
+  ) -> Request<(), (), get_github_actions_default_workflow_permissions_organization::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/permissions/workflow");
 
-    Request::<(), (), ActionsGetDefaultWorkflowPermissions>::builder(&self.config)
+    Request::<(), (), get_github_actions_default_workflow_permissions_organization::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -263,11 +2094,12 @@ impl GitHubActionsAPI {
   pub fn set_github_actions_default_workflow_permissions_organization(
     &self,
     org: impl Into<String>,
-  ) -> NoContentRequest<ActionsSetDefaultWorkflowPermissions, ()> {
+  ) -> NoContentRequest<set_github_actions_default_workflow_permissions_organization::Request, ()>
+  {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/permissions/workflow");
 
-    NoContentRequest::<ActionsSetDefaultWorkflowPermissions, ()>::builder(&self.config)
+    NoContentRequest::<set_github_actions_default_workflow_permissions_organization::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -286,13 +2118,13 @@ impl GitHubActionsAPI {
     org: impl Into<String>,
   ) -> Request<
     (),
-    ActionsListSelfHostedRunnersForOrgQuery,
-    ActionsListSelfHostedRunnersForOrgResponse,
+    list_self_hosted_runners_for_org::Query,
+    list_self_hosted_runners_for_org::Response,
   > {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/runners");
 
-    Request::<(), ActionsListSelfHostedRunnersForOrgQuery, ActionsListSelfHostedRunnersForOrgResponse>::builder(&self.config)
+    Request::<(), list_self_hosted_runners_for_org::Query, list_self_hosted_runners_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -309,11 +2141,11 @@ impl GitHubActionsAPI {
   pub fn list_runner_applications_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), Vec<RunnerApplication>> {
+  ) -> Request<(), (), list_runner_applications_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/runners/downloads");
 
-    Request::<(), (), Vec<RunnerApplication>>::builder(&self.config)
+    Request::<(), (), list_runner_applications_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -330,11 +2162,11 @@ impl GitHubActionsAPI {
   pub fn generate_runner_jitconfig_for_org(
     &self,
     org: impl Into<String>,
-  ) -> NoContentRequest<ActionsGenerateRunnerJitconfigForOrgRequest, ()> {
+  ) -> NoContentRequest<generate_runner_jitconfig_for_org::Request, ()> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/runners/generate-jitconfig");
 
-    NoContentRequest::<ActionsGenerateRunnerJitconfigForOrgRequest, ()>::builder(&self.config)
+    NoContentRequest::<generate_runner_jitconfig_for_org::Request, ()>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -357,11 +2189,11 @@ impl GitHubActionsAPI {
   pub fn create_registration_token_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), AuthenticationToken> {
+  ) -> Request<(), (), create_registration_token_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/runners/registration-token");
 
-    Request::<(), (), AuthenticationToken>::builder(&self.config)
+    Request::<(), (), create_registration_token_for_org::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -384,11 +2216,11 @@ impl GitHubActionsAPI {
   pub fn create_remove_token_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), AuthenticationToken> {
+  ) -> Request<(), (), create_remove_token_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/runners/remove-token");
 
-    Request::<(), (), AuthenticationToken>::builder(&self.config)
+    Request::<(), (), create_remove_token_for_org::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -406,12 +2238,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     runner_id: impl Into<i64>,
-  ) -> Request<(), (), Runner> {
+  ) -> Request<(), (), get_self_hosted_runner_for_org::Response> {
     let org = org.into();
     let runner_id = runner_id.into();
     let url = format!("/orgs/{org}/actions/runners/{runner_id}");
 
-    Request::<(), (), Runner>::builder(&self.config)
+    Request::<(), (), get_self_hosted_runner_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -475,12 +2307,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     runner_id: impl Into<i64>,
-  ) -> NoContentRequest<ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequest, ()> {
+  ) -> NoContentRequest<add_custom_labels_to_self_hosted_runner_for_org::Request, ()> {
     let org = org.into();
     let runner_id = runner_id.into();
     let url = format!("/orgs/{org}/actions/runners/{runner_id}/labels");
 
-    NoContentRequest::<ActionsAddCustomLabelsToSelfHostedRunnerForOrgRequest, ()>::builder(
+    NoContentRequest::<add_custom_labels_to_self_hosted_runner_for_org::Request, ()>::builder(
       &self.config,
     )
     .post(url)
@@ -501,12 +2333,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     runner_id: impl Into<i64>,
-  ) -> NoContentRequest<ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequest, ()> {
+  ) -> NoContentRequest<set_custom_labels_for_self_hosted_runner_for_org::Request, ()> {
     let org = org.into();
     let runner_id = runner_id.into();
     let url = format!("/orgs/{org}/actions/runners/{runner_id}/labels");
 
-    NoContentRequest::<ActionsSetCustomLabelsForSelfHostedRunnerForOrgRequest, ()>::builder(
+    NoContentRequest::<set_custom_labels_for_self_hosted_runner_for_org::Request, ()>::builder(
       &self.config,
     )
     .put(url)
@@ -579,11 +2411,11 @@ impl GitHubActionsAPI {
   pub fn list_org_secrets(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), ActionsListOrgSecretsQuery, ActionsListOrgSecretsResponse> {
+  ) -> Request<(), list_org_secrets::Query, list_org_secrets::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/secrets");
 
-    Request::<(), ActionsListOrgSecretsQuery, ActionsListOrgSecretsResponse>::builder(&self.config)
+    Request::<(), list_org_secrets::Query, list_org_secrets::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -598,11 +2430,14 @@ impl GitHubActionsAPI {
   /// OAuth tokens and personal access tokens (classic) need the`admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/actions/secrets#get-an-organization-public-key](https://docs.github.com/rest/actions/secrets#get-an-organization-public-key)
-  pub fn get_org_public_key(&self, org: impl Into<String>) -> Request<(), (), ActionsPublicKey> {
+  pub fn get_org_public_key(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), (), get_org_public_key::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/secrets/public-key");
 
-    Request::<(), (), ActionsPublicKey>::builder(&self.config)
+    Request::<(), (), get_org_public_key::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -620,12 +2455,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), OrganizationActionsSecret> {
+  ) -> Request<(), (), get_org_secret::Response> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/actions/secrets/{secret_name}");
 
-    Request::<(), (), OrganizationActionsSecret>::builder(&self.config)
+    Request::<(), (), get_org_secret::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -644,12 +2479,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<ActionsCreateOrUpdateOrgSecretRequest, (), EmptyObject> {
+  ) -> Request<create_or_update_org_secret::Request, (), create_or_update_org_secret::Response> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/actions/secrets/{secret_name}");
 
-    Request::<ActionsCreateOrUpdateOrgSecretRequest, (), EmptyObject>::builder(&self.config)
+    Request::<create_or_update_org_secret::Request, (), create_or_update_org_secret::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -693,8 +2528,8 @@ impl GitHubActionsAPI {
     secret_name: impl Into<String>,
   ) -> Request<
     (),
-    ActionsListSelectedReposForOrgSecretQuery,
-    ActionsListSelectedReposForOrgSecretResponse,
+    list_selected_repos_for_org_secret::Query,
+    list_selected_repos_for_org_secret::Response,
   > {
     let org = org.into();
     let secret_name = secret_name.into();
@@ -702,8 +2537,8 @@ impl GitHubActionsAPI {
 
     Request::<
       (),
-      ActionsListSelectedReposForOrgSecretQuery,
-      ActionsListSelectedReposForOrgSecretResponse,
+      list_selected_repos_for_org_secret::Query,
+      list_selected_repos_for_org_secret::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -724,12 +2559,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> NoContentRequest<ActionsSetSelectedReposForOrgSecretRequest, ()> {
+  ) -> NoContentRequest<set_selected_repos_for_org_secret::Request, ()> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/actions/secrets/{secret_name}/repositories");
 
-    NoContentRequest::<ActionsSetSelectedReposForOrgSecretRequest, ()>::builder(&self.config)
+    NoContentRequest::<set_selected_repos_for_org_secret::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -800,15 +2635,13 @@ impl GitHubActionsAPI {
   pub fn list_org_variables(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), ActionsListOrgVariablesQuery, ActionsListOrgVariablesResponse> {
+  ) -> Request<(), list_org_variables::Query, list_org_variables::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/variables");
 
-    Request::<(), ActionsListOrgVariablesQuery, ActionsListOrgVariablesResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_org_variables::Query, list_org_variables::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Create an organization variable**
@@ -823,13 +2656,15 @@ impl GitHubActionsAPI {
   pub fn create_org_variable(
     &self,
     org: impl Into<String>,
-  ) -> Request<ActionsCreateOrgVariableRequest, (), EmptyObject> {
+  ) -> Request<create_org_variable::Request, (), create_org_variable::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/variables");
 
-    Request::<ActionsCreateOrgVariableRequest, (), EmptyObject>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_org_variable::Request, (), create_org_variable::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Get an organization variable**
@@ -845,12 +2680,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     name: impl Into<String>,
-  ) -> Request<(), (), OrganizationActionsVariable> {
+  ) -> Request<(), (), get_org_variable::Response> {
     let org = org.into();
     let name = name.into();
     let url = format!("/orgs/{org}/actions/variables/{name}");
 
-    Request::<(), (), OrganizationActionsVariable>::builder(&self.config)
+    Request::<(), (), get_org_variable::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -868,12 +2703,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     name: impl Into<String>,
-  ) -> NoContentRequest<ActionsUpdateOrgVariableRequest, ()> {
+  ) -> NoContentRequest<update_org_variable::Request, ()> {
     let org = org.into();
     let name = name.into();
     let url = format!("/orgs/{org}/actions/variables/{name}");
 
-    NoContentRequest::<ActionsUpdateOrgVariableRequest, ()>::builder(&self.config)
+    NoContentRequest::<update_org_variable::Request, ()>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -917,8 +2752,8 @@ impl GitHubActionsAPI {
     name: impl Into<String>,
   ) -> Request<
     (),
-    ActionsListSelectedReposForOrgVariableQuery,
-    ActionsListSelectedReposForOrgVariableResponse,
+    list_selected_repos_for_org_variable::Query,
+    list_selected_repos_for_org_variable::Response,
   > {
     let org = org.into();
     let name = name.into();
@@ -926,8 +2761,8 @@ impl GitHubActionsAPI {
 
     Request::<
       (),
-      ActionsListSelectedReposForOrgVariableQuery,
-      ActionsListSelectedReposForOrgVariableResponse,
+      list_selected_repos_for_org_variable::Query,
+      list_selected_repos_for_org_variable::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -948,12 +2783,12 @@ impl GitHubActionsAPI {
     &self,
     org: impl Into<String>,
     name: impl Into<String>,
-  ) -> NoContentRequest<ActionsSetSelectedReposForOrgVariableRequest, ()> {
+  ) -> NoContentRequest<set_selected_repos_for_org_variable::Request, ()> {
     let org = org.into();
     let name = name.into();
     let url = format!("/orgs/{org}/actions/variables/{name}/repositories");
 
-    NoContentRequest::<ActionsSetSelectedReposForOrgVariableRequest, ()>::builder(&self.config)
+    NoContentRequest::<set_selected_repos_for_org_variable::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1024,12 +2859,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActionsListArtifactsForRepoQuery, ActionsListArtifactsForRepoResponse> {
+  ) -> Request<(), list_artifacts_for_repo::Query, list_artifacts_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/artifacts");
 
-    Request::<(), ActionsListArtifactsForRepoQuery, ActionsListArtifactsForRepoResponse>::builder(
+    Request::<(), list_artifacts_for_repo::Query, list_artifacts_for_repo::Response>::builder(
       &self.config,
     )
     .get(url)
@@ -1050,13 +2885,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     artifact_id: impl Into<i64>,
-  ) -> Request<(), (), Artifact> {
+  ) -> Request<(), (), get_artifact::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let artifact_id = artifact_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/artifacts/{artifact_id}");
 
-    Request::<(), (), Artifact>::builder(&self.config)
+    Request::<(), (), get_artifact::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1123,12 +2958,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ActionsCacheUsageByRepository> {
+  ) -> Request<(), (), get_actions_cache_usage::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/cache/usage");
 
-    Request::<(), (), ActionsCacheUsageByRepository>::builder(&self.config)
+    Request::<(), (), get_actions_cache_usage::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1144,14 +2979,16 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActionsGetActionsCacheListQuery, ActionsCacheList> {
+  ) -> Request<(), get_actions_cache_list::Query, get_actions_cache_list::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/caches");
 
-    Request::<(), ActionsGetActionsCacheListQuery, ActionsCacheList>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), get_actions_cache_list::Query, get_actions_cache_list::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Delete GitHub Actions caches for a repository (using a cache key)**
@@ -1165,12 +3002,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActionsDeleteActionsCacheByKeyQuery, ActionsCacheList> {
+  ) -> Request<(), delete_actions_cache_by_key::Query, delete_actions_cache_by_key::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/caches");
 
-    Request::<(), ActionsDeleteActionsCacheByKeyQuery, ActionsCacheList>::builder(&self.config)
+    Request::<(), delete_actions_cache_by_key::Query, delete_actions_cache_by_key::Response>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -1212,13 +3049,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     job_id: impl Into<i64>,
-  ) -> Request<(), (), Job> {
+  ) -> Request<(), (), get_job_for_workflow_run::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let job_id = job_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/jobs/{job_id}");
 
-    Request::<(), (), Job>::builder(&self.config)
+    Request::<(), (), get_job_for_workflow_run::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1261,13 +3098,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     job_id: impl Into<i64>,
-  ) -> Request<ActionsReRunJobForWorkflowRunRequest, (), EmptyObject> {
+  ) -> Request<re_run_job_for_workflow_run::Request, (), re_run_job_for_workflow_run::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let job_id = job_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/jobs/{job_id}/rerun");
 
-    Request::<ActionsReRunJobForWorkflowRunRequest, (), EmptyObject>::builder(&self.config)
+    Request::<re_run_job_for_workflow_run::Request, (), re_run_job_for_workflow_run::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1283,12 +3120,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), OidcCustomSubRepo> {
+  ) -> Request<(), (), get_custom_oidc_sub_claim_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/oidc/customization/sub");
 
-    Request::<(), (), OidcCustomSubRepo>::builder(&self.config)
+    Request::<(), (), get_custom_oidc_sub_claim_for_repo::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1304,14 +3141,22 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ActionsOidcSubjectCustomizationForARepository, (), EmptyObject> {
+  ) -> Request<
+    set_custom_oidc_sub_claim_for_repo::Request,
+    (),
+    set_custom_oidc_sub_claim_for_repo::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/oidc/customization/sub");
 
-    Request::<ActionsOidcSubjectCustomizationForARepository, (), EmptyObject>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<
+      set_custom_oidc_sub_claim_for_repo::Request,
+      (),
+      set_custom_oidc_sub_claim_for_repo::Response,
+    >::builder(&self.config)
+    .put(url)
+    .build()
   }
 
   /// **List repository organization secrets**
@@ -1328,16 +3173,13 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<
-    (),
-    ActionsListRepoOrganizationSecretsQuery,
-    ActionsListRepoOrganizationSecretsResponse,
-  > {
+  ) -> Request<(), list_repo_organization_secrets::Query, list_repo_organization_secrets::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/organization-secrets");
 
-    Request::<(), ActionsListRepoOrganizationSecretsQuery, ActionsListRepoOrganizationSecretsResponse>::builder(&self.config)
+    Request::<(), list_repo_organization_secrets::Query, list_repo_organization_secrets::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1357,20 +3199,16 @@ impl GitHubActionsAPI {
     repo: impl Into<String>,
   ) -> Request<
     (),
-    ActionsListRepoOrganizationVariablesQuery,
-    ActionsListRepoOrganizationVariablesResponse,
+    list_repo_organization_variables::Query,
+    list_repo_organization_variables::Response,
   > {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/organization-variables");
 
-    Request::<
-      (),
-      ActionsListRepoOrganizationVariablesQuery,
-      ActionsListRepoOrganizationVariablesResponse,
-    >::builder(&self.config)
-    .get(url)
-    .build()
+    Request::<(), list_repo_organization_variables::Query, list_repo_organization_variables::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get GitHub Actions permissions for a repository**
@@ -1384,12 +3222,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ActionsRepositoryPermissions> {
+  ) -> Request<(), (), get_github_actions_permissions_repository::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/permissions");
 
-    Request::<(), (), ActionsRepositoryPermissions>::builder(&self.config)
+    Request::<(), (), get_github_actions_permissions_repository::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1405,12 +3243,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<ActionsSetGithubActionsPermissionsRepositoryRequest, ()> {
+  ) -> NoContentRequest<set_github_actions_permissions_repository::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/permissions");
 
-    NoContentRequest::<ActionsSetGithubActionsPermissionsRepositoryRequest, ()>::builder(
+    NoContentRequest::<set_github_actions_permissions_repository::Request, ()>::builder(
       &self.config,
     )
     .put(url)
@@ -1430,12 +3268,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ActionsWorkflowAccessToRepository> {
+  ) -> Request<(), (), get_workflow_access_to_repository::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/permissions/access");
 
-    Request::<(), (), ActionsWorkflowAccessToRepository>::builder(&self.config)
+    Request::<(), (), get_workflow_access_to_repository::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1453,12 +3291,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<ActionsWorkflowAccessToRepository, ()> {
+  ) -> NoContentRequest<set_workflow_access_to_repository::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/permissions/access");
 
-    NoContentRequest::<ActionsWorkflowAccessToRepository, ()>::builder(&self.config)
+    NoContentRequest::<set_workflow_access_to_repository::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1474,12 +3312,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), SelectedActions> {
+  ) -> Request<(), (), get_allowed_actions_repository::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/permissions/selected-actions");
 
-    Request::<(), (), SelectedActions>::builder(&self.config)
+    Request::<(), (), get_allowed_actions_repository::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1495,12 +3333,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<SelectedActions, ()> {
+  ) -> NoContentRequest<set_allowed_actions_repository::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/permissions/selected-actions");
 
-    NoContentRequest::<SelectedActions, ()>::builder(&self.config)
+    NoContentRequest::<set_allowed_actions_repository::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1518,12 +3356,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ActionsGetDefaultWorkflowPermissions> {
+  ) -> Request<(), (), get_github_actions_default_workflow_permissions_repository::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/permissions/workflow");
 
-    Request::<(), (), ActionsGetDefaultWorkflowPermissions>::builder(&self.config)
+    Request::<(), (), get_github_actions_default_workflow_permissions_repository::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1541,12 +3379,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<ActionsSetDefaultWorkflowPermissions, ()> {
+  ) -> NoContentRequest<set_github_actions_default_workflow_permissions_repository::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/permissions/workflow");
 
-    NoContentRequest::<ActionsSetDefaultWorkflowPermissions, ()>::builder(&self.config)
+    NoContentRequest::<set_github_actions_default_workflow_permissions_repository::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1566,8 +3404,8 @@ impl GitHubActionsAPI {
     repo: impl Into<String>,
   ) -> Request<
     (),
-    ActionsListSelfHostedRunnersForRepoQuery,
-    ActionsListSelfHostedRunnersForRepoResponse,
+    list_self_hosted_runners_for_repo::Query,
+    list_self_hosted_runners_for_repo::Response,
   > {
     let owner = owner.into();
     let repo = repo.into();
@@ -1575,8 +3413,8 @@ impl GitHubActionsAPI {
 
     Request::<
       (),
-      ActionsListSelfHostedRunnersForRepoQuery,
-      ActionsListSelfHostedRunnersForRepoResponse,
+      list_self_hosted_runners_for_repo::Query,
+      list_self_hosted_runners_for_repo::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -1595,12 +3433,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<RunnerApplication>> {
+  ) -> Request<(), (), list_runner_applications_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/runners/downloads");
 
-    Request::<(), (), Vec<RunnerApplication>>::builder(&self.config)
+    Request::<(), (), list_runner_applications_for_repo::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1618,12 +3456,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<ActionsGenerateRunnerJitconfigForRepoRequest, ()> {
+  ) -> NoContentRequest<generate_runner_jitconfig_for_repo::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/runners/generate-jitconfig");
 
-    NoContentRequest::<ActionsGenerateRunnerJitconfigForRepoRequest, ()>::builder(&self.config)
+    NoContentRequest::<generate_runner_jitconfig_for_repo::Request, ()>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1647,12 +3485,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), AuthenticationToken> {
+  ) -> Request<(), (), create_registration_token_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/runners/registration-token");
 
-    Request::<(), (), AuthenticationToken>::builder(&self.config)
+    Request::<(), (), create_registration_token_for_repo::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1676,12 +3514,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), AuthenticationToken> {
+  ) -> Request<(), (), create_remove_token_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/runners/remove-token");
 
-    Request::<(), (), AuthenticationToken>::builder(&self.config)
+    Request::<(), (), create_remove_token_for_repo::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1700,13 +3538,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     runner_id: impl Into<i64>,
-  ) -> Request<(), (), Runner> {
+  ) -> Request<(), (), get_self_hosted_runner_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let runner_id = runner_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runners/{runner_id}");
 
-    Request::<(), (), Runner>::builder(&self.config)
+    Request::<(), (), get_self_hosted_runner_for_repo::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1775,13 +3613,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     runner_id: impl Into<i64>,
-  ) -> NoContentRequest<ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequest, ()> {
+  ) -> NoContentRequest<add_custom_labels_to_self_hosted_runner_for_repo::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let runner_id = runner_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runners/{runner_id}/labels");
 
-    NoContentRequest::<ActionsAddCustomLabelsToSelfHostedRunnerForRepoRequest, ()>::builder(
+    NoContentRequest::<add_custom_labels_to_self_hosted_runner_for_repo::Request, ()>::builder(
       &self.config,
     )
     .post(url)
@@ -1803,13 +3641,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     runner_id: impl Into<i64>,
-  ) -> NoContentRequest<ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequest, ()> {
+  ) -> NoContentRequest<set_custom_labels_for_self_hosted_runner_for_repo::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let runner_id = runner_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runners/{runner_id}/labels");
 
-    NoContentRequest::<ActionsSetCustomLabelsForSelfHostedRunnerForRepoRequest, ()>::builder(
+    NoContentRequest::<set_custom_labels_for_self_hosted_runner_for_repo::Request, ()>::builder(
       &self.config,
     )
     .put(url)
@@ -1888,12 +3726,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActionsListWorkflowRunsForRepoQuery, ActionsListWorkflowRunsForRepoResponse> {
+  ) -> Request<(), list_workflow_runs_for_repo::Query, list_workflow_runs_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs");
 
-    Request::<(), ActionsListWorkflowRunsForRepoQuery, ActionsListWorkflowRunsForRepoResponse>::builder(&self.config)
+    Request::<(), list_workflow_runs_for_repo::Query, list_workflow_runs_for_repo::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1912,13 +3750,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), ActionsGetWorkflowRunQuery, WorkflowRun> {
+  ) -> Request<(), get_workflow_run::Query, get_workflow_run::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}");
 
-    Request::<(), ActionsGetWorkflowRunQuery, WorkflowRun>::builder(&self.config)
+    Request::<(), get_workflow_run::Query, get_workflow_run::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1960,13 +3798,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), (), Vec<EnvironmentApprovals>> {
+  ) -> Request<(), (), get_reviews_for_run::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/approvals");
 
-    Request::<(), (), Vec<EnvironmentApprovals>>::builder(&self.config)
+    Request::<(), (), get_reviews_for_run::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1983,13 +3821,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), (), EmptyObject> {
+  ) -> Request<(), (), approve_workflow_run::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/approve");
 
-    Request::<(), (), EmptyObject>::builder(&self.config)
+    Request::<(), (), approve_workflow_run::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -2008,14 +3846,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), ActionsListWorkflowRunArtifactsQuery, ActionsListWorkflowRunArtifactsResponse>
-  {
+  ) -> Request<(), list_workflow_run_artifacts::Query, list_workflow_run_artifacts::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/artifacts");
 
-    Request::<(), ActionsListWorkflowRunArtifactsQuery, ActionsListWorkflowRunArtifactsResponse>::builder(&self.config)
+    Request::<(), list_workflow_run_artifacts::Query, list_workflow_run_artifacts::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2035,16 +3872,18 @@ impl GitHubActionsAPI {
     repo: impl Into<String>,
     run_id: impl Into<i64>,
     attempt_number: impl Into<i64>,
-  ) -> Request<(), ActionsGetWorkflowRunAttemptQuery, WorkflowRun> {
+  ) -> Request<(), get_workflow_run_attempt::Query, get_workflow_run_attempt::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let attempt_number = attempt_number.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/attempts/{attempt_number}");
 
-    Request::<(), ActionsGetWorkflowRunAttemptQuery, WorkflowRun>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), get_workflow_run_attempt::Query, get_workflow_run_attempt::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List jobs for a workflow run attempt**
@@ -2065,8 +3904,8 @@ impl GitHubActionsAPI {
     attempt_number: impl Into<i64>,
   ) -> Request<
     (),
-    ActionsListJobsForWorkflowRunAttemptQuery,
-    ActionsListJobsForWorkflowRunAttemptResponse,
+    list_jobs_for_workflow_run_attempt::Query,
+    list_jobs_for_workflow_run_attempt::Response,
   > {
     let owner = owner.into();
     let repo = repo.into();
@@ -2076,8 +3915,8 @@ impl GitHubActionsAPI {
 
     Request::<
       (),
-      ActionsListJobsForWorkflowRunAttemptQuery,
-      ActionsListJobsForWorkflowRunAttemptResponse,
+      list_jobs_for_workflow_run_attempt::Query,
+      list_jobs_for_workflow_run_attempt::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -2123,13 +3962,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), (), EmptyObject> {
+  ) -> Request<(), (), cancel_workflow_run::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/cancel");
 
-    Request::<(), (), EmptyObject>::builder(&self.config)
+    Request::<(), (), cancel_workflow_run::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -2149,13 +3988,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> NoContentRequest<ActionsReviewCustomGatesForRunRequest, ()> {
+  ) -> NoContentRequest<review_custom_gates_for_run::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/deployment_protection_rule");
 
-    NoContentRequest::<ActionsReviewCustomGatesForRunRequest, ()>::builder(&self.config)
+    NoContentRequest::<review_custom_gates_for_run::Request, ()>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -2173,13 +4012,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), (), EmptyObject> {
+  ) -> Request<(), (), force_cancel_workflow_run::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/force-cancel");
 
-    Request::<(), (), EmptyObject>::builder(&self.config)
+    Request::<(), (), force_cancel_workflow_run::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -2199,15 +4038,17 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), ActionsListJobsForWorkflowRunQuery, ActionsListJobsForWorkflowRunResponse> {
+  ) -> Request<(), list_jobs_for_workflow_run::Query, list_jobs_for_workflow_run::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/jobs");
 
-    Request::<(), ActionsListJobsForWorkflowRunQuery, ActionsListJobsForWorkflowRunResponse>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_jobs_for_workflow_run::Query, list_jobs_for_workflow_run::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Download workflow run logs**
@@ -2273,13 +4114,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), (), Vec<PendingDeployment>> {
+  ) -> Request<(), (), get_pending_deployments_for_run::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments");
 
-    Request::<(), (), Vec<PendingDeployment>>::builder(&self.config)
+    Request::<(), (), get_pending_deployments_for_run::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2298,15 +4139,21 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<ActionsReviewPendingDeploymentsForRunRequest, (), Vec<Deployment>> {
+  ) -> Request<
+    review_pending_deployments_for_run::Request,
+    (),
+    review_pending_deployments_for_run::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/pending_deployments");
 
-    Request::<ActionsReviewPendingDeploymentsForRunRequest, (), Vec<Deployment>>::builder(
-      &self.config,
-    )
+    Request::<
+      review_pending_deployments_for_run::Request,
+      (),
+      review_pending_deployments_for_run::Response,
+    >::builder(&self.config)
     .post(url)
     .build()
   }
@@ -2323,13 +4170,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<ActionsReRunWorkflowRequest, (), EmptyObject> {
+  ) -> Request<re_run_workflow::Request, (), re_run_workflow::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/rerun");
 
-    Request::<ActionsReRunWorkflowRequest, (), EmptyObject>::builder(&self.config)
+    Request::<re_run_workflow::Request, (), re_run_workflow::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -2346,13 +4193,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<ActionsReRunWorkflowFailedJobsRequest, (), EmptyObject> {
+  ) -> Request<re_run_workflow_failed_jobs::Request, (), re_run_workflow_failed_jobs::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/rerun-failed-jobs");
 
-    Request::<ActionsReRunWorkflowFailedJobsRequest, (), EmptyObject>::builder(&self.config)
+    Request::<re_run_workflow_failed_jobs::Request, (), re_run_workflow_failed_jobs::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -2371,13 +4218,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     run_id: impl Into<i64>,
-  ) -> Request<(), (), WorkflowRunUsage> {
+  ) -> Request<(), (), get_workflow_run_usage::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let run_id = run_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/runs/{run_id}/timing");
 
-    Request::<(), (), WorkflowRunUsage>::builder(&self.config)
+    Request::<(), (), get_workflow_run_usage::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2396,16 +4243,14 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActionsListRepoSecretsQuery, ActionsListRepoSecretsResponse> {
+  ) -> Request<(), list_repo_secrets::Query, list_repo_secrets::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/secrets");
 
-    Request::<(), ActionsListRepoSecretsQuery, ActionsListRepoSecretsResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_repo_secrets::Query, list_repo_secrets::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get a repository public key**
@@ -2422,12 +4267,12 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ActionsPublicKey> {
+  ) -> Request<(), (), get_repo_public_key::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/secrets/public-key");
 
-    Request::<(), (), ActionsPublicKey>::builder(&self.config)
+    Request::<(), (), get_repo_public_key::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2446,13 +4291,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), ActionsSecret> {
+  ) -> Request<(), (), get_repo_secret::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let secret_name = secret_name.into();
     let url = format!("/repos/{owner}/{repo}/actions/secrets/{secret_name}");
 
-    Request::<(), (), ActionsSecret>::builder(&self.config)
+    Request::<(), (), get_repo_secret::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2472,13 +4317,14 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<ActionsCreateOrUpdateRepoSecretRequest, (), EmptyObject> {
+  ) -> Request<create_or_update_repo_secret::Request, (), create_or_update_repo_secret::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let secret_name = secret_name.into();
     let url = format!("/repos/{owner}/{repo}/actions/secrets/{secret_name}");
 
-    Request::<ActionsCreateOrUpdateRepoSecretRequest, (), EmptyObject>::builder(&self.config)
+    Request::<create_or_update_repo_secret::Request, (), create_or_update_repo_secret::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -2521,16 +4367,14 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActionsListRepoVariablesQuery, ActionsListRepoVariablesResponse> {
+  ) -> Request<(), list_repo_variables::Query, list_repo_variables::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/variables");
 
-    Request::<(), ActionsListRepoVariablesQuery, ActionsListRepoVariablesResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_repo_variables::Query, list_repo_variables::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Create a repository variable**
@@ -2546,14 +4390,16 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ActionsCreateRepoVariableRequest, (), EmptyObject> {
+  ) -> Request<create_repo_variable::Request, (), create_repo_variable::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/variables");
 
-    Request::<ActionsCreateRepoVariableRequest, (), EmptyObject>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_repo_variable::Request, (), create_repo_variable::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Get a repository variable**
@@ -2570,13 +4416,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     name: impl Into<String>,
-  ) -> Request<(), (), ActionsVariable> {
+  ) -> Request<(), (), get_repo_variable::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let name = name.into();
     let url = format!("/repos/{owner}/{repo}/actions/variables/{name}");
 
-    Request::<(), (), ActionsVariable>::builder(&self.config)
+    Request::<(), (), get_repo_variable::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2595,13 +4441,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     name: impl Into<String>,
-  ) -> NoContentRequest<ActionsUpdateRepoVariableRequest, ()> {
+  ) -> NoContentRequest<update_repo_variable::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let name = name.into();
     let url = format!("/repos/{owner}/{repo}/actions/variables/{name}");
 
-    NoContentRequest::<ActionsUpdateRepoVariableRequest, ()>::builder(&self.config)
+    NoContentRequest::<update_repo_variable::Request, ()>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -2644,16 +4490,14 @@ impl GitHubActionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActionsListRepoWorkflowsQuery, ActionsListRepoWorkflowsResponse> {
+  ) -> Request<(), list_repo_workflows::Query, list_repo_workflows::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/actions/workflows");
 
-    Request::<(), ActionsListRepoWorkflowsQuery, ActionsListRepoWorkflowsResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_repo_workflows::Query, list_repo_workflows::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get a workflow**
@@ -2671,13 +4515,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     workflow_id: impl Into<StringOrInteger>,
-  ) -> Request<(), (), Workflow> {
+  ) -> Request<(), (), get_workflow::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let workflow_id = workflow_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/workflows/{workflow_id}");
 
-    Request::<(), (), Workflow>::builder(&self.config)
+    Request::<(), (), get_workflow::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2719,13 +4563,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     workflow_id: impl Into<StringOrInteger>,
-  ) -> NoContentRequest<ActionsCreateWorkflowDispatchRequest, ()> {
+  ) -> NoContentRequest<create_workflow_dispatch::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let workflow_id = workflow_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches");
 
-    NoContentRequest::<ActionsCreateWorkflowDispatchRequest, ()>::builder(&self.config)
+    NoContentRequest::<create_workflow_dispatch::Request, ()>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -2767,17 +4611,15 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     workflow_id: impl Into<StringOrInteger>,
-  ) -> Request<(), ActionsListWorkflowRunsQuery, ActionsListWorkflowRunsResponse> {
+  ) -> Request<(), list_workflow_runs::Query, list_workflow_runs::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let workflow_id = workflow_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs");
 
-    Request::<(), ActionsListWorkflowRunsQuery, ActionsListWorkflowRunsResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_workflow_runs::Query, list_workflow_runs::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get workflow usage**
@@ -2796,13 +4638,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     workflow_id: impl Into<StringOrInteger>,
-  ) -> Request<(), (), WorkflowUsage> {
+  ) -> Request<(), (), get_workflow_usage::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let workflow_id = workflow_id.into();
     let url = format!("/repos/{owner}/{repo}/actions/workflows/{workflow_id}/timing");
 
-    Request::<(), (), WorkflowUsage>::builder(&self.config)
+    Request::<(), (), get_workflow_usage::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2822,15 +4664,17 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     environment_name: impl Into<String>,
-  ) -> Request<(), ActionsListEnvironmentSecretsQuery, ActionsListEnvironmentSecretsResponse> {
+  ) -> Request<(), list_environment_secrets::Query, list_environment_secrets::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/secrets");
 
-    Request::<(), ActionsListEnvironmentSecretsQuery, ActionsListEnvironmentSecretsResponse>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_environment_secrets::Query, list_environment_secrets::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get an environment public key**
@@ -2848,13 +4692,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     environment_name: impl Into<String>,
-  ) -> Request<(), (), ActionsPublicKey> {
+  ) -> Request<(), (), get_environment_public_key::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/secrets/public-key");
 
-    Request::<(), (), ActionsPublicKey>::builder(&self.config)
+    Request::<(), (), get_environment_public_key::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2874,7 +4718,7 @@ impl GitHubActionsAPI {
     repo: impl Into<String>,
     environment_name: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), ActionsSecret> {
+  ) -> Request<(), (), get_environment_secret::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
@@ -2882,7 +4726,7 @@ impl GitHubActionsAPI {
     let url =
       format!("/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}");
 
-    Request::<(), (), ActionsSecret>::builder(&self.config)
+    Request::<(), (), get_environment_secret::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2903,7 +4747,11 @@ impl GitHubActionsAPI {
     repo: impl Into<String>,
     environment_name: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<ActionsCreateOrUpdateEnvironmentSecretRequest, (), EmptyObject> {
+  ) -> Request<
+    create_or_update_environment_secret::Request,
+    (),
+    create_or_update_environment_secret::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
@@ -2911,9 +4759,13 @@ impl GitHubActionsAPI {
     let url =
       format!("/repos/{owner}/{repo}/environments/{environment_name}/secrets/{secret_name}");
 
-    Request::<ActionsCreateOrUpdateEnvironmentSecretRequest, (), EmptyObject>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<
+      create_or_update_environment_secret::Request,
+      (),
+      create_or_update_environment_secret::Response,
+    >::builder(&self.config)
+    .put(url)
+    .build()
   }
 
   /// **Delete an environment secret**
@@ -2958,16 +4810,17 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     environment_name: impl Into<String>,
-  ) -> Request<(), ActionsListEnvironmentVariablesQuery, ActionsListEnvironmentVariablesResponse>
-  {
+  ) -> Request<(), list_environment_variables::Query, list_environment_variables::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/variables");
 
-    Request::<(), ActionsListEnvironmentVariablesQuery, ActionsListEnvironmentVariablesResponse>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_environment_variables::Query, list_environment_variables::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Create an environment variable**
@@ -2984,13 +4837,13 @@ impl GitHubActionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     environment_name: impl Into<String>,
-  ) -> Request<ActionsCreateEnvironmentVariableRequest, (), EmptyObject> {
+  ) -> Request<create_environment_variable::Request, (), create_environment_variable::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/variables");
 
-    Request::<ActionsCreateEnvironmentVariableRequest, (), EmptyObject>::builder(&self.config)
+    Request::<create_environment_variable::Request, (), create_environment_variable::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -3010,14 +4863,14 @@ impl GitHubActionsAPI {
     repo: impl Into<String>,
     environment_name: impl Into<String>,
     name: impl Into<String>,
-  ) -> Request<(), (), ActionsVariable> {
+  ) -> Request<(), (), get_environment_variable::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let name = name.into();
     let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}");
 
-    Request::<(), (), ActionsVariable>::builder(&self.config)
+    Request::<(), (), get_environment_variable::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3037,14 +4890,14 @@ impl GitHubActionsAPI {
     repo: impl Into<String>,
     name: impl Into<String>,
     environment_name: impl Into<String>,
-  ) -> NoContentRequest<ActionsUpdateEnvironmentVariableRequest, ()> {
+  ) -> NoContentRequest<update_environment_variable::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let name = name.into();
     let environment_name = environment_name.into();
     let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/variables/{name}");
 
-    NoContentRequest::<ActionsUpdateEnvironmentVariableRequest, ()>::builder(&self.config)
+    NoContentRequest::<update_environment_variable::Request, ()>::builder(&self.config)
       .patch(url)
       .build()
   }

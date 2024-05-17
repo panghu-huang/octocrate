@@ -1,6 +1,1092 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list_docker_migration_conflicting_packages_for_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Package>;
+}
+
+pub mod list_packages_for_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Package>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for QueryPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        QueryPackageType::Npm => "npm".to_string(),
+        QueryPackageType::Maven => "maven".to_string(),
+        QueryPackageType::Rubygems => "rubygems".to_string(),
+        QueryPackageType::Docker => "docker".to_string(),
+        QueryPackageType::Nuget => "nuget".to_string(),
+        QueryPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryVisibility {
+    #[serde(rename = "public")]
+    Public,
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "internal")]
+    Internal,
+  }
+
+  impl ToString for QueryVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        QueryVisibility::Public => "public".to_string(),
+        QueryVisibility::Private => "private".to_string(),
+        QueryVisibility::Internal => "internal".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.
+    pub package_type: QueryPackageType,
+    /// The selected visibility of the packages.  This parameter is optional and only filters an existing result set.
+    ///
+    /// The `internal` visibility is only supported for GitHub Packages registries that allow for granular permissions. For other ecosystems `internal` is synonymous with `private`.
+    /// For the list of GitHub Packages registries that support granular permissions, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub visibility: Option<QueryVisibility>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod get_package_for_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Package;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod delete_package_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod restore_package_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// package token
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub token: Option<String>,
+  }
+}
+
+pub mod get_all_package_versions_for_package_owned_by_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<PackageVersion>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryState {
+    #[serde(rename = "active")]
+    Active,
+    #[serde(rename = "deleted")]
+    Deleted,
+  }
+
+  impl ToString for QueryState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryState::Active => "active".to_string(),
+        QueryState::Deleted => "deleted".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The state of the package, either active or deleted.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<QueryState>,
+  }
+}
+
+pub mod get_package_version_for_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = PackageVersion;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod delete_package_version_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod restore_package_version_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod list_docker_migration_conflicting_packages_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Package>;
+}
+
+pub mod list_packages_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Package>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for QueryPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        QueryPackageType::Npm => "npm".to_string(),
+        QueryPackageType::Maven => "maven".to_string(),
+        QueryPackageType::Rubygems => "rubygems".to_string(),
+        QueryPackageType::Docker => "docker".to_string(),
+        QueryPackageType::Nuget => "nuget".to_string(),
+        QueryPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryVisibility {
+    #[serde(rename = "public")]
+    Public,
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "internal")]
+    Internal,
+  }
+
+  impl ToString for QueryVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        QueryVisibility::Public => "public".to_string(),
+        QueryVisibility::Private => "private".to_string(),
+        QueryVisibility::Internal => "internal".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.
+    pub package_type: QueryPackageType,
+    /// The selected visibility of the packages.  This parameter is optional and only filters an existing result set.
+    ///
+    /// The `internal` visibility is only supported for GitHub Packages registries that allow for granular permissions. For other ecosystems `internal` is synonymous with `private`.
+    /// For the list of GitHub Packages registries that support granular permissions, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub visibility: Option<QueryVisibility>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod get_package_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Package;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod delete_package_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod restore_package_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// package token
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub token: Option<String>,
+  }
+}
+
+pub mod get_all_package_versions_for_package_owned_by_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<PackageVersion>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryState {
+    #[serde(rename = "active")]
+    Active,
+    #[serde(rename = "deleted")]
+    Deleted,
+  }
+
+  impl ToString for QueryState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryState::Active => "active".to_string(),
+        QueryState::Deleted => "deleted".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The state of the package, either active or deleted.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<QueryState>,
+  }
+}
+
+pub mod get_package_version_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = PackageVersion;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod delete_package_version_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod restore_package_version_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod list_docker_migration_conflicting_packages_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Package>;
+}
+
+pub mod list_packages_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Package>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for QueryPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        QueryPackageType::Npm => "npm".to_string(),
+        QueryPackageType::Maven => "maven".to_string(),
+        QueryPackageType::Rubygems => "rubygems".to_string(),
+        QueryPackageType::Docker => "docker".to_string(),
+        QueryPackageType::Nuget => "nuget".to_string(),
+        QueryPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryVisibility {
+    #[serde(rename = "public")]
+    Public,
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "internal")]
+    Internal,
+  }
+
+  impl ToString for QueryVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        QueryVisibility::Public => "public".to_string(),
+        QueryVisibility::Private => "private".to_string(),
+        QueryVisibility::Internal => "internal".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.
+    pub package_type: QueryPackageType,
+    /// The selected visibility of the packages.  This parameter is optional and only filters an existing result set.
+    ///
+    /// The `internal` visibility is only supported for GitHub Packages registries that allow for granular permissions. For other ecosystems `internal` is synonymous with `private`.
+    /// For the list of GitHub Packages registries that support granular permissions, see "[About permissions for GitHub Packages](https://docs.github.com/packages/learn-github-packages/about-permissions-for-github-packages#granular-permissions-for-userorganization-scoped-packages)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub visibility: Option<QueryVisibility>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod get_package_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Package;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod delete_package_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod restore_package_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// package token
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub token: Option<String>,
+  }
+}
+
+pub mod get_all_package_versions_for_package_owned_by_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<PackageVersion>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod get_package_version_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = PackageVersion;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod delete_package_version_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
+
+pub mod restore_package_version_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersPackageType {
+    #[serde(rename = "npm")]
+    Npm,
+    #[serde(rename = "maven")]
+    Maven,
+    #[serde(rename = "rubygems")]
+    Rubygems,
+    #[serde(rename = "docker")]
+    Docker,
+    #[serde(rename = "nuget")]
+    Nuget,
+    #[serde(rename = "container")]
+    Container,
+  }
+
+  impl ToString for ParametersPackageType {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersPackageType::Npm => "npm".to_string(),
+        ParametersPackageType::Maven => "maven".to_string(),
+        ParametersPackageType::Rubygems => "rubygems".to_string(),
+        ParametersPackageType::Docker => "docker".to_string(),
+        ParametersPackageType::Nuget => "nuget".to_string(),
+        ParametersPackageType::Container => "container".to_string(),
+      }
+    }
+  }
+}
 
 /// Manage packages for authenticated users and organizations.
 pub struct GitHubPackagesAPI {
@@ -24,11 +1110,11 @@ impl GitHubPackagesAPI {
   pub fn list_docker_migration_conflicting_packages_for_organization(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), Vec<Package>> {
+  ) -> Request<(), (), list_docker_migration_conflicting_packages_for_organization::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/docker/conflicts");
 
-    Request::<(), (), Vec<Package>>::builder(&self.config)
+    Request::<(), (), list_docker_migration_conflicting_packages_for_organization::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -43,11 +1129,12 @@ impl GitHubPackagesAPI {
   pub fn list_packages_for_organization(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), PackagesListPackagesForOrganizationQuery, Vec<Package>> {
+  ) -> Request<(), list_packages_for_organization::Query, list_packages_for_organization::Response>
+  {
     let org = org.into();
     let url = format!("/orgs/{org}/packages");
 
-    Request::<(), PackagesListPackagesForOrganizationQuery, Vec<Package>>::builder(&self.config)
+    Request::<(), list_packages_for_organization::Query, list_packages_for_organization::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -61,17 +1148,17 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization](https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization)
   pub fn get_package_for_organization(
     &self,
-    package_type: impl Into<PackagesGetPackageForOrganizationParametersPackageType>,
+    package_type: impl Into<get_package_for_organization::ParametersPackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
-  ) -> Request<(), (), Package> {
+  ) -> Request<(), (), get_package_for_organization::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let org = org.into();
     let package_type = package_type.to_string();
     let url = format!("/orgs/{org}/packages/{package_type}/{package_name}");
 
-    Request::<(), (), Package>::builder(&self.config)
+    Request::<(), (), get_package_for_organization::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -87,7 +1174,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization](https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization)
   pub fn delete_package_for_org(
     &self,
-    package_type: impl Into<PackagesDeletePackageForOrgParametersPackageType>,
+    package_type: impl Into<delete_package_for_org::ParametersPackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
   ) -> NoContentRequest<(), ()> {
@@ -117,17 +1204,17 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization](https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization)
   pub fn restore_package_for_org(
     &self,
-    package_type: impl Into<PackagesRestorePackageForOrgParametersPackageType>,
+    package_type: impl Into<restore_package_for_org::ParametersPackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
-  ) -> NoContentRequest<(), PackagesRestorePackageForOrgQuery> {
+  ) -> NoContentRequest<(), restore_package_for_org::Query> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let org = org.into();
     let package_type = package_type.to_string();
     let url = format!("/orgs/{org}/packages/{package_type}/{package_name}/restore");
 
-    NoContentRequest::<(), PackagesRestorePackageForOrgQuery>::builder(&self.config)
+    NoContentRequest::<(), restore_package_for_org::Query>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -141,19 +1228,27 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization](https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization)
   pub fn get_all_package_versions_for_package_owned_by_org(
     &self,
-    package_type: impl Into<PackagesGetAllPackageVersionsForPackageOwnedByOrgParametersPackageType>,
+    package_type: impl Into<get_all_package_versions_for_package_owned_by_org::ParametersPackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
-  ) -> Request<(), PackagesGetAllPackageVersionsForPackageOwnedByOrgQuery, Vec<PackageVersion>> {
+  ) -> Request<
+    (),
+    get_all_package_versions_for_package_owned_by_org::Query,
+    get_all_package_versions_for_package_owned_by_org::Response,
+  > {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let org = org.into();
     let package_type = package_type.to_string();
     let url = format!("/orgs/{org}/packages/{package_type}/{package_name}/versions");
 
-    Request::<(), PackagesGetAllPackageVersionsForPackageOwnedByOrgQuery, Vec<PackageVersion>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      get_all_package_versions_for_package_owned_by_org::Query,
+      get_all_package_versions_for_package_owned_by_org::Response,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **Get a package version for an organization**
@@ -165,11 +1260,11 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization](https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization)
   pub fn get_package_version_for_organization(
     &self,
-    package_type: impl Into<PackagesGetPackageVersionForOrganizationParametersPackageType>,
+    package_type: impl Into<get_package_version_for_organization::ParametersPackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
     package_version_id: impl Into<i64>,
-  ) -> Request<(), (), PackageVersion> {
+  ) -> Request<(), (), get_package_version_for_organization::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let org = org.into();
@@ -178,7 +1273,7 @@ impl GitHubPackagesAPI {
     let url =
       format!("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}");
 
-    Request::<(), (), PackageVersion>::builder(&self.config)
+    Request::<(), (), get_package_version_for_organization::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -194,7 +1289,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization](https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization)
   pub fn delete_package_version_for_org(
     &self,
-    package_type: impl Into<PackagesDeletePackageVersionForOrgParametersPackageType>,
+    package_type: impl Into<delete_package_version_for_org::ParametersPackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
     package_version_id: impl Into<i64>,
@@ -227,7 +1322,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization](https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization)
   pub fn restore_package_version_for_org(
     &self,
-    package_type: impl Into<PackagesRestorePackageVersionForOrgParametersPackageType>,
+    package_type: impl Into<restore_package_version_for_org::ParametersPackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
     package_version_id: impl Into<i64>,
@@ -255,10 +1350,11 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user](https://docs.github.com/rest/packages/packages#get-list-of-conflicting-packages-during-docker-migration-for-authenticated-user)
   pub fn list_docker_migration_conflicting_packages_for_authenticated_user(
     &self,
-  ) -> Request<(), (), Vec<Package>> {
+  ) -> Request<(), (), list_docker_migration_conflicting_packages_for_authenticated_user::Response>
+  {
     let url = format!("/user/docker/conflicts");
 
-    Request::<(), (), Vec<Package>>::builder(&self.config)
+    Request::<(), (), list_docker_migration_conflicting_packages_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -272,12 +1368,18 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace](https://docs.github.com/rest/packages/packages#list-packages-for-the-authenticated-users-namespace)
   pub fn list_packages_for_authenticated_user(
     &self,
-  ) -> Request<(), PackagesListPackagesForAuthenticatedUserQuery, Vec<Package>> {
+  ) -> Request<
+    (),
+    list_packages_for_authenticated_user::Query,
+    list_packages_for_authenticated_user::Response,
+  > {
     let url = format!("/user/packages");
 
-    Request::<(), PackagesListPackagesForAuthenticatedUserQuery, Vec<Package>>::builder(
-      &self.config,
-    )
+    Request::<
+      (),
+      list_packages_for_authenticated_user::Query,
+      list_packages_for_authenticated_user::Response,
+    >::builder(&self.config)
     .get(url)
     .build()
   }
@@ -291,15 +1393,15 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user)
   pub fn get_package_for_authenticated_user(
     &self,
-    package_type: impl Into<PackagesGetPackageForAuthenticatedUserParametersPackageType>,
+    package_type: impl Into<get_package_for_authenticated_user::ParametersPackageType>,
     package_name: impl Into<String>,
-  ) -> Request<(), (), Package> {
+  ) -> Request<(), (), get_package_for_authenticated_user::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let package_type = package_type.to_string();
     let url = format!("/user/packages/{package_type}/{package_name}");
 
-    Request::<(), (), Package>::builder(&self.config)
+    Request::<(), (), get_package_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -313,7 +1415,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user)
   pub fn delete_package_for_authenticated_user(
     &self,
-    package_type: impl Into<PackagesDeletePackageForAuthenticatedUserParametersPackageType>,
+    package_type: impl Into<delete_package_for_authenticated_user::ParametersPackageType>,
     package_name: impl Into<String>,
   ) -> NoContentRequest<(), ()> {
     let package_type = package_type.into();
@@ -339,15 +1441,15 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user)
   pub fn restore_package_for_authenticated_user(
     &self,
-    package_type: impl Into<PackagesRestorePackageForAuthenticatedUserParametersPackageType>,
+    package_type: impl Into<restore_package_for_authenticated_user::ParametersPackageType>,
     package_name: impl Into<String>,
-  ) -> NoContentRequest<(), PackagesRestorePackageForAuthenticatedUserQuery> {
+  ) -> NoContentRequest<(), restore_package_for_authenticated_user::Query> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let package_type = package_type.to_string();
     let url = format!("/user/packages/{package_type}/{package_name}/restore");
 
-    NoContentRequest::<(), PackagesRestorePackageForAuthenticatedUserQuery>::builder(&self.config)
+    NoContentRequest::<(), restore_package_for_authenticated_user::Query>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -362,13 +1464,13 @@ impl GitHubPackagesAPI {
   pub fn get_all_package_versions_for_package_owned_by_authenticated_user(
     &self,
     package_type: impl Into<
-      PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParametersPackageType,
+      get_all_package_versions_for_package_owned_by_authenticated_user::ParametersPackageType,
     >,
     package_name: impl Into<String>,
   ) -> Request<
     (),
-    PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQuery,
-    Vec<PackageVersion>,
+    get_all_package_versions_for_package_owned_by_authenticated_user::Query,
+    get_all_package_versions_for_package_owned_by_authenticated_user::Response,
   > {
     let package_type = package_type.into();
     let package_name = package_name.into();
@@ -377,8 +1479,8 @@ impl GitHubPackagesAPI {
 
     Request::<
       (),
-      PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserQuery,
-      Vec<PackageVersion>,
+      get_all_package_versions_for_package_owned_by_authenticated_user::Query,
+      get_all_package_versions_for_package_owned_by_authenticated_user::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -393,17 +1495,17 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user)
   pub fn get_package_version_for_authenticated_user(
     &self,
-    package_type: impl Into<PackagesGetPackageVersionForAuthenticatedUserParametersPackageType>,
+    package_type: impl Into<get_package_version_for_authenticated_user::ParametersPackageType>,
     package_name: impl Into<String>,
     package_version_id: impl Into<i64>,
-  ) -> Request<(), (), PackageVersion> {
+  ) -> Request<(), (), get_package_version_for_authenticated_user::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let package_version_id = package_version_id.into();
     let package_type = package_type.to_string();
     let url = format!("/user/packages/{package_type}/{package_name}/versions/{package_version_id}");
 
-    Request::<(), (), PackageVersion>::builder(&self.config)
+    Request::<(), (), get_package_version_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -419,7 +1521,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user)
   pub fn delete_package_version_for_authenticated_user(
     &self,
-    package_type: impl Into<PackagesDeletePackageVersionForAuthenticatedUserParametersPackageType>,
+    package_type: impl Into<delete_package_version_for_authenticated_user::ParametersPackageType>,
     package_name: impl Into<String>,
     package_version_id: impl Into<i64>,
   ) -> NoContentRequest<(), ()> {
@@ -447,7 +1549,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user)
   pub fn restore_package_version_for_authenticated_user(
     &self,
-    package_type: impl Into<PackagesRestorePackageVersionForAuthenticatedUserParametersPackageType>,
+    package_type: impl Into<restore_package_version_for_authenticated_user::ParametersPackageType>,
     package_name: impl Into<String>,
     package_version_id: impl Into<i64>,
   ) -> NoContentRequest<(), ()> {
@@ -473,13 +1575,15 @@ impl GitHubPackagesAPI {
   pub fn list_docker_migration_conflicting_packages_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), (), Vec<Package>> {
+  ) -> Request<(), (), list_docker_migration_conflicting_packages_for_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/docker/conflicts");
 
-    Request::<(), (), Vec<Package>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), (), list_docker_migration_conflicting_packages_for_user::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List packages for a user**
@@ -492,13 +1596,15 @@ impl GitHubPackagesAPI {
   pub fn list_packages_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), PackagesListPackagesForUserQuery, Vec<Package>> {
+  ) -> Request<(), list_packages_for_user::Query, list_packages_for_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/packages");
 
-    Request::<(), PackagesListPackagesForUserQuery, Vec<Package>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_packages_for_user::Query, list_packages_for_user::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get a package for a user**
@@ -510,17 +1616,17 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-for-a-user](https://docs.github.com/rest/packages/packages#get-a-package-for-a-user)
   pub fn get_package_for_user(
     &self,
-    package_type: impl Into<PackagesGetPackageForUserParametersPackageType>,
+    package_type: impl Into<get_package_for_user::ParametersPackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<(), (), Package> {
+  ) -> Request<(), (), get_package_for_user::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let username = username.into();
     let package_type = package_type.to_string();
     let url = format!("/users/{username}/packages/{package_type}/{package_name}");
 
-    Request::<(), (), Package>::builder(&self.config)
+    Request::<(), (), get_package_for_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -536,7 +1642,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user](https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user)
   pub fn delete_package_for_user(
     &self,
-    package_type: impl Into<PackagesDeletePackageForUserParametersPackageType>,
+    package_type: impl Into<delete_package_for_user::ParametersPackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
   ) -> NoContentRequest<(), ()> {
@@ -566,17 +1672,17 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user](https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user)
   pub fn restore_package_for_user(
     &self,
-    package_type: impl Into<PackagesRestorePackageForUserParametersPackageType>,
+    package_type: impl Into<restore_package_for_user::ParametersPackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
-  ) -> NoContentRequest<(), PackagesRestorePackageForUserQuery> {
+  ) -> NoContentRequest<(), restore_package_for_user::Query> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let username = username.into();
     let package_type = package_type.to_string();
     let url = format!("/users/{username}/packages/{package_type}/{package_name}/restore");
 
-    NoContentRequest::<(), PackagesRestorePackageForUserQuery>::builder(&self.config)
+    NoContentRequest::<(), restore_package_for_user::Query>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -590,19 +1696,21 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user](https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user)
   pub fn get_all_package_versions_for_package_owned_by_user(
     &self,
-    package_type: impl Into<PackagesGetAllPackageVersionsForPackageOwnedByUserParametersPackageType>,
+    package_type: impl Into<get_all_package_versions_for_package_owned_by_user::ParametersPackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<(), (), Vec<PackageVersion>> {
+  ) -> Request<(), (), get_all_package_versions_for_package_owned_by_user::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let username = username.into();
     let package_type = package_type.to_string();
     let url = format!("/users/{username}/packages/{package_type}/{package_name}/versions");
 
-    Request::<(), (), Vec<PackageVersion>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), (), get_all_package_versions_for_package_owned_by_user::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get a package version for a user**
@@ -614,11 +1722,11 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user](https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user)
   pub fn get_package_version_for_user(
     &self,
-    package_type: impl Into<PackagesGetPackageVersionForUserParametersPackageType>,
+    package_type: impl Into<get_package_version_for_user::ParametersPackageType>,
     package_name: impl Into<String>,
     package_version_id: impl Into<i64>,
     username: impl Into<String>,
-  ) -> Request<(), (), PackageVersion> {
+  ) -> Request<(), (), get_package_version_for_user::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let package_version_id = package_version_id.into();
@@ -628,7 +1736,7 @@ impl GitHubPackagesAPI {
       "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
     );
 
-    Request::<(), (), PackageVersion>::builder(&self.config)
+    Request::<(), (), get_package_version_for_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -644,7 +1752,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user](https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user)
   pub fn delete_package_version_for_user(
     &self,
-    package_type: impl Into<PackagesDeletePackageVersionForUserParametersPackageType>,
+    package_type: impl Into<delete_package_version_for_user::ParametersPackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
     package_version_id: impl Into<i64>,
@@ -678,7 +1786,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user](https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user)
   pub fn restore_package_version_for_user(
     &self,
-    package_type: impl Into<PackagesRestorePackageVersionForUserParametersPackageType>,
+    package_type: impl Into<restore_package_version_for_user::ParametersPackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
     package_version_id: impl Into<i64>,

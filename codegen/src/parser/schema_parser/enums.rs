@@ -45,7 +45,7 @@ impl SchemaParser {
       }
     }
 
-    ctx.add_reference(&enum_.name, ParsedData::Enum(enum_.clone()));
+    self.add_reference(ctx, &enum_.name, ParsedData::Enum(enum_.clone()));
 
     if is_optional {
       return ParsedData::Type(Type::new_with_reference(

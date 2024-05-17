@@ -5,7 +5,6 @@ use serde::{Deserialize, Serialize};
 #[allow(unused_imports)]
 use typed_builder::TypedBuilder;
 
-/// Enumerations definition
 #[cfg(any(feature = "full", feature = "webhook_branch_protection_configuration"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionConfigurationDisabledAction {
@@ -12726,7 +12725,6 @@ pub enum WebhookEvent {
   WorkflowRun(WebhookWorkflowRunEvent),
 }
 
-/// Structs definition
 #[cfg(any(
   feature = "full",
   feature = "webhook_branch_protection_configuration",

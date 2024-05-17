@@ -1,6 +1,665 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list_alerts_for_enterprise {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<DependabotAlertWithRepository>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryScope {
+    #[serde(rename = "development")]
+    Development,
+    #[serde(rename = "runtime")]
+    Runtime,
+  }
+
+  impl ToString for QueryScope {
+    fn to_string(&self) -> String {
+      match self {
+        QueryScope::Development => "development".to_string(),
+        QueryScope::Runtime => "runtime".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// A comma-separated list of states. If specified, only alerts with these states will be returned.
+    ///
+    /// Can be: `auto_dismissed`, `dismissed`, `fixed`, `open`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<String>,
+    /// A comma-separated list of severities. If specified, only alerts with these severities will be returned.
+    ///
+    /// Can be: `low`, `medium`, `high`, `critical`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub severity: Option<String>,
+    /// A comma-separated list of ecosystems. If specified, only alerts for these ecosystems will be returned.
+    ///
+    /// Can be: `composer`, `go`, `maven`, `npm`, `nuget`, `pip`, `pub`, `rubygems`, `rust`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ecosystem: Option<String>,
+    /// A comma-separated list of package names. If specified, only alerts for these packages will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub package: Option<String>,
+    /// The scope of the vulnerable dependency. If specified, only alerts with this scope will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub scope: Option<QueryScope>,
+    /// The property by which to sort the results.
+    /// `created` means when the alert was created.
+    /// `updated` means when the alert's state last changed.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results before this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub before: Option<String>,
+    /// A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub after: Option<String>,
+    /// **Deprecated**. The number of results per page (max 100), starting from the first matching result.
+    /// This parameter must not be used in combination with `last`.
+    /// Instead, use `per_page` in combination with `after` to fetch the first page of results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub first: Option<i64>,
+    /// **Deprecated**. The number of results per page (max 100), starting from the last matching result.
+    /// This parameter must not be used in combination with `first`.
+    /// Instead, use `per_page` in combination with `before` to fetch the last page of results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub last: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod list_alerts_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<DependabotAlertWithRepository>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryScope {
+    #[serde(rename = "development")]
+    Development,
+    #[serde(rename = "runtime")]
+    Runtime,
+  }
+
+  impl ToString for QueryScope {
+    fn to_string(&self) -> String {
+      match self {
+        QueryScope::Development => "development".to_string(),
+        QueryScope::Runtime => "runtime".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// A comma-separated list of states. If specified, only alerts with these states will be returned.
+    ///
+    /// Can be: `auto_dismissed`, `dismissed`, `fixed`, `open`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<String>,
+    /// A comma-separated list of severities. If specified, only alerts with these severities will be returned.
+    ///
+    /// Can be: `low`, `medium`, `high`, `critical`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub severity: Option<String>,
+    /// A comma-separated list of ecosystems. If specified, only alerts for these ecosystems will be returned.
+    ///
+    /// Can be: `composer`, `go`, `maven`, `npm`, `nuget`, `pip`, `pub`, `rubygems`, `rust`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ecosystem: Option<String>,
+    /// A comma-separated list of package names. If specified, only alerts for these packages will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub package: Option<String>,
+    /// The scope of the vulnerable dependency. If specified, only alerts with this scope will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub scope: Option<QueryScope>,
+    /// The property by which to sort the results.
+    /// `created` means when the alert was created.
+    /// `updated` means when the alert's state last changed.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results before this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub before: Option<String>,
+    /// A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub after: Option<String>,
+    /// **Deprecated**. The number of results per page (max 100), starting from the first matching result.
+    /// This parameter must not be used in combination with `last`.
+    /// Instead, use `per_page` in combination with `after` to fetch the first page of results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub first: Option<i64>,
+    /// **Deprecated**. The number of results per page (max 100), starting from the last matching result.
+    /// This parameter must not be used in combination with `first`.
+    /// Instead, use `per_page` in combination with `before` to fetch the last page of results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub last: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod list_org_secrets {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub secrets: Vec<OrganizationDependabotSecret>,
+    pub total_count: i64,
+  }
+}
+
+pub mod get_org_public_key {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DependabotPublicKey;
+}
+
+pub mod get_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrganizationDependabotSecret;
+}
+
+pub mod create_or_update_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestVisibility {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "selected")]
+    Selected,
+  }
+
+  impl ToString for RequestVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        RequestVisibility::All => "all".to_string(),
+        RequestVisibility::Private => "private".to_string(),
+        RequestVisibility::Selected => "selected".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key) endpoint.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub encrypted_value: Option<String>,
+    /// ID of the key you used to encrypt the secret.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub key_id: Option<String>,
+    /// An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub selected_repository_ids: Option<Vec<String>>,
+    /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
+    pub visibility: RequestVisibility,
+  }
+}
+
+pub mod delete_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_selected_repos_for_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub repositories: Vec<MinimalRepository>,
+    pub total_count: i64,
+  }
+}
+
+pub mod set_selected_repos_for_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints.
+    pub selected_repository_ids: Vec<i64>,
+  }
+}
+
+pub mod add_selected_repo_to_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_selected_repo_from_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_alerts_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<DependabotAlert>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryScope {
+    #[serde(rename = "development")]
+    Development,
+    #[serde(rename = "runtime")]
+    Runtime,
+  }
+
+  impl ToString for QueryScope {
+    fn to_string(&self) -> String {
+      match self {
+        QueryScope::Development => "development".to_string(),
+        QueryScope::Runtime => "runtime".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// A comma-separated list of states. If specified, only alerts with these states will be returned.
+    ///
+    /// Can be: `auto_dismissed`, `dismissed`, `fixed`, `open`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<String>,
+    /// A comma-separated list of severities. If specified, only alerts with these severities will be returned.
+    ///
+    /// Can be: `low`, `medium`, `high`, `critical`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub severity: Option<String>,
+    /// A comma-separated list of ecosystems. If specified, only alerts for these ecosystems will be returned.
+    ///
+    /// Can be: `composer`, `go`, `maven`, `npm`, `nuget`, `pip`, `pub`, `rubygems`, `rust`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ecosystem: Option<String>,
+    /// A comma-separated list of package names. If specified, only alerts for these packages will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub package: Option<String>,
+    /// A comma-separated list of full manifest paths. If specified, only alerts for these manifests will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub manifest: Option<String>,
+    /// The scope of the vulnerable dependency. If specified, only alerts with this scope will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub scope: Option<QueryScope>,
+    /// The property by which to sort the results.
+    /// `created` means when the alert was created.
+    /// `updated` means when the alert's state last changed.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// **Deprecated**. Page number of the results to fetch. Use cursor-based pagination with `before` or `after` instead.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results before this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub before: Option<String>,
+    /// A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub after: Option<String>,
+    /// **Deprecated**. The number of results per page (max 100), starting from the first matching result.
+    /// This parameter must not be used in combination with `last`.
+    /// Instead, use `per_page` in combination with `after` to fetch the first page of results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub first: Option<i64>,
+    /// **Deprecated**. The number of results per page (max 100), starting from the last matching result.
+    /// This parameter must not be used in combination with `first`.
+    /// Instead, use `per_page` in combination with `before` to fetch the last page of results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub last: Option<i64>,
+  }
+}
+
+pub mod get_alert {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DependabotAlert;
+}
+
+pub mod update_alert {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DependabotAlert;
+
+  /// **Required when `state` is `dismissed`.** A reason for dismissing the alert.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestDismissedReason {
+    #[serde(rename = "fix_started")]
+    FixStarted,
+    #[serde(rename = "inaccurate")]
+    Inaccurate,
+    #[serde(rename = "no_bandwidth")]
+    NoBandwidth,
+    #[serde(rename = "not_used")]
+    NotUsed,
+    #[serde(rename = "tolerable_risk")]
+    TolerableRisk,
+  }
+
+  impl ToString for RequestDismissedReason {
+    fn to_string(&self) -> String {
+      match self {
+        RequestDismissedReason::FixStarted => "fix_started".to_string(),
+        RequestDismissedReason::Inaccurate => "inaccurate".to_string(),
+        RequestDismissedReason::NoBandwidth => "no_bandwidth".to_string(),
+        RequestDismissedReason::NotUsed => "not_used".to_string(),
+        RequestDismissedReason::TolerableRisk => "tolerable_risk".to_string(),
+      }
+    }
+  }
+
+  /// The state of the Dependabot alert.
+  /// A `dismissed_reason` must be provided when setting the state to `dismissed`.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestState {
+    #[serde(rename = "dismissed")]
+    Dismissed,
+    #[serde(rename = "open")]
+    Open,
+  }
+
+  impl ToString for RequestState {
+    fn to_string(&self) -> String {
+      match self {
+        RequestState::Dismissed => "dismissed".to_string(),
+        RequestState::Open => "open".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// An optional comment associated with dismissing the alert.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub dismissed_comment: Option<String>,
+    /// **Required when `state` is `dismissed`.** A reason for dismissing the alert.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub dismissed_reason: Option<RequestDismissedReason>,
+    /// The state of the Dependabot alert.
+    /// A `dismissed_reason` must be provided when setting the state to `dismissed`.
+    pub state: RequestState,
+  }
+}
+
+pub mod list_repo_secrets {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub secrets: Vec<DependabotSecret>,
+    pub total_count: i64,
+  }
+}
+
+pub mod get_repo_public_key {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DependabotPublicKey;
+}
+
+pub mod get_repo_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DependabotSecret;
+}
+
+pub mod create_or_update_repo_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/dependabot/secrets#get-a-repository-public-key) endpoint.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub encrypted_value: Option<String>,
+    /// ID of the key you used to encrypt the secret.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub key_id: Option<String>,
+  }
+}
+
+pub mod delete_repo_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
 
 /// Endpoints to manage Dependabot.
 pub struct GitHubDependabotAPI {
@@ -28,13 +687,15 @@ impl GitHubDependabotAPI {
   pub fn list_alerts_for_enterprise(
     &self,
     enterprise: impl Into<String>,
-  ) -> Request<(), DependabotListAlertsForEnterpriseQuery, Vec<DependabotAlertWithRepository>> {
+  ) -> Request<(), list_alerts_for_enterprise::Query, list_alerts_for_enterprise::Response> {
     let enterprise = enterprise.into();
     let url = format!("/enterprises/{enterprise}/dependabot/alerts");
 
-    Request::<(), DependabotListAlertsForEnterpriseQuery, Vec<DependabotAlertWithRepository>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_alerts_for_enterprise::Query, list_alerts_for_enterprise::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List Dependabot alerts for an organization**
@@ -49,15 +710,13 @@ impl GitHubDependabotAPI {
   pub fn list_alerts_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), DependabotListAlertsForOrgQuery, Vec<DependabotAlertWithRepository>> {
+  ) -> Request<(), list_alerts_for_org::Query, list_alerts_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/dependabot/alerts");
 
-    Request::<(), DependabotListAlertsForOrgQuery, Vec<DependabotAlertWithRepository>>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_alerts_for_org::Query, list_alerts_for_org::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **List organization secrets**
@@ -71,15 +730,13 @@ impl GitHubDependabotAPI {
   pub fn list_org_secrets(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), DependabotListOrgSecretsQuery, DependabotListOrgSecretsResponse> {
+  ) -> Request<(), list_org_secrets::Query, list_org_secrets::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/dependabot/secrets");
 
-    Request::<(), DependabotListOrgSecretsQuery, DependabotListOrgSecretsResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_org_secrets::Query, list_org_secrets::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get an organization public key**
@@ -90,11 +747,14 @@ impl GitHubDependabotAPI {
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key](https://docs.github.com/rest/dependabot/secrets#get-an-organization-public-key)
-  pub fn get_org_public_key(&self, org: impl Into<String>) -> Request<(), (), DependabotPublicKey> {
+  pub fn get_org_public_key(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), (), get_org_public_key::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/dependabot/secrets/public-key");
 
-    Request::<(), (), DependabotPublicKey>::builder(&self.config)
+    Request::<(), (), get_org_public_key::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -110,12 +770,12 @@ impl GitHubDependabotAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), OrganizationDependabotSecret> {
+  ) -> Request<(), (), get_org_secret::Response> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}");
 
-    Request::<(), (), OrganizationDependabotSecret>::builder(&self.config)
+    Request::<(), (), get_org_secret::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -132,12 +792,12 @@ impl GitHubDependabotAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<DependabotCreateOrUpdateOrgSecretRequest, (), EmptyObject> {
+  ) -> Request<create_or_update_org_secret::Request, (), create_or_update_org_secret::Response> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}");
 
-    Request::<DependabotCreateOrUpdateOrgSecretRequest, (), EmptyObject>::builder(&self.config)
+    Request::<create_or_update_org_secret::Request, (), create_or_update_org_secret::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -177,8 +837,8 @@ impl GitHubDependabotAPI {
     secret_name: impl Into<String>,
   ) -> Request<
     (),
-    DependabotListSelectedReposForOrgSecretQuery,
-    DependabotListSelectedReposForOrgSecretResponse,
+    list_selected_repos_for_org_secret::Query,
+    list_selected_repos_for_org_secret::Response,
   > {
     let org = org.into();
     let secret_name = secret_name.into();
@@ -186,8 +846,8 @@ impl GitHubDependabotAPI {
 
     Request::<
       (),
-      DependabotListSelectedReposForOrgSecretQuery,
-      DependabotListSelectedReposForOrgSecretResponse,
+      list_selected_repos_for_org_secret::Query,
+      list_selected_repos_for_org_secret::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -206,12 +866,12 @@ impl GitHubDependabotAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> NoContentRequest<DependabotSetSelectedReposForOrgSecretRequest, ()> {
+  ) -> NoContentRequest<set_selected_repos_for_org_secret::Request, ()> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/dependabot/secrets/{secret_name}/repositories");
 
-    NoContentRequest::<DependabotSetSelectedReposForOrgSecretRequest, ()>::builder(&self.config)
+    NoContentRequest::<set_selected_repos_for_org_secret::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -275,14 +935,16 @@ impl GitHubDependabotAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), DependabotListAlertsForRepoQuery, Vec<DependabotAlert>> {
+  ) -> Request<(), list_alerts_for_repo::Query, list_alerts_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/dependabot/alerts");
 
-    Request::<(), DependabotListAlertsForRepoQuery, Vec<DependabotAlert>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_alerts_for_repo::Query, list_alerts_for_repo::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get a Dependabot alert**
@@ -295,13 +957,13 @@ impl GitHubDependabotAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     alert_number: impl Into<i64>,
-  ) -> Request<(), (), DependabotAlert> {
+  ) -> Request<(), (), get_alert::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let alert_number = alert_number.into();
     let url = format!("/repos/{owner}/{repo}/dependabot/alerts/{alert_number}");
 
-    Request::<(), (), DependabotAlert>::builder(&self.config)
+    Request::<(), (), get_alert::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -318,13 +980,13 @@ impl GitHubDependabotAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     alert_number: impl Into<i64>,
-  ) -> Request<DependabotUpdateAlertRequest, (), DependabotAlert> {
+  ) -> Request<update_alert::Request, (), update_alert::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let alert_number = alert_number.into();
     let url = format!("/repos/{owner}/{repo}/dependabot/alerts/{alert_number}");
 
-    Request::<DependabotUpdateAlertRequest, (), DependabotAlert>::builder(&self.config)
+    Request::<update_alert::Request, (), update_alert::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -341,16 +1003,14 @@ impl GitHubDependabotAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), DependabotListRepoSecretsQuery, DependabotListRepoSecretsResponse> {
+  ) -> Request<(), list_repo_secrets::Query, list_repo_secrets::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/dependabot/secrets");
 
-    Request::<(), DependabotListRepoSecretsQuery, DependabotListRepoSecretsResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_repo_secrets::Query, list_repo_secrets::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get a repository public key**
@@ -366,12 +1026,12 @@ impl GitHubDependabotAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), DependabotPublicKey> {
+  ) -> Request<(), (), get_repo_public_key::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/dependabot/secrets/public-key");
 
-    Request::<(), (), DependabotPublicKey>::builder(&self.config)
+    Request::<(), (), get_repo_public_key::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -388,13 +1048,13 @@ impl GitHubDependabotAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), DependabotSecret> {
+  ) -> Request<(), (), get_repo_secret::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let secret_name = secret_name.into();
     let url = format!("/repos/{owner}/{repo}/dependabot/secrets/{secret_name}");
 
-    Request::<(), (), DependabotSecret>::builder(&self.config)
+    Request::<(), (), get_repo_secret::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -412,13 +1072,14 @@ impl GitHubDependabotAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<DependabotCreateOrUpdateRepoSecretRequest, (), EmptyObject> {
+  ) -> Request<create_or_update_repo_secret::Request, (), create_or_update_repo_secret::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let secret_name = secret_name.into();
     let url = format!("/repos/{owner}/{repo}/dependabot/secrets/{secret_name}");
 
-    Request::<DependabotCreateOrUpdateRepoSecretRequest, (), EmptyObject>::builder(&self.config)
+    Request::<create_or_update_repo_secret::Request, (), create_or_update_repo_secret::Response>::builder(&self.config)
       .put(url)
       .build()
   }

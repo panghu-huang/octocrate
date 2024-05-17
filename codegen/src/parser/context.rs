@@ -23,10 +23,13 @@ pub struct TypeReference {
   pub inner: ParsedData,
 }
 
+pub type References = IndexMap<IdentifierOrName, TypeReference>;
+
 struct ParseContextInner {
-  references: IndexMap<IdentifierOrName, TypeReference>,
+  references: References,
+  scoped_references: References,
   // webhook types and api types can't share certain types, such as Repository / Committer and so on.
-  webhook_references: IndexMap<IdentifierOrName, TypeReference>,
+  webhook_references: References,
   apis: IndexMap<APITag, Vec<API>>,
 }
 
@@ -61,11 +64,26 @@ impl ParseContext {
       api_description,
       progress_bar,
       inner: Mutex::new(ParseContextInner {
+        scoped_references: IndexMap::new(),
         references: IndexMap::new(),
         webhook_references: IndexMap::new(),
         apis: IndexMap::new(),
       }),
     }
+  }
+
+  pub fn add_scoped_reference(&self, id: &str, inner: ParsedData) {
+    let mut guard = self.inner.lock().expect("Failed to lock the inner context");
+
+    let references = guard.scoped_references.borrow_mut();
+
+    references.insert(
+      id.to_owned(),
+      TypeReference {
+        name: id.to_owned(),
+        inner,
+      },
+    );
   }
 
   pub fn add_reference(&self, id: &str, inner: ParsedData) {
@@ -97,6 +115,21 @@ impl ParseContext {
         },
       );
     }
+  }
+
+  pub fn get_scoped_references(&self) -> IndexMap<IdentifierOrName, TypeReference> {
+    self
+      .inner
+      .lock()
+      .expect("Failed to lock the inner context")
+      .scoped_references
+      .clone()
+  }
+
+  pub fn clear_scoped_references(&self) {
+    let mut guard = self.inner.lock().expect("Failed to lock the inner context");
+
+    guard.scoped_references.clear();
   }
 
   pub fn reference_existing(&self, name: &str) -> Option<TypeReference> {
@@ -204,6 +237,9 @@ impl ParseContext {
       .set_message(format!("Parsing API {} ...", api));
 
     self.progress_bar.inc(1);
+
+    // Clear the scoped references when starting to parse a new API
+    self.clear_scoped_references();
   }
 
   pub fn finish_parsing(&mut self) {
@@ -255,6 +291,7 @@ impl Default for ParseContext {
       tags: IndexMap::new(),
       api_description: APIDescription::default(),
       inner: Mutex::new(ParseContextInner {
+        scoped_references: IndexMap::new(),
         references: IndexMap::new(),
         webhook_references: IndexMap::new(),
         apis: IndexMap::new(),

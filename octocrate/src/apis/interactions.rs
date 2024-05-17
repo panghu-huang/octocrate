@@ -1,6 +1,100 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod get_restrictions_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Response {
+    /// Interaction limit settings.
+    InteractionLimitResponse(InteractionLimitResponse),
+    ResponseItem2(ResponseItem2),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct ResponseItem2 {}
+}
+
+pub mod set_restrictions_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = InteractionLimit;
+  pub type Response = InteractionLimitResponse;
+}
+
+pub mod remove_restrictions_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_restrictions_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Response {
+    /// Interaction limit settings.
+    InteractionLimitResponse(InteractionLimitResponse),
+    ResponseItem2(ResponseItem2),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct ResponseItem2 {}
+}
+
+pub mod set_restrictions_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = InteractionLimit;
+  pub type Response = InteractionLimitResponse;
+}
+
+pub mod remove_restrictions_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_restrictions_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Response {
+    /// Interaction limit settings.
+    InteractionLimitResponse(InteractionLimitResponse),
+    ResponseItem2(ResponseItem2),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct ResponseItem2 {}
+}
+
+pub mod set_restrictions_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = InteractionLimit;
+  pub type Response = InteractionLimitResponse;
+}
+
+pub mod remove_restrictions_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
 
 /// Owner or admin management of users interactions.
 pub struct GitHubInteractionsAPI {
@@ -22,11 +116,11 @@ impl GitHubInteractionsAPI {
   pub fn get_restrictions_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), InteractionsGetRestrictionsForOrgResponse> {
+  ) -> Request<(), (), get_restrictions_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/interaction-limits");
 
-    Request::<(), (), InteractionsGetRestrictionsForOrgResponse>::builder(&self.config)
+    Request::<(), (), get_restrictions_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -39,13 +133,15 @@ impl GitHubInteractionsAPI {
   pub fn set_restrictions_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<InteractionLimit, (), InteractionLimitResponse> {
+  ) -> Request<set_restrictions_for_org::Request, (), set_restrictions_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/interaction-limits");
 
-    Request::<InteractionLimit, (), InteractionLimitResponse>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<set_restrictions_for_org::Request, (), set_restrictions_for_org::Response>::builder(
+      &self.config,
+    )
+    .put(url)
+    .build()
   }
 
   /// **Remove interaction restrictions for an organization**
@@ -71,12 +167,12 @@ impl GitHubInteractionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), InteractionsGetRestrictionsForRepoResponse> {
+  ) -> Request<(), (), get_restrictions_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/interaction-limits");
 
-    Request::<(), (), InteractionsGetRestrictionsForRepoResponse>::builder(&self.config)
+    Request::<(), (), get_restrictions_for_repo::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -90,14 +186,16 @@ impl GitHubInteractionsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<InteractionLimit, (), InteractionLimitResponse> {
+  ) -> Request<set_restrictions_for_repo::Request, (), set_restrictions_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/interaction-limits");
 
-    Request::<InteractionLimit, (), InteractionLimitResponse>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<set_restrictions_for_repo::Request, (), set_restrictions_for_repo::Response>::builder(
+      &self.config,
+    )
+    .put(url)
+    .build()
   }
 
   /// **Remove interaction restrictions for a repository**
@@ -126,14 +224,12 @@ impl GitHubInteractionsAPI {
   /// *Documentation*: [https://docs.github.com/rest/interactions/user#get-interaction-restrictions-for-your-public-repositories](https://docs.github.com/rest/interactions/user#get-interaction-restrictions-for-your-public-repositories)
   pub fn get_restrictions_for_authenticated_user(
     &self,
-  ) -> Request<(), (), InteractionsGetRestrictionsForAuthenticatedUserResponse> {
+  ) -> Request<(), (), get_restrictions_for_authenticated_user::Response> {
     let url = format!("/user/interaction-limits");
 
-    Request::<(), (), InteractionsGetRestrictionsForAuthenticatedUserResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), (), get_restrictions_for_authenticated_user::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Set interaction restrictions for your public repositories**
@@ -143,12 +239,20 @@ impl GitHubInteractionsAPI {
   /// *Documentation*: [https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories](https://docs.github.com/rest/interactions/user#set-interaction-restrictions-for-your-public-repositories)
   pub fn set_restrictions_for_authenticated_user(
     &self,
-  ) -> Request<InteractionLimit, (), InteractionLimitResponse> {
+  ) -> Request<
+    set_restrictions_for_authenticated_user::Request,
+    (),
+    set_restrictions_for_authenticated_user::Response,
+  > {
     let url = format!("/user/interaction-limits");
 
-    Request::<InteractionLimit, (), InteractionLimitResponse>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<
+      set_restrictions_for_authenticated_user::Request,
+      (),
+      set_restrictions_for_authenticated_user::Response,
+    >::builder(&self.config)
+    .put(url)
+    .build()
   }
 
   /// **Remove interaction restrictions from your public repositories**

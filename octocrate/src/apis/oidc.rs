@@ -1,6 +1,25 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod get_oidc_custom_sub_template_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OidcCustomSub;
+}
+
+pub mod update_oidc_custom_sub_template_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = OidcCustomSub;
+  pub type Response = EmptyObject;
+}
 
 /// Endpoints to manage GitHub OIDC configuration using the REST API.
 pub struct GitHubOidcAPI {
@@ -24,11 +43,11 @@ impl GitHubOidcAPI {
   pub fn get_oidc_custom_sub_template_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), OidcCustomSub> {
+  ) -> Request<(), (), get_oidc_custom_sub_template_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/oidc/customization/sub");
 
-    Request::<(), (), OidcCustomSub>::builder(&self.config)
+    Request::<(), (), get_oidc_custom_sub_template_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -43,12 +62,20 @@ impl GitHubOidcAPI {
   pub fn update_oidc_custom_sub_template_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<OidcCustomSub, (), EmptyObject> {
+  ) -> Request<
+    update_oidc_custom_sub_template_for_org::Request,
+    (),
+    update_oidc_custom_sub_template_for_org::Response,
+  > {
     let org = org.into();
     let url = format!("/orgs/{org}/actions/oidc/customization/sub");
 
-    Request::<OidcCustomSub, (), EmptyObject>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<
+      update_oidc_custom_sub_template_for_org::Request,
+      (),
+      update_oidc_custom_sub_template_for_org::Response,
+    >::builder(&self.config)
+    .put(url)
+    .build()
   }
 }

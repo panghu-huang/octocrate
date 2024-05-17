@@ -1,6 +1,4 @@
-use octocrate::{
-  APIConfig, Error, GitHubAPI, PersonalAccessToken, PullsListQuery, PullsListQueryState,
-};
+use octocrate::{pulls, APIConfig, Error, GitHubAPI, PersonalAccessToken};
 
 #[tokio::test]
 async fn test_list_pull_request() {
@@ -19,8 +17,8 @@ async fn test_list_pull_request() {
     .pulls
     .list("facebook", "react")
     .query(
-      &PullsListQuery::builder()
-        .state(PullsListQueryState::Open)
+      &pulls::list::Query::builder()
+        .state(pulls::list::QueryState::Open)
         .per_page(10)
         .build(),
     )

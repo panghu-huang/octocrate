@@ -1,4 +1,4 @@
-use super::super::File;
+use super::super::{File, References};
 use crate::{
   common::{render_template, RenameRule},
   writer::format_code,
@@ -25,6 +25,7 @@ pub struct APIFunction {
   pub query_type: String,
   pub response_type: Option<String>,
   pub stringify_params: Vec<String>,
+  pub references: Option<References>,
 }
 
 #[derive(Serialize)]

@@ -1,4 +1,4 @@
-use octocrate::{APIConfig, GitHubAPI, PersonalAccessToken, UsersGetByUsernameResponse};
+use octocrate::{users, APIConfig, GitHubAPI, PersonalAccessToken};
 
 #[tokio::test]
 async fn test_get_user() {
@@ -21,8 +21,8 @@ async fn test_get_user() {
     .unwrap();
 
   let user_name = match user {
-    UsersGetByUsernameResponse::PublicUser(user) => user.login,
-    UsersGetByUsernameResponse::PrivateUser(user) => user.login,
+    users::get_by_username::Response::PublicUser(user) => user.login,
+    users::get_by_username::Response::PrivateUser(user) => user.login,
   };
 
   assert_eq!(user_name, "panghu-huang");

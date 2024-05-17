@@ -1,6 +1,1401 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Issue>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryFilter {
+    #[serde(rename = "assigned")]
+    Assigned,
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "mentioned")]
+    Mentioned,
+    #[serde(rename = "subscribed")]
+    Subscribed,
+    #[serde(rename = "repos")]
+    Repos,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryFilter {
+    fn to_string(&self) -> String {
+      match self {
+        QueryFilter::Assigned => "assigned".to_string(),
+        QueryFilter::Created => "created".to_string(),
+        QueryFilter::Mentioned => "mentioned".to_string(),
+        QueryFilter::Subscribed => "subscribed".to_string(),
+        QueryFilter::Repos => "repos".to_string(),
+        QueryFilter::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryState {
+    #[serde(rename = "open")]
+    Open,
+    #[serde(rename = "closed")]
+    Closed,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryState::Open => "open".to_string(),
+        QueryState::Closed => "closed".to_string(),
+        QueryState::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+    #[serde(rename = "comments")]
+    Comments,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Comments => "comments".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Indicates which sorts of issues to return. `assigned` means issues assigned to you. `created` means issues created by you. `mentioned` means issues mentioning you. `subscribed` means issues you're subscribed to updates for. `all` or `repos` means all issues you can see, regardless of participation or creation.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub filter: Option<QueryFilter>,
+    /// Indicates the state of the issues to return.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<QueryState>,
+    /// A list of comma separated label names. Example: `bug,ui,@high`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub labels: Option<String>,
+    /// What to sort results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub collab: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub orgs: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub owned: Option<bool>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub pulls: Option<bool>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Issue>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryFilter {
+    #[serde(rename = "assigned")]
+    Assigned,
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "mentioned")]
+    Mentioned,
+    #[serde(rename = "subscribed")]
+    Subscribed,
+    #[serde(rename = "repos")]
+    Repos,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryFilter {
+    fn to_string(&self) -> String {
+      match self {
+        QueryFilter::Assigned => "assigned".to_string(),
+        QueryFilter::Created => "created".to_string(),
+        QueryFilter::Mentioned => "mentioned".to_string(),
+        QueryFilter::Subscribed => "subscribed".to_string(),
+        QueryFilter::Repos => "repos".to_string(),
+        QueryFilter::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryState {
+    #[serde(rename = "open")]
+    Open,
+    #[serde(rename = "closed")]
+    Closed,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryState::Open => "open".to_string(),
+        QueryState::Closed => "closed".to_string(),
+        QueryState::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+    #[serde(rename = "comments")]
+    Comments,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Comments => "comments".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Indicates which sorts of issues to return. `assigned` means issues assigned to you. `created` means issues created by you. `mentioned` means issues mentioning you. `subscribed` means issues you're subscribed to updates for. `all` or `repos` means all issues you can see, regardless of participation or creation.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub filter: Option<QueryFilter>,
+    /// Indicates the state of the issues to return.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<QueryState>,
+    /// A list of comma separated label names. Example: `bug,ui,@high`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub labels: Option<String>,
+    /// What to sort results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_assignees {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod check_user_can_be_assigned {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Issue>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryState {
+    #[serde(rename = "open")]
+    Open,
+    #[serde(rename = "closed")]
+    Closed,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryState::Open => "open".to_string(),
+        QueryState::Closed => "closed".to_string(),
+        QueryState::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+    #[serde(rename = "comments")]
+    Comments,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Comments => "comments".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// If an `integer` is passed, it should refer to a milestone by its `number` field. If the string `*` is passed, issues with any milestone are accepted. If the string `none` is passed, issues without milestones are returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub milestone: Option<String>,
+    /// Indicates the state of the issues to return.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<QueryState>,
+    /// Can be the name of a user. Pass in `none` for issues with no assigned user, and `*` for issues assigned to any user.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub assignee: Option<String>,
+    /// The user that created the issue.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub creator: Option<String>,
+    /// A user that's mentioned in the issue.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub mentioned: Option<String>,
+    /// A list of comma separated label names. Example: `bug,ui,@high`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub labels: Option<String>,
+    /// What to sort results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Issue;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestLabelsItem2 {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub color: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub id: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Login for the user that this issue should be assigned to. _NOTE: Only users with push access can set the assignee for new issues. The assignee is silently dropped otherwise. **This field is deprecated.**_
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub assignee: Option<String>,
+    /// Logins for Users to assign to this issue. _NOTE: Only users with push access can set assignees for new issues. Assignees are silently dropped otherwise._
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub assignees: Option<Vec<String>>,
+    /// The contents of the issue.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub body: Option<String>,
+    /// Labels to associate with this issue. _NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise._
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub labels: Option<Vec<ObjectOrString<RequestLabelsItem2>>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub milestone: Option<StringOrInteger>,
+    /// The title of the issue.
+    pub title: StringOrInteger,
+  }
+}
+
+pub mod list_comments_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<IssueComment>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The property to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// Either `asc` or `desc`. Ignored without the `sort` parameter.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = IssueComment;
+}
+
+pub mod update_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = IssueComment;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The contents of the comment.
+    pub body: String,
+  }
+}
+
+pub mod delete_comment {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_events_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<IssueEvent>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_event {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = IssueEvent;
+}
+
+pub mod get {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Issue;
+}
+
+pub mod update {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Issue;
+
+  /// The open or closed state of the issue.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestState {
+    #[serde(rename = "open")]
+    Open,
+    #[serde(rename = "closed")]
+    Closed,
+  }
+
+  impl ToString for RequestState {
+    fn to_string(&self) -> String {
+      match self {
+        RequestState::Open => "open".to_string(),
+        RequestState::Closed => "closed".to_string(),
+      }
+    }
+  }
+
+  /// The reason for the state change. Ignored unless `state` is changed.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestStateReason {
+    #[serde(rename = "completed")]
+    Completed,
+    #[serde(rename = "not_planned")]
+    NotPlanned,
+    #[serde(rename = "reopened")]
+    Reopened,
+  }
+
+  impl ToString for RequestStateReason {
+    fn to_string(&self) -> String {
+      match self {
+        RequestStateReason::Completed => "completed".to_string(),
+        RequestStateReason::NotPlanned => "not_planned".to_string(),
+        RequestStateReason::Reopened => "reopened".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestLabelsItem2 {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub color: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub id: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Username to assign to this issue. **This field is deprecated.**
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub assignee: Option<String>,
+    /// Usernames to assign to this issue. Pass one or more user logins to _replace_ the set of assignees on this issue. Send an empty array (`[]`) to clear all assignees from the issue. Only users with push access can set assignees for new issues. Without push access to the repository, assignee changes are silently dropped.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub assignees: Option<Vec<String>>,
+    /// The contents of the issue.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub body: Option<String>,
+    /// Labels to associate with this issue. Pass one or more labels to _replace_ the set of labels on this issue. Send an empty array (`[]`) to clear all labels from the issue. Only users with push access can set labels for issues. Without push access to the repository, label changes are silently dropped.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub labels: Option<Vec<ObjectOrString<RequestLabelsItem2>>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub milestone: Option<StringOrInteger>,
+    /// The open or closed state of the issue.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<RequestState>,
+    /// The reason for the state change. Ignored unless `state` is changed.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state_reason: Option<RequestStateReason>,
+    /// The title of the issue.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub title: Option<StringOrInteger>,
+  }
+}
+
+pub mod add_assignees {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Issue;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Usernames of people to assign this issue to. _NOTE: Only users with push access can add assignees to an issue. Assignees are silently ignored otherwise._
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub assignees: Option<Vec<String>>,
+  }
+}
+
+pub mod remove_assignees {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Issue;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Usernames of assignees to remove from an issue. _NOTE: Only users with push access can remove assignees from an issue. Assignees are silently ignored otherwise._
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub assignees: Option<Vec<String>>,
+  }
+}
+
+pub mod check_user_can_be_assigned_to_issue {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_comments {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<IssueComment>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = IssueComment;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The contents of the comment.
+    pub body: String,
+  }
+}
+
+pub mod list_events {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<IssueEventForIssue>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_labels_on_issue {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Label>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod add_labels {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Label>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+    RequestItem3(RequestItem3),
+    RequestItem4Array(Vec<RequestItem4>),
+    String(String),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The names of the labels to add to the issue's existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also replace all of the labels for an issue. For more information, see "[Set labels for an issue](https://docs.github.com/rest/issues/labels#set-labels-for-an-issue)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub labels: Option<Vec<String>>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem3Labels {
+    pub name: String,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem3 {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub labels: Option<Vec<RequestItem3Labels>>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem4 {
+    pub name: String,
+  }
+}
+
+pub mod set_labels {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Label>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+    RequestItem3(RequestItem3),
+    RequestItem4Array(Vec<RequestItem4>),
+    String(String),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The names of the labels to set for the issue. The labels you set replace any existing labels. You can pass an empty array to remove all labels. Alternatively, you can pass a single label as a `string` or an `array` of labels directly, but GitHub recommends passing an object with the `labels` key. You can also add labels to the existing labels for an issue. For more information, see "[Add labels to an issue](https://docs.github.com/rest/issues/labels#add-labels-to-an-issue)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub labels: Option<Vec<String>>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem3Labels {
+    pub name: String,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem3 {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub labels: Option<Vec<RequestItem3Labels>>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem4 {
+    pub name: String,
+  }
+}
+
+pub mod remove_all_labels {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_label {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Label>;
+}
+
+pub mod lock {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  
+  ///  * `off-topic`  
+  ///  * `too heated`  
+  ///  * `resolved`  
+  ///  * `spam`
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestLockReason {
+    #[serde(rename = "off-topic")]
+    OffTopic,
+    #[serde(rename = "too heated")]
+    TooHeated,
+    #[serde(rename = "resolved")]
+    Resolved,
+    #[serde(rename = "spam")]
+    Spam,
+  }
+
+  impl ToString for RequestLockReason {
+    fn to_string(&self) -> String {
+      match self {
+        RequestLockReason::OffTopic => "off-topic".to_string(),
+        RequestLockReason::TooHeated => "too heated".to_string(),
+        RequestLockReason::Resolved => "resolved".to_string(),
+        RequestLockReason::Spam => "spam".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  
+    ///  * `off-topic`  
+    ///  * `too heated`  
+    ///  * `resolved`  
+    ///  * `spam`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub lock_reason: Option<RequestLockReason>,
+  }
+}
+
+pub mod unlock {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_events_for_timeline {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<TimelineIssueEvents>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_labels_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Label>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_label {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Label;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub color: Option<String>,
+    /// A short description of the label. Must be 100 characters or fewer.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."
+    pub name: String,
+  }
+}
+
+pub mod get_label {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Label;
+}
+
+pub mod update_label {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Label;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The [hexadecimal color code](http://www.color-hex.com/) for the label, without the leading `#`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub color: Option<String>,
+    /// A short description of the label. Must be 100 characters or fewer.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The new name of the label. Emoji can be added to label names, using either native emoji or colon-style markup. For example, typing `:strawberry:` will render the emoji ![:strawberry:](https://github.githubassets.com/images/icons/emoji/unicode/1f353.png ":strawberry:"). For a full list of available emoji and codes, see "[Emoji cheat sheet](https://github.com/ikatyang/emoji-cheat-sheet)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub new_name: Option<String>,
+  }
+}
+
+pub mod delete_label {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_milestones {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Milestone>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryState {
+    #[serde(rename = "open")]
+    Open,
+    #[serde(rename = "closed")]
+    Closed,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryState::Open => "open".to_string(),
+        QueryState::Closed => "closed".to_string(),
+        QueryState::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "due_on")]
+    DueOn,
+    #[serde(rename = "completeness")]
+    Completeness,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::DueOn => "due_on".to_string(),
+        QuerySort::Completeness => "completeness".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The state of the milestone. Either `open`, `closed`, or `all`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<QueryState>,
+    /// What to sort results by. Either `due_on` or `completeness`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction of the sort. Either `asc` or `desc`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_milestone {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Milestone;
+
+  /// The state of the milestone. Either `open` or `closed`.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestState {
+    #[serde(rename = "open")]
+    Open,
+    #[serde(rename = "closed")]
+    Closed,
+  }
+
+  impl ToString for RequestState {
+    fn to_string(&self) -> String {
+      match self {
+        RequestState::Open => "open".to_string(),
+        RequestState::Closed => "closed".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// A description of the milestone.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub due_on: Option<String>,
+    /// The state of the milestone. Either `open` or `closed`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<RequestState>,
+    /// The title of the milestone.
+    pub title: String,
+  }
+}
+
+pub mod get_milestone {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Milestone;
+}
+
+pub mod update_milestone {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Milestone;
+
+  /// The state of the milestone. Either `open` or `closed`.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestState {
+    #[serde(rename = "open")]
+    Open,
+    #[serde(rename = "closed")]
+    Closed,
+  }
+
+  impl ToString for RequestState {
+    fn to_string(&self) -> String {
+      match self {
+        RequestState::Open => "open".to_string(),
+        RequestState::Closed => "closed".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// A description of the milestone.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The milestone due date. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub due_on: Option<String>,
+    /// The state of the milestone. Either `open` or `closed`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<RequestState>,
+    /// The title of the milestone.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub title: Option<String>,
+  }
+}
+
+pub mod delete_milestone {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_labels_for_milestone {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Label>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Issue>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryFilter {
+    #[serde(rename = "assigned")]
+    Assigned,
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "mentioned")]
+    Mentioned,
+    #[serde(rename = "subscribed")]
+    Subscribed,
+    #[serde(rename = "repos")]
+    Repos,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryFilter {
+    fn to_string(&self) -> String {
+      match self {
+        QueryFilter::Assigned => "assigned".to_string(),
+        QueryFilter::Created => "created".to_string(),
+        QueryFilter::Mentioned => "mentioned".to_string(),
+        QueryFilter::Subscribed => "subscribed".to_string(),
+        QueryFilter::Repos => "repos".to_string(),
+        QueryFilter::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryState {
+    #[serde(rename = "open")]
+    Open,
+    #[serde(rename = "closed")]
+    Closed,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryState::Open => "open".to_string(),
+        QueryState::Closed => "closed".to_string(),
+        QueryState::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+    #[serde(rename = "comments")]
+    Comments,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Comments => "comments".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Indicates which sorts of issues to return. `assigned` means issues assigned to you. `created` means issues created by you. `mentioned` means issues mentioning you. `subscribed` means issues you're subscribed to updates for. `all` or `repos` means all issues you can see, regardless of participation or creation.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub filter: Option<QueryFilter>,
+    /// Indicates the state of the issues to return.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<QueryState>,
+    /// A list of comma separated label names. Example: `bug,ui,@high`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub labels: Option<String>,
+    /// What to sort results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
 
 /// Interact with GitHub Issues.
 pub struct GitHubIssuesAPI {
@@ -33,10 +1428,10 @@ impl GitHubIssuesAPI {
   /// - **`application/vnd.github.full+json`**: Returns raw, text, and HTML representations. Response will include `body`, `body_text`, and `body_html`.
   ///
   /// *Documentation*: [https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user](https://docs.github.com/rest/issues/issues#list-issues-assigned-to-the-authenticated-user)
-  pub fn list(&self) -> Request<(), IssuesListQuery, Vec<Issue>> {
+  pub fn list(&self) -> Request<(), list::Query, list::Response> {
     let url = format!("/issues");
 
-    Request::<(), IssuesListQuery, Vec<Issue>>::builder(&self.config)
+    Request::<(), list::Query, list::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -61,11 +1456,11 @@ impl GitHubIssuesAPI {
   pub fn list_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), IssuesListForOrgQuery, Vec<Issue>> {
+  ) -> Request<(), list_for_org::Query, list_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/issues");
 
-    Request::<(), IssuesListForOrgQuery, Vec<Issue>>::builder(&self.config)
+    Request::<(), list_for_org::Query, list_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -79,12 +1474,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListAssigneesQuery, Vec<SimpleUser>> {
+  ) -> Request<(), list_assignees::Query, list_assignees::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/assignees");
 
-    Request::<(), IssuesListAssigneesQuery, Vec<SimpleUser>>::builder(&self.config)
+    Request::<(), list_assignees::Query, list_assignees::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -135,12 +1530,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListForRepoQuery, Vec<Issue>> {
+  ) -> Request<(), list_for_repo::Query, list_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/issues");
 
-    Request::<(), IssuesListForRepoQuery, Vec<Issue>>::builder(&self.config)
+    Request::<(), list_for_repo::Query, list_for_repo::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -164,12 +1559,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<IssuesCreateRequest, (), Issue> {
+  ) -> Request<create::Request, (), create::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/issues");
 
-    Request::<IssuesCreateRequest, (), Issue>::builder(&self.config)
+    Request::<create::Request, (), create::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -192,14 +1587,16 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListCommentsForRepoQuery, Vec<IssueComment>> {
+  ) -> Request<(), list_comments_for_repo::Query, list_comments_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/issues/comments");
 
-    Request::<(), IssuesListCommentsForRepoQuery, Vec<IssueComment>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_comments_for_repo::Query, list_comments_for_repo::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get an issue comment**
@@ -219,13 +1616,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<(), (), IssueComment> {
+  ) -> Request<(), (), get_comment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/issues/comments/{comment_id}");
 
-    Request::<(), (), IssueComment>::builder(&self.config)
+    Request::<(), (), get_comment::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -247,13 +1644,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<IssuesUpdateCommentRequest, (), IssueComment> {
+  ) -> Request<update_comment::Request, (), update_comment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/issues/comments/{comment_id}");
 
-    Request::<IssuesUpdateCommentRequest, (), IssueComment>::builder(&self.config)
+    Request::<update_comment::Request, (), update_comment::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -288,14 +1685,16 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListEventsForRepoQuery, Vec<IssueEvent>> {
+  ) -> Request<(), list_events_for_repo::Query, list_events_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/issues/events");
 
-    Request::<(), IssuesListEventsForRepoQuery, Vec<IssueEvent>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_events_for_repo::Query, list_events_for_repo::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get an issue event**
@@ -308,13 +1707,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     event_id: impl Into<i64>,
-  ) -> Request<(), (), IssueEvent> {
+  ) -> Request<(), (), get_event::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let event_id = event_id.into();
     let url = format!("/repos/{owner}/{repo}/issues/events/{event_id}");
 
-    Request::<(), (), IssueEvent>::builder(&self.config)
+    Request::<(), (), get_event::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -346,13 +1745,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), (), Issue> {
+  ) -> Request<(), (), get::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}");
 
-    Request::<(), (), Issue>::builder(&self.config)
+    Request::<(), (), get::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -374,13 +1773,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<IssuesUpdateRequest, (), Issue> {
+  ) -> Request<update::Request, (), update::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}");
 
-    Request::<IssuesUpdateRequest, (), Issue>::builder(&self.config)
+    Request::<update::Request, (), update::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -395,13 +1794,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<IssuesAddAssigneesRequest, (), Issue> {
+  ) -> Request<add_assignees::Request, (), add_assignees::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/assignees");
 
-    Request::<IssuesAddAssigneesRequest, (), Issue>::builder(&self.config)
+    Request::<add_assignees::Request, (), add_assignees::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -416,13 +1815,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<IssuesRemoveAssigneesRequest, (), Issue> {
+  ) -> Request<remove_assignees::Request, (), remove_assignees::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/assignees");
 
-    Request::<IssuesRemoveAssigneesRequest, (), Issue>::builder(&self.config)
+    Request::<remove_assignees::Request, (), remove_assignees::Response>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -473,13 +1872,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), IssuesListCommentsQuery, Vec<IssueComment>> {
+  ) -> Request<(), list_comments::Query, list_comments::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/comments");
 
-    Request::<(), IssuesListCommentsQuery, Vec<IssueComment>>::builder(&self.config)
+    Request::<(), list_comments::Query, list_comments::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -506,13 +1905,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<IssuesCreateCommentRequest, (), IssueComment> {
+  ) -> Request<create_comment::Request, (), create_comment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/comments");
 
-    Request::<IssuesCreateCommentRequest, (), IssueComment>::builder(&self.config)
+    Request::<create_comment::Request, (), create_comment::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -527,13 +1926,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), IssuesListEventsQuery, Vec<IssueEventForIssue>> {
+  ) -> Request<(), list_events::Query, list_events::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/events");
 
-    Request::<(), IssuesListEventsQuery, Vec<IssueEventForIssue>>::builder(&self.config)
+    Request::<(), list_events::Query, list_events::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -548,15 +1947,17 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), IssuesListLabelsOnIssueQuery, Vec<Label>> {
+  ) -> Request<(), list_labels_on_issue::Query, list_labels_on_issue::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/labels");
 
-    Request::<(), IssuesListLabelsOnIssueQuery, Vec<Label>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_labels_on_issue::Query, list_labels_on_issue::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Add labels to an issue**
@@ -569,13 +1970,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<IssuesAddLabelsRequest, (), Vec<Label>> {
+  ) -> Request<add_labels::Request, (), add_labels::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/labels");
 
-    Request::<IssuesAddLabelsRequest, (), Vec<Label>>::builder(&self.config)
+    Request::<add_labels::Request, (), add_labels::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -590,13 +1991,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<IssuesSetLabelsRequest, (), Vec<Label>> {
+  ) -> Request<set_labels::Request, (), set_labels::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/labels");
 
-    Request::<IssuesSetLabelsRequest, (), Vec<Label>>::builder(&self.config)
+    Request::<set_labels::Request, (), set_labels::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -633,14 +2034,14 @@ impl GitHubIssuesAPI {
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
     name: impl Into<String>,
-  ) -> Request<(), (), Vec<Label>> {
+  ) -> Request<(), (), remove_label::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let name = name.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/labels/{name}");
 
-    Request::<(), (), Vec<Label>>::builder(&self.config)
+    Request::<(), (), remove_label::Response>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -657,13 +2058,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> NoContentRequest<IssuesLockRequest, ()> {
+  ) -> NoContentRequest<lock::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/lock");
 
-    NoContentRequest::<IssuesLockRequest, ()>::builder(&self.config)
+    NoContentRequest::<lock::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -699,15 +2100,17 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), IssuesListEventsForTimelineQuery, Vec<TimelineIssueEvents>> {
+  ) -> Request<(), list_events_for_timeline::Query, list_events_for_timeline::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/timeline");
 
-    Request::<(), IssuesListEventsForTimelineQuery, Vec<TimelineIssueEvents>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_events_for_timeline::Query, list_events_for_timeline::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List labels for a repository**
@@ -719,14 +2122,16 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListLabelsForRepoQuery, Vec<Label>> {
+  ) -> Request<(), list_labels_for_repo::Query, list_labels_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/labels");
 
-    Request::<(), IssuesListLabelsForRepoQuery, Vec<Label>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_labels_for_repo::Query, list_labels_for_repo::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Create a label**
@@ -738,12 +2143,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<IssuesCreateLabelRequest, (), Label> {
+  ) -> Request<create_label::Request, (), create_label::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/labels");
 
-    Request::<IssuesCreateLabelRequest, (), Label>::builder(&self.config)
+    Request::<create_label::Request, (), create_label::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -758,13 +2163,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     name: impl Into<String>,
-  ) -> Request<(), (), Label> {
+  ) -> Request<(), (), get_label::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let name = name.into();
     let url = format!("/repos/{owner}/{repo}/labels/{name}");
 
-    Request::<(), (), Label>::builder(&self.config)
+    Request::<(), (), get_label::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -779,13 +2184,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     name: impl Into<String>,
-  ) -> Request<IssuesUpdateLabelRequest, (), Label> {
+  ) -> Request<update_label::Request, (), update_label::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let name = name.into();
     let url = format!("/repos/{owner}/{repo}/labels/{name}");
 
-    Request::<IssuesUpdateLabelRequest, (), Label>::builder(&self.config)
+    Request::<update_label::Request, (), update_label::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -820,12 +2225,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), IssuesListMilestonesQuery, Vec<Milestone>> {
+  ) -> Request<(), list_milestones::Query, list_milestones::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/milestones");
 
-    Request::<(), IssuesListMilestonesQuery, Vec<Milestone>>::builder(&self.config)
+    Request::<(), list_milestones::Query, list_milestones::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -839,12 +2244,12 @@ impl GitHubIssuesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<IssuesCreateMilestoneRequest, (), Milestone> {
+  ) -> Request<create_milestone::Request, (), create_milestone::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/milestones");
 
-    Request::<IssuesCreateMilestoneRequest, (), Milestone>::builder(&self.config)
+    Request::<create_milestone::Request, (), create_milestone::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -859,13 +2264,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     milestone_number: impl Into<i64>,
-  ) -> Request<(), (), Milestone> {
+  ) -> Request<(), (), get_milestone::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let milestone_number = milestone_number.into();
     let url = format!("/repos/{owner}/{repo}/milestones/{milestone_number}");
 
-    Request::<(), (), Milestone>::builder(&self.config)
+    Request::<(), (), get_milestone::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -879,13 +2284,13 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     milestone_number: impl Into<i64>,
-  ) -> Request<IssuesUpdateMilestoneRequest, (), Milestone> {
+  ) -> Request<update_milestone::Request, (), update_milestone::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let milestone_number = milestone_number.into();
     let url = format!("/repos/{owner}/{repo}/milestones/{milestone_number}");
 
-    Request::<IssuesUpdateMilestoneRequest, (), Milestone>::builder(&self.config)
+    Request::<update_milestone::Request, (), update_milestone::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -921,15 +2326,17 @@ impl GitHubIssuesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     milestone_number: impl Into<i64>,
-  ) -> Request<(), IssuesListLabelsForMilestoneQuery, Vec<Label>> {
+  ) -> Request<(), list_labels_for_milestone::Query, list_labels_for_milestone::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let milestone_number = milestone_number.into();
     let url = format!("/repos/{owner}/{repo}/milestones/{milestone_number}/labels");
 
-    Request::<(), IssuesListLabelsForMilestoneQuery, Vec<Label>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_labels_for_milestone::Query, list_labels_for_milestone::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List user account issues assigned to the authenticated user**
@@ -951,10 +2358,10 @@ impl GitHubIssuesAPI {
   /// *Documentation*: [https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user](https://docs.github.com/rest/issues/issues#list-user-account-issues-assigned-to-the-authenticated-user)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<(), IssuesListForAuthenticatedUserQuery, Vec<Issue>> {
+  ) -> Request<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response> {
     let url = format!("/user/issues");
 
-    Request::<(), IssuesListForAuthenticatedUserQuery, Vec<Issue>>::builder(&self.config)
+    Request::<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }

@@ -56,6 +56,12 @@ pub struct Schema {
   pub one_of: Option<Vec<SchemaDefinition>>,
 }
 
+impl SchemaDefinition {
+  pub fn is_ref(&self) -> bool {
+    matches!(self, SchemaDefinition::Ref(_))
+  }
+}
+
 impl TryFrom<&String> for SchemaType {
   type Error = String;
 

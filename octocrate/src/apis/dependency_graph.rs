@@ -1,6 +1,53 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod diff_range {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DependencyGraphDiff;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The full path, relative to the repository root, of the dependency manifest file.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+  }
+}
+
+pub mod export_sbom {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DependencyGraphSpdxSbom;
+}
+
+pub mod create_repository_snapshot {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = Snapshot;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    /// The time at which the snapshot was created.
+    pub created_at: String,
+    /// ID of the created snapshot.
+    pub id: i64,
+    /// A message providing further details about the result, such as why the dependencies were not updated.
+    pub message: String,
+    /// Either "SUCCESS", "ACCEPTED", or "INVALID". "SUCCESS" indicates that the snapshot was successfully created and the repository's dependencies were updated. "ACCEPTED" indicates that the snapshot was successfully created, but the repository's dependencies were not updated. "INVALID" indicates that the snapshot was malformed.
+    pub result: String,
+  }
+}
 
 pub struct GitHubDependencyGraphAPI {
   config: SharedAPIConfig,
@@ -23,13 +70,13 @@ impl GitHubDependencyGraphAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     basehead: impl Into<String>,
-  ) -> Request<(), DependencyGraphDiffRangeQuery, DependencyGraphDiff> {
+  ) -> Request<(), diff_range::Query, diff_range::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let basehead = basehead.into();
     let url = format!("/repos/{owner}/{repo}/dependency-graph/compare/{basehead}");
 
-    Request::<(), DependencyGraphDiffRangeQuery, DependencyGraphDiff>::builder(&self.config)
+    Request::<(), diff_range::Query, diff_range::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -43,12 +90,12 @@ impl GitHubDependencyGraphAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), DependencyGraphSpdxSbom> {
+  ) -> Request<(), (), export_sbom::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/dependency-graph/sbom");
 
-    Request::<(), (), DependencyGraphSpdxSbom>::builder(&self.config)
+    Request::<(), (), export_sbom::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -66,12 +113,12 @@ impl GitHubDependencyGraphAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<Snapshot, (), DependencyGraphCreateRepositorySnapshotResponse> {
+  ) -> Request<create_repository_snapshot::Request, (), create_repository_snapshot::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/dependency-graph/snapshots");
 
-    Request::<Snapshot, (), DependencyGraphCreateRepositorySnapshotResponse>::builder(&self.config)
+    Request::<create_repository_snapshot::Request, (), create_repository_snapshot::Response>::builder(&self.config)
       .post(url)
       .build()
   }

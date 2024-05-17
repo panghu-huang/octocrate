@@ -1,6 +1,626 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list_public_events {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Event>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_feeds {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Feed;
+}
+
+pub mod list_public_events_for_repo_network {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Event>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_notifications_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Thread>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// If `true`, show notifications marked as read.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub all: Option<bool>,
+    /// If `true`, only shows notifications in which the user is directly participating or mentioned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub participating: Option<bool>,
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub before: Option<String>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 50). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod mark_notifications_as_read {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub last_read_at: Option<String>,
+    /// Whether the notification has been read.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub read: Option<bool>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub message: Option<String>,
+  }
+}
+
+pub mod get_thread {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Thread;
+}
+
+pub mod mark_thread_as_read {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod mark_thread_as_done {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_thread_subscription_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ThreadSubscription;
+}
+
+pub mod set_thread_subscription {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ThreadSubscription;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Whether to block all notifications from a thread.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ignored: Option<bool>,
+  }
+}
+
+pub mod delete_thread_subscription {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_public_org_events {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Event>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_repo_events {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Event>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_repo_notifications_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Thread>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// If `true`, show notifications marked as read.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub all: Option<bool>,
+    /// If `true`, only shows notifications in which the user is directly participating or mentioned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub participating: Option<bool>,
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// Only show notifications updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub before: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod mark_repo_notifications_as_read {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Describes the last point that notifications were checked. Anything updated since this time will not be marked as read. If you omit this parameter, all notifications are marked as read. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. Default: The current timestamp.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub last_read_at: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub message: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub url: Option<String>,
+  }
+}
+
+pub mod list_stargazers_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Response {
+    SimpleUserArray(Vec<SimpleUser>),
+    StargazerArray(Vec<Stargazer>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_watchers_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_repo_subscription {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepositorySubscription;
+}
+
+pub mod set_repo_subscription {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepositorySubscription;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Determines if all notifications should be blocked from this repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ignored: Option<bool>,
+    /// Determines if notifications should be received from this repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub subscribed: Option<bool>,
+  }
+}
+
+pub mod delete_repo_subscription {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_repos_starred_by_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Repository>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The property to sort the results by. `created` means when the repository was starred. `updated` means when the repository was last pushed to.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod check_repo_is_starred_by_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod star_repo_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod unstar_repo_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_watched_repos_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_events_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Event>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_org_events_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Event>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_public_events_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Event>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_received_events_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Event>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_received_public_events_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Event>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_repos_starred_by_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Response {
+    StarredRepositoryArray(Vec<StarredRepository>),
+    RepositoryArray(Vec<Repository>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The property to sort the results by. `created` means when the repository was starred. `updated` means when the repository was last pushed to.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_repos_watched_by_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
 
 /// Activity APIs provide access to notifications, subscriptions, and timelines.
 pub struct GitHubActivityAPI {
@@ -19,10 +639,12 @@ impl GitHubActivityAPI {
   /// We delay the public events feed by five minutes, which means the most recent event returned by the public events API actually occurred at least five minutes ago.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/events#list-public-events](https://docs.github.com/rest/activity/events#list-public-events)
-  pub fn list_public_events(&self) -> Request<(), ActivityListPublicEventsQuery, Vec<Event>> {
+  pub fn list_public_events(
+    &self,
+  ) -> Request<(), list_public_events::Query, list_public_events::Response> {
     let url = format!("/events");
 
-    Request::<(), ActivityListPublicEventsQuery, Vec<Event>>::builder(&self.config)
+    Request::<(), list_public_events::Query, list_public_events::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -44,10 +666,10 @@ impl GitHubActivityAPI {
   /// **Note**: Private feeds are only returned when [authenticating via Basic Auth](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) since current feed URIs use the older, non revocable auth tokens.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/feeds#get-feeds](https://docs.github.com/rest/activity/feeds#get-feeds)
-  pub fn get_feeds(&self) -> Request<(), (), Feed> {
+  pub fn get_feeds(&self) -> Request<(), (), get_feeds::Response> {
     let url = format!("/feeds");
 
-    Request::<(), (), Feed>::builder(&self.config)
+    Request::<(), (), get_feeds::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -60,14 +682,22 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActivityListPublicEventsForRepoNetworkQuery, Vec<Event>> {
+  ) -> Request<
+    (),
+    list_public_events_for_repo_network::Query,
+    list_public_events_for_repo_network::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/networks/{owner}/{repo}/events");
 
-    Request::<(), ActivityListPublicEventsForRepoNetworkQuery, Vec<Event>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      list_public_events_for_repo_network::Query,
+      list_public_events_for_repo_network::Response,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **List notifications for the authenticated user**
@@ -77,12 +707,18 @@ impl GitHubActivityAPI {
   /// *Documentation*: [https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user](https://docs.github.com/rest/activity/notifications#list-notifications-for-the-authenticated-user)
   pub fn list_notifications_for_authenticated_user(
     &self,
-  ) -> Request<(), ActivityListNotificationsForAuthenticatedUserQuery, Vec<Thread>> {
+  ) -> Request<
+    (),
+    list_notifications_for_authenticated_user::Query,
+    list_notifications_for_authenticated_user::Response,
+  > {
     let url = format!("/notifications");
 
-    Request::<(), ActivityListNotificationsForAuthenticatedUserQuery, Vec<Thread>>::builder(
-      &self.config,
-    )
+    Request::<
+      (),
+      list_notifications_for_authenticated_user::Query,
+      list_notifications_for_authenticated_user::Response,
+    >::builder(&self.config)
     .get(url)
     .build()
   }
@@ -94,11 +730,10 @@ impl GitHubActivityAPI {
   /// *Documentation*: [https://docs.github.com/rest/activity/notifications#mark-notifications-as-read](https://docs.github.com/rest/activity/notifications#mark-notifications-as-read)
   pub fn mark_notifications_as_read(
     &self,
-  ) -> Request<ActivityMarkNotificationsAsReadRequest, (), ActivityMarkNotificationsAsReadResponse>
-  {
+  ) -> Request<mark_notifications_as_read::Request, (), mark_notifications_as_read::Response> {
     let url = format!("/notifications");
 
-    Request::<ActivityMarkNotificationsAsReadRequest, (), ActivityMarkNotificationsAsReadResponse>::builder(&self.config)
+    Request::<mark_notifications_as_read::Request, (), mark_notifications_as_read::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -108,11 +743,11 @@ impl GitHubActivityAPI {
   /// Gets information about a notification thread.
   ///
   /// *Documentation*: [https://docs.github.com/rest/activity/notifications#get-a-thread](https://docs.github.com/rest/activity/notifications#get-a-thread)
-  pub fn get_thread(&self, thread_id: impl Into<i64>) -> Request<(), (), Thread> {
+  pub fn get_thread(&self, thread_id: impl Into<i64>) -> Request<(), (), get_thread::Response> {
     let thread_id = thread_id.into();
     let url = format!("/notifications/threads/{thread_id}");
 
-    Request::<(), (), Thread>::builder(&self.config)
+    Request::<(), (), get_thread::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -155,13 +790,15 @@ impl GitHubActivityAPI {
   pub fn get_thread_subscription_for_authenticated_user(
     &self,
     thread_id: impl Into<i64>,
-  ) -> Request<(), (), ThreadSubscription> {
+  ) -> Request<(), (), get_thread_subscription_for_authenticated_user::Response> {
     let thread_id = thread_id.into();
     let url = format!("/notifications/threads/{thread_id}/subscription");
 
-    Request::<(), (), ThreadSubscription>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), (), get_thread_subscription_for_authenticated_user::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Set a thread subscription**
@@ -176,13 +813,15 @@ impl GitHubActivityAPI {
   pub fn set_thread_subscription(
     &self,
     thread_id: impl Into<i64>,
-  ) -> Request<ActivitySetThreadSubscriptionRequest, (), ThreadSubscription> {
+  ) -> Request<set_thread_subscription::Request, (), set_thread_subscription::Response> {
     let thread_id = thread_id.into();
     let url = format!("/notifications/threads/{thread_id}/subscription");
 
-    Request::<ActivitySetThreadSubscriptionRequest, (), ThreadSubscription>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<set_thread_subscription::Request, (), set_thread_subscription::Response>::builder(
+      &self.config,
+    )
+    .put(url)
+    .build()
   }
 
   /// **Delete a thread subscription**
@@ -206,13 +845,15 @@ impl GitHubActivityAPI {
   pub fn list_public_org_events(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), ActivityListPublicOrgEventsQuery, Vec<Event>> {
+  ) -> Request<(), list_public_org_events::Query, list_public_org_events::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/events");
 
-    Request::<(), ActivityListPublicOrgEventsQuery, Vec<Event>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_public_org_events::Query, list_public_org_events::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List repository events**
@@ -225,12 +866,12 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActivityListRepoEventsQuery, Vec<Event>> {
+  ) -> Request<(), list_repo_events::Query, list_repo_events::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/events");
 
-    Request::<(), ActivityListRepoEventsQuery, Vec<Event>>::builder(&self.config)
+    Request::<(), list_repo_events::Query, list_repo_events::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -244,14 +885,20 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActivityListRepoNotificationsForAuthenticatedUserQuery, Vec<Thread>> {
+  ) -> Request<
+    (),
+    list_repo_notifications_for_authenticated_user::Query,
+    list_repo_notifications_for_authenticated_user::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/notifications");
 
-    Request::<(), ActivityListRepoNotificationsForAuthenticatedUserQuery, Vec<Thread>>::builder(
-      &self.config,
-    )
+    Request::<
+      (),
+      list_repo_notifications_for_authenticated_user::Query,
+      list_repo_notifications_for_authenticated_user::Response,
+    >::builder(&self.config)
     .get(url)
     .build()
   }
@@ -266,21 +913,17 @@ impl GitHubActivityAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
   ) -> Request<
-    ActivityMarkRepoNotificationsAsReadRequest,
+    mark_repo_notifications_as_read::Request,
     (),
-    ActivityMarkRepoNotificationsAsReadResponse,
+    mark_repo_notifications_as_read::Response,
   > {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/notifications");
 
-    Request::<
-      ActivityMarkRepoNotificationsAsReadRequest,
-      (),
-      ActivityMarkRepoNotificationsAsReadResponse,
-    >::builder(&self.config)
-    .put(url)
-    .build()
+    Request::<mark_repo_notifications_as_read::Request, (), mark_repo_notifications_as_read::Response>::builder(&self.config)
+      .put(url)
+      .build()
   }
 
   /// **List stargazers**
@@ -296,14 +939,16 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActivityListStargazersForRepoQuery, ActivityListStargazersForRepoResponse> {
+  ) -> Request<(), list_stargazers_for_repo::Query, list_stargazers_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/stargazers");
 
-    Request::<(), ActivityListStargazersForRepoQuery, ActivityListStargazersForRepoResponse>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_stargazers_for_repo::Query, list_stargazers_for_repo::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List watchers**
@@ -315,14 +960,16 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ActivityListWatchersForRepoQuery, Vec<SimpleUser>> {
+  ) -> Request<(), list_watchers_for_repo::Query, list_watchers_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/subscribers");
 
-    Request::<(), ActivityListWatchersForRepoQuery, Vec<SimpleUser>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_watchers_for_repo::Query, list_watchers_for_repo::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get a repository subscription**
@@ -334,12 +981,12 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), RepositorySubscription> {
+  ) -> Request<(), (), get_repo_subscription::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/subscription");
 
-    Request::<(), (), RepositorySubscription>::builder(&self.config)
+    Request::<(), (), get_repo_subscription::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -353,14 +1000,16 @@ impl GitHubActivityAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ActivitySetRepoSubscriptionRequest, (), RepositorySubscription> {
+  ) -> Request<set_repo_subscription::Request, (), set_repo_subscription::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/subscription");
 
-    Request::<ActivitySetRepoSubscriptionRequest, (), RepositorySubscription>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<set_repo_subscription::Request, (), set_repo_subscription::Response>::builder(
+      &self.config,
+    )
+    .put(url)
+    .build()
   }
 
   /// **Delete a repository subscription**
@@ -393,12 +1042,18 @@ impl GitHubActivityAPI {
   /// *Documentation*: [https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user](https://docs.github.com/rest/activity/starring#list-repositories-starred-by-the-authenticated-user)
   pub fn list_repos_starred_by_authenticated_user(
     &self,
-  ) -> Request<(), ActivityListReposStarredByAuthenticatedUserQuery, Vec<Repository>> {
+  ) -> Request<
+    (),
+    list_repos_starred_by_authenticated_user::Query,
+    list_repos_starred_by_authenticated_user::Response,
+  > {
     let url = format!("/user/starred");
 
-    Request::<(), ActivityListReposStarredByAuthenticatedUserQuery, Vec<Repository>>::builder(
-      &self.config,
-    )
+    Request::<
+      (),
+      list_repos_starred_by_authenticated_user::Query,
+      list_repos_starred_by_authenticated_user::Response,
+    >::builder(&self.config)
     .get(url)
     .build()
   }
@@ -467,12 +1122,20 @@ impl GitHubActivityAPI {
   /// *Documentation*: [https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user](https://docs.github.com/rest/activity/watching#list-repositories-watched-by-the-authenticated-user)
   pub fn list_watched_repos_for_authenticated_user(
     &self,
-  ) -> Request<(), ActivityListWatchedReposForAuthenticatedUserQuery, Vec<MinimalRepository>> {
+  ) -> Request<
+    (),
+    list_watched_repos_for_authenticated_user::Query,
+    list_watched_repos_for_authenticated_user::Response,
+  > {
     let url = format!("/user/subscriptions");
 
-    Request::<(), ActivityListWatchedReposForAuthenticatedUserQuery, Vec<MinimalRepository>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      list_watched_repos_for_authenticated_user::Query,
+      list_watched_repos_for_authenticated_user::Response,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **List events for the authenticated user**
@@ -483,13 +1146,21 @@ impl GitHubActivityAPI {
   pub fn list_events_for_authenticated_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ActivityListEventsForAuthenticatedUserQuery, Vec<Event>> {
+  ) -> Request<
+    (),
+    list_events_for_authenticated_user::Query,
+    list_events_for_authenticated_user::Response,
+  > {
     let username = username.into();
     let url = format!("/users/{username}/events");
 
-    Request::<(), ActivityListEventsForAuthenticatedUserQuery, Vec<Event>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      list_events_for_authenticated_user::Query,
+      list_events_for_authenticated_user::Response,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **List organization events for the authenticated user**
@@ -501,14 +1172,22 @@ impl GitHubActivityAPI {
     &self,
     username: impl Into<String>,
     org: impl Into<String>,
-  ) -> Request<(), ActivityListOrgEventsForAuthenticatedUserQuery, Vec<Event>> {
+  ) -> Request<
+    (),
+    list_org_events_for_authenticated_user::Query,
+    list_org_events_for_authenticated_user::Response,
+  > {
     let username = username.into();
     let org = org.into();
     let url = format!("/users/{username}/events/orgs/{org}");
 
-    Request::<(), ActivityListOrgEventsForAuthenticatedUserQuery, Vec<Event>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      list_org_events_for_authenticated_user::Query,
+      list_org_events_for_authenticated_user::Response,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **List public events for a user**
@@ -518,11 +1197,11 @@ impl GitHubActivityAPI {
   pub fn list_public_events_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ActivityListPublicEventsForUserQuery, Vec<Event>> {
+  ) -> Request<(), list_public_events_for_user::Query, list_public_events_for_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/events/public");
 
-    Request::<(), ActivityListPublicEventsForUserQuery, Vec<Event>>::builder(&self.config)
+    Request::<(), list_public_events_for_user::Query, list_public_events_for_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -535,11 +1214,12 @@ impl GitHubActivityAPI {
   pub fn list_received_events_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ActivityListReceivedEventsForUserQuery, Vec<Event>> {
+  ) -> Request<(), list_received_events_for_user::Query, list_received_events_for_user::Response>
+  {
     let username = username.into();
     let url = format!("/users/{username}/received_events");
 
-    Request::<(), ActivityListReceivedEventsForUserQuery, Vec<Event>>::builder(&self.config)
+    Request::<(), list_received_events_for_user::Query, list_received_events_for_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -551,13 +1231,21 @@ impl GitHubActivityAPI {
   pub fn list_received_public_events_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ActivityListReceivedPublicEventsForUserQuery, Vec<Event>> {
+  ) -> Request<
+    (),
+    list_received_public_events_for_user::Query,
+    list_received_public_events_for_user::Response,
+  > {
     let username = username.into();
     let url = format!("/users/{username}/received_events/public");
 
-    Request::<(), ActivityListReceivedPublicEventsForUserQuery, Vec<Event>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      list_received_public_events_for_user::Query,
+      list_received_public_events_for_user::Response,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **List repositories starred by a user**
@@ -572,13 +1260,15 @@ impl GitHubActivityAPI {
   pub fn list_repos_starred_by_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ActivityListReposStarredByUserQuery, ActivityListReposStarredByUserResponse> {
+  ) -> Request<(), list_repos_starred_by_user::Query, list_repos_starred_by_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/starred");
 
-    Request::<(), ActivityListReposStarredByUserQuery, ActivityListReposStarredByUserResponse>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_repos_starred_by_user::Query, list_repos_starred_by_user::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List repositories watched by a user**
@@ -589,11 +1279,11 @@ impl GitHubActivityAPI {
   pub fn list_repos_watched_by_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ActivityListReposWatchedByUserQuery, Vec<MinimalRepository>> {
+  ) -> Request<(), list_repos_watched_by_user::Query, list_repos_watched_by_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/subscriptions");
 
-    Request::<(), ActivityListReposWatchedByUserQuery, Vec<MinimalRepository>>::builder(
+    Request::<(), list_repos_watched_by_user::Query, list_repos_watched_by_user::Response>::builder(
       &self.config,
     )
     .get(url)

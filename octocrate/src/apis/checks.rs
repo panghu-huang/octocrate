@@ -1,6 +1,401 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod create {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CheckRun;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestItem1Status {
+    #[serde(rename = "completed")]
+    Completed,
+  }
+
+  impl ToString for RequestItem1Status {
+    fn to_string(&self) -> String {
+      match self {
+        RequestItem1Status::Completed => "completed".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestItem2Status {
+    #[serde(rename = "queued")]
+    Queued,
+    #[serde(rename = "in_progress")]
+    InProgress,
+  }
+
+  impl ToString for RequestItem2Status {
+    fn to_string(&self) -> String {
+      match self {
+        RequestItem2Status::Queued => "queued".to_string(),
+        RequestItem2Status::InProgress => "in_progress".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    RequestItem2(RequestItem2),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    pub status: RequestItem1Status,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem2 {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub status: Option<RequestItem2Status>,
+  }
+}
+
+pub mod get {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CheckRun;
+}
+
+pub mod update {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CheckRun;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestItem1Status {
+    #[serde(rename = "completed")]
+    Completed,
+  }
+
+  impl ToString for RequestItem1Status {
+    fn to_string(&self) -> String {
+      match self {
+        RequestItem1Status::Completed => "completed".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestItem2Status {
+    #[serde(rename = "queued")]
+    Queued,
+    #[serde(rename = "in_progress")]
+    InProgress,
+  }
+
+  impl ToString for RequestItem2Status {
+    fn to_string(&self) -> String {
+      match self {
+        RequestItem2Status::Queued => "queued".to_string(),
+        RequestItem2Status::InProgress => "in_progress".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    RequestItem2(RequestItem2),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub status: Option<RequestItem1Status>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem2 {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub status: Option<RequestItem2Status>,
+  }
+}
+
+pub mod list_annotations {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<CheckAnnotation>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod rerequest_run {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+}
+
+pub mod create_suite {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CheckSuite;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The sha of the head commit.
+    pub head_sha: String,
+  }
+}
+
+pub mod set_suites_preferences {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CheckSuitePreference;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestAutoTriggerChecks {
+    /// The `id` of the GitHub App.
+    pub app_id: i64,
+    /// Set to `true` to enable automatic creation of CheckSuite events upon pushes to the repository, or `false` to disable them.
+    pub setting: bool,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled by default.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub auto_trigger_checks: Option<Vec<RequestAutoTriggerChecks>>,
+  }
+}
+
+pub mod get_suite {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CheckSuite;
+}
+
+pub mod list_for_suite {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryStatus {
+    #[serde(rename = "queued")]
+    Queued,
+    #[serde(rename = "in_progress")]
+    InProgress,
+    #[serde(rename = "completed")]
+    Completed,
+  }
+
+  impl ToString for QueryStatus {
+    fn to_string(&self) -> String {
+      match self {
+        QueryStatus::Queued => "queued".to_string(),
+        QueryStatus::InProgress => "in_progress".to_string(),
+        QueryStatus::Completed => "completed".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryFilter {
+    #[serde(rename = "latest")]
+    Latest,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryFilter {
+    fn to_string(&self) -> String {
+      match self {
+        QueryFilter::Latest => "latest".to_string(),
+        QueryFilter::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns check runs with the specified `name`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub check_name: Option<String>,
+    /// Returns check runs with the specified `status`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub status: Option<QueryStatus>,
+    /// Filters check runs by their `completed_at` timestamp. `latest` returns the most recent check runs.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub filter: Option<QueryFilter>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub check_runs: Vec<CheckRun>,
+    pub total_count: i64,
+  }
+}
+
+pub mod rerequest_suite {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+}
+
+pub mod list_for_ref {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryStatus {
+    #[serde(rename = "queued")]
+    Queued,
+    #[serde(rename = "in_progress")]
+    InProgress,
+    #[serde(rename = "completed")]
+    Completed,
+  }
+
+  impl ToString for QueryStatus {
+    fn to_string(&self) -> String {
+      match self {
+        QueryStatus::Queued => "queued".to_string(),
+        QueryStatus::InProgress => "in_progress".to_string(),
+        QueryStatus::Completed => "completed".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryFilter {
+    #[serde(rename = "latest")]
+    Latest,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryFilter {
+    fn to_string(&self) -> String {
+      match self {
+        QueryFilter::Latest => "latest".to_string(),
+        QueryFilter::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns check runs with the specified `name`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub check_name: Option<String>,
+    /// Returns check runs with the specified `status`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub status: Option<QueryStatus>,
+    /// Filters check runs by their `completed_at` timestamp. `latest` returns the most recent check runs.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub filter: Option<QueryFilter>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub app_id: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub check_runs: Vec<CheckRun>,
+    pub total_count: i64,
+  }
+}
+
+pub mod list_suites_for_ref {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Filters check suites by GitHub App `id`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub app_id: Option<i64>,
+    /// Returns check runs with the specified `name`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub check_name: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub check_suites: Vec<CheckSuite>,
+    pub total_count: i64,
+  }
+}
 
 /// Rich interactions with checks run by your integrations.
 pub struct GitHubChecksAPI {
@@ -29,12 +424,12 @@ impl GitHubChecksAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ChecksCreateRequest, (), CheckRun> {
+  ) -> Request<create::Request, (), create::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/check-runs");
 
-    Request::<ChecksCreateRequest, (), CheckRun>::builder(&self.config)
+    Request::<create::Request, (), create::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -53,13 +448,13 @@ impl GitHubChecksAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     check_run_id: impl Into<i64>,
-  ) -> Request<(), (), CheckRun> {
+  ) -> Request<(), (), get::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let check_run_id = check_run_id.into();
     let url = format!("/repos/{owner}/{repo}/check-runs/{check_run_id}");
 
-    Request::<(), (), CheckRun>::builder(&self.config)
+    Request::<(), (), get::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -78,13 +473,13 @@ impl GitHubChecksAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     check_run_id: impl Into<i64>,
-  ) -> Request<ChecksUpdateRequest, (), CheckRun> {
+  ) -> Request<update::Request, (), update::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let check_run_id = check_run_id.into();
     let url = format!("/repos/{owner}/{repo}/check-runs/{check_run_id}");
 
-    Request::<ChecksUpdateRequest, (), CheckRun>::builder(&self.config)
+    Request::<update::Request, (), update::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -101,13 +496,13 @@ impl GitHubChecksAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     check_run_id: impl Into<i64>,
-  ) -> Request<(), ChecksListAnnotationsQuery, Vec<CheckAnnotation>> {
+  ) -> Request<(), list_annotations::Query, list_annotations::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let check_run_id = check_run_id.into();
     let url = format!("/repos/{owner}/{repo}/check-runs/{check_run_id}/annotations");
 
-    Request::<(), ChecksListAnnotationsQuery, Vec<CheckAnnotation>>::builder(&self.config)
+    Request::<(), list_annotations::Query, list_annotations::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -126,13 +521,13 @@ impl GitHubChecksAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     check_run_id: impl Into<i64>,
-  ) -> Request<(), (), EmptyObject> {
+  ) -> Request<(), (), rerequest_run::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let check_run_id = check_run_id.into();
     let url = format!("/repos/{owner}/{repo}/check-runs/{check_run_id}/rerequest");
 
-    Request::<(), (), EmptyObject>::builder(&self.config)
+    Request::<(), (), rerequest_run::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -150,12 +545,12 @@ impl GitHubChecksAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ChecksCreateSuiteRequest, (), CheckSuite> {
+  ) -> Request<create_suite::Request, (), create_suite::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/check-suites");
 
-    Request::<ChecksCreateSuiteRequest, (), CheckSuite>::builder(&self.config)
+    Request::<create_suite::Request, (), create_suite::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -170,14 +565,16 @@ impl GitHubChecksAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ChecksSetSuitesPreferencesRequest, (), CheckSuitePreference> {
+  ) -> Request<set_suites_preferences::Request, (), set_suites_preferences::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/check-suites/preferences");
 
-    Request::<ChecksSetSuitesPreferencesRequest, (), CheckSuitePreference>::builder(&self.config)
-      .patch(url)
-      .build()
+    Request::<set_suites_preferences::Request, (), set_suites_preferences::Response>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
   }
 
   /// **Get a check suite**
@@ -194,13 +591,13 @@ impl GitHubChecksAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     check_suite_id: impl Into<i64>,
-  ) -> Request<(), (), CheckSuite> {
+  ) -> Request<(), (), get_suite::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let check_suite_id = check_suite_id.into();
     let url = format!("/repos/{owner}/{repo}/check-suites/{check_suite_id}");
 
-    Request::<(), (), CheckSuite>::builder(&self.config)
+    Request::<(), (), get_suite::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -219,13 +616,13 @@ impl GitHubChecksAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     check_suite_id: impl Into<i64>,
-  ) -> Request<(), ChecksListForSuiteQuery, ChecksListForSuiteResponse> {
+  ) -> Request<(), list_for_suite::Query, list_for_suite::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let check_suite_id = check_suite_id.into();
     let url = format!("/repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs");
 
-    Request::<(), ChecksListForSuiteQuery, ChecksListForSuiteResponse>::builder(&self.config)
+    Request::<(), list_for_suite::Query, list_for_suite::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -242,13 +639,13 @@ impl GitHubChecksAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     check_suite_id: impl Into<i64>,
-  ) -> Request<(), (), EmptyObject> {
+  ) -> Request<(), (), rerequest_suite::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let check_suite_id = check_suite_id.into();
     let url = format!("/repos/{owner}/{repo}/check-suites/{check_suite_id}/rerequest");
 
-    Request::<(), (), EmptyObject>::builder(&self.config)
+    Request::<(), (), rerequest_suite::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -269,13 +666,13 @@ impl GitHubChecksAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<(), ChecksListForRefQuery, ChecksListForRefResponse> {
+  ) -> Request<(), list_for_ref::Query, list_for_ref::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/commits/{ref_}/check-runs");
 
-    Request::<(), ChecksListForRefQuery, ChecksListForRefResponse>::builder(&self.config)
+    Request::<(), list_for_ref::Query, list_for_ref::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -294,16 +691,14 @@ impl GitHubChecksAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<(), ChecksListSuitesForRefQuery, ChecksListSuitesForRefResponse> {
+  ) -> Request<(), list_suites_for_ref::Query, list_suites_for_ref::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/commits/{ref_}/check-suites");
 
-    Request::<(), ChecksListSuitesForRefQuery, ChecksListSuitesForRefResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_suites_for_ref::Query, list_suites_for_ref::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 }

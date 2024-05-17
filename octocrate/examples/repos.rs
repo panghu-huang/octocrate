@@ -1,6 +1,4 @@
-use octocrate::{
-  APIConfig, GitHubAPI, PersonalAccessToken, ReposGetContentResponse, ReposListForUserQuery,
-};
+use octocrate::{repos, APIConfig, GitHubAPI, PersonalAccessToken};
 
 #[tokio::test]
 async fn test_list_user_repositories() {
@@ -15,7 +13,7 @@ async fn test_list_user_repositories() {
 
   let api = GitHubAPI::new(&config);
 
-  let query = ReposListForUserQuery::builder()
+  let query = repos::list_for_user::Query::builder()
     .page(1)
     .per_page(10)
     .build();
@@ -32,7 +30,7 @@ async fn test_list_user_repositories() {
 
   assert_eq!(repository.owner.login, "panghu-huang");
 
-  let query = ReposListForUserQuery::builder()
+  let query = repos::list_for_user::Query::builder()
     .page(2)
     .per_page(10)
     .build();
@@ -94,7 +92,7 @@ async fn test_get_repository_file_content() {
     .unwrap();
 
   match content {
-    ReposGetContentResponse::ContentFile(file) => {
+    repos::get_content::Response::ContentFile(file) => {
       assert_eq!(file.name, "README.md");
     }
     _ => {
@@ -125,7 +123,7 @@ async fn test_get_repository_dir_content() {
     .unwrap();
 
   match content {
-    ReposGetContentResponse::ContentDirectory(dir) => {
+    repos::get_content::Response::ContentDirectory(dir) => {
       assert!(dir.len() > 1);
     }
     _ => panic!("Expected directory content"),

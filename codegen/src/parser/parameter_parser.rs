@@ -11,7 +11,7 @@ impl<'a> ParameterParser<'a> {
     Self { parameter }
   }
 
-  pub fn parse(&self, ctx: &mut ParseContext, name: &String) -> ParsedData {
+  pub fn parse(&self, ctx: &mut ParseContext, name: &str) -> ParsedData {
     let mut schema_parser = SchemaParser::new();
     let parameter = &self.parameter;
     let is_required = parameter.required.unwrap_or(false);

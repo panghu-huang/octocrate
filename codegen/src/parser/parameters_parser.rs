@@ -17,7 +17,7 @@ impl ParametersParser {
   pub fn parse(
     &self,
     ctx: &mut ParseContext,
-    struct_name: &String,
+    struct_name: &str,
     description: String,
   ) -> Option<Struct> {
     if self.parameters.is_empty() {

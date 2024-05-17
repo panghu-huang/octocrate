@@ -1,6 +1,626 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod get_authenticated {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Integration;
+}
+
+pub mod create_from_manifest {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Response {
+    /// GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub.
+    Integration(Integration),
+    ResponseItem2(ResponseItem2),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct ResponseItem2 {
+    pub client_id: String,
+    pub client_secret: String,
+    pub pem: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub webhook_secret: Option<String>,
+  }
+}
+
+pub mod get_webhook_config_for_app {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = WebhookConfig;
+}
+
+pub mod update_webhook_config_for_app {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = WebhookConfig;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content_type: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub insecure_ssl: Option<StringOrNumber>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub url: Option<String>,
+  }
+}
+
+pub mod list_webhook_deliveries {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<HookDeliveryItem>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to the `link` header for the next and previous page cursors.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub cursor: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub redelivery: Option<bool>,
+  }
+}
+
+pub mod get_webhook_delivery {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = HookDelivery;
+}
+
+pub mod redeliver_webhook_delivery {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_installation_requests_for_authenticated_app {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<IntegrationInstallationRequest>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_installations {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Installation>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub outdated: Option<String>,
+  }
+}
+
+pub mod get_installation {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Installation;
+}
+
+pub mod delete_installation {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod create_installation_access_token {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = InstallationToken;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permissions: Option<AppPermissions>,
+    /// List of repository names that the token should have access to
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repositories: Option<Vec<String>>,
+    /// List of repository IDs that the token should have access to
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repository_ids: Option<Vec<i64>>,
+  }
+}
+
+pub mod suspend_installation {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod unsuspend_installation {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod delete_authorization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The OAuth access token used to authenticate to the GitHub API.
+    pub access_token: String,
+  }
+}
+
+pub mod check_token {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Authorization;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The access_token of the OAuth or GitHub application.
+    pub access_token: String,
+  }
+}
+
+pub mod reset_token {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Authorization;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The access_token of the OAuth or GitHub application.
+    pub access_token: String,
+  }
+}
+
+pub mod delete_token {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The OAuth access token used to authenticate to the GitHub API.
+    pub access_token: String,
+  }
+}
+
+pub mod scope_token {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Authorization;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The access token used to authenticate to the GitHub API.
+    pub access_token: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permissions: Option<AppPermissions>,
+    /// The list of repository names to scope the user access token to. `repositories` may not be specified if `repository_ids` is specified.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repositories: Option<Vec<String>>,
+    /// The list of repository IDs to scope the user access token to. `repository_ids` may not be specified if `repositories` is specified.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repository_ids: Option<Vec<i64>>,
+    /// The name of the user or organization to scope the user access token to. **Required** unless `target_id` is specified.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub target: Option<String>,
+    /// The ID of the user or organization to scope the user access token to. **Required** unless `target` is specified.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub target_id: Option<i64>,
+  }
+}
+
+pub mod get_by_slug {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Integration;
+}
+
+pub mod list_repos_accessible_to_installation {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub repositories: Vec<Repository>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repository_selection: Option<String>,
+    pub total_count: i64,
+  }
+}
+
+pub mod revoke_installation_access_token {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_subscription_plan_for_account {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = MarketplacePurchase;
+}
+
+pub mod list_plans {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MarketplaceListingPlan>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_accounts_for_plan {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MarketplacePurchase>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The property to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// To return the oldest accounts first, set to `asc`. Ignored without the `sort` parameter.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_subscription_plan_for_account_stubbed {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = MarketplacePurchase;
+}
+
+pub mod list_plans_stubbed {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MarketplaceListingPlan>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_accounts_for_plan_stubbed {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MarketplacePurchase>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The property to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// To return the oldest accounts first, set to `asc`. Ignored without the `sort` parameter.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_org_installation {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Installation;
+}
+
+pub mod get_repo_installation {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Installation;
+}
+
+pub mod list_installations_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub installations: Vec<Installation>,
+    pub total_count: i64,
+  }
+}
+
+pub mod list_installation_repos_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub repositories: Vec<Repository>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repository_selection: Option<String>,
+    pub total_count: i64,
+  }
+}
+
+pub mod add_repo_to_installation_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_repo_from_installation_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_subscriptions_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<UserMarketplacePurchase>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_subscriptions_for_authenticated_user_stubbed {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<UserMarketplacePurchase>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_user_installation {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Installation;
+}
 
 /// Information for integrations and installations.
 pub struct GitHubAppsAPI {
@@ -21,10 +641,10 @@ impl GitHubAppsAPI {
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-the-authenticated-app](https://docs.github.com/rest/apps/apps#get-the-authenticated-app)
-  pub fn get_authenticated(&self) -> Request<(), (), Integration> {
+  pub fn get_authenticated(&self) -> Request<(), (), get_authenticated::Response> {
     let url = format!("/app");
 
-    Request::<(), (), Integration>::builder(&self.config)
+    Request::<(), (), get_authenticated::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -37,11 +657,11 @@ impl GitHubAppsAPI {
   pub fn create_from_manifest(
     &self,
     code: impl Into<String>,
-  ) -> Request<(), (), AppsCreateFromManifestResponse> {
+  ) -> Request<(), (), create_from_manifest::Response> {
     let code = code.into();
     let url = format!("/app-manifests/{code}/conversions");
 
-    Request::<(), (), AppsCreateFromManifestResponse>::builder(&self.config)
+    Request::<(), (), create_from_manifest::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -53,10 +673,12 @@ impl GitHubAppsAPI {
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app](https://docs.github.com/rest/apps/webhooks#get-a-webhook-configuration-for-an-app)
-  pub fn get_webhook_config_for_app(&self) -> Request<(), (), WebhookConfig> {
+  pub fn get_webhook_config_for_app(
+    &self,
+  ) -> Request<(), (), get_webhook_config_for_app::Response> {
     let url = format!("/app/hook/config");
 
-    Request::<(), (), WebhookConfig>::builder(&self.config)
+    Request::<(), (), get_webhook_config_for_app::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -70,10 +692,11 @@ impl GitHubAppsAPI {
   /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app](https://docs.github.com/rest/apps/webhooks#update-a-webhook-configuration-for-an-app)
   pub fn update_webhook_config_for_app(
     &self,
-  ) -> Request<AppsUpdateWebhookConfigForAppRequest, (), WebhookConfig> {
+  ) -> Request<update_webhook_config_for_app::Request, (), update_webhook_config_for_app::Response>
+  {
     let url = format!("/app/hook/config");
 
-    Request::<AppsUpdateWebhookConfigForAppRequest, (), WebhookConfig>::builder(&self.config)
+    Request::<update_webhook_config_for_app::Request, (), update_webhook_config_for_app::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -87,12 +710,14 @@ impl GitHubAppsAPI {
   /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook](https://docs.github.com/rest/apps/webhooks#list-deliveries-for-an-app-webhook)
   pub fn list_webhook_deliveries(
     &self,
-  ) -> Request<(), AppsListWebhookDeliveriesQuery, Vec<HookDeliveryItem>> {
+  ) -> Request<(), list_webhook_deliveries::Query, list_webhook_deliveries::Response> {
     let url = format!("/app/hook/deliveries");
 
-    Request::<(), AppsListWebhookDeliveriesQuery, Vec<HookDeliveryItem>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_webhook_deliveries::Query, list_webhook_deliveries::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get a delivery for an app webhook**
@@ -102,11 +727,14 @@ impl GitHubAppsAPI {
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook](https://docs.github.com/rest/apps/webhooks#get-a-delivery-for-an-app-webhook)
-  pub fn get_webhook_delivery(&self, delivery_id: impl Into<i64>) -> Request<(), (), HookDelivery> {
+  pub fn get_webhook_delivery(
+    &self,
+    delivery_id: impl Into<i64>,
+  ) -> Request<(), (), get_webhook_delivery::Response> {
     let delivery_id = delivery_id.into();
     let url = format!("/app/hook/deliveries/{delivery_id}");
 
-    Request::<(), (), HookDelivery>::builder(&self.config)
+    Request::<(), (), get_webhook_delivery::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -139,15 +767,15 @@ impl GitHubAppsAPI {
     &self,
   ) -> Request<
     (),
-    AppsListInstallationRequestsForAuthenticatedAppQuery,
-    Vec<IntegrationInstallationRequest>,
+    list_installation_requests_for_authenticated_app::Query,
+    list_installation_requests_for_authenticated_app::Response,
   > {
     let url = format!("/app/installation-requests");
 
     Request::<
       (),
-      AppsListInstallationRequestsForAuthenticatedAppQuery,
-      Vec<IntegrationInstallationRequest>,
+      list_installation_requests_for_authenticated_app::Query,
+      list_installation_requests_for_authenticated_app::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -160,10 +788,12 @@ impl GitHubAppsAPI {
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#list-installations-for-the-authenticated-app)
-  pub fn list_installations(&self) -> Request<(), AppsListInstallationsQuery, Vec<Installation>> {
+  pub fn list_installations(
+    &self,
+  ) -> Request<(), list_installations::Query, list_installations::Response> {
     let url = format!("/app/installations");
 
-    Request::<(), AppsListInstallationsQuery, Vec<Installation>>::builder(&self.config)
+    Request::<(), list_installations::Query, list_installations::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -175,11 +805,14 @@ impl GitHubAppsAPI {
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#get-an-installation-for-the-authenticated-app)
-  pub fn get_installation(&self, installation_id: impl Into<i64>) -> Request<(), (), Installation> {
+  pub fn get_installation(
+    &self,
+    installation_id: impl Into<i64>,
+  ) -> Request<(), (), get_installation::Response> {
     let installation_id = installation_id.into();
     let url = format!("/app/installations/{installation_id}");
 
-    Request::<(), (), Installation>::builder(&self.config)
+    Request::<(), (), get_installation::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -216,13 +849,19 @@ impl GitHubAppsAPI {
   pub fn create_installation_access_token(
     &self,
     installation_id: impl Into<i64>,
-  ) -> Request<AppsCreateInstallationAccessTokenRequest, (), InstallationToken> {
+  ) -> Request<
+    create_installation_access_token::Request,
+    (),
+    create_installation_access_token::Response,
+  > {
     let installation_id = installation_id.into();
     let url = format!("/app/installations/{installation_id}/access_tokens");
 
-    Request::<AppsCreateInstallationAccessTokenRequest, (), InstallationToken>::builder(
-      &self.config,
-    )
+    Request::<
+      create_installation_access_token::Request,
+      (),
+      create_installation_access_token::Response,
+    >::builder(&self.config)
     .post(url)
     .build()
   }
@@ -271,11 +910,11 @@ impl GitHubAppsAPI {
   pub fn delete_authorization(
     &self,
     client_id: impl Into<String>,
-  ) -> NoContentRequest<AppsDeleteAuthorizationRequest, ()> {
+  ) -> NoContentRequest<delete_authorization::Request, ()> {
     let client_id = client_id.into();
     let url = format!("/applications/{client_id}/grant");
 
-    NoContentRequest::<AppsDeleteAuthorizationRequest, ()>::builder(&self.config)
+    NoContentRequest::<delete_authorization::Request, ()>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -288,11 +927,11 @@ impl GitHubAppsAPI {
   pub fn check_token(
     &self,
     client_id: impl Into<String>,
-  ) -> Request<AppsCheckTokenRequest, (), Authorization> {
+  ) -> Request<check_token::Request, (), check_token::Response> {
     let client_id = client_id.into();
     let url = format!("/applications/{client_id}/token");
 
-    Request::<AppsCheckTokenRequest, (), Authorization>::builder(&self.config)
+    Request::<check_token::Request, (), check_token::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -305,11 +944,11 @@ impl GitHubAppsAPI {
   pub fn reset_token(
     &self,
     client_id: impl Into<String>,
-  ) -> Request<AppsResetTokenRequest, (), Authorization> {
+  ) -> Request<reset_token::Request, (), reset_token::Response> {
     let client_id = client_id.into();
     let url = format!("/applications/{client_id}/token");
 
-    Request::<AppsResetTokenRequest, (), Authorization>::builder(&self.config)
+    Request::<reset_token::Request, (), reset_token::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -322,11 +961,11 @@ impl GitHubAppsAPI {
   pub fn delete_token(
     &self,
     client_id: impl Into<String>,
-  ) -> NoContentRequest<AppsDeleteTokenRequest, ()> {
+  ) -> NoContentRequest<delete_token::Request, ()> {
     let client_id = client_id.into();
     let url = format!("/applications/{client_id}/token");
 
-    NoContentRequest::<AppsDeleteTokenRequest, ()>::builder(&self.config)
+    NoContentRequest::<delete_token::Request, ()>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -347,11 +986,11 @@ impl GitHubAppsAPI {
   pub fn scope_token(
     &self,
     client_id: impl Into<String>,
-  ) -> Request<AppsScopeTokenRequest, (), Authorization> {
+  ) -> Request<scope_token::Request, (), scope_token::Response> {
     let client_id = client_id.into();
     let url = format!("/applications/{client_id}/token/scoped");
 
-    Request::<AppsScopeTokenRequest, (), Authorization>::builder(&self.config)
+    Request::<scope_token::Request, (), scope_token::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -361,11 +1000,11 @@ impl GitHubAppsAPI {
   /// **Note**: The `:app_slug` is just the URL-friendly name of your GitHub App. You can find this on the settings page for your GitHub App (e.g., `https://github.com/settings/apps/:app_slug`).
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-an-app](https://docs.github.com/rest/apps/apps#get-an-app)
-  pub fn get_by_slug(&self, app_slug: impl Into<String>) -> Request<(), (), Integration> {
+  pub fn get_by_slug(&self, app_slug: impl Into<String>) -> Request<(), (), get_by_slug::Response> {
     let app_slug = app_slug.into();
     let url = format!("/apps/{app_slug}");
 
-    Request::<(), (), Integration>::builder(&self.config)
+    Request::<(), (), get_by_slug::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -379,15 +1018,15 @@ impl GitHubAppsAPI {
     &self,
   ) -> Request<
     (),
-    AppsListReposAccessibleToInstallationQuery,
-    AppsListReposAccessibleToInstallationResponse,
+    list_repos_accessible_to_installation::Query,
+    list_repos_accessible_to_installation::Response,
   > {
     let url = format!("/installation/repositories");
 
     Request::<
       (),
-      AppsListReposAccessibleToInstallationQuery,
-      AppsListReposAccessibleToInstallationResponse,
+      list_repos_accessible_to_installation::Query,
+      list_repos_accessible_to_installation::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -418,11 +1057,11 @@ impl GitHubAppsAPI {
   pub fn get_subscription_plan_for_account(
     &self,
     account_id: impl Into<i64>,
-  ) -> Request<(), (), MarketplacePurchase> {
+  ) -> Request<(), (), get_subscription_plan_for_account::Response> {
     let account_id = account_id.into();
     let url = format!("/marketplace_listing/accounts/{account_id}");
 
-    Request::<(), (), MarketplacePurchase>::builder(&self.config)
+    Request::<(), (), get_subscription_plan_for_account::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -434,10 +1073,10 @@ impl GitHubAppsAPI {
   /// GitHub Apps must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint. OAuth apps must use [basic authentication](https://docs.github.com/rest/overview/other-authentication-methods#basic-authentication) with their client ID and client secret to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-plans](https://docs.github.com/rest/apps/marketplace#list-plans)
-  pub fn list_plans(&self) -> Request<(), AppsListPlansQuery, Vec<MarketplaceListingPlan>> {
+  pub fn list_plans(&self) -> Request<(), list_plans::Query, list_plans::Response> {
     let url = format!("/marketplace_listing/plans");
 
-    Request::<(), AppsListPlansQuery, Vec<MarketplaceListingPlan>>::builder(&self.config)
+    Request::<(), list_plans::Query, list_plans::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -452,13 +1091,15 @@ impl GitHubAppsAPI {
   pub fn list_accounts_for_plan(
     &self,
     plan_id: impl Into<i64>,
-  ) -> Request<(), AppsListAccountsForPlanQuery, Vec<MarketplacePurchase>> {
+  ) -> Request<(), list_accounts_for_plan::Query, list_accounts_for_plan::Response> {
     let plan_id = plan_id.into();
     let url = format!("/marketplace_listing/plans/{plan_id}/accounts");
 
-    Request::<(), AppsListAccountsForPlanQuery, Vec<MarketplacePurchase>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_accounts_for_plan::Query, list_accounts_for_plan::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get a subscription plan for an account (stubbed)**
@@ -471,11 +1112,11 @@ impl GitHubAppsAPI {
   pub fn get_subscription_plan_for_account_stubbed(
     &self,
     account_id: impl Into<i64>,
-  ) -> Request<(), (), MarketplacePurchase> {
+  ) -> Request<(), (), get_subscription_plan_for_account_stubbed::Response> {
     let account_id = account_id.into();
     let url = format!("/marketplace_listing/stubbed/accounts/{account_id}");
 
-    Request::<(), (), MarketplacePurchase>::builder(&self.config)
+    Request::<(), (), get_subscription_plan_for_account_stubbed::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -489,10 +1130,10 @@ impl GitHubAppsAPI {
   /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-plans-stubbed](https://docs.github.com/rest/apps/marketplace#list-plans-stubbed)
   pub fn list_plans_stubbed(
     &self,
-  ) -> Request<(), AppsListPlansStubbedQuery, Vec<MarketplaceListingPlan>> {
+  ) -> Request<(), list_plans_stubbed::Query, list_plans_stubbed::Response> {
     let url = format!("/marketplace_listing/stubbed/plans");
 
-    Request::<(), AppsListPlansStubbedQuery, Vec<MarketplaceListingPlan>>::builder(&self.config)
+    Request::<(), list_plans_stubbed::Query, list_plans_stubbed::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -507,15 +1148,14 @@ impl GitHubAppsAPI {
   pub fn list_accounts_for_plan_stubbed(
     &self,
     plan_id: impl Into<i64>,
-  ) -> Request<(), AppsListAccountsForPlanStubbedQuery, Vec<MarketplacePurchase>> {
+  ) -> Request<(), list_accounts_for_plan_stubbed::Query, list_accounts_for_plan_stubbed::Response>
+  {
     let plan_id = plan_id.into();
     let url = format!("/marketplace_listing/stubbed/plans/{plan_id}/accounts");
 
-    Request::<(), AppsListAccountsForPlanStubbedQuery, Vec<MarketplacePurchase>>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_accounts_for_plan_stubbed::Query, list_accounts_for_plan_stubbed::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get an organization installation for the authenticated app**
@@ -525,11 +1165,14 @@ impl GitHubAppsAPI {
   /// You must use a [JWT](https://docs.github.com/apps/building-github-apps/authenticating-with-github-apps/#authenticating-as-a-github-app) to access this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app](https://docs.github.com/rest/apps/apps#get-an-organization-installation-for-the-authenticated-app)
-  pub fn get_org_installation(&self, org: impl Into<String>) -> Request<(), (), Installation> {
+  pub fn get_org_installation(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), (), get_org_installation::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/installation");
 
-    Request::<(), (), Installation>::builder(&self.config)
+    Request::<(), (), get_org_installation::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -545,12 +1188,12 @@ impl GitHubAppsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Installation> {
+  ) -> Request<(), (), get_repo_installation::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/installation");
 
-    Request::<(), (), Installation>::builder(&self.config)
+    Request::<(), (), get_repo_installation::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -568,15 +1211,15 @@ impl GitHubAppsAPI {
     &self,
   ) -> Request<
     (),
-    AppsListInstallationsForAuthenticatedUserQuery,
-    AppsListInstallationsForAuthenticatedUserResponse,
+    list_installations_for_authenticated_user::Query,
+    list_installations_for_authenticated_user::Response,
   > {
     let url = format!("/user/installations");
 
     Request::<
       (),
-      AppsListInstallationsForAuthenticatedUserQuery,
-      AppsListInstallationsForAuthenticatedUserResponse,
+      list_installations_for_authenticated_user::Query,
+      list_installations_for_authenticated_user::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -596,16 +1239,16 @@ impl GitHubAppsAPI {
     installation_id: impl Into<i64>,
   ) -> Request<
     (),
-    AppsListInstallationReposForAuthenticatedUserQuery,
-    AppsListInstallationReposForAuthenticatedUserResponse,
+    list_installation_repos_for_authenticated_user::Query,
+    list_installation_repos_for_authenticated_user::Response,
   > {
     let installation_id = installation_id.into();
     let url = format!("/user/installations/{installation_id}/repositories");
 
     Request::<
       (),
-      AppsListInstallationReposForAuthenticatedUserQuery,
-      AppsListInstallationReposForAuthenticatedUserResponse,
+      list_installation_repos_for_authenticated_user::Query,
+      list_installation_repos_for_authenticated_user::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -656,12 +1299,20 @@ impl GitHubAppsAPI {
   /// *Documentation*: [https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user](https://docs.github.com/rest/apps/marketplace#list-subscriptions-for-the-authenticated-user)
   pub fn list_subscriptions_for_authenticated_user(
     &self,
-  ) -> Request<(), AppsListSubscriptionsForAuthenticatedUserQuery, Vec<UserMarketplacePurchase>> {
+  ) -> Request<
+    (),
+    list_subscriptions_for_authenticated_user::Query,
+    list_subscriptions_for_authenticated_user::Response,
+  > {
     let url = format!("/user/marketplace_purchases");
 
-    Request::<(), AppsListSubscriptionsForAuthenticatedUserQuery, Vec<UserMarketplacePurchase>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      list_subscriptions_for_authenticated_user::Query,
+      list_subscriptions_for_authenticated_user::Response,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **List subscriptions for the authenticated user (stubbed)**
@@ -673,14 +1324,18 @@ impl GitHubAppsAPI {
     &self,
   ) -> Request<
     (),
-    AppsListSubscriptionsForAuthenticatedUserStubbedQuery,
-    Vec<UserMarketplacePurchase>,
+    list_subscriptions_for_authenticated_user_stubbed::Query,
+    list_subscriptions_for_authenticated_user_stubbed::Response,
   > {
     let url = format!("/user/marketplace_purchases/stubbed");
 
-    Request::<(), AppsListSubscriptionsForAuthenticatedUserStubbedQuery, Vec<UserMarketplacePurchase>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      list_subscriptions_for_authenticated_user_stubbed::Query,
+      list_subscriptions_for_authenticated_user_stubbed::Response,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **Get a user installation for the authenticated app**
@@ -693,11 +1348,11 @@ impl GitHubAppsAPI {
   pub fn get_user_installation(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), (), Installation> {
+  ) -> Request<(), (), get_user_installation::Response> {
     let username = username.into();
     let url = format!("/users/{username}/installation");
 
-    Request::<(), (), Installation>::builder(&self.config)
+    Request::<(), (), get_user_installation::Response>::builder(&self.config)
       .get(url)
       .build()
   }

@@ -1,4 +1,4 @@
-use octocrate::{APIConfig, GitHubAPI, PersonalAccessToken, SearchIssuesAndPullRequestsQuery};
+use octocrate::{search, APIConfig, GitHubAPI, PersonalAccessToken};
 
 #[tokio::test]
 async fn test_search_pull_requests() {
@@ -17,7 +17,7 @@ async fn test_search_pull_requests() {
     .search
     .issues_and_pull_requests()
     .query(
-      &SearchIssuesAndPullRequestsQuery::builder()
+      &search::issues_and_pull_requests::Query::builder()
         .q("repo:facebook/react is:pr is:open")
         .build(),
     )

@@ -1,6 +1,498 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Migration>;
+
+  /// Allowed values that can be passed to the exclude param.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryExclude {
+    #[serde(rename = "repositories")]
+    Repositories,
+  }
+
+  impl ToString for QueryExclude {
+    fn to_string(&self) -> String {
+      match self {
+        QueryExclude::Repositories => "repositories".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// Exclude attributes from the API response to improve performance
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude: Option<Vec<QueryExclude>>,
+  }
+}
+
+pub mod start_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Migration;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestExclude {
+    #[serde(rename = "repositories")]
+    Repositories,
+  }
+
+  impl ToString for RequestExclude {
+    fn to_string(&self) -> String {
+      match self {
+        RequestExclude::Repositories => "repositories".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Exclude related items from being returned in the response in order to improve performance of the request.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude: Option<Vec<RequestExclude>>,
+    /// Indicates whether attachments should be excluded from the migration (to reduce migration archive file size).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_attachments: Option<bool>,
+    /// Indicates whether the repository git data should be excluded from the migration.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_git_data: Option<bool>,
+    /// Indicates whether metadata should be excluded and only git source should be included for the migration.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_metadata: Option<bool>,
+    /// Indicates whether projects owned by the organization or users should be excluded. from the migration.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_owner_projects: Option<bool>,
+    /// Indicates whether releases should be excluded from the migration (to reduce migration archive file size).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_releases: Option<bool>,
+    /// Indicates whether repositories should be locked (to prevent manipulation) while migrating data.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub lock_repositories: Option<bool>,
+    /// Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub org_metadata_only: Option<bool>,
+    /// A list of arrays indicating which repositories should be migrated.
+    pub repositories: Vec<String>,
+  }
+}
+
+pub mod get_status_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Migration;
+
+  /// Allowed values that can be passed to the exclude param.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryExclude {
+    #[serde(rename = "repositories")]
+    Repositories,
+  }
+
+  impl ToString for QueryExclude {
+    fn to_string(&self) -> String {
+      match self {
+        QueryExclude::Repositories => "repositories".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Exclude attributes from the API response to improve performance
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude: Option<Vec<QueryExclude>>,
+  }
+}
+
+pub mod download_archive_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod delete_archive_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod unlock_repo_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_repos_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_import_status {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Import;
+}
+
+pub mod start_import {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Import;
+
+  /// The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestVcs {
+    #[serde(rename = "subversion")]
+    Subversion,
+    #[serde(rename = "git")]
+    Git,
+    #[serde(rename = "mercurial")]
+    Mercurial,
+    #[serde(rename = "tfvc")]
+    Tfvc,
+  }
+
+  impl ToString for RequestVcs {
+    fn to_string(&self) -> String {
+      match self {
+        RequestVcs::Subversion => "subversion".to_string(),
+        RequestVcs::Git => "git".to_string(),
+        RequestVcs::Mercurial => "mercurial".to_string(),
+        RequestVcs::Tfvc => "tfvc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// For a tfvc import, the name of the project that is being imported.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub tfvc_project: Option<String>,
+    /// The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub vcs: Option<RequestVcs>,
+    /// If authentication is required, the password to provide to `vcs_url`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub vcs_password: Option<String>,
+    /// The URL of the originating repository.
+    pub vcs_url: String,
+    /// If authentication is required, the username to provide to `vcs_url`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub vcs_username: Option<String>,
+  }
+}
+
+pub mod update_import {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Import;
+
+  /// The type of version control system you are migrating from.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestVcs {
+    #[serde(rename = "subversion")]
+    Subversion,
+    #[serde(rename = "tfvc")]
+    Tfvc,
+    #[serde(rename = "git")]
+    Git,
+    #[serde(rename = "mercurial")]
+    Mercurial,
+  }
+
+  impl ToString for RequestVcs {
+    fn to_string(&self) -> String {
+      match self {
+        RequestVcs::Subversion => "subversion".to_string(),
+        RequestVcs::Tfvc => "tfvc".to_string(),
+        RequestVcs::Git => "git".to_string(),
+        RequestVcs::Mercurial => "mercurial".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// For a tfvc import, the name of the project that is being imported.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub tfvc_project: Option<String>,
+    /// The type of version control system you are migrating from.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub vcs: Option<RequestVcs>,
+    /// The password to provide to the originating repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub vcs_password: Option<String>,
+    /// The username to provide to the originating repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub vcs_username: Option<String>,
+  }
+}
+
+pub mod cancel_import {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_commit_authors {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<PorterAuthor>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// A user ID. Only return users with an ID greater than this ID.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<i64>,
+  }
+}
+
+pub mod map_commit_author {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = PorterAuthor;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The new Git author email.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub email: Option<String>,
+    /// The new Git author name.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+  }
+}
+
+pub mod get_large_files {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<PorterLargeFile>;
+}
+
+pub mod set_lfs_preference {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Import;
+
+  /// Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestUseLfs {
+    #[serde(rename = "opt_in")]
+    OptIn,
+    #[serde(rename = "opt_out")]
+    OptOut,
+  }
+
+  impl ToString for RequestUseLfs {
+    fn to_string(&self) -> String {
+      match self {
+        RequestUseLfs::OptIn => "opt_in".to_string(),
+        RequestUseLfs::OptOut => "opt_out".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import.
+    pub use_lfs: RequestUseLfs,
+  }
+}
+
+pub mod list_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Migration>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod start_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Migration;
+
+  /// Allowed values that can be passed to the exclude param.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestExclude {
+    #[serde(rename = "repositories")]
+    Repositories,
+  }
+
+  impl ToString for RequestExclude {
+    fn to_string(&self) -> String {
+      match self {
+        RequestExclude::Repositories => "repositories".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Exclude attributes from the API response to improve performance
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude: Option<Vec<RequestExclude>>,
+    /// Do not include attachments in the migration
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_attachments: Option<bool>,
+    /// Indicates whether the repository git data should be excluded from the migration.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_git_data: Option<bool>,
+    /// Indicates whether metadata should be excluded and only git source should be included for the migration.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_metadata: Option<bool>,
+    /// Indicates whether projects owned by the organization or users should be excluded.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_owner_projects: Option<bool>,
+    /// Do not include releases in the migration
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude_releases: Option<bool>,
+    /// Lock the repositories being migrated at the start of the migration
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub lock_repositories: Option<bool>,
+    /// Indicates whether this should only include organization metadata (repositories array should be empty and will ignore other flags).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub org_metadata_only: Option<bool>,
+    pub repositories: Vec<String>,
+  }
+}
+
+pub mod get_status_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Migration;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub exclude: Option<Vec<String>>,
+  }
+}
+
+pub mod get_archive_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod delete_archive_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod unlock_repo_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_repos_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
 
 /// Move projects to or from GitHub.
 pub struct GitHubMigrationsAPI {
@@ -24,11 +516,11 @@ impl GitHubMigrationsAPI {
   pub fn list_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), MigrationsListForOrgQuery, Vec<Migration>> {
+  ) -> Request<(), list_for_org::Query, list_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/migrations");
 
-    Request::<(), MigrationsListForOrgQuery, Vec<Migration>>::builder(&self.config)
+    Request::<(), list_for_org::Query, list_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -41,11 +533,11 @@ impl GitHubMigrationsAPI {
   pub fn start_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<MigrationsStartForOrgRequest, (), Migration> {
+  ) -> Request<start_for_org::Request, (), start_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/migrations");
 
-    Request::<MigrationsStartForOrgRequest, (), Migration>::builder(&self.config)
+    Request::<start_for_org::Request, (), start_for_org::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -66,12 +558,12 @@ impl GitHubMigrationsAPI {
     &self,
     org: impl Into<String>,
     migration_id: impl Into<i64>,
-  ) -> Request<(), MigrationsGetStatusForOrgQuery, Migration> {
+  ) -> Request<(), get_status_for_org::Query, get_status_for_org::Response> {
     let org = org.into();
     let migration_id = migration_id.into();
     let url = format!("/orgs/{org}/migrations/{migration_id}");
 
-    Request::<(), MigrationsGetStatusForOrgQuery, Migration>::builder(&self.config)
+    Request::<(), get_status_for_org::Query, get_status_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -144,12 +636,12 @@ impl GitHubMigrationsAPI {
     &self,
     org: impl Into<String>,
     migration_id: impl Into<i64>,
-  ) -> Request<(), MigrationsListReposForOrgQuery, Vec<MinimalRepository>> {
+  ) -> Request<(), list_repos_for_org::Query, list_repos_for_org::Response> {
     let org = org.into();
     let migration_id = migration_id.into();
     let url = format!("/orgs/{org}/migrations/{migration_id}/repositories");
 
-    Request::<(), MigrationsListReposForOrgQuery, Vec<MinimalRepository>>::builder(&self.config)
+    Request::<(), list_repos_for_org::Query, list_repos_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -198,12 +690,12 @@ impl GitHubMigrationsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Import> {
+  ) -> Request<(), (), get_import_status::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/import");
 
-    Request::<(), (), Import>::builder(&self.config)
+    Request::<(), (), get_import_status::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -222,12 +714,12 @@ impl GitHubMigrationsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<MigrationsStartImportRequest, (), Import> {
+  ) -> Request<start_import::Request, (), start_import::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/import");
 
-    Request::<MigrationsStartImportRequest, (), Import>::builder(&self.config)
+    Request::<start_import::Request, (), start_import::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -248,12 +740,12 @@ impl GitHubMigrationsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<MigrationsUpdateImportRequest, (), Import> {
+  ) -> Request<update_import::Request, (), update_import::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/import");
 
-    Request::<MigrationsUpdateImportRequest, (), Import>::builder(&self.config)
+    Request::<update_import::Request, (), update_import::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -293,12 +785,12 @@ impl GitHubMigrationsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), MigrationsGetCommitAuthorsQuery, Vec<PorterAuthor>> {
+  ) -> Request<(), get_commit_authors::Query, get_commit_authors::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/import/authors");
 
-    Request::<(), MigrationsGetCommitAuthorsQuery, Vec<PorterAuthor>>::builder(&self.config)
+    Request::<(), get_commit_authors::Query, get_commit_authors::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -317,13 +809,13 @@ impl GitHubMigrationsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     author_id: impl Into<i64>,
-  ) -> Request<MigrationsMapCommitAuthorRequest, (), PorterAuthor> {
+  ) -> Request<map_commit_author::Request, (), map_commit_author::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let author_id = author_id.into();
     let url = format!("/repos/{owner}/{repo}/import/authors/{author_id}");
 
-    Request::<MigrationsMapCommitAuthorRequest, (), PorterAuthor>::builder(&self.config)
+    Request::<map_commit_author::Request, (), map_commit_author::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -340,12 +832,12 @@ impl GitHubMigrationsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<PorterLargeFile>> {
+  ) -> Request<(), (), get_large_files::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/import/large_files");
 
-    Request::<(), (), Vec<PorterLargeFile>>::builder(&self.config)
+    Request::<(), (), get_large_files::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -366,12 +858,12 @@ impl GitHubMigrationsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<MigrationsSetLfsPreferenceRequest, (), Import> {
+  ) -> Request<set_lfs_preference::Request, (), set_lfs_preference::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/import/lfs");
 
-    Request::<MigrationsSetLfsPreferenceRequest, (), Import>::builder(&self.config)
+    Request::<set_lfs_preference::Request, (), set_lfs_preference::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -383,10 +875,10 @@ impl GitHubMigrationsAPI {
   /// *Documentation*: [https://docs.github.com/rest/migrations/users#list-user-migrations](https://docs.github.com/rest/migrations/users#list-user-migrations)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<(), MigrationsListForAuthenticatedUserQuery, Vec<Migration>> {
+  ) -> Request<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response> {
     let url = format!("/user/migrations");
 
-    Request::<(), MigrationsListForAuthenticatedUserQuery, Vec<Migration>>::builder(&self.config)
+    Request::<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -398,10 +890,11 @@ impl GitHubMigrationsAPI {
   /// *Documentation*: [https://docs.github.com/rest/migrations/users#start-a-user-migration](https://docs.github.com/rest/migrations/users#start-a-user-migration)
   pub fn start_for_authenticated_user(
     &self,
-  ) -> Request<MigrationsStartForAuthenticatedUserRequest, (), Migration> {
+  ) -> Request<start_for_authenticated_user::Request, (), start_for_authenticated_user::Response>
+  {
     let url = format!("/user/migrations");
 
-    Request::<MigrationsStartForAuthenticatedUserRequest, (), Migration>::builder(&self.config)
+    Request::<start_for_authenticated_user::Request, (), start_for_authenticated_user::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -421,13 +914,21 @@ impl GitHubMigrationsAPI {
   pub fn get_status_for_authenticated_user(
     &self,
     migration_id: impl Into<i64>,
-  ) -> Request<(), MigrationsGetStatusForAuthenticatedUserQuery, Migration> {
+  ) -> Request<
+    (),
+    get_status_for_authenticated_user::Query,
+    get_status_for_authenticated_user::Response,
+  > {
     let migration_id = migration_id.into();
     let url = format!("/user/migrations/{migration_id}");
 
-    Request::<(), MigrationsGetStatusForAuthenticatedUserQuery, Migration>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      get_status_for_authenticated_user::Query,
+      get_status_for_authenticated_user::Response,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **Download a user migration archive**
@@ -511,13 +1012,19 @@ impl GitHubMigrationsAPI {
   pub fn list_repos_for_authenticated_user(
     &self,
     migration_id: impl Into<i64>,
-  ) -> Request<(), MigrationsListReposForAuthenticatedUserQuery, Vec<MinimalRepository>> {
+  ) -> Request<
+    (),
+    list_repos_for_authenticated_user::Query,
+    list_repos_for_authenticated_user::Response,
+  > {
     let migration_id = migration_id.into();
     let url = format!("/user/migrations/{migration_id}/repositories");
 
-    Request::<(), MigrationsListReposForAuthenticatedUserQuery, Vec<MinimalRepository>>::builder(
-      &self.config,
-    )
+    Request::<
+      (),
+      list_repos_for_authenticated_user::Query,
+      list_repos_for_authenticated_user::Response,
+    >::builder(&self.config)
     .get(url)
     .build()
   }

@@ -1,5 +1,6 @@
 use handlebars::{handlebars_helper, no_escape, Handlebars};
 use serde::Serialize;
+use std::env;
 
 pub fn render_template<T>(template: &str, data: &T) -> String
 where
@@ -8,6 +9,17 @@ where
   let mut handlebars = Handlebars::new();
 
   handlebars.register_escape_fn(no_escape);
+
+  let mut current_dir = env::current_dir().unwrap();
+  if !current_dir.ends_with("codegen") {
+    current_dir.push("codegen");
+  }
+
+  let template_dir = current_dir.join("templates");
+
+  handlebars
+    .register_template_file("types", template_dir.join("types.hbs"))
+    .expect("Failed to register template file");
 
   handlebars_helper!(split_lines: |input: str| {
     input.split('\n').map(|line| {
@@ -43,6 +55,7 @@ where
 #[cfg(test)]
 mod tests {
   use super::*;
+  use crate::{structures::types::Type, writer::References};
 
   #[test]
   fn test_render_template() {
@@ -88,6 +101,47 @@ mod tests {
     assert_eq!(
       rendered.trim(),
       "#[cfg(any(feature = \"feature1\", feature = \"feature2\"))]"
+    );
+  }
+
+  #[test]
+  fn test_render_template_types() {
+    let template = r#"{{> types}}"#;
+
+    let mut type_ = Type::new("i16");
+    type_.set_alias("Short");
+
+    let data = References {
+      render_features: false,
+      enums: vec![],
+      structs: vec![],
+      types: vec![type_],
+    };
+
+    let rendered = render_template(template, &data);
+
+    assert_eq!(rendered.trim(), "pub type Short = i16;".trim(),);
+  }
+
+  #[test]
+  fn test_render_template_types_with_features() {
+    let template = r#"{{> types}}"#;
+
+    let mut type_ = Type::new("i16");
+    type_.set_alias("Short");
+
+    let data = References {
+      render_features: true,
+      enums: vec![],
+      structs: vec![],
+      types: vec![type_],
+    };
+
+    let rendered = render_template(template, &data);
+
+    assert_eq!(
+      rendered.trim(),
+      "#[cfg(feature = \"full\")]\npub type Short = i16;".trim(),
     );
   }
 }

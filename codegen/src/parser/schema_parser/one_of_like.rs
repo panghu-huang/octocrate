@@ -234,7 +234,7 @@ impl SchemaParser {
           }
         }
 
-        ctx.add_reference(&enum_.name, ParsedData::Enum(enum_.clone()));
+        self.add_reference(ctx, &enum_.name, ParsedData::Enum(enum_.clone()));
 
         if is_optional {
           let type_name = schema_types.to_full_type_with_object(&enum_.name);
