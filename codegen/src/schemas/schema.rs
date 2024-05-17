@@ -58,10 +58,7 @@ pub struct Schema {
 
 impl SchemaDefinition {
   pub fn is_ref(&self) -> bool {
-    match self {
-      SchemaDefinition::Ref(_) => true,
-      _ => false,
-    }
+    matches!(self, SchemaDefinition::Ref(_))
   }
 }
 

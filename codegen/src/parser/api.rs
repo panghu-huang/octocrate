@@ -78,10 +78,10 @@ impl API {
     let parameters =
       ParametersParser::new(path_parameters).parse(ctx, "Parameters", "".to_string());
 
-    let query =
-      ParametersParser::new(query).parse(ctx, "Query", format!("Query for `{}`", schema.summary));
+    let query = ParametersParser::new(query).parse(ctx, "Query", "".to_string());
 
     if let Some(query) = &query {
+      // Query can only be a type unique to the API, so there is no need to check if it is a global type here
       ctx.add_scoped_reference(&query.name, ParsedData::Struct(query.clone()));
     }
 
@@ -103,6 +103,8 @@ impl API {
     });
 
     if let Some(body) = &body {
+      // If body is not Request or Option<Request>
+      // it means that this Request is a global type, and an alias needs to be created for this global type
       if body.name() != "Request" && body.name() != "Option<Request>" {
         let mut type_ = Type::new(&body.name());
         type_.set_alias("Request");
@@ -114,6 +116,8 @@ impl API {
     let response = Self::parse_responses(ctx, &mut schema_parser, schema.responses.clone());
 
     if let Some(response) = &response {
+      // If response is not Response
+      // it means that this Response is a global type, and an alias needs to be created for this global type
       if response.name() != "Response" {
         let mut type_ = Type::new(&response.name());
         type_.set_alias("Response");
@@ -160,12 +164,6 @@ impl API {
       let response = available_responses[0].1.as_ref().unwrap();
       let parsed = schema_parser.parse(ctx, "Response", response);
 
-      if !response.is_ref() && parsed.name() == "Hook" {
-        println!("{:?}", parsed);
-        println!("{:?}", response.is_ref());
-        panic!("Hook");
-      }
-
       if response.is_ref() {
         ctx.add_reference(&parsed.name(), parsed.clone());
       } else {
@@ -193,12 +191,6 @@ impl API {
           }
           field.set_type_name(&struct_.name);
           field.reference(&struct_.name);
-
-          if struct_.name == "Hook" {
-            println!("{:?}", struct_);
-            println!("{:?}", is_scoped);
-            panic!("Hook");
-          }
 
           if is_scoped {
             ctx.add_scoped_reference(&struct_.name, parsed.clone());

@@ -13,7 +13,17 @@ use crate::{
 use schema_types::SchemaTypes;
 
 pub struct SchemaParser {
+  // Use prefixs to record the path of the current schema, used to generate the name of the schema without a title
+  // ```rust
+  // struct A {
+  //   // The name here is generated through prefixs, a_b -> A_B -> AB
+  //   b: AB,
+  // }
+  //
+  // struct AB {}
+  // ```
   prefixs: Vec<String>,
+  // Use is_scoped to mark whether the current schema is a type unique to an API (non-global)
   is_scoped: bool,
 }
 
@@ -21,6 +31,7 @@ impl SchemaParser {
   pub fn new() -> Self {
     Self {
       prefixs: vec![],
+      // Default is_scoped to true
       is_scoped: true,
     }
   }
@@ -48,12 +59,9 @@ impl SchemaParser {
     let last_is_scoped = self.is_scoped;
 
     match schema {
-      SchemaDefinition::Schema(schema) => {
-        let parsed = self.parse_schema(ctx, schema);
-
-        parsed
-      }
+      SchemaDefinition::Schema(schema) => self.parse_schema(ctx, schema),
       SchemaDefinition::Ref(reference) => {
+        // If the reference is a global reference, set is_scoped to false
         self.is_scoped = false;
         let reference_id = reference.get_reference_id();
 
@@ -125,10 +133,6 @@ impl SchemaParser {
 
   fn add_reference(&self, ctx: &mut ParseContext, name: &str, reference: ParsedData) {
     if self.is_scoped {
-      if name == "Hook" {
-        println!("Hook {:#?}", reference);
-        panic!("Hook")
-      }
       ctx.add_scoped_reference(name, reference);
     } else {
       ctx.add_reference(name, reference);

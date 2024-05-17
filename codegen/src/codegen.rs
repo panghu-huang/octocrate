@@ -73,8 +73,6 @@ impl Codegen {
     let mut writer = Writer::new(path);
 
     // APIs
-    println!("Writing apis to file system");
-
     let mut directory = Directory::new("apis");
 
     let mut api_entry_module = APIEntryModule::new();
@@ -89,6 +87,7 @@ impl Codegen {
 
         let body_type = api
           .body
+          // We don't need to return the real type name, we just need to return the Request under the API module
           .map(|_| format!("{}::Request", api_name))
           .unwrap_or("()".to_string());
 
@@ -112,10 +111,13 @@ impl Codegen {
             };
 
             if let Some(rename) = &field.rename {
+              // If there is a rename, it means this parameter has been renamed
+              // e.g. /api/{ref} -> /api/{ref_}
               url = url.replace(&format!("{{{}}}", rename), &format!("{{{}}}", field.name));
             }
 
             if field.reference.is_some() {
+              // If this field has a reference, it means it is not a basic type and needs to be serialized
               stringify_params.push(field.name.clone());
             }
 
@@ -145,8 +147,10 @@ impl Codegen {
           body_type,
           query_type: api
             .query
+            // We don't need to return the real type name, we just need to return the Query under the corresponding API name module
             .map(|_| format!("{}::Query", api_name))
             .unwrap_or("()".to_string()),
+          // Same as query_type
           response_type: api.response.map(|_| format!("{}::Response", api_name)),
           references,
         };
@@ -163,8 +167,6 @@ impl Codegen {
     writer.add_file(directory);
 
     writer.write();
-
-    println!("Finished writing");
   }
 
   pub fn write_types(&self, parsed: ParsedAPIDescription, path: &Path) {
