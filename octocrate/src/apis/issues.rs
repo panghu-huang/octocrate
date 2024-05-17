@@ -98,7 +98,6 @@ pub mod list {
     }
   }
 
-  /// Query for `List issues assigned to the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -241,7 +240,6 @@ pub mod list_for_org {
     }
   }
 
-  /// Query for `List organization issues assigned to the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -286,7 +284,6 @@ pub mod list_assignees {
 
   pub type Response = Vec<SimpleUser>;
 
-  /// Query for `List assignees`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -369,7 +366,6 @@ pub mod list_for_repo {
     }
   }
 
-  /// Query for `List repository issues`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -510,7 +506,6 @@ pub mod list_comments_for_repo {
     }
   }
 
-  /// Query for `List issue comments for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -569,7 +564,6 @@ pub mod list_events_for_repo {
 
   pub type Response = Vec<IssueEvent>;
 
-  /// Query for `List issue events for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -740,7 +734,6 @@ pub mod list_comments {
 
   pub type Response = Vec<IssueComment>;
 
-  /// Query for `List issue comments`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -779,7 +772,6 @@ pub mod list_events {
 
   pub type Response = Vec<IssueEventForIssue>;
 
-  /// Query for `List issue events`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -800,7 +792,6 @@ pub mod list_labels_on_issue {
 
   pub type Response = Vec<Label>;
 
-  /// Query for `List labels for an issue`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -976,7 +967,6 @@ pub mod list_events_for_timeline {
 
   pub type Response = Vec<TimelineIssueEvents>;
 
-  /// Query for `List timeline events for an issue`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -997,7 +987,6 @@ pub mod list_labels_for_repo {
 
   pub type Response = Vec<Label>;
 
-  /// Query for `List labels for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1130,7 +1119,6 @@ pub mod list_milestones {
     }
   }
 
-  /// Query for `List milestones`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1265,7 +1253,6 @@ pub mod list_labels_for_milestone {
 
   pub type Response = Vec<Label>;
 
-  /// Query for `List labels for issues in a milestone`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1372,7 +1359,6 @@ pub mod list_for_authenticated_user {
     }
   }
 
-  /// Query for `List user account issues assigned to the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

@@ -27,7 +27,6 @@ pub mod list_for_org {
     }
   }
 
-  /// Query for `List organization migrations`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -127,7 +126,6 @@ pub mod get_status_for_org {
     }
   }
 
-  /// Query for `Get an organization migration status`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -159,7 +157,6 @@ pub mod list_repos_for_org {
 
   pub type Response = Vec<MinimalRepository>;
 
-  /// Query for `List repositories in an organization migration`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -298,7 +295,6 @@ pub mod get_commit_authors {
 
   pub type Response = Vec<PorterAuthor>;
 
-  /// Query for `Get commit authors`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -374,7 +370,6 @@ pub mod list_for_authenticated_user {
 
   pub type Response = Vec<Migration>;
 
-  /// Query for `List user migrations`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -455,7 +450,6 @@ pub mod get_status_for_authenticated_user {
 
   pub type Response = Migration;
 
-  /// Query for `Get a user migration status`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -486,7 +480,6 @@ pub mod list_repos_for_authenticated_user {
 
   pub type Response = Vec<MinimalRepository>;
 
-  /// Query for `List repositories for a user migration`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

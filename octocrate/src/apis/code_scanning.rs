@@ -46,7 +46,6 @@ pub mod list_alerts_for_org {
     }
   }
 
-  /// Query for `List code scanning alerts for an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -133,7 +132,6 @@ pub mod list_alerts_for_repo {
     }
   }
 
-  /// Query for `List code scanning alerts for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -209,7 +207,6 @@ pub mod list_alert_instances {
 
   pub type Response = Vec<CodeScanningAlertInstance>;
 
-  /// Query for `List instances of a code scanning alert`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -266,7 +263,6 @@ pub mod list_recent_analyses {
     }
   }
 
-  /// Query for `List code scanning analyses for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -319,7 +315,6 @@ pub mod delete_analysis {
 
   pub type Response = CodeScanningAnalysisDeletion;
 
-  /// Query for `Delete a code scanning analysis from a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

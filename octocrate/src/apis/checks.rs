@@ -139,7 +139,6 @@ pub mod list_annotations {
 
   pub type Response = Vec<CheckAnnotation>;
 
-  /// Query for `List check run annotations`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -248,7 +247,6 @@ pub mod list_for_suite {
     }
   }
 
-  /// Query for `List check runs in a check suite`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -330,7 +328,6 @@ pub mod list_for_ref {
     }
   }
 
-  /// Query for `List check runs for a Git reference`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -371,7 +368,6 @@ pub mod list_suites_for_ref {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List check suites for a Git reference`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

@@ -10,7 +10,6 @@ pub mod list_in_organization {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List codespaces for the organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -102,7 +101,6 @@ pub mod list_org_secrets {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List organization secrets`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -194,7 +192,6 @@ pub mod list_selected_repos_for_org_secret {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List selected repositories for an organization secret`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -242,7 +239,6 @@ pub mod get_codespaces_for_user_in_org {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List codespaces for a user in organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -280,7 +276,6 @@ pub mod list_in_repository_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List codespaces in a repository for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -383,7 +378,6 @@ pub mod list_devcontainers_in_repository_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List devcontainer configurations in a repository for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -421,7 +415,6 @@ pub mod repo_machines_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List available machine types for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -452,7 +445,6 @@ pub mod pre_flight_with_repo_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `Get default attributes for a codespace`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -494,7 +486,6 @@ pub mod check_permissions_for_devcontainer {
 
   pub type Response = CodespacesPermissionsCheckForDevcontainer;
 
-  /// Query for `Check if permissions defined by a devcontainer have been accepted by the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -510,7 +501,6 @@ pub mod list_repo_secrets {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List repository secrets`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -647,7 +637,6 @@ pub mod list_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List codespaces for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -824,7 +813,6 @@ pub mod list_secrets_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List secrets for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

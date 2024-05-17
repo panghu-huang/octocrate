@@ -72,7 +72,6 @@ pub mod list {
     }
   }
 
-  /// Query for `List pull requests`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -190,7 +189,6 @@ pub mod list_review_comments_for_repo {
     }
   }
 
-  /// Query for `List review comments in a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -339,7 +337,6 @@ pub mod list_review_comments {
     }
   }
 
-  /// Query for `List review comments on a pull request`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -489,7 +486,6 @@ pub mod list_commits {
 
   pub type Response = Vec<Commit>;
 
-  /// Query for `List commits on a pull request`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -510,7 +506,6 @@ pub mod list_files {
 
   pub type Response = Vec<DiffEntry>;
 
-  /// Query for `List pull requests files`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -618,7 +613,6 @@ pub mod list_reviews {
 
   pub type Response = Vec<PullRequestReview>;
 
-  /// Query for `List reviews for a pull request`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -741,7 +735,6 @@ pub mod list_comments_for_review {
 
   pub type Response = Vec<ReviewComment>;
 
-  /// Query for `List comments for a pull request review`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

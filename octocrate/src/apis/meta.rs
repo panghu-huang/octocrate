@@ -24,7 +24,6 @@ pub mod get_octocat {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `Get Octocat`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

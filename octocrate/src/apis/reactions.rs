@@ -47,7 +47,6 @@ pub mod list_for_team_discussion_comment_in_org {
     }
   }
 
-  /// Query for `List reactions for a team discussion comment`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -162,7 +161,6 @@ pub mod list_for_team_discussion_in_org {
     }
   }
 
-  /// Query for `List reactions for a team discussion`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -277,7 +275,6 @@ pub mod list_for_commit_comment {
     }
   }
 
-  /// Query for `List reactions for a commit comment`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -392,7 +389,6 @@ pub mod list_for_issue_comment {
     }
   }
 
-  /// Query for `List reactions for an issue comment`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -507,7 +503,6 @@ pub mod list_for_issue {
     }
   }
 
-  /// Query for `List reactions for an issue`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -622,7 +617,6 @@ pub mod list_for_pull_request_review_comment {
     }
   }
 
-  /// Query for `List reactions for a pull request review comment`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -731,7 +725,6 @@ pub mod list_for_release {
     }
   }
 
-  /// Query for `List reactions for a release`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -840,7 +833,6 @@ pub mod list_for_team_discussion_comment_legacy {
     }
   }
 
-  /// Query for `List reactions for a team discussion comment (Legacy)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -950,7 +942,6 @@ pub mod list_for_team_discussion_legacy {
     }
   }
 
-  /// Query for `List reactions for a team discussion (Legacy)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

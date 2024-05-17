@@ -92,7 +92,6 @@ pub mod list_global_advisories {
     }
   }
 
-  /// Query for `List global security advisories`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -248,7 +247,6 @@ pub mod list_org_repository_advisories {
     }
   }
 
-  /// Query for `List repository security advisories for an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -345,7 +343,6 @@ pub mod list_repository_advisories {
     }
   }
 
-  /// Query for `List repository security advisories`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

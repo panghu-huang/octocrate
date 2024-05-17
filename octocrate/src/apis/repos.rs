@@ -81,7 +81,6 @@ pub mod list_for_org {
     }
   }
 
-  /// Query for `List organization repositories`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -349,7 +348,6 @@ pub mod get_org_rulesets {
 
   pub type Response = Vec<RepositoryRuleset>;
 
-  /// Query for `Get all organization repository rulesets`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -464,7 +462,6 @@ pub mod get_org_rule_suites {
     }
   }
 
-  /// Query for `List organization rule suites`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -958,7 +955,6 @@ pub mod list_activities {
     }
   }
 
-  /// Query for `List repository activities`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1066,7 +1062,6 @@ pub mod list_branches {
 
   pub type Response = Vec<ShortBranch>;
 
-  /// Query for `List branches`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1749,7 +1744,6 @@ pub mod codeowners_errors {
 
   pub type Response = CodeownersErrors;
 
-  /// Query for `List CODEOWNERS errors`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1813,7 +1807,6 @@ pub mod list_collaborators {
     }
   }
 
-  /// Query for `List repository collaborators`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1875,7 +1868,6 @@ pub mod list_commit_comments_for_repo {
 
   pub type Response = Vec<CommitComment>;
 
-  /// Query for `List commit comments for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1922,7 +1914,6 @@ pub mod list_commits {
 
   pub type Response = Vec<Commit>;
 
-  /// Query for `List commits`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1974,7 +1965,6 @@ pub mod list_comments_for_commit {
 
   pub type Response = Vec<CommitComment>;
 
-  /// Query for `List commit comments`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2021,7 +2011,6 @@ pub mod list_pull_requests_associated_with_commit {
 
   pub type Response = Vec<PullRequestSimple>;
 
-  /// Query for `List pull requests associated with a commit`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2042,7 +2031,6 @@ pub mod get_commit {
 
   pub type Response = Commit;
 
-  /// Query for `Get a commit`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2063,7 +2051,6 @@ pub mod get_combined_status_for_ref {
 
   pub type Response = CombinedCommitStatus;
 
-  /// Query for `Get the combined status for a specific reference`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2084,7 +2071,6 @@ pub mod list_commit_statuses_for_ref {
 
   pub type Response = Vec<Status>;
 
-  /// Query for `List commit statuses for a reference`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2112,7 +2098,6 @@ pub mod compare_commits {
 
   pub type Response = CommitComparison;
 
-  /// Query for `Compare two commits`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2143,7 +2128,6 @@ pub mod get_content {
     ContentSubmodule(ContentSubmodule),
   }
 
-  /// Query for `Get repository content`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2275,7 +2259,6 @@ pub mod list_contributors {
 
   pub type Response = Vec<Contributor>;
 
-  /// Query for `List repository contributors`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2300,7 +2283,6 @@ pub mod list_deployments {
 
   pub type Response = Vec<Deployment>;
 
-  /// Query for `List deployments`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2408,7 +2390,6 @@ pub mod list_deployment_statuses {
 
   pub type Response = Vec<DeploymentStatus>;
 
-  /// Query for `List deployment statuses`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2521,7 +2502,6 @@ pub mod get_all_environments {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List environments`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2602,7 +2582,6 @@ pub mod list_deployment_branch_policies {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List deployment branch policies`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2690,7 +2669,6 @@ pub mod list_custom_deployment_rule_integrations {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List custom deployment rule integrations available for an environment`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2759,7 +2737,6 @@ pub mod list_forks {
     }
   }
 
-  /// Query for `List forks`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2808,7 +2785,6 @@ pub mod list_webhooks {
 
   pub type Response = Vec<Hook>;
 
-  /// Query for `List repository webhooks`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2949,7 +2925,6 @@ pub mod list_webhook_deliveries {
 
   pub type Response = Vec<HookDeliveryItem>;
 
-  /// Query for `List deliveries for a repository webhook`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -2995,7 +2970,6 @@ pub mod list_invitations {
 
   pub type Response = Vec<RepositoryInvitation>;
 
-  /// Query for `List repository invitations`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3064,7 +3038,6 @@ pub mod list_deploy_keys {
 
   pub type Response = Vec<DeployKey>;
 
-  /// Query for `List deploy keys`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3189,7 +3162,6 @@ pub mod list_pages_builds {
 
   pub type Response = Vec<PageBuild>;
 
-  /// Query for `List GitHub Pages builds`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3324,7 +3296,6 @@ pub mod get_readme {
 
   pub type Response = ContentFile;
 
-  /// Query for `Get a repository README`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3342,7 +3313,6 @@ pub mod get_readme_in_directory {
 
   pub type Response = ContentFile;
 
-  /// Query for `Get a repository README for a directory`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3360,7 +3330,6 @@ pub mod list_releases {
 
   pub type Response = Vec<Release>;
 
-  /// Query for `List releases`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3600,7 +3569,6 @@ pub mod list_release_assets {
 
   pub type Response = Vec<ReleaseAsset>;
 
-  /// Query for `List release assets`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3621,7 +3589,6 @@ pub mod upload_release_asset {
 
   pub type Response = ReleaseAsset;
 
-  /// Query for `Upload a release asset`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3638,7 +3605,6 @@ pub mod get_branch_rules {
 
   pub type Response = Vec<RepositoryRuleDetailed>;
 
-  /// Query for `Get rules for a branch`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3659,7 +3625,6 @@ pub mod get_repo_rulesets {
 
   pub type Response = Vec<RepositoryRuleset>;
 
-  /// Query for `Get all repository rulesets`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3778,7 +3743,6 @@ pub mod get_repo_rule_suites {
     }
   }
 
-  /// Query for `List repository rule suites`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3825,7 +3789,6 @@ pub mod get_repo_ruleset {
 
   pub type Response = RepositoryRuleset;
 
-  /// Query for `Get a repository ruleset`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3986,7 +3949,6 @@ pub mod list_tags {
 
   pub type Response = Vec<Tag>;
 
-  /// Query for `List repository tags`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -4038,7 +4000,6 @@ pub mod list_teams {
 
   pub type Response = Vec<Team>;
 
-  /// Query for `List repository teams`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -4059,7 +4020,6 @@ pub mod get_all_topics {
 
   pub type Response = Topic;
 
-  /// Query for `Get all repository topics`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -4111,7 +4071,6 @@ pub mod get_clones {
     }
   }
 
-  /// Query for `Get repository clones`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -4159,7 +4118,6 @@ pub mod get_views {
     }
   }
 
-  /// Query for `Get page views`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -4248,7 +4206,6 @@ pub mod list_public {
 
   pub type Response = Vec<MinimalRepository>;
 
-  /// Query for `List public repositories`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -4351,7 +4308,6 @@ pub mod list_for_authenticated_user {
     }
   }
 
-  /// Query for `List repositories for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -4612,7 +4568,6 @@ pub mod list_invitations_for_authenticated_user {
 
   pub type Response = Vec<RepositoryInvitation>;
 
-  /// Query for `List repository invitations for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -4703,7 +4658,6 @@ pub mod list_for_user {
     }
   }
 
-  /// Query for `List repositories for a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

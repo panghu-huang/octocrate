@@ -12,7 +12,6 @@ pub mod list {
 
   pub type Response = Vec<Team>;
 
-  /// Query for `List teams`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -285,7 +284,6 @@ pub mod list_discussions_in_org {
     }
   }
 
-  /// Query for `List discussions`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -383,7 +381,6 @@ pub mod list_discussion_comments_in_org {
     }
   }
 
-  /// Query for `List discussion comments`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -448,7 +445,6 @@ pub mod list_pending_invitations_in_org {
 
   pub type Response = Vec<OrganizationInvitation>;
 
-  /// Query for `List pending team invitations`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -489,7 +485,6 @@ pub mod list_members_in_org {
     }
   }
 
-  /// Query for `List team members`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -560,7 +555,6 @@ pub mod list_projects_in_org {
 
   pub type Response = Vec<TeamProject>;
 
-  /// Query for `List team projects`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -628,7 +622,6 @@ pub mod list_repos_in_org {
 
   pub type Response = Vec<MinimalRepository>;
 
-  /// Query for `List team repositories`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -675,7 +668,6 @@ pub mod list_child_in_org {
 
   pub type Response = Vec<Team>;
 
-  /// Query for `List child teams`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -830,7 +822,6 @@ pub mod list_discussions_legacy {
     }
   }
 
-  /// Query for `List discussions (Legacy)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -924,7 +915,6 @@ pub mod list_discussion_comments_legacy {
     }
   }
 
-  /// Query for `List discussion comments (Legacy)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -989,7 +979,6 @@ pub mod list_pending_invitations_legacy {
 
   pub type Response = Vec<OrganizationInvitation>;
 
-  /// Query for `List pending team invitations (Legacy)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1030,7 +1019,6 @@ pub mod list_members_legacy {
     }
   }
 
-  /// Query for `List team members (Legacy)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1116,7 +1104,6 @@ pub mod list_projects_legacy {
 
   pub type Response = Vec<TeamProject>;
 
-  /// Query for `List team projects (Legacy)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1184,7 +1171,6 @@ pub mod list_repos_legacy {
 
   pub type Response = Vec<MinimalRepository>;
 
-  /// Query for `List team repositories (Legacy)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1252,7 +1238,6 @@ pub mod list_child_legacy {
 
   pub type Response = Vec<Team>;
 
-  /// Query for `List child teams (Legacy)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1273,7 +1258,6 @@ pub mod list_for_authenticated_user {
 
   pub type Response = Vec<TeamFull>;
 
-  /// Query for `List teams for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

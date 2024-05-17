@@ -1,23 +1,12 @@
 use crate::structures::{enums::Enum, structs::Struct, types::Type};
 use serde::Serialize;
 
-#[derive(Serialize)]
+#[derive(Serialize, Default)]
 pub struct References {
   pub render_features: bool,
   pub enums: Vec<Enum>,
   pub structs: Vec<Struct>,
   pub types: Vec<Type>,
-}
-
-impl Default for References {
-  fn default() -> Self {
-    References {
-      render_features: false,
-      enums: Vec::new(),
-      structs: Vec::new(),
-      types: Vec::new(),
-    }
-  }
 }
 
 impl References {

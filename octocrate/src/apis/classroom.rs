@@ -19,7 +19,6 @@ pub mod list_accepted_assigments_for_an_assignment {
 
   pub type Response = Vec<ClassroomAcceptedAssignment>;
 
-  /// Query for `List accepted assignments for an assignment`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -47,7 +46,6 @@ pub mod list_classrooms {
 
   pub type Response = Vec<SimpleClassroom>;
 
-  /// Query for `List classrooms`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -75,7 +73,6 @@ pub mod list_assignments_for_a_classroom {
 
   pub type Response = Vec<SimpleClassroomAssignment>;
 
-  /// Query for `List assignments for a classroom`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

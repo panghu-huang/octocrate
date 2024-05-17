@@ -74,7 +74,6 @@ pub mod list_webhook_deliveries {
 
   pub type Response = Vec<HookDeliveryItem>;
 
-  /// Query for `List deliveries for an app webhook`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -110,7 +109,6 @@ pub mod list_installation_requests_for_authenticated_app {
 
   pub type Response = Vec<IntegrationInstallationRequest>;
 
-  /// Query for `List installation requests for the authenticated app`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -131,7 +129,6 @@ pub mod list_installations {
 
   pub type Response = Vec<Installation>;
 
-  /// Query for `List installations for the authenticated app`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -294,7 +291,6 @@ pub mod list_repos_accessible_to_installation {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List repositories accessible to the app installation`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -337,7 +333,6 @@ pub mod list_plans {
 
   pub type Response = Vec<MarketplaceListingPlan>;
 
-  /// Query for `List plans`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -392,7 +387,6 @@ pub mod list_accounts_for_plan {
     }
   }
 
-  /// Query for `List accounts for a plan`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -428,7 +422,6 @@ pub mod list_plans_stubbed {
 
   pub type Response = Vec<MarketplaceListingPlan>;
 
-  /// Query for `List plans (stubbed)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -483,7 +476,6 @@ pub mod list_accounts_for_plan_stubbed {
     }
   }
 
-  /// Query for `List accounts for a plan (stubbed)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -524,7 +516,6 @@ pub mod list_installations_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List app installations accessible to the user access token`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -550,7 +541,6 @@ pub mod list_installation_repos_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List repositories accessible to the user access token`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -591,7 +581,6 @@ pub mod list_subscriptions_for_authenticated_user {
 
   pub type Response = Vec<UserMarketplacePurchase>;
 
-  /// Query for `List subscriptions for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -612,7 +601,6 @@ pub mod list_subscriptions_for_authenticated_user_stubbed {
 
   pub type Response = Vec<UserMarketplacePurchase>;
 
-  /// Query for `List subscriptions for the authenticated user (stubbed)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

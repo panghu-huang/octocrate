@@ -63,7 +63,6 @@ pub mod list_alerts_for_enterprise {
     }
   }
 
-  /// Query for `List Dependabot alerts for an enterprise`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -187,7 +186,6 @@ pub mod list_alerts_for_org {
     }
   }
 
-  /// Query for `List Dependabot alerts for an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -258,7 +256,6 @@ pub mod list_org_secrets {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List organization secrets`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -350,7 +347,6 @@ pub mod list_selected_repos_for_org_secret {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List selected repositories for an organization secret`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -451,7 +447,6 @@ pub mod list_alerts_for_repo {
     }
   }
 
-  /// Query for `List Dependabot alerts for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -606,7 +601,6 @@ pub mod list_repo_secrets {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List repository secrets`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

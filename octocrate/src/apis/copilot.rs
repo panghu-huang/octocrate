@@ -17,7 +17,6 @@ pub mod list_copilot_seats {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List all Copilot seat assignments for an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

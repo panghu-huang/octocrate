@@ -41,7 +41,6 @@ pub mod code {
     }
   }
 
-  /// Query for `Search code`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -112,7 +111,6 @@ pub mod commits {
     }
   }
 
-  /// Query for `Search commits`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -210,7 +208,6 @@ pub mod issues_and_pull_requests {
     }
   }
 
-  /// Query for `Search issues and pull requests`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -281,7 +278,6 @@ pub mod labels {
     }
   }
 
-  /// Query for `Search labels`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -360,7 +356,6 @@ pub mod repos {
     }
   }
 
-  /// Query for `Search repositories`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -397,7 +392,6 @@ pub mod topics {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `Search topics`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -463,7 +457,6 @@ pub mod users {
     }
   }
 
-  /// Query for `Search users`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

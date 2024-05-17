@@ -63,7 +63,6 @@ pub mod list_alerts_for_enterprise {
     }
   }
 
-  /// Query for `List secret scanning alerts for an enterprise`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -165,7 +164,6 @@ pub mod list_alerts_for_org {
     }
   }
 
-  /// Query for `List secret scanning alerts for an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -271,7 +269,6 @@ pub mod list_alerts_for_repo {
     }
   }
 
-  /// Query for `List secret scanning alerts for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -352,7 +349,6 @@ pub mod list_locations_for_alert {
 
   pub type Response = Vec<SecretScanningLocation>;
 
-  /// Query for `List locations for a secret scanning alert`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

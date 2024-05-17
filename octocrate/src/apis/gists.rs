@@ -12,7 +12,6 @@ pub mod list {
 
   pub type Response = Vec<BaseGist>;
 
-  /// Query for `List gists for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -75,7 +74,6 @@ pub mod list_public {
 
   pub type Response = Vec<BaseGist>;
 
-  /// Query for `List public gists`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -100,7 +98,6 @@ pub mod list_starred {
 
   pub type Response = Vec<BaseGist>;
 
-  /// Query for `List starred gists`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -161,7 +158,6 @@ pub mod list_comments {
 
   pub type Response = Vec<GistComment>;
 
-  /// Query for `List gist comments`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -222,7 +218,6 @@ pub mod list_commits {
 
   pub type Response = Vec<GistCommit>;
 
-  /// Query for `List gist commits`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -243,7 +238,6 @@ pub mod list_forks {
 
   pub type Response = Vec<GistSimple>;
 
-  /// Query for `List gist forks`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -293,7 +287,6 @@ pub mod list_for_user {
 
   pub type Response = Vec<BaseGist>;
 
-  /// Query for `List gists for a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

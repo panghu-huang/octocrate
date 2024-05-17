@@ -12,7 +12,6 @@ pub mod diff_range {
 
   pub type Response = DependencyGraphDiff;
 
-  /// Query for `Get a diff of the dependencies between commits`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

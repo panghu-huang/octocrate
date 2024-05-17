@@ -12,7 +12,6 @@ pub mod get_all_commonly_used {
 
   pub type Response = Vec<LicenseSimple>;
 
-  /// Query for `Get all commonly used licenses`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -43,7 +42,6 @@ pub mod get_for_repo {
 
   pub type Response = LicenseContent;
 
-  /// Query for `Get the license for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

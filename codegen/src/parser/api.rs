@@ -125,7 +125,7 @@ impl API {
       }
     }
 
-    let references = ctx.get_and_clear_scoped_references();
+    let references = ctx.get_scoped_references();
 
     Self {
       name: api_name,

@@ -327,7 +327,6 @@ pub mod get_tree {
 
   pub type Response = GitTree;
 
-  /// Query for `Get a tree`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

@@ -32,7 +32,6 @@ pub mod list_for_org {
     }
   }
 
-  /// Query for `List organization projects`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -173,7 +172,6 @@ pub mod list_cards {
     }
   }
 
-  /// Query for `List project cards`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -334,7 +332,6 @@ pub mod list_collaborators {
     }
   }
 
-  /// Query for `List project collaborators`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -406,7 +403,6 @@ pub mod list_columns {
 
   pub type Response = Vec<ProjectColumn>;
 
-  /// Query for `List project columns`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -461,7 +457,6 @@ pub mod list_for_repo {
     }
   }
 
-  /// Query for `List repository projects`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -542,7 +537,6 @@ pub mod list_for_user {
     }
   }
 
-  /// Query for `List user projects`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

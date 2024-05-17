@@ -12,7 +12,6 @@ pub mod list_public_events {
 
   pub type Response = Vec<Event>;
 
-  /// Query for `List public events`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -40,7 +39,6 @@ pub mod list_public_events_for_repo_network {
 
   pub type Response = Vec<Event>;
 
-  /// Query for `List public events for a network of repositories`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -61,7 +59,6 @@ pub mod list_notifications_for_authenticated_user {
 
   pub type Response = Vec<Thread>;
 
-  /// Query for `List notifications for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -169,7 +166,6 @@ pub mod list_public_org_events {
 
   pub type Response = Vec<Event>;
 
-  /// Query for `List public organization events`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -190,7 +186,6 @@ pub mod list_repo_events {
 
   pub type Response = Vec<Event>;
 
-  /// Query for `List repository events`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -211,7 +206,6 @@ pub mod list_repo_notifications_for_authenticated_user {
 
   pub type Response = Vec<Thread>;
 
-  /// Query for `List repository notifications for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -278,7 +272,6 @@ pub mod list_stargazers_for_repo {
     StargazerArray(Vec<Stargazer>),
   }
 
-  /// Query for `List stargazers`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -299,7 +292,6 @@ pub mod list_watchers_for_repo {
 
   pub type Response = Vec<SimpleUser>;
 
-  /// Query for `List watchers`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -386,7 +378,6 @@ pub mod list_repos_starred_by_authenticated_user {
     }
   }
 
-  /// Query for `List repositories starred by the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -430,7 +421,6 @@ pub mod list_watched_repos_for_authenticated_user {
 
   pub type Response = Vec<MinimalRepository>;
 
-  /// Query for `List repositories watched by the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -451,7 +441,6 @@ pub mod list_events_for_authenticated_user {
 
   pub type Response = Vec<Event>;
 
-  /// Query for `List events for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -472,7 +461,6 @@ pub mod list_org_events_for_authenticated_user {
 
   pub type Response = Vec<Event>;
 
-  /// Query for `List organization events for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -493,7 +481,6 @@ pub mod list_public_events_for_user {
 
   pub type Response = Vec<Event>;
 
-  /// Query for `List public events for a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -514,7 +501,6 @@ pub mod list_received_events_for_user {
 
   pub type Response = Vec<Event>;
 
-  /// Query for `List events received by the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -535,7 +521,6 @@ pub mod list_received_public_events_for_user {
 
   pub type Response = Vec<Event>;
 
-  /// Query for `List public events received by a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -595,7 +580,6 @@ pub mod list_repos_starred_by_user {
     RepositoryArray(Vec<Repository>),
   }
 
-  /// Query for `List repositories starred by a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -624,7 +608,6 @@ pub mod list_repos_watched_by_user {
 
   pub type Response = Vec<MinimalRepository>;
 
-  /// Query for `List repositories watched by a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

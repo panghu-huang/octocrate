@@ -17,7 +17,6 @@ pub mod get_actions_cache_usage_by_repo_for_org {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List repositories with GitHub Actions cache usage for an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -64,7 +63,6 @@ pub mod list_selected_repositories_enabled_github_actions_organization {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List selected repositories enabled for GitHub Actions in an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -140,7 +138,6 @@ pub mod list_self_hosted_runners_for_org {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List self-hosted runners for an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -262,7 +259,6 @@ pub mod list_org_secrets {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List organization secrets`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -354,7 +350,6 @@ pub mod list_selected_repos_for_org_secret {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List selected repositories for an organization secret`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -402,7 +397,6 @@ pub mod list_org_variables {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List organization variables`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -530,7 +524,6 @@ pub mod list_selected_repos_for_org_variable {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List selected repositories for an organization variable`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -578,7 +571,6 @@ pub mod list_artifacts_for_repo {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List artifacts for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -671,7 +663,6 @@ pub mod get_actions_cache_list {
     }
   }
 
-  /// Query for `List GitHub Actions caches for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -709,7 +700,6 @@ pub mod delete_actions_cache_by_key {
 
   pub type Response = ActionsCacheList;
 
-  /// Query for `Delete GitHub Actions caches for a repository (using a cache key)`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -787,7 +777,6 @@ pub mod list_repo_organization_secrets {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List repository organization secrets`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -813,7 +802,6 @@ pub mod list_repo_organization_variables {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List repository organization variables`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -902,7 +890,6 @@ pub mod list_self_hosted_runners_for_repo {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List self-hosted runners for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1077,7 +1064,6 @@ pub mod list_workflow_runs_for_repo {
     }
   }
 
-  /// Query for `List workflow runs for a repository`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1137,7 +1123,6 @@ pub mod get_workflow_run {
 
   pub type Response = WorkflowRun;
 
-  /// Query for `Get a workflow run`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1171,7 +1156,6 @@ pub mod list_workflow_run_artifacts {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List workflow run artifacts`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1203,7 +1187,6 @@ pub mod get_workflow_run_attempt {
 
   pub type Response = WorkflowRun;
 
-  /// Query for `Get a workflow run attempt`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1218,7 +1201,6 @@ pub mod list_jobs_for_workflow_run_attempt {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List jobs for a workflow run attempt`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1292,7 +1274,6 @@ pub mod list_jobs_for_workflow_run {
     }
   }
 
-  /// Query for `List jobs for a workflow run`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1414,7 +1395,6 @@ pub mod list_repo_secrets {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List repository secrets`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1479,7 +1459,6 @@ pub mod list_repo_variables {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List repository variables`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1551,7 +1530,6 @@ pub mod list_repo_workflows {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List repository workflows`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1664,7 +1642,6 @@ pub mod list_workflow_runs {
     }
   }
 
-  /// Query for `List workflow runs for a workflow`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1729,7 +1706,6 @@ pub mod list_environment_secrets {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List environment secrets`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1790,7 +1766,6 @@ pub mod list_environment_variables {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List environment variables`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

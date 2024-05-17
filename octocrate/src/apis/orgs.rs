@@ -12,7 +12,6 @@ pub mod list {
 
   pub type Response = Vec<OrganizationSimple>;
 
-  /// Query for `List organizations`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -244,7 +243,6 @@ pub mod list_blocked_users {
 
   pub type Response = Vec<SimpleUser>;
 
-  /// Query for `List users blocked by an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -280,7 +278,6 @@ pub mod list_failed_invitations {
 
   pub type Response = Vec<OrganizationInvitation>;
 
-  /// Query for `List failed organization invitations`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -301,7 +298,6 @@ pub mod list_webhooks {
 
   pub type Response = Vec<OrgHook>;
 
-  /// Query for `List organization webhooks`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -454,7 +450,6 @@ pub mod list_webhook_deliveries {
 
   pub type Response = Vec<HookDeliveryItem>;
 
-  /// Query for `List deliveries for an organization webhook`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -493,7 +488,6 @@ pub mod list_app_installations {
   #[allow(unused_imports)]
   use super::*;
 
-  /// Query for `List app installations for an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -567,7 +561,6 @@ pub mod list_pending_invitations {
     }
   }
 
-  /// Query for `List pending organization invitations`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -661,7 +654,6 @@ pub mod list_invitation_teams {
 
   pub type Response = Vec<Team>;
 
-  /// Query for `List organization invitation teams`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -719,7 +711,6 @@ pub mod list_members {
     }
   }
 
-  /// Query for `List organization members`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -919,7 +910,6 @@ pub mod list_org_role_teams {
 
   pub type Response = Vec<Team>;
 
-  /// Query for `List teams that are assigned to an organization role`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -940,7 +930,6 @@ pub mod list_org_role_users {
 
   pub type Response = Vec<SimpleUser>;
 
-  /// Query for `List users that are assigned to an organization role`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -978,7 +967,6 @@ pub mod list_outside_collaborators {
     }
   }
 
-  /// Query for `List outside collaborators for an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1058,7 +1046,6 @@ pub mod list_pat_grant_requests {
     }
   }
 
-  /// Query for `List requests to access organization resources with fine-grained personal access tokens`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1179,7 +1166,6 @@ pub mod list_pat_grant_request_repositories {
 
   pub type Response = Vec<MinimalRepository>;
 
-  /// Query for `List repositories requested to be accessed by a fine-grained personal access token`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1231,7 +1217,6 @@ pub mod list_pat_grants {
     }
   }
 
-  /// Query for `List fine-grained personal access tokens with access to organization resources`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1336,7 +1321,6 @@ pub mod list_pat_grant_repositories {
 
   pub type Response = Vec<MinimalRepository>;
 
-  /// Query for `List repositories a fine-grained personal access token has access to`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1439,7 +1423,6 @@ pub mod list_custom_properties_values_for_repos {
 
   pub type Response = Vec<OrgRepoCustomPropertyValues>;
 
-  /// Query for `List custom property values for organization repositories`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1478,7 +1461,6 @@ pub mod list_public_members {
 
   pub type Response = Vec<SimpleUser>;
 
-  /// Query for `List public organization members`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1637,7 +1619,6 @@ pub mod list_memberships_for_authenticated_user {
     }
   }
 
-  /// Query for `List organization memberships for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1698,7 +1679,6 @@ pub mod list_for_authenticated_user {
 
   pub type Response = Vec<OrganizationSimple>;
 
-  /// Query for `List organizations for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1719,7 +1699,6 @@ pub mod list_for_user {
 
   pub type Response = Vec<OrganizationSimple>;
 
-  /// Query for `List organizations for a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

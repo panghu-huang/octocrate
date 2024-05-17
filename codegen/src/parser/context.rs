@@ -117,14 +117,19 @@ impl ParseContext {
     }
   }
 
-  pub fn get_and_clear_scoped_references(&self) -> References {
+  pub fn get_scoped_references(&self) -> IndexMap<IdentifierOrName, TypeReference> {
+    self
+      .inner
+      .lock()
+      .expect("Failed to lock the inner context")
+      .scoped_references
+      .clone()
+  }
+
+  pub fn clear_scoped_references(&self) {
     let mut guard = self.inner.lock().expect("Failed to lock the inner context");
 
-    let references = guard.scoped_references.clone();
-
     guard.scoped_references.clear();
-
-    references
   }
 
   pub fn reference_existing(&self, name: &str) -> Option<TypeReference> {
@@ -232,6 +237,9 @@ impl ParseContext {
       .set_message(format!("Parsing API {} ...", api));
 
     self.progress_bar.inc(1);
+
+    // Clear the scoped references when starting to parse a new API
+    self.clear_scoped_references();
   }
 
   pub fn finish_parsing(&mut self) {

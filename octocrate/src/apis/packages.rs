@@ -68,7 +68,6 @@ pub mod list_packages_for_organization {
     }
   }
 
-  /// Query for `List packages for an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -195,7 +194,6 @@ pub mod restore_package_for_org {
     }
   }
 
-  /// Query for `Restore a package for an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -258,7 +256,6 @@ pub mod get_all_package_versions_for_package_owned_by_org {
     }
   }
 
-  /// Query for `List package versions for a package owned by an organization`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -443,7 +440,6 @@ pub mod list_packages_for_authenticated_user {
     }
   }
 
-  /// Query for `List packages for the authenticated user's namespace`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -570,7 +566,6 @@ pub mod restore_package_for_authenticated_user {
     }
   }
 
-  /// Query for `Restore a package for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -633,7 +628,6 @@ pub mod get_all_package_versions_for_package_owned_by_authenticated_user {
     }
   }
 
-  /// Query for `List package versions for a package owned by the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -818,7 +812,6 @@ pub mod list_packages_for_user {
     }
   }
 
-  /// Query for `List packages for a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -945,7 +938,6 @@ pub mod restore_package_for_user {
     }
   }
 
-  /// Query for `Restore a package for a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {

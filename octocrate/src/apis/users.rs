@@ -70,7 +70,6 @@ pub mod list_blocked_by_authenticated_user {
 
   pub type Response = Vec<SimpleUser>;
 
-  /// Query for `List users blocked by the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -138,7 +137,6 @@ pub mod list_emails_for_authenticated_user {
 
   pub type Response = Vec<Email>;
 
-  /// Query for `List email addresses for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -203,7 +201,6 @@ pub mod list_followers_for_authenticated_user {
 
   pub type Response = Vec<SimpleUser>;
 
-  /// Query for `List followers of the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -224,7 +221,6 @@ pub mod list_followed_by_authenticated_user {
 
   pub type Response = Vec<SimpleUser>;
 
-  /// Query for `List the people the authenticated user follows`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -260,7 +256,6 @@ pub mod list_gpg_keys_for_authenticated_user {
 
   pub type Response = Vec<GpgKey>;
 
-  /// Query for `List GPG keys for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -311,7 +306,6 @@ pub mod list_public_ssh_keys_for_authenticated_user {
 
   pub type Response = Vec<Key>;
 
-  /// Query for `List public SSH keys for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -362,7 +356,6 @@ pub mod list_public_emails_for_authenticated_user {
 
   pub type Response = Vec<Email>;
 
-  /// Query for `List public email addresses for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -383,7 +376,6 @@ pub mod list_social_accounts_for_authenticated_user {
 
   pub type Response = Vec<SocialAccount>;
 
-  /// Query for `List social accounts for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -430,7 +422,6 @@ pub mod list_ssh_signing_keys_for_authenticated_user {
 
   pub type Response = Vec<SshSigningKey>;
 
-  /// Query for `List SSH signing keys for the authenticated user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -481,7 +472,6 @@ pub mod list {
 
   pub type Response = Vec<SimpleUser>;
 
-  /// Query for `List users`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -516,7 +506,6 @@ pub mod list_followers_for_user {
 
   pub type Response = Vec<SimpleUser>;
 
-  /// Query for `List followers of a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -537,7 +526,6 @@ pub mod list_following_for_user {
 
   pub type Response = Vec<SimpleUser>;
 
-  /// Query for `List the people a user follows`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -563,7 +551,6 @@ pub mod list_gpg_keys_for_user {
 
   pub type Response = Vec<GpgKey>;
 
-  /// Query for `List GPG keys for a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -607,7 +594,6 @@ pub mod get_context_for_user {
     }
   }
 
-  /// Query for `Get contextual information for a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -628,7 +614,6 @@ pub mod list_public_keys_for_user {
 
   pub type Response = Vec<KeySimple>;
 
-  /// Query for `List public keys for a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -649,7 +634,6 @@ pub mod list_social_accounts_for_user {
 
   pub type Response = Vec<SocialAccount>;
 
-  /// Query for `List social accounts for a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -670,7 +654,6 @@ pub mod list_ssh_signing_keys_for_user {
 
   pub type Response = Vec<SshSigningKey>;
 
-  /// Query for `List SSH signing keys for a user`
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
