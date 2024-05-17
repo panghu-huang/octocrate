@@ -1,6 +1,409 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list_alerts_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<CodeScanningOrganizationAlertItems>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List code scanning alerts for an organization`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The name of a code scanning tool. Only results by this tool will be listed. You can specify the tool by using either `tool_name` or `tool_guid`, but not both.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub tool_name: Option<String>,
+    /// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code scanning tools may not include a GUID in their analysis data. You can specify the tool by using either `tool_guid` or `tool_name`, but not both.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub tool_guid: Option<String>,
+    /// A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results before this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub before: Option<String>,
+    /// A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub after: Option<String>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// If specified, only code scanning alerts with this state will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<CodeScanningAlertStateQuery>,
+    /// The property by which to sort the results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// If specified, only code scanning alerts with this severity will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub severity: Option<CodeScanningAlertSeverity>,
+  }
+}
+
+pub mod list_alerts_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<CodeScanningAlertItems>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List code scanning alerts for a repository`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The name of a code scanning tool. Only results by this tool will be listed. You can specify the tool by using either `tool_name` or `tool_guid`, but not both.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub tool_name: Option<String>,
+    /// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code scanning tools may not include a GUID in their analysis data. You can specify the tool by using either `tool_guid` or `tool_name`, but not both.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub tool_guid: Option<String>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The Git reference for the results you want to list. The `ref` for a branch can be formatted either as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use `refs/pull/<number>/merge`.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The property by which to sort the results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// If specified, only code scanning alerts with this state will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<CodeScanningAlertStateQuery>,
+    /// If specified, only code scanning alerts with this severity will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub severity: Option<CodeScanningAlertSeverity>,
+  }
+}
+
+pub mod get_alert {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodeScanningAlert;
+}
+
+pub mod update_alert {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodeScanningAlert;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub dismissed_comment: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub dismissed_reason: Option<CodeScanningAlertDismissedReason>,
+    pub state: CodeScanningAlertSetState,
+  }
+}
+
+pub mod list_alert_instances {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<CodeScanningAlertInstance>;
+
+  /// Query for `List instances of a code scanning alert`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The Git reference for the results you want to list. The `ref` for a branch can be formatted either as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use `refs/pull/<number>/merge`.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+  }
+}
+
+pub mod list_recent_analyses {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<CodeScanningAnalysis>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List code scanning analyses for a repository`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The name of a code scanning tool. Only results by this tool will be listed. You can specify the tool by using either `tool_name` or `tool_guid`, but not both.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub tool_name: Option<String>,
+    /// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code scanning tools may not include a GUID in their analysis data. You can specify the tool by using either `tool_guid` or `tool_name`, but not both.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub tool_guid: Option<String>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The Git reference for the analyses you want to list. The `ref` for a branch can be formatted either as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use `refs/pull/<number>/merge`.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+    /// Filter analyses belonging to the same SARIF upload.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sarif_id: Option<String>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The property by which to sort the results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+  }
+}
+
+pub mod get_analysis {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodeScanningAnalysis;
+}
+
+pub mod delete_analysis {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodeScanningAnalysisDeletion;
+
+  /// Query for `Delete a code scanning analysis from a repository`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Allow deletion if the specified analysis is the last in a set. If you attempt to delete the final analysis in a set without setting this parameter to `true`, you'll get a 400 response with the message: `Analysis is last of its type and deletion may result in the loss of historical alert data. Please specify confirm_delete.`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub confirm_delete: Option<String>,
+  }
+}
+
+pub mod list_codeql_databases {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<CodeScanningCodeqlDatabase>;
+}
+
+pub mod get_codeql_database {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodeScanningCodeqlDatabase;
+}
+
+pub mod get_default_setup {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodeScanningDefaultSetup;
+}
+
+pub mod update_default_setup {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = CodeScanningDefaultSetupUpdate;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  pub enum Response {
+    Success(EmptyObject),
+    Accepted(CodeScanningDefaultSetupUpdateResponse),
+  }
+}
+
+pub mod upload_sarif {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodeScanningSarifsReceipt;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The base directory used in the analysis, as it appears in the SARIF file.
+    /// This property is used to convert file paths from absolute to relative, so that alerts can be mapped to their correct location in the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub checkout_uri: Option<String>,
+    pub commit_sha: String,
+    #[serde(rename = "ref")]
+    pub ref_: String,
+    pub sarif: String,
+    /// The time that the analysis run began. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub started_at: Option<String>,
+    /// The name of the tool used to generate the code scanning analysis. If this parameter is not used, the tool name defaults to "API". If the uploaded SARIF contains a tool GUID, this will be available for filtering using the `tool_guid` parameter of operations such as `GET /repos/{owner}/{repo}/code-scanning/alerts`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub tool_name: Option<String>,
+    /// Whether the SARIF file will be validated according to the code scanning specifications.
+    /// This parameter is intended to help integrators ensure that the uploaded SARIF files are correctly rendered by code scanning.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub validate: Option<bool>,
+  }
+}
+
+pub mod get_sarif {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodeScanningSarifsStatus;
+}
 
 pub struct GitHubCodeScanningAPI {
   config: SharedAPIConfig,
@@ -25,11 +428,11 @@ impl GitHubCodeScanningAPI {
   pub fn list_alerts_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), CodeScanningListAlertsForOrgQuery, Vec<CodeScanningOrganizationAlertItems>> {
+  ) -> Request<(), list_alerts_for_org::Query, list_alerts_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/code-scanning/alerts");
 
-    Request::<(), CodeScanningListAlertsForOrgQuery, Vec<CodeScanningOrganizationAlertItems>>::builder(&self.config)
+    Request::<(), list_alerts_for_org::Query, list_alerts_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -49,12 +452,12 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), CodeScanningListAlertsForRepoQuery, Vec<CodeScanningAlertItems>> {
+  ) -> Request<(), list_alerts_for_repo::Query, list_alerts_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/alerts");
 
-    Request::<(), CodeScanningListAlertsForRepoQuery, Vec<CodeScanningAlertItems>>::builder(
+    Request::<(), list_alerts_for_repo::Query, list_alerts_for_repo::Response>::builder(
       &self.config,
     )
     .get(url)
@@ -73,13 +476,13 @@ impl GitHubCodeScanningAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     alert_number: impl Into<i64>,
-  ) -> Request<(), (), CodeScanningAlert> {
+  ) -> Request<(), (), get_alert::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let alert_number = alert_number.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}");
 
-    Request::<(), (), CodeScanningAlert>::builder(&self.config)
+    Request::<(), (), get_alert::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -95,13 +498,13 @@ impl GitHubCodeScanningAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     alert_number: impl Into<i64>,
-  ) -> Request<CodeScanningUpdateAlertRequest, (), CodeScanningAlert> {
+  ) -> Request<update_alert::Request, (), update_alert::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let alert_number = alert_number.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}");
 
-    Request::<CodeScanningUpdateAlertRequest, (), CodeScanningAlert>::builder(&self.config)
+    Request::<update_alert::Request, (), update_alert::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -118,13 +521,13 @@ impl GitHubCodeScanningAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     alert_number: impl Into<i64>,
-  ) -> Request<(), CodeScanningListAlertInstancesQuery, Vec<CodeScanningAlertInstance>> {
+  ) -> Request<(), list_alert_instances::Query, list_alert_instances::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let alert_number = alert_number.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/alerts/{alert_number}/instances");
 
-    Request::<(), CodeScanningListAlertInstancesQuery, Vec<CodeScanningAlertInstance>>::builder(
+    Request::<(), list_alert_instances::Query, list_alert_instances::Response>::builder(
       &self.config,
     )
     .get(url)
@@ -154,12 +557,12 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), CodeScanningListRecentAnalysesQuery, Vec<CodeScanningAnalysis>> {
+  ) -> Request<(), list_recent_analyses::Query, list_recent_analyses::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/analyses");
 
-    Request::<(), CodeScanningListRecentAnalysesQuery, Vec<CodeScanningAnalysis>>::builder(
+    Request::<(), list_recent_analyses::Query, list_recent_analyses::Response>::builder(
       &self.config,
     )
     .get(url)
@@ -192,13 +595,13 @@ impl GitHubCodeScanningAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     analysis_id: impl Into<i64>,
-  ) -> Request<(), (), CodeScanningAnalysis> {
+  ) -> Request<(), (), get_analysis::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let analysis_id = analysis_id.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}");
 
-    Request::<(), (), CodeScanningAnalysis>::builder(&self.config)
+    Request::<(), (), get_analysis::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -276,17 +679,15 @@ impl GitHubCodeScanningAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     analysis_id: impl Into<i64>,
-  ) -> Request<(), CodeScanningDeleteAnalysisQuery, CodeScanningAnalysisDeletion> {
+  ) -> Request<(), delete_analysis::Query, delete_analysis::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let analysis_id = analysis_id.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/analyses/{analysis_id}");
 
-    Request::<(), CodeScanningDeleteAnalysisQuery, CodeScanningAnalysisDeletion>::builder(
-      &self.config,
-    )
-    .delete(url)
-    .build()
+    Request::<(), delete_analysis::Query, delete_analysis::Response>::builder(&self.config)
+      .delete(url)
+      .build()
   }
 
   /// **List CodeQL databases for a repository**
@@ -300,12 +701,12 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<CodeScanningCodeqlDatabase>> {
+  ) -> Request<(), (), list_codeql_databases::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/codeql/databases");
 
-    Request::<(), (), Vec<CodeScanningCodeqlDatabase>>::builder(&self.config)
+    Request::<(), (), list_codeql_databases::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -328,13 +729,13 @@ impl GitHubCodeScanningAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     language: impl Into<String>,
-  ) -> Request<(), (), CodeScanningCodeqlDatabase> {
+  ) -> Request<(), (), get_codeql_database::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let language = language.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/codeql/databases/{language}");
 
-    Request::<(), (), CodeScanningCodeqlDatabase>::builder(&self.config)
+    Request::<(), (), get_codeql_database::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -350,12 +751,12 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), CodeScanningDefaultSetup> {
+  ) -> Request<(), (), get_default_setup::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/default-setup");
 
-    Request::<(), (), CodeScanningDefaultSetup>::builder(&self.config)
+    Request::<(), (), get_default_setup::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -371,12 +772,12 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<CodeScanningDefaultSetupUpdate, (), CodeScanningUpdateDefaultSetupResponse> {
+  ) -> Request<update_default_setup::Request, (), update_default_setup::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/default-setup");
 
-    Request::<CodeScanningDefaultSetupUpdate, (), CodeScanningUpdateDefaultSetupResponse>::builder(
+    Request::<update_default_setup::Request, (), update_default_setup::Response>::builder(
       &self.config,
     )
     .patch(url)
@@ -423,12 +824,12 @@ impl GitHubCodeScanningAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<CodeScanningUploadSarifRequest, (), CodeScanningSarifsReceipt> {
+  ) -> Request<upload_sarif::Request, (), upload_sarif::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/sarifs");
 
-    Request::<CodeScanningUploadSarifRequest, (), CodeScanningSarifsReceipt>::builder(&self.config)
+    Request::<upload_sarif::Request, (), upload_sarif::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -444,13 +845,13 @@ impl GitHubCodeScanningAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     sarif_id: impl Into<String>,
-  ) -> Request<(), (), CodeScanningSarifsStatus> {
+  ) -> Request<(), (), get_sarif::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let sarif_id = sarif_id.into();
     let url = format!("/repos/{owner}/{repo}/code-scanning/sarifs/{sarif_id}");
 
-    Request::<(), (), CodeScanningSarifsStatus>::builder(&self.config)
+    Request::<(), (), get_sarif::Response>::builder(&self.config)
       .get(url)
       .build()
   }

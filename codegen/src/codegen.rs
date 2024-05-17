@@ -85,20 +85,11 @@ impl Codegen {
       let mut api_module = APIModule::new(&tag, description);
 
       for api in api_functions {
+        let api_name = api.name;
+
         let body_type = api
           .body
-          .map(|b| match b {
-            ParsedData::Type(t) => {
-              if t.type_name.starts_with("Option<") {
-                // Extract the inner type
-                t.reference
-                  .unwrap_or(t.type_name[7..t.type_name.len() - 1].to_string())
-              } else {
-                t.alias.unwrap_or(t.type_name)
-              }
-            }
-            _ => b.name(),
-          })
+          .map(|_| format!("{}::Request", api_name))
           .unwrap_or("()".to_string());
 
         let mut parameters = vec![];
@@ -108,9 +99,15 @@ impl Codegen {
 
         if let Some(p) = api.parameters {
           for field in p.fields {
+            let type_name = if field.reference.is_some() {
+              format!("{}::{}", api_name, field.type_name)
+            } else {
+              field.type_name.clone()
+            };
+
             let parameter = crate::writer::Parameter {
               name: field.name.clone(),
-              type_name: field.type_name.clone(),
+              type_name,
               rename: field.rename.clone(),
             };
 
@@ -126,8 +123,18 @@ impl Codegen {
           }
         }
 
+        let references = api.references.map(|r| {
+          let mut references = crate::writer::References::default();
+
+          for (_, reference) in r {
+            references.add_reference(&reference.inner);
+          }
+
+          references
+        });
+
         let api_function = APIFunction {
-          function_name: api.name.clone(),
+          function_name: api_name.clone(),
           method: api.method.to_string(),
           url,
           parameters,
@@ -138,9 +145,10 @@ impl Codegen {
           body_type,
           query_type: api
             .query
-            .map(|q| q.name.clone())
+            .map(|_| format!("{}::Query", api_name))
             .unwrap_or("()".to_string()),
-          response_type: api.response.map(|r| r.name()),
+          response_type: api.response.map(|_| format!("{}::Response", api_name)),
+          references,
         };
 
         api_module.add_function(api_function);

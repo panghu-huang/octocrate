@@ -80,7 +80,7 @@ impl SchemaParser {
     let parsed = ParsedData::Type(type_);
 
     if let Some(alias) = &alias {
-      ctx.add_reference(alias, parsed.clone());
+      self.add_reference(ctx, alias, parsed.clone());
     }
 
     self.prefixs = previous_prefix;

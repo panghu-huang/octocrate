@@ -1,6 +1,565 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Project>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryState {
+    #[serde(rename = "open")]
+    Open,
+    #[serde(rename = "closed")]
+    Closed,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryState::Open => "open".to_string(),
+        QueryState::Closed => "closed".to_string(),
+        QueryState::All => "all".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List organization projects`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Indicates the state of the projects to return.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<QueryState>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Project;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The description of the project.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub body: Option<String>,
+    /// The name of the project.
+    pub name: String,
+  }
+}
+
+pub mod get_card {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProjectCard;
+}
+
+pub mod update_card {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProjectCard;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Whether or not the card is archived
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub archived: Option<bool>,
+    /// The project card's note
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub note: Option<String>,
+  }
+}
+
+pub mod delete_card {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod move_card {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The unique identifier of the column the card should be moved to
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub column_id: Option<i64>,
+    /// The position of the card in a column. Can be one of: `top`, `bottom`, or `after:<card_id>` to place after the specified card.
+    pub position: String,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {}
+}
+
+pub mod get_column {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProjectColumn;
+}
+
+pub mod update_column {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProjectColumn;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Name of the project column
+    pub name: String,
+  }
+}
+
+pub mod delete_column {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_cards {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<ProjectCard>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryArchivedState {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "archived")]
+    Archived,
+    #[serde(rename = "not_archived")]
+    NotArchived,
+  }
+
+  impl ToString for QueryArchivedState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryArchivedState::All => "all".to_string(),
+        QueryArchivedState::Archived => "archived".to_string(),
+        QueryArchivedState::NotArchived => "not_archived".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List project cards`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Filters the project cards that are returned by the card's state.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub archived_state: Option<QueryArchivedState>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_card {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProjectCard;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    RequestItem2(RequestItem2),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The project card's note
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub note: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem2 {
+    /// The unique identifier of the content associated with the card
+    pub content_id: i64,
+    /// The piece of content associated with the card
+    pub content_type: String,
+  }
+}
+
+pub mod move_column {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to place after the specified column.
+    pub position: String,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {}
+}
+
+pub mod get {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Project;
+}
+
+pub mod update {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Project;
+
+  /// The baseline permission that all organization members have on this project
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestOrganizationPermission {
+    #[serde(rename = "read")]
+    Read,
+    #[serde(rename = "write")]
+    Write,
+    #[serde(rename = "admin")]
+    Admin,
+    #[serde(rename = "none")]
+    None,
+  }
+
+  impl ToString for RequestOrganizationPermission {
+    fn to_string(&self) -> String {
+      match self {
+        RequestOrganizationPermission::Read => "read".to_string(),
+        RequestOrganizationPermission::Write => "write".to_string(),
+        RequestOrganizationPermission::Admin => "admin".to_string(),
+        RequestOrganizationPermission::None => "none".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Body of the project
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub body: Option<String>,
+    /// Name of the project
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// The baseline permission that all organization members have on this project
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub organization_permission: Option<RequestOrganizationPermission>,
+    /// Whether or not this project can be seen by everyone.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub private: Option<bool>,
+    /// State of the project; either 'open' or 'closed'
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<String>,
+  }
+}
+
+pub mod delete {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_collaborators {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryAffiliation {
+    #[serde(rename = "outside")]
+    Outside,
+    #[serde(rename = "direct")]
+    Direct,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryAffiliation {
+    fn to_string(&self) -> String {
+      match self {
+        QueryAffiliation::Outside => "outside".to_string(),
+        QueryAffiliation::Direct => "direct".to_string(),
+        QueryAffiliation::All => "all".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List project collaborators`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Filters the collaborators by their affiliation. `outside` means outside collaborators of a project that are not a member of the project's organization. `direct` means collaborators with permissions to a project, regardless of organization membership status. `all` means all collaborators the authenticated user can see.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub affiliation: Option<QueryAffiliation>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod add_collaborator {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// The permission to grant the collaborator.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPermission {
+    #[serde(rename = "read")]
+    Read,
+    #[serde(rename = "write")]
+    Write,
+    #[serde(rename = "admin")]
+    Admin,
+  }
+
+  impl ToString for RequestPermission {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPermission::Read => "read".to_string(),
+        RequestPermission::Write => "write".to_string(),
+        RequestPermission::Admin => "admin".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The permission to grant the collaborator.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<RequestPermission>,
+  }
+}
+
+pub mod remove_collaborator {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_permission_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProjectCollaboratorPermission;
+}
+
+pub mod list_columns {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<ProjectColumn>;
+
+  /// Query for `List project columns`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_column {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProjectColumn;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Name of the project column
+    pub name: String,
+  }
+}
+
+pub mod list_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Project>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryState {
+    #[serde(rename = "open")]
+    Open,
+    #[serde(rename = "closed")]
+    Closed,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryState::Open => "open".to_string(),
+        QueryState::Closed => "closed".to_string(),
+        QueryState::All => "all".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List repository projects`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Indicates the state of the projects to return.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<QueryState>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Project;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The description of the project.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub body: Option<String>,
+    /// The name of the project.
+    pub name: String,
+  }
+}
+
+pub mod create_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Project;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Body of the project
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub body: Option<String>,
+    /// Name of the project
+    pub name: String,
+  }
+}
+
+pub mod list_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Project>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryState {
+    #[serde(rename = "open")]
+    Open,
+    #[serde(rename = "closed")]
+    Closed,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryState::Open => "open".to_string(),
+        QueryState::Closed => "closed".to_string(),
+        QueryState::All => "all".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List user projects`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Indicates the state of the projects to return.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<QueryState>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
 
 /// Interact with GitHub Projects.
 pub struct GitHubProjectsAPI {
@@ -22,11 +581,11 @@ impl GitHubProjectsAPI {
   pub fn list_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), ProjectsListForOrgQuery, Vec<Project>> {
+  ) -> Request<(), list_for_org::Query, list_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/projects");
 
-    Request::<(), ProjectsListForOrgQuery, Vec<Project>>::builder(&self.config)
+    Request::<(), list_for_org::Query, list_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -39,11 +598,11 @@ impl GitHubProjectsAPI {
   pub fn create_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<ProjectsCreateForOrgRequest, (), Project> {
+  ) -> Request<create_for_org::Request, (), create_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/projects");
 
-    Request::<ProjectsCreateForOrgRequest, (), Project>::builder(&self.config)
+    Request::<create_for_org::Request, (), create_for_org::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -53,11 +612,11 @@ impl GitHubProjectsAPI {
   /// Gets information about a project card.
   ///
   /// *Documentation*: [https://docs.github.com/rest/projects/cards#get-a-project-card](https://docs.github.com/rest/projects/cards#get-a-project-card)
-  pub fn get_card(&self, card_id: impl Into<i64>) -> Request<(), (), ProjectCard> {
+  pub fn get_card(&self, card_id: impl Into<i64>) -> Request<(), (), get_card::Response> {
     let card_id = card_id.into();
     let url = format!("/projects/columns/cards/{card_id}");
 
-    Request::<(), (), ProjectCard>::builder(&self.config)
+    Request::<(), (), get_card::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -69,11 +628,11 @@ impl GitHubProjectsAPI {
   pub fn update_card(
     &self,
     card_id: impl Into<i64>,
-  ) -> Request<ProjectsUpdateCardRequest, (), ProjectCard> {
+  ) -> Request<update_card::Request, (), update_card::Response> {
     let card_id = card_id.into();
     let url = format!("/projects/columns/cards/{card_id}");
 
-    Request::<ProjectsUpdateCardRequest, (), ProjectCard>::builder(&self.config)
+    Request::<update_card::Request, (), update_card::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -99,11 +658,11 @@ impl GitHubProjectsAPI {
   pub fn move_card(
     &self,
     card_id: impl Into<i64>,
-  ) -> Request<ProjectsMoveCardRequest, (), ProjectsMoveCardResponse> {
+  ) -> Request<move_card::Request, (), move_card::Response> {
     let card_id = card_id.into();
     let url = format!("/projects/columns/cards/{card_id}/moves");
 
-    Request::<ProjectsMoveCardRequest, (), ProjectsMoveCardResponse>::builder(&self.config)
+    Request::<move_card::Request, (), move_card::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -113,11 +672,11 @@ impl GitHubProjectsAPI {
   /// Gets information about a project column.
   ///
   /// *Documentation*: [https://docs.github.com/rest/projects/columns#get-a-project-column](https://docs.github.com/rest/projects/columns#get-a-project-column)
-  pub fn get_column(&self, column_id: impl Into<i64>) -> Request<(), (), ProjectColumn> {
+  pub fn get_column(&self, column_id: impl Into<i64>) -> Request<(), (), get_column::Response> {
     let column_id = column_id.into();
     let url = format!("/projects/columns/{column_id}");
 
-    Request::<(), (), ProjectColumn>::builder(&self.config)
+    Request::<(), (), get_column::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -129,11 +688,11 @@ impl GitHubProjectsAPI {
   pub fn update_column(
     &self,
     column_id: impl Into<i64>,
-  ) -> Request<ProjectsUpdateColumnRequest, (), ProjectColumn> {
+  ) -> Request<update_column::Request, (), update_column::Response> {
     let column_id = column_id.into();
     let url = format!("/projects/columns/{column_id}");
 
-    Request::<ProjectsUpdateColumnRequest, (), ProjectColumn>::builder(&self.config)
+    Request::<update_column::Request, (), update_column::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -160,11 +719,11 @@ impl GitHubProjectsAPI {
   pub fn list_cards(
     &self,
     column_id: impl Into<i64>,
-  ) -> Request<(), ProjectsListCardsQuery, Vec<ProjectCard>> {
+  ) -> Request<(), list_cards::Query, list_cards::Response> {
     let column_id = column_id.into();
     let url = format!("/projects/columns/{column_id}/cards");
 
-    Request::<(), ProjectsListCardsQuery, Vec<ProjectCard>>::builder(&self.config)
+    Request::<(), list_cards::Query, list_cards::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -176,11 +735,11 @@ impl GitHubProjectsAPI {
   pub fn create_card(
     &self,
     column_id: impl Into<i64>,
-  ) -> Request<ProjectsCreateCardRequest, (), ProjectCard> {
+  ) -> Request<create_card::Request, (), create_card::Response> {
     let column_id = column_id.into();
     let url = format!("/projects/columns/{column_id}/cards");
 
-    Request::<ProjectsCreateCardRequest, (), ProjectCard>::builder(&self.config)
+    Request::<create_card::Request, (), create_card::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -192,11 +751,11 @@ impl GitHubProjectsAPI {
   pub fn move_column(
     &self,
     column_id: impl Into<i64>,
-  ) -> Request<ProjectsMoveColumnRequest, (), ProjectsMoveColumnResponse> {
+  ) -> Request<move_column::Request, (), move_column::Response> {
     let column_id = column_id.into();
     let url = format!("/projects/columns/{column_id}/moves");
 
-    Request::<ProjectsMoveColumnRequest, (), ProjectsMoveColumnResponse>::builder(&self.config)
+    Request::<move_column::Request, (), move_column::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -206,11 +765,11 @@ impl GitHubProjectsAPI {
   /// Gets a project by its `id`. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
   ///
   /// *Documentation*: [https://docs.github.com/rest/projects/projects#get-a-project](https://docs.github.com/rest/projects/projects#get-a-project)
-  pub fn get(&self, project_id: impl Into<i64>) -> Request<(), (), Project> {
+  pub fn get(&self, project_id: impl Into<i64>) -> Request<(), (), get::Response> {
     let project_id = project_id.into();
     let url = format!("/projects/{project_id}");
 
-    Request::<(), (), Project>::builder(&self.config)
+    Request::<(), (), get::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -220,11 +779,14 @@ impl GitHubProjectsAPI {
   /// Updates a project board's information. Returns a `404 Not Found` status if projects are disabled. If you do not have sufficient privileges to perform this action, a `401 Unauthorized` or `410 Gone` status is returned.
   ///
   /// *Documentation*: [https://docs.github.com/rest/projects/projects#update-a-project](https://docs.github.com/rest/projects/projects#update-a-project)
-  pub fn update(&self, project_id: impl Into<i64>) -> Request<ProjectsUpdateRequest, (), Project> {
+  pub fn update(
+    &self,
+    project_id: impl Into<i64>,
+  ) -> Request<update::Request, (), update::Response> {
     let project_id = project_id.into();
     let url = format!("/projects/{project_id}");
 
-    Request::<ProjectsUpdateRequest, (), Project>::builder(&self.config)
+    Request::<update::Request, (), update::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -251,11 +813,11 @@ impl GitHubProjectsAPI {
   pub fn list_collaborators(
     &self,
     project_id: impl Into<i64>,
-  ) -> Request<(), ProjectsListCollaboratorsQuery, Vec<SimpleUser>> {
+  ) -> Request<(), list_collaborators::Query, list_collaborators::Response> {
     let project_id = project_id.into();
     let url = format!("/projects/{project_id}/collaborators");
 
-    Request::<(), ProjectsListCollaboratorsQuery, Vec<SimpleUser>>::builder(&self.config)
+    Request::<(), list_collaborators::Query, list_collaborators::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -269,12 +831,12 @@ impl GitHubProjectsAPI {
     &self,
     project_id: impl Into<i64>,
     username: impl Into<String>,
-  ) -> NoContentRequest<ProjectsAddCollaboratorRequest, ()> {
+  ) -> NoContentRequest<add_collaborator::Request, ()> {
     let project_id = project_id.into();
     let username = username.into();
     let url = format!("/projects/{project_id}/collaborators/{username}");
 
-    NoContentRequest::<ProjectsAddCollaboratorRequest, ()>::builder(&self.config)
+    NoContentRequest::<add_collaborator::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -307,12 +869,12 @@ impl GitHubProjectsAPI {
     &self,
     project_id: impl Into<i64>,
     username: impl Into<String>,
-  ) -> Request<(), (), ProjectCollaboratorPermission> {
+  ) -> Request<(), (), get_permission_for_user::Response> {
     let project_id = project_id.into();
     let username = username.into();
     let url = format!("/projects/{project_id}/collaborators/{username}/permission");
 
-    Request::<(), (), ProjectCollaboratorPermission>::builder(&self.config)
+    Request::<(), (), get_permission_for_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -325,11 +887,11 @@ impl GitHubProjectsAPI {
   pub fn list_columns(
     &self,
     project_id: impl Into<i64>,
-  ) -> Request<(), ProjectsListColumnsQuery, Vec<ProjectColumn>> {
+  ) -> Request<(), list_columns::Query, list_columns::Response> {
     let project_id = project_id.into();
     let url = format!("/projects/{project_id}/columns");
 
-    Request::<(), ProjectsListColumnsQuery, Vec<ProjectColumn>>::builder(&self.config)
+    Request::<(), list_columns::Query, list_columns::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -342,11 +904,11 @@ impl GitHubProjectsAPI {
   pub fn create_column(
     &self,
     project_id: impl Into<i64>,
-  ) -> Request<ProjectsCreateColumnRequest, (), ProjectColumn> {
+  ) -> Request<create_column::Request, (), create_column::Response> {
     let project_id = project_id.into();
     let url = format!("/projects/{project_id}/columns");
 
-    Request::<ProjectsCreateColumnRequest, (), ProjectColumn>::builder(&self.config)
+    Request::<create_column::Request, (), create_column::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -360,12 +922,12 @@ impl GitHubProjectsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ProjectsListForRepoQuery, Vec<Project>> {
+  ) -> Request<(), list_for_repo::Query, list_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/projects");
 
-    Request::<(), ProjectsListForRepoQuery, Vec<Project>>::builder(&self.config)
+    Request::<(), list_for_repo::Query, list_for_repo::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -379,12 +941,12 @@ impl GitHubProjectsAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ProjectsCreateForRepoRequest, (), Project> {
+  ) -> Request<create_for_repo::Request, (), create_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/projects");
 
-    Request::<ProjectsCreateForRepoRequest, (), Project>::builder(&self.config)
+    Request::<create_for_repo::Request, (), create_for_repo::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -396,10 +958,11 @@ impl GitHubProjectsAPI {
   /// *Documentation*: [https://docs.github.com/rest/projects/projects#create-a-user-project](https://docs.github.com/rest/projects/projects#create-a-user-project)
   pub fn create_for_authenticated_user(
     &self,
-  ) -> Request<ProjectsCreateForAuthenticatedUserRequest, (), Project> {
+  ) -> Request<create_for_authenticated_user::Request, (), create_for_authenticated_user::Response>
+  {
     let url = format!("/user/projects");
 
-    Request::<ProjectsCreateForAuthenticatedUserRequest, (), Project>::builder(&self.config)
+    Request::<create_for_authenticated_user::Request, (), create_for_authenticated_user::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -412,11 +975,11 @@ impl GitHubProjectsAPI {
   pub fn list_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ProjectsListForUserQuery, Vec<Project>> {
+  ) -> Request<(), list_for_user::Query, list_for_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/projects");
 
-    Request::<(), ProjectsListForUserQuery, Vec<Project>>::builder(&self.config)
+    Request::<(), list_for_user::Query, list_for_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }

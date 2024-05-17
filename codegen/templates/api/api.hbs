@@ -1,6 +1,22 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Serialize, Deserialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+{{#each functions }}
+pub mod {{ function_name }} {
+  #[allow(unused_imports)]
+  use super::*;
+
+  {{#if references}}
+  {{> types references}}
+  {{/if}}
+}
+
+{{/each}}
 
 {{#if description}}
 {{#each (split_lines description)}}

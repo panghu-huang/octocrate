@@ -1,6 +1,1023 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list_for_team_discussion_comment_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Reaction>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for QueryContent {
+    fn to_string(&self) -> String {
+      match self {
+        QueryContent::PlusOne => "+1".to_string(),
+        QueryContent::MinusOne => "-1".to_string(),
+        QueryContent::Laugh => "laugh".to_string(),
+        QueryContent::Confused => "confused".to_string(),
+        QueryContent::Heart => "heart".to_string(),
+        QueryContent::Hooray => "hooray".to_string(),
+        QueryContent::Rocket => "rocket".to_string(),
+        QueryContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List reactions for a team discussion comment`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns a single [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions). Omit this parameter to list all reactions to a team discussion comment.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content: Option<QueryContent>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_for_team_discussion_comment_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Reaction;
+
+  /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for RequestContent {
+    fn to_string(&self) -> String {
+      match self {
+        RequestContent::PlusOne => "+1".to_string(),
+        RequestContent::MinusOne => "-1".to_string(),
+        RequestContent::Laugh => "laugh".to_string(),
+        RequestContent::Confused => "confused".to_string(),
+        RequestContent::Heart => "heart".to_string(),
+        RequestContent::Hooray => "hooray".to_string(),
+        RequestContent::Rocket => "rocket".to_string(),
+        RequestContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.
+    pub content: RequestContent,
+  }
+}
+
+pub mod delete_for_team_discussion_comment {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_for_team_discussion_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Reaction>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for QueryContent {
+    fn to_string(&self) -> String {
+      match self {
+        QueryContent::PlusOne => "+1".to_string(),
+        QueryContent::MinusOne => "-1".to_string(),
+        QueryContent::Laugh => "laugh".to_string(),
+        QueryContent::Confused => "confused".to_string(),
+        QueryContent::Heart => "heart".to_string(),
+        QueryContent::Hooray => "hooray".to_string(),
+        QueryContent::Rocket => "rocket".to_string(),
+        QueryContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List reactions for a team discussion`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns a single [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions). Omit this parameter to list all reactions to a team discussion.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content: Option<QueryContent>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_for_team_discussion_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Reaction;
+
+  /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for RequestContent {
+    fn to_string(&self) -> String {
+      match self {
+        RequestContent::PlusOne => "+1".to_string(),
+        RequestContent::MinusOne => "-1".to_string(),
+        RequestContent::Laugh => "laugh".to_string(),
+        RequestContent::Confused => "confused".to_string(),
+        RequestContent::Heart => "heart".to_string(),
+        RequestContent::Hooray => "hooray".to_string(),
+        RequestContent::Rocket => "rocket".to_string(),
+        RequestContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.
+    pub content: RequestContent,
+  }
+}
+
+pub mod delete_for_team_discussion {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_for_commit_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Reaction>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for QueryContent {
+    fn to_string(&self) -> String {
+      match self {
+        QueryContent::PlusOne => "+1".to_string(),
+        QueryContent::MinusOne => "-1".to_string(),
+        QueryContent::Laugh => "laugh".to_string(),
+        QueryContent::Confused => "confused".to_string(),
+        QueryContent::Heart => "heart".to_string(),
+        QueryContent::Hooray => "hooray".to_string(),
+        QueryContent::Rocket => "rocket".to_string(),
+        QueryContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List reactions for a commit comment`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns a single [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions). Omit this parameter to list all reactions to a commit comment.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content: Option<QueryContent>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_for_commit_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Reaction;
+
+  /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for RequestContent {
+    fn to_string(&self) -> String {
+      match self {
+        RequestContent::PlusOne => "+1".to_string(),
+        RequestContent::MinusOne => "-1".to_string(),
+        RequestContent::Laugh => "laugh".to_string(),
+        RequestContent::Confused => "confused".to_string(),
+        RequestContent::Heart => "heart".to_string(),
+        RequestContent::Hooray => "hooray".to_string(),
+        RequestContent::Rocket => "rocket".to_string(),
+        RequestContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment.
+    pub content: RequestContent,
+  }
+}
+
+pub mod delete_for_commit_comment {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_for_issue_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Reaction>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for QueryContent {
+    fn to_string(&self) -> String {
+      match self {
+        QueryContent::PlusOne => "+1".to_string(),
+        QueryContent::MinusOne => "-1".to_string(),
+        QueryContent::Laugh => "laugh".to_string(),
+        QueryContent::Confused => "confused".to_string(),
+        QueryContent::Heart => "heart".to_string(),
+        QueryContent::Hooray => "hooray".to_string(),
+        QueryContent::Rocket => "rocket".to_string(),
+        QueryContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List reactions for an issue comment`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns a single [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions). Omit this parameter to list all reactions to an issue comment.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content: Option<QueryContent>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_for_issue_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Reaction;
+
+  /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for RequestContent {
+    fn to_string(&self) -> String {
+      match self {
+        RequestContent::PlusOne => "+1".to_string(),
+        RequestContent::MinusOne => "-1".to_string(),
+        RequestContent::Laugh => "laugh".to_string(),
+        RequestContent::Confused => "confused".to_string(),
+        RequestContent::Heart => "heart".to_string(),
+        RequestContent::Hooray => "hooray".to_string(),
+        RequestContent::Rocket => "rocket".to_string(),
+        RequestContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment.
+    pub content: RequestContent,
+  }
+}
+
+pub mod delete_for_issue_comment {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_for_issue {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Reaction>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for QueryContent {
+    fn to_string(&self) -> String {
+      match self {
+        QueryContent::PlusOne => "+1".to_string(),
+        QueryContent::MinusOne => "-1".to_string(),
+        QueryContent::Laugh => "laugh".to_string(),
+        QueryContent::Confused => "confused".to_string(),
+        QueryContent::Heart => "heart".to_string(),
+        QueryContent::Hooray => "hooray".to_string(),
+        QueryContent::Rocket => "rocket".to_string(),
+        QueryContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List reactions for an issue`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns a single [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions). Omit this parameter to list all reactions to an issue.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content: Option<QueryContent>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_for_issue {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Reaction;
+
+  /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for RequestContent {
+    fn to_string(&self) -> String {
+      match self {
+        RequestContent::PlusOne => "+1".to_string(),
+        RequestContent::MinusOne => "-1".to_string(),
+        RequestContent::Laugh => "laugh".to_string(),
+        RequestContent::Confused => "confused".to_string(),
+        RequestContent::Heart => "heart".to_string(),
+        RequestContent::Hooray => "hooray".to_string(),
+        RequestContent::Rocket => "rocket".to_string(),
+        RequestContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue.
+    pub content: RequestContent,
+  }
+}
+
+pub mod delete_for_issue {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_for_pull_request_review_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Reaction>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for QueryContent {
+    fn to_string(&self) -> String {
+      match self {
+        QueryContent::PlusOne => "+1".to_string(),
+        QueryContent::MinusOne => "-1".to_string(),
+        QueryContent::Laugh => "laugh".to_string(),
+        QueryContent::Confused => "confused".to_string(),
+        QueryContent::Heart => "heart".to_string(),
+        QueryContent::Hooray => "hooray".to_string(),
+        QueryContent::Rocket => "rocket".to_string(),
+        QueryContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List reactions for a pull request review comment`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns a single [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions). Omit this parameter to list all reactions to a pull request review comment.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content: Option<QueryContent>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_for_pull_request_review_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Reaction;
+
+  /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the pull request review comment.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for RequestContent {
+    fn to_string(&self) -> String {
+      match self {
+        RequestContent::PlusOne => "+1".to_string(),
+        RequestContent::MinusOne => "-1".to_string(),
+        RequestContent::Laugh => "laugh".to_string(),
+        RequestContent::Confused => "confused".to_string(),
+        RequestContent::Heart => "heart".to_string(),
+        RequestContent::Hooray => "hooray".to_string(),
+        RequestContent::Rocket => "rocket".to_string(),
+        RequestContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the pull request review comment.
+    pub content: RequestContent,
+  }
+}
+
+pub mod delete_for_pull_request_comment {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_for_release {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Reaction>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for QueryContent {
+    fn to_string(&self) -> String {
+      match self {
+        QueryContent::PlusOne => "+1".to_string(),
+        QueryContent::Laugh => "laugh".to_string(),
+        QueryContent::Heart => "heart".to_string(),
+        QueryContent::Hooray => "hooray".to_string(),
+        QueryContent::Rocket => "rocket".to_string(),
+        QueryContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List reactions for a release`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns a single [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions). Omit this parameter to list all reactions to a release.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content: Option<QueryContent>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_for_release {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Reaction;
+
+  /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for RequestContent {
+    fn to_string(&self) -> String {
+      match self {
+        RequestContent::PlusOne => "+1".to_string(),
+        RequestContent::Laugh => "laugh".to_string(),
+        RequestContent::Heart => "heart".to_string(),
+        RequestContent::Hooray => "hooray".to_string(),
+        RequestContent::Rocket => "rocket".to_string(),
+        RequestContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release.
+    pub content: RequestContent,
+  }
+}
+
+pub mod delete_for_release {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_for_team_discussion_comment_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Reaction>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for QueryContent {
+    fn to_string(&self) -> String {
+      match self {
+        QueryContent::PlusOne => "+1".to_string(),
+        QueryContent::MinusOne => "-1".to_string(),
+        QueryContent::Laugh => "laugh".to_string(),
+        QueryContent::Confused => "confused".to_string(),
+        QueryContent::Heart => "heart".to_string(),
+        QueryContent::Hooray => "hooray".to_string(),
+        QueryContent::Rocket => "rocket".to_string(),
+        QueryContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List reactions for a team discussion comment (Legacy)`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns a single [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions). Omit this parameter to list all reactions to a team discussion comment.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content: Option<QueryContent>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_for_team_discussion_comment_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Reaction;
+
+  /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for RequestContent {
+    fn to_string(&self) -> String {
+      match self {
+        RequestContent::PlusOne => "+1".to_string(),
+        RequestContent::MinusOne => "-1".to_string(),
+        RequestContent::Laugh => "laugh".to_string(),
+        RequestContent::Confused => "confused".to_string(),
+        RequestContent::Heart => "heart".to_string(),
+        RequestContent::Hooray => "hooray".to_string(),
+        RequestContent::Rocket => "rocket".to_string(),
+        RequestContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.
+    pub content: RequestContent,
+  }
+}
+
+pub mod list_for_team_discussion_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Reaction>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for QueryContent {
+    fn to_string(&self) -> String {
+      match self {
+        QueryContent::PlusOne => "+1".to_string(),
+        QueryContent::MinusOne => "-1".to_string(),
+        QueryContent::Laugh => "laugh".to_string(),
+        QueryContent::Confused => "confused".to_string(),
+        QueryContent::Heart => "heart".to_string(),
+        QueryContent::Hooray => "hooray".to_string(),
+        QueryContent::Rocket => "rocket".to_string(),
+        QueryContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List reactions for a team discussion (Legacy)`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Returns a single [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions). Omit this parameter to list all reactions to a team discussion.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content: Option<QueryContent>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_for_team_discussion_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Reaction;
+
+  /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestContent {
+    #[serde(rename = "+1")]
+    PlusOne,
+    #[serde(rename = "-1")]
+    MinusOne,
+    #[serde(rename = "laugh")]
+    Laugh,
+    #[serde(rename = "confused")]
+    Confused,
+    #[serde(rename = "heart")]
+    Heart,
+    #[serde(rename = "hooray")]
+    Hooray,
+    #[serde(rename = "rocket")]
+    Rocket,
+    #[serde(rename = "eyes")]
+    Eyes,
+  }
+
+  impl ToString for RequestContent {
+    fn to_string(&self) -> String {
+      match self {
+        RequestContent::PlusOne => "+1".to_string(),
+        RequestContent::MinusOne => "-1".to_string(),
+        RequestContent::Laugh => "laugh".to_string(),
+        RequestContent::Confused => "confused".to_string(),
+        RequestContent::Heart => "heart".to_string(),
+        RequestContent::Hooray => "hooray".to_string(),
+        RequestContent::Rocket => "rocket".to_string(),
+        RequestContent::Eyes => "eyes".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.
+    pub content: RequestContent,
+  }
+}
 
 /// Interact with reactions to various GitHub entities.
 pub struct GitHubReactionsAPI {
@@ -29,16 +1046,22 @@ impl GitHubReactionsAPI {
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
     comment_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForTeamDiscussionCommentInOrgQuery, Vec<Reaction>> {
+  ) -> Request<
+    (),
+    list_for_team_discussion_comment_in_org::Query,
+    list_for_team_discussion_comment_in_org::Response,
+  > {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
     let comment_number = comment_number.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions");
 
-    Request::<(), ReactionsListForTeamDiscussionCommentInOrgQuery, Vec<Reaction>>::builder(
-      &self.config,
-    )
+    Request::<
+      (),
+      list_for_team_discussion_comment_in_org::Query,
+      list_for_team_discussion_comment_in_org::Response,
+    >::builder(&self.config)
     .get(url)
     .build()
   }
@@ -60,16 +1083,22 @@ impl GitHubReactionsAPI {
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
     comment_number: impl Into<i64>,
-  ) -> Request<ReactionsCreateForTeamDiscussionCommentInOrgRequest, (), Reaction> {
+  ) -> Request<
+    create_for_team_discussion_comment_in_org::Request,
+    (),
+    create_for_team_discussion_comment_in_org::Response,
+  > {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
     let comment_number = comment_number.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions");
 
-    Request::<ReactionsCreateForTeamDiscussionCommentInOrgRequest, (), Reaction>::builder(
-      &self.config,
-    )
+    Request::<
+      create_for_team_discussion_comment_in_org::Request,
+      (),
+      create_for_team_discussion_comment_in_org::Response,
+    >::builder(&self.config)
     .post(url)
     .build()
   }
@@ -117,13 +1146,14 @@ impl GitHubReactionsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForTeamDiscussionInOrgQuery, Vec<Reaction>> {
+  ) -> Request<(), list_for_team_discussion_in_org::Query, list_for_team_discussion_in_org::Response>
+  {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions");
 
-    Request::<(), ReactionsListForTeamDiscussionInOrgQuery, Vec<Reaction>>::builder(&self.config)
+    Request::<(), list_for_team_discussion_in_org::Query, list_for_team_discussion_in_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -144,15 +1174,23 @@ impl GitHubReactionsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
-  ) -> Request<ReactionsCreateForTeamDiscussionInOrgRequest, (), Reaction> {
+  ) -> Request<
+    create_for_team_discussion_in_org::Request,
+    (),
+    create_for_team_discussion_in_org::Response,
+  > {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions");
 
-    Request::<ReactionsCreateForTeamDiscussionInOrgRequest, (), Reaction>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<
+      create_for_team_discussion_in_org::Request,
+      (),
+      create_for_team_discussion_in_org::Response,
+    >::builder(&self.config)
+    .post(url)
+    .build()
   }
 
   /// **Delete team discussion reaction**
@@ -194,15 +1232,17 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<(), ReactionsListForCommitCommentQuery, Vec<Reaction>> {
+  ) -> Request<(), list_for_commit_comment::Query, list_for_commit_comment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/comments/{comment_id}/reactions");
 
-    Request::<(), ReactionsListForCommitCommentQuery, Vec<Reaction>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_for_commit_comment::Query, list_for_commit_comment::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Create reaction for a commit comment**
@@ -215,15 +1255,17 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<ReactionsCreateForCommitCommentRequest, (), Reaction> {
+  ) -> Request<create_for_commit_comment::Request, (), create_for_commit_comment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/comments/{comment_id}/reactions");
 
-    Request::<ReactionsCreateForCommitCommentRequest, (), Reaction>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_for_commit_comment::Request, (), create_for_commit_comment::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Delete a commit comment reaction**
@@ -261,15 +1303,17 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<(), ReactionsListForIssueCommentQuery, Vec<Reaction>> {
+  ) -> Request<(), list_for_issue_comment::Query, list_for_issue_comment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions");
 
-    Request::<(), ReactionsListForIssueCommentQuery, Vec<Reaction>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_for_issue_comment::Query, list_for_issue_comment::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Create reaction for an issue comment**
@@ -282,15 +1326,17 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<ReactionsCreateForIssueCommentRequest, (), Reaction> {
+  ) -> Request<create_for_issue_comment::Request, (), create_for_issue_comment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/issues/comments/{comment_id}/reactions");
 
-    Request::<ReactionsCreateForIssueCommentRequest, (), Reaction>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_for_issue_comment::Request, (), create_for_issue_comment::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Delete an issue comment reaction**
@@ -328,13 +1374,13 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForIssueQuery, Vec<Reaction>> {
+  ) -> Request<(), list_for_issue::Query, list_for_issue::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/reactions");
 
-    Request::<(), ReactionsListForIssueQuery, Vec<Reaction>>::builder(&self.config)
+    Request::<(), list_for_issue::Query, list_for_issue::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -349,13 +1395,13 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     issue_number: impl Into<i64>,
-  ) -> Request<ReactionsCreateForIssueRequest, (), Reaction> {
+  ) -> Request<create_for_issue::Request, (), create_for_issue::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let issue_number = issue_number.into();
     let url = format!("/repos/{owner}/{repo}/issues/{issue_number}/reactions");
 
-    Request::<ReactionsCreateForIssueRequest, (), Reaction>::builder(&self.config)
+    Request::<create_for_issue::Request, (), create_for_issue::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -395,15 +1441,21 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<(), ReactionsListForPullRequestReviewCommentQuery, Vec<Reaction>> {
+  ) -> Request<
+    (),
+    list_for_pull_request_review_comment::Query,
+    list_for_pull_request_review_comment::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions");
 
-    Request::<(), ReactionsListForPullRequestReviewCommentQuery, Vec<Reaction>>::builder(
-      &self.config,
-    )
+    Request::<
+      (),
+      list_for_pull_request_review_comment::Query,
+      list_for_pull_request_review_comment::Response,
+    >::builder(&self.config)
     .get(url)
     .build()
   }
@@ -418,15 +1470,21 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<ReactionsCreateForPullRequestReviewCommentRequest, (), Reaction> {
+  ) -> Request<
+    create_for_pull_request_review_comment::Request,
+    (),
+    create_for_pull_request_review_comment::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions");
 
-    Request::<ReactionsCreateForPullRequestReviewCommentRequest, (), Reaction>::builder(
-      &self.config,
-    )
+    Request::<
+      create_for_pull_request_review_comment::Request,
+      (),
+      create_for_pull_request_review_comment::Response,
+    >::builder(&self.config)
     .post(url)
     .build()
   }
@@ -466,13 +1524,13 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     release_id: impl Into<i64>,
-  ) -> Request<(), ReactionsListForReleaseQuery, Vec<Reaction>> {
+  ) -> Request<(), list_for_release::Query, list_for_release::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let release_id = release_id.into();
     let url = format!("/repos/{owner}/{repo}/releases/{release_id}/reactions");
 
-    Request::<(), ReactionsListForReleaseQuery, Vec<Reaction>>::builder(&self.config)
+    Request::<(), list_for_release::Query, list_for_release::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -487,13 +1545,13 @@ impl GitHubReactionsAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     release_id: impl Into<i64>,
-  ) -> Request<ReactionsCreateForReleaseRequest, (), Reaction> {
+  ) -> Request<create_for_release::Request, (), create_for_release::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let release_id = release_id.into();
     let url = format!("/repos/{owner}/{repo}/releases/{release_id}/reactions");
 
-    Request::<ReactionsCreateForReleaseRequest, (), Reaction>::builder(&self.config)
+    Request::<create_for_release::Request, (), create_for_release::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -537,7 +1595,11 @@ impl GitHubReactionsAPI {
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
     comment_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForTeamDiscussionCommentLegacyQuery, Vec<Reaction>> {
+  ) -> Request<
+    (),
+    list_for_team_discussion_comment_legacy::Query,
+    list_for_team_discussion_comment_legacy::Response,
+  > {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let comment_number = comment_number.into();
@@ -545,9 +1607,11 @@ impl GitHubReactionsAPI {
       "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
     );
 
-    Request::<(), ReactionsListForTeamDiscussionCommentLegacyQuery, Vec<Reaction>>::builder(
-      &self.config,
-    )
+    Request::<
+      (),
+      list_for_team_discussion_comment_legacy::Query,
+      list_for_team_discussion_comment_legacy::Response,
+    >::builder(&self.config)
     .get(url)
     .build()
   }
@@ -568,7 +1632,11 @@ impl GitHubReactionsAPI {
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
     comment_number: impl Into<i64>,
-  ) -> Request<ReactionsCreateForTeamDiscussionCommentLegacyRequest, (), Reaction> {
+  ) -> Request<
+    create_for_team_discussion_comment_legacy::Request,
+    (),
+    create_for_team_discussion_comment_legacy::Response,
+  > {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let comment_number = comment_number.into();
@@ -576,9 +1644,11 @@ impl GitHubReactionsAPI {
       "/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions"
     );
 
-    Request::<ReactionsCreateForTeamDiscussionCommentLegacyRequest, (), Reaction>::builder(
-      &self.config,
-    )
+    Request::<
+      create_for_team_discussion_comment_legacy::Request,
+      (),
+      create_for_team_discussion_comment_legacy::Response,
+    >::builder(&self.config)
     .post(url)
     .build()
   }
@@ -596,12 +1666,13 @@ impl GitHubReactionsAPI {
     &self,
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
-  ) -> Request<(), ReactionsListForTeamDiscussionLegacyQuery, Vec<Reaction>> {
+  ) -> Request<(), list_for_team_discussion_legacy::Query, list_for_team_discussion_legacy::Response>
+  {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let url = format!("/teams/{team_id}/discussions/{discussion_number}/reactions");
 
-    Request::<(), ReactionsListForTeamDiscussionLegacyQuery, Vec<Reaction>>::builder(&self.config)
+    Request::<(), list_for_team_discussion_legacy::Query, list_for_team_discussion_legacy::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -621,13 +1692,21 @@ impl GitHubReactionsAPI {
     &self,
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
-  ) -> Request<ReactionsCreateForTeamDiscussionLegacyRequest, (), Reaction> {
+  ) -> Request<
+    create_for_team_discussion_legacy::Request,
+    (),
+    create_for_team_discussion_legacy::Response,
+  > {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let url = format!("/teams/{team_id}/discussions/{discussion_number}/reactions");
 
-    Request::<ReactionsCreateForTeamDiscussionLegacyRequest, (), Reaction>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<
+      create_for_team_discussion_legacy::Request,
+      (),
+      create_for_team_discussion_legacy::Response,
+    >::builder(&self.config)
+    .post(url)
+    .build()
   }
 }

@@ -1,6 +1,17 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod get {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RateLimitOverview;
+}
 
 pub struct GitHubRateLimitAPI {
   config: SharedAPIConfig,
@@ -31,10 +42,10 @@ impl GitHubRateLimitAPI {
   /// **Note:** The `rate` object is deprecated. If you're writing new API client code or updating existing code, you should use the `core` object instead of the `rate` object. The `core` object contains the same information that is present in the `rate` object.
   ///
   /// *Documentation*: [https://docs.github.com/rest/rate-limit/rate-limit#get-rate-limit-status-for-the-authenticated-user](https://docs.github.com/rest/rate-limit/rate-limit#get-rate-limit-status-for-the-authenticated-user)
-  pub fn get(&self) -> Request<(), (), RateLimitOverview> {
+  pub fn get(&self) -> Request<(), (), get::Response> {
     let url = format!("/rate_limit");
 
-    Request::<(), (), RateLimitOverview>::builder(&self.config)
+    Request::<(), (), get::Response>::builder(&self.config)
       .get(url)
       .build()
   }

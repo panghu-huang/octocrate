@@ -1,6 +1,131 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod get_copilot_organization_details {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CopilotOrganizationDetails;
+}
+
+pub mod list_copilot_seats {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List all Copilot seat assignments for an organization`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub seats: Option<Vec<CopilotSeatDetails>>,
+    /// Total number of Copilot seats for the organization currently being billed.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub total_seats: Option<i64>,
+  }
+}
+
+pub mod add_copilot_seats_for_teams {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// List of team names within the organization to which to grant access to GitHub Copilot.
+    pub selected_teams: Vec<String>,
+  }
+
+  /// The total number of seat assignments created.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub seats_created: i64,
+  }
+}
+
+pub mod cancel_copilot_seat_assignment_for_teams {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The names of teams from which to revoke access to GitHub Copilot.
+    pub selected_teams: Vec<String>,
+  }
+
+  /// The total number of seat assignments cancelled.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub seats_cancelled: i64,
+  }
+}
+
+pub mod add_copilot_seats_for_users {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The usernames of the organization members to be granted access to GitHub Copilot.
+    pub selected_usernames: Vec<String>,
+  }
+
+  /// The total number of seat assignments created.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub seats_created: i64,
+  }
+}
+
+pub mod cancel_copilot_seat_assignment_for_users {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The usernames of the organization members for which to revoke access to GitHub Copilot.
+    pub selected_usernames: Vec<String>,
+  }
+
+  /// The total number of seat assignments cancelled.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub seats_cancelled: i64,
+  }
+}
+
+pub mod get_copilot_seat_details_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CopilotSeatDetails;
+}
 
 /// Endpoints to manage Copilot using the REST API.
 pub struct GitHubCopilotAPI {
@@ -30,11 +155,11 @@ impl GitHubCopilotAPI {
   pub fn get_copilot_organization_details(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), CopilotOrganizationDetails> {
+  ) -> Request<(), (), get_copilot_organization_details::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/copilot/billing");
 
-    Request::<(), (), CopilotOrganizationDetails>::builder(&self.config)
+    Request::<(), (), get_copilot_organization_details::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -53,15 +178,13 @@ impl GitHubCopilotAPI {
   pub fn list_copilot_seats(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), CopilotListCopilotSeatsQuery, CopilotListCopilotSeatsResponse> {
+  ) -> Request<(), list_copilot_seats::Query, list_copilot_seats::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/copilot/billing/seats");
 
-    Request::<(), CopilotListCopilotSeatsQuery, CopilotListCopilotSeatsResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_copilot_seats::Query, list_copilot_seats::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Add teams to the Copilot subscription for an organization**
@@ -83,12 +206,11 @@ impl GitHubCopilotAPI {
   pub fn add_copilot_seats_for_teams(
     &self,
     org: impl Into<String>,
-  ) -> Request<CopilotAddCopilotSeatsForTeamsRequest, (), CopilotAddCopilotSeatsForTeamsResponse>
-  {
+  ) -> Request<add_copilot_seats_for_teams::Request, (), add_copilot_seats_for_teams::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/copilot/billing/selected_teams");
 
-    Request::<CopilotAddCopilotSeatsForTeamsRequest, (), CopilotAddCopilotSeatsForTeamsResponse>::builder(&self.config)
+    Request::<add_copilot_seats_for_teams::Request, (), add_copilot_seats_for_teams::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -113,17 +235,17 @@ impl GitHubCopilotAPI {
     &self,
     org: impl Into<String>,
   ) -> Request<
-    CopilotCancelCopilotSeatAssignmentForTeamsRequest,
+    cancel_copilot_seat_assignment_for_teams::Request,
     (),
-    CopilotCancelCopilotSeatAssignmentForTeamsResponse,
+    cancel_copilot_seat_assignment_for_teams::Response,
   > {
     let org = org.into();
     let url = format!("/orgs/{org}/copilot/billing/selected_teams");
 
     Request::<
-      CopilotCancelCopilotSeatAssignmentForTeamsRequest,
+      cancel_copilot_seat_assignment_for_teams::Request,
       (),
-      CopilotCancelCopilotSeatAssignmentForTeamsResponse,
+      cancel_copilot_seat_assignment_for_teams::Response,
     >::builder(&self.config)
     .delete(url)
     .build()
@@ -148,12 +270,11 @@ impl GitHubCopilotAPI {
   pub fn add_copilot_seats_for_users(
     &self,
     org: impl Into<String>,
-  ) -> Request<CopilotAddCopilotSeatsForUsersRequest, (), CopilotAddCopilotSeatsForUsersResponse>
-  {
+  ) -> Request<add_copilot_seats_for_users::Request, (), add_copilot_seats_for_users::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/copilot/billing/selected_users");
 
-    Request::<CopilotAddCopilotSeatsForUsersRequest, (), CopilotAddCopilotSeatsForUsersResponse>::builder(&self.config)
+    Request::<add_copilot_seats_for_users::Request, (), add_copilot_seats_for_users::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -178,17 +299,17 @@ impl GitHubCopilotAPI {
     &self,
     org: impl Into<String>,
   ) -> Request<
-    CopilotCancelCopilotSeatAssignmentForUsersRequest,
+    cancel_copilot_seat_assignment_for_users::Request,
     (),
-    CopilotCancelCopilotSeatAssignmentForUsersResponse,
+    cancel_copilot_seat_assignment_for_users::Response,
   > {
     let org = org.into();
     let url = format!("/orgs/{org}/copilot/billing/selected_users");
 
     Request::<
-      CopilotCancelCopilotSeatAssignmentForUsersRequest,
+      cancel_copilot_seat_assignment_for_users::Request,
       (),
-      CopilotCancelCopilotSeatAssignmentForUsersResponse,
+      cancel_copilot_seat_assignment_for_users::Response,
     >::builder(&self.config)
     .delete(url)
     .build()
@@ -209,12 +330,12 @@ impl GitHubCopilotAPI {
     &self,
     org: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<(), (), CopilotSeatDetails> {
+  ) -> Request<(), (), get_copilot_seat_details_for_user::Response> {
     let org = org.into();
     let username = username.into();
     let url = format!("/orgs/{org}/members/{username}/copilot");
 
-    Request::<(), (), CopilotSeatDetails>::builder(&self.config)
+    Request::<(), (), get_copilot_seat_details_for_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }

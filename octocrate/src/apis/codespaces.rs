@@ -1,6 +1,1021 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list_in_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List codespaces for the organization`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub codespaces: Vec<Codespace>,
+    pub total_count: i64,
+  }
+}
+
+pub mod set_codespaces_access {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestVisibility {
+    #[serde(rename = "disabled")]
+    Disabled,
+    #[serde(rename = "selected_members")]
+    SelectedMembers,
+    #[serde(rename = "all_members")]
+    AllMembers,
+    #[serde(rename = "all_members_and_outside_collaborators")]
+    AllMembersAndOutsideCollaborators,
+  }
+
+  impl ToString for RequestVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        RequestVisibility::Disabled => "disabled".to_string(),
+        RequestVisibility::SelectedMembers => "selected_members".to_string(),
+        RequestVisibility::AllMembers => "all_members".to_string(),
+        RequestVisibility::AllMembersAndOutsideCollaborators => {
+          "all_members_and_outside_collaborators".to_string()
+        }
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The usernames of the organization members who should have access to codespaces in the organization. Required when `visibility` is `selected_members`. The provided list of usernames will replace any existing value.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub selected_usernames: Option<Vec<String>>,
+    /// Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization.
+    pub visibility: RequestVisibility,
+  }
+}
+
+pub mod set_codespaces_access_users {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The usernames of the organization members whose codespaces be billed to the organization.
+    pub selected_usernames: Vec<String>,
+  }
+}
+
+pub mod delete_codespaces_access_users {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The usernames of the organization members whose codespaces should not be billed to the organization.
+    pub selected_usernames: Vec<String>,
+  }
+}
+
+pub mod list_org_secrets {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List organization secrets`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub secrets: Vec<CodespacesOrgSecret>,
+    pub total_count: i64,
+  }
+}
+
+pub mod get_org_public_key {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodespacesPublicKey;
+}
+
+pub mod get_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodespacesOrgSecret;
+}
+
+pub mod create_or_update_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestVisibility {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "selected")]
+    Selected,
+  }
+
+  impl ToString for RequestVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        RequestVisibility::All => "all".to_string(),
+        RequestVisibility::Private => "private".to_string(),
+        RequestVisibility::Selected => "selected".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get an organization public key](https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key) endpoint.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub encrypted_value: Option<String>,
+    /// The ID of the key you used to encrypt the secret.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub key_id: Option<String>,
+    /// An array of repository IDs that can access the organization secret. You can only provide a list of repository IDs when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub selected_repository_ids: Option<Vec<i64>>,
+    /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
+    pub visibility: RequestVisibility,
+  }
+}
+
+pub mod delete_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_selected_repos_for_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List selected repositories for an organization secret`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub repositories: Vec<MinimalRepository>,
+    pub total_count: i64,
+  }
+}
+
+pub mod set_selected_repos_for_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/codespaces/organization-secrets#remove-selected-repository-from-an-organization-secret) endpoints.
+    pub selected_repository_ids: Vec<i64>,
+  }
+}
+
+pub mod add_selected_repo_to_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_selected_repo_from_org_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_codespaces_for_user_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List codespaces for a user in organization`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub codespaces: Vec<Codespace>,
+    pub total_count: i64,
+  }
+}
+
+pub mod delete_from_organization {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod stop_in_organization {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Codespace;
+}
+
+pub mod list_in_repository_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List codespaces in a repository for the authenticated user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub codespaces: Vec<Codespace>,
+    pub total_count: i64,
+  }
+}
+
+pub mod create_with_repo_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Codespace;
+
+  /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestGeo {
+    EuropeWest,
+    SoutheastAsia,
+    UsEast,
+    UsWest,
+  }
+
+  impl ToString for RequestGeo {
+    fn to_string(&self) -> String {
+      match self {
+        RequestGeo::EuropeWest => "EuropeWest".to_string(),
+        RequestGeo::SoutheastAsia => "SoutheastAsia".to_string(),
+        RequestGeo::UsEast => "UsEast".to_string(),
+        RequestGeo::UsWest => "UsWest".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// IP for location auto-detection when proxying a request
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub client_ip: Option<String>,
+    /// Path to devcontainer.json config to use for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub devcontainer_path: Option<String>,
+    /// Display name for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub display_name: Option<String>,
+    /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub geo: Option<RequestGeo>,
+    /// Time in minutes before codespace stops from inactivity
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub idle_timeout_minutes: Option<i64>,
+    /// The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub location: Option<String>,
+    /// Machine type to use for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub machine: Option<String>,
+    /// Whether to authorize requested permissions from devcontainer.json
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub multi_repo_permissions_opt_out: Option<bool>,
+    /// Git ref (typically a branch name) for this codespace
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+    /// Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub retention_period_minutes: Option<i64>,
+    /// Working directory for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub working_directory: Option<String>,
+  }
+}
+
+pub mod list_devcontainers_in_repository_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List devcontainer configurations in a repository for the authenticated user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct ResponseDevcontainers {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub display_name: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    pub path: String,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub devcontainers: Vec<ResponseDevcontainers>,
+    pub total_count: i64,
+  }
+}
+
+pub mod repo_machines_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List available machine types for a repository`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The location to check for available machines. Assigned by IP if not provided.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub location: Option<String>,
+    /// IP for location auto-detection when proxying a request
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub client_ip: Option<String>,
+    /// The branch or commit to check for prebuild availability and devcontainer restrictions.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub machines: Vec<CodespaceMachine>,
+    pub total_count: i64,
+  }
+}
+
+pub mod pre_flight_with_repo_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `Get default attributes for a codespace`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The branch or commit to check for a default devcontainer path. If not specified, the default branch will be checked.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+    /// An alternative IP for default location auto-detection, such as when proxying a request.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub client_ip: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct ResponseDefaults {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub devcontainer_path: Option<String>,
+    pub location: String,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub billable_owner: Option<SimpleUser>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub defaults: Option<ResponseDefaults>,
+  }
+}
+
+pub mod check_permissions_for_devcontainer {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodespacesPermissionsCheckForDevcontainer;
+
+  /// Query for `Check if permissions defined by a devcontainer have been accepted by the authenticated user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The git reference that points to the location of the devcontainer configuration to use for the permission check. The value of `ref` will typically be a branch name (`heads/BRANCH_NAME`). For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation.
+    #[serde(rename = "ref")]
+    pub ref_: String,
+    /// Path to the devcontainer.json configuration to use for the permission check.
+    pub devcontainer_path: String,
+  }
+}
+
+pub mod list_repo_secrets {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List repository secrets`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub secrets: Vec<RepoCodespacesSecret>,
+    pub total_count: i64,
+  }
+}
+
+pub mod get_repo_public_key {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodespacesPublicKey;
+}
+
+pub mod get_repo_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepoCodespacesSecret;
+}
+
+pub mod create_or_update_repo_secret {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get a repository public key](https://docs.github.com/rest/codespaces/repository-secrets#get-a-repository-public-key) endpoint.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub encrypted_value: Option<String>,
+    /// ID of the key you used to encrypt the secret.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub key_id: Option<String>,
+  }
+}
+
+pub mod delete_repo_secret {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod create_with_pr_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Codespace;
+
+  /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestGeo {
+    EuropeWest,
+    SoutheastAsia,
+    UsEast,
+    UsWest,
+  }
+
+  impl ToString for RequestGeo {
+    fn to_string(&self) -> String {
+      match self {
+        RequestGeo::EuropeWest => "EuropeWest".to_string(),
+        RequestGeo::SoutheastAsia => "SoutheastAsia".to_string(),
+        RequestGeo::UsEast => "UsEast".to_string(),
+        RequestGeo::UsWest => "UsWest".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// IP for location auto-detection when proxying a request
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub client_ip: Option<String>,
+    /// Path to devcontainer.json config to use for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub devcontainer_path: Option<String>,
+    /// Display name for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub display_name: Option<String>,
+    /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub geo: Option<RequestGeo>,
+    /// Time in minutes before codespace stops from inactivity
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub idle_timeout_minutes: Option<i64>,
+    /// The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub location: Option<String>,
+    /// Machine type to use for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub machine: Option<String>,
+    /// Whether to authorize requested permissions from devcontainer.json
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub multi_repo_permissions_opt_out: Option<bool>,
+    /// Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub retention_period_minutes: Option<i64>,
+    /// Working directory for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub working_directory: Option<String>,
+  }
+}
+
+pub mod list_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List codespaces for the authenticated user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// ID of the Repository to filter on
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repository_id: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub codespaces: Vec<Codespace>,
+    pub total_count: i64,
+  }
+}
+
+pub mod create_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Codespace;
+
+  /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestItem1Geo {
+    EuropeWest,
+    SoutheastAsia,
+    UsEast,
+    UsWest,
+  }
+
+  impl ToString for RequestItem1Geo {
+    fn to_string(&self) -> String {
+      match self {
+        RequestItem1Geo::EuropeWest => "EuropeWest".to_string(),
+        RequestItem1Geo::SoutheastAsia => "SoutheastAsia".to_string(),
+        RequestItem1Geo::UsEast => "UsEast".to_string(),
+        RequestItem1Geo::UsWest => "UsWest".to_string(),
+      }
+    }
+  }
+
+  /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestItem2Geo {
+    EuropeWest,
+    SoutheastAsia,
+    UsEast,
+    UsWest,
+  }
+
+  impl ToString for RequestItem2Geo {
+    fn to_string(&self) -> String {
+      match self {
+        RequestItem2Geo::EuropeWest => "EuropeWest".to_string(),
+        RequestItem2Geo::SoutheastAsia => "SoutheastAsia".to_string(),
+        RequestItem2Geo::UsEast => "UsEast".to_string(),
+        RequestItem2Geo::UsWest => "UsWest".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    RequestItem2(RequestItem2),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// IP for location auto-detection when proxying a request
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub client_ip: Option<String>,
+    /// Path to devcontainer.json config to use for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub devcontainer_path: Option<String>,
+    /// Display name for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub display_name: Option<String>,
+    /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub geo: Option<RequestItem1Geo>,
+    /// Time in minutes before codespace stops from inactivity
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub idle_timeout_minutes: Option<i64>,
+    /// The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub location: Option<String>,
+    /// Machine type to use for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub machine: Option<String>,
+    /// Whether to authorize requested permissions from devcontainer.json
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub multi_repo_permissions_opt_out: Option<bool>,
+    /// Git ref (typically a branch name) for this codespace
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+    /// Repository id for this codespace
+    pub repository_id: i64,
+    /// Duration in minutes after codespace has gone idle in which it will be deleted. Must be integer minutes between 0 and 43200 (30 days).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub retention_period_minutes: Option<i64>,
+    /// Working directory for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub working_directory: Option<String>,
+  }
+
+  /// Pull request number for this codespace
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem2PullRequest {
+    /// Pull request number
+    pub pull_request_number: i64,
+    /// Repository id for this codespace
+    pub repository_id: i64,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem2 {
+    /// Path to devcontainer.json config to use for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub devcontainer_path: Option<String>,
+    /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub geo: Option<RequestItem2Geo>,
+    /// Time in minutes before codespace stops from inactivity
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub idle_timeout_minutes: Option<i64>,
+    /// The requested location for a new codespace. Best efforts are made to respect this upon creation. Assigned by IP if not provided.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub location: Option<String>,
+    /// Machine type to use for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub machine: Option<String>,
+    /// Pull request number for this codespace
+    pub pull_request: RequestItem2PullRequest,
+    /// Working directory for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub working_directory: Option<String>,
+  }
+}
+
+pub mod list_secrets_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List secrets for the authenticated user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub secrets: Vec<CodespacesSecret>,
+    pub total_count: i64,
+  }
+}
+
+pub mod get_public_key_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodespacesUserPublicKey;
+}
+
+pub mod get_secret_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodespacesSecret;
+}
+
+pub mod create_or_update_secret_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = EmptyObject;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Value for your secret, encrypted with [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages) using the public key retrieved from the [Get the public key for the authenticated user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user) endpoint.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub encrypted_value: Option<String>,
+    /// ID of the key you used to encrypt the secret.
+    pub key_id: String,
+    /// An array of repository ids that can access the user secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Set selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#set-selected-repositories-for-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub selected_repository_ids: Option<Vec<StringOrInteger>>,
+  }
+}
+
+pub mod delete_secret_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_repositories_for_secret_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub repositories: Vec<MinimalRepository>,
+    pub total_count: i64,
+  }
+}
+
+pub mod set_repositories_for_secret_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.
+    pub selected_repository_ids: Vec<i64>,
+  }
+}
+
+pub mod add_repository_for_secret_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_repository_for_secret_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Codespace;
+}
+
+pub mod update_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Codespace;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Display name for this codespace
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub display_name: Option<String>,
+    /// A valid machine to transition this codespace to.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub machine: Option<String>,
+    /// Recently opened folders inside the codespace. It is currently used by the clients to determine the folder path to load the codespace in.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub recent_folders: Option<Vec<String>>,
+  }
+}
+
+pub mod delete_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod export_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodespaceExportDetails;
+}
+
+pub mod get_export_details_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodespaceExportDetails;
+}
+
+pub mod codespace_machines_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub machines: Vec<CodespaceMachine>,
+    pub total_count: i64,
+  }
+}
+
+pub mod publish_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodespaceWithFullRepository;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// A name for the new repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// Whether the new repository should be private.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub private: Option<bool>,
+  }
+}
+
+pub mod start_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Codespace;
+}
+
+pub mod stop_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Codespace;
+}
 
 /// Endpoints to manage Codespaces using the REST API.
 pub struct GitHubCodespacesAPI {
@@ -24,11 +1039,11 @@ impl GitHubCodespacesAPI {
   pub fn list_in_organization(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), CodespacesListInOrganizationQuery, CodespacesListInOrganizationResponse> {
+  ) -> Request<(), list_in_organization::Query, list_in_organization::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/codespaces");
 
-    Request::<(), CodespacesListInOrganizationQuery, CodespacesListInOrganizationResponse>::builder(
+    Request::<(), list_in_organization::Query, list_in_organization::Response>::builder(
       &self.config,
     )
     .get(url)
@@ -44,11 +1059,11 @@ impl GitHubCodespacesAPI {
   pub fn set_codespaces_access(
     &self,
     org: impl Into<String>,
-  ) -> NoContentRequest<CodespacesSetCodespacesAccessRequest, ()> {
+  ) -> NoContentRequest<set_codespaces_access::Request, ()> {
     let org = org.into();
     let url = format!("/orgs/{org}/codespaces/access");
 
-    NoContentRequest::<CodespacesSetCodespacesAccessRequest, ()>::builder(&self.config)
+    NoContentRequest::<set_codespaces_access::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -66,11 +1081,11 @@ impl GitHubCodespacesAPI {
   pub fn set_codespaces_access_users(
     &self,
     org: impl Into<String>,
-  ) -> NoContentRequest<CodespacesSetCodespacesAccessUsersRequest, ()> {
+  ) -> NoContentRequest<set_codespaces_access_users::Request, ()> {
     let org = org.into();
     let url = format!("/orgs/{org}/codespaces/access/selected_users");
 
-    NoContentRequest::<CodespacesSetCodespacesAccessUsersRequest, ()>::builder(&self.config)
+    NoContentRequest::<set_codespaces_access_users::Request, ()>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -88,11 +1103,11 @@ impl GitHubCodespacesAPI {
   pub fn delete_codespaces_access_users(
     &self,
     org: impl Into<String>,
-  ) -> NoContentRequest<CodespacesDeleteCodespacesAccessUsersRequest, ()> {
+  ) -> NoContentRequest<delete_codespaces_access_users::Request, ()> {
     let org = org.into();
     let url = format!("/orgs/{org}/codespaces/access/selected_users");
 
-    NoContentRequest::<CodespacesDeleteCodespacesAccessUsersRequest, ()>::builder(&self.config)
+    NoContentRequest::<delete_codespaces_access_users::Request, ()>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -108,15 +1123,13 @@ impl GitHubCodespacesAPI {
   pub fn list_org_secrets(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), CodespacesListOrgSecretsQuery, CodespacesListOrgSecretsResponse> {
+  ) -> Request<(), list_org_secrets::Query, list_org_secrets::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/codespaces/secrets");
 
-    Request::<(), CodespacesListOrgSecretsQuery, CodespacesListOrgSecretsResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_org_secrets::Query, list_org_secrets::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get an organization public key**
@@ -125,11 +1138,14 @@ impl GitHubCodespacesAPI {
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key](https://docs.github.com/rest/codespaces/organization-secrets#get-an-organization-public-key)
-  pub fn get_org_public_key(&self, org: impl Into<String>) -> Request<(), (), CodespacesPublicKey> {
+  pub fn get_org_public_key(
+    &self,
+    org: impl Into<String>,
+  ) -> Request<(), (), get_org_public_key::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/codespaces/secrets/public-key");
 
-    Request::<(), (), CodespacesPublicKey>::builder(&self.config)
+    Request::<(), (), get_org_public_key::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -145,12 +1161,12 @@ impl GitHubCodespacesAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), CodespacesOrgSecret> {
+  ) -> Request<(), (), get_org_secret::Response> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/codespaces/secrets/{secret_name}");
 
-    Request::<(), (), CodespacesOrgSecret>::builder(&self.config)
+    Request::<(), (), get_org_secret::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -167,12 +1183,12 @@ impl GitHubCodespacesAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<CodespacesCreateOrUpdateOrgSecretRequest, (), EmptyObject> {
+  ) -> Request<create_or_update_org_secret::Request, (), create_or_update_org_secret::Response> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/codespaces/secrets/{secret_name}");
 
-    Request::<CodespacesCreateOrUpdateOrgSecretRequest, (), EmptyObject>::builder(&self.config)
+    Request::<create_or_update_org_secret::Request, (), create_or_update_org_secret::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -212,8 +1228,8 @@ impl GitHubCodespacesAPI {
     secret_name: impl Into<String>,
   ) -> Request<
     (),
-    CodespacesListSelectedReposForOrgSecretQuery,
-    CodespacesListSelectedReposForOrgSecretResponse,
+    list_selected_repos_for_org_secret::Query,
+    list_selected_repos_for_org_secret::Response,
   > {
     let org = org.into();
     let secret_name = secret_name.into();
@@ -221,8 +1237,8 @@ impl GitHubCodespacesAPI {
 
     Request::<
       (),
-      CodespacesListSelectedReposForOrgSecretQuery,
-      CodespacesListSelectedReposForOrgSecretResponse,
+      list_selected_repos_for_org_secret::Query,
+      list_selected_repos_for_org_secret::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -241,12 +1257,12 @@ impl GitHubCodespacesAPI {
     &self,
     org: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> NoContentRequest<CodespacesSetSelectedReposForOrgSecretRequest, ()> {
+  ) -> NoContentRequest<set_selected_repos_for_org_secret::Request, ()> {
     let org = org.into();
     let secret_name = secret_name.into();
     let url = format!("/orgs/{org}/codespaces/secrets/{secret_name}/repositories");
 
-    NoContentRequest::<CodespacesSetSelectedReposForOrgSecretRequest, ()>::builder(&self.config)
+    NoContentRequest::<set_selected_repos_for_org_secret::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -309,22 +1325,15 @@ impl GitHubCodespacesAPI {
     &self,
     org: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<
-    (),
-    CodespacesGetCodespacesForUserInOrgQuery,
-    CodespacesGetCodespacesForUserInOrgResponse,
-  > {
+  ) -> Request<(), get_codespaces_for_user_in_org::Query, get_codespaces_for_user_in_org::Response>
+  {
     let org = org.into();
     let username = username.into();
     let url = format!("/orgs/{org}/members/{username}/codespaces");
 
-    Request::<
-      (),
-      CodespacesGetCodespacesForUserInOrgQuery,
-      CodespacesGetCodespacesForUserInOrgResponse,
-    >::builder(&self.config)
-    .get(url)
-    .build()
+    Request::<(), get_codespaces_for_user_in_org::Query, get_codespaces_for_user_in_org::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Delete a codespace from the organization**
@@ -362,13 +1371,13 @@ impl GitHubCodespacesAPI {
     org: impl Into<String>,
     username: impl Into<String>,
     codespace_name: impl Into<String>,
-  ) -> Request<(), (), Codespace> {
+  ) -> Request<(), (), stop_in_organization::Response> {
     let org = org.into();
     let username = username.into();
     let codespace_name = codespace_name.into();
     let url = format!("/orgs/{org}/members/{username}/codespaces/{codespace_name}/stop");
 
-    Request::<(), (), Codespace>::builder(&self.config)
+    Request::<(), (), stop_in_organization::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -386,8 +1395,8 @@ impl GitHubCodespacesAPI {
     repo: impl Into<String>,
   ) -> Request<
     (),
-    CodespacesListInRepositoryForAuthenticatedUserQuery,
-    CodespacesListInRepositoryForAuthenticatedUserResponse,
+    list_in_repository_for_authenticated_user::Query,
+    list_in_repository_for_authenticated_user::Response,
   > {
     let owner = owner.into();
     let repo = repo.into();
@@ -395,8 +1404,8 @@ impl GitHubCodespacesAPI {
 
     Request::<
       (),
-      CodespacesListInRepositoryForAuthenticatedUserQuery,
-      CodespacesListInRepositoryForAuthenticatedUserResponse,
+      list_in_repository_for_authenticated_user::Query,
+      list_in_repository_for_authenticated_user::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -413,14 +1422,20 @@ impl GitHubCodespacesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<CodespacesCreateWithRepoForAuthenticatedUserRequest, (), Codespace> {
+  ) -> Request<
+    create_with_repo_for_authenticated_user::Request,
+    (),
+    create_with_repo_for_authenticated_user::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/codespaces");
 
-    Request::<CodespacesCreateWithRepoForAuthenticatedUserRequest, (), Codespace>::builder(
-      &self.config,
-    )
+    Request::<
+      create_with_repo_for_authenticated_user::Request,
+      (),
+      create_with_repo_for_authenticated_user::Response,
+    >::builder(&self.config)
     .post(url)
     .build()
   }
@@ -439,8 +1454,8 @@ impl GitHubCodespacesAPI {
     repo: impl Into<String>,
   ) -> Request<
     (),
-    CodespacesListDevcontainersInRepositoryForAuthenticatedUserQuery,
-    CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse,
+    list_devcontainers_in_repository_for_authenticated_user::Query,
+    list_devcontainers_in_repository_for_authenticated_user::Response,
   > {
     let owner = owner.into();
     let repo = repo.into();
@@ -448,8 +1463,8 @@ impl GitHubCodespacesAPI {
 
     Request::<
       (),
-      CodespacesListDevcontainersInRepositoryForAuthenticatedUserQuery,
-      CodespacesListDevcontainersInRepositoryForAuthenticatedUserResponse,
+      list_devcontainers_in_repository_for_authenticated_user::Query,
+      list_devcontainers_in_repository_for_authenticated_user::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -468,8 +1483,8 @@ impl GitHubCodespacesAPI {
     repo: impl Into<String>,
   ) -> Request<
     (),
-    CodespacesRepoMachinesForAuthenticatedUserQuery,
-    CodespacesRepoMachinesForAuthenticatedUserResponse,
+    repo_machines_for_authenticated_user::Query,
+    repo_machines_for_authenticated_user::Response,
   > {
     let owner = owner.into();
     let repo = repo.into();
@@ -477,8 +1492,8 @@ impl GitHubCodespacesAPI {
 
     Request::<
       (),
-      CodespacesRepoMachinesForAuthenticatedUserQuery,
-      CodespacesRepoMachinesForAuthenticatedUserResponse,
+      repo_machines_for_authenticated_user::Query,
+      repo_machines_for_authenticated_user::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -497,8 +1512,8 @@ impl GitHubCodespacesAPI {
     repo: impl Into<String>,
   ) -> Request<
     (),
-    CodespacesPreFlightWithRepoForAuthenticatedUserQuery,
-    CodespacesPreFlightWithRepoForAuthenticatedUserResponse,
+    pre_flight_with_repo_for_authenticated_user::Query,
+    pre_flight_with_repo_for_authenticated_user::Response,
   > {
     let owner = owner.into();
     let repo = repo.into();
@@ -506,8 +1521,8 @@ impl GitHubCodespacesAPI {
 
     Request::<
       (),
-      CodespacesPreFlightWithRepoForAuthenticatedUserQuery,
-      CodespacesPreFlightWithRepoForAuthenticatedUserResponse,
+      pre_flight_with_repo_for_authenticated_user::Query,
+      pre_flight_with_repo_for_authenticated_user::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -526,8 +1541,8 @@ impl GitHubCodespacesAPI {
     repo: impl Into<String>,
   ) -> Request<
     (),
-    CodespacesCheckPermissionsForDevcontainerQuery,
-    CodespacesPermissionsCheckForDevcontainer,
+    check_permissions_for_devcontainer::Query,
+    check_permissions_for_devcontainer::Response,
   > {
     let owner = owner.into();
     let repo = repo.into();
@@ -535,8 +1550,8 @@ impl GitHubCodespacesAPI {
 
     Request::<
       (),
-      CodespacesCheckPermissionsForDevcontainerQuery,
-      CodespacesPermissionsCheckForDevcontainer,
+      check_permissions_for_devcontainer::Query,
+      check_permissions_for_devcontainer::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -554,16 +1569,14 @@ impl GitHubCodespacesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), CodespacesListRepoSecretsQuery, CodespacesListRepoSecretsResponse> {
+  ) -> Request<(), list_repo_secrets::Query, list_repo_secrets::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/codespaces/secrets");
 
-    Request::<(), CodespacesListRepoSecretsQuery, CodespacesListRepoSecretsResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_repo_secrets::Query, list_repo_secrets::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Get a repository public key**
@@ -580,12 +1593,12 @@ impl GitHubCodespacesAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), CodespacesPublicKey> {
+  ) -> Request<(), (), get_repo_public_key::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/codespaces/secrets/public-key");
 
-    Request::<(), (), CodespacesPublicKey>::builder(&self.config)
+    Request::<(), (), get_repo_public_key::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -602,13 +1615,13 @@ impl GitHubCodespacesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), RepoCodespacesSecret> {
+  ) -> Request<(), (), get_repo_secret::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let secret_name = secret_name.into();
     let url = format!("/repos/{owner}/{repo}/codespaces/secrets/{secret_name}");
 
-    Request::<(), (), RepoCodespacesSecret>::builder(&self.config)
+    Request::<(), (), get_repo_secret::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -626,13 +1639,14 @@ impl GitHubCodespacesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     secret_name: impl Into<String>,
-  ) -> Request<CodespacesCreateOrUpdateRepoSecretRequest, (), EmptyObject> {
+  ) -> Request<create_or_update_repo_secret::Request, (), create_or_update_repo_secret::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let secret_name = secret_name.into();
     let url = format!("/repos/{owner}/{repo}/codespaces/secrets/{secret_name}");
 
-    Request::<CodespacesCreateOrUpdateRepoSecretRequest, (), EmptyObject>::builder(&self.config)
+    Request::<create_or_update_repo_secret::Request, (), create_or_update_repo_secret::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -672,15 +1686,21 @@ impl GitHubCodespacesAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     pull_number: impl Into<i64>,
-  ) -> Request<CodespacesCreateWithPrForAuthenticatedUserRequest, (), Codespace> {
+  ) -> Request<
+    create_with_pr_for_authenticated_user::Request,
+    (),
+    create_with_pr_for_authenticated_user::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let pull_number = pull_number.into();
     let url = format!("/repos/{owner}/{repo}/pulls/{pull_number}/codespaces");
 
-    Request::<CodespacesCreateWithPrForAuthenticatedUserRequest, (), Codespace>::builder(
-      &self.config,
-    )
+    Request::<
+      create_with_pr_for_authenticated_user::Request,
+      (),
+      create_with_pr_for_authenticated_user::Response,
+    >::builder(&self.config)
     .post(url)
     .build()
   }
@@ -694,14 +1714,10 @@ impl GitHubCodespacesAPI {
   /// *Documentation*: [https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user](https://docs.github.com/rest/codespaces/codespaces#list-codespaces-for-the-authenticated-user)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<
-    (),
-    CodespacesListForAuthenticatedUserQuery,
-    CodespacesListForAuthenticatedUserResponse,
-  > {
+  ) -> Request<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response> {
     let url = format!("/user/codespaces");
 
-    Request::<(), CodespacesListForAuthenticatedUserQuery, CodespacesListForAuthenticatedUserResponse>::builder(&self.config)
+    Request::<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -717,10 +1733,11 @@ impl GitHubCodespacesAPI {
   /// *Documentation*: [https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user](https://docs.github.com/rest/codespaces/codespaces#create-a-codespace-for-the-authenticated-user)
   pub fn create_for_authenticated_user(
     &self,
-  ) -> Request<CodespacesCreateForAuthenticatedUserRequest, (), Codespace> {
+  ) -> Request<create_for_authenticated_user::Request, (), create_for_authenticated_user::Response>
+  {
     let url = format!("/user/codespaces");
 
-    Request::<CodespacesCreateForAuthenticatedUserRequest, (), Codespace>::builder(&self.config)
+    Request::<create_for_authenticated_user::Request, (), create_for_authenticated_user::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -739,15 +1756,15 @@ impl GitHubCodespacesAPI {
     &self,
   ) -> Request<
     (),
-    CodespacesListSecretsForAuthenticatedUserQuery,
-    CodespacesListSecretsForAuthenticatedUserResponse,
+    list_secrets_for_authenticated_user::Query,
+    list_secrets_for_authenticated_user::Response,
   > {
     let url = format!("/user/codespaces/secrets");
 
     Request::<
       (),
-      CodespacesListSecretsForAuthenticatedUserQuery,
-      CodespacesListSecretsForAuthenticatedUserResponse,
+      list_secrets_for_authenticated_user::Query,
+      list_secrets_for_authenticated_user::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -762,10 +1779,12 @@ impl GitHubCodespacesAPI {
   /// OAuth app tokens and personal access tokens (classic) need the `codespace` or `codespace:secrets` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user](https://docs.github.com/rest/codespaces/secrets#get-public-key-for-the-authenticated-user)
-  pub fn get_public_key_for_authenticated_user(&self) -> Request<(), (), CodespacesUserPublicKey> {
+  pub fn get_public_key_for_authenticated_user(
+    &self,
+  ) -> Request<(), (), get_public_key_for_authenticated_user::Response> {
     let url = format!("/user/codespaces/secrets/public-key");
 
-    Request::<(), (), CodespacesUserPublicKey>::builder(&self.config)
+    Request::<(), (), get_public_key_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -782,11 +1801,11 @@ impl GitHubCodespacesAPI {
   pub fn get_secret_for_authenticated_user(
     &self,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), CodespacesSecret> {
+  ) -> Request<(), (), get_secret_for_authenticated_user::Response> {
     let secret_name = secret_name.into();
     let url = format!("/user/codespaces/secrets/{secret_name}");
 
-    Request::<(), (), CodespacesSecret>::builder(&self.config)
+    Request::<(), (), get_secret_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -804,13 +1823,19 @@ impl GitHubCodespacesAPI {
   pub fn create_or_update_secret_for_authenticated_user(
     &self,
     secret_name: impl Into<String>,
-  ) -> Request<CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest, (), EmptyObject> {
+  ) -> Request<
+    create_or_update_secret_for_authenticated_user::Request,
+    (),
+    create_or_update_secret_for_authenticated_user::Response,
+  > {
     let secret_name = secret_name.into();
     let url = format!("/user/codespaces/secrets/{secret_name}");
 
-    Request::<CodespacesCreateOrUpdateSecretForAuthenticatedUserRequest, (), EmptyObject>::builder(
-      &self.config,
-    )
+    Request::<
+      create_or_update_secret_for_authenticated_user::Request,
+      (),
+      create_or_update_secret_for_authenticated_user::Response,
+    >::builder(&self.config)
     .put(url)
     .build()
   }
@@ -848,11 +1873,11 @@ impl GitHubCodespacesAPI {
   pub fn list_repositories_for_secret_for_authenticated_user(
     &self,
     secret_name: impl Into<String>,
-  ) -> Request<(), (), CodespacesListRepositoriesForSecretForAuthenticatedUserResponse> {
+  ) -> Request<(), (), list_repositories_for_secret_for_authenticated_user::Response> {
     let secret_name = secret_name.into();
     let url = format!("/user/codespaces/secrets/{secret_name}/repositories");
 
-    Request::<(), (), CodespacesListRepositoriesForSecretForAuthenticatedUserResponse>::builder(
+    Request::<(), (), list_repositories_for_secret_for_authenticated_user::Response>::builder(
       &self.config,
     )
     .get(url)
@@ -871,11 +1896,11 @@ impl GitHubCodespacesAPI {
   pub fn set_repositories_for_secret_for_authenticated_user(
     &self,
     secret_name: impl Into<String>,
-  ) -> NoContentRequest<CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest, ()> {
+  ) -> NoContentRequest<set_repositories_for_secret_for_authenticated_user::Request, ()> {
     let secret_name = secret_name.into();
     let url = format!("/user/codespaces/secrets/{secret_name}/repositories");
 
-    NoContentRequest::<CodespacesSetRepositoriesForSecretForAuthenticatedUserRequest, ()>::builder(
+    NoContentRequest::<set_repositories_for_secret_for_authenticated_user::Request, ()>::builder(
       &self.config,
     )
     .put(url)
@@ -938,11 +1963,11 @@ impl GitHubCodespacesAPI {
   pub fn get_for_authenticated_user(
     &self,
     codespace_name: impl Into<String>,
-  ) -> Request<(), (), Codespace> {
+  ) -> Request<(), (), get_for_authenticated_user::Response> {
     let codespace_name = codespace_name.into();
     let url = format!("/user/codespaces/{codespace_name}");
 
-    Request::<(), (), Codespace>::builder(&self.config)
+    Request::<(), (), get_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -959,11 +1984,12 @@ impl GitHubCodespacesAPI {
   pub fn update_for_authenticated_user(
     &self,
     codespace_name: impl Into<String>,
-  ) -> Request<CodespacesUpdateForAuthenticatedUserRequest, (), Codespace> {
+  ) -> Request<update_for_authenticated_user::Request, (), update_for_authenticated_user::Response>
+  {
     let codespace_name = codespace_name.into();
     let url = format!("/user/codespaces/{codespace_name}");
 
-    Request::<CodespacesUpdateForAuthenticatedUserRequest, (), Codespace>::builder(&self.config)
+    Request::<update_for_authenticated_user::Request, (), update_for_authenticated_user::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -999,11 +2025,11 @@ impl GitHubCodespacesAPI {
   pub fn export_for_authenticated_user(
     &self,
     codespace_name: impl Into<String>,
-  ) -> Request<(), (), CodespaceExportDetails> {
+  ) -> Request<(), (), export_for_authenticated_user::Response> {
     let codespace_name = codespace_name.into();
     let url = format!("/user/codespaces/{codespace_name}/exports");
 
-    Request::<(), (), CodespaceExportDetails>::builder(&self.config)
+    Request::<(), (), export_for_authenticated_user::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1019,12 +2045,12 @@ impl GitHubCodespacesAPI {
     &self,
     codespace_name: impl Into<String>,
     export_id: impl Into<String>,
-  ) -> Request<(), (), CodespaceExportDetails> {
+  ) -> Request<(), (), get_export_details_for_authenticated_user::Response> {
     let codespace_name = codespace_name.into();
     let export_id = export_id.into();
     let url = format!("/user/codespaces/{codespace_name}/exports/{export_id}");
 
-    Request::<(), (), CodespaceExportDetails>::builder(&self.config)
+    Request::<(), (), get_export_details_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1039,15 +2065,13 @@ impl GitHubCodespacesAPI {
   pub fn codespace_machines_for_authenticated_user(
     &self,
     codespace_name: impl Into<String>,
-  ) -> Request<(), (), CodespacesCodespaceMachinesForAuthenticatedUserResponse> {
+  ) -> Request<(), (), codespace_machines_for_authenticated_user::Response> {
     let codespace_name = codespace_name.into();
     let url = format!("/user/codespaces/{codespace_name}/machines");
 
-    Request::<(), (), CodespacesCodespaceMachinesForAuthenticatedUserResponse>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), (), codespace_machines_for_authenticated_user::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Create a repository from an unpublished codespace**
@@ -1064,11 +2088,12 @@ impl GitHubCodespacesAPI {
   pub fn publish_for_authenticated_user(
     &self,
     codespace_name: impl Into<String>,
-  ) -> Request<CodespacesPublishForAuthenticatedUserRequest, (), CodespaceWithFullRepository> {
+  ) -> Request<publish_for_authenticated_user::Request, (), publish_for_authenticated_user::Response>
+  {
     let codespace_name = codespace_name.into();
     let url = format!("/user/codespaces/{codespace_name}/publish");
 
-    Request::<CodespacesPublishForAuthenticatedUserRequest, (), CodespaceWithFullRepository>::builder(&self.config)
+    Request::<publish_for_authenticated_user::Request, (), publish_for_authenticated_user::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1083,11 +2108,11 @@ impl GitHubCodespacesAPI {
   pub fn start_for_authenticated_user(
     &self,
     codespace_name: impl Into<String>,
-  ) -> Request<(), (), Codespace> {
+  ) -> Request<(), (), start_for_authenticated_user::Response> {
     let codespace_name = codespace_name.into();
     let url = format!("/user/codespaces/{codespace_name}/start");
 
-    Request::<(), (), Codespace>::builder(&self.config)
+    Request::<(), (), start_for_authenticated_user::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1102,11 +2127,11 @@ impl GitHubCodespacesAPI {
   pub fn stop_for_authenticated_user(
     &self,
     codespace_name: impl Into<String>,
-  ) -> Request<(), (), Codespace> {
+  ) -> Request<(), (), stop_for_authenticated_user::Response> {
     let codespace_name = codespace_name.into();
     let url = format!("/user/codespaces/{codespace_name}/stop");
 
-    Request::<(), (), Codespace>::builder(&self.config)
+    Request::<(), (), stop_for_authenticated_user::Response>::builder(&self.config)
       .post(url)
       .build()
   }

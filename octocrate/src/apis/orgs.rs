@@ -1,6 +1,1738 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrganizationSimple>;
+
+  /// Query for `List organizations`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// An organization ID. Only return organizations with an ID greater than this ID.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod get {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrganizationFull;
+}
+
+pub mod update {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrganizationFull;
+
+  /// Default permission level members have for organization repositories.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestDefaultRepositoryPermission {
+    #[serde(rename = "read")]
+    Read,
+    #[serde(rename = "write")]
+    Write,
+    #[serde(rename = "admin")]
+    Admin,
+    #[serde(rename = "none")]
+    None,
+  }
+
+  impl ToString for RequestDefaultRepositoryPermission {
+    fn to_string(&self) -> String {
+      match self {
+        RequestDefaultRepositoryPermission::Read => "read".to_string(),
+        RequestDefaultRepositoryPermission::Write => "write".to_string(),
+        RequestDefaultRepositoryPermission::Admin => "admin".to_string(),
+        RequestDefaultRepositoryPermission::None => "none".to_string(),
+      }
+    }
+  }
+
+  /// Specifies which types of repositories non-admin organization members can create. `private` is only available to repositories that are part of an organization on GitHub Enterprise Cloud.
+  /// **Note:** This parameter is deprecated and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in `members_can_create_repositories`. See the parameter deprecation notice in the operation description for details.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestMembersAllowedRepositoryCreationType {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "none")]
+    None,
+  }
+
+  impl ToString for RequestMembersAllowedRepositoryCreationType {
+    fn to_string(&self) -> String {
+      match self {
+        RequestMembersAllowedRepositoryCreationType::All => "all".to_string(),
+        RequestMembersAllowedRepositoryCreationType::Private => "private".to_string(),
+        RequestMembersAllowedRepositoryCreationType::None => "none".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Whether GitHub Advanced Security is automatically enabled for new repositories.
+    ///
+    /// To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+    ///
+    /// You can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub advanced_security_enabled_for_new_repositories: Option<bool>,
+    /// Billing email address. This address is not publicized.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub billing_email: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub blog: Option<String>,
+    /// The company name.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub company: Option<String>,
+    /// Default permission level members have for organization repositories.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub default_repository_permission: Option<RequestDefaultRepositoryPermission>,
+    /// Whether Dependabot alerts is automatically enabled for new repositories.
+    ///
+    /// To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+    ///
+    /// You can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub dependabot_alerts_enabled_for_new_repositories: Option<bool>,
+    /// Whether Dependabot security updates is automatically enabled for new repositories.
+    ///
+    /// To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+    ///
+    /// You can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub dependabot_security_updates_enabled_for_new_repositories: Option<bool>,
+    /// Whether dependency graph is automatically enabled for new repositories.
+    ///
+    /// To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+    ///
+    /// You can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub dependency_graph_enabled_for_new_repositories: Option<bool>,
+    /// The description of the company. The maximum size is 160 characters.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The publicly visible email address.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub email: Option<String>,
+    /// Whether an organization can use organization projects.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_organization_projects: Option<bool>,
+    /// Whether repositories that belong to the organization can use repository projects.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_repository_projects: Option<bool>,
+    /// The location.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub location: Option<String>,
+    /// Specifies which types of repositories non-admin organization members can create. `private` is only available to repositories that are part of an organization on GitHub Enterprise Cloud.
+    /// **Note:** This parameter is deprecated and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in `members_can_create_repositories`. See the parameter deprecation notice in the operation description for details.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub members_allowed_repository_creation_type:
+      Option<RequestMembersAllowedRepositoryCreationType>,
+    /// Whether organization members can create internal repositories, which are visible to all enterprise members. You can only allow members to create internal repositories if your organization is associated with an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+. For more information, see "[Restricting repository creation in your organization](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)" in the GitHub Help documentation.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub members_can_create_internal_repositories: Option<bool>,
+    /// Whether organization members can create GitHub Pages sites. Existing published sites will not be impacted.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub members_can_create_pages: Option<bool>,
+    /// Whether organization members can create private GitHub Pages sites. Existing published sites will not be impacted.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub members_can_create_private_pages: Option<bool>,
+    /// Whether organization members can create private repositories, which are visible to organization members with permission. For more information, see "[Restricting repository creation in your organization](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)" in the GitHub Help documentation.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub members_can_create_private_repositories: Option<bool>,
+    /// Whether organization members can create public GitHub Pages sites. Existing published sites will not be impacted.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub members_can_create_public_pages: Option<bool>,
+    /// Whether organization members can create public repositories, which are visible to anyone. For more information, see "[Restricting repository creation in your organization](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/restricting-repository-creation-in-your-organization)" in the GitHub Help documentation.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub members_can_create_public_repositories: Option<bool>,
+    /// Whether of non-admin organization members can create repositories. **Note:** A parameter can override this parameter. See `members_allowed_repository_creation_type` in this table for details.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub members_can_create_repositories: Option<bool>,
+    /// Whether organization members can fork private organization repositories.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub members_can_fork_private_repositories: Option<bool>,
+    /// The shorthand name of the company.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// Whether secret scanning is automatically enabled for new repositories.
+    ///
+    /// To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+    ///
+    /// You can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret_scanning_enabled_for_new_repositories: Option<bool>,
+    /// If `secret_scanning_push_protection_custom_link_enabled` is true, the URL that will be displayed to contributors who are blocked from pushing a secret.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret_scanning_push_protection_custom_link: Option<String>,
+    /// Whether a custom link is shown to contributors who are blocked from pushing a secret by push protection.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret_scanning_push_protection_custom_link_enabled: Option<bool>,
+    /// Whether secret scanning push protection is automatically enabled for new repositories.
+    ///
+    /// To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+    ///
+    /// You can check which security and analysis features are currently enabled by using a `GET /orgs/{org}` request.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret_scanning_push_protection_enabled_for_new_repositories: Option<bool>,
+    /// The Twitter username of the company.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub twitter_username: Option<String>,
+    /// Whether contributors to organization repositories are required to sign off on commits they make through GitHub's web interface.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub web_commit_signoff_required: Option<bool>,
+  }
+}
+
+pub mod delete {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_blocked_users {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  /// Query for `List users blocked by an organization`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod check_blocked_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod block_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod unblock_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_failed_invitations {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrganizationInvitation>;
+
+  /// Query for `List failed organization invitations`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_webhooks {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrgHook>;
+
+  /// Query for `List organization webhooks`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_webhook {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrgHook;
+
+  /// Key/value pairs to provide settings for this webhook.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestConfig {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content_type: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub insecure_ssl: Option<StringOrNumber>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub password: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret: Option<String>,
+    pub url: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub username: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub active: Option<bool>,
+    /// Key/value pairs to provide settings for this webhook.
+    pub config: RequestConfig,
+    /// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub events: Option<Vec<String>>,
+    /// Must be passed as "web".
+    pub name: String,
+  }
+}
+
+pub mod get_webhook {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrgHook;
+}
+
+pub mod update_webhook {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrgHook;
+
+  /// Key/value pairs to provide settings for this webhook.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestConfig {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content_type: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub insecure_ssl: Option<StringOrNumber>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret: Option<String>,
+    pub url: String,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub active: Option<bool>,
+    /// Key/value pairs to provide settings for this webhook.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub config: Option<RequestConfig>,
+    /// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub events: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+  }
+}
+
+pub mod delete_webhook {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_webhook_config_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = WebhookConfig;
+}
+
+pub mod update_webhook_config_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = WebhookConfig;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content_type: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub insecure_ssl: Option<StringOrNumber>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub url: Option<String>,
+  }
+}
+
+pub mod list_webhook_deliveries {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<HookDeliveryItem>;
+
+  /// Query for `List deliveries for an organization webhook`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to the `link` header for the next and previous page cursors.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub cursor: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub redelivery: Option<bool>,
+  }
+}
+
+pub mod get_webhook_delivery {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = HookDelivery;
+}
+
+pub mod redeliver_webhook_delivery {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod ping_webhook {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_app_installations {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List app installations for an organization`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub installations: Vec<Installation>,
+    pub total_count: i64,
+  }
+}
+
+pub mod list_pending_invitations {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrganizationInvitation>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryRole {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "admin")]
+    Admin,
+    #[serde(rename = "direct_member")]
+    DirectMember,
+    #[serde(rename = "billing_manager")]
+    BillingManager,
+    #[serde(rename = "hiring_manager")]
+    HiringManager,
+  }
+
+  impl ToString for QueryRole {
+    fn to_string(&self) -> String {
+      match self {
+        QueryRole::All => "all".to_string(),
+        QueryRole::Admin => "admin".to_string(),
+        QueryRole::DirectMember => "direct_member".to_string(),
+        QueryRole::BillingManager => "billing_manager".to_string(),
+        QueryRole::HiringManager => "hiring_manager".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryInvitationSource {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "member")]
+    Member,
+    #[serde(rename = "scim")]
+    Scim,
+  }
+
+  impl ToString for QueryInvitationSource {
+    fn to_string(&self) -> String {
+      match self {
+        QueryInvitationSource::All => "all".to_string(),
+        QueryInvitationSource::Member => "member".to_string(),
+        QueryInvitationSource::Scim => "scim".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List pending organization invitations`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// Filter invitations by their member role.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub role: Option<QueryRole>,
+    /// Filter invitations by their invitation source.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub invitation_source: Option<QueryInvitationSource>,
+  }
+}
+
+pub mod create_invitation {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrganizationInvitation;
+
+  /// The role for the new member.
+  ///  * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  
+  ///  * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  
+  ///  * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.
+  ///  * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestRole {
+    #[serde(rename = "admin")]
+    Admin,
+    #[serde(rename = "direct_member")]
+    DirectMember,
+    #[serde(rename = "billing_manager")]
+    BillingManager,
+    #[serde(rename = "reinstate")]
+    Reinstate,
+  }
+
+  impl ToString for RequestRole {
+    fn to_string(&self) -> String {
+      match self {
+        RequestRole::Admin => "admin".to_string(),
+        RequestRole::DirectMember => "direct_member".to_string(),
+        RequestRole::BillingManager => "billing_manager".to_string(),
+        RequestRole::Reinstate => "reinstate".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// **Required unless you provide `invitee_id`**. Email address of the person you are inviting, which can be an existing GitHub user.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub email: Option<String>,
+    /// **Required unless you provide `email`**. GitHub user ID for the person you are inviting.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub invitee_id: Option<i64>,
+    /// The role for the new member.
+    ///  * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  
+    ///  * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  
+    ///  * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization.
+    ///  * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub role: Option<RequestRole>,
+    /// Specify IDs for the teams you want to invite new members to.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub team_ids: Option<Vec<i64>>,
+  }
+}
+
+pub mod cancel_invitation {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_invitation_teams {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Team>;
+
+  /// Query for `List organization invitation teams`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_members {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryFilter {
+    #[serde(rename = "2fa_disabled")]
+    TwoFADisabled,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryFilter {
+    fn to_string(&self) -> String {
+      match self {
+        QueryFilter::TwoFADisabled => "2fa_disabled".to_string(),
+        QueryFilter::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryRole {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "admin")]
+    Admin,
+    #[serde(rename = "member")]
+    Member,
+  }
+
+  impl ToString for QueryRole {
+    fn to_string(&self) -> String {
+      match self {
+        QueryRole::All => "all".to_string(),
+        QueryRole::Admin => "admin".to_string(),
+        QueryRole::Member => "member".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List organization members`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Filter members returned in the list. `2fa_disabled` means that only members without [two-factor authentication](https://github.com/blog/1614-two-factor-authentication) enabled will be returned. This options is only available for organization owners.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub filter: Option<QueryFilter>,
+    /// Filter members returned by their role.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub role: Option<QueryRole>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod check_membership_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_member {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_membership_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrgMembership;
+}
+
+pub mod set_membership_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrgMembership;
+
+  /// The role to give the user in the organization. Can be one of:  
+  ///  * `admin` - The user will become an owner of the organization.  
+  ///  * `member` - The user will become a non-owner member of the organization.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestRole {
+    #[serde(rename = "admin")]
+    Admin,
+    #[serde(rename = "member")]
+    Member,
+  }
+
+  impl ToString for RequestRole {
+    fn to_string(&self) -> String {
+      match self {
+        RequestRole::Admin => "admin".to_string(),
+        RequestRole::Member => "member".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The role to give the user in the organization. Can be one of:  
+    ///  * `admin` - The user will become an owner of the organization.  
+    ///  * `member` - The user will become a non-owner member of the organization.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub role: Option<RequestRole>,
+  }
+}
+
+pub mod remove_membership_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_organization_fine_grained_permissions {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrganizationFineGrainedPermission>;
+}
+
+pub mod list_org_roles {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    /// The list of organization roles available to the organization.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub roles: Option<Vec<OrganizationRole>>,
+    /// The total number of organization roles available to the organization.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub total_count: Option<i64>,
+  }
+}
+
+pub mod create_custom_organization_role {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrganizationRole;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// A short description about the intended usage of this role or what permissions it grants.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The name of the custom role.
+    pub name: String,
+    /// A list of additional permissions included in this role.
+    pub permissions: Vec<String>,
+  }
+}
+
+pub mod revoke_all_org_roles_team {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod assign_team_to_org_role {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod revoke_org_role_team {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod revoke_all_org_roles_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod assign_user_to_org_role {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod revoke_org_role_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_org_role {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrganizationRole;
+}
+
+pub mod patch_custom_organization_role {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrganizationRole;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// A short description about the intended usage of this role or what permissions it grants.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The name of the custom role.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// A list of additional permissions included in this role.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permissions: Option<Vec<String>>,
+  }
+}
+
+pub mod delete_custom_organization_role {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_org_role_teams {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Team>;
+
+  /// Query for `List teams that are assigned to an organization role`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_org_role_users {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  /// Query for `List users that are assigned to an organization role`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_outside_collaborators {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryFilter {
+    #[serde(rename = "2fa_disabled")]
+    TwoFADisabled,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryFilter {
+    fn to_string(&self) -> String {
+      match self {
+        QueryFilter::TwoFADisabled => "2fa_disabled".to_string(),
+        QueryFilter::All => "all".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List outside collaborators for an organization`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Filter the list of outside collaborators. `2fa_disabled` means that only outside collaborators without [two-factor authentication](https://github.com/blog/1614-two-factor-authentication) enabled will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub filter: Option<QueryFilter>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod convert_member_to_outside_collaborator {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued.
+    #[serde(rename = "async")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub async_: Option<bool>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {}
+}
+
+pub mod remove_outside_collaborator {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_pat_grant_requests {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrganizationProgrammaticAccessGrantRequest>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created_at")]
+    CreatedAt,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::CreatedAt => "created_at".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List requests to access organization resources with fine-grained personal access tokens`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The property by which to sort the results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// A list of owner usernames to use to filter the results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub owner: Option<Vec<String>>,
+    /// The name of the repository to use to filter the results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repository: Option<String>,
+    /// The permission to use to filter the results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<String>,
+    /// Only show fine-grained personal access tokens used before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub last_used_before: Option<String>,
+    /// Only show fine-grained personal access tokens used after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub last_used_after: Option<String>,
+  }
+}
+
+pub mod review_pat_grant_requests_in_bulk {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Action to apply to the requests.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestAction {
+    #[serde(rename = "approve")]
+    Approve,
+    #[serde(rename = "deny")]
+    Deny,
+  }
+
+  impl ToString for RequestAction {
+    fn to_string(&self) -> String {
+      match self {
+        RequestAction::Approve => "approve".to_string(),
+        RequestAction::Deny => "deny".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Action to apply to the requests.
+    pub action: RequestAction,
+    /// Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub pat_request_ids: Option<Vec<i64>>,
+    /// Reason for approving or denying the requests. Max 1024 characters.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub reason: Option<String>,
+  }
+}
+
+pub mod review_pat_grant_request {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Action to apply to the request.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestAction {
+    #[serde(rename = "approve")]
+    Approve,
+    #[serde(rename = "deny")]
+    Deny,
+  }
+
+  impl ToString for RequestAction {
+    fn to_string(&self) -> String {
+      match self {
+        RequestAction::Approve => "approve".to_string(),
+        RequestAction::Deny => "deny".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Action to apply to the request.
+    pub action: RequestAction,
+    /// Reason for approving or denying the request. Max 1024 characters.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub reason: Option<String>,
+  }
+}
+
+pub mod list_pat_grant_request_repositories {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  /// Query for `List repositories requested to be accessed by a fine-grained personal access token`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_pat_grants {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrganizationProgrammaticAccessGrant>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created_at")]
+    CreatedAt,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::CreatedAt => "created_at".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List fine-grained personal access tokens with access to organization resources`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The property by which to sort the results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// A list of owner usernames to use to filter the results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub owner: Option<Vec<String>>,
+    /// The name of the repository to use to filter the results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repository: Option<String>,
+    /// The permission to use to filter the results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<String>,
+    /// Only show fine-grained personal access tokens used before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub last_used_before: Option<String>,
+    /// Only show fine-grained personal access tokens used after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub last_used_after: Option<String>,
+  }
+}
+
+pub mod update_pat_accesses {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Action to apply to the fine-grained personal access token.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestAction {
+    #[serde(rename = "revoke")]
+    Revoke,
+  }
+
+  impl ToString for RequestAction {
+    fn to_string(&self) -> String {
+      match self {
+        RequestAction::Revoke => "revoke".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Action to apply to the fine-grained personal access token.
+    pub action: RequestAction,
+    /// The IDs of the fine-grained personal access tokens.
+    pub pat_ids: Vec<i64>,
+  }
+}
+
+pub mod update_pat_access {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Action to apply to the fine-grained personal access token.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestAction {
+    #[serde(rename = "revoke")]
+    Revoke,
+  }
+
+  impl ToString for RequestAction {
+    fn to_string(&self) -> String {
+      match self {
+        RequestAction::Revoke => "revoke".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Action to apply to the fine-grained personal access token.
+    pub action: RequestAction,
+  }
+}
+
+pub mod list_pat_grant_repositories {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  /// Query for `List repositories a fine-grained personal access token has access to`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_all_custom_properties {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrgCustomProperty>;
+}
+
+pub mod create_or_update_custom_properties {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrgCustomProperty>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The array of custom properties to create or update.
+    pub properties: Vec<OrgCustomProperty>,
+  }
+}
+
+pub mod get_custom_property {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrgCustomProperty;
+}
+
+pub mod create_or_update_custom_property {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrgCustomProperty;
+
+  /// The type of the value for the property
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestValueType {
+    #[serde(rename = "string")]
+    String,
+    #[serde(rename = "single_select")]
+    SingleSelect,
+  }
+
+  impl ToString for RequestValueType {
+    fn to_string(&self) -> String {
+      match self {
+        RequestValueType::String => "string".to_string(),
+        RequestValueType::SingleSelect => "single_select".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// An ordered list of the allowed values of the property.
+    /// The property can have up to 200 allowed values.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allowed_values: Option<Vec<String>>,
+    /// Default value of the property
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub default_value: Option<Vec<String>>,
+    /// Short description of the property
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// Whether the property is required.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub required: Option<bool>,
+    /// The type of the value for the property
+    pub value_type: RequestValueType,
+  }
+}
+
+pub mod remove_custom_property {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_custom_properties_values_for_repos {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrgRepoCustomPropertyValues>;
+
+  /// Query for `List custom property values for organization repositories`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// Finds repositories in the organization with a query containing one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching for repositories](https://docs.github.com/articles/searching-for-repositories/)" for a detailed list of qualifiers.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repository_query: Option<String>,
+  }
+}
+
+pub mod create_or_update_custom_properties_values_for_repos {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// List of custom property names and associated values to apply to the repositories.
+    pub properties: Vec<CustomPropertyValue>,
+    /// The names of repositories that the custom property values will be applied to.
+    pub repository_names: Vec<String>,
+  }
+}
+
+pub mod list_public_members {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  /// Query for `List public organization members`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod check_public_membership_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod set_public_membership_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_public_membership_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_security_manager_teams {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<TeamSimple>;
+}
+
+pub mod add_security_manager_team {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_security_manager_team {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod enable_or_disable_security_product_on_all_org_repos {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersSecurityProduct {
+    #[serde(rename = "dependency_graph")]
+    DependencyGraph,
+    #[serde(rename = "dependabot_alerts")]
+    DependabotAlerts,
+    #[serde(rename = "dependabot_security_updates")]
+    DependabotSecurityUpdates,
+    #[serde(rename = "advanced_security")]
+    AdvancedSecurity,
+    #[serde(rename = "code_scanning_default_setup")]
+    CodeScanningDefaultSetup,
+    #[serde(rename = "secret_scanning")]
+    SecretScanning,
+    #[serde(rename = "secret_scanning_push_protection")]
+    SecretScanningPushProtection,
+  }
+
+  impl ToString for ParametersSecurityProduct {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersSecurityProduct::DependencyGraph => "dependency_graph".to_string(),
+        ParametersSecurityProduct::DependabotAlerts => "dependabot_alerts".to_string(),
+        ParametersSecurityProduct::DependabotSecurityUpdates => {
+          "dependabot_security_updates".to_string()
+        }
+        ParametersSecurityProduct::AdvancedSecurity => "advanced_security".to_string(),
+        ParametersSecurityProduct::CodeScanningDefaultSetup => {
+          "code_scanning_default_setup".to_string()
+        }
+        ParametersSecurityProduct::SecretScanning => "secret_scanning".to_string(),
+        ParametersSecurityProduct::SecretScanningPushProtection => {
+          "secret_scanning_push_protection".to_string()
+        }
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum ParametersEnablement {
+    #[serde(rename = "enable_all")]
+    EnableAll,
+    #[serde(rename = "disable_all")]
+    DisableAll,
+  }
+
+  impl ToString for ParametersEnablement {
+    fn to_string(&self) -> String {
+      match self {
+        ParametersEnablement::EnableAll => "enable_all".to_string(),
+        ParametersEnablement::DisableAll => "disable_all".to_string(),
+      }
+    }
+  }
+
+  /// CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.
+  /// If you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestQuerySuite {
+    #[serde(rename = "default")]
+    Default,
+    #[serde(rename = "extended")]
+    Extended,
+  }
+
+  impl ToString for RequestQuerySuite {
+    fn to_string(&self) -> String {
+      match self {
+        RequestQuerySuite::Default => "default".to_string(),
+        RequestQuerySuite::Extended => "extended".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.
+    /// If you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub query_suite: Option<RequestQuerySuite>,
+  }
+}
+
+pub mod list_memberships_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrgMembership>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryState {
+    #[serde(rename = "active")]
+    Active,
+    #[serde(rename = "pending")]
+    Pending,
+  }
+
+  impl ToString for QueryState {
+    fn to_string(&self) -> String {
+      match self {
+        QueryState::Active => "active".to_string(),
+        QueryState::Pending => "pending".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List organization memberships for the authenticated user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Indicates the state of the memberships to return. If not specified, the API returns both active and pending memberships.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<QueryState>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_membership_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrgMembership;
+}
+
+pub mod update_membership_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = OrgMembership;
+
+  /// The state that the membership should be in. Only `"active"` will be accepted.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestState {
+    #[serde(rename = "active")]
+    Active,
+  }
+
+  impl ToString for RequestState {
+    fn to_string(&self) -> String {
+      match self {
+        RequestState::Active => "active".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The state that the membership should be in. Only `"active"` will be accepted.
+    pub state: RequestState,
+  }
+}
+
+pub mod list_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrganizationSimple>;
+
+  /// Query for `List organizations for the authenticated user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrganizationSimple>;
+
+  /// Query for `List organizations for a user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
 
 /// Interact with GitHub Orgs.
 pub struct GitHubOrgsAPI {
@@ -21,10 +1753,10 @@ impl GitHubOrgsAPI {
   /// **Note:** Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of organizations.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#list-organizations](https://docs.github.com/rest/orgs/orgs#list-organizations)
-  pub fn list(&self) -> Request<(), OrgsListQuery, Vec<OrganizationSimple>> {
+  pub fn list(&self) -> Request<(), list::Query, list::Response> {
     let url = format!("/organizations");
 
-    Request::<(), OrgsListQuery, Vec<OrganizationSimple>>::builder(&self.config)
+    Request::<(), list::Query, list::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -53,11 +1785,11 @@ impl GitHubOrgsAPI {
   /// To see information about an organization's GitHub plan, GitHub Apps need the `Organization plan` permission.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#get-an-organization](https://docs.github.com/rest/orgs/orgs#get-an-organization)
-  pub fn get(&self, org: impl Into<String>) -> Request<(), (), OrganizationFull> {
+  pub fn get(&self, org: impl Into<String>) -> Request<(), (), get::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}");
 
-    Request::<(), (), OrganizationFull>::builder(&self.config)
+    Request::<(), (), get::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -84,11 +1816,11 @@ impl GitHubOrgsAPI {
   /// OAuth app tokens and personal access tokens (classic) need the `admin:org` or `repo` scope to use this endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#update-an-organization](https://docs.github.com/rest/orgs/orgs#update-an-organization)
-  pub fn update(&self, org: impl Into<String>) -> Request<OrgsUpdateRequest, (), OrganizationFull> {
+  pub fn update(&self, org: impl Into<String>) -> Request<update::Request, (), update::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}");
 
-    Request::<OrgsUpdateRequest, (), OrganizationFull>::builder(&self.config)
+    Request::<update::Request, (), update::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -121,11 +1853,11 @@ impl GitHubOrgsAPI {
   pub fn list_blocked_users(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListBlockedUsersQuery, Vec<SimpleUser>> {
+  ) -> Request<(), list_blocked_users::Query, list_blocked_users::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/blocks");
 
-    Request::<(), OrgsListBlockedUsersQuery, Vec<SimpleUser>>::builder(&self.config)
+    Request::<(), list_blocked_users::Query, list_blocked_users::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -195,11 +1927,11 @@ impl GitHubOrgsAPI {
   pub fn list_failed_invitations(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListFailedInvitationsQuery, Vec<OrganizationInvitation>> {
+  ) -> Request<(), list_failed_invitations::Query, list_failed_invitations::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/failed_invitations");
 
-    Request::<(), OrgsListFailedInvitationsQuery, Vec<OrganizationInvitation>>::builder(
+    Request::<(), list_failed_invitations::Query, list_failed_invitations::Response>::builder(
       &self.config,
     )
     .get(url)
@@ -217,11 +1949,11 @@ impl GitHubOrgsAPI {
   pub fn list_webhooks(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListWebhooksQuery, Vec<OrgHook>> {
+  ) -> Request<(), list_webhooks::Query, list_webhooks::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/hooks");
 
-    Request::<(), OrgsListWebhooksQuery, Vec<OrgHook>>::builder(&self.config)
+    Request::<(), list_webhooks::Query, list_webhooks::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -239,11 +1971,11 @@ impl GitHubOrgsAPI {
   pub fn create_webhook(
     &self,
     org: impl Into<String>,
-  ) -> Request<OrgsCreateWebhookRequest, (), OrgHook> {
+  ) -> Request<create_webhook::Request, (), create_webhook::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/hooks");
 
-    Request::<OrgsCreateWebhookRequest, (), OrgHook>::builder(&self.config)
+    Request::<create_webhook::Request, (), create_webhook::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -263,12 +1995,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), (), OrgHook> {
+  ) -> Request<(), (), get_webhook::Response> {
     let org = org.into();
     let hook_id = hook_id.into();
     let url = format!("/orgs/{org}/hooks/{hook_id}");
 
-    Request::<(), (), OrgHook>::builder(&self.config)
+    Request::<(), (), get_webhook::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -291,12 +2023,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<OrgsUpdateWebhookRequest, (), OrgHook> {
+  ) -> Request<update_webhook::Request, (), update_webhook::Response> {
     let org = org.into();
     let hook_id = hook_id.into();
     let url = format!("/orgs/{org}/hooks/{hook_id}");
 
-    Request::<OrgsUpdateWebhookRequest, (), OrgHook>::builder(&self.config)
+    Request::<update_webhook::Request, (), update_webhook::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -337,12 +2069,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), (), WebhookConfig> {
+  ) -> Request<(), (), get_webhook_config_for_org::Response> {
     let org = org.into();
     let hook_id = hook_id.into();
     let url = format!("/orgs/{org}/hooks/{hook_id}/config");
 
-    Request::<(), (), WebhookConfig>::builder(&self.config)
+    Request::<(), (), get_webhook_config_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -361,12 +2093,13 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<OrgsUpdateWebhookConfigForOrgRequest, (), WebhookConfig> {
+  ) -> Request<update_webhook_config_for_org::Request, (), update_webhook_config_for_org::Response>
+  {
     let org = org.into();
     let hook_id = hook_id.into();
     let url = format!("/orgs/{org}/hooks/{hook_id}/config");
 
-    Request::<OrgsUpdateWebhookConfigForOrgRequest, (), WebhookConfig>::builder(&self.config)
+    Request::<update_webhook_config_for_org::Request, (), update_webhook_config_for_org::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -385,14 +2118,16 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), OrgsListWebhookDeliveriesQuery, Vec<HookDeliveryItem>> {
+  ) -> Request<(), list_webhook_deliveries::Query, list_webhook_deliveries::Response> {
     let org = org.into();
     let hook_id = hook_id.into();
     let url = format!("/orgs/{org}/hooks/{hook_id}/deliveries");
 
-    Request::<(), OrgsListWebhookDeliveriesQuery, Vec<HookDeliveryItem>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_webhook_deliveries::Query, list_webhook_deliveries::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get a webhook delivery for an organization webhook**
@@ -410,13 +2145,13 @@ impl GitHubOrgsAPI {
     org: impl Into<String>,
     hook_id: impl Into<i64>,
     delivery_id: impl Into<i64>,
-  ) -> Request<(), (), HookDelivery> {
+  ) -> Request<(), (), get_webhook_delivery::Response> {
     let org = org.into();
     let hook_id = hook_id.into();
     let delivery_id = delivery_id.into();
     let url = format!("/orgs/{org}/hooks/{hook_id}/deliveries/{delivery_id}");
 
-    Request::<(), (), HookDelivery>::builder(&self.config)
+    Request::<(), (), get_webhook_delivery::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -485,11 +2220,11 @@ impl GitHubOrgsAPI {
   pub fn list_app_installations(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListAppInstallationsQuery, OrgsListAppInstallationsResponse> {
+  ) -> Request<(), list_app_installations::Query, list_app_installations::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/installations");
 
-    Request::<(), OrgsListAppInstallationsQuery, OrgsListAppInstallationsResponse>::builder(
+    Request::<(), list_app_installations::Query, list_app_installations::Response>::builder(
       &self.config,
     )
     .get(url)
@@ -504,11 +2239,11 @@ impl GitHubOrgsAPI {
   pub fn list_pending_invitations(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListPendingInvitationsQuery, Vec<OrganizationInvitation>> {
+  ) -> Request<(), list_pending_invitations::Query, list_pending_invitations::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/invitations");
 
-    Request::<(), OrgsListPendingInvitationsQuery, Vec<OrganizationInvitation>>::builder(
+    Request::<(), list_pending_invitations::Query, list_pending_invitations::Response>::builder(
       &self.config,
     )
     .get(url)
@@ -526,11 +2261,11 @@ impl GitHubOrgsAPI {
   pub fn create_invitation(
     &self,
     org: impl Into<String>,
-  ) -> Request<OrgsCreateInvitationRequest, (), OrganizationInvitation> {
+  ) -> Request<create_invitation::Request, (), create_invitation::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/invitations");
 
-    Request::<OrgsCreateInvitationRequest, (), OrganizationInvitation>::builder(&self.config)
+    Request::<create_invitation::Request, (), create_invitation::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -565,14 +2300,16 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     invitation_id: impl Into<i64>,
-  ) -> Request<(), OrgsListInvitationTeamsQuery, Vec<Team>> {
+  ) -> Request<(), list_invitation_teams::Query, list_invitation_teams::Response> {
     let org = org.into();
     let invitation_id = invitation_id.into();
     let url = format!("/orgs/{org}/invitations/{invitation_id}/teams");
 
-    Request::<(), OrgsListInvitationTeamsQuery, Vec<Team>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_invitation_teams::Query, list_invitation_teams::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List organization members**
@@ -583,11 +2320,11 @@ impl GitHubOrgsAPI {
   pub fn list_members(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListMembersQuery, Vec<SimpleUser>> {
+  ) -> Request<(), list_members::Query, list_members::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/members");
 
-    Request::<(), OrgsListMembersQuery, Vec<SimpleUser>>::builder(&self.config)
+    Request::<(), list_members::Query, list_members::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -639,12 +2376,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<(), (), OrgMembership> {
+  ) -> Request<(), (), get_membership_for_user::Response> {
     let org = org.into();
     let username = username.into();
     let url = format!("/orgs/{org}/memberships/{username}");
 
-    Request::<(), (), OrgMembership>::builder(&self.config)
+    Request::<(), (), get_membership_for_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -666,14 +2403,16 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<OrgsSetMembershipForUserRequest, (), OrgMembership> {
+  ) -> Request<set_membership_for_user::Request, (), set_membership_for_user::Response> {
     let org = org.into();
     let username = username.into();
     let url = format!("/orgs/{org}/memberships/{username}");
 
-    Request::<OrgsSetMembershipForUserRequest, (), OrgMembership>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<set_membership_for_user::Request, (), set_membership_for_user::Response>::builder(
+      &self.config,
+    )
+    .put(url)
+    .build()
   }
 
   /// **Remove organization membership for a user**
@@ -714,11 +2453,11 @@ impl GitHubOrgsAPI {
   pub fn list_organization_fine_grained_permissions(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), Vec<OrganizationFineGrainedPermission>> {
+  ) -> Request<(), (), list_organization_fine_grained_permissions::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/organization-fine-grained-permissions");
 
-    Request::<(), (), Vec<OrganizationFineGrainedPermission>>::builder(&self.config)
+    Request::<(), (), list_organization_fine_grained_permissions::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -738,11 +2477,11 @@ impl GitHubOrgsAPI {
   pub fn list_org_roles(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), OrgsListOrgRolesResponse> {
+  ) -> Request<(), (), list_org_roles::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/organization-roles");
 
-    Request::<(), (), OrgsListOrgRolesResponse>::builder(&self.config)
+    Request::<(), (), list_org_roles::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -762,11 +2501,15 @@ impl GitHubOrgsAPI {
   pub fn create_custom_organization_role(
     &self,
     org: impl Into<String>,
-  ) -> Request<OrgsCreateCustomOrganizationRoleRequest, (), OrganizationRole> {
+  ) -> Request<
+    create_custom_organization_role::Request,
+    (),
+    create_custom_organization_role::Response,
+  > {
     let org = org.into();
     let url = format!("/orgs/{org}/organization-roles");
 
-    Request::<OrgsCreateCustomOrganizationRoleRequest, (), OrganizationRole>::builder(&self.config)
+    Request::<create_custom_organization_role::Request, (), create_custom_organization_role::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -933,12 +2676,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     role_id: impl Into<i64>,
-  ) -> Request<(), (), OrganizationRole> {
+  ) -> Request<(), (), get_org_role::Response> {
     let org = org.into();
     let role_id = role_id.into();
     let url = format!("/orgs/{org}/organization-roles/{role_id}");
 
-    Request::<(), (), OrganizationRole>::builder(&self.config)
+    Request::<(), (), get_org_role::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -960,12 +2703,13 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     role_id: impl Into<i64>,
-  ) -> Request<OrgsPatchCustomOrganizationRoleRequest, (), OrganizationRole> {
+  ) -> Request<patch_custom_organization_role::Request, (), patch_custom_organization_role::Response>
+  {
     let org = org.into();
     let role_id = role_id.into();
     let url = format!("/orgs/{org}/organization-roles/{role_id}");
 
-    Request::<OrgsPatchCustomOrganizationRoleRequest, (), OrganizationRole>::builder(&self.config)
+    Request::<patch_custom_organization_role::Request, (), patch_custom_organization_role::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -1009,12 +2753,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     role_id: impl Into<i64>,
-  ) -> Request<(), OrgsListOrgRoleTeamsQuery, Vec<Team>> {
+  ) -> Request<(), list_org_role_teams::Query, list_org_role_teams::Response> {
     let org = org.into();
     let role_id = role_id.into();
     let url = format!("/orgs/{org}/organization-roles/{role_id}/teams");
 
-    Request::<(), OrgsListOrgRoleTeamsQuery, Vec<Team>>::builder(&self.config)
+    Request::<(), list_org_role_teams::Query, list_org_role_teams::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1032,12 +2776,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     role_id: impl Into<i64>,
-  ) -> Request<(), OrgsListOrgRoleUsersQuery, Vec<SimpleUser>> {
+  ) -> Request<(), list_org_role_users::Query, list_org_role_users::Response> {
     let org = org.into();
     let role_id = role_id.into();
     let url = format!("/orgs/{org}/organization-roles/{role_id}/users");
 
-    Request::<(), OrgsListOrgRoleUsersQuery, Vec<SimpleUser>>::builder(&self.config)
+    Request::<(), list_org_role_users::Query, list_org_role_users::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1050,13 +2794,15 @@ impl GitHubOrgsAPI {
   pub fn list_outside_collaborators(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListOutsideCollaboratorsQuery, Vec<SimpleUser>> {
+  ) -> Request<(), list_outside_collaborators::Query, list_outside_collaborators::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/outside_collaborators");
 
-    Request::<(), OrgsListOutsideCollaboratorsQuery, Vec<SimpleUser>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_outside_collaborators::Query, list_outside_collaborators::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Convert an organization member to outside collaborator**
@@ -1069,18 +2815,18 @@ impl GitHubOrgsAPI {
     org: impl Into<String>,
     username: impl Into<String>,
   ) -> Request<
-    OrgsConvertMemberToOutsideCollaboratorRequest,
+    convert_member_to_outside_collaborator::Request,
     (),
-    OrgsConvertMemberToOutsideCollaboratorResponse,
+    convert_member_to_outside_collaborator::Response,
   > {
     let org = org.into();
     let username = username.into();
     let url = format!("/orgs/{org}/outside_collaborators/{username}");
 
     Request::<
-      OrgsConvertMemberToOutsideCollaboratorRequest,
+      convert_member_to_outside_collaborator::Request,
       (),
-      OrgsConvertMemberToOutsideCollaboratorResponse,
+      convert_member_to_outside_collaborator::Response,
     >::builder(&self.config)
     .put(url)
     .build()
@@ -1115,14 +2861,15 @@ impl GitHubOrgsAPI {
   pub fn list_pat_grant_requests(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListPatGrantRequestsQuery, Vec<OrganizationProgrammaticAccessGrantRequest>>
-  {
+  ) -> Request<(), list_pat_grant_requests::Query, list_pat_grant_requests::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/personal-access-token-requests");
 
-    Request::<(), OrgsListPatGrantRequestsQuery, Vec<OrganizationProgrammaticAccessGrantRequest>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_pat_grant_requests::Query, list_pat_grant_requests::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Review requests to access organization resources with fine-grained personal access tokens**
@@ -1135,11 +2882,11 @@ impl GitHubOrgsAPI {
   pub fn review_pat_grant_requests_in_bulk(
     &self,
     org: impl Into<String>,
-  ) -> NoContentRequest<OrgsReviewPatGrantRequestsInBulkRequest, ()> {
+  ) -> NoContentRequest<review_pat_grant_requests_in_bulk::Request, ()> {
     let org = org.into();
     let url = format!("/orgs/{org}/personal-access-token-requests");
 
-    NoContentRequest::<OrgsReviewPatGrantRequestsInBulkRequest, ()>::builder(&self.config)
+    NoContentRequest::<review_pat_grant_requests_in_bulk::Request, ()>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1155,12 +2902,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     pat_request_id: impl Into<i64>,
-  ) -> NoContentRequest<OrgsReviewPatGrantRequestRequest, ()> {
+  ) -> NoContentRequest<review_pat_grant_request::Request, ()> {
     let org = org.into();
     let pat_request_id = pat_request_id.into();
     let url = format!("/orgs/{org}/personal-access-token-requests/{pat_request_id}");
 
-    NoContentRequest::<OrgsReviewPatGrantRequestRequest, ()>::builder(&self.config)
+    NoContentRequest::<review_pat_grant_request::Request, ()>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1176,14 +2923,20 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     pat_request_id: impl Into<i64>,
-  ) -> Request<(), OrgsListPatGrantRequestRepositoriesQuery, Vec<MinimalRepository>> {
+  ) -> Request<
+    (),
+    list_pat_grant_request_repositories::Query,
+    list_pat_grant_request_repositories::Response,
+  > {
     let org = org.into();
     let pat_request_id = pat_request_id.into();
     let url = format!("/orgs/{org}/personal-access-token-requests/{pat_request_id}/repositories");
 
-    Request::<(), OrgsListPatGrantRequestRepositoriesQuery, Vec<MinimalRepository>>::builder(
-      &self.config,
-    )
+    Request::<
+      (),
+      list_pat_grant_request_repositories::Query,
+      list_pat_grant_request_repositories::Response,
+    >::builder(&self.config)
     .get(url)
     .build()
   }
@@ -1198,15 +2951,13 @@ impl GitHubOrgsAPI {
   pub fn list_pat_grants(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListPatGrantsQuery, Vec<OrganizationProgrammaticAccessGrant>> {
+  ) -> Request<(), list_pat_grants::Query, list_pat_grants::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/personal-access-tokens");
 
-    Request::<(), OrgsListPatGrantsQuery, Vec<OrganizationProgrammaticAccessGrant>>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_pat_grants::Query, list_pat_grants::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Update the access to organization resources via fine-grained personal access tokens**
@@ -1219,11 +2970,11 @@ impl GitHubOrgsAPI {
   pub fn update_pat_accesses(
     &self,
     org: impl Into<String>,
-  ) -> NoContentRequest<OrgsUpdatePatAccessesRequest, ()> {
+  ) -> NoContentRequest<update_pat_accesses::Request, ()> {
     let org = org.into();
     let url = format!("/orgs/{org}/personal-access-tokens");
 
-    NoContentRequest::<OrgsUpdatePatAccessesRequest, ()>::builder(&self.config)
+    NoContentRequest::<update_pat_accesses::Request, ()>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1239,12 +2990,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     pat_id: impl Into<i64>,
-  ) -> NoContentRequest<OrgsUpdatePatAccessRequest, ()> {
+  ) -> NoContentRequest<update_pat_access::Request, ()> {
     let org = org.into();
     let pat_id = pat_id.into();
     let url = format!("/orgs/{org}/personal-access-tokens/{pat_id}");
 
-    NoContentRequest::<OrgsUpdatePatAccessRequest, ()>::builder(&self.config)
+    NoContentRequest::<update_pat_access::Request, ()>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1260,12 +3011,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     pat_id: impl Into<i64>,
-  ) -> Request<(), OrgsListPatGrantRepositoriesQuery, Vec<MinimalRepository>> {
+  ) -> Request<(), list_pat_grant_repositories::Query, list_pat_grant_repositories::Response> {
     let org = org.into();
     let pat_id = pat_id.into();
     let url = format!("/orgs/{org}/personal-access-tokens/{pat_id}/repositories");
 
-    Request::<(), OrgsListPatGrantRepositoriesQuery, Vec<MinimalRepository>>::builder(&self.config)
+    Request::<(), list_pat_grant_repositories::Query, list_pat_grant_repositories::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1279,11 +3030,11 @@ impl GitHubOrgsAPI {
   pub fn get_all_custom_properties(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), Vec<OrgCustomProperty>> {
+  ) -> Request<(), (), get_all_custom_properties::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/schema");
 
-    Request::<(), (), Vec<OrgCustomProperty>>::builder(&self.config)
+    Request::<(), (), get_all_custom_properties::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1300,13 +3051,19 @@ impl GitHubOrgsAPI {
   pub fn create_or_update_custom_properties(
     &self,
     org: impl Into<String>,
-  ) -> Request<OrgsCreateOrUpdateCustomPropertiesRequest, (), Vec<OrgCustomProperty>> {
+  ) -> Request<
+    create_or_update_custom_properties::Request,
+    (),
+    create_or_update_custom_properties::Response,
+  > {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/schema");
 
-    Request::<OrgsCreateOrUpdateCustomPropertiesRequest, (), Vec<OrgCustomProperty>>::builder(
-      &self.config,
-    )
+    Request::<
+      create_or_update_custom_properties::Request,
+      (),
+      create_or_update_custom_properties::Response,
+    >::builder(&self.config)
     .patch(url)
     .build()
   }
@@ -1321,12 +3078,12 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     custom_property_name: impl Into<String>,
-  ) -> Request<(), (), OrgCustomProperty> {
+  ) -> Request<(), (), get_custom_property::Response> {
     let org = org.into();
     let custom_property_name = custom_property_name.into();
     let url = format!("/orgs/{org}/properties/schema/{custom_property_name}");
 
-    Request::<(), (), OrgCustomProperty>::builder(&self.config)
+    Request::<(), (), get_custom_property::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1344,14 +3101,22 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     custom_property_name: impl Into<String>,
-  ) -> Request<OrgsCreateOrUpdateCustomPropertyRequest, (), OrgCustomProperty> {
+  ) -> Request<
+    create_or_update_custom_property::Request,
+    (),
+    create_or_update_custom_property::Response,
+  > {
     let org = org.into();
     let custom_property_name = custom_property_name.into();
     let url = format!("/orgs/{org}/properties/schema/{custom_property_name}");
 
-    Request::<OrgsCreateOrUpdateCustomPropertyRequest, (), OrgCustomProperty>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<
+      create_or_update_custom_property::Request,
+      (),
+      create_or_update_custom_property::Response,
+    >::builder(&self.config)
+    .put(url)
+    .build()
   }
 
   /// **Remove a custom property for an organization**
@@ -1386,14 +3151,21 @@ impl GitHubOrgsAPI {
   pub fn list_custom_properties_values_for_repos(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListCustomPropertiesValuesForReposQuery, Vec<OrgRepoCustomPropertyValues>>
-  {
+  ) -> Request<
+    (),
+    list_custom_properties_values_for_repos::Query,
+    list_custom_properties_values_for_repos::Response,
+  > {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/values");
 
-    Request::<(), OrgsListCustomPropertiesValuesForReposQuery, Vec<OrgRepoCustomPropertyValues>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      list_custom_properties_values_for_repos::Query,
+      list_custom_properties_values_for_repos::Response,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **Create or update custom property values for organization repositories**
@@ -1413,11 +3185,11 @@ impl GitHubOrgsAPI {
   pub fn create_or_update_custom_properties_values_for_repos(
     &self,
     org: impl Into<String>,
-  ) -> NoContentRequest<OrgsCreateOrUpdateCustomPropertiesValuesForReposRequest, ()> {
+  ) -> NoContentRequest<create_or_update_custom_properties_values_for_repos::Request, ()> {
     let org = org.into();
     let url = format!("/orgs/{org}/properties/values");
 
-    NoContentRequest::<OrgsCreateOrUpdateCustomPropertiesValuesForReposRequest, ()>::builder(
+    NoContentRequest::<create_or_update_custom_properties_values_for_repos::Request, ()>::builder(
       &self.config,
     )
     .patch(url)
@@ -1432,11 +3204,11 @@ impl GitHubOrgsAPI {
   pub fn list_public_members(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), OrgsListPublicMembersQuery, Vec<SimpleUser>> {
+  ) -> Request<(), list_public_members::Query, list_public_members::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/public_members");
 
-    Request::<(), OrgsListPublicMembersQuery, Vec<SimpleUser>>::builder(&self.config)
+    Request::<(), list_public_members::Query, list_public_members::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1512,11 +3284,11 @@ impl GitHubOrgsAPI {
   pub fn list_security_manager_teams(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), Vec<TeamSimple>> {
+  ) -> Request<(), (), list_security_manager_teams::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/security-managers");
 
-    Request::<(), (), Vec<TeamSimple>>::builder(&self.config)
+    Request::<(), (), list_security_manager_teams::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1580,10 +3352,10 @@ impl GitHubOrgsAPI {
     &self,
     org: impl Into<String>,
     security_product: impl Into<
-      OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersSecurityProduct,
+      enable_or_disable_security_product_on_all_org_repos::ParametersSecurityProduct,
     >,
-    enablement: impl Into<OrgsEnableOrDisableSecurityProductOnAllOrgReposParametersEnablement>,
-  ) -> NoContentRequest<OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest, ()> {
+    enablement: impl Into<enable_or_disable_security_product_on_all_org_repos::ParametersEnablement>,
+  ) -> NoContentRequest<enable_or_disable_security_product_on_all_org_repos::Request, ()> {
     let org = org.into();
     let security_product = security_product.into();
     let enablement = enablement.into();
@@ -1591,7 +3363,7 @@ impl GitHubOrgsAPI {
     let enablement = enablement.to_string();
     let url = format!("/orgs/{org}/{security_product}/{enablement}");
 
-    NoContentRequest::<OrgsEnableOrDisableSecurityProductOnAllOrgReposRequest, ()>::builder(
+    NoContentRequest::<enable_or_disable_security_product_on_all_org_repos::Request, ()>::builder(
       &self.config,
     )
     .post(url)
@@ -1605,12 +3377,18 @@ impl GitHubOrgsAPI {
   /// *Documentation*: [https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user](https://docs.github.com/rest/orgs/members#list-organization-memberships-for-the-authenticated-user)
   pub fn list_memberships_for_authenticated_user(
     &self,
-  ) -> Request<(), OrgsListMembershipsForAuthenticatedUserQuery, Vec<OrgMembership>> {
+  ) -> Request<
+    (),
+    list_memberships_for_authenticated_user::Query,
+    list_memberships_for_authenticated_user::Response,
+  > {
     let url = format!("/user/memberships/orgs");
 
-    Request::<(), OrgsListMembershipsForAuthenticatedUserQuery, Vec<OrgMembership>>::builder(
-      &self.config,
-    )
+    Request::<
+      (),
+      list_memberships_for_authenticated_user::Query,
+      list_memberships_for_authenticated_user::Response,
+    >::builder(&self.config)
     .get(url)
     .build()
   }
@@ -1623,11 +3401,11 @@ impl GitHubOrgsAPI {
   pub fn get_membership_for_authenticated_user(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), OrgMembership> {
+  ) -> Request<(), (), get_membership_for_authenticated_user::Response> {
     let org = org.into();
     let url = format!("/user/memberships/orgs/{org}");
 
-    Request::<(), (), OrgMembership>::builder(&self.config)
+    Request::<(), (), get_membership_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1640,13 +3418,19 @@ impl GitHubOrgsAPI {
   pub fn update_membership_for_authenticated_user(
     &self,
     org: impl Into<String>,
-  ) -> Request<OrgsUpdateMembershipForAuthenticatedUserRequest, (), OrgMembership> {
+  ) -> Request<
+    update_membership_for_authenticated_user::Request,
+    (),
+    update_membership_for_authenticated_user::Response,
+  > {
     let org = org.into();
     let url = format!("/user/memberships/orgs/{org}");
 
-    Request::<OrgsUpdateMembershipForAuthenticatedUserRequest, (), OrgMembership>::builder(
-      &self.config,
-    )
+    Request::<
+      update_membership_for_authenticated_user::Request,
+      (),
+      update_membership_for_authenticated_user::Response,
+    >::builder(&self.config)
     .patch(url)
     .build()
   }
@@ -1660,10 +3444,10 @@ impl GitHubOrgsAPI {
   /// *Documentation*: [https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user](https://docs.github.com/rest/orgs/orgs#list-organizations-for-the-authenticated-user)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<(), OrgsListForAuthenticatedUserQuery, Vec<OrganizationSimple>> {
+  ) -> Request<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response> {
     let url = format!("/user/orgs");
 
-    Request::<(), OrgsListForAuthenticatedUserQuery, Vec<OrganizationSimple>>::builder(&self.config)
+    Request::<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1678,11 +3462,11 @@ impl GitHubOrgsAPI {
   pub fn list_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), OrgsListForUserQuery, Vec<OrganizationSimple>> {
+  ) -> Request<(), list_for_user::Query, list_for_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/orgs");
 
-    Request::<(), OrgsListForUserQuery, Vec<OrganizationSimple>>::builder(&self.config)
+    Request::<(), list_for_user::Query, list_for_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }

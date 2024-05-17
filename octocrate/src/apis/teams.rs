@@ -1,6 +1,1292 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Team>;
+
+  /// Query for `List teams`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamFull;
+
+  /// The notification setting the team has chosen. The options are:  
+  ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
+  ///  * `notifications_disabled` - no one receives notifications.  
+  /// Default: `notifications_enabled`
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestNotificationSetting {
+    #[serde(rename = "notifications_enabled")]
+    NotificationsEnabled,
+    #[serde(rename = "notifications_disabled")]
+    NotificationsDisabled,
+  }
+
+  impl ToString for RequestNotificationSetting {
+    fn to_string(&self) -> String {
+      match self {
+        RequestNotificationSetting::NotificationsEnabled => "notifications_enabled".to_string(),
+        RequestNotificationSetting::NotificationsDisabled => "notifications_disabled".to_string(),
+      }
+    }
+  }
+
+  /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPermission {
+    #[serde(rename = "pull")]
+    Pull,
+    #[serde(rename = "push")]
+    Push,
+  }
+
+  impl ToString for RequestPermission {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPermission::Pull => "pull".to_string(),
+        RequestPermission::Push => "push".to_string(),
+      }
+    }
+  }
+
+  /// The level of privacy this team should have. The options are:  
+  /// **For a non-nested team:**  
+  ///  * `secret` - only visible to organization owners and members of this team.  
+  ///  * `closed` - visible to all members of this organization.  
+  /// Default: `secret`  
+  /// **For a parent or child team:**  
+  ///  * `closed` - visible to all members of this organization.  
+  /// Default for child team: `closed`
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPrivacy {
+    #[serde(rename = "secret")]
+    Secret,
+    #[serde(rename = "closed")]
+    Closed,
+  }
+
+  impl ToString for RequestPrivacy {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPrivacy::Secret => "secret".to_string(),
+        RequestPrivacy::Closed => "closed".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The description of the team.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// List GitHub IDs for organization members who will become team maintainers.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub maintainers: Option<Vec<String>>,
+    /// The name of the team.
+    pub name: String,
+    /// The notification setting the team has chosen. The options are:  
+    ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
+    ///  * `notifications_disabled` - no one receives notifications.  
+    /// Default: `notifications_enabled`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub notification_setting: Option<RequestNotificationSetting>,
+    /// The ID of a team to set as the parent team.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub parent_team_id: Option<i64>,
+    /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<RequestPermission>,
+    /// The level of privacy this team should have. The options are:  
+    /// **For a non-nested team:**  
+    ///  * `secret` - only visible to organization owners and members of this team.  
+    ///  * `closed` - visible to all members of this organization.  
+    /// Default: `secret`  
+    /// **For a parent or child team:**  
+    ///  * `closed` - visible to all members of this organization.  
+    /// Default for child team: `closed`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub privacy: Option<RequestPrivacy>,
+    /// The full name (e.g., "organization-name/repository-name") of repositories to add the team to.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repo_names: Option<Vec<String>>,
+  }
+}
+
+pub mod get_by_name {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamFull;
+}
+
+pub mod update_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamFull;
+
+  /// The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:
+  ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
+  ///  * `notifications_disabled` - no one receives notifications.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestNotificationSetting {
+    #[serde(rename = "notifications_enabled")]
+    NotificationsEnabled,
+    #[serde(rename = "notifications_disabled")]
+    NotificationsDisabled,
+  }
+
+  impl ToString for RequestNotificationSetting {
+    fn to_string(&self) -> String {
+      match self {
+        RequestNotificationSetting::NotificationsEnabled => "notifications_enabled".to_string(),
+        RequestNotificationSetting::NotificationsDisabled => "notifications_disabled".to_string(),
+      }
+    }
+  }
+
+  /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPermission {
+    #[serde(rename = "pull")]
+    Pull,
+    #[serde(rename = "push")]
+    Push,
+    #[serde(rename = "admin")]
+    Admin,
+  }
+
+  impl ToString for RequestPermission {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPermission::Pull => "pull".to_string(),
+        RequestPermission::Push => "push".to_string(),
+        RequestPermission::Admin => "admin".to_string(),
+      }
+    }
+  }
+
+  /// The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  
+  /// **For a non-nested team:**  
+  ///  * `secret` - only visible to organization owners and members of this team.  
+  ///  * `closed` - visible to all members of this organization.  
+  /// **For a parent or child team:**  
+  ///  * `closed` - visible to all members of this organization.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPrivacy {
+    #[serde(rename = "secret")]
+    Secret,
+    #[serde(rename = "closed")]
+    Closed,
+  }
+
+  impl ToString for RequestPrivacy {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPrivacy::Secret => "secret".to_string(),
+        RequestPrivacy::Closed => "closed".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The description of the team.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The name of the team.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:
+    ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
+    ///  * `notifications_disabled` - no one receives notifications.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub notification_setting: Option<RequestNotificationSetting>,
+    /// The ID of a team to set as the parent team.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub parent_team_id: Option<i64>,
+    /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<RequestPermission>,
+    /// The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  
+    /// **For a non-nested team:**  
+    ///  * `secret` - only visible to organization owners and members of this team.  
+    ///  * `closed` - visible to all members of this organization.  
+    /// **For a parent or child team:**  
+    ///  * `closed` - visible to all members of this organization.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub privacy: Option<RequestPrivacy>,
+  }
+}
+
+pub mod delete_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_discussions_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<TeamDiscussion>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List discussions`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// Pinned discussions only filter
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub pinned: Option<String>,
+  }
+}
+
+pub mod create_discussion_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussion;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The discussion post's body text.
+    pub body: String,
+    /// Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub private: Option<bool>,
+    /// The discussion post's title.
+    pub title: String,
+  }
+}
+
+pub mod get_discussion_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussion;
+}
+
+pub mod update_discussion_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussion;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The discussion post's body text.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub body: Option<String>,
+    /// The discussion post's title.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub title: Option<String>,
+  }
+}
+
+pub mod delete_discussion_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_discussion_comments_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<TeamDiscussionComment>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List discussion comments`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_discussion_comment_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussionComment;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The discussion comment's body text.
+    pub body: String,
+  }
+}
+
+pub mod get_discussion_comment_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussionComment;
+}
+
+pub mod update_discussion_comment_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussionComment;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The discussion comment's body text.
+    pub body: String,
+  }
+}
+
+pub mod delete_discussion_comment_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_pending_invitations_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrganizationInvitation>;
+
+  /// Query for `List pending team invitations`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_members_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryRole {
+    #[serde(rename = "member")]
+    Member,
+    #[serde(rename = "maintainer")]
+    Maintainer,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryRole {
+    fn to_string(&self) -> String {
+      match self {
+        QueryRole::Member => "member".to_string(),
+        QueryRole::Maintainer => "maintainer".to_string(),
+        QueryRole::All => "all".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List team members`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Filters members returned by their role in the team.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub role: Option<QueryRole>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_membership_for_user_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamMembership;
+}
+
+pub mod add_or_update_membership_for_user_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamMembership;
+
+  /// The role that this user should have in the team.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestRole {
+    #[serde(rename = "member")]
+    Member,
+    #[serde(rename = "maintainer")]
+    Maintainer,
+  }
+
+  impl ToString for RequestRole {
+    fn to_string(&self) -> String {
+      match self {
+        RequestRole::Member => "member".to_string(),
+        RequestRole::Maintainer => "maintainer".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The role that this user should have in the team.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub role: Option<RequestRole>,
+  }
+}
+
+pub mod remove_membership_for_user_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_projects_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<TeamProject>;
+
+  /// Query for `List team projects`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod check_permissions_for_project_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamProject;
+}
+
+pub mod add_or_update_project_permissions_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPermission {
+    #[serde(rename = "read")]
+    Read,
+    #[serde(rename = "write")]
+    Write,
+    #[serde(rename = "admin")]
+    Admin,
+  }
+
+  impl ToString for RequestPermission {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPermission::Read => "read".to_string(),
+        RequestPermission::Write => "write".to_string(),
+        RequestPermission::Admin => "admin".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<RequestPermission>,
+  }
+}
+
+pub mod remove_project_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_repos_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  /// Query for `List team repositories`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod check_permissions_for_repo_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamRepository;
+}
+
+pub mod add_or_update_repo_permissions_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The permission to grant the team on this repository. We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<String>,
+  }
+}
+
+pub mod remove_repo_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_child_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Team>;
+
+  /// Query for `List child teams`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamFull;
+}
+
+pub mod update_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamFull;
+
+  /// The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:
+  ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
+  ///  * `notifications_disabled` - no one receives notifications.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestNotificationSetting {
+    #[serde(rename = "notifications_enabled")]
+    NotificationsEnabled,
+    #[serde(rename = "notifications_disabled")]
+    NotificationsDisabled,
+  }
+
+  impl ToString for RequestNotificationSetting {
+    fn to_string(&self) -> String {
+      match self {
+        RequestNotificationSetting::NotificationsEnabled => "notifications_enabled".to_string(),
+        RequestNotificationSetting::NotificationsDisabled => "notifications_disabled".to_string(),
+      }
+    }
+  }
+
+  /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPermission {
+    #[serde(rename = "pull")]
+    Pull,
+    #[serde(rename = "push")]
+    Push,
+    #[serde(rename = "admin")]
+    Admin,
+  }
+
+  impl ToString for RequestPermission {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPermission::Pull => "pull".to_string(),
+        RequestPermission::Push => "push".to_string(),
+        RequestPermission::Admin => "admin".to_string(),
+      }
+    }
+  }
+
+  /// The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  
+  /// **For a non-nested team:**  
+  ///  * `secret` - only visible to organization owners and members of this team.  
+  ///  * `closed` - visible to all members of this organization.  
+  /// **For a parent or child team:**  
+  ///  * `closed` - visible to all members of this organization.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPrivacy {
+    #[serde(rename = "secret")]
+    Secret,
+    #[serde(rename = "closed")]
+    Closed,
+  }
+
+  impl ToString for RequestPrivacy {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPrivacy::Secret => "secret".to_string(),
+        RequestPrivacy::Closed => "closed".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The description of the team.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The name of the team.
+    pub name: String,
+    /// The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:
+    ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
+    ///  * `notifications_disabled` - no one receives notifications.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub notification_setting: Option<RequestNotificationSetting>,
+    /// The ID of a team to set as the parent team.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub parent_team_id: Option<i64>,
+    /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<RequestPermission>,
+    /// The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  
+    /// **For a non-nested team:**  
+    ///  * `secret` - only visible to organization owners and members of this team.  
+    ///  * `closed` - visible to all members of this organization.  
+    /// **For a parent or child team:**  
+    ///  * `closed` - visible to all members of this organization.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub privacy: Option<RequestPrivacy>,
+  }
+}
+
+pub mod delete_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_discussions_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<TeamDiscussion>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List discussions (Legacy)`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_discussion_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussion;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The discussion post's body text.
+    pub body: String,
+    /// Private posts are only visible to team members, organization owners, and team maintainers. Public posts are visible to all members of the organization. Set to `true` to create a private post.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub private: Option<bool>,
+    /// The discussion post's title.
+    pub title: String,
+  }
+}
+
+pub mod get_discussion_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussion;
+}
+
+pub mod update_discussion_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussion;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The discussion post's body text.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub body: Option<String>,
+    /// The discussion post's title.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub title: Option<String>,
+  }
+}
+
+pub mod delete_discussion_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_discussion_comments_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<TeamDiscussionComment>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List discussion comments (Legacy)`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_discussion_comment_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussionComment;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The discussion comment's body text.
+    pub body: String,
+  }
+}
+
+pub mod get_discussion_comment_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussionComment;
+}
+
+pub mod update_discussion_comment_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamDiscussionComment;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The discussion comment's body text.
+    pub body: String,
+  }
+}
+
+pub mod delete_discussion_comment_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_pending_invitations_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<OrganizationInvitation>;
+
+  /// Query for `List pending team invitations (Legacy)`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_members_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryRole {
+    #[serde(rename = "member")]
+    Member,
+    #[serde(rename = "maintainer")]
+    Maintainer,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryRole {
+    fn to_string(&self) -> String {
+      match self {
+        QueryRole::Member => "member".to_string(),
+        QueryRole::Maintainer => "maintainer".to_string(),
+        QueryRole::All => "all".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List team members (Legacy)`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Filters members returned by their role in the team.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub role: Option<QueryRole>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_member_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod add_member_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod remove_member_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_membership_for_user_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamMembership;
+}
+
+pub mod add_or_update_membership_for_user_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamMembership;
+
+  /// The role that this user should have in the team.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestRole {
+    #[serde(rename = "member")]
+    Member,
+    #[serde(rename = "maintainer")]
+    Maintainer,
+  }
+
+  impl ToString for RequestRole {
+    fn to_string(&self) -> String {
+      match self {
+        RequestRole::Member => "member".to_string(),
+        RequestRole::Maintainer => "maintainer".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The role that this user should have in the team.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub role: Option<RequestRole>,
+  }
+}
+
+pub mod remove_membership_for_user_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_projects_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<TeamProject>;
+
+  /// Query for `List team projects (Legacy)`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod check_permissions_for_project_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamProject;
+}
+
+pub mod add_or_update_project_permissions_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPermission {
+    #[serde(rename = "read")]
+    Read,
+    #[serde(rename = "write")]
+    Write,
+    #[serde(rename = "admin")]
+    Admin,
+  }
+
+  impl ToString for RequestPermission {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPermission::Read => "read".to_string(),
+        RequestPermission::Write => "write".to_string(),
+        RequestPermission::Admin => "admin".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<RequestPermission>,
+  }
+}
+
+pub mod remove_project_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_repos_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  /// Query for `List team repositories (Legacy)`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod check_permissions_for_repo_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TeamRepository;
+}
+
+pub mod add_or_update_repo_permissions_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPermission {
+    #[serde(rename = "pull")]
+    Pull,
+    #[serde(rename = "push")]
+    Push,
+    #[serde(rename = "admin")]
+    Admin,
+  }
+
+  impl ToString for RequestPermission {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPermission::Pull => "pull".to_string(),
+        RequestPermission::Push => "push".to_string(),
+        RequestPermission::Admin => "admin".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<RequestPermission>,
+  }
+}
+
+pub mod remove_repo_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_child_legacy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Team>;
+
+  /// Query for `List child teams (Legacy)`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<TeamFull>;
+
+  /// Query for `List teams for the authenticated user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
 
 /// Interact with GitHub Teams.
 pub struct GitHubTeamsAPI {
@@ -19,11 +1305,11 @@ impl GitHubTeamsAPI {
   /// Lists all teams in an organization that are visible to the authenticated user.
   ///
   /// *Documentation*: [https://docs.github.com/rest/teams/teams#list-teams](https://docs.github.com/rest/teams/teams#list-teams)
-  pub fn list(&self, org: impl Into<String>) -> Request<(), TeamsListQuery, Vec<Team>> {
+  pub fn list(&self, org: impl Into<String>) -> Request<(), list::Query, list::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/teams");
 
-    Request::<(), TeamsListQuery, Vec<Team>>::builder(&self.config)
+    Request::<(), list::Query, list::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -35,11 +1321,11 @@ impl GitHubTeamsAPI {
   /// When you create a new team, you automatically become a team maintainer without explicitly adding yourself to the optional array of `maintainers`. For more information, see "[About teams](https://docs.github.com/github/setting-up-and-managing-organizations-and-teams/about-teams)".
   ///
   /// *Documentation*: [https://docs.github.com/rest/teams/teams#create-a-team](https://docs.github.com/rest/teams/teams#create-a-team)
-  pub fn create(&self, org: impl Into<String>) -> Request<TeamsCreateRequest, (), TeamFull> {
+  pub fn create(&self, org: impl Into<String>) -> Request<create::Request, (), create::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/teams");
 
-    Request::<TeamsCreateRequest, (), TeamFull>::builder(&self.config)
+    Request::<create::Request, (), create::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -55,12 +1341,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), (), TeamFull> {
+  ) -> Request<(), (), get_by_name::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}");
 
-    Request::<(), (), TeamFull>::builder(&self.config)
+    Request::<(), (), get_by_name::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -76,12 +1362,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<TeamsUpdateInOrgRequest, (), TeamFull> {
+  ) -> Request<update_in_org::Request, (), update_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}");
 
-    Request::<TeamsUpdateInOrgRequest, (), TeamFull>::builder(&self.config)
+    Request::<update_in_org::Request, (), update_in_org::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -122,14 +1408,16 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListDiscussionsInOrgQuery, Vec<TeamDiscussion>> {
+  ) -> Request<(), list_discussions_in_org::Query, list_discussions_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions");
 
-    Request::<(), TeamsListDiscussionsInOrgQuery, Vec<TeamDiscussion>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_discussions_in_org::Query, list_discussions_in_org::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Create a discussion**
@@ -147,14 +1435,16 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<TeamsCreateDiscussionInOrgRequest, (), TeamDiscussion> {
+  ) -> Request<create_discussion_in_org::Request, (), create_discussion_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions");
 
-    Request::<TeamsCreateDiscussionInOrgRequest, (), TeamDiscussion>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_discussion_in_org::Request, (), create_discussion_in_org::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Get a discussion**
@@ -171,13 +1461,13 @@ impl GitHubTeamsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
-  ) -> Request<(), (), TeamDiscussion> {
+  ) -> Request<(), (), get_discussion_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}");
 
-    Request::<(), (), TeamDiscussion>::builder(&self.config)
+    Request::<(), (), get_discussion_in_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -196,15 +1486,17 @@ impl GitHubTeamsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
-  ) -> Request<TeamsUpdateDiscussionInOrgRequest, (), TeamDiscussion> {
+  ) -> Request<update_discussion_in_org::Request, (), update_discussion_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}");
 
-    Request::<TeamsUpdateDiscussionInOrgRequest, (), TeamDiscussion>::builder(&self.config)
-      .patch(url)
-      .build()
+    Request::<update_discussion_in_org::Request, (), update_discussion_in_org::Response>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
   }
 
   /// **Delete a discussion**
@@ -246,17 +1538,16 @@ impl GitHubTeamsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
-  ) -> Request<(), TeamsListDiscussionCommentsInOrgQuery, Vec<TeamDiscussionComment>> {
+  ) -> Request<(), list_discussion_comments_in_org::Query, list_discussion_comments_in_org::Response>
+  {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments");
 
-    Request::<(), TeamsListDiscussionCommentsInOrgQuery, Vec<TeamDiscussionComment>>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_discussion_comments_in_org::Query, list_discussion_comments_in_org::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Create a discussion comment**
@@ -275,15 +1566,21 @@ impl GitHubTeamsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
-  ) -> Request<TeamsCreateDiscussionCommentInOrgRequest, (), TeamDiscussionComment> {
+  ) -> Request<
+    create_discussion_comment_in_org::Request,
+    (),
+    create_discussion_comment_in_org::Response,
+  > {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments");
 
-    Request::<TeamsCreateDiscussionCommentInOrgRequest, (), TeamDiscussionComment>::builder(
-      &self.config,
-    )
+    Request::<
+      create_discussion_comment_in_org::Request,
+      (),
+      create_discussion_comment_in_org::Response,
+    >::builder(&self.config)
     .post(url)
     .build()
   }
@@ -303,7 +1600,7 @@ impl GitHubTeamsAPI {
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
     comment_number: impl Into<i64>,
-  ) -> Request<(), (), TeamDiscussionComment> {
+  ) -> Request<(), (), get_discussion_comment_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
@@ -312,7 +1609,7 @@ impl GitHubTeamsAPI {
       "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
     );
 
-    Request::<(), (), TeamDiscussionComment>::builder(&self.config)
+    Request::<(), (), get_discussion_comment_in_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -332,7 +1629,11 @@ impl GitHubTeamsAPI {
     team_slug: impl Into<String>,
     discussion_number: impl Into<i64>,
     comment_number: impl Into<i64>,
-  ) -> Request<TeamsUpdateDiscussionCommentInOrgRequest, (), TeamDiscussionComment> {
+  ) -> Request<
+    update_discussion_comment_in_org::Request,
+    (),
+    update_discussion_comment_in_org::Response,
+  > {
     let org = org.into();
     let team_slug = team_slug.into();
     let discussion_number = discussion_number.into();
@@ -341,9 +1642,11 @@ impl GitHubTeamsAPI {
       "/orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}"
     );
 
-    Request::<TeamsUpdateDiscussionCommentInOrgRequest, (), TeamDiscussionComment>::builder(
-      &self.config,
-    )
+    Request::<
+      update_discussion_comment_in_org::Request,
+      (),
+      update_discussion_comment_in_org::Response,
+    >::builder(&self.config)
     .patch(url)
     .build()
   }
@@ -388,16 +1691,15 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListPendingInvitationsInOrgQuery, Vec<OrganizationInvitation>> {
+  ) -> Request<(), list_pending_invitations_in_org::Query, list_pending_invitations_in_org::Response>
+  {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/invitations");
 
-    Request::<(), TeamsListPendingInvitationsInOrgQuery, Vec<OrganizationInvitation>>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_pending_invitations_in_org::Query, list_pending_invitations_in_org::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **List team members**
@@ -411,12 +1713,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListMembersInOrgQuery, Vec<SimpleUser>> {
+  ) -> Request<(), list_members_in_org::Query, list_members_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/members");
 
-    Request::<(), TeamsListMembersInOrgQuery, Vec<SimpleUser>>::builder(&self.config)
+    Request::<(), list_members_in_org::Query, list_members_in_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -440,13 +1742,13 @@ impl GitHubTeamsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<(), (), TeamMembership> {
+  ) -> Request<(), (), get_membership_for_user_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let username = username.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/memberships/{username}");
 
-    Request::<(), (), TeamMembership>::builder(&self.config)
+    Request::<(), (), get_membership_for_user_in_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -471,15 +1773,21 @@ impl GitHubTeamsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<TeamsAddOrUpdateMembershipForUserInOrgRequest, (), TeamMembership> {
+  ) -> Request<
+    add_or_update_membership_for_user_in_org::Request,
+    (),
+    add_or_update_membership_for_user_in_org::Response,
+  > {
     let org = org.into();
     let team_slug = team_slug.into();
     let username = username.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/memberships/{username}");
 
-    Request::<TeamsAddOrUpdateMembershipForUserInOrgRequest, (), TeamMembership>::builder(
-      &self.config,
-    )
+    Request::<
+      add_or_update_membership_for_user_in_org::Request,
+      (),
+      add_or_update_membership_for_user_in_org::Response,
+    >::builder(&self.config)
     .put(url)
     .build()
   }
@@ -522,14 +1830,16 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListProjectsInOrgQuery, Vec<TeamProject>> {
+  ) -> Request<(), list_projects_in_org::Query, list_projects_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/projects");
 
-    Request::<(), TeamsListProjectsInOrgQuery, Vec<TeamProject>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_projects_in_org::Query, list_projects_in_org::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Check team permissions for a project**
@@ -544,13 +1854,13 @@ impl GitHubTeamsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     project_id: impl Into<i64>,
-  ) -> Request<(), (), TeamProject> {
+  ) -> Request<(), (), check_permissions_for_project_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let project_id = project_id.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/projects/{project_id}");
 
-    Request::<(), (), TeamProject>::builder(&self.config)
+    Request::<(), (), check_permissions_for_project_in_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -567,13 +1877,13 @@ impl GitHubTeamsAPI {
     org: impl Into<String>,
     team_slug: impl Into<String>,
     project_id: impl Into<i64>,
-  ) -> NoContentRequest<TeamsAddOrUpdateProjectPermissionsInOrgRequest, ()> {
+  ) -> NoContentRequest<add_or_update_project_permissions_in_org::Request, ()> {
     let org = org.into();
     let team_slug = team_slug.into();
     let project_id = project_id.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/projects/{project_id}");
 
-    NoContentRequest::<TeamsAddOrUpdateProjectPermissionsInOrgRequest, ()>::builder(&self.config)
+    NoContentRequest::<add_or_update_project_permissions_in_org::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -612,12 +1922,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListReposInOrgQuery, Vec<MinimalRepository>> {
+  ) -> Request<(), list_repos_in_org::Query, list_repos_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/repos");
 
-    Request::<(), TeamsListReposInOrgQuery, Vec<MinimalRepository>>::builder(&self.config)
+    Request::<(), list_repos_in_org::Query, list_repos_in_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -641,14 +1951,14 @@ impl GitHubTeamsAPI {
     team_slug: impl Into<String>,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), TeamRepository> {
+  ) -> Request<(), (), check_permissions_for_repo_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}");
 
-    Request::<(), (), TeamRepository>::builder(&self.config)
+    Request::<(), (), check_permissions_for_repo_in_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -668,14 +1978,14 @@ impl GitHubTeamsAPI {
     team_slug: impl Into<String>,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<TeamsAddOrUpdateRepoPermissionsInOrgRequest, ()> {
+  ) -> NoContentRequest<add_or_update_repo_permissions_in_org::Request, ()> {
     let org = org.into();
     let team_slug = team_slug.into();
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/repos/{owner}/{repo}");
 
-    NoContentRequest::<TeamsAddOrUpdateRepoPermissionsInOrgRequest, ()>::builder(&self.config)
+    NoContentRequest::<add_or_update_repo_permissions_in_org::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -716,12 +2026,12 @@ impl GitHubTeamsAPI {
     &self,
     org: impl Into<String>,
     team_slug: impl Into<String>,
-  ) -> Request<(), TeamsListChildInOrgQuery, Vec<Team>> {
+  ) -> Request<(), list_child_in_org::Query, list_child_in_org::Response> {
     let org = org.into();
     let team_slug = team_slug.into();
     let url = format!("/orgs/{org}/teams/{team_slug}/teams");
 
-    Request::<(), TeamsListChildInOrgQuery, Vec<Team>>::builder(&self.config)
+    Request::<(), list_child_in_org::Query, list_child_in_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -731,11 +2041,11 @@ impl GitHubTeamsAPI {
   /// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API. We recommend migrating your existing code to use the [Get a team by name](https://docs.github.com/rest/teams/teams#get-a-team-by-name) endpoint.
   ///
   /// *Documentation*: [https://docs.github.com/rest/teams/teams#get-a-team-legacy](https://docs.github.com/rest/teams/teams#get-a-team-legacy)
-  pub fn get_legacy(&self, team_id: impl Into<i64>) -> Request<(), (), TeamFull> {
+  pub fn get_legacy(&self, team_id: impl Into<i64>) -> Request<(), (), get_legacy::Response> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}");
 
-    Request::<(), (), TeamFull>::builder(&self.config)
+    Request::<(), (), get_legacy::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -752,11 +2062,11 @@ impl GitHubTeamsAPI {
   pub fn update_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<TeamsUpdateLegacyRequest, (), TeamFull> {
+  ) -> Request<update_legacy::Request, (), update_legacy::Response> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}");
 
-    Request::<TeamsUpdateLegacyRequest, (), TeamFull>::builder(&self.config)
+    Request::<update_legacy::Request, (), update_legacy::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -791,13 +2101,15 @@ impl GitHubTeamsAPI {
   pub fn list_discussions_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListDiscussionsLegacyQuery, Vec<TeamDiscussion>> {
+  ) -> Request<(), list_discussions_legacy::Query, list_discussions_legacy::Response> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/discussions");
 
-    Request::<(), TeamsListDiscussionsLegacyQuery, Vec<TeamDiscussion>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_discussions_legacy::Query, list_discussions_legacy::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Create a discussion (Legacy)**
@@ -814,13 +2126,15 @@ impl GitHubTeamsAPI {
   pub fn create_discussion_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<TeamsCreateDiscussionLegacyRequest, (), TeamDiscussion> {
+  ) -> Request<create_discussion_legacy::Request, (), create_discussion_legacy::Response> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/discussions");
 
-    Request::<TeamsCreateDiscussionLegacyRequest, (), TeamDiscussion>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_discussion_legacy::Request, (), create_discussion_legacy::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Get a discussion (Legacy)**
@@ -836,12 +2150,12 @@ impl GitHubTeamsAPI {
     &self,
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
-  ) -> Request<(), (), TeamDiscussion> {
+  ) -> Request<(), (), get_discussion_legacy::Response> {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let url = format!("/teams/{team_id}/discussions/{discussion_number}");
 
-    Request::<(), (), TeamDiscussion>::builder(&self.config)
+    Request::<(), (), get_discussion_legacy::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -859,14 +2173,16 @@ impl GitHubTeamsAPI {
     &self,
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
-  ) -> Request<TeamsUpdateDiscussionLegacyRequest, (), TeamDiscussion> {
+  ) -> Request<update_discussion_legacy::Request, (), update_discussion_legacy::Response> {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let url = format!("/teams/{team_id}/discussions/{discussion_number}");
 
-    Request::<TeamsUpdateDiscussionLegacyRequest, (), TeamDiscussion>::builder(&self.config)
-      .patch(url)
-      .build()
+    Request::<update_discussion_legacy::Request, (), update_discussion_legacy::Response>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
   }
 
   /// **Delete a discussion (Legacy)**
@@ -905,16 +2221,15 @@ impl GitHubTeamsAPI {
     &self,
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
-  ) -> Request<(), TeamsListDiscussionCommentsLegacyQuery, Vec<TeamDiscussionComment>> {
+  ) -> Request<(), list_discussion_comments_legacy::Query, list_discussion_comments_legacy::Response>
+  {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let url = format!("/teams/{team_id}/discussions/{discussion_number}/comments");
 
-    Request::<(), TeamsListDiscussionCommentsLegacyQuery, Vec<TeamDiscussionComment>>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_discussion_comments_legacy::Query, list_discussion_comments_legacy::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **Create a discussion comment (Legacy)**
@@ -932,14 +2247,20 @@ impl GitHubTeamsAPI {
     &self,
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
-  ) -> Request<TeamsCreateDiscussionCommentLegacyRequest, (), TeamDiscussionComment> {
+  ) -> Request<
+    create_discussion_comment_legacy::Request,
+    (),
+    create_discussion_comment_legacy::Response,
+  > {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let url = format!("/teams/{team_id}/discussions/{discussion_number}/comments");
 
-    Request::<TeamsCreateDiscussionCommentLegacyRequest, (), TeamDiscussionComment>::builder(
-      &self.config,
-    )
+    Request::<
+      create_discussion_comment_legacy::Request,
+      (),
+      create_discussion_comment_legacy::Response,
+    >::builder(&self.config)
     .post(url)
     .build()
   }
@@ -958,13 +2279,13 @@ impl GitHubTeamsAPI {
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
     comment_number: impl Into<i64>,
-  ) -> Request<(), (), TeamDiscussionComment> {
+  ) -> Request<(), (), get_discussion_comment_legacy::Response> {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let comment_number = comment_number.into();
     let url = format!("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}");
 
-    Request::<(), (), TeamDiscussionComment>::builder(&self.config)
+    Request::<(), (), get_discussion_comment_legacy::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -983,15 +2304,21 @@ impl GitHubTeamsAPI {
     team_id: impl Into<i64>,
     discussion_number: impl Into<i64>,
     comment_number: impl Into<i64>,
-  ) -> Request<TeamsUpdateDiscussionCommentLegacyRequest, (), TeamDiscussionComment> {
+  ) -> Request<
+    update_discussion_comment_legacy::Request,
+    (),
+    update_discussion_comment_legacy::Response,
+  > {
     let team_id = team_id.into();
     let discussion_number = discussion_number.into();
     let comment_number = comment_number.into();
     let url = format!("/teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}");
 
-    Request::<TeamsUpdateDiscussionCommentLegacyRequest, (), TeamDiscussionComment>::builder(
-      &self.config,
-    )
+    Request::<
+      update_discussion_comment_legacy::Request,
+      (),
+      update_discussion_comment_legacy::Response,
+    >::builder(&self.config)
     .patch(url)
     .build()
   }
@@ -1031,15 +2358,14 @@ impl GitHubTeamsAPI {
   pub fn list_pending_invitations_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListPendingInvitationsLegacyQuery, Vec<OrganizationInvitation>> {
+  ) -> Request<(), list_pending_invitations_legacy::Query, list_pending_invitations_legacy::Response>
+  {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/invitations");
 
-    Request::<(), TeamsListPendingInvitationsLegacyQuery, Vec<OrganizationInvitation>>::builder(
-      &self.config,
-    )
-    .get(url)
-    .build()
+    Request::<(), list_pending_invitations_legacy::Query, list_pending_invitations_legacy::Response>::builder(&self.config)
+      .get(url)
+      .build()
   }
 
   /// **List team members (Legacy)**
@@ -1052,11 +2378,11 @@ impl GitHubTeamsAPI {
   pub fn list_members_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListMembersLegacyQuery, Vec<SimpleUser>> {
+  ) -> Request<(), list_members_legacy::Query, list_members_legacy::Response> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/members");
 
-    Request::<(), TeamsListMembersLegacyQuery, Vec<SimpleUser>>::builder(&self.config)
+    Request::<(), list_members_legacy::Query, list_members_legacy::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1158,12 +2484,12 @@ impl GitHubTeamsAPI {
     &self,
     team_id: impl Into<i64>,
     username: impl Into<String>,
-  ) -> Request<(), (), TeamMembership> {
+  ) -> Request<(), (), get_membership_for_user_legacy::Response> {
     let team_id = team_id.into();
     let username = username.into();
     let url = format!("/teams/{team_id}/memberships/{username}");
 
-    Request::<(), (), TeamMembership>::builder(&self.config)
+    Request::<(), (), get_membership_for_user_legacy::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1187,14 +2513,20 @@ impl GitHubTeamsAPI {
     &self,
     team_id: impl Into<i64>,
     username: impl Into<String>,
-  ) -> Request<TeamsAddOrUpdateMembershipForUserLegacyRequest, (), TeamMembership> {
+  ) -> Request<
+    add_or_update_membership_for_user_legacy::Request,
+    (),
+    add_or_update_membership_for_user_legacy::Response,
+  > {
     let team_id = team_id.into();
     let username = username.into();
     let url = format!("/teams/{team_id}/memberships/{username}");
 
-    Request::<TeamsAddOrUpdateMembershipForUserLegacyRequest, (), TeamMembership>::builder(
-      &self.config,
-    )
+    Request::<
+      add_or_update_membership_for_user_legacy::Request,
+      (),
+      add_or_update_membership_for_user_legacy::Response,
+    >::builder(&self.config)
     .put(url)
     .build()
   }
@@ -1234,13 +2566,15 @@ impl GitHubTeamsAPI {
   pub fn list_projects_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListProjectsLegacyQuery, Vec<TeamProject>> {
+  ) -> Request<(), list_projects_legacy::Query, list_projects_legacy::Response> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/projects");
 
-    Request::<(), TeamsListProjectsLegacyQuery, Vec<TeamProject>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_projects_legacy::Query, list_projects_legacy::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Check team permissions for a project (Legacy)**
@@ -1254,12 +2588,12 @@ impl GitHubTeamsAPI {
     &self,
     team_id: impl Into<i64>,
     project_id: impl Into<i64>,
-  ) -> Request<(), (), TeamProject> {
+  ) -> Request<(), (), check_permissions_for_project_legacy::Response> {
     let team_id = team_id.into();
     let project_id = project_id.into();
     let url = format!("/teams/{team_id}/projects/{project_id}");
 
-    Request::<(), (), TeamProject>::builder(&self.config)
+    Request::<(), (), check_permissions_for_project_legacy::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1275,12 +2609,12 @@ impl GitHubTeamsAPI {
     &self,
     team_id: impl Into<i64>,
     project_id: impl Into<i64>,
-  ) -> NoContentRequest<TeamsAddOrUpdateProjectPermissionsLegacyRequest, ()> {
+  ) -> NoContentRequest<add_or_update_project_permissions_legacy::Request, ()> {
     let team_id = team_id.into();
     let project_id = project_id.into();
     let url = format!("/teams/{team_id}/projects/{project_id}");
 
-    NoContentRequest::<TeamsAddOrUpdateProjectPermissionsLegacyRequest, ()>::builder(&self.config)
+    NoContentRequest::<add_or_update_project_permissions_legacy::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1314,11 +2648,11 @@ impl GitHubTeamsAPI {
   pub fn list_repos_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListReposLegacyQuery, Vec<MinimalRepository>> {
+  ) -> Request<(), list_repos_legacy::Query, list_repos_legacy::Response> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/repos");
 
-    Request::<(), TeamsListReposLegacyQuery, Vec<MinimalRepository>>::builder(&self.config)
+    Request::<(), list_repos_legacy::Query, list_repos_legacy::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1337,13 +2671,13 @@ impl GitHubTeamsAPI {
     team_id: impl Into<i64>,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), TeamRepository> {
+  ) -> Request<(), (), check_permissions_for_repo_legacy::Response> {
     let team_id = team_id.into();
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/teams/{team_id}/repos/{owner}/{repo}");
 
-    Request::<(), (), TeamRepository>::builder(&self.config)
+    Request::<(), (), check_permissions_for_repo_legacy::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1362,13 +2696,13 @@ impl GitHubTeamsAPI {
     team_id: impl Into<i64>,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<TeamsAddOrUpdateRepoPermissionsLegacyRequest, ()> {
+  ) -> NoContentRequest<add_or_update_repo_permissions_legacy::Request, ()> {
     let team_id = team_id.into();
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/teams/{team_id}/repos/{owner}/{repo}");
 
-    NoContentRequest::<TeamsAddOrUpdateRepoPermissionsLegacyRequest, ()>::builder(&self.config)
+    NoContentRequest::<add_or_update_repo_permissions_legacy::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1404,11 +2738,11 @@ impl GitHubTeamsAPI {
   pub fn list_child_legacy(
     &self,
     team_id: impl Into<i64>,
-  ) -> Request<(), TeamsListChildLegacyQuery, Vec<Team>> {
+  ) -> Request<(), list_child_legacy::Query, list_child_legacy::Response> {
     let team_id = team_id.into();
     let url = format!("/teams/{team_id}/teams");
 
-    Request::<(), TeamsListChildLegacyQuery, Vec<Team>>::builder(&self.config)
+    Request::<(), list_child_legacy::Query, list_child_legacy::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1425,10 +2759,10 @@ impl GitHubTeamsAPI {
   /// *Documentation*: [https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user](https://docs.github.com/rest/teams/teams#list-teams-for-the-authenticated-user)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<(), TeamsListForAuthenticatedUserQuery, Vec<TeamFull>> {
+  ) -> Request<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response> {
     let url = format!("/user/teams");
 
-    Request::<(), TeamsListForAuthenticatedUserQuery, Vec<TeamFull>>::builder(&self.config)
+    Request::<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }

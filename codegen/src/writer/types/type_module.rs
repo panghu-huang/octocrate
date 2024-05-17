@@ -1,8 +1,7 @@
-use super::super::File;
+use super::super::{File, References};
 use crate::{
   common::{render_template, RenameRule},
   parser::ParsedData,
-  structures::{enums::Enum, structs::Struct, types::Type},
   writer::format_code,
 };
 use serde::Serialize;
@@ -11,9 +10,7 @@ use serde::Serialize;
 pub struct TypeModule {
   name: String,
   file_name: String,
-  enums: Vec<Enum>,
-  structs: Vec<Struct>,
-  types: Vec<Type>,
+  references: References,
 }
 
 impl TypeModule {
@@ -22,24 +19,15 @@ impl TypeModule {
     TypeModule {
       name: RenameRule::VariantName.apply(name),
       file_name: RenameRule::FieldName.apply(name),
-      enums: Vec::new(),
-      structs: Vec::new(),
-      types: Vec::new(),
+      references: References {
+        render_features: true,
+        ..References::default()
+      },
     }
   }
 
   pub fn add_type(&mut self, parsed: &ParsedData) {
-    match parsed {
-      ParsedData::Enum(e) => self.enums.push(e.clone()),
-      ParsedData::Struct(s) => self.structs.push(s.clone()),
-      ParsedData::Type(t) => {
-        // Only add types that have an alias
-        // having an alias --> pub type Alias = Type;
-        if t.alias.is_some() {
-          self.types.push(t.clone());
-        }
-      }
-    }
+    self.references.add_reference(parsed);
   }
 }
 

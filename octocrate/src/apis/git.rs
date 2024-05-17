@@ -1,6 +1,342 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod create_blob {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ShortBlob;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The new blob's content.
+    pub content: String,
+    /// The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub encoding: Option<String>,
+  }
+}
+
+pub mod get_blob {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Blob;
+}
+
+pub mod create_commit {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GitCommit;
+
+  /// Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestAuthor {
+    /// Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub date: Option<String>,
+    /// The email of the author (or committer) of the commit
+    pub email: String,
+    /// The name of the author (or committer) of the commit
+    pub name: String,
+  }
+
+  /// Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestCommitter {
+    /// Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub date: Option<String>,
+    /// The email of the author (or committer) of the commit
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub email: Option<String>,
+    /// The name of the author (or committer) of the commit
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub author: Option<RequestAuthor>,
+    /// Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub committer: Option<RequestCommitter>,
+    /// The commit message
+    pub message: String,
+    /// The SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub parents: Option<Vec<String>>,
+    /// The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds the signature to the `gpgsig` header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a `signature` parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create signed commits.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub signature: Option<String>,
+    /// The SHA of the tree object this commit points to
+    pub tree: String,
+  }
+}
+
+pub mod get_commit {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GitCommit;
+}
+
+pub mod list_matching_refs {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<GitRef>;
+}
+
+pub mod get_ref {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GitRef;
+}
+
+pub mod create_ref {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GitRef;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The name of the fully qualified reference (ie: `refs/heads/master`). If it doesn't start with 'refs' and have at least two slashes, it will be rejected.
+    #[serde(rename = "ref")]
+    pub ref_: String,
+    /// The SHA1 value for this reference.
+    pub sha: String,
+  }
+}
+
+pub mod update_ref {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GitRef;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub force: Option<bool>,
+    /// The SHA1 value to set this reference to
+    pub sha: String,
+  }
+}
+
+pub mod delete_ref {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod create_tag {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GitTag;
+
+  /// The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestType {
+    #[serde(rename = "commit")]
+    Commit,
+    #[serde(rename = "tree")]
+    Tree,
+    #[serde(rename = "blob")]
+    Blob,
+  }
+
+  impl ToString for RequestType {
+    fn to_string(&self) -> String {
+      match self {
+        RequestType::Commit => "commit".to_string(),
+        RequestType::Tree => "tree".to_string(),
+        RequestType::Blob => "blob".to_string(),
+      }
+    }
+  }
+
+  /// An object with information about the individual creating the tag.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestTagger {
+    /// When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub date: Option<String>,
+    /// The email of the author of the tag
+    pub email: String,
+    /// The name of the author of the tag
+    pub name: String,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The tag message.
+    pub message: String,
+    /// The SHA of the git object this is tagging.
+    pub object: String,
+    /// The tag's name. This is typically a version (e.g., "v0.0.1").
+    pub tag: String,
+    /// An object with information about the individual creating the tag.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub tagger: Option<RequestTagger>,
+    /// The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`.
+    #[serde(rename = "type")]
+    pub type_: RequestType,
+  }
+}
+
+pub mod get_tag {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GitTag;
+}
+
+pub mod create_tree {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GitTree;
+
+  /// The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestTreeMode {
+    #[serde(rename = "100644")]
+    _100644,
+    #[serde(rename = "100755")]
+    _100755,
+    #[serde(rename = "040000")]
+    _040000,
+    #[serde(rename = "160000")]
+    _160000,
+    #[serde(rename = "120000")]
+    _120000,
+  }
+
+  impl ToString for RequestTreeMode {
+    fn to_string(&self) -> String {
+      match self {
+        RequestTreeMode::_100644 => "100644".to_string(),
+        RequestTreeMode::_100755 => "100755".to_string(),
+        RequestTreeMode::_040000 => "040000".to_string(),
+        RequestTreeMode::_160000 => "160000".to_string(),
+        RequestTreeMode::_120000 => "120000".to_string(),
+      }
+    }
+  }
+
+  /// Either `blob`, `tree`, or `commit`.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestTreeType {
+    #[serde(rename = "blob")]
+    Blob,
+    #[serde(rename = "tree")]
+    Tree,
+    #[serde(rename = "commit")]
+    Commit,
+  }
+
+  impl ToString for RequestTreeType {
+    fn to_string(&self) -> String {
+      match self {
+        RequestTreeType::Blob => "blob".to_string(),
+        RequestTreeType::Tree => "tree".to_string(),
+        RequestTreeType::Commit => "commit".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestTree {
+    /// The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`.  
+    ///   
+    /// **Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content: Option<String>,
+    /// The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub mode: Option<RequestTreeMode>,
+    /// The file referenced in the tree.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub path: Option<String>,
+    /// The SHA1 checksum ID of the object in the tree. Also called `tree.sha`. If the value is `null` then the file will be deleted.  
+    ///   
+    /// **Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sha: Option<String>,
+    /// Either `blob`, `tree`, or `commit`.
+    #[serde(rename = "type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub type_: Option<RequestTreeType>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on.
+    /// If not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit.
+    ///
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub base_tree: Option<String>,
+    /// Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure.
+    pub tree: Vec<RequestTree>,
+  }
+}
+
+pub mod get_tree {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GitTree;
+
+  /// Query for `Get a tree`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively returning objects or subtrees.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub recursive: Option<String>,
+  }
+}
 
 /// Raw Git functionality.
 pub struct GitHubGitAPI {
@@ -22,12 +358,12 @@ impl GitHubGitAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<GitCreateBlobRequest, (), ShortBlob> {
+  ) -> Request<create_blob::Request, (), create_blob::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/git/blobs");
 
-    Request::<GitCreateBlobRequest, (), ShortBlob>::builder(&self.config)
+    Request::<create_blob::Request, (), create_blob::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -49,13 +385,13 @@ impl GitHubGitAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     file_sha: impl Into<String>,
-  ) -> Request<(), (), Blob> {
+  ) -> Request<(), (), get_blob::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let file_sha = file_sha.into();
     let url = format!("/repos/{owner}/{repo}/git/blobs/{file_sha}");
 
-    Request::<(), (), Blob>::builder(&self.config)
+    Request::<(), (), get_blob::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -98,12 +434,12 @@ impl GitHubGitAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<GitCreateCommitRequest, (), GitCommit> {
+  ) -> Request<create_commit::Request, (), create_commit::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/git/commits");
 
-    Request::<GitCreateCommitRequest, (), GitCommit>::builder(&self.config)
+    Request::<create_commit::Request, (), create_commit::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -149,13 +485,13 @@ impl GitHubGitAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     commit_sha: impl Into<String>,
-  ) -> Request<(), (), GitCommit> {
+  ) -> Request<(), (), get_commit::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let commit_sha = commit_sha.into();
     let url = format!("/repos/{owner}/{repo}/git/commits/{commit_sha}");
 
-    Request::<(), (), GitCommit>::builder(&self.config)
+    Request::<(), (), get_commit::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -176,13 +512,13 @@ impl GitHubGitAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<(), (), Vec<GitRef>> {
+  ) -> Request<(), (), list_matching_refs::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/git/matching-refs/{ref_}");
 
-    Request::<(), (), Vec<GitRef>>::builder(&self.config)
+    Request::<(), (), list_matching_refs::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -199,13 +535,13 @@ impl GitHubGitAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<(), (), GitRef> {
+  ) -> Request<(), (), get_ref::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/git/ref/{ref_}");
 
-    Request::<(), (), GitRef>::builder(&self.config)
+    Request::<(), (), get_ref::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -219,12 +555,12 @@ impl GitHubGitAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<GitCreateRefRequest, (), GitRef> {
+  ) -> Request<create_ref::Request, (), create_ref::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/git/refs");
 
-    Request::<GitCreateRefRequest, (), GitRef>::builder(&self.config)
+    Request::<create_ref::Request, (), create_ref::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -239,13 +575,13 @@ impl GitHubGitAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<GitUpdateRefRequest, (), GitRef> {
+  ) -> Request<update_ref::Request, (), update_ref::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/git/refs/{ref_}");
 
-    Request::<GitUpdateRefRequest, (), GitRef>::builder(&self.config)
+    Request::<update_ref::Request, (), update_ref::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -309,12 +645,12 @@ impl GitHubGitAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<GitCreateTagRequest, (), GitTag> {
+  ) -> Request<create_tag::Request, (), create_tag::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/git/tags");
 
-    Request::<GitCreateTagRequest, (), GitTag>::builder(&self.config)
+    Request::<create_tag::Request, (), create_tag::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -356,13 +692,13 @@ impl GitHubGitAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     tag_sha: impl Into<String>,
-  ) -> Request<(), (), GitTag> {
+  ) -> Request<(), (), get_tag::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let tag_sha = tag_sha.into();
     let url = format!("/repos/{owner}/{repo}/git/tags/{tag_sha}");
 
-    Request::<(), (), GitTag>::builder(&self.config)
+    Request::<(), (), get_tag::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -380,12 +716,12 @@ impl GitHubGitAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<GitCreateTreeRequest, (), GitTree> {
+  ) -> Request<create_tree::Request, (), create_tree::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/git/trees");
 
-    Request::<GitCreateTreeRequest, (), GitTree>::builder(&self.config)
+    Request::<create_tree::Request, (), create_tree::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -405,13 +741,13 @@ impl GitHubGitAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     tree_sha: impl Into<String>,
-  ) -> Request<(), GitGetTreeQuery, GitTree> {
+  ) -> Request<(), get_tree::Query, get_tree::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let tree_sha = tree_sha.into();
     let url = format!("/repos/{owner}/{repo}/git/trees/{tree_sha}");
 
-    Request::<(), GitGetTreeQuery, GitTree>::builder(&self.config)
+    Request::<(), get_tree::Query, get_tree::Response>::builder(&self.config)
       .get(url)
       .build()
   }

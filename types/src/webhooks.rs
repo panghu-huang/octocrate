@@ -5,7 +5,6 @@ use serde::{Deserialize, Serialize};
 #[allow(unused_imports)]
 use typed_builder::TypedBuilder;
 
-/// Enumerations definition
 #[cfg(any(feature = "full", feature = "webhook_branch_protection_configuration"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionConfigurationDisabledAction {
@@ -12582,151 +12581,79 @@ pub enum WebhookWorkflowRunEvent {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
 pub enum WebhookEvent {
-  #[cfg(feature = "webhook_branch_protection_configuration")]
   BranchProtectionConfiguration(WebhookBranchProtectionConfigurationEvent),
-  #[cfg(feature = "webhook_branch_protection_rule")]
   BranchProtectionRule(WebhookBranchProtectionRuleEvent),
-  #[cfg(feature = "webhook_check_run")]
   CheckRun(WebhookCheckRunEvent),
-  #[cfg(feature = "webhook_check_suite")]
   CheckSuite(WebhookCheckSuiteEvent),
-  #[cfg(feature = "webhook_code_scanning_alert")]
   CodeScanningAlert(WebhookCodeScanningAlertEvent),
-  #[cfg(feature = "webhook_commit_comment")]
   CommitComment(WebhookCommitCommentEvent),
-  #[cfg(feature = "webhook_create")]
   Create(WebhookCreate),
-  #[cfg(feature = "webhook_custom_property")]
   CustomProperty(WebhookCustomPropertyEvent),
-  #[cfg(feature = "webhook_custom_property_values")]
   CustomPropertyValues(WebhookCustomPropertyValuesEvent),
-  #[cfg(feature = "webhook_delete")]
   Delete(WebhookDelete),
-  #[cfg(feature = "webhook_dependabot_alert")]
   DependabotAlert(WebhookDependabotAlertEvent),
-  #[cfg(feature = "webhook_deploy_key")]
   DeployKey(WebhookDeployKeyEvent),
-  #[cfg(feature = "webhook_deployment")]
   Deployment(WebhookDeploymentEvent),
-  #[cfg(feature = "webhook_deployment_protection_rule")]
   DeploymentProtectionRule(WebhookDeploymentProtectionRuleEvent),
-  #[cfg(feature = "webhook_deployment_review")]
   DeploymentReview(WebhookDeploymentReviewEvent),
-  #[cfg(feature = "webhook_deployment_status")]
   DeploymentStatus(WebhookDeploymentStatusEvent),
-  #[cfg(feature = "webhook_discussion")]
   Discussion(WebhookDiscussionEvent),
-  #[cfg(feature = "webhook_discussion_comment")]
   DiscussionComment(WebhookDiscussionCommentEvent),
-  #[cfg(feature = "webhook_fork")]
   Fork(WebhookFork),
-  #[cfg(feature = "webhook_github_app_authorization")]
   GithubAppAuthorization(WebhookGithubAppAuthorizationEvent),
-  #[cfg(feature = "webhook_gollum")]
   Gollum(WebhookGollum),
-  #[cfg(feature = "webhook_installation")]
   Installation(WebhookInstallationEvent),
-  #[cfg(feature = "webhook_installation_repositories")]
   InstallationRepositories(WebhookInstallationRepositoriesEvent),
-  #[cfg(feature = "webhook_installation_target")]
   InstallationTarget(WebhookInstallationTargetEvent),
-  #[cfg(feature = "webhook_issue_comment")]
   IssueComment(WebhookIssueCommentEvent),
-  #[cfg(feature = "webhook_issues")]
   Issues(WebhookIssuesEvent),
-  #[cfg(feature = "webhook_label")]
   Label(WebhookLabelEvent),
-  #[cfg(feature = "webhook_marketplace_purchase")]
   MarketplacePurchase(WebhookMarketplacePurchaseEvent),
-  #[cfg(feature = "webhook_member")]
   Member(WebhookMemberEvent),
-  #[cfg(feature = "webhook_membership")]
   Membership(WebhookMembershipEvent),
-  #[cfg(feature = "webhook_merge_group")]
   MergeGroup(WebhookMergeGroupEvent),
-  #[cfg(feature = "webhook_meta")]
   Meta(WebhookMetaEvent),
-  #[cfg(feature = "webhook_milestone")]
   Milestone(WebhookMilestoneEvent),
-  #[cfg(feature = "webhook_org_block")]
   OrgBlock(WebhookOrgBlockEvent),
-  #[cfg(feature = "webhook_organization")]
   Organization(WebhookOrganizationEvent),
-  #[cfg(feature = "webhook_package")]
   Package(WebhookPackageEvent),
-  #[cfg(feature = "webhook_page_build")]
   PageBuild(WebhookPageBuild),
-  #[cfg(feature = "webhook_personal_access_token_request")]
   PersonalAccessTokenRequest(WebhookPersonalAccessTokenRequestEvent),
-  #[cfg(feature = "webhook_ping")]
   Ping(WebhookPing),
-  #[cfg(feature = "webhook_project_card")]
   ProjectCard(WebhookProjectCardEvent),
-  #[cfg(feature = "webhook_project")]
   Project(WebhookProjectEvent),
-  #[cfg(feature = "webhook_project_column")]
   ProjectColumn(WebhookProjectColumnEvent),
-  #[cfg(feature = "webhook_projects_v2")]
   ProjectsV2(WebhookProjectsV2Event),
-  #[cfg(feature = "webhook_projects_v2_item")]
   ProjectsV2Item(WebhookProjectsV2ItemEvent),
-  #[cfg(feature = "webhook_public")]
   Public(WebhookPublic),
-  #[cfg(feature = "webhook_pull_request")]
   PullRequest(WebhookPullRequestEvent),
-  #[cfg(feature = "webhook_pull_request_review_comment")]
   PullRequestReviewComment(WebhookPullRequestReviewCommentEvent),
-  #[cfg(feature = "webhook_pull_request_review")]
   PullRequestReview(WebhookPullRequestReviewEvent),
-  #[cfg(feature = "webhook_pull_request_review_thread")]
   PullRequestReviewThread(WebhookPullRequestReviewThreadEvent),
-  #[cfg(feature = "webhook_push")]
   Push(WebhookPush),
-  #[cfg(feature = "webhook_registry_package")]
   RegistryPackage(WebhookRegistryPackageEvent),
-  #[cfg(feature = "webhook_release")]
   Release(WebhookReleaseEvent),
-  #[cfg(feature = "webhook_repository_advisory")]
   RepositoryAdvisory(WebhookRepositoryAdvisoryEvent),
-  #[cfg(feature = "webhook_repository")]
   Repository(WebhookRepositoryEvent),
-  #[cfg(feature = "webhook_repository_dispatch")]
   RepositoryDispatch(WebhookRepositoryDispatchEvent),
-  #[cfg(feature = "webhook_repository_import")]
   RepositoryImport(WebhookRepositoryImport),
-  #[cfg(feature = "webhook_repository_ruleset")]
   RepositoryRuleset(WebhookRepositoryRulesetEvent),
-  #[cfg(feature = "webhook_repository_vulnerability_alert")]
   RepositoryVulnerabilityAlert(WebhookRepositoryVulnerabilityAlertEvent),
-  #[cfg(feature = "webhook_secret_scanning_alert")]
   SecretScanningAlert(WebhookSecretScanningAlertEvent),
-  #[cfg(feature = "webhook_secret_scanning_alert_location")]
   SecretScanningAlertLocation(WebhookSecretScanningAlertLocationEvent),
-  #[cfg(feature = "webhook_security_advisory")]
   SecurityAdvisory(WebhookSecurityAdvisoryEvent),
-  #[cfg(feature = "webhook_security_and_analysis")]
   SecurityAndAnalysis(WebhookSecurityAndAnalysis),
-  #[cfg(feature = "webhook_sponsorship")]
   Sponsorship(WebhookSponsorshipEvent),
-  #[cfg(feature = "webhook_star")]
   Star(WebhookStarEvent),
-  #[cfg(feature = "webhook_status")]
   Status(WebhookStatus),
-  #[cfg(feature = "webhook_team_add")]
   TeamAdd(WebhookTeamAdd),
-  #[cfg(feature = "webhook_team")]
   Team(WebhookTeamEvent),
-  #[cfg(feature = "webhook_watch")]
   Watch(WebhookWatchEvent),
-  #[cfg(feature = "webhook_workflow_dispatch")]
   WorkflowDispatch(WebhookWorkflowDispatch),
-  #[cfg(feature = "webhook_workflow_job")]
   WorkflowJob(WebhookWorkflowJobEvent),
-  #[cfg(feature = "webhook_workflow_run")]
   WorkflowRun(WebhookWorkflowRunEvent),
 }
 
-/// Structs definition
 #[cfg(any(
   feature = "full",
   feature = "webhook_branch_protection_configuration",

@@ -1,6 +1,4 @@
-use octocrate::{
-  APIConfig, AuthorAssociation, GitHubAPI, IssuesCreateCommentRequest, PersonalAccessToken,
-};
+use octocrate::{issues, APIConfig, AuthorAssociation, GitHubAPI, PersonalAccessToken};
 
 #[tokio::test]
 async fn create_issue_comment() {
@@ -17,7 +15,7 @@ async fn create_issue_comment() {
   let api = GitHubAPI::new(&config);
 
   // https://github.com/panghu-huang/octocrate/pull/1#issuecomment-2041280635
-  let comment = IssuesCreateCommentRequest {
+  let comment = issues::create_comment::Request {
     body: "Hello, world! (Created by octocrate)".to_string(),
   };
 

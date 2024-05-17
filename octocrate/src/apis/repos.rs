@@ -1,6 +1,4735 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list_for_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryType {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "public")]
+    Public,
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "forks")]
+    Forks,
+    #[serde(rename = "sources")]
+    Sources,
+    #[serde(rename = "member")]
+    Member,
+  }
+
+  impl ToString for QueryType {
+    fn to_string(&self) -> String {
+      match self {
+        QueryType::All => "all".to_string(),
+        QueryType::Public => "public".to_string(),
+        QueryType::Private => "private".to_string(),
+        QueryType::Forks => "forks".to_string(),
+        QueryType::Sources => "sources".to_string(),
+        QueryType::Member => "member".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+    #[serde(rename = "pushed")]
+    Pushed,
+    #[serde(rename = "full_name")]
+    FullName,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Pushed => "pushed".to_string(),
+        QuerySort::FullName => "full_name".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List organization repositories`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Specifies the types of repositories you want returned.
+    #[serde(rename = "type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub type_: Option<QueryType>,
+    /// The property to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The order to sort by. Default: `asc` when using `full_name`, otherwise `desc`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_in_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = FullRepository;
+
+  /// The default value for a merge commit message.
+  ///
+  /// - `PR_TITLE` - default to the pull request's title.
+  /// - `PR_BODY` - default to the pull request's body.
+  /// - `BLANK` - default to a blank commit message.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestMergeCommitMessage {
+    #[serde(rename = "PR_BODY")]
+    PrBody,
+    #[serde(rename = "PR_TITLE")]
+    PrTitle,
+    #[serde(rename = "BLANK")]
+    Blank,
+  }
+
+  impl ToString for RequestMergeCommitMessage {
+    fn to_string(&self) -> String {
+      match self {
+        RequestMergeCommitMessage::PrBody => "PR_BODY".to_string(),
+        RequestMergeCommitMessage::PrTitle => "PR_TITLE".to_string(),
+        RequestMergeCommitMessage::Blank => "BLANK".to_string(),
+      }
+    }
+  }
+
+  /// The default value for a merge commit title.
+  ///
+  /// - `PR_TITLE` - default to the pull request's title.
+  /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestMergeCommitTitle {
+    #[serde(rename = "PR_TITLE")]
+    PrTitle,
+    #[serde(rename = "MERGE_MESSAGE")]
+    MergeMessage,
+  }
+
+  impl ToString for RequestMergeCommitTitle {
+    fn to_string(&self) -> String {
+      match self {
+        RequestMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
+        RequestMergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
+      }
+    }
+  }
+
+  /// The default value for a squash merge commit message:
+  ///
+  /// - `PR_BODY` - default to the pull request's body.
+  /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
+  /// - `BLANK` - default to a blank commit message.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestSquashMergeCommitMessage {
+    #[serde(rename = "PR_BODY")]
+    PrBody,
+    #[serde(rename = "COMMIT_MESSAGES")]
+    CommitMessages,
+    #[serde(rename = "BLANK")]
+    Blank,
+  }
+
+  impl ToString for RequestSquashMergeCommitMessage {
+    fn to_string(&self) -> String {
+      match self {
+        RequestSquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
+        RequestSquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
+        RequestSquashMergeCommitMessage::Blank => "BLANK".to_string(),
+      }
+    }
+  }
+
+  /// The default value for a squash merge commit title:
+  ///
+  /// - `PR_TITLE` - default to the pull request's title.
+  /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestSquashMergeCommitTitle {
+    #[serde(rename = "PR_TITLE")]
+    PrTitle,
+    #[serde(rename = "COMMIT_OR_PR_TITLE")]
+    CommitOrPrTitle,
+  }
+
+  impl ToString for RequestSquashMergeCommitTitle {
+    fn to_string(&self) -> String {
+      match self {
+        RequestSquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
+        RequestSquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
+      }
+    }
+  }
+
+  /// The visibility of the repository.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestVisibility {
+    #[serde(rename = "public")]
+    Public,
+    #[serde(rename = "private")]
+    Private,
+  }
+
+  impl ToString for RequestVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        RequestVisibility::Public => "public".to_string(),
+        RequestVisibility::Private => "private".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Either `true` to allow auto-merge on pull requests, or `false` to disallow auto-merge.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_auto_merge: Option<bool>,
+    /// Either `true` to allow merging pull requests with a merge commit, or `false` to prevent merging pull requests with merge commits.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_merge_commit: Option<bool>,
+    /// Either `true` to allow rebase-merging pull requests, or `false` to prevent rebase-merging.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_rebase_merge: Option<bool>,
+    /// Either `true` to allow squash-merging pull requests, or `false` to prevent squash-merging.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_squash_merge: Option<bool>,
+    /// Pass `true` to create an initial commit with empty README.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub auto_init: Option<bool>,
+    /// The custom properties for the new repository. The keys are the custom property names, and the values are the corresponding custom property values.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub custom_properties: Option<serde_json::Value>,
+    /// Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion. **The authenticated user must be an organization owner to set this property to `true`.**
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub delete_branch_on_merge: Option<bool>,
+    /// A short description of the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// Desired language or platform [.gitignore template](https://github.com/github/gitignore) to apply. Use the name of the template without the extension. For example, "Haskell".
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub gitignore_template: Option<String>,
+    /// Whether downloads are enabled.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_downloads: Option<bool>,
+    /// Either `true` to enable issues for this repository or `false` to disable them.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_issues: Option<bool>,
+    /// Either `true` to enable projects for this repository or `false` to disable them. **Note:** If you're creating a repository in an organization that has disabled repository projects, the default is `false`, and if you pass `true`, the API returns an error.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_projects: Option<bool>,
+    /// Either `true` to enable the wiki for this repository or `false` to disable it.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_wiki: Option<bool>,
+    /// A URL with more information about the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub homepage: Option<String>,
+    /// Either `true` to make this repo available as a template repository or `false` to prevent it.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub is_template: Option<bool>,
+    /// Choose an [open source license template](https://choosealicense.com/) that best suits your needs, and then use the [license keyword](https://docs.github.com/articles/licensing-a-repository/#searching-github-by-license-type) as the `license_template` string. For example, "mit" or "mpl-2.0".
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub license_template: Option<String>,
+    /// The default value for a merge commit message.
+    ///
+    /// - `PR_TITLE` - default to the pull request's title.
+    /// - `PR_BODY` - default to the pull request's body.
+    /// - `BLANK` - default to a blank commit message.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub merge_commit_message: Option<RequestMergeCommitMessage>,
+    /// The default value for a merge commit title.
+    ///
+    /// - `PR_TITLE` - default to the pull request's title.
+    /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub merge_commit_title: Option<RequestMergeCommitTitle>,
+    /// The name of the repository.
+    pub name: String,
+    /// Whether the repository is private.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub private: Option<bool>,
+    /// The default value for a squash merge commit message:
+    ///
+    /// - `PR_BODY` - default to the pull request's body.
+    /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
+    /// - `BLANK` - default to a blank commit message.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub squash_merge_commit_message: Option<RequestSquashMergeCommitMessage>,
+    /// The default value for a squash merge commit title:
+    ///
+    /// - `PR_TITLE` - default to the pull request's title.
+    /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub squash_merge_commit_title: Option<RequestSquashMergeCommitTitle>,
+    /// The id of the team that will be granted access to this repository. This is only valid when creating a repository in an organization.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub team_id: Option<i64>,
+    /// Either `true` to allow squash-merge commits to use pull request title, or `false` to use commit message. **This property has been deprecated. Please use `squash_merge_commit_title` instead.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub use_squash_pr_title_as_default: Option<bool>,
+    /// The visibility of the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub visibility: Option<RequestVisibility>,
+  }
+}
+
+pub mod get_org_rulesets {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<RepositoryRuleset>;
+
+  /// Query for `Get all organization repository rulesets`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_org_ruleset {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepositoryRuleset;
+
+  /// The target of the ruleset.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestTarget {
+    #[serde(rename = "branch")]
+    Branch,
+    #[serde(rename = "tag")]
+    Tag,
+  }
+
+  impl ToString for RequestTarget {
+    fn to_string(&self) -> String {
+      match self {
+        RequestTarget::Branch => "branch".to_string(),
+        RequestTarget::Tag => "tag".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The actors that can bypass the rules in this ruleset
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub bypass_actors: Option<Vec<RepositoryRulesetBypassActor>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub conditions: Option<OrgRulesetConditions>,
+    pub enforcement: RepositoryRuleEnforcement,
+    /// The name of the ruleset.
+    pub name: String,
+    /// An array of rules within the ruleset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub rules: Option<Vec<RepositoryRule>>,
+    /// The target of the ruleset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub target: Option<RequestTarget>,
+  }
+}
+
+pub mod get_org_rule_suites {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RuleSuites;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryTimePeriod {
+    #[serde(rename = "hour")]
+    Hour,
+    #[serde(rename = "day")]
+    Day,
+    #[serde(rename = "week")]
+    Week,
+    #[serde(rename = "month")]
+    Month,
+  }
+
+  impl ToString for QueryTimePeriod {
+    fn to_string(&self) -> String {
+      match self {
+        QueryTimePeriod::Hour => "hour".to_string(),
+        QueryTimePeriod::Day => "day".to_string(),
+        QueryTimePeriod::Week => "week".to_string(),
+        QueryTimePeriod::Month => "month".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryRuleSuiteResult {
+    #[serde(rename = "pass")]
+    Pass,
+    #[serde(rename = "fail")]
+    Fail,
+    #[serde(rename = "bypass")]
+    Bypass,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryRuleSuiteResult {
+    fn to_string(&self) -> String {
+      match self {
+        QueryRuleSuiteResult::Pass => "pass".to_string(),
+        QueryRuleSuiteResult::Fail => "fail".to_string(),
+        QueryRuleSuiteResult::Bypass => "bypass".to_string(),
+        QueryRuleSuiteResult::All => "all".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List organization rule suites`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The name of the repository to filter on. When specified, only rule evaluations from this repository will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub repository_name: Option<i64>,
+    /// The time period to filter by.
+    ///
+    /// For example, `day` will filter for rule suites that occurred in the past 24 hours, and `week` will filter for insights that occurred in the past 7 days (168 hours).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub time_period: Option<QueryTimePeriod>,
+    /// The handle for the GitHub user account to filter on. When specified, only rule evaluations triggered by this actor will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub actor_name: Option<String>,
+    /// The rule results to filter on. When specified, only suites with this result will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub rule_suite_result: Option<QueryRuleSuiteResult>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_org_rule_suite {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RuleSuite;
+}
+
+pub mod get_org_ruleset {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepositoryRuleset;
+}
+
+pub mod update_org_ruleset {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepositoryRuleset;
+
+  /// The target of the ruleset.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestTarget {
+    #[serde(rename = "branch")]
+    Branch,
+    #[serde(rename = "tag")]
+    Tag,
+  }
+
+  impl ToString for RequestTarget {
+    fn to_string(&self) -> String {
+      match self {
+        RequestTarget::Branch => "branch".to_string(),
+        RequestTarget::Tag => "tag".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The actors that can bypass the rules in this ruleset
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub bypass_actors: Option<Vec<RepositoryRulesetBypassActor>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub conditions: Option<OrgRulesetConditions>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub enforcement: Option<RepositoryRuleEnforcement>,
+    /// The name of the ruleset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// An array of rules within the ruleset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub rules: Option<Vec<RepositoryRule>>,
+    /// The target of the ruleset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub target: Option<RequestTarget>,
+  }
+}
+
+pub mod delete_org_ruleset {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = FullRepository;
+}
+
+pub mod update {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = FullRepository;
+
+  /// The default value for a merge commit message.
+  ///
+  /// - `PR_TITLE` - default to the pull request's title.
+  /// - `PR_BODY` - default to the pull request's body.
+  /// - `BLANK` - default to a blank commit message.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestMergeCommitMessage {
+    #[serde(rename = "PR_BODY")]
+    PrBody,
+    #[serde(rename = "PR_TITLE")]
+    PrTitle,
+    #[serde(rename = "BLANK")]
+    Blank,
+  }
+
+  impl ToString for RequestMergeCommitMessage {
+    fn to_string(&self) -> String {
+      match self {
+        RequestMergeCommitMessage::PrBody => "PR_BODY".to_string(),
+        RequestMergeCommitMessage::PrTitle => "PR_TITLE".to_string(),
+        RequestMergeCommitMessage::Blank => "BLANK".to_string(),
+      }
+    }
+  }
+
+  /// The default value for a merge commit title.
+  ///
+  /// - `PR_TITLE` - default to the pull request's title.
+  /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestMergeCommitTitle {
+    #[serde(rename = "PR_TITLE")]
+    PrTitle,
+    #[serde(rename = "MERGE_MESSAGE")]
+    MergeMessage,
+  }
+
+  impl ToString for RequestMergeCommitTitle {
+    fn to_string(&self) -> String {
+      match self {
+        RequestMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
+        RequestMergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
+      }
+    }
+  }
+
+  /// The default value for a squash merge commit message:
+  ///
+  /// - `PR_BODY` - default to the pull request's body.
+  /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
+  /// - `BLANK` - default to a blank commit message.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestSquashMergeCommitMessage {
+    #[serde(rename = "PR_BODY")]
+    PrBody,
+    #[serde(rename = "COMMIT_MESSAGES")]
+    CommitMessages,
+    #[serde(rename = "BLANK")]
+    Blank,
+  }
+
+  impl ToString for RequestSquashMergeCommitMessage {
+    fn to_string(&self) -> String {
+      match self {
+        RequestSquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
+        RequestSquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
+        RequestSquashMergeCommitMessage::Blank => "BLANK".to_string(),
+      }
+    }
+  }
+
+  /// The default value for a squash merge commit title:
+  ///
+  /// - `PR_TITLE` - default to the pull request's title.
+  /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestSquashMergeCommitTitle {
+    #[serde(rename = "PR_TITLE")]
+    PrTitle,
+    #[serde(rename = "COMMIT_OR_PR_TITLE")]
+    CommitOrPrTitle,
+  }
+
+  impl ToString for RequestSquashMergeCommitTitle {
+    fn to_string(&self) -> String {
+      match self {
+        RequestSquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
+        RequestSquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
+      }
+    }
+  }
+
+  /// The visibility of the repository.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestVisibility {
+    #[serde(rename = "public")]
+    Public,
+    #[serde(rename = "private")]
+    Private,
+  }
+
+  impl ToString for RequestVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        RequestVisibility::Public => "public".to_string(),
+        RequestVisibility::Private => "private".to_string(),
+      }
+    }
+  }
+
+  /// Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see "[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)."
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestSecurityAndAnalysisAdvancedSecurity {
+    /// Can be `enabled` or `disabled`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub status: Option<String>,
+  }
+
+  /// Use the `status` property to enable or disable secret scanning for this repository. For more information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning)."
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestSecurityAndAnalysisSecretScanning {
+    /// Can be `enabled` or `disabled`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub status: Option<String>,
+  }
+
+  /// Use the `status` property to enable or disable secret scanning push protection for this repository. For more information, see "[Protecting pushes with secret scanning](/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestSecurityAndAnalysisSecretScanningPushProtection {
+    /// Can be `enabled` or `disabled`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub status: Option<String>,
+  }
+
+  /// Specify which security and analysis features to enable or disable for the repository.
+  ///
+  /// To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+  ///
+  /// For example, to enable GitHub Advanced Security, use this data in the body of the `PATCH` request:
+  /// `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.
+  ///
+  /// You can check which security and analysis features are currently enabled by using a `GET /repos/{owner}/{repo}` request.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestSecurityAndAnalysis {
+    /// Use the `status` property to enable or disable GitHub Advanced Security for this repository. For more information, see "[About GitHub Advanced Security](/github/getting-started-with-github/learning-about-github/about-github-advanced-security)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub advanced_security: Option<RequestSecurityAndAnalysisAdvancedSecurity>,
+    /// Use the `status` property to enable or disable secret scanning for this repository. For more information, see "[About secret scanning](/code-security/secret-security/about-secret-scanning)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret_scanning: Option<RequestSecurityAndAnalysisSecretScanning>,
+    /// Use the `status` property to enable or disable secret scanning push protection for this repository. For more information, see "[Protecting pushes with secret scanning](/code-security/secret-scanning/protecting-pushes-with-secret-scanning)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret_scanning_push_protection:
+      Option<RequestSecurityAndAnalysisSecretScanningPushProtection>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Either `true` to allow auto-merge on pull requests, or `false` to disallow auto-merge.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_auto_merge: Option<bool>,
+    /// Either `true` to allow private forks, or `false` to prevent private forks.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_forking: Option<bool>,
+    /// Either `true` to allow merging pull requests with a merge commit, or `false` to prevent merging pull requests with merge commits.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_merge_commit: Option<bool>,
+    /// Either `true` to allow rebase-merging pull requests, or `false` to prevent rebase-merging.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_rebase_merge: Option<bool>,
+    /// Either `true` to allow squash-merging pull requests, or `false` to prevent squash-merging.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_squash_merge: Option<bool>,
+    /// Either `true` to always allow a pull request head branch that is behind its base branch to be updated even if it is not required to be up to date before merging, or false otherwise.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_update_branch: Option<bool>,
+    /// Whether to archive this repository. `false` will unarchive a previously archived repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub archived: Option<bool>,
+    /// Updates the default branch for this repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub default_branch: Option<String>,
+    /// Either `true` to allow automatically deleting head branches when pull requests are merged, or `false` to prevent automatic deletion.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub delete_branch_on_merge: Option<bool>,
+    /// A short description of the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// Either `true` to enable issues for this repository or `false` to disable them.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_issues: Option<bool>,
+    /// Either `true` to enable projects for this repository or `false` to disable them. **Note:** If you're creating a repository in an organization that has disabled repository projects, the default is `false`, and if you pass `true`, the API returns an error.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_projects: Option<bool>,
+    /// Either `true` to enable the wiki for this repository or `false` to disable it.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_wiki: Option<bool>,
+    /// A URL with more information about the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub homepage: Option<String>,
+    /// Either `true` to make this repo available as a template repository or `false` to prevent it.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub is_template: Option<bool>,
+    /// The default value for a merge commit message.
+    ///
+    /// - `PR_TITLE` - default to the pull request's title.
+    /// - `PR_BODY` - default to the pull request's body.
+    /// - `BLANK` - default to a blank commit message.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub merge_commit_message: Option<RequestMergeCommitMessage>,
+    /// The default value for a merge commit title.
+    ///
+    /// - `PR_TITLE` - default to the pull request's title.
+    /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub merge_commit_title: Option<RequestMergeCommitTitle>,
+    /// The name of the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// Either `true` to make the repository private or `false` to make it public. Default: `false`.  
+    /// **Note**: You will get a `422` error if the organization restricts [changing repository visibility](https://docs.github.com/articles/repository-permission-levels-for-an-organization#changing-the-visibility-of-repositories) to organization owners and a non-owner tries to change the value of private.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub private: Option<bool>,
+    /// Specify which security and analysis features to enable or disable for the repository.
+    ///
+    /// To use this parameter, you must have admin permissions for the repository or be an owner or security manager for the organization that owns the repository. For more information, see "[Managing security managers in your organization](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/managing-security-managers-in-your-organization)."
+    ///
+    /// For example, to enable GitHub Advanced Security, use this data in the body of the `PATCH` request:
+    /// `{ "security_and_analysis": {"advanced_security": { "status": "enabled" } } }`.
+    ///
+    /// You can check which security and analysis features are currently enabled by using a `GET /repos/{owner}/{repo}` request.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub security_and_analysis: Option<RequestSecurityAndAnalysis>,
+    /// The default value for a squash merge commit message:
+    ///
+    /// - `PR_BODY` - default to the pull request's body.
+    /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
+    /// - `BLANK` - default to a blank commit message.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub squash_merge_commit_message: Option<RequestSquashMergeCommitMessage>,
+    /// The default value for a squash merge commit title:
+    ///
+    /// - `PR_TITLE` - default to the pull request's title.
+    /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub squash_merge_commit_title: Option<RequestSquashMergeCommitTitle>,
+    /// Either `true` to allow squash-merge commits to use pull request title, or `false` to use commit message. **This property has been deprecated. Please use `squash_merge_commit_title` instead.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub use_squash_pr_title_as_default: Option<bool>,
+    /// The visibility of the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub visibility: Option<RequestVisibility>,
+    /// Either `true` to require contributors to sign off on web-based commits, or `false` to not require contributors to sign off on web-based commits.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub web_commit_signoff_required: Option<bool>,
+  }
+}
+
+pub mod delete {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_activities {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Activity>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryTimePeriod {
+    #[serde(rename = "day")]
+    Day,
+    #[serde(rename = "week")]
+    Week,
+    #[serde(rename = "month")]
+    Month,
+    #[serde(rename = "quarter")]
+    Quarter,
+    #[serde(rename = "year")]
+    Year,
+  }
+
+  impl ToString for QueryTimePeriod {
+    fn to_string(&self) -> String {
+      match self {
+        QueryTimePeriod::Day => "day".to_string(),
+        QueryTimePeriod::Week => "week".to_string(),
+        QueryTimePeriod::Month => "month".to_string(),
+        QueryTimePeriod::Quarter => "quarter".to_string(),
+        QueryTimePeriod::Year => "year".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryActivityType {
+    #[serde(rename = "push")]
+    Push,
+    #[serde(rename = "force_push")]
+    ForcePush,
+    #[serde(rename = "branch_creation")]
+    BranchCreation,
+    #[serde(rename = "branch_deletion")]
+    BranchDeletion,
+    #[serde(rename = "pr_merge")]
+    PrMerge,
+    #[serde(rename = "merge_queue_merge")]
+    MergeQueueMerge,
+  }
+
+  impl ToString for QueryActivityType {
+    fn to_string(&self) -> String {
+      match self {
+        QueryActivityType::Push => "push".to_string(),
+        QueryActivityType::ForcePush => "force_push".to_string(),
+        QueryActivityType::BranchCreation => "branch_creation".to_string(),
+        QueryActivityType::BranchDeletion => "branch_deletion".to_string(),
+        QueryActivityType::PrMerge => "pr_merge".to_string(),
+        QueryActivityType::MergeQueueMerge => "merge_queue_merge".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List repository activities`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The direction to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results before this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub before: Option<String>,
+    /// A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub after: Option<String>,
+    /// The Git reference for the activities you want to list.
+    ///
+    /// The `ref` for a branch can be formatted either as `refs/heads/BRANCH_NAME` or `BRANCH_NAME`, where `BRANCH_NAME` is the name of your branch.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+    /// The GitHub username to use to filter by the actor who performed the activity.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub actor: Option<String>,
+    /// The time period to filter by.
+    ///
+    /// For example, `day` will filter for activity that occurred in the past 24 hours, and `week` will filter for activity that occurred in the past 7 days (168 hours).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub time_period: Option<QueryTimePeriod>,
+    /// The activity type to filter by.
+    ///
+    /// For example, you can choose to filter by "force_push", to see all force pushes to the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub activity_type: Option<QueryActivityType>,
+  }
+}
+
+pub mod list_autolinks {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Autolink>;
+}
+
+pub mod create_autolink {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Autolink;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Whether this autolink reference matches alphanumeric characters. If true, the `<num>` parameter of the `url_template` matches alphanumeric characters `A-Z` (case insensitive), `0-9`, and `-`. If false, this autolink reference only matches numeric characters.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub is_alphanumeric: Option<bool>,
+    /// This prefix appended by certain characters will generate a link any time it is found in an issue, pull request, or commit.
+    pub key_prefix: String,
+    /// The URL must contain `<num>` for the reference number. `<num>` matches different characters depending on the value of `is_alphanumeric`.
+    pub url_template: String,
+  }
+}
+
+pub mod get_autolink {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Autolink;
+}
+
+pub mod delete_autolink {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod check_automated_security_fixes {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CheckAutomatedSecurityFixes;
+}
+
+pub mod enable_automated_security_fixes {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod disable_automated_security_fixes {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_branches {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<ShortBranch>;
+
+  /// Query for `List branches`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Setting to `true` returns only protected branches. When set to `false`, only unprotected branches are returned. Omitting this parameter returns all branches.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub protected: Option<bool>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_branch {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = BranchWithProtection;
+}
+
+pub mod get_branch_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = BranchProtection;
+}
+
+pub mod update_branch_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProtectedBranch;
+
+  /// Allow specific users, teams, or apps to bypass pull request requirements.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestRequiredPullRequestReviewsBypassPullRequestAllowances {
+    /// The list of app `slug`s allowed to bypass pull request requirements.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub apps: Option<Vec<String>>,
+    /// The list of team `slug`s allowed to bypass pull request requirements.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub teams: Option<Vec<String>>,
+    /// The list of user `login`s allowed to bypass pull request requirements.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub users: Option<Vec<String>>,
+  }
+
+  /// Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestRequiredPullRequestReviewsDismissalRestrictions {
+    /// The list of app `slug`s with dismissal access
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub apps: Option<Vec<String>>,
+    /// The list of team `slug`s with dismissal access
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub teams: Option<Vec<String>>,
+    /// The list of user `login`s with dismissal access
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub users: Option<Vec<String>>,
+  }
+
+  /// Require at least one approving review on a pull request, before merging. Set to `null` to disable.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestRequiredPullRequestReviews {
+    /// Allow specific users, teams, or apps to bypass pull request requirements.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub bypass_pull_request_allowances:
+      Option<RequestRequiredPullRequestReviewsBypassPullRequestAllowances>,
+    /// Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub dismiss_stale_reviews: Option<bool>,
+    /// Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub dismissal_restrictions: Option<RequestRequiredPullRequestReviewsDismissalRestrictions>,
+    /// Blocks merging pull requests until [code owners](https://docs.github.com/articles/about-code-owners/) review them.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub require_code_owner_reviews: Option<bool>,
+    /// Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub require_last_push_approval: Option<bool>,
+    /// Specify the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub required_approving_review_count: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestRequiredStatusChecksChecks {
+    /// The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub app_id: Option<i64>,
+    /// The name of the required check
+    pub context: String,
+  }
+
+  /// Require status checks to pass before merging. Set to `null` to disable.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestRequiredStatusChecks {
+    /// The list of status checks to require in order to merge into this branch.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub checks: Option<Vec<RequestRequiredStatusChecksChecks>>,
+    /// **Deprecated**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control.
+    ///
+    pub contexts: Vec<String>,
+    /// Require branches to be up to date before merging.
+    pub strict: bool,
+  }
+
+  /// Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestRestrictions {
+    /// The list of app `slug`s with push access
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub apps: Option<Vec<String>>,
+    /// The list of team `slug`s with push access
+    pub teams: Vec<String>,
+    /// The list of user `login`s with push access
+    pub users: Vec<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Allows deletion of the protected branch by anyone with write access to the repository. Set to `false` to prevent deletion of the protected branch. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://docs.github.com/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_deletions: Option<bool>,
+    /// Permits force pushes to the protected branch by anyone with write access to the repository. Set to `true` to allow force pushes. Set to `false` or `null` to block force pushes. Default: `false`. For more information, see "[Enabling force pushes to a protected branch](https://docs.github.com/github/administering-a-repository/enabling-force-pushes-to-a-protected-branch)" in the GitHub Help documentation."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_force_pushes: Option<bool>,
+    /// Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing. Default: `false`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_fork_syncing: Option<bool>,
+    /// If set to `true`, the `restrictions` branch protection settings which limits who can push will also block pushes which create new branches, unless the push is initiated by a user, team, or app which has the ability to push. Set to `true` to restrict new branch creation. Default: `false`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub block_creations: Option<bool>,
+    /// Enforce all configured restrictions for administrators. Set to `true` to enforce required status checks for repository administrators. Set to `null` to disable.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub enforce_admins: Option<bool>,
+    /// Whether to set the branch as read-only. If this is true, users will not be able to push to the branch. Default: `false`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub lock_branch: Option<bool>,
+    /// Requires all conversations on code to be resolved before a pull request can be merged into a branch that matches this rule. Set to `false` to disable. Default: `false`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub required_conversation_resolution: Option<bool>,
+    /// Enforces a linear commit Git history, which prevents anyone from pushing merge commits to a branch. Set to `true` to enforce a linear commit history. Set to `false` to disable a linear commit Git history. Your repository must allow squash merging or rebase merging before you can enable a linear commit history. Default: `false`. For more information, see "[Requiring a linear commit history](https://docs.github.com/github/administering-a-repository/requiring-a-linear-commit-history)" in the GitHub Help documentation.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub required_linear_history: Option<bool>,
+    /// Require at least one approving review on a pull request, before merging. Set to `null` to disable.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub required_pull_request_reviews: Option<RequestRequiredPullRequestReviews>,
+    /// Require status checks to pass before merging. Set to `null` to disable.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub required_status_checks: Option<RequestRequiredStatusChecks>,
+    /// Restrict who can push to the protected branch. User, app, and team `restrictions` are only available for organization-owned repositories. Set to `null` to disable.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub restrictions: Option<RequestRestrictions>,
+  }
+}
+
+pub mod delete_branch_protection {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_admin_branch_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProtectedBranchAdminEnforced;
+}
+
+pub mod set_admin_branch_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProtectedBranchAdminEnforced;
+}
+
+pub mod delete_admin_branch_protection {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_pull_request_review_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProtectedBranchPullRequestReview;
+}
+
+pub mod update_pull_request_review_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProtectedBranchPullRequestReview;
+
+  /// Allow specific users, teams, or apps to bypass pull request requirements.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestBypassPullRequestAllowances {
+    /// The list of app `slug`s allowed to bypass pull request requirements.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub apps: Option<Vec<String>>,
+    /// The list of team `slug`s allowed to bypass pull request requirements.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub teams: Option<Vec<String>>,
+    /// The list of user `login`s allowed to bypass pull request requirements.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub users: Option<Vec<String>>,
+  }
+
+  /// Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestDismissalRestrictions {
+    /// The list of app `slug`s with dismissal access
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub apps: Option<Vec<String>>,
+    /// The list of team `slug`s with dismissal access
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub teams: Option<Vec<String>>,
+    /// The list of user `login`s with dismissal access
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub users: Option<Vec<String>>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Allow specific users, teams, or apps to bypass pull request requirements.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub bypass_pull_request_allowances: Option<RequestBypassPullRequestAllowances>,
+    /// Set to `true` if you want to automatically dismiss approving reviews when someone pushes a new commit.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub dismiss_stale_reviews: Option<bool>,
+    /// Specify which users, teams, and apps can dismiss pull request reviews. Pass an empty `dismissal_restrictions` object to disable. User and team `dismissal_restrictions` are only available for organization-owned repositories. Omit this parameter for personal repositories.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub dismissal_restrictions: Option<RequestDismissalRestrictions>,
+    /// Blocks merging pull requests until [code owners](https://docs.github.com/articles/about-code-owners/) have reviewed.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub require_code_owner_reviews: Option<bool>,
+    /// Whether the most recent push must be approved by someone other than the person who pushed it. Default: `false`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub require_last_push_approval: Option<bool>,
+    /// Specifies the number of reviewers required to approve pull requests. Use a number between 1 and 6 or 0 to not require reviewers.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub required_approving_review_count: Option<i64>,
+  }
+}
+
+pub mod delete_pull_request_review_protection {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_commit_signature_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProtectedBranchAdminEnforced;
+}
+
+pub mod create_commit_signature_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ProtectedBranchAdminEnforced;
+}
+
+pub mod delete_commit_signature_protection {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_status_checks_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = StatusCheckPolicy;
+}
+
+pub mod update_status_check_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = StatusCheckPolicy;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestChecks {
+    /// The ID of the GitHub App that must provide this check. Omit this field to automatically select the GitHub App that has recently provided this check, or any app if it was not set by a GitHub App. Pass -1 to explicitly allow any app to set the status.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub app_id: Option<i64>,
+    /// The name of the required check
+    pub context: String,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The list of status checks to require in order to merge into this branch.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub checks: Option<Vec<RequestChecks>>,
+    /// **Deprecated**: The list of status checks to require in order to merge into this branch. If any of these checks have recently been set by a particular GitHub App, they will be required to come from that app in future for the branch to merge. Use `checks` instead of `contexts` for more fine-grained control.
+    ///
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub contexts: Option<Vec<String>>,
+    /// Require branches to be up to date before merging.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub strict: Option<bool>,
+  }
+}
+
+pub mod remove_status_check_protection {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_all_status_check_contexts {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<String>;
+}
+
+pub mod add_status_check_contexts {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<String>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The name of the status checks
+    pub contexts: Vec<String>,
+  }
+}
+
+pub mod set_status_check_contexts {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<String>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The name of the status checks
+    pub contexts: Vec<String>,
+  }
+}
+
+pub mod remove_status_check_contexts {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<String>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The name of the status checks
+    pub contexts: Vec<String>,
+  }
+}
+
+pub mod get_access_restrictions {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = BranchRestrictionPolicy;
+}
+
+pub mod delete_access_restrictions {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_apps_with_access_to_protected_branch {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Integration>;
+}
+
+pub mod add_app_access_restrictions {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Integration>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items.
+    pub apps: Vec<String>,
+  }
+}
+
+pub mod set_app_access_restrictions {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Integration>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items.
+    pub apps: Vec<String>,
+  }
+}
+
+pub mod remove_app_access_restrictions {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Integration>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The GitHub Apps that have push access to this branch. Use the slugified version of the app name. **Note**: The list of users, apps, and teams in total is limited to 100 items.
+    pub apps: Vec<String>,
+  }
+}
+
+pub mod get_teams_with_access_to_protected_branch {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Team>;
+}
+
+pub mod add_team_access_restrictions {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Team>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The slug values for teams
+    pub teams: Vec<String>,
+  }
+}
+
+pub mod set_team_access_restrictions {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Team>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The slug values for teams
+    pub teams: Vec<String>,
+  }
+}
+
+pub mod remove_team_access_restrictions {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Team>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The slug values for teams
+    pub teams: Vec<String>,
+  }
+}
+
+pub mod get_users_with_access_to_protected_branch {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+}
+
+pub mod add_user_access_restrictions {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The username for users
+    pub users: Vec<String>,
+  }
+}
+
+pub mod set_user_access_restrictions {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The username for users
+    pub users: Vec<String>,
+  }
+}
+
+pub mod remove_user_access_restrictions {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleUser>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Request {
+    RequestItem1(RequestItem1),
+    StringArray(Vec<String>),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestItem1 {
+    /// The username for users
+    pub users: Vec<String>,
+  }
+}
+
+pub mod rename_branch {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = BranchWithProtection;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The new name of the branch.
+    pub new_name: String,
+  }
+}
+
+pub mod codeowners_errors {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CodeownersErrors;
+
+  /// Query for `List CODEOWNERS errors`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// A branch, tag or commit name used to determine which version of the CODEOWNERS file to use. Default: the repository's default branch (e.g. `main`)
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+  }
+}
+
+pub mod list_collaborators {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Collaborator>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryAffiliation {
+    #[serde(rename = "outside")]
+    Outside,
+    #[serde(rename = "direct")]
+    Direct,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryAffiliation {
+    fn to_string(&self) -> String {
+      match self {
+        QueryAffiliation::Outside => "outside".to_string(),
+        QueryAffiliation::Direct => "direct".to_string(),
+        QueryAffiliation::All => "all".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryPermission {
+    #[serde(rename = "pull")]
+    Pull,
+    #[serde(rename = "triage")]
+    Triage,
+    #[serde(rename = "push")]
+    Push,
+    #[serde(rename = "maintain")]
+    Maintain,
+    #[serde(rename = "admin")]
+    Admin,
+  }
+
+  impl ToString for QueryPermission {
+    fn to_string(&self) -> String {
+      match self {
+        QueryPermission::Pull => "pull".to_string(),
+        QueryPermission::Triage => "triage".to_string(),
+        QueryPermission::Push => "push".to_string(),
+        QueryPermission::Maintain => "maintain".to_string(),
+        QueryPermission::Admin => "admin".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List repository collaborators`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Filter collaborators returned by their affiliation. `outside` means all outside collaborators of an organization-owned repository. `direct` means all collaborators with permissions to an organization-owned repository, regardless of organization membership status. `all` means all collaborators the authenticated user can see.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub affiliation: Option<QueryAffiliation>,
+    /// Filter collaborators by the permissions they have on the repository. If not specified, all collaborators will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<QueryPermission>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod check_collaborator {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod add_collaborator {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepositoryInvitation;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The permission to grant the collaborator. **Only valid on organization-owned repositories.** We accept the following permissions to be set: `pull`, `triage`, `push`, `maintain`, `admin` and you can also specify a custom repository role name, if the owning organization has defined any.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permission: Option<String>,
+  }
+}
+
+pub mod remove_collaborator {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_collaborator_permission_level {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepositoryCollaboratorPermission;
+}
+
+pub mod list_commit_comments_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<CommitComment>;
+
+  /// Query for `List commit comments for a repository`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_commit_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CommitComment;
+}
+
+pub mod update_commit_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CommitComment;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The contents of the comment
+    pub body: String,
+  }
+}
+
+pub mod delete_commit_comment {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_commits {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Commit>;
+
+  /// Query for `List commits`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// SHA or branch to start listing commits from. Default: the repository’s default branch (usually `main`).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sha: Option<String>,
+    /// Only commits containing this file path will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub path: Option<String>,
+    /// GitHub username or email address to use to filter by commit author.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub author: Option<String>,
+    /// GitHub username or email address to use to filter by commit committer.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub committer: Option<String>,
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// Only commits before this date will be returned. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub until: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_branches_for_head_commit {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<BranchShort>;
+}
+
+pub mod list_comments_for_commit {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<CommitComment>;
+
+  /// Query for `List commit comments`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_commit_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CommitComment;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The contents of the comment.
+    pub body: String,
+    /// **Deprecated**. Use **position** parameter instead. Line number in the file to comment on.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub line: Option<i64>,
+    /// Relative path of the file to comment on.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub path: Option<String>,
+    /// Line index in the diff to comment on.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub position: Option<i64>,
+  }
+}
+
+pub mod list_pull_requests_associated_with_commit {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<PullRequestSimple>;
+
+  /// Query for `List pull requests associated with a commit`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_commit {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Commit;
+
+  /// Query for `Get a commit`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod get_combined_status_for_ref {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CombinedCommitStatus;
+
+  /// Query for `Get the combined status for a specific reference`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_commit_statuses_for_ref {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Status>;
+
+  /// Query for `List commit statuses for a reference`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_community_profile_metrics {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CommunityProfile;
+}
+
+pub mod compare_commits {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CommitComparison;
+
+  /// Query for `Compare two commits`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod get_content {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  #[serde(untagged)]
+  pub enum Response {
+    ContentDirectory(Vec<ContentDirectoryItem>),
+    /// Content File
+    ContentFile(ContentFile),
+    /// An object describing a symlink
+    ContentSymlink(ContentSymlink),
+    /// An object describing a submodule
+    ContentSubmodule(ContentSubmodule),
+  }
+
+  /// Query for `Get repository content`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The name of the commit/branch/tag. Default: the repository’s default branch.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+  }
+}
+
+pub mod create_or_update_file_contents {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = FileCommit;
+
+  /// The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestAuthor {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub date: Option<String>,
+    /// The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted.
+    pub email: String,
+    /// The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted.
+    pub name: String,
+  }
+
+  /// The person that committed the file. Default: the authenticated user.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestCommitter {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub date: Option<String>,
+    /// The email of the author or committer of the commit. You'll receive a `422` status code if `email` is omitted.
+    pub email: String,
+    /// The name of the author or committer of the commit. You'll receive a `422` status code if `name` is omitted.
+    pub name: String,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The author of the file. Default: The `committer` or the authenticated user if you omit `committer`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub author: Option<RequestAuthor>,
+    /// The branch name. Default: the repository’s default branch.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub branch: Option<String>,
+    /// The person that committed the file. Default: the authenticated user.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub committer: Option<RequestCommitter>,
+    /// The new file content, using Base64 encoding.
+    pub content: String,
+    /// The commit message.
+    pub message: String,
+    /// **Required if you are updating a file**. The blob SHA of the file being replaced.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sha: Option<String>,
+  }
+}
+
+pub mod delete_file {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = FileCommit;
+
+  /// object containing information about the author.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestAuthor {
+    /// The email of the author (or committer) of the commit
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub email: Option<String>,
+    /// The name of the author (or committer) of the commit
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+  }
+
+  /// object containing information about the committer.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestCommitter {
+    /// The email of the author (or committer) of the commit
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub email: Option<String>,
+    /// The name of the author (or committer) of the commit
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// object containing information about the author.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub author: Option<RequestAuthor>,
+    /// The branch name. Default: the repository’s default branch
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub branch: Option<String>,
+    /// object containing information about the committer.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub committer: Option<RequestCommitter>,
+    /// The commit message.
+    pub message: String,
+    /// The blob SHA of the file being deleted.
+    pub sha: String,
+  }
+}
+
+pub mod list_contributors {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Contributor>;
+
+  /// Query for `List repository contributors`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Set to `1` or `true` to include anonymous contributors in results.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub anon: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_deployments {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Deployment>;
+
+  /// Query for `List deployments`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The SHA recorded at creation time.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sha: Option<String>,
+    /// The name of the ref. This can be a branch, tag, or SHA.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+    /// The name of the task for the deployment (e.g., `deploy` or `deploy:migrations`).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub task: Option<String>,
+    /// The name of the environment that was deployed to (e.g., `staging` or `production`).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub environment: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_deployment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  pub enum Response {
+    Created(Deployment),
+    Accepted(AcceptedResponse),
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Attempts to automatically merge the default branch into the requested ref, if it's behind the default branch.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub auto_merge: Option<bool>,
+    /// Short description of the deployment.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// Name for the target deployment environment (e.g., `production`, `staging`, `qa`).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub environment: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub payload: Option<serde_json::Value>,
+    /// Specifies if the given environment is one that end-users directly interact with. Default: `true` when `environment` is `production` and `false` otherwise.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub production_environment: Option<bool>,
+    /// The ref to deploy. This can be a branch, tag, or SHA.
+    #[serde(rename = "ref")]
+    pub ref_: String,
+    /// The [status](https://docs.github.com/rest/commits/statuses) contexts to verify against commit status checks. If you omit this parameter, GitHub verifies all unique contexts before creating a deployment. To bypass checking entirely, pass an empty array. Defaults to all unique contexts.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub required_contexts: Option<Vec<String>>,
+    /// Specifies a task to execute (e.g., `deploy` or `deploy:migrations`).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub task: Option<String>,
+    /// Specifies if the given environment is specific to the deployment and will no longer exist at some point in the future. Default: `false`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub transient_environment: Option<bool>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct AcceptedResponse {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub message: Option<String>,
+  }
+}
+
+pub mod get_deployment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Deployment;
+}
+
+pub mod delete_deployment {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_deployment_statuses {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<DeploymentStatus>;
+
+  /// Query for `List deployment statuses`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_deployment_status {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DeploymentStatus;
+
+  /// The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestState {
+    #[serde(rename = "error")]
+    Error,
+    #[serde(rename = "failure")]
+    Failure,
+    #[serde(rename = "inactive")]
+    Inactive,
+    #[serde(rename = "in_progress")]
+    InProgress,
+    #[serde(rename = "queued")]
+    Queued,
+    #[serde(rename = "pending")]
+    Pending,
+    #[serde(rename = "success")]
+    Success,
+  }
+
+  impl ToString for RequestState {
+    fn to_string(&self) -> String {
+      match self {
+        RequestState::Error => "error".to_string(),
+        RequestState::Failure => "failure".to_string(),
+        RequestState::Inactive => "inactive".to_string(),
+        RequestState::InProgress => "in_progress".to_string(),
+        RequestState::Queued => "queued".to_string(),
+        RequestState::Pending => "pending".to_string(),
+        RequestState::Success => "success".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Adds a new `inactive` status to all prior non-transient, non-production environment deployments with the same repository and `environment` name as the created status's deployment. An `inactive` status is only added to deployments that had a `success` state. Default: `true`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub auto_inactive: Option<bool>,
+    /// A short description of the status. The maximum description length is 140 characters.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// Name for the target deployment environment, which can be changed when setting a deploy status. For example, `production`, `staging`, or `qa`. If not defined, the environment of the previous status on the deployment will be used, if it exists. Otherwise, the environment of the deployment will be used.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub environment: Option<String>,
+    /// Sets the URL for accessing your environment. Default: `""`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub environment_url: Option<String>,
+    /// The full URL of the deployment's output. This parameter replaces `target_url`. We will continue to accept `target_url` to support legacy uses, but we recommend replacing `target_url` with `log_url`. Setting `log_url` will automatically set `target_url` to the same value. Default: `""`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub log_url: Option<String>,
+    /// The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub.
+    pub state: RequestState,
+    /// The target URL to associate with this status. This URL should contain output to keep the user updated while the task is running or serve as historical information for what happened in the deployment. **Note:** It's recommended to use the `log_url` parameter, which replaces `target_url`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub target_url: Option<String>,
+  }
+}
+
+pub mod get_deployment_status {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DeploymentStatus;
+}
+
+pub mod create_dispatch_event {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// JSON payload with extra information about the webhook event that your action or workflow may use. The maximum number of top-level properties is 10.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub client_payload: Option<serde_json::Value>,
+    /// A custom webhook event name. Must be 100 characters or fewer.
+    pub event_type: String,
+  }
+}
+
+pub mod get_all_environments {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List environments`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub environments: Option<Vec<Environment>>,
+    /// The number of environments in this repository
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub total_count: Option<i64>,
+  }
+}
+
+pub mod get_environment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Environment;
+}
+
+pub mod create_or_update_environment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Environment;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestReviewers {
+    /// The id of the user or team who can review the deployment
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub id: Option<i64>,
+    #[serde(rename = "type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub type_: Option<DeploymentReviewerType>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub deployment_branch_policy: Option<DeploymentBranchPolicySettings>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub prevent_self_review: Option<bool>,
+    /// The people or teams that may review jobs that reference the environment. You can list up to six users or teams as reviewers. The reviewers must have at least read access to the repository. Only one of the required reviewers needs to approve the job for it to proceed.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub reviewers: Option<Vec<RequestReviewers>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub wait_timer: Option<i64>,
+  }
+}
+
+pub mod delete_an_environment {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_deployment_branch_policies {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List deployment branch policies`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub branch_policies: Vec<DeploymentBranchPolicy>,
+    /// The number of deployment branch policies for the environment.
+    pub total_count: i64,
+  }
+}
+
+pub mod create_deployment_branch_policy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = DeploymentBranchPolicyNamePatternWithType;
+  pub type Response = DeploymentBranchPolicy;
+}
+
+pub mod get_deployment_branch_policy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DeploymentBranchPolicy;
+}
+
+pub mod update_deployment_branch_policy {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = DeploymentBranchPolicyNamePattern;
+  pub type Response = DeploymentBranchPolicy;
+}
+
+pub mod delete_deployment_branch_policy {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_all_deployment_protection_rules {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub custom_deployment_protection_rules: Option<Vec<DeploymentProtectionRule>>,
+    /// The number of enabled custom deployment protection rules for this environment
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub total_count: Option<i64>,
+  }
+}
+
+pub mod create_deployment_protection_rule {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DeploymentProtectionRule;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The ID of the custom app that will be enabled on the environment.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub integration_id: Option<i64>,
+  }
+}
+
+pub mod list_custom_deployment_rule_integrations {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `List custom deployment rule integrations available for an environment`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub available_custom_deployment_protection_rule_integrations:
+      Option<Vec<CustomDeploymentRuleApp>>,
+    /// The total number of custom deployment protection rule integrations available for this environment.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub total_count: Option<i64>,
+  }
+}
+
+pub mod get_custom_deployment_protection_rule {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DeploymentProtectionRule;
+}
+
+pub mod disable_deployment_protection_rule {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_forks {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "newest")]
+    Newest,
+    #[serde(rename = "oldest")]
+    Oldest,
+    #[serde(rename = "stargazers")]
+    Stargazers,
+    #[serde(rename = "watchers")]
+    Watchers,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Newest => "newest".to_string(),
+        QuerySort::Oldest => "oldest".to_string(),
+        QuerySort::Stargazers => "stargazers".to_string(),
+        QuerySort::Watchers => "watchers".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List forks`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The sort order. `stargazers` will sort by star count.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_fork {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = FullRepository;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// When forking from an existing repository, fork with only the default branch.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub default_branch_only: Option<bool>,
+    /// When forking from an existing repository, a new name for the fork.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// Optional parameter to specify the organization name if forking into an organization.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub organization: Option<String>,
+  }
+}
+
+pub mod list_webhooks {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Hook>;
+
+  /// Query for `List repository webhooks`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_webhook {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Hook;
+
+  /// Key/value pairs to provide settings for this webhook.
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct RequestConfig {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content_type: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub insecure_ssl: Option<StringOrNumber>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub url: Option<String>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub active: Option<bool>,
+    /// Key/value pairs to provide settings for this webhook.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub config: Option<RequestConfig>,
+    /// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub events: Option<Vec<String>>,
+    /// Use `web` to create a webhook. Default: `web`. This parameter only accepts the value `web`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+  }
+}
+
+pub mod get_webhook {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Hook;
+}
+
+pub mod update_webhook {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Hook;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub active: Option<bool>,
+    /// Determines a list of events to be added to the list of events that the Hook triggers for.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub add_events: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub config: Option<WebhookConfig>,
+    /// Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. This replaces the entire array of events.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub events: Option<Vec<String>>,
+    /// Determines a list of events to be removed from the list of events that the Hook triggers for.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub remove_events: Option<Vec<String>>,
+  }
+}
+
+pub mod delete_webhook {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_webhook_config_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = WebhookConfig;
+}
+
+pub mod update_webhook_config_for_repo {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = WebhookConfig;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub content_type: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub insecure_ssl: Option<StringOrNumber>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub secret: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub url: Option<String>,
+  }
+}
+
+pub mod list_webhook_deliveries {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<HookDeliveryItem>;
+
+  /// Query for `List deliveries for a repository webhook`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to the `link` header for the next and previous page cursors.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub cursor: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub redelivery: Option<bool>,
+  }
+}
+
+pub mod get_webhook_delivery {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = HookDelivery;
+}
+
+pub mod redeliver_webhook_delivery {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod ping_webhook {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod test_push_webhook {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_invitations {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<RepositoryInvitation>;
+
+  /// Query for `List repository invitations`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod update_invitation {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepositoryInvitation;
+
+  /// The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPermissions {
+    #[serde(rename = "read")]
+    Read,
+    #[serde(rename = "write")]
+    Write,
+    #[serde(rename = "maintain")]
+    Maintain,
+    #[serde(rename = "triage")]
+    Triage,
+    #[serde(rename = "admin")]
+    Admin,
+  }
+
+  impl ToString for RequestPermissions {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPermissions::Read => "read".to_string(),
+        RequestPermissions::Write => "write".to_string(),
+        RequestPermissions::Maintain => "maintain".to_string(),
+        RequestPermissions::Triage => "triage".to_string(),
+        RequestPermissions::Admin => "admin".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub permissions: Option<RequestPermissions>,
+  }
+}
+
+pub mod delete_invitation {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_deploy_keys {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<DeployKey>;
+
+  /// Query for `List deploy keys`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_deploy_key {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DeployKey;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The contents of the key.
+    pub key: String,
+    /// If `true`, the key will only be able to read repository contents. Otherwise, the key will be able to read and write.  
+    ///   
+    /// Deploy keys with write access can perform the same actions as an organization member with admin access, or a collaborator on a personal repository. For more information, see "[Repository permission levels for an organization](https://docs.github.com/articles/repository-permission-levels-for-an-organization/)" and "[Permission levels for a user account repository](https://docs.github.com/articles/permission-levels-for-a-user-account-repository/)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub read_only: Option<bool>,
+    /// A name for the key.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub title: Option<String>,
+  }
+}
+
+pub mod get_deploy_key {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = DeployKey;
+}
+
+pub mod delete_deploy_key {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_languages {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = serde_json::Value;
+}
+
+pub mod merge_upstream {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = MergedUpstream;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The name of the branch which should be updated to match upstream.
+    pub branch: String,
+  }
+}
+
+pub mod merge {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Commit;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The name of the base branch that the head will be merged into.
+    pub base: String,
+    /// Commit message to use for the merge commit. If omitted, a default message will be used.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub commit_message: Option<String>,
+    /// The head to merge. This can be a branch name or a commit SHA1.
+    pub head: String,
+  }
+}
+
+pub mod get_pages {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Page;
+}
+
+pub mod create_pages_site {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = Option<serde_json::Value>;
+  pub type Response = Page;
+}
+
+pub mod update_information_about_pages_site {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Request = serde_json::Value;
+}
+
+pub mod delete_pages_site {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_pages_builds {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<PageBuild>;
+
+  /// Query for `List GitHub Pages builds`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod request_pages_build {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = PageBuildStatus;
+}
+
+pub mod get_latest_pages_build {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = PageBuild;
+}
+
+pub mod get_pages_build {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = PageBuild;
+}
+
+pub mod create_pages_deployment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = PageDeployment;
+
+  /// The object used to create GitHub Pages deployment
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The ID of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub artifact_id: Option<f64>,
+    /// The URL of an artifact that contains the .zip or .tar of static assets to deploy. The artifact belongs to the repository. Either `artifact_id` or `artifact_url` are required.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub artifact_url: Option<String>,
+    /// The target environment for this GitHub Pages deployment.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub environment: Option<String>,
+    /// The OIDC token issued by GitHub Actions certifying the origin of the deployment.
+    pub oidc_token: String,
+    /// A unique string that represents the version of the build for this deployment.
+    pub pages_build_version: String,
+  }
+}
+
+pub mod get_pages_deployment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = PagesDeploymentStatus;
+}
+
+pub mod cancel_pages_deployment {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_pages_health_check {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize)]
+  pub enum Response {
+    Success(PagesHealthCheck),
+    Accepted(EmptyObject),
+  }
+}
+
+pub mod check_private_vulnerability_reporting {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    /// Whether or not private vulnerability reporting is enabled for the repository.
+    pub enabled: bool,
+  }
+}
+
+pub mod enable_private_vulnerability_reporting {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod disable_private_vulnerability_reporting {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_custom_properties_values {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<CustomPropertyValue>;
+}
+
+pub mod create_or_update_custom_properties_values {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// A list of custom property names and associated values to apply to the repositories.
+    pub properties: Vec<CustomPropertyValue>,
+  }
+}
+
+pub mod get_readme {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ContentFile;
+
+  /// Query for `Get a repository README`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The name of the commit/branch/tag. Default: the repository’s default branch.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+  }
+}
+
+pub mod get_readme_in_directory {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ContentFile;
+
+  /// Query for `Get a repository README for a directory`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The name of the commit/branch/tag. Default: the repository’s default branch.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+  }
+}
+
+pub mod list_releases {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Release>;
+
+  /// Query for `List releases`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_release {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Release;
+
+  /// Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestMakeLatest {
+    #[serde(rename = "true")]
+    True,
+    #[serde(rename = "false")]
+    False,
+    #[serde(rename = "legacy")]
+    Legacy,
+  }
+
+  impl ToString for RequestMakeLatest {
+    fn to_string(&self) -> String {
+      match self {
+        RequestMakeLatest::True => "true".to_string(),
+        RequestMakeLatest::False => "false".to_string(),
+        RequestMakeLatest::Legacy => "legacy".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Text describing the contents of the tag.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub body: Option<String>,
+    /// If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub discussion_category_name: Option<String>,
+    /// `true` to create a draft (unpublished) release, `false` to create a published one.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub draft: Option<bool>,
+    /// Whether to automatically generate the name and body for this release. If `name` is specified, the specified name will be used; otherwise, a name will be automatically generated. If `body` is specified, the body will be pre-pended to the automatically generated notes.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub generate_release_notes: Option<bool>,
+    /// Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub make_latest: Option<RequestMakeLatest>,
+    /// The name of the release.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// `true` to identify the release as a prerelease. `false` to identify the release as a full release.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub prerelease: Option<bool>,
+    /// The name of the tag.
+    pub tag_name: String,
+    /// Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub target_commitish: Option<String>,
+  }
+}
+
+pub mod get_release_asset {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ReleaseAsset;
+}
+
+pub mod update_release_asset {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ReleaseAsset;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// An alternate short description of the asset. Used in place of the filename.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub label: Option<String>,
+    /// The file name of the asset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub state: Option<String>,
+  }
+}
+
+pub mod delete_release_asset {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod generate_release_notes {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ReleaseNotesContent;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Specifies a path to a file in the repository containing configuration settings used for generating the release notes. If unspecified, the configuration file located in the repository at '.github/release.yml' or '.github/release.yaml' will be used. If that is not present, the default configuration will be used.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub configuration_file_path: Option<String>,
+    /// The name of the previous tag to use as the starting point for the release notes. Use to manually specify the range for the set of changes considered as part this release.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub previous_tag_name: Option<String>,
+    /// The tag name for the release. This can be an existing tag or a new one.
+    pub tag_name: String,
+    /// Specifies the commitish value that will be the target for the release's tag. Required if the supplied tag_name does not reference an existing tag. Ignored if the tag_name already exists.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub target_commitish: Option<String>,
+  }
+}
+
+pub mod get_latest_release {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Release;
+}
+
+pub mod get_release_by_tag {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Release;
+}
+
+pub mod get_release {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Release;
+}
+
+pub mod update_release {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Release;
+
+  /// Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestMakeLatest {
+    #[serde(rename = "true")]
+    True,
+    #[serde(rename = "false")]
+    False,
+    #[serde(rename = "legacy")]
+    Legacy,
+  }
+
+  impl ToString for RequestMakeLatest {
+    fn to_string(&self) -> String {
+      match self {
+        RequestMakeLatest::True => "true".to_string(),
+        RequestMakeLatest::False => "false".to_string(),
+        RequestMakeLatest::Legacy => "legacy".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Text describing the contents of the tag.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub body: Option<String>,
+    /// If specified, a discussion of the specified category is created and linked to the release. The value must be a category that already exists in the repository. If there is already a discussion linked to the release, this parameter is ignored. For more information, see "[Managing categories for discussions in your repository](https://docs.github.com/discussions/managing-discussions-for-your-community/managing-categories-for-discussions-in-your-repository)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub discussion_category_name: Option<String>,
+    /// `true` makes the release a draft, and `false` publishes the release.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub draft: Option<bool>,
+    /// Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub make_latest: Option<RequestMakeLatest>,
+    /// The name of the release.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// `true` to identify the release as a prerelease, `false` to identify the release as a full release.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub prerelease: Option<bool>,
+    /// The name of the tag.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub tag_name: Option<String>,
+    /// Specifies the commitish value that determines where the Git tag is created from. Can be any branch or commit SHA. Unused if the Git tag already exists. Default: the repository's default branch.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub target_commitish: Option<String>,
+  }
+}
+
+pub mod delete_release {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_release_assets {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<ReleaseAsset>;
+
+  /// Query for `List release assets`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod upload_release_asset {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ReleaseAsset;
+
+  /// Query for `Upload a release asset`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    pub name: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub label: Option<String>,
+  }
+}
+
+pub mod get_branch_rules {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<RepositoryRuleDetailed>;
+
+  /// Query for `Get rules for a branch`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_repo_rulesets {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<RepositoryRuleset>;
+
+  /// Query for `Get all repository rulesets`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// Include rulesets configured at higher levels that apply to this repository
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub includes_parents: Option<bool>,
+  }
+}
+
+pub mod create_repo_ruleset {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepositoryRuleset;
+
+  /// The target of the ruleset.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestTarget {
+    #[serde(rename = "branch")]
+    Branch,
+    #[serde(rename = "tag")]
+    Tag,
+  }
+
+  impl ToString for RequestTarget {
+    fn to_string(&self) -> String {
+      match self {
+        RequestTarget::Branch => "branch".to_string(),
+        RequestTarget::Tag => "tag".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The actors that can bypass the rules in this ruleset
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub bypass_actors: Option<Vec<RepositoryRulesetBypassActor>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub conditions: Option<RepositoryRulesetConditions>,
+    pub enforcement: RepositoryRuleEnforcement,
+    /// The name of the ruleset.
+    pub name: String,
+    /// An array of rules within the ruleset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub rules: Option<Vec<RepositoryRule>>,
+    /// The target of the ruleset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub target: Option<RequestTarget>,
+  }
+}
+
+pub mod get_repo_rule_suites {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RuleSuites;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryTimePeriod {
+    #[serde(rename = "hour")]
+    Hour,
+    #[serde(rename = "day")]
+    Day,
+    #[serde(rename = "week")]
+    Week,
+    #[serde(rename = "month")]
+    Month,
+  }
+
+  impl ToString for QueryTimePeriod {
+    fn to_string(&self) -> String {
+      match self {
+        QueryTimePeriod::Hour => "hour".to_string(),
+        QueryTimePeriod::Day => "day".to_string(),
+        QueryTimePeriod::Week => "week".to_string(),
+        QueryTimePeriod::Month => "month".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryRuleSuiteResult {
+    #[serde(rename = "pass")]
+    Pass,
+    #[serde(rename = "fail")]
+    Fail,
+    #[serde(rename = "bypass")]
+    Bypass,
+    #[serde(rename = "all")]
+    All,
+  }
+
+  impl ToString for QueryRuleSuiteResult {
+    fn to_string(&self) -> String {
+      match self {
+        QueryRuleSuiteResult::Pass => "pass".to_string(),
+        QueryRuleSuiteResult::Fail => "fail".to_string(),
+        QueryRuleSuiteResult::Bypass => "bypass".to_string(),
+        QueryRuleSuiteResult::All => "all".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List repository rule suites`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The name of the ref. Cannot contain wildcard characters. When specified, only rule evaluations triggered for this ref will be returned.
+    #[serde(rename = "ref")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub ref_: Option<String>,
+    /// The time period to filter by.
+    ///
+    /// For example, `day` will filter for rule suites that occurred in the past 24 hours, and `week` will filter for insights that occurred in the past 7 days (168 hours).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub time_period: Option<QueryTimePeriod>,
+    /// The handle for the GitHub user account to filter on. When specified, only rule evaluations triggered by this actor will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub actor_name: Option<String>,
+    /// The rule results to filter on. When specified, only suites with this result will be returned.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub rule_suite_result: Option<QueryRuleSuiteResult>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_repo_rule_suite {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RuleSuite;
+}
+
+pub mod get_repo_ruleset {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepositoryRuleset;
+
+  /// Query for `Get a repository ruleset`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Include rulesets configured at higher levels that apply to this repository
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub includes_parents: Option<bool>,
+  }
+}
+
+pub mod update_repo_ruleset {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = RepositoryRuleset;
+
+  /// The target of the ruleset.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestTarget {
+    #[serde(rename = "branch")]
+    Branch,
+    #[serde(rename = "tag")]
+    Tag,
+  }
+
+  impl ToString for RequestTarget {
+    fn to_string(&self) -> String {
+      match self {
+        RequestTarget::Branch => "branch".to_string(),
+        RequestTarget::Tag => "tag".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The actors that can bypass the rules in this ruleset
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub bypass_actors: Option<Vec<RepositoryRulesetBypassActor>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub conditions: Option<RepositoryRulesetConditions>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub enforcement: Option<RepositoryRuleEnforcement>,
+    /// The name of the ruleset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub name: Option<String>,
+    /// An array of rules within the ruleset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub rules: Option<Vec<RepositoryRule>>,
+    /// The target of the ruleset.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub target: Option<RequestTarget>,
+  }
+}
+
+pub mod delete_repo_ruleset {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_code_frequency_stats {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Vec<i64>>;
+}
+
+pub mod get_commit_activity_stats {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<CommitActivity>;
+}
+
+pub mod get_contributors_stats {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<ContributorActivity>;
+}
+
+pub mod get_participation_stats {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ParticipationStats;
+}
+
+pub mod get_punch_card_stats {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Vec<i64>>;
+}
+
+pub mod create_commit_status {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Status;
+
+  /// The state of the status.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestState {
+    #[serde(rename = "error")]
+    Error,
+    #[serde(rename = "failure")]
+    Failure,
+    #[serde(rename = "pending")]
+    Pending,
+    #[serde(rename = "success")]
+    Success,
+  }
+
+  impl ToString for RequestState {
+    fn to_string(&self) -> String {
+      match self {
+        RequestState::Error => "error".to_string(),
+        RequestState::Failure => "failure".to_string(),
+        RequestState::Pending => "pending".to_string(),
+        RequestState::Success => "success".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// A string label to differentiate this status from the status of other systems. This field is case-insensitive.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub context: Option<String>,
+    /// A short description of the status.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The state of the status.
+    pub state: RequestState,
+    /// The target URL to associate with this status. This URL will be linked from the GitHub UI to allow users to easily see the source of the status.  
+    /// For example, if your continuous integration system is posting build status, you would want to provide the deep link for the build output for this specific SHA:  
+    /// `http://ci.example.com/user/repo/build/sha`
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub target_url: Option<String>,
+  }
+}
+
+pub mod list_tags {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Tag>;
+
+  /// Query for `List repository tags`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_tag_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<TagProtection>;
+}
+
+pub mod create_tag_protection {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = TagProtection;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// An optional glob pattern to match against when enforcing tag protection.
+    pub pattern: String,
+  }
+}
+
+pub mod delete_tag_protection {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod download_tarball_archive {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_teams {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Team>;
+
+  /// Query for `List repository teams`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get_all_topics {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Topic;
+
+  /// Query for `Get all repository topics`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod replace_all_topics {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Topic;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// An array of topics to add to the repository. Pass one or more topics to _replace_ the set of existing topics. Send an empty array (`[]`) to clear all topics from the repository. **Note:** Topic `names` cannot contain uppercase letters.
+    pub names: Vec<String>,
+  }
+}
+
+pub mod get_clones {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CloneTraffic;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryPer {
+    #[serde(rename = "day")]
+    Day,
+    #[serde(rename = "week")]
+    Week,
+  }
+
+  impl ToString for QueryPer {
+    fn to_string(&self) -> String {
+      match self {
+        QueryPer::Day => "day".to_string(),
+        QueryPer::Week => "week".to_string(),
+      }
+    }
+  }
+
+  /// Query for `Get repository clones`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The time frame to display results for.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per: Option<QueryPer>,
+  }
+}
+
+pub mod get_top_paths {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<ContentTraffic>;
+}
+
+pub mod get_top_referrers {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<ReferrerTraffic>;
+}
+
+pub mod get_views {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ViewTraffic;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryPer {
+    #[serde(rename = "day")]
+    Day,
+    #[serde(rename = "week")]
+    Week,
+  }
+
+  impl ToString for QueryPer {
+    fn to_string(&self) -> String {
+      match self {
+        QueryPer::Day => "day".to_string(),
+        QueryPer::Week => "week".to_string(),
+      }
+    }
+  }
+
+  /// Query for `Get page views`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The time frame to display results for.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per: Option<QueryPer>,
+  }
+}
+
+pub mod transfer {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = MinimalRepository;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The new name to be given to the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub new_name: Option<String>,
+    /// The username or organization name the repository will be transferred to.
+    pub new_owner: String,
+    /// ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub team_ids: Option<Vec<i64>>,
+  }
+}
+
+pub mod check_vulnerability_alerts {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod enable_vulnerability_alerts {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod disable_vulnerability_alerts {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod download_zipball_archive {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod create_using_template {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = FullRepository;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// A short description of the new repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// Set to `true` to include the directory structure and files from all branches in the template repository, and not just the default branch. Default: `false`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub include_all_branches: Option<bool>,
+    /// The name of the new repository.
+    pub name: String,
+    /// The organization or person who will own the new repository. To create a new repository in an organization, the authenticated user must be a member of the specified organization.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub owner: Option<String>,
+    /// Either `true` to create a new private repository or `false` to create a new public one.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub private: Option<bool>,
+  }
+}
+
+pub mod list_public {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  /// Query for `List public repositories`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// A repository ID. Only return repositories with an ID greater than this ID.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<i64>,
+  }
+}
+
+pub mod list_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<Repository>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryVisibility {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "public")]
+    Public,
+    #[serde(rename = "private")]
+    Private,
+  }
+
+  impl ToString for QueryVisibility {
+    fn to_string(&self) -> String {
+      match self {
+        QueryVisibility::All => "all".to_string(),
+        QueryVisibility::Public => "public".to_string(),
+        QueryVisibility::Private => "private".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryType {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "owner")]
+    Owner,
+    #[serde(rename = "public")]
+    Public,
+    #[serde(rename = "private")]
+    Private,
+    #[serde(rename = "member")]
+    Member,
+  }
+
+  impl ToString for QueryType {
+    fn to_string(&self) -> String {
+      match self {
+        QueryType::All => "all".to_string(),
+        QueryType::Owner => "owner".to_string(),
+        QueryType::Public => "public".to_string(),
+        QueryType::Private => "private".to_string(),
+        QueryType::Member => "member".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+    #[serde(rename = "pushed")]
+    Pushed,
+    #[serde(rename = "full_name")]
+    FullName,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Pushed => "pushed".to_string(),
+        QuerySort::FullName => "full_name".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List repositories for the authenticated user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Limit results to repositories with the specified visibility.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub visibility: Option<QueryVisibility>,
+    /// Comma-separated list of values. Can include:  
+    ///  * `owner`: Repositories that are owned by the authenticated user.  
+    ///  * `collaborator`: Repositories that the user has been added to as a collaborator.  
+    ///  * `organization_member`: Repositories that the user has access to through being a member of an organization. This includes every repository on every team that the user is on.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub affiliation: Option<String>,
+    /// Limit results to repositories of the specified type. Will cause a `422` error if used in the same request as **visibility** or **affiliation**.
+    #[serde(rename = "type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub type_: Option<QueryType>,
+    /// The property to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The order to sort by. Default: `asc` when using `full_name`, otherwise `desc`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// Only show repositories updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// Only show repositories updated before the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub before: Option<String>,
+  }
+}
+
+pub mod create_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = FullRepository;
+
+  /// The default value for a merge commit message.
+  ///
+  /// - `PR_TITLE` - default to the pull request's title.
+  /// - `PR_BODY` - default to the pull request's body.
+  /// - `BLANK` - default to a blank commit message.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestMergeCommitMessage {
+    #[serde(rename = "PR_BODY")]
+    PrBody,
+    #[serde(rename = "PR_TITLE")]
+    PrTitle,
+    #[serde(rename = "BLANK")]
+    Blank,
+  }
+
+  impl ToString for RequestMergeCommitMessage {
+    fn to_string(&self) -> String {
+      match self {
+        RequestMergeCommitMessage::PrBody => "PR_BODY".to_string(),
+        RequestMergeCommitMessage::PrTitle => "PR_TITLE".to_string(),
+        RequestMergeCommitMessage::Blank => "BLANK".to_string(),
+      }
+    }
+  }
+
+  /// The default value for a merge commit title.
+  ///
+  /// - `PR_TITLE` - default to the pull request's title.
+  /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestMergeCommitTitle {
+    #[serde(rename = "PR_TITLE")]
+    PrTitle,
+    #[serde(rename = "MERGE_MESSAGE")]
+    MergeMessage,
+  }
+
+  impl ToString for RequestMergeCommitTitle {
+    fn to_string(&self) -> String {
+      match self {
+        RequestMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
+        RequestMergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
+      }
+    }
+  }
+
+  /// The default value for a squash merge commit message:
+  ///
+  /// - `PR_BODY` - default to the pull request's body.
+  /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
+  /// - `BLANK` - default to a blank commit message.
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestSquashMergeCommitMessage {
+    #[serde(rename = "PR_BODY")]
+    PrBody,
+    #[serde(rename = "COMMIT_MESSAGES")]
+    CommitMessages,
+    #[serde(rename = "BLANK")]
+    Blank,
+  }
+
+  impl ToString for RequestSquashMergeCommitMessage {
+    fn to_string(&self) -> String {
+      match self {
+        RequestSquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
+        RequestSquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
+        RequestSquashMergeCommitMessage::Blank => "BLANK".to_string(),
+      }
+    }
+  }
+
+  /// The default value for a squash merge commit title:
+  ///
+  /// - `PR_TITLE` - default to the pull request's title.
+  /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestSquashMergeCommitTitle {
+    #[serde(rename = "PR_TITLE")]
+    PrTitle,
+    #[serde(rename = "COMMIT_OR_PR_TITLE")]
+    CommitOrPrTitle,
+  }
+
+  impl ToString for RequestSquashMergeCommitTitle {
+    fn to_string(&self) -> String {
+      match self {
+        RequestSquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
+        RequestSquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Whether to allow Auto-merge to be used on pull requests.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_auto_merge: Option<bool>,
+    /// Whether to allow merge commits for pull requests.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_merge_commit: Option<bool>,
+    /// Whether to allow rebase merges for pull requests.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_rebase_merge: Option<bool>,
+    /// Whether to allow squash merges for pull requests.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub allow_squash_merge: Option<bool>,
+    /// Whether the repository is initialized with a minimal README.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub auto_init: Option<bool>,
+    /// Whether to delete head branches when pull requests are merged
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub delete_branch_on_merge: Option<bool>,
+    /// A short description of the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The desired language or platform to apply to the .gitignore.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub gitignore_template: Option<String>,
+    /// Whether discussions are enabled.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_discussions: Option<bool>,
+    /// Whether downloads are enabled.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_downloads: Option<bool>,
+    /// Whether issues are enabled.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_issues: Option<bool>,
+    /// Whether projects are enabled.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_projects: Option<bool>,
+    /// Whether the wiki is enabled.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub has_wiki: Option<bool>,
+    /// A URL with more information about the repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub homepage: Option<String>,
+    /// Whether this repository acts as a template that can be used to generate new repositories.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub is_template: Option<bool>,
+    /// The license keyword of the open source license for this repository.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub license_template: Option<String>,
+    /// The default value for a merge commit message.
+    ///
+    /// - `PR_TITLE` - default to the pull request's title.
+    /// - `PR_BODY` - default to the pull request's body.
+    /// - `BLANK` - default to a blank commit message.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub merge_commit_message: Option<RequestMergeCommitMessage>,
+    /// The default value for a merge commit title.
+    ///
+    /// - `PR_TITLE` - default to the pull request's title.
+    /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub merge_commit_title: Option<RequestMergeCommitTitle>,
+    /// The name of the repository.
+    pub name: String,
+    /// Whether the repository is private.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub private: Option<bool>,
+    /// The default value for a squash merge commit message:
+    ///
+    /// - `PR_BODY` - default to the pull request's body.
+    /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
+    /// - `BLANK` - default to a blank commit message.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub squash_merge_commit_message: Option<RequestSquashMergeCommitMessage>,
+    /// The default value for a squash merge commit title:
+    ///
+    /// - `PR_TITLE` - default to the pull request's title.
+    /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub squash_merge_commit_title: Option<RequestSquashMergeCommitTitle>,
+    /// The id of the team that will be granted access to this repository. This is only valid when creating a repository in an organization.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub team_id: Option<i64>,
+  }
+}
+
+pub mod list_invitations_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<RepositoryInvitation>;
+
+  /// Query for `List repository invitations for the authenticated user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod accept_invitation_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod decline_invitation_for_authenticated_user {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<MinimalRepository>;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryType {
+    #[serde(rename = "all")]
+    All,
+    #[serde(rename = "owner")]
+    Owner,
+    #[serde(rename = "member")]
+    Member,
+  }
+
+  impl ToString for QueryType {
+    fn to_string(&self) -> String {
+      match self {
+        QueryType::All => "all".to_string(),
+        QueryType::Owner => "owner".to_string(),
+        QueryType::Member => "member".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+    #[serde(rename = "pushed")]
+    Pushed,
+    #[serde(rename = "full_name")]
+    FullName,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Pushed => "pushed".to_string(),
+        QuerySort::FullName => "full_name".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryDirection {
+    #[serde(rename = "asc")]
+    Asc,
+    #[serde(rename = "desc")]
+    Desc,
+  }
+
+  impl ToString for QueryDirection {
+    fn to_string(&self) -> String {
+      match self {
+        QueryDirection::Asc => "asc".to_string(),
+        QueryDirection::Desc => "desc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `List repositories for a user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Limit results to repositories of the specified type.
+    #[serde(rename = "type")]
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub type_: Option<QueryType>,
+    /// The property to sort the results by.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// The order to sort by. Default: `asc` when using `full_name`, otherwise `desc`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub direction: Option<QueryDirection>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
 
 /// Interact with GitHub Repos.
 pub struct GitHubReposAPI {
@@ -24,11 +4753,11 @@ impl GitHubReposAPI {
   pub fn list_for_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), ReposListForOrgQuery, Vec<MinimalRepository>> {
+  ) -> Request<(), list_for_org::Query, list_for_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/repos");
 
-    Request::<(), ReposListForOrgQuery, Vec<MinimalRepository>>::builder(&self.config)
+    Request::<(), list_for_org::Query, list_for_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -43,11 +4772,11 @@ impl GitHubReposAPI {
   pub fn create_in_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<ReposCreateInOrgRequest, (), FullRepository> {
+  ) -> Request<create_in_org::Request, (), create_in_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/repos");
 
-    Request::<ReposCreateInOrgRequest, (), FullRepository>::builder(&self.config)
+    Request::<create_in_org::Request, (), create_in_org::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -60,11 +4789,11 @@ impl GitHubReposAPI {
   pub fn get_org_rulesets(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), ReposGetOrgRulesetsQuery, Vec<RepositoryRuleset>> {
+  ) -> Request<(), get_org_rulesets::Query, get_org_rulesets::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/rulesets");
 
-    Request::<(), ReposGetOrgRulesetsQuery, Vec<RepositoryRuleset>>::builder(&self.config)
+    Request::<(), get_org_rulesets::Query, get_org_rulesets::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -77,11 +4806,11 @@ impl GitHubReposAPI {
   pub fn create_org_ruleset(
     &self,
     org: impl Into<String>,
-  ) -> Request<ReposCreateOrgRulesetRequest, (), RepositoryRuleset> {
+  ) -> Request<create_org_ruleset::Request, (), create_org_ruleset::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/rulesets");
 
-    Request::<ReposCreateOrgRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
+    Request::<create_org_ruleset::Request, (), create_org_ruleset::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -95,11 +4824,11 @@ impl GitHubReposAPI {
   pub fn get_org_rule_suites(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), ReposGetOrgRuleSuitesQuery, RuleSuites> {
+  ) -> Request<(), get_org_rule_suites::Query, get_org_rule_suites::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/rulesets/rule-suites");
 
-    Request::<(), ReposGetOrgRuleSuitesQuery, RuleSuites>::builder(&self.config)
+    Request::<(), get_org_rule_suites::Query, get_org_rule_suites::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -114,12 +4843,12 @@ impl GitHubReposAPI {
     &self,
     org: impl Into<String>,
     rule_suite_id: impl Into<i64>,
-  ) -> Request<(), (), RuleSuite> {
+  ) -> Request<(), (), get_org_rule_suite::Response> {
     let org = org.into();
     let rule_suite_id = rule_suite_id.into();
     let url = format!("/orgs/{org}/rulesets/rule-suites/{rule_suite_id}");
 
-    Request::<(), (), RuleSuite>::builder(&self.config)
+    Request::<(), (), get_org_rule_suite::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -133,12 +4862,12 @@ impl GitHubReposAPI {
     &self,
     org: impl Into<String>,
     ruleset_id: impl Into<i64>,
-  ) -> Request<(), (), RepositoryRuleset> {
+  ) -> Request<(), (), get_org_ruleset::Response> {
     let org = org.into();
     let ruleset_id = ruleset_id.into();
     let url = format!("/orgs/{org}/rulesets/{ruleset_id}");
 
-    Request::<(), (), RepositoryRuleset>::builder(&self.config)
+    Request::<(), (), get_org_ruleset::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -152,12 +4881,12 @@ impl GitHubReposAPI {
     &self,
     org: impl Into<String>,
     ruleset_id: impl Into<i64>,
-  ) -> Request<ReposUpdateOrgRulesetRequest, (), RepositoryRuleset> {
+  ) -> Request<update_org_ruleset::Request, (), update_org_ruleset::Response> {
     let org = org.into();
     let ruleset_id = ruleset_id.into();
     let url = format!("/orgs/{org}/rulesets/{ruleset_id}");
 
-    Request::<ReposUpdateOrgRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
+    Request::<update_org_ruleset::Request, (), update_org_ruleset::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -192,12 +4921,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), FullRepository> {
+  ) -> Request<(), (), get::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}");
 
-    Request::<(), (), FullRepository>::builder(&self.config)
+    Request::<(), (), get::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -211,12 +4940,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposUpdateRequest, (), FullRepository> {
+  ) -> Request<update::Request, (), update::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}");
 
-    Request::<ReposUpdateRequest, (), FullRepository>::builder(&self.config)
+    Request::<update::Request, (), update::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -257,12 +4986,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListActivitiesQuery, Vec<Activity>> {
+  ) -> Request<(), list_activities::Query, list_activities::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/activity");
 
-    Request::<(), ReposListActivitiesQuery, Vec<Activity>>::builder(&self.config)
+    Request::<(), list_activities::Query, list_activities::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -278,12 +5007,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<Autolink>> {
+  ) -> Request<(), (), list_autolinks::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/autolinks");
 
-    Request::<(), (), Vec<Autolink>>::builder(&self.config)
+    Request::<(), (), list_autolinks::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -297,12 +5026,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreateAutolinkRequest, (), Autolink> {
+  ) -> Request<create_autolink::Request, (), create_autolink::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/autolinks");
 
-    Request::<ReposCreateAutolinkRequest, (), Autolink>::builder(&self.config)
+    Request::<create_autolink::Request, (), create_autolink::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -319,13 +5048,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     autolink_id: impl Into<i64>,
-  ) -> Request<(), (), Autolink> {
+  ) -> Request<(), (), get_autolink::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let autolink_id = autolink_id.into();
     let url = format!("/repos/{owner}/{repo}/autolinks/{autolink_id}");
 
-    Request::<(), (), Autolink>::builder(&self.config)
+    Request::<(), (), get_autolink::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -362,12 +5091,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), CheckAutomatedSecurityFixes> {
+  ) -> Request<(), (), check_automated_security_fixes::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/automated-security-fixes");
 
-    Request::<(), (), CheckAutomatedSecurityFixes>::builder(&self.config)
+    Request::<(), (), check_automated_security_fixes::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -418,12 +5147,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListBranchesQuery, Vec<ShortBranch>> {
+  ) -> Request<(), list_branches::Query, list_branches::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/branches");
 
-    Request::<(), ReposListBranchesQuery, Vec<ShortBranch>>::builder(&self.config)
+    Request::<(), list_branches::Query, list_branches::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -437,13 +5166,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), BranchWithProtection> {
+  ) -> Request<(), (), get_branch::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}");
 
-    Request::<(), (), BranchWithProtection>::builder(&self.config)
+    Request::<(), (), get_branch::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -458,13 +5187,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), BranchProtection> {
+  ) -> Request<(), (), get_branch_protection::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection");
 
-    Request::<(), (), BranchProtection>::builder(&self.config)
+    Request::<(), (), get_branch_protection::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -485,15 +5214,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposUpdateBranchProtectionRequest, (), ProtectedBranch> {
+  ) -> Request<update_branch_protection::Request, (), update_branch_protection::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection");
 
-    Request::<ReposUpdateBranchProtectionRequest, (), ProtectedBranch>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<update_branch_protection::Request, (), update_branch_protection::Response>::builder(
+      &self.config,
+    )
+    .put(url)
+    .build()
   }
 
   /// **Delete branch protection**
@@ -527,13 +5258,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), ProtectedBranchAdminEnforced> {
+  ) -> Request<(), (), get_admin_branch_protection::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins");
 
-    Request::<(), (), ProtectedBranchAdminEnforced>::builder(&self.config)
+    Request::<(), (), get_admin_branch_protection::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -550,13 +5281,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), ProtectedBranchAdminEnforced> {
+  ) -> Request<(), (), set_admin_branch_protection::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/enforce_admins");
 
-    Request::<(), (), ProtectedBranchAdminEnforced>::builder(&self.config)
+    Request::<(), (), set_admin_branch_protection::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -594,14 +5325,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), ProtectedBranchPullRequestReview> {
+  ) -> Request<(), (), get_pull_request_review_protection::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url =
       format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews");
 
-    Request::<(), (), ProtectedBranchPullRequestReview>::builder(&self.config)
+    Request::<(), (), get_pull_request_review_protection::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -620,17 +5351,24 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposUpdatePullRequestReviewProtectionRequest, (), ProtectedBranchPullRequestReview>
-  {
+  ) -> Request<
+    update_pull_request_review_protection::Request,
+    (),
+    update_pull_request_review_protection::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url =
       format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_pull_request_reviews");
 
-    Request::<ReposUpdatePullRequestReviewProtectionRequest, (), ProtectedBranchPullRequestReview>::builder(&self.config)
-      .patch(url)
-      .build()
+    Request::<
+      update_pull_request_review_protection::Request,
+      (),
+      update_pull_request_review_protection::Response,
+    >::builder(&self.config)
+    .patch(url)
+    .build()
   }
 
   /// **Delete pull request review protection**
@@ -669,13 +5407,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), ProtectedBranchAdminEnforced> {
+  ) -> Request<(), (), get_commit_signature_protection::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures");
 
-    Request::<(), (), ProtectedBranchAdminEnforced>::builder(&self.config)
+    Request::<(), (), get_commit_signature_protection::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -692,13 +5430,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), ProtectedBranchAdminEnforced> {
+  ) -> Request<(), (), create_commit_signature_protection::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures");
 
-    Request::<(), (), ProtectedBranchAdminEnforced>::builder(&self.config)
+    Request::<(), (), create_commit_signature_protection::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -736,13 +5474,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), StatusCheckPolicy> {
+  ) -> Request<(), (), get_status_checks_protection::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks");
 
-    Request::<(), (), StatusCheckPolicy>::builder(&self.config)
+    Request::<(), (), get_status_checks_protection::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -759,13 +5497,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposUpdateStatusCheckProtectionRequest, (), StatusCheckPolicy> {
+  ) -> Request<update_status_check_protection::Request, (), update_status_check_protection::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks");
 
-    Request::<ReposUpdateStatusCheckProtectionRequest, (), StatusCheckPolicy>::builder(&self.config)
+    Request::<update_status_check_protection::Request, (), update_status_check_protection::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -801,14 +5540,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), Vec<String>> {
+  ) -> Request<(), (), get_all_status_check_contexts::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url =
       format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
-    Request::<(), (), Vec<String>>::builder(&self.config)
+    Request::<(), (), get_all_status_check_contexts::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -823,16 +5562,18 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposAddStatusCheckContextsRequest, (), Vec<String>> {
+  ) -> Request<add_status_check_contexts::Request, (), add_status_check_contexts::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url =
       format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
-    Request::<ReposAddStatusCheckContextsRequest, (), Vec<String>>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<add_status_check_contexts::Request, (), add_status_check_contexts::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Set status check contexts**
@@ -845,16 +5586,18 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposSetStatusCheckContextsRequest, (), Vec<String>> {
+  ) -> Request<set_status_check_contexts::Request, (), set_status_check_contexts::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url =
       format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
-    Request::<ReposSetStatusCheckContextsRequest, (), Vec<String>>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<set_status_check_contexts::Request, (), set_status_check_contexts::Response>::builder(
+      &self.config,
+    )
+    .put(url)
+    .build()
   }
 
   /// **Remove status check contexts**
@@ -867,14 +5610,15 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposRemoveStatusCheckContextsRequest, (), Vec<String>> {
+  ) -> Request<remove_status_check_contexts::Request, (), remove_status_check_contexts::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url =
       format!("/repos/{owner}/{repo}/branches/{branch}/protection/required_status_checks/contexts");
 
-    Request::<ReposRemoveStatusCheckContextsRequest, (), Vec<String>>::builder(&self.config)
+    Request::<remove_status_check_contexts::Request, (), remove_status_check_contexts::Response>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -893,13 +5637,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), BranchRestrictionPolicy> {
+  ) -> Request<(), (), get_access_restrictions::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions");
 
-    Request::<(), (), BranchRestrictionPolicy>::builder(&self.config)
+    Request::<(), (), get_access_restrictions::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -939,13 +5683,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), Vec<Integration>> {
+  ) -> Request<(), (), get_apps_with_access_to_protected_branch::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<(), (), Vec<Integration>>::builder(&self.config)
+    Request::<(), (), get_apps_with_access_to_protected_branch::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -962,13 +5706,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposAddAppAccessRestrictionsRequest, (), Vec<Integration>> {
+  ) -> Request<add_app_access_restrictions::Request, (), add_app_access_restrictions::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<ReposAddAppAccessRestrictionsRequest, (), Vec<Integration>>::builder(&self.config)
+    Request::<add_app_access_restrictions::Request, (), add_app_access_restrictions::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -985,13 +5729,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposSetAppAccessRestrictionsRequest, (), Vec<Integration>> {
+  ) -> Request<set_app_access_restrictions::Request, (), set_app_access_restrictions::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<ReposSetAppAccessRestrictionsRequest, (), Vec<Integration>>::builder(&self.config)
+    Request::<set_app_access_restrictions::Request, (), set_app_access_restrictions::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1008,13 +5752,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposRemoveAppAccessRestrictionsRequest, (), Vec<Integration>> {
+  ) -> Request<remove_app_access_restrictions::Request, (), remove_app_access_restrictions::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/apps");
 
-    Request::<ReposRemoveAppAccessRestrictionsRequest, (), Vec<Integration>>::builder(&self.config)
+    Request::<remove_app_access_restrictions::Request, (), remove_app_access_restrictions::Response>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -1031,13 +5776,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), Vec<Team>> {
+  ) -> Request<(), (), get_teams_with_access_to_protected_branch::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
 
-    Request::<(), (), Vec<Team>>::builder(&self.config)
+    Request::<(), (), get_teams_with_access_to_protected_branch::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1054,13 +5799,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposAddTeamAccessRestrictionsRequest, (), Vec<Team>> {
+  ) -> Request<add_team_access_restrictions::Request, (), add_team_access_restrictions::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
 
-    Request::<ReposAddTeamAccessRestrictionsRequest, (), Vec<Team>>::builder(&self.config)
+    Request::<add_team_access_restrictions::Request, (), add_team_access_restrictions::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1077,13 +5823,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposSetTeamAccessRestrictionsRequest, (), Vec<Team>> {
+  ) -> Request<set_team_access_restrictions::Request, (), set_team_access_restrictions::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
 
-    Request::<ReposSetTeamAccessRestrictionsRequest, (), Vec<Team>>::builder(&self.config)
+    Request::<set_team_access_restrictions::Request, (), set_team_access_restrictions::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1100,13 +5847,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposRemoveTeamAccessRestrictionsRequest, (), Vec<Team>> {
+  ) -> Request<
+    remove_team_access_restrictions::Request,
+    (),
+    remove_team_access_restrictions::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/teams");
 
-    Request::<ReposRemoveTeamAccessRestrictionsRequest, (), Vec<Team>>::builder(&self.config)
+    Request::<remove_team_access_restrictions::Request, (), remove_team_access_restrictions::Response>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -1123,13 +5874,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), (), Vec<SimpleUser>> {
+  ) -> Request<(), (), get_users_with_access_to_protected_branch::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
 
-    Request::<(), (), Vec<SimpleUser>>::builder(&self.config)
+    Request::<(), (), get_users_with_access_to_protected_branch::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1150,13 +5901,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposAddUserAccessRestrictionsRequest, (), Vec<SimpleUser>> {
+  ) -> Request<add_user_access_restrictions::Request, (), add_user_access_restrictions::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
 
-    Request::<ReposAddUserAccessRestrictionsRequest, (), Vec<SimpleUser>>::builder(&self.config)
+    Request::<add_user_access_restrictions::Request, (), add_user_access_restrictions::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1177,13 +5929,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposSetUserAccessRestrictionsRequest, (), Vec<SimpleUser>> {
+  ) -> Request<set_user_access_restrictions::Request, (), set_user_access_restrictions::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
 
-    Request::<ReposSetUserAccessRestrictionsRequest, (), Vec<SimpleUser>>::builder(&self.config)
+    Request::<set_user_access_restrictions::Request, (), set_user_access_restrictions::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1204,13 +5957,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposRemoveUserAccessRestrictionsRequest, (), Vec<SimpleUser>> {
+  ) -> Request<
+    remove_user_access_restrictions::Request,
+    (),
+    remove_user_access_restrictions::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/protection/restrictions/users");
 
-    Request::<ReposRemoveUserAccessRestrictionsRequest, (), Vec<SimpleUser>>::builder(&self.config)
+    Request::<remove_user_access_restrictions::Request, (), remove_user_access_restrictions::Response>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -1231,13 +5988,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<ReposRenameBranchRequest, (), BranchWithProtection> {
+  ) -> Request<rename_branch::Request, (), rename_branch::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/branches/{branch}/rename");
 
-    Request::<ReposRenameBranchRequest, (), BranchWithProtection>::builder(&self.config)
+    Request::<rename_branch::Request, (), rename_branch::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -1255,12 +6012,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposCodeownersErrorsQuery, CodeownersErrors> {
+  ) -> Request<(), codeowners_errors::Query, codeowners_errors::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/codeowners/errors");
 
-    Request::<(), ReposCodeownersErrorsQuery, CodeownersErrors>::builder(&self.config)
+    Request::<(), codeowners_errors::Query, codeowners_errors::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1281,12 +6038,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListCollaboratorsQuery, Vec<Collaborator>> {
+  ) -> Request<(), list_collaborators::Query, list_collaborators::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/collaborators");
 
-    Request::<(), ReposListCollaboratorsQuery, Vec<Collaborator>>::builder(&self.config)
+    Request::<(), list_collaborators::Query, list_collaborators::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1348,13 +6105,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<ReposAddCollaboratorRequest, (), RepositoryInvitation> {
+  ) -> Request<add_collaborator::Request, (), add_collaborator::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let username = username.into();
     let url = format!("/repos/{owner}/{repo}/collaborators/{username}");
 
-    Request::<ReposAddCollaboratorRequest, (), RepositoryInvitation>::builder(&self.config)
+    Request::<add_collaborator::Request, (), add_collaborator::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1416,13 +6173,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     username: impl Into<String>,
-  ) -> Request<(), (), RepositoryCollaboratorPermission> {
+  ) -> Request<(), (), get_collaborator_permission_level::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let username = username.into();
     let url = format!("/repos/{owner}/{repo}/collaborators/{username}/permission");
 
-    Request::<(), (), RepositoryCollaboratorPermission>::builder(&self.config)
+    Request::<(), (), get_collaborator_permission_level::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1443,12 +6200,13 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListCommitCommentsForRepoQuery, Vec<CommitComment>> {
+  ) -> Request<(), list_commit_comments_for_repo::Query, list_commit_comments_for_repo::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/comments");
 
-    Request::<(), ReposListCommitCommentsForRepoQuery, Vec<CommitComment>>::builder(&self.config)
+    Request::<(), list_commit_comments_for_repo::Query, list_commit_comments_for_repo::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1470,13 +6228,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<(), (), CommitComment> {
+  ) -> Request<(), (), get_commit_comment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/comments/{comment_id}");
 
-    Request::<(), (), CommitComment>::builder(&self.config)
+    Request::<(), (), get_commit_comment::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1498,15 +6256,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<ReposUpdateCommitCommentRequest, (), CommitComment> {
+  ) -> Request<update_commit_comment::Request, (), update_commit_comment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let comment_id = comment_id.into();
     let url = format!("/repos/{owner}/{repo}/comments/{comment_id}");
 
-    Request::<ReposUpdateCommitCommentRequest, (), CommitComment>::builder(&self.config)
-      .patch(url)
-      .build()
+    Request::<update_commit_comment::Request, (), update_commit_comment::Response>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
   }
 
   /// **Delete a commit comment**
@@ -1565,12 +6325,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListCommitsQuery, Vec<Commit>> {
+  ) -> Request<(), list_commits::Query, list_commits::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/commits");
 
-    Request::<(), ReposListCommitsQuery, Vec<Commit>>::builder(&self.config)
+    Request::<(), list_commits::Query, list_commits::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1587,13 +6347,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     commit_sha: impl Into<String>,
-  ) -> Request<(), (), Vec<BranchShort>> {
+  ) -> Request<(), (), list_branches_for_head_commit::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let commit_sha = commit_sha.into();
     let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/branches-where-head");
 
-    Request::<(), (), Vec<BranchShort>>::builder(&self.config)
+    Request::<(), (), list_branches_for_head_commit::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1615,15 +6375,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     commit_sha: impl Into<String>,
-  ) -> Request<(), ReposListCommentsForCommitQuery, Vec<CommitComment>> {
+  ) -> Request<(), list_comments_for_commit::Query, list_comments_for_commit::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let commit_sha = commit_sha.into();
     let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/comments");
 
-    Request::<(), ReposListCommentsForCommitQuery, Vec<CommitComment>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_comments_for_commit::Query, list_comments_for_commit::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Create a commit comment**
@@ -1645,15 +6407,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     commit_sha: impl Into<String>,
-  ) -> Request<ReposCreateCommitCommentRequest, (), CommitComment> {
+  ) -> Request<create_commit_comment::Request, (), create_commit_comment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let commit_sha = commit_sha.into();
     let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/comments");
 
-    Request::<ReposCreateCommitCommentRequest, (), CommitComment>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_commit_comment::Request, (), create_commit_comment::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **List pull requests associated with a commit**
@@ -1668,15 +6432,21 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     commit_sha: impl Into<String>,
-  ) -> Request<(), ReposListPullRequestsAssociatedWithCommitQuery, Vec<PullRequestSimple>> {
+  ) -> Request<
+    (),
+    list_pull_requests_associated_with_commit::Query,
+    list_pull_requests_associated_with_commit::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let commit_sha = commit_sha.into();
     let url = format!("/repos/{owner}/{repo}/commits/{commit_sha}/pulls");
 
-    Request::<(), ReposListPullRequestsAssociatedWithCommitQuery, Vec<PullRequestSimple>>::builder(
-      &self.config,
-    )
+    Request::<
+      (),
+      list_pull_requests_associated_with_commit::Query,
+      list_pull_requests_associated_with_commit::Response,
+    >::builder(&self.config)
     .get(url)
     .build()
   }
@@ -1728,13 +6498,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<(), ReposGetCommitQuery, Commit> {
+  ) -> Request<(), get_commit::Query, get_commit::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/commits/{ref_}");
 
-    Request::<(), ReposGetCommitQuery, Commit>::builder(&self.config)
+    Request::<(), get_commit::Query, get_commit::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1756,13 +6526,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<(), ReposGetCombinedStatusForRefQuery, CombinedCommitStatus> {
+  ) -> Request<(), get_combined_status_for_ref::Query, get_combined_status_for_ref::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/commits/{ref_}/status");
 
-    Request::<(), ReposGetCombinedStatusForRefQuery, CombinedCommitStatus>::builder(&self.config)
+    Request::<(), get_combined_status_for_ref::Query, get_combined_status_for_ref::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1779,13 +6549,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ref_: impl Into<String>,
-  ) -> Request<(), ReposListCommitStatusesForRefQuery, Vec<Status>> {
+  ) -> Request<(), list_commit_statuses_for_ref::Query, list_commit_statuses_for_ref::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let ref_ = ref_.into();
     let url = format!("/repos/{owner}/{repo}/commits/{ref_}/statuses");
 
-    Request::<(), ReposListCommitStatusesForRefQuery, Vec<Status>>::builder(&self.config)
+    Request::<(), list_commit_statuses_for_ref::Query, list_commit_statuses_for_ref::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1809,12 +6579,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), CommunityProfile> {
+  ) -> Request<(), (), get_community_profile_metrics::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/community/profile");
 
-    Request::<(), (), CommunityProfile>::builder(&self.config)
+    Request::<(), (), get_community_profile_metrics::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1878,13 +6648,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     basehead: impl Into<String>,
-  ) -> Request<(), ReposCompareCommitsQuery, CommitComparison> {
+  ) -> Request<(), compare_commits::Query, compare_commits::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let basehead = basehead.into();
     let url = format!("/repos/{owner}/{repo}/compare/{basehead}");
 
-    Request::<(), ReposCompareCommitsQuery, CommitComparison>::builder(&self.config)
+    Request::<(), compare_commits::Query, compare_commits::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1923,13 +6693,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     path: impl Into<String>,
-  ) -> Request<(), ReposGetContentQuery, ReposGetContentResponse> {
+  ) -> Request<(), get_content::Query, get_content::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let path = path.into();
     let url = format!("/repos/{owner}/{repo}/contents/{path}");
 
-    Request::<(), ReposGetContentQuery, ReposGetContentResponse>::builder(&self.config)
+    Request::<(), get_content::Query, get_content::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -1948,13 +6718,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     path: impl Into<String>,
-  ) -> Request<ReposCreateOrUpdateFileContentsRequest, (), FileCommit> {
+  ) -> Request<create_or_update_file_contents::Request, (), create_or_update_file_contents::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let path = path.into();
     let url = format!("/repos/{owner}/{repo}/contents/{path}");
 
-    Request::<ReposCreateOrUpdateFileContentsRequest, (), FileCommit>::builder(&self.config)
+    Request::<create_or_update_file_contents::Request, (), create_or_update_file_contents::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -1977,13 +6748,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     path: impl Into<String>,
-  ) -> Request<ReposDeleteFileRequest, (), FileCommit> {
+  ) -> Request<delete_file::Request, (), delete_file::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let path = path.into();
     let url = format!("/repos/{owner}/{repo}/contents/{path}");
 
-    Request::<ReposDeleteFileRequest, (), FileCommit>::builder(&self.config)
+    Request::<delete_file::Request, (), delete_file::Response>::builder(&self.config)
       .delete(url)
       .build()
   }
@@ -1999,12 +6770,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListContributorsQuery, Vec<Contributor>> {
+  ) -> Request<(), list_contributors::Query, list_contributors::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/contributors");
 
-    Request::<(), ReposListContributorsQuery, Vec<Contributor>>::builder(&self.config)
+    Request::<(), list_contributors::Query, list_contributors::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2018,12 +6789,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListDeploymentsQuery, Vec<Deployment>> {
+  ) -> Request<(), list_deployments::Query, list_deployments::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/deployments");
 
-    Request::<(), ReposListDeploymentsQuery, Vec<Deployment>>::builder(&self.config)
+    Request::<(), list_deployments::Query, list_deployments::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2084,16 +6855,14 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreateDeploymentRequest, (), ReposCreateDeploymentResponse> {
+  ) -> Request<create_deployment::Request, (), create_deployment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/deployments");
 
-    Request::<ReposCreateDeploymentRequest, (), ReposCreateDeploymentResponse>::builder(
-      &self.config,
-    )
-    .post(url)
-    .build()
+    Request::<create_deployment::Request, (), create_deployment::Response>::builder(&self.config)
+      .post(url)
+      .build()
   }
 
   /// **Get a deployment**
@@ -2105,13 +6874,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     deployment_id: impl Into<i64>,
-  ) -> Request<(), (), Deployment> {
+  ) -> Request<(), (), get_deployment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let deployment_id = deployment_id.into();
     let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}");
 
-    Request::<(), (), Deployment>::builder(&self.config)
+    Request::<(), (), get_deployment::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2156,15 +6925,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     deployment_id: impl Into<i64>,
-  ) -> Request<(), ReposListDeploymentStatusesQuery, Vec<DeploymentStatus>> {
+  ) -> Request<(), list_deployment_statuses::Query, list_deployment_statuses::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let deployment_id = deployment_id.into();
     let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses");
 
-    Request::<(), ReposListDeploymentStatusesQuery, Vec<DeploymentStatus>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_deployment_statuses::Query, list_deployment_statuses::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Create a deployment status**
@@ -2179,15 +6950,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     deployment_id: impl Into<i64>,
-  ) -> Request<ReposCreateDeploymentStatusRequest, (), DeploymentStatus> {
+  ) -> Request<create_deployment_status::Request, (), create_deployment_status::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let deployment_id = deployment_id.into();
     let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses");
 
-    Request::<ReposCreateDeploymentStatusRequest, (), DeploymentStatus>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_deployment_status::Request, (), create_deployment_status::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Get a deployment status**
@@ -2201,14 +6974,14 @@ impl GitHubReposAPI {
     repo: impl Into<String>,
     deployment_id: impl Into<i64>,
     status_id: impl Into<i64>,
-  ) -> Request<(), (), DeploymentStatus> {
+  ) -> Request<(), (), get_deployment_status::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let deployment_id = deployment_id.into();
     let status_id = status_id.into();
     let url = format!("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses/{status_id}");
 
-    Request::<(), (), DeploymentStatus>::builder(&self.config)
+    Request::<(), (), get_deployment_status::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2228,12 +7001,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<ReposCreateDispatchEventRequest, ()> {
+  ) -> NoContentRequest<create_dispatch_event::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/dispatches");
 
-    NoContentRequest::<ReposCreateDispatchEventRequest, ()>::builder(&self.config)
+    NoContentRequest::<create_dispatch_event::Request, ()>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -2251,12 +7024,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposGetAllEnvironmentsQuery, ReposGetAllEnvironmentsResponse> {
+  ) -> Request<(), get_all_environments::Query, get_all_environments::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/environments");
 
-    Request::<(), ReposGetAllEnvironmentsQuery, ReposGetAllEnvironmentsResponse>::builder(
+    Request::<(), get_all_environments::Query, get_all_environments::Response>::builder(
       &self.config,
     )
     .get(url)
@@ -2277,13 +7050,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     environment_name: impl Into<String>,
-  ) -> Request<(), (), Environment> {
+  ) -> Request<(), (), get_environment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let url = format!("/repos/{owner}/{repo}/environments/{environment_name}");
 
-    Request::<(), (), Environment>::builder(&self.config)
+    Request::<(), (), get_environment::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2304,13 +7077,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     environment_name: impl Into<String>,
-  ) -> Request<ReposCreateOrUpdateEnvironmentRequest, (), Environment> {
+  ) -> Request<create_or_update_environment::Request, (), create_or_update_environment::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let url = format!("/repos/{owner}/{repo}/environments/{environment_name}");
 
-    Request::<ReposCreateOrUpdateEnvironmentRequest, (), Environment>::builder(&self.config)
+    Request::<create_or_update_environment::Request, (), create_or_update_environment::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -2350,7 +7124,7 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     environment_name: impl Into<String>,
-  ) -> Request<(), ReposListDeploymentBranchPoliciesQuery, ReposListDeploymentBranchPoliciesResponse>
+  ) -> Request<(), list_deployment_branch_policies::Query, list_deployment_branch_policies::Response>
   {
     let owner = owner.into();
     let repo = repo.into();
@@ -2358,7 +7132,7 @@ impl GitHubReposAPI {
     let url =
       format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies");
 
-    Request::<(), ReposListDeploymentBranchPoliciesQuery, ReposListDeploymentBranchPoliciesResponse>::builder(&self.config)
+    Request::<(), list_deployment_branch_policies::Query, list_deployment_branch_policies::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2375,18 +7149,20 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     environment_name: impl Into<String>,
-  ) -> Request<DeploymentBranchPolicyNamePatternWithType, (), DeploymentBranchPolicy> {
+  ) -> Request<
+    create_deployment_branch_policy::Request,
+    (),
+    create_deployment_branch_policy::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let url =
       format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies");
 
-    Request::<DeploymentBranchPolicyNamePatternWithType, (), DeploymentBranchPolicy>::builder(
-      &self.config,
-    )
-    .post(url)
-    .build()
+    Request::<create_deployment_branch_policy::Request, (), create_deployment_branch_policy::Response>::builder(&self.config)
+      .post(url)
+      .build()
   }
 
   /// **Get a deployment branch policy**
@@ -2404,14 +7180,14 @@ impl GitHubReposAPI {
     repo: impl Into<String>,
     environment_name: impl Into<String>,
     branch_policy_id: impl Into<i64>,
-  ) -> Request<(), (), DeploymentBranchPolicy> {
+  ) -> Request<(), (), get_deployment_branch_policy::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let branch_policy_id = branch_policy_id.into();
     let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}");
 
-    Request::<(), (), DeploymentBranchPolicy>::builder(&self.config)
+    Request::<(), (), get_deployment_branch_policy::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2429,14 +7205,18 @@ impl GitHubReposAPI {
     repo: impl Into<String>,
     environment_name: impl Into<String>,
     branch_policy_id: impl Into<i64>,
-  ) -> Request<DeploymentBranchPolicyNamePattern, (), DeploymentBranchPolicy> {
+  ) -> Request<
+    update_deployment_branch_policy::Request,
+    (),
+    update_deployment_branch_policy::Response,
+  > {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let branch_policy_id = branch_policy_id.into();
     let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment-branch-policies/{branch_policy_id}");
 
-    Request::<DeploymentBranchPolicyNamePattern, (), DeploymentBranchPolicy>::builder(&self.config)
+    Request::<update_deployment_branch_policy::Request, (), update_deployment_branch_policy::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -2480,14 +7260,14 @@ impl GitHubReposAPI {
     environment_name: impl Into<String>,
     repo: impl Into<String>,
     owner: impl Into<String>,
-  ) -> Request<(), (), ReposGetAllDeploymentProtectionRulesResponse> {
+  ) -> Request<(), (), get_all_deployment_protection_rules::Response> {
     let environment_name = environment_name.into();
     let repo = repo.into();
     let owner = owner.into();
     let url =
       format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules");
 
-    Request::<(), (), ReposGetAllDeploymentProtectionRulesResponse>::builder(&self.config)
+    Request::<(), (), get_all_deployment_protection_rules::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2508,16 +7288,22 @@ impl GitHubReposAPI {
     environment_name: impl Into<String>,
     repo: impl Into<String>,
     owner: impl Into<String>,
-  ) -> Request<ReposCreateDeploymentProtectionRuleRequest, (), DeploymentProtectionRule> {
+  ) -> Request<
+    create_deployment_protection_rule::Request,
+    (),
+    create_deployment_protection_rule::Response,
+  > {
     let environment_name = environment_name.into();
     let repo = repo.into();
     let owner = owner.into();
     let url =
       format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules");
 
-    Request::<ReposCreateDeploymentProtectionRuleRequest, (), DeploymentProtectionRule>::builder(
-      &self.config,
-    )
+    Request::<
+      create_deployment_protection_rule::Request,
+      (),
+      create_deployment_protection_rule::Response,
+    >::builder(&self.config)
     .post(url)
     .build()
   }
@@ -2540,8 +7326,8 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
   ) -> Request<
     (),
-    ReposListCustomDeploymentRuleIntegrationsQuery,
-    ReposListCustomDeploymentRuleIntegrationsResponse,
+    list_custom_deployment_rule_integrations::Query,
+    list_custom_deployment_rule_integrations::Response,
   > {
     let environment_name = environment_name.into();
     let repo = repo.into();
@@ -2552,8 +7338,8 @@ impl GitHubReposAPI {
 
     Request::<
       (),
-      ReposListCustomDeploymentRuleIntegrationsQuery,
-      ReposListCustomDeploymentRuleIntegrationsResponse,
+      list_custom_deployment_rule_integrations::Query,
+      list_custom_deployment_rule_integrations::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -2574,14 +7360,14 @@ impl GitHubReposAPI {
     repo: impl Into<String>,
     environment_name: impl Into<String>,
     protection_rule_id: impl Into<i64>,
-  ) -> Request<(), (), DeploymentProtectionRule> {
+  ) -> Request<(), (), get_custom_deployment_protection_rule::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let environment_name = environment_name.into();
     let protection_rule_id = protection_rule_id.into();
     let url = format!("/repos/{owner}/{repo}/environments/{environment_name}/deployment_protection_rules/{protection_rule_id}");
 
-    Request::<(), (), DeploymentProtectionRule>::builder(&self.config)
+    Request::<(), (), get_custom_deployment_protection_rule::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2621,12 +7407,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListForksQuery, Vec<MinimalRepository>> {
+  ) -> Request<(), list_forks::Query, list_forks::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/forks");
 
-    Request::<(), ReposListForksQuery, Vec<MinimalRepository>>::builder(&self.config)
+    Request::<(), list_forks::Query, list_forks::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2644,12 +7430,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreateForkRequest, (), FullRepository> {
+  ) -> Request<create_fork::Request, (), create_fork::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/forks");
 
-    Request::<ReposCreateForkRequest, (), FullRepository>::builder(&self.config)
+    Request::<create_fork::Request, (), create_fork::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -2663,12 +7449,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListWebhooksQuery, Vec<Hook>> {
+  ) -> Request<(), list_webhooks::Query, list_webhooks::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/hooks");
 
-    Request::<(), ReposListWebhooksQuery, Vec<Hook>>::builder(&self.config)
+    Request::<(), list_webhooks::Query, list_webhooks::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2683,12 +7469,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreateWebhookRequest, (), Hook> {
+  ) -> Request<create_webhook::Request, (), create_webhook::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/hooks");
 
-    Request::<ReposCreateWebhookRequest, (), Hook>::builder(&self.config)
+    Request::<create_webhook::Request, (), create_webhook::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -2703,13 +7489,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), (), Hook> {
+  ) -> Request<(), (), get_webhook::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}");
 
-    Request::<(), (), Hook>::builder(&self.config)
+    Request::<(), (), get_webhook::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2724,13 +7510,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<ReposUpdateWebhookRequest, (), Hook> {
+  ) -> Request<update_webhook::Request, (), update_webhook::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}");
 
-    Request::<ReposUpdateWebhookRequest, (), Hook>::builder(&self.config)
+    Request::<update_webhook::Request, (), update_webhook::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -2767,13 +7553,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), (), WebhookConfig> {
+  ) -> Request<(), (), get_webhook_config_for_repo::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/config");
 
-    Request::<(), (), WebhookConfig>::builder(&self.config)
+    Request::<(), (), get_webhook_config_for_repo::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2790,13 +7576,14 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfig> {
+  ) -> Request<update_webhook_config_for_repo::Request, (), update_webhook_config_for_repo::Response>
+  {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/config");
 
-    Request::<ReposUpdateWebhookConfigForRepoRequest, (), WebhookConfig>::builder(&self.config)
+    Request::<update_webhook_config_for_repo::Request, (), update_webhook_config_for_repo::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -2811,15 +7598,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
-  ) -> Request<(), ReposListWebhookDeliveriesQuery, Vec<HookDeliveryItem>> {
+  ) -> Request<(), list_webhook_deliveries::Query, list_webhook_deliveries::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries");
 
-    Request::<(), ReposListWebhookDeliveriesQuery, Vec<HookDeliveryItem>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), list_webhook_deliveries::Query, list_webhook_deliveries::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get a delivery for a repository webhook**
@@ -2833,14 +7622,14 @@ impl GitHubReposAPI {
     repo: impl Into<String>,
     hook_id: impl Into<i64>,
     delivery_id: impl Into<i64>,
-  ) -> Request<(), (), HookDelivery> {
+  ) -> Request<(), (), get_webhook_delivery::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let hook_id = hook_id.into();
     let delivery_id = delivery_id.into();
     let url = format!("/repos/{owner}/{repo}/hooks/{hook_id}/deliveries/{delivery_id}");
 
-    Request::<(), (), HookDelivery>::builder(&self.config)
+    Request::<(), (), get_webhook_delivery::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2921,12 +7710,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListInvitationsQuery, Vec<RepositoryInvitation>> {
+  ) -> Request<(), list_invitations::Query, list_invitations::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/invitations");
 
-    Request::<(), ReposListInvitationsQuery, Vec<RepositoryInvitation>>::builder(&self.config)
+    Request::<(), list_invitations::Query, list_invitations::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2940,13 +7729,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     invitation_id: impl Into<i64>,
-  ) -> Request<ReposUpdateInvitationRequest, (), RepositoryInvitation> {
+  ) -> Request<update_invitation::Request, (), update_invitation::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let invitation_id = invitation_id.into();
     let url = format!("/repos/{owner}/{repo}/invitations/{invitation_id}");
 
-    Request::<ReposUpdateInvitationRequest, (), RepositoryInvitation>::builder(&self.config)
+    Request::<update_invitation::Request, (), update_invitation::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -2979,12 +7768,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListDeployKeysQuery, Vec<DeployKey>> {
+  ) -> Request<(), list_deploy_keys::Query, list_deploy_keys::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/keys");
 
-    Request::<(), ReposListDeployKeysQuery, Vec<DeployKey>>::builder(&self.config)
+    Request::<(), list_deploy_keys::Query, list_deploy_keys::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -2998,12 +7787,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreateDeployKeyRequest, (), DeployKey> {
+  ) -> Request<create_deploy_key::Request, (), create_deploy_key::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/keys");
 
-    Request::<ReposCreateDeployKeyRequest, (), DeployKey>::builder(&self.config)
+    Request::<create_deploy_key::Request, (), create_deploy_key::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -3017,13 +7806,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     key_id: impl Into<i64>,
-  ) -> Request<(), (), DeployKey> {
+  ) -> Request<(), (), get_deploy_key::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let key_id = key_id.into();
     let url = format!("/repos/{owner}/{repo}/keys/{key_id}");
 
-    Request::<(), (), DeployKey>::builder(&self.config)
+    Request::<(), (), get_deploy_key::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3058,12 +7847,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), serde_json::Value> {
+  ) -> Request<(), (), list_languages::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/languages");
 
-    Request::<(), (), serde_json::Value>::builder(&self.config)
+    Request::<(), (), list_languages::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3077,12 +7866,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposMergeUpstreamRequest, (), MergedUpstream> {
+  ) -> Request<merge_upstream::Request, (), merge_upstream::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/merge-upstream");
 
-    Request::<ReposMergeUpstreamRequest, (), MergedUpstream>::builder(&self.config)
+    Request::<merge_upstream::Request, (), merge_upstream::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -3095,12 +7884,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposMergeRequest, (), Commit> {
+  ) -> Request<merge::Request, (), merge::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/merges");
 
-    Request::<ReposMergeRequest, (), Commit>::builder(&self.config)
+    Request::<merge::Request, (), merge::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -3116,12 +7905,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Page> {
+  ) -> Request<(), (), get_pages::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages");
 
-    Request::<(), (), Page>::builder(&self.config)
+    Request::<(), (), get_pages::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3139,12 +7928,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<serde_json::Value, (), Page> {
+  ) -> Request<create_pages_site::Request, (), create_pages_site::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages");
 
-    Request::<serde_json::Value, (), Page>::builder(&self.config)
+    Request::<create_pages_site::Request, (), create_pages_site::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -3162,12 +7951,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<serde_json::Value, ()> {
+  ) -> NoContentRequest<update_information_about_pages_site::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages");
 
-    NoContentRequest::<serde_json::Value, ()>::builder(&self.config)
+    NoContentRequest::<update_information_about_pages_site::Request, ()>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -3206,12 +7995,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListPagesBuildsQuery, Vec<PageBuild>> {
+  ) -> Request<(), list_pages_builds::Query, list_pages_builds::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages/builds");
 
-    Request::<(), ReposListPagesBuildsQuery, Vec<PageBuild>>::builder(&self.config)
+    Request::<(), list_pages_builds::Query, list_pages_builds::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3227,12 +8016,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), PageBuildStatus> {
+  ) -> Request<(), (), request_pages_build::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages/builds");
 
-    Request::<(), (), PageBuildStatus>::builder(&self.config)
+    Request::<(), (), request_pages_build::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -3248,12 +8037,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), PageBuild> {
+  ) -> Request<(), (), get_latest_pages_build::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages/builds/latest");
 
-    Request::<(), (), PageBuild>::builder(&self.config)
+    Request::<(), (), get_latest_pages_build::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3270,13 +8059,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     build_id: impl Into<i64>,
-  ) -> Request<(), (), PageBuild> {
+  ) -> Request<(), (), get_pages_build::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let build_id = build_id.into();
     let url = format!("/repos/{owner}/{repo}/pages/builds/{build_id}");
 
-    Request::<(), (), PageBuild>::builder(&self.config)
+    Request::<(), (), get_pages_build::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3292,14 +8081,16 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreatePagesDeploymentRequest, (), PageDeployment> {
+  ) -> Request<create_pages_deployment::Request, (), create_pages_deployment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages/deployments");
 
-    Request::<ReposCreatePagesDeploymentRequest, (), PageDeployment>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_pages_deployment::Request, (), create_pages_deployment::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Get the status of a GitHub Pages deployment**
@@ -3314,13 +8105,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     pages_deployment_id: impl Into<StringOrInteger>,
-  ) -> Request<(), (), PagesDeploymentStatus> {
+  ) -> Request<(), (), get_pages_deployment::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let pages_deployment_id = pages_deployment_id.into();
     let url = format!("/repos/{owner}/{repo}/pages/deployments/{pages_deployment_id}");
 
-    Request::<(), (), PagesDeploymentStatus>::builder(&self.config)
+    Request::<(), (), get_pages_deployment::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3363,12 +8154,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ReposGetPagesHealthCheckResponse> {
+  ) -> Request<(), (), get_pages_health_check::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/pages/health");
 
-    Request::<(), (), ReposGetPagesHealthCheckResponse>::builder(&self.config)
+    Request::<(), (), get_pages_health_check::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3382,12 +8173,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ReposCheckPrivateVulnerabilityReportingResponse> {
+  ) -> Request<(), (), check_private_vulnerability_reporting::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/private-vulnerability-reporting");
 
-    Request::<(), (), ReposCheckPrivateVulnerabilityReportingResponse>::builder(&self.config)
+    Request::<(), (), check_private_vulnerability_reporting::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3440,12 +8231,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<CustomPropertyValue>> {
+  ) -> Request<(), (), get_custom_properties_values::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/properties/values");
 
-    Request::<(), (), Vec<CustomPropertyValue>>::builder(&self.config)
+    Request::<(), (), get_custom_properties_values::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3462,14 +8253,16 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> NoContentRequest<ReposCreateOrUpdateCustomPropertiesValuesRequest, ()> {
+  ) -> NoContentRequest<create_or_update_custom_properties_values::Request, ()> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/properties/values");
 
-    NoContentRequest::<ReposCreateOrUpdateCustomPropertiesValuesRequest, ()>::builder(&self.config)
-      .patch(url)
-      .build()
+    NoContentRequest::<create_or_update_custom_properties_values::Request, ()>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
   }
 
   /// **Get a repository README**
@@ -3486,12 +8279,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposGetReadmeQuery, ContentFile> {
+  ) -> Request<(), get_readme::Query, get_readme::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/readme");
 
-    Request::<(), ReposGetReadmeQuery, ContentFile>::builder(&self.config)
+    Request::<(), get_readme::Query, get_readme::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3511,15 +8304,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     dir: impl Into<String>,
-  ) -> Request<(), ReposGetReadmeInDirectoryQuery, ContentFile> {
+  ) -> Request<(), get_readme_in_directory::Query, get_readme_in_directory::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let dir = dir.into();
     let url = format!("/repos/{owner}/{repo}/readme/{dir}");
 
-    Request::<(), ReposGetReadmeInDirectoryQuery, ContentFile>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), get_readme_in_directory::Query, get_readme_in_directory::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **List releases**
@@ -3533,12 +8328,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListReleasesQuery, Vec<Release>> {
+  ) -> Request<(), list_releases::Query, list_releases::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/releases");
 
-    Request::<(), ReposListReleasesQuery, Vec<Release>>::builder(&self.config)
+    Request::<(), list_releases::Query, list_releases::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3554,12 +8349,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreateReleaseRequest, (), Release> {
+  ) -> Request<create_release::Request, (), create_release::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/releases");
 
-    Request::<ReposCreateReleaseRequest, (), Release>::builder(&self.config)
+    Request::<create_release::Request, (), create_release::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -3574,13 +8369,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     asset_id: impl Into<i64>,
-  ) -> Request<(), (), ReleaseAsset> {
+  ) -> Request<(), (), get_release_asset::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let asset_id = asset_id.into();
     let url = format!("/repos/{owner}/{repo}/releases/assets/{asset_id}");
 
-    Request::<(), (), ReleaseAsset>::builder(&self.config)
+    Request::<(), (), get_release_asset::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3595,15 +8390,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     asset_id: impl Into<i64>,
-  ) -> Request<ReposUpdateReleaseAssetRequest, (), ReleaseAsset> {
+  ) -> Request<update_release_asset::Request, (), update_release_asset::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let asset_id = asset_id.into();
     let url = format!("/repos/{owner}/{repo}/releases/assets/{asset_id}");
 
-    Request::<ReposUpdateReleaseAssetRequest, (), ReleaseAsset>::builder(&self.config)
-      .patch(url)
-      .build()
+    Request::<update_release_asset::Request, (), update_release_asset::Response>::builder(
+      &self.config,
+    )
+    .patch(url)
+    .build()
   }
 
   /// **Delete a release asset**
@@ -3635,14 +8432,16 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposGenerateReleaseNotesRequest, (), ReleaseNotesContent> {
+  ) -> Request<generate_release_notes::Request, (), generate_release_notes::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/releases/generate-notes");
 
-    Request::<ReposGenerateReleaseNotesRequest, (), ReleaseNotesContent>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<generate_release_notes::Request, (), generate_release_notes::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Get the latest release**
@@ -3656,12 +8455,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Release> {
+  ) -> Request<(), (), get_latest_release::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/releases/latest");
 
-    Request::<(), (), Release>::builder(&self.config)
+    Request::<(), (), get_latest_release::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3676,13 +8475,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     tag: impl Into<String>,
-  ) -> Request<(), (), Release> {
+  ) -> Request<(), (), get_release_by_tag::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let tag = tag.into();
     let url = format!("/repos/{owner}/{repo}/releases/tags/{tag}");
 
-    Request::<(), (), Release>::builder(&self.config)
+    Request::<(), (), get_release_by_tag::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3701,13 +8500,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     release_id: impl Into<i64>,
-  ) -> Request<(), (), Release> {
+  ) -> Request<(), (), get_release::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let release_id = release_id.into();
     let url = format!("/repos/{owner}/{repo}/releases/{release_id}");
 
-    Request::<(), (), Release>::builder(&self.config)
+    Request::<(), (), get_release::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3722,13 +8521,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     release_id: impl Into<i64>,
-  ) -> Request<ReposUpdateReleaseRequest, (), Release> {
+  ) -> Request<update_release::Request, (), update_release::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let release_id = release_id.into();
     let url = format!("/repos/{owner}/{repo}/releases/{release_id}");
 
-    Request::<ReposUpdateReleaseRequest, (), Release>::builder(&self.config)
+    Request::<update_release::Request, (), update_release::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -3763,13 +8562,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     release_id: impl Into<i64>,
-  ) -> Request<(), ReposListReleaseAssetsQuery, Vec<ReleaseAsset>> {
+  ) -> Request<(), list_release_assets::Query, list_release_assets::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let release_id = release_id.into();
     let url = format!("/repos/{owner}/{repo}/releases/{release_id}/assets");
 
-    Request::<(), ReposListReleaseAssetsQuery, Vec<ReleaseAsset>>::builder(&self.config)
+    Request::<(), list_release_assets::Query, list_release_assets::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3802,15 +8601,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     release_id: impl Into<i64>,
-  ) -> Request<(), ReposUploadReleaseAssetQuery, ReleaseAsset> {
+  ) -> Request<(), upload_release_asset::Query, upload_release_asset::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let release_id = release_id.into();
     let url = format!("/repos/{owner}/{repo}/releases/{release_id}/assets");
 
-    Request::<(), ReposUploadReleaseAssetQuery, ReleaseAsset>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<(), upload_release_asset::Query, upload_release_asset::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Get rules for a branch**
@@ -3826,13 +8627,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     branch: impl Into<String>,
-  ) -> Request<(), ReposGetBranchRulesQuery, Vec<RepositoryRuleDetailed>> {
+  ) -> Request<(), get_branch_rules::Query, get_branch_rules::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let branch = branch.into();
     let url = format!("/repos/{owner}/{repo}/rules/branches/{branch}");
 
-    Request::<(), ReposGetBranchRulesQuery, Vec<RepositoryRuleDetailed>>::builder(&self.config)
+    Request::<(), get_branch_rules::Query, get_branch_rules::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3846,12 +8647,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposGetRepoRulesetsQuery, Vec<RepositoryRuleset>> {
+  ) -> Request<(), get_repo_rulesets::Query, get_repo_rulesets::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/rulesets");
 
-    Request::<(), ReposGetRepoRulesetsQuery, Vec<RepositoryRuleset>>::builder(&self.config)
+    Request::<(), get_repo_rulesets::Query, get_repo_rulesets::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3865,14 +8666,16 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreateRepoRulesetRequest, (), RepositoryRuleset> {
+  ) -> Request<create_repo_ruleset::Request, (), create_repo_ruleset::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/rulesets");
 
-    Request::<ReposCreateRepoRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_repo_ruleset::Request, (), create_repo_ruleset::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **List repository rule suites**
@@ -3885,14 +8688,16 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposGetRepoRuleSuitesQuery, RuleSuites> {
+  ) -> Request<(), get_repo_rule_suites::Query, get_repo_rule_suites::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/rulesets/rule-suites");
 
-    Request::<(), ReposGetRepoRuleSuitesQuery, RuleSuites>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<(), get_repo_rule_suites::Query, get_repo_rule_suites::Response>::builder(
+      &self.config,
+    )
+    .get(url)
+    .build()
   }
 
   /// **Get a repository rule suite**
@@ -3906,13 +8711,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     rule_suite_id: impl Into<i64>,
-  ) -> Request<(), (), RuleSuite> {
+  ) -> Request<(), (), get_repo_rule_suite::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let rule_suite_id = rule_suite_id.into();
     let url = format!("/repos/{owner}/{repo}/rulesets/rule-suites/{rule_suite_id}");
 
-    Request::<(), (), RuleSuite>::builder(&self.config)
+    Request::<(), (), get_repo_rule_suite::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3927,13 +8732,13 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ruleset_id: impl Into<i64>,
-  ) -> Request<(), ReposGetRepoRulesetQuery, RepositoryRuleset> {
+  ) -> Request<(), get_repo_ruleset::Query, get_repo_ruleset::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let ruleset_id = ruleset_id.into();
     let url = format!("/repos/{owner}/{repo}/rulesets/{ruleset_id}");
 
-    Request::<(), ReposGetRepoRulesetQuery, RepositoryRuleset>::builder(&self.config)
+    Request::<(), get_repo_ruleset::Query, get_repo_ruleset::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -3948,15 +8753,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     ruleset_id: impl Into<i64>,
-  ) -> Request<ReposUpdateRepoRulesetRequest, (), RepositoryRuleset> {
+  ) -> Request<update_repo_ruleset::Request, (), update_repo_ruleset::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let ruleset_id = ruleset_id.into();
     let url = format!("/repos/{owner}/{repo}/rulesets/{ruleset_id}");
 
-    Request::<ReposUpdateRepoRulesetRequest, (), RepositoryRuleset>::builder(&self.config)
-      .put(url)
-      .build()
+    Request::<update_repo_ruleset::Request, (), update_repo_ruleset::Response>::builder(
+      &self.config,
+    )
+    .put(url)
+    .build()
   }
 
   /// **Delete a repository ruleset**
@@ -3994,12 +8801,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<Vec<i64>>> {
+  ) -> Request<(), (), get_code_frequency_stats::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/stats/code_frequency");
 
-    Request::<(), (), Vec<Vec<i64>>>::builder(&self.config)
+    Request::<(), (), get_code_frequency_stats::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4013,12 +8820,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<CommitActivity>> {
+  ) -> Request<(), (), get_commit_activity_stats::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/stats/commit_activity");
 
-    Request::<(), (), Vec<CommitActivity>>::builder(&self.config)
+    Request::<(), (), get_commit_activity_stats::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4040,12 +8847,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<ContributorActivity>> {
+  ) -> Request<(), (), get_contributors_stats::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/stats/contributors");
 
-    Request::<(), (), Vec<ContributorActivity>>::builder(&self.config)
+    Request::<(), (), get_contributors_stats::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4063,12 +8870,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), ParticipationStats> {
+  ) -> Request<(), (), get_participation_stats::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/stats/participation");
 
-    Request::<(), (), ParticipationStats>::builder(&self.config)
+    Request::<(), (), get_participation_stats::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4088,12 +8895,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<Vec<i64>>> {
+  ) -> Request<(), (), get_punch_card_stats::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/stats/punch_card");
 
-    Request::<(), (), Vec<Vec<i64>>>::builder(&self.config)
+    Request::<(), (), get_punch_card_stats::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4110,15 +8917,17 @@ impl GitHubReposAPI {
     owner: impl Into<String>,
     repo: impl Into<String>,
     sha: impl Into<String>,
-  ) -> Request<ReposCreateCommitStatusRequest, (), Status> {
+  ) -> Request<create_commit_status::Request, (), create_commit_status::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let sha = sha.into();
     let url = format!("/repos/{owner}/{repo}/statuses/{sha}");
 
-    Request::<ReposCreateCommitStatusRequest, (), Status>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_commit_status::Request, (), create_commit_status::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **List repository tags**
@@ -4129,12 +8938,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListTagsQuery, Vec<Tag>> {
+  ) -> Request<(), list_tags::Query, list_tags::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/tags");
 
-    Request::<(), ReposListTagsQuery, Vec<Tag>>::builder(&self.config)
+    Request::<(), list_tags::Query, list_tags::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4150,12 +8959,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<TagProtection>> {
+  ) -> Request<(), (), list_tag_protection::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/tags/protection");
 
-    Request::<(), (), Vec<TagProtection>>::builder(&self.config)
+    Request::<(), (), list_tag_protection::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4170,14 +8979,16 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposCreateTagProtectionRequest, (), TagProtection> {
+  ) -> Request<create_tag_protection::Request, (), create_tag_protection::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/tags/protection");
 
-    Request::<ReposCreateTagProtectionRequest, (), TagProtection>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_tag_protection::Request, (), create_tag_protection::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **Delete a tag protection state for a repository**
@@ -4239,12 +9050,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposListTeamsQuery, Vec<Team>> {
+  ) -> Request<(), list_teams::Query, list_teams::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/teams");
 
-    Request::<(), ReposListTeamsQuery, Vec<Team>>::builder(&self.config)
+    Request::<(), list_teams::Query, list_teams::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4257,12 +9068,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposGetAllTopicsQuery, Topic> {
+  ) -> Request<(), get_all_topics::Query, get_all_topics::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/topics");
 
-    Request::<(), ReposGetAllTopicsQuery, Topic>::builder(&self.config)
+    Request::<(), get_all_topics::Query, get_all_topics::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4275,12 +9086,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposReplaceAllTopicsRequest, (), Topic> {
+  ) -> Request<replace_all_topics::Request, (), replace_all_topics::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/topics");
 
-    Request::<ReposReplaceAllTopicsRequest, (), Topic>::builder(&self.config)
+    Request::<replace_all_topics::Request, (), replace_all_topics::Response>::builder(&self.config)
       .put(url)
       .build()
   }
@@ -4294,12 +9105,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposGetClonesQuery, CloneTraffic> {
+  ) -> Request<(), get_clones::Query, get_clones::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/traffic/clones");
 
-    Request::<(), ReposGetClonesQuery, CloneTraffic>::builder(&self.config)
+    Request::<(), get_clones::Query, get_clones::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4313,12 +9124,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<ContentTraffic>> {
+  ) -> Request<(), (), get_top_paths::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/traffic/popular/paths");
 
-    Request::<(), (), Vec<ContentTraffic>>::builder(&self.config)
+    Request::<(), (), get_top_paths::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4332,12 +9143,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), (), Vec<ReferrerTraffic>> {
+  ) -> Request<(), (), get_top_referrers::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/traffic/popular/referrers");
 
-    Request::<(), (), Vec<ReferrerTraffic>>::builder(&self.config)
+    Request::<(), (), get_top_referrers::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4351,12 +9162,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<(), ReposGetViewsQuery, ViewTraffic> {
+  ) -> Request<(), get_views::Query, get_views::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/traffic/views");
 
-    Request::<(), ReposGetViewsQuery, ViewTraffic>::builder(&self.config)
+    Request::<(), get_views::Query, get_views::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4370,12 +9181,12 @@ impl GitHubReposAPI {
     &self,
     owner: impl Into<String>,
     repo: impl Into<String>,
-  ) -> Request<ReposTransferRequest, (), MinimalRepository> {
+  ) -> Request<transfer::Request, (), transfer::Response> {
     let owner = owner.into();
     let repo = repo.into();
     let url = format!("/repos/{owner}/{repo}/transfer");
 
-    Request::<ReposTransferRequest, (), MinimalRepository>::builder(&self.config)
+    Request::<transfer::Request, (), transfer::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -4475,14 +9286,16 @@ impl GitHubReposAPI {
     &self,
     template_owner: impl Into<String>,
     template_repo: impl Into<String>,
-  ) -> Request<ReposCreateUsingTemplateRequest, (), FullRepository> {
+  ) -> Request<create_using_template::Request, (), create_using_template::Response> {
     let template_owner = template_owner.into();
     let template_repo = template_repo.into();
     let url = format!("/repos/{template_owner}/{template_repo}/generate");
 
-    Request::<ReposCreateUsingTemplateRequest, (), FullRepository>::builder(&self.config)
-      .post(url)
-      .build()
+    Request::<create_using_template::Request, (), create_using_template::Response>::builder(
+      &self.config,
+    )
+    .post(url)
+    .build()
   }
 
   /// **List public repositories**
@@ -4494,10 +9307,10 @@ impl GitHubReposAPI {
   /// - Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of repositories.
   ///
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-public-repositories](https://docs.github.com/rest/repos/repos#list-public-repositories)
-  pub fn list_public(&self) -> Request<(), ReposListPublicQuery, Vec<MinimalRepository>> {
+  pub fn list_public(&self) -> Request<(), list_public::Query, list_public::Response> {
     let url = format!("/repositories");
 
-    Request::<(), ReposListPublicQuery, Vec<MinimalRepository>>::builder(&self.config)
+    Request::<(), list_public::Query, list_public::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4511,10 +9324,10 @@ impl GitHubReposAPI {
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user](https://docs.github.com/rest/repos/repos#list-repositories-for-the-authenticated-user)
   pub fn list_for_authenticated_user(
     &self,
-  ) -> Request<(), ReposListForAuthenticatedUserQuery, Vec<Repository>> {
+  ) -> Request<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response> {
     let url = format!("/user/repos");
 
-    Request::<(), ReposListForAuthenticatedUserQuery, Vec<Repository>>::builder(&self.config)
+    Request::<(), list_for_authenticated_user::Query, list_for_authenticated_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -4528,10 +9341,11 @@ impl GitHubReposAPI {
   /// *Documentation*: [https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user](https://docs.github.com/rest/repos/repos#create-a-repository-for-the-authenticated-user)
   pub fn create_for_authenticated_user(
     &self,
-  ) -> Request<ReposCreateForAuthenticatedUserRequest, (), FullRepository> {
+  ) -> Request<create_for_authenticated_user::Request, (), create_for_authenticated_user::Response>
+  {
     let url = format!("/user/repos");
 
-    Request::<ReposCreateForAuthenticatedUserRequest, (), FullRepository>::builder(&self.config)
+    Request::<create_for_authenticated_user::Request, (), create_for_authenticated_user::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -4543,12 +9357,20 @@ impl GitHubReposAPI {
   /// *Documentation*: [https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user](https://docs.github.com/rest/collaborators/invitations#list-repository-invitations-for-the-authenticated-user)
   pub fn list_invitations_for_authenticated_user(
     &self,
-  ) -> Request<(), ReposListInvitationsForAuthenticatedUserQuery, Vec<RepositoryInvitation>> {
+  ) -> Request<
+    (),
+    list_invitations_for_authenticated_user::Query,
+    list_invitations_for_authenticated_user::Response,
+  > {
     let url = format!("/user/repository_invitations");
 
-    Request::<(), ReposListInvitationsForAuthenticatedUserQuery, Vec<RepositoryInvitation>>::builder(&self.config)
-      .get(url)
-      .build()
+    Request::<
+      (),
+      list_invitations_for_authenticated_user::Query,
+      list_invitations_for_authenticated_user::Response,
+    >::builder(&self.config)
+    .get(url)
+    .build()
   }
 
   /// **Accept a repository invitation**
@@ -4591,11 +9413,11 @@ impl GitHubReposAPI {
   pub fn list_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), ReposListForUserQuery, Vec<MinimalRepository>> {
+  ) -> Request<(), list_for_user::Query, list_for_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/repos");
 
-    Request::<(), ReposListForUserQuery, Vec<MinimalRepository>>::builder(&self.config)
+    Request::<(), list_for_user::Query, list_for_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }

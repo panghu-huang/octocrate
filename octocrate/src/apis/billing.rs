@@ -1,6 +1,52 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod get_github_actions_billing_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsBillingUsage;
+}
+
+pub mod get_github_packages_billing_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = PackagesBillingUsage;
+}
+
+pub mod get_shared_storage_billing_org {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CombinedBillingUsage;
+}
+
+pub mod get_github_actions_billing_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ActionsBillingUsage;
+}
+
+pub mod get_github_packages_billing_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = PackagesBillingUsage;
+}
+
+pub mod get_shared_storage_billing_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = CombinedBillingUsage;
+}
 
 /// Monitor charges and usage from Actions and Packages.
 pub struct GitHubBillingAPI {
@@ -26,11 +72,11 @@ impl GitHubBillingAPI {
   pub fn get_github_actions_billing_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), ActionsBillingUsage> {
+  ) -> Request<(), (), get_github_actions_billing_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/settings/billing/actions");
 
-    Request::<(), (), ActionsBillingUsage>::builder(&self.config)
+    Request::<(), (), get_github_actions_billing_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -47,11 +93,11 @@ impl GitHubBillingAPI {
   pub fn get_github_packages_billing_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), PackagesBillingUsage> {
+  ) -> Request<(), (), get_github_packages_billing_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/settings/billing/packages");
 
-    Request::<(), (), PackagesBillingUsage>::builder(&self.config)
+    Request::<(), (), get_github_packages_billing_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -68,11 +114,11 @@ impl GitHubBillingAPI {
   pub fn get_shared_storage_billing_org(
     &self,
     org: impl Into<String>,
-  ) -> Request<(), (), CombinedBillingUsage> {
+  ) -> Request<(), (), get_shared_storage_billing_org::Response> {
     let org = org.into();
     let url = format!("/orgs/{org}/settings/billing/shared-storage");
 
-    Request::<(), (), CombinedBillingUsage>::builder(&self.config)
+    Request::<(), (), get_shared_storage_billing_org::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -89,11 +135,11 @@ impl GitHubBillingAPI {
   pub fn get_github_actions_billing_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), (), ActionsBillingUsage> {
+  ) -> Request<(), (), get_github_actions_billing_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/settings/billing/actions");
 
-    Request::<(), (), ActionsBillingUsage>::builder(&self.config)
+    Request::<(), (), get_github_actions_billing_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -110,11 +156,11 @@ impl GitHubBillingAPI {
   pub fn get_github_packages_billing_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), (), PackagesBillingUsage> {
+  ) -> Request<(), (), get_github_packages_billing_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/settings/billing/packages");
 
-    Request::<(), (), PackagesBillingUsage>::builder(&self.config)
+    Request::<(), (), get_github_packages_billing_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -131,11 +177,11 @@ impl GitHubBillingAPI {
   pub fn get_shared_storage_billing_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), (), CombinedBillingUsage> {
+  ) -> Request<(), (), get_shared_storage_billing_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/settings/billing/shared-storage");
 
-    Request::<(), (), CombinedBillingUsage>::builder(&self.config)
+    Request::<(), (), get_shared_storage_billing_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }

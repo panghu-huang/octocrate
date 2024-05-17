@@ -104,7 +104,7 @@ impl SchemaParser {
         }
       }
 
-      ctx.add_reference(&struct_.name, ParsedData::Struct(struct_.clone()));
+      self.add_reference(ctx, &struct_.name, ParsedData::Struct(struct_.clone()));
 
       struct_
     };

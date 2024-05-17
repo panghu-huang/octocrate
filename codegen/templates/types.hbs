@@ -1,0 +1,107 @@
+{{#if types }}
+{{#each types }}
+{{#if alias }}
+{{#if ../render_features}}
+{{render_features_cfg tags}}
+{{/if}}
+{{#if description }}
+{{#each (split_lines description)}}
+/// {{this}}
+{{/each}}
+{{/if}}
+pub type {{ alias }} = {{ type_name }};
+{{/if}}
+{{/each}}
+{{/if}}
+
+{{#if enums }}
+{{#each enums }}
+{{#if ../render_features}}
+{{render_features_cfg tags}}
+{{/if}}
+{{#if description }}
+{{#each (split_lines description)}}
+/// {{this}}
+{{/each}}
+{{/if}}
+#[derive(Debug, Clone, Serialize, Deserialize{{#if copiable }}, PartialEq, Copy{{/if}})]
+{{#if untagged }}
+#[serde(untagged)]
+{{/if}}
+pub enum {{ name }} {
+  {{#each fields }}
+  {{#if tags}}
+  {{#if ../render_features}}
+  {{render_features_cfg tags}}
+  {{/if}}
+  {{/if}}
+  {{#if description }}
+  {{#each (split_lines description)}}
+  /// {{this}}
+  {{/each}}
+  {{/if}}
+  {{#if type_name }}
+  {{ name }}({{ type_name }}),
+  {{else}}
+  {{#if rename }}
+  #[serde(rename = "{{ rename }}")]
+  {{/if}}
+  {{ name }},
+  {{/if}}
+  {{/each}}
+}
+{{#if copiable }}
+
+{{#if ../render_features}}
+{{render_features_cfg tags}}
+{{/if}}
+impl ToString for {{ name }} {
+  fn to_string(&self) -> String {
+    match self {
+      {{#each fields }}
+      {{#if rename }}
+      {{ ../name }}::{{ name }} => "{{ rename }}".to_string(),
+      {{else}}
+      {{ ../name }}::{{ name }} => "{{ name }}".to_string(),
+      {{/if}}
+      {{/each}}
+    }
+  }
+}
+{{/if}}
+
+{{/each}}
+{{/if}}
+
+{{#if structs }}
+{{#each structs }}
+{{#if ../render_features}}
+{{render_features_cfg tags}}
+{{/if}}
+{{#if description}}
+{{#each (split_lines description)}}
+/// {{this}}
+{{/each}}
+{{/if}}
+#[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+#[builder(field_defaults(setter(into)))]
+pub struct {{ name }} {
+  {{#each fields }}
+  {{#if description }}
+  {{#each (split_lines description)}}
+  /// {{this}}
+  {{/each}}
+  {{/if}}
+  {{#if rename }}
+  #[serde(rename = "{{ rename }}")]
+  {{/if}}
+  {{#if (is_optional_field type_name)}}
+  #[serde(skip_serializing_if = "Option::is_none")]
+  #[builder(default, setter(strip_option))]
+  {{/if}}
+  pub {{ name }}: {{ type_name }},
+  {{/each}}
+}
+
+{{/each}}
+{{/if}}

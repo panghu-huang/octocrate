@@ -1,4 +1,4 @@
-use octocrate::{APIConfig, GitHubAPI, PersonalAccessToken, ReposListForUserQuery};
+use octocrate::{repos, APIConfig, GitHubAPI, PersonalAccessToken};
 
 #[tokio::test]
 async fn test_pagination() {
@@ -13,7 +13,7 @@ async fn test_pagination() {
 
   let api = GitHubAPI::new(&config);
 
-  let query = ReposListForUserQuery::builder()
+  let query = repos::list_for_user::Query::builder()
     .page(1)
     .per_page(10)
     .build();
@@ -30,7 +30,7 @@ async fn test_pagination() {
 
   assert_eq!(repository.owner.login, "ifiokjr");
 
-  let query = ReposListForUserQuery::builder()
+  let query = repos::list_for_user::Query::builder()
     .page(repositories.pages.last.unwrap())
     .per_page(10)
     .build();

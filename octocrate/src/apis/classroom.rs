@@ -1,6 +1,94 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod get_an_assignment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = ClassroomAssignment;
+}
+
+pub mod list_accepted_assigments_for_an_assignment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<ClassroomAcceptedAssignment>;
+
+  /// Query for `List accepted assignments for an assignment`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod get_assignment_grades {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<ClassroomAssignmentGrade>;
+}
+
+pub mod list_classrooms {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleClassroom>;
+
+  /// Query for `List classrooms`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
+
+pub mod get_a_classroom {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Classroom;
+}
+
+pub mod list_assignments_for_a_classroom {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<SimpleClassroomAssignment>;
+
+  /// Query for `List assignments for a classroom`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+  }
+}
 
 /// Interact with GitHub Classroom.
 pub struct GitHubClassroomAPI {
@@ -22,11 +110,11 @@ impl GitHubClassroomAPI {
   pub fn get_an_assignment(
     &self,
     assignment_id: impl Into<i64>,
-  ) -> Request<(), (), ClassroomAssignment> {
+  ) -> Request<(), (), get_an_assignment::Response> {
     let assignment_id = assignment_id.into();
     let url = format!("/assignments/{assignment_id}");
 
-    Request::<(), (), ClassroomAssignment>::builder(&self.config)
+    Request::<(), (), get_an_assignment::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -41,16 +129,16 @@ impl GitHubClassroomAPI {
     assignment_id: impl Into<i64>,
   ) -> Request<
     (),
-    ClassroomListAcceptedAssigmentsForAnAssignmentQuery,
-    Vec<ClassroomAcceptedAssignment>,
+    list_accepted_assigments_for_an_assignment::Query,
+    list_accepted_assigments_for_an_assignment::Response,
   > {
     let assignment_id = assignment_id.into();
     let url = format!("/assignments/{assignment_id}/accepted_assignments");
 
     Request::<
       (),
-      ClassroomListAcceptedAssigmentsForAnAssignmentQuery,
-      Vec<ClassroomAcceptedAssignment>,
+      list_accepted_assigments_for_an_assignment::Query,
+      list_accepted_assigments_for_an_assignment::Response,
     >::builder(&self.config)
     .get(url)
     .build()
@@ -64,11 +152,11 @@ impl GitHubClassroomAPI {
   pub fn get_assignment_grades(
     &self,
     assignment_id: impl Into<i64>,
-  ) -> Request<(), (), Vec<ClassroomAssignmentGrade>> {
+  ) -> Request<(), (), get_assignment_grades::Response> {
     let assignment_id = assignment_id.into();
     let url = format!("/assignments/{assignment_id}/grades");
 
-    Request::<(), (), Vec<ClassroomAssignmentGrade>>::builder(&self.config)
+    Request::<(), (), get_assignment_grades::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -78,10 +166,10 @@ impl GitHubClassroomAPI {
   /// Lists GitHub Classroom classrooms for the current user. Classrooms will only be returned if the current user is an administrator of one or more GitHub Classrooms.
   ///
   /// *Documentation*: [https://docs.github.com/rest/classroom/classroom#list-classrooms](https://docs.github.com/rest/classroom/classroom#list-classrooms)
-  pub fn list_classrooms(&self) -> Request<(), ClassroomListClassroomsQuery, Vec<SimpleClassroom>> {
+  pub fn list_classrooms(&self) -> Request<(), list_classrooms::Query, list_classrooms::Response> {
     let url = format!("/classrooms");
 
-    Request::<(), ClassroomListClassroomsQuery, Vec<SimpleClassroom>>::builder(&self.config)
+    Request::<(), list_classrooms::Query, list_classrooms::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -91,11 +179,14 @@ impl GitHubClassroomAPI {
   /// Gets a GitHub Classroom classroom for the current user. Classroom will only be returned if the current user is an administrator of the GitHub Classroom.
   ///
   /// *Documentation*: [https://docs.github.com/rest/classroom/classroom#get-a-classroom](https://docs.github.com/rest/classroom/classroom#get-a-classroom)
-  pub fn get_a_classroom(&self, classroom_id: impl Into<i64>) -> Request<(), (), Classroom> {
+  pub fn get_a_classroom(
+    &self,
+    classroom_id: impl Into<i64>,
+  ) -> Request<(), (), get_a_classroom::Response> {
     let classroom_id = classroom_id.into();
     let url = format!("/classrooms/{classroom_id}");
 
-    Request::<(), (), Classroom>::builder(&self.config)
+    Request::<(), (), get_a_classroom::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -108,11 +199,15 @@ impl GitHubClassroomAPI {
   pub fn list_assignments_for_a_classroom(
     &self,
     classroom_id: impl Into<i64>,
-  ) -> Request<(), ClassroomListAssignmentsForAClassroomQuery, Vec<SimpleClassroomAssignment>> {
+  ) -> Request<
+    (),
+    list_assignments_for_a_classroom::Query,
+    list_assignments_for_a_classroom::Response,
+  > {
     let classroom_id = classroom_id.into();
     let url = format!("/classrooms/{classroom_id}/assignments");
 
-    Request::<(), ClassroomListAssignmentsForAClassroomQuery, Vec<SimpleClassroomAssignment>>::builder(&self.config)
+    Request::<(), list_assignments_for_a_classroom::Query, list_assignments_for_a_classroom::Response>::builder(&self.config)
       .get(url)
       .build()
   }

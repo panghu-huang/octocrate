@@ -1,6 +1,500 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod code {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "indexed")]
+    Indexed,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Indexed => "indexed".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryOrder {
+    #[serde(rename = "desc")]
+    Desc,
+    #[serde(rename = "asc")]
+    Asc,
+  }
+
+  impl ToString for QueryOrder {
+    fn to_string(&self) -> String {
+      match self {
+        QueryOrder::Desc => "desc".to_string(),
+        QueryOrder::Asc => "asc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `Search code`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching code](https://docs.github.com/search-github/searching-on-github/searching-code)" for a detailed list of qualifiers.
+    pub q: String,
+    /// **This field is deprecated.** Sorts the results of your query. Can only be `indexed`, which indicates how recently a file has been indexed by the GitHub search infrastructure. Default: [best match](https://docs.github.com/rest/search/search#ranking-search-results)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// **This field is deprecated.** Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub order: Option<QueryOrder>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub incomplete_results: bool,
+    pub items: Vec<CodeSearchResultItem>,
+    pub total_count: i64,
+  }
+}
+
+pub mod commits {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "author-date")]
+    AuthorDate,
+    #[serde(rename = "committer-date")]
+    CommitterDate,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::AuthorDate => "author-date".to_string(),
+        QuerySort::CommitterDate => "committer-date".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryOrder {
+    #[serde(rename = "desc")]
+    Desc,
+    #[serde(rename = "asc")]
+    Asc,
+  }
+
+  impl ToString for QueryOrder {
+    fn to_string(&self) -> String {
+      match self {
+        QueryOrder::Desc => "desc".to_string(),
+        QueryOrder::Asc => "asc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `Search commits`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching commits](https://docs.github.com/search-github/searching-on-github/searching-commits)" for a detailed list of qualifiers.
+    pub q: String,
+    /// Sorts the results of your query by `author-date` or `committer-date`. Default: [best match](https://docs.github.com/rest/search/search#ranking-search-results)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub order: Option<QueryOrder>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub incomplete_results: bool,
+    pub items: Vec<CommitSearchResultItem>,
+    pub total_count: i64,
+  }
+}
+
+pub mod issues_and_pull_requests {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "comments")]
+    Comments,
+    #[serde(rename = "reactions")]
+    Reactions,
+    #[serde(rename = "reactions-+1")]
+    ReactionsMinusPlusOne,
+    #[serde(rename = "reactions--1")]
+    ReactionsMinusMinusOne,
+    #[serde(rename = "reactions-smile")]
+    ReactionsSmile,
+    #[serde(rename = "reactions-thinking_face")]
+    ReactionsThinkingFace,
+    #[serde(rename = "reactions-heart")]
+    ReactionsHeart,
+    #[serde(rename = "reactions-tada")]
+    ReactionsTada,
+    #[serde(rename = "interactions")]
+    Interactions,
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Comments => "comments".to_string(),
+        QuerySort::Reactions => "reactions".to_string(),
+        QuerySort::ReactionsMinusPlusOne => "reactions-+1".to_string(),
+        QuerySort::ReactionsMinusMinusOne => "reactions--1".to_string(),
+        QuerySort::ReactionsSmile => "reactions-smile".to_string(),
+        QuerySort::ReactionsThinkingFace => "reactions-thinking_face".to_string(),
+        QuerySort::ReactionsHeart => "reactions-heart".to_string(),
+        QuerySort::ReactionsTada => "reactions-tada".to_string(),
+        QuerySort::Interactions => "interactions".to_string(),
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryOrder {
+    #[serde(rename = "desc")]
+    Desc,
+    #[serde(rename = "asc")]
+    Asc,
+  }
+
+  impl ToString for QueryOrder {
+    fn to_string(&self) -> String {
+      match self {
+        QueryOrder::Desc => "desc".to_string(),
+        QueryOrder::Asc => "asc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `Search issues and pull requests`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching issues and pull requests](https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests)" for a detailed list of qualifiers.
+    pub q: String,
+    /// Sorts the results of your query by the number of `comments`, `reactions`, `reactions-+1`, `reactions--1`, `reactions-smile`, `reactions-thinking_face`, `reactions-heart`, `reactions-tada`, or `interactions`. You can also sort results by how recently the items were `created` or `updated`, Default: [best match](https://docs.github.com/rest/search/search#ranking-search-results)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub order: Option<QueryOrder>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub incomplete_results: bool,
+    pub items: Vec<IssueSearchResultItem>,
+    pub total_count: i64,
+  }
+}
+
+pub mod labels {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "created")]
+    Created,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Created => "created".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryOrder {
+    #[serde(rename = "desc")]
+    Desc,
+    #[serde(rename = "asc")]
+    Asc,
+  }
+
+  impl ToString for QueryOrder {
+    fn to_string(&self) -> String {
+      match self {
+        QueryOrder::Desc => "desc".to_string(),
+        QueryOrder::Asc => "asc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `Search labels`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The id of the repository.
+    pub repository_id: i64,
+    /// The search keywords. This endpoint does not accept qualifiers in the query. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query).
+    pub q: String,
+    /// Sorts the results of your query by when the label was `created` or `updated`. Default: [best match](https://docs.github.com/rest/search/search#ranking-search-results)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub order: Option<QueryOrder>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub incomplete_results: bool,
+    pub items: Vec<LabelSearchResultItem>,
+    pub total_count: i64,
+  }
+}
+
+pub mod repos {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "stars")]
+    Stars,
+    #[serde(rename = "forks")]
+    Forks,
+    #[serde(rename = "help-wanted-issues")]
+    HelpWantedIssues,
+    #[serde(rename = "updated")]
+    Updated,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Stars => "stars".to_string(),
+        QuerySort::Forks => "forks".to_string(),
+        QuerySort::HelpWantedIssues => "help-wanted-issues".to_string(),
+        QuerySort::Updated => "updated".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryOrder {
+    #[serde(rename = "desc")]
+    Desc,
+    #[serde(rename = "asc")]
+    Asc,
+  }
+
+  impl ToString for QueryOrder {
+    fn to_string(&self) -> String {
+      match self {
+        QueryOrder::Desc => "desc".to_string(),
+        QueryOrder::Asc => "asc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `Search repositories`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching for repositories](https://docs.github.com/articles/searching-for-repositories/)" for a detailed list of qualifiers.
+    pub q: String,
+    /// Sorts the results of your query by number of `stars`, `forks`, or `help-wanted-issues` or how recently the items were `updated`. Default: [best match](https://docs.github.com/rest/search/search#ranking-search-results)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub order: Option<QueryOrder>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub incomplete_results: bool,
+    pub items: Vec<RepoSearchResultItem>,
+    pub total_count: i64,
+  }
+}
+
+pub mod topics {
+  #[allow(unused_imports)]
+  use super::*;
+
+  /// Query for `Search topics`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query).
+    pub q: String,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub incomplete_results: bool,
+    pub items: Vec<TopicSearchResultItem>,
+    pub total_count: i64,
+  }
+}
+
+pub mod users {
+  #[allow(unused_imports)]
+  use super::*;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QuerySort {
+    #[serde(rename = "followers")]
+    Followers,
+    #[serde(rename = "repositories")]
+    Repositories,
+    #[serde(rename = "joined")]
+    Joined,
+  }
+
+  impl ToString for QuerySort {
+    fn to_string(&self) -> String {
+      match self {
+        QuerySort::Followers => "followers".to_string(),
+        QuerySort::Repositories => "repositories".to_string(),
+        QuerySort::Joined => "joined".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum QueryOrder {
+    #[serde(rename = "desc")]
+    Desc,
+    #[serde(rename = "asc")]
+    Asc,
+  }
+
+  impl ToString for QueryOrder {
+    fn to_string(&self) -> String {
+      match self {
+        QueryOrder::Desc => "desc".to_string(),
+        QueryOrder::Asc => "asc".to_string(),
+      }
+    }
+  }
+
+  /// Query for `Search users`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching users](https://docs.github.com/search-github/searching-on-github/searching-users)" for a detailed list of qualifiers.
+    pub q: String,
+    /// Sorts the results of your query by number of `followers` or `repositories`, or when the person `joined` GitHub. Default: [best match](https://docs.github.com/rest/search/search#ranking-search-results)
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub sort: Option<QuerySort>,
+    /// Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub order: Option<QueryOrder>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Response {
+    pub incomplete_results: bool,
+    pub items: Vec<UserSearchResultItem>,
+    pub total_count: i64,
+  }
+}
 
 /// Look for stuff on GitHub.
 pub struct GitHubSearchAPI {
@@ -38,10 +532,10 @@ impl GitHubSearchAPI {
   /// This endpoint requires you to authenticate and limits you to 10 requests per minute.
   ///
   /// *Documentation*: [https://docs.github.com/rest/search/search#search-code](https://docs.github.com/rest/search/search#search-code)
-  pub fn code(&self) -> Request<(), SearchCodeQuery, SearchCodeResponse> {
+  pub fn code(&self) -> Request<(), code::Query, code::Response> {
     let url = format!("/search/code");
 
-    Request::<(), SearchCodeQuery, SearchCodeResponse>::builder(&self.config)
+    Request::<(), code::Query, code::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -58,10 +552,10 @@ impl GitHubSearchAPI {
   /// `q=repo:octocat/Spoon-Knife+css`
   ///
   /// *Documentation*: [https://docs.github.com/rest/search/search#search-commits](https://docs.github.com/rest/search/search#search-commits)
-  pub fn commits(&self) -> Request<(), SearchCommitsQuery, SearchCommitsResponse> {
+  pub fn commits(&self) -> Request<(), commits::Query, commits::Response> {
     let url = format!("/search/commits");
 
-    Request::<(), SearchCommitsQuery, SearchCommitsResponse>::builder(&self.config)
+    Request::<(), commits::Query, commits::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -84,10 +578,10 @@ impl GitHubSearchAPI {
   /// *Documentation*: [https://docs.github.com/rest/search/search#search-issues-and-pull-requests](https://docs.github.com/rest/search/search#search-issues-and-pull-requests)
   pub fn issues_and_pull_requests(
     &self,
-  ) -> Request<(), SearchIssuesAndPullRequestsQuery, SearchIssuesAndPullRequestsResponse> {
+  ) -> Request<(), issues_and_pull_requests::Query, issues_and_pull_requests::Response> {
     let url = format!("/search/issues");
 
-    Request::<(), SearchIssuesAndPullRequestsQuery, SearchIssuesAndPullRequestsResponse>::builder(
+    Request::<(), issues_and_pull_requests::Query, issues_and_pull_requests::Response>::builder(
       &self.config,
     )
     .get(url)
@@ -107,10 +601,10 @@ impl GitHubSearchAPI {
   /// The labels that best match the query appear first in the search results.
   ///
   /// *Documentation*: [https://docs.github.com/rest/search/search#search-labels](https://docs.github.com/rest/search/search#search-labels)
-  pub fn labels(&self) -> Request<(), SearchLabelsQuery, SearchLabelsResponse> {
+  pub fn labels(&self) -> Request<(), labels::Query, labels::Response> {
     let url = format!("/search/labels");
 
-    Request::<(), SearchLabelsQuery, SearchLabelsResponse>::builder(&self.config)
+    Request::<(), labels::Query, labels::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -128,10 +622,10 @@ impl GitHubSearchAPI {
   /// This query searches for repositories with the word `tetris` in the name, the description, or the README. The results are limited to repositories where the primary language is assembly. The results are sorted by stars in descending order, so that the most popular repositories appear first in the search results.
   ///
   /// *Documentation*: [https://docs.github.com/rest/search/search#search-repositories](https://docs.github.com/rest/search/search#search-repositories)
-  pub fn repos(&self) -> Request<(), SearchReposQuery, SearchReposResponse> {
+  pub fn repos(&self) -> Request<(), repos::Query, repos::Response> {
     let url = format!("/search/repositories");
 
-    Request::<(), SearchReposQuery, SearchReposResponse>::builder(&self.config)
+    Request::<(), repos::Query, repos::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -149,10 +643,10 @@ impl GitHubSearchAPI {
   /// This query searches for topics with the keyword `ruby` and limits the results to find only topics that are featured. The topics that are the best match for the query appear first in the search results.
   ///
   /// *Documentation*: [https://docs.github.com/rest/search/search#search-topics](https://docs.github.com/rest/search/search#search-topics)
-  pub fn topics(&self) -> Request<(), SearchTopicsQuery, SearchTopicsResponse> {
+  pub fn topics(&self) -> Request<(), topics::Query, topics::Response> {
     let url = format!("/search/topics");
 
-    Request::<(), SearchTopicsQuery, SearchTopicsResponse>::builder(&self.config)
+    Request::<(), topics::Query, topics::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -172,10 +666,10 @@ impl GitHubSearchAPI {
   /// This endpoint does not accept authentication and will only include publicly visible users. As an alternative, you can use the GraphQL API. The GraphQL API requires authentication and will return private users, including Enterprise Managed Users (EMUs), that you are authorized to view. For more information, see "[GraphQL Queries](https://docs.github.com/graphql/reference/queries#search)."
   ///
   /// *Documentation*: [https://docs.github.com/rest/search/search#search-users](https://docs.github.com/rest/search/search#search-users)
-  pub fn users(&self) -> Request<(), SearchUsersQuery, SearchUsersResponse> {
+  pub fn users(&self) -> Request<(), users::Query, users::Response> {
     let url = format!("/search/users");
 
-    Request::<(), SearchUsersQuery, SearchUsersResponse>::builder(&self.config)
+    Request::<(), users::Query, users::Response>::builder(&self.config)
       .get(url)
       .build()
   }

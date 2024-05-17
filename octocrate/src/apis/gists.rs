@@ -1,6 +1,316 @@
 use octocrate_core::*;
 #[allow(unused_imports)]
 use octocrate_types::*;
+#[allow(unused_imports)]
+use serde::{Deserialize, Serialize};
+#[allow(unused_imports)]
+use typed_builder::TypedBuilder;
+
+pub mod list {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<BaseGist>;
+
+  /// Query for `List gists for the authenticated user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GistSimple;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
+  pub enum RequestPublicItem2 {
+    #[serde(rename = "true")]
+    True,
+    #[serde(rename = "false")]
+    False,
+  }
+
+  impl ToString for RequestPublicItem2 {
+    fn to_string(&self) -> String {
+      match self {
+        RequestPublicItem2::True => "true".to_string(),
+        RequestPublicItem2::False => "false".to_string(),
+      }
+    }
+  }
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// Description of the gist
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// Names and content for the files that make up the gist
+    pub files: serde_json::Value,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub public: Option<serde_json::Value>,
+  }
+}
+
+pub mod list_public {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<BaseGist>;
+
+  /// Query for `List public gists`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_starred {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<BaseGist>;
+
+  /// Query for `List starred gists`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod get {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GistSimple;
+}
+
+pub mod update {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GistSimple;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The description of the gist.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub description: Option<String>,
+    /// The gist files to be updated, renamed, or deleted. Each `key` must match the current filename
+    /// (including extension) of the targeted gist file. For example: `hello.py`.
+    ///
+    /// To delete a file, set the whole file to null. For example: `hello.py : null`. The file will also be
+    /// deleted if the specified object does not contain at least one of `content` or `filename`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub files: Option<serde_json::Value>,
+  }
+}
+
+pub mod delete {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_comments {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<GistComment>;
+
+  /// Query for `List gist comments`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod create_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GistComment;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The comment text.
+    pub body: String,
+  }
+}
+
+pub mod get_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GistComment;
+}
+
+pub mod update_comment {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GistComment;
+
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Request {
+    /// The comment text.
+    pub body: String,
+  }
+}
+
+pub mod delete_comment {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod list_commits {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<GistCommit>;
+
+  /// Query for `List gist commits`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod list_forks {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<GistSimple>;
+
+  /// Query for `List gist forks`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
+
+pub mod fork {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = BaseGist;
+}
+
+pub mod check_is_starred {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod star {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod unstar {
+  #[allow(unused_imports)]
+  use super::*;
+}
+
+pub mod get_revision {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = GistSimple;
+}
+
+pub mod list_for_user {
+  #[allow(unused_imports)]
+  use super::*;
+
+  pub type Response = Vec<BaseGist>;
+
+  /// Query for `List gists for a user`
+  #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
+  #[builder(field_defaults(setter(into)))]
+  pub struct Query {
+    /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub since: Option<String>,
+    /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub per_page: Option<i64>,
+    /// The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
+    #[serde(skip_serializing_if = "Option::is_none")]
+    #[builder(default, setter(strip_option))]
+    pub page: Option<i64>,
+  }
+}
 
 /// View, modify your gists.
 pub struct GitHubGistsAPI {
@@ -19,10 +329,10 @@ impl GitHubGistsAPI {
   /// Lists the authenticated user's gists or if called anonymously, this endpoint returns all public gists:
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user](https://docs.github.com/rest/gists/gists#list-gists-for-the-authenticated-user)
-  pub fn list(&self) -> Request<(), GistsListQuery, Vec<BaseGist>> {
+  pub fn list(&self) -> Request<(), list::Query, list::Response> {
     let url = format!("/gists");
 
-    Request::<(), GistsListQuery, Vec<BaseGist>>::builder(&self.config)
+    Request::<(), list::Query, list::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -34,10 +344,10 @@ impl GitHubGistsAPI {
   /// **Note:** Don't name your files "gistfile" with a numerical suffix. This is the format of the automatic naming scheme that Gist uses internally.
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#create-a-gist](https://docs.github.com/rest/gists/gists#create-a-gist)
-  pub fn create(&self) -> Request<GistsCreateRequest, (), GistSimple> {
+  pub fn create(&self) -> Request<create::Request, (), create::Response> {
     let url = format!("/gists");
 
-    Request::<GistsCreateRequest, (), GistSimple>::builder(&self.config)
+    Request::<create::Request, (), create::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -49,10 +359,10 @@ impl GitHubGistsAPI {
   /// Note: With [pagination](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api), you can fetch up to 3000 gists. For example, you can fetch 100 pages with 30 gists per page or 30 pages with 100 gists per page.
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-public-gists](https://docs.github.com/rest/gists/gists#list-public-gists)
-  pub fn list_public(&self) -> Request<(), GistsListPublicQuery, Vec<BaseGist>> {
+  pub fn list_public(&self) -> Request<(), list_public::Query, list_public::Response> {
     let url = format!("/gists/public");
 
-    Request::<(), GistsListPublicQuery, Vec<BaseGist>>::builder(&self.config)
+    Request::<(), list_public::Query, list_public::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -62,10 +372,10 @@ impl GitHubGistsAPI {
   /// List the authenticated user's starred gists:
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#list-starred-gists](https://docs.github.com/rest/gists/gists#list-starred-gists)
-  pub fn list_starred(&self) -> Request<(), GistsListStarredQuery, Vec<BaseGist>> {
+  pub fn list_starred(&self) -> Request<(), list_starred::Query, list_starred::Response> {
     let url = format!("/gists/starred");
 
-    Request::<(), GistsListStarredQuery, Vec<BaseGist>>::builder(&self.config)
+    Request::<(), list_starred::Query, list_starred::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -80,11 +390,11 @@ impl GitHubGistsAPI {
   /// - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#get-a-gist](https://docs.github.com/rest/gists/gists#get-a-gist)
-  pub fn get(&self, gist_id: impl Into<String>) -> Request<(), (), GistSimple> {
+  pub fn get(&self, gist_id: impl Into<String>) -> Request<(), (), get::Response> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}");
 
-    Request::<(), (), GistSimple>::builder(&self.config)
+    Request::<(), (), get::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -103,11 +413,14 @@ impl GitHubGistsAPI {
   /// - **`application/vnd.github.base64+json`**: Returns the base64-encoded contents. This can be useful if your gist contains any invalid UTF-8 sequences.
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#update-a-gist](https://docs.github.com/rest/gists/gists#update-a-gist)
-  pub fn update(&self, gist_id: impl Into<String>) -> Request<GistsUpdateRequest, (), GistSimple> {
+  pub fn update(
+    &self,
+    gist_id: impl Into<String>,
+  ) -> Request<update::Request, (), update::Response> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}");
 
-    Request::<GistsUpdateRequest, (), GistSimple>::builder(&self.config)
+    Request::<update::Request, (), update::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -138,11 +451,11 @@ impl GitHubGistsAPI {
   pub fn list_comments(
     &self,
     gist_id: impl Into<String>,
-  ) -> Request<(), GistsListCommentsQuery, Vec<GistComment>> {
+  ) -> Request<(), list_comments::Query, list_comments::Response> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/comments");
 
-    Request::<(), GistsListCommentsQuery, Vec<GistComment>>::builder(&self.config)
+    Request::<(), list_comments::Query, list_comments::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -160,11 +473,11 @@ impl GitHubGistsAPI {
   pub fn create_comment(
     &self,
     gist_id: impl Into<String>,
-  ) -> Request<GistsCreateCommentRequest, (), GistComment> {
+  ) -> Request<create_comment::Request, (), create_comment::Response> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/comments");
 
-    Request::<GistsCreateCommentRequest, (), GistComment>::builder(&self.config)
+    Request::<create_comment::Request, (), create_comment::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -183,12 +496,12 @@ impl GitHubGistsAPI {
     &self,
     gist_id: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<(), (), GistComment> {
+  ) -> Request<(), (), get_comment::Response> {
     let gist_id = gist_id.into();
     let comment_id = comment_id.into();
     let url = format!("/gists/{gist_id}/comments/{comment_id}");
 
-    Request::<(), (), GistComment>::builder(&self.config)
+    Request::<(), (), get_comment::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -207,12 +520,12 @@ impl GitHubGistsAPI {
     &self,
     gist_id: impl Into<String>,
     comment_id: impl Into<i64>,
-  ) -> Request<GistsUpdateCommentRequest, (), GistComment> {
+  ) -> Request<update_comment::Request, (), update_comment::Response> {
     let gist_id = gist_id.into();
     let comment_id = comment_id.into();
     let url = format!("/gists/{gist_id}/comments/{comment_id}");
 
-    Request::<GistsUpdateCommentRequest, (), GistComment>::builder(&self.config)
+    Request::<update_comment::Request, (), update_comment::Response>::builder(&self.config)
       .patch(url)
       .build()
   }
@@ -242,11 +555,11 @@ impl GitHubGistsAPI {
   pub fn list_commits(
     &self,
     gist_id: impl Into<String>,
-  ) -> Request<(), GistsListCommitsQuery, Vec<GistCommit>> {
+  ) -> Request<(), list_commits::Query, list_commits::Response> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/commits");
 
-    Request::<(), GistsListCommitsQuery, Vec<GistCommit>>::builder(&self.config)
+    Request::<(), list_commits::Query, list_commits::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -258,11 +571,11 @@ impl GitHubGistsAPI {
   pub fn list_forks(
     &self,
     gist_id: impl Into<String>,
-  ) -> Request<(), GistsListForksQuery, Vec<GistSimple>> {
+  ) -> Request<(), list_forks::Query, list_forks::Response> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/forks");
 
-    Request::<(), GistsListForksQuery, Vec<GistSimple>>::builder(&self.config)
+    Request::<(), list_forks::Query, list_forks::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -271,11 +584,11 @@ impl GitHubGistsAPI {
   ///
   ///
   /// *Documentation*: [https://docs.github.com/rest/gists/gists#fork-a-gist](https://docs.github.com/rest/gists/gists#fork-a-gist)
-  pub fn fork(&self, gist_id: impl Into<String>) -> Request<(), (), BaseGist> {
+  pub fn fork(&self, gist_id: impl Into<String>) -> Request<(), (), fork::Response> {
     let gist_id = gist_id.into();
     let url = format!("/gists/{gist_id}/forks");
 
-    Request::<(), (), BaseGist>::builder(&self.config)
+    Request::<(), (), fork::Response>::builder(&self.config)
       .post(url)
       .build()
   }
@@ -334,12 +647,12 @@ impl GitHubGistsAPI {
     &self,
     gist_id: impl Into<String>,
     sha: impl Into<String>,
-  ) -> Request<(), (), GistSimple> {
+  ) -> Request<(), (), get_revision::Response> {
     let gist_id = gist_id.into();
     let sha = sha.into();
     let url = format!("/gists/{gist_id}/{sha}");
 
-    Request::<(), (), GistSimple>::builder(&self.config)
+    Request::<(), (), get_revision::Response>::builder(&self.config)
       .get(url)
       .build()
   }
@@ -352,11 +665,11 @@ impl GitHubGistsAPI {
   pub fn list_for_user(
     &self,
     username: impl Into<String>,
-  ) -> Request<(), GistsListForUserQuery, Vec<BaseGist>> {
+  ) -> Request<(), list_for_user::Query, list_for_user::Response> {
     let username = username.into();
     let url = format!("/users/{username}/gists");
 
-    Request::<(), GistsListForUserQuery, Vec<BaseGist>>::builder(&self.config)
+    Request::<(), list_for_user::Query, list_for_user::Response>::builder(&self.config)
       .get(url)
       .build()
   }
