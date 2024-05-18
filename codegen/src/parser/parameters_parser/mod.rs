@@ -1,8 +1,11 @@
-use super::{context::ParseContext, parameter_parser::ParameterParser, ParsedData};
+mod parameter_parser;
+
+use super::{context::ParseContext, ParsedData};
 use crate::{
   schemas::parameters::Parameter,
   structures::structs::{Struct, StructField},
 };
+use parameter_parser::ParameterParser;
 
 #[derive(Debug, Clone)]
 pub struct ParametersParser {

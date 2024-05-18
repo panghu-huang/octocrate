@@ -1,4 +1,4 @@
-use super::{context::ParseContext, schema_parser::SchemaParser, ParsedData};
+use super::super::{context::ParseContext, schema_parser::SchemaParser, ParsedData};
 use crate::{schemas::parameters::Parameter, structures::types::Type};
 
 #[derive(Debug, Clone)]

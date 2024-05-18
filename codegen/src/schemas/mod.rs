@@ -1,5 +1,4 @@
 pub mod api;
-pub mod body_parameters;
 pub mod external_docs;
 pub mod parameters;
 pub mod refs;

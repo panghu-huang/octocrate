@@ -164,7 +164,7 @@ async fn main() {
 
 ```rust
 use octocrate::{
-  APIConfig, AuthorAssociation, GitHubAPI, IssuesCreateCommentRequest, PersonalAccessToken,
+  issues, APIConfig, AuthorAssociation, GitHubAPI, PersonalAccessToken,
 };
 
 #[tokio::main]
@@ -177,7 +177,7 @@ async fn main() {
 
   // 创建一个 Issue Comment 请求
   // https://github.com/panghu-huang/octocrate/pull/1#issuecomment-2041280635
-  let comment = IssuesCreateCommentRequest {
+  let comment = issues::create_comment::Request {
     body: "Hello, world! (Created by octocrate)".to_string(),
   };
 
@@ -195,7 +195,7 @@ async fn main() {
 
 ```rust
 use octocrate::{
-  APIConfig, Error, GitHubAPI, PersonalAccessToken, PullsListQuery, PullsListQueryState,
+  pulls, APIConfig, Error, GitHubAPI, PersonalAccessToken,
 };
 
 #[tokio::main]
@@ -207,8 +207,8 @@ async fn main() {
   let api = GitHubAPI::new(&config);
 
   // 使用构建器创建一个 Pull Request 列表查询
-  let query = PullsListQuery::builder()
-    .state(PullsListQueryState::Open)
+  let query = pulls::list::Query::builder()
+    .state(pulls::list::QueryState::Open)
     .per_page(10)
     .build()
 
