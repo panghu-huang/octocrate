@@ -29,4 +29,12 @@ impl ParsedData {
       ParsedData::Type(t) => t.add_tag(tag),
     }
   }
+
+  pub fn has_tag(&self, tag: &String) -> bool {
+    match self {
+      ParsedData::Struct(s) => s.has_tag(tag),
+      ParsedData::Enum(e) => e.has_tag(tag),
+      ParsedData::Type(t) => t.has_tag(tag),
+    }
+  }
 }

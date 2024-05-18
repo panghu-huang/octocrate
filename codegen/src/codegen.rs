@@ -172,8 +172,6 @@ impl Codegen {
   pub fn write_types(&self, parsed: ParsedAPIDescription, path: &Path) {
     let mut writer = Writer::new(path);
 
-    println!("Writing to file system");
-
     let mut type_entry_module = TypeEntryModule::new("lib.rs");
 
     // Types
@@ -202,8 +200,6 @@ impl Codegen {
     writer.add_file(type_entry_module);
 
     writer.write();
-
-    println!("Finished writing");
   }
 
   fn parse_webhooks(&self, parse_context: &mut ParseContext, api_description: &APIDescription) {
