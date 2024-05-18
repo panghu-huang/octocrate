@@ -38,7 +38,9 @@ impl SchemaParser {
 
       for (name, schema) in properties {
         self.prefixs.push(name.clone());
+
         let parsed = self.parse_schema_definition(ctx, schema);
+
         self.prefixs.pop();
 
         let description = if let SchemaDefinition::Schema(schema) = &schema {
@@ -55,7 +57,6 @@ impl SchemaParser {
               struct_field.set_description(description);
             }
 
-            // ctx.record_reference_type(&generated.name.to_string(), generated.clone());
             struct_field.reference(&generated.name);
 
             struct_.add_field(struct_field);
@@ -67,7 +68,6 @@ impl SchemaParser {
               struct_field.set_description(description);
             }
 
-            // ctx.record_reference_type(&generated.name.to_string(), generated.clone());
             struct_field.reference(&generated.name);
 
             struct_.add_field(struct_field);
@@ -114,13 +114,9 @@ impl SchemaParser {
     if let Some(type_) = &schema.type_ {
       let schema_types = SchemaTypes::from(type_);
 
-      // Mark: Not here
-
       let type_name = schema_types.to_full_type_with_object(&struct_.name.to_string());
 
       if type_name != struct_.name {
-        // ctx.record_reference_type(&struct_.name.to_string(), struct_.clone());
-
         return ParsedData::Type(Type::new_with_reference(&type_name, &struct_.name));
       }
     }

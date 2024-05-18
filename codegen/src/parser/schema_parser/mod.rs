@@ -78,6 +78,7 @@ impl SchemaParser {
 
             if schema.title.is_some() {
               // Use the reference id as generated type name to avoid conflict
+              // In the webhooks type, there are two data structures, RepositoryWebhooks and Repository, with the title being Repository
               schema.title = Some(RenameRule::VariantName.apply(&reference_id));
             }
 
@@ -90,7 +91,7 @@ impl SchemaParser {
 
             self.prefixs = previous_prefixs;
 
-            self.add_reference(ctx, &parsed.name(), parsed.clone());
+            self.add_reference(ctx, &reference_id, parsed.clone());
 
             parsed
           }
@@ -131,11 +132,11 @@ impl SchemaParser {
     ParsedData::Type(Type::new(&type_name))
   }
 
-  fn add_reference(&self, ctx: &mut ParseContext, name: &str, reference: ParsedData) {
+  fn add_reference(&self, ctx: &mut ParseContext, id_or_name: &str, reference: ParsedData) {
     if self.is_scoped {
-      ctx.add_scoped_reference(name, reference);
+      ctx.add_scoped_reference(id_or_name, reference);
     } else {
-      ctx.add_reference(name, reference);
+      ctx.add_reference(id_or_name, reference);
     }
   }
 }

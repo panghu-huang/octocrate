@@ -39,9 +39,13 @@ impl Struct {
   }
 
   pub fn add_tag(&mut self, tag: &String) {
-    if !self.tags.contains(tag) {
+    if !self.has_tag(tag) {
       self.tags.push(tag.clone());
     }
+  }
+
+  pub fn has_tag(&self, tag: &String) -> bool {
+    self.tags.contains(tag)
   }
 
   pub fn add_field(&mut self, field: StructField) {

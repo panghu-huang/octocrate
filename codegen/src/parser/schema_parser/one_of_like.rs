@@ -291,14 +291,14 @@ mod schema_parser_one_of_like_tests {
       .clone();
 
     let _content_directory = schema_parser.parse(
-      &mut ParseContext::default(),
+      &mut parse_context,
       &"Content Directory".to_string(),
       &SchemaDefinition::Schema(content_directory.clone()),
     );
 
     // Parse twice to test if the reference is working
     let content_directory = schema_parser.parse(
-      &mut ParseContext::default(),
+      &mut parse_context,
       &"Content Directory".to_string(),
       &SchemaDefinition::Schema(content_directory),
     );
@@ -322,14 +322,14 @@ mod schema_parser_one_of_like_tests {
       .clone();
 
     let _generated = schema_parser.parse(
-      &mut ParseContext::default(),
+      &mut parse_context,
       &"Content File".to_string(),
       &SchemaDefinition::Schema(content_file.clone()),
     );
 
     // Parse twice to test if the reference is working
     let content_file = schema_parser.parse(
-      &mut ParseContext::default(),
+      &mut parse_context,
       &"Content File".to_string(),
       &SchemaDefinition::Schema(content_file),
     );
