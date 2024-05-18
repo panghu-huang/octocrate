@@ -232,11 +232,6 @@ pub mod update {
   }
 }
 
-pub mod delete {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_blocked_users {
   #[allow(unused_imports)]
   use super::*;
@@ -255,21 +250,6 @@ pub mod list_blocked_users {
     #[builder(default, setter(strip_option))]
     pub page: Option<i64>,
   }
-}
-
-pub mod check_blocked_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod block_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod unblock_user {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_failed_invitations {
@@ -408,11 +388,6 @@ pub mod update_webhook {
   }
 }
 
-pub mod delete_webhook {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_webhook_config_for_org {
   #[allow(unused_imports)]
   use super::*;
@@ -472,16 +447,6 @@ pub mod get_webhook_delivery {
   use super::*;
 
   pub type Response = HookDelivery;
-}
-
-pub mod redeliver_webhook_delivery {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod ping_webhook {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_app_installations {
@@ -643,11 +608,6 @@ pub mod create_invitation {
   }
 }
 
-pub mod cancel_invitation {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_invitation_teams {
   #[allow(unused_imports)]
   use super::*;
@@ -733,16 +693,6 @@ pub mod list_members {
   }
 }
 
-pub mod check_membership_for_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_member {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_membership_for_user {
   #[allow(unused_imports)]
   use super::*;
@@ -786,11 +736,6 @@ pub mod set_membership_for_user {
     #[builder(default, setter(strip_option))]
     pub role: Option<RequestRole>,
   }
-}
-
-pub mod remove_membership_for_user {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_organization_fine_grained_permissions {
@@ -838,36 +783,6 @@ pub mod create_custom_organization_role {
   }
 }
 
-pub mod revoke_all_org_roles_team {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod assign_team_to_org_role {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod revoke_org_role_team {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod revoke_all_org_roles_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod assign_user_to_org_role {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod revoke_org_role_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_org_role {
   #[allow(unused_imports)]
   use super::*;
@@ -897,11 +812,6 @@ pub mod patch_custom_organization_role {
     #[builder(default, setter(strip_option))]
     pub permissions: Option<Vec<String>>,
   }
-}
-
-pub mod delete_custom_organization_role {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_org_role_teams {
@@ -1002,11 +912,6 @@ pub mod convert_member_to_outside_collaborator {
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Response {}
-}
-
-pub mod remove_outside_collaborator {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_pat_grant_requests {
@@ -1412,11 +1317,6 @@ pub mod create_or_update_custom_property {
   }
 }
 
-pub mod remove_custom_property {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_custom_properties_values_for_repos {
   #[allow(unused_imports)]
   use super::*;
@@ -1475,36 +1375,11 @@ pub mod list_public_members {
   }
 }
 
-pub mod check_public_membership_for_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod set_public_membership_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_public_membership_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_security_manager_teams {
   #[allow(unused_imports)]
   use super::*;
 
   pub type Response = Vec<TeamSimple>;
-}
-
-pub mod add_security_manager_team {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_security_manager_team {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod enable_or_disable_security_product_on_all_org_repos {

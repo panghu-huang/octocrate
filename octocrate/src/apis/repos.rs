@@ -560,11 +560,6 @@ pub mod update_org_ruleset {
   }
 }
 
-pub mod delete_org_ruleset {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get {
   #[allow(unused_imports)]
   use super::*;
@@ -872,11 +867,6 @@ pub mod update {
   }
 }
 
-pub mod delete {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_activities {
   #[allow(unused_imports)]
   use super::*;
@@ -1034,26 +1024,11 @@ pub mod get_autolink {
   pub type Response = Autolink;
 }
 
-pub mod delete_autolink {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod check_automated_security_fixes {
   #[allow(unused_imports)]
   use super::*;
 
   pub type Response = CheckAutomatedSecurityFixes;
-}
-
-pub mod enable_automated_security_fixes {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod disable_automated_security_fixes {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_branches {
@@ -1257,11 +1232,6 @@ pub mod update_branch_protection {
   }
 }
 
-pub mod delete_branch_protection {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_admin_branch_protection {
   #[allow(unused_imports)]
   use super::*;
@@ -1274,11 +1244,6 @@ pub mod set_admin_branch_protection {
   use super::*;
 
   pub type Response = ProtectedBranchAdminEnforced;
-}
-
-pub mod delete_admin_branch_protection {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_pull_request_review_protection {
@@ -1360,11 +1325,6 @@ pub mod update_pull_request_review_protection {
   }
 }
 
-pub mod delete_pull_request_review_protection {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_commit_signature_protection {
   #[allow(unused_imports)]
   use super::*;
@@ -1377,11 +1337,6 @@ pub mod create_commit_signature_protection {
   use super::*;
 
   pub type Response = ProtectedBranchAdminEnforced;
-}
-
-pub mod delete_commit_signature_protection {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_status_checks_protection {
@@ -1425,11 +1380,6 @@ pub mod update_status_check_protection {
     #[builder(default, setter(strip_option))]
     pub strict: Option<bool>,
   }
-}
-
-pub mod remove_status_check_protection {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_all_status_check_contexts {
@@ -1507,11 +1457,6 @@ pub mod get_access_restrictions {
   use super::*;
 
   pub type Response = BranchRestrictionPolicy;
-}
-
-pub mod delete_access_restrictions {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_apps_with_access_to_protected_branch {
@@ -1829,11 +1774,6 @@ pub mod list_collaborators {
   }
 }
 
-pub mod check_collaborator {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod add_collaborator {
   #[allow(unused_imports)]
   use super::*;
@@ -1848,11 +1788,6 @@ pub mod add_collaborator {
     #[builder(default, setter(strip_option))]
     pub permission: Option<String>,
   }
-}
-
-pub mod remove_collaborator {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_collaborator_permission_level {
@@ -1901,11 +1836,6 @@ pub mod update_commit_comment {
     /// The contents of the comment
     pub body: String,
   }
-}
-
-pub mod delete_commit_comment {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_commits {
@@ -2379,11 +2309,6 @@ pub mod get_deployment {
   pub type Response = Deployment;
 }
 
-pub mod delete_deployment {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_deployment_statuses {
   #[allow(unused_imports)]
   use super::*;
@@ -2573,11 +2498,6 @@ pub mod create_or_update_environment {
   }
 }
 
-pub mod delete_an_environment {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_deployment_branch_policies {
   #[allow(unused_imports)]
   use super::*;
@@ -2625,11 +2545,6 @@ pub mod update_deployment_branch_policy {
 
   pub type Request = DeploymentBranchPolicyNamePattern;
   pub type Response = DeploymentBranchPolicy;
-}
-
-pub mod delete_deployment_branch_policy {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_all_deployment_protection_rules {
@@ -2701,11 +2616,6 @@ pub mod get_custom_deployment_protection_rule {
   use super::*;
 
   pub type Response = DeploymentProtectionRule;
-}
-
-pub mod disable_deployment_protection_rule {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_forks {
@@ -2883,11 +2793,6 @@ pub mod update_webhook {
   }
 }
 
-pub mod delete_webhook {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_webhook_config_for_repo {
   #[allow(unused_imports)]
   use super::*;
@@ -2947,21 +2852,6 @@ pub mod get_webhook_delivery {
   use super::*;
 
   pub type Response = HookDelivery;
-}
-
-pub mod redeliver_webhook_delivery {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod ping_webhook {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod test_push_webhook {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_invitations {
@@ -3027,11 +2917,6 @@ pub mod update_invitation {
   }
 }
 
-pub mod delete_invitation {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_deploy_keys {
   #[allow(unused_imports)]
   use super::*;
@@ -3081,11 +2966,6 @@ pub mod get_deploy_key {
   use super::*;
 
   pub type Response = DeployKey;
-}
-
-pub mod delete_deploy_key {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_languages {
@@ -3149,11 +3029,6 @@ pub mod update_information_about_pages_site {
   use super::*;
 
   pub type Request = serde_json::Value;
-}
-
-pub mod delete_pages_site {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_pages_builds {
@@ -3233,11 +3108,6 @@ pub mod get_pages_deployment {
   pub type Response = PagesDeploymentStatus;
 }
 
-pub mod cancel_pages_deployment {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_pages_health_check {
   #[allow(unused_imports)]
   use super::*;
@@ -3259,16 +3129,6 @@ pub mod check_private_vulnerability_reporting {
     /// Whether or not private vulnerability reporting is enabled for the repository.
     pub enabled: bool,
   }
-}
-
-pub mod enable_private_vulnerability_reporting {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod disable_private_vulnerability_reporting {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_custom_properties_values {
@@ -3441,11 +3301,6 @@ pub mod update_release_asset {
   }
 }
 
-pub mod delete_release_asset {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod generate_release_notes {
   #[allow(unused_imports)]
   use super::*;
@@ -3556,11 +3411,6 @@ pub mod update_release {
     #[builder(default, setter(strip_option))]
     pub target_commitish: Option<String>,
   }
-}
-
-pub mod delete_release {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_release_assets {
@@ -3851,11 +3701,6 @@ pub mod update_repo_ruleset {
   }
 }
 
-pub mod delete_repo_ruleset {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_code_frequency_stats {
   #[allow(unused_imports)]
   use super::*;
@@ -3982,16 +3827,6 @@ pub mod create_tag_protection {
     /// An optional glob pattern to match against when enforcing tag protection.
     pub pattern: String,
   }
-}
-
-pub mod delete_tag_protection {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod download_tarball_archive {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_teams {
@@ -4148,26 +3983,6 @@ pub mod transfer {
     #[builder(default, setter(strip_option))]
     pub team_ids: Option<Vec<i64>>,
   }
-}
-
-pub mod check_vulnerability_alerts {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod enable_vulnerability_alerts {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod disable_vulnerability_alerts {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod download_zipball_archive {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod create_using_template {
@@ -4580,16 +4395,6 @@ pub mod list_invitations_for_authenticated_user {
     #[builder(default, setter(strip_option))]
     pub page: Option<i64>,
   }
-}
-
-pub mod accept_invitation_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod decline_invitation_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_for_user {

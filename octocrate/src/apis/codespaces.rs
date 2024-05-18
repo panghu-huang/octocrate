@@ -183,11 +183,6 @@ pub mod create_or_update_org_secret {
   }
 }
 
-pub mod delete_org_secret {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_selected_repos_for_org_secret {
   #[allow(unused_imports)]
   use super::*;
@@ -225,16 +220,6 @@ pub mod set_selected_repos_for_org_secret {
   }
 }
 
-pub mod add_selected_repo_to_org_secret {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_selected_repo_from_org_secret {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_codespaces_for_user_in_org {
   #[allow(unused_imports)]
   use super::*;
@@ -258,11 +243,6 @@ pub mod get_codespaces_for_user_in_org {
     pub codespaces: Vec<Codespace>,
     pub total_count: i64,
   }
-}
-
-pub mod delete_from_organization {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod stop_in_organization {
@@ -554,11 +534,6 @@ pub mod create_or_update_repo_secret {
     #[builder(default, setter(strip_option))]
     pub key_id: Option<String>,
   }
-}
-
-pub mod delete_repo_secret {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod create_with_pr_for_authenticated_user {
@@ -870,11 +845,6 @@ pub mod create_or_update_secret_for_authenticated_user {
   }
 }
 
-pub mod delete_secret_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_repositories_for_secret_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
@@ -897,16 +867,6 @@ pub mod set_repositories_for_secret_for_authenticated_user {
     /// An array of repository ids for which a codespace can access the secret. You can manage the list of selected repositories using the [List selected repositories for a user secret](https://docs.github.com/rest/codespaces/secrets#list-selected-repositories-for-a-user-secret), [Add a selected repository to a user secret](https://docs.github.com/rest/codespaces/secrets#add-a-selected-repository-to-a-user-secret), and [Remove a selected repository from a user secret](https://docs.github.com/rest/codespaces/secrets#remove-a-selected-repository-from-a-user-secret) endpoints.
     pub selected_repository_ids: Vec<i64>,
   }
-}
-
-pub mod add_repository_for_secret_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_repository_for_secret_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_for_authenticated_user {
@@ -938,11 +898,6 @@ pub mod update_for_authenticated_user {
     #[builder(default, setter(strip_option))]
     pub recent_folders: Option<Vec<String>>,
   }
-}
-
-pub mod delete_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod export_for_authenticated_user {

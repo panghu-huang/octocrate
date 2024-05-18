@@ -31,11 +31,6 @@ pub mod set_restrictions_for_org {
   pub type Response = InteractionLimitResponse;
 }
 
-pub mod remove_restrictions_for_org {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_restrictions_for_repo {
   #[allow(unused_imports)]
   use super::*;
@@ -61,11 +56,6 @@ pub mod set_restrictions_for_repo {
   pub type Response = InteractionLimitResponse;
 }
 
-pub mod remove_restrictions_for_repo {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_restrictions_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
@@ -89,11 +79,6 @@ pub mod set_restrictions_for_authenticated_user {
 
   pub type Request = InteractionLimit;
   pub type Response = InteractionLimitResponse;
-}
-
-pub mod remove_restrictions_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 /// Owner or admin management of users interactions.

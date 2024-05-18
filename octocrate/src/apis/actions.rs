@@ -96,16 +96,6 @@ pub mod set_selected_repositories_enabled_github_actions_organization {
   }
 }
 
-pub mod enable_selected_repository_github_actions_organization {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod disable_selected_repository_github_actions_organization {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_allowed_actions_organization {
   #[allow(unused_imports)]
   use super::*;
@@ -211,16 +201,6 @@ pub mod get_self_hosted_runner_for_org {
   pub type Response = Runner;
 }
 
-pub mod delete_self_hosted_runner_from_org {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod list_labels_for_self_hosted_runner_for_org {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod add_custom_labels_to_self_hosted_runner_for_org {
   #[allow(unused_imports)]
   use super::*;
@@ -243,16 +223,6 @@ pub mod set_custom_labels_for_self_hosted_runner_for_org {
     /// The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.
     pub labels: Vec<String>,
   }
-}
-
-pub mod remove_all_custom_labels_from_self_hosted_runner_for_org {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_custom_label_from_self_hosted_runner_for_org {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_org_secrets {
@@ -341,11 +311,6 @@ pub mod create_or_update_org_secret {
   }
 }
 
-pub mod delete_org_secret {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_selected_repos_for_org_secret {
   #[allow(unused_imports)]
   use super::*;
@@ -381,16 +346,6 @@ pub mod set_selected_repos_for_org_secret {
     /// An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/actions/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/actions/secrets#remove-selected-repository-from-an-organization-secret) endpoints.
     pub selected_repository_ids: Vec<i64>,
   }
-}
-
-pub mod add_selected_repo_to_org_secret {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_selected_repo_from_org_secret {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_org_variables {
@@ -515,11 +470,6 @@ pub mod update_org_variable {
   }
 }
 
-pub mod delete_org_variable {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_selected_repos_for_org_variable {
   #[allow(unused_imports)]
   use super::*;
@@ -557,16 +507,6 @@ pub mod set_selected_repos_for_org_variable {
   }
 }
 
-pub mod add_selected_repo_to_org_variable {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_selected_repo_from_org_variable {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_artifacts_for_repo {
   #[allow(unused_imports)]
   use super::*;
@@ -601,16 +541,6 @@ pub mod get_artifact {
   use super::*;
 
   pub type Response = Artifact;
-}
-
-pub mod delete_artifact {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod download_artifact {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_actions_cache_usage {
@@ -713,21 +643,11 @@ pub mod delete_actions_cache_by_key {
   }
 }
 
-pub mod delete_actions_cache_by_id {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_job_for_workflow_run {
   #[allow(unused_imports)]
   use super::*;
 
   pub type Response = Job;
-}
-
-pub mod download_job_logs_for_workflow_run {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod re_run_job_for_workflow_run {
@@ -963,16 +883,6 @@ pub mod get_self_hosted_runner_for_repo {
   pub type Response = Runner;
 }
 
-pub mod delete_self_hosted_runner_from_repo {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod list_labels_for_self_hosted_runner_for_repo {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod add_custom_labels_to_self_hosted_runner_for_repo {
   #[allow(unused_imports)]
   use super::*;
@@ -995,16 +905,6 @@ pub mod set_custom_labels_for_self_hosted_runner_for_repo {
     /// The names of the custom labels to set for the runner. You can pass an empty array to remove all custom labels.
     pub labels: Vec<String>,
   }
-}
-
-pub mod remove_all_custom_labels_from_self_hosted_runner_for_repo {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_custom_label_from_self_hosted_runner_for_repo {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_workflow_runs_for_repo {
@@ -1133,11 +1033,6 @@ pub mod get_workflow_run {
   }
 }
 
-pub mod delete_workflow_run {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_reviews_for_run {
   #[allow(unused_imports)]
   use super::*;
@@ -1222,11 +1117,6 @@ pub mod list_jobs_for_workflow_run_attempt {
   }
 }
 
-pub mod download_workflow_run_attempt_logs {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod cancel_workflow_run {
   #[allow(unused_imports)]
   use super::*;
@@ -1297,16 +1187,6 @@ pub mod list_jobs_for_workflow_run {
     pub jobs: Vec<Job>,
     pub total_count: i64,
   }
-}
-
-pub mod download_workflow_run_logs {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod delete_workflow_run_logs {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_pending_deployments_for_run {
@@ -1450,11 +1330,6 @@ pub mod create_or_update_repo_secret {
   }
 }
 
-pub mod delete_repo_secret {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_repo_variables {
   #[allow(unused_imports)]
   use super::*;
@@ -1521,11 +1396,6 @@ pub mod update_repo_variable {
   }
 }
 
-pub mod delete_repo_variable {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_repo_workflows {
   #[allow(unused_imports)]
   use super::*;
@@ -1558,11 +1428,6 @@ pub mod get_workflow {
   pub type Response = Workflow;
 }
 
-pub mod disable_workflow {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod create_workflow_dispatch {
   #[allow(unused_imports)]
   use super::*;
@@ -1578,11 +1443,6 @@ pub mod create_workflow_dispatch {
     #[serde(rename = "ref")]
     pub ref_: String,
   }
-}
-
-pub mod enable_workflow {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_workflow_runs {
@@ -1757,11 +1617,6 @@ pub mod create_or_update_environment_secret {
   }
 }
 
-pub mod delete_environment_secret {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_environment_variables {
   #[allow(unused_imports)]
   use super::*;
@@ -1826,11 +1681,6 @@ pub mod update_environment_variable {
     #[builder(default, setter(strip_option))]
     pub value: Option<String>,
   }
-}
-
-pub mod delete_environment_variable {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 /// Endpoints to manage GitHub Actions using the REST API.

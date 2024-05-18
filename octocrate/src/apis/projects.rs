@@ -95,11 +95,6 @@ pub mod update_card {
   }
 }
 
-pub mod delete_card {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod move_card {
   #[allow(unused_imports)]
   use super::*;
@@ -139,11 +134,6 @@ pub mod update_column {
     /// Name of the project column
     pub name: String,
   }
-}
-
-pub mod delete_column {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_cards {
@@ -301,11 +291,6 @@ pub mod update {
   }
 }
 
-pub mod delete {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_collaborators {
   #[allow(unused_imports)]
   use super::*;
@@ -383,11 +368,6 @@ pub mod add_collaborator {
     #[builder(default, setter(strip_option))]
     pub permission: Option<RequestPermission>,
   }
-}
-
-pub mod remove_collaborator {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_permission_for_user {
