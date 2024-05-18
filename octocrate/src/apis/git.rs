@@ -151,11 +151,6 @@ pub mod update_ref {
   }
 }
 
-pub mod delete_ref {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod create_tag {
   #[allow(unused_imports)]
   use super::*;

@@ -298,11 +298,6 @@ pub mod list_assignees {
   }
 }
 
-pub mod check_user_can_be_assigned {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_for_repo {
   #[allow(unused_imports)]
   use super::*;
@@ -553,11 +548,6 @@ pub mod update_comment {
   }
 }
 
-pub mod delete_comment {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_events_for_repo {
   #[allow(unused_imports)]
   use super::*;
@@ -721,11 +711,6 @@ pub mod remove_assignees {
     #[builder(default, setter(strip_option))]
     pub assignees: Option<Vec<String>>,
   }
-}
-
-pub mod check_user_can_be_assigned_to_issue {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_comments {
@@ -898,11 +883,6 @@ pub mod set_labels {
   }
 }
 
-pub mod remove_all_labels {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod remove_label {
   #[allow(unused_imports)]
   use super::*;
@@ -954,11 +934,6 @@ pub mod lock {
     #[builder(default, setter(strip_option))]
     pub lock_reason: Option<RequestLockReason>,
   }
-}
-
-pub mod unlock {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_events_for_timeline {
@@ -1052,11 +1027,6 @@ pub mod update_label {
     #[builder(default, setter(strip_option))]
     pub new_name: Option<String>,
   }
-}
-
-pub mod delete_label {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_milestones {
@@ -1240,11 +1210,6 @@ pub mod update_milestone {
     #[builder(default, setter(strip_option))]
     pub title: Option<String>,
   }
-}
-
-pub mod delete_milestone {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_labels_for_milestone {

@@ -98,11 +98,6 @@ pub mod get_webhook_delivery {
   pub type Response = HookDelivery;
 }
 
-pub mod redeliver_webhook_delivery {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_installation_requests_for_authenticated_app {
   #[allow(unused_imports)]
   use super::*;
@@ -157,11 +152,6 @@ pub mod get_installation {
   pub type Response = Installation;
 }
 
-pub mod delete_installation {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod create_installation_access_token {
   #[allow(unused_imports)]
   use super::*;
@@ -183,16 +173,6 @@ pub mod create_installation_access_token {
     #[builder(default, setter(strip_option))]
     pub repository_ids: Option<Vec<i64>>,
   }
-}
-
-pub mod suspend_installation {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod unsuspend_installation {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod delete_authorization {
@@ -313,11 +293,6 @@ pub mod list_repos_accessible_to_installation {
     pub repository_selection: Option<String>,
     pub total_count: i64,
   }
-}
-
-pub mod revoke_installation_access_token {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_subscription_plan_for_account {
@@ -563,16 +538,6 @@ pub mod list_installation_repos_for_authenticated_user {
     pub repository_selection: Option<String>,
     pub total_count: i64,
   }
-}
-
-pub mod add_repo_to_installation_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_repo_from_installation_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_subscriptions_for_authenticated_user {

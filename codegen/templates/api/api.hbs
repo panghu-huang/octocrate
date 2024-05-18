@@ -7,15 +7,15 @@ use serde::{Serialize, Deserialize};
 use typed_builder::TypedBuilder;
 
 {{#each functions }}
+{{#if references}}
 pub mod {{ function_name }} {
   #[allow(unused_imports)]
   use super::*;
 
-  {{#if references}}
   {{> types references}}
-  {{/if}}
 }
 
+{{/if}}
 {{/each}}
 
 {{#if description}}

@@ -256,11 +256,6 @@ pub mod update_in_org {
   }
 }
 
-pub mod delete_in_org {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_discussions_in_org {
   #[allow(unused_imports)]
   use super::*;
@@ -353,11 +348,6 @@ pub mod update_discussion_in_org {
   }
 }
 
-pub mod delete_discussion_in_org {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_discussion_comments_in_org {
   #[allow(unused_imports)]
   use super::*;
@@ -432,11 +422,6 @@ pub mod update_discussion_comment_in_org {
     /// The discussion comment's body text.
     pub body: String,
   }
-}
-
-pub mod delete_discussion_comment_in_org {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_pending_invitations_in_org {
@@ -544,11 +529,6 @@ pub mod add_or_update_membership_for_user_in_org {
   }
 }
 
-pub mod remove_membership_for_user_in_org {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_projects_in_org {
   #[allow(unused_imports)]
   use super::*;
@@ -611,11 +591,6 @@ pub mod add_or_update_project_permissions_in_org {
   }
 }
 
-pub mod remove_project_in_org {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_repos_in_org {
   #[allow(unused_imports)]
   use super::*;
@@ -655,11 +630,6 @@ pub mod add_or_update_repo_permissions_in_org {
     #[builder(default, setter(strip_option))]
     pub permission: Option<String>,
   }
-}
-
-pub mod remove_repo_in_org {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_child_in_org {
@@ -794,11 +764,6 @@ pub mod update_legacy {
   }
 }
 
-pub mod delete_legacy {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_discussions_legacy {
   #[allow(unused_imports)]
   use super::*;
@@ -887,11 +852,6 @@ pub mod update_discussion_legacy {
   }
 }
 
-pub mod delete_discussion_legacy {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_discussion_comments_legacy {
   #[allow(unused_imports)]
   use super::*;
@@ -968,11 +928,6 @@ pub mod update_discussion_comment_legacy {
   }
 }
 
-pub mod delete_discussion_comment_legacy {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_pending_invitations_legacy {
   #[allow(unused_imports)]
   use super::*;
@@ -1037,21 +992,6 @@ pub mod list_members_legacy {
   }
 }
 
-pub mod get_member_legacy {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod add_member_legacy {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_member_legacy {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_membership_for_user_legacy {
   #[allow(unused_imports)]
   use super::*;
@@ -1091,11 +1031,6 @@ pub mod add_or_update_membership_for_user_legacy {
     #[builder(default, setter(strip_option))]
     pub role: Option<RequestRole>,
   }
-}
-
-pub mod remove_membership_for_user_legacy {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_projects_legacy {
@@ -1160,11 +1095,6 @@ pub mod add_or_update_project_permissions_legacy {
   }
 }
 
-pub mod remove_project_legacy {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_repos_legacy {
   #[allow(unused_imports)]
   use super::*;
@@ -1225,11 +1155,6 @@ pub mod add_or_update_repo_permissions_legacy {
     #[builder(default, setter(strip_option))]
     pub permission: Option<RequestPermission>,
   }
-}
-
-pub mod remove_repo_legacy {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_child_legacy {

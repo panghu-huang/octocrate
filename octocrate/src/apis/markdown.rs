@@ -44,11 +44,6 @@ pub mod render {
   }
 }
 
-pub mod render_raw {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 /// Render GitHub flavored markdown
 pub struct GitHubMarkdownAPI {
   config: SharedAPIConfig,

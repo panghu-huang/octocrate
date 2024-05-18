@@ -115,11 +115,6 @@ pub mod create_for_team_discussion_comment_in_org {
   }
 }
 
-pub mod delete_for_team_discussion_comment {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_for_team_discussion_in_org {
   #[allow(unused_imports)]
   use super::*;
@@ -227,11 +222,6 @@ pub mod create_for_team_discussion_in_org {
     /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.
     pub content: RequestContent,
   }
-}
-
-pub mod delete_for_team_discussion {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_for_commit_comment {
@@ -343,11 +333,6 @@ pub mod create_for_commit_comment {
   }
 }
 
-pub mod delete_for_commit_comment {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_for_issue_comment {
   #[allow(unused_imports)]
   use super::*;
@@ -455,11 +440,6 @@ pub mod create_for_issue_comment {
     /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment.
     pub content: RequestContent,
   }
-}
-
-pub mod delete_for_issue_comment {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_for_issue {
@@ -571,11 +551,6 @@ pub mod create_for_issue {
   }
 }
 
-pub mod delete_for_issue {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_for_pull_request_review_comment {
   #[allow(unused_imports)]
   use super::*;
@@ -685,11 +660,6 @@ pub mod create_for_pull_request_review_comment {
   }
 }
 
-pub mod delete_for_pull_request_comment {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_for_release {
   #[allow(unused_imports)]
   use super::*;
@@ -785,11 +755,6 @@ pub mod create_for_release {
     /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release.
     pub content: RequestContent,
   }
-}
-
-pub mod delete_for_release {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_for_team_discussion_comment_legacy {

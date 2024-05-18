@@ -147,11 +147,6 @@ pub mod update {
   }
 }
 
-pub mod delete {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_comments {
   #[allow(unused_imports)]
   use super::*;
@@ -207,11 +202,6 @@ pub mod update_comment {
   }
 }
 
-pub mod delete_comment {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_commits {
   #[allow(unused_imports)]
   use super::*;
@@ -257,21 +247,6 @@ pub mod fork {
   use super::*;
 
   pub type Response = BaseGist;
-}
-
-pub mod check_is_starred {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod star {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod unstar {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_revision {

@@ -136,21 +136,6 @@ pub mod get_status_for_org {
   }
 }
 
-pub mod download_archive_for_org {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod delete_archive_for_org {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod unlock_repo_for_org {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_repos_for_org {
   #[allow(unused_imports)]
   use super::*;
@@ -282,11 +267,6 @@ pub mod update_import {
     #[builder(default, setter(strip_option))]
     pub vcs_username: Option<String>,
   }
-}
-
-pub mod cancel_import {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod get_commit_authors {
@@ -457,21 +437,6 @@ pub mod get_status_for_authenticated_user {
     #[builder(default, setter(strip_option))]
     pub exclude: Option<Vec<String>>,
   }
-}
-
-pub mod get_archive_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod delete_archive_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod unlock_repo_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_repos_for_authenticated_user {

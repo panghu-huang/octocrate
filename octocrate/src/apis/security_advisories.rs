@@ -404,11 +404,6 @@ pub mod update_repository_advisory {
   pub type Response = RepositoryAdvisory;
 }
 
-pub mod create_repository_advisory_cve_request {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod create_fork {
   #[allow(unused_imports)]
   use super::*;

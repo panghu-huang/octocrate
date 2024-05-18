@@ -122,16 +122,6 @@ pub mod get_thread {
   pub type Response = Thread;
 }
 
-pub mod mark_thread_as_read {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod mark_thread_as_done {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get_thread_subscription_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
@@ -153,11 +143,6 @@ pub mod set_thread_subscription {
     #[builder(default, setter(strip_option))]
     pub ignored: Option<bool>,
   }
-}
-
-pub mod delete_thread_subscription {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_public_org_events {
@@ -333,11 +318,6 @@ pub mod set_repo_subscription {
   }
 }
 
-pub mod delete_repo_subscription {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_repos_starred_by_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
@@ -398,21 +378,6 @@ pub mod list_repos_starred_by_authenticated_user {
     #[builder(default, setter(strip_option))]
     pub page: Option<i64>,
   }
-}
-
-pub mod check_repo_is_starred_by_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod star_repo_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod unstar_repo_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_watched_repos_for_authenticated_user {

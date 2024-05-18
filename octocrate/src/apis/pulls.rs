@@ -235,11 +235,6 @@ pub mod update_review_comment {
   }
 }
 
-pub mod delete_review_comment {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod get {
   #[allow(unused_imports)]
   use super::*;
@@ -518,11 +513,6 @@ pub mod list_files {
     #[builder(default, setter(strip_option))]
     pub page: Option<i64>,
   }
-}
-
-pub mod check_if_merged {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod merge {

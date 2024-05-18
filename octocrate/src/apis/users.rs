@@ -84,21 +84,6 @@ pub mod list_blocked_by_authenticated_user {
   }
 }
 
-pub mod check_blocked {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod block {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod unblock {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod set_primary_email_visibility_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
@@ -235,21 +220,6 @@ pub mod list_followed_by_authenticated_user {
   }
 }
 
-pub mod check_person_is_followed_by_authenticated {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod follow {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod unfollow {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_gpg_keys_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
@@ -295,11 +265,6 @@ pub mod get_gpg_key_for_authenticated_user {
   pub type Response = GpgKey;
 }
 
-pub mod delete_gpg_key_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_public_ssh_keys_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
@@ -343,11 +308,6 @@ pub mod get_public_ssh_key_for_authenticated_user {
   use super::*;
 
   pub type Response = Key;
-}
-
-pub mod delete_public_ssh_key_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_public_emails_for_authenticated_user {
@@ -461,11 +421,6 @@ pub mod get_ssh_signing_key_for_authenticated_user {
   pub type Response = SshSigningKey;
 }
 
-pub mod delete_ssh_signing_key_for_authenticated_user {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list {
   #[allow(unused_imports)]
   use super::*;
@@ -538,11 +493,6 @@ pub mod list_following_for_user {
     #[builder(default, setter(strip_option))]
     pub page: Option<i64>,
   }
-}
-
-pub mod check_following_for_user {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_gpg_keys_for_user {

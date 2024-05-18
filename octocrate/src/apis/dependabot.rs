@@ -338,11 +338,6 @@ pub mod create_or_update_org_secret {
   }
 }
 
-pub mod delete_org_secret {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
 pub mod list_selected_repos_for_org_secret {
   #[allow(unused_imports)]
   use super::*;
@@ -378,16 +373,6 @@ pub mod set_selected_repos_for_org_secret {
     /// An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Set selected repositories for an organization secret](https://docs.github.com/rest/dependabot/secrets#set-selected-repositories-for-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/dependabot/secrets#remove-selected-repository-from-an-organization-secret) endpoints.
     pub selected_repository_ids: Vec<i64>,
   }
-}
-
-pub mod add_selected_repo_to_org_secret {
-  #[allow(unused_imports)]
-  use super::*;
-}
-
-pub mod remove_selected_repo_from_org_secret {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 pub mod list_alerts_for_repo {
@@ -654,11 +639,6 @@ pub mod create_or_update_repo_secret {
     #[builder(default, setter(strip_option))]
     pub key_id: Option<String>,
   }
-}
-
-pub mod delete_repo_secret {
-  #[allow(unused_imports)]
-  use super::*;
 }
 
 /// Endpoints to manage Dependabot.
