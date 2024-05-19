@@ -329,23 +329,6 @@ pub mod list_accounts_for_plan {
   pub type Response = Vec<MarketplacePurchase>;
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QuerySort {
-    #[serde(rename = "created")]
-    Created,
-    #[serde(rename = "updated")]
-    Updated,
-  }
-
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
-      match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
     Asc,
@@ -368,7 +351,7 @@ pub mod list_accounts_for_plan {
     /// The property to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub sort: Option<QuerySort>,
+    pub sort: Option<parameters::Sort>,
     /// To return the oldest accounts first, set to `asc`. Ignored without the `sort` parameter.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -418,23 +401,6 @@ pub mod list_accounts_for_plan_stubbed {
   pub type Response = Vec<MarketplacePurchase>;
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QuerySort {
-    #[serde(rename = "created")]
-    Created,
-    #[serde(rename = "updated")]
-    Updated,
-  }
-
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
-      match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
     Asc,
@@ -457,7 +423,7 @@ pub mod list_accounts_for_plan_stubbed {
     /// The property to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub sort: Option<QuerySort>,
+    pub sort: Option<parameters::Sort>,
     /// To return the oldest accounts first, set to `asc`. Ignored without the `sort` parameter.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]

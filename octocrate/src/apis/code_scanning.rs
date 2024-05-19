@@ -13,23 +13,6 @@ pub mod list_alerts_for_org {
   pub type Response = Vec<CodeScanningOrganizationAlertItems>;
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
     Created,
@@ -76,7 +59,7 @@ pub mod list_alerts_for_org {
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// If specified, only code scanning alerts with this state will be returned.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -97,23 +80,6 @@ pub mod list_alerts_for_repo {
   use super::*;
 
   pub type Response = Vec<CodeScanningAlertItems>;
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
@@ -159,7 +125,7 @@ pub mod list_alerts_for_repo {
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// The property by which to sort the results.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -233,23 +199,6 @@ pub mod list_recent_analyses {
   pub type Response = Vec<CodeScanningAnalysis>;
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
     Created,
@@ -294,7 +243,7 @@ pub mod list_recent_analyses {
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// The property by which to sort the results.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]

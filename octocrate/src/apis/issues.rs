@@ -81,23 +81,6 @@ pub mod list {
     }
   }
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -120,7 +103,7 @@ pub mod list {
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -223,23 +206,6 @@ pub mod list_for_org {
     }
   }
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -262,7 +228,7 @@ pub mod list_for_org {
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -344,23 +310,6 @@ pub mod list_for_repo {
     }
   }
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -395,7 +344,7 @@ pub mod list_for_repo {
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -468,23 +417,6 @@ pub mod list_comments_for_repo {
   pub type Response = Vec<IssueComment>;
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QuerySort {
-    #[serde(rename = "created")]
-    Created,
-    #[serde(rename = "updated")]
-    Updated,
-  }
-
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
-      match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
     Asc,
@@ -507,7 +439,7 @@ pub mod list_comments_for_repo {
     /// The property to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub sort: Option<QuerySort>,
+    pub sort: Option<parameters::Sort>,
     /// Either `asc` or `desc`. Ignored without the `sort` parameter.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -1307,23 +1239,6 @@ pub mod list_for_authenticated_user {
     }
   }
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1346,7 +1261,7 @@ pub mod list_for_authenticated_user {
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// Only show results that were last updated after the given time. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]

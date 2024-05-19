@@ -59,23 +59,6 @@ pub mod list_global_advisories {
   }
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "updated")]
     Updated,
@@ -162,7 +145,7 @@ pub mod list_global_advisories {
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -186,23 +169,6 @@ pub mod list_org_repository_advisories {
   use super::*;
 
   pub type Response = Vec<RepositoryAdvisory>;
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
@@ -253,7 +219,7 @@ pub mod list_org_repository_advisories {
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// The property to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -284,23 +250,6 @@ pub mod list_repository_advisories {
   pub type Response = Vec<RepositoryAdvisory>;
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
     Created,
@@ -349,7 +298,7 @@ pub mod list_repository_advisories {
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// The property to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]

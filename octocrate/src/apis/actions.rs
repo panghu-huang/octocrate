@@ -556,43 +556,6 @@ pub mod get_actions_cache_list {
 
   pub type Response = ActionsCacheList;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QuerySort {
-    #[serde(rename = "created_at")]
-    CreatedAt,
-    #[serde(rename = "last_accessed_at")]
-    LastAccessedAt,
-    #[serde(rename = "size_in_bytes")]
-    SizeInBytes,
-  }
-
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
-      match self {
-        QuerySort::CreatedAt => "created_at".to_string(),
-        QuerySort::LastAccessedAt => "last_accessed_at".to_string(),
-        QuerySort::SizeInBytes => "size_in_bytes".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -616,11 +579,11 @@ pub mod get_actions_cache_list {
     /// The property to sort the results by. `created_at` means when the cache was created. `last_accessed_at` means when the cache was last accessed. `size_in_bytes` is the size of the cache in bytes.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub sort: Option<QuerySort>,
+    pub sort: Option<parameters::ActionsCacheListSort>,
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
   }
 }
 
@@ -911,59 +874,6 @@ pub mod list_workflow_runs_for_repo {
   #[allow(unused_imports)]
   use super::*;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryStatus {
-    #[serde(rename = "completed")]
-    Completed,
-    #[serde(rename = "action_required")]
-    ActionRequired,
-    #[serde(rename = "cancelled")]
-    Cancelled,
-    #[serde(rename = "failure")]
-    Failure,
-    #[serde(rename = "neutral")]
-    Neutral,
-    #[serde(rename = "skipped")]
-    Skipped,
-    #[serde(rename = "stale")]
-    Stale,
-    #[serde(rename = "success")]
-    Success,
-    #[serde(rename = "timed_out")]
-    TimedOut,
-    #[serde(rename = "in_progress")]
-    InProgress,
-    #[serde(rename = "queued")]
-    Queued,
-    #[serde(rename = "requested")]
-    Requested,
-    #[serde(rename = "waiting")]
-    Waiting,
-    #[serde(rename = "pending")]
-    Pending,
-  }
-
-  impl ToString for QueryStatus {
-    fn to_string(&self) -> String {
-      match self {
-        QueryStatus::Completed => "completed".to_string(),
-        QueryStatus::ActionRequired => "action_required".to_string(),
-        QueryStatus::Cancelled => "cancelled".to_string(),
-        QueryStatus::Failure => "failure".to_string(),
-        QueryStatus::Neutral => "neutral".to_string(),
-        QueryStatus::Skipped => "skipped".to_string(),
-        QueryStatus::Stale => "stale".to_string(),
-        QueryStatus::Success => "success".to_string(),
-        QueryStatus::TimedOut => "timed_out".to_string(),
-        QueryStatus::InProgress => "in_progress".to_string(),
-        QueryStatus::Queued => "queued".to_string(),
-        QueryStatus::Requested => "requested".to_string(),
-        QueryStatus::Waiting => "waiting".to_string(),
-        QueryStatus::Pending => "pending".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -982,7 +892,7 @@ pub mod list_workflow_runs_for_repo {
     /// Returns workflow runs with the check run `status` or `conclusion` that you specify. For example, a conclusion can be `success` or a status can be `in_progress`. Only GitHub Actions can set a status of `waiting`, `pending`, or `requested`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub status: Option<QueryStatus>,
+    pub status: Option<parameters::WorkflowRunStatus>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -1449,59 +1359,6 @@ pub mod list_workflow_runs {
   #[allow(unused_imports)]
   use super::*;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryStatus {
-    #[serde(rename = "completed")]
-    Completed,
-    #[serde(rename = "action_required")]
-    ActionRequired,
-    #[serde(rename = "cancelled")]
-    Cancelled,
-    #[serde(rename = "failure")]
-    Failure,
-    #[serde(rename = "neutral")]
-    Neutral,
-    #[serde(rename = "skipped")]
-    Skipped,
-    #[serde(rename = "stale")]
-    Stale,
-    #[serde(rename = "success")]
-    Success,
-    #[serde(rename = "timed_out")]
-    TimedOut,
-    #[serde(rename = "in_progress")]
-    InProgress,
-    #[serde(rename = "queued")]
-    Queued,
-    #[serde(rename = "requested")]
-    Requested,
-    #[serde(rename = "waiting")]
-    Waiting,
-    #[serde(rename = "pending")]
-    Pending,
-  }
-
-  impl ToString for QueryStatus {
-    fn to_string(&self) -> String {
-      match self {
-        QueryStatus::Completed => "completed".to_string(),
-        QueryStatus::ActionRequired => "action_required".to_string(),
-        QueryStatus::Cancelled => "cancelled".to_string(),
-        QueryStatus::Failure => "failure".to_string(),
-        QueryStatus::Neutral => "neutral".to_string(),
-        QueryStatus::Skipped => "skipped".to_string(),
-        QueryStatus::Stale => "stale".to_string(),
-        QueryStatus::Success => "success".to_string(),
-        QueryStatus::TimedOut => "timed_out".to_string(),
-        QueryStatus::InProgress => "in_progress".to_string(),
-        QueryStatus::Queued => "queued".to_string(),
-        QueryStatus::Requested => "requested".to_string(),
-        QueryStatus::Waiting => "waiting".to_string(),
-        QueryStatus::Pending => "pending".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1520,7 +1377,7 @@ pub mod list_workflow_runs {
     /// Returns workflow runs with the check run `status` or `conclusion` that you specify. For example, a conclusion can be `success` or a status can be `in_progress`. Only GitHub Actions can set a status of `waiting`, `pending`, or `requested`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub status: Option<QueryStatus>,
+    pub status: Option<parameters::WorkflowRunStatus>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]

@@ -324,51 +324,17 @@ pub mod list_repos_starred_by_authenticated_user {
 
   pub type Response = Vec<Repository>;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QuerySort {
-    #[serde(rename = "created")]
-    Created,
-    #[serde(rename = "updated")]
-    Updated,
-  }
-
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
-      match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
     /// The property to sort the results by. `created` means when the repository was starred. `updated` means when the repository was last pushed to.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub sort: Option<QuerySort>,
+    pub sort: Option<parameters::SortStarred>,
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -504,40 +470,6 @@ pub mod list_repos_starred_by_user {
   #[allow(unused_imports)]
   use super::*;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QuerySort {
-    #[serde(rename = "created")]
-    Created,
-    #[serde(rename = "updated")]
-    Updated,
-  }
-
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
-      match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Response {
@@ -551,11 +483,11 @@ pub mod list_repos_starred_by_user {
     /// The property to sort the results by. `created` means when the repository was starred. `updated` means when the repository was last pushed to.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub sort: Option<QuerySort>,
+    pub sort: Option<parameters::SortStarred>,
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]

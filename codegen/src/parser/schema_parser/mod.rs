@@ -25,6 +25,8 @@ pub struct SchemaParser {
   prefixs: Vec<String>,
   // Use is_scoped to mark whether the current schema is a type unique to an API (non-global)
   is_scoped: bool,
+  // Use is_global_parameter to mark whether the current schema is a global parameter
+  is_global_parameter: bool,
 }
 
 impl SchemaParser {
@@ -33,6 +35,7 @@ impl SchemaParser {
       prefixs: vec![],
       // Default is_scoped to true
       is_scoped: true,
+      is_global_parameter: false,
     }
   }
 
@@ -47,6 +50,22 @@ impl SchemaParser {
     let parsed = self.parse_schema_definition(ctx, schema);
 
     self.prefixs.pop();
+
+    parsed
+  }
+
+  // Global parameter
+  pub fn parse_global_parameter(
+    &mut self,
+    ctx: &mut ParseContext,
+    prefix_name: &str,
+    schema: &SchemaDefinition,
+  ) -> ParsedData {
+    self.is_global_parameter = true;
+
+    let parsed = self.parse(ctx, prefix_name, schema);
+
+    self.is_global_parameter = false;
 
     parsed
   }
@@ -68,7 +87,7 @@ impl SchemaParser {
         let parsed = match ctx.reference_existing(&reference_id) {
           Some(parsed) => parsed.inner,
           None => {
-            let mut schema = ctx.get_component(&reference_id).unwrap_or_else(|| {
+            let mut schema = ctx.get_schema_component(&reference_id).unwrap_or_else(|| {
               panic!("Failed to find reference schema with id: {}", reference_id)
             });
 
@@ -133,7 +152,9 @@ impl SchemaParser {
   }
 
   fn add_reference(&self, ctx: &mut ParseContext, id_or_name: &str, reference: ParsedData) {
-    if self.is_scoped {
+    if self.is_global_parameter {
+      ctx.add_parameter(id_or_name, reference);
+    } else if self.is_scoped {
       ctx.add_scoped_reference(id_or_name, reference);
     } else {
       ctx.add_reference(id_or_name, reference);

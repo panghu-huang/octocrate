@@ -211,26 +211,6 @@ pub mod list_for_suite {
   use super::*;
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryStatus {
-    #[serde(rename = "queued")]
-    Queued,
-    #[serde(rename = "in_progress")]
-    InProgress,
-    #[serde(rename = "completed")]
-    Completed,
-  }
-
-  impl ToString for QueryStatus {
-    fn to_string(&self) -> String {
-      match self {
-        QueryStatus::Queued => "queued".to_string(),
-        QueryStatus::InProgress => "in_progress".to_string(),
-        QueryStatus::Completed => "completed".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryFilter {
     #[serde(rename = "latest")]
     Latest,
@@ -257,7 +237,7 @@ pub mod list_for_suite {
     /// Returns check runs with the specified `status`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub status: Option<QueryStatus>,
+    pub status: Option<parameters::Status>,
     /// Filters check runs by their `completed_at` timestamp. `latest` returns the most recent check runs.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -292,26 +272,6 @@ pub mod list_for_ref {
   use super::*;
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryStatus {
-    #[serde(rename = "queued")]
-    Queued,
-    #[serde(rename = "in_progress")]
-    InProgress,
-    #[serde(rename = "completed")]
-    Completed,
-  }
-
-  impl ToString for QueryStatus {
-    fn to_string(&self) -> String {
-      match self {
-        QueryStatus::Queued => "queued".to_string(),
-        QueryStatus::InProgress => "in_progress".to_string(),
-        QueryStatus::Completed => "completed".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryFilter {
     #[serde(rename = "latest")]
     Latest,
@@ -338,7 +298,7 @@ pub mod list_for_ref {
     /// Returns check runs with the specified `status`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub status: Option<QueryStatus>,
+    pub status: Option<parameters::Status>,
     /// Filters check runs by their `completed_at` timestamp. `latest` returns the most recent check runs.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]

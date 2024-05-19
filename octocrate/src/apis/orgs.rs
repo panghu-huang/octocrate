@@ -920,37 +920,6 @@ pub mod list_pat_grant_requests {
 
   pub type Response = Vec<OrganizationProgrammaticAccessGrantRequest>;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QuerySort {
-    #[serde(rename = "created_at")]
-    CreatedAt,
-  }
-
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
-      match self {
-        QuerySort::CreatedAt => "created_at".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -965,11 +934,11 @@ pub mod list_pat_grant_requests {
     /// The property by which to sort the results.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub sort: Option<QuerySort>,
+    pub sort: Option<parameters::PersonalAccessTokenSort>,
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// A list of owner usernames to use to filter the results.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -1091,37 +1060,6 @@ pub mod list_pat_grants {
 
   pub type Response = Vec<OrganizationProgrammaticAccessGrant>;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QuerySort {
-    #[serde(rename = "created_at")]
-    CreatedAt,
-  }
-
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
-      match self {
-        QuerySort::CreatedAt => "created_at".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -1136,11 +1074,11 @@ pub mod list_pat_grants {
     /// The property by which to sort the results.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub sort: Option<QuerySort>,
+    pub sort: Option<parameters::PersonalAccessTokenSort>,
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// A list of owner usernames to use to filter the results.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -1385,61 +1323,6 @@ pub mod list_security_manager_teams {
 pub mod enable_or_disable_security_product_on_all_org_repos {
   #[allow(unused_imports)]
   use super::*;
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum ParametersSecurityProduct {
-    #[serde(rename = "dependency_graph")]
-    DependencyGraph,
-    #[serde(rename = "dependabot_alerts")]
-    DependabotAlerts,
-    #[serde(rename = "dependabot_security_updates")]
-    DependabotSecurityUpdates,
-    #[serde(rename = "advanced_security")]
-    AdvancedSecurity,
-    #[serde(rename = "code_scanning_default_setup")]
-    CodeScanningDefaultSetup,
-    #[serde(rename = "secret_scanning")]
-    SecretScanning,
-    #[serde(rename = "secret_scanning_push_protection")]
-    SecretScanningPushProtection,
-  }
-
-  impl ToString for ParametersSecurityProduct {
-    fn to_string(&self) -> String {
-      match self {
-        ParametersSecurityProduct::DependencyGraph => "dependency_graph".to_string(),
-        ParametersSecurityProduct::DependabotAlerts => "dependabot_alerts".to_string(),
-        ParametersSecurityProduct::DependabotSecurityUpdates => {
-          "dependabot_security_updates".to_string()
-        }
-        ParametersSecurityProduct::AdvancedSecurity => "advanced_security".to_string(),
-        ParametersSecurityProduct::CodeScanningDefaultSetup => {
-          "code_scanning_default_setup".to_string()
-        }
-        ParametersSecurityProduct::SecretScanning => "secret_scanning".to_string(),
-        ParametersSecurityProduct::SecretScanningPushProtection => {
-          "secret_scanning_push_protection".to_string()
-        }
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum ParametersEnablement {
-    #[serde(rename = "enable_all")]
-    EnableAll,
-    #[serde(rename = "disable_all")]
-    DisableAll,
-  }
-
-  impl ToString for ParametersEnablement {
-    fn to_string(&self) -> String {
-      match self {
-        ParametersEnablement::EnableAll => "enable_all".to_string(),
-        ParametersEnablement::DisableAll => "disable_all".to_string(),
-      }
-    }
-  }
 
   /// CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.
   /// If you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.
@@ -3205,10 +3088,8 @@ impl GitHubOrgsAPI {
   pub fn enable_or_disable_security_product_on_all_org_repos(
     &self,
     org: impl Into<String>,
-    security_product: impl Into<
-      enable_or_disable_security_product_on_all_org_repos::ParametersSecurityProduct,
-    >,
-    enablement: impl Into<enable_or_disable_security_product_on_all_org_repos::ParametersEnablement>,
+    security_product: impl Into<parameters::SecurityProduct>,
+    enablement: impl Into<parameters::OrgSecurityProductEnablement>,
   ) -> NoContentRequest<enable_or_disable_security_product_on_all_org_repos::Request, ()> {
     let org = org.into();
     let security_product = security_product.into();
