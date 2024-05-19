@@ -39,10 +39,7 @@ impl ParametersParser {
           ctx
             .get_parameter_component(&reference_id)
             .map(|parameter| (parameter.name.clone(), parameter.description.clone()))
-            .expect(&format!(
-              "Reference to parameter {} not found",
-              reference_id
-            ))
+            .unwrap_or_else(|| panic!("Reference to parameter {} not found", reference_id))
         }
       };
 
@@ -133,12 +130,6 @@ mod tests {
       }
       _ => panic!("Expected ParsedData::Type"),
     };
-
-    // ctx.add_reference_with_parameter_name(
-    //   &"pagination-before".to_string(),
-    //   &"before".to_string(),
-    //   parsed_data.clone(),
-    // );
 
     let json = r#"[
       {

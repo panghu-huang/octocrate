@@ -29,10 +29,9 @@ impl<'a> ParameterParser<'a> {
         let parsed = match ctx.reference_parameter(&reference_id) {
           Some(parameter) => parameter.inner,
           None => {
-            let parameter = ctx.get_parameter_component(&reference_id).expect(&format!(
-              "Reference to parameter {} not found",
-              reference_id
-            ));
+            let parameter = ctx
+              .get_parameter_component(&reference_id)
+              .unwrap_or_else(|| panic!("Reference to parameter {} not found", reference_id));
 
             let parsed =
               schema_parser.parse_global_parameter(ctx, &reference_id, &parameter.schema);
