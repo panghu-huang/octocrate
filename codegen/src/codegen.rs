@@ -14,6 +14,7 @@ use std::path::Path;
 #[derive(Clone)]
 pub struct ParsedAPIDescription {
   tags: IndexMap<String, String>,
+  parameters: IndexMap<String, ParsedData>,
   types: IndexMap<String, ParsedData>,
   webhooks: IndexMap<String, ParsedData>,
   apis: IndexMap<String, Vec<API>>,
@@ -64,6 +65,7 @@ impl Codegen {
     ParsedAPIDescription {
       tags: parse_context.get_tags(),
       apis: parse_context.get_apis(),
+      parameters: parse_context.get_parameters(),
       types: parse_context.get_references(),
       webhooks: parse_context.get_webhook_references(),
     }
@@ -98,11 +100,14 @@ impl Codegen {
 
         if let Some(p) = api.parameters {
           for field in p.fields {
-            let type_name = if field.reference.is_some() {
-              format!("{}::{}", api_name, field.type_name)
-            } else {
-              field.type_name.clone()
-            };
+            let type_name =
+              if field.reference.is_some() && !field.type_name.starts_with("parameters::") {
+                // If there is no reference, it means it is a basic type, such as i32, String
+                // If it starts with parameters::, it means it references a type in `octocrate_core::parameters`
+                format!("{}::{}", api_name, field.type_name)
+              } else {
+                field.type_name.clone()
+              };
 
             let parameter = crate::writer::Parameter {
               name: field.name.clone(),
@@ -184,6 +189,17 @@ impl Codegen {
     type_entry_module.add_module("models");
 
     writer.add_file(types_module);
+
+    // Parameters
+    let mut parameters_module = TypeModule::new("parameters");
+
+    for (_, type_) in parsed.parameters.iter() {
+      parameters_module.add_type(type_);
+    }
+
+    type_entry_module.add_module_with_exports("parameters", false);
+
+    writer.add_file(parameters_module);
 
     // Webhooks
     let mut webhooks_module = TypeModule::new("webhooks");

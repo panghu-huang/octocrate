@@ -94,23 +94,6 @@ pub mod commits {
     }
   }
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryOrder {
-    #[serde(rename = "desc")]
-    Desc,
-    #[serde(rename = "asc")]
-    Asc,
-  }
-
-  impl ToString for QueryOrder {
-    fn to_string(&self) -> String {
-      match self {
-        QueryOrder::Desc => "desc".to_string(),
-        QueryOrder::Asc => "asc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -123,7 +106,7 @@ pub mod commits {
     /// Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub order: Option<QueryOrder>,
+    pub order: Option<parameters::Order>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -191,23 +174,6 @@ pub mod issues_and_pull_requests {
     }
   }
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryOrder {
-    #[serde(rename = "desc")]
-    Desc,
-    #[serde(rename = "asc")]
-    Asc,
-  }
-
-  impl ToString for QueryOrder {
-    fn to_string(&self) -> String {
-      match self {
-        QueryOrder::Desc => "desc".to_string(),
-        QueryOrder::Asc => "asc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -220,7 +186,7 @@ pub mod issues_and_pull_requests {
     /// Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub order: Option<QueryOrder>,
+    pub order: Option<parameters::Order>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -261,23 +227,6 @@ pub mod labels {
     }
   }
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryOrder {
-    #[serde(rename = "desc")]
-    Desc,
-    #[serde(rename = "asc")]
-    Asc,
-  }
-
-  impl ToString for QueryOrder {
-    fn to_string(&self) -> String {
-      match self {
-        QueryOrder::Desc => "desc".to_string(),
-        QueryOrder::Asc => "asc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -292,7 +241,7 @@ pub mod labels {
     /// Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub order: Option<QueryOrder>,
+    pub order: Option<parameters::Order>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -339,23 +288,6 @@ pub mod repos {
     }
   }
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryOrder {
-    #[serde(rename = "desc")]
-    Desc,
-    #[serde(rename = "asc")]
-    Asc,
-  }
-
-  impl ToString for QueryOrder {
-    fn to_string(&self) -> String {
-      match self {
-        QueryOrder::Desc => "desc".to_string(),
-        QueryOrder::Asc => "asc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -368,7 +300,7 @@ pub mod repos {
     /// Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub order: Option<QueryOrder>,
+    pub order: Option<parameters::Order>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -440,23 +372,6 @@ pub mod users {
     }
   }
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryOrder {
-    #[serde(rename = "desc")]
-    Desc,
-    #[serde(rename = "asc")]
-    Asc,
-  }
-
-  impl ToString for QueryOrder {
-    fn to_string(&self) -> String {
-      match self {
-        QueryOrder::Desc => "desc".to_string(),
-        QueryOrder::Asc => "asc".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -469,7 +384,7 @@ pub mod users {
     /// Determines whether the first search result returned is the highest number of matches (`desc`) or lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub order: Option<QueryOrder>,
+    pub order: Option<parameters::Order>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]

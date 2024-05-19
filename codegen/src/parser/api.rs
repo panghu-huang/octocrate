@@ -56,20 +56,23 @@ impl API {
 
     if let Some(parameters) = &schema.parameters {
       for parameter in parameters {
-        let parameter = match parameter {
-          ParameterDefinition::Parameter(parameter) => parameter.clone(),
+        let is_query = match parameter {
+          ParameterDefinition::Parameter(parameter) => parameter.position.is_query(),
           ParameterDefinition::Ref(reference) => {
             let reference_id = reference.get_reference_id();
+
             ctx
-              .get_parameter(&reference_id)
+              .get_parameter_component(&reference_id)
               .expect("Reference not found")
+              .position
+              .is_query()
           }
         };
 
-        if parameter.position.is_query() {
-          query.push(parameter);
+        if is_query {
+          query.push(parameter.clone());
         } else {
-          path_parameters.push(parameter);
+          path_parameters.push(parameter.clone());
         }
       }
     }

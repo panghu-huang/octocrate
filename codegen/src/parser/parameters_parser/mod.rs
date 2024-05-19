@@ -2,18 +2,18 @@ mod parameter_parser;
 
 use super::{context::ParseContext, ParsedData};
 use crate::{
-  schemas::parameters::Parameter,
+  schemas::parameters::ParameterDefinition,
   structures::structs::{Struct, StructField},
 };
 use parameter_parser::ParameterParser;
 
 #[derive(Debug, Clone)]
 pub struct ParametersParser {
-  pub parameters: Vec<Parameter>,
+  pub parameters: Vec<ParameterDefinition>,
 }
 
 impl ParametersParser {
-  pub fn new(parameters: Vec<Parameter>) -> Self {
+  pub fn new(parameters: Vec<ParameterDefinition>) -> Self {
     Self { parameters }
   }
 
@@ -30,16 +30,24 @@ impl ParametersParser {
     let mut new_struct = Struct::new_with_description(struct_name, &description);
 
     for parameter in &self.parameters {
+      let (name, description) = match parameter {
+        ParameterDefinition::Parameter(parameter) => {
+          (parameter.name.clone(), parameter.description.clone())
+        }
+        ParameterDefinition::Ref(reference) => {
+          let reference_id = reference.get_reference_id();
+          ctx
+            .get_parameter_component(&reference_id)
+            .map(|parameter| (parameter.name.clone(), parameter.description.clone()))
+            .unwrap_or_else(|| panic!("Reference to parameter {} not found", reference_id))
+        }
+      };
+
       let parameter_parser = ParameterParser::new(parameter);
 
-      let generated_struct =
-        parameter_parser.parse(ctx, &format!("{}_{}", struct_name, &parameter.name));
+      let parsed = parameter_parser.parse(ctx, &format!("{}_{}", struct_name, &name));
 
-      let field = self.create_field_from_parsed_data(
-        &parameter.name,
-        &generated_struct,
-        &parameter.description,
-      );
+      let field = self.create_field_from_parsed_data(&name, &parsed, &description);
 
       new_struct.add_field(field);
     }
@@ -81,18 +89,7 @@ impl ParametersParser {
 
         field
       }
-      ParsedData::Struct(struct_) => {
-        let mut field = StructField::new(parameter_name, &struct_.name);
-
-        let description = description.as_ref().or(struct_.description.as_ref());
-        if let Some(description) = description {
-          field.set_description(description);
-        }
-
-        field.reference(&struct_.name);
-
-        field
-      }
+      _ => unreachable!("ParameterParser should not return a Struct"),
     }
   }
 }
@@ -100,7 +97,6 @@ impl ParametersParser {
 #[cfg(test)]
 mod tests {
   use super::*;
-  use crate::schemas::parameters::Parameter;
 
   #[test]
   fn test_parameters_parser() {
@@ -114,7 +110,7 @@ mod tests {
       }
     }"#;
 
-    let parameter: Parameter = serde_json::from_str(json).unwrap();
+    let parameter: ParameterDefinition = serde_json::from_str(json).unwrap();
 
     let mut ctx = ParseContext::default();
 
@@ -134,12 +130,6 @@ mod tests {
       }
       _ => panic!("Expected ParsedData::Type"),
     };
-
-    // ctx.add_reference_with_parameter_name(
-    //   &"pagination-before".to_string(),
-    //   &"before".to_string(),
-    //   parsed_data.clone(),
-    // );
 
     let json = r#"[
       {
@@ -162,7 +152,7 @@ mod tests {
       }
       ]"#;
 
-    let parameters: Vec<Parameter> = serde_json::from_str(json).unwrap();
+    let parameters: Vec<ParameterDefinition> = serde_json::from_str(json).unwrap();
 
     let parameters_parser = ParametersParser::new(parameters);
 

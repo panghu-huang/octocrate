@@ -28,6 +28,7 @@ pub type References = IndexMap<ReferenceName, TypeReference>;
 
 struct ParseContextState {
   id_name_map: IndexMap<String, String>,
+  parameters: References,
   references: References,
   scoped_references: References,
   // webhook types and api types can't share certain types, such as Repository / Committer and so on.
@@ -67,6 +68,7 @@ impl ParseContext {
       progress_bar,
       state: ParseContextState {
         id_name_map: IndexMap::new(),
+        parameters: IndexMap::new(),
         scoped_references: IndexMap::new(),
         references: IndexMap::new(),
         webhook_references: IndexMap::new(),
@@ -123,6 +125,51 @@ impl ParseContext {
         },
       );
     }
+  }
+
+  pub fn add_parameter(&mut self, id: &str, parameter: ParsedData) {
+    let parameters = self.state.parameters.borrow_mut();
+
+    let normalized_id = match &parameter {
+      ParsedData::Enum(enum_) => enum_.name.clone(),
+      _ => id.to_owned(),
+    };
+
+    if id != normalized_id {
+      self
+        .state
+        .id_name_map
+        .insert(id.to_owned(), normalized_id.clone());
+    }
+
+    if parameters.contains_key(&normalized_id) {
+      self.reference_parameter(&normalized_id);
+      return;
+    }
+
+    let mut parameter = parameter;
+
+    if let Some(tag) = &self.working_tag {
+      parameter.add_tag(tag);
+    }
+
+    parameters.insert(
+      normalized_id.clone(),
+      TypeReference {
+        name: parameter.name(),
+        inner: parameter,
+      },
+    );
+  }
+
+  pub fn reference_parameter(&mut self, id: &str) -> Option<TypeReference> {
+    self.state.parameters.get_mut(id).map(|reference| {
+      if let Some(tag) = &self.working_tag {
+        reference.inner.add_tag(tag);
+      }
+
+      reference.clone()
+    })
   }
 
   pub fn get_scoped_references(&self) -> IndexMap<ReferenceName, TypeReference> {
@@ -269,11 +316,20 @@ impl ParseContext {
       .collect()
   }
 
-  pub fn get_component(&self, id: &str) -> Option<Schema> {
+  pub fn get_parameters(&self) -> IndexMap<ReferenceName, ParsedData> {
+    self
+      .state
+      .parameters
+      .iter()
+      .map(|(name, reference)| (name.clone(), reference.inner.clone()))
+      .collect()
+  }
+
+  pub fn get_schema_component(&self, id: &str) -> Option<Schema> {
     self.api_description.components.schemas.get(id).cloned()
   }
 
-  pub fn get_parameter(&self, name: &str) -> Option<Parameter> {
+  pub fn get_parameter_component(&self, name: &str) -> Option<Parameter> {
     self
       .api_description
       .components
@@ -293,6 +349,7 @@ impl Default for ParseContext {
       api_description: APIDescription::default(),
       state: ParseContextState {
         id_name_map: IndexMap::new(),
+        parameters: IndexMap::new(),
         scoped_references: IndexMap::new(),
         references: IndexMap::new(),
         webhook_references: IndexMap::new(),

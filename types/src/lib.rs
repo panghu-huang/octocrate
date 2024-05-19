@@ -3,6 +3,8 @@ mod models;
 #[allow(unused_imports)]
 pub use models::*;
 
+pub mod parameters;
+
 pub mod webhooks;
 
 #[cfg(feature = "pagination")]

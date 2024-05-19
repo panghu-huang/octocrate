@@ -416,52 +416,6 @@ pub mod get_org_rule_suites {
 
   pub type Response = RuleSuites;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryTimePeriod {
-    #[serde(rename = "hour")]
-    Hour,
-    #[serde(rename = "day")]
-    Day,
-    #[serde(rename = "week")]
-    Week,
-    #[serde(rename = "month")]
-    Month,
-  }
-
-  impl ToString for QueryTimePeriod {
-    fn to_string(&self) -> String {
-      match self {
-        QueryTimePeriod::Hour => "hour".to_string(),
-        QueryTimePeriod::Day => "day".to_string(),
-        QueryTimePeriod::Week => "week".to_string(),
-        QueryTimePeriod::Month => "month".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryRuleSuiteResult {
-    #[serde(rename = "pass")]
-    Pass,
-    #[serde(rename = "fail")]
-    Fail,
-    #[serde(rename = "bypass")]
-    Bypass,
-    #[serde(rename = "all")]
-    All,
-  }
-
-  impl ToString for QueryRuleSuiteResult {
-    fn to_string(&self) -> String {
-      match self {
-        QueryRuleSuiteResult::Pass => "pass".to_string(),
-        QueryRuleSuiteResult::Fail => "fail".to_string(),
-        QueryRuleSuiteResult::Bypass => "bypass".to_string(),
-        QueryRuleSuiteResult::All => "all".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -474,7 +428,7 @@ pub mod get_org_rule_suites {
     /// For example, `day` will filter for rule suites that occurred in the past 24 hours, and `week` will filter for insights that occurred in the past 7 days (168 hours).
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub time_period: Option<QueryTimePeriod>,
+    pub time_period: Option<parameters::TimePeriod>,
     /// The handle for the GitHub user account to filter on. When specified, only rule evaluations triggered by this actor will be returned.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -482,7 +436,7 @@ pub mod get_org_rule_suites {
     /// The rule results to filter on. When specified, only suites with this result will be returned.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub rule_suite_result: Option<QueryRuleSuiteResult>,
+    pub rule_suite_result: Option<parameters::RuleSuiteResult>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -874,23 +828,6 @@ pub mod list_activities {
   pub type Response = Vec<Activity>;
 
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryDirection {
-    #[serde(rename = "asc")]
-    Asc,
-    #[serde(rename = "desc")]
-    Desc,
-  }
-
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
-      match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryTimePeriod {
     #[serde(rename = "day")]
     Day,
@@ -951,7 +888,7 @@ pub mod list_activities {
     /// The direction to sort the results by.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub direction: Option<QueryDirection>,
+    pub direction: Option<parameters::Direction>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -3547,52 +3484,6 @@ pub mod get_repo_rule_suites {
 
   pub type Response = RuleSuites;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryTimePeriod {
-    #[serde(rename = "hour")]
-    Hour,
-    #[serde(rename = "day")]
-    Day,
-    #[serde(rename = "week")]
-    Week,
-    #[serde(rename = "month")]
-    Month,
-  }
-
-  impl ToString for QueryTimePeriod {
-    fn to_string(&self) -> String {
-      match self {
-        QueryTimePeriod::Hour => "hour".to_string(),
-        QueryTimePeriod::Day => "day".to_string(),
-        QueryTimePeriod::Week => "week".to_string(),
-        QueryTimePeriod::Month => "month".to_string(),
-      }
-    }
-  }
-
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryRuleSuiteResult {
-    #[serde(rename = "pass")]
-    Pass,
-    #[serde(rename = "fail")]
-    Fail,
-    #[serde(rename = "bypass")]
-    Bypass,
-    #[serde(rename = "all")]
-    All,
-  }
-
-  impl ToString for QueryRuleSuiteResult {
-    fn to_string(&self) -> String {
-      match self {
-        QueryRuleSuiteResult::Pass => "pass".to_string(),
-        QueryRuleSuiteResult::Fail => "fail".to_string(),
-        QueryRuleSuiteResult::Bypass => "bypass".to_string(),
-        QueryRuleSuiteResult::All => "all".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
@@ -3606,7 +3497,7 @@ pub mod get_repo_rule_suites {
     /// For example, `day` will filter for rule suites that occurred in the past 24 hours, and `week` will filter for insights that occurred in the past 7 days (168 hours).
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub time_period: Option<QueryTimePeriod>,
+    pub time_period: Option<parameters::TimePeriod>,
     /// The handle for the GitHub user account to filter on. When specified, only rule evaluations triggered by this actor will be returned.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -3614,7 +3505,7 @@ pub mod get_repo_rule_suites {
     /// The rule results to filter on. When specified, only suites with this result will be returned.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub rule_suite_result: Option<QueryRuleSuiteResult>,
+    pub rule_suite_result: Option<parameters::RuleSuiteResult>,
     /// The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -3889,30 +3780,13 @@ pub mod get_clones {
 
   pub type Response = CloneTraffic;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryPer {
-    #[serde(rename = "day")]
-    Day,
-    #[serde(rename = "week")]
-    Week,
-  }
-
-  impl ToString for QueryPer {
-    fn to_string(&self) -> String {
-      match self {
-        QueryPer::Day => "day".to_string(),
-        QueryPer::Week => "week".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
     /// The time frame to display results for.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub per: Option<QueryPer>,
+    pub per: Option<parameters::Per>,
   }
 }
 
@@ -3936,30 +3810,13 @@ pub mod get_views {
 
   pub type Response = ViewTraffic;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryPer {
-    #[serde(rename = "day")]
-    Day,
-    #[serde(rename = "week")]
-    Week,
-  }
-
-  impl ToString for QueryPer {
-    fn to_string(&self) -> String {
-      match self {
-        QueryPer::Day => "day".to_string(),
-        QueryPer::Week => "week".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
     /// The time frame to display results for.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub per: Option<QueryPer>,
+    pub per: Option<parameters::Per>,
   }
 }
 
