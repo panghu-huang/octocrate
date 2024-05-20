@@ -24,9 +24,9 @@ fn parse_webhook_event(event: &str, data: &str) -> WebhookEvent {
   match event {
     #[cfg(feature = "push")]
     "push" => {
-      let push_evnet: WebhookPush = serde_json::from_str(data).unwrap();
+      let push_event: WebhookPush = serde_json::from_str(data).unwrap();
 
-      WebhookEvent::Push(push_evnet)
+      WebhookEvent::Push(push_event)
     }
     #[cfg(feature = "pull_request")]
     "pull_request" => {
