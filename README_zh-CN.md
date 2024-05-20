@@ -20,19 +20,19 @@ octocrate 是一个基于 Rust 的完整的 GitHub REST API 库。
 
 ```toml
 [dependencies]
-octocrate = "1.0"
+octocrate = "*"
 ```
 
 通过 features 按需引入所需要的 API：
 
 ```toml
-octocrate = { version = "1.0", features = ["repos", "git", "pulls", "issues", "users", "search"] }
+octocrate = { version = "*", features = ["repos", "git", "pulls", "issues", "users", "search"] }
 ```
 
 或者通过 `full` 特性引入所有的 API 和 Webhooks（注意这会增加编译时间）：
 
 ```toml
-octocrate = { version = "1.0", features = ["full"] }
+octocrate = { version = "*", features = ["full"] }
 ```
 
 ### 类型依赖
@@ -40,22 +40,22 @@ octocrate = { version = "1.0", features = ["full"] }
 octocrate 同样支持只引入类型而不使用对应的 API：
 
 ```toml
-octocrate-types = "1.0"
+octocrate-types = "*"
 ```
 
 通过 features 按需引入所需要的类型：
 
 ```toml
-octocrate-types = { version = "1.0", features = ["repos", "git", "pulls", "issues", "users", "search"] }
+octocrate-types = { version = "*", features = ["repos", "git", "pulls", "issues", "users", "search"] }
 ```
 
 引入 Webhooks 类型：
 
 ```toml
-octocrate-types = { version = "1.0", features = ["webhook_pull_request", "webhook_push"] }
+octocrate-webhooks = { version = "*", features = ["pull_request", "push"] }
 ```
 
-你可以查看 [octocrate-types 文档](https://docs.rs/crate/octocrate-types/latest/features) 了解所有支持的 features 和类型。
+你可以查看 [octocrate-types 文档](https://docs.rs/crate/octocrate-types/latest/features) 和 [octocrate-webhooks 文档](https://docs.rs/crate/octocrate-webhooks/latest/features) 了解所有支持的 features 和类型。
 
 ## 示例
 

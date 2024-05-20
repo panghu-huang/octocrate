@@ -20,19 +20,19 @@ octocrate is a comprehensive GitHub REST API library based on Rust.
 
 ```toml
 [dependencies]
-octocrate = "1.0"
+octocrate = "*"
 ```
 
 Use features to selectively import the required APIs:
 
 ```toml
-octocrate = { version = "1.0", features = ["repos", "git", "pulls", "issues", "users", "search"] }
+octocrate = { version = "*", features = ["repos", "git", "pulls", "issues", "users", "search"] }
 ```
 
 Or use the `full` feature to import all APIs and Webhooks (note: this will increase compilation time):
 
 ```toml
-octocrate = { version = "1.0", features = ["full"] }
+octocrate = { version = "*", features = ["full"] }
 ```
 
 ### Type Dependencies
@@ -40,22 +40,22 @@ octocrate = { version = "1.0", features = ["full"] }
 You can also import only types without using the corresponding APIs:
 
 ```toml
-octocrate-types = "1.0"
+octocrate-types = "*"
 ```
 
 Use features to selectively import the required types:
 
 ```toml
-octocrate-types = { version = "1.0", features = ["repos", "git", "pulls", "issues", "users", "search"] }
+octocrate-types = { version = "*", features = ["repos", "git", "pulls", "issues", "users", "search"] }
 ```
 
 Import Webhooks types:
 
 ```toml
-octocrate-types = { version = "1.0", features = ["webhook_pull_request", "webhook_push"] }
+octocrate-webhooks = { version = "*", features = ["pull_request", "push"] }
 ```
 
-You can check the [octocrate-types documentation](https://docs.rs/crate/octocrate-types/latest/features) for all supported features and types.
+You can check [octocrate-types documentation](https://docs.rs/crate/octocrate-types/latest/features) and [octocrate-webhooks documentation](https://docs.rs/crate/octocrate-webhooks/latest/features) for all supported features and types.
 
 ## Example
 
