@@ -195,27 +195,6 @@ pub mod create_or_update_org_secret {
 
   pub type Response = EmptyObject;
 
-  /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestVisibility {
-    #[serde(rename = "all")]
-    All,
-    #[serde(rename = "private")]
-    Private,
-    #[serde(rename = "selected")]
-    Selected,
-  }
-
-  impl ToString for RequestVisibility {
-    fn to_string(&self) -> String {
-      match self {
-        RequestVisibility::All => "all".to_string(),
-        RequestVisibility::Private => "private".to_string(),
-        RequestVisibility::Selected => "selected".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Request {
@@ -232,7 +211,7 @@ pub mod create_or_update_org_secret {
     #[builder(default, setter(strip_option))]
     pub selected_repository_ids: Option<Vec<String>>,
     /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
-    pub visibility: RequestVisibility,
+    pub visibility: Visibility,
   }
 }
 
@@ -366,33 +345,6 @@ pub mod update_alert {
 
   pub type Response = DependabotAlert;
 
-  /// **Required when `state` is `dismissed`.** A reason for dismissing the alert.
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestDismissedReason {
-    #[serde(rename = "fix_started")]
-    FixStarted,
-    #[serde(rename = "inaccurate")]
-    Inaccurate,
-    #[serde(rename = "no_bandwidth")]
-    NoBandwidth,
-    #[serde(rename = "not_used")]
-    NotUsed,
-    #[serde(rename = "tolerable_risk")]
-    TolerableRisk,
-  }
-
-  impl ToString for RequestDismissedReason {
-    fn to_string(&self) -> String {
-      match self {
-        RequestDismissedReason::FixStarted => "fix_started".to_string(),
-        RequestDismissedReason::Inaccurate => "inaccurate".to_string(),
-        RequestDismissedReason::NoBandwidth => "no_bandwidth".to_string(),
-        RequestDismissedReason::NotUsed => "not_used".to_string(),
-        RequestDismissedReason::TolerableRisk => "tolerable_risk".to_string(),
-      }
-    }
-  }
-
   /// The state of the Dependabot alert.
   /// A `dismissed_reason` must be provided when setting the state to `dismissed`.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -422,7 +374,7 @@ pub mod update_alert {
     /// **Required when `state` is `dismissed`.** A reason for dismissing the alert.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub dismissed_reason: Option<RequestDismissedReason>,
+    pub dismissed_reason: Option<DismissedReason>,
     /// The state of the Dependabot alert.
     /// A `dismissed_reason` must be provided when setting the state to `dismissed`.
     pub state: RequestState,

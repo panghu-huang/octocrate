@@ -9,7 +9,7 @@ use crate::{
     APIEntryModule, APIFunction, APIModule, Directory, TypeEntryModule, TypeModule, Writer,
   },
 };
-use std::path::Path;
+use std::path::{Path, PathBuf};
 
 #[derive(Clone)]
 pub struct ParsedAPIDescription {
@@ -18,6 +18,12 @@ pub struct ParsedAPIDescription {
   types: IndexMap<String, ParsedData>,
   webhooks: IndexMap<String, ParsedData>,
   apis: IndexMap<String, Vec<API>>,
+}
+
+pub struct WriteOptions {
+  pub apis_path: PathBuf,
+  pub types_path: PathBuf,
+  pub webhooks_path: PathBuf,
 }
 
 pub struct Codegen;
@@ -71,7 +77,13 @@ impl Codegen {
     }
   }
 
-  pub fn write_apis(&self, parsed: ParsedAPIDescription, path: &Path) {
+  pub fn write(&self, parsed: &ParsedAPIDescription, options: &WriteOptions) {
+    self.write_types(parsed, &options.types_path);
+    self.write_apis(parsed, &options.apis_path);
+    self.write_webhooks(parsed, &options.webhooks_path);
+  }
+
+  fn write_apis(&self, parsed: &ParsedAPIDescription, path: &Path) {
     let mut writer = Writer::new(path);
 
     // APIs
@@ -79,16 +91,17 @@ impl Codegen {
 
     let mut api_entry_module = APIEntryModule::new();
 
-    for (tag, api_functions) in parsed.apis {
-      let description = parsed.tags.get(&tag).cloned();
+    for (tag, api_functions) in &parsed.apis {
+      let description = parsed.tags.get(tag).cloned();
 
-      let mut api_module = APIModule::new(&tag, description);
+      let mut api_module = APIModule::new(tag, description);
 
       for api in api_functions {
-        let api_name = api.name;
+        let api_name = &api.name;
 
         let body_type = api
           .body
+          .as_ref()
           // We don't need to return the real type name, we just need to return the Request under the API module
           .map(|_| format!("{}::Request", api_name))
           .unwrap_or("()".to_string());
@@ -98,8 +111,8 @@ impl Codegen {
 
         let mut url = api.path.clone();
 
-        if let Some(p) = api.parameters {
-          for field in p.fields {
+        if let Some(p) = &api.parameters {
+          for field in &p.fields {
             let type_name =
               if field.reference.is_some() && !field.type_name.starts_with("parameters::") {
                 // If there is no reference, it means it is a basic type, such as i32, String
@@ -130,7 +143,7 @@ impl Codegen {
           }
         }
 
-        let references = api.references.map(|r| {
+        let references = api.references.as_ref().map(|r| {
           let mut references = crate::writer::References::default();
 
           for (_, reference) in r {
@@ -152,18 +165,22 @@ impl Codegen {
           body_type,
           query_type: api
             .query
+            .as_ref()
             // We don't need to return the real type name, we just need to return the Query under the corresponding API name module
             .map(|_| format!("{}::Query", api_name))
             .unwrap_or("()".to_string()),
           // Same as query_type
-          response_type: api.response.map(|_| format!("{}::Response", api_name)),
+          response_type: api
+            .response
+            .as_ref()
+            .map(|_| format!("{}::Response", api_name)),
           references,
         };
 
         api_module.add_function(api_function);
       }
 
-      api_entry_module.add_module(&tag);
+      api_entry_module.add_module(tag);
       directory.add_file(api_module);
     }
 
@@ -174,10 +191,13 @@ impl Codegen {
     writer.write();
   }
 
-  pub fn write_types(&self, parsed: ParsedAPIDescription, path: &Path) {
+  fn write_types(&self, parsed: &ParsedAPIDescription, path: &Path) {
     let mut writer = Writer::new(path);
 
     let mut type_entry_module = TypeEntryModule::new("lib.rs");
+
+    // Add presets module
+    type_entry_module.add_module("presets");
 
     // Types
     let mut types_module = TypeModule::new("models");
@@ -201,6 +221,15 @@ impl Codegen {
 
     writer.add_file(parameters_module);
 
+    // Add type entry module
+    writer.add_file(type_entry_module);
+
+    writer.write();
+  }
+
+  fn write_webhooks(&self, parsed: &ParsedAPIDescription, path: &Path) {
+    let mut writer = Writer::new(path);
+
     // Webhooks
     let mut webhooks_module = TypeModule::new("webhooks");
 
@@ -208,12 +237,7 @@ impl Codegen {
       webhooks_module.add_type(type_);
     }
 
-    type_entry_module.add_module_with_exports("webhooks", false);
-
     writer.add_file(webhooks_module);
-
-    // Add type entry module
-    writer.add_file(type_entry_module);
 
     writer.write();
   }
@@ -322,5 +346,5 @@ impl Codegen {
 }
 
 fn webhook_feature_name(name: &str) -> String {
-  RenameRule::FieldName.apply(&format!("webhook_{}", name))
+  RenameRule::FieldName.apply(name)
 }

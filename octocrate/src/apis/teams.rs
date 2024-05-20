@@ -526,34 +526,13 @@ pub mod add_or_update_project_permissions_in_org {
   #[allow(unused_imports)]
   use super::*;
 
-  /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestPermission {
-    #[serde(rename = "read")]
-    Read,
-    #[serde(rename = "write")]
-    Write,
-    #[serde(rename = "admin")]
-    Admin,
-  }
-
-  impl ToString for RequestPermission {
-    fn to_string(&self) -> String {
-      match self {
-        RequestPermission::Read => "read".to_string(),
-        RequestPermission::Write => "write".to_string(),
-        RequestPermission::Admin => "admin".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Request {
     /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub permission: Option<RequestPermission>,
+    pub permission: Option<ReadWriteAdminPermission>,
   }
 }
 
@@ -996,34 +975,13 @@ pub mod add_or_update_project_permissions_legacy {
   #[allow(unused_imports)]
   use super::*;
 
-  /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestPermission {
-    #[serde(rename = "read")]
-    Read,
-    #[serde(rename = "write")]
-    Write,
-    #[serde(rename = "admin")]
-    Admin,
-  }
-
-  impl ToString for RequestPermission {
-    fn to_string(&self) -> String {
-      match self {
-        RequestPermission::Read => "read".to_string(),
-        RequestPermission::Write => "write".to_string(),
-        RequestPermission::Admin => "admin".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Request {
     /// The permission to grant to the team for this project. Default: the team's `permission` attribute will be used to determine what permission to grant the team on this project. Note that, if you choose not to pass any parameters, you'll need to set `Content-Length` to zero when calling this endpoint. For more information, see "[HTTP method](https://docs.github.com/rest/guides/getting-started-with-the-rest-api#http-method)."
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub permission: Option<RequestPermission>,
+    pub permission: Option<ReadWriteAdminPermission>,
   }
 }
 
