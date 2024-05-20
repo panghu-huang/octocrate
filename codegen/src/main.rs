@@ -5,9 +5,9 @@ mod schemas;
 mod structures;
 mod writer;
 
-use codegen::Codegen;
+use codegen::{Codegen, WriteOptions};
 use indicatif::HumanDuration;
-use std::time::Instant;
+use std::{path::PathBuf, time::Instant};
 
 fn main() {
   let codegen = Codegen::new();
@@ -15,11 +15,13 @@ fn main() {
   let start_time = Instant::now();
   let parsed_api_description = codegen.parse();
 
-  let apis_dir = std::path::PathBuf::from("octocrate/src");
-  let types_dir = std::path::PathBuf::from("types/src");
+  let write_options = WriteOptions {
+    apis_path: PathBuf::from("octocrate/src"),
+    types_path: PathBuf::from("types/src"),
+    webhooks_path: PathBuf::from("webhooks/src"),
+  };
 
-  codegen.write_apis(parsed_api_description.clone(), &apis_dir);
-  codegen.write_types(parsed_api_description, &types_dir);
+  codegen.write(&parsed_api_description, &write_options);
 
   println!("✨ Done in {}", HumanDuration(start_time.elapsed()));
 }

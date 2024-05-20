@@ -783,6 +783,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "octocrate-webhooks"
+version = "1.0.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "typed-builder",
+]
+
+[[package]]
 name = "once_cell"
 version = "1.19.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"

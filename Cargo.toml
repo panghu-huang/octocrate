@@ -1,5 +1,5 @@
 [workspace]
-members = ["codegen", "octocrate", "core", "types"]
+members = ["codegen", "octocrate", "core", "types", "webhooks"]
 resolver = "2"
 
 [workspace.package]

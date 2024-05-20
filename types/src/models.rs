@@ -113,26 +113,6 @@ impl ToString for SecurityAdvisoryCreditTypes {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-/// The type of identifier.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum GlobalAdvisoryIdentifiersType {
-  #[serde(rename = "CVE")]
-  Cve,
-  #[serde(rename = "GHSA")]
-  Ghsa,
-}
-
-#[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for GlobalAdvisoryIdentifiersType {
-  fn to_string(&self) -> String {
-    match self {
-      GlobalAdvisoryIdentifiersType::Cve => "CVE".to_string(),
-      GlobalAdvisoryIdentifiersType::Ghsa => "GHSA".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum GlobalAdvisorySeverity {
@@ -204,330 +184,6 @@ pub enum InstallationAccount {
   Enterprise(Enterprise),
 }
 
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
-/// The level of permission to grant the access token for custom property management.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum AppPermissionsOrganizationCustomProperties {
-  #[serde(rename = "read")]
-  Read,
-  #[serde(rename = "write")]
-  Write,
-  #[serde(rename = "admin")]
-  Admin,
-}
-
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
-impl ToString for AppPermissionsOrganizationCustomProperties {
-  fn to_string(&self) -> String {
-    match self {
-      AppPermissionsOrganizationCustomProperties::Read => "read".to_string(),
-      AppPermissionsOrganizationCustomProperties::Write => "write".to_string(),
-      AppPermissionsOrganizationCustomProperties::Admin => "admin".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
-/// The level of permission to grant the access token to manage organization projects and projects beta (where available).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum AppPermissionsOrganizationProjects {
-  #[serde(rename = "read")]
-  Read,
-  #[serde(rename = "write")]
-  Write,
-  #[serde(rename = "admin")]
-  Admin,
-}
-
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
-impl ToString for AppPermissionsOrganizationProjects {
-  fn to_string(&self) -> String {
-    match self {
-      AppPermissionsOrganizationProjects::Read => "read".to_string(),
-      AppPermissionsOrganizationProjects::Write => "write".to_string(),
-      AppPermissionsOrganizationProjects::Admin => "admin".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
-/// The level of permission to grant the access token to manage repository projects, columns, and cards.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum AppPermissionsRepositoryProjects {
-  #[serde(rename = "read")]
-  Read,
-  #[serde(rename = "write")]
-  Write,
-  #[serde(rename = "admin")]
-  Admin,
-}
-
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
-impl ToString for AppPermissionsRepositoryProjects {
-  fn to_string(&self) -> String {
-    match self {
-      AppPermissionsRepositoryProjects::Read => "read".to_string(),
-      AppPermissionsRepositoryProjects::Write => "write".to_string(),
-      AppPermissionsRepositoryProjects::Admin => "admin".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
-/// Describe whether all repositories have been selected or there's a selection involved
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum InstallationRepositorySelection {
-  #[serde(rename = "all")]
-  All,
-  #[serde(rename = "selected")]
-  Selected,
-}
-
-#[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
-impl ToString for InstallationRepositorySelection {
-  fn to_string(&self) -> String {
-    match self {
-      InstallationRepositorySelection::All => "all".to_string(),
-      InstallationRepositorySelection::Selected => "selected".to_string(),
-    }
-  }
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "pulls",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "codespaces"
-))]
-/// The default value for a merge commit message.
-///
-/// - `PR_TITLE` - default to the pull request's title.
-/// - `PR_BODY` - default to the pull request's body.
-/// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum RepositoryMergeCommitMessage {
-  #[serde(rename = "PR_BODY")]
-  PrBody,
-  #[serde(rename = "PR_TITLE")]
-  PrTitle,
-  #[serde(rename = "BLANK")]
-  Blank,
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "pulls",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "codespaces"
-))]
-impl ToString for RepositoryMergeCommitMessage {
-  fn to_string(&self) -> String {
-    match self {
-      RepositoryMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      RepositoryMergeCommitMessage::PrTitle => "PR_TITLE".to_string(),
-      RepositoryMergeCommitMessage::Blank => "BLANK".to_string(),
-    }
-  }
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "pulls",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "codespaces"
-))]
-/// The default value for a merge commit title.
-///
-/// - `PR_TITLE` - default to the pull request's title.
-/// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum RepositoryMergeCommitTitle {
-  #[serde(rename = "PR_TITLE")]
-  PrTitle,
-  #[serde(rename = "MERGE_MESSAGE")]
-  MergeMessage,
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "pulls",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "codespaces"
-))]
-impl ToString for RepositoryMergeCommitTitle {
-  fn to_string(&self) -> String {
-    match self {
-      RepositoryMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      RepositoryMergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
-    }
-  }
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "pulls",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "codespaces"
-))]
-/// The default value for a squash merge commit message:
-///
-/// - `PR_BODY` - default to the pull request's body.
-/// - `COMMIT_MESSAGES` - default to the branch's commit messages.
-/// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum RepositorySquashMergeCommitMessage {
-  #[serde(rename = "PR_BODY")]
-  PrBody,
-  #[serde(rename = "COMMIT_MESSAGES")]
-  CommitMessages,
-  #[serde(rename = "BLANK")]
-  Blank,
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "pulls",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "codespaces"
-))]
-impl ToString for RepositorySquashMergeCommitMessage {
-  fn to_string(&self) -> String {
-    match self {
-      RepositorySquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      RepositorySquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
-      RepositorySquashMergeCommitMessage::Blank => "BLANK".to_string(),
-    }
-  }
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "pulls",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "codespaces"
-))]
-/// The default value for a squash merge commit title:
-///
-/// - `PR_TITLE` - default to the pull request's title.
-/// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum RepositorySquashMergeCommitTitle {
-  #[serde(rename = "PR_TITLE")]
-  PrTitle,
-  #[serde(rename = "COMMIT_OR_PR_TITLE")]
-  CommitOrPrTitle,
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "apps",
-  feature = "activity",
-  feature = "issues",
-  feature = "actions",
-  feature = "migrations",
-  feature = "repos",
-  feature = "pulls",
-  feature = "security_advisories",
-  feature = "search",
-  feature = "codespaces"
-))]
-impl ToString for RepositorySquashMergeCommitTitle {
-  fn to_string(&self) -> String {
-    match self {
-      RepositorySquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      RepositorySquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "apps"))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum InstallationTokenRepositorySelection {
-  #[serde(rename = "all")]
-  All,
-  #[serde(rename = "selected")]
-  Selected,
-}
-
-#[cfg(any(feature = "full", feature = "apps"))]
-impl ToString for InstallationTokenRepositorySelection {
-  fn to_string(&self) -> String {
-    match self {
-      InstallationTokenRepositorySelection::All => "all".to_string(),
-      InstallationTokenRepositorySelection::Selected => "selected".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "apps"))]
-/// Describe whether all repositories have been selected or there's a selection involved
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum ScopedInstallationRepositorySelection {
-  #[serde(rename = "all")]
-  All,
-  #[serde(rename = "selected")]
-  Selected,
-}
-
-#[cfg(any(feature = "full", feature = "apps"))]
-impl ToString for ScopedInstallationRepositorySelection {
-  fn to_string(&self) -> String {
-    match self {
-      ScopedInstallationRepositorySelection::All => "all".to_string(),
-      ScopedInstallationRepositorySelection::Selected => "selected".to_string(),
-    }
-  }
-}
-
 #[cfg(any(feature = "full", feature = "classroom"))]
 /// Whether it's a group assignment or individual assignment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -584,133 +240,6 @@ impl ToString for DependabotAlertWithRepositoryDependencyScope {
     match self {
       DependabotAlertWithRepositoryDependencyScope::Development => "development".to_string(),
       DependabotAlertWithRepositoryDependencyScope::Runtime => "runtime".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-/// The reason that the alert was dismissed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum DependabotAlertWithRepositoryDismissedReason {
-  #[serde(rename = "fix_started")]
-  FixStarted,
-  #[serde(rename = "inaccurate")]
-  Inaccurate,
-  #[serde(rename = "no_bandwidth")]
-  NoBandwidth,
-  #[serde(rename = "not_used")]
-  NotUsed,
-  #[serde(rename = "tolerable_risk")]
-  TolerableRisk,
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for DependabotAlertWithRepositoryDismissedReason {
-  fn to_string(&self) -> String {
-    match self {
-      DependabotAlertWithRepositoryDismissedReason::FixStarted => "fix_started".to_string(),
-      DependabotAlertWithRepositoryDismissedReason::Inaccurate => "inaccurate".to_string(),
-      DependabotAlertWithRepositoryDismissedReason::NoBandwidth => "no_bandwidth".to_string(),
-      DependabotAlertWithRepositoryDismissedReason::NotUsed => "not_used".to_string(),
-      DependabotAlertWithRepositoryDismissedReason::TolerableRisk => "tolerable_risk".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-/// The type of advisory identifier.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum DependabotAlertSecurityAdvisoryIdentifiersType {
-  #[serde(rename = "CVE")]
-  Cve,
-  #[serde(rename = "GHSA")]
-  Ghsa,
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for DependabotAlertSecurityAdvisoryIdentifiersType {
-  fn to_string(&self) -> String {
-    match self {
-      DependabotAlertSecurityAdvisoryIdentifiersType::Cve => "CVE".to_string(),
-      DependabotAlertSecurityAdvisoryIdentifiersType::Ghsa => "GHSA".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-/// The severity of the advisory.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum DependabotAlertSecurityAdvisorySeverity {
-  #[serde(rename = "low")]
-  Low,
-  #[serde(rename = "medium")]
-  Medium,
-  #[serde(rename = "high")]
-  High,
-  #[serde(rename = "critical")]
-  Critical,
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for DependabotAlertSecurityAdvisorySeverity {
-  fn to_string(&self) -> String {
-    match self {
-      DependabotAlertSecurityAdvisorySeverity::Low => "low".to_string(),
-      DependabotAlertSecurityAdvisorySeverity::Medium => "medium".to_string(),
-      DependabotAlertSecurityAdvisorySeverity::High => "high".to_string(),
-      DependabotAlertSecurityAdvisorySeverity::Critical => "critical".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-/// The severity of the vulnerability.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum DependabotAlertSecurityVulnerabilitySeverity {
-  #[serde(rename = "low")]
-  Low,
-  #[serde(rename = "medium")]
-  Medium,
-  #[serde(rename = "high")]
-  High,
-  #[serde(rename = "critical")]
-  Critical,
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for DependabotAlertSecurityVulnerabilitySeverity {
-  fn to_string(&self) -> String {
-    match self {
-      DependabotAlertSecurityVulnerabilitySeverity::Low => "low".to_string(),
-      DependabotAlertSecurityVulnerabilitySeverity::Medium => "medium".to_string(),
-      DependabotAlertSecurityVulnerabilitySeverity::High => "high".to_string(),
-      DependabotAlertSecurityVulnerabilitySeverity::Critical => "critical".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-/// The state of the Dependabot alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum DependabotAlertWithRepositoryState {
-  #[serde(rename = "auto_dismissed")]
-  AutoDismissed,
-  #[serde(rename = "dismissed")]
-  Dismissed,
-  #[serde(rename = "fixed")]
-  Fixed,
-  #[serde(rename = "open")]
-  Open,
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for DependabotAlertWithRepositoryState {
-  fn to_string(&self) -> String {
-    match self {
-      DependabotAlertWithRepositoryState::AutoDismissed => "auto_dismissed".to_string(),
-      DependabotAlertWithRepositoryState::Dismissed => "dismissed".to_string(),
-      DependabotAlertWithRepositoryState::Fixed => "fixed".to_string(),
-      DependabotAlertWithRepositoryState::Open => "open".to_string(),
     }
   }
 }
@@ -1172,72 +701,6 @@ impl ToString for RunnerLabelType {
   }
 }
 
-#[cfg(any(feature = "full", feature = "actions"))]
-/// Describe whether all repositories have been selected or there's a selection involved
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum AuthenticationTokenRepositorySelection {
-  #[serde(rename = "all")]
-  All,
-  #[serde(rename = "selected")]
-  Selected,
-}
-
-#[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for AuthenticationTokenRepositorySelection {
-  fn to_string(&self) -> String {
-    match self {
-      AuthenticationTokenRepositorySelection::All => "all".to_string(),
-      AuthenticationTokenRepositorySelection::Selected => "selected".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "actions"))]
-/// Visibility of a secret
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum OrganizationActionsSecretVisibility {
-  #[serde(rename = "all")]
-  All,
-  #[serde(rename = "private")]
-  Private,
-  #[serde(rename = "selected")]
-  Selected,
-}
-
-#[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for OrganizationActionsSecretVisibility {
-  fn to_string(&self) -> String {
-    match self {
-      OrganizationActionsSecretVisibility::All => "all".to_string(),
-      OrganizationActionsSecretVisibility::Private => "private".to_string(),
-      OrganizationActionsSecretVisibility::Selected => "selected".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "actions"))]
-/// Visibility of a variable
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum OrganizationActionsVariableVisibility {
-  #[serde(rename = "all")]
-  All,
-  #[serde(rename = "private")]
-  Private,
-  #[serde(rename = "selected")]
-  Selected,
-}
-
-#[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for OrganizationActionsVariableVisibility {
-  fn to_string(&self) -> String {
-    match self {
-      OrganizationActionsVariableVisibility::All => "all".to_string(),
-      OrganizationActionsVariableVisibility::Private => "private".to_string(),
-      OrganizationActionsVariableVisibility::Selected => "selected".to_string(),
-    }
-  }
-}
-
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1372,32 +835,6 @@ impl ToString for CodeScanningAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-/// The security severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum CodeScanningAlertRuleSummarySecuritySeverityLevel {
-  #[serde(rename = "low")]
-  Low,
-  #[serde(rename = "medium")]
-  Medium,
-  #[serde(rename = "high")]
-  High,
-  #[serde(rename = "critical")]
-  Critical,
-}
-
-#[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningAlertRuleSummarySecuritySeverityLevel {
-  fn to_string(&self) -> String {
-    match self {
-      CodeScanningAlertRuleSummarySecuritySeverityLevel::Low => "low".to_string(),
-      CodeScanningAlertRuleSummarySecuritySeverityLevel::Medium => "medium".to_string(),
-      CodeScanningAlertRuleSummarySecuritySeverityLevel::High => "high".to_string(),
-      CodeScanningAlertRuleSummarySecuritySeverityLevel::Critical => "critical".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertRuleSummarySeverity {
@@ -1516,98 +953,6 @@ impl ToString for CodespaceState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "codespaces"))]
-/// The type of repositories in the organization that the secret is visible to
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum CodespacesOrgSecretVisibility {
-  #[serde(rename = "all")]
-  All,
-  #[serde(rename = "private")]
-  Private,
-  #[serde(rename = "selected")]
-  Selected,
-}
-
-#[cfg(any(feature = "full", feature = "codespaces"))]
-impl ToString for CodespacesOrgSecretVisibility {
-  fn to_string(&self) -> String {
-    match self {
-      CodespacesOrgSecretVisibility::All => "all".to_string(),
-      CodespacesOrgSecretVisibility::Private => "private".to_string(),
-      CodespacesOrgSecretVisibility::Selected => "selected".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "copilot"))]
-/// The organization policy for allowing or disallowing organization members to use Copilot within their CLI.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum CopilotOrganizationDetailsCli {
-  #[serde(rename = "enabled")]
-  Enabled,
-  #[serde(rename = "disabled")]
-  Disabled,
-  #[serde(rename = "unconfigured")]
-  Unconfigured,
-}
-
-#[cfg(any(feature = "full", feature = "copilot"))]
-impl ToString for CopilotOrganizationDetailsCli {
-  fn to_string(&self) -> String {
-    match self {
-      CopilotOrganizationDetailsCli::Enabled => "enabled".to_string(),
-      CopilotOrganizationDetailsCli::Disabled => "disabled".to_string(),
-      CopilotOrganizationDetailsCli::Unconfigured => "unconfigured".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "copilot"))]
-/// The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum CopilotOrganizationDetailsIdeChat {
-  #[serde(rename = "enabled")]
-  Enabled,
-  #[serde(rename = "disabled")]
-  Disabled,
-  #[serde(rename = "unconfigured")]
-  Unconfigured,
-}
-
-#[cfg(any(feature = "full", feature = "copilot"))]
-impl ToString for CopilotOrganizationDetailsIdeChat {
-  fn to_string(&self) -> String {
-    match self {
-      CopilotOrganizationDetailsIdeChat::Enabled => "enabled".to_string(),
-      CopilotOrganizationDetailsIdeChat::Disabled => "disabled".to_string(),
-      CopilotOrganizationDetailsIdeChat::Unconfigured => "unconfigured".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "copilot"))]
-/// The organization policy for allowing or disallowing organization members to use Copilot features within github.com.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum CopilotOrganizationDetailsPlatformChat {
-  #[serde(rename = "enabled")]
-  Enabled,
-  #[serde(rename = "disabled")]
-  Disabled,
-  #[serde(rename = "unconfigured")]
-  Unconfigured,
-}
-
-#[cfg(any(feature = "full", feature = "copilot"))]
-impl ToString for CopilotOrganizationDetailsPlatformChat {
-  fn to_string(&self) -> String {
-    match self {
-      CopilotOrganizationDetailsPlatformChat::Enabled => "enabled".to_string(),
-      CopilotOrganizationDetailsPlatformChat::Disabled => "disabled".to_string(),
-      CopilotOrganizationDetailsPlatformChat::Unconfigured => "unconfigured".to_string(),
-    }
-  }
-}
-
 #[cfg(any(feature = "full", feature = "copilot"))]
 /// The organization policy for allowing or disallowing Copilot to make suggestions that match public code.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1672,60 +1017,6 @@ pub enum CopilotSeatDetailsAssignee {
   Team(Team),
   /// GitHub account for managing multiple users, teams, and repositories
   Organization(Organization),
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-/// Visibility of a secret
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum OrganizationDependabotSecretVisibility {
-  #[serde(rename = "all")]
-  All,
-  #[serde(rename = "private")]
-  Private,
-  #[serde(rename = "selected")]
-  Selected,
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for OrganizationDependabotSecretVisibility {
-  fn to_string(&self) -> String {
-    match self {
-      OrganizationDependabotSecretVisibility::All => "all".to_string(),
-      OrganizationDependabotSecretVisibility::Private => "private".to_string(),
-      OrganizationDependabotSecretVisibility::Selected => "selected".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "packages"))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum PackagePackageType {
-  #[serde(rename = "npm")]
-  Npm,
-  #[serde(rename = "maven")]
-  Maven,
-  #[serde(rename = "rubygems")]
-  Rubygems,
-  #[serde(rename = "docker")]
-  Docker,
-  #[serde(rename = "nuget")]
-  Nuget,
-  #[serde(rename = "container")]
-  Container,
-}
-
-#[cfg(any(feature = "full", feature = "packages"))]
-impl ToString for PackagePackageType {
-  fn to_string(&self) -> String {
-    match self {
-      PackagePackageType::Npm => "npm".to_string(),
-      PackagePackageType::Maven => "maven".to_string(),
-      PackagePackageType::Rubygems => "rubygems".to_string(),
-      PackagePackageType::Docker => "docker".to_string(),
-      PackagePackageType::Nuget => "nuget".to_string(),
-      PackagePackageType::Container => "container".to_string(),
-    }
-  }
 }
 
 #[cfg(any(feature = "full", feature = "packages"))]
@@ -1842,83 +1133,6 @@ impl ToString for OrgMembershipState {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages"))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum PackageVersionMetadataPackageType {
-  #[serde(rename = "npm")]
-  Npm,
-  #[serde(rename = "maven")]
-  Maven,
-  #[serde(rename = "rubygems")]
-  Rubygems,
-  #[serde(rename = "docker")]
-  Docker,
-  #[serde(rename = "nuget")]
-  Nuget,
-  #[serde(rename = "container")]
-  Container,
-}
-
-#[cfg(any(feature = "full", feature = "packages"))]
-impl ToString for PackageVersionMetadataPackageType {
-  fn to_string(&self) -> String {
-    match self {
-      PackageVersionMetadataPackageType::Npm => "npm".to_string(),
-      PackageVersionMetadataPackageType::Maven => "maven".to_string(),
-      PackageVersionMetadataPackageType::Rubygems => "rubygems".to_string(),
-      PackageVersionMetadataPackageType::Docker => "docker".to_string(),
-      PackageVersionMetadataPackageType::Nuget => "nuget".to_string(),
-      PackageVersionMetadataPackageType::Container => "container".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "orgs"))]
-/// Type of repository selection requested.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum OrganizationProgrammaticAccessGrantRequestRepositorySelection {
-  #[serde(rename = "none")]
-  None,
-  #[serde(rename = "all")]
-  All,
-  #[serde(rename = "subset")]
-  Subset,
-}
-
-#[cfg(any(feature = "full", feature = "orgs"))]
-impl ToString for OrganizationProgrammaticAccessGrantRequestRepositorySelection {
-  fn to_string(&self) -> String {
-    match self {
-      OrganizationProgrammaticAccessGrantRequestRepositorySelection::None => "none".to_string(),
-      OrganizationProgrammaticAccessGrantRequestRepositorySelection::All => "all".to_string(),
-      OrganizationProgrammaticAccessGrantRequestRepositorySelection::Subset => "subset".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "orgs"))]
-/// Type of repository selection requested.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum OrganizationProgrammaticAccessGrantRepositorySelection {
-  #[serde(rename = "none")]
-  None,
-  #[serde(rename = "all")]
-  All,
-  #[serde(rename = "subset")]
-  Subset,
-}
-
-#[cfg(any(feature = "full", feature = "orgs"))]
-impl ToString for OrganizationProgrammaticAccessGrantRepositorySelection {
-  fn to_string(&self) -> String {
-    match self {
-      OrganizationProgrammaticAccessGrantRepositorySelection::None => "none".to_string(),
-      OrganizationProgrammaticAccessGrantRepositorySelection::All => "all".to_string(),
-      OrganizationProgrammaticAccessGrantRepositorySelection::Subset => "subset".to_string(),
-    }
-  }
-}
-
 #[cfg(any(feature = "full", feature = "projects"))]
 /// The baseline permission that all organization members have on this project. Only present if owner is an organization.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1981,146 +1195,6 @@ impl ToString for OrgCustomPropertyValuesEditableBy {
     match self {
       OrgCustomPropertyValuesEditableBy::OrgActors => "org_actors".to_string(),
       OrgCustomPropertyValuesEditableBy::OrgAndRepoActors => "org_and_repo_actors".to_string(),
-    }
-  }
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "security_advisories",
-  feature = "codespaces"
-))]
-/// The default value for a merge commit message.
-///
-/// - `PR_TITLE` - default to the pull request's title.
-/// - `PR_BODY` - default to the pull request's body.
-/// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum FullRepositoryMergeCommitMessage {
-  #[serde(rename = "PR_BODY")]
-  PrBody,
-  #[serde(rename = "PR_TITLE")]
-  PrTitle,
-  #[serde(rename = "BLANK")]
-  Blank,
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "security_advisories",
-  feature = "codespaces"
-))]
-impl ToString for FullRepositoryMergeCommitMessage {
-  fn to_string(&self) -> String {
-    match self {
-      FullRepositoryMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      FullRepositoryMergeCommitMessage::PrTitle => "PR_TITLE".to_string(),
-      FullRepositoryMergeCommitMessage::Blank => "BLANK".to_string(),
-    }
-  }
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "security_advisories",
-  feature = "codespaces"
-))]
-/// The default value for a merge commit title.
-///
-///   - `PR_TITLE` - default to the pull request's title.
-///   - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum FullRepositoryMergeCommitTitle {
-  #[serde(rename = "PR_TITLE")]
-  PrTitle,
-  #[serde(rename = "MERGE_MESSAGE")]
-  MergeMessage,
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "security_advisories",
-  feature = "codespaces"
-))]
-impl ToString for FullRepositoryMergeCommitTitle {
-  fn to_string(&self) -> String {
-    match self {
-      FullRepositoryMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      FullRepositoryMergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
-    }
-  }
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "security_advisories",
-  feature = "codespaces"
-))]
-/// The default value for a squash merge commit message:
-///
-/// - `PR_BODY` - default to the pull request's body.
-/// - `COMMIT_MESSAGES` - default to the branch's commit messages.
-/// - `BLANK` - default to a blank commit message.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum FullRepositorySquashMergeCommitMessage {
-  #[serde(rename = "PR_BODY")]
-  PrBody,
-  #[serde(rename = "COMMIT_MESSAGES")]
-  CommitMessages,
-  #[serde(rename = "BLANK")]
-  Blank,
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "security_advisories",
-  feature = "codespaces"
-))]
-impl ToString for FullRepositorySquashMergeCommitMessage {
-  fn to_string(&self) -> String {
-    match self {
-      FullRepositorySquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-      FullRepositorySquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
-      FullRepositorySquashMergeCommitMessage::Blank => "BLANK".to_string(),
-    }
-  }
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "security_advisories",
-  feature = "codespaces"
-))]
-/// The default value for a squash merge commit title:
-///
-/// - `PR_TITLE` - default to the pull request's title.
-/// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum FullRepositorySquashMergeCommitTitle {
-  #[serde(rename = "PR_TITLE")]
-  PrTitle,
-  #[serde(rename = "COMMIT_OR_PR_TITLE")]
-  CommitOrPrTitle,
-}
-
-#[cfg(any(
-  feature = "full",
-  feature = "repos",
-  feature = "security_advisories",
-  feature = "codespaces"
-))]
-impl ToString for FullRepositorySquashMergeCommitTitle {
-  fn to_string(&self) -> String {
-    match self {
-      FullRepositorySquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-      FullRepositorySquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
     }
   }
 }
@@ -2406,32 +1480,6 @@ impl ToString for RepositoryRuleNonFastForwardType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-/// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum RepositoryRuleCommitMessagePatternParametersOperator {
-  #[serde(rename = "starts_with")]
-  StartsWith,
-  #[serde(rename = "ends_with")]
-  EndsWith,
-  #[serde(rename = "contains")]
-  Contains,
-  #[serde(rename = "regex")]
-  Regex,
-}
-
-#[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleCommitMessagePatternParametersOperator {
-  fn to_string(&self) -> String {
-    match self {
-      RepositoryRuleCommitMessagePatternParametersOperator::StartsWith => "starts_with".to_string(),
-      RepositoryRuleCommitMessagePatternParametersOperator::EndsWith => "ends_with".to_string(),
-      RepositoryRuleCommitMessagePatternParametersOperator::Contains => "contains".to_string(),
-      RepositoryRuleCommitMessagePatternParametersOperator::Regex => "regex".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitMessagePatternType {
   #[serde(rename = "commit_message_pattern")]
@@ -2445,34 +1493,6 @@ impl ToString for RepositoryRuleCommitMessagePatternType {
       RepositoryRuleCommitMessagePatternType::CommitMessagePattern => {
         "commit_message_pattern".to_string()
       }
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "repos"))]
-/// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum RepositoryRuleCommitAuthorEmailPatternParametersOperator {
-  #[serde(rename = "starts_with")]
-  StartsWith,
-  #[serde(rename = "ends_with")]
-  EndsWith,
-  #[serde(rename = "contains")]
-  Contains,
-  #[serde(rename = "regex")]
-  Regex,
-}
-
-#[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleCommitAuthorEmailPatternParametersOperator {
-  fn to_string(&self) -> String {
-    match self {
-      RepositoryRuleCommitAuthorEmailPatternParametersOperator::StartsWith => {
-        "starts_with".to_string()
-      }
-      RepositoryRuleCommitAuthorEmailPatternParametersOperator::EndsWith => "ends_with".to_string(),
-      RepositoryRuleCommitAuthorEmailPatternParametersOperator::Contains => "contains".to_string(),
-      RepositoryRuleCommitAuthorEmailPatternParametersOperator::Regex => "regex".to_string(),
     }
   }
 }
@@ -2496,34 +1516,6 @@ impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-/// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum RepositoryRuleCommitterEmailPatternParametersOperator {
-  #[serde(rename = "starts_with")]
-  StartsWith,
-  #[serde(rename = "ends_with")]
-  EndsWith,
-  #[serde(rename = "contains")]
-  Contains,
-  #[serde(rename = "regex")]
-  Regex,
-}
-
-#[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleCommitterEmailPatternParametersOperator {
-  fn to_string(&self) -> String {
-    match self {
-      RepositoryRuleCommitterEmailPatternParametersOperator::StartsWith => {
-        "starts_with".to_string()
-      }
-      RepositoryRuleCommitterEmailPatternParametersOperator::EndsWith => "ends_with".to_string(),
-      RepositoryRuleCommitterEmailPatternParametersOperator::Contains => "contains".to_string(),
-      RepositoryRuleCommitterEmailPatternParametersOperator::Regex => "regex".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitterEmailPatternType {
   #[serde(rename = "committer_email_pattern")]
@@ -2542,32 +1534,6 @@ impl ToString for RepositoryRuleCommitterEmailPatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-/// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum RepositoryRuleBranchNamePatternParametersOperator {
-  #[serde(rename = "starts_with")]
-  StartsWith,
-  #[serde(rename = "ends_with")]
-  EndsWith,
-  #[serde(rename = "contains")]
-  Contains,
-  #[serde(rename = "regex")]
-  Regex,
-}
-
-#[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleBranchNamePatternParametersOperator {
-  fn to_string(&self) -> String {
-    match self {
-      RepositoryRuleBranchNamePatternParametersOperator::StartsWith => "starts_with".to_string(),
-      RepositoryRuleBranchNamePatternParametersOperator::EndsWith => "ends_with".to_string(),
-      RepositoryRuleBranchNamePatternParametersOperator::Contains => "contains".to_string(),
-      RepositoryRuleBranchNamePatternParametersOperator::Regex => "regex".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleBranchNamePatternType {
   #[serde(rename = "branch_name_pattern")]
@@ -2579,32 +1545,6 @@ impl ToString for RepositoryRuleBranchNamePatternType {
   fn to_string(&self) -> String {
     match self {
       RepositoryRuleBranchNamePatternType::BranchNamePattern => "branch_name_pattern".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "repos"))]
-/// The operator to use for matching.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum RepositoryRuleTagNamePatternParametersOperator {
-  #[serde(rename = "starts_with")]
-  StartsWith,
-  #[serde(rename = "ends_with")]
-  EndsWith,
-  #[serde(rename = "contains")]
-  Contains,
-  #[serde(rename = "regex")]
-  Regex,
-}
-
-#[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleTagNamePatternParametersOperator {
-  fn to_string(&self) -> String {
-    match self {
-      RepositoryRuleTagNamePatternParametersOperator::StartsWith => "starts_with".to_string(),
-      RepositoryRuleTagNamePatternParametersOperator::EndsWith => "ends_with".to_string(),
-      RepositoryRuleTagNamePatternParametersOperator::Contains => "contains".to_string(),
-      RepositoryRuleTagNamePatternParametersOperator::Regex => "regex".to_string(),
     }
   }
 }
@@ -2863,26 +1803,6 @@ impl ToString for RepositoryAdvisoryCreditState {
       RepositoryAdvisoryCreditState::Accepted => "accepted".to_string(),
       RepositoryAdvisoryCreditState::Declined => "declined".to_string(),
       RepositoryAdvisoryCreditState::Pending => "pending".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "security_advisories"))]
-/// The type of identifier.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum RepositoryAdvisoryIdentifiersType {
-  #[serde(rename = "CVE")]
-  Cve,
-  #[serde(rename = "GHSA")]
-  Ghsa,
-}
-
-#[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for RepositoryAdvisoryIdentifiersType {
-  fn to_string(&self) -> String {
-    match self {
-      RepositoryAdvisoryIdentifiersType::Cve => "CVE".to_string(),
-      RepositoryAdvisoryIdentifiersType::Ghsa => "GHSA".to_string(),
     }
   }
 }
@@ -3480,32 +2400,6 @@ impl ToString for CheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-/// The security severity of the alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum CodeScanningAlertRuleSecuritySeverityLevel {
-  #[serde(rename = "low")]
-  Low,
-  #[serde(rename = "medium")]
-  Medium,
-  #[serde(rename = "high")]
-  High,
-  #[serde(rename = "critical")]
-  Critical,
-}
-
-#[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningAlertRuleSecuritySeverityLevel {
-  fn to_string(&self) -> String {
-    match self {
-      CodeScanningAlertRuleSecuritySeverityLevel::Low => "low".to_string(),
-      CodeScanningAlertRuleSecuritySeverityLevel::Medium => "medium".to_string(),
-      CodeScanningAlertRuleSecuritySeverityLevel::High => "high".to_string(),
-      CodeScanningAlertRuleSecuritySeverityLevel::Critical => "critical".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningAlertRuleSeverity {
@@ -3921,61 +2815,6 @@ impl ToString for DependabotAlertDependencyScope {
     match self {
       DependabotAlertDependencyScope::Development => "development".to_string(),
       DependabotAlertDependencyScope::Runtime => "runtime".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-/// The reason that the alert was dismissed.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum DependabotAlertDismissedReason {
-  #[serde(rename = "fix_started")]
-  FixStarted,
-  #[serde(rename = "inaccurate")]
-  Inaccurate,
-  #[serde(rename = "no_bandwidth")]
-  NoBandwidth,
-  #[serde(rename = "not_used")]
-  NotUsed,
-  #[serde(rename = "tolerable_risk")]
-  TolerableRisk,
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for DependabotAlertDismissedReason {
-  fn to_string(&self) -> String {
-    match self {
-      DependabotAlertDismissedReason::FixStarted => "fix_started".to_string(),
-      DependabotAlertDismissedReason::Inaccurate => "inaccurate".to_string(),
-      DependabotAlertDismissedReason::NoBandwidth => "no_bandwidth".to_string(),
-      DependabotAlertDismissedReason::NotUsed => "not_used".to_string(),
-      DependabotAlertDismissedReason::TolerableRisk => "tolerable_risk".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-/// The state of the Dependabot alert.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum DependabotAlertState {
-  #[serde(rename = "auto_dismissed")]
-  AutoDismissed,
-  #[serde(rename = "dismissed")]
-  Dismissed,
-  #[serde(rename = "fixed")]
-  Fixed,
-  #[serde(rename = "open")]
-  Open,
-}
-
-#[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for DependabotAlertState {
-  fn to_string(&self) -> String {
-    match self {
-      DependabotAlertState::AutoDismissed => "auto_dismissed".to_string(),
-      DependabotAlertState::Dismissed => "dismissed".to_string(),
-      DependabotAlertState::Fixed => "fixed".to_string(),
-      DependabotAlertState::Open => "open".to_string(),
     }
   }
 }
@@ -4990,29 +3829,6 @@ impl ToString for RepositoryAdvisoryUpdateState {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces"))]
-/// The type of repositories in the organization that the secret is visible to
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum CodespacesSecretVisibility {
-  #[serde(rename = "all")]
-  All,
-  #[serde(rename = "private")]
-  Private,
-  #[serde(rename = "selected")]
-  Selected,
-}
-
-#[cfg(any(feature = "full", feature = "codespaces"))]
-impl ToString for CodespacesSecretVisibility {
-  fn to_string(&self) -> String {
-    match self {
-      CodespacesSecretVisibility::All => "all".to_string(),
-      CodespacesSecretVisibility::Private => "private".to_string(),
-      CodespacesSecretVisibility::Selected => "selected".to_string(),
-    }
-  }
-}
-
-#[cfg(any(feature = "full", feature = "codespaces"))]
 /// The initally assigned location of a new codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodespaceWithFullRepositoryLocation {
@@ -5225,7 +4041,7 @@ pub struct GlobalAdvisoryCwes {
 pub struct GlobalAdvisoryIdentifiers {
   /// The type of identifier.
   #[serde(rename = "type")]
-  pub type_: GlobalAdvisoryIdentifiersType,
+  pub type_: IdentifiersType,
   /// The identifier value.
   pub value: String,
 }
@@ -5704,7 +4520,7 @@ pub struct AppPermissions {
   /// The level of permission to grant the access token for custom property management.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub organization_custom_properties: Option<AppPermissionsOrganizationCustomProperties>,
+  pub organization_custom_properties: Option<ReadWriteAdminPermission>,
   /// The level of permission to grant the access token for custom repository roles management.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -5736,7 +4552,7 @@ pub struct AppPermissions {
   /// The level of permission to grant the access token to manage organization projects and projects beta (where available).
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub organization_projects: Option<AppPermissionsOrganizationProjects>,
+  pub organization_projects: Option<ReadWriteAdminPermission>,
   /// The level of permission to grant the access token to manage organization secrets.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -5776,7 +4592,7 @@ pub struct AppPermissions {
   /// The level of permission to grant the access token to manage repository projects, columns, and cards.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub repository_projects: Option<AppPermissionsRepositoryProjects>,
+  pub repository_projects: Option<ReadWriteAdminPermission>,
   /// The level of permission to grant the access token to view and manage secret scanning alerts.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -5838,7 +4654,7 @@ pub struct Installation {
   pub permissions: AppPermissions,
   pub repositories_url: String,
   /// Describe whether all repositories have been selected or there's a selection involved
-  pub repository_selection: InstallationRepositorySelection,
+  pub repository_selection: RepositorySelection,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub single_file_name: Option<String>,
@@ -6047,14 +4863,14 @@ pub struct Repository {
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub merge_commit_message: Option<RepositoryMergeCommitMessage>,
+  pub merge_commit_message: Option<MergeCommitMessage>,
   /// The default value for a merge commit title.
   ///
   /// - `PR_TITLE` - default to the pull request's title.
   /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub merge_commit_title: Option<RepositoryMergeCommitTitle>,
+  pub merge_commit_title: Option<MergeCommitTitle>,
   pub merges_url: String,
   pub milestones_url: String,
   #[serde(skip_serializing_if = "Option::is_none")]
@@ -6086,14 +4902,14 @@ pub struct Repository {
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub squash_merge_commit_message: Option<RepositorySquashMergeCommitMessage>,
+  pub squash_merge_commit_message: Option<SquashMergeCommitMessage>,
   /// The default value for a squash merge commit title:
   ///
   /// - `PR_TITLE` - default to the pull request's title.
   /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub squash_merge_commit_title: Option<RepositorySquashMergeCommitTitle>,
+  pub squash_merge_commit_title: Option<SquashMergeCommitTitle>,
   pub ssh_url: String,
   pub stargazers_count: i64,
   pub stargazers_url: String,
@@ -6150,7 +4966,7 @@ pub struct InstallationToken {
   pub repositories: Option<Vec<Repository>>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub repository_selection: Option<InstallationTokenRepositorySelection>,
+  pub repository_selection: Option<RepositorySelection>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub single_file: Option<String>,
@@ -6180,7 +4996,7 @@ pub struct ScopedInstallation {
   pub permissions: AppPermissions,
   pub repositories_url: String,
   /// Describe whether all repositories have been selected or there's a selection involved
-  pub repository_selection: ScopedInstallationRepositorySelection,
+  pub repository_selection: RepositorySelection,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub single_file_name: Option<String>,
@@ -6652,7 +5468,7 @@ pub struct DependabotAlertSecurityAdvisoryCwes {
 pub struct DependabotAlertSecurityAdvisoryIdentifiers {
   /// The type of advisory identifier.
   #[serde(rename = "type")]
-  pub type_: DependabotAlertSecurityAdvisoryIdentifiersType,
+  pub type_: IdentifiersType,
   /// The value of the advisory identifer.
   pub value: String,
 }
@@ -6686,7 +5502,7 @@ pub struct DependabotAlertSecurityVulnerability {
   pub first_patched_version: Option<DependabotAlertSecurityVulnerabilityFirstPatchedVersion>,
   pub package: DependabotAlertPackage,
   /// The severity of the vulnerability.
-  pub severity: DependabotAlertSecurityVulnerabilitySeverity,
+  pub severity: Severity,
   /// Conditions that identify vulnerable versions of this vulnerability's package.
   pub vulnerable_version_range: String,
 }
@@ -6715,7 +5531,7 @@ pub struct DependabotAlertSecurityAdvisory {
   /// Links to additional advisory information.
   pub references: Vec<DependabotAlertSecurityAdvisoryReferences>,
   /// The severity of the advisory.
-  pub severity: DependabotAlertSecurityAdvisorySeverity,
+  pub severity: Severity,
   /// A short, plain text summary of the advisory.
   pub summary: String,
   /// The time that the advisory was last modified in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
@@ -6752,7 +5568,7 @@ pub struct DependabotAlertWithRepository {
   /// The reason that the alert was dismissed.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub dismissed_reason: Option<DependabotAlertWithRepositoryDismissedReason>,
+  pub dismissed_reason: Option<DismissedReason>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub fixed_at: Option<String>,
@@ -6762,7 +5578,7 @@ pub struct DependabotAlertWithRepository {
   pub security_advisory: DependabotAlertSecurityAdvisory,
   pub security_vulnerability: DependabotAlertSecurityVulnerability,
   /// The state of the Dependabot alert.
-  pub state: DependabotAlertWithRepositoryState,
+  pub state: DependabotAlertState,
   pub updated_at: String,
   pub url: String,
 }
@@ -8618,7 +7434,7 @@ pub struct AuthenticationToken {
   /// Describe whether all repositories have been selected or there's a selection involved
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub repository_selection: Option<AuthenticationTokenRepositorySelection>,
+  pub repository_selection: Option<RepositorySelection>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub single_file: Option<String>,
@@ -8639,7 +7455,7 @@ pub struct OrganizationActionsSecret {
   pub selected_repositories_url: Option<String>,
   pub updated_at: String,
   /// Visibility of a secret
-  pub visibility: OrganizationActionsSecretVisibility,
+  pub visibility: Visibility,
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
@@ -8682,7 +7498,7 @@ pub struct OrganizationActionsVariable {
   /// The value of the variable.
   pub value: String,
   /// Visibility of a variable
-  pub visibility: OrganizationActionsVariableVisibility,
+  pub visibility: Visibility,
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
@@ -8774,7 +7590,7 @@ pub struct CodeScanningAlertRuleSummary {
   /// The security severity of the alert.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub security_severity_level: Option<CodeScanningAlertRuleSummarySecuritySeverityLevel>,
+  pub security_severity_level: Option<Severity>,
   /// The severity of the alert.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -9003,7 +7819,7 @@ pub struct CodespacesOrgSecret {
   /// The date and time at which the secret was created, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
   pub updated_at: String,
   /// The type of repositories in the organization that the secret is visible to
-  pub visibility: CodespacesOrgSecretVisibility,
+  pub visibility: Visibility,
 }
 
 #[cfg(any(feature = "full", feature = "codespaces"))]
@@ -9068,15 +7884,15 @@ pub struct CopilotOrganizationDetails {
   /// The organization policy for allowing or disallowing organization members to use Copilot within their CLI.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub cli: Option<CopilotOrganizationDetailsCli>,
+  pub cli: Option<CopilotOrganizationPolicy>,
   /// The organization policy for allowing or disallowing organization members to use Copilot Chat within their editor.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub ide_chat: Option<CopilotOrganizationDetailsIdeChat>,
+  pub ide_chat: Option<CopilotOrganizationPolicy>,
   /// The organization policy for allowing or disallowing organization members to use Copilot features within github.com.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub platform_chat: Option<CopilotOrganizationDetailsPlatformChat>,
+  pub platform_chat: Option<CopilotOrganizationPolicy>,
   /// The organization policy for allowing or disallowing Copilot to make suggestions that match public code.
   pub public_code_suggestions: CopilotOrganizationDetailsPublicCodeSuggestions,
   pub seat_breakdown: CopilotSeatBreakdown,
@@ -9319,7 +8135,7 @@ pub struct OrganizationDependabotSecret {
   pub selected_repositories_url: Option<String>,
   pub updated_at: String,
   /// Visibility of a secret
-  pub visibility: OrganizationDependabotSecretVisibility,
+  pub visibility: Visibility,
 }
 
 #[cfg(any(feature = "full", feature = "dependabot"))]
@@ -9347,7 +8163,7 @@ pub struct Package {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub owner: Option<SimpleUser>,
-  pub package_type: PackagePackageType,
+  pub package_type: PackageType,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub repository: Option<MinimalRepository>,
@@ -9566,7 +8382,7 @@ pub struct PackageVersionMetadata {
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub docker: Option<DockerMetadata>,
-  pub package_type: PackageVersionMetadataPackageType,
+  pub package_type: PackageType,
 }
 
 #[cfg(any(feature = "full", feature = "packages"))]
@@ -9634,7 +8450,7 @@ pub struct OrganizationProgrammaticAccessGrantRequest {
   /// URL to the list of repositories requested to be accessed via fine-grained personal access token. Should only be followed when `repository_selection` is `subset`.
   pub repositories_url: String,
   /// Type of repository selection requested.
-  pub repository_selection: OrganizationProgrammaticAccessGrantRequestRepositorySelection,
+  pub repository_selection: RequestRepositorySelection,
   /// Whether the associated fine-grained personal access token has expired.
   pub token_expired: bool,
   /// Date and time when the associated fine-grained personal access token expires.
@@ -9678,7 +8494,7 @@ pub struct OrganizationProgrammaticAccessGrant {
   /// URL to the list of repositories the fine-grained personal access token can access. Only follow when `repository_selection` is `subset`.
   pub repositories_url: String,
   /// Type of repository selection requested.
-  pub repository_selection: OrganizationProgrammaticAccessGrantRepositorySelection,
+  pub repository_selection: RequestRepositorySelection,
   /// Whether the associated fine-grained personal access token has expired.
   pub token_expired: bool,
   /// Date and time when the associated fine-grained personal access token expires.
@@ -9931,14 +8747,14 @@ pub struct FullRepository {
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub merge_commit_message: Option<FullRepositoryMergeCommitMessage>,
+  pub merge_commit_message: Option<MergeCommitMessage>,
   /// The default value for a merge commit title.
   ///
   ///   - `PR_TITLE` - default to the pull request's title.
   ///   - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub merge_commit_title: Option<FullRepositoryMergeCommitTitle>,
+  pub merge_commit_title: Option<MergeCommitTitle>,
   pub merges_url: String,
   pub milestones_url: String,
   #[serde(skip_serializing_if = "Option::is_none")]
@@ -9979,14 +8795,14 @@ pub struct FullRepository {
   /// - `BLANK` - default to a blank commit message.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub squash_merge_commit_message: Option<FullRepositorySquashMergeCommitMessage>,
+  pub squash_merge_commit_message: Option<SquashMergeCommitMessage>,
   /// The default value for a squash merge commit title:
   ///
   /// - `PR_TITLE` - default to the pull request's title.
   /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub squash_merge_commit_title: Option<FullRepositorySquashMergeCommitTitle>,
+  pub squash_merge_commit_title: Option<SquashMergeCommitTitle>,
   pub ssh_url: String,
   pub stargazers_count: i64,
   pub stargazers_url: String,
@@ -10331,7 +9147,7 @@ pub struct RepositoryRuleCommitMessagePatternParameters {
   #[builder(default, setter(strip_option))]
   pub negate: Option<bool>,
   /// The operator to use for matching.
-  pub operator: RepositoryRuleCommitMessagePatternParametersOperator,
+  pub operator: Operator,
   /// The pattern to match with.
   pub pattern: String,
 }
@@ -10361,7 +9177,7 @@ pub struct RepositoryRuleCommitAuthorEmailPatternParameters {
   #[builder(default, setter(strip_option))]
   pub negate: Option<bool>,
   /// The operator to use for matching.
-  pub operator: RepositoryRuleCommitAuthorEmailPatternParametersOperator,
+  pub operator: Operator,
   /// The pattern to match with.
   pub pattern: String,
 }
@@ -10391,7 +9207,7 @@ pub struct RepositoryRuleCommitterEmailPatternParameters {
   #[builder(default, setter(strip_option))]
   pub negate: Option<bool>,
   /// The operator to use for matching.
-  pub operator: RepositoryRuleCommitterEmailPatternParametersOperator,
+  pub operator: Operator,
   /// The pattern to match with.
   pub pattern: String,
 }
@@ -10421,7 +9237,7 @@ pub struct RepositoryRuleBranchNamePatternParameters {
   #[builder(default, setter(strip_option))]
   pub negate: Option<bool>,
   /// The operator to use for matching.
-  pub operator: RepositoryRuleBranchNamePatternParametersOperator,
+  pub operator: Operator,
   /// The pattern to match with.
   pub pattern: String,
 }
@@ -10451,7 +9267,7 @@ pub struct RepositoryRuleTagNamePatternParameters {
   #[builder(default, setter(strip_option))]
   pub negate: Option<bool>,
   /// The operator to use for matching.
-  pub operator: RepositoryRuleTagNamePatternParametersOperator,
+  pub operator: Operator,
   /// The pattern to match with.
   pub pattern: String,
 }
@@ -10763,7 +9579,7 @@ pub struct RepositoryAdvisoryCwes {
 pub struct RepositoryAdvisoryIdentifiers {
   /// The type of identifier.
   #[serde(rename = "type")]
-  pub type_: RepositoryAdvisoryIdentifiersType,
+  pub type_: IdentifiersType,
   /// The identifier value.
   pub value: String,
 }
@@ -13591,7 +12407,7 @@ pub struct CodeScanningAlertRule {
   /// The security severity of the alert.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub security_severity_level: Option<CodeScanningAlertRuleSecuritySeverityLevel>,
+  pub security_severity_level: Option<Severity>,
   /// The severity of the alert.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
@@ -14740,7 +13556,7 @@ pub struct DependabotAlert {
   /// The reason that the alert was dismissed.
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
-  pub dismissed_reason: Option<DependabotAlertDismissedReason>,
+  pub dismissed_reason: Option<DismissedReason>,
   #[serde(skip_serializing_if = "Option::is_none")]
   #[builder(default, setter(strip_option))]
   pub fixed_at: Option<String>,
@@ -19125,7 +17941,7 @@ pub struct CodespacesSecret {
   /// The date and time at which the secret was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ.
   pub updated_at: String,
   /// The type of repositories in the organization that the secret is visible to
-  pub visibility: CodespacesSecretVisibility,
+  pub visibility: Visibility,
 }
 
 #[cfg(any(feature = "full", feature = "codespaces"))]

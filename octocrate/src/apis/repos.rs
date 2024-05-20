@@ -114,98 +114,6 @@ pub mod create_in_org {
 
   pub type Response = FullRepository;
 
-  /// The default value for a merge commit message.
-  ///
-  /// - `PR_TITLE` - default to the pull request's title.
-  /// - `PR_BODY` - default to the pull request's body.
-  /// - `BLANK` - default to a blank commit message.
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestMergeCommitMessage {
-    #[serde(rename = "PR_BODY")]
-    PrBody,
-    #[serde(rename = "PR_TITLE")]
-    PrTitle,
-    #[serde(rename = "BLANK")]
-    Blank,
-  }
-
-  impl ToString for RequestMergeCommitMessage {
-    fn to_string(&self) -> String {
-      match self {
-        RequestMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-        RequestMergeCommitMessage::PrTitle => "PR_TITLE".to_string(),
-        RequestMergeCommitMessage::Blank => "BLANK".to_string(),
-      }
-    }
-  }
-
-  /// The default value for a merge commit title.
-  ///
-  /// - `PR_TITLE` - default to the pull request's title.
-  /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestMergeCommitTitle {
-    #[serde(rename = "PR_TITLE")]
-    PrTitle,
-    #[serde(rename = "MERGE_MESSAGE")]
-    MergeMessage,
-  }
-
-  impl ToString for RequestMergeCommitTitle {
-    fn to_string(&self) -> String {
-      match self {
-        RequestMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-        RequestMergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
-      }
-    }
-  }
-
-  /// The default value for a squash merge commit message:
-  ///
-  /// - `PR_BODY` - default to the pull request's body.
-  /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
-  /// - `BLANK` - default to a blank commit message.
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestSquashMergeCommitMessage {
-    #[serde(rename = "PR_BODY")]
-    PrBody,
-    #[serde(rename = "COMMIT_MESSAGES")]
-    CommitMessages,
-    #[serde(rename = "BLANK")]
-    Blank,
-  }
-
-  impl ToString for RequestSquashMergeCommitMessage {
-    fn to_string(&self) -> String {
-      match self {
-        RequestSquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-        RequestSquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
-        RequestSquashMergeCommitMessage::Blank => "BLANK".to_string(),
-      }
-    }
-  }
-
-  /// The default value for a squash merge commit title:
-  ///
-  /// - `PR_TITLE` - default to the pull request's title.
-  /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestSquashMergeCommitTitle {
-    #[serde(rename = "PR_TITLE")]
-    PrTitle,
-    #[serde(rename = "COMMIT_OR_PR_TITLE")]
-    CommitOrPrTitle,
-  }
-
-  impl ToString for RequestSquashMergeCommitTitle {
-    fn to_string(&self) -> String {
-      match self {
-        RequestSquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-        RequestSquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
-      }
-    }
-  }
-
   /// The visibility of the repository.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestVisibility {
@@ -298,14 +206,14 @@ pub mod create_in_org {
     /// - `BLANK` - default to a blank commit message.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub merge_commit_message: Option<RequestMergeCommitMessage>,
+    pub merge_commit_message: Option<MergeCommitMessage>,
     /// The default value for a merge commit title.
     ///
     /// - `PR_TITLE` - default to the pull request's title.
     /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub merge_commit_title: Option<RequestMergeCommitTitle>,
+    pub merge_commit_title: Option<MergeCommitTitle>,
     /// The name of the repository.
     pub name: String,
     /// Whether the repository is private.
@@ -319,14 +227,14 @@ pub mod create_in_org {
     /// - `BLANK` - default to a blank commit message.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub squash_merge_commit_message: Option<RequestSquashMergeCommitMessage>,
+    pub squash_merge_commit_message: Option<SquashMergeCommitMessage>,
     /// The default value for a squash merge commit title:
     ///
     /// - `PR_TITLE` - default to the pull request's title.
     /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub squash_merge_commit_title: Option<RequestSquashMergeCommitTitle>,
+    pub squash_merge_commit_title: Option<SquashMergeCommitTitle>,
     /// The id of the team that will be granted access to this repository. This is only valid when creating a repository in an organization.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -527,98 +435,6 @@ pub mod update {
 
   pub type Response = FullRepository;
 
-  /// The default value for a merge commit message.
-  ///
-  /// - `PR_TITLE` - default to the pull request's title.
-  /// - `PR_BODY` - default to the pull request's body.
-  /// - `BLANK` - default to a blank commit message.
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestMergeCommitMessage {
-    #[serde(rename = "PR_BODY")]
-    PrBody,
-    #[serde(rename = "PR_TITLE")]
-    PrTitle,
-    #[serde(rename = "BLANK")]
-    Blank,
-  }
-
-  impl ToString for RequestMergeCommitMessage {
-    fn to_string(&self) -> String {
-      match self {
-        RequestMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-        RequestMergeCommitMessage::PrTitle => "PR_TITLE".to_string(),
-        RequestMergeCommitMessage::Blank => "BLANK".to_string(),
-      }
-    }
-  }
-
-  /// The default value for a merge commit title.
-  ///
-  /// - `PR_TITLE` - default to the pull request's title.
-  /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestMergeCommitTitle {
-    #[serde(rename = "PR_TITLE")]
-    PrTitle,
-    #[serde(rename = "MERGE_MESSAGE")]
-    MergeMessage,
-  }
-
-  impl ToString for RequestMergeCommitTitle {
-    fn to_string(&self) -> String {
-      match self {
-        RequestMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-        RequestMergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
-      }
-    }
-  }
-
-  /// The default value for a squash merge commit message:
-  ///
-  /// - `PR_BODY` - default to the pull request's body.
-  /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
-  /// - `BLANK` - default to a blank commit message.
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestSquashMergeCommitMessage {
-    #[serde(rename = "PR_BODY")]
-    PrBody,
-    #[serde(rename = "COMMIT_MESSAGES")]
-    CommitMessages,
-    #[serde(rename = "BLANK")]
-    Blank,
-  }
-
-  impl ToString for RequestSquashMergeCommitMessage {
-    fn to_string(&self) -> String {
-      match self {
-        RequestSquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-        RequestSquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
-        RequestSquashMergeCommitMessage::Blank => "BLANK".to_string(),
-      }
-    }
-  }
-
-  /// The default value for a squash merge commit title:
-  ///
-  /// - `PR_TITLE` - default to the pull request's title.
-  /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestSquashMergeCommitTitle {
-    #[serde(rename = "PR_TITLE")]
-    PrTitle,
-    #[serde(rename = "COMMIT_OR_PR_TITLE")]
-    CommitOrPrTitle,
-  }
-
-  impl ToString for RequestSquashMergeCommitTitle {
-    fn to_string(&self) -> String {
-      match self {
-        RequestSquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-        RequestSquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
-      }
-    }
-  }
-
   /// The visibility of the repository.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestVisibility {
@@ -763,14 +579,14 @@ pub mod update {
     /// - `BLANK` - default to a blank commit message.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub merge_commit_message: Option<RequestMergeCommitMessage>,
+    pub merge_commit_message: Option<MergeCommitMessage>,
     /// The default value for a merge commit title.
     ///
     /// - `PR_TITLE` - default to the pull request's title.
     /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub merge_commit_title: Option<RequestMergeCommitTitle>,
+    pub merge_commit_title: Option<MergeCommitTitle>,
     /// The name of the repository.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -798,14 +614,14 @@ pub mod update {
     /// - `BLANK` - default to a blank commit message.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub squash_merge_commit_message: Option<RequestSquashMergeCommitMessage>,
+    pub squash_merge_commit_message: Option<SquashMergeCommitMessage>,
     /// The default value for a squash merge commit title:
     ///
     /// - `PR_TITLE` - default to the pull request's title.
     /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub squash_merge_commit_title: Option<RequestSquashMergeCommitTitle>,
+    pub squash_merge_commit_title: Option<SquashMergeCommitTitle>,
     /// Either `true` to allow squash-merge commits to use pull request title, or `false` to use commit message. **This property has been deprecated. Please use `squash_merge_commit_title` instead.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
@@ -4032,98 +3848,6 @@ pub mod create_for_authenticated_user {
 
   pub type Response = FullRepository;
 
-  /// The default value for a merge commit message.
-  ///
-  /// - `PR_TITLE` - default to the pull request's title.
-  /// - `PR_BODY` - default to the pull request's body.
-  /// - `BLANK` - default to a blank commit message.
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestMergeCommitMessage {
-    #[serde(rename = "PR_BODY")]
-    PrBody,
-    #[serde(rename = "PR_TITLE")]
-    PrTitle,
-    #[serde(rename = "BLANK")]
-    Blank,
-  }
-
-  impl ToString for RequestMergeCommitMessage {
-    fn to_string(&self) -> String {
-      match self {
-        RequestMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-        RequestMergeCommitMessage::PrTitle => "PR_TITLE".to_string(),
-        RequestMergeCommitMessage::Blank => "BLANK".to_string(),
-      }
-    }
-  }
-
-  /// The default value for a merge commit title.
-  ///
-  /// - `PR_TITLE` - default to the pull request's title.
-  /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestMergeCommitTitle {
-    #[serde(rename = "PR_TITLE")]
-    PrTitle,
-    #[serde(rename = "MERGE_MESSAGE")]
-    MergeMessage,
-  }
-
-  impl ToString for RequestMergeCommitTitle {
-    fn to_string(&self) -> String {
-      match self {
-        RequestMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-        RequestMergeCommitTitle::MergeMessage => "MERGE_MESSAGE".to_string(),
-      }
-    }
-  }
-
-  /// The default value for a squash merge commit message:
-  ///
-  /// - `PR_BODY` - default to the pull request's body.
-  /// - `COMMIT_MESSAGES` - default to the branch's commit messages.
-  /// - `BLANK` - default to a blank commit message.
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestSquashMergeCommitMessage {
-    #[serde(rename = "PR_BODY")]
-    PrBody,
-    #[serde(rename = "COMMIT_MESSAGES")]
-    CommitMessages,
-    #[serde(rename = "BLANK")]
-    Blank,
-  }
-
-  impl ToString for RequestSquashMergeCommitMessage {
-    fn to_string(&self) -> String {
-      match self {
-        RequestSquashMergeCommitMessage::PrBody => "PR_BODY".to_string(),
-        RequestSquashMergeCommitMessage::CommitMessages => "COMMIT_MESSAGES".to_string(),
-        RequestSquashMergeCommitMessage::Blank => "BLANK".to_string(),
-      }
-    }
-  }
-
-  /// The default value for a squash merge commit title:
-  ///
-  /// - `PR_TITLE` - default to the pull request's title.
-  /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestSquashMergeCommitTitle {
-    #[serde(rename = "PR_TITLE")]
-    PrTitle,
-    #[serde(rename = "COMMIT_OR_PR_TITLE")]
-    CommitOrPrTitle,
-  }
-
-  impl ToString for RequestSquashMergeCommitTitle {
-    fn to_string(&self) -> String {
-      match self {
-        RequestSquashMergeCommitTitle::PrTitle => "PR_TITLE".to_string(),
-        RequestSquashMergeCommitTitle::CommitOrPrTitle => "COMMIT_OR_PR_TITLE".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Request {
@@ -4198,14 +3922,14 @@ pub mod create_for_authenticated_user {
     /// - `BLANK` - default to a blank commit message.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub merge_commit_message: Option<RequestMergeCommitMessage>,
+    pub merge_commit_message: Option<MergeCommitMessage>,
     /// The default value for a merge commit title.
     ///
     /// - `PR_TITLE` - default to the pull request's title.
     /// - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name).
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub merge_commit_title: Option<RequestMergeCommitTitle>,
+    pub merge_commit_title: Option<MergeCommitTitle>,
     /// The name of the repository.
     pub name: String,
     /// Whether the repository is private.
@@ -4219,14 +3943,14 @@ pub mod create_for_authenticated_user {
     /// - `BLANK` - default to a blank commit message.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub squash_merge_commit_message: Option<RequestSquashMergeCommitMessage>,
+    pub squash_merge_commit_message: Option<SquashMergeCommitMessage>,
     /// The default value for a squash merge commit title:
     ///
     /// - `PR_TITLE` - default to the pull request's title.
     /// - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit).
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub squash_merge_commit_title: Option<RequestSquashMergeCommitTitle>,
+    pub squash_merge_commit_title: Option<SquashMergeCommitTitle>,
     /// The id of the team that will be granted access to this repository. This is only valid when creating a repository in an organization.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]

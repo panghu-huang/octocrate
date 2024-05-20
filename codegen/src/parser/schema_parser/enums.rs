@@ -8,6 +8,58 @@ use crate::{
   },
 };
 
+// Hardcoded enums for reducing the number of generated enums
+// We don't directly modify the api.json because the https://github.com/github/rest-api-description repository is always being updated
+// To avoid conflicts, we made some modifications here
+// Please note that these enum values are generated based on the current state of the GitHub API, and if the GitHub API changes, these enum values may become outdated
+const PRESET_ENUMS: [(&str, &[&str]); 18] = [
+  ("ReadWriteAdminPermission", &["read", "write", "admin"]),
+  ("ReadWritePermission", &["read", "write"]),
+  ("ReadPermission", &["read"]),
+  ("WritePermission", &["write"]),
+  (
+    "SquashMergeCommitMessage",
+    &["PR_BODY", "COMMIT_MESSAGES", "BLANK"],
+  ),
+  ("MergeCommitMessage", &["PR_BODY", "PR_TITLE", "BLANK"]),
+  ("MergeCommitTitle", &["PR_TITLE", "MERGE_MESSAGE"]),
+  (
+    "SquashMergeCommitTitle",
+    &["PR_TITLE", "COMMIT_OR_PR_TITLE"],
+  ),
+  ("Severity", &["low", "medium", "high", "critical"]),
+  ("Visibility", &["all", "private", "selected"]),
+  (
+    "Operator",
+    &["starts_with", "ends_with", "contains", "regex"],
+  ),
+  ("IdentifiersType", &["CVE", "GHSA"]),
+  ("RepositorySelection", &["all", "selected"]),
+  (
+    "DependabotAlertState",
+    &["auto_dismissed", "dismissed", "fixed", "open"],
+  ),
+  (
+    "CopilotOrganizationPolicy",
+    &["enabled", "disabled", "unconfigured"],
+  ),
+  (
+    "PackageType",
+    &["npm", "maven", "rubygems", "docker", "nuget", "container"],
+  ),
+  (
+    "DismissedReason",
+    &[
+      "fix_started",
+      "inaccurate",
+      "no_bandwidth",
+      "not_used",
+      "tolerable_risk",
+    ],
+  ),
+  ("RequestRepositorySelection", &["none", "all", "subset"]),
+];
+
 impl SchemaParser {
   pub(super) fn parse_enum(&mut self, ctx: &mut ParseContext, schema: &Schema) -> ParsedData {
     let enum_name = self.prefixs.join("_");
@@ -57,36 +109,37 @@ impl SchemaParser {
     ParsedData::Enum(enum_)
   }
 
-  fn check_if_preset_enum(&self, enums: &Vec<Option<StringOrBool>>) -> Option<ParsedData> {
-    // if read write -> ReadWritePermission
-    // if read -> ReadPermission
-    // if write -> WritePermission
-    let len = enums.len();
-    if len <= 2 {
-      let mut is_read = false;
-      let mut is_write = false;
+  fn check_if_preset_enum(&self, enums: &[Option<StringOrBool>]) -> Option<ParsedData> {
+    let no_null_enums: Vec<_> = enums.iter().filter_map(|x| x.as_ref()).collect();
 
-      for enum_value in enums {
-        if let Some(StringOrBool::String(value)) = &enum_value {
-          if value == "read" {
-            is_read = true;
-          } else if value == "write" {
-            is_write = true;
+    let has_null = enums.len() != no_null_enums.len();
+
+    for (enum_name, values) in PRESET_ENUMS.iter() {
+      if no_null_enums.len() == values.len() {
+        let mut is_preset = true;
+
+        for (index, value) in values.iter().enumerate() {
+          if let StringOrBool::String(enum_value) = &no_null_enums[index] {
+            if enum_value != value {
+              is_preset = false;
+              break;
+            }
+          } else {
+            is_preset = false;
+            break;
           }
         }
-      }
 
-      match (len, is_read, is_write) {
-        (1, true, false) => {
-          return Some(ParsedData::Type(Type::new("ReadPermission")));
+        if is_preset {
+          if has_null {
+            return Some(ParsedData::Type(Type::new_with_reference(
+              &format!("Option<{}>", enum_name),
+              enum_name,
+            )));
+          }
+
+          return Some(ParsedData::Type(Type::new(enum_name)));
         }
-        (1, false, true) => {
-          return Some(ParsedData::Type(Type::new("WritePermission")));
-        }
-        (2, true, true) => {
-          return Some(ParsedData::Type(Type::new("ReadWritePermission")));
-        }
-        _ => {}
       }
     }
 

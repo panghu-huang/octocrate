@@ -142,27 +142,6 @@ pub mod create_or_update_org_secret {
 
   pub type Response = EmptyObject;
 
-  /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestVisibility {
-    #[serde(rename = "all")]
-    All,
-    #[serde(rename = "private")]
-    Private,
-    #[serde(rename = "selected")]
-    Selected,
-  }
-
-  impl ToString for RequestVisibility {
-    fn to_string(&self) -> String {
-      match self {
-        RequestVisibility::All => "all".to_string(),
-        RequestVisibility::Private => "private".to_string(),
-        RequestVisibility::Selected => "selected".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Request {
@@ -179,7 +158,7 @@ pub mod create_or_update_org_secret {
     #[builder(default, setter(strip_option))]
     pub selected_repository_ids: Option<Vec<i64>>,
     /// Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret.
-    pub visibility: RequestVisibility,
+    pub visibility: Visibility,
   }
 }
 

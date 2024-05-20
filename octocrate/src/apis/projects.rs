@@ -339,34 +339,13 @@ pub mod add_collaborator {
   #[allow(unused_imports)]
   use super::*;
 
-  /// The permission to grant the collaborator.
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum RequestPermission {
-    #[serde(rename = "read")]
-    Read,
-    #[serde(rename = "write")]
-    Write,
-    #[serde(rename = "admin")]
-    Admin,
-  }
-
-  impl ToString for RequestPermission {
-    fn to_string(&self) -> String {
-      match self {
-        RequestPermission::Read => "read".to_string(),
-        RequestPermission::Write => "write".to_string(),
-        RequestPermission::Admin => "admin".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Request {
     /// The permission to grant the collaborator.
     #[serde(skip_serializing_if = "Option::is_none")]
     #[builder(default, setter(strip_option))]
-    pub permission: Option<RequestPermission>,
+    pub permission: Option<ReadWriteAdminPermission>,
   }
 }
 

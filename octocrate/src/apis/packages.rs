@@ -19,40 +19,11 @@ pub mod list_packages_for_organization {
 
   pub type Response = Vec<Package>;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryPackageType {
-    #[serde(rename = "npm")]
-    Npm,
-    #[serde(rename = "maven")]
-    Maven,
-    #[serde(rename = "rubygems")]
-    Rubygems,
-    #[serde(rename = "docker")]
-    Docker,
-    #[serde(rename = "nuget")]
-    Nuget,
-    #[serde(rename = "container")]
-    Container,
-  }
-
-  impl ToString for QueryPackageType {
-    fn to_string(&self) -> String {
-      match self {
-        QueryPackageType::Npm => "npm".to_string(),
-        QueryPackageType::Maven => "maven".to_string(),
-        QueryPackageType::Rubygems => "rubygems".to_string(),
-        QueryPackageType::Docker => "docker".to_string(),
-        QueryPackageType::Nuget => "nuget".to_string(),
-        QueryPackageType::Container => "container".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
     /// The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.
-    pub package_type: QueryPackageType,
+    pub package_type: PackageType,
     /// The selected visibility of the packages.  This parameter is optional and only filters an existing result set.
     ///
     /// The `internal` visibility is only supported for GitHub Packages registries that allow for granular permissions. For other ecosystems `internal` is synonymous with `private`.
@@ -153,40 +124,11 @@ pub mod list_packages_for_authenticated_user {
 
   pub type Response = Vec<Package>;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryPackageType {
-    #[serde(rename = "npm")]
-    Npm,
-    #[serde(rename = "maven")]
-    Maven,
-    #[serde(rename = "rubygems")]
-    Rubygems,
-    #[serde(rename = "docker")]
-    Docker,
-    #[serde(rename = "nuget")]
-    Nuget,
-    #[serde(rename = "container")]
-    Container,
-  }
-
-  impl ToString for QueryPackageType {
-    fn to_string(&self) -> String {
-      match self {
-        QueryPackageType::Npm => "npm".to_string(),
-        QueryPackageType::Maven => "maven".to_string(),
-        QueryPackageType::Rubygems => "rubygems".to_string(),
-        QueryPackageType::Docker => "docker".to_string(),
-        QueryPackageType::Nuget => "nuget".to_string(),
-        QueryPackageType::Container => "container".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
     /// The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.
-    pub package_type: QueryPackageType,
+    pub package_type: PackageType,
     /// The selected visibility of the packages.  This parameter is optional and only filters an existing result set.
     ///
     /// The `internal` visibility is only supported for GitHub Packages registries that allow for granular permissions. For other ecosystems `internal` is synonymous with `private`.
@@ -287,40 +229,11 @@ pub mod list_packages_for_user {
 
   pub type Response = Vec<Package>;
 
-  #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-  pub enum QueryPackageType {
-    #[serde(rename = "npm")]
-    Npm,
-    #[serde(rename = "maven")]
-    Maven,
-    #[serde(rename = "rubygems")]
-    Rubygems,
-    #[serde(rename = "docker")]
-    Docker,
-    #[serde(rename = "nuget")]
-    Nuget,
-    #[serde(rename = "container")]
-    Container,
-  }
-
-  impl ToString for QueryPackageType {
-    fn to_string(&self) -> String {
-      match self {
-        QueryPackageType::Npm => "npm".to_string(),
-        QueryPackageType::Maven => "maven".to_string(),
-        QueryPackageType::Rubygems => "rubygems".to_string(),
-        QueryPackageType::Docker => "docker".to_string(),
-        QueryPackageType::Nuget => "nuget".to_string(),
-        QueryPackageType::Container => "container".to_string(),
-      }
-    }
-  }
-
   #[derive(Debug, Clone, Serialize, Deserialize, TypedBuilder)]
   #[builder(field_defaults(setter(into)))]
   pub struct Query {
     /// The type of supported package. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker` to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if these have now been migrated to the Container registry.
-    pub package_type: QueryPackageType,
+    pub package_type: PackageType,
     /// The selected visibility of the packages.  This parameter is optional and only filters an existing result set.
     ///
     /// The `internal` visibility is only supported for GitHub Packages registries that allow for granular permissions. For other ecosystems `internal` is synonymous with `private`.
@@ -434,14 +347,13 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization](https://docs.github.com/rest/packages/packages#get-a-package-for-an-organization)
   pub fn get_package_for_organization(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
   ) -> Request<(), (), get_package_for_organization::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let org = org.into();
-    let package_type = package_type.to_string();
     let url = format!("/orgs/{org}/packages/{package_type}/{package_name}");
 
     Request::<(), (), get_package_for_organization::Response>::builder(&self.config)
@@ -460,14 +372,13 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization](https://docs.github.com/rest/packages/packages#delete-a-package-for-an-organization)
   pub fn delete_package_for_org(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
   ) -> NoContentRequest<(), ()> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let org = org.into();
-    let package_type = package_type.to_string();
     let url = format!("/orgs/{org}/packages/{package_type}/{package_name}");
 
     NoContentRequest::<(), ()>::builder(&self.config)
@@ -490,14 +401,13 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization](https://docs.github.com/rest/packages/packages#restore-a-package-for-an-organization)
   pub fn restore_package_for_org(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
   ) -> NoContentRequest<(), restore_package_for_org::Query> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let org = org.into();
-    let package_type = package_type.to_string();
     let url = format!("/orgs/{org}/packages/{package_type}/{package_name}/restore");
 
     NoContentRequest::<(), restore_package_for_org::Query>::builder(&self.config)
@@ -514,7 +424,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization](https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-an-organization)
   pub fn get_all_package_versions_for_package_owned_by_org(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
   ) -> Request<
@@ -525,7 +435,6 @@ impl GitHubPackagesAPI {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let org = org.into();
-    let package_type = package_type.to_string();
     let url = format!("/orgs/{org}/packages/{package_type}/{package_name}/versions");
 
     Request::<
@@ -546,7 +455,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization](https://docs.github.com/rest/packages/packages#get-a-package-version-for-an-organization)
   pub fn get_package_version_for_organization(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
     package_version_id: impl Into<i64>,
@@ -555,7 +464,6 @@ impl GitHubPackagesAPI {
     let package_name = package_name.into();
     let org = org.into();
     let package_version_id = package_version_id.into();
-    let package_type = package_type.to_string();
     let url =
       format!("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}");
 
@@ -575,7 +483,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization](https://docs.github.com/rest/packages/packages#delete-package-version-for-an-organization)
   pub fn delete_package_version_for_org(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
     package_version_id: impl Into<i64>,
@@ -584,7 +492,6 @@ impl GitHubPackagesAPI {
     let package_name = package_name.into();
     let org = org.into();
     let package_version_id = package_version_id.into();
-    let package_type = package_type.to_string();
     let url =
       format!("/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}");
 
@@ -608,7 +515,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization](https://docs.github.com/rest/packages/packages#restore-package-version-for-an-organization)
   pub fn restore_package_version_for_org(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     org: impl Into<String>,
     package_version_id: impl Into<i64>,
@@ -617,7 +524,6 @@ impl GitHubPackagesAPI {
     let package_name = package_name.into();
     let org = org.into();
     let package_version_id = package_version_id.into();
-    let package_type = package_type.to_string();
     let url = format!(
       "/orgs/{org}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore"
     );
@@ -679,12 +585,11 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#get-a-package-for-the-authenticated-user)
   pub fn get_package_for_authenticated_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
   ) -> Request<(), (), get_package_for_authenticated_user::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
-    let package_type = package_type.to_string();
     let url = format!("/user/packages/{package_type}/{package_name}");
 
     Request::<(), (), get_package_for_authenticated_user::Response>::builder(&self.config)
@@ -701,12 +606,11 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#delete-a-package-for-the-authenticated-user)
   pub fn delete_package_for_authenticated_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
   ) -> NoContentRequest<(), ()> {
     let package_type = package_type.into();
     let package_name = package_name.into();
-    let package_type = package_type.to_string();
     let url = format!("/user/packages/{package_type}/{package_name}");
 
     NoContentRequest::<(), ()>::builder(&self.config)
@@ -727,12 +631,11 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#restore-a-package-for-the-authenticated-user)
   pub fn restore_package_for_authenticated_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
   ) -> NoContentRequest<(), restore_package_for_authenticated_user::Query> {
     let package_type = package_type.into();
     let package_name = package_name.into();
-    let package_type = package_type.to_string();
     let url = format!("/user/packages/{package_type}/{package_name}/restore");
 
     NoContentRequest::<(), restore_package_for_authenticated_user::Query>::builder(&self.config)
@@ -749,7 +652,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user](https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-the-authenticated-user)
   pub fn get_all_package_versions_for_package_owned_by_authenticated_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
   ) -> Request<
     (),
@@ -758,7 +661,6 @@ impl GitHubPackagesAPI {
   > {
     let package_type = package_type.into();
     let package_name = package_name.into();
-    let package_type = package_type.to_string();
     let url = format!("/user/packages/{package_type}/{package_name}/versions");
 
     Request::<
@@ -779,14 +681,13 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#get-a-package-version-for-the-authenticated-user)
   pub fn get_package_version_for_authenticated_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     package_version_id: impl Into<i64>,
   ) -> Request<(), (), get_package_version_for_authenticated_user::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let package_version_id = package_version_id.into();
-    let package_type = package_type.to_string();
     let url = format!("/user/packages/{package_type}/{package_name}/versions/{package_version_id}");
 
     Request::<(), (), get_package_version_for_authenticated_user::Response>::builder(&self.config)
@@ -805,14 +706,13 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#delete-a-package-version-for-the-authenticated-user)
   pub fn delete_package_version_for_authenticated_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     package_version_id: impl Into<i64>,
   ) -> NoContentRequest<(), ()> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let package_version_id = package_version_id.into();
-    let package_type = package_type.to_string();
     let url = format!("/user/packages/{package_type}/{package_name}/versions/{package_version_id}");
 
     NoContentRequest::<(), ()>::builder(&self.config)
@@ -833,14 +733,13 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user](https://docs.github.com/rest/packages/packages#restore-a-package-version-for-the-authenticated-user)
   pub fn restore_package_version_for_authenticated_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     package_version_id: impl Into<i64>,
   ) -> NoContentRequest<(), ()> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let package_version_id = package_version_id.into();
-    let package_type = package_type.to_string();
     let url =
       format!("/user/packages/{package_type}/{package_name}/versions/{package_version_id}/restore");
 
@@ -900,14 +799,13 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-for-a-user](https://docs.github.com/rest/packages/packages#get-a-package-for-a-user)
   pub fn get_package_for_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
   ) -> Request<(), (), get_package_for_user::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let username = username.into();
-    let package_type = package_type.to_string();
     let url = format!("/users/{username}/packages/{package_type}/{package_name}");
 
     Request::<(), (), get_package_for_user::Response>::builder(&self.config)
@@ -926,14 +824,13 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user](https://docs.github.com/rest/packages/packages#delete-a-package-for-a-user)
   pub fn delete_package_for_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
   ) -> NoContentRequest<(), ()> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let username = username.into();
-    let package_type = package_type.to_string();
     let url = format!("/users/{username}/packages/{package_type}/{package_name}");
 
     NoContentRequest::<(), ()>::builder(&self.config)
@@ -956,14 +853,13 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user](https://docs.github.com/rest/packages/packages#restore-a-package-for-a-user)
   pub fn restore_package_for_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
   ) -> NoContentRequest<(), restore_package_for_user::Query> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let username = username.into();
-    let package_type = package_type.to_string();
     let url = format!("/users/{username}/packages/{package_type}/{package_name}/restore");
 
     NoContentRequest::<(), restore_package_for_user::Query>::builder(&self.config)
@@ -980,14 +876,13 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user](https://docs.github.com/rest/packages/packages#list-package-versions-for-a-package-owned-by-a-user)
   pub fn get_all_package_versions_for_package_owned_by_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
   ) -> Request<(), (), get_all_package_versions_for_package_owned_by_user::Response> {
     let package_type = package_type.into();
     let package_name = package_name.into();
     let username = username.into();
-    let package_type = package_type.to_string();
     let url = format!("/users/{username}/packages/{package_type}/{package_name}/versions");
 
     Request::<(), (), get_all_package_versions_for_package_owned_by_user::Response>::builder(
@@ -1006,7 +901,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user](https://docs.github.com/rest/packages/packages#get-a-package-version-for-a-user)
   pub fn get_package_version_for_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     package_version_id: impl Into<i64>,
     username: impl Into<String>,
@@ -1015,7 +910,6 @@ impl GitHubPackagesAPI {
     let package_name = package_name.into();
     let package_version_id = package_version_id.into();
     let username = username.into();
-    let package_type = package_type.to_string();
     let url = format!(
       "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
     );
@@ -1036,7 +930,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user](https://docs.github.com/rest/packages/packages#delete-package-version-for-a-user)
   pub fn delete_package_version_for_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
     package_version_id: impl Into<i64>,
@@ -1045,7 +939,6 @@ impl GitHubPackagesAPI {
     let package_name = package_name.into();
     let username = username.into();
     let package_version_id = package_version_id.into();
-    let package_type = package_type.to_string();
     let url = format!(
       "/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}"
     );
@@ -1070,7 +963,7 @@ impl GitHubPackagesAPI {
   /// *Documentation*: [https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user](https://docs.github.com/rest/packages/packages#restore-package-version-for-a-user)
   pub fn restore_package_version_for_user(
     &self,
-    package_type: impl Into<parameters::PackageType>,
+    package_type: impl Into<PackageType>,
     package_name: impl Into<String>,
     username: impl Into<String>,
     package_version_id: impl Into<i64>,
@@ -1079,7 +972,6 @@ impl GitHubPackagesAPI {
     let package_name = package_name.into();
     let username = username.into();
     let package_version_id = package_version_id.into();
-    let package_type = package_type.to_string();
     let url = format!("/users/{username}/packages/{package_type}/{package_name}/versions/{package_version_id}/restore");
 
     NoContentRequest::<(), ()>::builder(&self.config)

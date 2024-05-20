@@ -175,37 +175,6 @@ impl ToString for PackageVisibility {
   }
 }
 
-#[cfg(any(feature = "full", feature = "packages"))]
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
-pub enum PackageType {
-  #[serde(rename = "npm")]
-  Npm,
-  #[serde(rename = "maven")]
-  Maven,
-  #[serde(rename = "rubygems")]
-  Rubygems,
-  #[serde(rename = "docker")]
-  Docker,
-  #[serde(rename = "nuget")]
-  Nuget,
-  #[serde(rename = "container")]
-  Container,
-}
-
-#[cfg(any(feature = "full", feature = "packages"))]
-impl ToString for PackageType {
-  fn to_string(&self) -> String {
-    match self {
-      PackageType::Npm => "npm".to_string(),
-      PackageType::Maven => "maven".to_string(),
-      PackageType::Rubygems => "rubygems".to_string(),
-      PackageType::Docker => "docker".to_string(),
-      PackageType::Nuget => "nuget".to_string(),
-      PackageType::Container => "container".to_string(),
-    }
-  }
-}
-
 #[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PersonalAccessTokenSort {
