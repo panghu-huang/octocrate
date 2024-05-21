@@ -746,7 +746,7 @@ dependencies = [
 
 [[package]]
 name = "octocrate"
-version = "1.0.0"
+version = "2.0.0-beta.1"
 dependencies = [
  "chrono",
  "dotenv",
@@ -774,7 +774,7 @@ dependencies = [
 
 [[package]]
 name = "octocrate-types"
-version = "1.0.0"
+version = "2.0.0-beta.1"
 dependencies = [
  "serde",
  "serde_json",
