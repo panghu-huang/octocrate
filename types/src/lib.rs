@@ -10,8 +10,8 @@ pub use models::*;
 
 pub mod parameters;
 
-#[cfg(feature = "pagination")]
-mod pagination;
+#[cfg(any(feature = "full", feature = "apps"))]
+mod installation_token;
 
-#[cfg(feature = "pagination")]
-pub use pagination::*;
+#[cfg(any(feature = "full", feature = "pagination"))]
+pub use octocrate_core::{PaginatedData, LinkedPages};

@@ -11,8 +11,5 @@ pub mod {{ name }};
 {{/if}}
 {{/each}}
 
-#[cfg(feature = "pagination")]
-mod pagination;
-
-#[cfg(feature = "pagination")]
-pub use pagination::*;
+#[cfg(any(feature = "full", feature = "apps"))]
+mod installation_token;
