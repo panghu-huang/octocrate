@@ -746,7 +746,7 @@ dependencies = [
 
 [[package]]
 name = "octocrate"
-version = "2.0.0-beta.1"
+version = "2.0.0"
 dependencies = [
  "chrono",
  "dotenv",
@@ -760,7 +760,7 @@ dependencies = [
 
 [[package]]
 name = "octocrate-core"
-version = "0.1.5"
+version = "0.1.6"
 dependencies = [
  "chrono",
  "jsonwebtoken",
@@ -774,7 +774,7 @@ dependencies = [
 
 [[package]]
 name = "octocrate-types"
-version = "2.0.0-beta.1"
+version = "2.0.0"
 dependencies = [
  "chrono",
  "octocrate-core",
