@@ -17,7 +17,7 @@ doctest = false
 [features]
 # API features
 full = []
-apps = []
+apps = ["dep:chrono"]
 actions = []
 activity = []
 billing = []
@@ -62,3 +62,4 @@ serde_json = { workspace = true }
 serde = { workspace = true, features = ["derive"] }
 typed-builder = { workspace = true }
 octocrate-core = { workspace = true }
+chrono = { workspace = true, optional = true }

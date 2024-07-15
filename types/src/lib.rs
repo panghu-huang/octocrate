@@ -14,4 +14,4 @@ pub mod parameters;
 mod installation_token;
 
 #[cfg(any(feature = "full", feature = "pagination"))]
-pub use octocrate_core::{PaginatedData, LinkedPages};
+pub use octocrate_core::{LinkedPages, PaginatedData};
