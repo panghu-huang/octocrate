@@ -31,6 +31,6 @@ indexmap = "2"
 url = "2"
 
 # internal
-octocrate = { path = "octocrate", version = "2.0.0-beta.1" }
-octocrate-core = { path = "core", version = "0.1.5" }
-octocrate-types = { path = "types", version = "2.0.0-beta.1" }
+octocrate = { path = "octocrate", version = "2.0.0" }
+octocrate-core = { path = "core", version = "0.1.6" }
+octocrate-types = { path = "types", version = "2.0.0" }
