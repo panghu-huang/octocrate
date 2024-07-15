@@ -111,7 +111,7 @@ where
   Query: serde::Serialize,
   ResponseData: serde::de::DeserializeOwned + IntoIterator,
 {
-  pub async fn paginated_send(self) -> Result<octocrate_types::PaginatedData<ResponseData>, Error> {
+  pub async fn paginated_send(self) -> Result<crate::PaginatedData<ResponseData>, Error> {
     Ok(self.paginated_send_with_response().await?.paginate())
   }
 

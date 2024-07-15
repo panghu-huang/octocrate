@@ -1,6 +1,5 @@
-use std::collections::HashMap;
-
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use url::Url;
 
 #[derive(Default, Debug, Copy, Clone, Serialize, Deserialize, PartialEq, Hash, Eq)]

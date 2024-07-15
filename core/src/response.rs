@@ -19,15 +19,15 @@ pub struct GitHubPaginatedResponse<ResponseData> {
   pub version: Version,
   pub content_length: Option<u64>,
   pub url: Url,
-  pub pages: octocrate_types::LinkedPages,
+  pub pages: crate::LinkedPages,
 }
 
 #[cfg(feature = "pagination")]
 impl<ResponseData: serde::de::DeserializeOwned + IntoIterator>
   GitHubPaginatedResponse<ResponseData>
 {
-  pub fn paginate(self) -> octocrate_types::PaginatedData<ResponseData> {
-    octocrate_types::PaginatedData {
+  pub fn paginate(self) -> crate::PaginatedData<ResponseData> {
+    crate::PaginatedData {
       data: self.data,
       pages: self.pages,
     }
