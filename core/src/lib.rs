@@ -9,12 +9,6 @@ mod request;
 mod request_builder;
 mod response;
 
-#[cfg(feature = "pagination")]
-mod pagination;
-
-#[cfg(feature = "pagination")]
-pub use pagination::*;
-
 pub use api_config::*;
 pub use app_authorization::*;
 pub use error::*;

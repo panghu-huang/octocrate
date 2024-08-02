@@ -8,9 +8,7 @@ async fn test_app_installation() {
   let private_key_path =
     std::env::var("GITHUB_APP_PRIVATE_KEY_PATH").expect("GITHUB_APP_PRIVATE_KEY_PATH is not set");
 
-  let private_key = std::fs::read_to_string(&private_key_path)
-    .map_err(|e| format!("Failed to read private key file: {}", e))
-    .unwrap();
+  let private_key = std::fs::read_to_string(&private_key_path).unwrap();
 
   let app_authorization = AppAuthorization::new(app_id, private_key);
 

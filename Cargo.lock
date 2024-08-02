@@ -764,23 +764,22 @@ version = "0.1.6"
 dependencies = [
  "chrono",
  "jsonwebtoken",
+ "octocrate-types",
  "reqwest",
  "serde",
  "serde_json",
  "thiserror",
  "tokio",
- "url",
 ]
 
 [[package]]
 name = "octocrate-types"
 version = "2.0.0"
 dependencies = [
- "chrono",
- "octocrate-core",
  "serde",
  "serde_json",
  "typed-builder",
+ "url",
 ]
 
 [[package]]
