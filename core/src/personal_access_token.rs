@@ -1,4 +1,4 @@
-use crate::expirable_token::ExpirableToken;
+use octocrate_types::ExpirableToken;
 
 pub struct PersonalAccessToken {
   token: String,

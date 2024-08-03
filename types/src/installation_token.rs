@@ -1,5 +1,5 @@
-use crate::InstallationToken;
-use octocrate_core::ExpirableToken;
+use super::expirable_token::ExpirableToken;
+use super::models::InstallationToken;
 
 impl ExpirableToken for InstallationToken {
   fn get_token(&self) -> Option<String> {

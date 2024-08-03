@@ -16,7 +16,7 @@ doctest = false
 
 [features]
 # API features
-full = []
+full = ["pagination", "dep:chrono"]
 apps = ["dep:chrono"]
 actions = []
 activity = []
@@ -55,11 +55,11 @@ interactions = []
 classroom = []
 desktop = []
 webhooks = []
-pagination = ["octocrate-core/pagination"]
+pagination = ["dep:url"]
 
 [dependencies]
 serde_json = { workspace = true }
+url = { workspace = true, optional = true }
 serde = { workspace = true, features = ["derive"] }
 typed-builder = { workspace = true }
-octocrate-core = { workspace = true }
 chrono = { workspace = true, optional = true }

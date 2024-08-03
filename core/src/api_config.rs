@@ -1,4 +1,4 @@
-use crate::expirable_token::ExpirableToken;
+use octocrate_types::ExpirableToken;
 use std::sync::Arc;
 
 pub struct APIConfig {

@@ -11,10 +11,11 @@ readme.workspace = true
 description.workspace = true
 categories.workspace = true
 
+
 [features]
-full = ["pagination"]
-apps = []
-pagination = ["dep:url"]
+full = ["octocrate-types/full"]
+apps = ["octocrate-types/apps"]
+pagination = ["octocrate-types/pagination"]
 default-tls = ["reqwest/default-tls"]
 rustls-tls = ["reqwest/rustls-tls"]
 
@@ -29,8 +30,8 @@ reqwest = { workspace = true, default-features = false, features = [
 serde = { workspace = true, features = ["derive"] }
 thiserror = { workspace = true }
 jsonwebtoken = { workspace = true, features = ["use_pem"] }
+octocrate-types = { workspace = true }
 chrono = { workspace = true }
-url = { workspace = true, optional = true }
 
 [dev-dependencies]
 tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
