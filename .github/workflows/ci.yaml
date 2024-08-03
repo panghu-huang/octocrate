@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches: [main]
-  pull_request:
+  pull_request_target:
     branches: [main]
     types:
       - opened
@@ -39,7 +39,7 @@ jobs:
         run: cargo fmt --check
 
       - name: Check linting
-        run: cargo clippy -- --no-deps
+        run: cargo clippy
 
       - name: Run tests
         env:
