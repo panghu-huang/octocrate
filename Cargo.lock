@@ -776,6 +776,7 @@ dependencies = [
 name = "octocrate-types"
 version = "2.0.0"
 dependencies = [
+ "chrono",
  "serde",
  "serde_json",
  "typed-builder",

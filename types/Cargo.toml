@@ -16,8 +16,8 @@ doctest = false
 
 [features]
 # API features
-full = ["pagination"]
-apps = []
+full = ["pagination", "dep:chrono"]
+apps = ["dep:chrono"]
 actions = []
 activity = []
 billing = []
@@ -62,3 +62,4 @@ serde_json = { workspace = true }
 url = { workspace = true, optional = true }
 serde = { workspace = true, features = ["derive"] }
 typed-builder = { workspace = true }
+chrono = { workspace = true, optional = true }

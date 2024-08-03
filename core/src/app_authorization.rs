@@ -1,8 +1,9 @@
 use std::sync::Mutex;
 
-use crate::{error::Error, expirable_token::ExpirableToken};
+use crate::error::Error;
 use chrono::{DateTime, Utc};
 use jsonwebtoken::{encode, Algorithm, EncodingKey, Header};
+use octocrate_types::ExpirableToken;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug)]
