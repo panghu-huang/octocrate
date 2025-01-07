@@ -40,7 +40,7 @@ async fn create_issue_comment() {
     .await
     .unwrap();
 
-  let first_comment = comments.first().clone().unwrap();
+  let first_comment = comments.first().unwrap();
 
   assert_eq!(
     first_comment.body.as_ref().unwrap(),

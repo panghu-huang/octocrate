@@ -1,4 +1,4 @@
-#![allow(unused_variables)]
+#![allow(clippy::all)]
 mod apis;
 
 pub use apis::*;

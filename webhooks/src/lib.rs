@@ -1,3 +1,4 @@
+#![allow(clippy::all)]
 mod presets;
 mod webhooks;
 

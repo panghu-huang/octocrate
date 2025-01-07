@@ -3,6 +3,8 @@ use crate::{
   error::{APIErrorResponse, Error},
   no_content_request_builder::NoContentRequestBuilder,
 };
+#[cfg(feature = "multipart")]
+use reqwest::multipart::Form;
 use std::marker::PhantomData;
 
 pub struct NoContentRequest<Body, Query> {
@@ -23,6 +25,13 @@ where
 
   pub fn query(mut self, query: &Query) -> Self {
     self.builder = self.builder.query(query);
+
+    self
+  }
+
+  #[cfg(feature = "multipart")]
+  pub fn form(mut self, form: Form) -> Self {
+    self.builder = self.builder.multipart(form);
 
     self
   }

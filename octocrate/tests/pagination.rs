@@ -26,7 +26,7 @@ async fn test_pagination() {
     .await
     .unwrap();
 
-  let repository = repositories.data.get(0).unwrap();
+  let repository = repositories.data.first().unwrap();
 
   assert_eq!(repository.owner.login, "ifiokjr");
 

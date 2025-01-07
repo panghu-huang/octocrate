@@ -17,3 +17,8 @@ pub use personal_access_token::*;
 pub use request::*;
 pub use request_builder::*;
 pub use response::*;
+
+#[cfg(feature = "multipart")]
+pub mod multipart {
+  pub use reqwest::multipart::*;
+}

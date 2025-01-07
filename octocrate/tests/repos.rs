@@ -26,7 +26,7 @@ async fn test_list_user_repositories() {
     .await
     .unwrap();
 
-  let repository = repositories.get(0).unwrap();
+  let repository = repositories.first().unwrap();
 
   assert_eq!(repository.owner.login, "panghu-huang");
 
