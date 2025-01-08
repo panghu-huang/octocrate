@@ -1,3 +1,5 @@
+#[cfg(feature = "file-body")]
+use crate::utils::file_to_body;
 use crate::{
   api_config::SharedAPIConfig,
   error::{APIErrorResponse, Error},
@@ -6,6 +8,8 @@ use crate::{
 #[cfg(feature = "multipart")]
 use reqwest::multipart::Form;
 use std::marker::PhantomData;
+#[cfg(feature = "file-body")]
+use tokio::fs::File;
 
 pub struct NoContentRequest<Body, Query> {
   pub(crate) builder: reqwest::RequestBuilder,
@@ -34,6 +38,32 @@ where
     self.builder = self.builder.multipart(form);
 
     self
+  }
+
+  pub fn header<K, V>(mut self, key: K, value: V) -> Self
+  where
+    K: Into<String>,
+    V: Into<String>,
+  {
+    let key = key.into();
+    let value = value.into();
+    self.builder = self.builder.header(key, value);
+
+    self
+  }
+
+  #[cfg(feature = "file-body")]
+  pub async fn file(mut self, file: File) -> Result<Self, Error> {
+    let len = file
+      .metadata()
+      .await
+      .map_err(|err| Error::Error(format!("Failed to get file metadata: {}", err)))?
+      .len();
+
+    self.builder = self.builder.body(file_to_body(file));
+    self.builder = self.builder.header("Content-Length", len);
+
+    Ok(self)
   }
 
   pub fn body(mut self, body: &Body) -> Self {

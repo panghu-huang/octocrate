@@ -1,3 +1,5 @@
+#[cfg(feature = "file-body")]
+use crate::utils::file_to_body;
 use crate::{
   api_config::SharedAPIConfig,
   error::{APIErrorResponse, Error},
@@ -9,8 +11,6 @@ use reqwest::multipart::Form;
 use std::marker::PhantomData;
 #[cfg(feature = "file-body")]
 use tokio::fs::File;
-#[cfg(feature = "file-body")]
-use tokio_util::codec::{BytesCodec, FramedRead};
 
 pub struct Request<Body, Query, Response> {
   pub(crate) builder: reqwest::RequestBuilder,
@@ -43,16 +43,30 @@ where
     self
   }
 
-  #[cfg(feature = "file-body")]
-  pub async fn file(mut self, file: File) -> Self {
-    let len = file.metadata().await.unwrap().len();
-    self.builder = self.builder.body(file_to_body(file));
-    self.builder = self
-      .builder
-      .header("Content-Type", "text/plain")
-      .header("Content-Length", len);
+  pub fn header<K, V>(mut self, key: K, value: V) -> Self
+  where
+    K: Into<String>,
+    V: Into<String>,
+  {
+    let key = key.into();
+    let value = value.into();
+    self.builder = self.builder.header(key, value);
 
     self
+  }
+
+  #[cfg(feature = "file-body")]
+  pub async fn file(mut self, file: File) -> Result<Self, Error> {
+    let len = file
+      .metadata()
+      .await
+      .map_err(|err| Error::Error(format!("Failed to get file metadata: {}", err)))?
+      .len();
+
+    self.builder = self.builder.body(file_to_body(file));
+    self.builder = self.builder.header("Content-Length", len);
+
+    Ok(self)
   }
 
   pub fn body(mut self, body: &Body) -> Self {
@@ -145,13 +159,6 @@ where
   ) -> Result<crate::GitHubPaginatedResponse<ResponseData>, Error> {
     Ok(self.send_with_response().await?.into())
   }
-}
-
-#[cfg(feature = "file-body")]
-fn file_to_body(file: File) -> reqwest::Body {
-  let stream = FramedRead::new(file, BytesCodec::new());
-
-  reqwest::Body::wrap_stream(stream)
 }
 
 #[cfg(test)]
