@@ -43,7 +43,7 @@ async fn test_list_user_repositories() {
     .await
     .unwrap();
 
-  assert!(repositories.get(0).unwrap().full_name != repository.full_name);
+  assert!(repositories.first().unwrap().full_name != repository.full_name);
 }
 
 #[tokio::test]

@@ -38,6 +38,7 @@ async fn test_create_release_with_assets() {
   tokio::fs::write(file_path, "Hello, world!").await.unwrap();
 
   let file = File::open(file_path).await.unwrap();
+  let content_length = file.metadata().await.unwrap().len();
 
   let query = repos::upload_release_asset::Query::builder()
     .name("test.txt")
@@ -46,12 +47,12 @@ async fn test_create_release_with_assets() {
     .repos
     .upload_release_asset("panghu-huang", "octocrate", release.id)
     .query(&query)
-    // Put the file into the body of the request
-    .file(file)
-    .await
-    .unwrap()
     // Set the content type of the file
     .header("Content-Type", "text/plain")
+    // Set the content length of the file
+    .header("Content-Length", content_length.to_string())
+    // Put the file into the body of the request
+    .file(file)
     .send()
     .await
     .unwrap();

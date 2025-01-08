@@ -34,7 +34,7 @@ where
   }
 
   #[cfg(feature = "multipart")]
-  pub fn form(mut self, form: Form) -> Self {
+  pub fn multipart(mut self, form: Form) -> Self {
     self.builder = self.builder.multipart(form);
 
     self
@@ -53,17 +53,10 @@ where
   }
 
   #[cfg(feature = "file-body")]
-  pub async fn file(mut self, file: File) -> Result<Self, Error> {
-    let len = file
-      .metadata()
-      .await
-      .map_err(|err| Error::Error(format!("Failed to get file metadata: {}", err)))?
-      .len();
-
+  pub fn file(mut self, file: File) -> Self {
     self.builder = self.builder.body(file_to_body(file));
-    self.builder = self.builder.header("Content-Length", len);
 
-    Ok(self)
+    self
   }
 
   pub fn body(mut self, body: &Body) -> Self {
