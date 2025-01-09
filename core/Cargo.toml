@@ -18,6 +18,8 @@ apps = ["octocrate-types/apps"]
 pagination = ["octocrate-types/pagination"]
 default-tls = ["reqwest/default-tls"]
 rustls-tls = ["reqwest/rustls-tls"]
+multipart = ["reqwest/multipart"]
+file-body = ["reqwest/stream", "tokio-util/codec", "tokio/fs"]
 
 [dependencies]
 serde_json = { workspace = true }
@@ -27,6 +29,8 @@ reqwest = { workspace = true, default-features = false, features = [
   "http2",
   "macos-system-configuration",
 ] }
+tokio = { workspace = true, optional = true }
+tokio-util = { workspace = true, optional = true }
 serde = { workspace = true, features = ["derive"] }
 thiserror = { workspace = true }
 jsonwebtoken = { workspace = true, features = ["use_pem"] }

@@ -1,5 +1,6 @@
 use octocrate_types::ExpirableToken;
 
+#[derive(Clone)]
 pub struct PersonalAccessToken {
   token: String,
 }

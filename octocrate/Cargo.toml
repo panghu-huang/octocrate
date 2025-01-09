@@ -54,6 +54,8 @@ desktop = ["octocrate-types/desktop"]
 webhooks = ["octocrate-types/webhooks"]
 pagination = ["octocrate-types/pagination", "octocrate-core/pagination"]
 rustls-tls = ["octocrate-core/rustls-tls"]
+multipart = ["octocrate-core/multipart"]
+file-body = ["octocrate-core/file-body"]
 
 [lib]
 doctest = false
@@ -67,53 +69,50 @@ typed-builder = { workspace = true }
 chrono = { workspace = true, optional = true }
 
 [dev-dependencies]
-tokio = { workspace = true, features = ["macros", "rt-multi-thread"] }
+tokio = { workspace = true, features = ["macros", "rt-multi-thread", "fs"] }
 dotenv = { workspace = true }
 
-[[example]]
+[[test]]
 name = "commits"
-path = "examples/commits.rs"
+path = "tests/commits.rs"
 required-features = ["repos"]
-test = true
 
-[[example]]
+[[test]]
 name = "repos"
-path = "examples/repos.rs"
+path = "tests/repos.rs"
 required-features = ["repos"]
-test = true
 
-[[example]]
+[[test]]
+name = "releases"
+path = "tests/releases.rs"
+required-features = ["repos", "file-body"]
+
+[[test]]
 name = "users"
-path = "examples/users.rs"
+path = "tests/users.rs"
 required-features = ["users"]
-test = true
 
-[[example]]
+[[test]]
 name = "pulls"
-path = "examples/pulls.rs"
+path = "tests/pulls.rs"
 required-features = ["pulls"]
-test = true
 
-[[example]]
+[[test]]
 name = "apps"
-path = "examples/apps.rs"
+path = "tests/apps.rs"
 required-features = ["apps", "repos"]
-test = true
 
-[[example]]
+[[test]]
 name = "issues"
-path = "examples/issues.rs"
+path = "tests/issues.rs"
 required-features = ["issues"]
-test = true
 
-[[example]]
+[[test]]
 name = "search"
-path = "examples/search.rs"
+path = "tests/search.rs"
 required-features = ["search"]
-test = true
 
-[[example]]
+[[test]]
 name = "pagination"
-path = "examples/pagination.rs"
+path = "tests/pagination.rs"
 required-features = ["pagination", "repos"]
-test = true

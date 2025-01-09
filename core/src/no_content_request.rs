@@ -1,9 +1,15 @@
+#[cfg(feature = "file-body")]
+use crate::utils::file_to_body;
 use crate::{
   api_config::SharedAPIConfig,
   error::{APIErrorResponse, Error},
   no_content_request_builder::NoContentRequestBuilder,
 };
+#[cfg(feature = "multipart")]
+use reqwest::multipart::Form;
 use std::marker::PhantomData;
+#[cfg(feature = "file-body")]
+use tokio::fs::File;
 
 pub struct NoContentRequest<Body, Query> {
   pub(crate) builder: reqwest::RequestBuilder,
@@ -23,6 +29,32 @@ where
 
   pub fn query(mut self, query: &Query) -> Self {
     self.builder = self.builder.query(query);
+
+    self
+  }
+
+  #[cfg(feature = "multipart")]
+  pub fn multipart(mut self, form: Form) -> Self {
+    self.builder = self.builder.multipart(form);
+
+    self
+  }
+
+  pub fn header<K, V>(mut self, key: K, value: V) -> Self
+  where
+    K: Into<String>,
+    V: Into<String>,
+  {
+    let key = key.into();
+    let value = value.into();
+    self.builder = self.builder.header(key, value);
+
+    self
+  }
+
+  #[cfg(feature = "file-body")]
+  pub fn file(mut self, file: File) -> Self {
+    self.builder = self.builder.body(file_to_body(file));
 
     self
   }
