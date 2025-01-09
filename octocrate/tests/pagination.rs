@@ -45,5 +45,3 @@ async fn test_pagination() {
 
   assert!(repositories.data.first().unwrap().full_name != repository.full_name);
 }
-
-fn main() {}
