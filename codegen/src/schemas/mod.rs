@@ -24,6 +24,7 @@ pub struct Content {
   pub application_json: Option<ApplicationJSONContent>,
 }
 
+#[allow(dead_code)]
 #[derive(Deserialize, Clone, Debug)]
 pub struct RequestBody {
   pub required: bool,
@@ -57,6 +58,7 @@ pub struct Components {
   pub schemas: IndexMap<String, schema::Schema>,
 }
 
+#[allow(dead_code)]
 #[derive(Deserialize, Clone, Debug)]
 pub struct APIDescription {
   pub paths: IndexMap<Path, Paths>,

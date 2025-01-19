@@ -1,6 +1,7 @@
 use super::{external_docs::ExternalDocs, ContentOrRef};
 use serde::Deserialize;
 
+#[allow(dead_code)]
 #[derive(Deserialize, Clone, Debug)]
 pub struct Webhook {
   pub summary: String,

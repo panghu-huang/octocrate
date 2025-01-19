@@ -25,7 +25,7 @@ pub struct Directory {
 }
 
 impl<'a> Writer<'a> {
-  pub fn new(path: &'a Path) -> Writer {
+  pub fn new(path: &'a Path) -> Writer<'a> {
     Writer {
       path,
       files: Vec::new(),
