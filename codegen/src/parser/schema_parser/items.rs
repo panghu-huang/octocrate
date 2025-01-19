@@ -159,11 +159,7 @@ mod schema_parser_items_tests {
 
     let mut ctx = ParseContext::default();
 
-    let generated = parser.parse(
-      &mut ctx,
-      "Tag",
-      &SchemaDefinition::Schema(schema),
-    );
+    let generated = parser.parse(&mut ctx, "Tag", &SchemaDefinition::Schema(schema));
 
     match generated {
       ParsedData::Type(type_) => {
