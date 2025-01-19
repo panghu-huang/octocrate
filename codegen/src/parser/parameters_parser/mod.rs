@@ -118,7 +118,7 @@ mod tests {
 
     let parser = ParameterParser::new(&parameter);
 
-    let mut parsed_data = parser.parse(&mut ctx, &"pagination-before".to_string());
+    let mut parsed_data = parser.parse(&mut ctx, "pagination-before");
 
     match &mut parsed_data {
       ParsedData::Type(type_) => {
@@ -157,7 +157,7 @@ mod tests {
     let parameters_parser = ParametersParser::new(parameters);
 
     let struct_ = parameters_parser
-      .parse(&mut ctx, &"Query".to_string(), "Description".to_string())
+      .parse(&mut ctx, "Query", "Description".to_string())
       .unwrap();
 
     assert_eq!(struct_.name, "Query");

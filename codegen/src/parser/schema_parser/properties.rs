@@ -162,14 +162,14 @@ mod schema_parser_properties_tests {
 
     let mut generated = parser.parse(
       &mut parse_context,
-      &"Response".to_string(),
+      "Response",
       &SchemaDefinition::Schema(schema.clone()),
     );
 
     for _ in 0..5 {
       generated = parser.parse(
         &mut parse_context,
-        &"Response".to_string(),
+        "Response",
         &SchemaDefinition::Schema(schema.clone()),
       );
     }

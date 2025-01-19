@@ -176,7 +176,7 @@ mod schema_parser_enums_tests {
 
     let generated = parser.parse(
       &mut ctx,
-      &"Response".to_string(),
+      "Response",
       &SchemaDefinition::Schema(schema),
     );
 

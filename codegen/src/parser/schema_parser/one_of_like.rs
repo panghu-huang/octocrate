@@ -292,14 +292,14 @@ mod schema_parser_one_of_like_tests {
 
     let _content_directory = schema_parser.parse(
       &mut parse_context,
-      &"Content Directory".to_string(),
+      "Content Directory",
       &SchemaDefinition::Schema(content_directory.clone()),
     );
 
     // Parse twice to test if the reference is working
     let content_directory = schema_parser.parse(
       &mut parse_context,
-      &"Content Directory".to_string(),
+      "Content Directory",
       &SchemaDefinition::Schema(content_directory),
     );
 
@@ -312,7 +312,7 @@ mod schema_parser_one_of_like_tests {
       panic!("Expected type");
     }
 
-    parse_context.add_reference(&"content-directory".to_string(), content_directory);
+    parse_context.add_reference("content-directory", content_directory);
 
     let content_file = api_description
       .components
@@ -323,14 +323,14 @@ mod schema_parser_one_of_like_tests {
 
     let _generated = schema_parser.parse(
       &mut parse_context,
-      &"Content File".to_string(),
+      "Content File",
       &SchemaDefinition::Schema(content_file.clone()),
     );
 
     // Parse twice to test if the reference is working
     let content_file = schema_parser.parse(
       &mut parse_context,
-      &"Content File".to_string(),
+      "Content File",
       &SchemaDefinition::Schema(content_file),
     );
 
@@ -341,7 +341,7 @@ mod schema_parser_one_of_like_tests {
       panic!("Expected struct");
     }
 
-    parse_context.add_reference(&"content-file".to_string(), content_file);
+    parse_context.add_reference("content-file", content_file);
 
     let json = r#"{
       "oneOf": [
@@ -358,7 +358,7 @@ mod schema_parser_one_of_like_tests {
 
     let generated = schema_parser.parse(
       &mut parse_context,
-      &"Response".to_string(),
+      "Response",
       &SchemaDefinition::Schema(schema),
     );
 
@@ -401,7 +401,7 @@ mod schema_parser_one_of_like_tests {
 
     let generated = schema_parser.parse(
       &mut parse_context,
-      &"IssueEvent".to_string(),
+      "IssueEvent",
       &SchemaDefinition::Schema(issue_event),
     );
 
@@ -436,7 +436,7 @@ mod schema_parser_one_of_like_tests {
 
     let generated = schema_parser.parse(
       &mut parse_context,
-      &"Author".to_string(),
+      "Author",
       &SchemaDefinition::Schema(author_schema),
     );
 
@@ -477,7 +477,7 @@ mod schema_parser_one_of_like_tests {
 
     let generated = schema_parser.parse(
       &mut parse_context,
-      &"Response".to_string(),
+      "Response",
       &SchemaDefinition::Schema(schema),
     );
 
@@ -543,7 +543,7 @@ mod schema_parser_one_of_like_tests {
 
     let generated = schema_parser.parse(
       &mut parse_context,
-      &"RequestBody".to_string(),
+      "RequestBody",
       &SchemaDefinition::Schema(schema),
     );
 
