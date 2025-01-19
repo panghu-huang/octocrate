@@ -174,11 +174,7 @@ mod schema_parser_enums_tests {
 
     let mut ctx = ParseContext::default();
 
-    let generated = parser.parse(
-      &mut ctx,
-      &"Response".to_string(),
-      &SchemaDefinition::Schema(schema),
-    );
+    let generated = parser.parse(&mut ctx, "Response", &SchemaDefinition::Schema(schema));
 
     if let ParsedData::Struct(struct_) = generated {
       assert_eq!(struct_.name.to_string(), "Response");

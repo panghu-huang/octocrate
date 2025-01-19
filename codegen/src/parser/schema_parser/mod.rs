@@ -178,11 +178,7 @@ mod schema_parser_tests {
 
     let mut ctx = ParseContext::default();
 
-    let generated = parser.parse(
-      &mut ctx,
-      &"Response".to_string(),
-      &SchemaDefinition::Schema(schema),
-    );
+    let generated = parser.parse(&mut ctx, "Response", &SchemaDefinition::Schema(schema));
 
     if let ParsedData::Type(type_) = generated {
       assert_eq!(type_.type_name, "String");

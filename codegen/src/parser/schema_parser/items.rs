@@ -159,11 +159,7 @@ mod schema_parser_items_tests {
 
     let mut ctx = ParseContext::default();
 
-    let generated = parser.parse(
-      &mut ctx,
-      &"Tag".to_string(),
-      &SchemaDefinition::Schema(schema),
-    );
+    let generated = parser.parse(&mut ctx, "Tag", &SchemaDefinition::Schema(schema));
 
     match generated {
       ParsedData::Type(type_) => {
@@ -193,7 +189,7 @@ mod schema_parser_items_tests {
 
     let generated = schema_parser.parse(
       &mut parse_context,
-      &"Response".to_string(),
+      "Response",
       &SchemaDefinition::Schema(schema),
     );
 
@@ -220,7 +216,7 @@ mod schema_parser_items_tests {
 
     let generated = schema_parser.parse(
       &mut parse_context,
-      &"NullableResponse".to_string(),
+      "NullableResponse",
       &SchemaDefinition::Schema(schema),
     );
 
