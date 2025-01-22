@@ -36,6 +36,7 @@ pub mod create {
 
   pub type Response = GistSimple;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestPublicItem2 {
     #[serde(rename = "true")]
@@ -44,11 +45,11 @@ pub mod create {
     False,
   }
 
-  impl ToString for RequestPublicItem2 {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestPublicItem2 {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestPublicItem2::True => "true".to_string(),
-        RequestPublicItem2::False => "false".to_string(),
+        RequestPublicItem2::True => write!(f, "true"),
+        RequestPublicItem2::False => write!(f, "false"),
       }
     }
   }

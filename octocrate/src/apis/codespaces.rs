@@ -35,6 +35,7 @@ pub mod set_codespaces_access {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   /// Which users can access codespaces in the organization. `disabled` means that no users can access codespaces in the organization.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestVisibility {
@@ -48,14 +49,14 @@ pub mod set_codespaces_access {
     AllMembersAndOutsideCollaborators,
   }
 
-  impl ToString for RequestVisibility {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestVisibility {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestVisibility::Disabled => "disabled".to_string(),
-        RequestVisibility::SelectedMembers => "selected_members".to_string(),
-        RequestVisibility::AllMembers => "all_members".to_string(),
+        RequestVisibility::Disabled => write!(f, "disabled"),
+        RequestVisibility::SelectedMembers => write!(f, "selected_members"),
+        RequestVisibility::AllMembers => write!(f, "all_members"),
         RequestVisibility::AllMembersAndOutsideCollaborators => {
-          "all_members_and_outside_collaborators".to_string()
+          write!(f, "all_members_and_outside_collaborators")
         }
       }
     }
@@ -262,6 +263,7 @@ pub mod create_with_repo_for_authenticated_user {
 
   pub type Response = Codespace;
 
+  #[allow(clippy::large_enum_variant)]
   /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestGeo {
@@ -271,13 +273,13 @@ pub mod create_with_repo_for_authenticated_user {
     UsWest,
   }
 
-  impl ToString for RequestGeo {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestGeo {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestGeo::EuropeWest => "EuropeWest".to_string(),
-        RequestGeo::SoutheastAsia => "SoutheastAsia".to_string(),
-        RequestGeo::UsEast => "UsEast".to_string(),
-        RequestGeo::UsWest => "UsWest".to_string(),
+        RequestGeo::EuropeWest => write!(f, "EuropeWest"),
+        RequestGeo::SoutheastAsia => write!(f, "SoutheastAsia"),
+        RequestGeo::UsEast => write!(f, "UsEast"),
+        RequestGeo::UsWest => write!(f, "UsWest"),
       }
     }
   }
@@ -521,6 +523,7 @@ pub mod create_with_pr_for_authenticated_user {
 
   pub type Response = Codespace;
 
+  #[allow(clippy::large_enum_variant)]
   /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestGeo {
@@ -530,13 +533,13 @@ pub mod create_with_pr_for_authenticated_user {
     UsWest,
   }
 
-  impl ToString for RequestGeo {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestGeo {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestGeo::EuropeWest => "EuropeWest".to_string(),
-        RequestGeo::SoutheastAsia => "SoutheastAsia".to_string(),
-        RequestGeo::UsEast => "UsEast".to_string(),
-        RequestGeo::UsWest => "UsWest".to_string(),
+        RequestGeo::EuropeWest => write!(f, "EuropeWest"),
+        RequestGeo::SoutheastAsia => write!(f, "SoutheastAsia"),
+        RequestGeo::UsEast => write!(f, "UsEast"),
+        RequestGeo::UsWest => write!(f, "UsWest"),
       }
     }
   }
@@ -622,6 +625,7 @@ pub mod create_for_authenticated_user {
 
   pub type Response = Codespace;
 
+  #[allow(clippy::large_enum_variant)]
   /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestItem1Geo {
@@ -631,17 +635,18 @@ pub mod create_for_authenticated_user {
     UsWest,
   }
 
-  impl ToString for RequestItem1Geo {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestItem1Geo {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestItem1Geo::EuropeWest => "EuropeWest".to_string(),
-        RequestItem1Geo::SoutheastAsia => "SoutheastAsia".to_string(),
-        RequestItem1Geo::UsEast => "UsEast".to_string(),
-        RequestItem1Geo::UsWest => "UsWest".to_string(),
+        RequestItem1Geo::EuropeWest => write!(f, "EuropeWest"),
+        RequestItem1Geo::SoutheastAsia => write!(f, "SoutheastAsia"),
+        RequestItem1Geo::UsEast => write!(f, "UsEast"),
+        RequestItem1Geo::UsWest => write!(f, "UsWest"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// The geographic area for this codespace. If not specified, the value is assigned by IP. This property replaces `location`, which is being deprecated.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestItem2Geo {
@@ -651,17 +656,18 @@ pub mod create_for_authenticated_user {
     UsWest,
   }
 
-  impl ToString for RequestItem2Geo {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestItem2Geo {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestItem2Geo::EuropeWest => "EuropeWest".to_string(),
-        RequestItem2Geo::SoutheastAsia => "SoutheastAsia".to_string(),
-        RequestItem2Geo::UsEast => "UsEast".to_string(),
-        RequestItem2Geo::UsWest => "UsWest".to_string(),
+        RequestItem2Geo::EuropeWest => write!(f, "EuropeWest"),
+        RequestItem2Geo::SoutheastAsia => write!(f, "SoutheastAsia"),
+        RequestItem2Geo::UsEast => write!(f, "UsEast"),
+        RequestItem2Geo::UsWest => write!(f, "UsWest"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {

@@ -69,6 +69,7 @@ pub mod get_all_package_versions_for_package_owned_by_org {
 
   pub type Response = Vec<PackageVersion>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "active")]
@@ -77,11 +78,11 @@ pub mod get_all_package_versions_for_package_owned_by_org {
     Deleted,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Active => "active".to_string(),
-        QueryState::Deleted => "deleted".to_string(),
+        QueryState::Active => write!(f, "active"),
+        QueryState::Deleted => write!(f, "deleted"),
       }
     }
   }
@@ -174,6 +175,7 @@ pub mod get_all_package_versions_for_package_owned_by_authenticated_user {
 
   pub type Response = Vec<PackageVersion>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "active")]
@@ -182,11 +184,11 @@ pub mod get_all_package_versions_for_package_owned_by_authenticated_user {
     Deleted,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Active => "active".to_string(),
-        QueryState::Deleted => "deleted".to_string(),
+        QueryState::Active => write!(f, "active"),
+        QueryState::Deleted => write!(f, "deleted"),
       }
     }
   }

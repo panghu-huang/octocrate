@@ -12,6 +12,7 @@ pub mod list {
 
   pub type Response = Vec<PullRequestSimple>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "open")]
@@ -22,16 +23,17 @@ pub mod list {
     All,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Open => "open".to_string(),
-        QueryState::Closed => "closed".to_string(),
-        QueryState::All => "all".to_string(),
+        QueryState::Open => write!(f, "open"),
+        QueryState::Closed => write!(f, "closed"),
+        QueryState::All => write!(f, "all"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -44,17 +46,18 @@ pub mod list {
     LongRunning,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::Popularity => "popularity".to_string(),
-        QuerySort::LongRunning => "long-running".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::Popularity => write!(f, "popularity"),
+        QuerySort::LongRunning => write!(f, "long-running"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
@@ -63,11 +66,11 @@ pub mod list {
     Desc,
   }
 
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryDirection {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
+        QueryDirection::Asc => write!(f, "asc"),
+        QueryDirection::Desc => write!(f, "desc"),
       }
     }
   }
@@ -152,6 +155,7 @@ pub mod list_review_comments_for_repo {
 
   pub type Response = Vec<PullRequestReviewComment>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -162,16 +166,17 @@ pub mod list_review_comments_for_repo {
     CreatedAt,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::CreatedAt => "created_at".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::CreatedAt => write!(f, "created_at"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
@@ -180,11 +185,11 @@ pub mod list_review_comments_for_repo {
     Desc,
   }
 
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryDirection {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
+        QueryDirection::Asc => write!(f, "asc"),
+        QueryDirection::Desc => write!(f, "desc"),
       }
     }
   }
@@ -248,6 +253,7 @@ pub mod update {
 
   pub type Response = PullRequest;
 
+  #[allow(clippy::large_enum_variant)]
   /// State of this Pull Request. Either `open` or `closed`.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestState {
@@ -257,11 +263,11 @@ pub mod update {
     Closed,
   }
 
-  impl ToString for RequestState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestState::Open => "open".to_string(),
-        RequestState::Closed => "closed".to_string(),
+        RequestState::Open => write!(f, "open"),
+        RequestState::Closed => write!(f, "closed"),
       }
     }
   }
@@ -298,6 +304,7 @@ pub mod list_review_comments {
 
   pub type Response = Vec<PullRequestReviewComment>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
@@ -306,11 +313,11 @@ pub mod list_review_comments {
     Desc,
   }
 
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryDirection {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
+        QueryDirection::Asc => write!(f, "asc"),
+        QueryDirection::Desc => write!(f, "desc"),
       }
     }
   }
@@ -347,6 +354,7 @@ pub mod create_review_comment {
 
   pub type Response = PullRequestReviewComment;
 
+  #[allow(clippy::large_enum_variant)]
   /// In a split diff view, the side of the diff that the pull request's changes appear on. Can be `LEFT` or `RIGHT`. Use `LEFT` for deletions that appear in red. Use `RIGHT` for additions that appear in green or unchanged lines that appear in white and are shown for context. For a multi-line comment, side represents whether the last line of the comment range is a deletion or addition. For more information, see "[Diff view options](https://docs.github.com/articles/about-comparing-branches-in-pull-requests#diff-view-options)" in the GitHub Help documentation.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestSide {
@@ -356,15 +364,16 @@ pub mod create_review_comment {
     Right,
   }
 
-  impl ToString for RequestSide {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestSide {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestSide::Left => "LEFT".to_string(),
-        RequestSide::Right => "RIGHT".to_string(),
+        RequestSide::Left => write!(f, "LEFT"),
+        RequestSide::Right => write!(f, "RIGHT"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// **Required when using multi-line comments unless using `in_reply_to`**. The `start_side` is the starting side of the diff that the comment applies to. Can be `LEFT` or `RIGHT`. To learn more about multi-line comments, see "[Commenting on a pull request](https://docs.github.com/articles/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request)" in the GitHub Help documentation. See `side` in this table for additional context.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestStartSide {
@@ -376,16 +385,17 @@ pub mod create_review_comment {
     Side,
   }
 
-  impl ToString for RequestStartSide {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestStartSide {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestStartSide::Left => "LEFT".to_string(),
-        RequestStartSide::Right => "RIGHT".to_string(),
-        RequestStartSide::Side => "side".to_string(),
+        RequestStartSide::Left => write!(f, "LEFT"),
+        RequestStartSide::Right => write!(f, "RIGHT"),
+        RequestStartSide::Side => write!(f, "side"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// The level at which the comment is targeted.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestSubjectType {
@@ -395,11 +405,11 @@ pub mod create_review_comment {
     File,
   }
 
-  impl ToString for RequestSubjectType {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestSubjectType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestSubjectType::Line => "line".to_string(),
-        RequestSubjectType::File => "file".to_string(),
+        RequestSubjectType::Line => write!(f, "line"),
+        RequestSubjectType::File => write!(f, "file"),
       }
     }
   }
@@ -504,6 +514,7 @@ pub mod merge {
 
   pub type Response = PullRequestMergeResult;
 
+  #[allow(clippy::large_enum_variant)]
   /// The merge method to use.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestMergeMethod {
@@ -515,12 +526,12 @@ pub mod merge {
     Rebase,
   }
 
-  impl ToString for RequestMergeMethod {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestMergeMethod {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestMergeMethod::Merge => "merge".to_string(),
-        RequestMergeMethod::Squash => "squash".to_string(),
-        RequestMergeMethod::Rebase => "rebase".to_string(),
+        RequestMergeMethod::Merge => write!(f, "merge"),
+        RequestMergeMethod::Squash => write!(f, "squash"),
+        RequestMergeMethod::Rebase => write!(f, "rebase"),
       }
     }
   }
@@ -606,6 +617,7 @@ pub mod create_review {
 
   pub type Response = PullRequestReview;
 
+  #[allow(clippy::large_enum_variant)]
   /// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. By leaving this blank, you set the review action state to `PENDING`, which means you will need to [submit the pull request review](https://docs.github.com/rest/pulls/reviews#submit-a-review-for-a-pull-request) when you are ready.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestEvent {
@@ -617,12 +629,12 @@ pub mod create_review {
     Comment,
   }
 
-  impl ToString for RequestEvent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestEvent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestEvent::Approve => "APPROVE".to_string(),
-        RequestEvent::RequestChanges => "REQUEST_CHANGES".to_string(),
-        RequestEvent::Comment => "COMMENT".to_string(),
+        RequestEvent::Approve => write!(f, "APPROVE"),
+        RequestEvent::RequestChanges => write!(f, "REQUEST_CHANGES"),
+        RequestEvent::Comment => write!(f, "COMMENT"),
       }
     }
   }
@@ -728,16 +740,17 @@ pub mod dismiss_review {
 
   pub type Response = PullRequestReview;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestEvent {
     #[serde(rename = "DISMISS")]
     Dismiss,
   }
 
-  impl ToString for RequestEvent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestEvent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestEvent::Dismiss => "DISMISS".to_string(),
+        RequestEvent::Dismiss => write!(f, "DISMISS"),
       }
     }
   }
@@ -759,6 +772,7 @@ pub mod submit_review {
 
   pub type Response = PullRequestReview;
 
+  #[allow(clippy::large_enum_variant)]
   /// The review action you want to perform. The review actions include: `APPROVE`, `REQUEST_CHANGES`, or `COMMENT`. When you leave this blank, the API returns _HTTP 422 (Unrecognizable entity)_ and sets the review action state to `PENDING`, which means you will need to re-submit the pull request review using a review action.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestEvent {
@@ -770,12 +784,12 @@ pub mod submit_review {
     Comment,
   }
 
-  impl ToString for RequestEvent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestEvent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestEvent::Approve => "APPROVE".to_string(),
-        RequestEvent::RequestChanges => "REQUEST_CHANGES".to_string(),
-        RequestEvent::Comment => "COMMENT".to_string(),
+        RequestEvent::Approve => write!(f, "APPROVE"),
+        RequestEvent::RequestChanges => write!(f, "REQUEST_CHANGES"),
+        RequestEvent::Comment => write!(f, "COMMENT"),
       }
     }
   }

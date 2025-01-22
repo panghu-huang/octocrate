@@ -39,6 +39,7 @@ pub mod update {
 
   pub type Response = OrganizationFull;
 
+  #[allow(clippy::large_enum_variant)]
   /// Default permission level members have for organization repositories.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestDefaultRepositoryPermission {
@@ -52,17 +53,18 @@ pub mod update {
     None,
   }
 
-  impl ToString for RequestDefaultRepositoryPermission {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestDefaultRepositoryPermission {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestDefaultRepositoryPermission::Read => "read".to_string(),
-        RequestDefaultRepositoryPermission::Write => "write".to_string(),
-        RequestDefaultRepositoryPermission::Admin => "admin".to_string(),
-        RequestDefaultRepositoryPermission::None => "none".to_string(),
+        RequestDefaultRepositoryPermission::Read => write!(f, "read"),
+        RequestDefaultRepositoryPermission::Write => write!(f, "write"),
+        RequestDefaultRepositoryPermission::Admin => write!(f, "admin"),
+        RequestDefaultRepositoryPermission::None => write!(f, "none"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// Specifies which types of repositories non-admin organization members can create. `private` is only available to repositories that are part of an organization on GitHub Enterprise Cloud.
   /// **Note:** This parameter is deprecated and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in `members_can_create_repositories`. See the parameter deprecation notice in the operation description for details.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -75,12 +77,12 @@ pub mod update {
     None,
   }
 
-  impl ToString for RequestMembersAllowedRepositoryCreationType {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestMembersAllowedRepositoryCreationType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestMembersAllowedRepositoryCreationType::All => "all".to_string(),
-        RequestMembersAllowedRepositoryCreationType::Private => "private".to_string(),
-        RequestMembersAllowedRepositoryCreationType::None => "none".to_string(),
+        RequestMembersAllowedRepositoryCreationType::All => write!(f, "all"),
+        RequestMembersAllowedRepositoryCreationType::Private => write!(f, "private"),
+        RequestMembersAllowedRepositoryCreationType::None => write!(f, "none"),
       }
     }
   }
@@ -480,6 +482,7 @@ pub mod list_pending_invitations {
 
   pub type Response = Vec<OrganizationInvitation>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryRole {
     #[serde(rename = "all")]
@@ -494,18 +497,19 @@ pub mod list_pending_invitations {
     HiringManager,
   }
 
-  impl ToString for QueryRole {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryRole {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryRole::All => "all".to_string(),
-        QueryRole::Admin => "admin".to_string(),
-        QueryRole::DirectMember => "direct_member".to_string(),
-        QueryRole::BillingManager => "billing_manager".to_string(),
-        QueryRole::HiringManager => "hiring_manager".to_string(),
+        QueryRole::All => write!(f, "all"),
+        QueryRole::Admin => write!(f, "admin"),
+        QueryRole::DirectMember => write!(f, "direct_member"),
+        QueryRole::BillingManager => write!(f, "billing_manager"),
+        QueryRole::HiringManager => write!(f, "hiring_manager"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryInvitationSource {
     #[serde(rename = "all")]
@@ -516,12 +520,12 @@ pub mod list_pending_invitations {
     Scim,
   }
 
-  impl ToString for QueryInvitationSource {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryInvitationSource {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryInvitationSource::All => "all".to_string(),
-        QueryInvitationSource::Member => "member".to_string(),
-        QueryInvitationSource::Scim => "scim".to_string(),
+        QueryInvitationSource::All => write!(f, "all"),
+        QueryInvitationSource::Member => write!(f, "member"),
+        QueryInvitationSource::Scim => write!(f, "scim"),
       }
     }
   }
@@ -554,6 +558,7 @@ pub mod create_invitation {
 
   pub type Response = OrganizationInvitation;
 
+  #[allow(clippy::large_enum_variant)]
   /// The role for the new member.
   ///  * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams.  
   ///  * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation.  
@@ -571,13 +576,13 @@ pub mod create_invitation {
     Reinstate,
   }
 
-  impl ToString for RequestRole {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestRole {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestRole::Admin => "admin".to_string(),
-        RequestRole::DirectMember => "direct_member".to_string(),
-        RequestRole::BillingManager => "billing_manager".to_string(),
-        RequestRole::Reinstate => "reinstate".to_string(),
+        RequestRole::Admin => write!(f, "admin"),
+        RequestRole::DirectMember => write!(f, "direct_member"),
+        RequestRole::BillingManager => write!(f, "billing_manager"),
+        RequestRole::Reinstate => write!(f, "reinstate"),
       }
     }
   }
@@ -634,6 +639,7 @@ pub mod list_members {
 
   pub type Response = Vec<SimpleUser>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryFilter {
     #[serde(rename = "2fa_disabled")]
@@ -642,15 +648,16 @@ pub mod list_members {
     All,
   }
 
-  impl ToString for QueryFilter {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryFilter {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryFilter::TwoFADisabled => "2fa_disabled".to_string(),
-        QueryFilter::All => "all".to_string(),
+        QueryFilter::TwoFADisabled => write!(f, "2fa_disabled"),
+        QueryFilter::All => write!(f, "all"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryRole {
     #[serde(rename = "all")]
@@ -661,12 +668,12 @@ pub mod list_members {
     Member,
   }
 
-  impl ToString for QueryRole {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryRole {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryRole::All => "all".to_string(),
-        QueryRole::Admin => "admin".to_string(),
-        QueryRole::Member => "member".to_string(),
+        QueryRole::All => write!(f, "all"),
+        QueryRole::Admin => write!(f, "admin"),
+        QueryRole::Member => write!(f, "member"),
       }
     }
   }
@@ -706,6 +713,7 @@ pub mod set_membership_for_user {
 
   pub type Response = OrgMembership;
 
+  #[allow(clippy::large_enum_variant)]
   /// The role to give the user in the organization. Can be one of:  
   ///  * `admin` - The user will become an owner of the organization.  
   ///  * `member` - The user will become a non-owner member of the organization.
@@ -717,11 +725,11 @@ pub mod set_membership_for_user {
     Member,
   }
 
-  impl ToString for RequestRole {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestRole {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestRole::Admin => "admin".to_string(),
-        RequestRole::Member => "member".to_string(),
+        RequestRole::Admin => write!(f, "admin"),
+        RequestRole::Member => write!(f, "member"),
       }
     }
   }
@@ -860,6 +868,7 @@ pub mod list_outside_collaborators {
 
   pub type Response = Vec<SimpleUser>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryFilter {
     #[serde(rename = "2fa_disabled")]
@@ -868,11 +877,11 @@ pub mod list_outside_collaborators {
     All,
   }
 
-  impl ToString for QueryFilter {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryFilter {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryFilter::TwoFADisabled => "2fa_disabled".to_string(),
-        QueryFilter::All => "all".to_string(),
+        QueryFilter::TwoFADisabled => write!(f, "2fa_disabled"),
+        QueryFilter::All => write!(f, "all"),
       }
     }
   }
@@ -966,6 +975,7 @@ pub mod review_pat_grant_requests_in_bulk {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   /// Action to apply to the requests.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestAction {
@@ -975,11 +985,11 @@ pub mod review_pat_grant_requests_in_bulk {
     Deny,
   }
 
-  impl ToString for RequestAction {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestAction {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestAction::Approve => "approve".to_string(),
-        RequestAction::Deny => "deny".to_string(),
+        RequestAction::Approve => write!(f, "approve"),
+        RequestAction::Deny => write!(f, "deny"),
       }
     }
   }
@@ -1004,6 +1014,7 @@ pub mod review_pat_grant_request {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   /// Action to apply to the request.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestAction {
@@ -1013,11 +1024,11 @@ pub mod review_pat_grant_request {
     Deny,
   }
 
-  impl ToString for RequestAction {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestAction {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestAction::Approve => "approve".to_string(),
-        RequestAction::Deny => "deny".to_string(),
+        RequestAction::Approve => write!(f, "approve"),
+        RequestAction::Deny => write!(f, "deny"),
       }
     }
   }
@@ -1106,6 +1117,7 @@ pub mod update_pat_accesses {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   /// Action to apply to the fine-grained personal access token.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestAction {
@@ -1113,10 +1125,10 @@ pub mod update_pat_accesses {
     Revoke,
   }
 
-  impl ToString for RequestAction {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestAction {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestAction::Revoke => "revoke".to_string(),
+        RequestAction::Revoke => write!(f, "revoke"),
       }
     }
   }
@@ -1135,6 +1147,7 @@ pub mod update_pat_access {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   /// Action to apply to the fine-grained personal access token.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestAction {
@@ -1142,10 +1155,10 @@ pub mod update_pat_access {
     Revoke,
   }
 
-  impl ToString for RequestAction {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestAction {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestAction::Revoke => "revoke".to_string(),
+        RequestAction::Revoke => write!(f, "revoke"),
       }
     }
   }
@@ -1212,6 +1225,7 @@ pub mod create_or_update_custom_property {
 
   pub type Response = OrgCustomProperty;
 
+  #[allow(clippy::large_enum_variant)]
   /// The type of the value for the property
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestValueType {
@@ -1221,11 +1235,11 @@ pub mod create_or_update_custom_property {
     SingleSelect,
   }
 
-  impl ToString for RequestValueType {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestValueType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestValueType::String => "string".to_string(),
-        RequestValueType::SingleSelect => "single_select".to_string(),
+        RequestValueType::String => write!(f, "string"),
+        RequestValueType::SingleSelect => write!(f, "single_select"),
       }
     }
   }
@@ -1324,6 +1338,7 @@ pub mod enable_or_disable_security_product_on_all_org_repos {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   /// CodeQL query suite to be used. If you specify the `query_suite` parameter, the default setup will be configured with this query suite only on all repositories that didn't have default setup already configured. It will not change the query suite on repositories that already have default setup configured.
   /// If you don't specify any `query_suite` in your request, the preferred query suite of the organization will be applied.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1334,11 +1349,11 @@ pub mod enable_or_disable_security_product_on_all_org_repos {
     Extended,
   }
 
-  impl ToString for RequestQuerySuite {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestQuerySuite {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestQuerySuite::Default => "default".to_string(),
-        RequestQuerySuite::Extended => "extended".to_string(),
+        RequestQuerySuite::Default => write!(f, "default"),
+        RequestQuerySuite::Extended => write!(f, "extended"),
       }
     }
   }
@@ -1360,6 +1375,7 @@ pub mod list_memberships_for_authenticated_user {
 
   pub type Response = Vec<OrgMembership>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "active")]
@@ -1368,11 +1384,11 @@ pub mod list_memberships_for_authenticated_user {
     Pending,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Active => "active".to_string(),
-        QueryState::Pending => "pending".to_string(),
+        QueryState::Active => write!(f, "active"),
+        QueryState::Pending => write!(f, "pending"),
       }
     }
   }
@@ -1408,6 +1424,7 @@ pub mod update_membership_for_authenticated_user {
 
   pub type Response = OrgMembership;
 
+  #[allow(clippy::large_enum_variant)]
   /// The state that the membership should be in. Only `"active"` will be accepted.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestState {
@@ -1415,10 +1432,10 @@ pub mod update_membership_for_authenticated_user {
     Active,
   }
 
-  impl ToString for RequestState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestState::Active => "active".to_string(),
+        RequestState::Active => write!(f, "active"),
       }
     }
   }

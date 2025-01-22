@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 #[allow(unused_imports)]
 use typed_builder::TypedBuilder;
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_configuration"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionConfigurationDisabledAction {
@@ -13,14 +14,15 @@ pub enum WebhookBranchProtectionConfigurationDisabledAction {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_configuration"))]
-impl ToString for WebhookBranchProtectionConfigurationDisabledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookBranchProtectionConfigurationDisabledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookBranchProtectionConfigurationDisabledAction::Disabled => "disabled".to_string(),
+      WebhookBranchProtectionConfigurationDisabledAction::Disabled => write!(f, "disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_configuration"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionConfigurationEnabledAction {
@@ -29,14 +31,15 @@ pub enum WebhookBranchProtectionConfigurationEnabledAction {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_configuration"))]
-impl ToString for WebhookBranchProtectionConfigurationEnabledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookBranchProtectionConfigurationEnabledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookBranchProtectionConfigurationEnabledAction::Enabled => "enabled".to_string(),
+      WebhookBranchProtectionConfigurationEnabledAction::Enabled => write!(f, "enabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleCreatedAction {
@@ -45,14 +48,15 @@ pub enum WebhookBranchProtectionRuleCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for WebhookBranchProtectionRuleCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookBranchProtectionRuleCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookBranchProtectionRuleCreatedAction::Created => "created".to_string(),
+      WebhookBranchProtectionRuleCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleAllowDeletionsEnforcementLevel {
@@ -65,16 +69,17 @@ pub enum BranchProtectionRuleAllowDeletionsEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for BranchProtectionRuleAllowDeletionsEnforcementLevel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for BranchProtectionRuleAllowDeletionsEnforcementLevel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      BranchProtectionRuleAllowDeletionsEnforcementLevel::Off => "off".to_string(),
-      BranchProtectionRuleAllowDeletionsEnforcementLevel::NonAdmins => "non_admins".to_string(),
-      BranchProtectionRuleAllowDeletionsEnforcementLevel::Everyone => "everyone".to_string(),
+      BranchProtectionRuleAllowDeletionsEnforcementLevel::Off => write!(f, "off"),
+      BranchProtectionRuleAllowDeletionsEnforcementLevel::NonAdmins => write!(f, "non_admins"),
+      BranchProtectionRuleAllowDeletionsEnforcementLevel::Everyone => write!(f, "everyone"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleAllowForcePushesEnforcementLevel {
@@ -87,16 +92,17 @@ pub enum BranchProtectionRuleAllowForcePushesEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for BranchProtectionRuleAllowForcePushesEnforcementLevel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for BranchProtectionRuleAllowForcePushesEnforcementLevel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      BranchProtectionRuleAllowForcePushesEnforcementLevel::Off => "off".to_string(),
-      BranchProtectionRuleAllowForcePushesEnforcementLevel::NonAdmins => "non_admins".to_string(),
-      BranchProtectionRuleAllowForcePushesEnforcementLevel::Everyone => "everyone".to_string(),
+      BranchProtectionRuleAllowForcePushesEnforcementLevel::Off => write!(f, "off"),
+      BranchProtectionRuleAllowForcePushesEnforcementLevel::NonAdmins => write!(f, "non_admins"),
+      BranchProtectionRuleAllowForcePushesEnforcementLevel::Everyone => write!(f, "everyone"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
@@ -109,20 +115,21 @@ pub enum BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for BranchProtectionRuleLinearHistoryRequirementEnforcementLevel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      BranchProtectionRuleLinearHistoryRequirementEnforcementLevel::Off => "off".to_string(),
+      BranchProtectionRuleLinearHistoryRequirementEnforcementLevel::Off => write!(f, "off"),
       BranchProtectionRuleLinearHistoryRequirementEnforcementLevel::NonAdmins => {
-        "non_admins".to_string()
+        write!(f, "non_admins")
       }
       BranchProtectionRuleLinearHistoryRequirementEnforcementLevel::Everyone => {
-        "everyone".to_string()
+        write!(f, "everyone")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleMergeQueueEnforcementLevel {
@@ -135,16 +142,17 @@ pub enum BranchProtectionRuleMergeQueueEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for BranchProtectionRuleMergeQueueEnforcementLevel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for BranchProtectionRuleMergeQueueEnforcementLevel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      BranchProtectionRuleMergeQueueEnforcementLevel::Off => "off".to_string(),
-      BranchProtectionRuleMergeQueueEnforcementLevel::NonAdmins => "non_admins".to_string(),
-      BranchProtectionRuleMergeQueueEnforcementLevel::Everyone => "everyone".to_string(),
+      BranchProtectionRuleMergeQueueEnforcementLevel::Off => write!(f, "off"),
+      BranchProtectionRuleMergeQueueEnforcementLevel::NonAdmins => write!(f, "non_admins"),
+      BranchProtectionRuleMergeQueueEnforcementLevel::Everyone => write!(f, "everyone"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRulePullRequestReviewsEnforcementLevel {
@@ -157,16 +165,17 @@ pub enum BranchProtectionRulePullRequestReviewsEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for BranchProtectionRulePullRequestReviewsEnforcementLevel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for BranchProtectionRulePullRequestReviewsEnforcementLevel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      BranchProtectionRulePullRequestReviewsEnforcementLevel::Off => "off".to_string(),
-      BranchProtectionRulePullRequestReviewsEnforcementLevel::NonAdmins => "non_admins".to_string(),
-      BranchProtectionRulePullRequestReviewsEnforcementLevel::Everyone => "everyone".to_string(),
+      BranchProtectionRulePullRequestReviewsEnforcementLevel::Off => write!(f, "off"),
+      BranchProtectionRulePullRequestReviewsEnforcementLevel::NonAdmins => write!(f, "non_admins"),
+      BranchProtectionRulePullRequestReviewsEnforcementLevel::Everyone => write!(f, "everyone"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleRequiredConversationResolutionLevel {
@@ -179,18 +188,17 @@ pub enum BranchProtectionRuleRequiredConversationResolutionLevel {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for BranchProtectionRuleRequiredConversationResolutionLevel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for BranchProtectionRuleRequiredConversationResolutionLevel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      BranchProtectionRuleRequiredConversationResolutionLevel::Off => "off".to_string(),
-      BranchProtectionRuleRequiredConversationResolutionLevel::NonAdmins => {
-        "non_admins".to_string()
-      }
-      BranchProtectionRuleRequiredConversationResolutionLevel::Everyone => "everyone".to_string(),
+      BranchProtectionRuleRequiredConversationResolutionLevel::Off => write!(f, "off"),
+      BranchProtectionRuleRequiredConversationResolutionLevel::NonAdmins => write!(f, "non_admins"),
+      BranchProtectionRuleRequiredConversationResolutionLevel::Everyone => write!(f, "everyone"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
@@ -203,18 +211,17 @@ pub enum BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for BranchProtectionRuleRequiredDeploymentsEnforcementLevel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      BranchProtectionRuleRequiredDeploymentsEnforcementLevel::Off => "off".to_string(),
-      BranchProtectionRuleRequiredDeploymentsEnforcementLevel::NonAdmins => {
-        "non_admins".to_string()
-      }
-      BranchProtectionRuleRequiredDeploymentsEnforcementLevel::Everyone => "everyone".to_string(),
+      BranchProtectionRuleRequiredDeploymentsEnforcementLevel::Off => write!(f, "off"),
+      BranchProtectionRuleRequiredDeploymentsEnforcementLevel::NonAdmins => write!(f, "non_admins"),
+      BranchProtectionRuleRequiredDeploymentsEnforcementLevel::Everyone => write!(f, "everyone"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
@@ -227,18 +234,19 @@ pub enum BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for BranchProtectionRuleRequiredStatusChecksEnforcementLevel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      BranchProtectionRuleRequiredStatusChecksEnforcementLevel::Off => "off".to_string(),
+      BranchProtectionRuleRequiredStatusChecksEnforcementLevel::Off => write!(f, "off"),
       BranchProtectionRuleRequiredStatusChecksEnforcementLevel::NonAdmins => {
-        "non_admins".to_string()
+        write!(f, "non_admins")
       }
-      BranchProtectionRuleRequiredStatusChecksEnforcementLevel::Everyone => "everyone".to_string(),
+      BranchProtectionRuleRequiredStatusChecksEnforcementLevel::Everyone => write!(f, "everyone"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum BranchProtectionRuleSignatureRequirementEnforcementLevel {
@@ -251,18 +259,19 @@ pub enum BranchProtectionRuleSignatureRequirementEnforcementLevel {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for BranchProtectionRuleSignatureRequirementEnforcementLevel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for BranchProtectionRuleSignatureRequirementEnforcementLevel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      BranchProtectionRuleSignatureRequirementEnforcementLevel::Off => "off".to_string(),
+      BranchProtectionRuleSignatureRequirementEnforcementLevel::Off => write!(f, "off"),
       BranchProtectionRuleSignatureRequirementEnforcementLevel::NonAdmins => {
-        "non_admins".to_string()
+        write!(f, "non_admins")
       }
-      BranchProtectionRuleSignatureRequirementEnforcementLevel::Everyone => "everyone".to_string(),
+      BranchProtectionRuleSignatureRequirementEnforcementLevel::Everyone => write!(f, "everyone"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleDeletedAction {
@@ -271,14 +280,15 @@ pub enum WebhookBranchProtectionRuleDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for WebhookBranchProtectionRuleDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookBranchProtectionRuleDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookBranchProtectionRuleDeletedAction::Deleted => "deleted".to_string(),
+      WebhookBranchProtectionRuleDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleEditedAction {
@@ -287,14 +297,15 @@ pub enum WebhookBranchProtectionRuleEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for WebhookBranchProtectionRuleEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookBranchProtectionRuleEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookBranchProtectionRuleEditedAction::Edited => "edited".to_string(),
+      WebhookBranchProtectionRuleEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom {
@@ -307,18 +318,19 @@ pub enum WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforce
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString
+impl std::fmt::Display
   for WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom
 {
-  fn to_string(&self) -> String {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom::Off => "off".to_string(),
-      WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom::NonAdmins => "non_admins".to_string(),
-      WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom::Everyone => "everyone".to_string(),
+      WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom::Off => write!(f, "off"),
+      WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom::NonAdmins => write!(f, "non_admins"),
+      WebhookBranchProtectionRuleEditedChangesLinearHistoryRequirementEnforcementLevelFrom::Everyone => write!(f, "everyone"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom {
@@ -331,16 +343,19 @@ pub enum WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcement
 }
 
 #[cfg(any(feature = "full", feature = "branch_protection_rule"))]
-impl ToString for WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom {
-  fn to_string(&self) -> String {
+impl std::fmt::Display
+  for WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom
+{
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom::Off => "off".to_string(),
-      WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom::NonAdmins => "non_admins".to_string(),
-      WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom::Everyone => "everyone".to_string(),
+      WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom::Off => write!(f, "off"),
+      WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom::NonAdmins => write!(f, "non_admins"),
+      WebhookBranchProtectionRuleEditedChangesRequiredStatusChecksEnforcementLevelFrom::Everyone => write!(f, "everyone"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunCompletedAction {
@@ -349,14 +364,15 @@ pub enum WebhookCheckRunCompletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "check_run"))]
-impl ToString for WebhookCheckRunCompletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckRunCompletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckRunCompletedAction::Completed => "completed".to_string(),
+      WebhookCheckRunCompletedAction::Completed => write!(f, "completed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimpleCheckSuiteConclusion {
@@ -381,22 +397,23 @@ pub enum SimpleCheckSuiteConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "check_run"))]
-impl ToString for SimpleCheckSuiteConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SimpleCheckSuiteConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SimpleCheckSuiteConclusion::Success => "success".to_string(),
-      SimpleCheckSuiteConclusion::Failure => "failure".to_string(),
-      SimpleCheckSuiteConclusion::Neutral => "neutral".to_string(),
-      SimpleCheckSuiteConclusion::Cancelled => "cancelled".to_string(),
-      SimpleCheckSuiteConclusion::Skipped => "skipped".to_string(),
-      SimpleCheckSuiteConclusion::TimedOut => "timed_out".to_string(),
-      SimpleCheckSuiteConclusion::ActionRequired => "action_required".to_string(),
-      SimpleCheckSuiteConclusion::Stale => "stale".to_string(),
-      SimpleCheckSuiteConclusion::StartupFailure => "startup_failure".to_string(),
+      SimpleCheckSuiteConclusion::Success => write!(f, "success"),
+      SimpleCheckSuiteConclusion::Failure => write!(f, "failure"),
+      SimpleCheckSuiteConclusion::Neutral => write!(f, "neutral"),
+      SimpleCheckSuiteConclusion::Cancelled => write!(f, "cancelled"),
+      SimpleCheckSuiteConclusion::Skipped => write!(f, "skipped"),
+      SimpleCheckSuiteConclusion::TimedOut => write!(f, "timed_out"),
+      SimpleCheckSuiteConclusion::ActionRequired => write!(f, "action_required"),
+      SimpleCheckSuiteConclusion::Stale => write!(f, "stale"),
+      SimpleCheckSuiteConclusion::StartupFailure => write!(f, "startup_failure"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "check_run",
@@ -415,15 +432,16 @@ pub enum SecurityAndAnalysisAdvancedSecurityStatus {
   feature = "check_run",
   feature = "security_and_analysis"
 ))]
-impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAndAnalysisAdvancedSecurityStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAndAnalysisAdvancedSecurityStatus::Enabled => "enabled".to_string(),
-      SecurityAndAnalysisAdvancedSecurityStatus::Disabled => "disabled".to_string(),
+      SecurityAndAnalysisAdvancedSecurityStatus::Enabled => write!(f, "enabled"),
+      SecurityAndAnalysisAdvancedSecurityStatus::Disabled => write!(f, "disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "check_run",
@@ -443,15 +461,16 @@ pub enum SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   feature = "check_run",
   feature = "security_and_analysis"
 ))]
-impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAndAnalysisDependabotSecurityUpdatesStatus::Enabled => "enabled".to_string(),
-      SecurityAndAnalysisDependabotSecurityUpdatesStatus::Disabled => "disabled".to_string(),
+      SecurityAndAnalysisDependabotSecurityUpdatesStatus::Enabled => write!(f, "enabled"),
+      SecurityAndAnalysisDependabotSecurityUpdatesStatus::Disabled => write!(f, "disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "check_run",
@@ -470,15 +489,16 @@ pub enum SecurityAndAnalysisSecretScanningStatus {
   feature = "check_run",
   feature = "security_and_analysis"
 ))]
-impl ToString for SecurityAndAnalysisSecretScanningStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAndAnalysisSecretScanningStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAndAnalysisSecretScanningStatus::Enabled => "enabled".to_string(),
-      SecurityAndAnalysisSecretScanningStatus::Disabled => "disabled".to_string(),
+      SecurityAndAnalysisSecretScanningStatus::Enabled => write!(f, "enabled"),
+      SecurityAndAnalysisSecretScanningStatus::Disabled => write!(f, "disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "check_run",
@@ -497,15 +517,16 @@ pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
   feature = "check_run",
   feature = "security_and_analysis"
 ))]
-impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAndAnalysisSecretScanningPushProtectionStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAndAnalysisSecretScanningPushProtectionStatus::Enabled => "enabled".to_string(),
-      SecurityAndAnalysisSecretScanningPushProtectionStatus::Disabled => "disabled".to_string(),
+      SecurityAndAnalysisSecretScanningPushProtectionStatus::Enabled => write!(f, "enabled"),
+      SecurityAndAnalysisSecretScanningPushProtectionStatus::Disabled => write!(f, "disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SimpleCheckSuiteStatus {
@@ -522,18 +543,19 @@ pub enum SimpleCheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "check_run"))]
-impl ToString for SimpleCheckSuiteStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SimpleCheckSuiteStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SimpleCheckSuiteStatus::Queued => "queued".to_string(),
-      SimpleCheckSuiteStatus::InProgress => "in_progress".to_string(),
-      SimpleCheckSuiteStatus::Completed => "completed".to_string(),
-      SimpleCheckSuiteStatus::Pending => "pending".to_string(),
-      SimpleCheckSuiteStatus::Waiting => "waiting".to_string(),
+      SimpleCheckSuiteStatus::Queued => write!(f, "queued"),
+      SimpleCheckSuiteStatus::InProgress => write!(f, "in_progress"),
+      SimpleCheckSuiteStatus::Completed => write!(f, "completed"),
+      SimpleCheckSuiteStatus::Pending => write!(f, "pending"),
+      SimpleCheckSuiteStatus::Waiting => write!(f, "waiting"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckRunWithSimpleCheckSuiteConclusion {
@@ -562,24 +584,25 @@ pub enum CheckRunWithSimpleCheckSuiteConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "check_run"))]
-impl ToString for CheckRunWithSimpleCheckSuiteConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CheckRunWithSimpleCheckSuiteConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CheckRunWithSimpleCheckSuiteConclusion::Waiting => "waiting".to_string(),
-      CheckRunWithSimpleCheckSuiteConclusion::Pending => "pending".to_string(),
-      CheckRunWithSimpleCheckSuiteConclusion::StartupFailure => "startup_failure".to_string(),
-      CheckRunWithSimpleCheckSuiteConclusion::Stale => "stale".to_string(),
-      CheckRunWithSimpleCheckSuiteConclusion::Success => "success".to_string(),
-      CheckRunWithSimpleCheckSuiteConclusion::Failure => "failure".to_string(),
-      CheckRunWithSimpleCheckSuiteConclusion::Neutral => "neutral".to_string(),
-      CheckRunWithSimpleCheckSuiteConclusion::Cancelled => "cancelled".to_string(),
-      CheckRunWithSimpleCheckSuiteConclusion::Skipped => "skipped".to_string(),
-      CheckRunWithSimpleCheckSuiteConclusion::TimedOut => "timed_out".to_string(),
-      CheckRunWithSimpleCheckSuiteConclusion::ActionRequired => "action_required".to_string(),
+      CheckRunWithSimpleCheckSuiteConclusion::Waiting => write!(f, "waiting"),
+      CheckRunWithSimpleCheckSuiteConclusion::Pending => write!(f, "pending"),
+      CheckRunWithSimpleCheckSuiteConclusion::StartupFailure => write!(f, "startup_failure"),
+      CheckRunWithSimpleCheckSuiteConclusion::Stale => write!(f, "stale"),
+      CheckRunWithSimpleCheckSuiteConclusion::Success => write!(f, "success"),
+      CheckRunWithSimpleCheckSuiteConclusion::Failure => write!(f, "failure"),
+      CheckRunWithSimpleCheckSuiteConclusion::Neutral => write!(f, "neutral"),
+      CheckRunWithSimpleCheckSuiteConclusion::Cancelled => write!(f, "cancelled"),
+      CheckRunWithSimpleCheckSuiteConclusion::Skipped => write!(f, "skipped"),
+      CheckRunWithSimpleCheckSuiteConclusion::TimedOut => write!(f, "timed_out"),
+      CheckRunWithSimpleCheckSuiteConclusion::ActionRequired => write!(f, "action_required"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_run"))]
 /// The phase of the lifecycle that the check is currently in.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -595,17 +618,18 @@ pub enum CheckRunWithSimpleCheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "check_run"))]
-impl ToString for CheckRunWithSimpleCheckSuiteStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CheckRunWithSimpleCheckSuiteStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CheckRunWithSimpleCheckSuiteStatus::Queued => "queued".to_string(),
-      CheckRunWithSimpleCheckSuiteStatus::InProgress => "in_progress".to_string(),
-      CheckRunWithSimpleCheckSuiteStatus::Completed => "completed".to_string(),
-      CheckRunWithSimpleCheckSuiteStatus::Pending => "pending".to_string(),
+      CheckRunWithSimpleCheckSuiteStatus::Queued => write!(f, "queued"),
+      CheckRunWithSimpleCheckSuiteStatus::InProgress => write!(f, "in_progress"),
+      CheckRunWithSimpleCheckSuiteStatus::Completed => write!(f, "completed"),
+      CheckRunWithSimpleCheckSuiteStatus::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunCreatedAction {
@@ -614,14 +638,15 @@ pub enum WebhookCheckRunCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "check_run"))]
-impl ToString for WebhookCheckRunCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckRunCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckRunCreatedAction::Created => "created".to_string(),
+      WebhookCheckRunCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunRequestedActionAction {
@@ -630,14 +655,15 @@ pub enum WebhookCheckRunRequestedActionAction {
 }
 
 #[cfg(any(feature = "full", feature = "check_run"))]
-impl ToString for WebhookCheckRunRequestedActionAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckRunRequestedActionAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckRunRequestedActionAction::RequestedAction => "requested_action".to_string(),
+      WebhookCheckRunRequestedActionAction::RequestedAction => write!(f, "requested_action"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckRunRerequestedAction {
@@ -646,14 +672,15 @@ pub enum WebhookCheckRunRerequestedAction {
 }
 
 #[cfg(any(feature = "full", feature = "check_run"))]
-impl ToString for WebhookCheckRunRerequestedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckRunRerequestedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckRunRerequestedAction::Rerequested => "rerequested".to_string(),
+      WebhookCheckRunRerequestedAction::Rerequested => write!(f, "rerequested"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_suite"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteCompletedAction {
@@ -662,14 +689,15 @@ pub enum WebhookCheckSuiteCompletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "check_suite"))]
-impl ToString for WebhookCheckSuiteCompletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckSuiteCompletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckSuiteCompletedAction::Completed => "completed".to_string(),
+      WebhookCheckSuiteCompletedAction::Completed => write!(f, "completed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "check_suite",
@@ -798,65 +826,66 @@ pub enum AppEvents {
   feature = "issues",
   feature = "workflow_job"
 ))]
-impl ToString for AppEvents {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for AppEvents {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      AppEvents::BranchProtectionRule => "branch_protection_rule".to_string(),
-      AppEvents::CheckRun => "check_run".to_string(),
-      AppEvents::CheckSuite => "check_suite".to_string(),
-      AppEvents::CodeScanningAlert => "code_scanning_alert".to_string(),
-      AppEvents::CommitComment => "commit_comment".to_string(),
-      AppEvents::ContentReference => "content_reference".to_string(),
-      AppEvents::Create => "create".to_string(),
-      AppEvents::Delete => "delete".to_string(),
-      AppEvents::Deployment => "deployment".to_string(),
-      AppEvents::DeploymentReview => "deployment_review".to_string(),
-      AppEvents::DeploymentStatus => "deployment_status".to_string(),
-      AppEvents::DeployKey => "deploy_key".to_string(),
-      AppEvents::Discussion => "discussion".to_string(),
-      AppEvents::DiscussionComment => "discussion_comment".to_string(),
-      AppEvents::Fork => "fork".to_string(),
-      AppEvents::Gollum => "gollum".to_string(),
-      AppEvents::Issues => "issues".to_string(),
-      AppEvents::IssueComment => "issue_comment".to_string(),
-      AppEvents::Label => "label".to_string(),
-      AppEvents::Member => "member".to_string(),
-      AppEvents::Membership => "membership".to_string(),
-      AppEvents::Milestone => "milestone".to_string(),
-      AppEvents::Organization => "organization".to_string(),
-      AppEvents::OrgBlock => "org_block".to_string(),
-      AppEvents::PageBuild => "page_build".to_string(),
-      AppEvents::Project => "project".to_string(),
-      AppEvents::ProjectCard => "project_card".to_string(),
-      AppEvents::ProjectColumn => "project_column".to_string(),
-      AppEvents::Public => "public".to_string(),
-      AppEvents::PullRequest => "pull_request".to_string(),
-      AppEvents::PullRequestReview => "pull_request_review".to_string(),
-      AppEvents::PullRequestReviewComment => "pull_request_review_comment".to_string(),
-      AppEvents::Push => "push".to_string(),
-      AppEvents::RegistryPackage => "registry_package".to_string(),
-      AppEvents::Release => "release".to_string(),
-      AppEvents::Repository => "repository".to_string(),
-      AppEvents::RepositoryDispatch => "repository_dispatch".to_string(),
-      AppEvents::SecretScanningAlert => "secret_scanning_alert".to_string(),
-      AppEvents::Star => "star".to_string(),
-      AppEvents::Status => "status".to_string(),
-      AppEvents::Team => "team".to_string(),
-      AppEvents::TeamAdd => "team_add".to_string(),
-      AppEvents::Watch => "watch".to_string(),
-      AppEvents::WorkflowDispatch => "workflow_dispatch".to_string(),
-      AppEvents::WorkflowRun => "workflow_run".to_string(),
-      AppEvents::MergeGroup => "merge_group".to_string(),
-      AppEvents::PullRequestReviewThread => "pull_request_review_thread".to_string(),
-      AppEvents::WorkflowJob => "workflow_job".to_string(),
-      AppEvents::MergeQueueEntry => "merge_queue_entry".to_string(),
-      AppEvents::SecurityAndAnalysis => "security_and_analysis".to_string(),
-      AppEvents::ProjectsV2Item => "projects_v2_item".to_string(),
-      AppEvents::SecretScanningAlertLocation => "secret_scanning_alert_location".to_string(),
+      AppEvents::BranchProtectionRule => write!(f, "branch_protection_rule"),
+      AppEvents::CheckRun => write!(f, "check_run"),
+      AppEvents::CheckSuite => write!(f, "check_suite"),
+      AppEvents::CodeScanningAlert => write!(f, "code_scanning_alert"),
+      AppEvents::CommitComment => write!(f, "commit_comment"),
+      AppEvents::ContentReference => write!(f, "content_reference"),
+      AppEvents::Create => write!(f, "create"),
+      AppEvents::Delete => write!(f, "delete"),
+      AppEvents::Deployment => write!(f, "deployment"),
+      AppEvents::DeploymentReview => write!(f, "deployment_review"),
+      AppEvents::DeploymentStatus => write!(f, "deployment_status"),
+      AppEvents::DeployKey => write!(f, "deploy_key"),
+      AppEvents::Discussion => write!(f, "discussion"),
+      AppEvents::DiscussionComment => write!(f, "discussion_comment"),
+      AppEvents::Fork => write!(f, "fork"),
+      AppEvents::Gollum => write!(f, "gollum"),
+      AppEvents::Issues => write!(f, "issues"),
+      AppEvents::IssueComment => write!(f, "issue_comment"),
+      AppEvents::Label => write!(f, "label"),
+      AppEvents::Member => write!(f, "member"),
+      AppEvents::Membership => write!(f, "membership"),
+      AppEvents::Milestone => write!(f, "milestone"),
+      AppEvents::Organization => write!(f, "organization"),
+      AppEvents::OrgBlock => write!(f, "org_block"),
+      AppEvents::PageBuild => write!(f, "page_build"),
+      AppEvents::Project => write!(f, "project"),
+      AppEvents::ProjectCard => write!(f, "project_card"),
+      AppEvents::ProjectColumn => write!(f, "project_column"),
+      AppEvents::Public => write!(f, "public"),
+      AppEvents::PullRequest => write!(f, "pull_request"),
+      AppEvents::PullRequestReview => write!(f, "pull_request_review"),
+      AppEvents::PullRequestReviewComment => write!(f, "pull_request_review_comment"),
+      AppEvents::Push => write!(f, "push"),
+      AppEvents::RegistryPackage => write!(f, "registry_package"),
+      AppEvents::Release => write!(f, "release"),
+      AppEvents::Repository => write!(f, "repository"),
+      AppEvents::RepositoryDispatch => write!(f, "repository_dispatch"),
+      AppEvents::SecretScanningAlert => write!(f, "secret_scanning_alert"),
+      AppEvents::Star => write!(f, "star"),
+      AppEvents::Status => write!(f, "status"),
+      AppEvents::Team => write!(f, "team"),
+      AppEvents::TeamAdd => write!(f, "team_add"),
+      AppEvents::Watch => write!(f, "watch"),
+      AppEvents::WorkflowDispatch => write!(f, "workflow_dispatch"),
+      AppEvents::WorkflowRun => write!(f, "workflow_run"),
+      AppEvents::MergeGroup => write!(f, "merge_group"),
+      AppEvents::PullRequestReviewThread => write!(f, "pull_request_review_thread"),
+      AppEvents::WorkflowJob => write!(f, "workflow_job"),
+      AppEvents::MergeQueueEntry => write!(f, "merge_queue_entry"),
+      AppEvents::SecurityAndAnalysis => write!(f, "security_and_analysis"),
+      AppEvents::ProjectsV2Item => write!(f, "projects_v2_item"),
+      AppEvents::SecretScanningAlertLocation => write!(f, "secret_scanning_alert_location"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "check_suite",
@@ -942,16 +971,17 @@ pub enum UserType {
   feature = "workflow_job",
   feature = "workflow_run"
 ))]
-impl ToString for UserType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for UserType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      UserType::Bot => "Bot".to_string(),
-      UserType::User => "User".to_string(),
-      UserType::Organization => "Organization".to_string(),
+      UserType::Bot => write!(f, "Bot"),
+      UserType::User => write!(f, "User"),
+      UserType::Organization => write!(f, "Organization"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_suite"))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -977,26 +1007,27 @@ pub enum WebhookCheckSuiteCompletedCheckSuiteConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "check_suite"))]
-impl ToString for WebhookCheckSuiteCompletedCheckSuiteConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckSuiteCompletedCheckSuiteConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckSuiteCompletedCheckSuiteConclusion::Success => "success".to_string(),
-      WebhookCheckSuiteCompletedCheckSuiteConclusion::Failure => "failure".to_string(),
-      WebhookCheckSuiteCompletedCheckSuiteConclusion::Neutral => "neutral".to_string(),
-      WebhookCheckSuiteCompletedCheckSuiteConclusion::Cancelled => "cancelled".to_string(),
-      WebhookCheckSuiteCompletedCheckSuiteConclusion::TimedOut => "timed_out".to_string(),
+      WebhookCheckSuiteCompletedCheckSuiteConclusion::Success => write!(f, "success"),
+      WebhookCheckSuiteCompletedCheckSuiteConclusion::Failure => write!(f, "failure"),
+      WebhookCheckSuiteCompletedCheckSuiteConclusion::Neutral => write!(f, "neutral"),
+      WebhookCheckSuiteCompletedCheckSuiteConclusion::Cancelled => write!(f, "cancelled"),
+      WebhookCheckSuiteCompletedCheckSuiteConclusion::TimedOut => write!(f, "timed_out"),
       WebhookCheckSuiteCompletedCheckSuiteConclusion::ActionRequired => {
-        "action_required".to_string()
+        write!(f, "action_required")
       }
-      WebhookCheckSuiteCompletedCheckSuiteConclusion::Stale => "stale".to_string(),
-      WebhookCheckSuiteCompletedCheckSuiteConclusion::Skipped => "skipped".to_string(),
+      WebhookCheckSuiteCompletedCheckSuiteConclusion::Stale => write!(f, "stale"),
+      WebhookCheckSuiteCompletedCheckSuiteConclusion::Skipped => write!(f, "skipped"),
       WebhookCheckSuiteCompletedCheckSuiteConclusion::StartupFailure => {
-        "startup_failure".to_string()
+        write!(f, "startup_failure")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_suite"))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1014,18 +1045,19 @@ pub enum WebhookCheckSuiteCompletedCheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "check_suite"))]
-impl ToString for WebhookCheckSuiteCompletedCheckSuiteStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckSuiteCompletedCheckSuiteStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckSuiteCompletedCheckSuiteStatus::Requested => "requested".to_string(),
-      WebhookCheckSuiteCompletedCheckSuiteStatus::InProgress => "in_progress".to_string(),
-      WebhookCheckSuiteCompletedCheckSuiteStatus::Completed => "completed".to_string(),
-      WebhookCheckSuiteCompletedCheckSuiteStatus::Queued => "queued".to_string(),
-      WebhookCheckSuiteCompletedCheckSuiteStatus::Pending => "pending".to_string(),
+      WebhookCheckSuiteCompletedCheckSuiteStatus::Requested => write!(f, "requested"),
+      WebhookCheckSuiteCompletedCheckSuiteStatus::InProgress => write!(f, "in_progress"),
+      WebhookCheckSuiteCompletedCheckSuiteStatus::Completed => write!(f, "completed"),
+      WebhookCheckSuiteCompletedCheckSuiteStatus::Queued => write!(f, "queued"),
+      WebhookCheckSuiteCompletedCheckSuiteStatus::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_suite"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRequestedAction {
@@ -1034,14 +1066,15 @@ pub enum WebhookCheckSuiteRequestedAction {
 }
 
 #[cfg(any(feature = "full", feature = "check_suite"))]
-impl ToString for WebhookCheckSuiteRequestedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckSuiteRequestedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckSuiteRequestedAction::Requested => "requested".to_string(),
+      WebhookCheckSuiteRequestedAction::Requested => write!(f, "requested"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_suite"))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1065,23 +1098,24 @@ pub enum WebhookCheckSuiteRequestedCheckSuiteConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "check_suite"))]
-impl ToString for WebhookCheckSuiteRequestedCheckSuiteConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckSuiteRequestedCheckSuiteConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckSuiteRequestedCheckSuiteConclusion::Success => "success".to_string(),
-      WebhookCheckSuiteRequestedCheckSuiteConclusion::Failure => "failure".to_string(),
-      WebhookCheckSuiteRequestedCheckSuiteConclusion::Neutral => "neutral".to_string(),
-      WebhookCheckSuiteRequestedCheckSuiteConclusion::Cancelled => "cancelled".to_string(),
-      WebhookCheckSuiteRequestedCheckSuiteConclusion::TimedOut => "timed_out".to_string(),
+      WebhookCheckSuiteRequestedCheckSuiteConclusion::Success => write!(f, "success"),
+      WebhookCheckSuiteRequestedCheckSuiteConclusion::Failure => write!(f, "failure"),
+      WebhookCheckSuiteRequestedCheckSuiteConclusion::Neutral => write!(f, "neutral"),
+      WebhookCheckSuiteRequestedCheckSuiteConclusion::Cancelled => write!(f, "cancelled"),
+      WebhookCheckSuiteRequestedCheckSuiteConclusion::TimedOut => write!(f, "timed_out"),
       WebhookCheckSuiteRequestedCheckSuiteConclusion::ActionRequired => {
-        "action_required".to_string()
+        write!(f, "action_required")
       }
-      WebhookCheckSuiteRequestedCheckSuiteConclusion::Stale => "stale".to_string(),
-      WebhookCheckSuiteRequestedCheckSuiteConclusion::Skipped => "skipped".to_string(),
+      WebhookCheckSuiteRequestedCheckSuiteConclusion::Stale => write!(f, "stale"),
+      WebhookCheckSuiteRequestedCheckSuiteConclusion::Skipped => write!(f, "skipped"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_suite"))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1097,17 +1131,18 @@ pub enum WebhookCheckSuiteRequestedCheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "check_suite"))]
-impl ToString for WebhookCheckSuiteRequestedCheckSuiteStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckSuiteRequestedCheckSuiteStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckSuiteRequestedCheckSuiteStatus::Requested => "requested".to_string(),
-      WebhookCheckSuiteRequestedCheckSuiteStatus::InProgress => "in_progress".to_string(),
-      WebhookCheckSuiteRequestedCheckSuiteStatus::Completed => "completed".to_string(),
-      WebhookCheckSuiteRequestedCheckSuiteStatus::Queued => "queued".to_string(),
+      WebhookCheckSuiteRequestedCheckSuiteStatus::Requested => write!(f, "requested"),
+      WebhookCheckSuiteRequestedCheckSuiteStatus::InProgress => write!(f, "in_progress"),
+      WebhookCheckSuiteRequestedCheckSuiteStatus::Completed => write!(f, "completed"),
+      WebhookCheckSuiteRequestedCheckSuiteStatus::Queued => write!(f, "queued"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_suite"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCheckSuiteRerequestedAction {
@@ -1116,14 +1151,15 @@ pub enum WebhookCheckSuiteRerequestedAction {
 }
 
 #[cfg(any(feature = "full", feature = "check_suite"))]
-impl ToString for WebhookCheckSuiteRerequestedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckSuiteRerequestedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckSuiteRerequestedAction::Rerequested => "rerequested".to_string(),
+      WebhookCheckSuiteRerequestedAction::Rerequested => write!(f, "rerequested"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_suite"))]
 /// The summary conclusion for all check runs that are part of the check suite. This value will be `null` until the check run has completed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1145,22 +1181,23 @@ pub enum WebhookCheckSuiteRerequestedCheckSuiteConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "check_suite"))]
-impl ToString for WebhookCheckSuiteRerequestedCheckSuiteConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckSuiteRerequestedCheckSuiteConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckSuiteRerequestedCheckSuiteConclusion::Success => "success".to_string(),
-      WebhookCheckSuiteRerequestedCheckSuiteConclusion::Failure => "failure".to_string(),
-      WebhookCheckSuiteRerequestedCheckSuiteConclusion::Neutral => "neutral".to_string(),
-      WebhookCheckSuiteRerequestedCheckSuiteConclusion::Cancelled => "cancelled".to_string(),
-      WebhookCheckSuiteRerequestedCheckSuiteConclusion::TimedOut => "timed_out".to_string(),
+      WebhookCheckSuiteRerequestedCheckSuiteConclusion::Success => write!(f, "success"),
+      WebhookCheckSuiteRerequestedCheckSuiteConclusion::Failure => write!(f, "failure"),
+      WebhookCheckSuiteRerequestedCheckSuiteConclusion::Neutral => write!(f, "neutral"),
+      WebhookCheckSuiteRerequestedCheckSuiteConclusion::Cancelled => write!(f, "cancelled"),
+      WebhookCheckSuiteRerequestedCheckSuiteConclusion::TimedOut => write!(f, "timed_out"),
       WebhookCheckSuiteRerequestedCheckSuiteConclusion::ActionRequired => {
-        "action_required".to_string()
+        write!(f, "action_required")
       }
-      WebhookCheckSuiteRerequestedCheckSuiteConclusion::Stale => "stale".to_string(),
+      WebhookCheckSuiteRerequestedCheckSuiteConclusion::Stale => write!(f, "stale"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "check_suite"))]
 /// The summary status for all check runs that are part of the check suite. Can be `requested`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1176,17 +1213,18 @@ pub enum WebhookCheckSuiteRerequestedCheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "check_suite"))]
-impl ToString for WebhookCheckSuiteRerequestedCheckSuiteStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCheckSuiteRerequestedCheckSuiteStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCheckSuiteRerequestedCheckSuiteStatus::Requested => "requested".to_string(),
-      WebhookCheckSuiteRerequestedCheckSuiteStatus::InProgress => "in_progress".to_string(),
-      WebhookCheckSuiteRerequestedCheckSuiteStatus::Completed => "completed".to_string(),
-      WebhookCheckSuiteRerequestedCheckSuiteStatus::Queued => "queued".to_string(),
+      WebhookCheckSuiteRerequestedCheckSuiteStatus::Requested => write!(f, "requested"),
+      WebhookCheckSuiteRerequestedCheckSuiteStatus::InProgress => write!(f, "in_progress"),
+      WebhookCheckSuiteRerequestedCheckSuiteStatus::Completed => write!(f, "completed"),
+      WebhookCheckSuiteRerequestedCheckSuiteStatus::Queued => write!(f, "queued"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertAppearedInBranchAction {
@@ -1195,16 +1233,17 @@ pub enum WebhookCodeScanningAlertAppearedInBranchAction {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertAppearedInBranchAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertAppearedInBranchAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookCodeScanningAlertAppearedInBranchAction::AppearedInBranch => {
-        "appeared_in_branch".to_string()
+        write!(f, "appeared_in_branch")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1218,22 +1257,23 @@ pub enum WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason::FalsePositive => {
-        "false positive".to_string()
+        write!(f, "false positive")
       }
       WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason::WonTFix => {
-        "won't fix".to_string()
+        write!(f, "won't fix")
       }
       WebhookCodeScanningAlertAppearedInBranchAlertDismissedReason::UsedInTests => {
-        "used in tests".to_string()
+        write!(f, "used in tests")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1247,16 +1287,17 @@ pub enum AlertInstanceState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for AlertInstanceState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for AlertInstanceState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      AlertInstanceState::Open => "open".to_string(),
-      AlertInstanceState::Dismissed => "dismissed".to_string(),
-      AlertInstanceState::Fixed => "fixed".to_string(),
+      AlertInstanceState::Open => write!(f, "open"),
+      AlertInstanceState::Dismissed => write!(f, "dismissed"),
+      AlertInstanceState::Fixed => write!(f, "fixed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1272,17 +1313,18 @@ pub enum WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity::None => "none".to_string(),
-      WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity::Note => "note".to_string(),
-      WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity::Warning => "warning".to_string(),
-      WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity::Error => "error".to_string(),
+      WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity::None => write!(f, "none"),
+      WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity::Note => write!(f, "note"),
+      WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity::Warning => write!(f, "warning"),
+      WebhookCodeScanningAlertAppearedInBranchAlertRuleSeverity::Error => write!(f, "error"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1296,16 +1338,17 @@ pub enum WebhookCodeScanningAlertAppearedInBranchAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertAppearedInBranchAlertState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertAppearedInBranchAlertState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertAppearedInBranchAlertState::Open => "open".to_string(),
-      WebhookCodeScanningAlertAppearedInBranchAlertState::Dismissed => "dismissed".to_string(),
-      WebhookCodeScanningAlertAppearedInBranchAlertState::Fixed => "fixed".to_string(),
+      WebhookCodeScanningAlertAppearedInBranchAlertState::Open => write!(f, "open"),
+      WebhookCodeScanningAlertAppearedInBranchAlertState::Dismissed => write!(f, "dismissed"),
+      WebhookCodeScanningAlertAppearedInBranchAlertState::Fixed => write!(f, "fixed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertClosedByUserAction {
@@ -1314,14 +1357,15 @@ pub enum WebhookCodeScanningAlertClosedByUserAction {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertClosedByUserAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertClosedByUserAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertClosedByUserAction::ClosedByUser => "closed_by_user".to_string(),
+      WebhookCodeScanningAlertClosedByUserAction::ClosedByUser => write!(f, "closed_by_user"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1335,20 +1379,21 @@ pub enum WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertClosedByUserAlertDismissedReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookCodeScanningAlertClosedByUserAlertDismissedReason::FalsePositive => {
-        "false positive".to_string()
+        write!(f, "false positive")
       }
-      WebhookCodeScanningAlertClosedByUserAlertDismissedReason::WonTFix => "won't fix".to_string(),
+      WebhookCodeScanningAlertClosedByUserAlertDismissedReason::WonTFix => write!(f, "won't fix"),
       WebhookCodeScanningAlertClosedByUserAlertDismissedReason::UsedInTests => {
-        "used in tests".to_string()
+        write!(f, "used in tests")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1364,17 +1409,18 @@ pub enum WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertClosedByUserAlertRuleSeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertClosedByUserAlertRuleSeverity::None => "none".to_string(),
-      WebhookCodeScanningAlertClosedByUserAlertRuleSeverity::Note => "note".to_string(),
-      WebhookCodeScanningAlertClosedByUserAlertRuleSeverity::Warning => "warning".to_string(),
-      WebhookCodeScanningAlertClosedByUserAlertRuleSeverity::Error => "error".to_string(),
+      WebhookCodeScanningAlertClosedByUserAlertRuleSeverity::None => write!(f, "none"),
+      WebhookCodeScanningAlertClosedByUserAlertRuleSeverity::Note => write!(f, "note"),
+      WebhookCodeScanningAlertClosedByUserAlertRuleSeverity::Warning => write!(f, "warning"),
+      WebhookCodeScanningAlertClosedByUserAlertRuleSeverity::Error => write!(f, "error"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1386,15 +1432,16 @@ pub enum WebhookCodeScanningAlertClosedByUserAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertClosedByUserAlertState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertClosedByUserAlertState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertClosedByUserAlertState::Dismissed => "dismissed".to_string(),
-      WebhookCodeScanningAlertClosedByUserAlertState::Fixed => "fixed".to_string(),
+      WebhookCodeScanningAlertClosedByUserAlertState::Dismissed => write!(f, "dismissed"),
+      WebhookCodeScanningAlertClosedByUserAlertState::Fixed => write!(f, "fixed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertCreatedAction {
@@ -1403,14 +1450,15 @@ pub enum WebhookCodeScanningAlertCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertCreatedAction::Created => "created".to_string(),
+      WebhookCodeScanningAlertCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1426,17 +1474,18 @@ pub enum WebhookCodeScanningAlertCreatedAlertRuleSeverity {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertCreatedAlertRuleSeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertCreatedAlertRuleSeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertCreatedAlertRuleSeverity::None => "none".to_string(),
-      WebhookCodeScanningAlertCreatedAlertRuleSeverity::Note => "note".to_string(),
-      WebhookCodeScanningAlertCreatedAlertRuleSeverity::Warning => "warning".to_string(),
-      WebhookCodeScanningAlertCreatedAlertRuleSeverity::Error => "error".to_string(),
+      WebhookCodeScanningAlertCreatedAlertRuleSeverity::None => write!(f, "none"),
+      WebhookCodeScanningAlertCreatedAlertRuleSeverity::Note => write!(f, "note"),
+      WebhookCodeScanningAlertCreatedAlertRuleSeverity::Warning => write!(f, "warning"),
+      WebhookCodeScanningAlertCreatedAlertRuleSeverity::Error => write!(f, "error"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1448,15 +1497,16 @@ pub enum WebhookCodeScanningAlertCreatedAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertCreatedAlertState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertCreatedAlertState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertCreatedAlertState::Open => "open".to_string(),
-      WebhookCodeScanningAlertCreatedAlertState::Dismissed => "dismissed".to_string(),
+      WebhookCodeScanningAlertCreatedAlertState::Open => write!(f, "open"),
+      WebhookCodeScanningAlertCreatedAlertState::Dismissed => write!(f, "dismissed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertFixedAction {
@@ -1465,14 +1515,15 @@ pub enum WebhookCodeScanningAlertFixedAction {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertFixedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertFixedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertFixedAction::Fixed => "fixed".to_string(),
+      WebhookCodeScanningAlertFixedAction::Fixed => write!(f, "fixed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1486,18 +1537,19 @@ pub enum WebhookCodeScanningAlertFixedAlertDismissedReason {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertFixedAlertDismissedReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertFixedAlertDismissedReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookCodeScanningAlertFixedAlertDismissedReason::FalsePositive => {
-        "false positive".to_string()
+        write!(f, "false positive")
       }
-      WebhookCodeScanningAlertFixedAlertDismissedReason::WonTFix => "won't fix".to_string(),
-      WebhookCodeScanningAlertFixedAlertDismissedReason::UsedInTests => "used in tests".to_string(),
+      WebhookCodeScanningAlertFixedAlertDismissedReason::WonTFix => write!(f, "won't fix"),
+      WebhookCodeScanningAlertFixedAlertDismissedReason::UsedInTests => write!(f, "used in tests"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1513,17 +1565,18 @@ pub enum WebhookCodeScanningAlertFixedAlertRuleSeverity {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertFixedAlertRuleSeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertFixedAlertRuleSeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertFixedAlertRuleSeverity::None => "none".to_string(),
-      WebhookCodeScanningAlertFixedAlertRuleSeverity::Note => "note".to_string(),
-      WebhookCodeScanningAlertFixedAlertRuleSeverity::Warning => "warning".to_string(),
-      WebhookCodeScanningAlertFixedAlertRuleSeverity::Error => "error".to_string(),
+      WebhookCodeScanningAlertFixedAlertRuleSeverity::None => write!(f, "none"),
+      WebhookCodeScanningAlertFixedAlertRuleSeverity::Note => write!(f, "note"),
+      WebhookCodeScanningAlertFixedAlertRuleSeverity::Warning => write!(f, "warning"),
+      WebhookCodeScanningAlertFixedAlertRuleSeverity::Error => write!(f, "error"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1533,14 +1586,15 @@ pub enum WebhookCodeScanningAlertFixedAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertFixedAlertState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertFixedAlertState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertFixedAlertState::Fixed => "fixed".to_string(),
+      WebhookCodeScanningAlertFixedAlertState::Fixed => write!(f, "fixed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedAction {
@@ -1549,14 +1603,15 @@ pub enum WebhookCodeScanningAlertReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertReopenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertReopenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertReopenedAction::Reopened => "reopened".to_string(),
+      WebhookCodeScanningAlertReopenedAction::Reopened => write!(f, "reopened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1572,17 +1627,18 @@ pub enum WebhookCodeScanningAlertReopenedAlertRuleSeverity {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertReopenedAlertRuleSeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertReopenedAlertRuleSeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertReopenedAlertRuleSeverity::None => "none".to_string(),
-      WebhookCodeScanningAlertReopenedAlertRuleSeverity::Note => "note".to_string(),
-      WebhookCodeScanningAlertReopenedAlertRuleSeverity::Warning => "warning".to_string(),
-      WebhookCodeScanningAlertReopenedAlertRuleSeverity::Error => "error".to_string(),
+      WebhookCodeScanningAlertReopenedAlertRuleSeverity::None => write!(f, "none"),
+      WebhookCodeScanningAlertReopenedAlertRuleSeverity::Note => write!(f, "note"),
+      WebhookCodeScanningAlertReopenedAlertRuleSeverity::Warning => write!(f, "warning"),
+      WebhookCodeScanningAlertReopenedAlertRuleSeverity::Error => write!(f, "error"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1596,16 +1652,17 @@ pub enum WebhookCodeScanningAlertReopenedAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertReopenedAlertState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertReopenedAlertState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertReopenedAlertState::Open => "open".to_string(),
-      WebhookCodeScanningAlertReopenedAlertState::Dismissed => "dismissed".to_string(),
-      WebhookCodeScanningAlertReopenedAlertState::Fixed => "fixed".to_string(),
+      WebhookCodeScanningAlertReopenedAlertState::Open => write!(f, "open"),
+      WebhookCodeScanningAlertReopenedAlertState::Dismissed => write!(f, "dismissed"),
+      WebhookCodeScanningAlertReopenedAlertState::Fixed => write!(f, "fixed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCodeScanningAlertReopenedByUserAction {
@@ -1614,16 +1671,15 @@ pub enum WebhookCodeScanningAlertReopenedByUserAction {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertReopenedByUserAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertReopenedByUserAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertReopenedByUserAction::ReopenedByUser => {
-        "reopened_by_user".to_string()
-      }
+      WebhookCodeScanningAlertReopenedByUserAction::ReopenedByUser => write!(f, "reopened_by_user"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1639,17 +1695,18 @@ pub enum WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity::None => "none".to_string(),
-      WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity::Note => "note".to_string(),
-      WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity::Warning => "warning".to_string(),
-      WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity::Error => "error".to_string(),
+      WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity::None => write!(f, "none"),
+      WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity::Note => write!(f, "note"),
+      WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity::Warning => write!(f, "warning"),
+      WebhookCodeScanningAlertReopenedByUserAlertRuleSeverity::Error => write!(f, "error"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1661,15 +1718,16 @@ pub enum WebhookCodeScanningAlertReopenedByUserAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning_alert"))]
-impl ToString for WebhookCodeScanningAlertReopenedByUserAlertState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCodeScanningAlertReopenedByUserAlertState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCodeScanningAlertReopenedByUserAlertState::Open => "open".to_string(),
-      WebhookCodeScanningAlertReopenedByUserAlertState::Fixed => "fixed".to_string(),
+      WebhookCodeScanningAlertReopenedByUserAlertState::Open => write!(f, "open"),
+      WebhookCodeScanningAlertReopenedByUserAlertState::Fixed => write!(f, "fixed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "commit_comment"))]
 /// The action performed. Can be `created`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1679,14 +1737,15 @@ pub enum WebhookCommitCommentCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "commit_comment"))]
-impl ToString for WebhookCommitCommentCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCommitCommentCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCommitCommentCreatedAction::Created => "created".to_string(),
+      WebhookCommitCommentCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "commit_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1710,25 +1769,26 @@ pub enum WebhookCommitCommentCreatedCommentAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "commit_comment"))]
-impl ToString for WebhookCommitCommentCreatedCommentAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCommitCommentCreatedCommentAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookCommitCommentCreatedCommentAuthorAssociation::Collaborator => {
-        "COLLABORATOR".to_string()
+        write!(f, "COLLABORATOR")
       }
-      WebhookCommitCommentCreatedCommentAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      WebhookCommitCommentCreatedCommentAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
+      WebhookCommitCommentCreatedCommentAuthorAssociation::Contributor => write!(f, "CONTRIBUTOR"),
+      WebhookCommitCommentCreatedCommentAuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
       WebhookCommitCommentCreatedCommentAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
-      WebhookCommitCommentCreatedCommentAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      WebhookCommitCommentCreatedCommentAuthorAssociation::Member => "MEMBER".to_string(),
-      WebhookCommitCommentCreatedCommentAuthorAssociation::None => "NONE".to_string(),
-      WebhookCommitCommentCreatedCommentAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookCommitCommentCreatedCommentAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      WebhookCommitCommentCreatedCommentAuthorAssociation::Member => write!(f, "MEMBER"),
+      WebhookCommitCommentCreatedCommentAuthorAssociation::None => write!(f, "NONE"),
+      WebhookCommitCommentCreatedCommentAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "create"))]
 /// The type of Git ref object created in the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1740,15 +1800,16 @@ pub enum WebhookCreateRefType {
 }
 
 #[cfg(any(feature = "full", feature = "create"))]
-impl ToString for WebhookCreateRefType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCreateRefType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCreateRefType::Tag => "tag".to_string(),
-      WebhookCreateRefType::Branch => "branch".to_string(),
+      WebhookCreateRefType::Tag => write!(f, "tag"),
+      WebhookCreateRefType::Branch => write!(f, "branch"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "custom_property"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyCreatedAction {
@@ -1757,14 +1818,15 @@ pub enum WebhookCustomPropertyCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "custom_property"))]
-impl ToString for WebhookCustomPropertyCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCustomPropertyCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCustomPropertyCreatedAction::Created => "created".to_string(),
+      WebhookCustomPropertyCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "custom_property"))]
 /// The type of the value for the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1776,15 +1838,16 @@ pub enum OrgCustomPropertyValueType {
 }
 
 #[cfg(any(feature = "full", feature = "custom_property"))]
-impl ToString for OrgCustomPropertyValueType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for OrgCustomPropertyValueType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      OrgCustomPropertyValueType::String => "string".to_string(),
-      OrgCustomPropertyValueType::SingleSelect => "single_select".to_string(),
+      OrgCustomPropertyValueType::String => write!(f, "string"),
+      OrgCustomPropertyValueType::SingleSelect => write!(f, "single_select"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "custom_property"))]
 /// Who can edit the values of the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1796,15 +1859,16 @@ pub enum OrgCustomPropertyValuesEditableBy {
 }
 
 #[cfg(any(feature = "full", feature = "custom_property"))]
-impl ToString for OrgCustomPropertyValuesEditableBy {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for OrgCustomPropertyValuesEditableBy {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      OrgCustomPropertyValuesEditableBy::OrgActors => "org_actors".to_string(),
-      OrgCustomPropertyValuesEditableBy::OrgAndRepoActors => "org_and_repo_actors".to_string(),
+      OrgCustomPropertyValuesEditableBy::OrgActors => write!(f, "org_actors"),
+      OrgCustomPropertyValuesEditableBy::OrgAndRepoActors => write!(f, "org_and_repo_actors"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "custom_property"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyDeletedAction {
@@ -1813,14 +1877,15 @@ pub enum WebhookCustomPropertyDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "custom_property"))]
-impl ToString for WebhookCustomPropertyDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCustomPropertyDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCustomPropertyDeletedAction::Deleted => "deleted".to_string(),
+      WebhookCustomPropertyDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "custom_property"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyUpdatedAction {
@@ -1829,14 +1894,15 @@ pub enum WebhookCustomPropertyUpdatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "custom_property"))]
-impl ToString for WebhookCustomPropertyUpdatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCustomPropertyUpdatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCustomPropertyUpdatedAction::Updated => "updated".to_string(),
+      WebhookCustomPropertyUpdatedAction::Updated => write!(f, "updated"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "custom_property_values"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookCustomPropertyValuesUpdatedAction {
@@ -1845,14 +1911,15 @@ pub enum WebhookCustomPropertyValuesUpdatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "custom_property_values"))]
-impl ToString for WebhookCustomPropertyValuesUpdatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookCustomPropertyValuesUpdatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookCustomPropertyValuesUpdatedAction::Updated => "updated".to_string(),
+      WebhookCustomPropertyValuesUpdatedAction::Updated => write!(f, "updated"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "delete"))]
 /// The type of Git ref object deleted in the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1864,15 +1931,16 @@ pub enum WebhookDeleteRefType {
 }
 
 #[cfg(any(feature = "full", feature = "delete"))]
-impl ToString for WebhookDeleteRefType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeleteRefType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeleteRefType::Tag => "tag".to_string(),
-      WebhookDeleteRefType::Branch => "branch".to_string(),
+      WebhookDeleteRefType::Tag => write!(f, "tag"),
+      WebhookDeleteRefType::Branch => write!(f, "branch"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertAutoDismissedAction {
@@ -1881,14 +1949,15 @@ pub enum WebhookDependabotAlertAutoDismissedAction {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
-impl ToString for WebhookDependabotAlertAutoDismissedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDependabotAlertAutoDismissedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDependabotAlertAutoDismissedAction::AutoDismissed => "auto_dismissed".to_string(),
+      WebhookDependabotAlertAutoDismissedAction::AutoDismissed => write!(f, "auto_dismissed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
 /// The execution scope of the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1900,15 +1969,16 @@ pub enum DependabotAlertDependencyScope {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
-impl ToString for DependabotAlertDependencyScope {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DependabotAlertDependencyScope {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DependabotAlertDependencyScope::Development => "development".to_string(),
-      DependabotAlertDependencyScope::Runtime => "runtime".to_string(),
+      DependabotAlertDependencyScope::Development => write!(f, "development"),
+      DependabotAlertDependencyScope::Runtime => write!(f, "runtime"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertAutoReopenedAction {
@@ -1917,14 +1987,15 @@ pub enum WebhookDependabotAlertAutoReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
-impl ToString for WebhookDependabotAlertAutoReopenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDependabotAlertAutoReopenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDependabotAlertAutoReopenedAction::AutoReopened => "auto_reopened".to_string(),
+      WebhookDependabotAlertAutoReopenedAction::AutoReopened => write!(f, "auto_reopened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertCreatedAction {
@@ -1933,14 +2004,15 @@ pub enum WebhookDependabotAlertCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
-impl ToString for WebhookDependabotAlertCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDependabotAlertCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDependabotAlertCreatedAction::Created => "created".to_string(),
+      WebhookDependabotAlertCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertDismissedAction {
@@ -1949,14 +2021,15 @@ pub enum WebhookDependabotAlertDismissedAction {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
-impl ToString for WebhookDependabotAlertDismissedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDependabotAlertDismissedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDependabotAlertDismissedAction::Dismissed => "dismissed".to_string(),
+      WebhookDependabotAlertDismissedAction::Dismissed => write!(f, "dismissed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertFixedAction {
@@ -1965,14 +2038,15 @@ pub enum WebhookDependabotAlertFixedAction {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
-impl ToString for WebhookDependabotAlertFixedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDependabotAlertFixedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDependabotAlertFixedAction::Fixed => "fixed".to_string(),
+      WebhookDependabotAlertFixedAction::Fixed => write!(f, "fixed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertReintroducedAction {
@@ -1981,14 +2055,15 @@ pub enum WebhookDependabotAlertReintroducedAction {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
-impl ToString for WebhookDependabotAlertReintroducedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDependabotAlertReintroducedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDependabotAlertReintroducedAction::Reintroduced => "reintroduced".to_string(),
+      WebhookDependabotAlertReintroducedAction::Reintroduced => write!(f, "reintroduced"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDependabotAlertReopenedAction {
@@ -1997,14 +2072,15 @@ pub enum WebhookDependabotAlertReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot_alert"))]
-impl ToString for WebhookDependabotAlertReopenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDependabotAlertReopenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDependabotAlertReopenedAction::Reopened => "reopened".to_string(),
+      WebhookDependabotAlertReopenedAction::Reopened => write!(f, "reopened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deploy_key"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeployKeyCreatedAction {
@@ -2013,14 +2089,15 @@ pub enum WebhookDeployKeyCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "deploy_key"))]
-impl ToString for WebhookDeployKeyCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeployKeyCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeployKeyCreatedAction::Created => "created".to_string(),
+      WebhookDeployKeyCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deploy_key"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeployKeyDeletedAction {
@@ -2029,14 +2106,15 @@ pub enum WebhookDeployKeyDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "deploy_key"))]
-impl ToString for WebhookDeployKeyDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeployKeyDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeployKeyDeletedAction::Deleted => "deleted".to_string(),
+      WebhookDeployKeyDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deployment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentCreatedAction {
@@ -2045,14 +2123,15 @@ pub enum WebhookDeploymentCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "deployment"))]
-impl ToString for WebhookDeploymentCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeploymentCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeploymentCreatedAction::Created => "created".to_string(),
+      WebhookDeploymentCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "deployment",
@@ -2083,20 +2162,21 @@ pub enum DeploymentWorkflowRunConclusion {
   feature = "deployment_review",
   feature = "deployment_status"
 ))]
-impl ToString for DeploymentWorkflowRunConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DeploymentWorkflowRunConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DeploymentWorkflowRunConclusion::Success => "success".to_string(),
-      DeploymentWorkflowRunConclusion::Failure => "failure".to_string(),
-      DeploymentWorkflowRunConclusion::Neutral => "neutral".to_string(),
-      DeploymentWorkflowRunConclusion::Cancelled => "cancelled".to_string(),
-      DeploymentWorkflowRunConclusion::TimedOut => "timed_out".to_string(),
-      DeploymentWorkflowRunConclusion::ActionRequired => "action_required".to_string(),
-      DeploymentWorkflowRunConclusion::Stale => "stale".to_string(),
+      DeploymentWorkflowRunConclusion::Success => write!(f, "success"),
+      DeploymentWorkflowRunConclusion::Failure => write!(f, "failure"),
+      DeploymentWorkflowRunConclusion::Neutral => write!(f, "neutral"),
+      DeploymentWorkflowRunConclusion::Cancelled => write!(f, "cancelled"),
+      DeploymentWorkflowRunConclusion::TimedOut => write!(f, "timed_out"),
+      DeploymentWorkflowRunConclusion::ActionRequired => write!(f, "action_required"),
+      DeploymentWorkflowRunConclusion::Stale => write!(f, "stale"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "deployment",
@@ -2125,19 +2205,20 @@ pub enum DeploymentWorkflowRunStatus {
   feature = "deployment_review",
   feature = "deployment_status"
 ))]
-impl ToString for DeploymentWorkflowRunStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DeploymentWorkflowRunStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DeploymentWorkflowRunStatus::Requested => "requested".to_string(),
-      DeploymentWorkflowRunStatus::InProgress => "in_progress".to_string(),
-      DeploymentWorkflowRunStatus::Completed => "completed".to_string(),
-      DeploymentWorkflowRunStatus::Queued => "queued".to_string(),
-      DeploymentWorkflowRunStatus::Waiting => "waiting".to_string(),
-      DeploymentWorkflowRunStatus::Pending => "pending".to_string(),
+      DeploymentWorkflowRunStatus::Requested => write!(f, "requested"),
+      DeploymentWorkflowRunStatus::InProgress => write!(f, "in_progress"),
+      DeploymentWorkflowRunStatus::Completed => write!(f, "completed"),
+      DeploymentWorkflowRunStatus::Queued => write!(f, "queued"),
+      DeploymentWorkflowRunStatus::Waiting => write!(f, "waiting"),
+      DeploymentWorkflowRunStatus::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deployment_protection_rule"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentProtectionRuleRequestedAction {
@@ -2146,14 +2227,15 @@ pub enum WebhookDeploymentProtectionRuleRequestedAction {
 }
 
 #[cfg(any(feature = "full", feature = "deployment_protection_rule"))]
-impl ToString for WebhookDeploymentProtectionRuleRequestedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeploymentProtectionRuleRequestedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeploymentProtectionRuleRequestedAction::Requested => "requested".to_string(),
+      WebhookDeploymentProtectionRuleRequestedAction::Requested => write!(f, "requested"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "deployment_protection_rule",
@@ -2185,21 +2267,22 @@ pub enum AuthorAssociation {
   feature = "deployment_protection_rule",
   feature = "pull_request"
 ))]
-impl ToString for AuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for AuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      AuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      AuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      AuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      AuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
-      AuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      AuthorAssociation::Member => "MEMBER".to_string(),
-      AuthorAssociation::None => "NONE".to_string(),
-      AuthorAssociation::Owner => "OWNER".to_string(),
+      AuthorAssociation::Collaborator => write!(f, "COLLABORATOR"),
+      AuthorAssociation::Contributor => write!(f, "CONTRIBUTOR"),
+      AuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
+      AuthorAssociation::FirstTimeContributor => write!(f, "FIRST_TIME_CONTRIBUTOR"),
+      AuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      AuthorAssociation::Member => write!(f, "MEMBER"),
+      AuthorAssociation::None => write!(f, "NONE"),
+      AuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "deployment_protection_rule",
@@ -2221,16 +2304,17 @@ pub enum AutoMergeMergeMethod {
   feature = "deployment_protection_rule",
   feature = "pull_request"
 ))]
-impl ToString for AutoMergeMergeMethod {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for AutoMergeMergeMethod {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      AutoMergeMergeMethod::Merge => "merge".to_string(),
-      AutoMergeMergeMethod::Squash => "squash".to_string(),
-      AutoMergeMergeMethod::Rebase => "rebase".to_string(),
+      AutoMergeMergeMethod::Merge => write!(f, "merge"),
+      AutoMergeMergeMethod::Squash => write!(f, "squash"),
+      AutoMergeMergeMethod::Rebase => write!(f, "rebase"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "deployment_protection_rule",
@@ -2262,15 +2346,16 @@ pub enum MilestoneState {
   feature = "pull_request_review",
   feature = "pull_request_review_thread"
 ))]
-impl ToString for MilestoneState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for MilestoneState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      MilestoneState::Open => "open".to_string(),
-      MilestoneState::Closed => "closed".to_string(),
+      MilestoneState::Open => write!(f, "open"),
+      MilestoneState::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "deployment_protection_rule",
@@ -2290,15 +2375,16 @@ pub enum PullRequestState {
   feature = "deployment_protection_rule",
   feature = "pull_request"
 ))]
-impl ToString for PullRequestState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestState::Open => "open".to_string(),
-      PullRequestState::Closed => "closed".to_string(),
+      PullRequestState::Open => write!(f, "open"),
+      PullRequestState::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewApprovedAction {
@@ -2307,14 +2393,15 @@ pub enum WebhookDeploymentReviewApprovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "deployment_review"))]
-impl ToString for WebhookDeploymentReviewApprovedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeploymentReviewApprovedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeploymentReviewApprovedAction::Approved => "approved".to_string(),
+      WebhookDeploymentReviewApprovedAction::Approved => write!(f, "approved"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewApprovedReviewersType {
@@ -2322,14 +2409,15 @@ pub enum WebhookDeploymentReviewApprovedReviewersType {
 }
 
 #[cfg(any(feature = "full", feature = "deployment_review"))]
-impl ToString for WebhookDeploymentReviewApprovedReviewersType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeploymentReviewApprovedReviewersType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeploymentReviewApprovedReviewersType::User => "User".to_string(),
+      WebhookDeploymentReviewApprovedReviewersType::User => write!(f, "User"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRejectedAction {
@@ -2338,14 +2426,15 @@ pub enum WebhookDeploymentReviewRejectedAction {
 }
 
 #[cfg(any(feature = "full", feature = "deployment_review"))]
-impl ToString for WebhookDeploymentReviewRejectedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeploymentReviewRejectedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeploymentReviewRejectedAction::Rejected => "rejected".to_string(),
+      WebhookDeploymentReviewRejectedAction::Rejected => write!(f, "rejected"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRejectedReviewersType {
@@ -2353,14 +2442,15 @@ pub enum WebhookDeploymentReviewRejectedReviewersType {
 }
 
 #[cfg(any(feature = "full", feature = "deployment_review"))]
-impl ToString for WebhookDeploymentReviewRejectedReviewersType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeploymentReviewRejectedReviewersType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeploymentReviewRejectedReviewersType::User => "User".to_string(),
+      WebhookDeploymentReviewRejectedReviewersType::User => write!(f, "User"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRequestedAction {
@@ -2369,14 +2459,15 @@ pub enum WebhookDeploymentReviewRequestedAction {
 }
 
 #[cfg(any(feature = "full", feature = "deployment_review"))]
-impl ToString for WebhookDeploymentReviewRequestedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeploymentReviewRequestedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeploymentReviewRequestedAction::Requested => "requested".to_string(),
+      WebhookDeploymentReviewRequestedAction::Requested => write!(f, "requested"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deployment_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentReviewRequestedReviewersType {
@@ -2385,15 +2476,16 @@ pub enum WebhookDeploymentReviewRequestedReviewersType {
 }
 
 #[cfg(any(feature = "full", feature = "deployment_review"))]
-impl ToString for WebhookDeploymentReviewRequestedReviewersType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeploymentReviewRequestedReviewersType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeploymentReviewRequestedReviewersType::User => "User".to_string(),
-      WebhookDeploymentReviewRequestedReviewersType::Team => "Team".to_string(),
+      WebhookDeploymentReviewRequestedReviewersType::User => write!(f, "User"),
+      WebhookDeploymentReviewRequestedReviewersType::Team => write!(f, "Team"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deployment_status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDeploymentStatusCreatedAction {
@@ -2402,14 +2494,15 @@ pub enum WebhookDeploymentStatusCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "deployment_status"))]
-impl ToString for WebhookDeploymentStatusCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeploymentStatusCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeploymentStatusCreatedAction::Created => "created".to_string(),
+      WebhookDeploymentStatusCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deployment_status"))]
 /// The result of the completed check run. This value will be `null` until the check run has completed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2433,23 +2526,24 @@ pub enum WebhookDeploymentStatusCreatedCheckRunConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "deployment_status"))]
-impl ToString for WebhookDeploymentStatusCreatedCheckRunConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeploymentStatusCreatedCheckRunConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeploymentStatusCreatedCheckRunConclusion::Success => "success".to_string(),
-      WebhookDeploymentStatusCreatedCheckRunConclusion::Failure => "failure".to_string(),
-      WebhookDeploymentStatusCreatedCheckRunConclusion::Neutral => "neutral".to_string(),
-      WebhookDeploymentStatusCreatedCheckRunConclusion::Cancelled => "cancelled".to_string(),
-      WebhookDeploymentStatusCreatedCheckRunConclusion::TimedOut => "timed_out".to_string(),
+      WebhookDeploymentStatusCreatedCheckRunConclusion::Success => write!(f, "success"),
+      WebhookDeploymentStatusCreatedCheckRunConclusion::Failure => write!(f, "failure"),
+      WebhookDeploymentStatusCreatedCheckRunConclusion::Neutral => write!(f, "neutral"),
+      WebhookDeploymentStatusCreatedCheckRunConclusion::Cancelled => write!(f, "cancelled"),
+      WebhookDeploymentStatusCreatedCheckRunConclusion::TimedOut => write!(f, "timed_out"),
       WebhookDeploymentStatusCreatedCheckRunConclusion::ActionRequired => {
-        "action_required".to_string()
+        write!(f, "action_required")
       }
-      WebhookDeploymentStatusCreatedCheckRunConclusion::Stale => "stale".to_string(),
-      WebhookDeploymentStatusCreatedCheckRunConclusion::Skipped => "skipped".to_string(),
+      WebhookDeploymentStatusCreatedCheckRunConclusion::Stale => write!(f, "stale"),
+      WebhookDeploymentStatusCreatedCheckRunConclusion::Skipped => write!(f, "skipped"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "deployment_status"))]
 /// The current status of the check run. Can be `queued`, `in_progress`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2467,18 +2561,19 @@ pub enum WebhookDeploymentStatusCreatedCheckRunStatus {
 }
 
 #[cfg(any(feature = "full", feature = "deployment_status"))]
-impl ToString for WebhookDeploymentStatusCreatedCheckRunStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDeploymentStatusCreatedCheckRunStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDeploymentStatusCreatedCheckRunStatus::Queued => "queued".to_string(),
-      WebhookDeploymentStatusCreatedCheckRunStatus::InProgress => "in_progress".to_string(),
-      WebhookDeploymentStatusCreatedCheckRunStatus::Completed => "completed".to_string(),
-      WebhookDeploymentStatusCreatedCheckRunStatus::Waiting => "waiting".to_string(),
-      WebhookDeploymentStatusCreatedCheckRunStatus::Pending => "pending".to_string(),
+      WebhookDeploymentStatusCreatedCheckRunStatus::Queued => write!(f, "queued"),
+      WebhookDeploymentStatusCreatedCheckRunStatus::InProgress => write!(f, "in_progress"),
+      WebhookDeploymentStatusCreatedCheckRunStatus::Completed => write!(f, "completed"),
+      WebhookDeploymentStatusCreatedCheckRunStatus::Waiting => write!(f, "waiting"),
+      WebhookDeploymentStatusCreatedCheckRunStatus::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionAnsweredAction {
@@ -2487,14 +2582,15 @@ pub enum WebhookDiscussionAnsweredAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionAnsweredAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionAnsweredAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionAnsweredAction::Answered => "answered".to_string(),
+      WebhookDiscussionAnsweredAction::Answered => write!(f, "answered"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2518,23 +2614,24 @@ pub enum WebhookDiscussionAnsweredAnswerAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionAnsweredAnswerAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionAnsweredAnswerAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionAnsweredAnswerAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      WebhookDiscussionAnsweredAnswerAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      WebhookDiscussionAnsweredAnswerAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
+      WebhookDiscussionAnsweredAnswerAuthorAssociation::Collaborator => write!(f, "COLLABORATOR"),
+      WebhookDiscussionAnsweredAnswerAuthorAssociation::Contributor => write!(f, "CONTRIBUTOR"),
+      WebhookDiscussionAnsweredAnswerAuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
       WebhookDiscussionAnsweredAnswerAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
-      WebhookDiscussionAnsweredAnswerAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      WebhookDiscussionAnsweredAnswerAuthorAssociation::Member => "MEMBER".to_string(),
-      WebhookDiscussionAnsweredAnswerAuthorAssociation::None => "NONE".to_string(),
-      WebhookDiscussionAnsweredAnswerAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookDiscussionAnsweredAnswerAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      WebhookDiscussionAnsweredAnswerAuthorAssociation::Member => write!(f, "MEMBER"),
+      WebhookDiscussionAnsweredAnswerAuthorAssociation::None => write!(f, "NONE"),
+      WebhookDiscussionAnsweredAnswerAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "discussion",
@@ -2566,21 +2663,22 @@ pub enum DiscussionAuthorAssociation {
   feature = "discussion",
   feature = "discussion_comment"
 ))]
-impl ToString for DiscussionAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DiscussionAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DiscussionAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      DiscussionAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      DiscussionAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      DiscussionAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
-      DiscussionAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      DiscussionAuthorAssociation::Member => "MEMBER".to_string(),
-      DiscussionAuthorAssociation::None => "NONE".to_string(),
-      DiscussionAuthorAssociation::Owner => "OWNER".to_string(),
+      DiscussionAuthorAssociation::Collaborator => write!(f, "COLLABORATOR"),
+      DiscussionAuthorAssociation::Contributor => write!(f, "CONTRIBUTOR"),
+      DiscussionAuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
+      DiscussionAuthorAssociation::FirstTimeContributor => write!(f, "FIRST_TIME_CONTRIBUTOR"),
+      DiscussionAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      DiscussionAuthorAssociation::Member => write!(f, "MEMBER"),
+      DiscussionAuthorAssociation::None => write!(f, "NONE"),
+      DiscussionAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "discussion",
@@ -2608,18 +2706,19 @@ pub enum DiscussionState {
   feature = "discussion",
   feature = "discussion_comment"
 ))]
-impl ToString for DiscussionState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DiscussionState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DiscussionState::Open => "open".to_string(),
-      DiscussionState::Closed => "closed".to_string(),
-      DiscussionState::Locked => "locked".to_string(),
-      DiscussionState::Converting => "converting".to_string(),
-      DiscussionState::Transferring => "transferring".to_string(),
+      DiscussionState::Open => write!(f, "open"),
+      DiscussionState::Closed => write!(f, "closed"),
+      DiscussionState::Locked => write!(f, "locked"),
+      DiscussionState::Converting => write!(f, "converting"),
+      DiscussionState::Transferring => write!(f, "transferring"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "discussion",
@@ -2643,17 +2742,18 @@ pub enum DiscussionStateReason {
   feature = "discussion",
   feature = "discussion_comment"
 ))]
-impl ToString for DiscussionStateReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DiscussionStateReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DiscussionStateReason::Resolved => "resolved".to_string(),
-      DiscussionStateReason::Outdated => "outdated".to_string(),
-      DiscussionStateReason::Duplicate => "duplicate".to_string(),
-      DiscussionStateReason::Reopened => "reopened".to_string(),
+      DiscussionStateReason::Resolved => write!(f, "resolved"),
+      DiscussionStateReason::Outdated => write!(f, "outdated"),
+      DiscussionStateReason::Duplicate => write!(f, "duplicate"),
+      DiscussionStateReason::Reopened => write!(f, "reopened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCategoryChangedAction {
@@ -2662,14 +2762,15 @@ pub enum WebhookDiscussionCategoryChangedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionCategoryChangedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionCategoryChangedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionCategoryChangedAction::CategoryChanged => "category_changed".to_string(),
+      WebhookDiscussionCategoryChangedAction::CategoryChanged => write!(f, "category_changed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionClosedAction {
@@ -2678,14 +2779,15 @@ pub enum WebhookDiscussionClosedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionClosedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionClosedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionClosedAction::Closed => "closed".to_string(),
+      WebhookDiscussionClosedAction::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentCreatedAction {
@@ -2694,14 +2796,15 @@ pub enum WebhookDiscussionCommentCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
-impl ToString for WebhookDiscussionCommentCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionCommentCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionCommentCreatedAction::Created => "created".to_string(),
+      WebhookDiscussionCommentCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2725,29 +2828,30 @@ pub enum WebhookDiscussionCommentCreatedCommentAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
-impl ToString for WebhookDiscussionCommentCreatedCommentAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionCommentCreatedCommentAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookDiscussionCommentCreatedCommentAuthorAssociation::Collaborator => {
-        "COLLABORATOR".to_string()
+        write!(f, "COLLABORATOR")
       }
       WebhookDiscussionCommentCreatedCommentAuthorAssociation::Contributor => {
-        "CONTRIBUTOR".to_string()
+        write!(f, "CONTRIBUTOR")
       }
       WebhookDiscussionCommentCreatedCommentAuthorAssociation::FirstTimer => {
-        "FIRST_TIMER".to_string()
+        write!(f, "FIRST_TIMER")
       }
       WebhookDiscussionCommentCreatedCommentAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
-      WebhookDiscussionCommentCreatedCommentAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      WebhookDiscussionCommentCreatedCommentAuthorAssociation::Member => "MEMBER".to_string(),
-      WebhookDiscussionCommentCreatedCommentAuthorAssociation::None => "NONE".to_string(),
-      WebhookDiscussionCommentCreatedCommentAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookDiscussionCommentCreatedCommentAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      WebhookDiscussionCommentCreatedCommentAuthorAssociation::Member => write!(f, "MEMBER"),
+      WebhookDiscussionCommentCreatedCommentAuthorAssociation::None => write!(f, "NONE"),
+      WebhookDiscussionCommentCreatedCommentAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentDeletedAction {
@@ -2756,14 +2860,15 @@ pub enum WebhookDiscussionCommentDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
-impl ToString for WebhookDiscussionCommentDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionCommentDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionCommentDeletedAction::Deleted => "deleted".to_string(),
+      WebhookDiscussionCommentDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2787,29 +2892,30 @@ pub enum WebhookDiscussionCommentDeletedCommentAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
-impl ToString for WebhookDiscussionCommentDeletedCommentAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionCommentDeletedCommentAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookDiscussionCommentDeletedCommentAuthorAssociation::Collaborator => {
-        "COLLABORATOR".to_string()
+        write!(f, "COLLABORATOR")
       }
       WebhookDiscussionCommentDeletedCommentAuthorAssociation::Contributor => {
-        "CONTRIBUTOR".to_string()
+        write!(f, "CONTRIBUTOR")
       }
       WebhookDiscussionCommentDeletedCommentAuthorAssociation::FirstTimer => {
-        "FIRST_TIMER".to_string()
+        write!(f, "FIRST_TIMER")
       }
       WebhookDiscussionCommentDeletedCommentAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
-      WebhookDiscussionCommentDeletedCommentAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      WebhookDiscussionCommentDeletedCommentAuthorAssociation::Member => "MEMBER".to_string(),
-      WebhookDiscussionCommentDeletedCommentAuthorAssociation::None => "NONE".to_string(),
-      WebhookDiscussionCommentDeletedCommentAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookDiscussionCommentDeletedCommentAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      WebhookDiscussionCommentDeletedCommentAuthorAssociation::Member => write!(f, "MEMBER"),
+      WebhookDiscussionCommentDeletedCommentAuthorAssociation::None => write!(f, "NONE"),
+      WebhookDiscussionCommentDeletedCommentAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCommentEditedAction {
@@ -2818,14 +2924,15 @@ pub enum WebhookDiscussionCommentEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
-impl ToString for WebhookDiscussionCommentEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionCommentEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionCommentEditedAction::Edited => "edited".to_string(),
+      WebhookDiscussionCommentEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2849,29 +2956,30 @@ pub enum WebhookDiscussionCommentEditedCommentAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "discussion_comment"))]
-impl ToString for WebhookDiscussionCommentEditedCommentAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionCommentEditedCommentAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookDiscussionCommentEditedCommentAuthorAssociation::Collaborator => {
-        "COLLABORATOR".to_string()
+        write!(f, "COLLABORATOR")
       }
       WebhookDiscussionCommentEditedCommentAuthorAssociation::Contributor => {
-        "CONTRIBUTOR".to_string()
+        write!(f, "CONTRIBUTOR")
       }
       WebhookDiscussionCommentEditedCommentAuthorAssociation::FirstTimer => {
-        "FIRST_TIMER".to_string()
+        write!(f, "FIRST_TIMER")
       }
       WebhookDiscussionCommentEditedCommentAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
-      WebhookDiscussionCommentEditedCommentAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      WebhookDiscussionCommentEditedCommentAuthorAssociation::Member => "MEMBER".to_string(),
-      WebhookDiscussionCommentEditedCommentAuthorAssociation::None => "NONE".to_string(),
-      WebhookDiscussionCommentEditedCommentAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookDiscussionCommentEditedCommentAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      WebhookDiscussionCommentEditedCommentAuthorAssociation::Member => write!(f, "MEMBER"),
+      WebhookDiscussionCommentEditedCommentAuthorAssociation::None => write!(f, "NONE"),
+      WebhookDiscussionCommentEditedCommentAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCreatedAction {
@@ -2880,20 +2988,22 @@ pub enum WebhookDiscussionCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionCreatedAction::Created => "created".to_string(),
+      WebhookDiscussionCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum WebhookDiscussionCreatedDiscussionItem2Locked {
   Boolean(bool),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionCreatedDiscussionItem2State {
@@ -2906,16 +3016,17 @@ pub enum WebhookDiscussionCreatedDiscussionItem2State {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionCreatedDiscussionItem2State {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionCreatedDiscussionItem2State {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionCreatedDiscussionItem2State::Open => "open".to_string(),
-      WebhookDiscussionCreatedDiscussionItem2State::Converting => "converting".to_string(),
-      WebhookDiscussionCreatedDiscussionItem2State::Transferring => "transferring".to_string(),
+      WebhookDiscussionCreatedDiscussionItem2State::Open => write!(f, "open"),
+      WebhookDiscussionCreatedDiscussionItem2State::Converting => write!(f, "converting"),
+      WebhookDiscussionCreatedDiscussionItem2State::Transferring => write!(f, "transferring"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -2925,6 +3036,7 @@ pub enum WebhookDiscussionCreatedDiscussion {
   WebhookDiscussionCreatedDiscussionItem2(WebhookDiscussionCreatedDiscussionItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionDeletedAction {
@@ -2933,14 +3045,15 @@ pub enum WebhookDiscussionDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionDeletedAction::Deleted => "deleted".to_string(),
+      WebhookDiscussionDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionEditedAction {
@@ -2949,14 +3062,15 @@ pub enum WebhookDiscussionEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionEditedAction::Edited => "edited".to_string(),
+      WebhookDiscussionEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionLabeledAction {
@@ -2965,14 +3079,15 @@ pub enum WebhookDiscussionLabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionLabeledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionLabeledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionLabeledAction::Labeled => "labeled".to_string(),
+      WebhookDiscussionLabeledAction::Labeled => write!(f, "labeled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionLockedAction {
@@ -2981,14 +3096,15 @@ pub enum WebhookDiscussionLockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionLockedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionLockedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionLockedAction::Locked => "locked".to_string(),
+      WebhookDiscussionLockedAction::Locked => write!(f, "locked"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionPinnedAction {
@@ -2997,14 +3113,15 @@ pub enum WebhookDiscussionPinnedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionPinnedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionPinnedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionPinnedAction::Pinned => "pinned".to_string(),
+      WebhookDiscussionPinnedAction::Pinned => write!(f, "pinned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionReopenedAction {
@@ -3013,14 +3130,15 @@ pub enum WebhookDiscussionReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionReopenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionReopenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionReopenedAction::Reopened => "reopened".to_string(),
+      WebhookDiscussionReopenedAction::Reopened => write!(f, "reopened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionTransferredAction {
@@ -3029,14 +3147,15 @@ pub enum WebhookDiscussionTransferredAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionTransferredAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionTransferredAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionTransferredAction::Transferred => "transferred".to_string(),
+      WebhookDiscussionTransferredAction::Transferred => write!(f, "transferred"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnansweredAction {
@@ -3045,14 +3164,15 @@ pub enum WebhookDiscussionUnansweredAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionUnansweredAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionUnansweredAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionUnansweredAction::Unanswered => "unanswered".to_string(),
+      WebhookDiscussionUnansweredAction::Unanswered => write!(f, "unanswered"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3076,29 +3196,28 @@ pub enum WebhookDiscussionUnansweredOldAnswerAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionUnansweredOldAnswerAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionUnansweredOldAnswerAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookDiscussionUnansweredOldAnswerAuthorAssociation::Collaborator => {
-        "COLLABORATOR".to_string()
+        write!(f, "COLLABORATOR")
       }
       WebhookDiscussionUnansweredOldAnswerAuthorAssociation::Contributor => {
-        "CONTRIBUTOR".to_string()
+        write!(f, "CONTRIBUTOR")
       }
-      WebhookDiscussionUnansweredOldAnswerAuthorAssociation::FirstTimer => {
-        "FIRST_TIMER".to_string()
-      }
+      WebhookDiscussionUnansweredOldAnswerAuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
       WebhookDiscussionUnansweredOldAnswerAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
-      WebhookDiscussionUnansweredOldAnswerAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      WebhookDiscussionUnansweredOldAnswerAuthorAssociation::Member => "MEMBER".to_string(),
-      WebhookDiscussionUnansweredOldAnswerAuthorAssociation::None => "NONE".to_string(),
-      WebhookDiscussionUnansweredOldAnswerAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookDiscussionUnansweredOldAnswerAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      WebhookDiscussionUnansweredOldAnswerAuthorAssociation::Member => write!(f, "MEMBER"),
+      WebhookDiscussionUnansweredOldAnswerAuthorAssociation::None => write!(f, "NONE"),
+      WebhookDiscussionUnansweredOldAnswerAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnlabeledAction {
@@ -3107,14 +3226,15 @@ pub enum WebhookDiscussionUnlabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionUnlabeledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionUnlabeledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionUnlabeledAction::Unlabeled => "unlabeled".to_string(),
+      WebhookDiscussionUnlabeledAction::Unlabeled => write!(f, "unlabeled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnlockedAction {
@@ -3123,14 +3243,15 @@ pub enum WebhookDiscussionUnlockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionUnlockedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionUnlockedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionUnlockedAction::Unlocked => "unlocked".to_string(),
+      WebhookDiscussionUnlockedAction::Unlocked => write!(f, "unlocked"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "discussion"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookDiscussionUnpinnedAction {
@@ -3139,14 +3260,15 @@ pub enum WebhookDiscussionUnpinnedAction {
 }
 
 #[cfg(any(feature = "full", feature = "discussion"))]
-impl ToString for WebhookDiscussionUnpinnedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookDiscussionUnpinnedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookDiscussionUnpinnedAction::Unpinned => "unpinned".to_string(),
+      WebhookDiscussionUnpinnedAction::Unpinned => write!(f, "unpinned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "fork",
@@ -3181,22 +3303,24 @@ pub enum RepositoryVisibility {
   feature = "security_and_analysis",
   feature = "team"
 ))]
-impl ToString for RepositoryVisibility {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryVisibility {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryVisibility::Public => "public".to_string(),
-      RepositoryVisibility::Private => "private".to_string(),
-      RepositoryVisibility::Internal => "internal".to_string(),
+      RepositoryVisibility::Public => write!(f, "public"),
+      RepositoryVisibility::Private => write!(f, "private"),
+      RepositoryVisibility::Internal => write!(f, "internal"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "fork"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum WebhookForkForkeeItem2Fork {
   Boolean(bool),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "fork"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3206,6 +3330,7 @@ pub enum WebhookForkForkee {
   WebhookForkForkeeItem2(WebhookForkForkeeItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "github_app_authorization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookGithubAppAuthorizationRevokedAction {
@@ -3214,14 +3339,15 @@ pub enum WebhookGithubAppAuthorizationRevokedAction {
 }
 
 #[cfg(any(feature = "full", feature = "github_app_authorization"))]
-impl ToString for WebhookGithubAppAuthorizationRevokedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookGithubAppAuthorizationRevokedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookGithubAppAuthorizationRevokedAction::Revoked => "revoked".to_string(),
+      WebhookGithubAppAuthorizationRevokedAction::Revoked => write!(f, "revoked"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "gollum"))]
 /// The action that was performed on the page. Can be `created` or `edited`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3233,15 +3359,16 @@ pub enum WebhookGollumPagesAction {
 }
 
 #[cfg(any(feature = "full", feature = "gollum"))]
-impl ToString for WebhookGollumPagesAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookGollumPagesAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookGollumPagesAction::Created => "created".to_string(),
-      WebhookGollumPagesAction::Edited => "edited".to_string(),
+      WebhookGollumPagesAction::Created => write!(f, "created"),
+      WebhookGollumPagesAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationCreatedAction {
@@ -3250,14 +3377,15 @@ pub enum WebhookInstallationCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "installation"))]
-impl ToString for WebhookInstallationCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookInstallationCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookInstallationCreatedAction::Created => "created".to_string(),
+      WebhookInstallationCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "installation",
@@ -3272,6 +3400,7 @@ pub enum InstallationAccount {
   Enterprise(Enterprise),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationDeletedAction {
@@ -3280,14 +3409,15 @@ pub enum WebhookInstallationDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "installation"))]
-impl ToString for WebhookInstallationDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookInstallationDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookInstallationDeletedAction::Deleted => "deleted".to_string(),
+      WebhookInstallationDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationNewPermissionsAcceptedAction {
@@ -3296,16 +3426,17 @@ pub enum WebhookInstallationNewPermissionsAcceptedAction {
 }
 
 #[cfg(any(feature = "full", feature = "installation"))]
-impl ToString for WebhookInstallationNewPermissionsAcceptedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookInstallationNewPermissionsAcceptedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookInstallationNewPermissionsAcceptedAction::NewPermissionsAccepted => {
-        "new_permissions_accepted".to_string()
+        write!(f, "new_permissions_accepted")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "installation_repositories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationRepositoriesAddedAction {
@@ -3314,14 +3445,15 @@ pub enum WebhookInstallationRepositoriesAddedAction {
 }
 
 #[cfg(any(feature = "full", feature = "installation_repositories"))]
-impl ToString for WebhookInstallationRepositoriesAddedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookInstallationRepositoriesAddedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookInstallationRepositoriesAddedAction::Added => "added".to_string(),
+      WebhookInstallationRepositoriesAddedAction::Added => write!(f, "added"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "installation_repositories"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationRepositoriesRemovedAction {
@@ -3330,14 +3462,15 @@ pub enum WebhookInstallationRepositoriesRemovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "installation_repositories"))]
-impl ToString for WebhookInstallationRepositoriesRemovedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookInstallationRepositoriesRemovedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookInstallationRepositoriesRemovedAction::Removed => "removed".to_string(),
+      WebhookInstallationRepositoriesRemovedAction::Removed => write!(f, "removed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationSuspendAction {
@@ -3346,14 +3479,15 @@ pub enum WebhookInstallationSuspendAction {
 }
 
 #[cfg(any(feature = "full", feature = "installation"))]
-impl ToString for WebhookInstallationSuspendAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookInstallationSuspendAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookInstallationSuspendAction::Suspend => "suspend".to_string(),
+      WebhookInstallationSuspendAction::Suspend => write!(f, "suspend"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "installation_target"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationTargetRenamedAction {
@@ -3362,14 +3496,15 @@ pub enum WebhookInstallationTargetRenamedAction {
 }
 
 #[cfg(any(feature = "full", feature = "installation_target"))]
-impl ToString for WebhookInstallationTargetRenamedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookInstallationTargetRenamedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookInstallationTargetRenamedAction::Renamed => "renamed".to_string(),
+      WebhookInstallationTargetRenamedAction::Renamed => write!(f, "renamed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "installation"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookInstallationUnsuspendAction {
@@ -3378,14 +3513,15 @@ pub enum WebhookInstallationUnsuspendAction {
 }
 
 #[cfg(any(feature = "full", feature = "installation"))]
-impl ToString for WebhookInstallationUnsuspendAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookInstallationUnsuspendAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookInstallationUnsuspendAction::Unsuspend => "unsuspend".to_string(),
+      WebhookInstallationUnsuspendAction::Unsuspend => write!(f, "unsuspend"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentCreatedAction {
@@ -3394,14 +3530,15 @@ pub enum WebhookIssueCommentCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issue_comment"))]
-impl ToString for WebhookIssueCommentCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssueCommentCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssueCommentCreatedAction::Created => "created".to_string(),
+      WebhookIssueCommentCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3425,21 +3562,22 @@ pub enum IssueCommentAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "issue_comment"))]
-impl ToString for IssueCommentAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for IssueCommentAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      IssueCommentAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      IssueCommentAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      IssueCommentAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      IssueCommentAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
-      IssueCommentAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      IssueCommentAuthorAssociation::Member => "MEMBER".to_string(),
-      IssueCommentAuthorAssociation::None => "NONE".to_string(),
-      IssueCommentAuthorAssociation::Owner => "OWNER".to_string(),
+      IssueCommentAuthorAssociation::Collaborator => write!(f, "COLLABORATOR"),
+      IssueCommentAuthorAssociation::Contributor => write!(f, "CONTRIBUTOR"),
+      IssueCommentAuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
+      IssueCommentAuthorAssociation::FirstTimeContributor => write!(f, "FIRST_TIME_CONTRIBUTOR"),
+      IssueCommentAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      IssueCommentAuthorAssociation::Member => write!(f, "MEMBER"),
+      IssueCommentAuthorAssociation::None => write!(f, "NONE"),
+      IssueCommentAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum IssueActiveLockReason {
@@ -3454,17 +3592,18 @@ pub enum IssueActiveLockReason {
 }
 
 #[cfg(any(feature = "full", feature = "issue_comment", feature = "issues"))]
-impl ToString for IssueActiveLockReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for IssueActiveLockReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      IssueActiveLockReason::Resolved => "resolved".to_string(),
-      IssueActiveLockReason::OffTopic => "off-topic".to_string(),
-      IssueActiveLockReason::TooHeated => "too heated".to_string(),
-      IssueActiveLockReason::Spam => "spam".to_string(),
+      IssueActiveLockReason::Resolved => write!(f, "resolved"),
+      IssueActiveLockReason::OffTopic => write!(f, "off-topic"),
+      IssueActiveLockReason::TooHeated => write!(f, "too heated"),
+      IssueActiveLockReason::Spam => write!(f, "spam"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment", feature = "issues"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3488,21 +3627,22 @@ pub enum IssueAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "issue_comment", feature = "issues"))]
-impl ToString for IssueAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for IssueAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      IssueAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      IssueAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      IssueAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      IssueAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
-      IssueAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      IssueAuthorAssociation::Member => "MEMBER".to_string(),
-      IssueAuthorAssociation::None => "NONE".to_string(),
-      IssueAuthorAssociation::Owner => "OWNER".to_string(),
+      IssueAuthorAssociation::Collaborator => write!(f, "COLLABORATOR"),
+      IssueAuthorAssociation::Contributor => write!(f, "CONTRIBUTOR"),
+      IssueAuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
+      IssueAuthorAssociation::FirstTimeContributor => write!(f, "FIRST_TIME_CONTRIBUTOR"),
+      IssueAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      IssueAuthorAssociation::Member => write!(f, "MEMBER"),
+      IssueAuthorAssociation::None => write!(f, "NONE"),
+      IssueAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment", feature = "issues"))]
 /// State of the issue; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3514,15 +3654,16 @@ pub enum IssueState {
 }
 
 #[cfg(any(feature = "full", feature = "issue_comment", feature = "issues"))]
-impl ToString for IssueState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for IssueState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      IssueState::Open => "open".to_string(),
-      IssueState::Closed => "closed".to_string(),
+      IssueState::Open => write!(f, "open"),
+      IssueState::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment"))]
 /// State of the issue; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3534,15 +3675,16 @@ pub enum WebhookIssueCommentCreatedIssueItem2State {
 }
 
 #[cfg(any(feature = "full", feature = "issue_comment"))]
-impl ToString for WebhookIssueCommentCreatedIssueItem2State {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssueCommentCreatedIssueItem2State {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssueCommentCreatedIssueItem2State::Open => "open".to_string(),
-      WebhookIssueCommentCreatedIssueItem2State::Closed => "closed".to_string(),
+      WebhookIssueCommentCreatedIssueItem2State::Open => write!(f, "open"),
+      WebhookIssueCommentCreatedIssueItem2State::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3552,6 +3694,7 @@ pub enum WebhookIssueCommentCreatedIssue {
   WebhookIssueCommentCreatedIssueItem2(WebhookIssueCommentCreatedIssueItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentDeletedAction {
@@ -3560,14 +3703,15 @@ pub enum WebhookIssueCommentDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issue_comment"))]
-impl ToString for WebhookIssueCommentDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssueCommentDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssueCommentDeletedAction::Deleted => "deleted".to_string(),
+      WebhookIssueCommentDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment"))]
 /// State of the issue; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3579,15 +3723,16 @@ pub enum WebhookIssueCommentDeletedIssueItem2State {
 }
 
 #[cfg(any(feature = "full", feature = "issue_comment"))]
-impl ToString for WebhookIssueCommentDeletedIssueItem2State {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssueCommentDeletedIssueItem2State {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssueCommentDeletedIssueItem2State::Open => "open".to_string(),
-      WebhookIssueCommentDeletedIssueItem2State::Closed => "closed".to_string(),
+      WebhookIssueCommentDeletedIssueItem2State::Open => write!(f, "open"),
+      WebhookIssueCommentDeletedIssueItem2State::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3597,6 +3742,7 @@ pub enum WebhookIssueCommentDeletedIssue {
   WebhookIssueCommentDeletedIssueItem2(WebhookIssueCommentDeletedIssueItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssueCommentEditedAction {
@@ -3605,14 +3751,15 @@ pub enum WebhookIssueCommentEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issue_comment"))]
-impl ToString for WebhookIssueCommentEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssueCommentEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssueCommentEditedAction::Edited => "edited".to_string(),
+      WebhookIssueCommentEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment"))]
 /// State of the issue; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3624,15 +3771,16 @@ pub enum WebhookIssueCommentEditedIssueItem2State {
 }
 
 #[cfg(any(feature = "full", feature = "issue_comment"))]
-impl ToString for WebhookIssueCommentEditedIssueItem2State {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssueCommentEditedIssueItem2State {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssueCommentEditedIssueItem2State::Open => "open".to_string(),
-      WebhookIssueCommentEditedIssueItem2State::Closed => "closed".to_string(),
+      WebhookIssueCommentEditedIssueItem2State::Open => write!(f, "open"),
+      WebhookIssueCommentEditedIssueItem2State::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issue_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3642,6 +3790,7 @@ pub enum WebhookIssueCommentEditedIssue {
   WebhookIssueCommentEditedIssueItem2(WebhookIssueCommentEditedIssueItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 /// The action that was performed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3651,14 +3800,15 @@ pub enum WebhookIssuesAssignedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesAssignedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesAssignedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesAssignedAction::Assigned => "assigned".to_string(),
+      WebhookIssuesAssignedAction::Assigned => write!(f, "assigned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 /// The action that was performed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3668,14 +3818,15 @@ pub enum WebhookIssuesClosedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesClosedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesClosedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesClosedAction::Closed => "closed".to_string(),
+      WebhookIssuesClosedAction::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesClosedIssueItem2State {
@@ -3686,15 +3837,16 @@ pub enum WebhookIssuesClosedIssueItem2State {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesClosedIssueItem2State {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesClosedIssueItem2State {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesClosedIssueItem2State::Closed => "closed".to_string(),
-      WebhookIssuesClosedIssueItem2State::Open => "open".to_string(),
+      WebhookIssuesClosedIssueItem2State::Closed => write!(f, "closed"),
+      WebhookIssuesClosedIssueItem2State::Open => write!(f, "open"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3704,6 +3856,7 @@ pub enum WebhookIssuesClosedIssue {
   WebhookIssuesClosedIssueItem2(WebhookIssuesClosedIssueItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesDeletedAction {
@@ -3712,14 +3865,15 @@ pub enum WebhookIssuesDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesDeletedAction::Deleted => "deleted".to_string(),
+      WebhookIssuesDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesDemilestonedAction {
@@ -3728,14 +3882,15 @@ pub enum WebhookIssuesDemilestonedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesDemilestonedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesDemilestonedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesDemilestonedAction::Demilestoned => "demilestoned".to_string(),
+      WebhookIssuesDemilestonedAction::Demilestoned => write!(f, "demilestoned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3745,6 +3900,7 @@ pub enum WebhookIssuesDemilestonedIssue {
   WebhookIssuesDemilestonedIssueItem2(WebhookIssuesDemilestonedIssueItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesEditedAction {
@@ -3753,14 +3909,15 @@ pub enum WebhookIssuesEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesEditedAction::Edited => "edited".to_string(),
+      WebhookIssuesEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesLabeledAction {
@@ -3769,14 +3926,15 @@ pub enum WebhookIssuesLabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesLabeledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesLabeledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesLabeledAction::Labeled => "labeled".to_string(),
+      WebhookIssuesLabeledAction::Labeled => write!(f, "labeled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesLockedAction {
@@ -3785,14 +3943,15 @@ pub enum WebhookIssuesLockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesLockedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesLockedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesLockedAction::Locked => "locked".to_string(),
+      WebhookIssuesLockedAction::Locked => write!(f, "locked"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesLockedIssueItem2ActiveLockReason {
@@ -3807,23 +3966,25 @@ pub enum WebhookIssuesLockedIssueItem2ActiveLockReason {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesLockedIssueItem2ActiveLockReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesLockedIssueItem2ActiveLockReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesLockedIssueItem2ActiveLockReason::Resolved => "resolved".to_string(),
-      WebhookIssuesLockedIssueItem2ActiveLockReason::OffTopic => "off-topic".to_string(),
-      WebhookIssuesLockedIssueItem2ActiveLockReason::TooHeated => "too heated".to_string(),
-      WebhookIssuesLockedIssueItem2ActiveLockReason::Spam => "spam".to_string(),
+      WebhookIssuesLockedIssueItem2ActiveLockReason::Resolved => write!(f, "resolved"),
+      WebhookIssuesLockedIssueItem2ActiveLockReason::OffTopic => write!(f, "off-topic"),
+      WebhookIssuesLockedIssueItem2ActiveLockReason::TooHeated => write!(f, "too heated"),
+      WebhookIssuesLockedIssueItem2ActiveLockReason::Spam => write!(f, "spam"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum WebhookIssuesLockedIssueItem2Locked {
   Boolean(bool),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3833,6 +3994,7 @@ pub enum WebhookIssuesLockedIssue {
   WebhookIssuesLockedIssueItem2(WebhookIssuesLockedIssueItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesMilestonedAction {
@@ -3841,14 +4003,15 @@ pub enum WebhookIssuesMilestonedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesMilestonedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesMilestonedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesMilestonedAction::Milestoned => "milestoned".to_string(),
+      WebhookIssuesMilestonedAction::Milestoned => write!(f, "milestoned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3858,6 +4021,7 @@ pub enum WebhookIssuesMilestonedIssue {
   WebhookIssuesMilestonedIssueItem2(WebhookIssuesMilestonedIssueItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesOpenedAction {
@@ -3866,14 +4030,15 @@ pub enum WebhookIssuesOpenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesOpenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesOpenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesOpenedAction::Opened => "opened".to_string(),
+      WebhookIssuesOpenedAction::Opened => write!(f, "opened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesPinnedAction {
@@ -3882,14 +4047,15 @@ pub enum WebhookIssuesPinnedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesPinnedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesPinnedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesPinnedAction::Pinned => "pinned".to_string(),
+      WebhookIssuesPinnedAction::Pinned => write!(f, "pinned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesReopenedAction {
@@ -3898,14 +4064,15 @@ pub enum WebhookIssuesReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesReopenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesReopenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesReopenedAction::Reopened => "reopened".to_string(),
+      WebhookIssuesReopenedAction::Reopened => write!(f, "reopened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesReopenedIssueItem2State {
@@ -3916,15 +4083,16 @@ pub enum WebhookIssuesReopenedIssueItem2State {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesReopenedIssueItem2State {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesReopenedIssueItem2State {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesReopenedIssueItem2State::Open => "open".to_string(),
-      WebhookIssuesReopenedIssueItem2State::Closed => "closed".to_string(),
+      WebhookIssuesReopenedIssueItem2State::Open => write!(f, "open"),
+      WebhookIssuesReopenedIssueItem2State::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3934,6 +4102,7 @@ pub enum WebhookIssuesReopenedIssue {
   WebhookIssuesReopenedIssueItem2(WebhookIssuesReopenedIssueItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesTransferredAction {
@@ -3942,14 +4111,15 @@ pub enum WebhookIssuesTransferredAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesTransferredAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesTransferredAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesTransferredAction::Transferred => "transferred".to_string(),
+      WebhookIssuesTransferredAction::Transferred => write!(f, "transferred"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 /// The action that was performed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3959,14 +4129,15 @@ pub enum WebhookIssuesUnassignedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesUnassignedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesUnassignedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesUnassignedAction::Unassigned => "unassigned".to_string(),
+      WebhookIssuesUnassignedAction::Unassigned => write!(f, "unassigned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesUnlabeledAction {
@@ -3975,14 +4146,15 @@ pub enum WebhookIssuesUnlabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesUnlabeledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesUnlabeledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesUnlabeledAction::Unlabeled => "unlabeled".to_string(),
+      WebhookIssuesUnlabeledAction::Unlabeled => write!(f, "unlabeled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesUnlockedAction {
@@ -3991,20 +4163,22 @@ pub enum WebhookIssuesUnlockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesUnlockedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesUnlockedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesUnlockedAction::Unlocked => "unlocked".to_string(),
+      WebhookIssuesUnlockedAction::Unlocked => write!(f, "unlocked"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum WebhookIssuesUnlockedIssueItem2Locked {
   Boolean(bool),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -4014,6 +4188,7 @@ pub enum WebhookIssuesUnlockedIssue {
   WebhookIssuesUnlockedIssueItem2(WebhookIssuesUnlockedIssueItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookIssuesUnpinnedAction {
@@ -4022,14 +4197,15 @@ pub enum WebhookIssuesUnpinnedAction {
 }
 
 #[cfg(any(feature = "full", feature = "issues"))]
-impl ToString for WebhookIssuesUnpinnedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookIssuesUnpinnedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookIssuesUnpinnedAction::Unpinned => "unpinned".to_string(),
+      WebhookIssuesUnpinnedAction::Unpinned => write!(f, "unpinned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookLabelCreatedAction {
@@ -4038,14 +4214,15 @@ pub enum WebhookLabelCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "label"))]
-impl ToString for WebhookLabelCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookLabelCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookLabelCreatedAction::Created => "created".to_string(),
+      WebhookLabelCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookLabelDeletedAction {
@@ -4054,14 +4231,15 @@ pub enum WebhookLabelDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "label"))]
-impl ToString for WebhookLabelDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookLabelDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookLabelDeletedAction::Deleted => "deleted".to_string(),
+      WebhookLabelDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "label"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookLabelEditedAction {
@@ -4070,14 +4248,15 @@ pub enum WebhookLabelEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "label"))]
-impl ToString for WebhookLabelEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookLabelEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookLabelEditedAction::Edited => "edited".to_string(),
+      WebhookLabelEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseCancelledAction {
@@ -4086,14 +4265,15 @@ pub enum WebhookMarketplacePurchaseCancelledAction {
 }
 
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
-impl ToString for WebhookMarketplacePurchaseCancelledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMarketplacePurchaseCancelledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMarketplacePurchaseCancelledAction::Cancelled => "cancelled".to_string(),
+      WebhookMarketplacePurchaseCancelledAction::Cancelled => write!(f, "cancelled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MarketplacePurchasePlanPriceModel {
@@ -4106,16 +4286,17 @@ pub enum MarketplacePurchasePlanPriceModel {
 }
 
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
-impl ToString for MarketplacePurchasePlanPriceModel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for MarketplacePurchasePlanPriceModel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      MarketplacePurchasePlanPriceModel::Free => "FREE".to_string(),
-      MarketplacePurchasePlanPriceModel::FlatRate => "FLAT_RATE".to_string(),
-      MarketplacePurchasePlanPriceModel::PerUnit => "PER_UNIT".to_string(),
+      MarketplacePurchasePlanPriceModel::Free => write!(f, "FREE"),
+      MarketplacePurchasePlanPriceModel::FlatRate => write!(f, "FLAT_RATE"),
+      MarketplacePurchasePlanPriceModel::PerUnit => write!(f, "PER_UNIT"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel {
@@ -4128,22 +4309,25 @@ pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceMod
 }
 
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
-impl ToString for WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display
+  for WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel
+{
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel::Free => {
-        "FREE".to_string()
+        write!(f, "FREE")
       }
       WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel::FlatRate => {
-        "FLAT_RATE".to_string()
+        write!(f, "FLAT_RATE")
       }
       WebhookMarketplacePurchaseCancelledMarketplacePurchaseItem2PlanPriceModel::PerUnit => {
-        "PER_UNIT".to_string()
+        write!(f, "PER_UNIT")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -4154,6 +4338,7 @@ pub enum WebhookMarketplacePurchaseCancelledMarketplacePurchase {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseChangedAction {
@@ -4162,14 +4347,15 @@ pub enum WebhookMarketplacePurchaseChangedAction {
 }
 
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
-impl ToString for WebhookMarketplacePurchaseChangedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMarketplacePurchaseChangedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMarketplacePurchaseChangedAction::Changed => "changed".to_string(),
+      WebhookMarketplacePurchaseChangedAction::Changed => write!(f, "changed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel {
@@ -4182,22 +4368,23 @@ pub enum WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel
 }
 
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
-impl ToString for WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel::Free => {
-        "FREE".to_string()
+        write!(f, "FREE")
       }
       WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel::FlatRate => {
-        "FLAT_RATE".to_string()
+        write!(f, "FLAT_RATE")
       }
       WebhookMarketplacePurchaseChangedMarketplacePurchaseItem2PlanPriceModel::PerUnit => {
-        "PER_UNIT".to_string()
+        write!(f, "PER_UNIT")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -4208,6 +4395,7 @@ pub enum WebhookMarketplacePurchaseChangedMarketplacePurchase {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePendingChangeAction {
@@ -4216,14 +4404,15 @@ pub enum WebhookMarketplacePurchasePendingChangeAction {
 }
 
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
-impl ToString for WebhookMarketplacePurchasePendingChangeAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMarketplacePurchasePendingChangeAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMarketplacePurchasePendingChangeAction::PendingChange => "pending_change".to_string(),
+      WebhookMarketplacePurchasePendingChangeAction::PendingChange => write!(f, "pending_change"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel {
@@ -4236,22 +4425,25 @@ pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPric
 }
 
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
-impl ToString for WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display
+  for WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel
+{
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel::Free => {
-        "FREE".to_string()
+        write!(f, "FREE")
       }
       WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel::FlatRate => {
-        "FLAT_RATE".to_string()
+        write!(f, "FLAT_RATE")
       }
       WebhookMarketplacePurchasePendingChangeMarketplacePurchaseItem2PlanPriceModel::PerUnit => {
-        "PER_UNIT".to_string()
+        write!(f, "PER_UNIT")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -4262,6 +4454,7 @@ pub enum WebhookMarketplacePurchasePendingChangeMarketplacePurchase {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePendingChangeCancelledAction {
@@ -4270,16 +4463,17 @@ pub enum WebhookMarketplacePurchasePendingChangeCancelledAction {
 }
 
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
-impl ToString for WebhookMarketplacePurchasePendingChangeCancelledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMarketplacePurchasePendingChangeCancelledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookMarketplacePurchasePendingChangeCancelledAction::PendingChangeCancelled => {
-        "pending_change_cancelled".to_string()
+        write!(f, "pending_change_cancelled")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -4290,6 +4484,7 @@ pub enum WebhookMarketplacePurchasePendingChangeCancelledMarketplacePurchase {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePurchasedAction {
@@ -4298,14 +4493,15 @@ pub enum WebhookMarketplacePurchasePurchasedAction {
 }
 
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
-impl ToString for WebhookMarketplacePurchasePurchasedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMarketplacePurchasePurchasedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMarketplacePurchasePurchasedAction::Purchased => "purchased".to_string(),
+      WebhookMarketplacePurchasePurchasedAction::Purchased => write!(f, "purchased"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel {
@@ -4318,22 +4514,25 @@ pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceMod
 }
 
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
-impl ToString for WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display
+  for WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel
+{
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel::Free => {
-        "FREE".to_string()
+        write!(f, "FREE")
       }
       WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel::FlatRate => {
-        "FLAT_RATE".to_string()
+        write!(f, "FLAT_RATE")
       }
       WebhookMarketplacePurchasePurchasedMarketplacePurchaseItem2PlanPriceModel::PerUnit => {
-        "PER_UNIT".to_string()
+        write!(f, "PER_UNIT")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "marketplace_purchase"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -4344,6 +4543,7 @@ pub enum WebhookMarketplacePurchasePurchasedMarketplacePurchase {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberAddedAction {
@@ -4352,14 +4552,15 @@ pub enum WebhookMemberAddedAction {
 }
 
 #[cfg(any(feature = "full", feature = "member"))]
-impl ToString for WebhookMemberAddedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMemberAddedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMemberAddedAction::Added => "added".to_string(),
+      WebhookMemberAddedAction::Added => write!(f, "added"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberAddedChangesPermissionTo {
@@ -4372,16 +4573,17 @@ pub enum WebhookMemberAddedChangesPermissionTo {
 }
 
 #[cfg(any(feature = "full", feature = "member"))]
-impl ToString for WebhookMemberAddedChangesPermissionTo {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMemberAddedChangesPermissionTo {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMemberAddedChangesPermissionTo::Write => "write".to_string(),
-      WebhookMemberAddedChangesPermissionTo::Admin => "admin".to_string(),
-      WebhookMemberAddedChangesPermissionTo::Read => "read".to_string(),
+      WebhookMemberAddedChangesPermissionTo::Write => write!(f, "write"),
+      WebhookMemberAddedChangesPermissionTo::Admin => write!(f, "admin"),
+      WebhookMemberAddedChangesPermissionTo::Read => write!(f, "read"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberEditedAction {
@@ -4390,14 +4592,15 @@ pub enum WebhookMemberEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "member"))]
-impl ToString for WebhookMemberEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMemberEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMemberEditedAction::Edited => "edited".to_string(),
+      WebhookMemberEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "member"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMemberRemovedAction {
@@ -4406,14 +4609,15 @@ pub enum WebhookMemberRemovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "member"))]
-impl ToString for WebhookMemberRemovedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMemberRemovedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMemberRemovedAction::Removed => "removed".to_string(),
+      WebhookMemberRemovedAction::Removed => write!(f, "removed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "membership"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMembershipAddedAction {
@@ -4422,14 +4626,15 @@ pub enum WebhookMembershipAddedAction {
 }
 
 #[cfg(any(feature = "full", feature = "membership"))]
-impl ToString for WebhookMembershipAddedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMembershipAddedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMembershipAddedAction::Added => "added".to_string(),
+      WebhookMembershipAddedAction::Added => write!(f, "added"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "membership"))]
 /// The scope of the membership. Currently, can only be `team`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -4439,14 +4644,15 @@ pub enum WebhookMembershipAddedScope {
 }
 
 #[cfg(any(feature = "full", feature = "membership"))]
-impl ToString for WebhookMembershipAddedScope {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMembershipAddedScope {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMembershipAddedScope::Team => "team".to_string(),
+      WebhookMembershipAddedScope::Team => write!(f, "team"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "membership",
@@ -4477,15 +4683,16 @@ pub enum TeamNotificationSetting {
   feature = "team_add",
   feature = "team"
 ))]
-impl ToString for TeamNotificationSetting {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for TeamNotificationSetting {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      TeamNotificationSetting::NotificationsEnabled => "notifications_enabled".to_string(),
-      TeamNotificationSetting::NotificationsDisabled => "notifications_disabled".to_string(),
+      TeamNotificationSetting::NotificationsEnabled => write!(f, "notifications_enabled"),
+      TeamNotificationSetting::NotificationsDisabled => write!(f, "notifications_disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "membership",
@@ -4517,15 +4724,16 @@ pub enum TeamParentNotificationSetting {
   feature = "team_add",
   feature = "team"
 ))]
-impl ToString for TeamParentNotificationSetting {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for TeamParentNotificationSetting {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      TeamParentNotificationSetting::NotificationsEnabled => "notifications_enabled".to_string(),
-      TeamParentNotificationSetting::NotificationsDisabled => "notifications_disabled".to_string(),
+      TeamParentNotificationSetting::NotificationsEnabled => write!(f, "notifications_enabled"),
+      TeamParentNotificationSetting::NotificationsDisabled => write!(f, "notifications_disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "membership",
@@ -4558,16 +4766,17 @@ pub enum TeamParentPrivacy {
   feature = "team_add",
   feature = "team"
 ))]
-impl ToString for TeamParentPrivacy {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for TeamParentPrivacy {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      TeamParentPrivacy::Open => "open".to_string(),
-      TeamParentPrivacy::Closed => "closed".to_string(),
-      TeamParentPrivacy::Secret => "secret".to_string(),
+      TeamParentPrivacy::Open => write!(f, "open"),
+      TeamParentPrivacy::Closed => write!(f, "closed"),
+      TeamParentPrivacy::Secret => write!(f, "secret"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "membership",
@@ -4600,16 +4809,17 @@ pub enum TeamPrivacy {
   feature = "team_add",
   feature = "team"
 ))]
-impl ToString for TeamPrivacy {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for TeamPrivacy {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      TeamPrivacy::Open => "open".to_string(),
-      TeamPrivacy::Closed => "closed".to_string(),
-      TeamPrivacy::Secret => "secret".to_string(),
+      TeamPrivacy::Open => write!(f, "open"),
+      TeamPrivacy::Closed => write!(f, "closed"),
+      TeamPrivacy::Secret => write!(f, "secret"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "membership"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMembershipRemovedAction {
@@ -4618,14 +4828,15 @@ pub enum WebhookMembershipRemovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "membership"))]
-impl ToString for WebhookMembershipRemovedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMembershipRemovedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMembershipRemovedAction::Removed => "removed".to_string(),
+      WebhookMembershipRemovedAction::Removed => write!(f, "removed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "membership"))]
 /// The scope of the membership. Currently, can only be `team`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -4637,15 +4848,16 @@ pub enum WebhookMembershipRemovedScope {
 }
 
 #[cfg(any(feature = "full", feature = "membership"))]
-impl ToString for WebhookMembershipRemovedScope {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMembershipRemovedScope {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMembershipRemovedScope::Team => "team".to_string(),
-      WebhookMembershipRemovedScope::Organization => "organization".to_string(),
+      WebhookMembershipRemovedScope::Team => write!(f, "team"),
+      WebhookMembershipRemovedScope::Organization => write!(f, "organization"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "merge_group"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMergeGroupChecksRequestedAction {
@@ -4654,14 +4866,15 @@ pub enum WebhookMergeGroupChecksRequestedAction {
 }
 
 #[cfg(any(feature = "full", feature = "merge_group"))]
-impl ToString for WebhookMergeGroupChecksRequestedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMergeGroupChecksRequestedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMergeGroupChecksRequestedAction::ChecksRequested => "checks_requested".to_string(),
+      WebhookMergeGroupChecksRequestedAction::ChecksRequested => write!(f, "checks_requested"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "merge_group"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMergeGroupDestroyedAction {
@@ -4670,14 +4883,15 @@ pub enum WebhookMergeGroupDestroyedAction {
 }
 
 #[cfg(any(feature = "full", feature = "merge_group"))]
-impl ToString for WebhookMergeGroupDestroyedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMergeGroupDestroyedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMergeGroupDestroyedAction::Destroyed => "destroyed".to_string(),
+      WebhookMergeGroupDestroyedAction::Destroyed => write!(f, "destroyed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "merge_group"))]
 /// Explains why the merge group is being destroyed. The group could have been merged, removed from the queue (dequeued), or invalidated by an earlier queue entry being dequeued (invalidated).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -4691,16 +4905,17 @@ pub enum WebhookMergeGroupDestroyedReason {
 }
 
 #[cfg(any(feature = "full", feature = "merge_group"))]
-impl ToString for WebhookMergeGroupDestroyedReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMergeGroupDestroyedReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMergeGroupDestroyedReason::Merged => "merged".to_string(),
-      WebhookMergeGroupDestroyedReason::Invalidated => "invalidated".to_string(),
-      WebhookMergeGroupDestroyedReason::Dequeued => "dequeued".to_string(),
+      WebhookMergeGroupDestroyedReason::Merged => write!(f, "merged"),
+      WebhookMergeGroupDestroyedReason::Invalidated => write!(f, "invalidated"),
+      WebhookMergeGroupDestroyedReason::Dequeued => write!(f, "dequeued"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "meta"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMetaDeletedAction {
@@ -4709,14 +4924,15 @@ pub enum WebhookMetaDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "meta"))]
-impl ToString for WebhookMetaDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMetaDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMetaDeletedAction::Deleted => "deleted".to_string(),
+      WebhookMetaDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "meta"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMetaDeletedHookConfigContentType {
@@ -4727,15 +4943,16 @@ pub enum WebhookMetaDeletedHookConfigContentType {
 }
 
 #[cfg(any(feature = "full", feature = "meta"))]
-impl ToString for WebhookMetaDeletedHookConfigContentType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMetaDeletedHookConfigContentType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMetaDeletedHookConfigContentType::Json => "json".to_string(),
-      WebhookMetaDeletedHookConfigContentType::Form => "form".to_string(),
+      WebhookMetaDeletedHookConfigContentType::Json => write!(f, "json"),
+      WebhookMetaDeletedHookConfigContentType::Form => write!(f, "form"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "meta"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMetaDeletedHookEvents {
@@ -4846,73 +5063,74 @@ pub enum WebhookMetaDeletedHookEvents {
 }
 
 #[cfg(any(feature = "full", feature = "meta"))]
-impl ToString for WebhookMetaDeletedHookEvents {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMetaDeletedHookEvents {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMetaDeletedHookEvents::Asterisk => "*".to_string(),
-      WebhookMetaDeletedHookEvents::BranchProtectionRule => "branch_protection_rule".to_string(),
-      WebhookMetaDeletedHookEvents::CheckRun => "check_run".to_string(),
-      WebhookMetaDeletedHookEvents::CheckSuite => "check_suite".to_string(),
-      WebhookMetaDeletedHookEvents::CodeScanningAlert => "code_scanning_alert".to_string(),
-      WebhookMetaDeletedHookEvents::CommitComment => "commit_comment".to_string(),
-      WebhookMetaDeletedHookEvents::Create => "create".to_string(),
-      WebhookMetaDeletedHookEvents::Delete => "delete".to_string(),
-      WebhookMetaDeletedHookEvents::Deployment => "deployment".to_string(),
-      WebhookMetaDeletedHookEvents::DeploymentStatus => "deployment_status".to_string(),
-      WebhookMetaDeletedHookEvents::DeployKey => "deploy_key".to_string(),
-      WebhookMetaDeletedHookEvents::Discussion => "discussion".to_string(),
-      WebhookMetaDeletedHookEvents::DiscussionComment => "discussion_comment".to_string(),
-      WebhookMetaDeletedHookEvents::Fork => "fork".to_string(),
-      WebhookMetaDeletedHookEvents::Gollum => "gollum".to_string(),
-      WebhookMetaDeletedHookEvents::Issues => "issues".to_string(),
-      WebhookMetaDeletedHookEvents::IssueComment => "issue_comment".to_string(),
-      WebhookMetaDeletedHookEvents::Label => "label".to_string(),
-      WebhookMetaDeletedHookEvents::Member => "member".to_string(),
-      WebhookMetaDeletedHookEvents::Membership => "membership".to_string(),
-      WebhookMetaDeletedHookEvents::Meta => "meta".to_string(),
-      WebhookMetaDeletedHookEvents::Milestone => "milestone".to_string(),
-      WebhookMetaDeletedHookEvents::Organization => "organization".to_string(),
-      WebhookMetaDeletedHookEvents::OrgBlock => "org_block".to_string(),
-      WebhookMetaDeletedHookEvents::Package => "package".to_string(),
-      WebhookMetaDeletedHookEvents::PageBuild => "page_build".to_string(),
-      WebhookMetaDeletedHookEvents::Project => "project".to_string(),
-      WebhookMetaDeletedHookEvents::ProjectCard => "project_card".to_string(),
-      WebhookMetaDeletedHookEvents::ProjectColumn => "project_column".to_string(),
-      WebhookMetaDeletedHookEvents::Public => "public".to_string(),
-      WebhookMetaDeletedHookEvents::PullRequest => "pull_request".to_string(),
-      WebhookMetaDeletedHookEvents::PullRequestReview => "pull_request_review".to_string(),
+      WebhookMetaDeletedHookEvents::Asterisk => write!(f, "*"),
+      WebhookMetaDeletedHookEvents::BranchProtectionRule => write!(f, "branch_protection_rule"),
+      WebhookMetaDeletedHookEvents::CheckRun => write!(f, "check_run"),
+      WebhookMetaDeletedHookEvents::CheckSuite => write!(f, "check_suite"),
+      WebhookMetaDeletedHookEvents::CodeScanningAlert => write!(f, "code_scanning_alert"),
+      WebhookMetaDeletedHookEvents::CommitComment => write!(f, "commit_comment"),
+      WebhookMetaDeletedHookEvents::Create => write!(f, "create"),
+      WebhookMetaDeletedHookEvents::Delete => write!(f, "delete"),
+      WebhookMetaDeletedHookEvents::Deployment => write!(f, "deployment"),
+      WebhookMetaDeletedHookEvents::DeploymentStatus => write!(f, "deployment_status"),
+      WebhookMetaDeletedHookEvents::DeployKey => write!(f, "deploy_key"),
+      WebhookMetaDeletedHookEvents::Discussion => write!(f, "discussion"),
+      WebhookMetaDeletedHookEvents::DiscussionComment => write!(f, "discussion_comment"),
+      WebhookMetaDeletedHookEvents::Fork => write!(f, "fork"),
+      WebhookMetaDeletedHookEvents::Gollum => write!(f, "gollum"),
+      WebhookMetaDeletedHookEvents::Issues => write!(f, "issues"),
+      WebhookMetaDeletedHookEvents::IssueComment => write!(f, "issue_comment"),
+      WebhookMetaDeletedHookEvents::Label => write!(f, "label"),
+      WebhookMetaDeletedHookEvents::Member => write!(f, "member"),
+      WebhookMetaDeletedHookEvents::Membership => write!(f, "membership"),
+      WebhookMetaDeletedHookEvents::Meta => write!(f, "meta"),
+      WebhookMetaDeletedHookEvents::Milestone => write!(f, "milestone"),
+      WebhookMetaDeletedHookEvents::Organization => write!(f, "organization"),
+      WebhookMetaDeletedHookEvents::OrgBlock => write!(f, "org_block"),
+      WebhookMetaDeletedHookEvents::Package => write!(f, "package"),
+      WebhookMetaDeletedHookEvents::PageBuild => write!(f, "page_build"),
+      WebhookMetaDeletedHookEvents::Project => write!(f, "project"),
+      WebhookMetaDeletedHookEvents::ProjectCard => write!(f, "project_card"),
+      WebhookMetaDeletedHookEvents::ProjectColumn => write!(f, "project_column"),
+      WebhookMetaDeletedHookEvents::Public => write!(f, "public"),
+      WebhookMetaDeletedHookEvents::PullRequest => write!(f, "pull_request"),
+      WebhookMetaDeletedHookEvents::PullRequestReview => write!(f, "pull_request_review"),
       WebhookMetaDeletedHookEvents::PullRequestReviewComment => {
-        "pull_request_review_comment".to_string()
+        write!(f, "pull_request_review_comment")
       }
       WebhookMetaDeletedHookEvents::PullRequestReviewThread => {
-        "pull_request_review_thread".to_string()
+        write!(f, "pull_request_review_thread")
       }
-      WebhookMetaDeletedHookEvents::Push => "push".to_string(),
-      WebhookMetaDeletedHookEvents::RegistryPackage => "registry_package".to_string(),
-      WebhookMetaDeletedHookEvents::Release => "release".to_string(),
-      WebhookMetaDeletedHookEvents::Repository => "repository".to_string(),
-      WebhookMetaDeletedHookEvents::RepositoryImport => "repository_import".to_string(),
+      WebhookMetaDeletedHookEvents::Push => write!(f, "push"),
+      WebhookMetaDeletedHookEvents::RegistryPackage => write!(f, "registry_package"),
+      WebhookMetaDeletedHookEvents::Release => write!(f, "release"),
+      WebhookMetaDeletedHookEvents::Repository => write!(f, "repository"),
+      WebhookMetaDeletedHookEvents::RepositoryImport => write!(f, "repository_import"),
       WebhookMetaDeletedHookEvents::RepositoryVulnerabilityAlert => {
-        "repository_vulnerability_alert".to_string()
+        write!(f, "repository_vulnerability_alert")
       }
-      WebhookMetaDeletedHookEvents::SecretScanningAlert => "secret_scanning_alert".to_string(),
+      WebhookMetaDeletedHookEvents::SecretScanningAlert => write!(f, "secret_scanning_alert"),
       WebhookMetaDeletedHookEvents::SecretScanningAlertLocation => {
-        "secret_scanning_alert_location".to_string()
+        write!(f, "secret_scanning_alert_location")
       }
-      WebhookMetaDeletedHookEvents::SecurityAndAnalysis => "security_and_analysis".to_string(),
-      WebhookMetaDeletedHookEvents::Star => "star".to_string(),
-      WebhookMetaDeletedHookEvents::Status => "status".to_string(),
-      WebhookMetaDeletedHookEvents::Team => "team".to_string(),
-      WebhookMetaDeletedHookEvents::TeamAdd => "team_add".to_string(),
-      WebhookMetaDeletedHookEvents::Watch => "watch".to_string(),
-      WebhookMetaDeletedHookEvents::WorkflowJob => "workflow_job".to_string(),
-      WebhookMetaDeletedHookEvents::WorkflowRun => "workflow_run".to_string(),
-      WebhookMetaDeletedHookEvents::RepositoryDispatch => "repository_dispatch".to_string(),
-      WebhookMetaDeletedHookEvents::ProjectsV2Item => "projects_v2_item".to_string(),
+      WebhookMetaDeletedHookEvents::SecurityAndAnalysis => write!(f, "security_and_analysis"),
+      WebhookMetaDeletedHookEvents::Star => write!(f, "star"),
+      WebhookMetaDeletedHookEvents::Status => write!(f, "status"),
+      WebhookMetaDeletedHookEvents::Team => write!(f, "team"),
+      WebhookMetaDeletedHookEvents::TeamAdd => write!(f, "team_add"),
+      WebhookMetaDeletedHookEvents::Watch => write!(f, "watch"),
+      WebhookMetaDeletedHookEvents::WorkflowJob => write!(f, "workflow_job"),
+      WebhookMetaDeletedHookEvents::WorkflowRun => write!(f, "workflow_run"),
+      WebhookMetaDeletedHookEvents::RepositoryDispatch => write!(f, "repository_dispatch"),
+      WebhookMetaDeletedHookEvents::ProjectsV2Item => write!(f, "projects_v2_item"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneClosedAction {
@@ -4921,14 +5139,15 @@ pub enum WebhookMilestoneClosedAction {
 }
 
 #[cfg(any(feature = "full", feature = "milestone"))]
-impl ToString for WebhookMilestoneClosedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMilestoneClosedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMilestoneClosedAction::Closed => "closed".to_string(),
+      WebhookMilestoneClosedAction::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneCreatedAction {
@@ -4937,14 +5156,15 @@ pub enum WebhookMilestoneCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "milestone"))]
-impl ToString for WebhookMilestoneCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMilestoneCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMilestoneCreatedAction::Created => "created".to_string(),
+      WebhookMilestoneCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneDeletedAction {
@@ -4953,14 +5173,15 @@ pub enum WebhookMilestoneDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "milestone"))]
-impl ToString for WebhookMilestoneDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMilestoneDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMilestoneDeletedAction::Deleted => "deleted".to_string(),
+      WebhookMilestoneDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneEditedAction {
@@ -4969,14 +5190,15 @@ pub enum WebhookMilestoneEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "milestone"))]
-impl ToString for WebhookMilestoneEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMilestoneEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMilestoneEditedAction::Edited => "edited".to_string(),
+      WebhookMilestoneEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "milestone"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookMilestoneOpenedAction {
@@ -4985,14 +5207,15 @@ pub enum WebhookMilestoneOpenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "milestone"))]
-impl ToString for WebhookMilestoneOpenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookMilestoneOpenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookMilestoneOpenedAction::Opened => "opened".to_string(),
+      WebhookMilestoneOpenedAction::Opened => write!(f, "opened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "org_block"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrgBlockBlockedAction {
@@ -5001,14 +5224,15 @@ pub enum WebhookOrgBlockBlockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "org_block"))]
-impl ToString for WebhookOrgBlockBlockedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookOrgBlockBlockedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookOrgBlockBlockedAction::Blocked => "blocked".to_string(),
+      WebhookOrgBlockBlockedAction::Blocked => write!(f, "blocked"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "org_block"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrgBlockUnblockedAction {
@@ -5017,14 +5241,15 @@ pub enum WebhookOrgBlockUnblockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "org_block"))]
-impl ToString for WebhookOrgBlockUnblockedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookOrgBlockUnblockedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookOrgBlockUnblockedAction::Unblocked => "unblocked".to_string(),
+      WebhookOrgBlockUnblockedAction::Unblocked => write!(f, "unblocked"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationDeletedAction {
@@ -5033,14 +5258,15 @@ pub enum WebhookOrganizationDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "organization"))]
-impl ToString for WebhookOrganizationDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookOrganizationDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookOrganizationDeletedAction::Deleted => "deleted".to_string(),
+      WebhookOrganizationDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationMemberAddedAction {
@@ -5049,14 +5275,15 @@ pub enum WebhookOrganizationMemberAddedAction {
 }
 
 #[cfg(any(feature = "full", feature = "organization"))]
-impl ToString for WebhookOrganizationMemberAddedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookOrganizationMemberAddedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookOrganizationMemberAddedAction::MemberAdded => "member_added".to_string(),
+      WebhookOrganizationMemberAddedAction::MemberAdded => write!(f, "member_added"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationMemberInvitedAction {
@@ -5065,14 +5292,15 @@ pub enum WebhookOrganizationMemberInvitedAction {
 }
 
 #[cfg(any(feature = "full", feature = "organization"))]
-impl ToString for WebhookOrganizationMemberInvitedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookOrganizationMemberInvitedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookOrganizationMemberInvitedAction::MemberInvited => "member_invited".to_string(),
+      WebhookOrganizationMemberInvitedAction::MemberInvited => write!(f, "member_invited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationMemberRemovedAction {
@@ -5081,14 +5309,15 @@ pub enum WebhookOrganizationMemberRemovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "organization"))]
-impl ToString for WebhookOrganizationMemberRemovedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookOrganizationMemberRemovedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookOrganizationMemberRemovedAction::MemberRemoved => "member_removed".to_string(),
+      WebhookOrganizationMemberRemovedAction::MemberRemoved => write!(f, "member_removed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "organization"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookOrganizationRenamedAction {
@@ -5097,14 +5326,15 @@ pub enum WebhookOrganizationRenamedAction {
 }
 
 #[cfg(any(feature = "full", feature = "organization"))]
-impl ToString for WebhookOrganizationRenamedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookOrganizationRenamedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookOrganizationRenamedAction::Renamed => "renamed".to_string(),
+      WebhookOrganizationRenamedAction::Renamed => write!(f, "renamed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPackagePublishedAction {
@@ -5113,14 +5343,15 @@ pub enum WebhookPackagePublishedAction {
 }
 
 #[cfg(any(feature = "full", feature = "package"))]
-impl ToString for WebhookPackagePublishedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPackagePublishedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPackagePublishedAction::Published => "published".to_string(),
+      WebhookPackagePublishedAction::Published => write!(f, "published"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPackageUpdatedAction {
@@ -5129,14 +5360,15 @@ pub enum WebhookPackageUpdatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "package"))]
-impl ToString for WebhookPackageUpdatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPackageUpdatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPackageUpdatedAction::Updated => "updated".to_string(),
+      WebhookPackageUpdatedAction::Updated => write!(f, "updated"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestApprovedAction {
@@ -5145,14 +5377,15 @@ pub enum WebhookPersonalAccessTokenRequestApprovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "personal_access_token_request"))]
-impl ToString for WebhookPersonalAccessTokenRequestApprovedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPersonalAccessTokenRequestApprovedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPersonalAccessTokenRequestApprovedAction::Approved => "approved".to_string(),
+      WebhookPersonalAccessTokenRequestApprovedAction::Approved => write!(f, "approved"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestCancelledAction {
@@ -5161,14 +5394,15 @@ pub enum WebhookPersonalAccessTokenRequestCancelledAction {
 }
 
 #[cfg(any(feature = "full", feature = "personal_access_token_request"))]
-impl ToString for WebhookPersonalAccessTokenRequestCancelledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPersonalAccessTokenRequestCancelledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPersonalAccessTokenRequestCancelledAction::Cancelled => "cancelled".to_string(),
+      WebhookPersonalAccessTokenRequestCancelledAction::Cancelled => write!(f, "cancelled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestCreatedAction {
@@ -5177,14 +5411,15 @@ pub enum WebhookPersonalAccessTokenRequestCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "personal_access_token_request"))]
-impl ToString for WebhookPersonalAccessTokenRequestCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPersonalAccessTokenRequestCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPersonalAccessTokenRequestCreatedAction::Created => "created".to_string(),
+      WebhookPersonalAccessTokenRequestCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "personal_access_token_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPersonalAccessTokenRequestDeniedAction {
@@ -5193,14 +5428,15 @@ pub enum WebhookPersonalAccessTokenRequestDeniedAction {
 }
 
 #[cfg(any(feature = "full", feature = "personal_access_token_request"))]
-impl ToString for WebhookPersonalAccessTokenRequestDeniedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPersonalAccessTokenRequestDeniedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPersonalAccessTokenRequestDeniedAction::Denied => "denied".to_string(),
+      WebhookPersonalAccessTokenRequestDeniedAction::Denied => write!(f, "denied"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "ping"))]
 /// The type of webhook. The only valid value is 'web'.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -5210,14 +5446,15 @@ pub enum WebhookName {
 }
 
 #[cfg(any(feature = "full", feature = "ping"))]
-impl ToString for WebhookName {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookName {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookName::Web => "web".to_string(),
+      WebhookName::Web => write!(f, "web"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardConvertedAction {
@@ -5226,14 +5463,15 @@ pub enum WebhookProjectCardConvertedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project_card"))]
-impl ToString for WebhookProjectCardConvertedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectCardConvertedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectCardConvertedAction::Converted => "converted".to_string(),
+      WebhookProjectCardConvertedAction::Converted => write!(f, "converted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardCreatedAction {
@@ -5242,14 +5480,15 @@ pub enum WebhookProjectCardCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project_card"))]
-impl ToString for WebhookProjectCardCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectCardCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectCardCreatedAction::Created => "created".to_string(),
+      WebhookProjectCardCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardDeletedAction {
@@ -5258,14 +5497,15 @@ pub enum WebhookProjectCardDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project_card"))]
-impl ToString for WebhookProjectCardDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectCardDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectCardDeletedAction::Deleted => "deleted".to_string(),
+      WebhookProjectCardDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardEditedAction {
@@ -5274,14 +5514,15 @@ pub enum WebhookProjectCardEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project_card"))]
-impl ToString for WebhookProjectCardEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectCardEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectCardEditedAction::Edited => "edited".to_string(),
+      WebhookProjectCardEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCardMovedAction {
@@ -5290,14 +5531,15 @@ pub enum WebhookProjectCardMovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project_card"))]
-impl ToString for WebhookProjectCardMovedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectCardMovedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectCardMovedAction::Moved => "moved".to_string(),
+      WebhookProjectCardMovedAction::Moved => write!(f, "moved"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project_card"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -5306,6 +5548,7 @@ pub enum WebhookProjectCardMovedProjectCard {
   WebhookProjectCardMovedProjectCardItem2(WebhookProjectCardMovedProjectCardItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectClosedAction {
@@ -5314,14 +5557,15 @@ pub enum WebhookProjectClosedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project"))]
-impl ToString for WebhookProjectClosedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectClosedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectClosedAction::Closed => "closed".to_string(),
+      WebhookProjectClosedAction::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project"))]
 /// State of the project; either 'open' or 'closed'
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -5333,15 +5577,16 @@ pub enum ProjectState {
 }
 
 #[cfg(any(feature = "full", feature = "project"))]
-impl ToString for ProjectState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ProjectState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ProjectState::Open => "open".to_string(),
-      ProjectState::Closed => "closed".to_string(),
+      ProjectState::Open => write!(f, "open"),
+      ProjectState::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnCreatedAction {
@@ -5350,14 +5595,15 @@ pub enum WebhookProjectColumnCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project_column"))]
-impl ToString for WebhookProjectColumnCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectColumnCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectColumnCreatedAction::Created => "created".to_string(),
+      WebhookProjectColumnCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnDeletedAction {
@@ -5366,14 +5612,15 @@ pub enum WebhookProjectColumnDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project_column"))]
-impl ToString for WebhookProjectColumnDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectColumnDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectColumnDeletedAction::Deleted => "deleted".to_string(),
+      WebhookProjectColumnDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnEditedAction {
@@ -5382,14 +5629,15 @@ pub enum WebhookProjectColumnEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project_column"))]
-impl ToString for WebhookProjectColumnEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectColumnEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectColumnEditedAction::Edited => "edited".to_string(),
+      WebhookProjectColumnEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project_column"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectColumnMovedAction {
@@ -5398,14 +5646,15 @@ pub enum WebhookProjectColumnMovedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project_column"))]
-impl ToString for WebhookProjectColumnMovedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectColumnMovedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectColumnMovedAction::Moved => "moved".to_string(),
+      WebhookProjectColumnMovedAction::Moved => write!(f, "moved"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectCreatedAction {
@@ -5414,14 +5663,15 @@ pub enum WebhookProjectCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project"))]
-impl ToString for WebhookProjectCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectCreatedAction::Created => "created".to_string(),
+      WebhookProjectCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectDeletedAction {
@@ -5430,14 +5680,15 @@ pub enum WebhookProjectDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project"))]
-impl ToString for WebhookProjectDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectDeletedAction::Deleted => "deleted".to_string(),
+      WebhookProjectDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectEditedAction {
@@ -5446,14 +5697,15 @@ pub enum WebhookProjectEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project"))]
-impl ToString for WebhookProjectEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectEditedAction::Edited => "edited".to_string(),
+      WebhookProjectEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "project"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectReopenedAction {
@@ -5462,14 +5714,15 @@ pub enum WebhookProjectReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "project"))]
-impl ToString for WebhookProjectReopenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectReopenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectReopenedAction::Reopened => "reopened".to_string(),
+      WebhookProjectReopenedAction::Reopened => write!(f, "reopened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectClosedAction {
@@ -5478,14 +5731,15 @@ pub enum WebhookProjectsV2ProjectClosedAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2"))]
-impl ToString for WebhookProjectsV2ProjectClosedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ProjectClosedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ProjectClosedAction::Closed => "closed".to_string(),
+      WebhookProjectsV2ProjectClosedAction::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectCreatedAction {
@@ -5494,14 +5748,15 @@ pub enum WebhookProjectsV2ProjectCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2"))]
-impl ToString for WebhookProjectsV2ProjectCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ProjectCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ProjectCreatedAction::Created => "created".to_string(),
+      WebhookProjectsV2ProjectCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectDeletedAction {
@@ -5510,14 +5765,15 @@ pub enum WebhookProjectsV2ProjectDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2"))]
-impl ToString for WebhookProjectsV2ProjectDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ProjectDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ProjectDeletedAction::Deleted => "deleted".to_string(),
+      WebhookProjectsV2ProjectDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectEditedAction {
@@ -5526,14 +5782,15 @@ pub enum WebhookProjectsV2ProjectEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2"))]
-impl ToString for WebhookProjectsV2ProjectEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ProjectEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ProjectEditedAction::Edited => "edited".to_string(),
+      WebhookProjectsV2ProjectEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemArchivedAction {
@@ -5542,14 +5799,15 @@ pub enum WebhookProjectsV2ItemArchivedAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
-impl ToString for WebhookProjectsV2ItemArchivedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ItemArchivedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ItemArchivedAction::Archived => "archived".to_string(),
+      WebhookProjectsV2ItemArchivedAction::Archived => write!(f, "archived"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
 /// The type of content tracked in a project item
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -5560,16 +5818,17 @@ pub enum ProjectsV2ItemContentType {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
-impl ToString for ProjectsV2ItemContentType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ProjectsV2ItemContentType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ProjectsV2ItemContentType::Issue => "Issue".to_string(),
-      ProjectsV2ItemContentType::PullRequest => "PullRequest".to_string(),
-      ProjectsV2ItemContentType::DraftIssue => "DraftIssue".to_string(),
+      ProjectsV2ItemContentType::Issue => write!(f, "Issue"),
+      ProjectsV2ItemContentType::PullRequest => write!(f, "PullRequest"),
+      ProjectsV2ItemContentType::DraftIssue => write!(f, "DraftIssue"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemConvertedAction {
@@ -5578,14 +5837,15 @@ pub enum WebhookProjectsV2ItemConvertedAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
-impl ToString for WebhookProjectsV2ItemConvertedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ItemConvertedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ItemConvertedAction::Converted => "converted".to_string(),
+      WebhookProjectsV2ItemConvertedAction::Converted => write!(f, "converted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemCreatedAction {
@@ -5594,14 +5854,15 @@ pub enum WebhookProjectsV2ItemCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
-impl ToString for WebhookProjectsV2ItemCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ItemCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ItemCreatedAction::Created => "created".to_string(),
+      WebhookProjectsV2ItemCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemDeletedAction {
@@ -5610,14 +5871,15 @@ pub enum WebhookProjectsV2ItemDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
-impl ToString for WebhookProjectsV2ItemDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ItemDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ItemDeletedAction::Deleted => "deleted".to_string(),
+      WebhookProjectsV2ItemDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemEditedAction {
@@ -5626,14 +5888,15 @@ pub enum WebhookProjectsV2ItemEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
-impl ToString for WebhookProjectsV2ItemEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ItemEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ItemEditedAction::Edited => "edited".to_string(),
+      WebhookProjectsV2ItemEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -5642,6 +5905,7 @@ pub enum WebhookProjectsV2ItemEditedChanges {
   WebhookProjectsV2ItemEditedChangesItem2(WebhookProjectsV2ItemEditedChangesItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemReorderedAction {
@@ -5650,14 +5914,15 @@ pub enum WebhookProjectsV2ItemReorderedAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
-impl ToString for WebhookProjectsV2ItemReorderedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ItemReorderedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ItemReorderedAction::Reordered => "reordered".to_string(),
+      WebhookProjectsV2ItemReorderedAction::Reordered => write!(f, "reordered"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ItemRestoredAction {
@@ -5666,14 +5931,15 @@ pub enum WebhookProjectsV2ItemRestoredAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2_item"))]
-impl ToString for WebhookProjectsV2ItemRestoredAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ItemRestoredAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ItemRestoredAction::Restored => "restored".to_string(),
+      WebhookProjectsV2ItemRestoredAction::Restored => write!(f, "restored"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects_v2"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookProjectsV2ProjectReopenedAction {
@@ -5682,14 +5948,15 @@ pub enum WebhookProjectsV2ProjectReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "projects_v2"))]
-impl ToString for WebhookProjectsV2ProjectReopenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookProjectsV2ProjectReopenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookProjectsV2ProjectReopenedAction::Reopened => "reopened".to_string(),
+      WebhookProjectsV2ProjectReopenedAction::Reopened => write!(f, "reopened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestAssignedAction {
@@ -5698,14 +5965,15 @@ pub enum WebhookPullRequestAssignedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestAssignedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestAssignedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestAssignedAction::Assigned => "assigned".to_string(),
+      WebhookPullRequestAssignedAction::Assigned => write!(f, "assigned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PullRequestActiveLockReason {
@@ -5720,17 +5988,18 @@ pub enum PullRequestActiveLockReason {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for PullRequestActiveLockReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestActiveLockReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestActiveLockReason::Resolved => "resolved".to_string(),
-      PullRequestActiveLockReason::OffTopic => "off-topic".to_string(),
-      PullRequestActiveLockReason::TooHeated => "too heated".to_string(),
-      PullRequestActiveLockReason::Spam => "spam".to_string(),
+      PullRequestActiveLockReason::Resolved => write!(f, "resolved"),
+      PullRequestActiveLockReason::OffTopic => write!(f, "off-topic"),
+      PullRequestActiveLockReason::TooHeated => write!(f, "too heated"),
+      PullRequestActiveLockReason::Spam => write!(f, "spam"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -5754,21 +6023,22 @@ pub enum PullRequestAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for PullRequestAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      PullRequestAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      PullRequestAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      PullRequestAuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
-      PullRequestAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      PullRequestAuthorAssociation::Member => "MEMBER".to_string(),
-      PullRequestAuthorAssociation::None => "NONE".to_string(),
-      PullRequestAuthorAssociation::Owner => "OWNER".to_string(),
+      PullRequestAuthorAssociation::Collaborator => write!(f, "COLLABORATOR"),
+      PullRequestAuthorAssociation::Contributor => write!(f, "CONTRIBUTOR"),
+      PullRequestAuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
+      PullRequestAuthorAssociation::FirstTimeContributor => write!(f, "FIRST_TIME_CONTRIBUTOR"),
+      PullRequestAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      PullRequestAuthorAssociation::Member => write!(f, "MEMBER"),
+      PullRequestAuthorAssociation::None => write!(f, "NONE"),
+      PullRequestAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "pull_request",
@@ -5794,16 +6064,17 @@ pub enum PullRequestAutoMergeMergeMethod {
   feature = "pull_request_review",
   feature = "pull_request_review_thread"
 ))]
-impl ToString for PullRequestAutoMergeMergeMethod {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestAutoMergeMergeMethod {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestAutoMergeMergeMethod::Merge => "merge".to_string(),
-      PullRequestAutoMergeMergeMethod::Squash => "squash".to_string(),
-      PullRequestAutoMergeMergeMethod::Rebase => "rebase".to_string(),
+      PullRequestAutoMergeMergeMethod::Merge => write!(f, "merge"),
+      PullRequestAutoMergeMergeMethod::Squash => write!(f, "squash"),
+      PullRequestAutoMergeMergeMethod::Rebase => write!(f, "rebase"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestAutoMergeDisabledAction {
@@ -5812,16 +6083,17 @@ pub enum WebhookPullRequestAutoMergeDisabledAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestAutoMergeDisabledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestAutoMergeDisabledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestAutoMergeDisabledAction::AutoMergeDisabled => {
-        "auto_merge_disabled".to_string()
+        write!(f, "auto_merge_disabled")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestAutoMergeEnabledAction {
@@ -5830,16 +6102,15 @@ pub enum WebhookPullRequestAutoMergeEnabledAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestAutoMergeEnabledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestAutoMergeEnabledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestAutoMergeEnabledAction::AutoMergeEnabled => {
-        "auto_merge_enabled".to_string()
-      }
+      WebhookPullRequestAutoMergeEnabledAction::AutoMergeEnabled => write!(f, "auto_merge_enabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestClosedAction {
@@ -5848,14 +6119,15 @@ pub enum WebhookPullRequestClosedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestClosedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestClosedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestClosedAction::Closed => "closed".to_string(),
+      WebhookPullRequestClosedAction::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -5865,6 +6137,7 @@ pub enum WebhookPullRequestClosedPullRequest {
   WebhookPullRequestClosedPullRequestItem2(WebhookPullRequestClosedPullRequestItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestConvertedToDraftAction {
@@ -5873,16 +6146,15 @@ pub enum WebhookPullRequestConvertedToDraftAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestConvertedToDraftAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestConvertedToDraftAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestConvertedToDraftAction::ConvertedToDraft => {
-        "converted_to_draft".to_string()
-      }
+      WebhookPullRequestConvertedToDraftAction::ConvertedToDraft => write!(f, "converted_to_draft"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -5894,6 +6166,7 @@ pub enum WebhookPullRequestConvertedToDraftPullRequest {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestDemilestonedAction {
@@ -5902,14 +6175,15 @@ pub enum WebhookPullRequestDemilestonedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestDemilestonedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestDemilestonedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestDemilestonedAction::Demilestoned => "demilestoned".to_string(),
+      WebhookPullRequestDemilestonedAction::Demilestoned => write!(f, "demilestoned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestDequeuedAction {
@@ -5918,14 +6192,15 @@ pub enum WebhookPullRequestDequeuedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestDequeuedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestDequeuedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestDequeuedAction::Dequeued => "dequeued".to_string(),
+      WebhookPullRequestDequeuedAction::Dequeued => write!(f, "dequeued"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestEditedAction {
@@ -5934,14 +6209,15 @@ pub enum WebhookPullRequestEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestEditedAction::Edited => "edited".to_string(),
+      WebhookPullRequestEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -5951,6 +6227,7 @@ pub enum WebhookPullRequestEditedPullRequest {
   WebhookPullRequestEditedPullRequestItem2(WebhookPullRequestEditedPullRequestItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestEnqueuedAction {
@@ -5959,14 +6236,15 @@ pub enum WebhookPullRequestEnqueuedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestEnqueuedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestEnqueuedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestEnqueuedAction::Enqueued => "enqueued".to_string(),
+      WebhookPullRequestEnqueuedAction::Enqueued => write!(f, "enqueued"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestLabeledAction {
@@ -5975,14 +6253,15 @@ pub enum WebhookPullRequestLabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestLabeledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestLabeledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestLabeledAction::Labeled => "labeled".to_string(),
+      WebhookPullRequestLabeledAction::Labeled => write!(f, "labeled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestLockedAction {
@@ -5991,14 +6270,15 @@ pub enum WebhookPullRequestLockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestLockedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestLockedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestLockedAction::Locked => "locked".to_string(),
+      WebhookPullRequestLockedAction::Locked => write!(f, "locked"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestMilestonedAction {
@@ -6007,14 +6287,15 @@ pub enum WebhookPullRequestMilestonedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestMilestonedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestMilestonedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestMilestonedAction::Milestoned => "milestoned".to_string(),
+      WebhookPullRequestMilestonedAction::Milestoned => write!(f, "milestoned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestOpenedAction {
@@ -6023,14 +6304,15 @@ pub enum WebhookPullRequestOpenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestOpenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestOpenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestOpenedAction::Opened => "opened".to_string(),
+      WebhookPullRequestOpenedAction::Opened => write!(f, "opened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -6040,6 +6322,7 @@ pub enum WebhookPullRequestOpenedPullRequest {
   WebhookPullRequestOpenedPullRequestItem2(WebhookPullRequestOpenedPullRequestItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReadyForReviewAction {
@@ -6048,14 +6331,15 @@ pub enum WebhookPullRequestReadyForReviewAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestReadyForReviewAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReadyForReviewAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReadyForReviewAction::ReadyForReview => "ready_for_review".to_string(),
+      WebhookPullRequestReadyForReviewAction::ReadyForReview => write!(f, "ready_for_review"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -6067,6 +6351,7 @@ pub enum WebhookPullRequestReadyForReviewPullRequest {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReopenedAction {
@@ -6075,14 +6360,15 @@ pub enum WebhookPullRequestReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestReopenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReopenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReopenedAction::Reopened => "reopened".to_string(),
+      WebhookPullRequestReopenedAction::Reopened => write!(f, "reopened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -6092,6 +6378,7 @@ pub enum WebhookPullRequestReopenedPullRequest {
   WebhookPullRequestReopenedPullRequestItem2(WebhookPullRequestReopenedPullRequestItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentCreatedAction {
@@ -6100,14 +6387,15 @@ pub enum WebhookPullRequestReviewCommentCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewCommentCreatedAction::Created => "created".to_string(),
+      WebhookPullRequestReviewCommentCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "pull_request_review_comment",
@@ -6139,23 +6427,24 @@ pub enum PullRequestReviewCommentAuthorAssociation {
   feature = "pull_request_review_comment",
   feature = "pull_request_review_thread"
 ))]
-impl ToString for PullRequestReviewCommentAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestReviewCommentAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestReviewCommentAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      PullRequestReviewCommentAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      PullRequestReviewCommentAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
+      PullRequestReviewCommentAuthorAssociation::Collaborator => write!(f, "COLLABORATOR"),
+      PullRequestReviewCommentAuthorAssociation::Contributor => write!(f, "CONTRIBUTOR"),
+      PullRequestReviewCommentAuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
       PullRequestReviewCommentAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
-      PullRequestReviewCommentAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      PullRequestReviewCommentAuthorAssociation::Member => "MEMBER".to_string(),
-      PullRequestReviewCommentAuthorAssociation::None => "NONE".to_string(),
-      PullRequestReviewCommentAuthorAssociation::Owner => "OWNER".to_string(),
+      PullRequestReviewCommentAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      PullRequestReviewCommentAuthorAssociation::Member => write!(f, "MEMBER"),
+      PullRequestReviewCommentAuthorAssociation::None => write!(f, "NONE"),
+      PullRequestReviewCommentAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "pull_request_review_comment",
@@ -6175,15 +6464,16 @@ pub enum PullRequestReviewCommentSide {
   feature = "pull_request_review_comment",
   feature = "pull_request_review_thread"
 ))]
-impl ToString for PullRequestReviewCommentSide {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestReviewCommentSide {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestReviewCommentSide::Left => "LEFT".to_string(),
-      PullRequestReviewCommentSide::Right => "RIGHT".to_string(),
+      PullRequestReviewCommentSide::Left => write!(f, "LEFT"),
+      PullRequestReviewCommentSide::Right => write!(f, "RIGHT"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "pull_request_review_comment",
@@ -6203,15 +6493,16 @@ pub enum PullRequestReviewCommentStartSide {
   feature = "pull_request_review_comment",
   feature = "pull_request_review_thread"
 ))]
-impl ToString for PullRequestReviewCommentStartSide {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestReviewCommentStartSide {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestReviewCommentStartSide::Left => "LEFT".to_string(),
-      PullRequestReviewCommentStartSide::Right => "RIGHT".to_string(),
+      PullRequestReviewCommentStartSide::Left => write!(f, "LEFT"),
+      PullRequestReviewCommentStartSide::Right => write!(f, "RIGHT"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "pull_request_review_comment",
@@ -6231,15 +6522,16 @@ pub enum PullRequestReviewCommentSubjectType {
   feature = "pull_request_review_comment",
   feature = "pull_request_review_thread"
 ))]
-impl ToString for PullRequestReviewCommentSubjectType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestReviewCommentSubjectType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestReviewCommentSubjectType::Line => "line".to_string(),
-      PullRequestReviewCommentSubjectType::File => "file".to_string(),
+      PullRequestReviewCommentSubjectType::Line => write!(f, "line"),
+      PullRequestReviewCommentSubjectType::File => write!(f, "file"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason {
@@ -6254,23 +6546,24 @@ pub enum WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::Resolved => {
-        "resolved".to_string()
+        write!(f, "resolved")
       }
       WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::OffTopic => {
-        "off-topic".to_string()
+        write!(f, "off-topic")
       }
       WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::TooHeated => {
-        "too heated".to_string()
+        write!(f, "too heated")
       }
-      WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::Spam => "spam".to_string(),
+      WebhookPullRequestReviewCommentCreatedPullRequestActiveLockReason::Spam => write!(f, "spam"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -6294,37 +6587,36 @@ pub enum WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Collaborator => {
-        "COLLABORATOR".to_string()
+        write!(f, "COLLABORATOR")
       }
       WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Contributor => {
-        "CONTRIBUTOR".to_string()
+        write!(f, "CONTRIBUTOR")
       }
       WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::FirstTimer => {
-        "FIRST_TIMER".to_string()
+        write!(f, "FIRST_TIMER")
       }
       WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
       WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Mannequin => {
-        "MANNEQUIN".to_string()
+        write!(f, "MANNEQUIN")
       }
       WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Member => {
-        "MEMBER".to_string()
+        write!(f, "MEMBER")
       }
-      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::None => {
-        "NONE".to_string()
-      }
+      WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::None => write!(f, "NONE"),
       WebhookPullRequestReviewCommentCreatedPullRequestAuthorAssociation::Owner => {
-        "OWNER".to_string()
+        write!(f, "OWNER")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentCreatedPullRequestState {
@@ -6335,15 +6627,16 @@ pub enum WebhookPullRequestReviewCommentCreatedPullRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentCreatedPullRequestState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentCreatedPullRequestState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewCommentCreatedPullRequestState::Open => "open".to_string(),
-      WebhookPullRequestReviewCommentCreatedPullRequestState::Closed => "closed".to_string(),
+      WebhookPullRequestReviewCommentCreatedPullRequestState::Open => write!(f, "open"),
+      WebhookPullRequestReviewCommentCreatedPullRequestState::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentDeletedAction {
@@ -6352,14 +6645,15 @@ pub enum WebhookPullRequestReviewCommentDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewCommentDeletedAction::Deleted => "deleted".to_string(),
+      WebhookPullRequestReviewCommentDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason {
@@ -6374,23 +6668,24 @@ pub enum WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::Resolved => {
-        "resolved".to_string()
+        write!(f, "resolved")
       }
       WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::OffTopic => {
-        "off-topic".to_string()
+        write!(f, "off-topic")
       }
       WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::TooHeated => {
-        "too heated".to_string()
+        write!(f, "too heated")
       }
-      WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::Spam => "spam".to_string(),
+      WebhookPullRequestReviewCommentDeletedPullRequestActiveLockReason::Spam => write!(f, "spam"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -6414,37 +6709,36 @@ pub enum WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Collaborator => {
-        "COLLABORATOR".to_string()
+        write!(f, "COLLABORATOR")
       }
       WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Contributor => {
-        "CONTRIBUTOR".to_string()
+        write!(f, "CONTRIBUTOR")
       }
       WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::FirstTimer => {
-        "FIRST_TIMER".to_string()
+        write!(f, "FIRST_TIMER")
       }
       WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
       WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Mannequin => {
-        "MANNEQUIN".to_string()
+        write!(f, "MANNEQUIN")
       }
       WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Member => {
-        "MEMBER".to_string()
+        write!(f, "MEMBER")
       }
-      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::None => {
-        "NONE".to_string()
-      }
+      WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::None => write!(f, "NONE"),
       WebhookPullRequestReviewCommentDeletedPullRequestAuthorAssociation::Owner => {
-        "OWNER".to_string()
+        write!(f, "OWNER")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentDeletedPullRequestState {
@@ -6455,15 +6749,16 @@ pub enum WebhookPullRequestReviewCommentDeletedPullRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentDeletedPullRequestState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentDeletedPullRequestState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewCommentDeletedPullRequestState::Open => "open".to_string(),
-      WebhookPullRequestReviewCommentDeletedPullRequestState::Closed => "closed".to_string(),
+      WebhookPullRequestReviewCommentDeletedPullRequestState::Open => write!(f, "open"),
+      WebhookPullRequestReviewCommentDeletedPullRequestState::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentEditedAction {
@@ -6472,14 +6767,15 @@ pub enum WebhookPullRequestReviewCommentEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewCommentEditedAction::Edited => "edited".to_string(),
+      WebhookPullRequestReviewCommentEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason {
@@ -6494,23 +6790,24 @@ pub enum WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::Resolved => {
-        "resolved".to_string()
+        write!(f, "resolved")
       }
       WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::OffTopic => {
-        "off-topic".to_string()
+        write!(f, "off-topic")
       }
       WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::TooHeated => {
-        "too heated".to_string()
+        write!(f, "too heated")
       }
-      WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::Spam => "spam".to_string(),
+      WebhookPullRequestReviewCommentEditedPullRequestActiveLockReason::Spam => write!(f, "spam"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -6534,35 +6831,36 @@ pub enum WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Collaborator => {
-        "COLLABORATOR".to_string()
+        write!(f, "COLLABORATOR")
       }
       WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Contributor => {
-        "CONTRIBUTOR".to_string()
+        write!(f, "CONTRIBUTOR")
       }
       WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::FirstTimer => {
-        "FIRST_TIMER".to_string()
+        write!(f, "FIRST_TIMER")
       }
       WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
       WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Mannequin => {
-        "MANNEQUIN".to_string()
+        write!(f, "MANNEQUIN")
       }
       WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Member => {
-        "MEMBER".to_string()
+        write!(f, "MEMBER")
       }
-      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::None => "NONE".to_string(),
+      WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::None => write!(f, "NONE"),
       WebhookPullRequestReviewCommentEditedPullRequestAuthorAssociation::Owner => {
-        "OWNER".to_string()
+        write!(f, "OWNER")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewCommentEditedPullRequestState {
@@ -6573,15 +6871,16 @@ pub enum WebhookPullRequestReviewCommentEditedPullRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_comment"))]
-impl ToString for WebhookPullRequestReviewCommentEditedPullRequestState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewCommentEditedPullRequestState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewCommentEditedPullRequestState::Open => "open".to_string(),
-      WebhookPullRequestReviewCommentEditedPullRequestState::Closed => "closed".to_string(),
+      WebhookPullRequestReviewCommentEditedPullRequestState::Open => write!(f, "open"),
+      WebhookPullRequestReviewCommentEditedPullRequestState::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewDismissedAction {
@@ -6590,14 +6889,15 @@ pub enum WebhookPullRequestReviewDismissedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
-impl ToString for WebhookPullRequestReviewDismissedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewDismissedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewDismissedAction::Dismissed => "dismissed".to_string(),
+      WebhookPullRequestReviewDismissedAction::Dismissed => write!(f, "dismissed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "pull_request_review",
@@ -6620,17 +6920,18 @@ pub enum SimplePullRequestActiveLockReason {
   feature = "pull_request_review",
   feature = "pull_request_review_thread"
 ))]
-impl ToString for SimplePullRequestActiveLockReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SimplePullRequestActiveLockReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SimplePullRequestActiveLockReason::Resolved => "resolved".to_string(),
-      SimplePullRequestActiveLockReason::OffTopic => "off-topic".to_string(),
-      SimplePullRequestActiveLockReason::TooHeated => "too heated".to_string(),
-      SimplePullRequestActiveLockReason::Spam => "spam".to_string(),
+      SimplePullRequestActiveLockReason::Resolved => write!(f, "resolved"),
+      SimplePullRequestActiveLockReason::OffTopic => write!(f, "off-topic"),
+      SimplePullRequestActiveLockReason::TooHeated => write!(f, "too heated"),
+      SimplePullRequestActiveLockReason::Spam => write!(f, "spam"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "pull_request_review",
@@ -6662,23 +6963,24 @@ pub enum SimplePullRequestAuthorAssociation {
   feature = "pull_request_review",
   feature = "pull_request_review_thread"
 ))]
-impl ToString for SimplePullRequestAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SimplePullRequestAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SimplePullRequestAuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      SimplePullRequestAuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      SimplePullRequestAuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
+      SimplePullRequestAuthorAssociation::Collaborator => write!(f, "COLLABORATOR"),
+      SimplePullRequestAuthorAssociation::Contributor => write!(f, "CONTRIBUTOR"),
+      SimplePullRequestAuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
       SimplePullRequestAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
-      SimplePullRequestAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      SimplePullRequestAuthorAssociation::Member => "MEMBER".to_string(),
-      SimplePullRequestAuthorAssociation::None => "NONE".to_string(),
-      SimplePullRequestAuthorAssociation::Owner => "OWNER".to_string(),
+      SimplePullRequestAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      SimplePullRequestAuthorAssociation::Member => write!(f, "MEMBER"),
+      SimplePullRequestAuthorAssociation::None => write!(f, "NONE"),
+      SimplePullRequestAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "pull_request_review",
@@ -6697,15 +6999,16 @@ pub enum SimplePullRequestState {
   feature = "pull_request_review",
   feature = "pull_request_review_thread"
 ))]
-impl ToString for SimplePullRequestState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SimplePullRequestState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SimplePullRequestState::Open => "open".to_string(),
-      SimplePullRequestState::Closed => "closed".to_string(),
+      SimplePullRequestState::Open => write!(f, "open"),
+      SimplePullRequestState::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -6729,31 +7032,30 @@ pub enum WebhookPullRequestReviewDismissedReviewAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
-impl ToString for WebhookPullRequestReviewDismissedReviewAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewDismissedReviewAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewDismissedReviewAuthorAssociation::Collaborator => {
-        "COLLABORATOR".to_string()
+        write!(f, "COLLABORATOR")
       }
       WebhookPullRequestReviewDismissedReviewAuthorAssociation::Contributor => {
-        "CONTRIBUTOR".to_string()
+        write!(f, "CONTRIBUTOR")
       }
       WebhookPullRequestReviewDismissedReviewAuthorAssociation::FirstTimer => {
-        "FIRST_TIMER".to_string()
+        write!(f, "FIRST_TIMER")
       }
       WebhookPullRequestReviewDismissedReviewAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
-      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Mannequin => {
-        "MANNEQUIN".to_string()
-      }
-      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Member => "MEMBER".to_string(),
-      WebhookPullRequestReviewDismissedReviewAuthorAssociation::None => "NONE".to_string(),
-      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Member => write!(f, "MEMBER"),
+      WebhookPullRequestReviewDismissedReviewAuthorAssociation::None => write!(f, "NONE"),
+      WebhookPullRequestReviewDismissedReviewAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewDismissedReviewState {
@@ -6766,18 +7068,19 @@ pub enum WebhookPullRequestReviewDismissedReviewState {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
-impl ToString for WebhookPullRequestReviewDismissedReviewState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewDismissedReviewState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewDismissedReviewState::Dismissed => "dismissed".to_string(),
-      WebhookPullRequestReviewDismissedReviewState::Approved => "approved".to_string(),
+      WebhookPullRequestReviewDismissedReviewState::Dismissed => write!(f, "dismissed"),
+      WebhookPullRequestReviewDismissedReviewState::Approved => write!(f, "approved"),
       WebhookPullRequestReviewDismissedReviewState::ChangesRequested => {
-        "changes_requested".to_string()
+        write!(f, "changes_requested")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewEditedAction {
@@ -6786,14 +7089,15 @@ pub enum WebhookPullRequestReviewEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
-impl ToString for WebhookPullRequestReviewEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewEditedAction::Edited => "edited".to_string(),
+      WebhookPullRequestReviewEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -6817,29 +7121,28 @@ pub enum WebhookPullRequestReviewEditedReviewAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
-impl ToString for WebhookPullRequestReviewEditedReviewAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewEditedReviewAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewEditedReviewAuthorAssociation::Collaborator => {
-        "COLLABORATOR".to_string()
+        write!(f, "COLLABORATOR")
       }
       WebhookPullRequestReviewEditedReviewAuthorAssociation::Contributor => {
-        "CONTRIBUTOR".to_string()
+        write!(f, "CONTRIBUTOR")
       }
-      WebhookPullRequestReviewEditedReviewAuthorAssociation::FirstTimer => {
-        "FIRST_TIMER".to_string()
-      }
+      WebhookPullRequestReviewEditedReviewAuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
       WebhookPullRequestReviewEditedReviewAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
-      WebhookPullRequestReviewEditedReviewAuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      WebhookPullRequestReviewEditedReviewAuthorAssociation::Member => "MEMBER".to_string(),
-      WebhookPullRequestReviewEditedReviewAuthorAssociation::None => "NONE".to_string(),
-      WebhookPullRequestReviewEditedReviewAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookPullRequestReviewEditedReviewAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      WebhookPullRequestReviewEditedReviewAuthorAssociation::Member => write!(f, "MEMBER"),
+      WebhookPullRequestReviewEditedReviewAuthorAssociation::None => write!(f, "NONE"),
+      WebhookPullRequestReviewEditedReviewAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestRemovedItem1Action {
@@ -6848,16 +7151,17 @@ pub enum WebhookPullRequestReviewRequestRemovedItem1Action {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestReviewRequestRemovedItem1Action {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewRequestRemovedItem1Action {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewRequestRemovedItem1Action::ReviewRequestRemoved => {
-        "review_request_removed".to_string()
+        write!(f, "review_request_removed")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestRemovedItem2Action {
@@ -6866,16 +7170,17 @@ pub enum WebhookPullRequestReviewRequestRemovedItem2Action {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestReviewRequestRemovedItem2Action {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewRequestRemovedItem2Action {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewRequestRemovedItem2Action::ReviewRequestRemoved => {
-        "review_request_removed".to_string()
+        write!(f, "review_request_removed")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -6884,6 +7189,7 @@ pub enum WebhookPullRequestReviewRequestRemoved {
   WebhookPullRequestReviewRequestRemovedItem2(WebhookPullRequestReviewRequestRemovedItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestedItem1Action {
@@ -6892,16 +7198,17 @@ pub enum WebhookPullRequestReviewRequestedItem1Action {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestReviewRequestedItem1Action {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewRequestedItem1Action {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewRequestedItem1Action::ReviewRequested => {
-        "review_requested".to_string()
+        write!(f, "review_requested")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewRequestedItem2Action {
@@ -6910,16 +7217,17 @@ pub enum WebhookPullRequestReviewRequestedItem2Action {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestReviewRequestedItem2Action {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewRequestedItem2Action {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewRequestedItem2Action::ReviewRequested => {
-        "review_requested".to_string()
+        write!(f, "review_requested")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -6928,6 +7236,7 @@ pub enum WebhookPullRequestReviewRequested {
   WebhookPullRequestReviewRequestedItem2(WebhookPullRequestReviewRequestedItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewSubmittedAction {
@@ -6936,14 +7245,15 @@ pub enum WebhookPullRequestReviewSubmittedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
-impl ToString for WebhookPullRequestReviewSubmittedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewSubmittedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewSubmittedAction::Submitted => "submitted".to_string(),
+      WebhookPullRequestReviewSubmittedAction::Submitted => write!(f, "submitted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
 /// How the author is associated with the repository.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -6967,31 +7277,30 @@ pub enum WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review"))]
-impl ToString for WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewSubmittedReviewAuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Collaborator => {
-        "COLLABORATOR".to_string()
+        write!(f, "COLLABORATOR")
       }
       WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Contributor => {
-        "CONTRIBUTOR".to_string()
+        write!(f, "CONTRIBUTOR")
       }
       WebhookPullRequestReviewSubmittedReviewAuthorAssociation::FirstTimer => {
-        "FIRST_TIMER".to_string()
+        write!(f, "FIRST_TIMER")
       }
       WebhookPullRequestReviewSubmittedReviewAuthorAssociation::FirstTimeContributor => {
-        "FIRST_TIME_CONTRIBUTOR".to_string()
+        write!(f, "FIRST_TIME_CONTRIBUTOR")
       }
-      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Mannequin => {
-        "MANNEQUIN".to_string()
-      }
-      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Member => "MEMBER".to_string(),
-      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::None => "NONE".to_string(),
-      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Owner => "OWNER".to_string(),
+      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Member => write!(f, "MEMBER"),
+      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::None => write!(f, "NONE"),
+      WebhookPullRequestReviewSubmittedReviewAuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_thread"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewThreadResolvedAction {
@@ -7000,14 +7309,15 @@ pub enum WebhookPullRequestReviewThreadResolvedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_thread"))]
-impl ToString for WebhookPullRequestReviewThreadResolvedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewThreadResolvedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewThreadResolvedAction::Resolved => "resolved".to_string(),
+      WebhookPullRequestReviewThreadResolvedAction::Resolved => write!(f, "resolved"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request_review_thread"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestReviewThreadUnresolvedAction {
@@ -7016,14 +7326,15 @@ pub enum WebhookPullRequestReviewThreadUnresolvedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request_review_thread"))]
-impl ToString for WebhookPullRequestReviewThreadUnresolvedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestReviewThreadUnresolvedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestReviewThreadUnresolvedAction::Unresolved => "unresolved".to_string(),
+      WebhookPullRequestReviewThreadUnresolvedAction::Unresolved => write!(f, "unresolved"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestSynchronizeAction {
@@ -7032,14 +7343,15 @@ pub enum WebhookPullRequestSynchronizeAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestSynchronizeAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestSynchronizeAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestSynchronizeAction::Synchronize => "synchronize".to_string(),
+      WebhookPullRequestSynchronizeAction::Synchronize => write!(f, "synchronize"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestUnassignedAction {
@@ -7048,14 +7360,15 @@ pub enum WebhookPullRequestUnassignedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestUnassignedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestUnassignedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestUnassignedAction::Unassigned => "unassigned".to_string(),
+      WebhookPullRequestUnassignedAction::Unassigned => write!(f, "unassigned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestUnlabeledAction {
@@ -7064,14 +7377,15 @@ pub enum WebhookPullRequestUnlabeledAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestUnlabeledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestUnlabeledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestUnlabeledAction::Unlabeled => "unlabeled".to_string(),
+      WebhookPullRequestUnlabeledAction::Unlabeled => write!(f, "unlabeled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pull_request"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookPullRequestUnlockedAction {
@@ -7080,14 +7394,15 @@ pub enum WebhookPullRequestUnlockedAction {
 }
 
 #[cfg(any(feature = "full", feature = "pull_request"))]
-impl ToString for WebhookPullRequestUnlockedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookPullRequestUnlockedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookPullRequestUnlockedAction::Unlocked => "unlocked".to_string(),
+      WebhookPullRequestUnlockedAction::Unlocked => write!(f, "unlocked"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRegistryPackagePublishedAction {
@@ -7096,14 +7411,15 @@ pub enum WebhookRegistryPackagePublishedAction {
 }
 
 #[cfg(any(feature = "full", feature = "registry_package"))]
-impl ToString for WebhookRegistryPackagePublishedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRegistryPackagePublishedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRegistryPackagePublishedAction::Published => "published".to_string(),
+      WebhookRegistryPackagePublishedAction::Published => write!(f, "published"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "registry_package"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRegistryPackageUpdatedAction {
@@ -7112,14 +7428,15 @@ pub enum WebhookRegistryPackageUpdatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "registry_package"))]
-impl ToString for WebhookRegistryPackageUpdatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRegistryPackageUpdatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRegistryPackageUpdatedAction::Updated => "updated".to_string(),
+      WebhookRegistryPackageUpdatedAction::Updated => write!(f, "updated"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseCreatedAction {
@@ -7128,14 +7445,15 @@ pub enum WebhookReleaseCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "release"))]
-impl ToString for WebhookReleaseCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookReleaseCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookReleaseCreatedAction::Created => "created".to_string(),
+      WebhookReleaseCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 /// State of the release asset.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -7145,14 +7463,15 @@ pub enum ReleaseAssetState {
 }
 
 #[cfg(any(feature = "full", feature = "release"))]
-impl ToString for ReleaseAssetState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ReleaseAssetState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ReleaseAssetState::Uploaded => "uploaded".to_string(),
+      ReleaseAssetState::Uploaded => write!(f, "uploaded"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseDeletedAction {
@@ -7161,14 +7480,15 @@ pub enum WebhookReleaseDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "release"))]
-impl ToString for WebhookReleaseDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookReleaseDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookReleaseDeletedAction::Deleted => "deleted".to_string(),
+      WebhookReleaseDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseEditedAction {
@@ -7177,14 +7497,15 @@ pub enum WebhookReleaseEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "release"))]
-impl ToString for WebhookReleaseEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookReleaseEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookReleaseEditedAction::Edited => "edited".to_string(),
+      WebhookReleaseEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleasePrereleasedAction {
@@ -7193,14 +7514,15 @@ pub enum WebhookReleasePrereleasedAction {
 }
 
 #[cfg(any(feature = "full", feature = "release"))]
-impl ToString for WebhookReleasePrereleasedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookReleasePrereleasedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookReleasePrereleasedAction::Prereleased => "prereleased".to_string(),
+      WebhookReleasePrereleasedAction::Prereleased => write!(f, "prereleased"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 /// Whether the release is identified as a prerelease or a full release.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -7208,6 +7530,7 @@ pub enum WebhookReleasePrereleasedReleaseItem2Prerelease {
   Boolean(bool),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -7217,6 +7540,7 @@ pub enum WebhookReleasePrereleasedRelease {
   WebhookReleasePrereleasedReleaseItem2(WebhookReleasePrereleasedReleaseItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleasePublishedAction {
@@ -7225,14 +7549,15 @@ pub enum WebhookReleasePublishedAction {
 }
 
 #[cfg(any(feature = "full", feature = "release"))]
-impl ToString for WebhookReleasePublishedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookReleasePublishedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookReleasePublishedAction::Published => "published".to_string(),
+      WebhookReleasePublishedAction::Published => write!(f, "published"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -7242,6 +7567,7 @@ pub enum WebhookReleasePublishedRelease {
   WebhookReleasePublishedReleaseItem2(WebhookReleasePublishedReleaseItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseReleasedAction {
@@ -7250,14 +7576,15 @@ pub enum WebhookReleaseReleasedAction {
 }
 
 #[cfg(any(feature = "full", feature = "release"))]
-impl ToString for WebhookReleaseReleasedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookReleaseReleasedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookReleaseReleasedAction::Released => "released".to_string(),
+      WebhookReleaseReleasedAction::Released => write!(f, "released"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookReleaseUnpublishedAction {
@@ -7266,14 +7593,15 @@ pub enum WebhookReleaseUnpublishedAction {
 }
 
 #[cfg(any(feature = "full", feature = "release"))]
-impl ToString for WebhookReleaseUnpublishedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookReleaseUnpublishedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookReleaseUnpublishedAction::Unpublished => "unpublished".to_string(),
+      WebhookReleaseUnpublishedAction::Unpublished => write!(f, "unpublished"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "release"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -7283,6 +7611,7 @@ pub enum WebhookReleaseUnpublishedRelease {
   WebhookReleaseUnpublishedReleaseItem2(WebhookReleaseUnpublishedReleaseItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryAdvisoryPublishedAction {
@@ -7291,14 +7620,15 @@ pub enum WebhookRepositoryAdvisoryPublishedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
-impl ToString for WebhookRepositoryAdvisoryPublishedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryAdvisoryPublishedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryAdvisoryPublishedAction::Published => "published".to_string(),
+      WebhookRepositoryAdvisoryPublishedAction::Published => write!(f, "published"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
 /// The type of credit the user is receiving.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -7326,23 +7656,24 @@ pub enum SecurityAdvisoryCreditTypes {
 }
 
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
-impl ToString for SecurityAdvisoryCreditTypes {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAdvisoryCreditTypes {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAdvisoryCreditTypes::Analyst => "analyst".to_string(),
-      SecurityAdvisoryCreditTypes::Finder => "finder".to_string(),
-      SecurityAdvisoryCreditTypes::Reporter => "reporter".to_string(),
-      SecurityAdvisoryCreditTypes::Coordinator => "coordinator".to_string(),
-      SecurityAdvisoryCreditTypes::RemediationDeveloper => "remediation_developer".to_string(),
-      SecurityAdvisoryCreditTypes::RemediationReviewer => "remediation_reviewer".to_string(),
-      SecurityAdvisoryCreditTypes::RemediationVerifier => "remediation_verifier".to_string(),
-      SecurityAdvisoryCreditTypes::Tool => "tool".to_string(),
-      SecurityAdvisoryCreditTypes::Sponsor => "sponsor".to_string(),
-      SecurityAdvisoryCreditTypes::Other => "other".to_string(),
+      SecurityAdvisoryCreditTypes::Analyst => write!(f, "analyst"),
+      SecurityAdvisoryCreditTypes::Finder => write!(f, "finder"),
+      SecurityAdvisoryCreditTypes::Reporter => write!(f, "reporter"),
+      SecurityAdvisoryCreditTypes::Coordinator => write!(f, "coordinator"),
+      SecurityAdvisoryCreditTypes::RemediationDeveloper => write!(f, "remediation_developer"),
+      SecurityAdvisoryCreditTypes::RemediationReviewer => write!(f, "remediation_reviewer"),
+      SecurityAdvisoryCreditTypes::RemediationVerifier => write!(f, "remediation_verifier"),
+      SecurityAdvisoryCreditTypes::Tool => write!(f, "tool"),
+      SecurityAdvisoryCreditTypes::Sponsor => write!(f, "sponsor"),
+      SecurityAdvisoryCreditTypes::Other => write!(f, "other"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
 /// The state of the user's acceptance of the credit.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -7356,16 +7687,17 @@ pub enum RepositoryAdvisoryCreditState {
 }
 
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
-impl ToString for RepositoryAdvisoryCreditState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryAdvisoryCreditState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryAdvisoryCreditState::Accepted => "accepted".to_string(),
-      RepositoryAdvisoryCreditState::Declined => "declined".to_string(),
-      RepositoryAdvisoryCreditState::Pending => "pending".to_string(),
+      RepositoryAdvisoryCreditState::Accepted => write!(f, "accepted"),
+      RepositoryAdvisoryCreditState::Declined => write!(f, "declined"),
+      RepositoryAdvisoryCreditState::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -7381,17 +7713,18 @@ pub enum RepositoryAdvisorySeverity {
 }
 
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
-impl ToString for RepositoryAdvisorySeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryAdvisorySeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryAdvisorySeverity::Critical => "critical".to_string(),
-      RepositoryAdvisorySeverity::High => "high".to_string(),
-      RepositoryAdvisorySeverity::Medium => "medium".to_string(),
-      RepositoryAdvisorySeverity::Low => "low".to_string(),
+      RepositoryAdvisorySeverity::Critical => write!(f, "critical"),
+      RepositoryAdvisorySeverity::High => write!(f, "high"),
+      RepositoryAdvisorySeverity::Medium => write!(f, "medium"),
+      RepositoryAdvisorySeverity::Low => write!(f, "low"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
 /// The state of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -7409,18 +7742,19 @@ pub enum RepositoryAdvisoryState {
 }
 
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
-impl ToString for RepositoryAdvisoryState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryAdvisoryState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryAdvisoryState::Published => "published".to_string(),
-      RepositoryAdvisoryState::Closed => "closed".to_string(),
-      RepositoryAdvisoryState::Withdrawn => "withdrawn".to_string(),
-      RepositoryAdvisoryState::Draft => "draft".to_string(),
-      RepositoryAdvisoryState::Triage => "triage".to_string(),
+      RepositoryAdvisoryState::Published => write!(f, "published"),
+      RepositoryAdvisoryState::Closed => write!(f, "closed"),
+      RepositoryAdvisoryState::Withdrawn => write!(f, "withdrawn"),
+      RepositoryAdvisoryState::Draft => write!(f, "draft"),
+      RepositoryAdvisoryState::Triage => write!(f, "triage"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
 /// The package's language or package management ecosystem.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -7454,26 +7788,27 @@ pub enum SecurityAdvisoryEcosystems {
 }
 
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
-impl ToString for SecurityAdvisoryEcosystems {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAdvisoryEcosystems {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAdvisoryEcosystems::Rubygems => "rubygems".to_string(),
-      SecurityAdvisoryEcosystems::Npm => "npm".to_string(),
-      SecurityAdvisoryEcosystems::Pip => "pip".to_string(),
-      SecurityAdvisoryEcosystems::Maven => "maven".to_string(),
-      SecurityAdvisoryEcosystems::Nuget => "nuget".to_string(),
-      SecurityAdvisoryEcosystems::Composer => "composer".to_string(),
-      SecurityAdvisoryEcosystems::Go => "go".to_string(),
-      SecurityAdvisoryEcosystems::Rust => "rust".to_string(),
-      SecurityAdvisoryEcosystems::Erlang => "erlang".to_string(),
-      SecurityAdvisoryEcosystems::Actions => "actions".to_string(),
-      SecurityAdvisoryEcosystems::Pub => "pub".to_string(),
-      SecurityAdvisoryEcosystems::Other => "other".to_string(),
-      SecurityAdvisoryEcosystems::Swift => "swift".to_string(),
+      SecurityAdvisoryEcosystems::Rubygems => write!(f, "rubygems"),
+      SecurityAdvisoryEcosystems::Npm => write!(f, "npm"),
+      SecurityAdvisoryEcosystems::Pip => write!(f, "pip"),
+      SecurityAdvisoryEcosystems::Maven => write!(f, "maven"),
+      SecurityAdvisoryEcosystems::Nuget => write!(f, "nuget"),
+      SecurityAdvisoryEcosystems::Composer => write!(f, "composer"),
+      SecurityAdvisoryEcosystems::Go => write!(f, "go"),
+      SecurityAdvisoryEcosystems::Rust => write!(f, "rust"),
+      SecurityAdvisoryEcosystems::Erlang => write!(f, "erlang"),
+      SecurityAdvisoryEcosystems::Actions => write!(f, "actions"),
+      SecurityAdvisoryEcosystems::Pub => write!(f, "pub"),
+      SecurityAdvisoryEcosystems::Other => write!(f, "other"),
+      SecurityAdvisoryEcosystems::Swift => write!(f, "swift"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryAdvisoryReportedAction {
@@ -7482,14 +7817,15 @@ pub enum WebhookRepositoryAdvisoryReportedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository_advisory"))]
-impl ToString for WebhookRepositoryAdvisoryReportedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryAdvisoryReportedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryAdvisoryReportedAction::Reported => "reported".to_string(),
+      WebhookRepositoryAdvisoryReportedAction::Reported => write!(f, "reported"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryArchivedAction {
@@ -7498,14 +7834,15 @@ pub enum WebhookRepositoryArchivedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository"))]
-impl ToString for WebhookRepositoryArchivedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryArchivedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryArchivedAction::Archived => "archived".to_string(),
+      WebhookRepositoryArchivedAction::Archived => write!(f, "archived"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryCreatedAction {
@@ -7514,14 +7851,15 @@ pub enum WebhookRepositoryCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository"))]
-impl ToString for WebhookRepositoryCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryCreatedAction::Created => "created".to_string(),
+      WebhookRepositoryCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryDeletedAction {
@@ -7530,14 +7868,15 @@ pub enum WebhookRepositoryDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository"))]
-impl ToString for WebhookRepositoryDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryDeletedAction::Deleted => "deleted".to_string(),
+      WebhookRepositoryDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryEditedAction {
@@ -7546,14 +7885,15 @@ pub enum WebhookRepositoryEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository"))]
-impl ToString for WebhookRepositoryEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryEditedAction::Edited => "edited".to_string(),
+      WebhookRepositoryEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_import"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryImportStatus {
@@ -7566,16 +7906,17 @@ pub enum WebhookRepositoryImportStatus {
 }
 
 #[cfg(any(feature = "full", feature = "repository_import"))]
-impl ToString for WebhookRepositoryImportStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryImportStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryImportStatus::Success => "success".to_string(),
-      WebhookRepositoryImportStatus::Cancelled => "cancelled".to_string(),
-      WebhookRepositoryImportStatus::Failure => "failure".to_string(),
+      WebhookRepositoryImportStatus::Success => write!(f, "success"),
+      WebhookRepositoryImportStatus::Cancelled => write!(f, "cancelled"),
+      WebhookRepositoryImportStatus::Failure => write!(f, "failure"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryPrivatizedAction {
@@ -7584,14 +7925,15 @@ pub enum WebhookRepositoryPrivatizedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository"))]
-impl ToString for WebhookRepositoryPrivatizedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryPrivatizedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryPrivatizedAction::Privatized => "privatized".to_string(),
+      WebhookRepositoryPrivatizedAction::Privatized => write!(f, "privatized"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryPublicizedAction {
@@ -7600,14 +7942,15 @@ pub enum WebhookRepositoryPublicizedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository"))]
-impl ToString for WebhookRepositoryPublicizedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryPublicizedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryPublicizedAction::Publicized => "publicized".to_string(),
+      WebhookRepositoryPublicizedAction::Publicized => write!(f, "publicized"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRenamedAction {
@@ -7616,14 +7959,15 @@ pub enum WebhookRepositoryRenamedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository"))]
-impl ToString for WebhookRepositoryRenamedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryRenamedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryRenamedAction::Renamed => "renamed".to_string(),
+      WebhookRepositoryRenamedAction::Renamed => write!(f, "renamed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRulesetCreatedAction {
@@ -7632,14 +7976,15 @@ pub enum WebhookRepositoryRulesetCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for WebhookRepositoryRulesetCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryRulesetCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryRulesetCreatedAction::Created => "created".to_string(),
+      WebhookRepositoryRulesetCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 /// The type of actor that can bypass a ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -7651,17 +7996,18 @@ pub enum RepositoryRulesetBypassActorActorType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRulesetBypassActorActorType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulesetBypassActorActorType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulesetBypassActorActorType::RepositoryRole => "RepositoryRole".to_string(),
-      RepositoryRulesetBypassActorActorType::Team => "Team".to_string(),
-      RepositoryRulesetBypassActorActorType::Integration => "Integration".to_string(),
-      RepositoryRulesetBypassActorActorType::OrganizationAdmin => "OrganizationAdmin".to_string(),
+      RepositoryRulesetBypassActorActorType::RepositoryRole => write!(f, "RepositoryRole"),
+      RepositoryRulesetBypassActorActorType::Team => write!(f, "Team"),
+      RepositoryRulesetBypassActorActorType::Integration => write!(f, "Integration"),
+      RepositoryRulesetBypassActorActorType::OrganizationAdmin => write!(f, "OrganizationAdmin"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 /// When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -7673,15 +8019,16 @@ pub enum RepositoryRulesetBypassActorBypassMode {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRulesetBypassActorBypassMode {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulesetBypassActorBypassMode {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulesetBypassActorBypassMode::Always => "always".to_string(),
-      RepositoryRulesetBypassActorBypassMode::PullRequest => "pull_request".to_string(),
+      RepositoryRulesetBypassActorBypassMode::Always => write!(f, "always"),
+      RepositoryRulesetBypassActorBypassMode::PullRequest => write!(f, "pull_request"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -7692,6 +8039,7 @@ pub enum OrgRulesetConditionsItem1 {
   RepositoryRulesetConditionsRepositoryNameTarget(RepositoryRulesetConditionsRepositoryNameTarget),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -7702,6 +8050,7 @@ pub enum OrgRulesetConditionsItem2 {
   RepositoryRulesetConditionsRepositoryIdTarget(RepositoryRulesetConditionsRepositoryIdTarget),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -7714,6 +8063,7 @@ pub enum OrgRulesetConditionsItem3 {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -7723,6 +8073,7 @@ pub enum OrgRulesetConditions {
   OrgRulesetConditionsItem3(OrgRulesetConditionsItem3),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 /// The bypass type of the user making the API request for this ruleset. This field is only returned when
 /// querying the repository-level endpoint.
@@ -7737,16 +8088,17 @@ pub enum RepositoryRulesetCurrentUserCanBypass {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRulesetCurrentUserCanBypass {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulesetCurrentUserCanBypass {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulesetCurrentUserCanBypass::Always => "always".to_string(),
-      RepositoryRulesetCurrentUserCanBypass::PullRequestsOnly => "pull_requests_only".to_string(),
-      RepositoryRulesetCurrentUserCanBypass::Never => "never".to_string(),
+      RepositoryRulesetCurrentUserCanBypass::Always => write!(f, "always"),
+      RepositoryRulesetCurrentUserCanBypass::PullRequestsOnly => write!(f, "pull_requests_only"),
+      RepositoryRulesetCurrentUserCanBypass::Never => write!(f, "never"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 /// The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -7760,16 +8112,17 @@ pub enum RepositoryRuleEnforcement {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleEnforcement {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleEnforcement {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleEnforcement::Disabled => "disabled".to_string(),
-      RepositoryRuleEnforcement::Active => "active".to_string(),
-      RepositoryRuleEnforcement::Evaluate => "evaluate".to_string(),
+      RepositoryRuleEnforcement::Disabled => write!(f, "disabled"),
+      RepositoryRuleEnforcement::Active => write!(f, "active"),
+      RepositoryRuleEnforcement::Evaluate => write!(f, "evaluate"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCreationType {
@@ -7778,14 +8131,15 @@ pub enum RepositoryRuleCreationType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleCreationType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleCreationType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleCreationType::Creation => "creation".to_string(),
+      RepositoryRuleCreationType::Creation => write!(f, "creation"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleUpdateType {
@@ -7794,14 +8148,15 @@ pub enum RepositoryRuleUpdateType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleUpdateType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleUpdateType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleUpdateType::Update => "update".to_string(),
+      RepositoryRuleUpdateType::Update => write!(f, "update"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleDeletionType {
@@ -7810,14 +8165,15 @@ pub enum RepositoryRuleDeletionType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleDeletionType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleDeletionType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleDeletionType::Deletion => "deletion".to_string(),
+      RepositoryRuleDeletionType::Deletion => write!(f, "deletion"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredLinearHistoryType {
@@ -7826,16 +8182,17 @@ pub enum RepositoryRuleRequiredLinearHistoryType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleRequiredLinearHistoryType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleRequiredLinearHistoryType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleRequiredLinearHistoryType::RequiredLinearHistory => {
-        "required_linear_history".to_string()
+        write!(f, "required_linear_history")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredDeploymentsType {
@@ -7844,16 +8201,17 @@ pub enum RepositoryRuleRequiredDeploymentsType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleRequiredDeploymentsType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleRequiredDeploymentsType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleRequiredDeploymentsType::RequiredDeployments => {
-        "required_deployments".to_string()
+        write!(f, "required_deployments")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredSignaturesType {
@@ -7862,14 +8220,15 @@ pub enum RepositoryRuleRequiredSignaturesType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleRequiredSignaturesType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleRequiredSignaturesType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleRequiredSignaturesType::RequiredSignatures => "required_signatures".to_string(),
+      RepositoryRuleRequiredSignaturesType::RequiredSignatures => write!(f, "required_signatures"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulePullRequestType {
@@ -7878,14 +8237,15 @@ pub enum RepositoryRulePullRequestType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRulePullRequestType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulePullRequestType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulePullRequestType::PullRequest => "pull_request".to_string(),
+      RepositoryRulePullRequestType::PullRequest => write!(f, "pull_request"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredStatusChecksType {
@@ -7894,16 +8254,17 @@ pub enum RepositoryRuleRequiredStatusChecksType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleRequiredStatusChecksType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleRequiredStatusChecksType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleRequiredStatusChecksType::RequiredStatusChecks => {
-        "required_status_checks".to_string()
+        write!(f, "required_status_checks")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleNonFastForwardType {
@@ -7912,14 +8273,15 @@ pub enum RepositoryRuleNonFastForwardType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleNonFastForwardType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleNonFastForwardType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleNonFastForwardType::NonFastForward => "non_fast_forward".to_string(),
+      RepositoryRuleNonFastForwardType::NonFastForward => write!(f, "non_fast_forward"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitMessagePatternType {
@@ -7928,16 +8290,17 @@ pub enum RepositoryRuleCommitMessagePatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleCommitMessagePatternType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleCommitMessagePatternType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleCommitMessagePatternType::CommitMessagePattern => {
-        "commit_message_pattern".to_string()
+        write!(f, "commit_message_pattern")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitAuthorEmailPatternType {
@@ -7946,16 +8309,17 @@ pub enum RepositoryRuleCommitAuthorEmailPatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleCommitAuthorEmailPatternType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleCommitAuthorEmailPatternType::CommitAuthorEmailPattern => {
-        "commit_author_email_pattern".to_string()
+        write!(f, "commit_author_email_pattern")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitterEmailPatternType {
@@ -7964,16 +8328,17 @@ pub enum RepositoryRuleCommitterEmailPatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleCommitterEmailPatternType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleCommitterEmailPatternType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleCommitterEmailPatternType::CommitterEmailPattern => {
-        "committer_email_pattern".to_string()
+        write!(f, "committer_email_pattern")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleBranchNamePatternType {
@@ -7982,14 +8347,15 @@ pub enum RepositoryRuleBranchNamePatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleBranchNamePatternType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleBranchNamePatternType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleBranchNamePatternType::BranchNamePattern => "branch_name_pattern".to_string(),
+      RepositoryRuleBranchNamePatternType::BranchNamePattern => write!(f, "branch_name_pattern"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleTagNamePatternType {
@@ -7998,14 +8364,15 @@ pub enum RepositoryRuleTagNamePatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleTagNamePatternType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleTagNamePatternType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleTagNamePatternType::TagNamePattern => "tag_name_pattern".to_string(),
+      RepositoryRuleTagNamePatternType::TagNamePattern => write!(f, "tag_name_pattern"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleWorkflowsType {
@@ -8014,14 +8381,15 @@ pub enum RepositoryRuleWorkflowsType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRuleWorkflowsType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleWorkflowsType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleWorkflowsType::Workflows => "workflows".to_string(),
+      RepositoryRuleWorkflowsType::Workflows => write!(f, "workflows"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -8058,6 +8426,7 @@ pub enum RepositoryRule {
   RepositoryRuleWorkflows(RepositoryRuleWorkflows),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 /// The type of the source of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -8067,15 +8436,16 @@ pub enum RepositoryRulesetSourceType {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRulesetSourceType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulesetSourceType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulesetSourceType::Repository => "Repository".to_string(),
-      RepositoryRulesetSourceType::Organization => "Organization".to_string(),
+      RepositoryRulesetSourceType::Repository => write!(f, "Repository"),
+      RepositoryRulesetSourceType::Organization => write!(f, "Organization"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 /// The target of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -8087,15 +8457,16 @@ pub enum RepositoryRulesetTarget {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for RepositoryRulesetTarget {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulesetTarget {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulesetTarget::Branch => "branch".to_string(),
-      RepositoryRulesetTarget::Tag => "tag".to_string(),
+      RepositoryRulesetTarget::Branch => write!(f, "branch"),
+      RepositoryRulesetTarget::Tag => write!(f, "tag"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRulesetDeletedAction {
@@ -8104,14 +8475,15 @@ pub enum WebhookRepositoryRulesetDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for WebhookRepositoryRulesetDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryRulesetDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryRulesetDeletedAction::Deleted => "deleted".to_string(),
+      WebhookRepositoryRulesetDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryRulesetEditedAction {
@@ -8120,14 +8492,15 @@ pub enum WebhookRepositoryRulesetEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository_ruleset"))]
-impl ToString for WebhookRepositoryRulesetEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryRulesetEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryRulesetEditedAction::Edited => "edited".to_string(),
+      WebhookRepositoryRulesetEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryTransferredAction {
@@ -8136,14 +8509,15 @@ pub enum WebhookRepositoryTransferredAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository"))]
-impl ToString for WebhookRepositoryTransferredAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryTransferredAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryTransferredAction::Transferred => "transferred".to_string(),
+      WebhookRepositoryTransferredAction::Transferred => write!(f, "transferred"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryUnarchivedAction {
@@ -8152,14 +8526,15 @@ pub enum WebhookRepositoryUnarchivedAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository"))]
-impl ToString for WebhookRepositoryUnarchivedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryUnarchivedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryUnarchivedAction::Unarchived => "unarchived".to_string(),
+      WebhookRepositoryUnarchivedAction::Unarchived => write!(f, "unarchived"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertCreateAction {
@@ -8168,14 +8543,15 @@ pub enum WebhookRepositoryVulnerabilityAlertCreateAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
-impl ToString for WebhookRepositoryVulnerabilityAlertCreateAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryVulnerabilityAlertCreateAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryVulnerabilityAlertCreateAction::Create => "create".to_string(),
+      WebhookRepositoryVulnerabilityAlertCreateAction::Create => write!(f, "create"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryVulnerabilityAlertAlertState {
@@ -8188,16 +8564,17 @@ pub enum RepositoryVulnerabilityAlertAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
-impl ToString for RepositoryVulnerabilityAlertAlertState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryVulnerabilityAlertAlertState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryVulnerabilityAlertAlertState::Open => "open".to_string(),
-      RepositoryVulnerabilityAlertAlertState::Dismissed => "dismissed".to_string(),
-      RepositoryVulnerabilityAlertAlertState::Fixed => "fixed".to_string(),
+      RepositoryVulnerabilityAlertAlertState::Open => write!(f, "open"),
+      RepositoryVulnerabilityAlertAlertState::Dismissed => write!(f, "dismissed"),
+      RepositoryVulnerabilityAlertAlertState::Fixed => write!(f, "fixed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
@@ -8206,14 +8583,15 @@ pub enum WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
 }
 
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
-impl ToString for WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryVulnerabilityAlertCreateAlertItem2State {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryVulnerabilityAlertCreateAlertItem2State::Open => "open".to_string(),
+      WebhookRepositoryVulnerabilityAlertCreateAlertItem2State::Open => write!(f, "open"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -8225,6 +8603,7 @@ pub enum WebhookRepositoryVulnerabilityAlertCreateAlert {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertDismissAction {
@@ -8233,14 +8612,15 @@ pub enum WebhookRepositoryVulnerabilityAlertDismissAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
-impl ToString for WebhookRepositoryVulnerabilityAlertDismissAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryVulnerabilityAlertDismissAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryVulnerabilityAlertDismissAction::Dismiss => "dismiss".to_string(),
+      WebhookRepositoryVulnerabilityAlertDismissAction::Dismiss => write!(f, "dismiss"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertDismissAlertItem2State {
@@ -8249,16 +8629,17 @@ pub enum WebhookRepositoryVulnerabilityAlertDismissAlertItem2State {
 }
 
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
-impl ToString for WebhookRepositoryVulnerabilityAlertDismissAlertItem2State {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryVulnerabilityAlertDismissAlertItem2State {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookRepositoryVulnerabilityAlertDismissAlertItem2State::Dismissed => {
-        "dismissed".to_string()
+        write!(f, "dismissed")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -8270,6 +8651,7 @@ pub enum WebhookRepositoryVulnerabilityAlertDismissAlert {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertReopenAction {
@@ -8278,14 +8660,15 @@ pub enum WebhookRepositoryVulnerabilityAlertReopenAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
-impl ToString for WebhookRepositoryVulnerabilityAlertReopenAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryVulnerabilityAlertReopenAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryVulnerabilityAlertReopenAction::Reopen => "reopen".to_string(),
+      WebhookRepositoryVulnerabilityAlertReopenAction::Reopen => write!(f, "reopen"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
@@ -8294,14 +8677,15 @@ pub enum WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
 }
 
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
-impl ToString for WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryVulnerabilityAlertReopenAlertItem2State {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryVulnerabilityAlertReopenAlertItem2State::Open => "open".to_string(),
+      WebhookRepositoryVulnerabilityAlertReopenAlertItem2State::Open => write!(f, "open"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -8313,6 +8697,7 @@ pub enum WebhookRepositoryVulnerabilityAlertReopenAlert {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertResolveAction {
@@ -8321,14 +8706,15 @@ pub enum WebhookRepositoryVulnerabilityAlertResolveAction {
 }
 
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
-impl ToString for WebhookRepositoryVulnerabilityAlertResolveAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryVulnerabilityAlertResolveAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryVulnerabilityAlertResolveAction::Resolve => "resolve".to_string(),
+      WebhookRepositoryVulnerabilityAlertResolveAction::Resolve => write!(f, "resolve"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
@@ -8339,15 +8725,16 @@ pub enum WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
 }
 
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
-impl ToString for WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookRepositoryVulnerabilityAlertResolveAlertItem2State {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookRepositoryVulnerabilityAlertResolveAlertItem2State::Fixed => "fixed".to_string(),
-      WebhookRepositoryVulnerabilityAlertResolveAlertItem2State::Open => "open".to_string(),
+      WebhookRepositoryVulnerabilityAlertResolveAlertItem2State::Fixed => write!(f, "fixed"),
+      WebhookRepositoryVulnerabilityAlertResolveAlertItem2State::Open => write!(f, "open"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repository_vulnerability_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -8359,6 +8746,7 @@ pub enum WebhookRepositoryVulnerabilityAlertResolveAlert {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertCreatedAction {
@@ -8367,14 +8755,15 @@ pub enum WebhookSecretScanningAlertCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning_alert"))]
-impl ToString for WebhookSecretScanningAlertCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSecretScanningAlertCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSecretScanningAlertCreatedAction::Created => "created".to_string(),
+      WebhookSecretScanningAlertCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "secret_scanning_alert",
@@ -8402,19 +8791,20 @@ pub enum SecretScanningAlertResolutionWebhook {
   feature = "secret_scanning_alert",
   feature = "secret_scanning_alert_location"
 ))]
-impl ToString for SecretScanningAlertResolutionWebhook {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecretScanningAlertResolutionWebhook {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecretScanningAlertResolutionWebhook::FalsePositive => "false_positive".to_string(),
-      SecretScanningAlertResolutionWebhook::WontFix => "wont_fix".to_string(),
-      SecretScanningAlertResolutionWebhook::Revoked => "revoked".to_string(),
-      SecretScanningAlertResolutionWebhook::UsedInTests => "used_in_tests".to_string(),
-      SecretScanningAlertResolutionWebhook::PatternDeleted => "pattern_deleted".to_string(),
-      SecretScanningAlertResolutionWebhook::PatternEdited => "pattern_edited".to_string(),
+      SecretScanningAlertResolutionWebhook::FalsePositive => write!(f, "false_positive"),
+      SecretScanningAlertResolutionWebhook::WontFix => write!(f, "wont_fix"),
+      SecretScanningAlertResolutionWebhook::Revoked => write!(f, "revoked"),
+      SecretScanningAlertResolutionWebhook::UsedInTests => write!(f, "used_in_tests"),
+      SecretScanningAlertResolutionWebhook::PatternDeleted => write!(f, "pattern_deleted"),
+      SecretScanningAlertResolutionWebhook::PatternEdited => write!(f, "pattern_edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "secret_scanning_alert",
@@ -8436,16 +8826,17 @@ pub enum SecretScanningAlertWebhookValidity {
   feature = "secret_scanning_alert",
   feature = "secret_scanning_alert_location"
 ))]
-impl ToString for SecretScanningAlertWebhookValidity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecretScanningAlertWebhookValidity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecretScanningAlertWebhookValidity::Active => "active".to_string(),
-      SecretScanningAlertWebhookValidity::Inactive => "inactive".to_string(),
-      SecretScanningAlertWebhookValidity::Unknown => "unknown".to_string(),
+      SecretScanningAlertWebhookValidity::Active => write!(f, "active"),
+      SecretScanningAlertWebhookValidity::Inactive => write!(f, "inactive"),
+      SecretScanningAlertWebhookValidity::Unknown => write!(f, "unknown"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning_alert_location"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertLocationCreatedAction {
@@ -8454,14 +8845,15 @@ pub enum WebhookSecretScanningAlertLocationCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning_alert_location"))]
-impl ToString for WebhookSecretScanningAlertLocationCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSecretScanningAlertLocationCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSecretScanningAlertLocationCreatedAction::Created => "created".to_string(),
+      WebhookSecretScanningAlertLocationCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning_alert_location"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -8494,6 +8886,7 @@ pub enum SecretScanningLocationDetails {
   SecretScanningLocationPullRequestReviewComment(SecretScanningLocationPullRequestReviewComment),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning_alert_location"))]
 /// The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -8527,28 +8920,29 @@ pub enum SecretScanningLocationType {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning_alert_location"))]
-impl ToString for SecretScanningLocationType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecretScanningLocationType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecretScanningLocationType::Commit => "commit".to_string(),
-      SecretScanningLocationType::WikiCommit => "wiki_commit".to_string(),
-      SecretScanningLocationType::IssueTitle => "issue_title".to_string(),
-      SecretScanningLocationType::IssueBody => "issue_body".to_string(),
-      SecretScanningLocationType::IssueComment => "issue_comment".to_string(),
-      SecretScanningLocationType::DiscussionTitle => "discussion_title".to_string(),
-      SecretScanningLocationType::DiscussionBody => "discussion_body".to_string(),
-      SecretScanningLocationType::DiscussionComment => "discussion_comment".to_string(),
-      SecretScanningLocationType::PullRequestTitle => "pull_request_title".to_string(),
-      SecretScanningLocationType::PullRequestBody => "pull_request_body".to_string(),
-      SecretScanningLocationType::PullRequestComment => "pull_request_comment".to_string(),
-      SecretScanningLocationType::PullRequestReview => "pull_request_review".to_string(),
+      SecretScanningLocationType::Commit => write!(f, "commit"),
+      SecretScanningLocationType::WikiCommit => write!(f, "wiki_commit"),
+      SecretScanningLocationType::IssueTitle => write!(f, "issue_title"),
+      SecretScanningLocationType::IssueBody => write!(f, "issue_body"),
+      SecretScanningLocationType::IssueComment => write!(f, "issue_comment"),
+      SecretScanningLocationType::DiscussionTitle => write!(f, "discussion_title"),
+      SecretScanningLocationType::DiscussionBody => write!(f, "discussion_body"),
+      SecretScanningLocationType::DiscussionComment => write!(f, "discussion_comment"),
+      SecretScanningLocationType::PullRequestTitle => write!(f, "pull_request_title"),
+      SecretScanningLocationType::PullRequestBody => write!(f, "pull_request_body"),
+      SecretScanningLocationType::PullRequestComment => write!(f, "pull_request_comment"),
+      SecretScanningLocationType::PullRequestReview => write!(f, "pull_request_review"),
       SecretScanningLocationType::PullRequestReviewComment => {
-        "pull_request_review_comment".to_string()
+        write!(f, "pull_request_review_comment")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertReopenedAction {
@@ -8557,14 +8951,15 @@ pub enum WebhookSecretScanningAlertReopenedAction {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning_alert"))]
-impl ToString for WebhookSecretScanningAlertReopenedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSecretScanningAlertReopenedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSecretScanningAlertReopenedAction::Reopened => "reopened".to_string(),
+      WebhookSecretScanningAlertReopenedAction::Reopened => write!(f, "reopened"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertResolvedAction {
@@ -8573,14 +8968,15 @@ pub enum WebhookSecretScanningAlertResolvedAction {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning_alert"))]
-impl ToString for WebhookSecretScanningAlertResolvedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSecretScanningAlertResolvedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSecretScanningAlertResolvedAction::Resolved => "resolved".to_string(),
+      WebhookSecretScanningAlertResolvedAction::Resolved => write!(f, "resolved"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertRevokedAction {
@@ -8589,14 +8985,15 @@ pub enum WebhookSecretScanningAlertRevokedAction {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning_alert"))]
-impl ToString for WebhookSecretScanningAlertRevokedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSecretScanningAlertRevokedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSecretScanningAlertRevokedAction::Revoked => "revoked".to_string(),
+      WebhookSecretScanningAlertRevokedAction::Revoked => write!(f, "revoked"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning_alert"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecretScanningAlertValidatedAction {
@@ -8605,14 +9002,15 @@ pub enum WebhookSecretScanningAlertValidatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning_alert"))]
-impl ToString for WebhookSecretScanningAlertValidatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSecretScanningAlertValidatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSecretScanningAlertValidatedAction::Validated => "validated".to_string(),
+      WebhookSecretScanningAlertValidatedAction::Validated => write!(f, "validated"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecurityAdvisoryPublishedAction {
@@ -8621,14 +9019,15 @@ pub enum WebhookSecurityAdvisoryPublishedAction {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisory"))]
-impl ToString for WebhookSecurityAdvisoryPublishedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSecurityAdvisoryPublishedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSecurityAdvisoryPublishedAction::Published => "published".to_string(),
+      WebhookSecurityAdvisoryPublishedAction::Published => write!(f, "published"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecurityAdvisoryUpdatedAction {
@@ -8637,14 +9036,15 @@ pub enum WebhookSecurityAdvisoryUpdatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisory"))]
-impl ToString for WebhookSecurityAdvisoryUpdatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSecurityAdvisoryUpdatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSecurityAdvisoryUpdatedAction::Updated => "updated".to_string(),
+      WebhookSecurityAdvisoryUpdatedAction::Updated => write!(f, "updated"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisory"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSecurityAdvisoryWithdrawnAction {
@@ -8653,14 +9053,15 @@ pub enum WebhookSecurityAdvisoryWithdrawnAction {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisory"))]
-impl ToString for WebhookSecurityAdvisoryWithdrawnAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSecurityAdvisoryWithdrawnAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSecurityAdvisoryWithdrawnAction::Withdrawn => "withdrawn".to_string(),
+      WebhookSecurityAdvisoryWithdrawnAction::Withdrawn => write!(f, "withdrawn"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipCancelledAction {
@@ -8669,14 +9070,15 @@ pub enum WebhookSponsorshipCancelledAction {
 }
 
 #[cfg(any(feature = "full", feature = "sponsorship"))]
-impl ToString for WebhookSponsorshipCancelledAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSponsorshipCancelledAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSponsorshipCancelledAction::Cancelled => "cancelled".to_string(),
+      WebhookSponsorshipCancelledAction::Cancelled => write!(f, "cancelled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipCreatedAction {
@@ -8685,14 +9087,15 @@ pub enum WebhookSponsorshipCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "sponsorship"))]
-impl ToString for WebhookSponsorshipCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSponsorshipCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSponsorshipCreatedAction::Created => "created".to_string(),
+      WebhookSponsorshipCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipEditedAction {
@@ -8701,14 +9104,15 @@ pub enum WebhookSponsorshipEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "sponsorship"))]
-impl ToString for WebhookSponsorshipEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSponsorshipEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSponsorshipEditedAction::Edited => "edited".to_string(),
+      WebhookSponsorshipEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipPendingCancellationAction {
@@ -8717,16 +9121,17 @@ pub enum WebhookSponsorshipPendingCancellationAction {
 }
 
 #[cfg(any(feature = "full", feature = "sponsorship"))]
-impl ToString for WebhookSponsorshipPendingCancellationAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSponsorshipPendingCancellationAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookSponsorshipPendingCancellationAction::PendingCancellation => {
-        "pending_cancellation".to_string()
+        write!(f, "pending_cancellation")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipPendingTierChangeAction {
@@ -8735,16 +9140,17 @@ pub enum WebhookSponsorshipPendingTierChangeAction {
 }
 
 #[cfg(any(feature = "full", feature = "sponsorship"))]
-impl ToString for WebhookSponsorshipPendingTierChangeAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSponsorshipPendingTierChangeAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookSponsorshipPendingTierChangeAction::PendingTierChange => {
-        "pending_tier_change".to_string()
+        write!(f, "pending_tier_change")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "sponsorship"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookSponsorshipTierChangedAction {
@@ -8753,14 +9159,15 @@ pub enum WebhookSponsorshipTierChangedAction {
 }
 
 #[cfg(any(feature = "full", feature = "sponsorship"))]
-impl ToString for WebhookSponsorshipTierChangedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookSponsorshipTierChangedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookSponsorshipTierChangedAction::TierChanged => "tier_changed".to_string(),
+      WebhookSponsorshipTierChangedAction::TierChanged => write!(f, "tier_changed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "star"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookStarCreatedAction {
@@ -8769,14 +9176,15 @@ pub enum WebhookStarCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "star"))]
-impl ToString for WebhookStarCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookStarCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookStarCreatedAction::Created => "created".to_string(),
+      WebhookStarCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "star"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookStarDeletedAction {
@@ -8785,14 +9193,15 @@ pub enum WebhookStarDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "star"))]
-impl ToString for WebhookStarDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookStarDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookStarDeletedAction::Deleted => "deleted".to_string(),
+      WebhookStarDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "status"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -8802,6 +9211,7 @@ pub enum WebhookStatusCommitCommitAuthor {
   WebhookStatusCommitCommitAuthorItem2(WebhookStatusCommitCommitAuthorItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "status"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -8811,6 +9221,7 @@ pub enum WebhookStatusCommitCommitCommitter {
   WebhookStatusCommitCommitCommitterItem2(WebhookStatusCommitCommitCommitterItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "status"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookStatusCommitCommitVerificationReason {
@@ -8847,36 +9258,35 @@ pub enum WebhookStatusCommitCommitVerificationReason {
 }
 
 #[cfg(any(feature = "full", feature = "status"))]
-impl ToString for WebhookStatusCommitCommitVerificationReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookStatusCommitCommitVerificationReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookStatusCommitCommitVerificationReason::ExpiredKey => "expired_key".to_string(),
-      WebhookStatusCommitCommitVerificationReason::NotSigningKey => "not_signing_key".to_string(),
-      WebhookStatusCommitCommitVerificationReason::GpgverifyError => "gpgverify_error".to_string(),
+      WebhookStatusCommitCommitVerificationReason::ExpiredKey => write!(f, "expired_key"),
+      WebhookStatusCommitCommitVerificationReason::NotSigningKey => write!(f, "not_signing_key"),
+      WebhookStatusCommitCommitVerificationReason::GpgverifyError => write!(f, "gpgverify_error"),
       WebhookStatusCommitCommitVerificationReason::GpgverifyUnavailable => {
-        "gpgverify_unavailable".to_string()
+        write!(f, "gpgverify_unavailable")
       }
-      WebhookStatusCommitCommitVerificationReason::Unsigned => "unsigned".to_string(),
+      WebhookStatusCommitCommitVerificationReason::Unsigned => write!(f, "unsigned"),
       WebhookStatusCommitCommitVerificationReason::UnknownSignatureType => {
-        "unknown_signature_type".to_string()
+        write!(f, "unknown_signature_type")
       }
-      WebhookStatusCommitCommitVerificationReason::NoUser => "no_user".to_string(),
-      WebhookStatusCommitCommitVerificationReason::UnverifiedEmail => {
-        "unverified_email".to_string()
-      }
-      WebhookStatusCommitCommitVerificationReason::BadEmail => "bad_email".to_string(),
-      WebhookStatusCommitCommitVerificationReason::UnknownKey => "unknown_key".to_string(),
+      WebhookStatusCommitCommitVerificationReason::NoUser => write!(f, "no_user"),
+      WebhookStatusCommitCommitVerificationReason::UnverifiedEmail => write!(f, "unverified_email"),
+      WebhookStatusCommitCommitVerificationReason::BadEmail => write!(f, "bad_email"),
+      WebhookStatusCommitCommitVerificationReason::UnknownKey => write!(f, "unknown_key"),
       WebhookStatusCommitCommitVerificationReason::MalformedSignature => {
-        "malformed_signature".to_string()
+        write!(f, "malformed_signature")
       }
-      WebhookStatusCommitCommitVerificationReason::Invalid => "invalid".to_string(),
-      WebhookStatusCommitCommitVerificationReason::Valid => "valid".to_string(),
-      WebhookStatusCommitCommitVerificationReason::BadCert => "bad_cert".to_string(),
-      WebhookStatusCommitCommitVerificationReason::OcspPending => "ocsp_pending".to_string(),
+      WebhookStatusCommitCommitVerificationReason::Invalid => write!(f, "invalid"),
+      WebhookStatusCommitCommitVerificationReason::Valid => write!(f, "valid"),
+      WebhookStatusCommitCommitVerificationReason::BadCert => write!(f, "bad_cert"),
+      WebhookStatusCommitCommitVerificationReason::OcspPending => write!(f, "ocsp_pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "status"))]
 /// The new state. Can be `pending`, `success`, `failure`, or `error`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -8892,17 +9302,18 @@ pub enum WebhookStatusState {
 }
 
 #[cfg(any(feature = "full", feature = "status"))]
-impl ToString for WebhookStatusState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookStatusState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookStatusState::Pending => "pending".to_string(),
-      WebhookStatusState::Success => "success".to_string(),
-      WebhookStatusState::Failure => "failure".to_string(),
-      WebhookStatusState::Error => "error".to_string(),
+      WebhookStatusState::Pending => write!(f, "pending"),
+      WebhookStatusState::Success => write!(f, "success"),
+      WebhookStatusState::Failure => write!(f, "failure"),
+      WebhookStatusState::Error => write!(f, "error"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamAddedToRepositoryAction {
@@ -8911,14 +9322,15 @@ pub enum WebhookTeamAddedToRepositoryAction {
 }
 
 #[cfg(any(feature = "full", feature = "team"))]
-impl ToString for WebhookTeamAddedToRepositoryAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookTeamAddedToRepositoryAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookTeamAddedToRepositoryAction::AddedToRepository => "added_to_repository".to_string(),
+      WebhookTeamAddedToRepositoryAction::AddedToRepository => write!(f, "added_to_repository"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamCreatedAction {
@@ -8927,14 +9339,15 @@ pub enum WebhookTeamCreatedAction {
 }
 
 #[cfg(any(feature = "full", feature = "team"))]
-impl ToString for WebhookTeamCreatedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookTeamCreatedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookTeamCreatedAction::Created => "created".to_string(),
+      WebhookTeamCreatedAction::Created => write!(f, "created"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamDeletedAction {
@@ -8943,14 +9356,15 @@ pub enum WebhookTeamDeletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "team"))]
-impl ToString for WebhookTeamDeletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookTeamDeletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookTeamDeletedAction::Deleted => "deleted".to_string(),
+      WebhookTeamDeletedAction::Deleted => write!(f, "deleted"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamEditedAction {
@@ -8959,14 +9373,15 @@ pub enum WebhookTeamEditedAction {
 }
 
 #[cfg(any(feature = "full", feature = "team"))]
-impl ToString for WebhookTeamEditedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookTeamEditedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookTeamEditedAction::Edited => "edited".to_string(),
+      WebhookTeamEditedAction::Edited => write!(f, "edited"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "team"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookTeamRemovedFromRepositoryAction {
@@ -8975,16 +9390,17 @@ pub enum WebhookTeamRemovedFromRepositoryAction {
 }
 
 #[cfg(any(feature = "full", feature = "team"))]
-impl ToString for WebhookTeamRemovedFromRepositoryAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookTeamRemovedFromRepositoryAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       WebhookTeamRemovedFromRepositoryAction::RemovedFromRepository => {
-        "removed_from_repository".to_string()
+        write!(f, "removed_from_repository")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "watch"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWatchStartedAction {
@@ -8993,14 +9409,15 @@ pub enum WebhookWatchStartedAction {
 }
 
 #[cfg(any(feature = "full", feature = "watch"))]
-impl ToString for WebhookWatchStartedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWatchStartedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWatchStartedAction::Started => "started".to_string(),
+      WebhookWatchStartedAction::Started => write!(f, "started"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobCompletedAction {
@@ -9009,14 +9426,15 @@ pub enum WebhookWorkflowJobCompletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WebhookWorkflowJobCompletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowJobCompletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowJobCompletedAction::Completed => "completed".to_string(),
+      WebhookWorkflowJobCompletedAction::Completed => write!(f, "completed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowJobConclusion {
@@ -9037,20 +9455,21 @@ pub enum WorkflowJobConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WorkflowJobConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WorkflowJobConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WorkflowJobConclusion::Success => "success".to_string(),
-      WorkflowJobConclusion::Failure => "failure".to_string(),
-      WorkflowJobConclusion::Skipped => "skipped".to_string(),
-      WorkflowJobConclusion::Cancelled => "cancelled".to_string(),
-      WorkflowJobConclusion::ActionRequired => "action_required".to_string(),
-      WorkflowJobConclusion::Neutral => "neutral".to_string(),
-      WorkflowJobConclusion::TimedOut => "timed_out".to_string(),
+      WorkflowJobConclusion::Success => write!(f, "success"),
+      WorkflowJobConclusion::Failure => write!(f, "failure"),
+      WorkflowJobConclusion::Skipped => write!(f, "skipped"),
+      WorkflowJobConclusion::Cancelled => write!(f, "cancelled"),
+      WorkflowJobConclusion::ActionRequired => write!(f, "action_required"),
+      WorkflowJobConclusion::Neutral => write!(f, "neutral"),
+      WorkflowJobConclusion::TimedOut => write!(f, "timed_out"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 /// The current status of the job. Can be `queued`, `in_progress`, `waiting`, or `completed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -9066,17 +9485,18 @@ pub enum WorkflowJobStatus {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WorkflowJobStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WorkflowJobStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WorkflowJobStatus::Queued => "queued".to_string(),
-      WorkflowJobStatus::InProgress => "in_progress".to_string(),
-      WorkflowJobStatus::Completed => "completed".to_string(),
-      WorkflowJobStatus::Waiting => "waiting".to_string(),
+      WorkflowJobStatus::Queued => write!(f, "queued"),
+      WorkflowJobStatus::InProgress => write!(f, "in_progress"),
+      WorkflowJobStatus::Completed => write!(f, "completed"),
+      WorkflowJobStatus::Waiting => write!(f, "waiting"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowStepConclusion {
@@ -9091,17 +9511,18 @@ pub enum WorkflowStepConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WorkflowStepConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WorkflowStepConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WorkflowStepConclusion::Failure => "failure".to_string(),
-      WorkflowStepConclusion::Skipped => "skipped".to_string(),
-      WorkflowStepConclusion::Success => "success".to_string(),
-      WorkflowStepConclusion::Cancelled => "cancelled".to_string(),
+      WorkflowStepConclusion::Failure => write!(f, "failure"),
+      WorkflowStepConclusion::Skipped => write!(f, "skipped"),
+      WorkflowStepConclusion::Success => write!(f, "success"),
+      WorkflowStepConclusion::Cancelled => write!(f, "cancelled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowStepStatus {
@@ -9114,16 +9535,17 @@ pub enum WorkflowStepStatus {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WorkflowStepStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WorkflowStepStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WorkflowStepStatus::InProgress => "in_progress".to_string(),
-      WorkflowStepStatus::Completed => "completed".to_string(),
-      WorkflowStepStatus::Queued => "queued".to_string(),
+      WorkflowStepStatus::InProgress => write!(f, "in_progress"),
+      WorkflowStepStatus::Completed => write!(f, "completed"),
+      WorkflowStepStatus::Queued => write!(f, "queued"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
@@ -9144,22 +9566,23 @@ pub enum WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Success => "success".to_string(),
-      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Failure => "failure".to_string(),
-      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Skipped => "skipped".to_string(),
-      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Cancelled => "cancelled".to_string(),
+      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Success => write!(f, "success"),
+      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Failure => write!(f, "failure"),
+      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Skipped => write!(f, "skipped"),
+      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Cancelled => write!(f, "cancelled"),
       WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::ActionRequired => {
-        "action_required".to_string()
+        write!(f, "action_required")
       }
-      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Neutral => "neutral".to_string(),
-      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::TimedOut => "timed_out".to_string(),
+      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::Neutral => write!(f, "neutral"),
+      WebhookWorkflowJobCompletedWorkflowJobItem2Conclusion::TimedOut => write!(f, "timed_out"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9169,6 +9592,7 @@ pub enum WebhookWorkflowJobCompletedWorkflowJob {
   WebhookWorkflowJobCompletedWorkflowJobItem2(WebhookWorkflowJobCompletedWorkflowJobItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobInProgressAction {
@@ -9177,14 +9601,15 @@ pub enum WebhookWorkflowJobInProgressAction {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WebhookWorkflowJobInProgressAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowJobInProgressAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowJobInProgressAction::InProgress => "in_progress".to_string(),
+      WebhookWorkflowJobInProgressAction::InProgress => write!(f, "in_progress"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobInProgressWorkflowJobItem2Status {
@@ -9197,16 +9622,17 @@ pub enum WebhookWorkflowJobInProgressWorkflowJobItem2Status {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WebhookWorkflowJobInProgressWorkflowJobItem2Status {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowJobInProgressWorkflowJobItem2Status {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowJobInProgressWorkflowJobItem2Status::InProgress => "in_progress".to_string(),
-      WebhookWorkflowJobInProgressWorkflowJobItem2Status::Completed => "completed".to_string(),
-      WebhookWorkflowJobInProgressWorkflowJobItem2Status::Queued => "queued".to_string(),
+      WebhookWorkflowJobInProgressWorkflowJobItem2Status::InProgress => write!(f, "in_progress"),
+      WebhookWorkflowJobInProgressWorkflowJobItem2Status::Completed => write!(f, "completed"),
+      WebhookWorkflowJobInProgressWorkflowJobItem2Status::Queued => write!(f, "queued"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9216,6 +9642,7 @@ pub enum WebhookWorkflowJobInProgressWorkflowJob {
   WebhookWorkflowJobInProgressWorkflowJobItem2(WebhookWorkflowJobInProgressWorkflowJobItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobQueuedAction {
@@ -9224,14 +9651,15 @@ pub enum WebhookWorkflowJobQueuedAction {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WebhookWorkflowJobQueuedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowJobQueuedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowJobQueuedAction::Queued => "queued".to_string(),
+      WebhookWorkflowJobQueuedAction::Queued => write!(f, "queued"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobQueuedWorkflowJobStatus {
@@ -9246,17 +9674,18 @@ pub enum WebhookWorkflowJobQueuedWorkflowJobStatus {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WebhookWorkflowJobQueuedWorkflowJobStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowJobQueuedWorkflowJobStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowJobQueuedWorkflowJobStatus::Queued => "queued".to_string(),
-      WebhookWorkflowJobQueuedWorkflowJobStatus::InProgress => "in_progress".to_string(),
-      WebhookWorkflowJobQueuedWorkflowJobStatus::Completed => "completed".to_string(),
-      WebhookWorkflowJobQueuedWorkflowJobStatus::Waiting => "waiting".to_string(),
+      WebhookWorkflowJobQueuedWorkflowJobStatus::Queued => write!(f, "queued"),
+      WebhookWorkflowJobQueuedWorkflowJobStatus::InProgress => write!(f, "in_progress"),
+      WebhookWorkflowJobQueuedWorkflowJobStatus::Completed => write!(f, "completed"),
+      WebhookWorkflowJobQueuedWorkflowJobStatus::Waiting => write!(f, "waiting"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobWaitingAction {
@@ -9265,14 +9694,15 @@ pub enum WebhookWorkflowJobWaitingAction {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WebhookWorkflowJobWaitingAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowJobWaitingAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowJobWaitingAction::Waiting => "waiting".to_string(),
+      WebhookWorkflowJobWaitingAction::Waiting => write!(f, "waiting"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_job"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowJobWaitingWorkflowJobStatus {
@@ -9287,17 +9717,18 @@ pub enum WebhookWorkflowJobWaitingWorkflowJobStatus {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_job"))]
-impl ToString for WebhookWorkflowJobWaitingWorkflowJobStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowJobWaitingWorkflowJobStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowJobWaitingWorkflowJobStatus::Queued => "queued".to_string(),
-      WebhookWorkflowJobWaitingWorkflowJobStatus::InProgress => "in_progress".to_string(),
-      WebhookWorkflowJobWaitingWorkflowJobStatus::Completed => "completed".to_string(),
-      WebhookWorkflowJobWaitingWorkflowJobStatus::Waiting => "waiting".to_string(),
+      WebhookWorkflowJobWaitingWorkflowJobStatus::Queued => write!(f, "queued"),
+      WebhookWorkflowJobWaitingWorkflowJobStatus::InProgress => write!(f, "in_progress"),
+      WebhookWorkflowJobWaitingWorkflowJobStatus::Completed => write!(f, "completed"),
+      WebhookWorkflowJobWaitingWorkflowJobStatus::Waiting => write!(f, "waiting"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunCompletedAction {
@@ -9306,14 +9737,15 @@ pub enum WebhookWorkflowRunCompletedAction {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_run"))]
-impl ToString for WebhookWorkflowRunCompletedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowRunCompletedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowRunCompletedAction::Completed => "completed".to_string(),
+      WebhookWorkflowRunCompletedAction::Completed => write!(f, "completed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowRunConclusion {
@@ -9336,21 +9768,22 @@ pub enum WorkflowRunConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_run"))]
-impl ToString for WorkflowRunConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WorkflowRunConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WorkflowRunConclusion::Success => "success".to_string(),
-      WorkflowRunConclusion::Failure => "failure".to_string(),
-      WorkflowRunConclusion::Neutral => "neutral".to_string(),
-      WorkflowRunConclusion::Cancelled => "cancelled".to_string(),
-      WorkflowRunConclusion::TimedOut => "timed_out".to_string(),
-      WorkflowRunConclusion::ActionRequired => "action_required".to_string(),
-      WorkflowRunConclusion::Stale => "stale".to_string(),
-      WorkflowRunConclusion::Skipped => "skipped".to_string(),
+      WorkflowRunConclusion::Success => write!(f, "success"),
+      WorkflowRunConclusion::Failure => write!(f, "failure"),
+      WorkflowRunConclusion::Neutral => write!(f, "neutral"),
+      WorkflowRunConclusion::Cancelled => write!(f, "cancelled"),
+      WorkflowRunConclusion::TimedOut => write!(f, "timed_out"),
+      WorkflowRunConclusion::ActionRequired => write!(f, "action_required"),
+      WorkflowRunConclusion::Stale => write!(f, "stale"),
+      WorkflowRunConclusion::Skipped => write!(f, "skipped"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowRunStatus {
@@ -9369,19 +9802,20 @@ pub enum WorkflowRunStatus {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_run"))]
-impl ToString for WorkflowRunStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WorkflowRunStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WorkflowRunStatus::Requested => "requested".to_string(),
-      WorkflowRunStatus::InProgress => "in_progress".to_string(),
-      WorkflowRunStatus::Completed => "completed".to_string(),
-      WorkflowRunStatus::Queued => "queued".to_string(),
-      WorkflowRunStatus::Pending => "pending".to_string(),
-      WorkflowRunStatus::Waiting => "waiting".to_string(),
+      WorkflowRunStatus::Requested => write!(f, "requested"),
+      WorkflowRunStatus::InProgress => write!(f, "in_progress"),
+      WorkflowRunStatus::Completed => write!(f, "completed"),
+      WorkflowRunStatus::Queued => write!(f, "queued"),
+      WorkflowRunStatus::Pending => write!(f, "pending"),
+      WorkflowRunStatus::Waiting => write!(f, "waiting"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
@@ -9404,23 +9838,24 @@ pub enum WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_run"))]
-impl ToString for WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Success => "success".to_string(),
-      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Failure => "failure".to_string(),
-      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Neutral => "neutral".to_string(),
-      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Cancelled => "cancelled".to_string(),
-      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::TimedOut => "timed_out".to_string(),
+      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Success => write!(f, "success"),
+      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Failure => write!(f, "failure"),
+      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Neutral => write!(f, "neutral"),
+      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Cancelled => write!(f, "cancelled"),
+      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::TimedOut => write!(f, "timed_out"),
       WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::ActionRequired => {
-        "action_required".to_string()
+        write!(f, "action_required")
       }
-      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Stale => "stale".to_string(),
-      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Skipped => "skipped".to_string(),
+      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Stale => write!(f, "stale"),
+      WebhookWorkflowRunCompletedWorkflowRunItem2Conclusion::Skipped => write!(f, "skipped"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9429,6 +9864,7 @@ pub enum WebhookWorkflowRunCompletedWorkflowRun {
   WebhookWorkflowRunCompletedWorkflowRunItem2(WebhookWorkflowRunCompletedWorkflowRunItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunInProgressAction {
@@ -9437,14 +9873,15 @@ pub enum WebhookWorkflowRunInProgressAction {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_run"))]
-impl ToString for WebhookWorkflowRunInProgressAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowRunInProgressAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowRunInProgressAction::InProgress => "in_progress".to_string(),
+      WebhookWorkflowRunInProgressAction::InProgress => write!(f, "in_progress"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
@@ -9467,23 +9904,24 @@ pub enum WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_run"))]
-impl ToString for WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Success => "success".to_string(),
-      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Failure => "failure".to_string(),
-      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Neutral => "neutral".to_string(),
-      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Cancelled => "cancelled".to_string(),
-      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::TimedOut => "timed_out".to_string(),
+      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Success => write!(f, "success"),
+      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Failure => write!(f, "failure"),
+      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Neutral => write!(f, "neutral"),
+      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Cancelled => write!(f, "cancelled"),
+      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::TimedOut => write!(f, "timed_out"),
       WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::ActionRequired => {
-        "action_required".to_string()
+        write!(f, "action_required")
       }
-      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Skipped => "skipped".to_string(),
-      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Stale => "stale".to_string(),
+      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Skipped => write!(f, "skipped"),
+      WebhookWorkflowRunInProgressWorkflowRunItem2Conclusion::Stale => write!(f, "stale"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9492,6 +9930,7 @@ pub enum WebhookWorkflowRunInProgressWorkflowRun {
   WebhookWorkflowRunInProgressWorkflowRunItem2(WebhookWorkflowRunInProgressWorkflowRunItem2),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WebhookWorkflowRunRequestedAction {
@@ -9500,14 +9939,15 @@ pub enum WebhookWorkflowRunRequestedAction {
 }
 
 #[cfg(any(feature = "full", feature = "workflow_run"))]
-impl ToString for WebhookWorkflowRunRequestedAction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WebhookWorkflowRunRequestedAction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WebhookWorkflowRunRequestedAction::Requested => "requested".to_string(),
+      WebhookWorkflowRunRequestedAction::Requested => write!(f, "requested"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9516,6 +9956,7 @@ pub enum WebhookBranchProtectionConfigurationEvent {
   Enabled(WebhookBranchProtectionConfigurationEnabled),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9525,6 +9966,7 @@ pub enum WebhookBranchProtectionRuleEvent {
   Edited(WebhookBranchProtectionRuleEdited),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9535,6 +9977,7 @@ pub enum WebhookCheckRunEvent {
   Rerequested(WebhookCheckRunRerequested),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9544,6 +9987,7 @@ pub enum WebhookCheckSuiteEvent {
   Rerequested(WebhookCheckSuiteRerequested),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9556,6 +10000,7 @@ pub enum WebhookCodeScanningAlertEvent {
   ReopenedByUser(WebhookCodeScanningAlertReopenedByUser),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9563,6 +10008,7 @@ pub enum WebhookCommitCommentEvent {
   Created(WebhookCommitCommentCreated),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9572,6 +10018,7 @@ pub enum WebhookCustomPropertyEvent {
   Updated(WebhookCustomPropertyUpdated),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9579,6 +10026,7 @@ pub enum WebhookCustomPropertyValuesEvent {
   Updated(WebhookCustomPropertyValuesUpdated),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9592,6 +10040,7 @@ pub enum WebhookDependabotAlertEvent {
   Reopened(WebhookDependabotAlertReopened),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9600,6 +10049,7 @@ pub enum WebhookDeployKeyEvent {
   Deleted(WebhookDeployKeyDeleted),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9607,6 +10057,7 @@ pub enum WebhookDeploymentEvent {
   Created(WebhookDeploymentCreated),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9614,6 +10065,7 @@ pub enum WebhookDeploymentProtectionRuleEvent {
   Requested(WebhookDeploymentProtectionRuleRequested),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9623,6 +10075,7 @@ pub enum WebhookDeploymentReviewEvent {
   Requested(WebhookDeploymentReviewRequested),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9630,6 +10083,7 @@ pub enum WebhookDeploymentStatusEvent {
   Created(WebhookDeploymentStatusCreated),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9651,6 +10105,7 @@ pub enum WebhookDiscussionEvent {
   Unpinned(WebhookDiscussionUnpinned),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9660,6 +10115,7 @@ pub enum WebhookDiscussionCommentEvent {
   Edited(WebhookDiscussionCommentEdited),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9667,6 +10123,7 @@ pub enum WebhookGithubAppAuthorizationEvent {
   Revoked(WebhookGithubAppAuthorizationRevoked),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9678,6 +10135,7 @@ pub enum WebhookInstallationEvent {
   Unsuspend(WebhookInstallationUnsuspend),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9686,6 +10144,7 @@ pub enum WebhookInstallationRepositoriesEvent {
   Removed(WebhookInstallationRepositoriesRemoved),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9693,6 +10152,7 @@ pub enum WebhookInstallationTargetEvent {
   Renamed(WebhookInstallationTargetRenamed),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9702,6 +10162,7 @@ pub enum WebhookIssueCommentEvent {
   Edited(WebhookIssueCommentEdited),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9724,6 +10185,7 @@ pub enum WebhookIssuesEvent {
   Unpinned(WebhookIssuesUnpinned),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9733,6 +10195,7 @@ pub enum WebhookLabelEvent {
   Edited(WebhookLabelEdited),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9744,6 +10207,7 @@ pub enum WebhookMarketplacePurchaseEvent {
   Purchased(WebhookMarketplacePurchasePurchased),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9753,6 +10217,7 @@ pub enum WebhookMemberEvent {
   Removed(WebhookMemberRemoved),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9761,6 +10226,7 @@ pub enum WebhookMembershipEvent {
   Removed(WebhookMembershipRemoved),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9769,6 +10235,7 @@ pub enum WebhookMergeGroupEvent {
   Destroyed(WebhookMergeGroupDestroyed),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9776,6 +10243,7 @@ pub enum WebhookMetaEvent {
   Deleted(WebhookMetaDeleted),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9787,6 +10255,7 @@ pub enum WebhookMilestoneEvent {
   Opened(WebhookMilestoneOpened),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9795,6 +10264,7 @@ pub enum WebhookOrgBlockEvent {
   Unblocked(WebhookOrgBlockUnblocked),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9806,6 +10276,7 @@ pub enum WebhookOrganizationEvent {
   Renamed(WebhookOrganizationRenamed),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9814,6 +10285,7 @@ pub enum WebhookPackageEvent {
   Updated(WebhookPackageUpdated),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9824,6 +10296,7 @@ pub enum WebhookPersonalAccessTokenRequestEvent {
   Denied(WebhookPersonalAccessTokenRequestDenied),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9835,6 +10308,7 @@ pub enum WebhookProjectCardEvent {
   Moved(WebhookProjectCardMoved),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9846,6 +10320,7 @@ pub enum WebhookProjectEvent {
   Reopened(WebhookProjectReopened),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9856,6 +10331,7 @@ pub enum WebhookProjectColumnEvent {
   Moved(WebhookProjectColumnMoved),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9867,6 +10343,7 @@ pub enum WebhookProjectsV2Event {
   Reopened(WebhookProjectsV2ProjectReopened),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9880,6 +10357,7 @@ pub enum WebhookProjectsV2ItemEvent {
   Restored(WebhookProjectsV2ItemRestored),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9907,6 +10385,7 @@ pub enum WebhookPullRequestEvent {
   Unlocked(WebhookPullRequestUnlocked),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9916,6 +10395,7 @@ pub enum WebhookPullRequestReviewCommentEvent {
   Edited(WebhookPullRequestReviewCommentEdited),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9925,6 +10405,7 @@ pub enum WebhookPullRequestReviewEvent {
   Submitted(WebhookPullRequestReviewSubmitted),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9933,6 +10414,7 @@ pub enum WebhookPullRequestReviewThreadEvent {
   Unresolved(WebhookPullRequestReviewThreadUnresolved),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9941,6 +10423,7 @@ pub enum WebhookRegistryPackageEvent {
   Updated(WebhookRegistryPackageUpdated),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9954,6 +10437,7 @@ pub enum WebhookReleaseEvent {
   Unpublished(WebhookReleaseUnpublished),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9962,6 +10446,7 @@ pub enum WebhookRepositoryAdvisoryEvent {
   Reported(WebhookRepositoryAdvisoryReported),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9977,6 +10462,7 @@ pub enum WebhookRepositoryEvent {
   Unarchived(WebhookRepositoryUnarchived),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9984,6 +10470,7 @@ pub enum WebhookRepositoryDispatchEvent {
   SampleCollected(WebhookRepositoryDispatchSample),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -9993,6 +10480,7 @@ pub enum WebhookRepositoryRulesetEvent {
   Edited(WebhookRepositoryRulesetEdited),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -10003,6 +10491,7 @@ pub enum WebhookRepositoryVulnerabilityAlertEvent {
   Resolve(WebhookRepositoryVulnerabilityAlertResolve),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -10014,6 +10503,7 @@ pub enum WebhookSecretScanningAlertEvent {
   Validated(WebhookSecretScanningAlertValidated),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -10021,6 +10511,7 @@ pub enum WebhookSecretScanningAlertLocationEvent {
   Created(WebhookSecretScanningAlertLocationCreated),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -10030,6 +10521,7 @@ pub enum WebhookSecurityAdvisoryEvent {
   Withdrawn(WebhookSecurityAdvisoryWithdrawn),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -10042,6 +10534,7 @@ pub enum WebhookSponsorshipEvent {
   TierChanged(WebhookSponsorshipTierChanged),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -10050,6 +10543,7 @@ pub enum WebhookStarEvent {
   Deleted(WebhookStarDeleted),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -10061,6 +10555,7 @@ pub enum WebhookTeamEvent {
   RemovedFromRepository(WebhookTeamRemovedFromRepository),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -10068,6 +10563,7 @@ pub enum WebhookWatchEvent {
   Started(WebhookWatchStarted),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -10078,6 +10574,7 @@ pub enum WebhookWorkflowJobEvent {
   Waiting(WebhookWorkflowJobWaiting),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "workflow_run"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -10087,6 +10584,7 @@ pub enum WebhookWorkflowRunEvent {
   Requested(WebhookWorkflowRunRequested),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "webhook_event"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]

@@ -12,6 +12,7 @@ pub mod list_for_org {
 
   pub type Response = Vec<Migration>;
 
+  #[allow(clippy::large_enum_variant)]
   /// Allowed values that can be passed to the exclude param.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryExclude {
@@ -19,10 +20,10 @@ pub mod list_for_org {
     Repositories,
   }
 
-  impl ToString for QueryExclude {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryExclude {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryExclude::Repositories => "repositories".to_string(),
+        QueryExclude::Repositories => write!(f, "repositories"),
       }
     }
   }
@@ -51,16 +52,17 @@ pub mod start_for_org {
 
   pub type Response = Migration;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestExclude {
     #[serde(rename = "repositories")]
     Repositories,
   }
 
-  impl ToString for RequestExclude {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestExclude {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestExclude::Repositories => "repositories".to_string(),
+        RequestExclude::Repositories => write!(f, "repositories"),
       }
     }
   }
@@ -111,6 +113,7 @@ pub mod get_status_for_org {
 
   pub type Response = Migration;
 
+  #[allow(clippy::large_enum_variant)]
   /// Allowed values that can be passed to the exclude param.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryExclude {
@@ -118,10 +121,10 @@ pub mod get_status_for_org {
     Repositories,
   }
 
-  impl ToString for QueryExclude {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryExclude {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryExclude::Repositories => "repositories".to_string(),
+        QueryExclude::Repositories => write!(f, "repositories"),
       }
     }
   }
@@ -169,6 +172,7 @@ pub mod start_import {
 
   pub type Response = Import;
 
+  #[allow(clippy::large_enum_variant)]
   /// The originating VCS type. Without this parameter, the import job will take additional time to detect the VCS type before beginning the import. This detection step will be reflected in the response.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestVcs {
@@ -182,13 +186,13 @@ pub mod start_import {
     Tfvc,
   }
 
-  impl ToString for RequestVcs {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestVcs {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestVcs::Subversion => "subversion".to_string(),
-        RequestVcs::Git => "git".to_string(),
-        RequestVcs::Mercurial => "mercurial".to_string(),
-        RequestVcs::Tfvc => "tfvc".to_string(),
+        RequestVcs::Subversion => write!(f, "subversion"),
+        RequestVcs::Git => write!(f, "git"),
+        RequestVcs::Mercurial => write!(f, "mercurial"),
+        RequestVcs::Tfvc => write!(f, "tfvc"),
       }
     }
   }
@@ -223,6 +227,7 @@ pub mod update_import {
 
   pub type Response = Import;
 
+  #[allow(clippy::large_enum_variant)]
   /// The type of version control system you are migrating from.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestVcs {
@@ -236,13 +241,13 @@ pub mod update_import {
     Mercurial,
   }
 
-  impl ToString for RequestVcs {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestVcs {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestVcs::Subversion => "subversion".to_string(),
-        RequestVcs::Tfvc => "tfvc".to_string(),
-        RequestVcs::Git => "git".to_string(),
-        RequestVcs::Mercurial => "mercurial".to_string(),
+        RequestVcs::Subversion => write!(f, "subversion"),
+        RequestVcs::Tfvc => write!(f, "tfvc"),
+        RequestVcs::Git => write!(f, "git"),
+        RequestVcs::Mercurial => write!(f, "mercurial"),
       }
     }
   }
@@ -318,6 +323,7 @@ pub mod set_lfs_preference {
 
   pub type Response = Import;
 
+  #[allow(clippy::large_enum_variant)]
   /// Whether to store large files during the import. `opt_in` means large files will be stored using Git LFS. `opt_out` means large files will be removed during the import.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestUseLfs {
@@ -327,11 +333,11 @@ pub mod set_lfs_preference {
     OptOut,
   }
 
-  impl ToString for RequestUseLfs {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestUseLfs {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestUseLfs::OptIn => "opt_in".to_string(),
-        RequestUseLfs::OptOut => "opt_out".to_string(),
+        RequestUseLfs::OptIn => write!(f, "opt_in"),
+        RequestUseLfs::OptOut => write!(f, "opt_out"),
       }
     }
   }
@@ -370,6 +376,7 @@ pub mod start_for_authenticated_user {
 
   pub type Response = Migration;
 
+  #[allow(clippy::large_enum_variant)]
   /// Allowed values that can be passed to the exclude param.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestExclude {
@@ -377,10 +384,10 @@ pub mod start_for_authenticated_user {
     Repositories,
   }
 
-  impl ToString for RequestExclude {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestExclude {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestExclude::Repositories => "repositories".to_string(),
+        RequestExclude::Repositories => write!(f, "repositories"),
       }
     }
   }

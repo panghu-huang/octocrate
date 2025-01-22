@@ -10,6 +10,7 @@ pub mod get_authenticated {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Response {
@@ -90,6 +91,7 @@ pub mod set_primary_email_visibility_for_authenticated_user {
 
   pub type Response = Vec<Email>;
 
+  #[allow(clippy::large_enum_variant)]
   /// Denotes whether an email is publicly visible.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestVisibility {
@@ -99,11 +101,11 @@ pub mod set_primary_email_visibility_for_authenticated_user {
     Private,
   }
 
-  impl ToString for RequestVisibility {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestVisibility {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestVisibility::Public => "public".to_string(),
-        RequestVisibility::Private => "private".to_string(),
+        RequestVisibility::Public => write!(f, "public"),
+        RequestVisibility::Private => write!(f, "private"),
       }
     }
   }
@@ -142,6 +144,7 @@ pub mod add_email_for_authenticated_user {
 
   pub type Response = Vec<Email>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -162,6 +165,7 @@ pub mod delete_email_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -445,6 +449,7 @@ pub mod get_by_username {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Response {
@@ -521,6 +526,7 @@ pub mod get_context_for_user {
 
   pub type Response = Hovercard;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySubjectType {
     #[serde(rename = "organization")]
@@ -533,13 +539,13 @@ pub mod get_context_for_user {
     PullRequest,
   }
 
-  impl ToString for QuerySubjectType {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySubjectType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySubjectType::Organization => "organization".to_string(),
-        QuerySubjectType::Repository => "repository".to_string(),
-        QuerySubjectType::Issue => "issue".to_string(),
-        QuerySubjectType::PullRequest => "pull_request".to_string(),
+        QuerySubjectType::Organization => write!(f, "organization"),
+        QuerySubjectType::Repository => write!(f, "repository"),
+        QuerySubjectType::Issue => write!(f, "issue"),
+        QuerySubjectType::PullRequest => write!(f, "pull_request"),
       }
     }
   }

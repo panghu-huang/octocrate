@@ -157,6 +157,7 @@ pub mod create_tag {
 
   pub type Response = GitTag;
 
+  #[allow(clippy::large_enum_variant)]
   /// The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestType {
@@ -168,12 +169,12 @@ pub mod create_tag {
     Blob,
   }
 
-  impl ToString for RequestType {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestType::Commit => "commit".to_string(),
-        RequestType::Tree => "tree".to_string(),
-        RequestType::Blob => "blob".to_string(),
+        RequestType::Commit => write!(f, "commit"),
+        RequestType::Tree => write!(f, "tree"),
+        RequestType::Blob => write!(f, "blob"),
       }
     }
   }
@@ -224,6 +225,7 @@ pub mod create_tree {
 
   pub type Response = GitTree;
 
+  #[allow(clippy::large_enum_variant)]
   /// The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestTreeMode {
@@ -239,18 +241,19 @@ pub mod create_tree {
     _120000,
   }
 
-  impl ToString for RequestTreeMode {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestTreeMode {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestTreeMode::_100644 => "100644".to_string(),
-        RequestTreeMode::_100755 => "100755".to_string(),
-        RequestTreeMode::_040000 => "040000".to_string(),
-        RequestTreeMode::_160000 => "160000".to_string(),
-        RequestTreeMode::_120000 => "120000".to_string(),
+        RequestTreeMode::_100644 => write!(f, "100644"),
+        RequestTreeMode::_100755 => write!(f, "100755"),
+        RequestTreeMode::_040000 => write!(f, "040000"),
+        RequestTreeMode::_160000 => write!(f, "160000"),
+        RequestTreeMode::_120000 => write!(f, "120000"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// Either `blob`, `tree`, or `commit`.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestTreeType {
@@ -262,12 +265,12 @@ pub mod create_tree {
     Commit,
   }
 
-  impl ToString for RequestTreeType {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestTreeType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestTreeType::Blob => "blob".to_string(),
-        RequestTreeType::Tree => "tree".to_string(),
-        RequestTreeType::Commit => "commit".to_string(),
+        RequestTreeType::Blob => write!(f, "blob"),
+        RequestTreeType::Tree => write!(f, "tree"),
+        RequestTreeType::Commit => write!(f, "commit"),
       }
     }
   }

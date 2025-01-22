@@ -12,20 +12,22 @@ pub mod create {
 
   pub type Response = CheckRun;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestItem1Status {
     #[serde(rename = "completed")]
     Completed,
   }
 
-  impl ToString for RequestItem1Status {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestItem1Status {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestItem1Status::Completed => "completed".to_string(),
+        RequestItem1Status::Completed => write!(f, "completed"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestItem2Status {
     #[serde(rename = "queued")]
@@ -34,15 +36,16 @@ pub mod create {
     InProgress,
   }
 
-  impl ToString for RequestItem2Status {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestItem2Status {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestItem2Status::Queued => "queued".to_string(),
-        RequestItem2Status::InProgress => "in_progress".to_string(),
+        RequestItem2Status::Queued => write!(f, "queued"),
+        RequestItem2Status::InProgress => write!(f, "in_progress"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -78,20 +81,22 @@ pub mod update {
 
   pub type Response = CheckRun;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestItem1Status {
     #[serde(rename = "completed")]
     Completed,
   }
 
-  impl ToString for RequestItem1Status {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestItem1Status {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestItem1Status::Completed => "completed".to_string(),
+        RequestItem1Status::Completed => write!(f, "completed"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestItem2Status {
     #[serde(rename = "queued")]
@@ -100,15 +105,16 @@ pub mod update {
     InProgress,
   }
 
-  impl ToString for RequestItem2Status {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestItem2Status {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestItem2Status::Queued => "queued".to_string(),
-        RequestItem2Status::InProgress => "in_progress".to_string(),
+        RequestItem2Status::Queued => write!(f, "queued"),
+        RequestItem2Status::InProgress => write!(f, "in_progress"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -210,6 +216,7 @@ pub mod list_for_suite {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryFilter {
     #[serde(rename = "latest")]
@@ -218,11 +225,11 @@ pub mod list_for_suite {
     All,
   }
 
-  impl ToString for QueryFilter {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryFilter {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryFilter::Latest => "latest".to_string(),
-        QueryFilter::All => "all".to_string(),
+        QueryFilter::Latest => write!(f, "latest"),
+        QueryFilter::All => write!(f, "all"),
       }
     }
   }
@@ -271,6 +278,7 @@ pub mod list_for_ref {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryFilter {
     #[serde(rename = "latest")]
@@ -279,11 +287,11 @@ pub mod list_for_ref {
     All,
   }
 
-  impl ToString for QueryFilter {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryFilter {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryFilter::Latest => "latest".to_string(),
-        QueryFilter::All => "all".to_string(),
+        QueryFilter::Latest => write!(f, "latest"),
+        QueryFilter::All => write!(f, "all"),
       }
     }
   }

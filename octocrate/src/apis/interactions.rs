@@ -10,6 +10,7 @@ pub mod get_restrictions_for_org {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Response {
@@ -35,6 +36,7 @@ pub mod get_restrictions_for_repo {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Response {
@@ -60,6 +62,7 @@ pub mod get_restrictions_for_authenticated_user {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Response {

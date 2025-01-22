@@ -16,6 +16,7 @@ pub type {{ alias }} = {{ type_name }};
 
 {{#if enums }}
 {{#each enums }}
+#[allow(clippy::large_enum_variant)]
 {{#if ../render_features}}
 {{render_features_cfg tags}}
 {{/if}}
@@ -55,14 +56,14 @@ pub enum {{ name }} {
 {{#if ../render_features}}
 {{render_features_cfg tags}}
 {{/if}}
-impl ToString for {{ name }} {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for {{ name }} {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       {{#each fields }}
       {{#if rename }}
-      {{ ../name }}::{{ name }} => "{{ rename }}".to_string(),
+      {{ ../name }}::{{ name }} => write!(f, "{{ rename }}"),
       {{else}}
-      {{ ../name }}::{{ name }} => "{{ name }}".to_string(),
+      {{ ../name }}::{{ name }} => write!(f, "{{ name }}"),
       {{/if}}
       {{/each}}
     }

@@ -43,6 +43,7 @@ impl File for TypeModule {
 
     let file_path = path.join(self.file_name());
 
-    std::fs::write(file_path, rendered).expect("Unable to write file");
+    std::fs::write(&file_path, rendered)
+      .unwrap_or_else(|err| panic!("Unable to write file {}: {}", file_path.display(), err));
   }
 }

@@ -10,6 +10,7 @@ pub mod render {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   /// The rendering mode.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestMode {
@@ -19,11 +20,11 @@ pub mod render {
     Gfm,
   }
 
-  impl ToString for RequestMode {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestMode {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestMode::Markdown => "markdown".to_string(),
-        RequestMode::Gfm => "gfm".to_string(),
+        RequestMode::Markdown => write!(f, "markdown"),
+        RequestMode::Gfm => write!(f, "gfm"),
       }
     }
   }

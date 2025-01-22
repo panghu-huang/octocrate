@@ -12,6 +12,7 @@ pub mod list_for_org {
 
   pub type Response = Vec<Project>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "open")]
@@ -22,12 +23,12 @@ pub mod list_for_org {
     All,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Open => "open".to_string(),
-        QueryState::Closed => "closed".to_string(),
-        QueryState::All => "all".to_string(),
+        QueryState::Open => write!(f, "open"),
+        QueryState::Closed => write!(f, "closed"),
+        QueryState::All => write!(f, "all"),
       }
     }
   }
@@ -142,6 +143,7 @@ pub mod list_cards {
 
   pub type Response = Vec<ProjectCard>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryArchivedState {
     #[serde(rename = "all")]
@@ -152,12 +154,12 @@ pub mod list_cards {
     NotArchived,
   }
 
-  impl ToString for QueryArchivedState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryArchivedState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryArchivedState::All => "all".to_string(),
-        QueryArchivedState::Archived => "archived".to_string(),
-        QueryArchivedState::NotArchived => "not_archived".to_string(),
+        QueryArchivedState::All => write!(f, "all"),
+        QueryArchivedState::Archived => write!(f, "archived"),
+        QueryArchivedState::NotArchived => write!(f, "not_archived"),
       }
     }
   }
@@ -186,6 +188,7 @@ pub mod create_card {
 
   pub type Response = ProjectCard;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -241,6 +244,7 @@ pub mod update {
 
   pub type Response = Project;
 
+  #[allow(clippy::large_enum_variant)]
   /// The baseline permission that all organization members have on this project
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestOrganizationPermission {
@@ -254,13 +258,13 @@ pub mod update {
     None,
   }
 
-  impl ToString for RequestOrganizationPermission {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestOrganizationPermission {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestOrganizationPermission::Read => "read".to_string(),
-        RequestOrganizationPermission::Write => "write".to_string(),
-        RequestOrganizationPermission::Admin => "admin".to_string(),
-        RequestOrganizationPermission::None => "none".to_string(),
+        RequestOrganizationPermission::Read => write!(f, "read"),
+        RequestOrganizationPermission::Write => write!(f, "write"),
+        RequestOrganizationPermission::Admin => write!(f, "admin"),
+        RequestOrganizationPermission::None => write!(f, "none"),
       }
     }
   }
@@ -297,6 +301,7 @@ pub mod list_collaborators {
 
   pub type Response = Vec<SimpleUser>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryAffiliation {
     #[serde(rename = "outside")]
@@ -307,12 +312,12 @@ pub mod list_collaborators {
     All,
   }
 
-  impl ToString for QueryAffiliation {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryAffiliation {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryAffiliation::Outside => "outside".to_string(),
-        QueryAffiliation::Direct => "direct".to_string(),
-        QueryAffiliation::All => "all".to_string(),
+        QueryAffiliation::Outside => write!(f, "outside"),
+        QueryAffiliation::Direct => write!(f, "direct"),
+        QueryAffiliation::All => write!(f, "all"),
       }
     }
   }
@@ -396,6 +401,7 @@ pub mod list_for_repo {
 
   pub type Response = Vec<Project>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "open")]
@@ -406,12 +412,12 @@ pub mod list_for_repo {
     All,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Open => "open".to_string(),
-        QueryState::Closed => "closed".to_string(),
-        QueryState::All => "all".to_string(),
+        QueryState::Open => write!(f, "open"),
+        QueryState::Closed => write!(f, "closed"),
+        QueryState::All => write!(f, "all"),
       }
     }
   }
@@ -476,6 +482,7 @@ pub mod list_for_user {
 
   pub type Response = Vec<Project>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "open")]
@@ -486,12 +493,12 @@ pub mod list_for_user {
     All,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Open => "open".to_string(),
-        QueryState::Closed => "closed".to_string(),
-        QueryState::All => "all".to_string(),
+        QueryState::Open => write!(f, "open"),
+        QueryState::Closed => write!(f, "closed"),
+        QueryState::All => write!(f, "all"),
       }
     }
   }

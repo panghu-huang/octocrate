@@ -12,6 +12,7 @@ pub mod list_for_org {
 
   pub type Response = Vec<MinimalRepository>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryType {
     #[serde(rename = "all")]
@@ -28,19 +29,20 @@ pub mod list_for_org {
     Member,
   }
 
-  impl ToString for QueryType {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryType::All => "all".to_string(),
-        QueryType::Public => "public".to_string(),
-        QueryType::Private => "private".to_string(),
-        QueryType::Forks => "forks".to_string(),
-        QueryType::Sources => "sources".to_string(),
-        QueryType::Member => "member".to_string(),
+        QueryType::All => write!(f, "all"),
+        QueryType::Public => write!(f, "public"),
+        QueryType::Private => write!(f, "private"),
+        QueryType::Forks => write!(f, "forks"),
+        QueryType::Sources => write!(f, "sources"),
+        QueryType::Member => write!(f, "member"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -53,17 +55,18 @@ pub mod list_for_org {
     FullName,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::Pushed => "pushed".to_string(),
-        QuerySort::FullName => "full_name".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::Pushed => write!(f, "pushed"),
+        QuerySort::FullName => write!(f, "full_name"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
@@ -72,11 +75,11 @@ pub mod list_for_org {
     Desc,
   }
 
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryDirection {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
+        QueryDirection::Asc => write!(f, "asc"),
+        QueryDirection::Desc => write!(f, "desc"),
       }
     }
   }
@@ -114,6 +117,7 @@ pub mod create_in_org {
 
   pub type Response = FullRepository;
 
+  #[allow(clippy::large_enum_variant)]
   /// The visibility of the repository.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestVisibility {
@@ -123,11 +127,11 @@ pub mod create_in_org {
     Private,
   }
 
-  impl ToString for RequestVisibility {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestVisibility {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestVisibility::Public => "public".to_string(),
-        RequestVisibility::Private => "private".to_string(),
+        RequestVisibility::Public => write!(f, "public"),
+        RequestVisibility::Private => write!(f, "private"),
       }
     }
   }
@@ -276,6 +280,7 @@ pub mod create_org_ruleset {
 
   pub type Response = RepositoryRuleset;
 
+  #[allow(clippy::large_enum_variant)]
   /// The target of the ruleset.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestTarget {
@@ -285,11 +290,11 @@ pub mod create_org_ruleset {
     Tag,
   }
 
-  impl ToString for RequestTarget {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestTarget {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestTarget::Branch => "branch".to_string(),
-        RequestTarget::Tag => "tag".to_string(),
+        RequestTarget::Branch => write!(f, "branch"),
+        RequestTarget::Tag => write!(f, "tag"),
       }
     }
   }
@@ -376,6 +381,7 @@ pub mod update_org_ruleset {
 
   pub type Response = RepositoryRuleset;
 
+  #[allow(clippy::large_enum_variant)]
   /// The target of the ruleset.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestTarget {
@@ -385,11 +391,11 @@ pub mod update_org_ruleset {
     Tag,
   }
 
-  impl ToString for RequestTarget {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestTarget {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestTarget::Branch => "branch".to_string(),
-        RequestTarget::Tag => "tag".to_string(),
+        RequestTarget::Branch => write!(f, "branch"),
+        RequestTarget::Tag => write!(f, "tag"),
       }
     }
   }
@@ -435,6 +441,7 @@ pub mod update {
 
   pub type Response = FullRepository;
 
+  #[allow(clippy::large_enum_variant)]
   /// The visibility of the repository.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestVisibility {
@@ -444,11 +451,11 @@ pub mod update {
     Private,
   }
 
-  impl ToString for RequestVisibility {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestVisibility {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestVisibility::Public => "public".to_string(),
-        RequestVisibility::Private => "private".to_string(),
+        RequestVisibility::Public => write!(f, "public"),
+        RequestVisibility::Private => write!(f, "private"),
       }
     }
   }
@@ -643,6 +650,7 @@ pub mod list_activities {
 
   pub type Response = Vec<Activity>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryTimePeriod {
     #[serde(rename = "day")]
@@ -657,18 +665,19 @@ pub mod list_activities {
     Year,
   }
 
-  impl ToString for QueryTimePeriod {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryTimePeriod {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryTimePeriod::Day => "day".to_string(),
-        QueryTimePeriod::Week => "week".to_string(),
-        QueryTimePeriod::Month => "month".to_string(),
-        QueryTimePeriod::Quarter => "quarter".to_string(),
-        QueryTimePeriod::Year => "year".to_string(),
+        QueryTimePeriod::Day => write!(f, "day"),
+        QueryTimePeriod::Week => write!(f, "week"),
+        QueryTimePeriod::Month => write!(f, "month"),
+        QueryTimePeriod::Quarter => write!(f, "quarter"),
+        QueryTimePeriod::Year => write!(f, "year"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryActivityType {
     #[serde(rename = "push")]
@@ -685,15 +694,15 @@ pub mod list_activities {
     MergeQueueMerge,
   }
 
-  impl ToString for QueryActivityType {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryActivityType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryActivityType::Push => "push".to_string(),
-        QueryActivityType::ForcePush => "force_push".to_string(),
-        QueryActivityType::BranchCreation => "branch_creation".to_string(),
-        QueryActivityType::BranchDeletion => "branch_deletion".to_string(),
-        QueryActivityType::PrMerge => "pr_merge".to_string(),
-        QueryActivityType::MergeQueueMerge => "merge_queue_merge".to_string(),
+        QueryActivityType::Push => write!(f, "push"),
+        QueryActivityType::ForcePush => write!(f, "force_push"),
+        QueryActivityType::BranchCreation => write!(f, "branch_creation"),
+        QueryActivityType::BranchDeletion => write!(f, "branch_deletion"),
+        QueryActivityType::PrMerge => write!(f, "pr_merge"),
+        QueryActivityType::MergeQueueMerge => write!(f, "merge_queue_merge"),
       }
     }
   }
@@ -1148,6 +1157,7 @@ pub mod add_status_check_contexts {
 
   pub type Response = Vec<String>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1169,6 +1179,7 @@ pub mod set_status_check_contexts {
 
   pub type Response = Vec<String>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1190,6 +1201,7 @@ pub mod remove_status_check_contexts {
 
   pub type Response = Vec<String>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1225,6 +1237,7 @@ pub mod add_app_access_restrictions {
 
   pub type Response = Vec<Integration>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1246,6 +1259,7 @@ pub mod set_app_access_restrictions {
 
   pub type Response = Vec<Integration>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1267,6 +1281,7 @@ pub mod remove_app_access_restrictions {
 
   pub type Response = Vec<Integration>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1295,6 +1310,7 @@ pub mod add_team_access_restrictions {
 
   pub type Response = Vec<Team>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1316,6 +1332,7 @@ pub mod set_team_access_restrictions {
 
   pub type Response = Vec<Team>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1337,6 +1354,7 @@ pub mod remove_team_access_restrictions {
 
   pub type Response = Vec<Team>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1365,6 +1383,7 @@ pub mod add_user_access_restrictions {
 
   pub type Response = Vec<SimpleUser>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1386,6 +1405,7 @@ pub mod set_user_access_restrictions {
 
   pub type Response = Vec<SimpleUser>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1407,6 +1427,7 @@ pub mod remove_user_access_restrictions {
 
   pub type Response = Vec<SimpleUser>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -1459,6 +1480,7 @@ pub mod list_collaborators {
 
   pub type Response = Vec<Collaborator>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryAffiliation {
     #[serde(rename = "outside")]
@@ -1469,16 +1491,17 @@ pub mod list_collaborators {
     All,
   }
 
-  impl ToString for QueryAffiliation {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryAffiliation {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryAffiliation::Outside => "outside".to_string(),
-        QueryAffiliation::Direct => "direct".to_string(),
-        QueryAffiliation::All => "all".to_string(),
+        QueryAffiliation::Outside => write!(f, "outside"),
+        QueryAffiliation::Direct => write!(f, "direct"),
+        QueryAffiliation::All => write!(f, "all"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryPermission {
     #[serde(rename = "pull")]
@@ -1493,14 +1516,14 @@ pub mod list_collaborators {
     Admin,
   }
 
-  impl ToString for QueryPermission {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryPermission {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryPermission::Pull => "pull".to_string(),
-        QueryPermission::Triage => "triage".to_string(),
-        QueryPermission::Push => "push".to_string(),
-        QueryPermission::Maintain => "maintain".to_string(),
-        QueryPermission::Admin => "admin".to_string(),
+        QueryPermission::Pull => write!(f, "pull"),
+        QueryPermission::Triage => write!(f, "triage"),
+        QueryPermission::Push => write!(f, "push"),
+        QueryPermission::Maintain => write!(f, "maintain"),
+        QueryPermission::Admin => write!(f, "admin"),
       }
     }
   }
@@ -1799,6 +1822,7 @@ pub mod get_content {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Response {
@@ -2001,6 +2025,7 @@ pub mod create_deployment {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   pub enum Response {
     Created(Deployment),
@@ -2088,6 +2113,7 @@ pub mod create_deployment_status {
 
   pub type Response = DeploymentStatus;
 
+  #[allow(clippy::large_enum_variant)]
   /// The state of the status. When you set a transient deployment to `inactive`, the deployment will be shown as `destroyed` in GitHub.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestState {
@@ -2107,16 +2133,16 @@ pub mod create_deployment_status {
     Success,
   }
 
-  impl ToString for RequestState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestState::Error => "error".to_string(),
-        RequestState::Failure => "failure".to_string(),
-        RequestState::Inactive => "inactive".to_string(),
-        RequestState::InProgress => "in_progress".to_string(),
-        RequestState::Queued => "queued".to_string(),
-        RequestState::Pending => "pending".to_string(),
-        RequestState::Success => "success".to_string(),
+        RequestState::Error => write!(f, "error"),
+        RequestState::Failure => write!(f, "failure"),
+        RequestState::Inactive => write!(f, "inactive"),
+        RequestState::InProgress => write!(f, "in_progress"),
+        RequestState::Queued => write!(f, "queued"),
+        RequestState::Pending => write!(f, "pending"),
+        RequestState::Success => write!(f, "success"),
       }
     }
   }
@@ -2377,6 +2403,7 @@ pub mod list_forks {
 
   pub type Response = Vec<MinimalRepository>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "newest")]
@@ -2389,13 +2416,13 @@ pub mod list_forks {
     Watchers,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Newest => "newest".to_string(),
-        QuerySort::Oldest => "oldest".to_string(),
-        QuerySort::Stargazers => "stargazers".to_string(),
-        QuerySort::Watchers => "watchers".to_string(),
+        QuerySort::Newest => write!(f, "newest"),
+        QuerySort::Oldest => write!(f, "oldest"),
+        QuerySort::Stargazers => write!(f, "stargazers"),
+        QuerySort::Watchers => write!(f, "watchers"),
       }
     }
   }
@@ -2633,6 +2660,7 @@ pub mod update_invitation {
 
   pub type Response = RepositoryInvitation;
 
+  #[allow(clippy::large_enum_variant)]
   /// The permissions that the associated user will have on the repository. Valid values are `read`, `write`, `maintain`, `triage`, and `admin`.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestPermissions {
@@ -2648,14 +2676,14 @@ pub mod update_invitation {
     Admin,
   }
 
-  impl ToString for RequestPermissions {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestPermissions {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestPermissions::Read => "read".to_string(),
-        RequestPermissions::Write => "write".to_string(),
-        RequestPermissions::Maintain => "maintain".to_string(),
-        RequestPermissions::Triage => "triage".to_string(),
-        RequestPermissions::Admin => "admin".to_string(),
+        RequestPermissions::Read => write!(f, "read"),
+        RequestPermissions::Write => write!(f, "write"),
+        RequestPermissions::Maintain => write!(f, "maintain"),
+        RequestPermissions::Triage => write!(f, "triage"),
+        RequestPermissions::Admin => write!(f, "admin"),
       }
     }
   }
@@ -2865,6 +2893,7 @@ pub mod get_pages_health_check {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   pub enum Response {
     Success(PagesHealthCheck),
@@ -2963,6 +2992,7 @@ pub mod create_release {
 
   pub type Response = Release;
 
+  #[allow(clippy::large_enum_variant)]
   /// Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestMakeLatest {
@@ -2974,12 +3004,12 @@ pub mod create_release {
     Legacy,
   }
 
-  impl ToString for RequestMakeLatest {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestMakeLatest {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestMakeLatest::True => "true".to_string(),
-        RequestMakeLatest::False => "false".to_string(),
-        RequestMakeLatest::Legacy => "legacy".to_string(),
+        RequestMakeLatest::True => write!(f, "true"),
+        RequestMakeLatest::False => write!(f, "false"),
+        RequestMakeLatest::Legacy => write!(f, "legacy"),
       }
     }
   }
@@ -3107,6 +3137,7 @@ pub mod update_release {
 
   pub type Response = Release;
 
+  #[allow(clippy::large_enum_variant)]
   /// Specifies whether this release should be set as the latest release for the repository. Drafts and prereleases cannot be set as latest. Defaults to `true` for newly published releases. `legacy` specifies that the latest release should be determined based on the release creation date and higher semantic version.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestMakeLatest {
@@ -3118,12 +3149,12 @@ pub mod update_release {
     Legacy,
   }
 
-  impl ToString for RequestMakeLatest {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestMakeLatest {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestMakeLatest::True => "true".to_string(),
-        RequestMakeLatest::False => "false".to_string(),
-        RequestMakeLatest::Legacy => "legacy".to_string(),
+        RequestMakeLatest::True => write!(f, "true"),
+        RequestMakeLatest::False => write!(f, "false"),
+        RequestMakeLatest::Legacy => write!(f, "legacy"),
       }
     }
   }
@@ -3252,6 +3283,7 @@ pub mod create_repo_ruleset {
 
   pub type Response = RepositoryRuleset;
 
+  #[allow(clippy::large_enum_variant)]
   /// The target of the ruleset.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestTarget {
@@ -3261,11 +3293,11 @@ pub mod create_repo_ruleset {
     Tag,
   }
 
-  impl ToString for RequestTarget {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestTarget {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestTarget::Branch => "branch".to_string(),
-        RequestTarget::Tag => "tag".to_string(),
+        RequestTarget::Branch => write!(f, "branch"),
+        RequestTarget::Tag => write!(f, "tag"),
       }
     }
   }
@@ -3362,6 +3394,7 @@ pub mod update_repo_ruleset {
 
   pub type Response = RepositoryRuleset;
 
+  #[allow(clippy::large_enum_variant)]
   /// The target of the ruleset.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestTarget {
@@ -3371,11 +3404,11 @@ pub mod update_repo_ruleset {
     Tag,
   }
 
-  impl ToString for RequestTarget {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestTarget {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestTarget::Branch => "branch".to_string(),
-        RequestTarget::Tag => "tag".to_string(),
+        RequestTarget::Branch => write!(f, "branch"),
+        RequestTarget::Tag => write!(f, "tag"),
       }
     }
   }
@@ -3449,6 +3482,7 @@ pub mod create_commit_status {
 
   pub type Response = Status;
 
+  #[allow(clippy::large_enum_variant)]
   /// The state of the status.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestState {
@@ -3462,13 +3496,13 @@ pub mod create_commit_status {
     Success,
   }
 
-  impl ToString for RequestState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestState::Error => "error".to_string(),
-        RequestState::Failure => "failure".to_string(),
-        RequestState::Pending => "pending".to_string(),
-        RequestState::Success => "success".to_string(),
+        RequestState::Error => write!(f, "error"),
+        RequestState::Failure => write!(f, "failure"),
+        RequestState::Pending => write!(f, "pending"),
+        RequestState::Success => write!(f, "success"),
       }
     }
   }
@@ -3710,6 +3744,7 @@ pub mod list_for_authenticated_user {
 
   pub type Response = Vec<Repository>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryVisibility {
     #[serde(rename = "all")]
@@ -3720,16 +3755,17 @@ pub mod list_for_authenticated_user {
     Private,
   }
 
-  impl ToString for QueryVisibility {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryVisibility {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryVisibility::All => "all".to_string(),
-        QueryVisibility::Public => "public".to_string(),
-        QueryVisibility::Private => "private".to_string(),
+        QueryVisibility::All => write!(f, "all"),
+        QueryVisibility::Public => write!(f, "public"),
+        QueryVisibility::Private => write!(f, "private"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryType {
     #[serde(rename = "all")]
@@ -3744,18 +3780,19 @@ pub mod list_for_authenticated_user {
     Member,
   }
 
-  impl ToString for QueryType {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryType::All => "all".to_string(),
-        QueryType::Owner => "owner".to_string(),
-        QueryType::Public => "public".to_string(),
-        QueryType::Private => "private".to_string(),
-        QueryType::Member => "member".to_string(),
+        QueryType::All => write!(f, "all"),
+        QueryType::Owner => write!(f, "owner"),
+        QueryType::Public => write!(f, "public"),
+        QueryType::Private => write!(f, "private"),
+        QueryType::Member => write!(f, "member"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -3768,17 +3805,18 @@ pub mod list_for_authenticated_user {
     FullName,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::Pushed => "pushed".to_string(),
-        QuerySort::FullName => "full_name".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::Pushed => write!(f, "pushed"),
+        QuerySort::FullName => write!(f, "full_name"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
@@ -3787,11 +3825,11 @@ pub mod list_for_authenticated_user {
     Desc,
   }
 
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryDirection {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
+        QueryDirection::Asc => write!(f, "asc"),
+        QueryDirection::Desc => write!(f, "desc"),
       }
     }
   }
@@ -3984,6 +4022,7 @@ pub mod list_for_user {
 
   pub type Response = Vec<MinimalRepository>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryType {
     #[serde(rename = "all")]
@@ -3994,16 +4033,17 @@ pub mod list_for_user {
     Member,
   }
 
-  impl ToString for QueryType {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryType::All => "all".to_string(),
-        QueryType::Owner => "owner".to_string(),
-        QueryType::Member => "member".to_string(),
+        QueryType::All => write!(f, "all"),
+        QueryType::Owner => write!(f, "owner"),
+        QueryType::Member => write!(f, "member"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -4016,17 +4056,18 @@ pub mod list_for_user {
     FullName,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::Pushed => "pushed".to_string(),
-        QuerySort::FullName => "full_name".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::Pushed => write!(f, "pushed"),
+        QuerySort::FullName => write!(f, "full_name"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
@@ -4035,11 +4076,11 @@ pub mod list_for_user {
     Desc,
   }
 
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryDirection {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
+        QueryDirection::Asc => write!(f, "asc"),
+        QueryDirection::Desc => write!(f, "desc"),
       }
     }
   }

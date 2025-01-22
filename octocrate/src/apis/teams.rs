@@ -32,6 +32,7 @@ pub mod create {
 
   pub type Response = TeamFull;
 
+  #[allow(clippy::large_enum_variant)]
   /// The notification setting the team has chosen. The options are:  
   ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
   ///  * `notifications_disabled` - no one receives notifications.  
@@ -44,15 +45,16 @@ pub mod create {
     NotificationsDisabled,
   }
 
-  impl ToString for RequestNotificationSetting {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestNotificationSetting {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestNotificationSetting::NotificationsEnabled => "notifications_enabled".to_string(),
-        RequestNotificationSetting::NotificationsDisabled => "notifications_disabled".to_string(),
+        RequestNotificationSetting::NotificationsEnabled => write!(f, "notifications_enabled"),
+        RequestNotificationSetting::NotificationsDisabled => write!(f, "notifications_disabled"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestPermission {
@@ -62,15 +64,16 @@ pub mod create {
     Push,
   }
 
-  impl ToString for RequestPermission {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestPermission {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestPermission::Pull => "pull".to_string(),
-        RequestPermission::Push => "push".to_string(),
+        RequestPermission::Pull => write!(f, "pull"),
+        RequestPermission::Push => write!(f, "push"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// The level of privacy this team should have. The options are:  
   /// **For a non-nested team:**  
   ///  * `secret` - only visible to organization owners and members of this team.  
@@ -87,11 +90,11 @@ pub mod create {
     Closed,
   }
 
-  impl ToString for RequestPrivacy {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestPrivacy {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestPrivacy::Secret => "secret".to_string(),
-        RequestPrivacy::Closed => "closed".to_string(),
+        RequestPrivacy::Secret => write!(f, "secret"),
+        RequestPrivacy::Closed => write!(f, "closed"),
       }
     }
   }
@@ -155,6 +158,7 @@ pub mod update_in_org {
 
   pub type Response = TeamFull;
 
+  #[allow(clippy::large_enum_variant)]
   /// The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:
   ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
   ///  * `notifications_disabled` - no one receives notifications.
@@ -166,15 +170,16 @@ pub mod update_in_org {
     NotificationsDisabled,
   }
 
-  impl ToString for RequestNotificationSetting {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestNotificationSetting {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestNotificationSetting::NotificationsEnabled => "notifications_enabled".to_string(),
-        RequestNotificationSetting::NotificationsDisabled => "notifications_disabled".to_string(),
+        RequestNotificationSetting::NotificationsEnabled => write!(f, "notifications_enabled"),
+        RequestNotificationSetting::NotificationsDisabled => write!(f, "notifications_disabled"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestPermission {
@@ -186,16 +191,17 @@ pub mod update_in_org {
     Admin,
   }
 
-  impl ToString for RequestPermission {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestPermission {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestPermission::Pull => "pull".to_string(),
-        RequestPermission::Push => "push".to_string(),
-        RequestPermission::Admin => "admin".to_string(),
+        RequestPermission::Pull => write!(f, "pull"),
+        RequestPermission::Push => write!(f, "push"),
+        RequestPermission::Admin => write!(f, "admin"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. When a team is nested, the `privacy` for parent teams cannot be `secret`. The options are:  
   /// **For a non-nested team:**  
   ///  * `secret` - only visible to organization owners and members of this team.  
@@ -210,11 +216,11 @@ pub mod update_in_org {
     Closed,
   }
 
-  impl ToString for RequestPrivacy {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestPrivacy {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestPrivacy::Secret => "secret".to_string(),
-        RequestPrivacy::Closed => "closed".to_string(),
+        RequestPrivacy::Secret => write!(f, "secret"),
+        RequestPrivacy::Closed => write!(f, "closed"),
       }
     }
   }
@@ -416,6 +422,7 @@ pub mod list_members_in_org {
 
   pub type Response = Vec<SimpleUser>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryRole {
     #[serde(rename = "member")]
@@ -426,12 +433,12 @@ pub mod list_members_in_org {
     All,
   }
 
-  impl ToString for QueryRole {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryRole {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryRole::Member => "member".to_string(),
-        QueryRole::Maintainer => "maintainer".to_string(),
-        QueryRole::All => "all".to_string(),
+        QueryRole::Member => write!(f, "member"),
+        QueryRole::Maintainer => write!(f, "maintainer"),
+        QueryRole::All => write!(f, "all"),
       }
     }
   }
@@ -467,6 +474,7 @@ pub mod add_or_update_membership_for_user_in_org {
 
   pub type Response = TeamMembership;
 
+  #[allow(clippy::large_enum_variant)]
   /// The role that this user should have in the team.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestRole {
@@ -476,11 +484,11 @@ pub mod add_or_update_membership_for_user_in_org {
     Maintainer,
   }
 
-  impl ToString for RequestRole {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestRole {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestRole::Member => "member".to_string(),
-        RequestRole::Maintainer => "maintainer".to_string(),
+        RequestRole::Member => write!(f, "member"),
+        RequestRole::Maintainer => write!(f, "maintainer"),
       }
     }
   }
@@ -610,6 +618,7 @@ pub mod update_legacy {
 
   pub type Response = TeamFull;
 
+  #[allow(clippy::large_enum_variant)]
   /// The notification setting the team has chosen. Editing teams without specifying this parameter leaves `notification_setting` intact. The options are:
   ///  * `notifications_enabled` - team members receive notifications when the team is @mentioned.  
   ///  * `notifications_disabled` - no one receives notifications.
@@ -621,15 +630,16 @@ pub mod update_legacy {
     NotificationsDisabled,
   }
 
-  impl ToString for RequestNotificationSetting {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestNotificationSetting {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestNotificationSetting::NotificationsEnabled => "notifications_enabled".to_string(),
-        RequestNotificationSetting::NotificationsDisabled => "notifications_disabled".to_string(),
+        RequestNotificationSetting::NotificationsEnabled => write!(f, "notifications_enabled"),
+        RequestNotificationSetting::NotificationsDisabled => write!(f, "notifications_disabled"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// **Deprecated**. The permission that new repositories will be added to the team with when none is specified.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestPermission {
@@ -641,16 +651,17 @@ pub mod update_legacy {
     Admin,
   }
 
-  impl ToString for RequestPermission {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestPermission {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestPermission::Pull => "pull".to_string(),
-        RequestPermission::Push => "push".to_string(),
-        RequestPermission::Admin => "admin".to_string(),
+        RequestPermission::Pull => write!(f, "pull"),
+        RequestPermission::Push => write!(f, "push"),
+        RequestPermission::Admin => write!(f, "admin"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// The level of privacy this team should have. Editing teams without specifying this parameter leaves `privacy` intact. The options are:  
   /// **For a non-nested team:**  
   ///  * `secret` - only visible to organization owners and members of this team.  
@@ -665,11 +676,11 @@ pub mod update_legacy {
     Closed,
   }
 
-  impl ToString for RequestPrivacy {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestPrivacy {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestPrivacy::Secret => "secret".to_string(),
-        RequestPrivacy::Closed => "closed".to_string(),
+        RequestPrivacy::Secret => write!(f, "secret"),
+        RequestPrivacy::Closed => write!(f, "closed"),
       }
     }
   }
@@ -865,6 +876,7 @@ pub mod list_members_legacy {
 
   pub type Response = Vec<SimpleUser>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryRole {
     #[serde(rename = "member")]
@@ -875,12 +887,12 @@ pub mod list_members_legacy {
     All,
   }
 
-  impl ToString for QueryRole {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryRole {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryRole::Member => "member".to_string(),
-        QueryRole::Maintainer => "maintainer".to_string(),
-        QueryRole::All => "all".to_string(),
+        QueryRole::Member => write!(f, "member"),
+        QueryRole::Maintainer => write!(f, "maintainer"),
+        QueryRole::All => write!(f, "all"),
       }
     }
   }
@@ -916,6 +928,7 @@ pub mod add_or_update_membership_for_user_legacy {
 
   pub type Response = TeamMembership;
 
+  #[allow(clippy::large_enum_variant)]
   /// The role that this user should have in the team.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestRole {
@@ -925,11 +938,11 @@ pub mod add_or_update_membership_for_user_legacy {
     Maintainer,
   }
 
-  impl ToString for RequestRole {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestRole {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestRole::Member => "member".to_string(),
-        RequestRole::Maintainer => "maintainer".to_string(),
+        RequestRole::Member => write!(f, "member"),
+        RequestRole::Maintainer => write!(f, "maintainer"),
       }
     }
   }
@@ -1016,6 +1029,7 @@ pub mod add_or_update_repo_permissions_legacy {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   /// The permission to grant the team on this repository. If no permission is specified, the team's `permission` attribute will be used to determine what permission to grant the team on this repository.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestPermission {
@@ -1027,12 +1041,12 @@ pub mod add_or_update_repo_permissions_legacy {
     Admin,
   }
 
-  impl ToString for RequestPermission {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestPermission {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestPermission::Pull => "pull".to_string(),
-        RequestPermission::Push => "push".to_string(),
-        RequestPermission::Admin => "admin".to_string(),
+        RequestPermission::Pull => write!(f, "pull"),
+        RequestPermission::Push => write!(f, "push"),
+        RequestPermission::Admin => write!(f, "admin"),
       }
     }
   }
