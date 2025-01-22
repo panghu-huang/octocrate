@@ -1,4 +1,3 @@
-#![allow(clippy::all)]
 mod presets;
 
 #[allow(unused_imports)]

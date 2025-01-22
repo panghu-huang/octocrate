@@ -345,6 +345,7 @@ pub mod update_alert {
 
   pub type Response = DependabotAlert;
 
+  #[allow(clippy::large_enum_variant)]
   /// The state of the Dependabot alert.
   /// A `dismissed_reason` must be provided when setting the state to `dismissed`.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -355,11 +356,11 @@ pub mod update_alert {
     Open,
   }
 
-  impl ToString for RequestState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestState::Dismissed => "dismissed".to_string(),
-        RequestState::Open => "open".to_string(),
+        RequestState::Dismissed => write!(f, "dismissed"),
+        RequestState::Open => write!(f, "open"),
       }
     }
   }

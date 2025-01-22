@@ -5,6 +5,7 @@ use serde::{Deserialize, Serialize};
 #[allow(unused_imports)]
 use typed_builder::TypedBuilder;
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "security_advisories",
@@ -39,15 +40,16 @@ pub enum Direction {
   feature = "repos",
   feature = "activity"
 ))]
-impl ToString for Direction {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for Direction {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      Direction::Asc => "asc".to_string(),
-      Direction::Desc => "desc".to_string(),
+      Direction::Asc => write!(f, "asc"),
+      Direction::Desc => write!(f, "desc"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertScope {
@@ -58,15 +60,16 @@ pub enum DependabotAlertScope {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for DependabotAlertScope {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DependabotAlertScope {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DependabotAlertScope::Development => "development".to_string(),
-      DependabotAlertScope::Runtime => "runtime".to_string(),
+      DependabotAlertScope::Development => write!(f, "development"),
+      DependabotAlertScope::Runtime => write!(f, "runtime"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependabotAlertSort {
@@ -77,15 +80,16 @@ pub enum DependabotAlertSort {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for DependabotAlertSort {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DependabotAlertSort {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DependabotAlertSort::Created => "created".to_string(),
-      DependabotAlertSort::Updated => "updated".to_string(),
+      DependabotAlertSort::Created => write!(f, "created"),
+      DependabotAlertSort::Updated => write!(f, "updated"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertState {
@@ -96,15 +100,16 @@ pub enum SecretScanningAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
-impl ToString for SecretScanningAlertState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecretScanningAlertState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecretScanningAlertState::Open => "open".to_string(),
-      SecretScanningAlertState::Resolved => "resolved".to_string(),
+      SecretScanningAlertState::Open => write!(f, "open"),
+      SecretScanningAlertState::Resolved => write!(f, "resolved"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecretScanningAlertSort {
@@ -115,15 +120,16 @@ pub enum SecretScanningAlertSort {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
-impl ToString for SecretScanningAlertSort {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecretScanningAlertSort {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecretScanningAlertSort::Created => "created".to_string(),
-      SecretScanningAlertSort::Updated => "updated".to_string(),
+      SecretScanningAlertSort::Created => write!(f, "created"),
+      SecretScanningAlertSort::Updated => write!(f, "updated"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "apps",
@@ -144,15 +150,16 @@ pub enum Sort {
   feature = "issues",
   feature = "pulls"
 ))]
-impl ToString for Sort {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for Sort {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      Sort::Created => "created".to_string(),
-      Sort::Updated => "updated".to_string(),
+      Sort::Created => write!(f, "created"),
+      Sort::Updated => write!(f, "updated"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackageVisibility {
@@ -165,16 +172,17 @@ pub enum PackageVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "packages"))]
-impl ToString for PackageVisibility {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PackageVisibility {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PackageVisibility::Public => "public".to_string(),
-      PackageVisibility::Private => "private".to_string(),
-      PackageVisibility::Internal => "internal".to_string(),
+      PackageVisibility::Public => write!(f, "public"),
+      PackageVisibility::Private => write!(f, "private"),
+      PackageVisibility::Internal => write!(f, "internal"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PersonalAccessTokenSort {
@@ -183,14 +191,15 @@ pub enum PersonalAccessTokenSort {
 }
 
 #[cfg(any(feature = "full", feature = "orgs"))]
-impl ToString for PersonalAccessTokenSort {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PersonalAccessTokenSort {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PersonalAccessTokenSort::CreatedAt => "created_at".to_string(),
+      PersonalAccessTokenSort::CreatedAt => write!(f, "created_at"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum TimePeriod {
@@ -205,17 +214,18 @@ pub enum TimePeriod {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for TimePeriod {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for TimePeriod {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      TimePeriod::Hour => "hour".to_string(),
-      TimePeriod::Day => "day".to_string(),
-      TimePeriod::Week => "week".to_string(),
-      TimePeriod::Month => "month".to_string(),
+      TimePeriod::Hour => write!(f, "hour"),
+      TimePeriod::Day => write!(f, "day"),
+      TimePeriod::Week => write!(f, "week"),
+      TimePeriod::Month => write!(f, "month"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RuleSuiteResult {
@@ -230,17 +240,18 @@ pub enum RuleSuiteResult {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RuleSuiteResult {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RuleSuiteResult {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RuleSuiteResult::Pass => "pass".to_string(),
-      RuleSuiteResult::Fail => "fail".to_string(),
-      RuleSuiteResult::Bypass => "bypass".to_string(),
-      RuleSuiteResult::All => "all".to_string(),
+      RuleSuiteResult::Pass => write!(f, "pass"),
+      RuleSuiteResult::Fail => write!(f, "fail"),
+      RuleSuiteResult::Bypass => write!(f, "bypass"),
+      RuleSuiteResult::All => write!(f, "all"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SecurityProduct {
@@ -261,22 +272,21 @@ pub enum SecurityProduct {
 }
 
 #[cfg(any(feature = "full", feature = "orgs"))]
-impl ToString for SecurityProduct {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityProduct {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityProduct::DependencyGraph => "dependency_graph".to_string(),
-      SecurityProduct::DependabotAlerts => "dependabot_alerts".to_string(),
-      SecurityProduct::DependabotSecurityUpdates => "dependabot_security_updates".to_string(),
-      SecurityProduct::AdvancedSecurity => "advanced_security".to_string(),
-      SecurityProduct::CodeScanningDefaultSetup => "code_scanning_default_setup".to_string(),
-      SecurityProduct::SecretScanning => "secret_scanning".to_string(),
-      SecurityProduct::SecretScanningPushProtection => {
-        "secret_scanning_push_protection".to_string()
-      }
+      SecurityProduct::DependencyGraph => write!(f, "dependency_graph"),
+      SecurityProduct::DependabotAlerts => write!(f, "dependabot_alerts"),
+      SecurityProduct::DependabotSecurityUpdates => write!(f, "dependabot_security_updates"),
+      SecurityProduct::AdvancedSecurity => write!(f, "advanced_security"),
+      SecurityProduct::CodeScanningDefaultSetup => write!(f, "code_scanning_default_setup"),
+      SecurityProduct::SecretScanning => write!(f, "secret_scanning"),
+      SecurityProduct::SecretScanningPushProtection => write!(f, "secret_scanning_push_protection"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum OrgSecurityProductEnablement {
@@ -287,15 +297,16 @@ pub enum OrgSecurityProductEnablement {
 }
 
 #[cfg(any(feature = "full", feature = "orgs"))]
-impl ToString for OrgSecurityProductEnablement {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for OrgSecurityProductEnablement {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      OrgSecurityProductEnablement::EnableAll => "enable_all".to_string(),
-      OrgSecurityProductEnablement::DisableAll => "disable_all".to_string(),
+      OrgSecurityProductEnablement::EnableAll => write!(f, "enable_all"),
+      OrgSecurityProductEnablement::DisableAll => write!(f, "disable_all"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ActionsCacheListSort {
@@ -308,16 +319,17 @@ pub enum ActionsCacheListSort {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for ActionsCacheListSort {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ActionsCacheListSort {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ActionsCacheListSort::CreatedAt => "created_at".to_string(),
-      ActionsCacheListSort::LastAccessedAt => "last_accessed_at".to_string(),
-      ActionsCacheListSort::SizeInBytes => "size_in_bytes".to_string(),
+      ActionsCacheListSort::CreatedAt => write!(f, "created_at"),
+      ActionsCacheListSort::LastAccessedAt => write!(f, "last_accessed_at"),
+      ActionsCacheListSort::SizeInBytes => write!(f, "size_in_bytes"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowRunStatus {
@@ -352,27 +364,28 @@ pub enum WorkflowRunStatus {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for WorkflowRunStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WorkflowRunStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WorkflowRunStatus::Completed => "completed".to_string(),
-      WorkflowRunStatus::ActionRequired => "action_required".to_string(),
-      WorkflowRunStatus::Cancelled => "cancelled".to_string(),
-      WorkflowRunStatus::Failure => "failure".to_string(),
-      WorkflowRunStatus::Neutral => "neutral".to_string(),
-      WorkflowRunStatus::Skipped => "skipped".to_string(),
-      WorkflowRunStatus::Stale => "stale".to_string(),
-      WorkflowRunStatus::Success => "success".to_string(),
-      WorkflowRunStatus::TimedOut => "timed_out".to_string(),
-      WorkflowRunStatus::InProgress => "in_progress".to_string(),
-      WorkflowRunStatus::Queued => "queued".to_string(),
-      WorkflowRunStatus::Requested => "requested".to_string(),
-      WorkflowRunStatus::Waiting => "waiting".to_string(),
-      WorkflowRunStatus::Pending => "pending".to_string(),
+      WorkflowRunStatus::Completed => write!(f, "completed"),
+      WorkflowRunStatus::ActionRequired => write!(f, "action_required"),
+      WorkflowRunStatus::Cancelled => write!(f, "cancelled"),
+      WorkflowRunStatus::Failure => write!(f, "failure"),
+      WorkflowRunStatus::Neutral => write!(f, "neutral"),
+      WorkflowRunStatus::Skipped => write!(f, "skipped"),
+      WorkflowRunStatus::Stale => write!(f, "stale"),
+      WorkflowRunStatus::Success => write!(f, "success"),
+      WorkflowRunStatus::TimedOut => write!(f, "timed_out"),
+      WorkflowRunStatus::InProgress => write!(f, "in_progress"),
+      WorkflowRunStatus::Queued => write!(f, "queued"),
+      WorkflowRunStatus::Requested => write!(f, "requested"),
+      WorkflowRunStatus::Waiting => write!(f, "waiting"),
+      WorkflowRunStatus::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum Status {
@@ -385,16 +398,17 @@ pub enum Status {
 }
 
 #[cfg(any(feature = "full", feature = "checks"))]
-impl ToString for Status {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for Status {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      Status::Queued => "queued".to_string(),
-      Status::InProgress => "in_progress".to_string(),
-      Status::Completed => "completed".to_string(),
+      Status::Queued => write!(f, "queued"),
+      Status::InProgress => write!(f, "in_progress"),
+      Status::Completed => write!(f, "completed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum Per {
@@ -405,15 +419,16 @@ pub enum Per {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for Per {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for Per {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      Per::Day => "day".to_string(),
-      Per::Week => "week".to_string(),
+      Per::Day => write!(f, "day"),
+      Per::Week => write!(f, "week"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "search"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum Order {
@@ -424,15 +439,16 @@ pub enum Order {
 }
 
 #[cfg(any(feature = "full", feature = "search"))]
-impl ToString for Order {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for Order {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      Order::Desc => "desc".to_string(),
-      Order::Asc => "asc".to_string(),
+      Order::Desc => write!(f, "desc"),
+      Order::Asc => write!(f, "asc"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "activity"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum SortStarred {
@@ -443,11 +459,11 @@ pub enum SortStarred {
 }
 
 #[cfg(any(feature = "full", feature = "activity"))]
-impl ToString for SortStarred {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SortStarred {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SortStarred::Created => "created".to_string(),
-      SortStarred::Updated => "updated".to_string(),
+      SortStarred::Created => write!(f, "created"),
+      SortStarred::Updated => write!(f, "updated"),
     }
   }
 }

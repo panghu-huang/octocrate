@@ -12,6 +12,7 @@ pub mod list_global_advisories {
 
   pub type Response = Vec<GlobalAdvisory>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryType {
     #[serde(rename = "reviewed")]
@@ -22,16 +23,17 @@ pub mod list_global_advisories {
     Unreviewed,
   }
 
-  impl ToString for QueryType {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryType {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryType::Reviewed => "reviewed".to_string(),
-        QueryType::Malware => "malware".to_string(),
-        QueryType::Unreviewed => "unreviewed".to_string(),
+        QueryType::Reviewed => write!(f, "reviewed"),
+        QueryType::Malware => write!(f, "malware"),
+        QueryType::Unreviewed => write!(f, "unreviewed"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySeverity {
     #[serde(rename = "unknown")]
@@ -46,18 +48,19 @@ pub mod list_global_advisories {
     Critical,
   }
 
-  impl ToString for QuerySeverity {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySeverity {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySeverity::Unknown => "unknown".to_string(),
-        QuerySeverity::Low => "low".to_string(),
-        QuerySeverity::Medium => "medium".to_string(),
-        QuerySeverity::High => "high".to_string(),
-        QuerySeverity::Critical => "critical".to_string(),
+        QuerySeverity::Unknown => write!(f, "unknown"),
+        QuerySeverity::Low => write!(f, "low"),
+        QuerySeverity::Medium => write!(f, "medium"),
+        QuerySeverity::High => write!(f, "high"),
+        QuerySeverity::Critical => write!(f, "critical"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "updated")]
@@ -66,11 +69,11 @@ pub mod list_global_advisories {
     Published,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::Published => "published".to_string(),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::Published => write!(f, "published"),
       }
     }
   }
@@ -170,6 +173,7 @@ pub mod list_org_repository_advisories {
 
   pub type Response = Vec<RepositoryAdvisory>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -180,16 +184,17 @@ pub mod list_org_repository_advisories {
     Published,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::Published => "published".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::Published => write!(f, "published"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "triage")]
@@ -202,13 +207,13 @@ pub mod list_org_repository_advisories {
     Closed,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Triage => "triage".to_string(),
-        QueryState::Draft => "draft".to_string(),
-        QueryState::Published => "published".to_string(),
-        QueryState::Closed => "closed".to_string(),
+        QueryState::Triage => write!(f, "triage"),
+        QueryState::Draft => write!(f, "draft"),
+        QueryState::Published => write!(f, "published"),
+        QueryState::Closed => write!(f, "closed"),
       }
     }
   }
@@ -249,6 +254,7 @@ pub mod list_repository_advisories {
 
   pub type Response = Vec<RepositoryAdvisory>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -259,16 +265,17 @@ pub mod list_repository_advisories {
     Published,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::Published => "published".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::Published => write!(f, "published"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "triage")]
@@ -281,13 +288,13 @@ pub mod list_repository_advisories {
     Closed,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Triage => "triage".to_string(),
-        QueryState::Draft => "draft".to_string(),
-        QueryState::Published => "published".to_string(),
-        QueryState::Closed => "closed".to_string(),
+        QueryState::Triage => write!(f, "triage"),
+        QueryState::Draft => write!(f, "draft"),
+        QueryState::Published => write!(f, "published"),
+        QueryState::Closed => write!(f, "closed"),
       }
     }
   }

@@ -12,6 +12,7 @@ pub mod list {
 
   pub type Response = Vec<Issue>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryFilter {
     #[serde(rename = "assigned")]
@@ -28,19 +29,20 @@ pub mod list {
     All,
   }
 
-  impl ToString for QueryFilter {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryFilter {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryFilter::Assigned => "assigned".to_string(),
-        QueryFilter::Created => "created".to_string(),
-        QueryFilter::Mentioned => "mentioned".to_string(),
-        QueryFilter::Subscribed => "subscribed".to_string(),
-        QueryFilter::Repos => "repos".to_string(),
-        QueryFilter::All => "all".to_string(),
+        QueryFilter::Assigned => write!(f, "assigned"),
+        QueryFilter::Created => write!(f, "created"),
+        QueryFilter::Mentioned => write!(f, "mentioned"),
+        QueryFilter::Subscribed => write!(f, "subscribed"),
+        QueryFilter::Repos => write!(f, "repos"),
+        QueryFilter::All => write!(f, "all"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "open")]
@@ -51,16 +53,17 @@ pub mod list {
     All,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Open => "open".to_string(),
-        QueryState::Closed => "closed".to_string(),
-        QueryState::All => "all".to_string(),
+        QueryState::Open => write!(f, "open"),
+        QueryState::Closed => write!(f, "closed"),
+        QueryState::All => write!(f, "all"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -71,12 +74,12 @@ pub mod list {
     Comments,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::Comments => "comments".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::Comments => write!(f, "comments"),
       }
     }
   }
@@ -137,6 +140,7 @@ pub mod list_for_org {
 
   pub type Response = Vec<Issue>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryFilter {
     #[serde(rename = "assigned")]
@@ -153,19 +157,20 @@ pub mod list_for_org {
     All,
   }
 
-  impl ToString for QueryFilter {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryFilter {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryFilter::Assigned => "assigned".to_string(),
-        QueryFilter::Created => "created".to_string(),
-        QueryFilter::Mentioned => "mentioned".to_string(),
-        QueryFilter::Subscribed => "subscribed".to_string(),
-        QueryFilter::Repos => "repos".to_string(),
-        QueryFilter::All => "all".to_string(),
+        QueryFilter::Assigned => write!(f, "assigned"),
+        QueryFilter::Created => write!(f, "created"),
+        QueryFilter::Mentioned => write!(f, "mentioned"),
+        QueryFilter::Subscribed => write!(f, "subscribed"),
+        QueryFilter::Repos => write!(f, "repos"),
+        QueryFilter::All => write!(f, "all"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "open")]
@@ -176,16 +181,17 @@ pub mod list_for_org {
     All,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Open => "open".to_string(),
-        QueryState::Closed => "closed".to_string(),
-        QueryState::All => "all".to_string(),
+        QueryState::Open => write!(f, "open"),
+        QueryState::Closed => write!(f, "closed"),
+        QueryState::All => write!(f, "all"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -196,12 +202,12 @@ pub mod list_for_org {
     Comments,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::Comments => "comments".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::Comments => write!(f, "comments"),
       }
     }
   }
@@ -270,6 +276,7 @@ pub mod list_for_repo {
 
   pub type Response = Vec<Issue>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "open")]
@@ -280,16 +287,17 @@ pub mod list_for_repo {
     All,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Open => "open".to_string(),
-        QueryState::Closed => "closed".to_string(),
-        QueryState::All => "all".to_string(),
+        QueryState::Open => write!(f, "open"),
+        QueryState::Closed => write!(f, "closed"),
+        QueryState::All => write!(f, "all"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -300,12 +308,12 @@ pub mod list_for_repo {
     Comments,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::Comments => "comments".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::Comments => write!(f, "comments"),
       }
     }
   }
@@ -416,6 +424,7 @@ pub mod list_comments_for_repo {
 
   pub type Response = Vec<IssueComment>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
@@ -424,11 +433,11 @@ pub mod list_comments_for_repo {
     Desc,
   }
 
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryDirection {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
+        QueryDirection::Asc => write!(f, "asc"),
+        QueryDirection::Desc => write!(f, "desc"),
       }
     }
   }
@@ -520,6 +529,7 @@ pub mod update {
 
   pub type Response = Issue;
 
+  #[allow(clippy::large_enum_variant)]
   /// The open or closed state of the issue.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestState {
@@ -529,15 +539,16 @@ pub mod update {
     Closed,
   }
 
-  impl ToString for RequestState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestState::Open => "open".to_string(),
-        RequestState::Closed => "closed".to_string(),
+        RequestState::Open => write!(f, "open"),
+        RequestState::Closed => write!(f, "closed"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   /// The reason for the state change. Ignored unless `state` is changed.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestStateReason {
@@ -549,12 +560,12 @@ pub mod update {
     Reopened,
   }
 
-  impl ToString for RequestStateReason {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestStateReason {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestStateReason::Completed => "completed".to_string(),
-        RequestStateReason::NotPlanned => "not_planned".to_string(),
-        RequestStateReason::Reopened => "reopened".to_string(),
+        RequestStateReason::Completed => write!(f, "completed"),
+        RequestStateReason::NotPlanned => write!(f, "not_planned"),
+        RequestStateReason::Reopened => write!(f, "reopened"),
       }
     }
   }
@@ -729,6 +740,7 @@ pub mod add_labels {
 
   pub type Response = Vec<Label>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -775,6 +787,7 @@ pub mod set_labels {
 
   pub type Response = Vec<Label>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -826,6 +839,7 @@ pub mod lock {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   /// The reason for locking the issue or pull request conversation. Lock will fail if you don't use one of these reasons:  
   ///  * `off-topic`  
   ///  * `too heated`  
@@ -843,13 +857,13 @@ pub mod lock {
     Spam,
   }
 
-  impl ToString for RequestLockReason {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestLockReason {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestLockReason::OffTopic => "off-topic".to_string(),
-        RequestLockReason::TooHeated => "too heated".to_string(),
-        RequestLockReason::Resolved => "resolved".to_string(),
-        RequestLockReason::Spam => "spam".to_string(),
+        RequestLockReason::OffTopic => write!(f, "off-topic"),
+        RequestLockReason::TooHeated => write!(f, "too heated"),
+        RequestLockReason::Resolved => write!(f, "resolved"),
+        RequestLockReason::Spam => write!(f, "spam"),
       }
     }
   }
@@ -967,6 +981,7 @@ pub mod list_milestones {
 
   pub type Response = Vec<Milestone>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "open")]
@@ -977,16 +992,17 @@ pub mod list_milestones {
     All,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Open => "open".to_string(),
-        QueryState::Closed => "closed".to_string(),
-        QueryState::All => "all".to_string(),
+        QueryState::Open => write!(f, "open"),
+        QueryState::Closed => write!(f, "closed"),
+        QueryState::All => write!(f, "all"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "due_on")]
@@ -995,15 +1011,16 @@ pub mod list_milestones {
     Completeness,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::DueOn => "due_on".to_string(),
-        QuerySort::Completeness => "completeness".to_string(),
+        QuerySort::DueOn => write!(f, "due_on"),
+        QuerySort::Completeness => write!(f, "completeness"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
@@ -1012,11 +1029,11 @@ pub mod list_milestones {
     Desc,
   }
 
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryDirection {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
+        QueryDirection::Asc => write!(f, "asc"),
+        QueryDirection::Desc => write!(f, "desc"),
       }
     }
   }
@@ -1053,6 +1070,7 @@ pub mod create_milestone {
 
   pub type Response = Milestone;
 
+  #[allow(clippy::large_enum_variant)]
   /// The state of the milestone. Either `open` or `closed`.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestState {
@@ -1062,11 +1080,11 @@ pub mod create_milestone {
     Closed,
   }
 
-  impl ToString for RequestState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestState::Open => "open".to_string(),
-        RequestState::Closed => "closed".to_string(),
+        RequestState::Open => write!(f, "open"),
+        RequestState::Closed => write!(f, "closed"),
       }
     }
   }
@@ -1104,6 +1122,7 @@ pub mod update_milestone {
 
   pub type Response = Milestone;
 
+  #[allow(clippy::large_enum_variant)]
   /// The state of the milestone. Either `open` or `closed`.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestState {
@@ -1113,11 +1132,11 @@ pub mod update_milestone {
     Closed,
   }
 
-  impl ToString for RequestState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestState::Open => "open".to_string(),
-        RequestState::Closed => "closed".to_string(),
+        RequestState::Open => write!(f, "open"),
+        RequestState::Closed => write!(f, "closed"),
       }
     }
   }
@@ -1170,6 +1189,7 @@ pub mod list_for_authenticated_user {
 
   pub type Response = Vec<Issue>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryFilter {
     #[serde(rename = "assigned")]
@@ -1186,19 +1206,20 @@ pub mod list_for_authenticated_user {
     All,
   }
 
-  impl ToString for QueryFilter {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryFilter {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryFilter::Assigned => "assigned".to_string(),
-        QueryFilter::Created => "created".to_string(),
-        QueryFilter::Mentioned => "mentioned".to_string(),
-        QueryFilter::Subscribed => "subscribed".to_string(),
-        QueryFilter::Repos => "repos".to_string(),
-        QueryFilter::All => "all".to_string(),
+        QueryFilter::Assigned => write!(f, "assigned"),
+        QueryFilter::Created => write!(f, "created"),
+        QueryFilter::Mentioned => write!(f, "mentioned"),
+        QueryFilter::Subscribed => write!(f, "subscribed"),
+        QueryFilter::Repos => write!(f, "repos"),
+        QueryFilter::All => write!(f, "all"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryState {
     #[serde(rename = "open")]
@@ -1209,16 +1230,17 @@ pub mod list_for_authenticated_user {
     All,
   }
 
-  impl ToString for QueryState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryState::Open => "open".to_string(),
-        QueryState::Closed => "closed".to_string(),
-        QueryState::All => "all".to_string(),
+        QueryState::Open => write!(f, "open"),
+        QueryState::Closed => write!(f, "closed"),
+        QueryState::All => write!(f, "all"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -1229,12 +1251,12 @@ pub mod list_for_authenticated_user {
     Comments,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
-        QuerySort::Comments => "comments".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
+        QuerySort::Comments => write!(f, "comments"),
       }
     }
   }

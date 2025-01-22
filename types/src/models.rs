@@ -15,6 +15,7 @@ pub type CodeFrequencyStat = Vec<i64>;
 #[cfg(any(feature = "full", feature = "search"))]
 pub type SearchResultTextMatches = Vec<SearchResultTextMatchesItem>;
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The package's language or package management ecosystem.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -48,26 +49,27 @@ pub enum SecurityAdvisoryEcosystems {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for SecurityAdvisoryEcosystems {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAdvisoryEcosystems {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAdvisoryEcosystems::Rubygems => "rubygems".to_string(),
-      SecurityAdvisoryEcosystems::Npm => "npm".to_string(),
-      SecurityAdvisoryEcosystems::Pip => "pip".to_string(),
-      SecurityAdvisoryEcosystems::Maven => "maven".to_string(),
-      SecurityAdvisoryEcosystems::Nuget => "nuget".to_string(),
-      SecurityAdvisoryEcosystems::Composer => "composer".to_string(),
-      SecurityAdvisoryEcosystems::Go => "go".to_string(),
-      SecurityAdvisoryEcosystems::Rust => "rust".to_string(),
-      SecurityAdvisoryEcosystems::Erlang => "erlang".to_string(),
-      SecurityAdvisoryEcosystems::Actions => "actions".to_string(),
-      SecurityAdvisoryEcosystems::Pub => "pub".to_string(),
-      SecurityAdvisoryEcosystems::Other => "other".to_string(),
-      SecurityAdvisoryEcosystems::Swift => "swift".to_string(),
+      SecurityAdvisoryEcosystems::Rubygems => write!(f, "rubygems"),
+      SecurityAdvisoryEcosystems::Npm => write!(f, "npm"),
+      SecurityAdvisoryEcosystems::Pip => write!(f, "pip"),
+      SecurityAdvisoryEcosystems::Maven => write!(f, "maven"),
+      SecurityAdvisoryEcosystems::Nuget => write!(f, "nuget"),
+      SecurityAdvisoryEcosystems::Composer => write!(f, "composer"),
+      SecurityAdvisoryEcosystems::Go => write!(f, "go"),
+      SecurityAdvisoryEcosystems::Rust => write!(f, "rust"),
+      SecurityAdvisoryEcosystems::Erlang => write!(f, "erlang"),
+      SecurityAdvisoryEcosystems::Actions => write!(f, "actions"),
+      SecurityAdvisoryEcosystems::Pub => write!(f, "pub"),
+      SecurityAdvisoryEcosystems::Other => write!(f, "other"),
+      SecurityAdvisoryEcosystems::Swift => write!(f, "swift"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The type of credit the user is receiving.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -95,23 +97,24 @@ pub enum SecurityAdvisoryCreditTypes {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for SecurityAdvisoryCreditTypes {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAdvisoryCreditTypes {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAdvisoryCreditTypes::Analyst => "analyst".to_string(),
-      SecurityAdvisoryCreditTypes::Finder => "finder".to_string(),
-      SecurityAdvisoryCreditTypes::Reporter => "reporter".to_string(),
-      SecurityAdvisoryCreditTypes::Coordinator => "coordinator".to_string(),
-      SecurityAdvisoryCreditTypes::RemediationDeveloper => "remediation_developer".to_string(),
-      SecurityAdvisoryCreditTypes::RemediationReviewer => "remediation_reviewer".to_string(),
-      SecurityAdvisoryCreditTypes::RemediationVerifier => "remediation_verifier".to_string(),
-      SecurityAdvisoryCreditTypes::Tool => "tool".to_string(),
-      SecurityAdvisoryCreditTypes::Sponsor => "sponsor".to_string(),
-      SecurityAdvisoryCreditTypes::Other => "other".to_string(),
+      SecurityAdvisoryCreditTypes::Analyst => write!(f, "analyst"),
+      SecurityAdvisoryCreditTypes::Finder => write!(f, "finder"),
+      SecurityAdvisoryCreditTypes::Reporter => write!(f, "reporter"),
+      SecurityAdvisoryCreditTypes::Coordinator => write!(f, "coordinator"),
+      SecurityAdvisoryCreditTypes::RemediationDeveloper => write!(f, "remediation_developer"),
+      SecurityAdvisoryCreditTypes::RemediationReviewer => write!(f, "remediation_reviewer"),
+      SecurityAdvisoryCreditTypes::RemediationVerifier => write!(f, "remediation_verifier"),
+      SecurityAdvisoryCreditTypes::Tool => write!(f, "tool"),
+      SecurityAdvisoryCreditTypes::Sponsor => write!(f, "sponsor"),
+      SecurityAdvisoryCreditTypes::Other => write!(f, "other"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -129,18 +132,19 @@ pub enum GlobalAdvisorySeverity {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for GlobalAdvisorySeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for GlobalAdvisorySeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      GlobalAdvisorySeverity::Critical => "critical".to_string(),
-      GlobalAdvisorySeverity::High => "high".to_string(),
-      GlobalAdvisorySeverity::Medium => "medium".to_string(),
-      GlobalAdvisorySeverity::Low => "low".to_string(),
-      GlobalAdvisorySeverity::Unknown => "unknown".to_string(),
+      GlobalAdvisorySeverity::Critical => write!(f, "critical"),
+      GlobalAdvisorySeverity::High => write!(f, "high"),
+      GlobalAdvisorySeverity::Medium => write!(f, "medium"),
+      GlobalAdvisorySeverity::Low => write!(f, "low"),
+      GlobalAdvisorySeverity::Unknown => write!(f, "unknown"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The type of advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -154,16 +158,17 @@ pub enum GlobalAdvisoryType {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for GlobalAdvisoryType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for GlobalAdvisoryType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      GlobalAdvisoryType::Reviewed => "reviewed".to_string(),
-      GlobalAdvisoryType::Unreviewed => "unreviewed".to_string(),
-      GlobalAdvisoryType::Malware => "malware".to_string(),
+      GlobalAdvisoryType::Reviewed => write!(f, "reviewed"),
+      GlobalAdvisoryType::Unreviewed => write!(f, "unreviewed"),
+      GlobalAdvisoryType::Malware => write!(f, "malware"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -174,6 +179,7 @@ pub enum IntegrationInstallationRequestAccount {
   Enterprise(Enterprise),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "apps", feature = "orgs"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -184,6 +190,7 @@ pub enum InstallationAccount {
   Enterprise(Enterprise),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "classroom"))]
 /// Whether it's a group assignment or individual assignment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -195,15 +202,16 @@ pub enum ClassroomAssignmentType {
 }
 
 #[cfg(any(feature = "full", feature = "classroom"))]
-impl ToString for ClassroomAssignmentType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ClassroomAssignmentType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ClassroomAssignmentType::Individual => "individual".to_string(),
-      ClassroomAssignmentType::Group => "group".to_string(),
+      ClassroomAssignmentType::Individual => write!(f, "individual"),
+      ClassroomAssignmentType::Group => write!(f, "group"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "classroom"))]
 /// Whether it's a Group Assignment or Individual Assignment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -215,15 +223,16 @@ pub enum SimpleClassroomAssignmentType {
 }
 
 #[cfg(any(feature = "full", feature = "classroom"))]
-impl ToString for SimpleClassroomAssignmentType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SimpleClassroomAssignmentType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SimpleClassroomAssignmentType::Individual => "individual".to_string(),
-      SimpleClassroomAssignmentType::Group => "group".to_string(),
+      SimpleClassroomAssignmentType::Individual => write!(f, "individual"),
+      SimpleClassroomAssignmentType::Group => write!(f, "group"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot"))]
 /// The execution scope of the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -235,15 +244,16 @@ pub enum DependabotAlertWithRepositoryDependencyScope {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for DependabotAlertWithRepositoryDependencyScope {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DependabotAlertWithRepositoryDependencyScope {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DependabotAlertWithRepositoryDependencyScope::Development => "development".to_string(),
-      DependabotAlertWithRepositoryDependencyScope::Runtime => "runtime".to_string(),
+      DependabotAlertWithRepositoryDependencyScope::Development => write!(f, "development"),
+      DependabotAlertWithRepositoryDependencyScope::Runtime => write!(f, "runtime"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// **Required when the `state` is `resolved`.** The reason for resolving the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -259,17 +269,18 @@ pub enum SecretScanningAlertResolution {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
-impl ToString for SecretScanningAlertResolution {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecretScanningAlertResolution {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecretScanningAlertResolution::FalsePositive => "false_positive".to_string(),
-      SecretScanningAlertResolution::WontFix => "wont_fix".to_string(),
-      SecretScanningAlertResolution::Revoked => "revoked".to_string(),
-      SecretScanningAlertResolution::UsedInTests => "used_in_tests".to_string(),
+      SecretScanningAlertResolution::FalsePositive => write!(f, "false_positive"),
+      SecretScanningAlertResolution::WontFix => write!(f, "wont_fix"),
+      SecretScanningAlertResolution::Revoked => write!(f, "revoked"),
+      SecretScanningAlertResolution::UsedInTests => write!(f, "used_in_tests"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -281,15 +292,16 @@ pub enum SecretScanningAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
-impl ToString for SecretScanningAlertState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecretScanningAlertState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecretScanningAlertState::Open => "open".to_string(),
-      SecretScanningAlertState::Resolved => "resolved".to_string(),
+      SecretScanningAlertState::Open => write!(f, "open"),
+      SecretScanningAlertState::Resolved => write!(f, "resolved"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// The token status as of the latest validity check.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -303,16 +315,17 @@ pub enum OrganizationSecretScanningAlertValidity {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
-impl ToString for OrganizationSecretScanningAlertValidity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for OrganizationSecretScanningAlertValidity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      OrganizationSecretScanningAlertValidity::Active => "active".to_string(),
-      OrganizationSecretScanningAlertValidity::Inactive => "inactive".to_string(),
-      OrganizationSecretScanningAlertValidity::Unknown => "unknown".to_string(),
+      OrganizationSecretScanningAlertValidity::Active => write!(f, "active"),
+      OrganizationSecretScanningAlertValidity::Inactive => write!(f, "inactive"),
+      OrganizationSecretScanningAlertValidity::Unknown => write!(f, "unknown"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "activity",
@@ -352,21 +365,22 @@ pub enum AuthorAssociation {
   feature = "pulls",
   feature = "search"
 ))]
-impl ToString for AuthorAssociation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for AuthorAssociation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      AuthorAssociation::Collaborator => "COLLABORATOR".to_string(),
-      AuthorAssociation::Contributor => "CONTRIBUTOR".to_string(),
-      AuthorAssociation::FirstTimer => "FIRST_TIMER".to_string(),
-      AuthorAssociation::FirstTimeContributor => "FIRST_TIME_CONTRIBUTOR".to_string(),
-      AuthorAssociation::Mannequin => "MANNEQUIN".to_string(),
-      AuthorAssociation::Member => "MEMBER".to_string(),
-      AuthorAssociation::None => "NONE".to_string(),
-      AuthorAssociation::Owner => "OWNER".to_string(),
+      AuthorAssociation::Collaborator => write!(f, "COLLABORATOR"),
+      AuthorAssociation::Contributor => write!(f, "CONTRIBUTOR"),
+      AuthorAssociation::FirstTimer => write!(f, "FIRST_TIMER"),
+      AuthorAssociation::FirstTimeContributor => write!(f, "FIRST_TIME_CONTRIBUTOR"),
+      AuthorAssociation::Mannequin => write!(f, "MANNEQUIN"),
+      AuthorAssociation::Member => write!(f, "MEMBER"),
+      AuthorAssociation::None => write!(f, "NONE"),
+      AuthorAssociation::Owner => write!(f, "OWNER"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "activity",
@@ -392,15 +406,16 @@ pub enum MilestoneState {
   feature = "pulls",
   feature = "search"
 ))]
-impl ToString for MilestoneState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for MilestoneState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      MilestoneState::Open => "open".to_string(),
-      MilestoneState::Closed => "closed".to_string(),
+      MilestoneState::Open => write!(f, "open"),
+      MilestoneState::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "activity", feature = "issues"))]
 /// The reason for the current state
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -414,16 +429,17 @@ pub enum IssueStateReason {
 }
 
 #[cfg(any(feature = "full", feature = "activity", feature = "issues"))]
-impl ToString for IssueStateReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for IssueStateReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      IssueStateReason::Completed => "completed".to_string(),
-      IssueStateReason::Reopened => "reopened".to_string(),
-      IssueStateReason::NotPlanned => "not_planned".to_string(),
+      IssueStateReason::Completed => write!(f, "completed"),
+      IssueStateReason::Reopened => write!(f, "reopened"),
+      IssueStateReason::NotPlanned => write!(f, "not_planned"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "apps"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MarketplaceListingPlanPriceModel {
@@ -436,16 +452,17 @@ pub enum MarketplaceListingPlanPriceModel {
 }
 
 #[cfg(any(feature = "full", feature = "apps"))]
-impl ToString for MarketplaceListingPlanPriceModel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for MarketplaceListingPlanPriceModel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      MarketplaceListingPlanPriceModel::Free => "FREE".to_string(),
-      MarketplaceListingPlanPriceModel::FlatRate => "FLAT_RATE".to_string(),
-      MarketplaceListingPlanPriceModel::PerUnit => "PER_UNIT".to_string(),
+      MarketplaceListingPlanPriceModel::Free => write!(f, "FREE"),
+      MarketplaceListingPlanPriceModel::FlatRate => write!(f, "FLAT_RATE"),
+      MarketplaceListingPlanPriceModel::PerUnit => write!(f, "PER_UNIT"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "activity",
@@ -484,15 +501,16 @@ pub enum SecurityAndAnalysisAdvancedSecurityStatus {
   feature = "security_advisories",
   feature = "search"
 ))]
-impl ToString for SecurityAndAnalysisAdvancedSecurityStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAndAnalysisAdvancedSecurityStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAndAnalysisAdvancedSecurityStatus::Enabled => "enabled".to_string(),
-      SecurityAndAnalysisAdvancedSecurityStatus::Disabled => "disabled".to_string(),
+      SecurityAndAnalysisAdvancedSecurityStatus::Enabled => write!(f, "enabled"),
+      SecurityAndAnalysisAdvancedSecurityStatus::Disabled => write!(f, "disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "activity",
@@ -532,15 +550,16 @@ pub enum SecurityAndAnalysisDependabotSecurityUpdatesStatus {
   feature = "security_advisories",
   feature = "search"
 ))]
-impl ToString for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAndAnalysisDependabotSecurityUpdatesStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAndAnalysisDependabotSecurityUpdatesStatus::Enabled => "enabled".to_string(),
-      SecurityAndAnalysisDependabotSecurityUpdatesStatus::Disabled => "disabled".to_string(),
+      SecurityAndAnalysisDependabotSecurityUpdatesStatus::Enabled => write!(f, "enabled"),
+      SecurityAndAnalysisDependabotSecurityUpdatesStatus::Disabled => write!(f, "disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "activity",
@@ -579,15 +598,16 @@ pub enum SecurityAndAnalysisSecretScanningStatus {
   feature = "security_advisories",
   feature = "search"
 ))]
-impl ToString for SecurityAndAnalysisSecretScanningStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAndAnalysisSecretScanningStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAndAnalysisSecretScanningStatus::Enabled => "enabled".to_string(),
-      SecurityAndAnalysisSecretScanningStatus::Disabled => "disabled".to_string(),
+      SecurityAndAnalysisSecretScanningStatus::Enabled => write!(f, "enabled"),
+      SecurityAndAnalysisSecretScanningStatus::Disabled => write!(f, "disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(
   feature = "full",
   feature = "activity",
@@ -626,15 +646,16 @@ pub enum SecurityAndAnalysisSecretScanningPushProtectionStatus {
   feature = "security_advisories",
   feature = "search"
 ))]
-impl ToString for SecurityAndAnalysisSecretScanningPushProtectionStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecurityAndAnalysisSecretScanningPushProtectionStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecurityAndAnalysisSecretScanningPushProtectionStatus::Enabled => "enabled".to_string(),
-      SecurityAndAnalysisSecretScanningPushProtectionStatus::Disabled => "disabled".to_string(),
+      SecurityAndAnalysisSecretScanningPushProtectionStatus::Enabled => write!(f, "enabled"),
+      SecurityAndAnalysisSecretScanningPushProtectionStatus::Disabled => write!(f, "disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 /// The permissions policy that controls the actions and reusable workflows that are allowed to run.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -648,16 +669,17 @@ pub enum AllowedActions {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for AllowedActions {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for AllowedActions {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      AllowedActions::All => "all".to_string(),
-      AllowedActions::LocalOnly => "local_only".to_string(),
-      AllowedActions::Selected => "selected".to_string(),
+      AllowedActions::All => write!(f, "all"),
+      AllowedActions::LocalOnly => write!(f, "local_only"),
+      AllowedActions::Selected => write!(f, "selected"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 /// The policy that controls the repositories in the organization that are allowed to run GitHub Actions.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -671,16 +693,17 @@ pub enum EnabledRepositories {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for EnabledRepositories {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for EnabledRepositories {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      EnabledRepositories::All => "all".to_string(),
-      EnabledRepositories::None => "none".to_string(),
-      EnabledRepositories::Selected => "selected".to_string(),
+      EnabledRepositories::All => write!(f, "all"),
+      EnabledRepositories::None => write!(f, "none"),
+      EnabledRepositories::Selected => write!(f, "selected"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 /// The type of label. Read-only labels are applied automatically when the runner is configured.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -692,15 +715,16 @@ pub enum RunnerLabelType {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for RunnerLabelType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RunnerLabelType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RunnerLabelType::ReadOnly => "read-only".to_string(),
-      RunnerLabelType::Custom => "custom".to_string(),
+      RunnerLabelType::ReadOnly => write!(f, "read-only"),
+      RunnerLabelType::Custom => write!(f, "custom"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -716,17 +740,18 @@ pub enum CodeScanningAlertStateQuery {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningAlertStateQuery {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningAlertStateQuery {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningAlertStateQuery::Open => "open".to_string(),
-      CodeScanningAlertStateQuery::Closed => "closed".to_string(),
-      CodeScanningAlertStateQuery::Dismissed => "dismissed".to_string(),
-      CodeScanningAlertStateQuery::Fixed => "fixed".to_string(),
+      CodeScanningAlertStateQuery::Open => write!(f, "open"),
+      CodeScanningAlertStateQuery::Closed => write!(f, "closed"),
+      CodeScanningAlertStateQuery::Dismissed => write!(f, "dismissed"),
+      CodeScanningAlertStateQuery::Fixed => write!(f, "fixed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Severity of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -748,20 +773,21 @@ pub enum CodeScanningAlertSeverity {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningAlertSeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningAlertSeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningAlertSeverity::Critical => "critical".to_string(),
-      CodeScanningAlertSeverity::High => "high".to_string(),
-      CodeScanningAlertSeverity::Medium => "medium".to_string(),
-      CodeScanningAlertSeverity::Low => "low".to_string(),
-      CodeScanningAlertSeverity::Warning => "warning".to_string(),
-      CodeScanningAlertSeverity::Note => "note".to_string(),
-      CodeScanningAlertSeverity::Error => "error".to_string(),
+      CodeScanningAlertSeverity::Critical => write!(f, "critical"),
+      CodeScanningAlertSeverity::High => write!(f, "high"),
+      CodeScanningAlertSeverity::Medium => write!(f, "medium"),
+      CodeScanningAlertSeverity::Low => write!(f, "low"),
+      CodeScanningAlertSeverity::Warning => write!(f, "warning"),
+      CodeScanningAlertSeverity::Note => write!(f, "note"),
+      CodeScanningAlertSeverity::Error => write!(f, "error"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// **Required when the state is dismissed.** The reason for dismissing or closing the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -775,16 +801,17 @@ pub enum CodeScanningAlertDismissedReason {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningAlertDismissedReason {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningAlertDismissedReason {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningAlertDismissedReason::FalsePositive => "false positive".to_string(),
-      CodeScanningAlertDismissedReason::WonTFix => "won't fix".to_string(),
-      CodeScanningAlertDismissedReason::UsedInTests => "used in tests".to_string(),
+      CodeScanningAlertDismissedReason::FalsePositive => write!(f, "false positive"),
+      CodeScanningAlertDismissedReason::WonTFix => write!(f, "won't fix"),
+      CodeScanningAlertDismissedReason::UsedInTests => write!(f, "used in tests"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// A classification of the file. For example to identify it as generated.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -800,17 +827,18 @@ pub enum CodeScanningAlertClassification {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningAlertClassification {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningAlertClassification {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningAlertClassification::Source => "source".to_string(),
-      CodeScanningAlertClassification::Generated => "generated".to_string(),
-      CodeScanningAlertClassification::Test => "test".to_string(),
-      CodeScanningAlertClassification::Library => "library".to_string(),
+      CodeScanningAlertClassification::Source => write!(f, "source"),
+      CodeScanningAlertClassification::Generated => write!(f, "generated"),
+      CodeScanningAlertClassification::Test => write!(f, "test"),
+      CodeScanningAlertClassification::Library => write!(f, "library"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// State of a code scanning alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -824,16 +852,17 @@ pub enum CodeScanningAlertState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningAlertState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningAlertState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningAlertState::Open => "open".to_string(),
-      CodeScanningAlertState::Dismissed => "dismissed".to_string(),
-      CodeScanningAlertState::Fixed => "fixed".to_string(),
+      CodeScanningAlertState::Open => write!(f, "open"),
+      CodeScanningAlertState::Dismissed => write!(f, "dismissed"),
+      CodeScanningAlertState::Fixed => write!(f, "fixed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -849,17 +878,18 @@ pub enum CodeScanningAlertRuleSummarySeverity {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningAlertRuleSummarySeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningAlertRuleSummarySeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningAlertRuleSummarySeverity::None => "none".to_string(),
-      CodeScanningAlertRuleSummarySeverity::Note => "note".to_string(),
-      CodeScanningAlertRuleSummarySeverity::Warning => "warning".to_string(),
-      CodeScanningAlertRuleSummarySeverity::Error => "error".to_string(),
+      CodeScanningAlertRuleSummarySeverity::None => write!(f, "none"),
+      CodeScanningAlertRuleSummarySeverity::Note => write!(f, "note"),
+      CodeScanningAlertRuleSummarySeverity::Warning => write!(f, "warning"),
+      CodeScanningAlertRuleSummarySeverity::Error => write!(f, "error"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "codespaces"))]
 /// The initally assigned location of a new codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -871,17 +901,18 @@ pub enum CodespaceLocation {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces"))]
-impl ToString for CodespaceLocation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodespaceLocation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodespaceLocation::EastUs => "EastUs".to_string(),
-      CodespaceLocation::SouthEastAsia => "SouthEastAsia".to_string(),
-      CodespaceLocation::WestEurope => "WestEurope".to_string(),
-      CodespaceLocation::WestUs2 => "WestUs2".to_string(),
+      CodespaceLocation::EastUs => write!(f, "EastUs"),
+      CodespaceLocation::SouthEastAsia => write!(f, "SouthEastAsia"),
+      CodespaceLocation::WestEurope => write!(f, "WestEurope"),
+      CodespaceLocation::WestUs2 => write!(f, "WestUs2"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "codespaces"))]
 /// Whether a prebuild is currently available when creating a codespace for this machine and repository. If a branch was not specified as a ref, the default branch will be assumed. Value will be "null" if prebuilds are not supported or prebuild availability could not be determined. Value will be "none" if no prebuild is available. Latest values "ready" and "in_progress" indicate the prebuild availability status.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -895,16 +926,17 @@ pub enum CodespaceMachinePrebuildAvailability {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces"))]
-impl ToString for CodespaceMachinePrebuildAvailability {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodespaceMachinePrebuildAvailability {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodespaceMachinePrebuildAvailability::None => "none".to_string(),
-      CodespaceMachinePrebuildAvailability::Ready => "ready".to_string(),
-      CodespaceMachinePrebuildAvailability::InProgress => "in_progress".to_string(),
+      CodespaceMachinePrebuildAvailability::None => write!(f, "none"),
+      CodespaceMachinePrebuildAvailability::Ready => write!(f, "ready"),
+      CodespaceMachinePrebuildAvailability::InProgress => write!(f, "in_progress"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "codespaces"))]
 /// State of this codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -929,30 +961,31 @@ pub enum CodespaceState {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces"))]
-impl ToString for CodespaceState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodespaceState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodespaceState::Unknown => "Unknown".to_string(),
-      CodespaceState::Created => "Created".to_string(),
-      CodespaceState::Queued => "Queued".to_string(),
-      CodespaceState::Provisioning => "Provisioning".to_string(),
-      CodespaceState::Available => "Available".to_string(),
-      CodespaceState::Awaiting => "Awaiting".to_string(),
-      CodespaceState::Unavailable => "Unavailable".to_string(),
-      CodespaceState::Deleted => "Deleted".to_string(),
-      CodespaceState::Moved => "Moved".to_string(),
-      CodespaceState::Shutdown => "Shutdown".to_string(),
-      CodespaceState::Archived => "Archived".to_string(),
-      CodespaceState::Starting => "Starting".to_string(),
-      CodespaceState::ShuttingDown => "ShuttingDown".to_string(),
-      CodespaceState::Failed => "Failed".to_string(),
-      CodespaceState::Exporting => "Exporting".to_string(),
-      CodespaceState::Updating => "Updating".to_string(),
-      CodespaceState::Rebuilding => "Rebuilding".to_string(),
+      CodespaceState::Unknown => write!(f, "Unknown"),
+      CodespaceState::Created => write!(f, "Created"),
+      CodespaceState::Queued => write!(f, "Queued"),
+      CodespaceState::Provisioning => write!(f, "Provisioning"),
+      CodespaceState::Available => write!(f, "Available"),
+      CodespaceState::Awaiting => write!(f, "Awaiting"),
+      CodespaceState::Unavailable => write!(f, "Unavailable"),
+      CodespaceState::Deleted => write!(f, "Deleted"),
+      CodespaceState::Moved => write!(f, "Moved"),
+      CodespaceState::Shutdown => write!(f, "Shutdown"),
+      CodespaceState::Archived => write!(f, "Archived"),
+      CodespaceState::Starting => write!(f, "Starting"),
+      CodespaceState::ShuttingDown => write!(f, "ShuttingDown"),
+      CodespaceState::Failed => write!(f, "Failed"),
+      CodespaceState::Exporting => write!(f, "Exporting"),
+      CodespaceState::Updating => write!(f, "Updating"),
+      CodespaceState::Rebuilding => write!(f, "Rebuilding"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "copilot"))]
 /// The organization policy for allowing or disallowing Copilot to make suggestions that match public code.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -968,17 +1001,18 @@ pub enum CopilotOrganizationDetailsPublicCodeSuggestions {
 }
 
 #[cfg(any(feature = "full", feature = "copilot"))]
-impl ToString for CopilotOrganizationDetailsPublicCodeSuggestions {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CopilotOrganizationDetailsPublicCodeSuggestions {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CopilotOrganizationDetailsPublicCodeSuggestions::Allow => "allow".to_string(),
-      CopilotOrganizationDetailsPublicCodeSuggestions::Block => "block".to_string(),
-      CopilotOrganizationDetailsPublicCodeSuggestions::Unconfigured => "unconfigured".to_string(),
-      CopilotOrganizationDetailsPublicCodeSuggestions::Unknown => "unknown".to_string(),
+      CopilotOrganizationDetailsPublicCodeSuggestions::Allow => write!(f, "allow"),
+      CopilotOrganizationDetailsPublicCodeSuggestions::Block => write!(f, "block"),
+      CopilotOrganizationDetailsPublicCodeSuggestions::Unconfigured => write!(f, "unconfigured"),
+      CopilotOrganizationDetailsPublicCodeSuggestions::Unknown => write!(f, "unknown"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "copilot"))]
 /// The mode of assigning new seats.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -994,19 +1028,20 @@ pub enum CopilotOrganizationDetailsSeatManagementSetting {
 }
 
 #[cfg(any(feature = "full", feature = "copilot"))]
-impl ToString for CopilotOrganizationDetailsSeatManagementSetting {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CopilotOrganizationDetailsSeatManagementSetting {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CopilotOrganizationDetailsSeatManagementSetting::AssignAll => "assign_all".to_string(),
+      CopilotOrganizationDetailsSeatManagementSetting::AssignAll => write!(f, "assign_all"),
       CopilotOrganizationDetailsSeatManagementSetting::AssignSelected => {
-        "assign_selected".to_string()
+        write!(f, "assign_selected")
       }
-      CopilotOrganizationDetailsSeatManagementSetting::Disabled => "disabled".to_string(),
-      CopilotOrganizationDetailsSeatManagementSetting::Unconfigured => "unconfigured".to_string(),
+      CopilotOrganizationDetailsSeatManagementSetting::Disabled => write!(f, "disabled"),
+      CopilotOrganizationDetailsSeatManagementSetting::Unconfigured => write!(f, "unconfigured"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "copilot"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -1019,6 +1054,7 @@ pub enum CopilotSeatDetailsAssignee {
   Organization(Organization),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "packages"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PackageVisibility {
@@ -1029,15 +1065,16 @@ pub enum PackageVisibility {
 }
 
 #[cfg(any(feature = "full", feature = "packages"))]
-impl ToString for PackageVisibility {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PackageVisibility {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PackageVisibility::Private => "private".to_string(),
-      PackageVisibility::Public => "public".to_string(),
+      PackageVisibility::Private => write!(f, "private"),
+      PackageVisibility::Public => write!(f, "public"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "interactions"))]
 /// The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1051,16 +1088,17 @@ pub enum InteractionGroup {
 }
 
 #[cfg(any(feature = "full", feature = "interactions"))]
-impl ToString for InteractionGroup {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for InteractionGroup {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      InteractionGroup::ExistingUsers => "existing_users".to_string(),
-      InteractionGroup::ContributorsOnly => "contributors_only".to_string(),
-      InteractionGroup::CollaboratorsOnly => "collaborators_only".to_string(),
+      InteractionGroup::ExistingUsers => write!(f, "existing_users"),
+      InteractionGroup::ContributorsOnly => write!(f, "contributors_only"),
+      InteractionGroup::CollaboratorsOnly => write!(f, "collaborators_only"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "interactions"))]
 /// The duration of the interaction restriction. Default: `one_day`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1078,18 +1116,19 @@ pub enum InteractionExpiry {
 }
 
 #[cfg(any(feature = "full", feature = "interactions"))]
-impl ToString for InteractionExpiry {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for InteractionExpiry {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      InteractionExpiry::OneDay => "one_day".to_string(),
-      InteractionExpiry::ThreeDays => "three_days".to_string(),
-      InteractionExpiry::OneWeek => "one_week".to_string(),
-      InteractionExpiry::OneMonth => "one_month".to_string(),
-      InteractionExpiry::SixMonths => "six_months".to_string(),
+      InteractionExpiry::OneDay => write!(f, "one_day"),
+      InteractionExpiry::ThreeDays => write!(f, "three_days"),
+      InteractionExpiry::OneWeek => write!(f, "one_week"),
+      InteractionExpiry::OneMonth => write!(f, "one_month"),
+      InteractionExpiry::SixMonths => write!(f, "six_months"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "orgs"))]
 /// The user's membership type in the organization.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1103,16 +1142,17 @@ pub enum OrgMembershipRole {
 }
 
 #[cfg(any(feature = "full", feature = "orgs"))]
-impl ToString for OrgMembershipRole {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for OrgMembershipRole {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      OrgMembershipRole::Admin => "admin".to_string(),
-      OrgMembershipRole::Member => "member".to_string(),
-      OrgMembershipRole::BillingManager => "billing_manager".to_string(),
+      OrgMembershipRole::Admin => write!(f, "admin"),
+      OrgMembershipRole::Member => write!(f, "member"),
+      OrgMembershipRole::BillingManager => write!(f, "billing_manager"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "orgs"))]
 /// The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1124,15 +1164,16 @@ pub enum OrgMembershipState {
 }
 
 #[cfg(any(feature = "full", feature = "orgs"))]
-impl ToString for OrgMembershipState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for OrgMembershipState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      OrgMembershipState::Active => "active".to_string(),
-      OrgMembershipState::Pending => "pending".to_string(),
+      OrgMembershipState::Active => write!(f, "active"),
+      OrgMembershipState::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "projects"))]
 /// The baseline permission that all organization members have on this project. Only present if owner is an organization.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1148,17 +1189,18 @@ pub enum ProjectOrganizationPermission {
 }
 
 #[cfg(any(feature = "full", feature = "projects"))]
-impl ToString for ProjectOrganizationPermission {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ProjectOrganizationPermission {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ProjectOrganizationPermission::Read => "read".to_string(),
-      ProjectOrganizationPermission::Write => "write".to_string(),
-      ProjectOrganizationPermission::Admin => "admin".to_string(),
-      ProjectOrganizationPermission::None => "none".to_string(),
+      ProjectOrganizationPermission::Read => write!(f, "read"),
+      ProjectOrganizationPermission::Write => write!(f, "write"),
+      ProjectOrganizationPermission::Admin => write!(f, "admin"),
+      ProjectOrganizationPermission::None => write!(f, "none"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "orgs"))]
 /// The type of the value for the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1170,15 +1212,16 @@ pub enum OrgCustomPropertyValueType {
 }
 
 #[cfg(any(feature = "full", feature = "orgs"))]
-impl ToString for OrgCustomPropertyValueType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for OrgCustomPropertyValueType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      OrgCustomPropertyValueType::String => "string".to_string(),
-      OrgCustomPropertyValueType::SingleSelect => "single_select".to_string(),
+      OrgCustomPropertyValueType::String => write!(f, "string"),
+      OrgCustomPropertyValueType::SingleSelect => write!(f, "single_select"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "orgs"))]
 /// Who can edit the values of the property
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1190,15 +1233,16 @@ pub enum OrgCustomPropertyValuesEditableBy {
 }
 
 #[cfg(any(feature = "full", feature = "orgs"))]
-impl ToString for OrgCustomPropertyValuesEditableBy {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for OrgCustomPropertyValuesEditableBy {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      OrgCustomPropertyValuesEditableBy::OrgActors => "org_actors".to_string(),
-      OrgCustomPropertyValuesEditableBy::OrgAndRepoActors => "org_and_repo_actors".to_string(),
+      OrgCustomPropertyValuesEditableBy::OrgActors => write!(f, "org_actors"),
+      OrgCustomPropertyValuesEditableBy::OrgAndRepoActors => write!(f, "org_and_repo_actors"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The type of actor that can bypass a ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1210,17 +1254,18 @@ pub enum RepositoryRulesetBypassActorActorType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRulesetBypassActorActorType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulesetBypassActorActorType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulesetBypassActorActorType::RepositoryRole => "RepositoryRole".to_string(),
-      RepositoryRulesetBypassActorActorType::Team => "Team".to_string(),
-      RepositoryRulesetBypassActorActorType::Integration => "Integration".to_string(),
-      RepositoryRulesetBypassActorActorType::OrganizationAdmin => "OrganizationAdmin".to_string(),
+      RepositoryRulesetBypassActorActorType::RepositoryRole => write!(f, "RepositoryRole"),
+      RepositoryRulesetBypassActorActorType::Team => write!(f, "Team"),
+      RepositoryRulesetBypassActorActorType::Integration => write!(f, "Integration"),
+      RepositoryRulesetBypassActorActorType::OrganizationAdmin => write!(f, "OrganizationAdmin"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// When the specified actor can bypass the ruleset. `pull_request` means that an actor can only bypass rules on pull requests.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1232,15 +1277,16 @@ pub enum RepositoryRulesetBypassActorBypassMode {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRulesetBypassActorBypassMode {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulesetBypassActorBypassMode {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulesetBypassActorBypassMode::Always => "always".to_string(),
-      RepositoryRulesetBypassActorBypassMode::PullRequest => "pull_request".to_string(),
+      RepositoryRulesetBypassActorBypassMode::Always => write!(f, "always"),
+      RepositoryRulesetBypassActorBypassMode::PullRequest => write!(f, "pull_request"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -1251,6 +1297,7 @@ pub enum OrgRulesetConditionsItem1 {
   RepositoryRulesetConditionsRepositoryNameTarget(RepositoryRulesetConditionsRepositoryNameTarget),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -1261,6 +1308,7 @@ pub enum OrgRulesetConditionsItem2 {
   RepositoryRulesetConditionsRepositoryIdTarget(RepositoryRulesetConditionsRepositoryIdTarget),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -1273,6 +1321,7 @@ pub enum OrgRulesetConditionsItem3 {
   ),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -1282,6 +1331,7 @@ pub enum OrgRulesetConditions {
   OrgRulesetConditionsItem3(OrgRulesetConditionsItem3),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The bypass type of the user making the API request for this ruleset. This field is only returned when
 /// querying the repository-level endpoint.
@@ -1296,16 +1346,17 @@ pub enum RepositoryRulesetCurrentUserCanBypass {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRulesetCurrentUserCanBypass {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulesetCurrentUserCanBypass {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulesetCurrentUserCanBypass::Always => "always".to_string(),
-      RepositoryRulesetCurrentUserCanBypass::PullRequestsOnly => "pull_requests_only".to_string(),
-      RepositoryRulesetCurrentUserCanBypass::Never => "never".to_string(),
+      RepositoryRulesetCurrentUserCanBypass::Always => write!(f, "always"),
+      RepositoryRulesetCurrentUserCanBypass::PullRequestsOnly => write!(f, "pull_requests_only"),
+      RepositoryRulesetCurrentUserCanBypass::Never => write!(f, "never"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The enforcement level of the ruleset. `evaluate` allows admins to test rules before enforcing them. Admins can view insights on the Rule Insights page (`evaluate` is only available with GitHub Enterprise).
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1319,16 +1370,17 @@ pub enum RepositoryRuleEnforcement {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleEnforcement {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleEnforcement {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleEnforcement::Disabled => "disabled".to_string(),
-      RepositoryRuleEnforcement::Active => "active".to_string(),
-      RepositoryRuleEnforcement::Evaluate => "evaluate".to_string(),
+      RepositoryRuleEnforcement::Disabled => write!(f, "disabled"),
+      RepositoryRuleEnforcement::Active => write!(f, "active"),
+      RepositoryRuleEnforcement::Evaluate => write!(f, "evaluate"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCreationType {
@@ -1337,14 +1389,15 @@ pub enum RepositoryRuleCreationType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleCreationType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleCreationType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleCreationType::Creation => "creation".to_string(),
+      RepositoryRuleCreationType::Creation => write!(f, "creation"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleUpdateType {
@@ -1353,14 +1406,15 @@ pub enum RepositoryRuleUpdateType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleUpdateType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleUpdateType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleUpdateType::Update => "update".to_string(),
+      RepositoryRuleUpdateType::Update => write!(f, "update"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleDeletionType {
@@ -1369,14 +1423,15 @@ pub enum RepositoryRuleDeletionType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleDeletionType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleDeletionType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleDeletionType::Deletion => "deletion".to_string(),
+      RepositoryRuleDeletionType::Deletion => write!(f, "deletion"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredLinearHistoryType {
@@ -1385,16 +1440,17 @@ pub enum RepositoryRuleRequiredLinearHistoryType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleRequiredLinearHistoryType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleRequiredLinearHistoryType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleRequiredLinearHistoryType::RequiredLinearHistory => {
-        "required_linear_history".to_string()
+        write!(f, "required_linear_history")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredDeploymentsType {
@@ -1403,16 +1459,17 @@ pub enum RepositoryRuleRequiredDeploymentsType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleRequiredDeploymentsType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleRequiredDeploymentsType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleRequiredDeploymentsType::RequiredDeployments => {
-        "required_deployments".to_string()
+        write!(f, "required_deployments")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredSignaturesType {
@@ -1421,14 +1478,15 @@ pub enum RepositoryRuleRequiredSignaturesType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleRequiredSignaturesType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleRequiredSignaturesType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleRequiredSignaturesType::RequiredSignatures => "required_signatures".to_string(),
+      RepositoryRuleRequiredSignaturesType::RequiredSignatures => write!(f, "required_signatures"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRulePullRequestType {
@@ -1437,14 +1495,15 @@ pub enum RepositoryRulePullRequestType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRulePullRequestType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulePullRequestType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulePullRequestType::PullRequest => "pull_request".to_string(),
+      RepositoryRulePullRequestType::PullRequest => write!(f, "pull_request"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleRequiredStatusChecksType {
@@ -1453,16 +1512,17 @@ pub enum RepositoryRuleRequiredStatusChecksType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleRequiredStatusChecksType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleRequiredStatusChecksType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleRequiredStatusChecksType::RequiredStatusChecks => {
-        "required_status_checks".to_string()
+        write!(f, "required_status_checks")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleNonFastForwardType {
@@ -1471,14 +1531,15 @@ pub enum RepositoryRuleNonFastForwardType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleNonFastForwardType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleNonFastForwardType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleNonFastForwardType::NonFastForward => "non_fast_forward".to_string(),
+      RepositoryRuleNonFastForwardType::NonFastForward => write!(f, "non_fast_forward"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitMessagePatternType {
@@ -1487,16 +1548,17 @@ pub enum RepositoryRuleCommitMessagePatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleCommitMessagePatternType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleCommitMessagePatternType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleCommitMessagePatternType::CommitMessagePattern => {
-        "commit_message_pattern".to_string()
+        write!(f, "commit_message_pattern")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitAuthorEmailPatternType {
@@ -1505,16 +1567,17 @@ pub enum RepositoryRuleCommitAuthorEmailPatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleCommitAuthorEmailPatternType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleCommitAuthorEmailPatternType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleCommitAuthorEmailPatternType::CommitAuthorEmailPattern => {
-        "commit_author_email_pattern".to_string()
+        write!(f, "commit_author_email_pattern")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleCommitterEmailPatternType {
@@ -1523,16 +1586,17 @@ pub enum RepositoryRuleCommitterEmailPatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleCommitterEmailPatternType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleCommitterEmailPatternType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
       RepositoryRuleCommitterEmailPatternType::CommitterEmailPattern => {
-        "committer_email_pattern".to_string()
+        write!(f, "committer_email_pattern")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleBranchNamePatternType {
@@ -1541,14 +1605,15 @@ pub enum RepositoryRuleBranchNamePatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleBranchNamePatternType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleBranchNamePatternType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleBranchNamePatternType::BranchNamePattern => "branch_name_pattern".to_string(),
+      RepositoryRuleBranchNamePatternType::BranchNamePattern => write!(f, "branch_name_pattern"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleTagNamePatternType {
@@ -1557,14 +1622,15 @@ pub enum RepositoryRuleTagNamePatternType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleTagNamePatternType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleTagNamePatternType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleTagNamePatternType::TagNamePattern => "tag_name_pattern".to_string(),
+      RepositoryRuleTagNamePatternType::TagNamePattern => write!(f, "tag_name_pattern"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum RepositoryRuleWorkflowsType {
@@ -1573,14 +1639,15 @@ pub enum RepositoryRuleWorkflowsType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleWorkflowsType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleWorkflowsType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleWorkflowsType::Workflows => "workflows".to_string(),
+      RepositoryRuleWorkflowsType::Workflows => write!(f, "workflows"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -1617,6 +1684,7 @@ pub enum RepositoryRule {
   RepositoryRuleWorkflows(RepositoryRuleWorkflows),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The type of the source of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1626,15 +1694,16 @@ pub enum RepositoryRulesetSourceType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRulesetSourceType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulesetSourceType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulesetSourceType::Repository => "Repository".to_string(),
-      RepositoryRulesetSourceType::Organization => "Organization".to_string(),
+      RepositoryRulesetSourceType::Repository => write!(f, "Repository"),
+      RepositoryRulesetSourceType::Organization => write!(f, "Organization"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The target of the ruleset
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1646,15 +1715,16 @@ pub enum RepositoryRulesetTarget {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRulesetTarget {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRulesetTarget {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRulesetTarget::Branch => "branch".to_string(),
-      RepositoryRulesetTarget::Tag => "tag".to_string(),
+      RepositoryRulesetTarget::Branch => write!(f, "branch"),
+      RepositoryRulesetTarget::Tag => write!(f, "tag"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1666,15 +1736,16 @@ pub enum RuleSuitesItemEvaluationResult {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RuleSuitesItemEvaluationResult {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RuleSuitesItemEvaluationResult {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RuleSuitesItemEvaluationResult::Pass => "pass".to_string(),
-      RuleSuitesItemEvaluationResult::Fail => "fail".to_string(),
+      RuleSuitesItemEvaluationResult::Pass => write!(f, "pass"),
+      RuleSuitesItemEvaluationResult::Fail => write!(f, "fail"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The result of the rule evaluations for rules with the `active` enforcement status.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1688,16 +1759,17 @@ pub enum RuleSuitesItemResult {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RuleSuitesItemResult {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RuleSuitesItemResult {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RuleSuitesItemResult::Pass => "pass".to_string(),
-      RuleSuitesItemResult::Fail => "fail".to_string(),
-      RuleSuitesItemResult::Bypass => "bypass".to_string(),
+      RuleSuitesItemResult::Pass => write!(f, "pass"),
+      RuleSuitesItemResult::Fail => write!(f, "fail"),
+      RuleSuitesItemResult::Bypass => write!(f, "bypass"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The result of the rule evaluations for rules with the `active` and `evaluate` enforcement statuses, demonstrating whether rules would pass or fail if all rules in the rule suite were `active`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1709,15 +1781,16 @@ pub enum RuleSuiteEvaluationResult {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RuleSuiteEvaluationResult {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RuleSuiteEvaluationResult {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RuleSuiteEvaluationResult::Pass => "pass".to_string(),
-      RuleSuiteEvaluationResult::Fail => "fail".to_string(),
+      RuleSuiteEvaluationResult::Pass => write!(f, "pass"),
+      RuleSuiteEvaluationResult::Fail => write!(f, "fail"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The result of the rule evaluations for rules with the `active` enforcement status.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1731,16 +1804,17 @@ pub enum RuleSuiteResult {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RuleSuiteResult {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RuleSuiteResult {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RuleSuiteResult::Pass => "pass".to_string(),
-      RuleSuiteResult::Fail => "fail".to_string(),
-      RuleSuiteResult::Bypass => "bypass".to_string(),
+      RuleSuiteResult::Pass => write!(f, "pass"),
+      RuleSuiteResult::Fail => write!(f, "fail"),
+      RuleSuiteResult::Bypass => write!(f, "bypass"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The enforcement level of this rule source.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1754,16 +1828,17 @@ pub enum RuleSuiteRuleEvaluationsEnforcement {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RuleSuiteRuleEvaluationsEnforcement {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RuleSuiteRuleEvaluationsEnforcement {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RuleSuiteRuleEvaluationsEnforcement::Active => "active".to_string(),
-      RuleSuiteRuleEvaluationsEnforcement::Evaluate => "evaluate".to_string(),
-      RuleSuiteRuleEvaluationsEnforcement::DeletedRuleset => "deleted ruleset".to_string(),
+      RuleSuiteRuleEvaluationsEnforcement::Active => write!(f, "active"),
+      RuleSuiteRuleEvaluationsEnforcement::Evaluate => write!(f, "evaluate"),
+      RuleSuiteRuleEvaluationsEnforcement::DeletedRuleset => write!(f, "deleted ruleset"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The result of the evaluation of the individual rule.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1775,15 +1850,16 @@ pub enum RuleSuiteRuleEvaluationsResult {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RuleSuiteRuleEvaluationsResult {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RuleSuiteRuleEvaluationsResult {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RuleSuiteRuleEvaluationsResult::Pass => "pass".to_string(),
-      RuleSuiteRuleEvaluationsResult::Fail => "fail".to_string(),
+      RuleSuiteRuleEvaluationsResult::Pass => write!(f, "pass"),
+      RuleSuiteRuleEvaluationsResult::Fail => write!(f, "fail"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The state of the user's acceptance of the credit.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1797,16 +1873,17 @@ pub enum RepositoryAdvisoryCreditState {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for RepositoryAdvisoryCreditState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryAdvisoryCreditState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryAdvisoryCreditState::Accepted => "accepted".to_string(),
-      RepositoryAdvisoryCreditState::Declined => "declined".to_string(),
-      RepositoryAdvisoryCreditState::Pending => "pending".to_string(),
+      RepositoryAdvisoryCreditState::Accepted => write!(f, "accepted"),
+      RepositoryAdvisoryCreditState::Declined => write!(f, "declined"),
+      RepositoryAdvisoryCreditState::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The severity of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1822,17 +1899,18 @@ pub enum RepositoryAdvisorySeverity {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for RepositoryAdvisorySeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryAdvisorySeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryAdvisorySeverity::Critical => "critical".to_string(),
-      RepositoryAdvisorySeverity::High => "high".to_string(),
-      RepositoryAdvisorySeverity::Medium => "medium".to_string(),
-      RepositoryAdvisorySeverity::Low => "low".to_string(),
+      RepositoryAdvisorySeverity::Critical => write!(f, "critical"),
+      RepositoryAdvisorySeverity::High => write!(f, "high"),
+      RepositoryAdvisorySeverity::Medium => write!(f, "medium"),
+      RepositoryAdvisorySeverity::Low => write!(f, "low"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The state of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1850,18 +1928,19 @@ pub enum RepositoryAdvisoryState {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for RepositoryAdvisoryState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryAdvisoryState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryAdvisoryState::Published => "published".to_string(),
-      RepositoryAdvisoryState::Closed => "closed".to_string(),
-      RepositoryAdvisoryState::Withdrawn => "withdrawn".to_string(),
-      RepositoryAdvisoryState::Draft => "draft".to_string(),
-      RepositoryAdvisoryState::Triage => "triage".to_string(),
+      RepositoryAdvisoryState::Published => write!(f, "published"),
+      RepositoryAdvisoryState::Closed => write!(f, "closed"),
+      RepositoryAdvisoryState::Withdrawn => write!(f, "withdrawn"),
+      RepositoryAdvisoryState::Draft => write!(f, "draft"),
+      RepositoryAdvisoryState::Triage => write!(f, "triage"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "teams"))]
 /// The notification setting the team has set
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1873,15 +1952,16 @@ pub enum TeamFullNotificationSetting {
 }
 
 #[cfg(any(feature = "full", feature = "teams"))]
-impl ToString for TeamFullNotificationSetting {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for TeamFullNotificationSetting {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      TeamFullNotificationSetting::NotificationsEnabled => "notifications_enabled".to_string(),
-      TeamFullNotificationSetting::NotificationsDisabled => "notifications_disabled".to_string(),
+      TeamFullNotificationSetting::NotificationsEnabled => write!(f, "notifications_enabled"),
+      TeamFullNotificationSetting::NotificationsDisabled => write!(f, "notifications_disabled"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "teams"))]
 /// The level of privacy this team should have
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1893,15 +1973,16 @@ pub enum TeamFullPrivacy {
 }
 
 #[cfg(any(feature = "full", feature = "teams"))]
-impl ToString for TeamFullPrivacy {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for TeamFullPrivacy {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      TeamFullPrivacy::Closed => "closed".to_string(),
-      TeamFullPrivacy::Secret => "secret".to_string(),
+      TeamFullPrivacy::Closed => write!(f, "closed"),
+      TeamFullPrivacy::Secret => write!(f, "secret"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "reactions"))]
 /// The reaction to use
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1925,21 +2006,22 @@ pub enum ReactionContent {
 }
 
 #[cfg(any(feature = "full", feature = "reactions"))]
-impl ToString for ReactionContent {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ReactionContent {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ReactionContent::PlusOne => "+1".to_string(),
-      ReactionContent::MinusOne => "-1".to_string(),
-      ReactionContent::Laugh => "laugh".to_string(),
-      ReactionContent::Confused => "confused".to_string(),
-      ReactionContent::Heart => "heart".to_string(),
-      ReactionContent::Hooray => "hooray".to_string(),
-      ReactionContent::Rocket => "rocket".to_string(),
-      ReactionContent::Eyes => "eyes".to_string(),
+      ReactionContent::PlusOne => write!(f, "+1"),
+      ReactionContent::MinusOne => write!(f, "-1"),
+      ReactionContent::Laugh => write!(f, "laugh"),
+      ReactionContent::Confused => write!(f, "confused"),
+      ReactionContent::Heart => write!(f, "heart"),
+      ReactionContent::Hooray => write!(f, "hooray"),
+      ReactionContent::Rocket => write!(f, "rocket"),
+      ReactionContent::Eyes => write!(f, "eyes"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "teams"))]
 /// The role of the user in the team.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1951,15 +2033,16 @@ pub enum TeamMembershipRole {
 }
 
 #[cfg(any(feature = "full", feature = "teams"))]
-impl ToString for TeamMembershipRole {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for TeamMembershipRole {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      TeamMembershipRole::Member => "member".to_string(),
-      TeamMembershipRole::Maintainer => "maintainer".to_string(),
+      TeamMembershipRole::Member => write!(f, "member"),
+      TeamMembershipRole::Maintainer => write!(f, "maintainer"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "teams"))]
 /// The state of the user's membership in the team.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -1971,15 +2054,16 @@ pub enum TeamMembershipState {
 }
 
 #[cfg(any(feature = "full", feature = "teams"))]
-impl ToString for TeamMembershipState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for TeamMembershipState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      TeamMembershipState::Active => "active".to_string(),
-      TeamMembershipState::Pending => "pending".to_string(),
+      TeamMembershipState::Active => write!(f, "active"),
+      TeamMembershipState::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 /// The outcome of the job.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2001,20 +2085,21 @@ pub enum JobConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for JobConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for JobConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      JobConclusion::Success => "success".to_string(),
-      JobConclusion::Failure => "failure".to_string(),
-      JobConclusion::Neutral => "neutral".to_string(),
-      JobConclusion::Cancelled => "cancelled".to_string(),
-      JobConclusion::Skipped => "skipped".to_string(),
-      JobConclusion::TimedOut => "timed_out".to_string(),
-      JobConclusion::ActionRequired => "action_required".to_string(),
+      JobConclusion::Success => write!(f, "success"),
+      JobConclusion::Failure => write!(f, "failure"),
+      JobConclusion::Neutral => write!(f, "neutral"),
+      JobConclusion::Cancelled => write!(f, "cancelled"),
+      JobConclusion::Skipped => write!(f, "skipped"),
+      JobConclusion::TimedOut => write!(f, "timed_out"),
+      JobConclusion::ActionRequired => write!(f, "action_required"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 /// The phase of the lifecycle that the job is currently in.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2034,19 +2119,20 @@ pub enum JobStatus {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for JobStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for JobStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      JobStatus::Queued => "queued".to_string(),
-      JobStatus::InProgress => "in_progress".to_string(),
-      JobStatus::Completed => "completed".to_string(),
-      JobStatus::Waiting => "waiting".to_string(),
-      JobStatus::Requested => "requested".to_string(),
-      JobStatus::Pending => "pending".to_string(),
+      JobStatus::Queued => write!(f, "queued"),
+      JobStatus::InProgress => write!(f, "in_progress"),
+      JobStatus::Completed => write!(f, "completed"),
+      JobStatus::Waiting => write!(f, "waiting"),
+      JobStatus::Requested => write!(f, "requested"),
+      JobStatus::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 /// The phase of the lifecycle that the job is currently in.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2060,16 +2146,17 @@ pub enum JobStepsStatus {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for JobStepsStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for JobStepsStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      JobStepsStatus::Queued => "queued".to_string(),
-      JobStepsStatus::InProgress => "in_progress".to_string(),
-      JobStepsStatus::Completed => "completed".to_string(),
+      JobStepsStatus::Queued => write!(f, "queued"),
+      JobStepsStatus::InProgress => write!(f, "in_progress"),
+      JobStepsStatus::Completed => write!(f, "completed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 /// Defines the level of access that workflows outside of the repository have to actions and reusable workflows within the
 /// repository.
@@ -2086,16 +2173,17 @@ pub enum ActionsWorkflowAccessToRepositoryAccessLevel {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for ActionsWorkflowAccessToRepositoryAccessLevel {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ActionsWorkflowAccessToRepositoryAccessLevel {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ActionsWorkflowAccessToRepositoryAccessLevel::None => "none".to_string(),
-      ActionsWorkflowAccessToRepositoryAccessLevel::User => "user".to_string(),
-      ActionsWorkflowAccessToRepositoryAccessLevel::Organization => "organization".to_string(),
+      ActionsWorkflowAccessToRepositoryAccessLevel::None => write!(f, "none"),
+      ActionsWorkflowAccessToRepositoryAccessLevel::User => write!(f, "user"),
+      ActionsWorkflowAccessToRepositoryAccessLevel::Organization => write!(f, "organization"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 /// Whether deployment to the environment(s) was approved or rejected or pending (with comments)
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2109,16 +2197,17 @@ pub enum EnvironmentApprovalsState {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for EnvironmentApprovalsState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for EnvironmentApprovalsState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      EnvironmentApprovalsState::Approved => "approved".to_string(),
-      EnvironmentApprovalsState::Rejected => "rejected".to_string(),
-      EnvironmentApprovalsState::Pending => "pending".to_string(),
+      EnvironmentApprovalsState::Approved => write!(f, "approved"),
+      EnvironmentApprovalsState::Rejected => write!(f, "rejected"),
+      EnvironmentApprovalsState::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 /// Whether to approve or reject deployment to the specified environments.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2130,15 +2219,16 @@ pub enum ReviewCustomGatesStateRequiredState {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for ReviewCustomGatesStateRequiredState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ReviewCustomGatesStateRequiredState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ReviewCustomGatesStateRequiredState::Approved => "approved".to_string(),
-      ReviewCustomGatesStateRequiredState::Rejected => "rejected".to_string(),
+      ReviewCustomGatesStateRequiredState::Approved => write!(f, "approved"),
+      ReviewCustomGatesStateRequiredState::Rejected => write!(f, "rejected"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -2149,6 +2239,7 @@ pub enum PendingDeploymentReviewersReviewer {
   Team(Team),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions", feature = "repos"))]
 /// The type of reviewer.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2158,15 +2249,16 @@ pub enum DeploymentReviewerType {
 }
 
 #[cfg(any(feature = "full", feature = "actions", feature = "repos"))]
-impl ToString for DeploymentReviewerType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DeploymentReviewerType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DeploymentReviewerType::User => "User".to_string(),
-      DeploymentReviewerType::Team => "Team".to_string(),
+      DeploymentReviewerType::User => write!(f, "User"),
+      DeploymentReviewerType::Team => write!(f, "Team"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "actions"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum WorkflowState {
@@ -2183,18 +2275,19 @@ pub enum WorkflowState {
 }
 
 #[cfg(any(feature = "full", feature = "actions"))]
-impl ToString for WorkflowState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for WorkflowState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      WorkflowState::Active => "active".to_string(),
-      WorkflowState::Deleted => "deleted".to_string(),
-      WorkflowState::DisabledFork => "disabled_fork".to_string(),
-      WorkflowState::DisabledInactivity => "disabled_inactivity".to_string(),
-      WorkflowState::DisabledManually => "disabled_manually".to_string(),
+      WorkflowState::Active => write!(f, "active"),
+      WorkflowState::Deleted => write!(f, "deleted"),
+      WorkflowState::DisabledFork => write!(f, "disabled_fork"),
+      WorkflowState::DisabledInactivity => write!(f, "disabled_inactivity"),
+      WorkflowState::DisabledManually => write!(f, "disabled_manually"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The type of the activity that was performed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2214,19 +2307,20 @@ pub enum ActivityActivityType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for ActivityActivityType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ActivityActivityType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ActivityActivityType::Push => "push".to_string(),
-      ActivityActivityType::ForcePush => "force_push".to_string(),
-      ActivityActivityType::BranchDeletion => "branch_deletion".to_string(),
-      ActivityActivityType::BranchCreation => "branch_creation".to_string(),
-      ActivityActivityType::PrMerge => "pr_merge".to_string(),
-      ActivityActivityType::MergeQueueMerge => "merge_queue_merge".to_string(),
+      ActivityActivityType::Push => write!(f, "push"),
+      ActivityActivityType::ForcePush => write!(f, "force_push"),
+      ActivityActivityType::BranchDeletion => write!(f, "branch_deletion"),
+      ActivityActivityType::BranchCreation => write!(f, "branch_creation"),
+      ActivityActivityType::PrMerge => write!(f, "pr_merge"),
+      ActivityActivityType::MergeQueueMerge => write!(f, "merge_queue_merge"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DiffEntryStatus {
@@ -2247,20 +2341,21 @@ pub enum DiffEntryStatus {
 }
 
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
-impl ToString for DiffEntryStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DiffEntryStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DiffEntryStatus::Added => "added".to_string(),
-      DiffEntryStatus::Removed => "removed".to_string(),
-      DiffEntryStatus::Modified => "modified".to_string(),
-      DiffEntryStatus::Renamed => "renamed".to_string(),
-      DiffEntryStatus::Copied => "copied".to_string(),
-      DiffEntryStatus::Changed => "changed".to_string(),
-      DiffEntryStatus::Unchanged => "unchanged".to_string(),
+      DiffEntryStatus::Added => write!(f, "added"),
+      DiffEntryStatus::Removed => write!(f, "removed"),
+      DiffEntryStatus::Modified => write!(f, "modified"),
+      DiffEntryStatus::Renamed => write!(f, "renamed"),
+      DiffEntryStatus::Copied => write!(f, "copied"),
+      DiffEntryStatus::Changed => write!(f, "changed"),
+      DiffEntryStatus::Unchanged => write!(f, "unchanged"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckRunConclusion {
@@ -2281,20 +2376,21 @@ pub enum CheckRunConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "checks"))]
-impl ToString for CheckRunConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CheckRunConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CheckRunConclusion::Success => "success".to_string(),
-      CheckRunConclusion::Failure => "failure".to_string(),
-      CheckRunConclusion::Neutral => "neutral".to_string(),
-      CheckRunConclusion::Cancelled => "cancelled".to_string(),
-      CheckRunConclusion::Skipped => "skipped".to_string(),
-      CheckRunConclusion::TimedOut => "timed_out".to_string(),
-      CheckRunConclusion::ActionRequired => "action_required".to_string(),
+      CheckRunConclusion::Success => write!(f, "success"),
+      CheckRunConclusion::Failure => write!(f, "failure"),
+      CheckRunConclusion::Neutral => write!(f, "neutral"),
+      CheckRunConclusion::Cancelled => write!(f, "cancelled"),
+      CheckRunConclusion::Skipped => write!(f, "skipped"),
+      CheckRunConclusion::TimedOut => write!(f, "timed_out"),
+      CheckRunConclusion::ActionRequired => write!(f, "action_required"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "checks"))]
 /// The phase of the lifecycle that the check is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check runs.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2314,19 +2410,20 @@ pub enum CheckRunStatus {
 }
 
 #[cfg(any(feature = "full", feature = "checks"))]
-impl ToString for CheckRunStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CheckRunStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CheckRunStatus::Queued => "queued".to_string(),
-      CheckRunStatus::InProgress => "in_progress".to_string(),
-      CheckRunStatus::Completed => "completed".to_string(),
-      CheckRunStatus::Waiting => "waiting".to_string(),
-      CheckRunStatus::Requested => "requested".to_string(),
-      CheckRunStatus::Pending => "pending".to_string(),
+      CheckRunStatus::Queued => write!(f, "queued"),
+      CheckRunStatus::InProgress => write!(f, "in_progress"),
+      CheckRunStatus::Completed => write!(f, "completed"),
+      CheckRunStatus::Waiting => write!(f, "waiting"),
+      CheckRunStatus::Requested => write!(f, "requested"),
+      CheckRunStatus::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "checks"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CheckSuiteConclusion {
@@ -2351,22 +2448,23 @@ pub enum CheckSuiteConclusion {
 }
 
 #[cfg(any(feature = "full", feature = "checks"))]
-impl ToString for CheckSuiteConclusion {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CheckSuiteConclusion {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CheckSuiteConclusion::Success => "success".to_string(),
-      CheckSuiteConclusion::Failure => "failure".to_string(),
-      CheckSuiteConclusion::Neutral => "neutral".to_string(),
-      CheckSuiteConclusion::Cancelled => "cancelled".to_string(),
-      CheckSuiteConclusion::Skipped => "skipped".to_string(),
-      CheckSuiteConclusion::TimedOut => "timed_out".to_string(),
-      CheckSuiteConclusion::ActionRequired => "action_required".to_string(),
-      CheckSuiteConclusion::StartupFailure => "startup_failure".to_string(),
-      CheckSuiteConclusion::Stale => "stale".to_string(),
+      CheckSuiteConclusion::Success => write!(f, "success"),
+      CheckSuiteConclusion::Failure => write!(f, "failure"),
+      CheckSuiteConclusion::Neutral => write!(f, "neutral"),
+      CheckSuiteConclusion::Cancelled => write!(f, "cancelled"),
+      CheckSuiteConclusion::Skipped => write!(f, "skipped"),
+      CheckSuiteConclusion::TimedOut => write!(f, "timed_out"),
+      CheckSuiteConclusion::ActionRequired => write!(f, "action_required"),
+      CheckSuiteConclusion::StartupFailure => write!(f, "startup_failure"),
+      CheckSuiteConclusion::Stale => write!(f, "stale"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "checks"))]
 /// The phase of the lifecycle that the check suite is currently in. Statuses of waiting, requested, and pending are reserved for GitHub Actions check suites.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2386,19 +2484,20 @@ pub enum CheckSuiteStatus {
 }
 
 #[cfg(any(feature = "full", feature = "checks"))]
-impl ToString for CheckSuiteStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CheckSuiteStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CheckSuiteStatus::Queued => "queued".to_string(),
-      CheckSuiteStatus::InProgress => "in_progress".to_string(),
-      CheckSuiteStatus::Completed => "completed".to_string(),
-      CheckSuiteStatus::Waiting => "waiting".to_string(),
-      CheckSuiteStatus::Requested => "requested".to_string(),
-      CheckSuiteStatus::Pending => "pending".to_string(),
+      CheckSuiteStatus::Queued => write!(f, "queued"),
+      CheckSuiteStatus::InProgress => write!(f, "in_progress"),
+      CheckSuiteStatus::Completed => write!(f, "completed"),
+      CheckSuiteStatus::Waiting => write!(f, "waiting"),
+      CheckSuiteStatus::Requested => write!(f, "requested"),
+      CheckSuiteStatus::Pending => write!(f, "pending"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The severity of the alert.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2414,17 +2513,18 @@ pub enum CodeScanningAlertRuleSeverity {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningAlertRuleSeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningAlertRuleSeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningAlertRuleSeverity::None => "none".to_string(),
-      CodeScanningAlertRuleSeverity::Note => "note".to_string(),
-      CodeScanningAlertRuleSeverity::Warning => "warning".to_string(),
-      CodeScanningAlertRuleSeverity::Error => "error".to_string(),
+      CodeScanningAlertRuleSeverity::None => write!(f, "none"),
+      CodeScanningAlertRuleSeverity::Note => write!(f, "note"),
+      CodeScanningAlertRuleSeverity::Warning => write!(f, "warning"),
+      CodeScanningAlertRuleSeverity::Error => write!(f, "error"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Sets the state of the code scanning alert. You must provide `dismissed_reason` when you set the state to `dismissed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2436,15 +2536,16 @@ pub enum CodeScanningAlertSetState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningAlertSetState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningAlertSetState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningAlertSetState::Open => "open".to_string(),
-      CodeScanningAlertSetState::Dismissed => "dismissed".to_string(),
+      CodeScanningAlertSetState::Open => write!(f, "open"),
+      CodeScanningAlertSetState::Dismissed => write!(f, "dismissed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupLanguages {
@@ -2471,25 +2572,24 @@ pub enum CodeScanningDefaultSetupLanguages {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningDefaultSetupLanguages {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningDefaultSetupLanguages {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningDefaultSetupLanguages::CCpp => "c-cpp".to_string(),
-      CodeScanningDefaultSetupLanguages::Csharp => "csharp".to_string(),
-      CodeScanningDefaultSetupLanguages::Go => "go".to_string(),
-      CodeScanningDefaultSetupLanguages::JavaKotlin => "java-kotlin".to_string(),
-      CodeScanningDefaultSetupLanguages::JavascriptTypescript => {
-        "javascript-typescript".to_string()
-      }
-      CodeScanningDefaultSetupLanguages::Javascript => "javascript".to_string(),
-      CodeScanningDefaultSetupLanguages::Python => "python".to_string(),
-      CodeScanningDefaultSetupLanguages::Ruby => "ruby".to_string(),
-      CodeScanningDefaultSetupLanguages::Typescript => "typescript".to_string(),
-      CodeScanningDefaultSetupLanguages::Swift => "swift".to_string(),
+      CodeScanningDefaultSetupLanguages::CCpp => write!(f, "c-cpp"),
+      CodeScanningDefaultSetupLanguages::Csharp => write!(f, "csharp"),
+      CodeScanningDefaultSetupLanguages::Go => write!(f, "go"),
+      CodeScanningDefaultSetupLanguages::JavaKotlin => write!(f, "java-kotlin"),
+      CodeScanningDefaultSetupLanguages::JavascriptTypescript => write!(f, "javascript-typescript"),
+      CodeScanningDefaultSetupLanguages::Javascript => write!(f, "javascript"),
+      CodeScanningDefaultSetupLanguages::Python => write!(f, "python"),
+      CodeScanningDefaultSetupLanguages::Ruby => write!(f, "ruby"),
+      CodeScanningDefaultSetupLanguages::Typescript => write!(f, "typescript"),
+      CodeScanningDefaultSetupLanguages::Swift => write!(f, "swift"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// CodeQL query suite to be used.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2501,15 +2601,16 @@ pub enum CodeScanningDefaultSetupQuerySuite {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningDefaultSetupQuerySuite {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningDefaultSetupQuerySuite {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningDefaultSetupQuerySuite::Default => "default".to_string(),
-      CodeScanningDefaultSetupQuerySuite::Extended => "extended".to_string(),
+      CodeScanningDefaultSetupQuerySuite::Default => write!(f, "default"),
+      CodeScanningDefaultSetupQuerySuite::Extended => write!(f, "extended"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The frequency of the periodic analysis.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2519,14 +2620,15 @@ pub enum CodeScanningDefaultSetupSchedule {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningDefaultSetupSchedule {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningDefaultSetupSchedule {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningDefaultSetupSchedule::Weekly => "weekly".to_string(),
+      CodeScanningDefaultSetupSchedule::Weekly => write!(f, "weekly"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// Code scanning default setup has been configured or not.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2538,15 +2640,16 @@ pub enum CodeScanningDefaultSetupState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningDefaultSetupState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningDefaultSetupState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningDefaultSetupState::Configured => "configured".to_string(),
-      CodeScanningDefaultSetupState::NotConfigured => "not-configured".to_string(),
+      CodeScanningDefaultSetupState::Configured => write!(f, "configured"),
+      CodeScanningDefaultSetupState::NotConfigured => write!(f, "not-configured"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CodeScanningDefaultSetupUpdateLanguages {
@@ -2569,23 +2672,24 @@ pub enum CodeScanningDefaultSetupUpdateLanguages {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningDefaultSetupUpdateLanguages {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningDefaultSetupUpdateLanguages {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningDefaultSetupUpdateLanguages::CCpp => "c-cpp".to_string(),
-      CodeScanningDefaultSetupUpdateLanguages::Csharp => "csharp".to_string(),
-      CodeScanningDefaultSetupUpdateLanguages::Go => "go".to_string(),
-      CodeScanningDefaultSetupUpdateLanguages::JavaKotlin => "java-kotlin".to_string(),
+      CodeScanningDefaultSetupUpdateLanguages::CCpp => write!(f, "c-cpp"),
+      CodeScanningDefaultSetupUpdateLanguages::Csharp => write!(f, "csharp"),
+      CodeScanningDefaultSetupUpdateLanguages::Go => write!(f, "go"),
+      CodeScanningDefaultSetupUpdateLanguages::JavaKotlin => write!(f, "java-kotlin"),
       CodeScanningDefaultSetupUpdateLanguages::JavascriptTypescript => {
-        "javascript-typescript".to_string()
+        write!(f, "javascript-typescript")
       }
-      CodeScanningDefaultSetupUpdateLanguages::Python => "python".to_string(),
-      CodeScanningDefaultSetupUpdateLanguages::Ruby => "ruby".to_string(),
-      CodeScanningDefaultSetupUpdateLanguages::Swift => "swift".to_string(),
+      CodeScanningDefaultSetupUpdateLanguages::Python => write!(f, "python"),
+      CodeScanningDefaultSetupUpdateLanguages::Ruby => write!(f, "ruby"),
+      CodeScanningDefaultSetupUpdateLanguages::Swift => write!(f, "swift"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// CodeQL query suite to be used.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2597,15 +2701,16 @@ pub enum CodeScanningDefaultSetupUpdateQuerySuite {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningDefaultSetupUpdateQuerySuite {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningDefaultSetupUpdateQuerySuite {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningDefaultSetupUpdateQuerySuite::Default => "default".to_string(),
-      CodeScanningDefaultSetupUpdateQuerySuite::Extended => "extended".to_string(),
+      CodeScanningDefaultSetupUpdateQuerySuite::Default => write!(f, "default"),
+      CodeScanningDefaultSetupUpdateQuerySuite::Extended => write!(f, "extended"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// The desired state of code scanning default setup.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2617,15 +2722,16 @@ pub enum CodeScanningDefaultSetupUpdateState {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningDefaultSetupUpdateState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningDefaultSetupUpdateState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningDefaultSetupUpdateState::Configured => "configured".to_string(),
-      CodeScanningDefaultSetupUpdateState::NotConfigured => "not-configured".to_string(),
+      CodeScanningDefaultSetupUpdateState::Configured => write!(f, "configured"),
+      CodeScanningDefaultSetupUpdateState::NotConfigured => write!(f, "not-configured"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "code_scanning"))]
 /// `pending` files have not yet been processed, while `complete` means results from the SARIF have been stored. `failed` files have either not been processed at all, or could only be partially processed.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2639,16 +2745,17 @@ pub enum CodeScanningSarifsStatusProcessingStatus {
 }
 
 #[cfg(any(feature = "full", feature = "code_scanning"))]
-impl ToString for CodeScanningSarifsStatusProcessingStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodeScanningSarifsStatusProcessingStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodeScanningSarifsStatusProcessingStatus::Pending => "pending".to_string(),
-      CodeScanningSarifsStatusProcessingStatus::Complete => "complete".to_string(),
-      CodeScanningSarifsStatusProcessingStatus::Failed => "failed".to_string(),
+      CodeScanningSarifsStatusProcessingStatus::Pending => write!(f, "pending"),
+      CodeScanningSarifsStatusProcessingStatus::Complete => write!(f, "complete"),
+      CodeScanningSarifsStatusProcessingStatus::Failed => write!(f, "failed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The permission associated with the invitation.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2666,18 +2773,19 @@ pub enum RepositoryInvitationPermissions {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryInvitationPermissions {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryInvitationPermissions {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryInvitationPermissions::Read => "read".to_string(),
-      RepositoryInvitationPermissions::Write => "write".to_string(),
-      RepositoryInvitationPermissions::Admin => "admin".to_string(),
-      RepositoryInvitationPermissions::Triage => "triage".to_string(),
-      RepositoryInvitationPermissions::Maintain => "maintain".to_string(),
+      RepositoryInvitationPermissions::Read => write!(f, "read"),
+      RepositoryInvitationPermissions::Write => write!(f, "write"),
+      RepositoryInvitationPermissions::Admin => write!(f, "admin"),
+      RepositoryInvitationPermissions::Triage => write!(f, "triage"),
+      RepositoryInvitationPermissions::Maintain => write!(f, "maintain"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
 /// The merge method to use.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2691,16 +2799,17 @@ pub enum AutoMergeMergeMethod {
 }
 
 #[cfg(any(feature = "full", feature = "repos", feature = "pulls"))]
-impl ToString for AutoMergeMergeMethod {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for AutoMergeMergeMethod {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      AutoMergeMergeMethod::Merge => "merge".to_string(),
-      AutoMergeMergeMethod::Squash => "squash".to_string(),
-      AutoMergeMergeMethod::Rebase => "rebase".to_string(),
+      AutoMergeMergeMethod::Merge => write!(f, "merge"),
+      AutoMergeMergeMethod::Squash => write!(f, "squash"),
+      AutoMergeMergeMethod::Rebase => write!(f, "rebase"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum CommitComparisonStatus {
@@ -2715,17 +2824,18 @@ pub enum CommitComparisonStatus {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for CommitComparisonStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CommitComparisonStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CommitComparisonStatus::Diverged => "diverged".to_string(),
-      CommitComparisonStatus::Ahead => "ahead".to_string(),
-      CommitComparisonStatus::Behind => "behind".to_string(),
-      CommitComparisonStatus::Identical => "identical".to_string(),
+      CommitComparisonStatus::Diverged => write!(f, "diverged"),
+      CommitComparisonStatus::Ahead => write!(f, "ahead"),
+      CommitComparisonStatus::Behind => write!(f, "behind"),
+      CommitComparisonStatus::Identical => write!(f, "identical"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentDirectoryItemType {
@@ -2740,17 +2850,18 @@ pub enum ContentDirectoryItemType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for ContentDirectoryItemType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ContentDirectoryItemType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ContentDirectoryItemType::Dir => "dir".to_string(),
-      ContentDirectoryItemType::File => "file".to_string(),
-      ContentDirectoryItemType::Submodule => "submodule".to_string(),
-      ContentDirectoryItemType::Symlink => "symlink".to_string(),
+      ContentDirectoryItemType::Dir => write!(f, "dir"),
+      ContentDirectoryItemType::File => write!(f, "file"),
+      ContentDirectoryItemType::Submodule => write!(f, "submodule"),
+      ContentDirectoryItemType::Symlink => write!(f, "symlink"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentFileType {
@@ -2759,14 +2870,15 @@ pub enum ContentFileType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for ContentFileType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ContentFileType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ContentFileType::File => "file".to_string(),
+      ContentFileType::File => write!(f, "file"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentSymlinkType {
@@ -2775,14 +2887,15 @@ pub enum ContentSymlinkType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for ContentSymlinkType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ContentSymlinkType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ContentSymlinkType::Symlink => "symlink".to_string(),
+      ContentSymlinkType::Symlink => write!(f, "symlink"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ContentSubmoduleType {
@@ -2791,14 +2904,15 @@ pub enum ContentSubmoduleType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for ContentSubmoduleType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ContentSubmoduleType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ContentSubmoduleType::Submodule => "submodule".to_string(),
+      ContentSubmoduleType::Submodule => write!(f, "submodule"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependabot"))]
 /// The execution scope of the vulnerable dependency.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2810,15 +2924,16 @@ pub enum DependabotAlertDependencyScope {
 }
 
 #[cfg(any(feature = "full", feature = "dependabot"))]
-impl ToString for DependabotAlertDependencyScope {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DependabotAlertDependencyScope {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DependabotAlertDependencyScope::Development => "development".to_string(),
-      DependabotAlertDependencyScope::Runtime => "runtime".to_string(),
+      DependabotAlertDependencyScope::Development => write!(f, "development"),
+      DependabotAlertDependencyScope::Runtime => write!(f, "runtime"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependency_graph"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum DependencyGraphDiffItemChangeType {
@@ -2829,15 +2944,16 @@ pub enum DependencyGraphDiffItemChangeType {
 }
 
 #[cfg(any(feature = "full", feature = "dependency_graph"))]
-impl ToString for DependencyGraphDiffItemChangeType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DependencyGraphDiffItemChangeType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DependencyGraphDiffItemChangeType::Added => "added".to_string(),
-      DependencyGraphDiffItemChangeType::Removed => "removed".to_string(),
+      DependencyGraphDiffItemChangeType::Added => write!(f, "added"),
+      DependencyGraphDiffItemChangeType::Removed => write!(f, "removed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "dependency_graph"))]
 /// Where the dependency is utilized. `development` means that the dependency is only utilized in the development environment. `runtime` means that the dependency is utilized at runtime and in the development environment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2851,16 +2967,17 @@ pub enum DependencyGraphDiffItemScope {
 }
 
 #[cfg(any(feature = "full", feature = "dependency_graph"))]
-impl ToString for DependencyGraphDiffItemScope {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DependencyGraphDiffItemScope {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DependencyGraphDiffItemScope::Unknown => "unknown".to_string(),
-      DependencyGraphDiffItemScope::Runtime => "runtime".to_string(),
-      DependencyGraphDiffItemScope::Development => "development".to_string(),
+      DependencyGraphDiffItemScope::Unknown => write!(f, "unknown"),
+      DependencyGraphDiffItemScope::Runtime => write!(f, "runtime"),
+      DependencyGraphDiffItemScope::Development => write!(f, "development"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The state of the status.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2882,20 +2999,21 @@ pub enum DeploymentStatusState {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for DeploymentStatusState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DeploymentStatusState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DeploymentStatusState::Error => "error".to_string(),
-      DeploymentStatusState::Failure => "failure".to_string(),
-      DeploymentStatusState::Inactive => "inactive".to_string(),
-      DeploymentStatusState::Pending => "pending".to_string(),
-      DeploymentStatusState::Success => "success".to_string(),
-      DeploymentStatusState::Queued => "queued".to_string(),
-      DeploymentStatusState::InProgress => "in_progress".to_string(),
+      DeploymentStatusState::Error => write!(f, "error"),
+      DeploymentStatusState::Failure => write!(f, "failure"),
+      DeploymentStatusState::Inactive => write!(f, "inactive"),
+      DeploymentStatusState::Pending => write!(f, "pending"),
+      DeploymentStatusState::Success => write!(f, "success"),
+      DeploymentStatusState::Queued => write!(f, "queued"),
+      DeploymentStatusState::InProgress => write!(f, "in_progress"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -2906,6 +3024,7 @@ pub enum EnvironmentProtectionRulesItem2ReviewersReviewer {
   Team(Team),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -2915,6 +3034,7 @@ pub enum EnvironmentProtectionRules {
   EnvironmentProtectionRulesItem3(EnvironmentProtectionRulesItem3),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// Whether this rule targets a branch or tag.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2926,15 +3046,16 @@ pub enum DeploymentBranchPolicyType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for DeploymentBranchPolicyType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DeploymentBranchPolicyType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DeploymentBranchPolicyType::Branch => "branch".to_string(),
-      DeploymentBranchPolicyType::Tag => "tag".to_string(),
+      DeploymentBranchPolicyType::Branch => write!(f, "branch"),
+      DeploymentBranchPolicyType::Tag => write!(f, "tag"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// Whether this rule targets a branch or tag
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -2946,15 +3067,16 @@ pub enum DeploymentBranchPolicyNamePatternWithTypeType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for DeploymentBranchPolicyNamePatternWithTypeType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for DeploymentBranchPolicyNamePatternWithTypeType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      DeploymentBranchPolicyNamePatternWithTypeType::Branch => "branch".to_string(),
-      DeploymentBranchPolicyNamePatternWithTypeType::Tag => "tag".to_string(),
+      DeploymentBranchPolicyNamePatternWithTypeType::Branch => write!(f, "branch"),
+      DeploymentBranchPolicyNamePatternWithTypeType::Tag => write!(f, "tag"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "migrations"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum ImportStatus {
@@ -2993,29 +3115,30 @@ pub enum ImportStatus {
 }
 
 #[cfg(any(feature = "full", feature = "migrations"))]
-impl ToString for ImportStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ImportStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ImportStatus::Auth => "auth".to_string(),
-      ImportStatus::Error => "error".to_string(),
-      ImportStatus::None => "none".to_string(),
-      ImportStatus::Detecting => "detecting".to_string(),
-      ImportStatus::Choose => "choose".to_string(),
-      ImportStatus::AuthFailed => "auth_failed".to_string(),
-      ImportStatus::Importing => "importing".to_string(),
-      ImportStatus::Mapping => "mapping".to_string(),
-      ImportStatus::WaitingToPush => "waiting_to_push".to_string(),
-      ImportStatus::Pushing => "pushing".to_string(),
-      ImportStatus::Complete => "complete".to_string(),
-      ImportStatus::Setup => "setup".to_string(),
-      ImportStatus::Unknown => "unknown".to_string(),
-      ImportStatus::DetectionFoundMultiple => "detection_found_multiple".to_string(),
-      ImportStatus::DetectionFoundNothing => "detection_found_nothing".to_string(),
-      ImportStatus::DetectionNeedsAuth => "detection_needs_auth".to_string(),
+      ImportStatus::Auth => write!(f, "auth"),
+      ImportStatus::Error => write!(f, "error"),
+      ImportStatus::None => write!(f, "none"),
+      ImportStatus::Detecting => write!(f, "detecting"),
+      ImportStatus::Choose => write!(f, "choose"),
+      ImportStatus::AuthFailed => write!(f, "auth_failed"),
+      ImportStatus::Importing => write!(f, "importing"),
+      ImportStatus::Mapping => write!(f, "mapping"),
+      ImportStatus::WaitingToPush => write!(f, "waiting_to_push"),
+      ImportStatus::Pushing => write!(f, "pushing"),
+      ImportStatus::Complete => write!(f, "complete"),
+      ImportStatus::Setup => write!(f, "setup"),
+      ImportStatus::Unknown => write!(f, "unknown"),
+      ImportStatus::DetectionFoundMultiple => write!(f, "detection_found_multiple"),
+      ImportStatus::DetectionFoundNothing => write!(f, "detection_found_nothing"),
+      ImportStatus::DetectionNeedsAuth => write!(f, "detection_needs_auth"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3052,6 +3175,7 @@ pub enum IssueEventForIssue {
   ConvertedNoteToIssueIssueEvent(ConvertedNoteToIssueIssueEvent),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 /// The side of the diff to which the comment applies. The side of the last line of the range for a multi-line comment
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3063,15 +3187,16 @@ pub enum PullRequestReviewCommentSide {
 }
 
 #[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
-impl ToString for PullRequestReviewCommentSide {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestReviewCommentSide {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestReviewCommentSide::Left => "LEFT".to_string(),
-      PullRequestReviewCommentSide::Right => "RIGHT".to_string(),
+      PullRequestReviewCommentSide::Left => write!(f, "LEFT"),
+      PullRequestReviewCommentSide::Right => write!(f, "RIGHT"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3083,15 +3208,16 @@ pub enum PullRequestReviewCommentStartSide {
 }
 
 #[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
-impl ToString for PullRequestReviewCommentStartSide {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestReviewCommentStartSide {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestReviewCommentStartSide::Left => "LEFT".to_string(),
-      PullRequestReviewCommentStartSide::Right => "RIGHT".to_string(),
+      PullRequestReviewCommentStartSide::Left => write!(f, "LEFT"),
+      PullRequestReviewCommentStartSide::Right => write!(f, "RIGHT"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
 /// The level at which the comment is targeted, can be a diff line or a file.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3103,15 +3229,16 @@ pub enum PullRequestReviewCommentSubjectType {
 }
 
 #[cfg(any(feature = "full", feature = "issues", feature = "pulls"))]
-impl ToString for PullRequestReviewCommentSubjectType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestReviewCommentSubjectType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestReviewCommentSubjectType::Line => "line".to_string(),
-      PullRequestReviewCommentSubjectType::File => "file".to_string(),
+      PullRequestReviewCommentSubjectType::Line => write!(f, "line"),
+      PullRequestReviewCommentSubjectType::File => write!(f, "file"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "issues"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3162,6 +3289,7 @@ pub enum TimelineIssueEvents {
   StateChangeIssueEvent(StateChangeIssueEvent),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum MergedUpstreamMergeType {
@@ -3174,16 +3302,17 @@ pub enum MergedUpstreamMergeType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for MergedUpstreamMergeType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for MergedUpstreamMergeType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      MergedUpstreamMergeType::Merge => "merge".to_string(),
-      MergedUpstreamMergeType::FastForward => "fast-forward".to_string(),
-      MergedUpstreamMergeType::None => "none".to_string(),
+      MergedUpstreamMergeType::Merge => write!(f, "merge"),
+      MergedUpstreamMergeType::FastForward => write!(f, "fast-forward"),
+      MergedUpstreamMergeType::None => write!(f, "none"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The process in which the Page will be built.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3195,15 +3324,16 @@ pub enum PageBuildType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for PageBuildType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PageBuildType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PageBuildType::Legacy => "legacy".to_string(),
-      PageBuildType::Workflow => "workflow".to_string(),
+      PageBuildType::Legacy => write!(f, "legacy"),
+      PageBuildType::Workflow => write!(f, "workflow"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
 pub enum PagesHttpsCertificateState {
@@ -3234,25 +3364,26 @@ pub enum PagesHttpsCertificateState {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for PagesHttpsCertificateState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PagesHttpsCertificateState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PagesHttpsCertificateState::New => "new".to_string(),
-      PagesHttpsCertificateState::AuthorizationCreated => "authorization_created".to_string(),
-      PagesHttpsCertificateState::AuthorizationPending => "authorization_pending".to_string(),
-      PagesHttpsCertificateState::Authorized => "authorized".to_string(),
-      PagesHttpsCertificateState::AuthorizationRevoked => "authorization_revoked".to_string(),
-      PagesHttpsCertificateState::Issued => "issued".to_string(),
-      PagesHttpsCertificateState::Uploaded => "uploaded".to_string(),
-      PagesHttpsCertificateState::Approved => "approved".to_string(),
-      PagesHttpsCertificateState::Errored => "errored".to_string(),
-      PagesHttpsCertificateState::BadAuthz => "bad_authz".to_string(),
-      PagesHttpsCertificateState::DestroyPending => "destroy_pending".to_string(),
-      PagesHttpsCertificateState::DnsChanged => "dns_changed".to_string(),
+      PagesHttpsCertificateState::New => write!(f, "new"),
+      PagesHttpsCertificateState::AuthorizationCreated => write!(f, "authorization_created"),
+      PagesHttpsCertificateState::AuthorizationPending => write!(f, "authorization_pending"),
+      PagesHttpsCertificateState::Authorized => write!(f, "authorized"),
+      PagesHttpsCertificateState::AuthorizationRevoked => write!(f, "authorization_revoked"),
+      PagesHttpsCertificateState::Issued => write!(f, "issued"),
+      PagesHttpsCertificateState::Uploaded => write!(f, "uploaded"),
+      PagesHttpsCertificateState::Approved => write!(f, "approved"),
+      PagesHttpsCertificateState::Errored => write!(f, "errored"),
+      PagesHttpsCertificateState::BadAuthz => write!(f, "bad_authz"),
+      PagesHttpsCertificateState::DestroyPending => write!(f, "destroy_pending"),
+      PagesHttpsCertificateState::DnsChanged => write!(f, "dns_changed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The state if the domain is verified
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3266,16 +3397,17 @@ pub enum PageProtectedDomainState {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for PageProtectedDomainState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PageProtectedDomainState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PageProtectedDomainState::Pending => "pending".to_string(),
-      PageProtectedDomainState::Verified => "verified".to_string(),
-      PageProtectedDomainState::Unverified => "unverified".to_string(),
+      PageProtectedDomainState::Pending => write!(f, "pending"),
+      PageProtectedDomainState::Verified => write!(f, "verified"),
+      PageProtectedDomainState::Unverified => write!(f, "unverified"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The status of the most recent build of the Page.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3289,16 +3421,17 @@ pub enum PageStatus {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for PageStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PageStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PageStatus::Built => "built".to_string(),
-      PageStatus::Building => "building".to_string(),
-      PageStatus::Errored => "errored".to_string(),
+      PageStatus::Built => write!(f, "built"),
+      PageStatus::Building => write!(f, "building"),
+      PageStatus::Errored => write!(f, "errored"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The current status of the deployment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3328,26 +3461,27 @@ pub enum PagesDeploymentStatusStatus {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for PagesDeploymentStatusStatus {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PagesDeploymentStatusStatus {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PagesDeploymentStatusStatus::DeploymentInProgress => "deployment_in_progress".to_string(),
-      PagesDeploymentStatusStatus::SyncingFiles => "syncing_files".to_string(),
-      PagesDeploymentStatusStatus::FinishedFileSync => "finished_file_sync".to_string(),
-      PagesDeploymentStatusStatus::UpdatingPages => "updating_pages".to_string(),
-      PagesDeploymentStatusStatus::PurgingCdn => "purging_cdn".to_string(),
-      PagesDeploymentStatusStatus::DeploymentCancelled => "deployment_cancelled".to_string(),
-      PagesDeploymentStatusStatus::DeploymentFailed => "deployment_failed".to_string(),
+      PagesDeploymentStatusStatus::DeploymentInProgress => write!(f, "deployment_in_progress"),
+      PagesDeploymentStatusStatus::SyncingFiles => write!(f, "syncing_files"),
+      PagesDeploymentStatusStatus::FinishedFileSync => write!(f, "finished_file_sync"),
+      PagesDeploymentStatusStatus::UpdatingPages => write!(f, "updating_pages"),
+      PagesDeploymentStatusStatus::PurgingCdn => write!(f, "purging_cdn"),
+      PagesDeploymentStatusStatus::DeploymentCancelled => write!(f, "deployment_cancelled"),
+      PagesDeploymentStatusStatus::DeploymentFailed => write!(f, "deployment_failed"),
       PagesDeploymentStatusStatus::DeploymentContentFailed => {
-        "deployment_content_failed".to_string()
+        write!(f, "deployment_content_failed")
       }
-      PagesDeploymentStatusStatus::DeploymentAttemptError => "deployment_attempt_error".to_string(),
-      PagesDeploymentStatusStatus::DeploymentLost => "deployment_lost".to_string(),
-      PagesDeploymentStatusStatus::Succeed => "succeed".to_string(),
+      PagesDeploymentStatusStatus::DeploymentAttemptError => write!(f, "deployment_attempt_error"),
+      PagesDeploymentStatusStatus::DeploymentLost => write!(f, "deployment_lost"),
+      PagesDeploymentStatusStatus::Succeed => write!(f, "succeed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pulls"))]
 /// State of this Pull Request. Either `open` or `closed`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3359,15 +3493,16 @@ pub enum PullRequestState {
 }
 
 #[cfg(any(feature = "full", feature = "pulls"))]
-impl ToString for PullRequestState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PullRequestState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PullRequestState::Open => "open".to_string(),
-      PullRequestState::Closed => "closed".to_string(),
+      PullRequestState::Open => write!(f, "open"),
+      PullRequestState::Closed => write!(f, "closed"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pulls"))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3379,15 +3514,16 @@ pub enum ReviewCommentSide {
 }
 
 #[cfg(any(feature = "full", feature = "pulls"))]
-impl ToString for ReviewCommentSide {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ReviewCommentSide {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ReviewCommentSide::Left => "LEFT".to_string(),
-      ReviewCommentSide::Right => "RIGHT".to_string(),
+      ReviewCommentSide::Left => write!(f, "LEFT"),
+      ReviewCommentSide::Right => write!(f, "RIGHT"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "pulls"))]
 /// The side of the first line of the range for a multi-line comment.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3399,15 +3535,16 @@ pub enum ReviewCommentStartSide {
 }
 
 #[cfg(any(feature = "full", feature = "pulls"))]
-impl ToString for ReviewCommentStartSide {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ReviewCommentStartSide {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ReviewCommentStartSide::Left => "LEFT".to_string(),
-      ReviewCommentStartSide::Right => "RIGHT".to_string(),
+      ReviewCommentStartSide::Left => write!(f, "LEFT"),
+      ReviewCommentStartSide::Right => write!(f, "RIGHT"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// State of the release asset.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3419,15 +3556,16 @@ pub enum ReleaseAssetState {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for ReleaseAssetState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for ReleaseAssetState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      ReleaseAssetState::Uploaded => "uploaded".to_string(),
-      ReleaseAssetState::Open => "open".to_string(),
+      ReleaseAssetState::Uploaded => write!(f, "uploaded"),
+      ReleaseAssetState::Open => write!(f, "open"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 /// The type of source for the ruleset that includes this rule.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3437,15 +3575,16 @@ pub enum RepositoryRuleRulesetInfoRulesetSourceType {
 }
 
 #[cfg(any(feature = "full", feature = "repos"))]
-impl ToString for RepositoryRuleRulesetInfoRulesetSourceType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryRuleRulesetInfoRulesetSourceType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryRuleRulesetInfoRulesetSourceType::Repository => "Repository".to_string(),
-      RepositoryRuleRulesetInfoRulesetSourceType::Organization => "Organization".to_string(),
+      RepositoryRuleRulesetInfoRulesetSourceType::Repository => write!(f, "Repository"),
+      RepositoryRuleRulesetInfoRulesetSourceType::Organization => write!(f, "Organization"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3456,6 +3595,7 @@ pub enum RepositoryRuleDetailedItem1 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3466,6 +3606,7 @@ pub enum RepositoryRuleDetailedItem2 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3476,6 +3617,7 @@ pub enum RepositoryRuleDetailedItem3 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3486,6 +3628,7 @@ pub enum RepositoryRuleDetailedItem4 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3496,6 +3639,7 @@ pub enum RepositoryRuleDetailedItem5 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3506,6 +3650,7 @@ pub enum RepositoryRuleDetailedItem6 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3516,6 +3661,7 @@ pub enum RepositoryRuleDetailedItem7 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3526,6 +3672,7 @@ pub enum RepositoryRuleDetailedItem8 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3536,6 +3683,7 @@ pub enum RepositoryRuleDetailedItem9 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3546,6 +3694,7 @@ pub enum RepositoryRuleDetailedItem10 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3556,6 +3705,7 @@ pub enum RepositoryRuleDetailedItem11 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3566,6 +3716,7 @@ pub enum RepositoryRuleDetailedItem12 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3576,6 +3727,7 @@ pub enum RepositoryRuleDetailedItem13 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3586,6 +3738,7 @@ pub enum RepositoryRuleDetailedItem14 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3596,6 +3749,7 @@ pub enum RepositoryRuleDetailedItem15 {
   RepositoryRuleRulesetInfo(RepositoryRuleRulesetInfo),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "repos"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3617,6 +3771,7 @@ pub enum RepositoryRuleDetailed {
   RepositoryRuleDetailedItem15(RepositoryRuleDetailedItem15),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// The token status as of the latest validity check.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3630,16 +3785,17 @@ pub enum SecretScanningAlertValidity {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
-impl ToString for SecretScanningAlertValidity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecretScanningAlertValidity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecretScanningAlertValidity::Active => "active".to_string(),
-      SecretScanningAlertValidity::Inactive => "inactive".to_string(),
-      SecretScanningAlertValidity::Unknown => "unknown".to_string(),
+      SecretScanningAlertValidity::Active => write!(f, "active"),
+      SecretScanningAlertValidity::Inactive => write!(f, "inactive"),
+      SecretScanningAlertValidity::Unknown => write!(f, "unknown"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(untagged)]
@@ -3672,6 +3828,7 @@ pub enum SecretScanningLocationDetails {
   SecretScanningLocationPullRequestReviewComment(SecretScanningLocationPullRequestReviewComment),
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
 /// The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3705,28 +3862,29 @@ pub enum SecretScanningLocationType {
 }
 
 #[cfg(any(feature = "full", feature = "secret_scanning"))]
-impl ToString for SecretScanningLocationType {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for SecretScanningLocationType {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      SecretScanningLocationType::Commit => "commit".to_string(),
-      SecretScanningLocationType::WikiCommit => "wiki_commit".to_string(),
-      SecretScanningLocationType::IssueTitle => "issue_title".to_string(),
-      SecretScanningLocationType::IssueBody => "issue_body".to_string(),
-      SecretScanningLocationType::IssueComment => "issue_comment".to_string(),
-      SecretScanningLocationType::DiscussionTitle => "discussion_title".to_string(),
-      SecretScanningLocationType::DiscussionBody => "discussion_body".to_string(),
-      SecretScanningLocationType::DiscussionComment => "discussion_comment".to_string(),
-      SecretScanningLocationType::PullRequestTitle => "pull_request_title".to_string(),
-      SecretScanningLocationType::PullRequestBody => "pull_request_body".to_string(),
-      SecretScanningLocationType::PullRequestComment => "pull_request_comment".to_string(),
-      SecretScanningLocationType::PullRequestReview => "pull_request_review".to_string(),
+      SecretScanningLocationType::Commit => write!(f, "commit"),
+      SecretScanningLocationType::WikiCommit => write!(f, "wiki_commit"),
+      SecretScanningLocationType::IssueTitle => write!(f, "issue_title"),
+      SecretScanningLocationType::IssueBody => write!(f, "issue_body"),
+      SecretScanningLocationType::IssueComment => write!(f, "issue_comment"),
+      SecretScanningLocationType::DiscussionTitle => write!(f, "discussion_title"),
+      SecretScanningLocationType::DiscussionBody => write!(f, "discussion_body"),
+      SecretScanningLocationType::DiscussionComment => write!(f, "discussion_comment"),
+      SecretScanningLocationType::PullRequestTitle => write!(f, "pull_request_title"),
+      SecretScanningLocationType::PullRequestBody => write!(f, "pull_request_body"),
+      SecretScanningLocationType::PullRequestComment => write!(f, "pull_request_comment"),
+      SecretScanningLocationType::PullRequestReview => write!(f, "pull_request_review"),
       SecretScanningLocationType::PullRequestReviewComment => {
-        "pull_request_review_comment".to_string()
+        write!(f, "pull_request_review_comment")
       }
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3742,17 +3900,18 @@ pub enum RepositoryAdvisoryCreateSeverity {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for RepositoryAdvisoryCreateSeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryAdvisoryCreateSeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryAdvisoryCreateSeverity::Critical => "critical".to_string(),
-      RepositoryAdvisoryCreateSeverity::High => "high".to_string(),
-      RepositoryAdvisoryCreateSeverity::Medium => "medium".to_string(),
-      RepositoryAdvisoryCreateSeverity::Low => "low".to_string(),
+      RepositoryAdvisoryCreateSeverity::Critical => write!(f, "critical"),
+      RepositoryAdvisoryCreateSeverity::High => write!(f, "high"),
+      RepositoryAdvisoryCreateSeverity::Medium => write!(f, "medium"),
+      RepositoryAdvisoryCreateSeverity::Low => write!(f, "low"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3768,17 +3927,18 @@ pub enum PrivateVulnerabilityReportCreateSeverity {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for PrivateVulnerabilityReportCreateSeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for PrivateVulnerabilityReportCreateSeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      PrivateVulnerabilityReportCreateSeverity::Critical => "critical".to_string(),
-      PrivateVulnerabilityReportCreateSeverity::High => "high".to_string(),
-      PrivateVulnerabilityReportCreateSeverity::Medium => "medium".to_string(),
-      PrivateVulnerabilityReportCreateSeverity::Low => "low".to_string(),
+      PrivateVulnerabilityReportCreateSeverity::Critical => write!(f, "critical"),
+      PrivateVulnerabilityReportCreateSeverity::High => write!(f, "high"),
+      PrivateVulnerabilityReportCreateSeverity::Medium => write!(f, "medium"),
+      PrivateVulnerabilityReportCreateSeverity::Low => write!(f, "low"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The severity of the advisory. You must choose between setting this field or `cvss_vector_string`.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3794,17 +3954,18 @@ pub enum RepositoryAdvisoryUpdateSeverity {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for RepositoryAdvisoryUpdateSeverity {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryAdvisoryUpdateSeverity {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryAdvisoryUpdateSeverity::Critical => "critical".to_string(),
-      RepositoryAdvisoryUpdateSeverity::High => "high".to_string(),
-      RepositoryAdvisoryUpdateSeverity::Medium => "medium".to_string(),
-      RepositoryAdvisoryUpdateSeverity::Low => "low".to_string(),
+      RepositoryAdvisoryUpdateSeverity::Critical => write!(f, "critical"),
+      RepositoryAdvisoryUpdateSeverity::High => write!(f, "high"),
+      RepositoryAdvisoryUpdateSeverity::Medium => write!(f, "medium"),
+      RepositoryAdvisoryUpdateSeverity::Low => write!(f, "low"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "security_advisories"))]
 /// The state of the advisory.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3818,16 +3979,17 @@ pub enum RepositoryAdvisoryUpdateState {
 }
 
 #[cfg(any(feature = "full", feature = "security_advisories"))]
-impl ToString for RepositoryAdvisoryUpdateState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for RepositoryAdvisoryUpdateState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      RepositoryAdvisoryUpdateState::Published => "published".to_string(),
-      RepositoryAdvisoryUpdateState::Closed => "closed".to_string(),
-      RepositoryAdvisoryUpdateState::Draft => "draft".to_string(),
+      RepositoryAdvisoryUpdateState::Published => write!(f, "published"),
+      RepositoryAdvisoryUpdateState::Closed => write!(f, "closed"),
+      RepositoryAdvisoryUpdateState::Draft => write!(f, "draft"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "codespaces"))]
 /// The initally assigned location of a new codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3839,17 +4001,18 @@ pub enum CodespaceWithFullRepositoryLocation {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces"))]
-impl ToString for CodespaceWithFullRepositoryLocation {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodespaceWithFullRepositoryLocation {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodespaceWithFullRepositoryLocation::EastUs => "EastUs".to_string(),
-      CodespaceWithFullRepositoryLocation::SouthEastAsia => "SouthEastAsia".to_string(),
-      CodespaceWithFullRepositoryLocation::WestEurope => "WestEurope".to_string(),
-      CodespaceWithFullRepositoryLocation::WestUs2 => "WestUs2".to_string(),
+      CodespaceWithFullRepositoryLocation::EastUs => write!(f, "EastUs"),
+      CodespaceWithFullRepositoryLocation::SouthEastAsia => write!(f, "SouthEastAsia"),
+      CodespaceWithFullRepositoryLocation::WestEurope => write!(f, "WestEurope"),
+      CodespaceWithFullRepositoryLocation::WestUs2 => write!(f, "WestUs2"),
     }
   }
 }
 
+#[allow(clippy::large_enum_variant)]
 #[cfg(any(feature = "full", feature = "codespaces"))]
 /// State of this codespace.
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
@@ -3874,26 +4037,26 @@ pub enum CodespaceWithFullRepositoryState {
 }
 
 #[cfg(any(feature = "full", feature = "codespaces"))]
-impl ToString for CodespaceWithFullRepositoryState {
-  fn to_string(&self) -> String {
+impl std::fmt::Display for CodespaceWithFullRepositoryState {
+  fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
     match self {
-      CodespaceWithFullRepositoryState::Unknown => "Unknown".to_string(),
-      CodespaceWithFullRepositoryState::Created => "Created".to_string(),
-      CodespaceWithFullRepositoryState::Queued => "Queued".to_string(),
-      CodespaceWithFullRepositoryState::Provisioning => "Provisioning".to_string(),
-      CodespaceWithFullRepositoryState::Available => "Available".to_string(),
-      CodespaceWithFullRepositoryState::Awaiting => "Awaiting".to_string(),
-      CodespaceWithFullRepositoryState::Unavailable => "Unavailable".to_string(),
-      CodespaceWithFullRepositoryState::Deleted => "Deleted".to_string(),
-      CodespaceWithFullRepositoryState::Moved => "Moved".to_string(),
-      CodespaceWithFullRepositoryState::Shutdown => "Shutdown".to_string(),
-      CodespaceWithFullRepositoryState::Archived => "Archived".to_string(),
-      CodespaceWithFullRepositoryState::Starting => "Starting".to_string(),
-      CodespaceWithFullRepositoryState::ShuttingDown => "ShuttingDown".to_string(),
-      CodespaceWithFullRepositoryState::Failed => "Failed".to_string(),
-      CodespaceWithFullRepositoryState::Exporting => "Exporting".to_string(),
-      CodespaceWithFullRepositoryState::Updating => "Updating".to_string(),
-      CodespaceWithFullRepositoryState::Rebuilding => "Rebuilding".to_string(),
+      CodespaceWithFullRepositoryState::Unknown => write!(f, "Unknown"),
+      CodespaceWithFullRepositoryState::Created => write!(f, "Created"),
+      CodespaceWithFullRepositoryState::Queued => write!(f, "Queued"),
+      CodespaceWithFullRepositoryState::Provisioning => write!(f, "Provisioning"),
+      CodespaceWithFullRepositoryState::Available => write!(f, "Available"),
+      CodespaceWithFullRepositoryState::Awaiting => write!(f, "Awaiting"),
+      CodespaceWithFullRepositoryState::Unavailable => write!(f, "Unavailable"),
+      CodespaceWithFullRepositoryState::Deleted => write!(f, "Deleted"),
+      CodespaceWithFullRepositoryState::Moved => write!(f, "Moved"),
+      CodespaceWithFullRepositoryState::Shutdown => write!(f, "Shutdown"),
+      CodespaceWithFullRepositoryState::Archived => write!(f, "Archived"),
+      CodespaceWithFullRepositoryState::Starting => write!(f, "Starting"),
+      CodespaceWithFullRepositoryState::ShuttingDown => write!(f, "ShuttingDown"),
+      CodespaceWithFullRepositoryState::Failed => write!(f, "Failed"),
+      CodespaceWithFullRepositoryState::Exporting => write!(f, "Exporting"),
+      CodespaceWithFullRepositoryState::Updating => write!(f, "Updating"),
+      CodespaceWithFullRepositoryState::Rebuilding => write!(f, "Rebuilding"),
     }
   }
 }

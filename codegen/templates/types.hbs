@@ -16,6 +16,7 @@ pub type {{ alias }} = {{ type_name }};
 
 {{#if enums }}
 {{#each enums }}
+#[allow(clippy::large_enum_variant)]
 {{#if ../render_features}}
 {{render_features_cfg tags}}
 {{/if}}

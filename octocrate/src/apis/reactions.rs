@@ -12,6 +12,7 @@ pub mod list_for_team_discussion_comment_in_org {
 
   pub type Response = Vec<Reaction>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryContent {
     #[serde(rename = "+1")]
@@ -32,17 +33,17 @@ pub mod list_for_team_discussion_comment_in_org {
     Eyes,
   }
 
-  impl ToString for QueryContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryContent::PlusOne => "+1".to_string(),
-        QueryContent::MinusOne => "-1".to_string(),
-        QueryContent::Laugh => "laugh".to_string(),
-        QueryContent::Confused => "confused".to_string(),
-        QueryContent::Heart => "heart".to_string(),
-        QueryContent::Hooray => "hooray".to_string(),
-        QueryContent::Rocket => "rocket".to_string(),
-        QueryContent::Eyes => "eyes".to_string(),
+        QueryContent::PlusOne => write!(f, "+1"),
+        QueryContent::MinusOne => write!(f, "-1"),
+        QueryContent::Laugh => write!(f, "laugh"),
+        QueryContent::Confused => write!(f, "confused"),
+        QueryContent::Heart => write!(f, "heart"),
+        QueryContent::Hooray => write!(f, "hooray"),
+        QueryContent::Rocket => write!(f, "rocket"),
+        QueryContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -71,6 +72,7 @@ pub mod create_for_team_discussion_comment_in_org {
 
   pub type Response = Reaction;
 
+  #[allow(clippy::large_enum_variant)]
   /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestContent {
@@ -92,17 +94,17 @@ pub mod create_for_team_discussion_comment_in_org {
     Eyes,
   }
 
-  impl ToString for RequestContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestContent::PlusOne => "+1".to_string(),
-        RequestContent::MinusOne => "-1".to_string(),
-        RequestContent::Laugh => "laugh".to_string(),
-        RequestContent::Confused => "confused".to_string(),
-        RequestContent::Heart => "heart".to_string(),
-        RequestContent::Hooray => "hooray".to_string(),
-        RequestContent::Rocket => "rocket".to_string(),
-        RequestContent::Eyes => "eyes".to_string(),
+        RequestContent::PlusOne => write!(f, "+1"),
+        RequestContent::MinusOne => write!(f, "-1"),
+        RequestContent::Laugh => write!(f, "laugh"),
+        RequestContent::Confused => write!(f, "confused"),
+        RequestContent::Heart => write!(f, "heart"),
+        RequestContent::Hooray => write!(f, "hooray"),
+        RequestContent::Rocket => write!(f, "rocket"),
+        RequestContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -121,6 +123,7 @@ pub mod list_for_team_discussion_in_org {
 
   pub type Response = Vec<Reaction>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryContent {
     #[serde(rename = "+1")]
@@ -141,17 +144,17 @@ pub mod list_for_team_discussion_in_org {
     Eyes,
   }
 
-  impl ToString for QueryContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryContent::PlusOne => "+1".to_string(),
-        QueryContent::MinusOne => "-1".to_string(),
-        QueryContent::Laugh => "laugh".to_string(),
-        QueryContent::Confused => "confused".to_string(),
-        QueryContent::Heart => "heart".to_string(),
-        QueryContent::Hooray => "hooray".to_string(),
-        QueryContent::Rocket => "rocket".to_string(),
-        QueryContent::Eyes => "eyes".to_string(),
+        QueryContent::PlusOne => write!(f, "+1"),
+        QueryContent::MinusOne => write!(f, "-1"),
+        QueryContent::Laugh => write!(f, "laugh"),
+        QueryContent::Confused => write!(f, "confused"),
+        QueryContent::Heart => write!(f, "heart"),
+        QueryContent::Hooray => write!(f, "hooray"),
+        QueryContent::Rocket => write!(f, "rocket"),
+        QueryContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -180,6 +183,7 @@ pub mod create_for_team_discussion_in_org {
 
   pub type Response = Reaction;
 
+  #[allow(clippy::large_enum_variant)]
   /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestContent {
@@ -201,17 +205,17 @@ pub mod create_for_team_discussion_in_org {
     Eyes,
   }
 
-  impl ToString for RequestContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestContent::PlusOne => "+1".to_string(),
-        RequestContent::MinusOne => "-1".to_string(),
-        RequestContent::Laugh => "laugh".to_string(),
-        RequestContent::Confused => "confused".to_string(),
-        RequestContent::Heart => "heart".to_string(),
-        RequestContent::Hooray => "hooray".to_string(),
-        RequestContent::Rocket => "rocket".to_string(),
-        RequestContent::Eyes => "eyes".to_string(),
+        RequestContent::PlusOne => write!(f, "+1"),
+        RequestContent::MinusOne => write!(f, "-1"),
+        RequestContent::Laugh => write!(f, "laugh"),
+        RequestContent::Confused => write!(f, "confused"),
+        RequestContent::Heart => write!(f, "heart"),
+        RequestContent::Hooray => write!(f, "hooray"),
+        RequestContent::Rocket => write!(f, "rocket"),
+        RequestContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -230,6 +234,7 @@ pub mod list_for_commit_comment {
 
   pub type Response = Vec<Reaction>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryContent {
     #[serde(rename = "+1")]
@@ -250,17 +255,17 @@ pub mod list_for_commit_comment {
     Eyes,
   }
 
-  impl ToString for QueryContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryContent::PlusOne => "+1".to_string(),
-        QueryContent::MinusOne => "-1".to_string(),
-        QueryContent::Laugh => "laugh".to_string(),
-        QueryContent::Confused => "confused".to_string(),
-        QueryContent::Heart => "heart".to_string(),
-        QueryContent::Hooray => "hooray".to_string(),
-        QueryContent::Rocket => "rocket".to_string(),
-        QueryContent::Eyes => "eyes".to_string(),
+        QueryContent::PlusOne => write!(f, "+1"),
+        QueryContent::MinusOne => write!(f, "-1"),
+        QueryContent::Laugh => write!(f, "laugh"),
+        QueryContent::Confused => write!(f, "confused"),
+        QueryContent::Heart => write!(f, "heart"),
+        QueryContent::Hooray => write!(f, "hooray"),
+        QueryContent::Rocket => write!(f, "rocket"),
+        QueryContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -289,6 +294,7 @@ pub mod create_for_commit_comment {
 
   pub type Response = Reaction;
 
+  #[allow(clippy::large_enum_variant)]
   /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestContent {
@@ -310,17 +316,17 @@ pub mod create_for_commit_comment {
     Eyes,
   }
 
-  impl ToString for RequestContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestContent::PlusOne => "+1".to_string(),
-        RequestContent::MinusOne => "-1".to_string(),
-        RequestContent::Laugh => "laugh".to_string(),
-        RequestContent::Confused => "confused".to_string(),
-        RequestContent::Heart => "heart".to_string(),
-        RequestContent::Hooray => "hooray".to_string(),
-        RequestContent::Rocket => "rocket".to_string(),
-        RequestContent::Eyes => "eyes".to_string(),
+        RequestContent::PlusOne => write!(f, "+1"),
+        RequestContent::MinusOne => write!(f, "-1"),
+        RequestContent::Laugh => write!(f, "laugh"),
+        RequestContent::Confused => write!(f, "confused"),
+        RequestContent::Heart => write!(f, "heart"),
+        RequestContent::Hooray => write!(f, "hooray"),
+        RequestContent::Rocket => write!(f, "rocket"),
+        RequestContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -339,6 +345,7 @@ pub mod list_for_issue_comment {
 
   pub type Response = Vec<Reaction>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryContent {
     #[serde(rename = "+1")]
@@ -359,17 +366,17 @@ pub mod list_for_issue_comment {
     Eyes,
   }
 
-  impl ToString for QueryContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryContent::PlusOne => "+1".to_string(),
-        QueryContent::MinusOne => "-1".to_string(),
-        QueryContent::Laugh => "laugh".to_string(),
-        QueryContent::Confused => "confused".to_string(),
-        QueryContent::Heart => "heart".to_string(),
-        QueryContent::Hooray => "hooray".to_string(),
-        QueryContent::Rocket => "rocket".to_string(),
-        QueryContent::Eyes => "eyes".to_string(),
+        QueryContent::PlusOne => write!(f, "+1"),
+        QueryContent::MinusOne => write!(f, "-1"),
+        QueryContent::Laugh => write!(f, "laugh"),
+        QueryContent::Confused => write!(f, "confused"),
+        QueryContent::Heart => write!(f, "heart"),
+        QueryContent::Hooray => write!(f, "hooray"),
+        QueryContent::Rocket => write!(f, "rocket"),
+        QueryContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -398,6 +405,7 @@ pub mod create_for_issue_comment {
 
   pub type Response = Reaction;
 
+  #[allow(clippy::large_enum_variant)]
   /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestContent {
@@ -419,17 +427,17 @@ pub mod create_for_issue_comment {
     Eyes,
   }
 
-  impl ToString for RequestContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestContent::PlusOne => "+1".to_string(),
-        RequestContent::MinusOne => "-1".to_string(),
-        RequestContent::Laugh => "laugh".to_string(),
-        RequestContent::Confused => "confused".to_string(),
-        RequestContent::Heart => "heart".to_string(),
-        RequestContent::Hooray => "hooray".to_string(),
-        RequestContent::Rocket => "rocket".to_string(),
-        RequestContent::Eyes => "eyes".to_string(),
+        RequestContent::PlusOne => write!(f, "+1"),
+        RequestContent::MinusOne => write!(f, "-1"),
+        RequestContent::Laugh => write!(f, "laugh"),
+        RequestContent::Confused => write!(f, "confused"),
+        RequestContent::Heart => write!(f, "heart"),
+        RequestContent::Hooray => write!(f, "hooray"),
+        RequestContent::Rocket => write!(f, "rocket"),
+        RequestContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -448,6 +456,7 @@ pub mod list_for_issue {
 
   pub type Response = Vec<Reaction>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryContent {
     #[serde(rename = "+1")]
@@ -468,17 +477,17 @@ pub mod list_for_issue {
     Eyes,
   }
 
-  impl ToString for QueryContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryContent::PlusOne => "+1".to_string(),
-        QueryContent::MinusOne => "-1".to_string(),
-        QueryContent::Laugh => "laugh".to_string(),
-        QueryContent::Confused => "confused".to_string(),
-        QueryContent::Heart => "heart".to_string(),
-        QueryContent::Hooray => "hooray".to_string(),
-        QueryContent::Rocket => "rocket".to_string(),
-        QueryContent::Eyes => "eyes".to_string(),
+        QueryContent::PlusOne => write!(f, "+1"),
+        QueryContent::MinusOne => write!(f, "-1"),
+        QueryContent::Laugh => write!(f, "laugh"),
+        QueryContent::Confused => write!(f, "confused"),
+        QueryContent::Heart => write!(f, "heart"),
+        QueryContent::Hooray => write!(f, "hooray"),
+        QueryContent::Rocket => write!(f, "rocket"),
+        QueryContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -507,6 +516,7 @@ pub mod create_for_issue {
 
   pub type Response = Reaction;
 
+  #[allow(clippy::large_enum_variant)]
   /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestContent {
@@ -528,17 +538,17 @@ pub mod create_for_issue {
     Eyes,
   }
 
-  impl ToString for RequestContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestContent::PlusOne => "+1".to_string(),
-        RequestContent::MinusOne => "-1".to_string(),
-        RequestContent::Laugh => "laugh".to_string(),
-        RequestContent::Confused => "confused".to_string(),
-        RequestContent::Heart => "heart".to_string(),
-        RequestContent::Hooray => "hooray".to_string(),
-        RequestContent::Rocket => "rocket".to_string(),
-        RequestContent::Eyes => "eyes".to_string(),
+        RequestContent::PlusOne => write!(f, "+1"),
+        RequestContent::MinusOne => write!(f, "-1"),
+        RequestContent::Laugh => write!(f, "laugh"),
+        RequestContent::Confused => write!(f, "confused"),
+        RequestContent::Heart => write!(f, "heart"),
+        RequestContent::Hooray => write!(f, "hooray"),
+        RequestContent::Rocket => write!(f, "rocket"),
+        RequestContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -557,6 +567,7 @@ pub mod list_for_pull_request_review_comment {
 
   pub type Response = Vec<Reaction>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryContent {
     #[serde(rename = "+1")]
@@ -577,17 +588,17 @@ pub mod list_for_pull_request_review_comment {
     Eyes,
   }
 
-  impl ToString for QueryContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryContent::PlusOne => "+1".to_string(),
-        QueryContent::MinusOne => "-1".to_string(),
-        QueryContent::Laugh => "laugh".to_string(),
-        QueryContent::Confused => "confused".to_string(),
-        QueryContent::Heart => "heart".to_string(),
-        QueryContent::Hooray => "hooray".to_string(),
-        QueryContent::Rocket => "rocket".to_string(),
-        QueryContent::Eyes => "eyes".to_string(),
+        QueryContent::PlusOne => write!(f, "+1"),
+        QueryContent::MinusOne => write!(f, "-1"),
+        QueryContent::Laugh => write!(f, "laugh"),
+        QueryContent::Confused => write!(f, "confused"),
+        QueryContent::Heart => write!(f, "heart"),
+        QueryContent::Hooray => write!(f, "hooray"),
+        QueryContent::Rocket => write!(f, "rocket"),
+        QueryContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -616,6 +627,7 @@ pub mod create_for_pull_request_review_comment {
 
   pub type Response = Reaction;
 
+  #[allow(clippy::large_enum_variant)]
   /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the pull request review comment.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestContent {
@@ -637,17 +649,17 @@ pub mod create_for_pull_request_review_comment {
     Eyes,
   }
 
-  impl ToString for RequestContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestContent::PlusOne => "+1".to_string(),
-        RequestContent::MinusOne => "-1".to_string(),
-        RequestContent::Laugh => "laugh".to_string(),
-        RequestContent::Confused => "confused".to_string(),
-        RequestContent::Heart => "heart".to_string(),
-        RequestContent::Hooray => "hooray".to_string(),
-        RequestContent::Rocket => "rocket".to_string(),
-        RequestContent::Eyes => "eyes".to_string(),
+        RequestContent::PlusOne => write!(f, "+1"),
+        RequestContent::MinusOne => write!(f, "-1"),
+        RequestContent::Laugh => write!(f, "laugh"),
+        RequestContent::Confused => write!(f, "confused"),
+        RequestContent::Heart => write!(f, "heart"),
+        RequestContent::Hooray => write!(f, "hooray"),
+        RequestContent::Rocket => write!(f, "rocket"),
+        RequestContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -666,6 +678,7 @@ pub mod list_for_release {
 
   pub type Response = Vec<Reaction>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryContent {
     #[serde(rename = "+1")]
@@ -682,15 +695,15 @@ pub mod list_for_release {
     Eyes,
   }
 
-  impl ToString for QueryContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryContent::PlusOne => "+1".to_string(),
-        QueryContent::Laugh => "laugh".to_string(),
-        QueryContent::Heart => "heart".to_string(),
-        QueryContent::Hooray => "hooray".to_string(),
-        QueryContent::Rocket => "rocket".to_string(),
-        QueryContent::Eyes => "eyes".to_string(),
+        QueryContent::PlusOne => write!(f, "+1"),
+        QueryContent::Laugh => write!(f, "laugh"),
+        QueryContent::Heart => write!(f, "heart"),
+        QueryContent::Hooray => write!(f, "hooray"),
+        QueryContent::Rocket => write!(f, "rocket"),
+        QueryContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -719,6 +732,7 @@ pub mod create_for_release {
 
   pub type Response = Reaction;
 
+  #[allow(clippy::large_enum_variant)]
   /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestContent {
@@ -736,15 +750,15 @@ pub mod create_for_release {
     Eyes,
   }
 
-  impl ToString for RequestContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestContent::PlusOne => "+1".to_string(),
-        RequestContent::Laugh => "laugh".to_string(),
-        RequestContent::Heart => "heart".to_string(),
-        RequestContent::Hooray => "hooray".to_string(),
-        RequestContent::Rocket => "rocket".to_string(),
-        RequestContent::Eyes => "eyes".to_string(),
+        RequestContent::PlusOne => write!(f, "+1"),
+        RequestContent::Laugh => write!(f, "laugh"),
+        RequestContent::Heart => write!(f, "heart"),
+        RequestContent::Hooray => write!(f, "hooray"),
+        RequestContent::Rocket => write!(f, "rocket"),
+        RequestContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -763,6 +777,7 @@ pub mod list_for_team_discussion_comment_legacy {
 
   pub type Response = Vec<Reaction>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryContent {
     #[serde(rename = "+1")]
@@ -783,17 +798,17 @@ pub mod list_for_team_discussion_comment_legacy {
     Eyes,
   }
 
-  impl ToString for QueryContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryContent::PlusOne => "+1".to_string(),
-        QueryContent::MinusOne => "-1".to_string(),
-        QueryContent::Laugh => "laugh".to_string(),
-        QueryContent::Confused => "confused".to_string(),
-        QueryContent::Heart => "heart".to_string(),
-        QueryContent::Hooray => "hooray".to_string(),
-        QueryContent::Rocket => "rocket".to_string(),
-        QueryContent::Eyes => "eyes".to_string(),
+        QueryContent::PlusOne => write!(f, "+1"),
+        QueryContent::MinusOne => write!(f, "-1"),
+        QueryContent::Laugh => write!(f, "laugh"),
+        QueryContent::Confused => write!(f, "confused"),
+        QueryContent::Heart => write!(f, "heart"),
+        QueryContent::Hooray => write!(f, "hooray"),
+        QueryContent::Rocket => write!(f, "rocket"),
+        QueryContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -822,6 +837,7 @@ pub mod create_for_team_discussion_comment_legacy {
 
   pub type Response = Reaction;
 
+  #[allow(clippy::large_enum_variant)]
   /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion comment.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestContent {
@@ -843,17 +859,17 @@ pub mod create_for_team_discussion_comment_legacy {
     Eyes,
   }
 
-  impl ToString for RequestContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestContent::PlusOne => "+1".to_string(),
-        RequestContent::MinusOne => "-1".to_string(),
-        RequestContent::Laugh => "laugh".to_string(),
-        RequestContent::Confused => "confused".to_string(),
-        RequestContent::Heart => "heart".to_string(),
-        RequestContent::Hooray => "hooray".to_string(),
-        RequestContent::Rocket => "rocket".to_string(),
-        RequestContent::Eyes => "eyes".to_string(),
+        RequestContent::PlusOne => write!(f, "+1"),
+        RequestContent::MinusOne => write!(f, "-1"),
+        RequestContent::Laugh => write!(f, "laugh"),
+        RequestContent::Confused => write!(f, "confused"),
+        RequestContent::Heart => write!(f, "heart"),
+        RequestContent::Hooray => write!(f, "hooray"),
+        RequestContent::Rocket => write!(f, "rocket"),
+        RequestContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -872,6 +888,7 @@ pub mod list_for_team_discussion_legacy {
 
   pub type Response = Vec<Reaction>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryContent {
     #[serde(rename = "+1")]
@@ -892,17 +909,17 @@ pub mod list_for_team_discussion_legacy {
     Eyes,
   }
 
-  impl ToString for QueryContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryContent::PlusOne => "+1".to_string(),
-        QueryContent::MinusOne => "-1".to_string(),
-        QueryContent::Laugh => "laugh".to_string(),
-        QueryContent::Confused => "confused".to_string(),
-        QueryContent::Heart => "heart".to_string(),
-        QueryContent::Hooray => "hooray".to_string(),
-        QueryContent::Rocket => "rocket".to_string(),
-        QueryContent::Eyes => "eyes".to_string(),
+        QueryContent::PlusOne => write!(f, "+1"),
+        QueryContent::MinusOne => write!(f, "-1"),
+        QueryContent::Laugh => write!(f, "laugh"),
+        QueryContent::Confused => write!(f, "confused"),
+        QueryContent::Heart => write!(f, "heart"),
+        QueryContent::Hooray => write!(f, "hooray"),
+        QueryContent::Rocket => write!(f, "rocket"),
+        QueryContent::Eyes => write!(f, "eyes"),
       }
     }
   }
@@ -931,6 +948,7 @@ pub mod create_for_team_discussion_legacy {
 
   pub type Response = Reaction;
 
+  #[allow(clippy::large_enum_variant)]
   /// The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the team discussion.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestContent {
@@ -952,17 +970,17 @@ pub mod create_for_team_discussion_legacy {
     Eyes,
   }
 
-  impl ToString for RequestContent {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestContent {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestContent::PlusOne => "+1".to_string(),
-        RequestContent::MinusOne => "-1".to_string(),
-        RequestContent::Laugh => "laugh".to_string(),
-        RequestContent::Confused => "confused".to_string(),
-        RequestContent::Heart => "heart".to_string(),
-        RequestContent::Hooray => "hooray".to_string(),
-        RequestContent::Rocket => "rocket".to_string(),
-        RequestContent::Eyes => "eyes".to_string(),
+        RequestContent::PlusOne => write!(f, "+1"),
+        RequestContent::MinusOne => write!(f, "-1"),
+        RequestContent::Laugh => write!(f, "laugh"),
+        RequestContent::Confused => write!(f, "confused"),
+        RequestContent::Heart => write!(f, "heart"),
+        RequestContent::Hooray => write!(f, "hooray"),
+        RequestContent::Rocket => write!(f, "rocket"),
+        RequestContent::Eyes => write!(f, "eyes"),
       }
     }
   }

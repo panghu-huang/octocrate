@@ -12,6 +12,7 @@ pub mod list_alerts_for_org {
 
   pub type Response = Vec<CodeScanningOrganizationAlertItems>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -20,11 +21,11 @@ pub mod list_alerts_for_org {
     Updated,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
       }
     }
   }
@@ -81,6 +82,7 @@ pub mod list_alerts_for_repo {
 
   pub type Response = Vec<CodeScanningAlertItems>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -89,11 +91,11 @@ pub mod list_alerts_for_repo {
     Updated,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
       }
     }
   }
@@ -198,16 +200,17 @@ pub mod list_recent_analyses {
 
   pub type Response = Vec<CodeScanningAnalysis>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
     Created,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
+        QuerySort::Created => write!(f, "created"),
       }
     }
   }
@@ -301,6 +304,7 @@ pub mod update_default_setup {
 
   pub type Request = CodeScanningDefaultSetupUpdate;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   pub enum Response {
     Success(EmptyObject),

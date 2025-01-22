@@ -975,6 +975,7 @@ pub mod review_custom_gates_for_run {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Request {
@@ -994,6 +995,7 @@ pub mod list_jobs_for_workflow_run {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryFilter {
     #[serde(rename = "latest")]
@@ -1002,11 +1004,11 @@ pub mod list_jobs_for_workflow_run {
     All,
   }
 
-  impl ToString for QueryFilter {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryFilter {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryFilter::Latest => "latest".to_string(),
-        QueryFilter::All => "all".to_string(),
+        QueryFilter::Latest => write!(f, "latest"),
+        QueryFilter::All => write!(f, "all"),
       }
     }
   }
@@ -1049,6 +1051,7 @@ pub mod review_pending_deployments_for_run {
 
   pub type Response = Vec<Deployment>;
 
+  #[allow(clippy::large_enum_variant)]
   /// Whether to approve or reject deployment to the specified environments.
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum RequestState {
@@ -1058,11 +1061,11 @@ pub mod review_pending_deployments_for_run {
     Rejected,
   }
 
-  impl ToString for RequestState {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for RequestState {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        RequestState::Approved => "approved".to_string(),
-        RequestState::Rejected => "rejected".to_string(),
+        RequestState::Approved => write!(f, "approved"),
+        RequestState::Rejected => write!(f, "rejected"),
       }
     }
   }

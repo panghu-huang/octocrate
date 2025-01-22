@@ -10,20 +10,22 @@ pub mod code {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "indexed")]
     Indexed,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Indexed => "indexed".to_string(),
+        QuerySort::Indexed => write!(f, "indexed"),
       }
     }
   }
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryOrder {
     #[serde(rename = "desc")]
@@ -32,11 +34,11 @@ pub mod code {
     Asc,
   }
 
-  impl ToString for QueryOrder {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryOrder {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryOrder::Desc => "desc".to_string(),
-        QueryOrder::Asc => "asc".to_string(),
+        QueryOrder::Desc => write!(f, "desc"),
+        QueryOrder::Asc => write!(f, "asc"),
       }
     }
   }
@@ -77,6 +79,7 @@ pub mod commits {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "author-date")]
@@ -85,11 +88,11 @@ pub mod commits {
     CommitterDate,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::AuthorDate => "author-date".to_string(),
-        QuerySort::CommitterDate => "committer-date".to_string(),
+        QuerySort::AuthorDate => write!(f, "author-date"),
+        QuerySort::CommitterDate => write!(f, "committer-date"),
       }
     }
   }
@@ -130,6 +133,7 @@ pub mod issues_and_pull_requests {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "comments")]
@@ -156,20 +160,20 @@ pub mod issues_and_pull_requests {
     Updated,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Comments => "comments".to_string(),
-        QuerySort::Reactions => "reactions".to_string(),
-        QuerySort::ReactionsMinusPlusOne => "reactions-+1".to_string(),
-        QuerySort::ReactionsMinusMinusOne => "reactions--1".to_string(),
-        QuerySort::ReactionsSmile => "reactions-smile".to_string(),
-        QuerySort::ReactionsThinkingFace => "reactions-thinking_face".to_string(),
-        QuerySort::ReactionsHeart => "reactions-heart".to_string(),
-        QuerySort::ReactionsTada => "reactions-tada".to_string(),
-        QuerySort::Interactions => "interactions".to_string(),
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Comments => write!(f, "comments"),
+        QuerySort::Reactions => write!(f, "reactions"),
+        QuerySort::ReactionsMinusPlusOne => write!(f, "reactions-+1"),
+        QuerySort::ReactionsMinusMinusOne => write!(f, "reactions--1"),
+        QuerySort::ReactionsSmile => write!(f, "reactions-smile"),
+        QuerySort::ReactionsThinkingFace => write!(f, "reactions-thinking_face"),
+        QuerySort::ReactionsHeart => write!(f, "reactions-heart"),
+        QuerySort::ReactionsTada => write!(f, "reactions-tada"),
+        QuerySort::Interactions => write!(f, "interactions"),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
       }
     }
   }
@@ -210,6 +214,7 @@ pub mod labels {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "created")]
@@ -218,11 +223,11 @@ pub mod labels {
     Updated,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Created => "created".to_string(),
-        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Created => write!(f, "created"),
+        QuerySort::Updated => write!(f, "updated"),
       }
     }
   }
@@ -265,6 +270,7 @@ pub mod repos {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "stars")]
@@ -277,13 +283,13 @@ pub mod repos {
     Updated,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Stars => "stars".to_string(),
-        QuerySort::Forks => "forks".to_string(),
-        QuerySort::HelpWantedIssues => "help-wanted-issues".to_string(),
-        QuerySort::Updated => "updated".to_string(),
+        QuerySort::Stars => write!(f, "stars"),
+        QuerySort::Forks => write!(f, "forks"),
+        QuerySort::HelpWantedIssues => write!(f, "help-wanted-issues"),
+        QuerySort::Updated => write!(f, "updated"),
       }
     }
   }
@@ -352,6 +358,7 @@ pub mod users {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QuerySort {
     #[serde(rename = "followers")]
@@ -362,12 +369,12 @@ pub mod users {
     Joined,
   }
 
-  impl ToString for QuerySort {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QuerySort {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QuerySort::Followers => "followers".to_string(),
-        QuerySort::Repositories => "repositories".to_string(),
-        QuerySort::Joined => "joined".to_string(),
+        QuerySort::Followers => write!(f, "followers"),
+        QuerySort::Repositories => write!(f, "repositories"),
+        QuerySort::Joined => write!(f, "joined"),
       }
     }
   }

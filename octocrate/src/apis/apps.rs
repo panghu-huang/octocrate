@@ -17,6 +17,7 @@ pub mod create_from_manifest {
   #[allow(unused_imports)]
   use super::*;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize)]
   #[serde(untagged)]
   pub enum Response {
@@ -328,6 +329,7 @@ pub mod list_accounts_for_plan {
 
   pub type Response = Vec<MarketplacePurchase>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
@@ -336,11 +338,11 @@ pub mod list_accounts_for_plan {
     Desc,
   }
 
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryDirection {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
+        QueryDirection::Asc => write!(f, "asc"),
+        QueryDirection::Desc => write!(f, "desc"),
       }
     }
   }
@@ -400,6 +402,7 @@ pub mod list_accounts_for_plan_stubbed {
 
   pub type Response = Vec<MarketplacePurchase>;
 
+  #[allow(clippy::large_enum_variant)]
   #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Copy)]
   pub enum QueryDirection {
     #[serde(rename = "asc")]
@@ -408,11 +411,11 @@ pub mod list_accounts_for_plan_stubbed {
     Desc,
   }
 
-  impl ToString for QueryDirection {
-    fn to_string(&self) -> String {
+  impl std::fmt::Display for QueryDirection {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
       match self {
-        QueryDirection::Asc => "asc".to_string(),
-        QueryDirection::Desc => "desc".to_string(),
+        QueryDirection::Asc => write!(f, "asc"),
+        QueryDirection::Desc => write!(f, "desc"),
       }
     }
   }
