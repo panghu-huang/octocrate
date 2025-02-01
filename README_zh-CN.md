@@ -224,6 +224,43 @@ async fn main() {
 }
 ```
 
+#### 上传文件
+
+```rust
+use octocrate::{repos, APIConfig, GitHubAPI, PersonalAccessToken};
+use tokio::fs::File;
+
+#[tokio::main]
+async fn main() {
+  let file_path = std::path::Path::new("test.txt");
+
+  // File 是 tokio::fs 模块中的文件
+  let file = File::open(file_path).await.unwrap();
+  // 获取文件的长度
+  let content_length = file.metadata().await.unwrap().len();
+
+  let query = repos::upload_release_asset::Query::builder()
+    .name("test.txt")
+    .build();
+
+  let release_asset = api_for_upload
+    .repos
+    .upload_release_asset("panghu-huang", "octocrate", release.id)
+    .query(&query)
+    // 设置文件的长度
+    .header("Content-Type", "text/plain")
+    // 设置文件的长度
+    .header("Content-Length", content_length.to_string())
+    // 设置文件的内容
+    .file(file)
+    .send()
+    .await
+    .unwrap();
+
+  // ..
+}
+```
+
 你可以在 [octocrate/tests](./octocrate/tests) 目录下找到更多的示例。
 
 ## 贡献
