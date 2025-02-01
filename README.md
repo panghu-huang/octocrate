@@ -244,7 +244,7 @@ async fn main() {
     .name("test.txt")
     .build();
 
-  let release_asset = api_for_upload
+  let release_asset = github_api
     .repos
     .upload_release_asset("panghu-huang", "octocrate", release.id)
     .query(&query)
