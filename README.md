@@ -225,6 +225,43 @@ async fn main() {
 }
 ```
 
+#### Upload File
+
+```rust
+use octocrate::{repos, APIConfig, GitHubAPI, PersonalAccessToken};
+use tokio::fs::File;
+
+#[tokio::main]
+async fn main() {
+  let file_path = std::path::Path::new("test.txt");
+
+  // File is from tokio::fs module
+  let file = File::open(file_path).await.unwrap();
+  // Get the file's length
+  let content_length = file.metadata().await.unwrap().len();
+
+  let query = repos::upload_release_asset::Query::builder()
+    .name("test.txt")
+    .build();
+
+  let release_asset = github_api
+    .repos
+    .upload_release_asset("panghu-huang", "octocrate", release.id)
+    .query(&query)
+    // Set the content type of the file
+    .header("Content-Type", "text/plain")
+    // Set the content length of the file
+    .header("Content-Length", content_length.to_string())
+    // Set the file content
+    .file(file)
+    .send()
+    .await
+    .unwrap();
+
+  // ..
+}
+```
+
 You can find more example code in the [octocrate/tests](./octocrate/tests) directory.
 
 ## Contributing
