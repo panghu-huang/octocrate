@@ -262,7 +262,7 @@ async fn main() {
 }
 ```
 
-You can find more example code in the [octocrate/tests](./octocrate/tests) directory.
+You can find more example code in the [octocrate/tests](https://github.com/panghu-huang/octocrate/tree/main/octocrate/tests) directory.
 
 ## Contributing
 

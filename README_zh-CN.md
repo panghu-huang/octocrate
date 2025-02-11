@@ -261,7 +261,7 @@ async fn main() {
 }
 ```
 
-你可以在 [octocrate/tests](./octocrate/tests) 目录下找到更多的示例。
+你可以在 [octocrate/tests](https://github.com/panghu-huang/octocrate/tree/main/octocrate/tests) 目录下找到更多的示例。
 
 ## 贡献
 

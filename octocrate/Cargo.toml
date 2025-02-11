@@ -1,6 +1,6 @@
 [package]
 name = "octocrate"
-version = "2.0.1"
+version = "2.2.0"
 edition.workspace = true
 keywords.workspace = true
 authors.workspace = true
